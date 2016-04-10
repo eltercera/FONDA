@@ -298,11 +298,11 @@
     <div class="row">
     <div class="col-sm-12">
         <ul class="list-group">
-            <li class="list-group-item"><a href="bootstrap-elements.html">Elementos de Bootstrap</a></li>
-            <li class="list-group-item"><a href="bootstrap-grid.html">Sistema de Grilla de Bootstrap</a></li>
-            <li class="list-group-item"><a href="forms.html">Formularios y Validacion</a></li>
-            <li class="list-group-item"><a href="charts.html">Graficos</a></li>
-            <li class="list-group-item"><a href="tables.html">Tablas</a></li>
+            <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/bootstrap-elements.html">Elementos de Bootstrap</a></li>
+            <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/bootstrap-grid.html">Sistema de Grilla de Bootstrap</a></li>
+            <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/forms.html">Formularios y Validacion</a></li>
+            <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/charts.html">Graficos</a></li>
+            <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/tables.html">Tablas</a></li>
         </ul>
     </div>
 </asp:Content>
