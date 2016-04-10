@@ -104,7 +104,7 @@ Es indispensable establecer el contenido de los contenedores de la Master Page c
 
 ### Texto
 - No se modificarán los tamaños definidos, el color, ni las fuentes utilizadas.
-- Para resaltar palabras claves de un texto, se usará la etiqueta <strong>
+- Para resaltar palabras claves de un texto, se usará la etiqueta < strong >
 
 ### Colores
 En el caso del FrontEnd del BackOffice, ya estan todos los que utilizaremos establecidos en los archivos CSS, si llegara a faltar en algun elemento que utilicen o no se ha cambiado y se rompe el diseño, avisar por Slack. Aqui se indican los colores para ser utilizados en el FrontEnd del FrontOffice:
