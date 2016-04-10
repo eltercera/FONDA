@@ -149,27 +149,27 @@
                         <a href="default.aspx"><i class="fa fa-fw fa-dashboard"></i> Panel de control</a>
                     </li>
                     <li>
-                        <a href="~/Seccion/Restaurant/default.aspx"><i class="fa fa-fw fa-user"></i> Servicio</a>
+                        <a href="Seccion/Restaurant/default.aspx"><i class="fa fa-fw fa-user"></i> Servicio</a>
                     </li>
                     <li>
-                        <a href="~/Seccion/Reservas/default.aspx"><i class="fa fa-fw fa-pencil-square-o"></i> Reservas</a>
+                        <a href="Seccion/Reservas/default.aspx"><i class="fa fa-fw fa-pencil-square-o"></i> Reservas</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-shopping-basket"></i> Menú <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="~/Seccion/Menu/menu_dia.aspx">Menú del día</a>
+                                <a href="Seccion/Menu/menu_dia.aspx">Menú del día</a>
                             </li>
                             <li>
-                                <a href="~/Seccion/Menu/default.aspx">Menú fijo</a>
+                                <a href="Seccion/Menu/default.aspx">Menú fijo</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="~/Seccion/Caja/default.aspx"><i class="fa fa-fw fa-money"></i> Caja</a>
+                        <a href="Seccion/Caja/default.aspx"><i class="fa fa-fw fa-money"></i> Caja</a>
                     </li>
                     <li>
-                        <a href="~/Seccion/Configuracion/default.aspx"><i class="fa fa-fw fa-wrench"></i> Configuración</a>
+                        <a href="Seccion/Configuracion/default.aspx"><i class="fa fa-fw fa-wrench"></i> Configuración</a>
                     </li>
                 </ul>
             </div>
