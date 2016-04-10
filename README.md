@@ -25,9 +25,9 @@ avanzada desde un dispositivo inteligente.
 │   ├── img/              //En esta carpeta va cualquier imagen que necesiten incluir en el proyecto.
 │   ├── MasterUI.master   //Esta es la MasterPage. NO modificar.
 ├── Controllers/          //Aqui iran todos los controladores del servicio web.
-├── Models/               //Aqui iran todos los controladores de las vistas.
+├── Models/               
 ├── scripts/              //Esto es propio del proyecto base creado por Visual.
-├── Seccion/              //Aqui se encuentran todas las vistas, divididas por secciones del menu.
+├── Seccion/              //Aqui se encuentran todas las vistas, divididas por secciones del menu. Aqui van TODAS las interfaces de la 1ra entrega.
 │   ├── Caja
 │   ├── Configuracion
 │   ├── Menu
