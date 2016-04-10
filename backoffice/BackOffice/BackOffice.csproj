@@ -381,6 +381,7 @@
     <Content Include="Seccion\Caja\Default.aspx" />
     <Content Include="Seccion\Configuracion\Default.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
+    <Content Include="Seccion\Reservas\Default.aspx" />
     <Content Include="Seccion\Restaurant\Default.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -420,6 +421,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seccion\Menu\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Reservas\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Reservas\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Restaurant\Default.aspx.cs">

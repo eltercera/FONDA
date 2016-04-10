@@ -36,7 +36,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" runat="server" href="~/Default.aspx">
                         <asp:Image id="logo" runat="server" AlternateText="FONDA Logo" CssClass="col-lg-2 col-md-2 col-sm-2 col-xs-2 logoimg hidden-xs" ImageUrl="~/Content/img/rsz_logo.png"/>
                         <p class="FONDAtitle">Fonda</p>
                     </a>
@@ -145,31 +145,31 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="default.aspx"><i class="fa fa-fw fa-dashboard"></i> Panel de control</a>
+                    <li>
+                        <a href="~/default.aspx" runat="server"><i class="fa fa-fw fa-dashboard"></i> Panel de control</a>
                     </li>
                     <li>
-                        <a href="Seccion/Restaurant/default.aspx"><i class="fa fa-fw fa-user"></i> Servicio</a>
+                        <a href="~/Seccion/Restaurant/default.aspx" runat="server"><i class="fa fa-fw fa-user"></i> Servicio</a>
                     </li>
                     <li>
-                        <a href="Seccion/Reservas/default.aspx"><i class="fa fa-fw fa-pencil-square-o"></i> Reservas</a>
+                        <a href="~/Seccion/Reservas/default.aspx" runat="server"><i class="fa fa-fw fa-pencil-square-o"></i> Reservas</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-shopping-basket"></i> Menú <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="Seccion/Menu/menu_dia.aspx">Menú del día</a>
+                                <a href="~/Seccion/Menu/menu_dia.aspx" runat="server">Menú del día</a>
                             </li>
                             <li>
-                                <a href="Seccion/Menu/default.aspx">Menú fijo</a>
+                                <a href="~/Seccion/Menu/default.aspx" runat="server">Menú fijo</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="Seccion/Caja/default.aspx"><i class="fa fa-fw fa-money"></i> Caja</a>
+                        <a href="~/Seccion/Caja/default.aspx" runat="server"><i class="fa fa-fw fa-money"></i> Caja</a>
                     </li>
                     <li>
-                        <a href="Seccion/Configuracion/default.aspx"><i class="fa fa-fw fa-wrench"></i> Configuración</a>
+                        <a href="~/Seccion/Configuracion/Default.aspx" runat="server"><i class="fa fa-fw fa-wrench"></i> Configuración</a>
                     </li>
                 </ul>
             </div>
