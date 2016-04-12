@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BackOffice.Prueba" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
-    Pandel de control
+    Panel de control
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
     Panel de control
@@ -21,7 +21,89 @@
         </div>
     </div>
     <!-- /.row -->
-
+    <div class="row m-b-3">
+        <div class="row">
+            <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
+                <div id="exitoFormulario" class="alert alert-success alert-dismissable col-lg-12" runat="server">
+                    Informacion enviada con exito!
+                </div>
+                <div id="alertaFormulario" class="alert alert-danger alert-dismissable col-lg-12" runat="server">
+                    La informacion no ha podido ser enviada. 
+                </div>
+            </div>
+        </div>
+        <div class="invisible">...</div>
+        <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+            <div class="row">
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Nombres</label>
+                            <asp:TextBox ID="Value1" CssClass="form-control" placeholder="ej. Maria" MaxLength="3" runat="server"/>
+                        </div>
+                </div>
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Apellidos</label>
+                            <asp:TextBox ID="TextBox1" CssClass="form-control" placeholder="ej. Rodriguez" MaxLength="3" runat="server"/>
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2">
+                    <div class="form-group">
+                        <label class="control-label">V/E</label>
+                        <asp:DropDownList id="DropDown" CssClass="form-control" AutoPostBack="True" runat="server"/>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
+                        <div class="form-group">
+                            <label class="control-label">Cedula de identidad</label>
+                            <asp:TextBox ID="TextBox2" CssClass="form-control" placeholder="ej. 26785432" MaxLength="3" runat="server"/>
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-10 col-sm-10 col-xs-10">
+                    <div class="form-group">
+                        <label class="control-label">Otro campo</label>
+                        <asp:DropDownList id="DropDownList1" CssClass="form-control" AutoPostBack="True" runat="server"/>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Otro campo</label>
+                            <asp:TextBox ID="TextBox3" CssClass="form-control" placeholder="ej. 26785432" MaxLength="3" runat="server"/>
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-10 col-sm-10 col-xs-10">
+                    <div class="form-group">
+                        <label class="control-label">Otro campo</label>
+                        <asp:DropDownList id="DropDownList2" CssClass="form-control" AutoPostBack="True" runat="server"/>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Otro campo</label>
+                            <asp:TextBox ID="TextBox4" CssClass="form-control" placeholder="ej. 26785432" MaxLength="3" runat="server"/>
+                        </div>
+                </div>
+                <div class="col-lg-4 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Otro campo</label>
+                            <asp:TextBox ID="TextBox5" CssClass="form-control" placeholder="ej. 26785432" MaxLength="3" runat="server"/>
+                        </div>
+                </div>
+            </div>
+            <div class="row col-lg-offset-8 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                <div class="col-md-10 col-sm-10 col-xs-10 ">
+                    <asp:Button id="Button1" Text="Submit" CssClass="btn btn-success col-md-5 col-sm-5 col-xs-5 m-r-1" runat="server" OnClick="Button1_Click"/>
+                    <asp:Button id="Button2" Text="Cancel" CssClass="btn btn-danger col-md-5 col-sm-5 col-xs-5" runat="server" OnClick="Button2_Click"/>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-3 col-md-6">
             <div class="panel panel-primary">
@@ -113,7 +195,6 @@
         </div>
     </div>
     <!-- /.row -->
-
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -295,14 +376,17 @@
     <div class="page-header">
         <h1>EJEMPLOS</h1>
     </div>
+    
     <div class="row">
-    <div class="col-sm-12">
-        <ul class="list-group">
-            <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/bootstrap-elements.html">Elementos de Bootstrap</a></li>
-            <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/bootstrap-grid.html">Sistema de Grilla de Bootstrap</a></li>
-            <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/forms.html">Formularios y Validacion</a></li>
-            <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/charts.html">Graficos</a></li>
-            <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/tables.html">Tablas</a></li>
-        </ul>
+        <div class="col-sm-12">
+            <ul class="list-group">
+                <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/bootstrap-elements.html">Elementos de Bootstrap</a></li>
+                <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/bootstrap-grid.html">Sistema de Grilla de Bootstrap</a></li>
+                <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/forms.html">Formularios y Validacion</a></li>
+                <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/charts.html">Graficos</a></li>
+                <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/tables.html">Tablas</a></li>
+            </ul>
+        </div>
     </div>
+    
 </asp:Content>
