@@ -186,3 +186,9 @@
     padding-top: 3rem!important;
     padding-bottom: 3rem!important;
 }
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
