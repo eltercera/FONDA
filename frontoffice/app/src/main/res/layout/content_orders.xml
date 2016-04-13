@@ -11,4 +11,13 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.OrdersActivity">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pagar Orden"
+        android:id="@+id/botoninicio"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="178dp"
+        android:onClick="cambiarP" />
 </RelativeLayout>

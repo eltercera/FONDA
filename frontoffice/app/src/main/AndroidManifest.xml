@@ -29,34 +29,33 @@
         <activity
             android:name=".activities.FavoritesActivity"
             android:label="@string/nav_favorites"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.RestauranstsActivity"
             android:label="@string/nav_rest"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.OrdersActivity"
             android:label="@string/nav_order"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.ProfileActivity"
             android:label="@string/nav_profile"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.ReserveActivity"
             android:label="@string/nav_reserve"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            ></activity>
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".activities.PagoExitosoActivity" />
+        <activity android:name=".activities.PagoOrdenActivity" />
+        <activity android:name=".activities.RegistrarTdcActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
