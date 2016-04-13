@@ -1,6 +1,8 @@
 package com.ds201625.fonda.activities;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 /**
@@ -37,5 +39,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+    }
+
+    protected AlertDialog buildSingleDialog(String title, String text) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setMessage(text)
+                .setTitle(title);
+        builder.setNeutralButton("OK",null);
+
+        return builder.create();
     }
 }
