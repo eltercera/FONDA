@@ -380,7 +380,10 @@
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Seccion\Caja\Default.aspx" />
     <Content Include="Seccion\Configuracion\Default.aspx" />
+    <Content Include="Seccion\Menu\AgregarMenu.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
+    <Content Include="Seccion\Menu\ModificarMenu.aspx" />
+    <Content Include="Seccion\Menu\VerMenu.aspx" />
     <Content Include="Seccion\Reservas\Default.aspx" />
     <Content Include="Seccion\Restaurant\Default.aspx" />
     <Content Include="Web.config" />
@@ -416,12 +419,33 @@
     <Compile Include="Seccion\Configuracion\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Seccion\Menu\AgregarMenu.aspx.cs">
+      <DependentUpon>AgregarMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Menu\AgregarMenu.aspx.designer.cs">
+      <DependentUpon>AgregarMenu.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Seccion\Menu\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seccion\Menu\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Menu\ModificarMenu.aspx.cs">
+      <DependentUpon>ModificarMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Menu\ModificarMenu.aspx.designer.cs">
+      <DependentUpon>ModificarMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Menu\VerMenu.aspx.cs">
+      <DependentUpon>VerMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Menu\VerMenu.aspx.designer.cs">
+      <DependentUpon>VerMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Reservas\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
