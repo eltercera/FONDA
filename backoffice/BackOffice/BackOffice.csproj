@@ -379,6 +379,9 @@
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Seccion\Caja\Default.aspx" />
+    <Content Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx" />
+    <Content Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx" />
+    <Content Include="Seccion\Configuracion\AgregarModificarRol.aspx" />
     <Content Include="Seccion\Configuracion\Default.aspx" />
     <Content Include="Seccion\Menu\AgregarMenu.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
@@ -411,6 +414,27 @@
     </Compile>
     <Compile Include="Seccion\Caja\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx.cs">
+      <DependentUpon>AgregarModificarPrivilegio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx.designer.cs">
+      <DependentUpon>AgregarModificarPrivilegio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx.cs">
+      <DependentUpon>AgregarModificarPriviRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx.designer.cs">
+      <DependentUpon>AgregarModificarPriviRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\AgregarModificarRol.aspx.cs">
+      <DependentUpon>AgregarModificarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\AgregarModificarRol.aspx.designer.cs">
+      <DependentUpon>AgregarModificarRol.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
