@@ -32,7 +32,8 @@
             android:id="@+id/textView3"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp" />
+            android:layout_marginTop="40dp"
+            android:textColor="@color/abc_background_cache_hint_selector_material_dark" />
 
         <TextView
             android:layout_width="wrap_content"
