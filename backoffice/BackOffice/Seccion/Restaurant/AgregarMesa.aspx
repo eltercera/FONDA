@@ -41,18 +41,15 @@ Agregar Mesa
 
                         </div>
                 </div>
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                    <div class="form-group">
+                        <label class="control-label">Disponibilidad</label>
+                        <br/>
+                            <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Activo" />
+                            <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Inactivo" />    
+                    </div>
                 </div>
-                <div class= "row">
-                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                            <div class="form-group">
-                                <label class="control-label">Disponibilidad</label>
-                                <br/>
-                                    <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Activo" />
-                                    <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Inactivo" />    
-                            </div>
-                  </div>
-              </div>
-            
+                </div>            
           
        </div>
 
