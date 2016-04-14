@@ -8,6 +8,17 @@ Listado de Restaurantes
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
+   <div>
+      <ol class="breadcrumb" style="background-color:rgba(0,0,0,0);">
+          <li>
+              <a href="../Default.aspx">Inicio</a>
+          </li>
+      
+          <li class="active">
+             Restaurante
+          </li>
+      </ol>
+  </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 <div class="row">
@@ -36,7 +47,7 @@ Listado de Restaurantes
                                                 <td>Calle Comercio, entre Sucre y Bellavista - El Hatillo</td>
                                                 <td>Japonesa</td>
                                                 <td bgcolor="#ACD691">Activo</td>
-                                                <td><a href="ModificarRest.aspx">Modificar <i class="fa fa-arrow-circle-right"></i></a></td>
+                                                <td><a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td><i class="fa fa-info-circle" aria-hidden="true"></i></td>
@@ -44,7 +55,7 @@ Listado de Restaurantes
                                                 <td>Transversal 1 - Los Palos Grandes</td>
                                                 <td>Cafetería, pastelería</td>
                                                 <td bgcolor="#E08E79">Inactivo</td>
-                                                <td><a href="ModificarRest.aspx">Modificar <i class="fa fa-arrow-circle-right"></i></a></td>
+                                                <td><a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td><i class="fa fa-info-circle" aria-hidden="true"></i></td>
@@ -52,12 +63,12 @@ Listado de Restaurantes
                                                 <td>4ta Avenida con 6ta Transversal. Cuadra Gastronomica - Los Palos Grandes</td>
                                                 <td>Americana</td>
                                                 <td bgcolor="#ACD691">Activo</td>
-                                                <td><a href="ModificarRest.aspx">Modificar <i class="fa fa-arrow-circle-right"></i></a></td>
+                                                <td><a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                     <div class="text-right">
-                                        <a href="AgregarRest.aspx">Agregar restaurante nuevo <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="AgregarRest.aspx"><i class="fa fa-plus"></i> Agregar restaurante nuevo</a>
                                     </div>
        
                                 </div>

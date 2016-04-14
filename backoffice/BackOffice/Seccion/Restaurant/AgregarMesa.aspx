@@ -8,6 +8,20 @@ Agregar Mesa
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
+   <div>
+      <ol class="breadcrumb" style="background-color:rgba(0,0,0,0);">
+          <li>
+              <a href="../Default.aspx">Inicio</a>
+          </li>
+      
+          <li>
+              <a href="../Restaurant/MenuRest.aspx">Restaurante</a> 
+          </li>
+          <li class="active">
+             Agregar Mesa
+          </li>
+      </ol>
+  </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 

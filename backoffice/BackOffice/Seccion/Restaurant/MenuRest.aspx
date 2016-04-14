@@ -9,6 +9,17 @@ Menu Restaurante
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
+   <div>
+      <ol class="breadcrumb" style="background-color:rgba(0,0,0,0);">
+          <li>
+              <a href="../Default.aspx">Inicio</a>
+          </li>
+
+          <li class="active">
+             Restaurante
+          </li>
+      </ol>
+  </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
                 <div class="row">
@@ -139,7 +150,7 @@ Menu Restaurante
                                                 <td>4</td>
                                                 <td bgcolor="#E08E79">Inactivo</td>
                                                 <td>@pperez</td>
-                                                <td><a href="ModificarMesa.aspx">Modificar <i class="fa fa-arrow-circle-right"></i></a></td>
+                                                <td><a href="ModificarMesa.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td>#2</td>
@@ -147,7 +158,7 @@ Menu Restaurante
                                                 <td>0</td>
                                                 <td bgcolor="#ACD691">Activo</td>
                                                 <td> </td>
-                                                <td><a href="ModificarMesa.aspx">Modificar <i class="fa fa-arrow-circle-right"></i></a></td>
+                                                <td><a href="ModificarMesa.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td>#3</td>
@@ -155,12 +166,12 @@ Menu Restaurante
                                                 <td>0</td>
                                                 <td bgcolor="#ACD691">Activo</td>
                                                 <td> </td>
-                                                <td><a href="ModificarMesa.aspx">Modificar <i class="fa fa-arrow-circle-right"></i></a></td>
+                                                <td><a href="ModificarMesa.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                     <div class="text-right">
-                                        <a href="AgregarMesa.aspx">Agregar mesa nueva <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="AgregarMesa.aspx"><i class="fa fa-plus"></i> Agregar mesa nueva</a>
                                     </div>
        
                                 </div>
