@@ -383,6 +383,7 @@
     <Content Include="Seccion\Menu\AgregarMenu.aspx" />
     <Content Include="Seccion\Menu\AgregarPlatillo.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
+    <Content Include="Seccion\Menu\MenuDia.aspx" />
     <Content Include="Seccion\Menu\ModificarMenu.aspx" />
     <Content Include="Seccion\Menu\ModificarPlatillo.aspx" />
     <Content Include="Seccion\Reservas\Default.aspx" />
@@ -445,6 +446,13 @@
     </Compile>
     <Compile Include="Seccion\Menu\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Menu\MenuDia.aspx.cs">
+      <DependentUpon>MenuDia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Menu\MenuDia.aspx.designer.cs">
+      <DependentUpon>MenuDia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Menu\ModificarMenu.aspx.cs">
       <DependentUpon>ModificarMenu.aspx</DependentUpon>
