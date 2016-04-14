@@ -71,7 +71,7 @@ public class ConsultaPagoActivity extends Activity {
         String[] data5 = {"RESTAURANT: EL TINAJERO","Direccion: las Mercedes","Fecha: 12/10/2015", "Hora: 3:00 Pm","Sub-Total:5.000 Bs","Total:7.000 Bs","Propina:800 Bs","Forma de Pago: tarjeta de credito","Banco: Mercantil" };
 
 
-        laptopCollection = new LinkedHashMap<String, List<String>>();
+        laptopCollection = new LinkedHashMap<String, List<String>>();   
 
         for (String laptop : groupList) {
             if (laptop.equals("12/12/15    5.000 Bs    7.000 Bs")) {
@@ -113,10 +113,5 @@ public class ConsultaPagoActivity extends Activity {
         return (int) (pixels * scale + 0.5f);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //  getMenuInflater().inflate(R.menu.activity_main, menu);
-        return true;
-    }
+
 }
