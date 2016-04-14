@@ -47,7 +47,7 @@ Listado de Restaurantes
                                                 <td>Calle Comercio, entre Sucre y Bellavista - El Hatillo</td>
                                                 <td>Japonesa</td>
                                                 <td bgcolor="#ACD691">Activo</td>
-                                                <td><a href="ModificarRest.aspx">Modificar <i class="fa fa-arrow-circle-right"></i></a></td>
+                                                <td><a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td><i class="fa fa-info-circle" aria-hidden="true"></i></td>
@@ -55,7 +55,7 @@ Listado de Restaurantes
                                                 <td>Transversal 1 - Los Palos Grandes</td>
                                                 <td>Cafetería, pastelería</td>
                                                 <td bgcolor="#E08E79">Inactivo</td>
-                                                <td><a href="ModificarRest.aspx">Modificar <i class="fa fa-arrow-circle-right"></i></a></td>
+                                                <td><a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td><i class="fa fa-info-circle" aria-hidden="true"></i></td>
@@ -63,12 +63,12 @@ Listado de Restaurantes
                                                 <td>4ta Avenida con 6ta Transversal. Cuadra Gastronomica - Los Palos Grandes</td>
                                                 <td>Americana</td>
                                                 <td bgcolor="#ACD691">Activo</td>
-                                                <td><a href="ModificarRest.aspx">Modificar <i class="fa fa-arrow-circle-right"></i></a></td>
+                                                <td><a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                     <div class="text-right">
-                                        <a href="AgregarRest.aspx">Agregar restaurante nuevo <i class="fa fa-arrow-circle-right"></i></a>
+                                        <a href="AgregarRest.aspx"><i class="fa fa-plus"></i> Agregar restaurante nuevo</a>
                                     </div>
        
                                 </div>
