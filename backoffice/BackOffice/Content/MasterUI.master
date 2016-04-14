@@ -156,8 +156,8 @@
                         <a href="~/Seccion/Reservas/default.aspx" runat="server"><i class="fa fa-fw fa-pencil-square-o"></i> Reservas</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-shopping-basket"></i> Menú <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#menu"><i class="fa fa-fw fa-shopping-basket"></i> Menú <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="menu" class="collapse">
                             <li>
                                 <a href="~/Seccion/Menu/menu_dia.aspx" runat="server">Menú del día</a>
                             </li>
@@ -170,7 +170,18 @@
                         <a href="~/Seccion/Caja/default.aspx" runat="server"><i class="fa fa-fw fa-money"></i> Caja</a>
                     </li>
                     <li>
-                        <a href="~/Seccion/Configuracion/Default.aspx" runat="server"><i class="fa fa-fw fa-wrench"></i> Configuración</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#config"><i class="fa fa-fw fa-wrench"></i> Confirguración <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="config" class="collapse">
+                            <li>
+                                <a href="~/Seccion/Configuracion/ListarUsuario.aspx" runat="server">Usuarios</a>
+                            </li>
+                            <li>
+                                <a href="~/Seccion/Configuracion/ListarRol.aspx" runat="server">Roles</a>
+                            </li>
+                            <li>
+                                <a href="~/Seccion/Configuracion/ListarPrivilegio.aspx" runat="server">Privilegios</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
