@@ -15,7 +15,7 @@ Modificar Mesa
           </li>
       
           <li>
-              <a href="../Restaurant/MenuRest.aspx">Restaurante</a> 
+              <a href="../Default.aspx">Restaurante</a> 
           </li>
           <li class="active">
              Modificar Mesa
