@@ -389,7 +389,6 @@
     <Content Include="Seccion\Reservas\Default.aspx" />
     <Content Include="Seccion\Restaurant\AgregarMesa.aspx" />
     <Content Include="Seccion\Restaurant\AgregarRest.aspx" />
-    <Content Include="Seccion\Restaurant\MenuRest.aspx" />
     <Content Include="Seccion\Restaurant\ModificarMesa.aspx" />
     <Content Include="Seccion\Restaurant\ModificarRest.aspx" />
     <Content Include="Seccion\Restaurant\Restaurante.aspx" />
@@ -488,13 +487,6 @@
     </Compile>
     <Compile Include="Seccion\Restaurant\AgregarRest.aspx.designer.cs">
       <DependentUpon>AgregarRest.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\MenuRest.aspx.cs">
-      <DependentUpon>MenuRest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\MenuRest.aspx.designer.cs">
-      <DependentUpon>MenuRest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Restaurant\ModificarMesa.aspx.cs">
       <DependentUpon>ModificarMesa.aspx</DependentUpon>
