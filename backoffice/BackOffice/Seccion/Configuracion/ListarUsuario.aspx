@@ -68,7 +68,7 @@
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">
                                         <a href="../Configuracion/ModificarUsuario.aspx"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                         &nbsp;&nbsp;&nbsp;
-                                        <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                        <a href="../Configuracion/ListarPrivilegioUsuario.aspx"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -83,7 +83,7 @@
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">
                                         <a href="../Configuracion/ModificarUsuario.aspx"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                         &nbsp;&nbsp;&nbsp;
-                                        <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                        <a href="../Configuracion/ListarPrivilegioUsuario.aspx"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -98,7 +98,7 @@
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">
                                         <a href="../Configuracion/ModificarUsuario.aspx"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                         &nbsp;&nbsp;&nbsp;
-                                        <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                                        <a href="../Configuracion/ListarPrivilegioUsuario.aspx"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

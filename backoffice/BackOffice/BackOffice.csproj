@@ -385,6 +385,9 @@
     <Content Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarRol.aspx" />
     <Content Include="Seccion\Configuracion\Default.aspx" />
+    <Content Include="Seccion\Configuracion\ListarPrivilegio.aspx" />
+    <Content Include="Seccion\Configuracion\ListarPrivilegioUsuario.aspx" />
+    <Content Include="Seccion\Configuracion\ListarRol.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
     <Content Include="Seccion\Menu\AgregarMenu.aspx" />
     <Content Include="Seccion\Menu\AgregarPlatillo.aspx" />
@@ -459,6 +462,27 @@
     </Compile>
     <Compile Include="Seccion\Configuracion\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\ListarPrivilegio.aspx.cs">
+      <DependentUpon>ListarPrivilegio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\ListarPrivilegio.aspx.designer.cs">
+      <DependentUpon>ListarPrivilegio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\ListarPrivilegioUsuario.aspx.cs">
+      <DependentUpon>ListarPrivilegioUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\ListarPrivilegioUsuario.aspx.designer.cs">
+      <DependentUpon>ListarPrivilegioUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\ListarRol.aspx.cs">
+      <DependentUpon>ListarRol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\ListarRol.aspx.designer.cs">
+      <DependentUpon>ListarRol.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\ListarUsuario.aspx.cs">
       <DependentUpon>ListarUsuario.aspx</DependentUpon>
@@ -625,7 +649,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49255</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
