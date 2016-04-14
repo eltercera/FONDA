@@ -17,7 +17,7 @@ public class OrdersActivity extends BaseActivityNavigation {
     }
     public void cambiarP (View v)
     {
-        Intent cambio = new Intent (this,PagoOrdenActivity.class);
+        Intent cambio = new Intent (this,CerrarCuentaActivity.class);
         startActivity(cambio);
     }
     public void cambiarHist (View v)
