@@ -6,6 +6,23 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">Listar Privilegios
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
+    <%--Breadcrumbs--%>
+    <div>
+        <ol class="breadcrumb" style="background-color: rgba(0,0,0,0);">
+            <li>
+                <a href="#">Inicio</a>
+            </li>
+            <li>
+                <a href="#">Configuración</a>
+            </li>
+            <li>
+                <a href="#">Usuario</a>
+            </li>
+            <li class="active">Privilegios  de Usuario
+            </li>
+        </ol>
+    </div>
+    <%--Fin_Breadcrumbs--%>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
     
