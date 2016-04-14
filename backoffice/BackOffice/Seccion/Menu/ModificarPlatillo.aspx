@@ -17,7 +17,7 @@
             </li>
         
             <li>
-                <a href="#">Menú</a> 
+                <a href="../Menu/Default.aspx">Menú</a> 
             </li>
             <li class="active">
                 Modificar Platillo
@@ -50,19 +50,10 @@
         <div class="row">
             <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                   
-                      <div class="group-container overHidden">
-                          <div class="overHidden">
-                              <div class="comboGroup">
-                                <label>Selecciona la categoria</label>
-                                <select class="form-control">
-                                    <option>Pastas</option>
-                                    <option>Carnes</option>
-                                    <option>Pescados</option>
-                                    <option>Vegetariano</option>
-                                </select>
-                                  </div>
+                     <div class="form-group">
+                                <label>Categoria</label>
+                                <p class="form-control-static">Pasta</p>
                             </div>
-                          </div>
             </div>
                 </div>
 
