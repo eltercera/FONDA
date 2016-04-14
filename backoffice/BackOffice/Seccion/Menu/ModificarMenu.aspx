@@ -86,7 +86,7 @@
 
             <!-- /.row -->
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-11">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title"><i class="fa fa-shopping-basket fa-fw"></i> Menú</h3>
@@ -97,7 +97,7 @@
                             <thead>
                                 <tr>
                                     <th>Plato</th>
-                                    <th>Agregar o quitar plato del menu</th>
+                                    <th>Agregar o quitar plato de la categoría</th>
                
                                 </tr>
                             </thead>

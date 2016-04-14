@@ -121,7 +121,7 @@
                                     </tbody>
                                 </table>
                                 <div class="text-right">
-                                    <a href="#">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="../Menu/ModificarMenu.aspx">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
                                     </tbody>
                                 </table>
                                 <div class="text-right">
-                                    <a href="#">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="../Menu/ModificarMenu.aspx">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -308,7 +308,7 @@
                                     </tbody>
                                 </table>
                                 <div class="text-right">
-                                    <a href="#">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="../Menu/ModificarMenu.aspx">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
