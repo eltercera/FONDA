@@ -2,10 +2,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-        Menú
+        Categoria del menú
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-        Agregar Menú
+        Agregar Categoria del menú
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
         <%--Breadcrumbs--%>
@@ -19,7 +19,7 @@
               <a href="#">Menú</a> 
           </li>
           <li class="active">
-             Agregar Menú
+             Agregar Categoria del menú
           </li>
       </ol>
   </div>
@@ -29,10 +29,10 @@
         <div class="row">
             <div class="col-lg-10 col-md-8 col-sm-8 col-xs-8">
                 <div id="exitoFormulario" class="alert alert-success alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" runat="server">
-                    Menú aregado con <strong>EXITO</strong>!
+                    La Categoria del menú se agrego con <strong>EXITO</strong>!
                 </div>
                 <div id="alertaFormulario" class="alert alert-danger alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" runat="server">
-                    El menú <strong>NO SE HA PODIDO AGREGAR!</strong>
+                    La Categoria del menú <strong>NO SE HA PODIDO AGREGAR!</strong>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
             <div class="row">
                  <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
-                            <label class="control-label">Nombre del menú</label>
+                            <label class="control-label">Nombre de la Categoria del menú</label>
                             <asp:TextBox ID="Value1" CssClass="form-control" placeholder="ej. Menú Navideño" MaxLength="3" runat="server"/>
                         </div>
                 </div>

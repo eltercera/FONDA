@@ -385,11 +385,11 @@
     <Content Include="Seccion\Configuracion\AgregarModificarRol.aspx" />
     <Content Include="Seccion\Configuracion\Default.aspx" />
     <Content Include="Seccion\Menu\AgregarMenu.aspx" />
+    <Content Include="Seccion\Menu\AgregarPlatillo.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ModificarMenu.aspx" />
-    <Content Include="Seccion\Menu\VerMenu.aspx" />
+    <Content Include="Seccion\Menu\ModificarPlatillo.aspx" />
     <Content Include="Seccion\Reservas\Default.aspx" />
-    <Content Include="Seccion\Restaurant\Default.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -459,6 +459,13 @@
     <Compile Include="Seccion\Menu\AgregarMenu.aspx.designer.cs">
       <DependentUpon>AgregarMenu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Seccion\Menu\AgregarPlatillo.aspx.cs">
+      <DependentUpon>AgregarPlatillo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Menu\AgregarPlatillo.aspx.designer.cs">
+      <DependentUpon>AgregarPlatillo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Seccion\Menu\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -473,25 +480,18 @@
     <Compile Include="Seccion\Menu\ModificarMenu.aspx.designer.cs">
       <DependentUpon>ModificarMenu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Menu\VerMenu.aspx.cs">
-      <DependentUpon>VerMenu.aspx</DependentUpon>
+    <Compile Include="Seccion\Menu\ModificarPlatillo.aspx.cs">
+      <DependentUpon>ModificarPlatillo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Seccion\Menu\VerMenu.aspx.designer.cs">
-      <DependentUpon>VerMenu.aspx</DependentUpon>
+    <Compile Include="Seccion\Menu\ModificarPlatillo.aspx.designer.cs">
+      <DependentUpon>ModificarPlatillo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Reservas\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seccion\Reservas\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -547,6 +547,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Seccion\Restaurant\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
