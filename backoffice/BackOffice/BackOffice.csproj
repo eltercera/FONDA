@@ -386,6 +386,12 @@
     <Content Include="Seccion\Menu\ModificarMenu.aspx" />
     <Content Include="Seccion\Menu\ModificarPlatillo.aspx" />
     <Content Include="Seccion\Reservas\Default.aspx" />
+    <Content Include="Seccion\Restaurant\AgregarMesa.aspx" />
+    <Content Include="Seccion\Restaurant\AgregarRest.aspx" />
+    <Content Include="Seccion\Restaurant\MenuRest.aspx" />
+    <Content Include="Seccion\Restaurant\ModificarMesa.aspx" />
+    <Content Include="Seccion\Restaurant\ModificarRest.aspx" />
+    <Content Include="Seccion\Restaurant\Restaurante.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -461,6 +467,48 @@
     <Compile Include="Seccion\Reservas\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Seccion\Restaurant\AgregarMesa.aspx.cs">
+      <DependentUpon>AgregarMesa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\AgregarMesa.aspx.designer.cs">
+      <DependentUpon>AgregarMesa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\AgregarRest.aspx.cs">
+      <DependentUpon>AgregarRest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\AgregarRest.aspx.designer.cs">
+      <DependentUpon>AgregarRest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\MenuRest.aspx.cs">
+      <DependentUpon>MenuRest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\MenuRest.aspx.designer.cs">
+      <DependentUpon>MenuRest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\ModificarMesa.aspx.cs">
+      <DependentUpon>ModificarMesa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\ModificarMesa.aspx.designer.cs">
+      <DependentUpon>ModificarMesa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\ModificarRest.aspx.cs">
+      <DependentUpon>ModificarRest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\ModificarRest.aspx.designer.cs">
+      <DependentUpon>ModificarRest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\Restaurante.aspx.cs">
+      <DependentUpon>Restaurante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\Restaurante.aspx.designer.cs">
+      <DependentUpon>Restaurante.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -503,6 +551,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\GreatVibes-Regular.otf" />
     <Content Include="Content\MasterUI.master" />
+    <Content Include="Seccion\Restaurant\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -514,7 +563,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
-    <Folder Include="Seccion\Restaurant\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
