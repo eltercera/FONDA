@@ -121,6 +121,7 @@
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\FotoUser.png" />
     <Content Include="Content\img\Logo.png" />
     <Content Include="Content\img\LogoWeb.png" />
     <Content Include="Content\img\rsz_logo.png" />
@@ -384,6 +385,7 @@
     <Content Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarRol.aspx" />
     <Content Include="Seccion\Configuracion\Default.aspx" />
+    <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
     <Content Include="Seccion\Menu\AgregarMenu.aspx" />
     <Content Include="Seccion\Menu\AgregarPlatillo.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
@@ -450,6 +452,13 @@
     </Compile>
     <Compile Include="Seccion\Configuracion\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\ListarUsuario.aspx.cs">
+      <DependentUpon>ListarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\ListarUsuario.aspx.designer.cs">
+      <DependentUpon>ListarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\mensajes.cs" />
     <Compile Include="Seccion\Menu\AgregarMenu.aspx.cs">
