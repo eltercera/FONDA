@@ -21,94 +21,6 @@
         </div>
     </div>
     <!-- /.row -->
-    <div class="row m-b-3">
-        <div class="row">
-            <div class="col-lg-10 col-md-8 col-sm-8 col-xs-8">
-                <div id="exitoFormulario" class="alert alert-success alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" runat="server">
-                    Informacion enviada con exito!
-                </div>
-                <div id="alertaFormulario" class="alert alert-danger alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" runat="server">
-                    La informacion no ha podido ser enviada. 
-                </div>
-            </div>
-        </div>
-        <div class="invisible">...</div>
-        <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-            <div class="row">
-                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                        <div class="form-group">
-                            <label class="control-label">Nombres</label>
-                            <asp:TextBox ID="Value1" CssClass="form-control" placeholder="ej. Maria" MaxLength="3" runat="server"/>
-                        </div>
-                </div>
-                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                        <div class="form-group">
-                            <label class="control-label">Apellidos</label>
-                            <asp:TextBox ID="TextBox1" CssClass="form-control" placeholder="ej. Rodriguez" MaxLength="3" runat="server"/>
-                        </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2">
-                    <div class="form-group">
-                        <label class="control-label">V/E</label>
-                        <asp:DropDownList id="DropDown" CssClass="form-control" AutoPostBack="True" runat="server"/>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
-                        <div class="form-group">
-                            <label class="control-label">Cedula de identidad</label>
-                            <asp:TextBox ID="TextBox2" CssClass="form-control" placeholder="ej. 26785432" MaxLength="3" runat="server"/>
-                        </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-10 col-sm-10 col-xs-10">
-                    <div class="form-group">
-                        <label class="control-label">Otro campo</label>
-                        <asp:DropDownList id="DropDownList1" CssClass="form-control" AutoPostBack="True" runat="server"/>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
-                        <div class="form-group">
-                            <label class="control-label">Otro campo</label>
-                            <asp:TextBox ID="TextBox3" CssClass="form-control" placeholder="ej. 26785432" MaxLength="3" runat="server"/>
-                        </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-10 col-sm-10 col-xs-10">
-                    <div class="form-group">
-                        <label class="control-label">Otro campo</label>
-                        <asp:DropDownList id="DropDownList2" CssClass="form-control" AutoPostBack="True" runat="server"/>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-10 col-sm-10 col-xs-10">
-                        <div class="form-group">
-                            <label class="control-label">Otro campo</label>
-                            <asp:TextBox ID="TextBox4" CssClass="form-control" placeholder="ej. 26785432" MaxLength="3" runat="server"/>
-                        </div>
-                </div>
-                <div class="col-lg-4 col-md-10 col-sm-10 col-xs-10">
-                        <div class="form-group">
-                            <label class="control-label">Otro campo</label>
-                            <asp:TextBox ID="TextBox5" CssClass="form-control" placeholder="ej. 26785432" MaxLength="3" runat="server"/>
-                        </div>
-                </div>
-            </div>
-            <div class="row col-lg-offset-8 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                <div class="col-md-10 col-sm-10 col-xs-10 ">
-                    <asp:Button id="Button1" Text="Submit" CssClass="btn btn-success col-md-5 col-sm-5 col-xs-5 m-r-1" runat="server" OnClick="Button1_Click"/>
-                    <asp:Button id="Button2" Text="Cancel" CssClass="btn btn-danger col-md-5 col-sm-5 col-xs-5" runat="server" OnClick="Button2_Click"/>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-
-    </div>
-
 
     <div class="row">
         <div class="col-lg-3 col-md-6">
@@ -197,6 +109,62 @@
                         <div class="clearfix"></div>
                     </div>
                 </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-shopping-basket fa-fw"></i> Mesas en sistema</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Cantidad de puestos</th>
+                                    <th>Cantidad de comensales</th>
+                                    <th>Estado</th>
+                                    <th>Reservación realizada por</th>
+                                    <th >Modificar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#1</td>
+                                    <td>6</td>
+                                    <td>4</td>
+                                    <td bgcolor="#E08E79">Inactivo</td>
+                                    <td>@pperez</td>
+                                    <td><a href="ModificarMesa.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>#2</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                    <td bgcolor="#ACD691">Activo</td>
+                                    <td> </td>
+                                    <td><a href="ModificarMesa.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td>#3</td>
+                                    <td>10</td>
+                                    <td>0</td>
+                                    <td bgcolor="#ACD691">Activo</td>
+                                    <td> </td>
+                                    <td><a href="ModificarMesa.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-right">
+                            <a href="AgregarMesa.aspx"><i class="fa fa-plus"></i> Agregar mesa nueva</a>
+                        </div>
+       
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -378,21 +346,5 @@
         </div>
     </div>
     <!-- /.row -->
-
-    <div class="page-header">
-        <h1>EJEMPLOS</h1>
-    </div>
-    
-    <div class="row">
-        <div class="col-sm-12">
-            <ul class="list-group">
-                <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/bootstrap-elements.html">Elementos de Bootstrap</a></li>
-                <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/bootstrap-grid.html">Sistema de Grilla de Bootstrap</a></li>
-                <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/forms.html">Formularios y Validacion</a></li>
-                <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/charts.html">Graficos</a></li>
-                <li class="list-group-item"><a href="http://gbsojo.github.io/BackOfficeTemplate/tables.html">Tablas</a></li>
-            </ul>
-        </div>
-    </div>
     
 </asp:Content>

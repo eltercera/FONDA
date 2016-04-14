@@ -15,7 +15,7 @@ Modificar Restaurante
           </li>
       
           <li>
-              <a href="../Restaurant/Restaurante.aspx">Restaurante</a> 
+              <a href="../Default.aspx">Restaurante</a> 
           </li>
           <li class="active">
              Modificar Restaurante
