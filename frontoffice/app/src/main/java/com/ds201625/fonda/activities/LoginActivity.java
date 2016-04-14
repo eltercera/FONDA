@@ -23,7 +23,7 @@ import com.ds201625.fonda.R;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     public enum LoginActivityStatus {
         ON_LOGIN,
@@ -206,22 +206,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void regiter() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setMessage("El registro de la cuenta "+mEmailView.getText().toString()
-                +" fue satisfactorio.")
-                .setTitle("Registro de Cuenta");
-
-
-        builder.setPositiveButton("Continuar", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                setOnLogin();
-                seguir();
-            }
-        });
-
-        AlertDialog dialog = builder.create();
-
+        AlertDialog dialog = buildSingleDialog("Registro de Cuenta",
+                "El registro de la cuenta "+mEmailView.getText().toString()
+                +" fue satisfactorio.");
         dialog.show();
     }
 }

@@ -31,7 +31,10 @@
         </android.support.design.widget.AppBarLayout>
 
 
-        <include layout="@layout/content_restaurants" />
+        <include layout="@layout/content_restaurants"
+
+
+            />
 
     </android.support.design.widget.CoordinatorLayout>
 
