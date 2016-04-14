@@ -33,5 +33,15 @@ namespace BackOffice.Seccion.Menu
         {
 
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgregarMenu.aspx");
+        }
+
+        protected void CogLinkButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgregarPlatillo.aspx");
+        }
     }
 }
