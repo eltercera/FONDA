@@ -39,7 +39,7 @@ public class ProfileActivity extends BaseActivityNavigation {
     }
 
     private void save() {
-        AlertDialog dialog = buildSingleDialog("Acrualización de perfil",
+        AlertDialog dialog = buildSingleDialog("Actualización de perfil",
                 "La actualización fue satisfactoria.");
         dialog.show();
     }

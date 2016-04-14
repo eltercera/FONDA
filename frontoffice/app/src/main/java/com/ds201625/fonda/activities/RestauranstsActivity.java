@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 
@@ -31,12 +32,7 @@ public class RestauranstsActivity extends BaseActivityNavigation {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, filtros); //crear un adaptador para pasarlo a la lista. entorno,tipo de item que pasas, lista creada
         listaFiltros.setAdapter(adapter);
 
-        listaFiltros.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
+        
 
     }
 }
