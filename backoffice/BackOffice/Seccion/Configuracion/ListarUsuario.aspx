@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="ListarUsuario.aspx.cs" Inherits="BackOffice.Seccion.Configuracion.ListarUsuario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
-    Usuarios
+    Gestión de Usuarios
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
     Usuario
@@ -14,7 +14,7 @@
     <div>
         <ol class="breadcrumb" style="background-color: rgba(0,0,0,0);">
             <li>
-                <a href="../Configuracion/ListarUsuario.aspx">Inicio</a>
+                <a href="#">Inicio</a>
             </li>
             <li>
                 <a href="#">Configuración</a>
@@ -27,15 +27,19 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
     <div class="row">
-        <div class="col-lg-4">    
-                            <input type="text" class="form-control" placeholder="Búsqueda">
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="text-right">
-                                <button onclick="../Configuracion/AgregarUsuario.aspx" type="button" class="btn btn-lg btn-primary">Agregar Nuevo Usuario</button>
-                            </div>
-                        </div>
-        <br><br><br>
+        <div class="col-lg-4">   
+            <div class="form-group input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+            </div>
+        </div>
+                        
+        <div class="col-lg-8">
+            <div class="text-right">
+                <asp:Button id="Button2" Text="Agregar Nuevo Usuario" CssClass="btn btn-lg btn-primary" runat="server" OnClick="Button1_Click"/>
+            </div>
+        </div>
+        <br><br>
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -66,7 +70,7 @@
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">Administrador de Sistema</td>
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">Activo</td>
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">
-                                        <a href="../Configuracion/ModificarUsuario.aspx"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                        <a href="../Configuracion/AgregarModificarUsuario.aspx?success=modificar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                         &nbsp;&nbsp;&nbsp;
                                         <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                     </td>
@@ -81,7 +85,7 @@
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">Cliente</td>
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">Activo</td>
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">
-                                        <a href="../Configuracion/ModificarUsuario.aspx"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                        <a href="../Configuracion/AgregarModificarUsuario.aspx?success=modificar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                         &nbsp;&nbsp;&nbsp;
                                         <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                     </td>
@@ -96,7 +100,7 @@
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">Cajero</td>
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">Inactivo</td>
                                     <td VALIGN="MIDDLE" ALIGN="CENTER">
-                                        <a href="../Configuracion/ModificarUsuario.aspx"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                        <a href="../Configuracion/AgregarModificarUsuario.aspx?success=modificar"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                         &nbsp;&nbsp;&nbsp;
                                         <a href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
                                     </td>
