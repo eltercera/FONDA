@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView3"
-            android:layout_column="8" />
+            android:layout_column="9" />
     </TableRow>
 
     <TableRow
@@ -27,16 +27,39 @@
 
 
     </TableRow>
-    <TextView
+
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Pago de orden"
-        android:id="@+id/tV_pagoOrden"
-        android:layout_gravity="center"
-        android:textSize="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_column="7" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Pago de orden"
+            android:id="@+id/tV_pagoOrden"
+            android:layout_gravity="center"
+            android:textSize="25dp"
+            android:layout_column="2"
+            android:layout_marginLeft="20dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_column="3"
+            android:src="@mipmap/pago_icon"
+            android:maxHeight="80dp"
+            android:layout_gravity="left" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </TableRow>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +80,8 @@
             android:id="@+id/textView6"
             android:layout_column="1"
             android:text="Bs."
-            android:layout_gravity="bottom" />
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="15dp" />
 
         <TextView
             android:layout_width="155dp"
@@ -67,27 +91,56 @@
             android:id="@+id/tV_totalOrden"
             android:layout_gravity="top|center_vertical"
             android:layout_marginTop="10dp"
-            android:layout_column="2" />
+            android:layout_column="2"
+            android:layout_marginLeft="15dp" />
     </TableRow>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Tarjeta de crédito"
         android:id="@+id/tV_tdc"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp" />
-
-    <Spinner
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    </TableRow>
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinner"
-        android:layout_gravity="center_horizontal"
-        android:spinnerMode="dropdown"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp" />
+        android:layout_height="match_parent">
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:layout_width="270dp"
+            android:layout_height="50dp"
+            android:id="@+id/spinner"
+            android:layout_gravity="center_horizontal"
+            android:spinnerMode="dropdown"
+            android:layout_marginTop="10dp"
+            android:layout_column="1"
+            android:layout_span="2" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button3"
+            android:layout_column="3"
+            android:background="@mipmap/add_icon"
+            android:width="20dp"
+            android:elegantTextHeight="false"
+            android:layout_gravity="left"
+            android:onClick="cambiarTdc" />
+
+    </TableRow>
 
     <TextView
         android:layout_width="wrap_content"
@@ -100,7 +153,8 @@
 
     <TableRow
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
@@ -117,17 +171,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/eT_propina"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="15dp"
             android:inputType="number"
-            android:editable="false"
             android:hint="Propina"
             android:layout_column="2" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView4"
-            android:layout_column="9" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -135,8 +181,8 @@
             android:layout_height="wrap_content"
             android:text="Aceptar"
             android:id="@+id/button2"
-            android:layout_column="51"
-            android:layout_marginLeft="10dp" />
+            android:layout_column="3"
+            android:layout_marginRight="40dp" />
 
     </TableRow>
 
@@ -154,7 +200,8 @@
         android:id="@+id/tV_totaltotal"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:textSize="22dp" />
+        android:textSize="22dp"
+        android:layout_marginLeft="10dp" />
 
     <TableRow
         android:layout_width="match_parent"
@@ -175,8 +222,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/tV_ultimo"
-            android:layout_column="2"
-            android:layout_span="49" />
+            android:layout_column="2" />
     </TableRow>
 
     <Button
