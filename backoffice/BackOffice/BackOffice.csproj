@@ -376,6 +376,7 @@
     <Content Include="Content\js\plugins\morris\raphael.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Seccion\Caja\Default.aspx" />
@@ -399,6 +400,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.aspx.cs">
@@ -443,6 +451,7 @@
     <Compile Include="Seccion\Configuracion\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Seccion\Configuracion\mensajes.cs" />
     <Compile Include="Seccion\Menu\AgregarMenu.aspx.cs">
       <DependentUpon>AgregarMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
