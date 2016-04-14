@@ -201,7 +201,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void seguir() {
-        startActivity(new Intent(this,MainActivity.class));
+        startActivity(new Intent(this,FavoritesActivity.class));
     }
 
     private void regiter() {
