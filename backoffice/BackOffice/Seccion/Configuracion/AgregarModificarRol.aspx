@@ -66,10 +66,10 @@
                             <label class="control-label">Status</label>
                           <div class="form-group">
                            <label class="radio-inline">
-                                <asp:RadioButton runat="server" Text="Activo" type="radio" GroupName="statusDojo" name="statusDojo"  id="statusDojoA"  />
+                                <asp:RadioButton runat="server" Text="Activo" type="radio" GroupName="statusRol" name="statusDojo"  id="statusDojoA"  />
                             </label>
                             <label class="radio-inline">
-                                <asp:RadioButton runat="server" Text="Inactivo" type="radio" GroupName="statusDojo" name="statusDojo"  id="statusDojoI" Checked="true"  />
+                                <asp:RadioButton runat="server" Text="Inactivo" type="radio" GroupName="statusRol" name="statusDojo"  id="statusDojoI" Checked="true"  />
                             </label>
                            </div>
                         </div>
