@@ -232,6 +232,8 @@
         android:id="@+id/btn_procesarPago"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
-        android:width="600px" />
+        android:width="600px"
+        android:onClick="cambiarFactura"
+        android:textSize="16dp" />
 
 </TableLayout>
