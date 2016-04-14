@@ -6,7 +6,7 @@
     Menú
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    Modificar Plato
+    Modificar Platillo
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
             <%--Breadcrumbs--%>
