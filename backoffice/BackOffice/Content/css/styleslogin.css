@@ -1,0 +1,112 @@
+
+
+@CHARSET "UTF-8"
+
+
+
+* {
+    -webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
+
+    .form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+	}
+
+body {
+	background: #222d32;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-image: url('../../../Content/img/Rst3.png');
+}
+
+#ModalCont {
+	
+    background-image: url('../../../Content/img/panel1.jpg');
+}
+    
+body #modalid {
+    /* new custom width */
+    width: 25%;
+    
+}
+
+.login-form {
+	margin-top: 60px;
+}
+
+form[role=login] {
+	color: #5d5d5d;
+	background: #000;
+    background-image: url('../../../Content/img/panel1.jpg');
+	padding: 26px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+
+	form[role=login] h1 {
+
+    font-size: 52px;
+    color: #774F38;
+
+}
+   
+}
+
+
+    	form[role=login] h3 {
+		color: #fff
+
+	}
+	form[role=login] img {
+		display: block;
+		margin-bottom: 35px;
+    width: 131px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+	form[role=login] input,
+	form[role=login] button {
+		font-size: 18px;
+		margin: 16px 0;
+			color: #000000
+			    background-color: #a94442;
+    border-color: #333;
+			
+
+	}
+	form[role=login] > div {
+		text-align: center;
+	}
+	
+.form-links {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 50px;
+}
+	.form-links a {
+		color: #000;
+	}
+.closeModal {
+    color:#fff;
+}
+
+#logo-pass {
+    text-align: center;
+    width:50%;
+    height:50%;
+
+}
+#infoRestablecer {
+    text-align:left;
+}

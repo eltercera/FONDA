@@ -1,0 +1,222 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterUI.master.cs" Inherits="MasterUI" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8">
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet" />
+
+    <!-- Morris Charts CSS -->
+    <link href="css/plugins/morris.css" rel="stylesheet" />
+
+    <!-- FONDA CSS -->
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <title> FONDA - 
+        <asp:ContentPlaceHolder ID="pagina" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/Default.aspx">
+                        <asp:Image id="logo" runat="server" AlternateText="FONDA Logo" CssClass="col-lg-2 col-md-2 col-sm-2 col-xs-2 logoimg hidden-xs" ImageUrl="~/Content/img/rsz_logo.png"/>
+                        <p class="FONDAtitle">Fonda</p>
+                    </a>
+                </div>
+                <!-- Top Menu Items -->
+                <ul class="nav navbar-right top-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                        <ul class="dropdown-menu message-dropdown">
+                            <li class="message-preview">
+                                <a href="#">
+                                    <div class="media">
+                                        <span class="pull-left">
+                                            <img class="media-object" src="http://placehold.it/50x50" alt="" />
+                                        </span>
+                                        <div class="media-body">
+                                            <h5 class="media-heading"><strong>John Doe</strong>
+                                            </h5>
+                                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                            <p>Hola ojnadfiiodfnoandfnadjfdisnf dolor sit amet, consectetur...</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="message-preview">
+                                <a href="#">
+                                    <div class="media">
+                                        <span class="pull-left">
+                                            <img class="media-object" src="http://placehold.it/50x50" alt="" />
+                                        </span>
+                                        <div class="media-body">
+                                            <h5 class="media-heading"><strong>John Smith</strong>
+                                            </h5>
+                                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                            <p>Hola ojnadfiiodfnoandfnadjfdisnf dolor sit amet, consectetur...</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="message-preview">
+                                <a href="#">
+                                    <div class="media">
+                                        <span class="pull-left">
+                                            <img class="media-object" src="http://placehold.it/50x50" alt="" />
+                                        </span>
+                                        <div class="media-body">
+                                            <h5 class="media-heading"><strong>John Smith</strong>
+                                            </h5>
+                                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                            <p>Hola ojnadfiiodfnoandfnadjfdisnf dolor sit amet, consectetur...</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="message-footer">
+                                <a href="#">Read All New Messages</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                        <ul class="dropdown-menu alert-dropdown">
+                            <li>
+                                <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                            </li>
+                            <li>
+                                <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                            </li>
+                            <li>
+                                <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                            </li>
+                            <li>
+                                <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                            </li>
+                            <li>
+                                <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                            </li>
+                            <li>
+                                <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">View All</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Doe <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="~/../../../login.aspx"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="~/default.aspx" runat="server"><i class="fa fa-fw fa-dashboard"></i> Panel de control</a>
+                    </li>
+                    <li>
+                        <a href="~/Seccion/Restaurant/default.aspx" runat="server"><i class="fa fa-fw fa-user"></i> Servicio</a>
+                    </li>
+                    <li>
+                        <a href="~/Seccion/Reservas/default.aspx" runat="server"><i class="fa fa-fw fa-pencil-square-o"></i> Reservas</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#menu"><i class="fa fa-fw fa-shopping-basket"></i> Menú <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="menu" class="collapse">
+                            <li>
+                                <a href="~/Seccion/Menu/menu_dia.aspx" runat="server">Menú del día</a>
+                            </li>
+                            <li>
+                                <a href="~/Seccion/Menu/default.aspx" runat="server">Menú fijo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="~/Seccion/Caja/default.aspx" runat="server"><i class="fa fa-fw fa-money"></i> Caja</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#config"><i class="fa fa-fw fa-wrench"></i> Confirguración <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="config" class="collapse">
+                            <li>
+                                <a href="~/Seccion/Configuracion/ListarUsuario.aspx" runat="server">Usuarios</a>
+                            </li>
+                            <li>
+                                <a href="~/Seccion/Configuracion/ListarRol.aspx" runat="server">Roles</a>
+                            </li>
+                            <li>
+                                <a href="~/Seccion/Configuracion/ListarPrivilegio.aspx" runat="server">Privilegios</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+            </nav>
+    
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            <asp:ContentPlaceHolder runat="server" ID="titulo"></asp:ContentPlaceHolder> <small><asp:ContentPlaceHolder runat="server" ID="subtitulo"></asp:ContentPlaceHolder></small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <asp:ContentPlaceHolder runat="server" ID="migas"></asp:ContentPlaceHolder>
+                        </ol>
+                    </div>
+                </div>
+
+                <asp:ContentPlaceHolder id="contenido" runat="server">
+        
+                </asp:ContentPlaceHolder>
+            </div>
+            </div>
+        </div>
+
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts>
+                <asp:ScriptReference Path="~/Content/js/jquery.js" />
+                <asp:ScriptReference Path="~/Content/js/bootstrap.min.js" />
+                <asp:ScriptReference Path="~/Content/js/jquery-validation/dist/jquery.validate.js" />
+            </Scripts>
+        </asp:ScriptManager>
+    </form>
+
+</body>
+</html>
