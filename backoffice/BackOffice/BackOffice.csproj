@@ -385,7 +385,6 @@
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ModificarMenu.aspx" />
     <Content Include="Seccion\Menu\ModificarPlatillo.aspx" />
-    <Content Include="Seccion\Menu\VerMenu.aspx" />
     <Content Include="Seccion\Reservas\Default.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -454,13 +453,6 @@
     </Compile>
     <Compile Include="Seccion\Menu\ModificarPlatillo.aspx.designer.cs">
       <DependentUpon>ModificarPlatillo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Menu\VerMenu.aspx.cs">
-      <DependentUpon>VerMenu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Menu\VerMenu.aspx.designer.cs">
-      <DependentUpon>VerMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Reservas\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

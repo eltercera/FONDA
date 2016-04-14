@@ -6,7 +6,7 @@
     Menú
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    Agregar Plato
+    Agregar Platillo
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
             <%--Breadcrumbs--%>
@@ -76,7 +76,7 @@
                
   <div class="form-group">
     <label for="ejemplo_archivo_1">Adjuntar una imagen del platillo</label>
-    <input type="file" id="ejemplo_archivo_1">
+    <input type="file" id="ejemplo_archivo_1"/>
     <p class="help-block">Imagen .jpg o .png</p>
   </div>
 
