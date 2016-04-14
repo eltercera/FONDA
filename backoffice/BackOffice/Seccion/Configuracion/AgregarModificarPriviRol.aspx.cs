@@ -26,7 +26,6 @@ namespace BackOffice.Seccion.Configuracion
                     this.accionPermitidaC.Checked = true;
                     this.accionPermitidaE.Checked = false;
                     this.accionPermitidaM.Checked = true;
-                    this.Subtitulo.Text = "Modificar Rol de Usuario";
                     this.Button1.Text = "Modificar";
 
                 }
