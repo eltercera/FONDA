@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace BackOffice.Seccion.Configuracion
+{
+    public partial class AgregarModificarRol : System.Web.UI.Page
+    {
+        private string success;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            exitoFormulario.Style["display"] = "none";
+            alertaFormulario.Style["display"] = "none";
+            this.success = Request.QueryString["success"];
+            if (success != null)
+            {
+                if (success.CompareTo("modificar") == 0)
+                {
+                    this.nombreRol.Text = "Cajero";
+                    this.descripcionRol.Text = "Es el encargado de llevar toda la gestión de Caja.";
+                    this.Button1.Text = "Modificar";
+
+                }
+            }
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            exitoFormulario.Style["display"] = "inline";
+            alertaFormulario.Style["display"] = "none";
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            alertaFormulario.Style["display"] = "inline";
+            exitoFormulario.Style["display"] = "none";
+        }
+    }
+}
