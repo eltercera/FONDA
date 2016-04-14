@@ -23,10 +23,9 @@
             android:layout_height="wrap_content"
             android:text="Aceptar"
             android:id="@+id/button6"
+            android:onClick="cambiarinicio"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="30dp"
-            android:onClick="cambiarinicio" />
+            android:layout_centerHorizontal="true" />
 
         <TableLayout
             android:layout_width="312dp"
@@ -176,11 +175,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total                                                         Bs. 1971,2"
+            android:text="Total                                                    Bs. 1971,2"
             android:id="@+id/textView40"
             android:layout_below="@+id/textView41"
-            android:layout_alignRight="@+id/textView11"
-            android:layout_alignEnd="@+id/textView11" />
+            android:layout_alignLeft="@+id/textView41"
+            android:layout_alignStart="@+id/textView41" />
 
         <TextView
             android:layout_width="wrap_content"
