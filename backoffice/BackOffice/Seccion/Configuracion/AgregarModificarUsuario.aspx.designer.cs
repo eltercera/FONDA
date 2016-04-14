@@ -7,10 +7,10 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace BackOffice {
+namespace BackOffice.Seccion.Configuracion {
     
     
-    public partial class Prueba {
+    public partial class AgregarModificarUsuario {
         
         /// <summary>
         /// Control exitoFormulario.
@@ -31,31 +31,31 @@ namespace BackOffice {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertaFormulario;
         
         /// <summary>
-        /// Control Value1.
+        /// Control nombreUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Value1;
+        protected global::System.Web.UI.WebControls.TextBox nombreUsuario;
         
         /// <summary>
-        /// Control TextBox1.
+        /// Control apellidoUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox apellidoUsuario;
         
         /// <summary>
-        /// Control DropDown.
+        /// Control nacionalidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDown;
+        protected global::System.Web.UI.WebControls.DropDownList nacionalidad;
         
         /// <summary>
         /// Control TextBox2.
@@ -67,49 +67,49 @@ namespace BackOffice {
         protected global::System.Web.UI.WebControls.TextBox TextBox2;
         
         /// <summary>
-        /// Control DropDownList1.
+        /// Control estado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList estado;
         
         /// <summary>
-        /// Control TextBox3.
+        /// Control ciudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.DropDownList ciudad;
         
         /// <summary>
-        /// Control DropDownList2.
+        /// Control direccionUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.TextBox direccionUsuario;
         
         /// <summary>
-        /// Control TextBox4.
+        /// Control statusDojoA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.RadioButton statusDojoA;
         
         /// <summary>
-        /// Control TextBox5.
+        /// Control statusDojoI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.RadioButton statusDojoI;
         
         /// <summary>
         /// Control Button1.

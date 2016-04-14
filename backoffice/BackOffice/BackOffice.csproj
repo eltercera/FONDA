@@ -377,12 +377,14 @@
     <Content Include="Content\js\plugins\morris\raphael.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
+    <Content Include="inicio.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Seccion\Caja\Default.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx" />
+    <Content Include="Seccion\Configuracion\AgregarModificarUsuario.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarRol.aspx" />
     <Content Include="Seccion\Configuracion\Default.aspx" />
     <Content Include="Seccion\Configuracion\ListarPrivilegio.aspx" />
@@ -412,6 +414,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="inicio.aspx.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="inicio.aspx.designer.cs">
+      <DependentUpon>inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -448,6 +457,13 @@
     </Compile>
     <Compile Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx.designer.cs">
       <DependentUpon>AgregarModificarPriviRol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\AgregarModificarUsuario.aspx.cs">
+      <DependentUpon>AgregarModificarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\AgregarModificarUsuario.aspx.designer.cs">
+      <DependentUpon>AgregarModificarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\AgregarModificarRol.aspx.cs">
       <DependentUpon>AgregarModificarRol.aspx</DependentUpon>
