@@ -79,7 +79,7 @@ namespace BackOffice.Seccion.Configuracion
             else{
                 if (usuario == "fonda" & clave == "12345")
                 { mensajeLogin(false, mensajes.logErr, mensajes.tipoErr);
-                Response.Redirect("Default.aspx");
+                Response.Redirect("inicio.aspx");
                 }
                 else { 
                             
