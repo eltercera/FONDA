@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,6 +9,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ds201625.fonda.activities.RegistrarTdcActivity"
     android:orientation="vertical">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_column="5" />
+    </TableRow>
 
     <TextView
         android:layout_width="289dp"
@@ -71,12 +82,59 @@
         android:hint="CVV"
         android:inputType="number"/>
 
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visa"
+            android:id="@+id/radioButton"
+            android:checked="false"
+            android:layout_column="6"
+            android:textSize="20dp"
+            android:layout_gravity="bottom" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView5"
+            android:layout_column="11"
+            android:src="@mipmap/visa_icon" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MasterCard"
+            android:id="@+id/radioButton2"
+            android:checked="false"
+            android:layout_column="6"
+            android:textSize="20dp"
+            android:layout_gravity="bottom" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView4"
+            android:layout_column="11"
+            android:src="@mipmap/mastercard_icon"
+            android:layout_gravity="center_vertical" />
+
+    </TableRow>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Guardar tarjeta de crédito"
         android:id="@+id/button"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:onClick="cambiarP" />
 
-</LinearLayout>
+</TableLayout>

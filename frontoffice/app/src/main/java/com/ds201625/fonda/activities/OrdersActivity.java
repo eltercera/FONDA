@@ -20,4 +20,9 @@ public class OrdersActivity extends BaseActivityNavigation {
         Intent cambio = new Intent (this,PagoOrdenActivity.class);
         startActivity(cambio);
     }
+    public void cambiarHist (View v)
+    {
+        Intent cambio = new Intent (this,ConsultaPagoActivity.class);
+        startActivity(cambio);
+    }
 }
