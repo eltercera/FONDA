@@ -46,6 +46,21 @@
            <div class="invisible">...</div>
            <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
      
+                        <div class="row">
+                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                                                         <label>Selecciona la categoría</label>
+                                <select class="form-control" >
+                                    <option>Pastas</option>
+                                    <option>Carnes</option>
+                                    <option>Pescados y Mariscos</option>
+                                </select>
+
+
+                        </div>
+                 </div>
+                 </div>
+
                  <div class="row">
                  <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">

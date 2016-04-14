@@ -50,22 +50,23 @@
         <div class="row">
             <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                   
-                     <div class="form-group">
-                                <label>Categoria</label>
-                                <p class="form-control-static">Pasta</p>
-                            </div>
+                            <div class="form-group">
+                                   <label>Selecciona la categoría</label>
+                                <select class="form-control" >
+                                    <option>Pastas</option>
+                                    <option>Carnes</option>
+                                    <option>Pescados y Mariscos</option>
+                                </select>
+                        </div>
             </div>
                 </div>
 
                       <div class="row">
                           <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                 <div class="form-group">
-                                <label>Selecciona el platillo</label>
-                                <select class="form-control" >
-                                    <option>Pasta Carbonara</option>
-                                    <option>Pasta con Vegetales</option>
-                                    <option>Pasta con Salmon</option>
-                                </select>
+
+                            <label class="control-label">Nombre del platillo</label>
+                            <asp:TextBox ID="nombrePlato" CssClass="form-control" placeholder="Pasta Carbonara" runat="server"/>
                             </div>
             </div>
 </div>
@@ -74,7 +75,7 @@
                  <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Descripcion del platillo</label>
-                            <asp:TextBox ID="descripcionPlato" CssClass="form-control" placeholder="ej. pasta con tocineta y queso parmesano" runat="server"/>
+                            <asp:TextBox ID="descripcionPlato" CssClass="form-control" placeholder="Pasta con tocineta y queso parmesano" runat="server"/>
                         </div>
                  </div>
                  </div>
@@ -83,7 +84,7 @@
                  <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Precio del platillo</label>
-                            <asp:TextBox ID="precioPlato" CssClass="form-control" placeholder="ej. 1000" MaxLength="5" runat="server"/>
+                            <asp:TextBox ID="precioPlato" CssClass="form-control" placeholder="1000" MaxLength="5" runat="server"/>
                         </div>
                 </div>
             </div>
@@ -101,11 +102,11 @@
                                 <div class="row">
                           <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                 <div class="form-group">
-                                <label>Activar / Desactivar platillo </label>
-                                <select class="form-control">
-                                    <option>Activar</option>
-                                    <option>Desactivar</option>
-                                </select>
+                                             <label class="control-label">Estatus</label>
+           <br />
+                        <asp:RadioButton GroupName="Estatus" runat="server" Text="  Activo" />
+                        <asp:RadioButton GroupName="Estatus" runat="server" Text="  Inactivo" />
+                         
                             </div>
             </div>
 </div>
