@@ -17,16 +17,39 @@
         android:text="Pagar Orden"
         android:id="@+id/botoninicio"
         android:onClick="cambiarP"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/button4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="149dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Historial"
         android:id="@+id/button4"
-        android:layout_below="@+id/botoninicio"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="54dp"
-        android:onClick="cambiarHist" />
+        android:onClick="cambiarHist"
+        android:layout_marginBottom="165dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/botoninicio"
+        android:layout_alignStart="@+id/botoninicio"
+        android:layout_alignRight="@+id/botoninicio"
+        android:layout_alignEnd="@+id/botoninicio" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView6"
+        android:src="@mipmap/cerrarcta_icon"
+        android:maxHeight="500dp"
+        android:layout_above="@+id/botoninicio"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView7"
+        android:src="@mipmap/dollar_icon"
+        android:layout_above="@+id/button4"
+        android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>
