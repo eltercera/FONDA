@@ -133,7 +133,7 @@
             android:layout_height="match_parent">
             <ImageView android:id="@+id/imageViewpDir"
                 android:layout_column="0"
-
+                android:src="@drawable/map_marker_24"
                 android:paddingRight="25dp"
                 android:layout_gravity="center_vertical" />
             <EditText
