@@ -17,7 +17,7 @@
             </li>
         
             <li>
-                <a href="#">Menú</a> 
+                <a href="../Menu/Default.aspx">Menú</a> 
             </li>
             <li class="active">
                 Agregar Platillo
@@ -36,7 +36,7 @@
             <div class="col-lg-10 col-md-8 col-sm-8 col-xs-8">
 
                 <div id="exitoFormulario" class="alert alert-success alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" runat="server">
-                    Plato aregado con <strong>EXITO</strong>!
+                    Plato agregado con <strong>EXITO</strong>!
                 </div>
                 <div id="alertaFormulario" class="alert alert-danger alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" runat="server">
                     El Platillo <strong>NO SE HA PODIDO AGREGAR!</strong>

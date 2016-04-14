@@ -17,7 +17,7 @@
             </li>
 
             <li>
-                <a href="#">Menú</a>
+                <a href="../Menu/Default.aspx">Menú</a>
             </li>
             <li class="active">Menú Fijo
             </li>
@@ -28,21 +28,10 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
     <div class="row m-b-3">
 
-        <div class="col-lg-offset-8 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-            <div class="col-md-10 col-sm-10 col-xs-10 ">
-                <div class="col-lg-12 col-lg-offset-1 ">
-
-                    <a href="../Menu/AgregarPlatillo.aspx"><i class="fa fa-plus" aria-hidden="true"></i>Agregar Nuevo Platillo</a>
-
-                </div>
-
-
-                <div class="col-lg-12 col-lg-offset-1 ">
-
-                    <a href="../Menu/AgregarMenu.aspx"><i class="fa fa-plus" aria-hidden="true"></i>Agregar Nueva Categoría</a>
-
-                </div>
-
+    <div class="col-lg-5 col-lg-offset-8 ">
+                   <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" OnClick="LinkButton1_Click" runat="server">Nueva Categoría</asp:LinkButton>
+                   <asp:LinkButton ID="CogLinkButton" CssClass="btn btn-primary" OnClick="CogLinkButton_Click" runat="server">Nuevo Platillo</asp:LinkButton>
+               </div>
 
 
             </div>
@@ -132,7 +121,7 @@
                                     </tbody>
                                 </table>
                                 <div class="text-right">
-                                    <a href="#">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="../Menu/ModificarMenu.aspx">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +215,7 @@
                                     </tbody>
                                 </table>
                                 <div class="text-right">
-                                    <a href="#">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="../Menu/ModificarMenu.aspx">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -319,7 +308,7 @@
                                     </tbody>
                                 </table>
                                 <div class="text-right">
-                                    <a href="#">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="../Menu/ModificarMenu.aspx">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
                         </div>
