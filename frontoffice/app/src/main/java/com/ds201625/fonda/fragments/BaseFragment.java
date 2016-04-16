@@ -1,4 +1,4 @@
-package com.ds201625.fonda.activities;
+package com.ds201625.fonda.fragments;
 
 import android.content.Context;
 import android.os.Bundle;

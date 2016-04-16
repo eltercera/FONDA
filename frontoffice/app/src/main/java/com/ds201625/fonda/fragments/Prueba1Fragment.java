@@ -1,4 +1,4 @@
-package com.ds201625.fonda.activities;
+package com.ds201625.fonda.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.fragments.BaseFragment;
 
 /**
  * Clase de Prueba para mostar el uso de Fragments

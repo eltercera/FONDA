@@ -8,6 +8,8 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.fragments.Prueba1Fragment;
+import com.ds201625.fonda.fragments.Prueba2Fragment;
 
 /**
  * Actividad de prueba para mostrar el uso de los Tabs.
