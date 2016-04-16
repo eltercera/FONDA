@@ -23,18 +23,18 @@ import java.util.Map;
  */
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Activity context;
-    private Map<String, List<String>> laptopCollections;
-    private List<String> laptops;
+    private Map<String, List<String>> coleccionDevisitas;
+    private List<String> visitas;
 
-    public ExpandableListAdapter(Activity context, List<String> laptops,
-                                 Map<String, List<String>> laptopCollections) {
+    public ExpandableListAdapter(Activity context, List<String> visitas,
+                                 Map<String, List<String>> coleccionDevisitas) {
         this.context = context;
-        this.laptopCollections = laptopCollections;
-        this.laptops = laptops;
+        this.coleccionDevisitas = coleccionDevisitas;
+        this.visitas = visitas;
     }
 
     public Object getChild(int groupPosition, int childPosition) {
-        return laptopCollections.get(laptops.get(groupPosition)).get(childPosition);
+        return coleccionDevisitas.get(visitas.get(groupPosition)).get(childPosition);
     }
 
     public long getChildId(int groupPosition, int childPosition) {
@@ -52,48 +52,20 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView item = (TextView) convertView.findViewById(R.id.laptop);
-
-        ImageView delete = (ImageView) convertView.findViewById(R.id.delete);
-        delete.setOnClickListener(new OnClickListener() {
-
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Do you want to remove?");
-                builder.setCancelable(false);
-                builder.setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                List<String> child =
-                                        laptopCollections.get(laptops.get(groupPosition));
-                                child.remove(childPosition);
-                                notifyDataSetChanged();
-                            }
-                        });
-                builder.setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-        });
-
         item.setText(laptop);
         return convertView;
     }
 
     public int getChildrenCount(int groupPosition) {
-        return laptopCollections.get(laptops.get(groupPosition)).size();
+        return coleccionDevisitas.get(visitas.get(groupPosition)).size();
     }
 
     public Object getGroup(int groupPosition) {
-        return laptops.get(groupPosition);
+        return visitas.get(groupPosition);
     }
 
     public int getGroupCount() {
-        return laptops.size();
+        return visitas.size();
     }
 
     public long getGroupId(int groupPosition) {

@@ -22,19 +22,19 @@ import java.util.Map;
 public class ConsultaPagoActivity extends Activity {
     List<String> groupList;
     List<String> childList;
-    Map<String, List<String>> laptopCollection;
+    Map<String, List<String>> coleccionDevisitas;
     ExpandableListView expListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_consultarpago);
+        setContentView(R.layout.activity_consulta_pago);
     createGroupList();
 
     createCollection();
 
     expListView = (ExpandableListView) findViewById(R.id.laptop_list);
     final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
-            this, groupList, laptopCollection);
+            this, groupList, coleccionDevisitas);
     expListView.setAdapter(expListAdapter);
 
     //setGroupIndicatorToRight();
@@ -55,11 +55,11 @@ public class ConsultaPagoActivity extends Activity {
 
     private void createGroupList() {
         groupList = new ArrayList<String>();
-        groupList.add("12/12/15    5.000 Bs    7.000 Bs");
-        groupList.add("12/12/15    5.000 Bs    7.000 Bs");
-        groupList.add("16/01/16    5.000 Bs    7.000 Bs");
-        groupList.add("02/02/16    5.000 Bs    7.000 Bs");
-        groupList.add("03/04/16    5.000 Bs    7.000 Bs");
+        groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
+        groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
+        groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
+        groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
+        groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
     }
 
     private void createCollection() {
@@ -71,21 +71,21 @@ public class ConsultaPagoActivity extends Activity {
         String[] data5 = {"RESTAURANT: EL TINAJERO","Direccion: las Mercedes","Fecha: 12/10/2015", "Hora: 3:00 Pm","Sub-Total:5.000 Bs","Total:7.000 Bs","Propina:800 Bs","Forma de Pago: tarjeta de credito","Banco: Mercantil" };
 
 
-        laptopCollection = new LinkedHashMap<String, List<String>>();   
+        coleccionDevisitas = new LinkedHashMap<String, List<String>>();
 
         for (String laptop : groupList) {
-            if (laptop.equals("12/12/15    5.000 Bs    7.000 Bs")) {
+            if (laptop.equals("RESTAURANTE:el tinajero   MONTO:5.000 Bs")) {
                 loadChild(data1);
-            } else if (laptop.equals("12/12/15    5.000 Bs    7.000 Bs"))
+            } else if (laptop.equals("RESTAURANTE:el tinajero   MONTO:5.000 Bs"))
                 loadChild(data2);
-            else if (laptop.equals("16/01/16    5.000 Bs    7.000 Bs"))
+            else if (laptop.equals("RESTAURANTE:el tinajero   MONTO:5.000 Bs"))
                 loadChild(data3);
-            else if (laptop.equals("02/02/16    5.000 Bs    7.000 Bs"))
+            else if (laptop.equals("RESTAURANTE:el tinajero   MONTO:5.000 Bs"))
                 loadChild(data4);
-            else  if (laptop.equals("03/04/16    5.000 Bs    7.000 Bs"))
+            else  if (laptop.equals("RESTAURANTE:el tinajero   MONTO:5.000 Bs"))
                 loadChild(data5);
 
-            laptopCollection.put(laptop, childList);
+            coleccionDevisitas.put(laptop, childList);
         }
     }
 
@@ -95,23 +95,6 @@ public class ConsultaPagoActivity extends Activity {
             childList.add(model);
     }
 
-    private void setGroupIndicatorToRight() {
-		/* Get the screen width */
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int width = dm.widthPixels;
-
-        expListView.setIndicatorBounds(width - getDipsFromPixel(35), width
-                - getDipsFromPixel(5));
-    }
-
-    // Convert pixel to dip
-    public int getDipsFromPixel(float pixels) {
-        // Get the screen's density scale
-        final float scale = getResources().getDisplayMetrics().density;
-        // Convert the dps to pixels, based on density scale
-        return (int) (pixels * scale + 0.5f);
-    }
 
 
 }
