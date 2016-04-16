@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class ProfileViewItemList extends ArrayAdapter<ProfileViewItem> {
 
     public ProfileViewItemList(Context context) {
-        super(context, R.layout.profile_item,R.id.tvProfile,new ArrayList<ProfileViewItem>());
+        super(context, R.layout.item_profile,R.id.tvProfile,new ArrayList<ProfileViewItem>());
     }
 
     @Override
@@ -26,7 +26,7 @@ public class ProfileViewItemList extends ArrayAdapter<ProfileViewItem> {
         if (convertView == null) {
             LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
 
-            convertView = inflater.inflate(R.layout.profile_item, null, true);
+            convertView = inflater.inflate(R.layout.item_profile, null, true);
 
             TextView tvProfile = (TextView) convertView.findViewById(R.id.tvProfile);
             TextView tvProfileName = (TextView) convertView.findViewById(R.id.tvProfileName);
