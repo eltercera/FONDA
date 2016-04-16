@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BackOffice.Seccion.Configuracion {
+namespace BackOffice.Seccion.Caja {
     
     
-    public partial class AgregarModificarRol {
+    public partial class AgregarOrden {
         
         /// <summary>
         /// exitoFormulario control.
@@ -29,42 +29,6 @@ namespace BackOffice.Seccion.Configuracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertaFormulario;
-        
-        /// <summary>
-        /// nombreRol control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nombreRol;
-        
-        /// <summary>
-        /// descripcionRol control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox descripcionRol;
-        
-        /// <summary>
-        /// statusDojoA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton statusDojoA;
-        
-        /// <summary>
-        /// statusDojoI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton statusDojoI;
         
         /// <summary>
         /// Button1 control.
