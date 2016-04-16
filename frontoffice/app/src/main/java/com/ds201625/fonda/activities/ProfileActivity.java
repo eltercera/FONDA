@@ -4,18 +4,32 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.ListView;
 
 import com.ds201625.fonda.R;
 
-public class ProfileActivity extends BaseActivityNavigation {
+public class ProfileActivity extends BaseNavigationActivity {
 
     MenuItem saveBotton;
+    ListView profiles;
+    ProfileViewItemList profileList;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_profile);
+
+        profiles = (ListView)findViewById(R.id.lvProfileList);
+
+        profileList = new ProfileViewItemList(this);
+
+        profileList.add(new ProfileViewItem("Profile 1","Nombew 1","J-1544152214"));
+        profileList.add(new ProfileViewItem("Profile 2","Nombew 2","J-1544152214"));
+        profileList.add(new ProfileViewItem("Profile 3","Nombew 3","J-1544152214"));
+        profileList.add(new ProfileViewItem("Profile 4","Nombew 4","J-1544152214"));
+
+        profiles.setAdapter(profileList);
+
         super.onCreate(savedInstanceState);
     }
 

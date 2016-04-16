@@ -1,26 +1,20 @@
 package com.ds201625.fonda.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.ds201625.fonda.R;
 
-import java.util.TooManyListenersException;
-
 /**
- * Created by rrodriguez on 4/10/16.
+ * Clase Base para Activity con el navegador a la izquierda.
  */
-public abstract class BaseActivityNavigation extends BaseActivity
+public abstract class BaseNavigationActivity extends BaseActivity
     implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
@@ -89,6 +83,7 @@ public abstract class BaseActivityNavigation extends BaseActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        //Acciones de las opciones.
         if (id == R.id.nav_favorites) {
             if (this.getClass() != FavoritesActivity.class)
                 startFondaActivity("FavoritesActivity");
@@ -96,7 +91,7 @@ public abstract class BaseActivityNavigation extends BaseActivity
             if (this.getClass() != RestauranstsActivity.class)
                 startFondaActivity("RestauranstsActivity");
         } else if (id == R.id.nav_config) {
-                startFondaActivity("SettingsActivity");
+                startFondaActivity("Main2Activity");
         } else if (id == R.id.nav_order) {
             if (this.getClass() != OrdersActivity.class)
                 startFondaActivity("OrdersActivity");

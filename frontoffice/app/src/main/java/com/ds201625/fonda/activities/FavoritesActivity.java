@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 
-public class FavoritesActivity extends BaseActivityNavigation {
+public class FavoritesActivity extends BaseNavigationActivity {
     ListView list;
     String[] names = {
             "The dining room",

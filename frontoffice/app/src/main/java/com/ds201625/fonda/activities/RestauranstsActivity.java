@@ -1,15 +1,12 @@
 package com.ds201625.fonda.activities;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 
-public class RestauranstsActivity extends BaseActivityNavigation {
+public class RestauranstsActivity extends BaseNavigationActivity {
     //Se define la lista
     ListView listaFiltros;
 
