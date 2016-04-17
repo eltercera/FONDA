@@ -41,28 +41,26 @@
                                 <tr>
                                     <th>N° Orden</th>
                                     <th>Cliente</th>                          
-                                    <th >Modificar</th>
-                                    <th >Pagar</th>
+                                    <th >Accion</th>
+                                   
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td><a href="VerDetalleOrden.aspx">#1</a></td>
                                     <td>@pperez</td>
-                                    <td><a href="ModificarOrden.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
-                                    <td><a href="CrearFactura.aspx"><i class="fa fa-money fa-fw"></i></a></td>
+                                    <td><a href="ModificarOrden.aspx"><i class="fa fa-pencil-square-o"></i></a>  <a href="CrearFactura.aspx"><i class="fa fa-money fa-fw"></i></a></td>
+                                    
                                 </tr>
                                 <tr>
                                     <td><a href="VerDetalleOrden.aspx">#2</a></td>
                                     <td>@jero1604</td>
-                                    <td><a href="ModificarOrden.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
-                                    <td><a href="CrearFactura.aspx"><i class="fa fa-money fa-fw"></i></a></td>
+                                    <td><a href="ModificarOrden.aspx"><i class="fa fa-pencil-square-o"></i></a>  <a href="CrearFactura.aspx"><i class="fa fa-money fa-fw"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td><a href="VerDetalleOrden.aspx">#3</a></td>
                                     <td>@vero12</td>
-                                    <td><a href="ModificarOrden.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
-                                    <td><a href="CrearFactura.aspx"><i class="fa fa-money fa-fw"></i></a></td>
+                                    <td><a href="ModificarOrden.aspx"><i class="fa fa-pencil-square-o"></i></a>  <a href="CrearFactura.aspx"><i class="fa fa-money fa-fw"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
