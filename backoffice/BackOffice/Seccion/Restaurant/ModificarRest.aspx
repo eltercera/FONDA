@@ -36,7 +36,7 @@ Modificar Restaurante
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Tipo</label>
-                            <a href="#"><i class="fa fa-plus"></i></a>
+                            <a href="AgregarCategoria.aspx"><i class="fa fa-plus"></i></a>
                             <asp:DropDownList id="DropDownList3" CssClass="form-control" AutoPostBack="True" runat="server">
                                 <asp:ListItem> </asp:ListItem>
                                 <asp:ListItem>Venezolana</asp:ListItem>

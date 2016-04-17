@@ -3,7 +3,7 @@
 Restaurantes
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-Listado de Restaurantes 
+Restaurantes 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
 </asp:Content>
@@ -22,6 +22,17 @@ Listado de Restaurantes
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 <div class="row">
+        <div class="col-lg-4">   
+            <div class="form-group input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
+            </div>
+        </div>
+        <div class="col-lg-8">
+              <div class="text-right">
+              <a href="AgregarRest.aspx"><i class="fa fa-plus"></i>Agregar</a>
+              </div>
+        </div>
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -32,45 +43,37 @@ Listado de Restaurantes
                                     <table class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Info</th>
                                                 <th>Nombre</th>
                                                 <th>Direccion</th>
                                                 <th>Tipo</th>
                                                 <th>Estado</th>
-                                                <th >Modificar</th>
+                                                <th >Accion</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><a data-toggle="modal" data-target="#elCine"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                                                <td><a href="MenuRest.aspx">El Cine</a></td>
+                                            <td><a href="MenuRest.aspx">El Cine</a></td>
                                                 <td>Calle Comercio, entre Sucre y Bellavista - El Hatillo</td>
                                                 <td>Japonesa</td>
                                                 <td bgcolor="#ACD691">Activo</td>
-                                                <td><a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
+                                                <td><a data-toggle="modal" data-target="#elCine"><i class="fa fa-info-circle" aria-hidden="true"></i></a>  <a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                             <tr>
-                                                <td><i class="fa fa-info-circle" aria-hidden="true"></i></td>
                                                 <td>St. Honoré</td>
                                                 <td>Transversal 1 - Los Palos Grandes</td>
                                                 <td>Cafetería, pastelería</td>
                                                 <td bgcolor="#E08E79">Inactivo</td>
-                                                <td><a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
+                                                <td><i class="fa fa-info-circle" aria-hidden="true"></i>  <a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                             <tr>
-                                                <td><i class="fa fa-info-circle" aria-hidden="true"></i></td>
                                                 <td>Ávila Burger</td>
                                                 <td>4ta Avenida con 6ta Transversal. Cuadra Gastronomica - Los Palos Grandes</td>
                                                 <td>Americana</td>
                                                 <td bgcolor="#ACD691">Activo</td>
-                                                <td><a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
+                                                <td><i class="fa fa-info-circle" aria-hidden="true"></i>  <a href="ModificarRest.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
                                             </tr>
                                         </tbody>
-                                    </table>
-                                    <div class="text-right">
-                                        <a href="AgregarRest.aspx"><i class="fa fa-plus"></i> Agregar restaurante nuevo</a>
-                                    </div>
-       
+                                    </table>       
                                 </div>
                             </div>
                         </div>

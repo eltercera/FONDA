@@ -1,14 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BackOffice.Prueba" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
-    Panel de control
+    Inicio
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    Panel de control
+    ¡Bienvenido!
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    Estado actual
+    NOMBRE DE RESTAURANT
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">  
+<asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server"> 
 
     <!-- Page Heading -->
 
@@ -32,7 +34,7 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">26</div>
-                            <div>Comensales!</div>
+                            <div>Comensales</div>
                         </div>
                     </div>
                 </div>
@@ -98,7 +100,7 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">124k</div>
-                            <div>Bs. por facturar!</div>
+                            <div>Bs. por facturar</div>
                         </div>
                     </div>
                 </div>
@@ -112,7 +114,13 @@
             </div>
         </div>
     </div>
-
+       <div class="row">
+        <div class="col-lg-12">
+           <div class="text-right">
+              <a href="AgregarRest.aspx"><i class="fa fa-plus"></i>Agregar</a>
+           </div>
+        </div>
+       </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -129,7 +137,7 @@
                                     <th>Cantidad de comensales</th>
                                     <th>Estado</th>
                                     <th>Reservación realizada por</th>
-                                    <th >Modificar</th>
+                                    <th>Accion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -159,9 +167,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="text-right">
-                            <a href="AgregarMesa.aspx"><i class="fa fa-plus"></i> Agregar mesa nueva</a>
-                        </div>
        
                     </div>
                 </div>
