@@ -24,7 +24,7 @@ public class NearFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //Indicar el layout que va a usar el fragment
-        return inflater.inflate(R.layout.fragment_food,container,false);
+        return inflater.inflate(R.layout.fragment_near,container,false);
     }
 
     @Override
