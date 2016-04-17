@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -64,6 +65,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return visitas.get(groupPosition);
     }
 
+
     public int getGroupCount() {
         return visitas.size();
     }
@@ -75,6 +77,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
         String laptopName = (String) getGroup(groupPosition);
+
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -82,6 +85,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     null);
         }
         TextView item = (TextView) convertView.findViewById(R.id.laptop);
+        ImageView icon = (ImageView) convertView.findViewById(R.id.restaurant);
+        if((laptopName).equals("RESTAURANTE: Moute Grill                                12/10/15"))
+            icon.setImageResource(R.drawable.calendar_24);
+        if((laptopName).equals("RESTAURANTE: La Castanuela                              12/10/15"))
+            icon.setImageResource(R.drawable.calendar_24);
+        if((laptopName).equals("RESTAURANTE: Chino                                      12/10/15"))
+            icon.setImageResource(R.drawable.nav_order);
+        if((laptopName).equals("RESTAURANTE: Loreto                                     12/10/15"))
+            icon.setImageResource(R.drawable.nav_rest);
+        if((laptopName).equals("RESTAURANTE: El tinajero                                12/10/15"))
+            icon.setImageResource(R.drawable.nav_rest);
+
         item.setTypeface(null, Typeface.BOLD);
         item.setText(laptopName);
         return convertView;

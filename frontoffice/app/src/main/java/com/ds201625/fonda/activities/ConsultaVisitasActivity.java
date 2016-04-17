@@ -51,14 +51,14 @@ public class ConsultaVisitasActivity extends Activity {
         }
     });
 }
-    View convertView;
+
     private void createGroupList() {
         groupList = new ArrayList<String>();
-        groupList.add("RESTAURANTE: El tinajero               12/10/15");
-        groupList.add("RESTAURANTE: El tinajero        12/10/15");
-        groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
-        groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
-        groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
+        groupList.add("RESTAURANTE: El tinajero                                12/10/15");
+        groupList.add("RESTAURANTE: La Castanuela                              12/10/15");
+        groupList.add("RESTAURANTE: Moute Grill                                12/10/15");
+        groupList.add("RESTAURANTE: Chino                                      12/10/15");
+        groupList.add("RESTAURANTE: Loreto                                     12/10/15");
     }
 
     private void createCollection() {
@@ -73,15 +73,15 @@ public class ConsultaVisitasActivity extends Activity {
         coleccionDevisitas = new LinkedHashMap<String, List<String>>();
 
         for (String laptop : groupList) {
-            if (laptop.equals("RESTAURANTE: El tinajero               12/10/15")) {
+            if (laptop.equals("RESTAURANTE: El tinajero                                12/10/15")) {
                 loadChild(data1);
-            } else if (laptop.equals("RESTAURANTE:el tinajero   MONTO:5.000 Bs"))
+            } else if (laptop.equals("RESTAURANTE: La Castanuela                              12/10/15"))
                 loadChild(data2);
-            else if (laptop.equals("RESTAURANTE:el tinajero   MONTO:5.000 Bs"))
+            else if (laptop.equals("RESTAURANTE: Moute Grill                                12/10/15"))
                 loadChild(data3);
-            else if (laptop.equals("RESTAURANTE:el tinajero   MONTO:5.000 Bs"))
+            else if (laptop.equals("RESTAURANTE: Chino                                      12/10/15"))
                 loadChild(data4);
-            else  if (laptop.equals("RESTAURANTE:el tinajero   MONTO:5.000 Bs"))
+            else  if (laptop.equals("RESTAURANTE: Loreto                                     12/10/15"))
                 loadChild(data5);
 
             coleccionDevisitas.put(laptop, childList);
