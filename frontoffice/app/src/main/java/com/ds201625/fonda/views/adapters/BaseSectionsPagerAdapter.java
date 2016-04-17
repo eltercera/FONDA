@@ -1,4 +1,4 @@
-package com.ds201625.fonda.views.activities;
+package com.ds201625.fonda.views.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

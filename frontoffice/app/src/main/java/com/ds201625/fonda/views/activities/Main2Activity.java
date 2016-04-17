@@ -1,13 +1,12 @@
 package com.ds201625.fonda.views.activities;
 
-
 import android.support.design.widget.TabLayout;
-
 
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.Prueba1Fragment;
 import com.ds201625.fonda.views.fragments.Prueba2Fragment;
 
