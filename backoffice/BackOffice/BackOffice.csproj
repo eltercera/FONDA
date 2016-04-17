@@ -385,6 +385,7 @@
     <Content Include="Seccion\Caja\ConsultarFactura.aspx" />
     <Content Include="Seccion\Caja\CrearFactura.aspx" />
     <Content Include="Seccion\Caja\Default.aspx" />
+    <Content Include="Seccion\Caja\DefaultOrdenesCerradas.aspx" />
     <Content Include="Seccion\Caja\ModificarOrden.aspx" />
     <Content Include="Seccion\Caja\VerDetalleOrden.aspx" />
     <Content Include="Seccion\Caja\VerDetalleOrdenCerrada.aspx" />
@@ -469,6 +470,13 @@
     </Compile>
     <Compile Include="Seccion\Caja\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Caja\DefaultOrdenesCerradas.aspx.cs">
+      <DependentUpon>DefaultOrdenesCerradas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Caja\DefaultOrdenesCerradas.aspx.designer.cs">
+      <DependentUpon>DefaultOrdenesCerradas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Caja\ModificarOrden.aspx.cs">
       <DependentUpon>ModificarOrden.aspx</DependentUpon>

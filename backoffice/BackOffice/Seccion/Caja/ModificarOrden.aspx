@@ -35,14 +35,128 @@
                     La orden <strong>NO SE HA PODIDO MODIFICAR!</strong>
                 </div>
             </div>
-        </div>
+  </div>
         <!-- /.row -->
-        <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+        
             <div class="row">
                 <div class="col-lg-11">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Pastas </h3>
+                            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>Factura #1 Cliente: @dhshga</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="vertical-align: middle">Foto</th>
+                                            <th style="vertical-align: middle">Plato</th>
+                                            <th style="vertical-align: middle">Descripción</th>
+                                            <th style="vertical-align: middle">Precio</th>
+                                            <th style="vertical-align: middle">IVA</th>
+                                            <th style="vertical-align: middle">Cantidad</th>
+                                            <th style="vertical-align: middle">Total</th>
+                                            <th style="vertical-align: middle">Sugerencia del dia</th>
+                                            <th style="vertical-align: middle">Seleccionar</th>
+                                            
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""></td>
+                                            <td style="vertical-align: middle">Pasta Carbonara</td>
+                                            <td style="vertical-align: middle">Pasta con trozos de tocineta y queso parmesano</td>
+                                            <td style="vertical-align: middle">2350</td>
+                                            <td style="vertical-align: middle">650</td>
+                                            <td style="vertical-align: middle"><input type="number" name="quantity" min="1" max="10"></td>
+                                            <td style="vertical-align: middle">3000</td>
+                                            <td style="text-align: center; vertical-align: middle">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..." checked>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""></td>
+                                            <td style="vertical-align: middle">Pasta con Vegetales</td>
+                                            <td style="vertical-align: middle">Pasta con brocoli y pimentón</td>
+                                            <td style="vertical-align: middle">2350</td>
+                                            <td style="vertical-align: middle">650</td>
+                                            <td style="vertical-align: middle"><input type="number" name="quantity" min="1" max="10"></td>
+                                            <td style="vertical-align: middle">3000</td>
+                                            <td style="text-align: center; vertical-align: middle">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..." checked>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""></td>
+                                            <td style="vertical-align: middle">Pasta con Salmon</td>
+                                            <td style="vertical-align: middle">Pasta con trozos de salmon y queso</td>
+                                            <td style="vertical-align: middle">2350</td>
+                                            <td style="vertical-align: middle">650</td>
+                                            <td style="vertical-align: middle"><input type="number" name="quantity" min="1" max="10"></td>
+                                            <td style="vertical-align: middle">3000</td>
+                                            <td style="text-align: center; vertical-align: middle">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..." checked>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                           
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <!-- /.row -->
+   
+            <!-- /.row -->
+        
+            <div class="row">
+                <div class="col-lg-11">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Pastas</h3>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -107,7 +221,7 @@
                                             <td style="text-align: center; vertical-align: middle">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..." checked>
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
                                                     </label>
                                                 </div>
                                             </td>
@@ -150,6 +264,7 @@
 
             <!-- /.row -->
 
+            
 
             <div class="row">
                 <div class="col-lg-11">
@@ -194,7 +309,7 @@
                                             <td style="text-align: center; vertical-align: middle">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..." checked>
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
                                                     </label>
                                                 </div>
                                             </td>
@@ -244,7 +359,7 @@
                                             <td style="text-align: center; vertical-align: middle">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..." checked>
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
                                                     </label>
                                                 </div>
                                             </td>
@@ -305,7 +420,7 @@
                                             <td style="text-align: center; vertical-align: middle">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..." checked>
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
                                                     </label>
                                                 </div>
                                             </td>
@@ -373,8 +488,8 @@
 
 
             
-        </div>
-    </div>
+     
+    
        
     
     

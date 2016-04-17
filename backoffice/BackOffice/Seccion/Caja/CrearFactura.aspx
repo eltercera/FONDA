@@ -54,6 +54,7 @@
                                             <th style="vertical-align: middle">Total</th>
                                    
                                         </tr>
+                                        
                                     </thead>
                                     <tbody>
                                         <tr>
@@ -78,6 +79,14 @@
                                             <td style="vertical-align: middle">4000</td>
                                             <td style="vertical-align: middle">120</td> 
                                             <td style="vertical-align: middle">4200</td> 
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td style="vertical-align: middle"></td>
+                                            <td style="vertical-align: middle"></td>
+                                            <td style="vertical-align: middle"></td>
+                                            <th style="vertical-align: middle">Monto Total</th> 
+                                            <td style="vertical-align: middle">10600</td> 
                                             
                                         </tr>
                                     </tbody>
