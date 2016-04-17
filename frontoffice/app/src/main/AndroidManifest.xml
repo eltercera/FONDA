@@ -52,7 +52,7 @@
             android:name=".activities.RegistrarTdcActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.ConsultaPagoActivity"
+            android:name=".activities.ConsultaVisitasActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.CerrarCuentaActivity"

@@ -5,9 +5,20 @@
     android:orientation="vertical"
     android:padding="10dp" >
 
+
+    <ImageView
+        android:id="@+id/restaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/nav_rest" />
+
     <TextView
         android:id="@+id/laptop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="25dp"/>
+
+
+
 </LinearLayout>

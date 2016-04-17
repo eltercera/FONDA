@@ -2,11 +2,10 @@ package com.ds201625.fonda.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
@@ -19,7 +18,7 @@ import java.util.Map;
 /**
  * Created by Adri on 13/04/2016.
  */
-public class ConsultaPagoActivity extends Activity {
+public class ConsultaVisitasActivity extends Activity {
     List<String> groupList;
     List<String> childList;
     Map<String, List<String>> coleccionDevisitas;
@@ -27,7 +26,7 @@ public class ConsultaPagoActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consulta_pago);
+        setContentView(R.layout.activity_consulta_visita);
     createGroupList();
 
     createCollection();
@@ -52,11 +51,11 @@ public class ConsultaPagoActivity extends Activity {
         }
     });
 }
-
+    View convertView;
     private void createGroupList() {
         groupList = new ArrayList<String>();
-        groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
-        groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
+        groupList.add("RESTAURANTE: El tinajero               12/10/15");
+        groupList.add("RESTAURANTE: El tinajero        12/10/15");
         groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
         groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
         groupList.add("RESTAURANTE:el tinajero   MONTO:5.000 Bs");
@@ -74,7 +73,7 @@ public class ConsultaPagoActivity extends Activity {
         coleccionDevisitas = new LinkedHashMap<String, List<String>>();
 
         for (String laptop : groupList) {
-            if (laptop.equals("RESTAURANTE:el tinajero   MONTO:5.000 Bs")) {
+            if (laptop.equals("RESTAURANTE: El tinajero               12/10/15")) {
                 loadChild(data1);
             } else if (laptop.equals("RESTAURANTE:el tinajero   MONTO:5.000 Bs"))
                 loadChild(data2);
