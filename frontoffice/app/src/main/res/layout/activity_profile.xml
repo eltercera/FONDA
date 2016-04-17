@@ -12,12 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".activities.ProfileActivity">
+        tools:context=".views.activities.ProfileActivity">
 
         <include layout="@layout/toolbar_default" />
 
         <include layout="@layout/content_profile" />
 
+        <include layout="@layout/floating_action_button_default"/>
     </android.support.design.widget.CoordinatorLayout>
 
     <include layout="@layout/navigation_view_default" />
