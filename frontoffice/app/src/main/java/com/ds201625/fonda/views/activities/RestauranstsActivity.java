@@ -1,35 +1,39 @@
 package com.ds201625.fonda.views.activities;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.widget.TabHost;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
+import com.ds201625.fonda.views.fragments.*;
 
-public class RestauranstsActivity extends BaseNavigationActivity {
-    //Se define la lista
-    ListView listaFiltros;
+public class RestauranstsActivity extends  BaseNavigationActivity {
 
-    //Se define dentro de la lista lis items
-    String[] filtros ={
-            "Tipo de Comida",
-            "Zona",
-            "Costo",
-            "Horario",
-            "Cercanos a Mi"
-
-    };
+    private ViewPager viewPager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //Se corren las vistas y menu
+
         setContentView(R.layout.activity_restaurants);
         super.onCreate(savedInstanceState);
 
-        listaFiltros = (ListView) findViewById(R.id.listaFiltros); //Asignas el listview del content a la variable listview
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, filtros); //crear un adaptador para pasarlo a la lista. entorno,tipo de item que pasas, lista creada
-        listaFiltros.setAdapter(adapter);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        BaseSectionsPagerAdapter RestaurantFilters = new BaseSectionsPagerAdapter(
+                getSupportFragmentManager());
 
-        
+        RestaurantFilters.addFragment("Comida",new FoodFragment());
+        RestaurantFilters.addFragment("Zona",new ZoneFragment());
+        RestaurantFilters.addFragment("Costo",new CostFragment());
+        RestaurantFilters.addFragment("Horario",new TimeFragment());
+        RestaurantFilters.addFragment("Cercanos",new NearFragment());
+        viewPager.setAdapter(RestaurantFilters);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
 
     }
+
+
 }
