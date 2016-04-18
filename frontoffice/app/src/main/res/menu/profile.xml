@@ -6,5 +6,6 @@
         android:id="@+id/action_favorite_save"
         android:icon="@android:drawable/ic_menu_save"
         android:title="Guardar"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
 </menu>

@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".views.activities.LoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/LoginTheme">
@@ -20,41 +20,42 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.FavoritesActivity"
+            android:name=".views.activities.FavoritesActivity"
             android:label="@string/nav_favorites"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.RestauranstsActivity"
+            android:name=".views.activities.RestauranstsActivity"
             android:label="@string/nav_rest"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.OrdersActivity"
+            android:name=".views.activities.OrdersActivity"
             android:label="@string/nav_order"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.ProfileActivity"
+            android:name=".views.activities.ProfileActivity"
             android:label="@string/nav_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.ReserveActivity"
+            android:name=".views.activities.ReserveActivity"
             android:label="@string/nav_reserve"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name=".views.activities.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".activities.PagoExitosoActivity"
+            android:name=".views.activities.PagoExitosoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.PagoOrdenActivity"
+            android:name=".views.activities.PagoOrdenActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.RegistrarTdcActivity"
+            android:name=".views.activities.RegistrarTdcActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.ConsultaPagoActivity"
+            android:name=".views.activities.ConsultaVisitasActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+<<<<<<< HEAD
             android:name=".activities.OrdenActualActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -62,6 +63,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.GenerarFacturaActivity"
+=======
+            android:name=".views.activities.CerrarCuentaActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.activities.FacturaActivity"
+>>>>>>> f50603b7b257b857417c8e8eb63bbeda10cd064e
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for
@@ -72,7 +79,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".activities.Main2Activity"
+            android:name=".views.activities.Main2Activity"
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
