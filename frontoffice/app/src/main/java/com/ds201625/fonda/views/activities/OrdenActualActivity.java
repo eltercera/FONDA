@@ -1,4 +1,4 @@
-package com.ds201625.fonda.activities;
+package com.ds201625.fonda.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +24,7 @@ public class OrdenActualActivity extends BaseNavigationActivity {
         lv1.setAdapter(adapter);
     }
 
-    public void cambiarC (View v)
+    public void cambiarCC (View v)
     {
         Intent cambio = new Intent (this,CierreCuentaActivity.class);
         startActivity(cambio);

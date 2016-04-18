@@ -9,37 +9,36 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activities.OrdenActualActivity"
+    tools:context=".views.activities.OrdenActualActivity"
     android:weightSum="1"
     android:baselineAligned="false"
     android:gravity="left|top">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Orden Actual"
+        android:id="@+id/tVOrden"
+        android:textSize="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cerrar"
-        android:id="@+id/button5"
-        android:onClick="cambiarC"
-        android:layout_alignBottom="@+id/lVOrden"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/bCerrar"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="cambiarCC" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lVOrden"
-        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="100dp" />
+        android:layout_above="@+id/bCerrar" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Orden Actual"
-        android:id="@+id/textView18"
-        android:textSize="25dp"
-        android:layout_marginTop="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
 </RelativeLayout>

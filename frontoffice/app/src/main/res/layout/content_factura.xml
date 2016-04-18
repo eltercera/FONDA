@@ -18,17 +18,18 @@
         android:layout_height="wrap_content"
         android:text="Aceptar"
         android:id="@+id/button6"
+        android:onClick="cambiarinicio"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:onClick="cambiarinicio" />
+        android:layout_toLeftOf="@+id/tVIVAValor"
+        android:layout_toStartOf="@+id/tVIVAValor" />
 
     <TableLayout
         android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:id="@+id/tableLayout"
         android:layout_below="@+id/textView37"
-        android:layout_centerHorizontal="true" >
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
 
         <TableRow
             android:layout_width="match_parent"
@@ -84,7 +85,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="RESTAURANT EL TINAJERO"
-        android:id="@+id/textView11"
+        android:id="@+id/tVNombreRest"
         android:layout_marginTop="61dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -94,24 +95,24 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="EL PARAISO"
-        android:id="@+id/textView12"
-        android:layout_below="@+id/textView11"
+        android:id="@+id/tVDireccion"
+        android:layout_below="@+id/tVNombreRest"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Numero:  0000001"
+        android:text="Numero:"
         android:id="@+id/textView13"
         android:layout_marginTop="36dp"
-        android:layout_below="@+id/textView12"
-        android:layout_toLeftOf="@+id/textView12"
-        android:layout_toStartOf="@+id/textView12" />
+        android:layout_below="@+id/tVDireccion"
+        android:layout_alignLeft="@+id/tableLayout"
+        android:layout_alignStart="@+id/tableLayout" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fecha: 10-04-2016 12:00"
+        android:text="Fecha:"
         android:id="@+id/textView14"
         android:layout_below="@+id/textView13"
         android:layout_alignLeft="@+id/textView13"
@@ -120,7 +121,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CI: 20615821"
+        android:text="CI/RIF: "
         android:id="@+id/textView15"
         android:layout_below="@+id/textView14"
         android:layout_alignLeft="@+id/textView14"
@@ -129,7 +130,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cliente: Adriana Da Rocha "
+        android:text="Cliente: "
         android:id="@+id/textView36"
         android:layout_below="@+id/textView15"
         android:layout_alignLeft="@+id/textView15"
@@ -141,58 +142,131 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Detalle Factura"
         android:id="@+id/textView37"
-        android:layout_below="@+id/textView36"
+        android:layout_below="@+id/tVCliente"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sub-Total"
+        android:id="@+id/textView38"
+        android:layout_below="@+id/tableLayout"
+        android:layout_alignLeft="@+id/tableLayout"
+        android:layout_alignStart="@+id/tableLayout"
+        android:layout_marginTop="28dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IVA"
+        android:id="@+id/textView39"
+        android:layout_below="@+id/textView38"
+        android:layout_alignLeft="@+id/textView38"
+        android:layout_alignStart="@+id/textView38"
+        android:layout_alignRight="@+id/textView14"
+        android:layout_alignEnd="@+id/textView14" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total"
+        android:id="@+id/textView40"
+        android:layout_below="@+id/textView41"
+        android:layout_alignLeft="@+id/textView41"
+        android:layout_alignStart="@+id/textView41" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Propina                                              "
+        android:id="@+id/textView41"
+        android:layout_below="@+id/textView39"
+        android:layout_alignLeft="@+id/textView39"
+        android:layout_alignStart="@+id/textView39"
+        android:layout_alignRight="@+id/textView13"
+        android:layout_alignEnd="@+id/textView13" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="000000001"
+        android:id="@+id/tVNumeroValor"
+        android:layout_above="@+id/tVFechaValor"
+        android:layout_toRightOf="@+id/textView38"
+        android:layout_toEndOf="@+id/textView38" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" 10-04-2016 12:00"
+        android:id="@+id/tVFechaValor"
+        android:layout_below="@+id/textView13"
+        android:layout_toRightOf="@+id/textView14"
+        android:layout_toEndOf="@+id/textView14" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20615821"
+        android:id="@+id/tVCedula"
+        android:layout_below="@+id/tVFechaValor"
+        android:layout_toRightOf="@+id/textView15"
+        android:layout_toEndOf="@+id/textView15" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Adriana Da Rocha "
+        android:id="@+id/tVCliente"
+        android:layout_below="@+id/tVCedula"
         android:layout_toRightOf="@+id/textView13"
         android:layout_toEndOf="@+id/textView13" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sub-Total                                             Bs. 1600"
-        android:id="@+id/textView38"
-        android:layout_below="@+id/tableLayout"
-        android:layout_alignLeft="@+id/tableLayout"
-        android:layout_alignStart="@+id/tableLayout"
-        android:layout_marginTop="28dp"
-        android:layout_alignRight="@+id/tableLayout"
-        android:layout_alignEnd="@+id/tableLayout" />
+        android:text="Bs. 1600"
+        android:id="@+id/tVSubValor"
+        android:layout_alignTop="@+id/textView38"
+        android:layout_alignRight="@+id/tVNombreRest"
+        android:layout_alignEnd="@+id/tVNombreRest" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="IVA                                                        Bs. 192"
-        android:id="@+id/textView39"
-        android:layout_below="@+id/textView38"
-        android:layout_alignLeft="@+id/textView38"
-        android:layout_alignStart="@+id/textView38"
-        android:layout_alignRight="@+id/tableLayout"
-        android:layout_alignEnd="@+id/tableLayout" />
+        android:text="Bs. 192"
+        android:id="@+id/tVIVAValor"
+        android:layout_below="@+id/tVSubValor"
+        android:layout_alignRight="@+id/tVSubValor"
+        android:layout_alignEnd="@+id/tVSubValor" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total                                                         Bs. 1971,2"
-        android:id="@+id/textView40"
-        android:layout_below="@+id/textView41"
-        android:layout_alignRight="@+id/textView11"
-        android:layout_alignEnd="@+id/textView11" />
+        android:text="Bs. 179,2"
+        android:id="@+id/tVPropinaValor"
+        android:layout_above="@+id/textView40"
+        android:layout_alignLeft="@+id/tVSubValor"
+        android:layout_alignStart="@+id/tVSubValor" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Propina                                              Bs. 179,2"
-        android:id="@+id/textView41"
-        android:layout_below="@+id/textView39"
-        android:layout_alignLeft="@+id/textView39"
-        android:layout_alignStart="@+id/textView39" />
+        android:text="Bs. 1971,2"
+        android:id="@+id/tVTotalValor"
+        android:layout_below="@+id/tVPropinaValor"
+        android:layout_alignLeft="@+id/tVPropinaValor"
+        android:layout_alignStart="@+id/tVPropinaValor" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView8"
+        android:id="@+id/imageView9"
         android:src="@drawable/icodes2"
-        android:layout_alignBottom="@+id/button6"
-        android:layout_alignLeft="@+id/textView41"
-        android:layout_alignStart="@+id/textView41" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/tVPropinaValor"
+        android:layout_toEndOf="@+id/tVPropinaValor" />
 
 </RelativeLayout>

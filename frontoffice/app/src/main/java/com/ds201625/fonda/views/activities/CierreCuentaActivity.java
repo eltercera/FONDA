@@ -1,4 +1,4 @@
-package com.ds201625.fonda.activities;
+package com.ds201625.fonda.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

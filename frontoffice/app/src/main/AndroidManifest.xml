@@ -55,25 +55,18 @@
             android:name=".views.activities.ConsultaVisitasActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-<<<<<<< HEAD
-            android:name=".activities.OrdenActualActivity"
+            android:name=".views.activities.OrdenActualActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.CierreCuentaActivity"
+            android:name=".views.activities.CierreCuentaActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.GenerarFacturaActivity"
-=======
-            android:name=".views.activities.CerrarCuentaActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".views.activities.FacturaActivity"
->>>>>>> f50603b7b257b857417c8e8eb63bbeda10cd064e
+            android:name=".views.activities.GenerarFacturaActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
-        -->
+         ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+                -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -83,5 +76,6 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
+
 
 </manifest>

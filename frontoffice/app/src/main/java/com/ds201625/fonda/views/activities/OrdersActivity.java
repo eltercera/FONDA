@@ -12,7 +12,7 @@ public class OrdersActivity extends BaseNavigationActivity {
         setContentView(R.layout.activity_orders);
         super.onCreate(savedInstanceState);
     }
-    public void cambiarP (View v)
+    public void cambiarC (View v)
     {
         Intent cambio = new Intent (this,OrdenActualActivity.class);
         startActivity(cambio);

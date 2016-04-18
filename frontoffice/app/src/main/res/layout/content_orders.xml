@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:text="Pagar Orden"
         android:id="@+id/botoninicio"
-        android:onClick="cambiarP"
+        android:onClick="cambiarC"
         android:layout_above="@+id/button4"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="149dp" />
