@@ -55,10 +55,13 @@
             android:name=".activities.ConsultaPagoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.CerrarCuentaActivity"
+            android:name=".activities.OrdenActualActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.FacturaActivity"
+            android:name=".activities.CierreCuentaActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.GenerarFacturaActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
  ATTENTION: This was auto-generated to add Google Play services to your project for

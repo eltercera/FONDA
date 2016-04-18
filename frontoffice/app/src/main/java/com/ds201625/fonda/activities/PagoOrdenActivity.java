@@ -61,7 +61,7 @@ public class PagoOrdenActivity extends Activity {
     }
     public void cambiarFactura (View v)
     {
-        Intent cambio = new Intent (this,FacturaActivity.class);
+        Intent cambio = new Intent (this,GenerarFacturaActivity.class);
         startActivity(cambio);
     }
 }
