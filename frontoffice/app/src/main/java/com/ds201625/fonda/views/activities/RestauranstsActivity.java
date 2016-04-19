@@ -12,6 +12,7 @@ import com.ds201625.fonda.views.fragments.*;
 public class RestauranstsActivity extends  BaseNavigationActivity {
 
     private ViewPager viewPager;
+    private BaseSectionsPagerAdapter RestaurantFilters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { //Se corren las vistas y menu
@@ -20,18 +21,18 @@ public class RestauranstsActivity extends  BaseNavigationActivity {
         super.onCreate(savedInstanceState);
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        BaseSectionsPagerAdapter RestaurantFilters = new BaseSectionsPagerAdapter(
-                getSupportFragmentManager());
-
-        RestaurantFilters.addFragment("Comida",new FoodFragment());
-        RestaurantFilters.addFragment("Zona",new ZoneFragment());
-        RestaurantFilters.addFragment("Costo",new CostFragment());
-        RestaurantFilters.addFragment("Horario",new TimeFragment());
-        RestaurantFilters.addFragment("Cercanos",new NearFragment());
-        viewPager.setAdapter(RestaurantFilters);
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+
+        RestaurantFilters = new BaseSectionsPagerAdapter(getSupportFragmentManager(),tabLayout);
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_food),new FoodFragment());
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_zone),new ZoneFragment());
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_cost),new CostFragment());
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_time),new TimeFragment());
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_near),new NearFragment());
+
+        viewPager.setAdapter(RestaurantFilters);
         tabLayout.setupWithViewPager(viewPager);
+        RestaurantFilters.iconsSetup();
 
     }
 
