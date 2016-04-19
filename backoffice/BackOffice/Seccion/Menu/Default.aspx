@@ -6,7 +6,7 @@
     Menú
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    Menú Fijo
+    Menú Principal
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
     <%--Breadcrumbs--%>
@@ -19,22 +19,24 @@
             <li>
                 <a href="../Menu/Default.aspx">Menú</a>
             </li>
-            <li class="active">Menú Fijo
+            <li class="active">Menú Principal
             </li>
         </ol>
     </div>
     <%--Fin_Breadcrumbs--%>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
-    <div class="row m-b-3">
-
-    <div class="col-lg-5 col-lg-offset-8 ">
-                   <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" OnClick="LinkButton1_Click" runat="server">Nueva Categoría</asp:LinkButton>
-                   <asp:LinkButton ID="CogLinkButton" CssClass="btn btn-primary" OnClick="CogLinkButton_Click" runat="server">Nuevo Platillo</asp:LinkButton>
-               </div>
-
-
+     <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+    <div class="row">
+        <div class="col-lg-4">   
+            <div class="form-group input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
             </div>
+        </div>
+       </div>
+
+
         </div>
         <!-- /.row -->
         <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
@@ -46,7 +48,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
+                                <table id="tabla1" class="table table-bordered table-striped dataTable">
                                     <thead>
                                         <tr>
                                             <th style="vertical-align: middle">Foto</th>
@@ -77,7 +79,9 @@
                                                 </div>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
+                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -96,7 +100,9 @@
                                                 </div>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
+                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -115,7 +121,9 @@
                                                 </div>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
+                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -171,7 +179,9 @@
                                                 </div>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
+                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -190,7 +200,9 @@
                                                 </div>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
+                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -209,7 +221,9 @@
                                                 </div>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
+                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -259,12 +273,14 @@
                                             <td style="text-align: center; vertical-align: middle">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        <input type="checkbox"  id="blankCheckbox" value="option1" aria-label="...">
                                                     </label>
                                                 </div>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
+                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -283,7 +299,9 @@
                                                 </div>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
+                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -297,12 +315,14 @@
                                             <td style="text-align: center; vertical-align: middle">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        <input type="checkbox" id="blankCheckbox" value="option1"  aria-label="...">
                                                     </label>
                                                 </div>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-fw" aria-hidden="true"></i></a>
+                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                                <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -321,4 +341,13 @@
             
         </div>
     </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('tabla1').DataTable();
+        });
+
+        
+        </script>
 </asp:Content>
