@@ -44,6 +44,9 @@
     <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
         <div class="row">
             <div class="col-lg-11">
+                     <div class="text-right">
+                                    <a href="../Menu/AgregarMenu.aspx">Agregar <i class="fa fa-plus"></i></a>
+                                </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Categorías </h3>
