@@ -26,81 +26,124 @@
     <%--Fin_Breadcrumbs--%>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
-    <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="form-group input-group">
-                    <input type="text" class="form-control">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
-            </div>
-        </div>
 
-
-    </div>
-    <!-- /.row -->
-    <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+     <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
         <div class="row">
-            <div class="col-lg-11">
-                     <div class="text-right">
-                                    <a href="../Menu/AgregarMenu.aspx">Agregar <i class="fa fa-plus"></i></a>
+           <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Categorias</h3>
+                                <a data-toggle="modal" data-target="#agregar" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table id="example" class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Estado</th>
+                                                <th class="no-sort">Acciones</th>
+ 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Pasta</td>
+                                                <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                
+                                                <td>Carnes</td>
+                                                <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                   
+                                            <tr>
+                                                
+                                                <td>Vegetales</td>                              
+                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                
+                                                <td>Jugos</td>
+                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                
+                                                <td>Postres</td>
+                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                
+                                                <td>Postres</td>
+                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                                <tr>
+                                                
+                                                <td>Postres</td>
+                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                                <tr>
+                                                
+                                                <td>Postres</td>                                      
+                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                                <tr>
+                                                
+                                                <td>Postres</td>
+                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                                <tr>
+                                                
+                                                <td>Ávila Burger</td>
+                                               <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                                <tr>
+                                                
+                                                <td>Postres</td>
+                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                                <tr>
+                                                
+                                                <td>Postres</td>
+                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                                <tr>
+                                                
+                                                <td>Postres</td>
+                                               <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                         
+                                        </tbody>
+                                    </table>       
                                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Categorías </h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table id="tabla1" class="table table-bordered table-striped dataTable">
-                                <thead>
-                                    <tr>
-                                        <th style="vertical-align: middle">Nombre</th>
-                                        <th style="vertical-align: middle">Acción</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-
-                                        <td style="vertical-align: middle">Pasta</td>
-                                        <td style="text-align: center; vertical-align: middle">
-                                            <a href="../Menu/ModificarMenu.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-
-                                        <td style="vertical-align: middle">Carnes </td>
-
-
-                                        <td style="text-align: center; vertical-align: middle">
-                                            <a href="../Menu/ModificarMenu.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                            <a href="#"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-
-                                        </td>
-                                    </tr>
-                                    <tr>
-
-                                        <td style="vertical-align: middle">Aves</td>
+                            </div>
                         </div>
-
-                        <td style="text-align: center; vertical-align: middle">
-                            <a href="../Menu/ModificarMenu.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-info-circle fa-2x" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-
-                        </td>
-                        </tr>
-                                    </tbody>
-                                </table>
                     </div>
-            </div>
-        </div>
-    </div>
-</asp:Content>
+                </div>
+                </div>
+                <!-- /.row -->
+            <!-- /.container-fluid -->
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('example').DataTable();
+            });
+
+
+        </script>
+    </asp:Content>

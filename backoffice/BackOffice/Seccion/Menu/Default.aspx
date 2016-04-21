@@ -342,14 +342,7 @@
 
             
         </div>
-    </div>
+  
 
-    <script type="text/javascript">
 
-        $(document).ready(function () {
-            $('tabla1').DataTable();
-        });
-
-        
-        </script>
 </asp:Content>
