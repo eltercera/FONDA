@@ -36,15 +36,15 @@
         android:layout_height="wrap_content"
         android:text="SubTotal"
         android:id="@+id/tvSub"
-        android:layout_marginBottom="73dp"
+        android:layout_marginBottom="71dp"
         android:layout_above="@+id/bAceptar"
-        android:layout_toLeftOf="@+id/bAceptar"
-        android:layout_toStartOf="@+id/bAceptar" />
+        android:layout_toLeftOf="@+id/tVTitulo"
+        android:layout_toStartOf="@+id/tVTitulo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2000"
+        android:text="1600"
         android:id="@+id/tVSubTotalValor"
         android:layout_alignTop="@+id/tvSub"
         android:layout_toRightOf="@+id/tVTitulo"
@@ -71,7 +71,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="240"
+        android:text="192"
         android:id="@+id/tVIVAValor"
         android:layout_below="@+id/tVSubTotalValor"
         android:layout_alignRight="@+id/tVSubTotalValor"
@@ -98,7 +98,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2240"
+        android:text="1792"
         android:id="@+id/textView19"
         android:layout_alignTop="@+id/tVTotal"
         android:layout_toRightOf="@+id/tVTotalMoneda"
@@ -116,9 +116,9 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lVOrden"
+        android:id="@+id/listView"
         android:layout_below="@+id/tVTitulo"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/bAceptar" />
+        android:layout_marginTop="52dp" />
 
 </RelativeLayout>
