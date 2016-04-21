@@ -19,6 +19,20 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- DataTables CSS -->
+    <link href="css/select.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/scroller.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/rowReorder.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/keyTable.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/fixedHeader.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/fixedColumns.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/colReorder.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/buttons.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/autoFill.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
     <title> FONDA - 
         <asp:ContentPlaceHolder ID="pagina" runat="server">
         </asp:ContentPlaceHolder>
@@ -150,20 +164,20 @@
                         <a href="~/default.aspx" runat="server"><i class="fa fa-fw fa-dashboard"></i> Panel de control</a>
                     </li>
                     <li>
-                        <a href="~/Seccion/Restaurant/default.aspx" runat="server"><i class="fa fa-fw fa-user"></i> Servicio</a>
-                    </li>
-                    <li>
-                        <a href="~/Seccion/Reservas/default.aspx" runat="server"><i class="fa fa-fw fa-pencil-square-o"></i> Reservas</a>
+                        <a href="~/Seccion/Restaurant/Restaurante.aspx" runat="server"><i class="fa fa-fw fa-user"></i> Restaurante</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#menu"><i class="fa fa-fw fa-shopping-basket"></i> Menú <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="menu" class="collapse">
                             <li>
-                                <a href="~/Seccion/Menu/menu_dia.aspx" runat="server">Menú del día</a>
+                                <a href="~/Seccion/Menu/MenuDia.aspx" runat="server">Menú del día</a>
                             </li>
                             <li>
-                                <a href="~/Seccion/Menu/default.aspx" runat="server">Menú fijo</a>
+                                <a href="~/Seccion/Menu/default.aspx" runat="server">Menú principal</a>
                             </li>
+                            <li>
+                               <a href="~/Seccion/Menu/ListarCategoria.aspx" runat="server">Categorías</a>
+                           </li>
                         </ul>
                     </li>
                     <li>
@@ -214,6 +228,26 @@
                 <asp:ScriptReference Path="~/Content/js/jquery.js" />
                 <asp:ScriptReference Path="~/Content/js/bootstrap.min.js" />
                 <asp:ScriptReference Path="~/Content/js/jquery-validation/dist/jquery.validate.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/jquery.dataTables.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/dataTables.autoFill.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/dataTables.bootstrap.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/dataTables.buttons.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/dataTables.colReorder.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/dataTables.fixedColumns.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/dataTables.fixedHeader.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/dataTables.keyTable.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/dataTables.responsive.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/dataTables.rowReorder.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/dataTables.scroller.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/dataTables.select.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/buttons.print.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/buttons.html5.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/buttons.flash.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/buttons.colVis.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/buttons.bootstrap.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/autoFill.bootstrap.min.js" />
+                <asp:ScriptReference Path="~/Content/js/datatables/responsive.bootstrap.min.js" />
+                <asp:ScriptReference Path="~/Content/js/DataTables.js" />
             </Scripts>
         </asp:ScriptManager>
     </form>

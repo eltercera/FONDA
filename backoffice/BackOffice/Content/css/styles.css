@@ -192,3 +192,52 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.panel-heading h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    width: 75%;
+    padding-top: 8px;
+}
+
+.no-sort::after { 
+    display: none!important;
+}
+
+.no-sort { 
+    pointer-events: none!important; 
+    cursor: default!important; 
+}
+
+.panel-heading > .btn-default:hover {
+    color:#774F38;
+    background-color:#fff;
+    border-color:#774F38
+}
+
+td > a > i.fa {
+    margin: 0 5px;
+    font-size: 1.5em;
+}
+
+td > span.label {
+   padding-top: 0.5em !important;
+}
+
+td > span.label > i > p {
+    font-size: 0em;
+    padding: none;
+    margin: none;
+}
+
+.table > tbody > tr > td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table {
+    table-layout: fixed;
+}
