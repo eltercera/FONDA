@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".views.activities.DetailRestaurantActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="NOMBRE DEL RESTAURANTE"
+            android:id="@+id/text_view_restaurant_name"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="25dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/imageView8"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:src="#9e6c6c" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="restaurante"
+                    android:id="@+id/text_view_restaurant"
+                    android:layout_gravity="center_horizontal|left" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="tipo de comida"
+                    android:id="@+id/text_view_restaurant_type"
+                    android:layout_gravity="center_horizontal|left" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="zona"
+                    android:id="@+id/text_view_restaurant_zone"
+                    android:layout_gravity="center_horizontal|left" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Como llegar?"
+            android:id="@+id/text_view_how_to_get_to"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/imageView10"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:src="#a46e6e" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Avenida Principal"
+                    android:id="@+id/text_view_restaurant_principal_avenue"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Avenida secundaria"
+                    android:id="@+id/text_view_restaurant_other_avenue"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Horario"
+            android:id="@+id/text_view_schedule"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="dia inicio - dia fin"
+            android:id="@+id/text_view_restaurant_work_days"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="hora inicio - hora fin"
+            android:id="@+id/text_view_restaurant_schedule"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/textView18"
+            android:layout_gravity="center_horizontal" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1"
+            android:layout_marginTop="25dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="favorito"
+                android:id="@+id/button5"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="0dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="reservar"
+                android:id="@+id/button7"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -24,6 +24,10 @@
             android:label="@string/nav_favorites"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".views.activities.DetailRestaurantActivity"
+            android:label="@string/nav_detail_restaurant"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".views.activities.RestauranstsActivity"
             android:label="@string/nav_rest"
             android:theme="@style/AppTheme.NoActionBar" />
