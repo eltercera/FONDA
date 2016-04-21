@@ -24,17 +24,26 @@ public class Main2Activity extends BaseNavigationActivity {
         setContentView(R.layout.activity_main2);
         super.onCreate(savedInstanceState);
 
-        mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager());
+        //Importante Primero obtener el Tablayout
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        //Inyectarlo al BaseSectionsPagerAdapter
+        mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager(),tabLayout);
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        mSectionsPagerAdapter.addFragment("Primera",new Prueba1Fragment());
-        mSectionsPagerAdapter.addFragment("Segunda",new Prueba2Fragment());
-        mSectionsPagerAdapter.addFragment("Tercera",new Prueba1Fragment());
+        //Tab solo con icono como titulo
+        mSectionsPagerAdapter.addFragment(getResources().getDrawable(R.drawable.contact_card_24),new Prueba1Fragment());
+        mSectionsPagerAdapter.addFragment(getResources().getDrawable(R.drawable.nav_reserve),new Prueba2Fragment());
+        mSectionsPagerAdapter.addFragment(getResources().getDrawable(R.drawable.calendar_24),new Prueba1Fragment());
+        //Tab con solo un String como titulo
+        mSectionsPagerAdapter.addFragment("Palabra",new Prueba1Fragment());
+        //Tab con Icono y titilo.
+        mSectionsPagerAdapter.addFragment("Palabra",getResources().getDrawable(R.drawable.nav_reserve),new Prueba1Fragment());
+
+        //Importante ejecutar esto para que se creen los iconos en el tab.
+        mSectionsPagerAdapter.iconsSetup();
     }
 
 }
