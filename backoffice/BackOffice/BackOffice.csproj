@@ -127,6 +127,26 @@
     <Content Include="Content\img\rsz_logo.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\DataTables.js" />
+    <Content Include="Content\js\datatables\autoFill.bootstrap.min.js" />
+    <Content Include="Content\js\datatables\buttons.bootstrap.min.js" />
+    <Content Include="Content\js\datatables\buttons.colVis.min.js" />
+    <Content Include="Content\js\datatables\buttons.flash.min.js" />
+    <Content Include="Content\js\datatables\buttons.html5.min.js" />
+    <Content Include="Content\js\datatables\buttons.print.min.js" />
+    <Content Include="Content\js\datatables\dataTables.autoFill.min.js" />
+    <Content Include="Content\js\datatables\dataTables.bootstrap.min.js" />
+    <Content Include="Content\js\datatables\dataTables.buttons.min.js" />
+    <Content Include="Content\js\datatables\dataTables.colReorder.min.js" />
+    <Content Include="Content\js\datatables\dataTables.fixedColumns.min.js" />
+    <Content Include="Content\js\datatables\dataTables.fixedHeader.min.js" />
+    <Content Include="Content\js\datatables\dataTables.keyTable.min.js" />
+    <Content Include="Content\js\datatables\dataTables.responsive.min.js" />
+    <Content Include="Content\js\datatables\dataTables.rowReorder.min.js" />
+    <Content Include="Content\js\datatables\dataTables.scroller.min.js" />
+    <Content Include="Content\js\datatables\dataTables.select.min.js" />
+    <Content Include="Content\js\datatables\jquery.dataTables.min.js" />
+    <Content Include="Content\js\datatables\responsive.bootstrap.min.js" />
     <Content Include="Content\js\jquery-validation\dist\additional-methods.js" />
     <Content Include="Content\js\jquery-validation\dist\additional-methods.min.js" />
     <Content Include="Content\js\jquery-validation\dist\jquery.validate.js" />
@@ -706,6 +726,7 @@
     <Content Include="Content\fonts\GreatVibes-Regular.otf" />
     <Content Include="Content\MasterUI.master" />
     <Content Include="Seccion\Restaurant\README.md" />
+    <Content Include="Content\js\datatables\Spanish.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
