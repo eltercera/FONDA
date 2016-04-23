@@ -26,35 +26,21 @@
     <%--Fin_Breadcrumbs--%>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
-     <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-    <div class="row">
-        <div class="col-lg-4">   
-            <div class="form-group input-group">
-                <input type="text" class="form-control">
-                <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
-            </div>
-        </div>
-       </div>
-
-         
-        </div>
-        <!-- /.row -->
-        <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-            <div class="row">
-                
-                <div class="col-lg-11">
-                         <div class="text-right">
-                                    <a href="../Menu/AgregarPlatillo.aspx">Agregar <i class="fa fa-plus"></i></a>
-                                </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Pastas </h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table id="tabla1" class="table table-bordered table-striped dataTable">
-                                    <thead>
-                                        <tr>
+ 
+      <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+        <div class="row">
+           <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Pastas</h3>
+                                <a data-toggle="modal" data-target="#agregar" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table id="default" class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
                                             <th style="vertical-align: middle">Foto</th>
                                             <th style="vertical-align: middle">Plato</th>
                                             <th style="vertical-align: middle">Descripción</th>
@@ -62,12 +48,33 @@
                                             <th style="vertical-align: middle">IVA</th>
                                             <th style="vertical-align: middle">Total</th>
                                             <th style="vertical-align: middle">Sugerencia del día</th>
-                                            <th style="vertical-align: middle">Acción</th>
-
+                                            <th class="no-sort">Acciones</th>
+ 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""></td>
+                                            <td style="vertical-align: middle">Pasta Carbonara</td>
+                                            <td style="vertical-align: middle">Pasta con trozos de tocineta y queso parmesano</td>
+                                            <td style="vertical-align: middle">2350</td>
+                                            <td style="vertical-align: middle">650</td>
+                                            <td style="vertical-align: middle">3000</td>
+                                            <td style="text-align: center; vertical-align: middle">
+                                                               <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle">
+                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
+                                            <tr>
                                             <td>
                                                 <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""></td>
                                             <td style="vertical-align: middle">Pasta Carbonara</td>
@@ -88,7 +95,7 @@
                                                  <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
-                                        <tr>
+                                            <tr>
                                             <td>
                                                 <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""></td>
                                             <td style="vertical-align: middle">Pasta con Vegetales</td>
@@ -108,8 +115,9 @@
                                                  <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
                                                  <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
+                                              
                                         </tr>
-                                        <tr>
+                                            <tr>
                                             <td>
                                                 <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""></td>
                                             <td style="vertical-align: middle">Pasta con Salmon</td>
@@ -130,30 +138,34 @@
                                                  <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                              
+                                                
+                                             
+                                        </tbody>
+                                    </table>       
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- /.row -->
+                </div>
+                <!-- /.row -->
+            <!-- /.container-fluid -->
+        
 
-            <!-- /.row -->
-
-
-            <div class="row">
-                <div class="col-lg-11">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Carnes </h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
-                                    <thead>
-                                        <tr>
+       <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+        <div class="row">
+           <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Carnes</h3>
+                                <a data-toggle="modal" data-target="#agregar" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table id="default1" class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
                                             <th style="vertical-align: middle">Foto</th>
                                             <th style="vertical-align: middle">Plato</th>
                                             <th style="vertical-align: middle">Descripción</th>
@@ -161,9 +173,10 @@
                                             <th style="vertical-align: middle">IVA</th>
                                             <th style="vertical-align: middle">Total</th>
                                             <th style="vertical-align: middle">Sugerencia del día</th>
-                                            <th style="vertical-align: middle">Acción</th>
-                                        </tr>
-                                    </thead>
+                                            <th class="no-sort">Acciones</th>
+ 
+                                            </tr>
+                                       </thead>
                                     <tbody>
                                         <tr>
                                             <td>
@@ -230,119 +243,16 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="text-right">
-                                    <a href="../Menu/ModificarMenu.aspx">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
+                             
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /.row -->
-
-            <!-- /.row -->
-
-            <div class="row">
-                <div class="col-lg-11">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Pescados y Mariscos </h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th style="vertical-align: middle">Foto</th>
-                                            <th style="vertical-align: middle">Plato</th>
-                                            <th style="vertical-align: middle">Descripción</th>
-                                            <th style="vertical-align: middle">Precio</th>
-                                            <th style="vertical-align: middle">IVA</th>
-                                            <th style="vertical-align: middle">Total</th>
-                                            <th style="vertical-align: middle">Sugerencia del día</th>
-                                            <th style="vertical-align: middle">Acción</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""></td>
-                                            <td style="vertical-align: middle">Rueda de Carite</td>
-                                            <td style="vertical-align: middle">Pescado fresco cocinado al ajillo</td>
-                                            <td style="vertical-align: middle">2350</td>
-                                            <td style="vertical-align: middle">650</td>
-                                            <td style="vertical-align: middle">3000</td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox"  id="blankCheckbox" value="option1" aria-label="...">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""></td>
-                                            <td style="vertical-align: middle">Calamares Rebosados</td>
-                                            <td style="vertical-align: middle">Calamares empanizados y fritos</td>
-                                            <td style="vertical-align: middle">2350</td>
-                                            <td style="vertical-align: middle">650</td>
-                                            <td style="vertical-align: middle">3000</td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""></td>
-                                            <td style="vertical-align: middle">Salmon Ahumado</td>
-                                            <td style="vertical-align: middle">Acompañado de vegetales al vapor</td>
-                                            <td style="vertical-align: middle">2350</td>
-                                            <td style="vertical-align: middle">650</td>
-                                            <td style="vertical-align: middle">3000</td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" id="blankCheckbox" value="option1"  aria-label="...">
-                                                    </label>
-                                                </div>
-                                            </td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                                <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <div class="text-right">
-                                    <a href="../Menu/ModificarMenu.aspx">Modificar Categoría <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            <!-- /.row -->
+                <!-- /.row -->
+            <!-- /.container-fluid -->
 
-
-            
-        </div>
-  
 
 
 </asp:Content>

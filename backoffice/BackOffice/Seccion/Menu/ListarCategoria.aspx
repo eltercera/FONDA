@@ -38,7 +38,7 @@
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table id="example" class="table table-bordered table-hover table-striped">
+                                    <table id="ListarCategoria" class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
@@ -138,12 +138,5 @@
                 <!-- /.row -->
             <!-- /.container-fluid -->
 
-        <script type="text/javascript">
 
-            $(document).ready(function () {
-                $('example').DataTable();
-            });
-
-
-        </script>
     </asp:Content>
