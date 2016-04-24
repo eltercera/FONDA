@@ -35,22 +35,6 @@ public class OrdenActualActivity extends BaseNavigationActivity {
             };
 
 
- /*   private String[] comidas = { "      1       Plato 1         Bs. 1000", "        1       Refresco         Bs. 100",
-            "       1       Torta         Bs. 500"};
-
-    private ListView lv1;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_orden_actual);
-        super.onCreate(savedInstanceState);
-
-        lv1 =(ListView)findViewById(R.id.lVOrden);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, comidas);
-        lv1.setAdapter(adapter);
-    }
-*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_orden_actual);
