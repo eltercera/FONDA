@@ -115,64 +115,50 @@
         </div>
     </div>
        <div class="row">
-        <div class="col-lg-12">
-           <div class="text-right">
-              <a href="AgregarRest.aspx"><i class="fa fa-plus"></i>Agregar</a>
-           </div>
-        </div>
-       </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-shopping-basket fa-fw"></i> Mesas en sistema</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Cantidad de puestos</th>
-                                    <th>Cantidad de comensales</th>
-                                    <th>Estado</th>
-                                    <th>Reservación realizada por</th>
-                                    <th>Accion</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#1</td>
-                                    <td>6</td>
-                                    <td>4</td>
-                                    <td bgcolor="#E08E79">Inactivo</td>
-                                    <td>@pperez</td>
-                                    <td><a href="ModificarMesa.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>#2</td>
-                                    <td>2</td>
-                                    <td>0</td>
-                                    <td bgcolor="#ACD691">Activo</td>
-                                    <td> </td>
-                                    <td><a href="ModificarMesa.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>#3</td>
-                                    <td>10</td>
-                                    <td>0</td>
-                                    <td bgcolor="#ACD691">Activo</td>
-                                    <td> </td>
-                                    <td><a href="ModificarMesa.aspx"><i class="fa fa-pencil-square-o"></i></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-       
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i>Mesas</h3>
+                                <a data-toggle="modal" data-target="#agregar" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
+                                <div class="clearfix"></div> 
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table id="example" class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Cantidad de puestos</th>
+                                                <th>Cantidad de comensales</th>
+                                                <th>Estado</th>
+                                                <th>Reservación realizada por</th>
+                                                <th class="no-sort">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#1</td>
+                                                <td>6</td>
+                                                <td>4</td>
+                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p class="stat">I</p></i></span></td>
+                                                <td>@pperez</td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#2</td>
+                                                <td>10</td>
+                                                <td>0</td>
+                                                <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
+                                                <td></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>       
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
@@ -351,5 +337,94 @@
         </div>
     </div>
     <!-- /.row -->
+
+    <!--modal modificar mesa-->
+    <div class="modal fade" id="modificar" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Mesas</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
+                            <label class="control-label">Cantidad de Puestos</label>
+                            <asp:DropDownList id="DropDownList3" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:ListItem> </asp:ListItem>
+                                <asp:ListItem>2</asp:ListItem>
+                                <asp:ListItem>4</asp:ListItem>
+                                <asp:ListItem>6</asp:ListItem>
+                                <asp:ListItem>8</asp:ListItem>
+                                <asp:ListItem>10</asp:ListItem>
+                            </asp:DropDownList> 
+
+                        </div>
+                </div>
+                <br />
+
+                    <div class="form-group">
+                        <label class="control-label">Disponibilidad</label>
+                        <br/>
+                            <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Activo" />
+                            <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Inactivo" />    
+                    </div>
+                </div>         
+
+                        <div class="modal-footer">
+                            <asp:Button id="Button1" Text="Modificar" CssClass="btn btn-success" runat="server"/>
+                            <asp:Button id="Button2" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                        </div>
+                    
+                </div>   
+               </div>
+           </div>
+
+<!--modal agregar mesa-->
+    <div class="modal fade" id="agregar" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Mesas</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
+                            <label class="control-label">Cantidad de Puestos</label>
+                            <asp:DropDownList id="DropDownList1" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:ListItem> </asp:ListItem>
+                                <asp:ListItem>2</asp:ListItem>
+                                <asp:ListItem>4</asp:ListItem>
+                                <asp:ListItem>6</asp:ListItem>
+                                <asp:ListItem>8</asp:ListItem>
+                                <asp:ListItem>10</asp:ListItem>
+                            </asp:DropDownList> 
+
+                        </div>
+                </div>
+                <br />
+
+                    <div class="form-group">
+                        <label class="control-label">Disponibilidad</label>
+                        <br/>
+                            <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Activo" />
+                            <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Inactivo" />    
+                    </div>
+                </div>         
+
+                        <div class="modal-footer">
+                            <asp:Button id="Button3" Text="Agregar" CssClass="btn btn-success" runat="server"/>
+                            <asp:Button id="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                        </div>
+                    
+                </div>   
+               </div>
+           </div>
+                   
     
 </asp:Content>
