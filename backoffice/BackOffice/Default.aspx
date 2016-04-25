@@ -124,14 +124,14 @@
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table id="example" class="table table-bordered table-hover table-striped">
+                                    <table id="dt-mesa" class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Cantidad de puestos</th>
                                                 <th>Cantidad de comensales</th>
-                                                <th>Estado</th>
                                                 <th>Reservación realizada por</th>
+                                                <th>Estado</th>
                                                 <th class="no-sort">Acciones</th>
                                             </tr>
                                         </thead>
@@ -140,16 +140,16 @@
                                                 <td>#1</td>
                                                 <td>6</td>
                                                 <td>4</td>
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p class="stat">I</p></i></span></td>
                                                 <td>@pperez</td>
+                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p class="stat">I</p></i></span></td>
                                                 <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td>#2</td>
                                                 <td>10</td>
                                                 <td>0</td>
-                                                <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
                                                 <td></td>
+                                                <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
                                                 <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                         </tbody>

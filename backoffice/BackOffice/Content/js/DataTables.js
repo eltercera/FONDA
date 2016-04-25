@@ -119,3 +119,17 @@ $(document).ready(function () {
         ]
     });
 });
+
+$(document).ready(function () {
+    $('#dt-mesa').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
