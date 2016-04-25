@@ -27,13 +27,13 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
  
-      <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+   
         <div class="row">
            <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Pastas</h3>
-                                <a data-toggle="modal" data-target="#agregar" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
+                                <a data-toggle="modal" data-target="#agregar_platillo" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="panel-body">
@@ -68,11 +68,8 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                            </td>
+                                         
+                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                             <tr>
                                             <td>
@@ -89,11 +86,8 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                            </td>
+                                     
+                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                             <tr>
                                             <td>
@@ -110,11 +104,9 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                            </td>
+                                          
+                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                     
                                               
                                         </tr>
                                             <tr>
@@ -132,11 +124,10 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                            </td>
+                             
+                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                           
+                                           
                                         </tr>
                                                 
                                              
@@ -147,18 +138,19 @@
                         </div>
                     </div>
                 </div>
-                </div>
+           
+    
                 <!-- /.row -->
             <!-- /.container-fluid -->
         
 
-       <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+
         <div class="row">
-           <div class="col-lg-12">
-                        <div class="panel panel-default">
+                <div class="col-lg-12">
+                             <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Carnes</h3>
-                                <a data-toggle="modal" data-target="#agregar" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
+                                <a data-toggle="modal" data-target="#agregar_platillo" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="panel-body">
@@ -193,11 +185,8 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                            </td>
+                                        
+                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -214,11 +203,8 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                            </td>
+                                        
+                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -235,11 +221,8 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                            <td style="text-align: center; vertical-align: middle">
-                                                <a href="../Menu/ModificarPlatillo.aspx"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                                 <a href=""><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                            </td>
+                                         
+                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -249,10 +232,151 @@
                     </div>
                 </div>
             </div>
-                </div>
                 <!-- /.row -->
             <!-- /.container-fluid -->
 
+       <!-- Modal modificar plato-->
+     <div class="modal fade" id="modificar" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Modificar Platillo</h4>
+                        </div>
+                            <div class="modal-body">
+                                 <div class="row">
+                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                         <div class="form-group">
+                                             <label>Selecciona la categoría</label>
+                                             <select class="form-control" >
+                                                 <option>Pastas</option>
+                                                 <option>Carnes</option>
+                                                 <option>Pescados y Mariscos</option>
+                                              </select>
+                                           </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                         <div class="form-group">
+                                            <label class="control-label">Nombre del platillo</label>
+                                            <asp:TextBox ID="TextBox1" CssClass="form-control" placeholder="Pasta Carbonara" runat="server"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                        <div class="form-group">
+                                            <label class="control-label">Descripcion del platillo</label>
+                                            <asp:TextBox ID="TextBox2" CssClass="form-control" placeholder="Pasta con tocineta y queso parmesano"  runat="server"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                        <div class="form-group">
+                                            <label class="control-label">Precio del platillo</label>
+                                            <asp:TextBox ID="TextBox3" CssClass="form-control" placeholder="1000" MaxLength="5" runat="server"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                        <div class="form-group">
+                                            <label for="ejemplo_archivo_1">Adjuntar una imagen del platillo</label>
+                                            <input type="file" id="ejemplo_archivo_1"/>
+                                            <p class="help-block">Imagen .jpg o .png</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                        <div class="form-group">
+                                             <label class="control-label">Estatus</label>
+                                                <br />
+                                                <asp:RadioButton ID="RadioButton1" GroupName="Estatus" runat="server" Text="  Activo" />
+                                                <asp:RadioButton ID="RadioButton2" GroupName="Estatus" runat="server" Text="  Inactivo" />
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                          </div>
+                          <div class="modal-footer">
+                                <asp:Button id="Button3" Text="Agregar" CssClass="btn btn-success" runat="server"/>
+                                <asp:Button id="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                          </div>
+                     </div>
+                 </div>
+   </div>
+
+
+    <!-- Modal agregar platillo-->
+    <div class="modal fade" id="agregar_platillo" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Agregar Platillo</h4>
+                        </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                        <div class="form-group">
+                                             <label>Selecciona la categoría</label>
+                                                <select class="form-control" >
+                                                    <option>Pastas</option>
+                                                    <option>Carnes</option>
+                                                    <option>Pescados y Mariscos</option>
+                                                </select>
+                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                         <div class="form-group">
+                                            <label class="control-label">Nombre del platillo</label>
+                                            <asp:TextBox ID="nombrePlato" CssClass="form-control" placeholder="ej. pasta carbonara" runat="server"/>
+                                        </div>
+                                    </div>       
+                                </div>
+                                <div class="row">
+                                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                        <div class="form-group">
+                                            <label class="control-label">Descripcion del platillo</label>
+                                            <asp:TextBox ID="descripcionPlato" CssClass="form-control" placeholder="ej. pasta con tocineta y queso parmesano" runat="server"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                        <div class="form-group">
+                                            <label class="control-label">Precio del platillo</label>
+                                            <asp:TextBox ID="precioPlato" CssClass="form-control" placeholder="ej. 1000" MaxLength="5" runat="server"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                        <div class="form-group">
+                                            <label for="ejemplo_archivo_1">Adjuntar una imagen del platillo</label>
+                                            <input type="file" id="ejemplo_archivo_1"/>
+                                            <p class="help-block">Imagen .jpg o .png</p>
+                                        </div>
+                                    </div>
+                                </div>
+                        <div class="modal-footer">
+                           <asp:Button id="Button1" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="Button1_Click"/>
+                           <asp:Button id="Button2" Text="Cancelar" CssClass="btn btn-danger" runat="server" OnClick="Button2_Click"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 </asp:Content>
