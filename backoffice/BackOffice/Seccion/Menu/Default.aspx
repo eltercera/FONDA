@@ -48,6 +48,7 @@
                                             <th style="vertical-align: middle">IVA</th>
                                             <th style="vertical-align: middle">Total</th>
                                             <th style="vertical-align: middle">Sugerencia del día</th>
+                                            <th>Estado</th>
                                             <th class="no-sort">Acciones</th>
  
                                             </tr>
@@ -62,13 +63,14 @@
                                             <td style="vertical-align: middle">650</td>
                                             <td style="vertical-align: middle">3000</td>
                                             <td style="text-align: center; vertical-align: middle">
-                                                               <div class="checkbox">
+                                                 <div class="checkbox">
                                                     <label>
                                                         <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
                                                     </label>
                                                 </div>
                                             </td>
-                                         
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+
                                                 <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                             <tr>
@@ -86,7 +88,8 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                     
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+
                                                 <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                             <tr>
@@ -104,7 +107,8 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                          
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+
                                                 <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                      
                                               
@@ -124,7 +128,8 @@
                                                     </label>
                                                 </div>
                                             </td>
-                             
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+
                                                 <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                            
                                            
@@ -165,6 +170,7 @@
                                             <th style="vertical-align: middle">IVA</th>
                                             <th style="vertical-align: middle">Total</th>
                                             <th style="vertical-align: middle">Sugerencia del día</th>
+                                                 <th style="vertical-align: middle">Estado</th>
                                             <th class="no-sort">Acciones</th>
  
                                             </tr>
@@ -185,8 +191,8 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                        
-                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                             <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+                                             <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -203,7 +209,8 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                        
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+
                                                 <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                         <tr>
@@ -221,7 +228,8 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                         
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+
                                                 <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#consultar"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                     </tbody>
@@ -246,18 +254,7 @@
                             <h4 class="modal-title">Modificar Platillo</h4>
                         </div>
                             <div class="modal-body">
-                                 <div class="row">
-                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                         <div class="form-group">
-                                             <label>Selecciona la categoría</label>
-                                             <select class="form-control" >
-                                                 <option>Pastas</option>
-                                                 <option>Carnes</option>
-                                                 <option>Pescados y Mariscos</option>
-                                              </select>
-                                           </div>
-                                    </div>
-                                </div>
+                            
                                 <div class="row">
                                       <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                          <div class="form-group">
@@ -291,19 +288,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="form-group">
-                                             <label class="control-label">Estatus</label>
-                                                <br />
-                                                <asp:RadioButton ID="RadioButton1" GroupName="Estatus" runat="server" Text="  Activo" />
-                                                <asp:RadioButton ID="RadioButton2" GroupName="Estatus" runat="server" Text="  Inactivo" />
-                                        </div>
-                                    </div>
+                            
                                 </div>
                                 
-                          </div>
+                        
                           <div class="modal-footer">
                                 <asp:Button id="Button3" Text="Agregar" CssClass="btn btn-success" runat="server"/>
                                 <asp:Button id="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
@@ -324,18 +312,7 @@
                             <h4 class="modal-title">Agregar Platillo</h4>
                         </div>
                             <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="form-group">
-                                             <label>Selecciona la categoría</label>
-                                                <select class="form-control" >
-                                                    <option>Pastas</option>
-                                                    <option>Carnes</option>
-                                                    <option>Pescados y Mariscos</option>
-                                                </select>
-                                         </div>
-                                    </div>
-                                </div>
+                              
                                 <div class="row">
                                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                          <div class="form-group">

@@ -57,6 +57,7 @@ $(document).ready(function () {
             null,
              null,
             null,
+            null,
             { "bSearchable": false },
             { "bSearchable": false }
         ]
@@ -72,6 +73,7 @@ $(document).ready(function () {
             null,
             null,
              null,
+            null,
             null,
             { "bSearchable": false },
             { "bSearchable": false }
