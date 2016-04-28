@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".views.activities.ProfileActivity">
+    tools:context=".views.activities.ProfileActivity"
+    android:background="@drawable/bckg">
 
     <FrameLayout
         android:id="@+id/fragment_container"
