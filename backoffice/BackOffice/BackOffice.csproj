@@ -418,13 +418,9 @@
     <Content Include="Seccion\Configuracion\ListarPrivilegioUsuario.aspx" />
     <Content Include="Seccion\Configuracion\ListarRol.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
-    <Content Include="Seccion\Menu\AgregarMenu.aspx" />
-    <Content Include="Seccion\Menu\AgregarPlatillo.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
     <Content Include="Seccion\Menu\MenuDia.aspx" />
-    <Content Include="Seccion\Menu\ModificarMenu.aspx" />
-    <Content Include="Seccion\Menu\ModificarPlatillo.aspx" />
     <Content Include="Seccion\Reservas\Default.aspx" />
     <Content Include="Seccion\Restaurant\AgregarCategoria.aspx" />
     <Content Include="Seccion\Restaurant\AgregarMesa.aspx" />
@@ -585,20 +581,6 @@
       <DependentUpon>ListarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\mensajes.cs" />
-    <Compile Include="Seccion\Menu\AgregarMenu.aspx.cs">
-      <DependentUpon>AgregarMenu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Menu\AgregarMenu.aspx.designer.cs">
-      <DependentUpon>AgregarMenu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Menu\AgregarPlatillo.aspx.cs">
-      <DependentUpon>AgregarPlatillo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Menu\AgregarPlatillo.aspx.designer.cs">
-      <DependentUpon>AgregarPlatillo.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Seccion\Menu\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -619,20 +601,6 @@
     </Compile>
     <Compile Include="Seccion\Menu\MenuDia.aspx.designer.cs">
       <DependentUpon>MenuDia.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Menu\ModificarMenu.aspx.cs">
-      <DependentUpon>ModificarMenu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Menu\ModificarMenu.aspx.designer.cs">
-      <DependentUpon>ModificarMenu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Menu\ModificarPlatillo.aspx.cs">
-      <DependentUpon>ModificarPlatillo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Menu\ModificarPlatillo.aspx.designer.cs">
-      <DependentUpon>ModificarPlatillo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Reservas\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
