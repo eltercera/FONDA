@@ -49,7 +49,7 @@ public class ProfileActivity extends BaseNavigationActivity
     private FragmentManager fm;
 
     /**
-     * ToolBarr
+     * ToolBar
      */
     private Toolbar tb;
 
