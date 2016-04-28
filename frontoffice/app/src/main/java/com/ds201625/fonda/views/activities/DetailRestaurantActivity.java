@@ -14,6 +14,5 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
         setContentView(R.layout.activity_detail_restaurant);
         super.onCreate(savedInstanceState);
 
-
     }
 }
