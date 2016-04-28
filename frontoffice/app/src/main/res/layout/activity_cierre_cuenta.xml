@@ -17,8 +17,7 @@
         tools:context=".views.activities.CierreCuentaActivity">
 
         <include layout="@layout/toolbar_default" />
-
-        <include layout="@layout/content_cierre_cuenta" />
+        <include layout="@layout/content_orders2" />
 
     </android.support.design.widget.CoordinatorLayout>
 

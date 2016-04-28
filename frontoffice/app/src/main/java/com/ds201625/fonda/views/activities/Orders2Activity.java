@@ -1,5 +1,6 @@
 package com.ds201625.fonda.views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -28,14 +29,13 @@ public class Orders2Activity extends BaseNavigationActivity {
      * Iten del Menu para cerrar
      */
     private MenuItem cerrarBotton;
-    private MenuItem sendBotton;
-    private MenuItem cancelBotton;
+
 
     /**
      * Fragment de la lista
      */
     private CurrentOrderFragment orderListFrag;
-    private CloseAccountFragment closeAccFrag;
+
     /**
      * Boton Flotante
      */
@@ -44,7 +44,7 @@ public class Orders2Activity extends BaseNavigationActivity {
     /**
      * Administrador de Fragments
      */
-   // private FragmentManager fm;
+     private FragmentManager fm;
 
     /**
      * ToolBarr
@@ -61,7 +61,7 @@ public class Orders2Activity extends BaseNavigationActivity {
         super.onCreate(savedInstanceState);
 
         //Importante Primero obtener el Tablayout
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs2);
         //Inyectarlo al BaseSectionsPagerAdapter
         mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager(),tabLayout);
 
@@ -70,7 +70,7 @@ public class Orders2Activity extends BaseNavigationActivity {
         tabLayout.setupWithViewPager(mViewPager);
 
         orderListFrag = new CurrentOrderFragment();
-        closeAccFrag = new CloseAccountFragment();
+
 
        //Tab con solo un String como titulo
         mSectionsPagerAdapter.addFragment("Orden Actual",orderListFrag);
@@ -78,7 +78,8 @@ public class Orders2Activity extends BaseNavigationActivity {
        // mSectionsPagerAdapter.addFragment("Cerrar Cuenta",closeAccFrag);
         //Importante ejecutar esto para que se creen los iconos en el tab.
         mSectionsPagerAdapter.iconsSetup();
-        showFragment(orderListFrag);
+
+
     }
 
 
@@ -93,9 +94,6 @@ public class Orders2Activity extends BaseNavigationActivity {
         getMenuInflater().inflate(R.menu.close, menu);
         cerrarBotton = menu.findItem(R.id.close);
 
-      //   getMenuInflater().inflate(R.menu.close2, menu);
-     //    sendBotton = menu.findItem(R.id.action_favorite_send);
-     //    cancelBotton =  menu.findItem(R.id.action_favorite_cancel);
         return true;
    }
 
@@ -105,11 +103,11 @@ public class Orders2Activity extends BaseNavigationActivity {
      * @param fragment el fragment que se quiere mostrar
      */
     private void showFragment(BaseFragment fragment) {
-     /*  fm.beginTransaction()
+       fm.beginTransaction()
                 .replace(R.id.fragment_container,fragment)
                 .commit();
         fm.executePendingTransactions();
-*/
+
         //Muestra y oculta compnentes.
         if(fragment.equals(orderListFrag)){
             if(cerrarBotton != null)
@@ -143,9 +141,14 @@ public class Orders2Activity extends BaseNavigationActivity {
         AlertDialog dialog = buildSingleDialog("Cierre de Cuenta",
                 "Se puede proceder con el cierre.");
         dialog.show();
-      //  closeAccFrag.onCreate();
-        showFragment(orderListFrag);
+
+        cambiarCC();
     }
 
+    public void cambiarCC ()
+    {
+        Intent cambio = new Intent (this,CierreCuentaActivity.class);
+        startActivity(cambio);
+    }
 
 }

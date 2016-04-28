@@ -6,5 +6,5 @@
         android:id="@+id/close"
         android:title="@string/nav_close_account"
         app:showAsAction="ifRoom"
-        android:visible="false"/>
+        android:visible="true"/>
 </menu>

@@ -18,7 +18,7 @@
 
         <include layout="@layout/toolbar_default" />
 
-        <include layout="@layout/content_factura" />
+        <include layout="@layout/content_orders2" />
 
     </android.support.design.widget.CoordinatorLayout>
 

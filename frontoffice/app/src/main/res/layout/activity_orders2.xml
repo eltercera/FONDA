@@ -36,7 +36,7 @@
 
             <!-- Esto Contiene el Tabs -->
             <android.support.design.widget.TabLayout
-                android:id="@+id/tabs"
+                android:id="@+id/tabs2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
