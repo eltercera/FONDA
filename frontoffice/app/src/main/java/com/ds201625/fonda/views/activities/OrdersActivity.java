@@ -23,4 +23,10 @@ public class OrdersActivity extends BaseNavigationActivity {
         startActivity(cambio);
     }
 
+    public void cambiarPrueba (View v)
+    {
+        Intent cambio = new Intent (this,Orders2Activity.class);
+        startActivity(cambio);
+    }
+
 }

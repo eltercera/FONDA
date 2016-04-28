@@ -51,5 +51,15 @@
         android:layout_above="@+id/button4"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prueba"
+        android:id="@+id/button8"
+        android:onClick="cambiarPrueba"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/button4"
+        android:layout_alignEnd="@+id/button4" />
+
 
 </RelativeLayout>

@@ -15,40 +15,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Cierre de Cuenta"
+        android:text="@string/title_fragment_close"
         android:id="@+id/tVTitulo"
         android:textSize="25dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Acepto el Total"
-        android:id="@+id/bAceptar"
-        android:layout_marginBottom="33dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="cambiarPa" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:layout_marginTop="78dp"
+        android:layout_below="@+id/tVTitulo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/view" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:layout_above="@+id/tvSub"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/view2" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SubTotal"
         android:id="@+id/tvSub"
-        android:layout_marginBottom="73dp"
-        android:layout_above="@+id/bAceptar"
-        android:layout_toLeftOf="@+id/bAceptar"
-        android:layout_toStartOf="@+id/bAceptar" />
+        android:layout_marginBottom="74dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2000"
+        android:text="1600"
         android:id="@+id/tVSubTotalValor"
-        android:layout_alignTop="@+id/tvSub"
-        android:layout_toRightOf="@+id/tVTitulo"
-        android:layout_toEndOf="@+id/tVTitulo" />
+        android:layout_alignTop="@+id/view2"
+        android:layout_alignRight="@+id/view2"
+        android:layout_alignEnd="@+id/view2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,7 +79,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="240"
+        android:text="192"
         android:id="@+id/tVIVAValor"
         android:layout_below="@+id/tVSubTotalValor"
         android:layout_alignRight="@+id/tVSubTotalValor"
@@ -98,7 +106,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2240"
+        android:text="1792"
         android:id="@+id/textView19"
         android:layout_alignTop="@+id/tVTotal"
         android:layout_toRightOf="@+id/tVTotalMoneda"
@@ -113,12 +121,53 @@
         android:layout_alignLeft="@+id/tVIVAMoneda"
         android:layout_alignStart="@+id/tVIVAMoneda" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha:"
+        android:id="@+id/tVFecha"
+        android:layout_alignBottom="@+id/view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="23-04-2016"
+        android:id="@+id/textView11"
+        android:layout_alignTop="@+id/tVFecha"
+        android:layout_toRightOf="@+id/tVFecha"
+        android:layout_toEndOf="@+id/tVFecha" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hora:"
+        android:id="@+id/textView12"
+        android:layout_alignBottom="@+id/textView11"
+        android:layout_alignRight="@+id/view"
+        android:layout_alignEnd="@+id/view"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="05:32"
+        android:id="@+id/textView20"
+        android:layout_alignTop="@+id/textView12"
+        android:layout_alignRight="@+id/view"
+        android:layout_alignEnd="@+id/view" />
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lVOrden"
-        android:layout_below="@+id/tVTitulo"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/bAceptar" />
+        android:layout_below="@+id/view"
+        android:layout_alignBottom="@+id/view2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

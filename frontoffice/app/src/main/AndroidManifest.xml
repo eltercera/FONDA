@@ -67,6 +67,10 @@
         <activity
             android:name=".views.activities.GenerarFacturaActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.activities.Orders2Activity"
+            android:label="@string/nav_order"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--
          ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
