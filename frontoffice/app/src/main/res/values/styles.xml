@@ -3,9 +3,10 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimaryDark</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">monospace</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -13,21 +14,63 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="LoginTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">#ECE5CE</item>
-        <item name="colorControlNormal">#ECE5CE</item>
-        <item name="colorControlActivated">#ECE5CE</item>
-        <item name="colorControlHighlight">#ECE5CE</item>
-        <item name="android:textColorHint">#ECE5CE</item>
-        <item name="android:textColor">#F1D4AF</item>
+        <item name="colorAccent">@color/powder</item>
+        <item name="colorControlNormal">@color/powder</item>
+        <item name="colorControlActivated">@color/powder</item>
+        <item name="colorControlHighlight">@color/powder</item>
+        <item name="android:textColorHint">@color/powder</item>
+        <item name="android:textColor">@color/creme</item>
+        <item name="android:textColorLink">@color/creme</item>
+        <item name="android:textColorLinkInverse">@color/creme</item>
     </style>
 
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/creme</item>
+        <item name="actionBarStyle">@style/Widget.AppTheme.ActionBar</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.AppTheme.ActionBar</item>
+        <item name="actionBarPopupTheme">@style/ThemeOverlay.AppTheme.PopupMenu</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Widget.AppTheme.ActionBar" parent="Widget.AppCompat.ActionBar.Solid">
+        <!-- action bar background -->
+        <item name="background">@color/colorPrimaryDark</item>
+        <!-- action bar elevation -->
+        <item name="elevation">4dp</item>
+    </style>
+
+    <style name="ThemeOverlay.AppTheme.ActionBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!-- title text color -->
+        <item name="android:textColorPrimary">@color/creme</item>
+        <!-- subtitle text color -->
+        <item name="android:textColorSecondary">@color/powder</item>
+        <!-- action menu item text color -->
+        <item name="actionMenuTextColor">@color/creme</item>
+        <!-- action menu item icon color - only applies to appcompat-v7 icons :( -->
+        <item name="colorControlNormal">@color/creme</item>
+    </style>
+
+    <style name="ThemeOverlay.AppTheme.PopupMenu" parent="ThemeOverlay.AppCompat.Dark">
+        <!-- popup menu background - NEVER "android:background" !!! in themes -->
+        <item name="android:colorBackground">@color/colorPrimary</item>
+        <!-- popup menu item text color -->
+        <item name="android:textColorPrimary">@color/creme</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="actionBarStyle">@style/Widget.AppTheme.ActionBar</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.AppTheme.ActionBar</item>
+        <item name="actionBarPopupTheme">@style/ThemeOverlay.AppTheme.PopupMenu</item>
+    </style>
+
+    <style name="AppTheme.Tabs" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">@color/creme</item>
+        <item name="android:textColorPrimary">@color/creme</item>
+        <item name="android:actionMenuTextColor">@color/creme</item>
+    </style>
 
 </resources>

@@ -45,7 +45,7 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textIsSelectable="false"
-                        android:textColor="#F1D4AF"/>
+                        android:textColor="@color/creme"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -65,7 +65,7 @@
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:textColor="#F1D4AF"/>
+                        android:textColor="@color/creme"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -85,7 +85,7 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:visibility="gone"
-                        android:textColor="#F1D4AF"/>
+                        android:textColor="@color/creme"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -106,7 +106,7 @@
                     android:id="@+id/textViewForgetPass"
                     android:textAlignment="center"
                     android:layout_marginTop="16dp"
-                    android:textColor="#31708f" />
+                    android:textColor="@color/creme" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -116,7 +116,7 @@
                     android:id="@+id/textViewRegiter"
                     android:textAlignment="center"
                     android:layout_marginTop="16dp"
-                    android:textColor="#31708f"/>
+                    android:textColor="@color/creme"/>
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -126,7 +126,7 @@
                     android:id="@+id/textViewStartSesion"
                     android:textAlignment="center"
                     android:layout_marginTop="16dp"
-                    android:textColor="#31708f"
+                    android:textColor="@color/colorPrimary"
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
