@@ -7,7 +7,9 @@
     android:layout_height="match_parent"
 
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".views.activities.DetailRestaurantActivity">
+    tools:context=".views.activities.DetailRestaurantActivity"
+    android:background="@drawable/fondo_favoritos"
+    >
 
     <LinearLayout
         android:orientation="vertical"
@@ -151,29 +153,6 @@
             android:text="Large Text"
             android:id="@+id/textView18"
             android:layout_gravity="center_horizontal" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:weightSum="1"
-            android:layout_marginTop="25dp">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="favorito"
-                android:id="@+id/button5"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="0dp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="reservar"
-                android:id="@+id/button7"
-                android:layout_gravity="center_vertical" />
-        </LinearLayout>
+        
     </LinearLayout>
 </ScrollView>
