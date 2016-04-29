@@ -12,6 +12,7 @@
     tools:context=".views.activities.OrdenActualActivity"
     android:weightSum="1"
     android:baselineAligned="false"
+    android:background="@drawable/bckg"
     android:gravity="left|top">
 
 

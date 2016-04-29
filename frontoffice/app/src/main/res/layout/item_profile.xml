@@ -11,16 +11,13 @@
         android:orientation="vertical">
         <CheckedTextView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:text="Profile Name"
             android:id="@+id/tvProfile"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
             android:paddingTop="5dp"
-            android:paddingBottom="5dp"
             android:textSize="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
             android:gravity="fill_vertical" />
 
         <TextView

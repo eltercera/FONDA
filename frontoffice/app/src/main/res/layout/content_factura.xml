@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.RestauranstsActivity"
+    android:background="@drawable/bckg"
     android:weightSum="1"
     android:baselineAligned="false"
     android:gravity="left|top">
