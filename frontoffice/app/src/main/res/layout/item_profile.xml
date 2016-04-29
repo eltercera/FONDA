@@ -1,32 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/form_left_padding"
     android:paddingRight="@dimen/form_right_padding">
 
-    <CheckedTextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Profile Name"
-        android:id="@+id/tvProfile"
-        android:layout_gravity="center_horizontal"
-        android:textStyle="bold"
-        android:textSize="25dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+        <CheckedTextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Profile Name"
+            android:id="@+id/tvProfile"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:paddingTop="5dp"
+            android:textSize="20dp"
+            android:gravity="fill_vertical" />
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Nombre"
-        android:id="@+id/tvProfileName"
-        android:layout_gravity="center_horizontal" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre"
+            android:id="@+id/tvProfileName"
+            android:layout_gravity="center_vertical"
+            android:gravity="fill_vertical" />
 
-    <TextView
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="CI/RIF: fsdf165sdf"
+            android:id="@+id/tvProfileRif"
+            android:layout_gravity="center_vertical"
+            android:gravity="bottom|fill_vertical" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="CI/RIF: fsdf165sdf"
-        android:id="@+id/tvProfileRif"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical|right"
+        android:gravity="right">
+        <ImageView android:id="@+id/imageViewNames"
+            android:layout_column="0"
+            android:src="@drawable/ic_chevron_right_black_24dp"
+            android:paddingRight="5dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_width="@dimen/design_navigation_icon_size"
+            android:layout_height="@dimen/design_navigation_icon_size"
+            android:layout_alignParentRight="true" />
+    </LinearLayout>
+
 </LinearLayout>
