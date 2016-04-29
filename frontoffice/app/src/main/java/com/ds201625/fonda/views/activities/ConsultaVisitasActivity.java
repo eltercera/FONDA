@@ -17,15 +17,17 @@ import java.util.Map;
 /**
  * Created by Adri on 13/04/2016.
  */
-public class ConsultaVisitasActivity extends Activity {
+public class ConsultaVisitasActivity extends BaseNavigationActivity {
     List<String> groupList;
     List<String> childList;
     Map<String, List<String>> coleccionDevisitas;
     ExpandableListView expListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_consulta_visita);
+        super.onCreate(savedInstanceState);
+
     createGroupList();
 
     createCollection();
