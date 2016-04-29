@@ -26,6 +26,95 @@
 
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 
+    <script type = "text/javascript">
+        function ToggleMenu1() {
+            $('#toggleMe1').toggle();
+            return false;
+        }
+
+        function ToggleMenu2() {
+            $('#toggleMe2').toggle();
+            return false;
+        }
+
+        function ToggleMenu3() {
+            $('#toggleMe3').toggle();
+            return false;
+        }
+
+        $(document).ready(function () {
+            $('#Menu1').DataTable({
+                "language": spanish,
+                "bAutoWidth": false,
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            $('#Menu2').DataTable({
+                "language": spanish,
+                "bAutoWidth": false,
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            $('#Menu3').DataTable({
+                "language": spanish,
+                "bAutoWidth": false,
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            $('#ModificarOrden').DataTable({
+                "language": spanish,
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+        });
+
+    </script>
+
  <div class="row">
             <div class="col-lg-10 col-md-8 col-sm-8 col-xs-8">
                 <div id="exitoFormulario" class="alert alert-success alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" runat="server">
@@ -48,7 +137,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table id="default" class="table table-bordered table-hover table-striped">
+                                <table id="ModificarOrden" class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th style="vertical-align: middle">Foto</th>
@@ -510,75 +599,6 @@
 
 
 
-    <script type = "text/javascript">
-        function ToggleMenu1() {
-            $('#toggleMe1').toggle();
-            return false;
-        }
-
-        function ToggleMenu2() {
-            $('#toggleMe2').toggle();
-            return false;
-        }
-
-        function ToggleMenu3() {
-            $('#toggleMe3').toggle();
-            return false;
-        }
-
-        $(document).ready(function () {
-            $('#Menu1').DataTable({
-                "language": spanish,
-                "bAutoWidth": false,
-                "aoColumns": [
-                    null,
-                    null,
-                    null,
-                    null,
-                     null,
-                    null,
-                    null,
-                    { "bSearchable": false },
-                    { "bSearchable": false }
-                ]
-            });
-        });
-
-        $(document).ready(function () {
-            $('#Menu2').DataTable({
-                "language": spanish,
-                "bAutoWidth": false,
-                "aoColumns": [
-                    null,
-                    null,
-                    null,
-                    null,
-                     null,
-                    null,
-                    null,
-                    { "bSearchable": false },
-                    { "bSearchable": false }
-                ]
-            });
-        });
-
-        $(document).ready(function () {
-            $('#Menu3').DataTable({
-                "language": spanish,
-                "bAutoWidth": false,
-                "aoColumns": [
-                    null,
-                    null,
-                    null,
-                    null,
-                     null,
-                    null,
-                    null,
-                    { "bSearchable": false },
-                    { "bSearchable": false }
-                ]
-            });
-        });
-    </script>
+    
         
 </asp:Content>

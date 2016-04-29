@@ -142,9 +142,11 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#ListarOrdenCerrada').DataTable({
+    $('#Detalle').DataTable({
         "language": spanish,
+        "bAutoWidth": false,
         "aoColumns": [
+            null,
             null,
             null,
             { "bSearchable": false },
