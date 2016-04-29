@@ -46,7 +46,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
+                                <table id="Menu1" class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th style="vertical-align: middle">Foto</th>
@@ -159,7 +159,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
+                                <table id="Menu2" class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th style="vertical-align: middle">Foto</th>
@@ -270,7 +270,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
+                                <table id="Menu3" class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th style="vertical-align: middle">Foto</th>
@@ -374,7 +374,7 @@
 
             
         </div>
-    </div>
+   
        
     
     
@@ -392,7 +392,62 @@
 
 
 
+    <script type = "text/javascript">
 
+        $(document).ready(function () {
+            $('#Menu1').DataTable({
+                "language": spanish,
+                "bAutoWidth": false,
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            $('#Menu2').DataTable({
+                "language": spanish,
+                "bAutoWidth": false,
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            $('#Menu3').DataTable({
+                "language": spanish,
+                "bAutoWidth": false,
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+        });
+    </script>
 
         
 </asp:Content>
