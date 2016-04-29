@@ -45,7 +45,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         LayoutInflater inflater = context.getLayoutInflater();
 
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.child_item, null);
+            convertView = inflater.inflate(R.layout.child_item_detail_visit, null);
         }
 
         TextView item = (TextView) convertView.findViewById(R.id.laptop);
@@ -77,7 +77,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.group_item,
+            convertView = infalInflater.inflate(R.layout.group_item_detail_visit,
                     null);
         }
         TextView item = (TextView) convertView.findViewById(R.id.laptop);

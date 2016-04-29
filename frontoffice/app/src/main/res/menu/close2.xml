@@ -6,11 +6,11 @@
         android:icon="@android:drawable/ic_menu_send"
         android:title="Enviar"
         app:showAsAction="ifRoom"
-        android:visible="false"/>
+        android:visible="true"/>
     <item
         android:id="@+id/action_favorite_cancel"
         android:icon="@android:drawable/ic_menu_close_clear_cancel"
         android:title="Cancelar"
         app:showAsAction="ifRoom"
-        android:visible="false"/>
+        android:visible="true"/>
 </menu>
