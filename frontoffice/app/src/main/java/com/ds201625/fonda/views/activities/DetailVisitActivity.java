@@ -1,6 +1,5 @@
 package com.ds201625.fonda.views.activities;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
@@ -17,7 +16,7 @@ import java.util.Map;
 /**
  * Created by Adri on 13/04/2016.
  */
-public class ConsultaVisitasActivity extends BaseNavigationActivity {
+public class DetailVisitActivity extends BaseNavigationActivity {
     List<String> groupList;
     List<String> childList;
     Map<String, List<String>> coleccionDevisitas;
@@ -25,7 +24,7 @@ public class ConsultaVisitasActivity extends BaseNavigationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        setContentView(R.layout.activity_consulta_visita);
+        setContentView(R.layout.activity_detail_visit);
         super.onCreate(savedInstanceState);
 
     createGroupList();

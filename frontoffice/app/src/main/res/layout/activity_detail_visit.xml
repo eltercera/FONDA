@@ -12,10 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".views.activities.ConsultaVisitasActivity">
+        tools:context=".views.activities.DetailVisitActivity">
 
         <include layout="@layout/toolbar_default" />
-        <include layout="@layout/content_consultar_visita" />
+        <include layout="@layout/content_detail_visit" />
 
 
 
