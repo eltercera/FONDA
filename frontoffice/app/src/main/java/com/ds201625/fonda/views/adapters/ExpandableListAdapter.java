@@ -1,4 +1,4 @@
-package com.ds201625.fonda.views.activities;
+package com.ds201625.fonda.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,11 +19,11 @@ import java.util.Map;
  * Created by Adri on 13/04/2016.
  */
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
-    private Activity context;
+    private Context context;
     private Map<String, List<String>> coleccionDevisitas;
     private List<String> visitas;
 
-    public ExpandableListAdapter(Activity context, List<String> visitas,
+    public ExpandableListAdapter(Context context, List<String> visitas,
                                  Map<String, List<String>> coleccionDevisitas) {
         this.context = context;
         this.coleccionDevisitas = coleccionDevisitas;
@@ -42,7 +42,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
         final String detalle = (String) getChild(groupPosition, childPosition);
-        LayoutInflater inflater = context.getLayoutInflater();
+        LayoutInflater inflater =  ((Activity) context).getLayoutInflater();
 
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.child_item_detail_visit, null);
