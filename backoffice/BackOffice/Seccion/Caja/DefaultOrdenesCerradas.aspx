@@ -36,7 +36,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover table-striped">
+                        <table id="ListarOrdenCerrada" class="table table-bordered table-hover table-striped">
                             <thead>
                                 <tr>
                                     <th>N° Orden</th>

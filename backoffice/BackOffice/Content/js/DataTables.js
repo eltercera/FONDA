@@ -129,3 +129,26 @@ $(document).ready(function () {
         ]
     });
 });
+
+$(document).ready(function () {
+    $('#ListarOrden').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#ListarOrdenCerrada').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
