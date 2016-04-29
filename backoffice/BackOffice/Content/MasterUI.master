@@ -161,9 +161,6 @@
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="~/default.aspx" runat="server"><i class="fa fa-fw fa-dashboard"></i> Panel de control</a>
-                    </li>
-                    <li>
                         <a href="~/Seccion/Restaurant/Restaurante.aspx" runat="server"><i class="fa fa-fw fa-user"></i> Restaurante</a>
                     </li>
                     <li>
