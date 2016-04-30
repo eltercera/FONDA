@@ -82,7 +82,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="~/Seccion/Restaurant/Mesas.aspx" runat="server">
                     <div class="panel-footer">
                         <span class="pull-left">Ver más</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -332,95 +332,6 @@
             </div>
         </div>
     </div>
-    <!-- /.row -->
-
-    <!--modal modificar mesa-->
-    <div class="modal fade" id="modificar" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Mesas</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
-                            <label class="control-label">Cantidad de Puestos</label>
-                            <asp:DropDownList id="DropDownList3" CssClass="form-control" AutoPostBack="True" runat="server">
-                                <asp:ListItem> </asp:ListItem>
-                                <asp:ListItem>2</asp:ListItem>
-                                <asp:ListItem>4</asp:ListItem>
-                                <asp:ListItem>6</asp:ListItem>
-                                <asp:ListItem>8</asp:ListItem>
-                                <asp:ListItem>10</asp:ListItem>
-                            </asp:DropDownList> 
-
-                        </div>
-                </div>
-                <br />
-
-                    <div class="form-group">
-                        <label class="control-label">Disponibilidad</label>
-                        <br/>
-                            <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Activo" />
-                            <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Inactivo" />    
-                    </div>
-                </div>         
-
-                        <div class="modal-footer">
-                            <asp:Button id="Button1" Text="Modificar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button2" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
-                        </div>
-                    
-                </div>   
-               </div>
-           </div>
-
-<!--modal agregar mesa-->
-    <div class="modal fade" id="agregar" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Mesas</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
-                            <label class="control-label">Cantidad de Puestos</label>
-                            <asp:DropDownList id="DropDownList1" CssClass="form-control" AutoPostBack="True" runat="server">
-                                <asp:ListItem> </asp:ListItem>
-                                <asp:ListItem>2</asp:ListItem>
-                                <asp:ListItem>4</asp:ListItem>
-                                <asp:ListItem>6</asp:ListItem>
-                                <asp:ListItem>8</asp:ListItem>
-                                <asp:ListItem>10</asp:ListItem>
-                            </asp:DropDownList> 
-
-                        </div>
-                </div>
-                <br />
-
-                    <div class="form-group">
-                        <label class="control-label">Disponibilidad</label>
-                        <br/>
-                            <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Activo" />
-                            <asp:RadioButton GroupName="Disponibilidad" runat="server" Text="  Inactivo" />    
-                    </div>
-                </div>         
-
-                        <div class="modal-footer">
-                            <asp:Button id="Button3" Text="Agregar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
-                        </div>
-                    
-                </div>   
-               </div>
-           </div>
-                   
+    <!-- /.row -->                  
     
 </asp:Content>

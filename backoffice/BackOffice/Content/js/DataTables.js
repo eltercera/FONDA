@@ -138,3 +138,16 @@ $(document).ready(function () {
         ]
     });
 });
+$(document).ready(function () {
+    $('#mesa').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
