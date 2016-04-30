@@ -19,6 +19,8 @@ import java.util.ArrayList;
  */
 public class BaseSectionsPagerAdapter extends FragmentPagerAdapter {
 
+    private ArrayList<Integer> tabNumber;
+
     /**
      * Array de Fragments
      */
@@ -52,6 +54,7 @@ public class BaseSectionsPagerAdapter extends FragmentPagerAdapter {
         tabLayout = null;
      }
 
+
     /**
      * Agrega un Fragment
      * @param title
@@ -73,6 +76,7 @@ public class BaseSectionsPagerAdapter extends FragmentPagerAdapter {
         notifyDataSetChanged();
     }
 
+
     public void addFragment(String title, Drawable titleIcon, Fragment fm) {
         if (tabLayout == null)
             return;
@@ -91,6 +95,7 @@ public class BaseSectionsPagerAdapter extends FragmentPagerAdapter {
             }
         }
     }
+
 
     @Override
     public Fragment getItem(int position) {
