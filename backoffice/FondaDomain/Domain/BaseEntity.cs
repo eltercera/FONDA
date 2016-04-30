@@ -34,7 +34,7 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Cambiar el estado actual de la entidad
 		/// </summary>
-		public void ChangeStatus()
+		public void ChangeRecordStatus()
 		{
 			_recordStatus = _recordStatus.Change ();
 		}
