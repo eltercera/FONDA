@@ -161,6 +161,7 @@
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
+<<<<<<< HEAD
                         <a href="~/default.aspx" runat="server"><i class="fa fa-fw fa-dashboard"></i>Inicio</a>
                     </li>
                     <li>
@@ -176,6 +177,9 @@
                                <a href="#" runat="server">Zonas</a>
                            </li>
                         </ul>
+=======
+                        <a href="~/Seccion/Restaurant/Restaurante.aspx" runat="server"><i class="fa fa-fw fa-user"></i> Restaurante</a>
+>>>>>>> c720d12b59b4ea327bcbbc545050264011a73c1e
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#menu"><i class="fa fa-fw fa-shopping-basket"></i> Menú <i class="fa fa-fw fa-caret-down"></i></a>

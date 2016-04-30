@@ -26,6 +26,95 @@
 
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 
+    <script type = "text/javascript">
+        function ToggleMenu1() {
+            $('#toggleMe1').toggle();
+            return false;
+        }
+
+        function ToggleMenu2() {
+            $('#toggleMe2').toggle();
+            return false;
+        }
+
+        function ToggleMenu3() {
+            $('#toggleMe3').toggle();
+            return false;
+        }
+
+        $(document).ready(function () {
+            $('#Menu1').DataTable({
+                "language": spanish,
+                "bAutoWidth": false,
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            $('#Menu2').DataTable({
+                "language": spanish,
+                "bAutoWidth": false,
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            $('#Menu3').DataTable({
+                "language": spanish,
+                "bAutoWidth": false,
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            $('#ModificarOrden').DataTable({
+                "language": spanish,
+                "aoColumns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+        });
+
+    </script>
+
  <div class="row">
             <div class="col-lg-10 col-md-8 col-sm-8 col-xs-8">
                 <div id="exitoFormulario" class="alert alert-success alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" runat="server">
@@ -36,17 +125,19 @@
                 </div>
             </div>
   </div>
+
+    
         <!-- /.row -->
         
             <div class="row">
                 <div class="col-lg-11">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>Factura #1 Cliente: @dhshga</h3>
+                            <h3 class="panel-title"><i class="fa fa-money fa-fw"> Factura #1 Cliente: @dhshga </i></h3>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
+                                <table id="ModificarOrden" class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th style="vertical-align: middle">Foto</th>
@@ -156,11 +247,11 @@
                 <div class="col-lg-11">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Pastas</h3>
+                            <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i><input type="button" value="Pastas" onclick="ToggleMenu1()" /></h3>
                         </div>
-                        <div class="panel-body">
+                        <div id="toggleMe1" class="panel-body" style="display: none;">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
+                                <table id="Menu1" class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th style="vertical-align: middle">Foto</th>
@@ -270,11 +361,11 @@
                 <div class="col-lg-11">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Carnes </h3>
+                            <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i><input type="button" value="Carnes" onclick="ToggleMenu2()" /></h3>
                         </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
+                            <div id="toggleMe2" class="panel-body" style="display: none;">
+                                <div class="table-responsive">
+                                <table id="Menu2" class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th style="vertical-align: middle">Foto</th>
@@ -347,19 +438,19 @@
                                             <td style="vertical-align: middle">Acompañado de papas al vapor</td>
                                             <td style="vertical-align: middle">2350</td>
                                             <td style="vertical-align: middle">650</td>
-                                            <td style="vertical-align: middle"><input type="number" name="quantity" min="1" max="10"></td>
+                                            <td style="vertical-align: middle"><input type="number" name="quantity" min="1" max="10"/></td>
                                             <td style="vertical-align: middle">3000</td>
                                             <td style="text-align: center; vertical-align: middle">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."/>
                                                     </label>
                                                 </div>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="..."/>
                                                     </label>
                                                 </div>
                                             </td>
@@ -381,11 +472,11 @@
                 <div class="col-lg-11">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Pescados y Mariscos </h3>
+                            <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i><input type="button" value="Pescados y Mariscos" onclick="ToggleMenu3()" /></h3>
                         </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover table-striped">
+                        <div id="toggleMe3" class="panel-body" style="display: none;">
+                            <div  class="table-responsive">
+                                <table id="Menu3" class="table table-bordered table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th style="vertical-align: middle">Foto</th>
@@ -508,6 +599,6 @@
 
 
 
-
+    
         
 </asp:Content>

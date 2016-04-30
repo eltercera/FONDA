@@ -151,3 +151,28 @@ $(document).ready(function () {
         ]
     });
 });
+
+$(document).ready(function () {
+    $('#ListarOrden').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#Detalle').DataTable({
+        "language": spanish,
+        "bAutoWidth": false,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});

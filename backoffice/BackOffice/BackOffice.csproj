@@ -402,13 +402,10 @@
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Seccion\Caja\AgregarOrden.aspx" />
-    <Content Include="Seccion\Caja\ConsultarFactura.aspx" />
     <Content Include="Seccion\Caja\CrearFactura.aspx" />
     <Content Include="Seccion\Caja\Default.aspx" />
     <Content Include="Seccion\Caja\DefaultOrdenesCerradas.aspx" />
     <Content Include="Seccion\Caja\ModificarOrden.aspx" />
-    <Content Include="Seccion\Caja\VerDetalleOrden.aspx" />
-    <Content Include="Seccion\Caja\VerDetalleOrdenCerrada.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarUsuario.aspx" />
@@ -465,13 +462,6 @@
     <Compile Include="Seccion\Caja\AgregarOrden.aspx.designer.cs">
       <DependentUpon>AgregarOrden.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Caja\ConsultarFactura.aspx.cs">
-      <DependentUpon>ConsultarFactura.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Caja\ConsultarFactura.aspx.designer.cs">
-      <DependentUpon>ConsultarFactura.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Seccion\Caja\CrearFactura.aspx.cs">
       <DependentUpon>CrearFactura.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -499,20 +489,6 @@
     </Compile>
     <Compile Include="Seccion\Caja\ModificarOrden.aspx.designer.cs">
       <DependentUpon>ModificarOrden.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.cs">
-      <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.designer.cs">
-      <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Caja\VerDetalleOrdenCerrada.aspx.cs">
-      <DependentUpon>VerDetalleOrdenCerrada.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Caja\VerDetalleOrdenCerrada.aspx.designer.cs">
-      <DependentUpon>VerDetalleOrdenCerrada.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx.cs">
       <DependentUpon>AgregarModificarPrivilegio.aspx</DependentUpon>
