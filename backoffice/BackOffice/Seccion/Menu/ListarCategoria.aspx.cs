@@ -11,7 +11,18 @@ namespace BackOffice.Seccion.Menu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            AlertSuccess_AgregarCategoria.Visible = false;
+            AlertSuccess_ModificarCategoria.Visible = false;
+        }
 
+        protected void BotonAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            AlertSuccess_AgregarCategoria.Visible = true;
+        }
+
+        protected void BotonModificarCategoria_Click(object sender, EventArgs e)
+        {
+            AlertSuccess_ModificarCategoria.Visible = true;
         }
     }
 }

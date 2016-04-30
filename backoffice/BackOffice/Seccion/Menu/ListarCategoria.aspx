@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="ListarCategoria.aspx.cs" Inherits="BackOffice.Seccion.Menu.ListarCategoria" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
+    Categorias del Menu
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
     Categorías
@@ -27,7 +28,24 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 
-  
+        <div id="AlertSuccess_AgregarCategoria" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> La categoría fue agregada <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
+
+          <div id="AlertSuccess_ModificarCategoria" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> La categoría fue modificada <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
+
         <div class="row">
            <div class="col-lg-12">
                         <div class="panel panel-default">
@@ -158,24 +176,15 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="form-group">
-                                            <label class="control-label">Estatus</label>
-                                            <br />
-                                            <asp:RadioButton ID="RadioButton1" GroupName="Estatus" runat="server" Text="  Activo" />
-                                            <asp:RadioButton ID="RadioButton2" GroupName="Estatus" runat="server" Text="  Inactivo" />
-                                        </div>
-                                    </div>
-                                </div>
+                              
                             </div>
-                            <div class="modal-footer">
-                                <asp:Button id="Button3" Text="Agregar" CssClass="btn btn-success" runat="server"/>
-                                <asp:Button id="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
-                            </div>
+                        <div class="modal-footer">
+                            <asp:Button ID="BotonModificarCategoria" Text="Modificar" CssClass="btn btn-success" OnClick="BotonModificarCategoria_Click" runat="server" />
+                            <asp:Button ID="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
                         </div>
-                    </div>          
-    </div>
+                    </div>
+                </div>
+     </div>
     
          <!-- Modal agregar categoria-->
      <div class="modal fade" id="agregar_categoria" role="dialog">
@@ -198,8 +207,8 @@
                                  </div>
                             </div>
                          <div class="modal-footer">
-                            <asp:Button id="Button1" Text="Agregar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button2" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="BotonAgregarCategoria" Text="Agregar" CssClass="btn btn-success" OnClick="BotonAgregarCategoria_Click" runat="server"/>
+                            <asp:Button id="BotonCancelarCategoria" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
                      </div>
                 </div>

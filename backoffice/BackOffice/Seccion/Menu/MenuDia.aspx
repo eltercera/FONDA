@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="MenuDia.aspx.cs" Inherits="BackOffice.Seccion.Menu.MenuDia" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
+    Menu del Dia
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
     Menú
@@ -34,7 +35,7 @@ Menú Del Día
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table id="default2" class="table table-bordered table-hover table-striped">
+                                    <table id="MenuDia" class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
                                             
@@ -119,15 +120,15 @@ Menú Del Día
                                                       <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                                              <div class="form-group">
                                                                 <label class="control-label">Nombre del platillo</label>
-                                                                <asp:TextBox ID="TextBox4" CssClass="form-control" placeholder="ej. pasta carbonara" runat="server" ReadOnly="true"/>
-                                                            </div>
+                                                                      <p class="form-control-static">ej. pasta carbonara</p>
+                                                           </div>
                                                       </div>
                                                    </div>  
                                                    <div class="row">
                                                          <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
                                                             <div class="form-group">
                                                                 <label class="control-label">Descripcion del platillo</label>
-                                                                <asp:TextBox ID="TextBox5" CssClass="form-control" placeholder="ej. pasta con tocineta y queso parmesano" runat="server" TextMode="MultiLine" ReadOnly="true"/>
+                                                               <p class="form-control-static">ej. pasta con tocineta y queso parmesano</p>
                                                             </div>
                                                         </div> 
                                                     </div> 
@@ -135,7 +136,7 @@ Menú Del Día
                                                          <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                                             <div class="form-group">
                                                                 <label class="control-label">Precio</label>
-                                                                <asp:TextBox ID="TextBox6" CssClass="form-control" placeholder="ej. 1000 bsf" runat="server" ReadOnly="true"/>
+                                                                    <p class="form-control-static">ej. 1000 bsf</p>
                                                             </div>
                                                         </div> 
                                                     </div> 
@@ -143,10 +144,7 @@ Menú Del Día
                                     
                                 </div>
                          </div>
-                         <div class="modal-footer">
-                            <asp:Button id="Button5" Text="Agregar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button6" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
-                        </div>
+                    
                 </div>
             </div>
 

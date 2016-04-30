@@ -34,11 +34,11 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">Menu</div>
-                            <div>Menu del dia</div>
+                            <div>Menu del Día</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="/Seccion/Menu/MenuDia.aspx">
                     <div class="panel-footer">
                         <span class="pull-left">Ver más</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -156,71 +156,75 @@
                     </div>
                 </div>
     <!-- /.row -->
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-shopping-basket fa-fw"></i> Menú del día</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Plato</th>
-                                    <th>Precio</th>
-                                    <th>IVA</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Pasta a la Carbonara</td>
-                                    <td>2350</td>
-                                    <td>650</td>
-                                    <td>3000</td>
-                                </tr>
-                                <tr>
-                                    <td>Pasta a la Carbonara</td>
-                                    <td>2350</td>
-                                    <td>650</td>
-                                    <td>3000</td>
-                                </tr>
-                                <tr>
-                                    <td>Pasta a la Carbonara</td>
-                                    <td>2350</td>
-                                    <td>650</td>
-                                    <td>3000</td>
-                                </tr>
-                                <tr>
-                                    <td>Pasta a la Carbonara</td>
-                                    <td>2350</td>
-                                    <td>650</td>
-                                    <td>3000</td>
-                                </tr>
-                                <tr>
-                                    <td>Pasta a la Carbonara</td>
-                                    <td>2350</td>
-                                    <td>650</td>
-                                    <td>3000</td>
-                                </tr>
-                                <tr>
-                                    <td>Pasta a la Carbonara</td>
-                                    <td>2350</td>
-                                    <td>650</td>
-                                    <td>3000</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="text-right">
-                            <a href="#">Modificar menú del día <i class="fa fa-arrow-circle-right"></i></a>
+     <%--Menu del Dia--%>
+
+        <div class="row">
+           <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Menu del día</h3>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table id="MenuDiaDashboard" class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                            
+                                            <th style="vertical-align: middle">Plato</th>
+                                            <th style="vertical-align: middle">Precio</th>
+                                            <th style="vertical-align: middle">IVA</th>
+                                            <th style="vertical-align: middle">Total</th>
+                         
+                                   
+ 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                              
+                                          
+                                            <td style="vertical-align: middle">Pasta Carbonara</td>
+                                            <td style="vertical-align: middle">2350</td>
+                                            <td style="vertical-align: middle">650</td>
+                                            <td style="vertical-align: middle">3000</td>
+     
+                                       
+                                         
+                                        </tr>
+                                            <tr>
+                                            <td style="vertical-align: middle">Pasta Carbonara</td>
+                                            <td style="vertical-align: middle">2350</td>
+                                            <td style="vertical-align: middle">650</td>
+                                            <td style="vertical-align: middle">3000</td>
+                                 
+                                        </tr>
+                                            <tr>
+                                          
+                                            <td style="vertical-align: middle">Pasta con Vegetales</td>
+                                            <td style="vertical-align: middle">2350</td>
+                                            <td style="vertical-align: middle">650</td>
+                                            <td style="vertical-align: middle">3000</td>
+                               </tr>
+                                            <tr>
+                                           
+                                            <td style="vertical-align: middle">Pasta con Salmon</td>
+                                            <td style="vertical-align: middle">2350</td>
+                                            <td style="vertical-align: middle">650</td>
+                                            <td style="vertical-align: middle">3000</td>
+                                              
+                                        </tr>
+                                                
+                                             
+                                        </tbody>
+                                    </table>       
+                                </div>
+                        
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.row -->
+      <%-- /Menu del Dia --%>
 
     <div class="row">
         <div class="col-lg-8">

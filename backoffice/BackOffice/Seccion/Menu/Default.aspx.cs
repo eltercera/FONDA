@@ -11,37 +11,24 @@ namespace BackOffice.Seccion.Menu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            AlertSuccess_AgregarPlato.Visible = false;
+            AlertSuccess_ModificarPlato.Visible = false;
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
 
+        protected void BotonModificarPlato_Click(object sender, EventArgs e)
+        {
+            AlertSuccess_ModificarPlato.Visible = true;
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void BotonAgregarPlatillo_Click(object sender, EventArgs e)
         {
-
+            AlertSuccess_AgregarPlato.Visible = true;
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
+        protected void ButtonCancelarAgregarPlatillo_Click(object sender, EventArgs e)
         {
 
-        }
-
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void LinkButton1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AgregarMenu.aspx");
-        }
-
-        protected void CogLinkButton_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AgregarPlatillo.aspx");
         }
     }
 }

@@ -160,9 +160,7 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
-                        <a href="~/default.aspx" runat="server"><i class="fa fa-fw fa-dashboard"></i>Inicio</a>
-                    </li>
+
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#restaurante"><i class="fa fa-fw fa-user"></i> Restaurante<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="restaurante" class="collapse">

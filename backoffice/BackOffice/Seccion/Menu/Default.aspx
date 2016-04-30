@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BackOffice.Seccion.Menu.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
+    Menu Principal
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
     Menú
@@ -26,19 +27,28 @@
     <%--Fin_Breadcrumbs--%>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
- 
-      <div class="row hide">
+
+    <div id="AlertSuccess_AgregarPlato" class="row" runat="server">
         <div class="col-lg-12">
-            <div class="alert alert-success alert-dismissable">
+            <div class="alert alert-success fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <i class="fa fa-check"></i> El platillo fue agregado <strong>exitosamente!</strong>
+                <i class="fa fa-check"></i>El platillo fue agregado <strong>exitosamente!</strong>
             </div>
         </div>
     </div>
 
-        <div class="row">
-           <div class="col-lg-12">
-                        <div class="panel panel-default">
+    <div id="AlertSuccess_ModificarPlato" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i>El plato fue modificado <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Pastas</h3>
                                 <a data-toggle="modal" data-target="#agregar_platillo" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
@@ -73,7 +83,7 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"></i></span></td>
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
 
                                                 <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                         </tr>
@@ -90,7 +100,7 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"></i></span></td>
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
 
                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
 
@@ -102,13 +112,13 @@
                                             <td style="vertical-align: middle">650</td>
                                             <td style="vertical-align: middle">3000</td>
                                             <td style="text-align: center; vertical-align: middle">
-                                                <div class="checkbox">
+                                                <div class="checkbox disabled">
                                                     <label>
-                                                        <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        <input type="checkbox" value="" disabled aria-label="...">
                                                     </label>
                                                 </div>
                                             </td>
-                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
 
                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
 
@@ -127,7 +137,7 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"></i></span></td>
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
 
                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
 
@@ -284,13 +294,13 @@
                                 </div>
                             
                                 </div>
-                                
-                        
-                          <div class="modal-footer">
-                                <asp:Button id="Button3" Text="Agregar" CssClass="btn btn-success" runat="server"/>
-                                <asp:Button id="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
-                          </div>
-                     </div>
+
+
+                        <div class="modal-footer">
+                            <asp:Button ID="BotonModificarPlato" Text="Modificar" CssClass="btn btn-success" OnClick="BotonModificarPlato_Click" runat="server" />
+                            <asp:Button ID="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
+                        </div>
+                    </div>
                  </div>
    </div>
     <!-- Modal Ver Plato-->
@@ -316,7 +326,7 @@
                                                       <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                                              <div class="form-group">
                                                                 <label class="control-label">Nombre del platillo</label>
-                                                                <asp:TextBox ID="TextBox4" CssClass="form-control" placeholder="ej. pasta carbonara" runat="server" ReadOnly="true"/>
+                                                                 <p class="form-control-static">ej. Pasta Carbonara</p>
                                                             </div>
                                                       </div>
                                                    </div>  
@@ -324,26 +334,23 @@
                                                          <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
                                                             <div class="form-group">
                                                                 <label class="control-label">Descripcion del platillo</label>
-                                                                <asp:TextBox ID="TextBox5" CssClass="form-control" placeholder="ej. pasta con tocineta y queso parmesano" runat="server" TextMode="MultiLine" ReadOnly="true"/>
-                                                            </div>
+                                                                      <p class="form-control-static">ej. pasta con tocineta y queso parmesano</p>
+                                                                   </div>
                                                         </div> 
                                                     </div> 
                                                      <div class="row">
                                                          <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                                             <div class="form-group">
                                                                 <label class="control-label">Precio</label>
-                                                                <asp:TextBox ID="TextBox6" CssClass="form-control" placeholder="ej. 1000 bsf" runat="server" ReadOnly="true"/>
-                                                            </div>
+                                                                          <p class="form-control-static">ej. 1000 bsf</p>
+                                                         </div>
                                                         </div> 
                                                     </div> 
                                             </div> 
                                     
                                 </div>
                          </div>
-                         <div class="modal-footer">
-                            <asp:Button id="Button5" Text="Agregar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button6" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
-                        </div>
+                  
                 </div>
             </div>
          </div>
@@ -394,8 +401,8 @@
                                     </div>
                                 </div>
                         <div class="modal-footer">
-                           <asp:Button id="Button1" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="Button1_Click"/>
-                           <asp:Button id="Button2" Text="Cancelar" CssClass="btn btn-danger" runat="server" OnClick="Button2_Click"/>
+                           <asp:Button id="BotonAgregarPlatillo" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="BotonAgregarPlatillo_Click"/>
+                           <asp:Button id="ButtonCancelarAgregarPlatillo" Text="Cancelar" CssClass="btn btn-danger" runat="server" OnClick="ButtonCancelarAgregarPlatillo_Click"/>
                         </div>
                     </div>
                 </div>

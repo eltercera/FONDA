@@ -78,7 +78,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#default2').DataTable({
+    $('#MenuDia').DataTable({
         "language": spanish,
         "aoColumns": [
             null,
@@ -89,6 +89,19 @@ $(document).ready(function () {
         ]
     });
 });
+
+$(document).ready(function () {
+    $('#MenuDiaDashboard').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
 $(document).ready(function () {
     $('#example2').DataTable({
         "language": spanish,
