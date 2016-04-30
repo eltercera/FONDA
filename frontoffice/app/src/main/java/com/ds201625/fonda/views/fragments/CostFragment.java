@@ -44,8 +44,8 @@ public class CostFragment extends BaseFragment {
         list=(ListView)view.findViewById(R.id.listViewRestaurants);
         list.setAdapter(adapter);*/
 
-        DialogFragment dialog = new TwoActionButtonsDialog();
-        dialog.show(getSupportFragmentManager(), "dialog");
+       /* DialogFragment dialog = new TwoActionButtonsDialog();
+        dialog.show(getSupportFragmentManager(), "dialog");*/
 
         return view;
 
