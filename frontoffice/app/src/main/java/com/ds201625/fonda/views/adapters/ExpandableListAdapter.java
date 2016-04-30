@@ -20,23 +20,27 @@ import java.util.Map;
  */
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
-    private Map<String, List<String>> coleccionDevisitas;
-    private List<String> visitas;
+    private Map<String, List<String>> collectionVisits;
+    private List<String> visits;
+    private String[] date;
     private String[] location;
     private String[] shortDescription;
+    private String[] name;
 
 
-    public ExpandableListAdapter(Context context, List<String> visitas,
-                                 Map<String, List<String>> coleccionDevisitas, String[] shortDescription, String[] location) {
+    public ExpandableListAdapter(Context context, List<String> visits,
+                                 Map<String, List<String>> collectionVisits,String[] name, String[] shortDescription, String[] location, String[] date) {
         this.context = context;
-        this.coleccionDevisitas = coleccionDevisitas;
-        this.visitas = visitas;
+        this.collectionVisits = collectionVisits;
+        this.date = date;
+        this.visits = visits;
         this.location = location;
         this.shortDescription = shortDescription;
+        this.name = name;
     }
 
     public Object getChild(int groupPosition, int childPosition) {
-        return coleccionDevisitas.get(visitas.get(groupPosition)).get(childPosition);
+        return collectionVisits.get(visits.get(groupPosition)).get(childPosition);
     }
 
     public long getChildId(int groupPosition, int childPosition) {
@@ -46,29 +50,29 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-        final String detalle = (String) getChild(groupPosition, childPosition);
+        final String detail = (String) getChild(groupPosition, childPosition);
         LayoutInflater inflater =  ((Activity) context).getLayoutInflater();
 
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.child_item_detail_visit, null);
         }
 
-        TextView item = (TextView) convertView.findViewById(R.id.laptop);
-        item.setText(detalle);
+        TextView item = (TextView) convertView.findViewById(R.id.detail_restaurant);
+        item.setText(detail);
         return convertView;
     }
 
     public int getChildrenCount(int groupPosition) {
-        return coleccionDevisitas.get(visitas.get(groupPosition)).size();
+        return collectionVisits.get(visits.get(groupPosition)).size();
     }
 
     public Object getGroup(int groupPosition) {
-        return visitas.get(groupPosition);
+        return visits.get(groupPosition);
     }
 
 
     public int getGroupCount() {
-        return visitas.size();
+        return visits.size();
     }
 
     public long getGroupId(int groupPosition) {
@@ -77,7 +81,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
-        String laptopName = (String) getGroup(groupPosition);
+        String restaurantList = (String) getGroup(groupPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context
@@ -87,25 +91,27 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         ImageView icon = (ImageView) convertView.findViewById(R.id.restaurant);
-        TextView item = (TextView) convertView.findViewById(R.id.laptop);
-        TextView item2 = (TextView) convertView.findViewById(R.id.txt2);
-
-        TextView item3 = (TextView) convertView.findViewById(R.id.txt3);
-        if((laptopName).equals("The dining room"))
+        TextView dateVisit = (TextView) convertView.findViewById(R.id.date_visit);
+        TextView nameRestaurant = (TextView) convertView.findViewById(R.id.name_restaurant);
+        TextView locationRestaurant = (TextView) convertView.findViewById(R.id.location_restaurant);
+        TextView descriptionRestaurant = (TextView) convertView.findViewById(R.id.description_restaurant);
+        if((restaurantList).equals("The dining room"))
             icon.setImageResource(R.mipmap.ic_restaurant001);
-        if((laptopName).equals("Mogi Mirin"))
+        if((restaurantList).equals("Mogi Mirin"))
             icon.setImageResource(R.mipmap.ic_restaurant002);
-        if((laptopName).equals("Gordo & Magro"))
+        if((restaurantList).equals("Gordo & Magro"))
             icon.setImageResource(R.mipmap.ic_restaurant003);
-        if((laptopName).equals("La Casona"))
+        if((restaurantList).equals("La Casona"))
             icon.setImageResource(R.mipmap.ic_restaurant004);
-        if((laptopName).equals("Tony's"))
+        if((restaurantList).equals("Tony's"))
             icon.setImageResource(R.mipmap.ic_restaurant005);
 
-        item.setTypeface(null, Typeface.BOLD);
-        item.setText(laptopName);
-        item2.setText(location[groupPosition]);
-        item3.setText(shortDescription[groupPosition]);
+        nameRestaurant.setTypeface(null, Typeface.BOLD);
+        nameRestaurant.setText(restaurantList);
+        nameRestaurant.setText(name[groupPosition]);
+        locationRestaurant.setText(location[groupPosition]);
+        descriptionRestaurant.setText(shortDescription[groupPosition]);
+        dateVisit.setText(date[groupPosition]);
         return convertView;
     }
 

@@ -21,7 +21,7 @@ import java.util.Map;
 public class HistoryVisitFragment extends BaseFragment {
     List<String> groupList;
     List<String> childList;
-    Map<String, List<String>> coleccionDevisitas;
+    Map<String, List<String>> collectionVisits;
     ExpandableListView expListView;
 
     @Override
@@ -36,9 +36,9 @@ public class HistoryVisitFragment extends BaseFragment {
       View layout =  (inflater.inflate(R.layout.fragment_historial_visitas,container,false));
         createCollection();
 
-        expListView = (ExpandableListView) layout.findViewById(R.id.laptop_list);
+        expListView = (ExpandableListView) layout.findViewById(R.id.restaurant_list);
         final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
-                getContext(), groupList, coleccionDevisitas,shortDescription,location);
+                getContext(), groupList,collectionVisits, names, shortDescription,location, dates);
         expListView.setAdapter(expListAdapter);
 
         //setGroupIndicatorToRight();
@@ -58,7 +58,13 @@ public class HistoryVisitFragment extends BaseFragment {
         return layout;
 
     }
-    String[] names = {
+    String[] dates ={
+            "12/01/16",
+            "12/01/16",
+            "12/01/16",
+            "12/01/16",
+            "12/01/16"};
+    String[]  names = {
             "The dining room",
             "Mogi Mirin",
             "Gordo & Magro",
@@ -76,22 +82,13 @@ public class HistoryVisitFragment extends BaseFragment {
             "Italiano",
             "Italiano",
             "Americano"} ;
+
     private void createGroupList() {
        groupList = new ArrayList<String>();
 
             for (String model : names)
                 groupList.add(model);
         }
-
-
-
-      /*  groupList = new ArrayList<String>();
-        groupList.add("El tinajero                                12/10/15");
-        groupList.add("La Castanuela                              12/10/15");
-        groupList.add("Moute Grill                                12/10/15");
-        groupList.add("Chino                                      12/10/15");
-        groupList.add("Loreto                                     12/10/15");
-*/
 
     private void createCollection() {
         // preparing laptops collection(child)
@@ -102,27 +99,27 @@ public class HistoryVisitFragment extends BaseFragment {
         String[] data5 = {"RESTAURANT: EL TINAJERO","Direccion: las Mercedes","Fecha: 12/10/2015", "Hora: 3:00 Pm","Sub-Total:5.000 Bs","Total:7.000 Bs","Propina:800 Bs","Forma de Pago: tarjeta de credito","Banco: Mercantil" };
 
 
-        coleccionDevisitas = new LinkedHashMap<String, List<String>>();
+        collectionVisits = new LinkedHashMap<String, List<String>>();
 
-        for (String laptop : groupList) {
-            if (laptop.equals("The dining room")) {
+        for (String listName : groupList) {
+            if (listName.equals("The dining room")) {
                 loadChild(data1);
-            } else if (laptop.equals("Mogi Mirin"))
+            } else if (listName.equals("Mogi Mirin"))
                 loadChild(data2);
-            else if (laptop.equals("Gordo & Magro"))
+            else if (listName.equals("Gordo & Magro"))
                 loadChild(data3);
-            else if (laptop.equals("La Casona"))
+            else if (listName.equals("La Casona"))
                 loadChild(data4);
-            else  if (laptop.equals("Tony's"))
+            else  if (listName.equals("Tony's"))
                 loadChild(data5);
 
-            coleccionDevisitas.put(laptop, childList);
+            collectionVisits.put(listName, childList);
         }
     }
 
-    private void loadChild(String[] laptopModels) {
+    private void loadChild(String[] restaurantDetails) {
         childList = new ArrayList<String>();
-        for (String model : laptopModels)
+        for (String model : restaurantDetails)
             childList.add(model);
     }
 

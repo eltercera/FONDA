@@ -136,7 +136,7 @@ public class OrdersActivity extends BaseNavigationActivity {
                 "Se puede proceder con el cierre.");
         dialog.show();
     */
-        showFragment(orderListFrag);
+
         cambiarCC();
     }
 

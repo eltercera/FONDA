@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="views.activities.DetailVisitActivity"
+    tools:context="views.activities.OrdersActivity"
     android:background="@drawable/bckg">
 
 
 
     <ExpandableListView
-        android:id="@+id/laptop_list"
+        android:id="@+id/restaurant_list"
         android:layout_width="match_parent"
         android:layout_height="fill_parent">
     </ExpandableListView>
