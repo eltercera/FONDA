@@ -123,8 +123,17 @@ $(document).ready(function () {
             null,
             null,
             null,
-            null,
             { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#CategoriaRest').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
             { "bSearchable": false }
         ]
     });

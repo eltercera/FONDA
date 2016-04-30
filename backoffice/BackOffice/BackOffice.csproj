@@ -423,10 +423,6 @@
     <Content Include="Seccion\Menu\MenuDia.aspx" />
     <Content Include="Seccion\Reservas\Default.aspx" />
     <Content Include="Seccion\Restaurant\AgregarCategoria.aspx" />
-    <Content Include="Seccion\Restaurant\AgregarMesa.aspx" />
-    <Content Include="Seccion\Restaurant\AgregarRest.aspx" />
-    <Content Include="Seccion\Restaurant\ModificarMesa.aspx" />
-    <Content Include="Seccion\Restaurant\ModificarRest.aspx" />
     <Content Include="Seccion\Restaurant\Restaurante.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -615,34 +611,6 @@
     </Compile>
     <Compile Include="Seccion\Restaurant\AgregarCategoria.aspx.designer.cs">
       <DependentUpon>AgregarCategoria.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\AgregarMesa.aspx.cs">
-      <DependentUpon>AgregarMesa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\AgregarMesa.aspx.designer.cs">
-      <DependentUpon>AgregarMesa.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\AgregarRest.aspx.cs">
-      <DependentUpon>AgregarRest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\AgregarRest.aspx.designer.cs">
-      <DependentUpon>AgregarRest.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\ModificarMesa.aspx.cs">
-      <DependentUpon>ModificarMesa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\ModificarMesa.aspx.designer.cs">
-      <DependentUpon>ModificarMesa.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\ModificarRest.aspx.cs">
-      <DependentUpon>ModificarRest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\ModificarRest.aspx.designer.cs">
-      <DependentUpon>ModificarRest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Restaurant\Restaurante.aspx.cs">
       <DependentUpon>Restaurante.aspx</DependentUpon>

@@ -161,10 +161,21 @@
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="~/default.aspx" runat="server"><i class="fa fa-fw fa-dashboard"></i> Panel de control</a>
+                        <a href="~/default.aspx" runat="server"><i class="fa fa-fw fa-dashboard"></i>Inicio</a>
                     </li>
                     <li>
-                        <a href="~/Seccion/Restaurant/Restaurante.aspx" runat="server"><i class="fa fa-fw fa-user"></i> Restaurante</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#restaurante"><i class="fa fa-fw fa-user"></i> Restaurante<i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="restaurante" class="collapse">
+                            <li>
+                                <a href="~/Seccion/Restaurant/Restaurante.aspx" runat="server">Restaurantes</a>
+                            </li>
+                            <li>
+                                <a href="~/Seccion/Restaurant/AgregarCategoria.aspx" runat="server">Categorias</a>
+                            </li>
+                            <li>
+                               <a href="#" runat="server">Zonas</a>
+                           </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#menu"><i class="fa fa-fw fa-shopping-basket"></i> Menú <i class="fa fa-fw fa-caret-down"></i></a>

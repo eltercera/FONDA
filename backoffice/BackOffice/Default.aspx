@@ -33,8 +33,8 @@
                             <i class="fa fa-cutlery fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
-                            <div>Comensales</div>
+                            <div class="huge">Menu</div>
+                            <div>Menu del dia</div>
                         </div>
                     </div>
                 </div>
@@ -119,8 +119,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i>Mesas</h3>
-                                <a data-toggle="modal" data-target="#agregar" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
-                                <div class="clearfix"></div> 
+                               <div class="clearfix"></div> 
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
@@ -132,7 +131,6 @@
                                                 <th>Cantidad de comensales</th>
                                                 <th>Reservación realizada por</th>
                                                 <th>Estado</th>
-                                                <th class="no-sort">Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -142,7 +140,6 @@
                                                 <td>4</td>
                                                 <td>@pperez</td>
                                                 <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p class="stat">I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td>#2</td>
@@ -150,7 +147,6 @@
                                                 <td>0</td>
                                                 <td></td>
                                                 <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                         </tbody>
                                     </table>       
