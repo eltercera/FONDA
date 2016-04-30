@@ -51,80 +51,80 @@
                                             <tr>
                                                 <td>Pasta</td>
                                                 <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                             <tr>
                                                 
                                                 <td>Carnes</td>
                                                 <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                    
                                             <tr>
                                                 
                                                 <td>Vegetales</td>                              
                                                 <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                             <tr>
                                                 
                                                 <td>Jugos</td>
                                                 <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                             <tr>
                                                 
                                                 <td>Postres</td>
                                                 <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                                 </tr>
                                                 <tr>
                                                 
                                                 <td>Postres</td>
                                                 <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                                 <tr>
                                                 
                                                 <td>Postres</td>
                                                 <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                                 <tr>
                                                 
                                                 <td>Postres</td>                                      
                                                 <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                                 <tr>
                                                 
                                                 <td>Postres</td>
                                                 <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                                 <tr>
                                                 
                                                 <td>Ávila Burger</td>
                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                                 <tr>
                                                 
                                                 <td>Postres</td>
                                                 <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                                 <tr>
                                                 
                                                 <td>Postres</td>
                                                 <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                                 <tr>
                                                 
                                                 <td>Postres</td>
                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                             </tr>
                                          
                                         </tbody>

@@ -27,7 +27,15 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
  
-   
+      <div class="row hide">
+        <div class="col-lg-12">
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> El platillo fue agregado <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
+
         <div class="row">
            <div class="col-lg-12">
                         <div class="panel panel-default">
@@ -65,9 +73,9 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"></i></span></td>
 
-                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
                                         </tr>
                                             <tr>
                                           
@@ -82,10 +90,11 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"></i></span></td>
 
-                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                        </tr>
+                                               <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
+
+                                            </tr>
                                             <tr>
                                           
                                             <td style="vertical-align: middle">Pasta con Vegetales</td>
@@ -101,8 +110,8 @@
                                             </td>
                                                 <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
 
-                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                     
+                                               <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
+
                                               
                                         </tr>
                                             <tr>
@@ -118,10 +127,10 @@
                                                     </label>
                                                 </div>
                                             </td>
-                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
+                                                <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"></i></span></td>
 
-                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                           
+                                               <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
+
                                            
                                         </tr>
                                                 
@@ -178,7 +187,8 @@
                                                 </div>
                                             </td>
                                              <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
-                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
+                                             <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
+
                                         </tr>
                                         <tr>
                                            
@@ -195,7 +205,8 @@
                                             </td>
                                                 <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
 
-                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
+                                               <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
+
                                         </tr>
                                         <tr>
                                            
@@ -212,7 +223,8 @@
                                             </td>
                                                 <td class="text-center" style="text-align:center; vertical-align:middle""><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
 
-                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
+
                                         </tr>
                                     </tbody>
                                 </table>
@@ -334,6 +346,7 @@
                         </div>
                 </div>
             </div>
+         </div>
 
     <!-- Modal agregar platillo-->
     <div class="modal fade" id="agregar_platillo" role="dialog">
