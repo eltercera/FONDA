@@ -22,12 +22,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private Map<String, List<String>> coleccionDevisitas;
     private List<String> visitas;
+    private String[] location;
+    private String[] shortDescription;
+
 
     public ExpandableListAdapter(Context context, List<String> visitas,
-                                 Map<String, List<String>> coleccionDevisitas) {
+                                 Map<String, List<String>> coleccionDevisitas, String[] shortDescription, String[] location) {
         this.context = context;
         this.coleccionDevisitas = coleccionDevisitas;
         this.visitas = visitas;
+        this.location = location;
+        this.shortDescription = shortDescription;
     }
 
     public Object getChild(int groupPosition, int childPosition) {
@@ -80,21 +85,27 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.group_item_detail_visit,
                     null);
         }
-        TextView item = (TextView) convertView.findViewById(R.id.laptop);
+
         ImageView icon = (ImageView) convertView.findViewById(R.id.restaurant);
-        if((laptopName).equals("RESTAURANTE: Moute Grill                                12/10/15"))
-            icon.setImageResource(R.drawable.calendar_24);
-        if((laptopName).equals("RESTAURANTE: La Castanuela                              12/10/15"))
-            icon.setImageResource(R.drawable.calendar_24);
-        if((laptopName).equals("RESTAURANTE: Chino                                      12/10/15"))
-            icon.setImageResource(R.drawable.nav_order);
-        if((laptopName).equals("RESTAURANTE: Loreto                                     12/10/15"))
-            icon.setImageResource(R.drawable.nav_rest);
-        if((laptopName).equals("RESTAURANTE: El tinajero                                12/10/15"))
-            icon.setImageResource(R.drawable.nav_rest);
+        TextView item = (TextView) convertView.findViewById(R.id.laptop);
+        TextView item2 = (TextView) convertView.findViewById(R.id.txt2);
+
+        TextView item3 = (TextView) convertView.findViewById(R.id.txt3);
+        if((laptopName).equals("The dining room"))
+            icon.setImageResource(R.mipmap.ic_restaurant001);
+        if((laptopName).equals("Mogi Mirin"))
+            icon.setImageResource(R.mipmap.ic_restaurant002);
+        if((laptopName).equals("Gordo & Magro"))
+            icon.setImageResource(R.mipmap.ic_restaurant003);
+        if((laptopName).equals("La Casona"))
+            icon.setImageResource(R.mipmap.ic_restaurant004);
+        if((laptopName).equals("Tony's"))
+            icon.setImageResource(R.mipmap.ic_restaurant005);
 
         item.setTypeface(null, Typeface.BOLD);
         item.setText(laptopName);
+        item2.setText(location[groupPosition]);
+        item3.setText(shortDescription[groupPosition]);
         return convertView;
     }
 

@@ -38,7 +38,7 @@ public class HistoryVisitFragment extends BaseFragment {
 
         expListView = (ExpandableListView) layout.findViewById(R.id.laptop_list);
         final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
-                getContext(), groupList, coleccionDevisitas);
+                getContext(), groupList, coleccionDevisitas,shortDescription,location);
         expListView.setAdapter(expListAdapter);
 
         //setGroupIndicatorToRight();
@@ -58,15 +58,40 @@ public class HistoryVisitFragment extends BaseFragment {
         return layout;
 
     }
-
+    String[] names = {
+            "The dining room",
+            "Mogi Mirin",
+            "Gordo & Magro",
+            "La Casona",
+            "Tony's"} ;
+    String[] location = {
+            "La castellana",
+            "Los dos caminos",
+            "La California",
+            "Parque central",
+            "El Rosal"} ;
+    String[] shortDescription = {
+            "Casual",
+            "Romantico",
+            "Italiano",
+            "Italiano",
+            "Americano"} ;
     private void createGroupList() {
-        groupList = new ArrayList<String>();
-        groupList.add("RESTAURANTE: El tinajero                                12/10/15");
-        groupList.add("RESTAURANTE: La Castanuela                              12/10/15");
-        groupList.add("RESTAURANTE: Moute Grill                                12/10/15");
-        groupList.add("RESTAURANTE: Chino                                      12/10/15");
-        groupList.add("RESTAURANTE: Loreto                                     12/10/15");
-    }
+       groupList = new ArrayList<String>();
+
+            for (String model : names)
+                groupList.add(model);
+        }
+
+
+
+      /*  groupList = new ArrayList<String>();
+        groupList.add("El tinajero                                12/10/15");
+        groupList.add("La Castanuela                              12/10/15");
+        groupList.add("Moute Grill                                12/10/15");
+        groupList.add("Chino                                      12/10/15");
+        groupList.add("Loreto                                     12/10/15");
+*/
 
     private void createCollection() {
         // preparing laptops collection(child)
@@ -80,15 +105,15 @@ public class HistoryVisitFragment extends BaseFragment {
         coleccionDevisitas = new LinkedHashMap<String, List<String>>();
 
         for (String laptop : groupList) {
-            if (laptop.equals("RESTAURANTE: El tinajero                                12/10/15")) {
+            if (laptop.equals("The dining room")) {
                 loadChild(data1);
-            } else if (laptop.equals("RESTAURANTE: La Castanuela                              12/10/15"))
+            } else if (laptop.equals("Mogi Mirin"))
                 loadChild(data2);
-            else if (laptop.equals("RESTAURANTE: Moute Grill                                12/10/15"))
+            else if (laptop.equals("Gordo & Magro"))
                 loadChild(data3);
-            else if (laptop.equals("RESTAURANTE: Chino                                      12/10/15"))
+            else if (laptop.equals("La Casona"))
                 loadChild(data4);
-            else  if (laptop.equals("RESTAURANTE: Loreto                                     12/10/15"))
+            else  if (laptop.equals("Tony's"))
                 loadChild(data5);
 
             coleccionDevisitas.put(laptop, childList);

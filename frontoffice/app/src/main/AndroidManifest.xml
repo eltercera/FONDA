@@ -56,9 +56,6 @@
             android:name=".views.activities.RegistrarTdcActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.activities.DetailVisitActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".views.activities.CierreCuentaActivity"
             android:label="Cerrar Cuenta"
             android:theme="@style/AppTheme.NoActionBar" />
