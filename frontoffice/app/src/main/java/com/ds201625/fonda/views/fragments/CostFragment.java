@@ -3,6 +3,7 @@ package com.ds201625.fonda.views.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,10 +39,13 @@ public class CostFragment extends BaseFragment {
         //Indicar el layout que va a usar el fragment
         View view= inflater.inflate(R.layout.fragment_cost,container,false);
 
-        FilterList adapter = new
+        /*FilterList adapter = new
                 FilterList(getActivity(),location);
         list=(ListView)view.findViewById(R.id.listViewRestaurants);
-        list.setAdapter(adapter);
+        list.setAdapter(adapter);*/
+
+        DialogFragment dialog = new TwoActionButtonsDialog();
+        dialog.show(getSupportFragmentManager(), "dialog");
 
         return view;
 
