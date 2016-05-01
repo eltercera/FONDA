@@ -105,8 +105,8 @@ public class PagoOrdenActivity extends BaseNavigationActivity {
 
     public void cambiarOrden ()
     {
-        Intent cambio = new Intent (this,CierreCuentaActivity.class);
-        startActivity(cambio);
+        //Intent cambio = new Intent (this,CierreCuentaActivity.class);
+       // startActivity(cambio);
     }
 
     /*public void suma(View v) {
