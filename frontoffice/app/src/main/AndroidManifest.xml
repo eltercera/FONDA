@@ -47,9 +47,6 @@
             android:name=".views.activities.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".views.activities.PagoExitosoActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".views.activities.PagoOrdenActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
