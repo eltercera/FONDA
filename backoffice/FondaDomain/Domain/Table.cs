@@ -12,7 +12,7 @@ namespace com.ds201625.fonda.Domain
     class Table
     {
         /// <summary>
-		/// El number es el numero único por el que se identifica la mesa 
+		/// El number es el numero único por el que se identifica cada mesa 
 		/// </summary>
 		private int _number;
         /// <summary>
