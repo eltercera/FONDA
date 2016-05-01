@@ -16,5 +16,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabIndicatorColor="@color/strawberry"
+        app:tabIndicatorHeight="4dp"
         android:theme="@style/AppTheme.TabsBarOverlay" />
 </android.support.design.widget.AppBarLayout>
