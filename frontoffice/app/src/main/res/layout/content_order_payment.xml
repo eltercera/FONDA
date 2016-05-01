@@ -9,24 +9,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".views.activities.CierreCuentaActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Pago de cuenta"
-        android:id="@+id/tVTitulo"
-        android:textSize="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    tools:context=".views.activities.PagoOrdenActivity"
+    android:background="@drawable/bckg">
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"
         android:layout_marginTop="78dp"
-        android:layout_below="@+id/tVTitulo"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/view" />
@@ -35,8 +25,7 @@
         android:layout_height="1dp"
         android:background="@android:color/black"
         android:id="@+id/view2"
-        android:layout_marginBottom="177dp"
-        android:layout_above="@+id/tvSub"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -53,11 +42,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1600"
-        android:id="@+id/tVSubTotalValor"
-        android:layout_alignTop="@+id/tVSubMoneda"
-        android:layout_alignLeft="@+id/textView20"
-        android:layout_alignStart="@+id/textView20" />
+        android:id="@+id/tvTip"
+        android:layout_alignTop="@+id/textView25"
+        android:layout_toRightOf="@+id/etTip"
+        android:layout_toEndOf="@+id/etTip" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,15 +53,15 @@
         android:text="Bs. "
         android:id="@+id/tVSubMoneda"
         android:layout_alignTop="@+id/tvSub"
-        android:layout_toRightOf="@+id/tVTitulo"
-        android:layout_toEndOf="@+id/tVTitulo" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fecha:"
         android:id="@+id/tVFecha"
-        android:layout_alignBottom="@+id/view"
+        android:textSize="25dp"
+        android:layout_above="@+id/lVOrden"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -84,27 +72,8 @@
         android:id="@+id/textView11"
         android:layout_alignTop="@+id/tVFecha"
         android:layout_toRightOf="@+id/tVFecha"
-        android:layout_toEndOf="@+id/tVFecha" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hora:"
-        android:id="@+id/textView12"
-        android:layout_alignBottom="@+id/textView11"
-        android:layout_alignRight="@+id/view"
-        android:layout_alignEnd="@+id/view"
-        android:layout_marginRight="40dp"
-        android:layout_marginEnd="40dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="05:32"
-        android:id="@+id/textView20"
-        android:layout_alignTop="@+id/textView12"
-        android:layout_alignRight="@+id/view"
-        android:layout_alignEnd="@+id/view" />
+        android:layout_toEndOf="@+id/tVFecha"
+        android:textSize="25dp" />
 
     <ListView
         android:layout_width="wrap_content"
@@ -116,31 +85,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Propina en porcentaje"
-        android:id="@+id/radioButton3"
-        android:checked="false"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="55dp"
-        android:layout_below="@+id/lVOrden" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="%"
-        android:id="@+id/textView23"
-        android:layout_below="@+id/radioButton3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/editText5"
-        android:layout_toLeftOf="@+id/editText5"
-        android:layout_toStartOf="@+id/editText5"
-        android:layout_alignParentRight="false"
-        android:gravity="center_vertical|center_horizontal" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -166,41 +110,40 @@
         android:layout_height="wrap_content"
         android:text="1600"
         android:id="@+id/textView26"
-        android:layout_alignTop="@+id/textView25"
-        android:layout_alignLeft="@+id/tVSubTotalValor"
-        android:layout_alignStart="@+id/tVSubTotalValor" />
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Propina en monto"
-        android:id="@+id/radioButton4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="false"
-        android:layout_below="@+id/lVOrden"
-        android:layout_marginTop="20dp" />
+        android:layout_alignBaseline="@+id/tVSubMoneda"
+        android:layout_alignBottom="@+id/tVSubMoneda"
+        android:layout_toRightOf="@+id/etTip"
+        android:layout_toEndOf="@+id/etTip" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText5"
-        android:layout_below="@+id/radioButton3"
-        android:layout_alignRight="@+id/radioButton3"
-        android:layout_alignEnd="@+id/radioButton3"
+        android:id="@+id/etTip"
         android:layout_toRightOf="@+id/tVFecha"
-        android:layout_toEndOf="@+id/tVFecha" />
+        android:layout_toEndOf="@+id/tVFecha"
+        android:layout_below="@+id/lVOrden" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:layout_alignBottom="@+id/editText5"
-        android:layout_toRightOf="@+id/editText5"
-        android:background="@android:drawable/ic_menu_send"
-        android:layout_alignTop="@+id/editText5" />
+        android:id="@+id/spinner"
+        android:layout_below="@+id/lVOrden"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/etTip"
+        android:layout_toLeftOf="@+id/etTip"
+        android:layout_toStartOf="@+id/etTip" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tvTip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
