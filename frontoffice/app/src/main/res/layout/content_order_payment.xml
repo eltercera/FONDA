@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".views.activities.CierreCuentaActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Pago de cuenta"
+        android:id="@+id/tVTitulo"
+        android:textSize="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:layout_marginTop="78dp"
+        android:layout_below="@+id/tVTitulo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/view" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:id="@+id/view2"
+        android:layout_marginBottom="177dp"
+        android:layout_above="@+id/tvSub"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Factura"
+        android:id="@+id/tvSub"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="28dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1600"
+        android:id="@+id/tVSubTotalValor"
+        android:layout_alignTop="@+id/tVSubMoneda"
+        android:layout_alignLeft="@+id/textView20"
+        android:layout_alignStart="@+id/textView20" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bs. "
+        android:id="@+id/tVSubMoneda"
+        android:layout_alignTop="@+id/tvSub"
+        android:layout_toRightOf="@+id/tVTitulo"
+        android:layout_toEndOf="@+id/tVTitulo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha:"
+        android:id="@+id/tVFecha"
+        android:layout_alignBottom="@+id/view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="23-04-2016"
+        android:id="@+id/textView11"
+        android:layout_alignTop="@+id/tVFecha"
+        android:layout_toRightOf="@+id/tVFecha"
+        android:layout_toEndOf="@+id/tVFecha" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hora:"
+        android:id="@+id/textView12"
+        android:layout_alignBottom="@+id/textView11"
+        android:layout_alignRight="@+id/view"
+        android:layout_alignEnd="@+id/view"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="05:32"
+        android:id="@+id/textView20"
+        android:layout_alignTop="@+id/textView12"
+        android:layout_alignRight="@+id/view"
+        android:layout_alignEnd="@+id/view" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lVOrden"
+        android:layout_below="@+id/view"
+        android:layout_alignBottom="@+id/view2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Propina en porcentaje"
+        android:id="@+id/radioButton3"
+        android:checked="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/lVOrden" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="%"
+        android:id="@+id/textView23"
+        android:layout_below="@+id/radioButton3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/editText5"
+        android:layout_toLeftOf="@+id/editText5"
+        android:layout_toStartOf="@+id/editText5"
+        android:layout_alignParentRight="false"
+        android:gravity="center_vertical|center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Propina"
+        android:id="@+id/textView24"
+        android:layout_alignTop="@+id/textView25"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bs. "
+        android:id="@+id/textView25"
+        android:layout_above="@+id/tvSub"
+        android:layout_alignLeft="@+id/tVSubMoneda"
+        android:layout_alignStart="@+id/tVSubMoneda"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1600"
+        android:id="@+id/textView26"
+        android:layout_alignTop="@+id/textView25"
+        android:layout_alignLeft="@+id/tVSubTotalValor"
+        android:layout_alignStart="@+id/tVSubTotalValor" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Propina en monto"
+        android:id="@+id/radioButton4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:checked="false"
+        android:layout_below="@+id/lVOrden"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/editText5"
+        android:layout_below="@+id/radioButton3"
+        android:layout_alignRight="@+id/radioButton3"
+        android:layout_alignEnd="@+id/radioButton3"
+        android:layout_toRightOf="@+id/tVFecha"
+        android:layout_toEndOf="@+id/tVFecha" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:layout_alignBottom="@+id/editText5"
+        android:layout_toRightOf="@+id/editText5"
+        android:background="@android:drawable/ic_menu_send"
+        android:layout_alignTop="@+id/editText5" />
+
+</RelativeLayout>
