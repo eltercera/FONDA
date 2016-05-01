@@ -2,23 +2,18 @@ package com.ds201625.fonda.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
-import com.ds201625.fonda.views.fragments.CloseAccountFragment;
 import com.ds201625.fonda.views.fragments.CurrentOrderFragment;
-import com.ds201625.fonda.views.fragments.HistorialVisitasFragment;
-import com.ds201625.fonda.views.fragments.ProfileListFragment;
+import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
 
 /**
  * Actividad de prueba Orden para mostrar el uso de los Tabs.
@@ -74,7 +69,7 @@ public class Orders2Activity extends BaseNavigationActivity {
 
        //Tab con solo un String como titulo
         mSectionsPagerAdapter.addFragment("Orden Actual",orderListFrag);
-        mSectionsPagerAdapter.addFragment("Historial de Visitas",new HistorialVisitasFragment());
+        mSectionsPagerAdapter.addFragment("Historial de Visitas",new HistoryVisitFragment());
        // mSectionsPagerAdapter.addFragment("Cerrar Cuenta",closeAccFrag);
         //Importante ejecutar esto para que se creen los iconos en el tab.
         mSectionsPagerAdapter.iconsSetup();

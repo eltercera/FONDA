@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +13,8 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.CurrentOrderFragment;
-import com.ds201625.fonda.views.fragments.HistorialVisitasFragment;
+import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
+import com.ds201625.fonda.views.fragments.ProfileListFragment;
 
 public class OrdersActivity extends BaseNavigationActivity {
 
@@ -69,27 +69,13 @@ public class OrdersActivity extends BaseNavigationActivity {
 
         //Tab con solo un String como titulo
         mSectionsPagerAdapter.addFragment("Orden Actual",orderListFrag);
-        mSectionsPagerAdapter.addFragment("Historial de Visitas",new HistorialVisitasFragment());
+        mSectionsPagerAdapter.addFragment("Historial de Visitas",new HistoryVisitFragment());
         // mSectionsPagerAdapter.addFragment("Cerrar Cuenta",closeAccFrag);
         //Importante ejecutar esto para que se creen los iconos en el tab.
         mSectionsPagerAdapter.iconsSetup();
 
 
     }
-    /**
-     * Sobre escritura para la iniciacion del menu en el toolbars
-     * @param menu
-     * @return
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.close, menu);
-        cerrarBotton = menu.findItem(R.id.close);
-
-        return true;
-    }
-
 
     /**
      * Realiza el intercambio de vistas de fragments
@@ -105,15 +91,30 @@ public class OrdersActivity extends BaseNavigationActivity {
         if(fragment.equals(orderListFrag)){
             if(cerrarBotton != null)
                 cerrarBotton.setVisible(false);
-            // fab.setVisibility(View.VISIBLE);
+          //  tabLayout.setVisibility(View.VISIBLE);
             //  profileListFrag.seProfiles(p);
         } else {
             if(cerrarBotton != null)
                 cerrarBotton.setVisible(true);
-            //  fab.setVisibility(View.GONE);
+         //   tabLayout.setVisibility(View.GONE);
         }
 
     }
+
+    /**
+     * Sobre escritura para la iniciacion del menu en el toolbars
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.close, menu);
+        cerrarBotton = menu.findItem(R.id.close);
+
+        return true;
+    }
+
 
     /**
      * Opciones y acciones del menu en el toolbars
@@ -135,6 +136,7 @@ public class OrdersActivity extends BaseNavigationActivity {
                 "Se puede proceder con el cierre.");
         dialog.show();
     */
+
         cambiarCC();
     }
 

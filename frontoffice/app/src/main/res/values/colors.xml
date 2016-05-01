@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#754e36</color>
-    <color name="colorPrimaryDark">#222222</color>
     <color name="colorAccent">#333</color>
+    <color name="darker">#452E20</color>
+    <color name="blurry">#96252525</color>
+    <color name="opposite">#FEA975</color>
+    <color name="middle">#D79063</color>
+    <color name="end">#b77b55</color>
+
+    <!--Estos son los colores que se pueden utilizar-->
+    <color name="colorPrimary">#754e36</color>
+    <color name="colorPrimaryDark">#222</color>
+    <color name="powder">#ECE5CE</color>
+    <color name="creme">#F1D4AF</color>
+
+    <!--Solo para detalles muy pequenos-->
+    <color name="strawberry">#E08E79</color>
+    <color name="charlotte">#C5E0DC</color>
+
+    <!--Eliminar este color-->
     <color name="brownPastelBackground">#DBC79F</color>
 </resources>
