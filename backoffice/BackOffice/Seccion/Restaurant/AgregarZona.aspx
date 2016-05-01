@@ -1,9 +1,10 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="AgregarZona.aspx.cs" Inherits="BackOffice.Seccion.Restaurant.AgregarZona" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 Agregar Zona
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    Agregar Zona
+Agregar Zona
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
 </asp:Content>
