@@ -17,7 +17,7 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Lista de restaurante favoritos de un comansal
 		/// </summary>
-		private List <Restaurant> _favoritesRestaurants;
+		private IList <Restaurant> _favoritesRestaurants;
 
 		public Commensal () : base ()
 		{
