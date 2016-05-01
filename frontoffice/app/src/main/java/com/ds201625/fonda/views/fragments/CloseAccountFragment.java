@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.views.adapters.CloseViewItemList;
+import com.ds201625.fonda.views.adapters.OrderViewItemList;
 
 /**
  * Clase de Prueba para mostar el uso de Fragments
@@ -18,11 +20,23 @@ public class CloseAccountFragment extends BaseFragment {
 
 
 
-    private String[] comidas = {
-            "      1          Plato 1           Bs. 1000",
-            "      1          Refresco           Bs. 100",
-            "      1          Torta              Bs. 500"};
+
+    String[] names = {
+            "Pasta Con Salmon",
+            "Coca-Cola",
+            "Terciopelo Rojo"
+    } ;
+    String[] quantity = {
+            "1",
+            "1",
+            "1"} ;
+    String[] price = {
+            "Bs. 1000",
+            "Bs. 100",
+            "Bs. 500"} ;
     private ListView lv1;
+
+    private CloseViewItemList closeViewItem;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,8 +51,9 @@ public class CloseAccountFragment extends BaseFragment {
 
         View layout = inflater.inflate(R.layout.fragment_close_account,container,false);
 
-        lv1 =(ListView)layout.findViewById(R.id.lVOrden);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1, comidas);
+        CloseViewItemList adapter = new CloseViewItemList(getContext(),
+                names,quantity,price);
+        lv1=(ListView)layout.findViewById(R.id.lvOrderList);
         lv1.setAdapter(adapter);
 
         return layout;
