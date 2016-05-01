@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\BaseEntity.cs" />
+    <Compile Include="Domain\Dish.cs" />
+    <Compile Include="Domain\MenuCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\Status.cs" />
     <Compile Include="Domain\EntityRecordStatus.cs" />
