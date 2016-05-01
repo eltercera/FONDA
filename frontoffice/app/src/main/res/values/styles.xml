@@ -37,6 +37,11 @@
         <item name="actionBarPopupTheme">@style/ThemeOverlay.AppTheme.PopupMenu</item>
     </style>
 
+    <style name="AppTheme.TabsBarOverlay" parent="AppTheme.AppBarOverlay">
+        <item name="android:background">@color/creme</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
     <style name="Widget.AppTheme.ActionBar" parent="Widget.AppCompat.ActionBar.Solid">
         <!-- action bar background -->
         <item name="background">@color/colorPrimaryDark</item>

@@ -14,5 +14,6 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.TabsBarOverlay" />
 </android.support.design.widget.AppBarLayout>
