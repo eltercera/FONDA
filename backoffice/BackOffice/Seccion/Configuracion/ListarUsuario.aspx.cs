@@ -19,5 +19,9 @@ namespace BackOffice.Seccion.Configuracion
             Response.Redirect("../Configuracion/AgregarModificarUsuario.aspx?success=agregar");
         }
 
+        protected void ModalInfo_Click(string opc)
+        {
+            Response.Redirect("../Configuracion/AgregarModificarUsuario.aspx?success=agregar");
+        }
     }
 }
