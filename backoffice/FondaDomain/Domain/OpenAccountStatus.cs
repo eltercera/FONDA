@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -41,7 +37,7 @@ namespace com.ds201625.fonda.Domain
         /// <returns>Abierto en String</returns>
         public override string ToString()
         {
-            return "Abierta";
+            return "Abierto";
         }
     }
 }

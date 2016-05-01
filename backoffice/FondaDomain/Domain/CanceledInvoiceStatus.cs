@@ -2,27 +2,27 @@
 
 namespace com.ds201625.fonda.Domain
 {
-    class ClosedAccountStatus : AccountStatus
+    class CanceledInvoiceStatus : InvoiceStatus
     {
         /// <summary>
 		/// La intancia unica
 		/// </summary>
-		private static ClosedAccountStatus _instance;
+		private static CanceledInvoiceStatus _instance;
 
         /// <summary>
 		/// Consructor
 		/// </summary>
-		public ClosedAccountStatus() : base () { }
+		public CanceledInvoiceStatus() : base () { }
 
         /// <summary>
-        /// Obtiene el Estado Cerrado de una entidad
+        /// Obtiene el Estado Cancelado de una entidad
         /// </summary>
-        public static ClosedAccountStatus Instance
+        public static CanceledInvoiceStatus Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new ClosedAccountStatus();
+                    _instance = new CanceledInvoiceStatus();
 
                 return _instance;
             }
@@ -31,10 +31,10 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Retrona una descripcion de este estado
         /// </summary>
-        /// <returns>Cerrado en String</returns>
+        /// <returns>Cancelado en String</returns>
         public override string ToString()
         {
-            return "Cerrado";
+            return "Cancelado";
         }
     }
 }
