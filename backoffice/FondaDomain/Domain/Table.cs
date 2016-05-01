@@ -19,10 +19,12 @@ namespace com.ds201625.fonda.Domain
 		/// La capacidad de la mesa (Mesa de 2, 4, 8, 16 personas)
 		/// </summary>
 		private int _capacity;
+        
         /// <summary>
         /// Estado simple de la mesa (Disponible, No Disponible)
         /// </summary>
-        private SimpleStatus _status;
+        private TableStatus _status;
+
         public virtual int Number
         {
             get { return _number; }
@@ -33,6 +35,12 @@ namespace com.ds201625.fonda.Domain
         {
             get { return _capacity; }
             set { _capacity = value; }
+        }
+
+        public virtual TableStatus Status
+        {
+            get { return _status; }
+            set { _status = value; }
         }
 
     }
