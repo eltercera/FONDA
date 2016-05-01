@@ -51,9 +51,8 @@ public class CloseAccountFragment extends BaseFragment {
 
         View layout = inflater.inflate(R.layout.fragment_close_account,container,false);
 
-        CloseViewItemList adapter = new CloseViewItemList(getContext(),
-                names,quantity,price);
-        lv1=(ListView)layout.findViewById(R.id.lvOrderList);
+        CloseViewItemList adapter = new CloseViewItemList(getContext(),quantity,names,price);
+        lv1=(ListView)layout.findViewById(R.id.lVOrden);
         lv1.setAdapter(adapter);
 
         return layout;
