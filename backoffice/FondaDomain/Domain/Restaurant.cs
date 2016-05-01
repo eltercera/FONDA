@@ -29,6 +29,11 @@ namespace com.ds201625.fonda.Domain
         private string _address;
 
         /// <summary>
+        /// Estatus del restaurante ( Activo , Inactivo )
+        /// </summary>
+        private SimpleStatus _status;
+
+        /// <summary>
         /// Tipo de moneda usada por el Restaurante
         /// </summary>
         private Currency _currency;
@@ -123,6 +128,19 @@ namespace com.ds201625.fonda.Domain
             /// </summary>
             /// <value>Recibe el logo de un restaurante </value>
             set { _logo = value; }
+        }
+
+        public SimpleStatus Status
+        {
+            /// <summary>
+            /// Obtiene el tipo de estatus de un restaurante
+            /// </summary>
+            get { return _status; }
+            /// <summary>
+            /// Asigna el tipo de estatus de un restaurante 
+            /// </summary>
+            /// <value>Recibe el tipo de estatus de un restaurante </value>
+            set { _status = value; }
         }
 
         public Currency Currency
