@@ -152,6 +152,15 @@ $(document).ready(function () {
     });
 });
 $(document).ready(function () {
+    $('#ZonaRest').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            { "bSearchable": false }
+        ]
+    });
+});
+$(document).ready(function () {
     $('#mesa').DataTable({
         "language": spanish,
         "aoColumns": [

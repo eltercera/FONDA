@@ -171,7 +171,7 @@
                                 <a href="~/Seccion/Restaurant/AgregarCategoria.aspx" runat="server">Categorias</a>
                             </li>
                             <li>
-                               <a href="#" runat="server">Zonas</a>
+                               <a href="~/Seccion/Restaurant/AgregarZona.aspx" runat="server">Zonas</a>
                            </li>
                         </ul>
                     <li>
