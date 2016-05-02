@@ -2,6 +2,7 @@ package com.ds201625.fonda.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,8 @@ public class CloseViewItemList extends ArrayAdapter<String> {
         TextView txtTitle = (TextView) rowView.findViewById(R.id.txt);
         TextView txtTitle3 = (TextView) rowView.findViewById(R.id.txt3);
 
+        txtTitle3.setGravity(Gravity.RIGHT);
+        txtTitle2.setGravity(Gravity.CENTER);
 
         txtTitle2.setText(quantity[position]);
         txtTitle.setText(name[position]);
