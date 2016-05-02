@@ -10,16 +10,16 @@
 namespace BackOffice.Seccion.Configuracion {
     
     
-    public partial class ListarUsuario {
+    public partial class ModalAgregar {
         
         /// <summary>
-        /// Control alert.
+        /// Control Usuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alert;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Usuario;
         
         /// <summary>
         /// Control nameUser.
@@ -67,39 +67,39 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.WebControls.TextBox address;
         
         /// <summary>
-        /// Control statusA.
+        /// Control statusDojoA.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton statusA;
+        protected global::System.Web.UI.WebControls.RadioButton statusDojoA;
         
         /// <summary>
-        /// Control statusI.
+        /// Control statusDojoI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton statusI;
+        protected global::System.Web.UI.WebControls.RadioButton statusDojoI;
         
         /// <summary>
-        /// Control ButtonAgrMod.
+        /// Control Button1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonAgrMod;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// Control ButtonCancelar.
+        /// Control Button2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCancelar;
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }
