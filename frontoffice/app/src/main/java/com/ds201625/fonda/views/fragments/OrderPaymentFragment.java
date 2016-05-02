@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.views.activities.OrdersActivity;
 
 import org.w3c.dom.Text;
 
@@ -27,8 +28,8 @@ public class OrderPaymentFragment extends BaseFragment {
 
 
 
-    private String[] pay = {"  " +
-            "Monto Total      Bs.    2000   ",
+    private String[] pay = {"Monto Total " +
+            " Bs. 2000 ",
             "Seleccionar Perfil",
             "Seleccionar TDC"};
     private ListView lv1;
@@ -63,7 +64,13 @@ public class OrderPaymentFragment extends BaseFragment {
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(LTRadapter);
 
+        return layout;
+    }
 
+    //La vista ha sido creada y cualquier configuración guardada está cargada
+    @Override
+    public void onViewStateRestored(Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
         // Verify and reflects the amount of the tip
         tvTip = (TextView) layout.findViewById(R.id.tvTip);
         etTip = (EditText) layout.findViewById(R.id.etTip);
@@ -81,6 +88,7 @@ public class OrderPaymentFragment extends BaseFragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+                spinner.getOnItemSelectedListener();
                 if (spinner.getSelectedItemPosition()==0)
                 {
 
@@ -92,10 +100,7 @@ public class OrderPaymentFragment extends BaseFragment {
 
             }
         });
-
-        return layout;
     }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
