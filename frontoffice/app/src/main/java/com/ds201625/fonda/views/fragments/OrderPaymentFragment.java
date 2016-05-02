@@ -27,18 +27,18 @@ import org.w3c.dom.Text;
 public class OrderPaymentFragment extends BaseFragment {
 
 
-
+    private float amount = 2000;
     private String[] pay = {"Monto Total " +
-            " Bs. 2000 ",
+            " Bs." + amount,
             "Seleccionar Perfil",
             "Seleccionar TDC"};
     private ListView lv1;
     private String [] values = {" % ", " Bs. "};
     private Spinner spinner;
-    private String changed;
     private EditText etTip;
     private TextView tvTip;
     private View layout;
+    private TextView tvAccount;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,6 +67,40 @@ public class OrderPaymentFragment extends BaseFragment {
         return layout;
     }
 
+    private void setTip()
+    {
+        try {
+            tvAccount = (TextView)layout.findViewById(R.id.tvAccount);
+            tvTip = (TextView)layout.findViewById(R.id.tvTip);
+            etTip = (EditText)layout.findViewById(R.id.etTip);
+            float tip;
+            float add;
+            int idSpinner = spinner.getSelectedItemPosition();
+
+        if (idSpinner==0)
+            {
+                tvTip.setText("");
+                tvAccount.setText("");
+                tip = (Float.parseFloat(etTip.getText().toString()) / 100) * amount;
+                add = tip + amount;
+                tvTip.setText(Float.toString(tip));
+                tvAccount.setText(Float.toString(add));
+            }
+        else if (idSpinner==1)
+            {
+                tvTip.setText("");
+                tvAccount.setText("");
+                tvTip.setText(etTip.getText().toString());
+                add = Float.parseFloat(etTip.getText().toString()) + amount;
+                tvAccount.setText(Float.toString(add));
+            }
+        }
+        catch (NumberFormatException e){
+            e.getMessage();
+            System.out.println("Ha ocurrido un error de formato de numero");
+        }
+    }
+
     //La vista ha sido creada y cualquier configuración guardada está cargada
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
@@ -74,7 +108,6 @@ public class OrderPaymentFragment extends BaseFragment {
         // Verify and reflects the amount of the tip
         tvTip = (TextView) layout.findViewById(R.id.tvTip);
         etTip = (EditText) layout.findViewById(R.id.etTip);
-        changed = etTip.getText().toString();
         etTip.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -83,21 +116,12 @@ public class OrderPaymentFragment extends BaseFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                setTip();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                spinner.getOnItemSelectedListener();
-                if (spinner.getSelectedItemPosition()==0)
-                {
-
-                }
-                else if (spinner.getSelectedItemPosition()==1)
-                {
-                    tvTip.setText(etTip.getText().toString());
-                }
-
+                setTip();
             }
         });
     }

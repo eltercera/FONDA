@@ -16,18 +16,17 @@
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="46dp"
         android:id="@+id/view"
         android:layout_below="@+id/textView6"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignRight="@+id/scrollView3"
+        android:layout_alignEnd="@+id/scrollView3" />
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"
         android:id="@+id/view2"
-        android:layout_marginBottom="108dp"
-        android:layout_above="@+id/tvTip"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -36,17 +35,18 @@
         android:layout_height="wrap_content"
         android:text="Total Factura"
         android:id="@+id/tvSub"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/textView24"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="28dp" />
+        android:layout_marginTop="40dp"
+        android:textSize="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvTip"
         android:layout_alignTop="@+id/textView25"
-        android:layout_toRightOf="@+id/etTip" />
+        android:layout_toRightOf="@+id/textView25" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,14 +54,16 @@
         android:text="Bs. "
         android:id="@+id/tVSubMoneda"
         android:layout_alignTop="@+id/tvSub"
-        android:layout_centerHorizontal="true" />
+        android:layout_toRightOf="@+id/textView11"
+        android:layout_toEndOf="@+id/textView11"
+        android:textSize="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fecha:"
         android:id="@+id/tVFecha"
-        android:textSize="25dp"
+        android:textSize="16dp"
         android:layout_above="@+id/lVOrden"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -75,7 +77,7 @@
         android:layout_alignTop="@+id/tVFecha"
         android:layout_toRightOf="@+id/tVFecha"
         android:layout_toEndOf="@+id/tVFecha"
-        android:textSize="25dp"
+        android:textSize="16dp"
         android:layout_marginBottom="10dp" />
 
     <ListView
@@ -92,9 +94,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Propina"
+        android:text="Monto propina"
         android:id="@+id/textView24"
-        android:layout_alignTop="@+id/textView25"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/spinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -104,18 +107,17 @@
         android:text="Bs. "
         android:id="@+id/textView25"
         android:layout_above="@+id/tvSub"
-        android:layout_alignLeft="@+id/tVSubMoneda"
-        android:layout_alignStart="@+id/tVSubMoneda"
-        android:layout_marginBottom="20dp" />
+        android:layout_toRightOf="@+id/textView11"
+        android:layout_toEndOf="@+id/textView11" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1600"
-        android:id="@+id/textView26"
+        android:id="@+id/tvAccount"
         android:layout_alignTop="@+id/tVSubMoneda"
         android:layout_toRightOf="@+id/tvTip"
-        android:layout_toEndOf="@+id/tvTip" />
+        android:layout_toEndOf="@+id/tvTip"
+        android:textSize="15dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -123,23 +125,22 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/etTip"
-        android:layout_below="@+id/textView21"
+        android:hint="Propina"
         android:layout_toRightOf="@+id/spinner"
-        android:layout_alignRight="@+id/textView11"
-        android:layout_alignEnd="@+id/textView11"
-        android:layout_marginTop="10dp" />
+        android:layout_below="@+id/lVOrden"
+        android:layout_marginTop="20dp" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
-        android:layout_below="@+id/textView21"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignBottom="@+id/etTip"
         android:layout_alignRight="@+id/tvSub"
         android:layout_alignEnd="@+id/tvSub"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/lVOrden" />
 
     <TextView
         android:layout_width="match_parent"
@@ -149,9 +150,9 @@
         android:id="@+id/textView6"
         android:textSize="25dp"
         android:textAlignment="center"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -159,28 +160,6 @@
         android:id="@+id/imageView2"
         android:layout_toRightOf="@+id/tVFecha"
         android:layout_toEndOf="@+id/tVFecha" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Propina"
-        android:id="@+id/textView21"
-        android:layout_below="@+id/lVOrden"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentEnd="false" />
-
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/etTip"
-        android:layout_toEndOf="@+id/etTip"
-        android:layout_alignTop="@+id/etTip" />
 
     <ScrollView
         android:layout_width="wrap_content"
