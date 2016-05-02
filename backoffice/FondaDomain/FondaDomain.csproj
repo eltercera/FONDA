@@ -81,6 +81,8 @@
     <Compile Include="Domain\Profile.cs" />
     <Compile Include="Domain\ActiveSimpleStatus.cs" />
     <Compile Include="Domain\SimpleStatus.cs" />
+    <Compile Include="Domain\Employee.cs" />
+    <Compile Include="Domain\Zone.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

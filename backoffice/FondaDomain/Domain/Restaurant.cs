@@ -61,17 +61,17 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Lista de categorias del menu de un restaurante
         /// </summary>
-        private List <MenuCategory> _menuCategories;
+		private IList <MenuCategory> _menuCategories;
 
         /// <summary>
         /// Lista de empleados de un restaurante
         /// </summary>
-        private List <Employee> _employees;
+        private IList <Employee> _employees;
 
         /// <summary>
         /// Lista de las mesas de un restaurante
         /// </summary>
-        private List <Table> _tables;
+        private IList <Table> _tables;
 
         /// <summary>
         /// Constructor.
@@ -208,7 +208,7 @@ namespace com.ds201625.fonda.Domain
             set { _schedule = value; }
         }
 
-        public virtual List <MenuCategory> MenuCategories
+        public virtual IList <MenuCategory> MenuCategories
         {
             /// <summary>
             /// Obtiene una lista de categorias del menu de un Restaurante
@@ -221,7 +221,7 @@ namespace com.ds201625.fonda.Domain
             set { _menuCategories = value; }
         }
 
-        public virtual List <Employee> Employees
+        public virtual IList <Employee> Employees
         {
             /// <summary>
             /// Obtiene una lista de empleados de un Restaurante
@@ -234,7 +234,7 @@ namespace com.ds201625.fonda.Domain
             set { _employees = value; }
         }
 
-        public virtual List <Table> Tables
+        public virtual IList <Table> Tables
         {
             /// <summary>
             /// Obtiene una lista de mesas de un Restaurante

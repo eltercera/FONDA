@@ -7,7 +7,7 @@ namespace com.ds201625.fonda.Domain
     /// Categoria del Menu
     /// </summary>
 
-    class MenuCategory : NounBaseEntity
+    public class MenuCategory : NounBaseEntity
     {
         /// <summary>
         /// Estado simple de la Categoria
