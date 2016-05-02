@@ -7,7 +7,7 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Plato
     /// </summary>
-    class Dish : NounBaseEntity
+    public class Dish : NounBaseEntity
     {
         /// <summary>
         /// Descripcion
