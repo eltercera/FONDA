@@ -19,6 +19,8 @@ namespace com.ds201625.fonda.Domain
 		/// </summary>
 		private IList <Restaurant> _favoritesRestaurants;
 
+		private IList <Profile> _profiles;
+
 		public Commensal () : base ()
 		{
 			_favoritesRestaurants = new List<Restaurant> ();
@@ -40,9 +42,20 @@ namespace com.ds201625.fonda.Domain
 			set { _favoritesRestaurants = value; }
 		}
 
+		public virtual IList<Profile> Profiles
+		{
+			get { return _profiles; }
+			set { _profiles = value; }
+		}
+
 		public virtual void AddFavoriteRestaurant ( Restaurant restaurant )
 		{
 			_favoritesRestaurants.Add (restaurant);
+		}
+
+		public virtual void AddProfile ( Profile restaurant )
+		{
+			_profiles.Add (restaurant);
 		}
 
 	}

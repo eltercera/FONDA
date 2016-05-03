@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>com.ds201625.fonda.DataAccess</RootNamespace>
+    <AssemblyName>FondaDataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="InterfaceDAO\IBaseEntityDAO.cs" />
+    <Compile Include="InterfaceDAO\INounBaseEntityDAO.cs" />
+    <Compile Include="InterfaceDAO\ICommensalDAO.cs" />
+    <Compile Include="InterfaceDAO\IUserAccountDAO.cs" />
+    <Compile Include="InterfaceDAO\IProfileDAO.cs" />
+    <Compile Include="InterfaceDAO\IGeneicPersonDAO.cs" />
+    <Compile Include="InterfaceDAO\IPersonDAO.cs" />
+    <Compile Include="InterfaceDAO\ICompanyDAO.cs" />
+    <Compile Include="FactoryDAO\FactoryDAO.cs" />
+    <Compile Include="FactoryDAO\IFactoryDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateDAO.cs" />
+    <Compile Include="InterfaceDAO\IStatusDAO.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\StatusMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\DeletedStatusMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\EntityRecordStatusMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\InsertedStatusMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\ActiveSimpleStatusMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\SimpleStatusMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\DisableSimpleStatus.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\GenericPersonMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\PersonMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\CompanyMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\ProfileMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\UserAccountMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\CommensalMap.cs" />
+    <Compile Include="HibernateDAO\Session\FacrotySession.cs" />
+    <Compile Include="HibernateDAO\HibernateBaseEntityDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateCommensalDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateStatusDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateUserAccountDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateProfileDAO.cs" />
+    <Compile Include="HibernateDAO\HibernatePersonDAO.cs" />
+    <Compile Include="HibernateDAO\HibernetNounBaseEntityDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateGeneicPersonDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateCompanyDAO.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
+      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
+      <Name>FondaDomain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="InterfaceDAO\" />
+    <Folder Include="FactoryDAO\" />
+    <Folder Include="HibernateDAO\" />
+    <Folder Include="HibernateDAO\FluentMappings\" />
+    <Folder Include="HibernateDAO\Session\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

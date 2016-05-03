@@ -15,7 +15,11 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Consructor
 		/// </summary>
-		public ActiveSimpleStatus () : base () {	}
+		protected ActiveSimpleStatus () : base () 
+		{
+			StatusId = 1;
+			Description = "Estado Activo Simple";
+		}
 
 		/// <summary>
 		/// Obtiene el Estado eliminado de una entidad
@@ -23,7 +27,7 @@ namespace com.ds201625.fonda.Domain
 		public static ActiveSimpleStatus Instance
 		{
 			get {
-				if ( _instance == null )
+				if (_instance == null)
 					_instance = new ActiveSimpleStatus ();
 
 				return _instance;

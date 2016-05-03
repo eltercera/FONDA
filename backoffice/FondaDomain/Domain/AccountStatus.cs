@@ -8,7 +8,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Constructor
         /// </summary>
-        public AccountStatus() : base()	{ }
+		protected AccountStatus() : base()	{ }
 
         /// <summary>
         /// Cambio el estado de una entidad

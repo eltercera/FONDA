@@ -12,7 +12,11 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
 		/// Consructor
 		/// </summary>
-		public CanceledInvoiceStatus() : base () { }
+		public CanceledInvoiceStatus() : base ()
+		{
+			StatusId = 9;
+			Description = "Factura Candelada";
+		}
 
         /// <summary>
         /// Obtiene el Estado Cancelado de una entidad

@@ -15,7 +15,11 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
 		/// Consructor
 		/// </summary>
-		public OpenAccountStatus() : base () { }
+		protected OpenAccountStatus() : base ()
+		{
+			StatusId = 7;
+			Description = "Cuenta de Ordenes Abierta";
+		}
 
         /// <summary>
         /// Obtiene el Estado Abierto de una entidad

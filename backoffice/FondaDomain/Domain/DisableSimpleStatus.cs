@@ -14,7 +14,11 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Consructor
 		/// </summary>
-		public DisableSimpleStatus () : base () {	}
+		protected DisableSimpleStatus () : base ()
+		{
+			StatusId = 2;
+			Description = "Estado simple Inactivo";
+		}
 
 		/// <summary>
 		/// Obtiene el Estado eliminado de una entidad

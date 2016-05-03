@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace com.ds201625.fonda
+namespace com.ds201625.fonda.Domain
 {
 	/// <summary>
 	/// Persona (Humano)
 	/// </summary>
-	public class Person
+	public class Person : GenericPerson
 	{
 		/// <summary>
 		/// Apellidos

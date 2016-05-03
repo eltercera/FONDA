@@ -12,7 +12,11 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
 		/// Consructor
 		/// </summary>
-		public GeneratedInvoiceStatus() : base () { }
+		public GeneratedInvoiceStatus() : base ()
+		{
+			StatusId = 10;
+			Description = "Factura Generada";
+		}
 
         /// <summary>
         /// Obtiene el Estado Pagada de una entidad

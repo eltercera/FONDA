@@ -19,7 +19,11 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
 		/// Consructor
 		/// </summary>
-		public FreeTableStatus() : base () { }
+		protected FreeTableStatus() : base ()
+		{
+			StatusId = 6;
+			Description = "Mesa Dispoible";
+		}
 
         /// <summary>
         /// Obtiene el Estado Disponible de una entidad

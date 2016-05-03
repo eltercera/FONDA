@@ -12,7 +12,7 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Retorna el estado contrario al actual.
 		/// </summary>
-		public EntityRecordStatus Change ()
+		public virtual EntityRecordStatus Change ()
 		{
 			if ( Equals ( InsertedStatus.Instance ) )
 				return DeletedStatus.Instance;
