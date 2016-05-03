@@ -24,15 +24,11 @@ namespace DataAccessTests
 		private DateTime _personBirthDate = Convert.ToDateTime("10/05/2016");
 		private int _personId;
 
-		[TestFixtureTearDown]
-		public void EndTests()
-		{
-			if (_personId != 0) {
-				getPersonDao ();
-				_personDAO.Delete(_person);
-			}
-		}
-
+        /// <summary>
+        /// Prueba de Dominio.
+        /// Solo crea a una persona y se veridica si los campos
+        /// estan correctamente asignados.
+        /// </summary>
 		[Test ()]
 		public void PersonDomainTerst ()
 		{
@@ -40,23 +36,40 @@ namespace DataAccessTests
 			PersonAssertions ();
 		}
 
+        /// <summary>
+        /// Prueba de Acceso a Datos.
+        /// Genera una persona, La persiste, la edita, la guarda,
+        /// la obtiene y verifica si los cambios son correctos.
+        /// </summary>
 		[Test ()]
 		public void PersonSave ()
 		{
+            // Genera una persona
 			getPersonDao ();
 			generatePerson ();
+
+            // La persiste
 			_personDAO.Save (_person);
+
+            // Verificación de la asignacion de Identificador de DB
 			Assert.AreNotEqual (_person.Id, 0);
 			_personId = _person.Id;
 
+            // Agrega los cambio a propiedades
 			generatePerson (true);
+
+            // Se Guarda
 			_personDAO.Save (_person);
 
+            // Reinicio de session de DAO
 			_personDAO.ResetSession ();
 
 			_person = null;
 
+            // Obencion del la persona por su identificador
 			_person = _personDAO.FindById (_personId);
+
+            // Verificacion de los cambios.
 			PersonAssertions (true);
 
 		}
@@ -115,6 +128,18 @@ namespace DataAccessTests
 			Assert.AreEqual (_person.BirthDate, _personBirthDate);
 			Assert.AreEqual (_person.Status, ActiveSimpleStatus.Instance);
 		}
+
+        [TestFixtureTearDown]
+        public void EndTests()
+        {
+            if (_personId != 0)
+            {
+                getPersonDao();
+                // Eliminacion de la Persona al finalidar todo.
+                _personDAO.Delete(_person);
+            }
+            _personDAO.ResetSession();
+        }
 	}
 }
 
