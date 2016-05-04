@@ -26,9 +26,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Column("cat_menu_status")
               .Not.Nullable();
 
-            References(x => x.ListDish)
+        /*    References(x => x.ListDish)
                 .Column("fk_menu_dish")
-                .Cascade.Persist();
+                .Cascade.Persist();*/
 
           
         }
