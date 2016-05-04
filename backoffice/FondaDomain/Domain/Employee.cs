@@ -38,11 +38,11 @@ namespace com.ds201625.fonda.Domain
         /// Obtiene o asigna la cuenta del usuario
         /// </summary>
         /// <value>Cuenta de usuario</value>
-        public virtual Account Account
+      /*  public virtual Account account
         {
             get { return _account; }
             set { _account = value; }
-	}
+	}*/
 
         /// <summary>
         /// Obtiene o asigna el rol del usuario

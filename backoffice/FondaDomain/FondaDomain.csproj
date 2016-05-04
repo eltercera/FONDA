@@ -63,6 +63,7 @@
     <Compile Include="Domain\Payment.cs" />
     <Compile Include="Domain\Restaurant.cs" />
     <Compile Include="Domain\RestaurantCategory.cs" />
+    <Compile Include="Domain\Role.cs" />
     <Compile Include="Domain\Schedule.cs" />
     <Compile Include="Domain\Table.cs" />
     <Compile Include="Domain\TableStatus.cs" />
