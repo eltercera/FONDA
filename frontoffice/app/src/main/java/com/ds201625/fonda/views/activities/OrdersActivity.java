@@ -8,13 +8,13 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
+import android.widget.FrameLayout;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.CurrentOrderFragment;
 import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
-import com.ds201625.fonda.views.fragments.ProfileListFragment;
+import com.ds201625.fonda.views.fragments.CloseAccountFragment;
 
 public class OrdersActivity extends BaseNavigationActivity {
 
@@ -24,6 +24,7 @@ public class OrdersActivity extends BaseNavigationActivity {
     private MenuItem cerrarBotton;
     private MenuItem sendBotton;
     private MenuItem cancelBotton;
+    private MenuItem buscarBotton;
 
     /**
      * Fragment de la lista
@@ -49,20 +50,30 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     private ViewPager mViewPager;
 
+    private TabLayout tb;
+
+    FrameLayout prueba;
+
+    CloseAccountFragment prueba2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_orders);
         super.onCreate(savedInstanceState);
 
+
         //Importante Primero obtener el Tablayout
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabsO);
+        tb = (TabLayout) findViewById(R.id.tabsO);
+
+        prueba = (FrameLayout) findViewById(R.id.fragment_container2);
+
         //Inyectarlo al BaseSectionsPagerAdapter
-        mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager(),tabLayout);
+        mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager(),tb);
 
         mViewPager = (ViewPager) findViewById(R.id.containerO);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        tabLayout.setupWithViewPager(mViewPager);
+        tb.setupWithViewPager(mViewPager);
 
         orderListFrag = new CurrentOrderFragment();
 
@@ -70,34 +81,11 @@ public class OrdersActivity extends BaseNavigationActivity {
         //Tab con solo un String como titulo
         mSectionsPagerAdapter.addFragment("Orden Actual",orderListFrag);
         mSectionsPagerAdapter.addFragment("Historial de Visitas",new HistoryVisitFragment());
-        // mSectionsPagerAdapter.addFragment("Cerrar Cuenta",closeAccFrag);
+
         //Importante ejecutar esto para que se creen los iconos en el tab.
         mSectionsPagerAdapter.iconsSetup();
 
-
-    }
-
-    /**
-     * Realiza el intercambio de vistas de fragments
-     * @param fragment el fragment que se quiere mostrar
-     */
-    private void showFragment(BaseFragment fragment) {
-        fm.beginTransaction()
-                .replace(R.id.fragment_container,fragment)
-                .commit();
-        fm.executePendingTransactions();
-
-        //Muestra y oculta compnentes.
-        if(fragment.equals(orderListFrag)){
-            if(cerrarBotton != null)
-                cerrarBotton.setVisible(false);
-          //  tabLayout.setVisibility(View.VISIBLE);
-            //  profileListFrag.seProfiles(p);
-        } else {
-            if(cerrarBotton != null)
-                cerrarBotton.setVisible(true);
-         //   tabLayout.setVisibility(View.GONE);
-        }
+        fm = getSupportFragmentManager();
 
     }
 
@@ -109,12 +97,45 @@ public class OrdersActivity extends BaseNavigationActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.close, menu);
+        getMenuInflater().inflate(R.menu.orders, menu);
         cerrarBotton = menu.findItem(R.id.close);
-
+        sendBotton = menu.findItem(R.id.action_favorite_send);
+        cancelBotton = menu.findItem(R.id.action_favorite_cancel);
+        buscarBotton = menu.findItem(R.id.action_favorite_search);
         return true;
     }
 
+    /**
+     * Realiza el intercambio de vistas de fragments
+     * @param fragment el fragment que se quiere mostrar
+     */
+    private void showFragment(BaseFragment fragment) {
+        fm.beginTransaction()
+                .replace(R.id.fragment_container2,fragment)
+                .commit();
+        fm.executePendingTransactions();
+        tb.setVisibility(View.GONE);
+
+        //Muestra y oculta compnentes.
+        if(fragment.equals(orderListFrag)){
+            if(cerrarBotton != null)
+                cerrarBotton.setVisible(true);
+        }
+        else if(fragment.equals(prueba2)) {
+            if(cerrarBotton != null)
+                cerrarBotton.setVisible(false);
+            if ((sendBotton != null) && (cancelBotton != null)){
+                sendBotton.setVisible(true);
+                cancelBotton.setVisible(true);
+            }
+        }
+        else{
+            if ((sendBotton != null) && (cancelBotton != null)) {
+                sendBotton.setVisible(false);
+                cancelBotton.setVisible(false);
+            }
+        }
+    }
 
     /**
      * Opciones y acciones del menu en el toolbars
@@ -127,6 +148,15 @@ public class OrdersActivity extends BaseNavigationActivity {
             case R.id.close:
                 cerrar();
                 break;
+            case R.id.action_favorite_search:
+                buscar();
+                break;
+            case R.id.action_favorite_send:
+                cambiarPa();
+                break;
+            case R.id.action_favorite_cancel:
+                salir();
+                break;
         }
         return true;
     }
@@ -136,14 +166,32 @@ public class OrdersActivity extends BaseNavigationActivity {
                 "Se puede proceder con el cierre.");
         dialog.show();
     */
-
         cambiarCC();
     }
 
     public void cambiarCC ()
     {
-        Intent cambio = new Intent (this,CierreCuentaActivity.class);
+
+        if (prueba2 == null)
+            prueba2 = new CloseAccountFragment();
+        showFragment(prueba2);
+    }
+
+    private void salir() {
+
+        Intent cambio = new Intent (this,OrdersActivity.class);
         startActivity(cambio);
+    }
+
+    public void cambiarPa ()
+    {
+        Intent cambio = new Intent (this,PagoOrdenActivity.class);
+        startActivity(cambio);
+    }
+
+    private void buscar() {
+
+        //Metodo para el boton de buscar
     }
 
 }

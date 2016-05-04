@@ -5,38 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".views.activities.CierreCuentaActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Pago de cuenta"
-        android:id="@+id/tVTitulo"
-        android:textSize="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    tools:context=".views.activities.PagoOrdenActivity"
+    android:background="@drawable/bckg">
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"
-        android:layout_marginTop="78dp"
-        android:layout_below="@+id/tVTitulo"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/view" />
+        android:layout_marginTop="46dp"
+        android:id="@+id/view"
+        android:layout_below="@+id/textView6"
+        android:layout_alignRight="@+id/scrollView3"
+        android:layout_alignEnd="@+id/scrollView3" />
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"
         android:id="@+id/view2"
-        android:layout_marginBottom="177dp"
-        android:layout_above="@+id/tvSub"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -45,19 +33,19 @@
         android:layout_height="wrap_content"
         android:text="Total Factura"
         android:id="@+id/tvSub"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/textView24"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="28dp" />
+        android:layout_marginTop="40dp"
+        android:textSize="15dp"
+        android:layout_marginLeft="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1600"
-        android:id="@+id/tVSubTotalValor"
-        android:layout_alignTop="@+id/tVSubMoneda"
-        android:layout_alignLeft="@+id/textView20"
-        android:layout_alignStart="@+id/textView20" />
+        android:id="@+id/tvTip"
+        android:layout_alignTop="@+id/textView25"
+        android:layout_toRightOf="@+id/textView25" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -65,17 +53,21 @@
         android:text="Bs. "
         android:id="@+id/tVSubMoneda"
         android:layout_alignTop="@+id/tvSub"
-        android:layout_toRightOf="@+id/tVTitulo"
-        android:layout_toEndOf="@+id/tVTitulo" />
+        android:layout_toRightOf="@+id/textView11"
+        android:layout_toEndOf="@+id/textView11"
+        android:textSize="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fecha:"
         android:id="@+id/tVFecha"
-        android:layout_alignBottom="@+id/view"
+        android:textSize="16dp"
+        android:layout_above="@+id/lVOrden"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -84,27 +76,9 @@
         android:id="@+id/textView11"
         android:layout_alignTop="@+id/tVFecha"
         android:layout_toRightOf="@+id/tVFecha"
-        android:layout_toEndOf="@+id/tVFecha" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hora:"
-        android:id="@+id/textView12"
-        android:layout_alignBottom="@+id/textView11"
-        android:layout_alignRight="@+id/view"
-        android:layout_alignEnd="@+id/view"
-        android:layout_marginRight="40dp"
-        android:layout_marginEnd="40dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="05:32"
-        android:id="@+id/textView20"
-        android:layout_alignTop="@+id/textView12"
-        android:layout_alignRight="@+id/view"
-        android:layout_alignEnd="@+id/view" />
+        android:layout_toEndOf="@+id/tVFecha"
+        android:textSize="16dp"
+        android:layout_marginBottom="10dp" />
 
     <ListView
         android:layout_width="wrap_content"
@@ -117,39 +91,16 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Propina en porcentaje"
-        android:id="@+id/radioButton3"
-        android:checked="false"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="55dp"
-        android:layout_below="@+id/lVOrden" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="%"
-        android:id="@+id/textView23"
-        android:layout_below="@+id/radioButton3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/editText5"
-        android:layout_toLeftOf="@+id/editText5"
-        android:layout_toStartOf="@+id/editText5"
-        android:layout_alignParentRight="false"
-        android:gravity="center_vertical|center_horizontal" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Propina"
+        android:text="Monto propina"
         android:id="@+id/textView24"
-        android:layout_alignTop="@+id/textView25"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/spinner"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -157,50 +108,68 @@
         android:text="Bs. "
         android:id="@+id/textView25"
         android:layout_above="@+id/tvSub"
-        android:layout_alignLeft="@+id/tVSubMoneda"
-        android:layout_alignStart="@+id/tVSubMoneda"
-        android:layout_marginBottom="20dp" />
+        android:layout_toRightOf="@+id/textView11"
+        android:layout_toEndOf="@+id/textView11" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1600"
-        android:id="@+id/textView26"
-        android:layout_alignTop="@+id/textView25"
-        android:layout_alignLeft="@+id/tVSubTotalValor"
-        android:layout_alignStart="@+id/tVSubTotalValor" />
-
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Propina en monto"
-        android:id="@+id/radioButton4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:checked="false"
-        android:layout_below="@+id/lVOrden"
-        android:layout_marginTop="20dp" />
+        android:id="@+id/tvAccount"
+        android:layout_alignTop="@+id/tVSubMoneda"
+        android:layout_toRightOf="@+id/tvTip"
+        android:layout_toEndOf="@+id/tvTip"
+        android:textSize="15dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText5"
-        android:layout_below="@+id/radioButton3"
-        android:layout_alignRight="@+id/radioButton3"
-        android:layout_alignEnd="@+id/radioButton3"
+        android:id="@+id/etTip"
+        android:hint="Propina"
+        android:layout_toRightOf="@+id/spinner"
+        android:layout_below="@+id/lVOrden"
+        android:layout_marginTop="20dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/etTip"
+        android:layout_alignRight="@+id/tvSub"
+        android:layout_alignEnd="@+id/tvSub"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/lVOrden" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="El Tinajero"
+        android:id="@+id/textView6"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
         android:layout_toRightOf="@+id/tVFecha"
         android:layout_toEndOf="@+id/tVFecha" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:layout_alignBottom="@+id/editText5"
-        android:layout_toRightOf="@+id/editText5"
-        android:background="@android:drawable/ic_menu_send"
-        android:layout_alignTop="@+id/editText5" />
+        android:id="@+id/scrollView3"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView6"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

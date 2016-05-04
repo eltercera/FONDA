@@ -17,7 +17,7 @@
         tools:context=".views.activities.PagoOrdenActivity">
 
         <include layout="@layout/toolbar_default" />
-        <include layout="@layout/content_orders2" />
+        <include layout="@layout/content_orders" />
 
     </android.support.design.widget.CoordinatorLayout>
 

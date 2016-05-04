@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/close"
+        android:title="@string/nav_close_account"
+        app:showAsAction="ifRoom"
+        android:visible="true"/>
+    <item
+        android:id="@+id/action_favorite_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Buscar"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+    <item
+        android:id="@+id/action_favorite_send"
+        android:icon="@android:drawable/ic_menu_send"
+        android:title="Enviar"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+    <item
+        android:id="@+id/action_favorite_cancel"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="Cancelar"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+    <item
+        android:id="@+id/action_favorite_download"
+        android:icon="@android:drawable/stat_sys_download"
+        android:title="Descargar"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+    <item
+        android:id="@+id/action_favorite_add"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Agregar"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+</menu>

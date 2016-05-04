@@ -5,11 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".views.activities.CierreCuentaActivity">
+    tools:context=".views.activities.PagoOrdenActivity">
 
     <FrameLayout
         android:id="@+id/fragment_container2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"/>
+
+
 </RelativeLayout>

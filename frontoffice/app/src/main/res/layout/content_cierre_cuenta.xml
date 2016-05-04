@@ -4,12 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".views.activities.CierreCuentaActivity"
+    tools:context=".views.activities.OrdersActivity"
     android:background="@drawable/bckg">
 
     <TextView
@@ -20,7 +16,8 @@
         android:id="@+id/tVTitulo"
         android:textSize="25dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp" />
 
     <View
         android:layout_width="fill_parent"
@@ -30,7 +27,9 @@
         android:layout_below="@+id/tVTitulo"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/view" />
+        android:id="@+id/view"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
@@ -38,7 +37,9 @@
         android:layout_above="@+id/tvSub"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/view2" />
+        android:id="@+id/view2"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +49,8 @@
         android:layout_marginBottom="74dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,7 +59,8 @@
         android:id="@+id/tVSubTotalValor"
         android:layout_alignTop="@+id/view2"
         android:layout_alignRight="@+id/view2"
-        android:layout_alignEnd="@+id/view2" />
+        android:layout_alignEnd="@+id/view2"
+        android:layout_marginRight="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -101,8 +104,9 @@
         android:text="Total"
         android:id="@+id/tVTotal"
         android:layout_below="@+id/tVIVA"
-        android:layout_alignLeft="@+id/tVIVA"
-        android:layout_alignStart="@+id/tVIVA" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -129,7 +133,8 @@
         android:id="@+id/tVFecha"
         android:layout_alignBottom="@+id/view"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -145,11 +150,9 @@
         android:layout_height="wrap_content"
         android:text="Hora:"
         android:id="@+id/textView12"
-        android:layout_alignBottom="@+id/textView11"
-        android:layout_alignRight="@+id/view"
-        android:layout_alignEnd="@+id/view"
-        android:layout_marginRight="40dp"
-        android:layout_marginEnd="40dp" />
+        android:layout_above="@+id/lVOrden"
+        android:layout_toLeftOf="@+id/textView20"
+        android:layout_toStartOf="@+id/textView20" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -158,7 +161,8 @@
         android:id="@+id/textView20"
         android:layout_alignTop="@+id/textView12"
         android:layout_alignRight="@+id/view"
-        android:layout_alignEnd="@+id/view" />
+        android:layout_alignEnd="@+id/view"
+        android:layout_marginRight="5dp" />
 
     <ListView
         android:layout_width="wrap_content"
@@ -169,6 +173,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="5px" />
 
 </RelativeLayout>

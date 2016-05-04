@@ -1,29 +1,16 @@
 package com.ds201625.fonda.views.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
-import android.view.ActionMode;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.views.activities.BaseNavigationActivity;
-import com.ds201625.fonda.views.activities.Orders2Activity;
-import com.ds201625.fonda.views.adapters.OrderViewItemList;
-import android.view.ActionMode;
 
-import java.util.ArrayList;
+import com.ds201625.fonda.R;
+import com.ds201625.fonda.views.adapters.OrderViewItemList;
 
 /**
  * Clase de Prueba para mostar el uso de Fragments
