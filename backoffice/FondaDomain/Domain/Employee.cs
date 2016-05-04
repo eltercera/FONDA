@@ -12,7 +12,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// cuenta
         /// </summary>
-        private Account _account;
+        private UserAccount _account;
         /// <summary>
         /// Rol de un trabajador
         /// </summary>
@@ -38,11 +38,11 @@ namespace com.ds201625.fonda.Domain
         /// Obtiene o asigna la cuenta del usuario
         /// </summary>
         /// <value>Cuenta de usuario</value>
-      /*  public virtual Account account
+       public virtual UserAccount UserAccount
         {
             get { return _account; }
             set { _account = value; }
-	}*/
+	}
 
         /// <summary>
         /// Obtiene o asigna el rol del usuario
