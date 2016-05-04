@@ -103,29 +103,8 @@ public class PagoOrdenActivity extends BaseNavigationActivity {
         startActivity(cambio);
     }
 
-    public void cambiarOrden ()
-    {
-        //Intent cambio = new Intent (this,CierreCuentaActivity.class);
-       // startActivity(cambio);
-    }
-
-    /*public void suma(View v) {
-        int m=2000;
-        propina = (EditText)findViewById(R.id.eT_propina);
-        total = (TextView)findViewById(R.id.tV_ultimo);
-        int a= Integer.parseInt(propina.getText().toString());
-        int z=a+m;
-        total.setText(String.valueOf(z));
-    }
-
-    public void cambiarTdc (View v)
-    {
-        Intent cambio = new Intent (this,RegistrarTdcActivity.class);
+    public void cambiarOrden () {
+        Intent cambio = new Intent (this,CloseAccountFragment.class);
         startActivity(cambio);
     }
-    public void cambiarFactura (View v)
-    {
-        Intent cambio = new Intent (this,GenerarFacturaActivity.class);
-        startActivity(cambio);
-    }*/
 }

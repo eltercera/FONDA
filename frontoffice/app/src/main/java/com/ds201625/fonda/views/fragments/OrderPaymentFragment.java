@@ -1,6 +1,7 @@
 package com.ds201625.fonda.views.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.activities.OrdersActivity;
+import com.ds201625.fonda.views.activities.RegistrarTdcActivity;
 
 import org.w3c.dom.Text;
 
@@ -64,6 +66,8 @@ public class OrderPaymentFragment extends BaseFragment {
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(LTRadapter);
 
+        EventReg();
+
         return layout;
     }
 
@@ -99,6 +103,32 @@ public class OrderPaymentFragment extends BaseFragment {
             e.getMessage();
             System.out.println("Ha ocurrido un error de formato de numero");
         }
+    }
+
+    private void EventReg(){
+        lv1 = (ListView)layout.findViewById(R.id.lVOrden);
+
+        lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String itemSelected = parent.getItemAtPosition(position).toString();
+
+                switch(position){
+                    case 0:
+                        Toast.makeText(getContext(), "Su " + itemSelected, Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        //Intent cambio = new Intent (getContext(),ProfileListFragment.class);
+                        //startActivity(cambio);
+                        break;
+                    case 2:
+                        Intent cambioTDC = new Intent (getContext(), RegistrarTdcActivity.class);
+                        startActivity(cambioTDC);
+                        break;
+                }
+            }
+        });
     }
 
     //La vista ha sido creada y cualquier configuración guardada está cargada
