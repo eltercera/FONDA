@@ -60,7 +60,7 @@
                                                 <td>19.335.400</td>
                                                 <td>Administrador de Sistema</td>
                                                 <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
-                                                <td class="text-center"><a runat="server" onserverclick="ModalInfo_Click" data-nombre="Javier"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a runat="server" onserverclick="Modificar_Click" data-nombre="Javier"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"></a><a><i class="fa fa-check" aria-hidden="true"></i></a><a><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center" /><a runat="server" onserverclick="ModalInfo_Click" data-nombre="Javier"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a runat="server" onserverclick="Modificar_Click" data-nombre="Javier"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"></a><a><i class="fa fa-check" aria-hidden="true"></i></a><a><i class="fa fa-times"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td><img src="../../Content/img/image-1.png" /></td>

@@ -31,6 +31,7 @@ namespace BackOffice.Seccion.Configuracion
         }
         protected void ModalAgregarModificar_Click(object sender, EventArgs e)
         {
+           
             if (ButtonAgrMod.Text.CompareTo("Agregar")==0)
             {
                 //agrego
@@ -43,11 +44,13 @@ namespace BackOffice.Seccion.Configuracion
 
         protected void Modificar_Click(object sender, EventArgs e)
         {
-            Button button1 = (Button)sender;
-           // this.nameUser.Text = ;
-            this.statusA.Checked = true;
-            this.ButtonAgrMod.Text = "Modificar";
-            ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#formUser').modal('show');", true);
+            //sender;
+            //this.nameUser.Text = button1;
+            //this.statusA.Checked = true;
+            //this.ButtonAgrMod.Text = "Modificar";
+            //PageMethods
+            //ClientScript.RegisterStartupScript(GetType(), "tomarID", " PageMethods", true);
+            //ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#formUser').modal('show');", true);
 
         }
     }
