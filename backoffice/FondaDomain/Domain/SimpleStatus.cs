@@ -7,9 +7,9 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		public SimpleStatus () : base()	{ }
+		protected SimpleStatus () : base()	{ }
 
-		public SimpleStatus Change ()
+		public virtual SimpleStatus Change ()
 		{
 			if (Equals (ActiveSimpleStatus.Instance))
 				return DisableSimpleStatus.Instance;

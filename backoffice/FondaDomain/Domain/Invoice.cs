@@ -5,7 +5,7 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Representa la factura de una cuenta
     /// </summary>
-    class Invoice : BaseEntity
+    public class Invoice : BaseEntity
     {
         /// <summary>
         /// Propina de la cuenta

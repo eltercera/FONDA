@@ -72,10 +72,31 @@ namespace com.ds201625.fonda.Domain
             set { _image = value; }
         }
 
+
+        /// <summary>
+        /// Obtiene o asigna la sugerencia
+        /// </summary>
+        /// <value>La Sugerencia</value>
+        public virtual Boolean Suggestion
+        {
+            get { return _suggestion; }
+            set { _suggestion = value; }
+        }
+
+        /// <summary>
+        /// Obtiene o asigna el estatus
+        /// </summary>
+        /// <value>El Estatus</value>
+        public virtual SimpleStatus Status
+        {
+            get { return _status; }
+            set { _status = value; }
+        }
+
         /// <summary>
         /// Cambia el eltado actual del Plato.
         /// </summary>
-        public void changeStatus()
+        public virtual void changeStatus()
         {
             _status = _status.Change();
         }

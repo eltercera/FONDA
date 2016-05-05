@@ -2,7 +2,7 @@
 
 namespace com.ds201625.fonda.Domain
 {
-    class ClosedAccountStatus : AccountStatus
+    public class ClosedAccountStatus : AccountStatus
     {
         /// <summary>
 		/// La intancia unica
@@ -12,7 +12,11 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
 		/// Consructor
 		/// </summary>
-		public ClosedAccountStatus() : base () { }
+		protected ClosedAccountStatus() : base ()
+		{
+			StatusId = 8;
+			Description = "Cuenta de Ordenes Cerrada";
+		}
 
         /// <summary>
         /// Obtiene el Estado Cerrado de una entidad
