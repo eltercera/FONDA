@@ -50,7 +50,7 @@
                                     <thead>
                                         <tr>
                                             <th style="vertical-align: middle">Foto</th>
-                                            <th style="vertical-align: middle">Platos</th>
+                                            <th style="vertical-align: middle">Plato</th>
                                             <th style="vertical-align: middle">Descripción</th>
                                             <th style="vertical-align: middle">Precio</th>
                                             <th style="vertical-align: middle">IVA</th>
