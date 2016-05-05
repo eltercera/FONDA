@@ -47,6 +47,16 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return null;
         }
+
+        public IDishDAO GetDishDAO()
+        {
+            return null;
+        }
+
+        public IMenuCategoryDAO GetMenuCategoryDAO()
+        {
+            return null;
+        }
     }
 }
 
