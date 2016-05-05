@@ -413,7 +413,6 @@
     <Content Include="Content\js\jquery-validation\src\localization\methods_nl.js" />
     <Content Include="Content\js\jquery-validation\src\localization\methods_pt.js" />
     <Content Include="Content\js\jquery.js" />
-    <Content Include="Content\js\ManejodeEventosG1.js" />
     <Content Include="Content\js\plugins\flot\excanvas.min.js" />
     <Content Include="Content\js\plugins\flot\flot-data.js" />
     <Content Include="Content\js\plugins\flot\jquery.flot.js" />

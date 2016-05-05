@@ -88,7 +88,7 @@ namespace BackOffice.Seccion.Configuracion {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a alert alert-danger alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4.
+        ///   Busca una cadena traducida similar a alert alert-danger alert-dismissable col-lg-12.
         /// </summary>
         internal static string danger {
             get {
@@ -97,7 +97,7 @@ namespace BackOffice.Seccion.Configuracion {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &lt;strong&gt;No se ha Modificado!&lt;/strong&gt;!&quot;.
+        ///   Busca una cadena traducida similar a &lt;strong&gt;No se ha Modificado!&lt;/strong&gt;&quot;.
         /// </summary>
         internal static string dangerModificacionFinal {
             get {

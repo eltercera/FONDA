@@ -11,6 +11,8 @@ namespace BackOffice.Seccion.Configuracion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            this.alert.Attributes.Clear();
+            this.alert.InnerHtml = "";
 
         }
 
@@ -22,6 +24,25 @@ namespace BackOffice.Seccion.Configuracion
         protected void ModalInfo_Click(object sender, EventArgs e)
         {
             Response.Redirect("../Configuracion/AgregarModificarUsuario.aspx?success=agregar");
+        }
+        protected void ModalAgregar_Click(object sender, EventArgs e)
+        {
+            ClearModalAgregar();   
+            ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#formUser').modal('show');", true);
+        }
+        protected void ClearModalAgregar()
+        {
+            this.nameUser.Text = "";
+            this.nameUser.Attributes["placeholder"] = "Nombre";
+            this.lastNameUser.Text = "";
+            this.lastNameUser.Attributes["placeholder"] = "Apellido";
+            this.nss1.Text = "";
+            this.nss2.Text = "";
+            this.nss2.Attributes["placeholder"] = "ej. 965831535-1";
+            this.address.Text = "";
+            this.address.Attributes["placeholder"] = "Dirección";
+            this.statusI.Checked = true;
+            this.ButtonAgrMod.Text = "Agregar";
         }
         protected void ButtonCancelar_Click(object sender, EventArgs e)
         {
@@ -40,17 +61,16 @@ namespace BackOffice.Seccion.Configuracion
             {
                 //modifico
             }
+
         }
 
         protected void Modificar_Click(object sender, EventArgs e)
         {
-            //sender;
-            //this.nameUser.Text = button1;
-            //this.statusA.Checked = true;
-            //this.ButtonAgrMod.Text = "Modificar";
-            //PageMethods
-            //ClientScript.RegisterStartupScript(GetType(), "tomarID", " PageMethods", true);
-            //ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#formUser').modal('show');", true);
+            LinkButton clickedLink = (LinkButton)sender;
+            this.nameUser.Text = clickedLink.Attributes["data-id"];
+            this.statusA.Checked = true;
+            this.ButtonAgrMod.Text = "Modificar";
+            ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#formUser').modal('show');", true);
 
         }
     }

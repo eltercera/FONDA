@@ -35,7 +35,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i>Usuarios</h3>
-                                <a data-toggle="modal" data-target="#agregar" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
+                                <asp:LinkButton runat="server" class="btn btn-default pull-right" onclick="ModalAgregar_Click" data-id="12345"><i class="fa fa-plus"></i></asp:LinkButton>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="panel-body">
@@ -60,7 +60,7 @@
                                                 <td>19.335.400</td>
                                                 <td>Administrador de Sistema</td>
                                                 <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
-                                                <td class="text-center" /><a runat="server" onserverclick="ModalInfo_Click" data-nombre="Javier"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a runat="server" onserverclick="Modificar_Click" data-nombre="Javier"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"></a><a><i class="fa fa-check" aria-hidden="true"></i></a><a><i class="fa fa-times"></i></a></td>
+                                                <td class="text-center" /><asp:LinkButton runat="server" onclick="ModalInfo_Click" data-id="12345"><i class="fa fa-info-circle" aria-hidden="true"></i></asp:LinkButton><asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"><i class="fa fa-pencil"></i></asp:LinkButton><asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"><i class="fa fa-check" aria-hidden="true"></i></asp:LinkButton><asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"><i class="fa fa-times"></i></asp:LinkButton></td>
                                             </tr>
                                             <tr>
                                                 <td><img src="../../Content/img/image-1.png" /></td>
@@ -69,7 +69,7 @@
                                                 <td>6.797.556</td>
                                                 <td>Cliente</td>
                                                 <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
-                                                <td class="text-center"><a runat="server" onserverclick="ModalInfo_Click"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a runat="server" onserverclick="Modificar_Click" data-nombre="Javier"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"></a><a><i class="fa fa-check" aria-hidden="true"></i></a><a><i class="fa fa-times"></i></a></td>
+                                               <td class="text-center" /><asp:LinkButton runat="server" onclick="ModalInfo_Click" data-id="12345"><i class="fa fa-info-circle" aria-hidden="true"></i></asp:LinkButton><asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"><i class="fa fa-pencil"></i></asp:LinkButton><asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"><i class="fa fa-check" aria-hidden="true"></i></asp:LinkButton><asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"><i class="fa fa-times"></i></asp:LinkButton></td>
                                             </tr>                                           
                                             <tr>
                                                 <td><img src="../../Content/img/image-1.png" /></td>
@@ -78,7 +78,7 @@
                                                 <td>15.865.488</td>
                                                 <td>Cajero</td>
                                                 <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a runat="server" onserverclick="ModalInfo_Click"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a runat="server" onserverclick="Modificar_Click" data-nombre="Javier"><i class="fa fa-pencil"></i></a><a data-toggle="modal" data-target="#modificar"></a><a><i class="fa fa-check" aria-hidden="true"></i></a><a><i class="fa fa-times"></i></a></td>
+                                               <td class="text-center" /><asp:LinkButton runat="server" onclick="ModalInfo_Click" data-id="12345"><i class="fa fa-info-circle" aria-hidden="true"></i></asp:LinkButton><asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"><i class="fa fa-pencil"></i></asp:LinkButton><asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"><i class="fa fa-check" aria-hidden="true"></i></asp:LinkButton><asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"><i class="fa fa-times"></i></asp:LinkButton></td>
                                             </tr>
                                         </tbody>
                                     </table>       
@@ -111,7 +111,7 @@
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Apellido del Usuario</label>
-                            <asp:TextBox ID="lastNameUser" CssClass="form-control" placeholder="Nombre" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="lastNameUser" CssClass="form-control" placeholder="Apellido" MaxLength="3" runat="server"/>
                         </div>
                 </div>
             </div>
@@ -119,10 +119,10 @@
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="form-group">
                         <label class="control-label">Nacionalidad</label>
-                        <asp:DropDownList id="nss1" CssClass="form-control" AutoPostBack="True" runat="server">
+                        <asp:DropDownList id="nss1" CssClass="form-control" runat="server">
                             <asp:ListItem> </asp:ListItem>
-                            <asp:ListItem>E</asp:ListItem>
-                            <asp:ListItem>V</asp:ListItem>
+                            <asp:ListItem Value="E">E</asp:ListItem>
+                            <asp:ListItem Value="V">V</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Dirección</label>
-                            <asp:TextBox ID="address" CssClass="form-control" placeholder="ej. 965831535-1" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="address" CssClass="form-control" placeholder="Dirección" MaxLength="3" runat="server"/>
                         </div>
                 </div>
             </div>
@@ -153,7 +153,7 @@
             </div>
                         <div class="modal-footer">
                             <asp:Button id="ButtonAgrMod" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ModalAgregarModificar_Click"/>
-                            <asp:Button id="ButtonCancelar" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonCancelar" Text="Cancelar" CssClass="btn btn-danger" runat="server" OnClick="ButtonCancelar_Click"/>
                         </div>
             </div>
             </div>

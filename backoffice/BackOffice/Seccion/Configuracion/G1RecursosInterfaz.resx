@@ -127,10 +127,10 @@
     <value>role</value>
   </data>
   <data name="danger" xml:space="preserve">
-    <value>alert alert-danger alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4</value>
+    <value>alert alert-danger alert-dismissable col-lg-12</value>
   </data>
   <data name="dangerModificacionFinal" xml:space="preserve">
-    <value>&lt;strong&gt;No se ha Modificado!&lt;/strong&gt;!"</value>
+    <value>&lt;strong&gt;No se ha Modificado!&lt;/strong&gt;"</value>
   </data>
   <data name="dangerModificacioninicio" xml:space="preserve">
     <value>"&lt;a href='#' class='close' data-dismiss='alert' aria-label='close'&gt;&amp;times;&lt;/a&gt;</value>
