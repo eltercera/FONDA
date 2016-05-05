@@ -136,7 +136,7 @@ namespace DataAccessTests
             {
                 getPersonDao();
                 // Eliminacion de la Persona al finalidar todo.
-                _personDAO.Delete(_person);
+                //_personDAO.Delete(_person);
             }
             _personDAO.ResetSession();
         }

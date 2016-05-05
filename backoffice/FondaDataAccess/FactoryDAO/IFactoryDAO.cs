@@ -11,6 +11,9 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 		IPersonDAO GetPersonDao ();
 		ICompanyDAO GetCompanyDAO();
 		IStatusDAO GetStatusDAO();
-	}
+        IOrderAccountDao GetOrderAccountDAO();
+        IDishOrderDAO GetDishOrderDAO();
+
+    }
 }
 

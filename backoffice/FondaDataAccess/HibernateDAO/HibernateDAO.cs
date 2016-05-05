@@ -37,6 +37,16 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		{
 			return new HibernateStatusDAO();
 		}
-	}
+
+        public IDishOrderDAO GetDishOrderDAO()
+        {
+            return null;
+        }
+
+        public IOrderAccountDao GetOrderAccountDAO()
+        {
+            return null;
+        }
+    }
 }
 

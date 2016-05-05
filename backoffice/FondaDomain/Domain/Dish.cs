@@ -96,7 +96,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Cambia el eltado actual del Plato.
         /// </summary>
-        public void changeStatus()
+        public virtual void changeStatus()
         {
             _status = _status.Change();
         }

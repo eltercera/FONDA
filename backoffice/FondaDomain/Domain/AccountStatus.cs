@@ -14,7 +14,7 @@ namespace com.ds201625.fonda.Domain
         /// Cambio el estado de una entidad
         /// </summary>
         /// <returns> rotorna el estado de la entidad</returns>
-        public AccountStatus Change()
+        public virtual AccountStatus Change()
         {
             if (Equals(OpenAccountStatus.Instance))
                 return ClosedAccountStatus.Instance;

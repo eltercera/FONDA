@@ -5,7 +5,7 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
 	/// Estado abierto de una entidad
 	/// </summary>
-    class OpenAccountStatus : AccountStatus
+    public class OpenAccountStatus : AccountStatus
     {
         /// <summary>
 		/// La intancia unica

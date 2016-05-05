@@ -2,7 +2,7 @@
 
 namespace com.ds201625.fonda.Domain
 {
-    class CanceledInvoiceStatus : InvoiceStatus
+    public class CanceledInvoiceStatus : InvoiceStatus
     {
         /// <summary>
 		/// La intancia unica

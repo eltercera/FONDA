@@ -2,7 +2,7 @@
 
 namespace com.ds201625.fonda.Domain
 {
-    class ClosedAccountStatus : AccountStatus
+    public class ClosedAccountStatus : AccountStatus
     {
         /// <summary>
 		/// La intancia unica

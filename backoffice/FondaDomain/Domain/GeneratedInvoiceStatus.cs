@@ -2,7 +2,7 @@
 
 namespace com.ds201625.fonda.Domain
 {
-    class GeneratedInvoiceStatus : InvoiceStatus
+    public class GeneratedInvoiceStatus : InvoiceStatus
     {
         /// <summary>
 		/// La intancia unica
