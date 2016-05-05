@@ -65,6 +65,15 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
             return _factory.GetDishOrderDAO();
         }
 
+        public IDishDAO GetDishDAO()
+        {
+            return _factory.GetDishDAO();
+        }
+
+        public IMenuCategoryDAO GetMenuCategoryDAO()
+        {
+            return _factory.GetMenuCategoryDAO();
+        }
     }
 }
 

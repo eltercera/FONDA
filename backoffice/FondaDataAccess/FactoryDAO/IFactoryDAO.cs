@@ -13,6 +13,8 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 		IStatusDAO GetStatusDAO();
         IOrderAccountDao GetOrderAccountDAO();
         IDishOrderDAO GetDishOrderDAO();
+        IDishDAO GetDishDAO();
+        IMenuCategoryDAO GetMenuCategoryDAO();
 
     }
 }
