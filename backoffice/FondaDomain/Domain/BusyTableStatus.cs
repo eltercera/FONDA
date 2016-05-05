@@ -19,7 +19,11 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
 		/// Consructor
 		/// </summary>
-		public BusyTableStatus() : base () { }
+		protected BusyTableStatus() : base ()
+		{
+			StatusId = 5;
+			Description = "Mesa Ocupada";
+		}
 
         /// <summary>
         /// Obtiene el Estado Ocupado de una entidad

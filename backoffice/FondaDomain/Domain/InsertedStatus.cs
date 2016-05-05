@@ -14,7 +14,11 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Consructor
 		/// </summary>
-		public InsertedStatus () : base () {	}
+		protected InsertedStatus () : base ()
+		{
+			StatusId = 4;
+			Description = "Registro no eliminado";
+		}
 
 		/// <summary>
 		/// Obtiene el Estado eliminado de una entidad

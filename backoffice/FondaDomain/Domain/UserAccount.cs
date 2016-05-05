@@ -41,7 +41,7 @@ namespace com.ds201625.fonda.Domain
 		/// Obtiene o asigna la clave
 		/// </summary>
 		/// <value>la clave</value>
-		public virtual string password
+		public virtual string Password
 		{
 			get { return _password; }
 			set { _password = value; }

@@ -11,7 +11,7 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Identidicador de la entidad
 		/// </summary>
-		public int _id;
+		private int _id;
 
 
 		private EntityRecordStatus _recordStatus;
@@ -19,7 +19,9 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		public BaseEntity() { }
+		public BaseEntity() {
+			_recordStatus = InsertedStatus.Instance;
+		}
 
 		/// <summary>
 		/// Obtiene o asigna el identificador de la entidad.
@@ -31,10 +33,16 @@ namespace com.ds201625.fonda.Domain
 			protected set { _id = value; }
 		}
 
+		public virtual EntityRecordStatus RecordStatus
+		{
+			get { return _recordStatus; }
+			set { _recordStatus = value; }
+		}
+
 		/// <summary>
 		/// Cambiar el estado actual de la entidad
 		/// </summary>
-		public void ChangeRecordStatus()
+		public virtual void ChangeRecordStatus()
 		{
 			_recordStatus = _recordStatus.Change ();
 		}
