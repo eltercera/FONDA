@@ -30,8 +30,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .KeyColumn("fk_menu_dish")
                 .Inverse()
                 .Cascade.Persist();
-                
-          
+
         }
     }
 }
