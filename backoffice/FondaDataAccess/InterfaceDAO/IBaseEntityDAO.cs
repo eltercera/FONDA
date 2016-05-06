@@ -2,7 +2,7 @@
 
 namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 {
-	public interface IBaseEntityDAO <T>
+	public interface IBaseEntityDAO <T> where T : Entity
 	{
 		/// <summary>
 		/// Persiste o actualiza una entidad

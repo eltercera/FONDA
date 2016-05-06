@@ -5,7 +5,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 {
 	public interface IStatusDAO : IBaseEntityDAO<Status>
 	{
-		Status FindByStatusId (int id);
+		/*Status FindByStatusId (int id);*/
 	}
 }
 
