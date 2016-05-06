@@ -4,7 +4,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 
-namespace com.ds201625.fonda.Tests.DataAccess
+namespace DataAccess
 {
 
     [TestFixture]
@@ -20,7 +20,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         /// Prueba de Dominio.
         /// crea un plato.
         /// </summary>
-        [Test()]
+        [Test]
         public void DishTest()
         {
             generateDish();
@@ -28,17 +28,16 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
         }
 
-        [Test()]
+        [Test]
 
         public void DishSave()
         {
             getDishDao();
             generateDish();
 
-            _dishDAO.Save(_dish);
+              _dishDAO.Save(_dish);
 
             Assert.AreNotEqual(_dish.Id, 0);
-
             _dishId = _dish.Id;
 
             generateDish(true);
@@ -70,14 +69,14 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
         private void generateDish(bool edit = false)
         {
-            if (_dish != null & !edit)
+            if (_dish != null)
                 return;
 
             if ((edit & _dish == null) | _dish == null)
                 _dish = new Dish();
 
             _dish.Name = "Pasta";
-            _dish.Description = "con carne y salsa de tomate";
+            _dish.Description = "con carne";
             _dish.Cost = 195;
             _dish.Image = null;
             _dish.Suggestion = true;
@@ -92,7 +91,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
             Assert.IsNotNull(_dish);
             Assert.AreEqual(_dish.Name, "Pasta");
-            Assert.AreEqual(_dish.Description, "con carne y salsa de tomate");
+            Assert.AreEqual(_dish.Description, "con carne");
             Assert.AreEqual(_dish.Cost, 195);
             Assert.AreEqual(_dish.Image, null);
             Assert.AreEqual(_dish.Status, ActiveSimpleStatus.Instance);

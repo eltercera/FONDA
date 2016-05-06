@@ -50,12 +50,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         public IDishDAO GetDishDAO()
         {
-            return null;
+            return new HibernateDishDAO();
         }
 
         public IMenuCategoryDAO GetMenuCategoryDAO()
         {
-            return null;
+            return new HibernateMenuCategoryDAO();
         }
     }
 }
