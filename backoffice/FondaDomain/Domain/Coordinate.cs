@@ -9,7 +9,7 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Representa las coordenadas de un Restaurante
     /// </summary>
-    public class Coordinate
+    public class Coordinate : Entity
     {
         /// <summary>
         /// Constructor

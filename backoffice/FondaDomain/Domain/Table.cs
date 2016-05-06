@@ -9,7 +9,7 @@ namespace com.ds201625.fonda.Domain
 /// Representa las mesas.
 /// </summary>
 {
-    public class Table
+    public class Table : Entity
     {
         /// <summary>
 		/// El number es el numero único por el que se identifica cada mesa 

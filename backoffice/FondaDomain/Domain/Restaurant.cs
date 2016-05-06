@@ -6,17 +6,8 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Representa a un restaurante
     /// </summary>
-	public class Restaurant : NounBaseEntity
+	public class Restaurant : Company
 	{
-        /// <summary>
-        /// Nacionalidad del Rif del restaurante
-        /// </summary>
-        private char _nationality;
-
-        /// <summary>
-        /// Rif del restaurante
-        /// </summary>
-        private string _rif;
 
         /// <summary>
         /// Logo del restaurante
@@ -24,24 +15,14 @@ namespace com.ds201625.fonda.Domain
         private string _logo;
 
         /// <summary>
-        /// Direccion detallada del Restaurante
+        /// Coordenadas de ubicacion del Restaurante
         /// </summary>
-        private string _address;
-
-        /// <summary>
-        /// Estatus del restaurante ( Activo , Inactivo )
-        /// </summary>
-        private SimpleStatus _status;
+        private Coordinate _coordinate;
 
         /// <summary>
         /// Tipo de moneda usada por el Restaurante
         /// </summary>
         private Currency _currency;
-
-        /// <summary>
-        /// Coordenadas de ubicacion del Restaurante
-        /// </summary>
-        private Coordinate _coordinate;
 
         /// <summary>
         /// Categoria de un restaurante
@@ -78,44 +59,6 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
 		public Restaurant () : base () { }
 
-        public virtual String Address
-        {
-            /// <summary>
-            /// Obtiene la direccion de un restaurante
-            /// </summary>
-            get { return _address; }
-            /// <summary>
-            /// Asigna la direccion de un restaurante 
-            /// </summary>
-            /// <value>Recibe la direccion un restaurante </value>
-            set { _address = value; }
-        }
-
-        public virtual String Rif
-        {
-            /// <summary>
-            /// Obtiene el Rif de un restaurante
-            /// </summary>
-            get { return _rif; }
-            /// <summary>
-            /// Asigna el Rif de un restaurante 
-            /// </summary>
-            /// <value>Recibe el Rif de un restaurante </value>
-            set { _rif = value; }
-        }
-
-        public virtual char Nationality
-        {
-            /// <summary>
-            /// Obtiene la Nacionalidad del Rif de un restaurante
-            /// </summary>
-            get { return _nationality; }
-            /// <summary>
-            /// Asigna la Nacionalidad del Rif de un restaurante 
-            /// </summary>
-            /// <value>Recibe la Nacionalidad del Rif de un restaurante </value>
-            set { _nationality = value; }
-        }
 
         public virtual string Logo
         {
@@ -130,17 +73,17 @@ namespace com.ds201625.fonda.Domain
             set { _logo = value; }
         }
 
-        public SimpleStatus Status
+        public virtual Coordinate coordinate
         {
             /// <summary>
-            /// Obtiene el tipo de estatus de un restaurante
+            /// Obtiene las coordenadas de un restaurante
             /// </summary>
-            get { return _status; }
+            get { return _coordinate; }
             /// <summary>
-            /// Asigna el tipo de estatus de un restaurante 
+            /// Asigna las coordenadas de un restaurante 
             /// </summary>
-            /// <value>Recibe el tipo de estatus de un restaurante </value>
-            set { _status = value; }
+            /// <value>Recibe las coordenadas de un restaurante </value>
+            set { _coordinate = value; }
         }
 
         public Currency Currency
@@ -154,19 +97,6 @@ namespace com.ds201625.fonda.Domain
             /// </summary>
             /// <value>Recibe el tipo de moneda de un restaurante </value>
             set { _currency = value; }
-        }
-
-        public virtual Coordinate coordinate
-        {
-            /// <summary>
-            /// Obtiene las coordenadas de un restaurante
-            /// </summary>
-            get { return _coordinate; }
-            /// <summary>
-            /// Asigna las coordenadas de un restaurante 
-            /// </summary>
-            /// <value>Recibe las coordenadas de un restaurante </value>
-            set { _coordinate = value; }
         }
 
         public virtual RestaurantCategory RestaurantCategory
