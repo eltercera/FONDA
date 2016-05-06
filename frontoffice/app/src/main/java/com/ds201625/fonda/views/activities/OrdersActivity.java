@@ -13,18 +13,23 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.CurrentOrderFragment;
+import com.ds201625.fonda.views.fragments.FacturaFragment;
 import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
 import com.ds201625.fonda.views.fragments.CloseAccountFragment;
+import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
 
 public class OrdersActivity extends BaseNavigationActivity {
 
     /**
-     * Iten del Menu para cerrar
+     * Iten del Menu
      */
     private MenuItem cerrarBotton;
     private MenuItem sendBotton;
     private MenuItem cancelBotton;
     private MenuItem buscarBotton;
+    private MenuItem sendPayBotton;
+    private MenuItem cancelPayBotton;
+    private MenuItem downloadBotton;
 
     /**
      * Fragment de la lista
@@ -52,9 +57,13 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     private TabLayout tb;
 
-    FrameLayout prueba;
+    private FrameLayout prueba;
 
-    CloseAccountFragment prueba2;
+    private CloseAccountFragment prueba2;
+
+    private OrderPaymentFragment ordPay;
+
+    private FacturaFragment factFrag;
 
 
     @Override
@@ -102,6 +111,9 @@ public class OrdersActivity extends BaseNavigationActivity {
         sendBotton = menu.findItem(R.id.action_favorite_send);
         cancelBotton = menu.findItem(R.id.action_favorite_cancel);
         buscarBotton = menu.findItem(R.id.action_favorite_search);
+        sendPayBotton = menu.findItem(R.id.action_favorite_send_pay);
+        cancelPayBotton = menu.findItem(R.id.action_favorite_cancel_pay);
+        downloadBotton = menu.findItem(R.id.action_favorite_download);
         return true;
     }
 
@@ -128,13 +140,41 @@ public class OrdersActivity extends BaseNavigationActivity {
                 sendBotton.setVisible(true);
                 cancelBotton.setVisible(true);
             }
+            if ((sendPayBotton != null) && (cancelPayBotton != null)) {
+                sendPayBotton.setVisible(false);
+                cancelPayBotton.setVisible(false);
+            }
         }
-        else{
+        else if (fragment.equals(ordPay)) {
+                if (cerrarBotton != null)
+                    cerrarBotton.setVisible(false);
+                if ((sendBotton != null) && (cancelBotton != null)) {
+                    sendBotton.setVisible(false);
+                    cancelBotton.setVisible(false);
+                }
+                if ((sendPayBotton != null) && (cancelPayBotton != null)) {
+                    sendPayBotton.setVisible(true);
+                    cancelPayBotton.setVisible(true);
+                }
+            }
+        else if (fragment.equals(factFrag)) {
+            if (cerrarBotton != null)
+                cerrarBotton.setVisible(false);
             if ((sendBotton != null) && (cancelBotton != null)) {
                 sendBotton.setVisible(false);
                 cancelBotton.setVisible(false);
             }
+            if ((sendPayBotton != null) && (cancelPayBotton != null)) {
+                sendPayBotton.setVisible(false);
+                cancelPayBotton.setVisible(false);
+            }
+            if (downloadBotton != null)
+                downloadBotton.setVisible(true);
+        } else {
+            if (downloadBotton != null)
+                downloadBotton.setVisible(false);
         }
+
     }
 
     /**
@@ -156,6 +196,15 @@ public class OrdersActivity extends BaseNavigationActivity {
                 break;
             case R.id.action_favorite_cancel:
                 salir();
+                break;
+            case R.id.action_favorite_send_pay:
+                cambiarFac();
+                break;
+            case R.id.action_favorite_cancel_pay:
+                cambiarCC();
+                break;
+            case R.id.action_favorite_download:
+                download();
                 break;
         }
         return true;
@@ -185,8 +234,9 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     public void cambiarPa ()
     {
-        Intent cambio = new Intent (this,PagoOrdenActivity.class);
-        startActivity(cambio);
+        if (ordPay == null)
+            ordPay = new OrderPaymentFragment();
+         showFragment(ordPay);
     }
 
     private void buscar() {
@@ -194,4 +244,15 @@ public class OrdersActivity extends BaseNavigationActivity {
         //Metodo para el boton de buscar
     }
 
+    public void cambiarFac ()
+    {
+        if (factFrag == null)
+            factFrag = new FacturaFragment();
+        showFragment(factFrag);
+    }
+
+    public void download ()
+    {
+        salir();
+    }
 }

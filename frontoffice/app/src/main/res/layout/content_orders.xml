@@ -11,7 +11,9 @@
         android:id="@+id/fragment_container2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:animateLayoutChanges="true"/>
+        android:animateLayoutChanges="true">
+
+    </FrameLayout>
 
 
 </RelativeLayout>
