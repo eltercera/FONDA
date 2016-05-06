@@ -16,6 +16,7 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         IDishDAO GetDishDAO();
         IMenuCategoryDAO GetMenuCategoryDAO();
         IRoleDAO GetRoleDAO();
+        IEmployeeDAO GetEmployeeDAO();
     }
 }
 

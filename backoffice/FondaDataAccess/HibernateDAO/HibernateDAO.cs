@@ -62,6 +62,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return new HibernateRoleDAO();
 
         }
+        public IEmployeeDAO GetEmployeeDAO()
+    {
+        return new HibernateEmployeeDAO();
+    }
 
     }
 }
