@@ -6,7 +6,7 @@ namespace com.ds201625.fonda.Domain
     /// Representa la forma de pago
     /// de la cuenta
     /// </summary>
-    public class Payment
+	public class Payment : BaseEntity
     {
         /// <summary>
         /// Monto pagado
