@@ -64,6 +64,10 @@
     <Compile Include="HibernateDAO\FluentMappings\MenuCategoryMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OpenAccountStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OrderAccountMap.cs" />
+    <Compile Include="HibernateDAO\HibernateDishDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateDishOrderDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateMenuCategoryDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
     <Compile Include="InterfaceDAO\IDishDAO.cs" />
     <Compile Include="InterfaceDAO\IDishOrderDAO.cs" />
     <Compile Include="InterfaceDAO\IInvoiceDao.cs" />
@@ -133,14 +137,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Database1.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database1_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
 </Project>

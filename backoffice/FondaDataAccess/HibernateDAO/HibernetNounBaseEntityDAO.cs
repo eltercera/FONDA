@@ -7,6 +7,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
 	public class HibernetNounBaseEntityDAO<T>
 		: HibernateBaseEntityDAO<T>,INounBaseEntityDAO<T>
+		where T : NounBaseEntity
 	{
 
 		/// <summary>
