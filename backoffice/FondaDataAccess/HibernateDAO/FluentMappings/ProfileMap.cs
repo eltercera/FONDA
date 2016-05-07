@@ -22,15 +22,18 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 			References (x => x.Person)
 				.Column ("fk_person_id")
 				.Unique()
-				.Not.Nullable ();
+				.Not.Nullable ()
+				.Cascade.Persist();
 
 			References (x => x.Status)
 				.Column ("fk_sinple_status_id")
-				.Not.Nullable ();
+				.Not.Nullable ()
+				.Cascade.Persist();
 
 			References (x => x.RecordStatus)
 				.Column ("fk_status_id")
-				.Not.Nullable ();
+				.Not.Nullable ()
+				.Cascade.Persist();
 		}
 	}
 }

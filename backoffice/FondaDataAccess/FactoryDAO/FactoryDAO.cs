@@ -75,6 +75,10 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
             return _factory.GetMenuCategoryDAO();
         }
 
+		public ITokenDAO GetTokenDAO()
+		{
+			return _factory.GetTokenDAO ();
+		}
     }
 }
 

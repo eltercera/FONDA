@@ -11,7 +11,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 		/// </summary>
 		/// <returns>La cuenta de usuario Commensal.</returns>
 		/// <param name="email">El token</param>
-		UserAccount FindByToken (string token);
+		Commensal FindByToken (string token);
 
 	}
 }

@@ -12,7 +12,7 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Token de session de la cuenta.
 		/// </summary>
-		private string _sesionToken;
+		private Token _sesionToken;
 
 		/// <summary>
 		/// Lista de restaurante favoritos de un comansal
@@ -24,13 +24,14 @@ namespace com.ds201625.fonda.Domain
 		public Commensal () : base ()
 		{
 			_favoritesRestaurants = new List<Restaurant> ();
+			_profiles = new List<Profile> ();
 		}
 
 		/// <summary>
 		/// Obtiene o asigna la clave
 		/// </summary>
 		/// <value>la clave</value>
-		public virtual string SesionToken
+		public virtual Token SesionToken
 		{
 			get { return _sesionToken; }
 			set { _sesionToken= value; }

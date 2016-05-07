@@ -110,6 +110,9 @@
     <Compile Include="HibernateDAO\HibernetNounBaseEntityDAO.cs" />
     <Compile Include="HibernateDAO\HibernateGeneicPersonDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCompanyDAO.cs" />
+    <Compile Include="InterfaceDAO\ITokenDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateTokenDAO.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\TokenMap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

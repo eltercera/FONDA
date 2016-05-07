@@ -13,16 +13,22 @@ namespace DataAccessTests
 		private FactoryDAO _facDAO;
 
 		private IPersonDAO _personDAO;
+		private IProfileDAO _profileDAO;
+		private ITokenDAO _tokenDAO;
+		private ICommensalDAO _commensalDAO;
+
+
 		private Person _person;
 
-		//private Company _company;
+		private Profile _profile;
 
-		//private Profile _profile;
-
-		//private Commensal _commensal;
+		private Commensal _commensal;
 
 		private DateTime _personBirthDate = Convert.ToDateTime("10/05/2016");
 		private int _personId;
+		private int _profileId;
+		private int _comensalId;
+		private string _TokenString;
 
         /// <summary>
         /// Prueba de Dominio.
@@ -34,6 +40,75 @@ namespace DataAccessTests
 		{
 			generatePerson ();
 			PersonAssertions ();
+		}
+
+		[Test ()]
+		public void ProfileDomainTerst ()
+		{
+			generateProfile ();
+			ProfileAssertions ();
+		}
+
+		[Test ()]
+		public void CommensalDomainTerst ()
+		{
+			generateCommensal ();
+			commensalAssertions ();
+		}
+
+		[Test ()]
+		public void CommensalSave ()
+		{
+			generateCommensal ();
+			getCommensalDao ();
+			getTokenDao ();
+
+			_commensalDAO.Save (_commensal);
+			Assert.AreNotEqual (_profile.Id, 0);
+
+			_TokenString = _commensal.SesionToken.StrToken;
+			_comensalId = _commensal.Id;
+
+			_commensalDAO.ResetSession ();
+			_commensal = null;
+
+			_commensal = _commensalDAO.FindByToken (_TokenString);
+			commensalAssertions ();
+
+			_commensalDAO.ResetSession ();
+			_commensal = null;
+
+			_commensal = (Commensal)_commensalDAO.FindByEmail ("ADasdasd@asdas.com");
+			commensalAssertions ();
+
+		}
+
+
+		[Test ()]
+		public void ProfileSave ()
+		{
+			// Genera una persona
+			getProfileDao ();
+			generateProfile ();
+
+			// La persiste
+			_profileDAO.Save (_profile);
+
+			// Verificación de la asignacion de Identificador de DB
+			Assert.AreNotEqual (_profile.Id, 0);
+			_profileId = _profile.Id;
+
+			// Reinicio de session de DAO
+			_profileDAO.ResetSession ();
+
+			_profile = null;
+
+			// Obencion del la persona por su identificador
+			_profile = _profileDAO.FindById (_profileId);
+
+			// Verificacion de los cambios.
+			ProfileAssertions ();
+			PersonAssertions (_personId == 0 ? false : true);
 		}
 
         /// <summary>
@@ -82,10 +157,76 @@ namespace DataAccessTests
 				
 		}
 
+		private void getTokenDao()
+		{
+			getDao ();
+			if (_tokenDAO == null)
+				_tokenDAO = _facDAO.GetTokenDAO();
+
+		}
+
+		private void getProfileDao()
+		{
+			getDao ();
+			if (_profileDAO == null)
+				_profileDAO = _facDAO.GetProfileDAO();
+
+		}
+
+		private void getCommensalDao()
+		{
+			getDao ();
+			if (_commensalDAO == null)
+				_commensalDAO = _facDAO.GetCommensalDAO();
+
+		}
+
 		private void getDao()
 		{
 			if (_facDAO == null)
 				_facDAO = FactoryDAO.Intance;
+		}
+
+		private void generateCommensal()
+		{
+			if (_commensal != null)
+				return;
+
+			_commensal = new Commensal ();
+			_commensal.Email = "ADasdasd@asdas.com";
+			_commensal.Password = "asdasdasd";
+			generateProfile ();
+			_commensal.AddProfile (_profile);
+			_commensal.SesionToken = new Token ();
+			_commensal.Status = ActiveSimpleStatus.Instance;
+
+		}
+
+		private void commensalAssertions()
+		{
+			Assert.IsNotNull (_commensal);
+			Assert.AreEqual (_commensal.Email, "ADasdasd@asdas.com");
+			Assert.AreEqual (_commensal.Password, "asdasdasd");
+			Assert.Less (0, _commensal.Profiles.Count);
+		}
+
+		private void generateProfile()
+		{
+			if (_profile != null)
+				return;
+
+			_profile = new Profile ();
+
+			_profile.ProfileName = "Nombre de Perfil";
+			_profile.Status = DisableSimpleStatus.Instance;
+			generatePerson ();
+			_profile.Person = _person;
+		}
+
+		private void ProfileAssertions()
+		{
+			Assert.IsNotNull (_profile);
+			Assert.AreEqual (_profile.ProfileName, "Nombre de Perfil");
 		}
 
 		private void generatePerson(bool edit = false)
@@ -132,12 +273,6 @@ namespace DataAccessTests
         [TestFixtureTearDown]
         public void EndTests()
         {
-            if (_personId != 0)
-            {
-                getPersonDao();
-                // Eliminacion de la Persona al finalidar todo.
-                //_personDAO.Delete(_person);
-            }
             _personDAO.ResetSession();
         }
 	}

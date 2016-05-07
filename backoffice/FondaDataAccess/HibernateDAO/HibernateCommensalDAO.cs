@@ -13,9 +13,16 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		/// </summary>
 		/// <returns>La cuenta de usuario Commensal.</returns>
 		/// <param name="email">El token</param>
-		public UserAccount FindByToken (string token)
+		public Commensal FindByToken (string token)
 		{
-			return FindBy ("Token", token);
+			ITokenDAO tokDAO = FactoryDAO.FactoryDAO.Intance.GetTokenDAO();
+
+			Token tk = tokDAO.FindByStrToken (token);
+
+			if (tk == null)
+				return null;
+
+			return (Commensal)FindBy ("SesionToken", tk);
 		}
 
 	}

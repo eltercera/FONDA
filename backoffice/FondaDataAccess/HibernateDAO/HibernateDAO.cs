@@ -57,6 +57,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return new HibernateMenuCategoryDAO();
         }
+
+		public ITokenDAO GetTokenDAO()
+		{
+			return new HibernateTokenDAO ();
+		}
     }
 }
 
