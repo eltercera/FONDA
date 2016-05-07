@@ -9,7 +9,7 @@ namespace com.ds201625.fonda.Domain
 /// Representa las mesas.
 /// </summary>
 {
-    public class Table : Entity
+    public class Table : BaseEntity
     {
 
         /// <summary>
