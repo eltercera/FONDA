@@ -74,6 +74,8 @@
   <ItemGroup>
     <Compile Include="BODishOrderTest.cs" />
     <Compile Include="BODishTest.cs" />
+    <Compile Include="BoEmployeeTest.cs" />
+    <Compile Include="BORoleTest.cs" />
     <Compile Include="FOUserRegisterTests.cs" />
   </ItemGroup>
   <ItemGroup>
