@@ -22,6 +22,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Column("res_logo")
               .Not.Nullable();
 
+            References(x => x.Status)
+                .Column("res_status")
+                .Not.Nullable();
+
             References(x => x.coordinate.Id)
               .Column("fk_res_coordinate")
               .Not.Nullable();

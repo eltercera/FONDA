@@ -13,32 +13,18 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
         {
             Table("TABLE");
 
-            Id(x => x.Number)
-              .Column("cat_menu_id")
+            Id(x => x.Id)
+              .Column("tab_id")
               .Not.Nullable()
               .GeneratedBy.Increment();
 
-            Map(x => x.Status)
-              .Column("cat_menu_name")
+            Map(x => x.Capacity)
+              .Column("tab_capacity")
               .Not.Nullable();
 
             References(x => x.Status)
-                .Column("fk_cat_status")
+                .Column("tab_status")
                 .Not.Nullable();
-
-            References(x => x.RecordStatus)
-              .Column("fk_cat_record")
-              .Not.Nullable();
-/*
-            HasMany(x => x.ListDish)
-                .KeyColumn("fk_menu_dish")
-                .Inverse()
-                .Cascade.Persist();
-                */
-            //TOdavia no falta que restarant cree su mappa
-            /*References(x => x.Restaurant)
-             .Column("fk_id_restaurant")
-             .Not.Nullable();*/
 
         }
     }

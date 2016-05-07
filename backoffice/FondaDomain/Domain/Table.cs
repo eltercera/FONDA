@@ -13,11 +13,6 @@ namespace com.ds201625.fonda.Domain
     {
 
         /// <summary>
-		/// El number es el numero único por el que se identifica cada mesa 
-		/// </summary>
-		private int _number;
-
-        /// <summary>
 		/// La capacidad de la mesa (Mesa de 2, 4, 8, 16 personas)
 		/// </summary>
 		private int _capacity;
@@ -27,11 +22,6 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private TableStatus _status;
 
-        public virtual int Number
-        {
-            get { return _number; }
-            set { _number = value; }
-        }
 
         public virtual int Capacity
         {

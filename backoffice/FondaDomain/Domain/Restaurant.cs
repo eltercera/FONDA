@@ -15,6 +15,11 @@ namespace com.ds201625.fonda.Domain
         private string _logo;
 
         /// <summary>
+        ///  status (Activo e Inactivo)
+        /// </summary>
+        private SimpleStatus _status;
+
+        /// <summary>
         /// Coordenadas de ubicacion del Restaurante
         /// </summary>
         private Coordinate _coordinate;
@@ -71,6 +76,19 @@ namespace com.ds201625.fonda.Domain
             /// </summary>
             /// <value>Recibe el logo de un restaurante </value>
             set { _logo = value; }
+        }
+
+        public virtual SimpleStatus Status
+        {
+            /// <summary>
+            /// Obtiene el status de un restaurante
+            /// </summary>
+            get { return _status; }
+            /// <summary>
+            /// Obtiene el status de un restaurante
+            /// </summary>
+            /// <value>Obtiene el status de un restaurante </value>
+            set { _status = value; }
         }
 
         public virtual Coordinate coordinate
