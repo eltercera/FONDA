@@ -41,7 +41,6 @@ Menú Del Día
                                             
                                             <th style="vertical-align: middle">Plato</th>
                                             <th style="vertical-align: middle">Precio</th>
-                                            <th style="vertical-align: middle">IVA</th>
                                             <th style="vertical-align: middle">Total</th>
                                             <th style="vertical-align: middle">Acciones</th>
                                    
@@ -54,7 +53,6 @@ Menú Del Día
                                           
                                             <td style="vertical-align: middle">Pasta Carbonara</td>
                                             <td style="vertical-align: middle">2350</td>
-                                            <td style="vertical-align: middle">650</td>
                                             <td style="vertical-align: middle">3000</td>
                                             <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></td>
 
@@ -64,7 +62,6 @@ Menú Del Día
                                             <tr>
                                             <td style="vertical-align: middle">Pasta Carbonara</td>
                                             <td style="vertical-align: middle">2350</td>
-                                            <td style="vertical-align: middle">650</td>
                                             <td style="vertical-align: middle">3000</td>
                                             <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></td>
                                      
@@ -73,7 +70,6 @@ Menú Del Día
                                           
                                             <td style="vertical-align: middle">Pasta con Vegetales</td>
                                             <td style="vertical-align: middle">2350</td>
-                                            <td style="vertical-align: middle">650</td>
                                             <td style="vertical-align: middle">3000</td>
                                             <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></td>
                                      </tr>
@@ -81,7 +77,6 @@ Menú Del Día
                                            
                                             <td style="vertical-align: middle">Pasta con Salmon</td>
                                             <td style="vertical-align: middle">2350</td>
-                                            <td style="vertical-align: middle">650</td>
                                             <td style="vertical-align: middle">3000</td>
                                             <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></td>
                                                 
