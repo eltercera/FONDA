@@ -5,6 +5,8 @@ using NHibernate.Cfg;
 using FluentNHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings;
+using System.IO;
+
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.Session
 {
 	public class FacrotySession
@@ -13,13 +15,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.Session
 
 		private static ISession GetSession ()
 		{
-			Configuration config = new Configuration().Configure();
+			Configuration config = new Configuration().Configure(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"hibernate.cfg.xml"));
 			ISessionFactory sessionFactory = Fluently.Configure (config)
 				.Mappings (m => m.FluentMappings
 					.AddFromAssemblyOf<PersonMap>()
 				)
-				/*.ExposeConfiguration(cfg => new SchemaExport(cfg)
-					.Execute(true, true, false))*/
+				.ExposeConfiguration(cfg => new SchemaExport(cfg)
+					.Execute(true, true, false))
 				.Diagnostics(diag => diag.Enable().OutputToConsole())
 				.BuildSessionFactory();
 
