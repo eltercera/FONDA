@@ -26,7 +26,7 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private Double _latitude;
 
-        public virtual float Longitude
+        public virtual Double Longitude
         {
             /// <summary>
             /// Obtiene la longitud
@@ -40,7 +40,7 @@ namespace com.ds201625.fonda.Domain
         }
 
 
-        public virtual float Latitude
+        public virtual Double Latitude
         {
             /// <summary>
             /// Obtiene la latitud

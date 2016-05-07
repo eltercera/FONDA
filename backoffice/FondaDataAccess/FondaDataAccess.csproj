@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="HibernateDAO\FluentMappings\AccountStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\ClosedAccountStatusMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\CoordinateMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\DishMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\DishOrderMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\MenuCategoryMap.cs" />
@@ -66,11 +67,13 @@
     <Compile Include="HibernateDAO\FluentMappings\OrderAccountMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\RestaurantCategoryMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\RestaurantMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\ScheduleMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\TableMap.cs" />
     <Compile Include="HibernateDAO\HibernateDishDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDishOrderDAO.cs" />
     <Compile Include="HibernateDAO\HibernateMenuCategoryDAO.cs" />
     <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateTableDAO.cs" />
     <Compile Include="InterfaceDAO\ICoordinateDAO.cs" />
     <Compile Include="InterfaceDAO\ICurrencyDAO.cs" />
     <Compile Include="InterfaceDAO\IDayDAO.cs" />
@@ -148,5 +151,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database1.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database1_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
 </Project>
