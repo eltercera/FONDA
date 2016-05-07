@@ -8,7 +8,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-    public class HibernateRestaurantCategoryDAO : HibernetNounBaseEntityDAO<RestaurantCategory> , IRestaurantCategoryDAO 
+    public class HibernateCurrencyDAO : HibernetNounBaseEntityDAO<Currency> , ICurrencyDAO
     {
     }
 }
