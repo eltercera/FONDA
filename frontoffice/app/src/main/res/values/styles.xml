@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">monospace</item>
-        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/text</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -35,6 +35,11 @@
         <item name="actionBarStyle">@style/Widget.AppTheme.ActionBar</item>
         <item name="actionBarTheme">@style/ThemeOverlay.AppTheme.ActionBar</item>
         <item name="actionBarPopupTheme">@style/ThemeOverlay.AppTheme.PopupMenu</item>
+    </style>
+
+    <style name="AppTheme.TabsBarOverlay" parent="AppTheme.AppBarOverlay">
+        <item name="android:background">@color/creme</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <style name="Widget.AppTheme.ActionBar" parent="Widget.AppCompat.ActionBar.Solid">

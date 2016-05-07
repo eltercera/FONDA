@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/action_favorite_save"
-        android:icon="@android:drawable/ic_menu_save"
+        android:icon="@drawable/ic_save_creme_24dp"
         android:title="Guardar"
         app:showAsAction="ifRoom"
         android:visible="false"/>

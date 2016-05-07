@@ -99,8 +99,8 @@ public class PagoOrdenActivity extends BaseNavigationActivity {
 
     public void cambiarFac ()
     {
-        Intent cambio = new Intent (this,GenerarFacturaActivity.class);
-        startActivity(cambio);
+       /* Intent cambio = new Intent (this,GenerarFacturaActivity.class);
+        startActivity(cambio);*/
     }
 
     public void cambiarOrden () {
