@@ -17,7 +17,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
 			HasMany (x => x.Profiles)
 				.KeyColumn("fk_profile")
-				.Inverse()
+				.ExtraLazyLoad()
 				.Cascade.All();
 
 			// TODO: Mapedo Many-To-Many a Restaurant

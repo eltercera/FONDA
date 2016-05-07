@@ -11,7 +11,7 @@ namespace com.ds201625.fonda.Domain
 
 		private string _profileName;
 
-		private GenericPerson _person;
+		private Person _person;
 
 		private SimpleStatus _status;
 
@@ -36,7 +36,7 @@ namespace com.ds201625.fonda.Domain
 		/// </summary>
 		/// <value>una persona o organizacion</value>
 		[DataMember]
-		public virtual GenericPerson Person
+		public virtual Person Person
 		{
 			get { return _person; }
 			set { _person = value; }

@@ -77,10 +77,16 @@ namespace DataAccessTests
 
 			_commensalDAO.ResetSession ();
 			_commensal = null;
+			_profile = null;
+			_person = null;
 
 			_commensal = (Commensal)_commensalDAO.FindByEmail ("ADasdasd@asdas.com");
 			commensalAssertions ();
 
+			_profile = _commensal.Profiles[0];
+			_person = _profile.Person;
+			ProfileAssertions ();
+			PersonAssertions ();
 		}
 
 
