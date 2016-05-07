@@ -23,6 +23,7 @@ namespace DataAccess
         /// si esta correctamente creada.
         /// </summary>
 		[Test()]
+        [Ignore]
         public void DishOrderTerst()
         {
             generateDishOrder();
@@ -30,6 +31,7 @@ namespace DataAccess
         }
 
         [Test()]
+        [Ignore]
         public void DishOrderSave()
         {
             // Se vuelve a generar una orden

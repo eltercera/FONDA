@@ -11,6 +11,7 @@ namespace com.ds201625.fonda.Domain
 {
     public class Table : Entity
     {
+
         /// <summary>
 		/// El number es el numero único por el que se identifica cada mesa 
 		/// </summary>
@@ -34,13 +35,27 @@ namespace com.ds201625.fonda.Domain
         public virtual int Capacity
         {
             get { return _capacity; }
-            set { _capacity = value; }
+            set {
+                    //if (ValidateCapacity(_capacity))
+                    //    throw new WrongCapacityTable();
+                      
+                    _capacity = value;
+                }
         }
 
         public virtual TableStatus Status
         {
             get { return _status; }
             set { _status = value; }
+        }
+
+        public bool ValidateCapacity(int Capacity)
+        {
+            if (Capacity == 2 || Capacity == 4 || Capacity == 8)
+                return true;
+
+            return false;
+
         }
 
     }
