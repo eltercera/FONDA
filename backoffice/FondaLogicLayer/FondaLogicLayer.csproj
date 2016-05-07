@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{593ABB6F-D1C8-4FFA-BCCE-06E1A472676A}</ProjectGuid>
+    <ProjectGuid>{D5EF3251-F4BC-4869-9A60-C343FD7112E4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FondaLogicLayer</RootNamespace>
+    <RootNamespace>com.ds201625.fonda.LogicLayer</RootNamespace>
     <AssemblyName>FondaLogicLayer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
