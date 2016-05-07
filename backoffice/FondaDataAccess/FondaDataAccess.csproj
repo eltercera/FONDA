@@ -61,19 +61,25 @@
     <Compile Include="HibernateDAO\FluentMappings\ClosedAccountStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\DishMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\DishOrderMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\EmployeeMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\MenuCategoryMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OpenAccountStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OrderAccountMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\RoleMap.cs" />
     <Compile Include="HibernateDAO\HibernateDishDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDishOrderDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateEmployeeDAO.cs" />
     <Compile Include="HibernateDAO\HibernateMenuCategoryDAO.cs" />
     <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateRoleDAO.cs" />
     <Compile Include="InterfaceDAO\IDishDAO.cs" />
     <Compile Include="InterfaceDAO\IDishOrderDAO.cs" />
+    <Compile Include="InterfaceDAO\IEmployeeDAO.cs" />
     <Compile Include="InterfaceDAO\IInvoiceDao.cs" />
     <Compile Include="InterfaceDAO\IMenuCategoryDAO.cs" />
     <Compile Include="InterfaceDAO\IOrderAccountDao.cs" />
     <Compile Include="InterfaceDAO\IPaymentDao.cs" />
+    <Compile Include="InterfaceDAO\IRoleDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InterfaceDAO\IBaseEntityDAO.cs" />
     <Compile Include="InterfaceDAO\INounBaseEntityDAO.cs" />
@@ -121,7 +127,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -137,5 +143,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database1.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
