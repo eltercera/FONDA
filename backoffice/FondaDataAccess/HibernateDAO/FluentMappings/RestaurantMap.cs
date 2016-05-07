@@ -22,26 +22,25 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Column("res_logo")
               .Not.Nullable();
 
-            Map(x => x.coordinate.)
-              .Column("res_latitud")
+            References(x => x.coordinate.Id)
+              .Column("fk_res_coordinate")
               .Not.Nullable();
 
             References(x => x.Currency.Id)
               .Column("fk_res_currency")
               .Not.Nullable();
 
-            References(x => x.Status)
-                .Column("fk_cat_status")
-                .Not.Nullable();
+            References(x => x.RestaurantCategory.Id)
+               .Column("fk_res_restaurantCategory")
+               .Not.Nullable();
 
-            References(x => x.RecordStatus)
-              .Column("fk_cat_record")
-              .Not.Nullable();
+            References(x => x.Zone.Id)
+               .Column("fk_res_zone")
+               .Not.Nullable();
 
-            HasMany(x => x.ListDish)
-                .KeyColumn("fk_menu_dish")
-                .Inverse()
-                .Cascade.Persist();
+            References(x => x.Schedule)
+               .Column("fk_res_schedule")
+               .Not.Nullable();
 
         }
     }
