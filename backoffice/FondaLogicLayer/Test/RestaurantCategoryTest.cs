@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using com.ds201625.fonda.Implementation;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,19 @@ namespace com.ds201625.fonda.LogicLayer.Test
     [TestFixture]
     public class RestaurantCategoryTest
     {
+        RestaurantCategory category;
+        [SetUp]
+        public void Init()
+        {
+            category = new RestaurantCategory();
+            //category.NameCategory = "Japonesa";
+        }
+
+        [Test]
+        public void InsertNewCategory()
+        {
+            category = category.InsertNewCategory("Hola");
+            Assert.AreEqual("Hola", category.Name);
+        }
     }
 }
