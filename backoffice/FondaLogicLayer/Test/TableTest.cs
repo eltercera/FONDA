@@ -39,6 +39,7 @@ namespace com.ds201625.fonda.LogicLayer.Test
 
         [Test, Description("Prueba el metodo que valida que una mesa no tenga una capacidad distinta a la establecida")]
         //[ExpectedException(typeof WrongCapacityTable)]
+        [Ignore("")]
         public void ValidateCapacity()
         {
             table = new com.ds201625.fonda.FondaLogicLayer.Implementation.Table(1, 2);
@@ -47,6 +48,7 @@ namespace com.ds201625.fonda.LogicLayer.Test
         }
 
         [Test, Description("Prueba que el estado de una mesa ocupada cambie a vacia")]
+        [Ignore("")]
         public void FreeTable()
         {
             _busyTable.Status.Change();
@@ -55,6 +57,7 @@ namespace com.ds201625.fonda.LogicLayer.Test
         }
         
         [Test, Description("Prueba que el estado de una mesa vacia cambie a ocupada")]
+        [Ignore("")]
         public void BusyTable()
         {
             _freeTable.Status.Change();

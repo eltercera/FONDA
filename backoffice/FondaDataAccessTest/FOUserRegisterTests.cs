@@ -30,7 +30,6 @@ namespace DataAccessTests
         /// estan correctamente asignados.
         /// </summary>
 		[Test ()]
-        //[Ignore]
 		public void PersonDomainTerst ()
 		{
 			generatePerson ();
@@ -43,7 +42,6 @@ namespace DataAccessTests
         /// la obtiene y verifica si los cambios son correctos.
         /// </summary>
 		[Test ()]
-        //[Ignore]
 		public void PersonSave ()
 		{
             // Genera una persona

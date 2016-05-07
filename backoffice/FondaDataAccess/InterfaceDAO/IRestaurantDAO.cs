@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 {
-    public interface IRestaurantDAO : IBaseEntityDAO<Restaurant>
+    public interface IRestaurantDAO : INounBaseEntityDAO<Restaurant>
     {
     }
 }

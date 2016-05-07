@@ -7,7 +7,7 @@ using com.ds201625.fonda.Domain;
 
 namespace DataAccess
 {
-
+    /*
     [TestFixture()]
     public class BODishOrderTest
     {
@@ -110,5 +110,5 @@ namespace DataAccess
             }
             _orderDAO.ResetSession();
         }
-    }
+    }*/
 }

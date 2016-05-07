@@ -15,13 +15,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.Session
 
 		private static ISession GetSession ()
 		{
-			Configuration config = new Configuration().Configure(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"hibernate.cfg.xml"));
+			Configuration config = new Configuration().Configure();
 			ISessionFactory sessionFactory = Fluently.Configure (config)
 				.Mappings (m => m.FluentMappings
 					.AddFromAssemblyOf<PersonMap>()
 				)
-				.ExposeConfiguration(cfg => new SchemaExport(cfg)
-					.Execute(true, true, false))
+				/*.ExposeConfiguration(cfg => new SchemaExport(cfg)
+					.Execute(true, true, false))*/
 				.Diagnostics(diag => diag.Enable().OutputToConsole())
 				.BuildSessionFactory();
 
