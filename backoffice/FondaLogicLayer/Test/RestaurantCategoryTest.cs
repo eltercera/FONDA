@@ -20,6 +20,7 @@ namespace com.ds201625.fonda.LogicLayer.Test
         }
 
         [Test]
+        [Ignore("")]
         public void InsertNewCategory()
         {
             category = category.InsertNewCategory("Hola");

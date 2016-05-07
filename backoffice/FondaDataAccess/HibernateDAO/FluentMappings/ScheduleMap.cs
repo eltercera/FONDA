@@ -26,10 +26,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Column("sch_closingTime")
               .Not.Nullable();
 
-            HasMany(x => x.Day.Id)
-                .KeyColumn("fk_day")
-                .Inverse()
-                .Cascade.Persist();
+
 
         }
     }

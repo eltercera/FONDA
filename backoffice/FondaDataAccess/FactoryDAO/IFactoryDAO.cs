@@ -15,6 +15,7 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         IDishOrderDAO GetDishOrderDAO();
         IDishDAO GetDishDAO();
         IMenuCategoryDAO GetMenuCategoryDAO();
+        IRestaurantDAO GetRestaurantDAO();
 
     }
 }
