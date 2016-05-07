@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.Implementation
 {
-    public class RestaurantCategory
+    public class RestaurantCategory : com.ds201625.fonda.Domain.RestaurantCategory
     {
     }
 }

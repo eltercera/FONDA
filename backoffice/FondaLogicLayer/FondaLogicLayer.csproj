@@ -67,9 +67,14 @@
     <Compile Include="Implementation\RestaurantCategory.cs" />
     <Compile Include="Implementation\Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\RestaurantCategoryTest.cs" />
+    <Compile Include="Test\TableTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Test\" />
+    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
+      <Project>{cd756618-286a-4fbc-93a3-0eccb571b18f}</Project>
+      <Name>FondaDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

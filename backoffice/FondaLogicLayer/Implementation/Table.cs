@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.FondaLogicLayer.Implementation
 {
-    public class Table
+    public class Table : com.ds201625.fonda.Domain.Table
     {
     }
 }
