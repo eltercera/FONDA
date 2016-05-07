@@ -7,7 +7,7 @@
     <ProjectGuid>{D5EF3251-F4BC-4869-9A60-C343FD7112E4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FondaLogicLayer</RootNamespace>
+    <RootNamespace>com.ds201625.fonda.LogicLayer</RootNamespace>
     <AssemblyName>FondaLogicLayer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,10 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\RestaurantCategory.cs" />
+    <Compile Include="Implementation\Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Implementation\" />
     <Folder Include="Test\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
