@@ -18,7 +18,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Lista de platos en la categoria
         /// </summary>
-        private  List<Dish> _listDish;
+        private  IList<Dish> _listDish;
 
         
 		/// <summary>
@@ -44,7 +44,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Retorna o asigna una lista de platos
         /// </summary>
-        public virtual List<Dish> ListDish
+        public virtual IList<Dish> ListDish
         {
             get { return _listDish; }
             set { _listDish = value; }

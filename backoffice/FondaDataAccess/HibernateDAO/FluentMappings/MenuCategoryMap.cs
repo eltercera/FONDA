@@ -28,8 +28,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             HasMany(x => x.ListDish)
                 .KeyColumn("fk_menu_dish")
-                .Inverse()
-                .Cascade.Persist();
+                .ExtraLazyLoad()
+                .Cascade.All();
 
             //TOdavia no falta que restarant cree su mappa
             /*References(x => x.Restaurant)

@@ -28,8 +28,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
 
             References(x => x.Status)
-                .Column("fk_dis_status")
-                .Not.Nullable();
+                .Column("fk_dis_status");
+                
 
             /*     References(x => x.RecordStatus)
                      .Column("fk_dis_record")
@@ -41,8 +41,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
             Map(x => x.Cost)
                 .Column("dis_cost")
                 .Not.Nullable();
-
-
+                
 
 
         }
