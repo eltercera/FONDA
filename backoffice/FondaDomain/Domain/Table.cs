@@ -16,6 +16,7 @@ namespace com.ds201625.fonda.Domain
 		/// El number es el numero único por el que se identifica cada mesa 
 		/// </summary>
 		private int _number;
+
         /// <summary>
 		/// La capacidad de la mesa (Mesa de 2, 4, 8, 16 personas)
 		/// </summary>
