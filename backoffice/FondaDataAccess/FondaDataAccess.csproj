@@ -67,6 +67,7 @@
     <Compile Include="HibernateDAO\FluentMappings\OrderAccountMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\RestaurantCategoryMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\RestaurantMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\ScheduleMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\TableMap.cs" />
     <Compile Include="HibernateDAO\HibernateDishDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDishOrderDAO.cs" />

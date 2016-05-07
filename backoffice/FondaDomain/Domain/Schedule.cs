@@ -9,7 +9,7 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Horario disponible de un Restaurante
     /// </summary>
-    public class Schedule : Entity
+    public class Schedule : BaseEntity
     {
         /// <summary>
         /// Hora de apertura del restaurante
