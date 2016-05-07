@@ -5,7 +5,7 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Representa la orden de una cuenta
     /// </summary>
-    class DishOrder : BaseEntity
+    public class DishOrder : BaseEntity
     {
         /// <summary>
         /// Plato ordenado

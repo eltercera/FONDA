@@ -1,14 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{F1CEAC46-0E2B-45F1-8EDC-D99F77B9DD26}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -44,39 +41,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.Web, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AI.WindowsServer, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL"/>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -88,11 +59,59 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -127,6 +146,26 @@
     <Content Include="Content\img\rsz_logo.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\DataTables.js" />
+    <Content Include="Content\js\datatables\autoFill.bootstrap.min.js" />
+    <Content Include="Content\js\datatables\buttons.bootstrap.min.js" />
+    <Content Include="Content\js\datatables\buttons.colVis.min.js" />
+    <Content Include="Content\js\datatables\buttons.flash.min.js" />
+    <Content Include="Content\js\datatables\buttons.html5.min.js" />
+    <Content Include="Content\js\datatables\buttons.print.min.js" />
+    <Content Include="Content\js\datatables\dataTables.autoFill.min.js" />
+    <Content Include="Content\js\datatables\dataTables.bootstrap.min.js" />
+    <Content Include="Content\js\datatables\dataTables.buttons.min.js" />
+    <Content Include="Content\js\datatables\dataTables.colReorder.min.js" />
+    <Content Include="Content\js\datatables\dataTables.fixedColumns.min.js" />
+    <Content Include="Content\js\datatables\dataTables.fixedHeader.min.js" />
+    <Content Include="Content\js\datatables\dataTables.keyTable.min.js" />
+    <Content Include="Content\js\datatables\dataTables.responsive.min.js" />
+    <Content Include="Content\js\datatables\dataTables.rowReorder.min.js" />
+    <Content Include="Content\js\datatables\dataTables.scroller.min.js" />
+    <Content Include="Content\js\datatables\dataTables.select.min.js" />
+    <Content Include="Content\js\datatables\jquery.dataTables.min.js" />
+    <Content Include="Content\js\datatables\responsive.bootstrap.min.js" />
     <Content Include="Content\js\jquery-validation\dist\additional-methods.js" />
     <Content Include="Content\js\jquery-validation\dist\additional-methods.min.js" />
     <Content Include="Content\js\jquery-validation\dist\jquery.validate.js" />
@@ -381,7 +420,11 @@
     <Content Include="Login.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Seccion\Caja\AgregarOrden.aspx" />
+    <Content Include="Seccion\Caja\CrearFactura.aspx" />
     <Content Include="Seccion\Caja\Default.aspx" />
+    <Content Include="Seccion\Caja\DefaultOrdenesCerradas.aspx" />
+    <Content Include="Seccion\Caja\ModificarOrden.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarUsuario.aspx" />
@@ -391,18 +434,14 @@
     <Content Include="Seccion\Configuracion\ListarPrivilegioUsuario.aspx" />
     <Content Include="Seccion\Configuracion\ListarRol.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
-    <Content Include="Seccion\Menu\AgregarMenu.aspx" />
-    <Content Include="Seccion\Menu\AgregarPlatillo.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
+    <Content Include="Seccion\Menu\ListarCategoria.aspx" />
     <Content Include="Seccion\Menu\MenuDia.aspx" />
-    <Content Include="Seccion\Menu\ModificarMenu.aspx" />
-    <Content Include="Seccion\Menu\ModificarPlatillo.aspx" />
     <Content Include="Seccion\Reservas\Default.aspx" />
-    <Content Include="Seccion\Restaurant\AgregarMesa.aspx" />
-    <Content Include="Seccion\Restaurant\AgregarRest.aspx" />
-    <Content Include="Seccion\Restaurant\ModificarMesa.aspx" />
-    <Content Include="Seccion\Restaurant\ModificarRest.aspx" />
+    <Content Include="Seccion\Restaurant\AgregarCategoria.aspx" />
+    <Content Include="Seccion\Restaurant\Mesas.aspx" />
     <Content Include="Seccion\Restaurant\Restaurante.aspx" />
+    <Content Include="Seccion\Restaurant\AgregarZona.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -436,12 +475,40 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Seccion\Caja\AgregarOrden.aspx.cs">
+      <DependentUpon>AgregarOrden.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Caja\AgregarOrden.aspx.designer.cs">
+      <DependentUpon>AgregarOrden.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Caja\CrearFactura.aspx.cs">
+      <DependentUpon>CrearFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Caja\CrearFactura.aspx.designer.cs">
+      <DependentUpon>CrearFactura.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Seccion\Caja\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seccion\Caja\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Caja\DefaultOrdenesCerradas.aspx.cs">
+      <DependentUpon>DefaultOrdenesCerradas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Caja\DefaultOrdenesCerradas.aspx.designer.cs">
+      <DependentUpon>DefaultOrdenesCerradas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Caja\ModificarOrden.aspx.cs">
+      <DependentUpon>ModificarOrden.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Caja\ModificarOrden.aspx.designer.cs">
+      <DependentUpon>ModificarOrden.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx.cs">
       <DependentUpon>AgregarModificarPrivilegio.aspx</DependentUpon>
@@ -507,26 +574,19 @@
       <DependentUpon>ListarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\mensajes.cs" />
-    <Compile Include="Seccion\Menu\AgregarMenu.aspx.cs">
-      <DependentUpon>AgregarMenu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Menu\AgregarMenu.aspx.designer.cs">
-      <DependentUpon>AgregarMenu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Menu\AgregarPlatillo.aspx.cs">
-      <DependentUpon>AgregarPlatillo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Menu\AgregarPlatillo.aspx.designer.cs">
-      <DependentUpon>AgregarPlatillo.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Seccion\Menu\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seccion\Menu\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Menu\ListarCategoria.aspx.cs">
+      <DependentUpon>ListarCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Menu\ListarCategoria.aspx.designer.cs">
+      <DependentUpon>ListarCategoria.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Menu\MenuDia.aspx.cs">
       <DependentUpon>MenuDia.aspx</DependentUpon>
@@ -535,20 +595,6 @@
     <Compile Include="Seccion\Menu\MenuDia.aspx.designer.cs">
       <DependentUpon>MenuDia.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Menu\ModificarMenu.aspx.cs">
-      <DependentUpon>ModificarMenu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Menu\ModificarMenu.aspx.designer.cs">
-      <DependentUpon>ModificarMenu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Menu\ModificarPlatillo.aspx.cs">
-      <DependentUpon>ModificarPlatillo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Menu\ModificarPlatillo.aspx.designer.cs">
-      <DependentUpon>ModificarPlatillo.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Seccion\Reservas\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -556,33 +602,19 @@
     <Compile Include="Seccion\Reservas\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Restaurant\AgregarMesa.aspx.cs">
-      <DependentUpon>AgregarMesa.aspx</DependentUpon>
+    <Compile Include="Seccion\Restaurant\AgregarCategoria.aspx.cs">
+      <DependentUpon>AgregarCategoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Seccion\Restaurant\AgregarMesa.aspx.designer.cs">
-      <DependentUpon>AgregarMesa.aspx</DependentUpon>
+    <Compile Include="Seccion\Restaurant\AgregarCategoria.aspx.designer.cs">
+      <DependentUpon>AgregarCategoria.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Restaurant\AgregarRest.aspx.cs">
-      <DependentUpon>AgregarRest.aspx</DependentUpon>
+    <Compile Include="Seccion\Restaurant\Mesas.aspx.cs">
+      <DependentUpon>Mesas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Seccion\Restaurant\AgregarRest.aspx.designer.cs">
-      <DependentUpon>AgregarRest.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\ModificarMesa.aspx.cs">
-      <DependentUpon>ModificarMesa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\ModificarMesa.aspx.designer.cs">
-      <DependentUpon>ModificarMesa.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\ModificarRest.aspx.cs">
-      <DependentUpon>ModificarRest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Restaurant\ModificarRest.aspx.designer.cs">
-      <DependentUpon>ModificarRest.aspx</DependentUpon>
+    <Compile Include="Seccion\Restaurant\Mesas.aspx.designer.cs">
+      <DependentUpon>Mesas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Restaurant\Restaurante.aspx.cs">
       <DependentUpon>Restaurante.aspx</DependentUpon>
@@ -590,6 +622,13 @@
     </Compile>
     <Compile Include="Seccion\Restaurant\Restaurante.aspx.designer.cs">
       <DependentUpon>Restaurante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\AgregarZona.aspx.cs">
+      <DependentUpon>AgregarZona.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\AgregarZona.aspx.designer.cs">
+      <DependentUpon>AgregarZona.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -634,6 +673,7 @@
     <Content Include="Content\fonts\GreatVibes-Regular.otf" />
     <Content Include="Content\MasterUI.master" />
     <Content Include="Seccion\Restaurant\README.md" />
+    <Content Include="Content\js\datatables\Spanish.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -670,6 +710,11 @@
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

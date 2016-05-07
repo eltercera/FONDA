@@ -9,19 +9,21 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Estados posibles de la Clase Table
     /// </summary>
-    public class TableStatus
+	public abstract class TableStatus : Status
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public TableStatus() : base()	{ }
+		protected TableStatus() : base()	{ }
 
-        public TableStatus Change()
+		public virtual TableStatus Change()
         {
             if (Equals(FreeTableStatus.Instance))
                 return BusyTableStatus.Instance;
 
             return FreeTableStatus.Instance;
         }
+
+
     }
 }

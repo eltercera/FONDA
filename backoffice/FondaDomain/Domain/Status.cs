@@ -1,10 +1,11 @@
-﻿
+﻿using System;
+
 namespace com.ds201625.fonda.Domain
 {
 	/// <summary>
 	/// Representa a un estado de una entidad
 	/// </summary>
-	public abstract class Status
+	public abstract class Status : Entity
 	{
 		/// <summary>
 		/// Identificador del estado de una entidad
@@ -53,7 +54,17 @@ namespace com.ds201625.fonda.Domain
 		/// </returns>
 		public override bool Equals (object obj)
 		{
-			return base.Equals (obj);
+			Status _obj = null;
+			try{
+				_obj = (Status)obj;
+			}
+			catch (InvalidCastException e)
+			{
+				// TODO: Manejo de estos errores.
+				Console.WriteLine (e.ToString ());
+				return false;
+			}
+			return (_statusId == _obj.StatusId);
 		}
 
 		public override int GetHashCode()

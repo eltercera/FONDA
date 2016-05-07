@@ -63,10 +63,16 @@ namespace com.ds201625.fonda.Domain
 			set { _ssn = value; }
 		}
 
+		public virtual SimpleStatus Status
+		{
+			get { return _status; }
+			set { _status = value; }
+		}
+
 		/// <summary>
 		/// CAmbia el eltado actual de la persona.
 		/// </summary>
-		public void changeStatus ()
+		public virtual void changeStatus ()
 		{
 			_status = _status.Change ();
 		}

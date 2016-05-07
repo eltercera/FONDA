@@ -6,7 +6,7 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Representa una cuenta de un restaurante.
     /// </summary>
-    class Account : BaseEntity
+    public class Account : BaseEntity
     {
         /// <summary>
         /// Estado de la cuenta
@@ -47,6 +47,15 @@ namespace com.ds201625.fonda.Domain
         {
             get { return _listDish; }
             set { _listDish = value; }
+        }
+
+        /// <summary>
+        /// Obtiene o asigna un estado a la cuenta
+        /// </summary>
+        public virtual AccountStatus Status
+        {
+            get { return _status; }
+            set { _status = value; }
         }
 
         /// <summary>
