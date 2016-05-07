@@ -21,6 +21,7 @@ namespace DataAccess
         /// crea un plato.
         /// </summary>
         [Test]
+        [Ignore]
         public void DishTest()
         {
             generateDish();
@@ -29,7 +30,7 @@ namespace DataAccess
         }
 
         [Test]
-
+        [Ignore]
         public void DishSave()
         {
             getDishDao();
