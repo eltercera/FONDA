@@ -33,8 +33,8 @@ public class ProfileViewItemList extends BaseArrayAdapter<Profile> {
         TextView tvProfileRif = (TextView) convertView.findViewById(R.id.tvProfileRif);
 
         tvProfile.setText(item.getProfileName());
-        tvProfileName.setText(item.getNames());
-        tvProfileRif.setText(item.getSsn());
+        tvProfileName.setText(item.getPerson().getName());
+        tvProfileRif.setText(item.getPerson().getSsn());
 
         return convertView;
     }

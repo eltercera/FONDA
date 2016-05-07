@@ -10,12 +10,16 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.RetrofitProfileService;
+import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.ProfileFormFragment;
 import com.ds201625.fonda.views.fragments.ProfileListFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Activity de Perfil de usuario
@@ -56,7 +60,7 @@ public class ProfileActivity extends BaseNavigationActivity
     /**
      * Solo para prueba de la interface
      */
-    private ArrayList<Profile> p= new ArrayList<Profile>();
+    private List<Profile> p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +88,8 @@ public class ProfileActivity extends BaseNavigationActivity
         fm.executePendingTransactions();
 
         //pruebas
-        p.add(new Profile("Personal 1"));
-        p.add(new Profile("Empresa 2"));
-        p.add(new Profile("Formación 3"));
-        p.add(new Profile("Formación 9"));
-        p.add(new Profile("Las Vegas"));
+        ProfileService ps = FondaServiceFactory.getInstance().getProfileService();
+        p=ps.getProfiles();
         profileListFrag.seProfiles(p);
 
     }
