@@ -4,7 +4,8 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-    class HibernateDishDAO : HibernetNounBaseEntityDAO<Dish>, IDishDAO
+    public class HibernateDishDAO
+        : HibernetNounBaseEntityDAO<Dish>, IDishDAO
     {
     }
 }

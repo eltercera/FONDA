@@ -54,6 +54,7 @@
     <Compile Include="Domain\Day.cs" />
     <Compile Include="Domain\Dish.cs" />
     <Compile Include="Domain\DishOrder.cs" />
+    <Compile Include="Domain\Entity.cs" />
     <Compile Include="Domain\FreeTableStatus.cs" />
     <Compile Include="Domain\GeneratedInvoiceStatus.cs" />
     <Compile Include="Domain\Invoice.cs" />
@@ -84,7 +85,6 @@
     <Compile Include="Domain\SimpleStatus.cs" />
     <Compile Include="Domain\Employee.cs" />
     <Compile Include="Domain\Zone.cs" />
-    <Compile Include="Domain\Entity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

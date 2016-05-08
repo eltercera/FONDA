@@ -9,7 +9,7 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Horario disponible de un Restaurante
     /// </summary>
-    public class Schedule : BaseEntity
+    public class Schedule
     {
         /// <summary>
         /// Hora de apertura del restaurante
@@ -21,16 +21,12 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private TimeSpan _closingTime;
 
-        private List<Day> _day;
+        private Day _day;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public Schedule() : base()
-        {
-
-            _day = new List<Day>();
-        }
+        public Schedule() : base() { }
 
         /// <summary>
         /// Constructor
@@ -58,8 +54,7 @@ namespace com.ds201625.fonda.Domain
         {
             /// <summary>
             /// Obtiene la hora de cierre del Restaurante
-            /// </summary> 
-            
+            /// </summary>
             get { return _closingTime; }
             /// <summary>
             /// Asigna la hora de cierre del Restaurante
@@ -68,7 +63,7 @@ namespace com.ds201625.fonda.Domain
             set { _closingTime = value; }
         }
 
-        public virtual List<Day> Day
+        public virtual Day Day
         {
             /// <summary>
             /// Obtiene el dia en el que abre el restaurante

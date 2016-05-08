@@ -5,7 +5,7 @@ namespace com.ds201625.fonda.Domain
 	/// <summary>
 	/// Entidad Base
 	/// </summary>
-	public class BaseEntity : Entity
+    public class BaseEntity
     {
 
 		/// <summary>

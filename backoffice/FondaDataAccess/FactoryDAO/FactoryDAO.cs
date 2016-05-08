@@ -74,11 +74,6 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         {
             return _factory.GetMenuCategoryDAO();
         }
-
-        public IRestaurantDAO GetRestaurantDAO()
-        {
-            return _factory.GetRestaurantDAO();
-        }
     }
 }
 

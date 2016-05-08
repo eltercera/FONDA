@@ -2,14 +2,12 @@
 using NHibernate;
 using com.ds201625.fonda.DataAccess.HibernateDAO.Session;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.Domain;
 using NHibernate.Criterion;
 using System.Collections.Generic;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
 	public class HibernateBaseEntityDAO <T> : IBaseEntityDAO<T>
-		where T : Entity
 	{
 
 		/// <summary>

@@ -23,13 +23,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable();
 
             References(x => x.RecordStatus)
-              .Column("fk_cat_record")
-              .Not.Nullable();
+              .Column("fk_cat_record");
+             
 
             HasMany(x => x.ListDish)
                 .KeyColumn("fk_menu_dish")
-                .Inverse()
-                .Cascade.Persist();
+                .ExtraLazyLoad()
+                .Cascade.All();
 
             //TOdavia no falta que restarant cree su mappa
             /*References(x => x.Restaurant)

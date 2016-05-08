@@ -83,7 +83,6 @@ $(document).ready(function () {
         "aoColumns": [
             null,
             null,
-            null,
             { "bSearchable": false },
             { "bSearchable": false }
         ]

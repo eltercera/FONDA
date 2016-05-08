@@ -9,7 +9,7 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Representa las coordenadas de un Restaurante
     /// </summary>
-    public class Coordinate : BaseEntity
+    public class Coordinate
     {
         /// <summary>
         /// Constructor
@@ -19,14 +19,14 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Ubicación del restaurante, medido en longitud
         /// </summary>
-        private Double _longitude;
+        private float _longitude;
 
         /// <summary>
         /// Ubicación del restaurante, medido en latitud
         /// </summary>
-        private Double _latitude;
+        private float _latitude;
 
-        public virtual Double Longitude
+        public virtual float Longitude
         {
             /// <summary>
             /// Obtiene la longitud
@@ -40,7 +40,7 @@ namespace com.ds201625.fonda.Domain
         }
 
 
-        public virtual Double Latitude
+        public virtual float Latitude
         {
             /// <summary>
             /// Obtiene la latitud
