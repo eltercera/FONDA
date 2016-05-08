@@ -65,8 +65,6 @@
     <Compile Include="HibernateDAO\FluentMappings\MenuCategoryMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OpenAccountStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OrderAccountMap.cs" />
-    <Compile Include="HibernateDAO\HibernateDishDAO.cs" />
-    <Compile Include="HibernateDAO\HibernateMenuCategoryDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\RoleMap.cs" />
     <Compile Include="HibernateDAO\HibernateDishDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDishOrderDAO.cs" />
