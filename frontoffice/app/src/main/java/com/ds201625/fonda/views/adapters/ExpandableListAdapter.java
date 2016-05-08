@@ -27,18 +27,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private String[] date;
     private String[] location;
     private String[] shortDescription;
-    private String[] name;
+
 
 
     public ExpandableListAdapter(Context context, List<String> visits,
-                                 Map<String, List<String>> collectionVisits,String[] name, String[] shortDescription, String[] location, String[] date) {
+                                 Map<String, List<String>> collectionVisits, String[] shortDescription, String[] location, String[] date) {
         this.context = context;
         this.collectionVisits = collectionVisits;
         this.date = date;
         this.visits = visits;
         this.location = location;
         this.shortDescription = shortDescription;
-        this.name = name;
+
     }
 
     public Object getChild(int groupPosition, int childPosition) {
@@ -89,7 +89,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         nameRestaurant.setTypeface(null, Typeface.BOLD);
         nameRestaurant.setText(restaurantList);
-        nameRestaurant.setText(name[groupPosition]);
+     //   nameRestaurant.setText(name[groupPosition]);
         locationRestaurant.setText(location[groupPosition]);
         descriptionRestaurant.setText(shortDescription[groupPosition]);
         dateVisit.setText(date[groupPosition]);

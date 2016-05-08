@@ -22,7 +22,7 @@ public class Profile extends BaseEntity {
         this.profileName = profileName;
     }
 
-    public Profile(Integer profileId) {this.setId(profileId);}
+    public Profile(Integer profileId, String profileName) {this.setId(profileId);this.profileName = profileName;}
 
     public String getProfileName() {
         return profileName;
