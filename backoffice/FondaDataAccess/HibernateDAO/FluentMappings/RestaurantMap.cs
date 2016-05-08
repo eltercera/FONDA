@@ -62,13 +62,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                .Not.Nullable();
 
             HasMany(x => x.MenuCategories)
-                .KeyColumn("fk_res_mencat");
+                .KeyColumn("fk_res_mencat")
+                .ExtraLazyLoad()
+                .Cascade.All();
 
             HasMany(x => x.Employees)
-                .KeyColumn("fk_res_employee");
+                .KeyColumn("fk_res_employee")
+                .ExtraLazyLoad()
+                .Cascade.All();
 
             HasMany(x => x.Tables)
-                .KeyColumn("fk_res_table");
+                .KeyColumn("fk_res_table")
+                .ExtraLazyLoad()
+                .Cascade.All();
                 
 
         }
