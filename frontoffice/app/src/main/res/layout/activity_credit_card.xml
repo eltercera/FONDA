@@ -16,9 +16,10 @@
 
         <include layout="@layout/toolbar_default" />
 
-        <include layout="@layout/content_profile" />
+        <include layout="@layout/fragment_add_n_select_cc" />
 
     </android.support.design.widget.CoordinatorLayout>
 
+    <include layout="@layout/navigation_view_default" />
 
 </android.support.v4.widget.DrawerLayout>
