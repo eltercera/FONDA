@@ -30,8 +30,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                .Not.Nullable();
 
             References(x => x.Status)
-               .Column("i_status")
-               .Not.Nullable();
+               .Column("i_status")          /*TODO : Cambiar nombre de columna a fk_status_id */
+               .Not.Nullable()
+               .Cascade.Persist();
 
             References(x => x.RecordStatus)
                 .Column("fk_inv_status_id")
@@ -60,7 +61,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             
 
-            /*TO DO: Agregar metodos get/set en Invoice.cs*/
+            
         }
     }
 }
