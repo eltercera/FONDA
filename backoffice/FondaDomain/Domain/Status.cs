@@ -5,7 +5,7 @@ namespace com.ds201625.fonda.Domain
 	/// <summary>
 	/// Representa a un estado de una entidad
 	/// </summary>
-	public abstract class Status
+	public abstract class Status : Entity
 	{
 		/// <summary>
 		/// Identificador del estado de una entidad

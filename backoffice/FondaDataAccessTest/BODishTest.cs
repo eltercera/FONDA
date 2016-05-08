@@ -37,6 +37,7 @@ namespace DataAccess
 
             _dishDAO.Save(_dish);
 
+
             Assert.AreNotEqual(_dish.Id, 0);
             _dishId = _dish.Id;
 
@@ -98,6 +99,6 @@ namespace DataAccess
             Assert.AreEqual(_dish.Suggestion, true);
         }
 
-    }
-   
+    } 
 }
+

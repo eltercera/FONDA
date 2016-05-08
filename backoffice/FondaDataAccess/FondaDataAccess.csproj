@@ -61,17 +61,27 @@
     <Compile Include="HibernateDAO\FluentMappings\ClosedAccountStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\DishMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\DishOrderMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\EmployeeMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\MenuCategoryMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OpenAccountStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OrderAccountMap.cs" />
     <Compile Include="HibernateDAO\HibernateDishDAO.cs" />
     <Compile Include="HibernateDAO\HibernateMenuCategoryDAO.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\RoleMap.cs" />
+    <Compile Include="HibernateDAO\HibernateDishDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateDishOrderDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateEmployeeDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateMenuCategoryDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateRoleDAO.cs" />
     <Compile Include="InterfaceDAO\IDishDAO.cs" />
     <Compile Include="InterfaceDAO\IDishOrderDAO.cs" />
+    <Compile Include="InterfaceDAO\IEmployeeDAO.cs" />
     <Compile Include="InterfaceDAO\IInvoiceDao.cs" />
     <Compile Include="InterfaceDAO\IMenuCategoryDAO.cs" />
     <Compile Include="InterfaceDAO\IOrderAccountDao.cs" />
     <Compile Include="InterfaceDAO\IPaymentDao.cs" />
+    <Compile Include="InterfaceDAO\IRoleDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InterfaceDAO\IBaseEntityDAO.cs" />
     <Compile Include="InterfaceDAO\INounBaseEntityDAO.cs" />
@@ -141,8 +151,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Database1_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 </Project>

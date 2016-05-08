@@ -40,12 +40,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         public IDishOrderDAO GetDishOrderDAO()
         {
-            return null;
+            return new HibernateDishOrderDAO();
         }
 
         public IOrderAccountDao GetOrderAccountDAO()
         {
-            return null;
+            return new HibernateOrderAccountDAO();
         }
 
         public IDishDAO GetDishDAO()
@@ -57,6 +57,17 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return new HibernateMenuCategoryDAO();
         }
+
+        public IRoleDAO GetRoleDAO()
+        {
+            return new HibernateRoleDAO();
+
+        }
+        public IEmployeeDAO GetEmployeeDAO()
+		{
+        return new HibernateEmployeeDAO();
+		}
+
     }
 }
 
