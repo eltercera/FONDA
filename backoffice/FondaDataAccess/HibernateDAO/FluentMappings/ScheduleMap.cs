@@ -26,7 +26,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Column("sch_closingTime")
               .Not.Nullable();
 
-
+            HasMany(x => x.Day)
+                .KeyColumn("fk_schedule_day")
+                .ExtraLazyLoad()
+                .Cascade.All();
 
         }
     }

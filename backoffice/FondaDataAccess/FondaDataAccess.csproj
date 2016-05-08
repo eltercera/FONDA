@@ -58,12 +58,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HibernateDAO\FluentMappings\AccountStatusMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\BusyTableStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\ClosedAccountStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CoordinateMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CurrencyMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\DayMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\DishMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\DishOrderMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\FreeTableStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\MenuCategoryMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OpenAccountStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OrderAccountMap.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="HibernateDAO\FluentMappings\RestaurantMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\ScheduleMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\TableMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\TableStatusMap.cs" />
     <Compile Include="HibernateDAO\HibernateCoordinateDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCurrencyDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDayDAO.cs" />

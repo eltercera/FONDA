@@ -23,7 +23,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Not.Nullable();
 
             References(x => x.Status)
-                .Column("tab_status")
+                .Column("fk_tab_status")
                 .Not.Nullable();
 
         }

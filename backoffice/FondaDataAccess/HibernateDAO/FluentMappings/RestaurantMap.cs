@@ -18,6 +18,21 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Not.Nullable()
               .GeneratedBy.Increment();
 
+            Map(x => x.Name)
+                .Column("res_name")
+                .Not.Nullable();
+
+            Map(x => x.Nationality)
+                .Column("res_name")
+                .Not.Nullable();
+
+            Map(x => x.Ssn)
+                .Column("res_rif")
+                .Not.Nullable();
+
+            Map(x => x.Address)
+                .Column("res_address");                
+
             Map(x => x.Logo)
               .Column("res_logo")
               .Not.Nullable();
@@ -45,6 +60,16 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
             References(x => x.Schedule)
                .Column("fk_res_schedule")
                .Not.Nullable();
+
+            HasMany(x => x.MenuCategories)
+                .KeyColumn("fk_res_mencat");
+
+            HasMany(x => x.Employees)
+                .KeyColumn("fk_res_employee");
+
+            HasMany(x => x.Tables)
+                .KeyColumn("fk_res_table");
+                
 
         }
     }
