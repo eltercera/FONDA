@@ -74,6 +74,19 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         {
             return _factory.GetMenuCategoryDAO();
         }
+<<<<<<< HEAD
+=======
+
+        public IRoleDAO GetRoleDAO()
+        {
+            return _factory.GetRoleDAO();
+        }
+        public IEmployeeDAO GetEmployeeDAO()
+        {
+            return _factory.GetEmployeeDAO();
+        }
+
+>>>>>>> develop
     }
 }
 

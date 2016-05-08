@@ -35,7 +35,11 @@ namespace DataAccess
             getDishDao();
             generateDish();
 
+<<<<<<< HEAD
             _dishDAO.Save(_dish);
+=======
+              _dishDAO.Save(_dish);
+>>>>>>> develop
 
             Assert.AreNotEqual(_dish.Id, 0);
             _dishId = _dish.Id;
@@ -99,5 +103,9 @@ namespace DataAccess
         }
 
     }
+<<<<<<< HEAD
    
 }
+=======
+}
+>>>>>>> develop
