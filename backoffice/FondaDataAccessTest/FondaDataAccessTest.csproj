@@ -71,6 +71,7 @@
     <Compile Include="BODishOrderTest.cs" />
     <Compile Include="BODishTest.cs" />
     <Compile Include="BOMenuCategoryTest.cs" />
+    <Compile Include="BOTableTest.cs" />
     <Compile Include="FOUserRegisterTests.cs" />
   </ItemGroup>
   <ItemGroup>
