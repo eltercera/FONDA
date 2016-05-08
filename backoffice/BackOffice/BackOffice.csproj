@@ -47,7 +47,7 @@
       <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL"/>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -414,6 +414,7 @@
     <Content Include="Content\js\plugins\morris\morris.js" />
     <Content Include="Content\js\plugins\morris\morris.min.js" />
     <Content Include="Content\js\plugins\morris\raphael.min.js" />
+    <Content Include="Content\Menu.xml" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
     <Content Include="inicio.aspx" />
@@ -450,6 +451,7 @@
       <DependentUpon>MasterUI.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Content\sessionTag.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
