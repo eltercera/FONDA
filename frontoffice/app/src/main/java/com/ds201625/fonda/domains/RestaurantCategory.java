@@ -11,6 +11,10 @@ public class RestaurantCategory {
         super();
     }
 
+    public RestaurantCategory (String nameCategory) {
+        this.nameCategory = nameCategory;
+    }
+
     public String getNameCategory() {
         return nameCategory;
     }

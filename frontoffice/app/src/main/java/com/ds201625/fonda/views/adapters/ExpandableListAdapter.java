@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Invoice;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -43,10 +45,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return collectionVisits.get(visits.get(groupPosition)).get(childPosition);
     }
 
-    public long getChildId(int groupPosition, int childPosition) {
-        return childPosition;
-    }
-
 
     public View getChildView(final int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
@@ -60,23 +58,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView item = (TextView) convertView.findViewById(R.id.detail_restaurant);
         item.setText(detail);
         return convertView;
-    }
-
-    public int getChildrenCount(int groupPosition) {
-        return collectionVisits.get(visits.get(groupPosition)).size();
-    }
-
-    public Object getGroup(int groupPosition) {
-        return visits.get(groupPosition);
-    }
-
-
-    public int getGroupCount() {
-        return visits.size();
-    }
-
-    public long getGroupId(int groupPosition) {
-        return groupPosition;
     }
 
     public View getGroupView(int groupPosition, boolean isExpanded,
@@ -114,6 +95,29 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         dateVisit.setText(date[groupPosition]);
         return convertView;
     }
+
+
+    public int getChildrenCount(int groupPosition) {
+        return collectionVisits.get(visits.get(groupPosition)).size();
+    }
+
+    public Object getGroup(int groupPosition) {
+        return visits.get(groupPosition);
+    }
+
+
+    public int getGroupCount() {
+        return visits.size();
+    }
+
+    public long getGroupId(int groupPosition) {
+        return groupPosition;
+    }
+
+    public long getChildId(int groupPosition, int childPosition) {
+        return childPosition;
+    }
+
 
     public boolean hasStableIds() {
         return true;
