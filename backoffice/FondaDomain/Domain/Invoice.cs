@@ -8,6 +8,21 @@ namespace com.ds201625.fonda.Domain
     public class Invoice : BaseEntity
     {
         /// <summary>
+        /// Restaurante al que la factura pertenece
+        /// </summary>
+        private Restaurant _restaurante;
+
+        /// <summary>
+        /// Pago al que la factura pertenece
+        /// </summary>
+        private Payment _payment;
+
+        /// <summary>
+        /// Cuenta a la que la factura pertenece
+        /// </summary>
+        private Account _account;
+
+        /// <summary>
         /// Propina de la cuenta
         /// </summary>
         private float _tip;
@@ -76,16 +91,45 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna el status de la cuenta
         /// </summary>
-        public InvoiceStatus Status
+        public virtual InvoiceStatus Status
         {
             get { return _status; }
             set { _status = value; }
         }
 
         /// <summary>
+        /// Obtiene o asigna un restaurante
+        /// </summary>
+        public virtual Restaurant Restaurant
+        {
+            get { return _restaurante; }
+            set { _restaurante = value; }
+        }
+
+        /// <summary>
+        /// Obtiene o asigna un pago
+        /// </summary>
+        public virtual Payment Payment
+        {
+            get { return _payment; }
+            set { _payment = value; }
+        }
+
+        /// <summary>
+        /// Obtiene o asigna una cuenta
+        /// </summary>
+        public virtual Account Account
+        {
+            get { return _account; }
+            set { _account = value; }
+        }
+
+
+
+        /// <summary>
         /// Cambia el eltado actual de la factura.
         /// </summary>
-        public void changeStatus()
+        public virtual void changeStatus()
         {
             _status = _status.Change();
         }

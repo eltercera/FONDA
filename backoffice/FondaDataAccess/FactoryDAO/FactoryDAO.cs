@@ -75,6 +75,23 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
             return _factory.GetMenuCategoryDAO();
         }
 
+        public IInvoiceDao GetInvoiceDao()
+        {
+            return _factory.GetInvoiceDAO();
+        }
+
+        public ICashPaymentDAO GetCashPaymentDAO()
+        {
+            return _factory.GetCashPaymentDAO();
+        }
+
+        public ICreditCardPaymentDAO GetCreditCardPaymentDAO()
+        {
+            return _factory.GetCreditCardPaymentDAO();
+        }
+
+
+
     }
 }
 

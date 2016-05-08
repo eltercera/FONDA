@@ -57,6 +57,22 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return new HibernateMenuCategoryDAO();
         }
+
+        public IInvoiceDao GetInvoiceDAO()
+        {
+            return new HibernateInvoiceDAO();
+        }
+
+        public ICreditCardPaymentDAO GetCreditCardPaymentDAO()
+        {
+            return new HibernateCreditCardPaymentDAO();
+        }
+
+        public ICashPaymentDAO GetCashPaymentDAO()
+        {
+            return new HibernateCashPaymentDAO();
+        }
+
     }
 }
 

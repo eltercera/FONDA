@@ -72,8 +72,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOCashPaymentTest.cs" />
+    <Compile Include="BOCreditCardPaymentTest.cs" />
     <Compile Include="BODishOrderTest.cs" />
     <Compile Include="BODishTest.cs" />
+    <Compile Include="BOInvoiceTest.cs" />
     <Compile Include="FOUserRegisterTests.cs" />
   </ItemGroup>
   <ItemGroup>
