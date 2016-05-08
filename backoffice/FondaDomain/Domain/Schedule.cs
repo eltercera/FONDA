@@ -24,7 +24,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Dias en que labora el restaurante
         /// </summary>
-        private List<Day> _day;
+        private IList<Day> _day;
 
         /// <summary>
         /// Constructor
@@ -70,7 +70,7 @@ namespace com.ds201625.fonda.Domain
             set { _closingTime = value; }
         }
 
-        public virtual List<Day> Day
+        public virtual IList<Day> Day
         {
             /// <summary>
             /// Obtiene el dia en el que abre el restaurante
