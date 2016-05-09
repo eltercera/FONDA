@@ -4,10 +4,10 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 
-namespace DataAccess
+namespace FondaDataAccessTest
 {
-    
-    
+
+
 
     [TestFixture]
 
@@ -89,7 +89,7 @@ namespace DataAccess
             _mencat.ListDish.Add(plato);
             _mencat.ListDish.Add(plato2);
             _mencat.Status = ActiveSimpleStatus.Instance;
-            
+
 
 
 
@@ -110,6 +110,6 @@ namespace DataAccess
         }
 
     }
-   
+
 }
 

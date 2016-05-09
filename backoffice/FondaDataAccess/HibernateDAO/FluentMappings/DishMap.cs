@@ -24,8 +24,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable();
 
             Map(x => x.Image)
-                .Column("dis_image")
-                .Not.Nullable();
+                .Column("dis_image");
+
 
             References(x => x.Status)
                 .Column("fk_dis_status");               
