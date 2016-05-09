@@ -7,7 +7,7 @@ using FluentNHibernate.Mapping;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 {
-    class CoordinateMap : ClassMap<com.ds201625.fonda.Domain.Coordinate>
+    public class CoordinateMap : ClassMap<com.ds201625.fonda.Domain.Coordinate>
     {
         public CoordinateMap()
         {

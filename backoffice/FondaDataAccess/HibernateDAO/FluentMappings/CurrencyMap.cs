@@ -7,7 +7,7 @@ using FluentNHibernate.Mapping;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 {
-    class CurrencyMap : ClassMap<com.ds201625.fonda.Domain.Currency>
+    public class CurrencyMap : ClassMap<com.ds201625.fonda.Domain.Currency>
     {
         public CurrencyMap()
         {

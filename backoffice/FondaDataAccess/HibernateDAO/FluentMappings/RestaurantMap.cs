@@ -7,7 +7,7 @@ using FluentNHibernate.Mapping;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 {
-    class RestaurantMap : ClassMap<com.ds201625.fonda.Domain.Restaurant>
+    public class RestaurantMap : ClassMap<com.ds201625.fonda.Domain.Restaurant>
     {
         public RestaurantMap()
         {

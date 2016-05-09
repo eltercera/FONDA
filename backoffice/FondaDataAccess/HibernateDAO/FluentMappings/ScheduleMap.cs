@@ -7,7 +7,7 @@ using FluentNHibernate.Mapping;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 {
-    class ScheduleMap : ClassMap<com.ds201625.fonda.Domain.Schedule>
+    public class ScheduleMap : ClassMap<com.ds201625.fonda.Domain.Schedule>
     {
         public ScheduleMap()
         {

@@ -7,7 +7,7 @@ using FluentNHibernate.Mapping;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 {
-    class DayMap : ClassMap<com.ds201625.fonda.Domain.MenuCategory>
+    public class DayMap : ClassMap<com.ds201625.fonda.Domain.MenuCategory>
     {
         public DayMap()
         {
