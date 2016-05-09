@@ -44,6 +44,23 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 			return Session.Get<T> (id);
 		}
 
+		protected IList<T> FindAll(ICriterion restrictions = null, int max = -1, int offset = -1){
+			ICriteria criteria = Session.CreateCriteria (typeof(T));
+
+			if (restrictions != null)
+				criteria.Add (restrictions);
+
+			if (max > 0)
+				criteria.SetMaxResults (max);
+
+			if (offset > 0)
+				criteria.SetFirstResult (offset);
+
+			IList<T> result = criteria.List<T> ();
+
+			return result;
+		}
+
 		protected T FindBy (string property, object value)
 		{
 			ICriteria criteria = Session.CreateCriteria (typeof (T))
