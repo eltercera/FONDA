@@ -6,7 +6,7 @@ using com.ds201625.fonda.Domain;
 
 namespace FondaDataAccessTest
 {
-
+    
 
 
     [TestFixture]
@@ -18,6 +18,7 @@ namespace FondaDataAccessTest
         private MenuCategory _mencat;
         private int _mencatId;
         private IDishDAO _dishDAO;
+        
 
         /// <summary>
         /// Prueba de Dominio.
@@ -81,7 +82,6 @@ namespace FondaDataAccessTest
             if ((edit & _mencat == null) | _mencat == null)
                 _mencat = new MenuCategory();
 
-
             _dishDAO = _facDAO.GetDishDAO();
             Dish plato = _dishDAO.FindById(1);
             Dish plato2 = _dishDAO.FindById(2);
@@ -110,6 +110,7 @@ namespace FondaDataAccessTest
         }
 
     }
+     
 
 }
 

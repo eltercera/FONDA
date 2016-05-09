@@ -22,10 +22,13 @@ namespace BackOffice.Seccion.Menu
         {
             AlertSuccess_AgregarCategoria.Visible = true;
             FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IMenuCategoryDAO menuCatDAO = factoryDAO.GetMenuCategoryDAO();
-            MenuCategory mc = menuCatDAO.FindById(1);
-            Value1.Text = mc.Name;
-
+            IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
+            MenuCategory _mencat = new MenuCategory();
+            String nombre = Value1.Text;
+            _mencat.Name = nombre;
+            _mencat.ListDish = null;
+            _mencat.Status = ActiveSimpleStatus.Instance;
+            _mencatDAO.Save(_mencat);
         }
 
         protected void BotonModificarCategoria_Click(object sender, EventArgs e)
