@@ -139,12 +139,24 @@
                         </div>
                 </div>
             </div>
+                    <div class="row">
+                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Usuario</label>
+                            <asp:TextBox ID="userNameU" CssClass="form-control" placeholder="Usuario" MaxLength="3" runat="server"/>
+                        </div>
+                      </div>
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <asp:TextBox ID="email" CssClass="form-control" placeholder="Email" MaxLength="3" runat="server"/>
+                        </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                          <label class="control-label">Status</label>
                             <div class="form-group">
-                                <label class="control-label">Status</label>
-                                            <br/>
                                                 <asp:RadioButton GroupName="Disponibilidad" ID="statusA" runat="server" Text="  Activo" />
                                                 <asp:RadioButton GroupName="Disponibilidad" ID="statusI" runat="server" Text=" Inactivo" Checked="true"/>  
                             </div>

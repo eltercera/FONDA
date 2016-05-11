@@ -67,6 +67,24 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.WebControls.TextBox address;
         
         /// <summary>
+        /// Control userNameU.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox userNameU;
+        
+        /// <summary>
+        /// Control email.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox email;
+        
+        /// <summary>
         /// Control statusA.
         /// </summary>
         /// <remarks>

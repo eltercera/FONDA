@@ -41,6 +41,10 @@ namespace BackOffice.Seccion.Configuracion
             this.nss2.Attributes["placeholder"] = "ej. 965831535-1";
             this.address.Text = "";
             this.address.Attributes["placeholder"] = "Dirección";
+            this.email.Text = "";
+            this.address.Attributes["placeholder"] = "Email";
+            this.userNameU.Text = "";
+            this.address.Attributes["placeholder"] = "Usuario";
             this.statusI.Checked = true;
             this.ButtonAgrMod.Text = "Agregar";
         }
