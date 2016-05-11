@@ -2,20 +2,40 @@
 using System.Web.Http;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEnd.ActionFilters;
+using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
-	[RoutePrefix("api/token")]
-	public class TokenFondaWebApiController : ApiController
+	[RoutePrefix("api")]
+	public class TokenFondaWebApiController : FondaWebApi
 	{
 		public TokenFondaWebApiController () : base () {}
 
-		[FondaAuthToken]
-		[Route]
-		[HttpGet]
-		public Token getToken()
+		[FondaAuthLogin]
+		[Route("token")]
+		[HttpPost]
+		public IHttpActionResult getToken()
 		{
-			return null;
+			Commensal commensal = GetCommensal (Request.Headers);
+			if (commensal == null)
+				return BadRequest ();
+
+			ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO ();
+			Token token = new Token ();
+			commensal.AddToken (token);
+
+			try
+			{
+				commensalDao.Save (commensal);
+			}
+			catch (SaveEntityFondaDAOException e)
+			{
+				Console.WriteLine (e.ToString ());
+				return InternalServerError (e);
+			}
+
+			return Ok (token);
 		}
 
 	}

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace com.ds201625.fonda.Domain
@@ -12,7 +12,7 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Token de session de la cuenta.
 		/// </summary>
-		private Token _sesionToken;
+		private IList<Token> _sesionTokens;
 
 		/// <summary>
 		/// Lista de restaurante favoritos de un comansal
@@ -25,16 +25,13 @@ namespace com.ds201625.fonda.Domain
 		{
 			_favoritesRestaurants = new List<Restaurant> ();
 			_profiles = new List<Profile> ();
+			_sesionTokens = new List<Token> ();
 		}
 
-		/// <summary>
-		/// Obtiene o asigna la clave
-		/// </summary>
-		/// <value>la clave</value>
-		public virtual Token SesionToken
+		public virtual IList<Token> SesionTokens
 		{
-			get { return _sesionToken; }
-			set { _sesionToken= value; }
+			get { return _sesionTokens; }
+			set { _sesionTokens= value; }
 		}
 
 		public virtual IList<Restaurant> FavoritesRestaurants
@@ -57,6 +54,12 @@ namespace com.ds201625.fonda.Domain
 		public virtual void AddProfile ( Profile restaurant )
 		{
 			_profiles.Add (restaurant);
+		}
+
+		public virtual void AddToken ( Token token )
+		{
+			token.Commensal = this;
+			_sesionTokens.Add (token);
 		}
 
 	}

@@ -84,9 +84,10 @@
     <Compile Include="ActionFilters\FondaAuth.cs" />
     <Compile Include="ActionFilters\FondaAuthLoginAttribute.cs" />
     <Compile Include="ActionFilters\FondaAuthTokenAttribute.cs" />
-    <Compile Include="Controllers\ProfileFOndaWebApiController.cs" />
     <Compile Include="Controllers\FondaWebApi.cs" />
     <Compile Include="Controllers\TokenFondaWebApiController.cs" />
+    <Compile Include="Controllers\ProfileFondaWebApiController.cs" />
+    <Compile Include="Controllers\CommensalWebApiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

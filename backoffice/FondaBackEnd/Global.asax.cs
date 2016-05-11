@@ -25,7 +25,8 @@ namespace com.ds201625.fonda.BackEnd
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
 			HttpConfiguration config = GlobalConfiguration.Configuration;
-			config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver ();
+			config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
+				new CamelCasePropertyNamesContractResolver ();
 			config.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;
         }
     }

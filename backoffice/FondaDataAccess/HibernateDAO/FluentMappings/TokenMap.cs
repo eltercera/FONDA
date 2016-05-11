@@ -28,10 +28,9 @@ namespace com.ds201625.fonda.DataAccess
 				.Column ("tok_expiration")
 				.Not.Nullable ();
 
-			References (x => x.RecordStatus)
-				.Column ("fk_status_id")
-				.Not.Nullable ();
-			
+			References (x => x.Commensal);
+
+
 		}
 	}
 }

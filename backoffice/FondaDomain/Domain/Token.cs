@@ -8,6 +8,7 @@ namespace com.ds201625.fonda.Domain
 		private string _strToken;
 		private DateTime _created;
 		private DateTime _expiration;
+		private Commensal _commensal;
 
 		public Token () : base ()
 		{
@@ -35,6 +36,12 @@ namespace com.ds201625.fonda.Domain
 		{
 			get { return _expiration; }
 			protected set { _expiration = value; }
+		}
+
+		public virtual Commensal Commensal
+		{
+			get { return _commensal; }
+			set { _commensal = value; }
 		}
 	}
 }

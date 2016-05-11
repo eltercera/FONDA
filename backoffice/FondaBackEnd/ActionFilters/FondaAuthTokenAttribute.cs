@@ -46,14 +46,14 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 		/// <param name="token">Token.</param>
 		private int ValidateAccount(String token)
 		{
-			ICommensalDAO commDAO = FactoryDAO.GetCommensalDAO ();
+			ITokenDAO tokDAo= FactoryDAO.GetTokenDAO ();
 
-			Commensal comm = commDAO.FindByToken(token);
+			Token tok = tokDAo.FindByStrToken(token);
 
-			if (comm == null)
+			if (tok == null)
 				return 0;
 
-			return comm.Id;
+			return tok.Commensal.Id;
 		}
 	}
 }
