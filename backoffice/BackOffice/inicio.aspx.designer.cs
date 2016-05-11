@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace BackOffice.Seccion.Configuracion {
+namespace BackOffice {
     
     
-    public partial class Default {
+    public partial class inicio {
     }
 }

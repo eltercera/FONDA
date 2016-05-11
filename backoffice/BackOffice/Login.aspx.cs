@@ -85,7 +85,7 @@ namespace BackOffice.Seccion.Configuracion
                     Session[RecursoMaster.sessionUserID] = "12";
                 
                     mensajeLogin(false, mensajes.logErr, mensajes.tipoErr);
-                Response.Redirect("inicio.aspx");
+                Response.Redirect("Default.aspx");
                 }
                 else { 
                             
