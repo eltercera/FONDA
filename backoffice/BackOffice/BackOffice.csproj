@@ -426,15 +426,9 @@
     <Content Include="Seccion\Caja\Default.aspx" />
     <Content Include="Seccion\Caja\DefaultOrdenesCerradas.aspx" />
     <Content Include="Seccion\Caja\ModificarOrden.aspx" />
-    <Content Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx" />
-    <Content Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarUsuario.aspx" />
-    <Content Include="Seccion\Configuracion\AgregarModificarRol.aspx" />
-    <Content Include="Seccion\Configuracion\Default.aspx" />
-    <Content Include="Seccion\Configuracion\ListarPrivilegio.aspx" />
-    <Content Include="Seccion\Configuracion\ListarPrivilegioUsuario.aspx" />
-    <Content Include="Seccion\Configuracion\ListarRol.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
+    <Content Include="Seccion\Configuracion\ModalAgregar.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
     <Content Include="Seccion\Menu\MenuDia.aspx" />
@@ -512,20 +506,6 @@
     <Compile Include="Seccion\Caja\ModificarOrden.aspx.designer.cs">
       <DependentUpon>ModificarOrden.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx.cs">
-      <DependentUpon>AgregarModificarPrivilegio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx.designer.cs">
-      <DependentUpon>AgregarModificarPrivilegio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx.cs">
-      <DependentUpon>AgregarModificarPriviRol.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx.designer.cs">
-      <DependentUpon>AgregarModificarPriviRol.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Seccion\Configuracion\AgregarModificarUsuario.aspx.cs">
       <DependentUpon>AgregarModificarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -533,40 +513,10 @@
     <Compile Include="Seccion\Configuracion\AgregarModificarUsuario.aspx.designer.cs">
       <DependentUpon>AgregarModificarUsuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarRol.aspx.cs">
-      <DependentUpon>AgregarModificarRol.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarRol.aspx.designer.cs">
-      <DependentUpon>AgregarModificarRol.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarPrivilegio.aspx.cs">
-      <DependentUpon>ListarPrivilegio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarPrivilegio.aspx.designer.cs">
-      <DependentUpon>ListarPrivilegio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarPrivilegioUsuario.aspx.cs">
-      <DependentUpon>ListarPrivilegioUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarPrivilegioUsuario.aspx.designer.cs">
-      <DependentUpon>ListarPrivilegioUsuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarRol.aspx.cs">
-      <DependentUpon>ListarRol.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarRol.aspx.designer.cs">
-      <DependentUpon>ListarRol.aspx</DependentUpon>
+    <Compile Include="Seccion\Configuracion\G1RecursosInterfaz.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>G1RecursosInterfaz.resx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\ListarUsuario.aspx.cs">
       <DependentUpon>ListarUsuario.aspx</DependentUpon>
@@ -576,6 +526,13 @@
       <DependentUpon>ListarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\mensajes.cs" />
+    <Compile Include="Seccion\Configuracion\ModalAgregar.aspx.cs">
+      <DependentUpon>ModalAgregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\ModalAgregar.aspx.designer.cs">
+      <DependentUpon>ModalAgregar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Seccion\Menu\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -687,6 +644,12 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Seccion\Configuracion\G1RecursosInterfaz.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>G1RecursosInterfaz.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
