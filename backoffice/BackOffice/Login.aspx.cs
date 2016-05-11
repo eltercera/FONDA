@@ -79,6 +79,7 @@ namespace BackOffice.Seccion.Configuracion
             else{
                 if (usuario == "fonda" & clave == "12345")
                 {
+
                     Session[RecursoMaster.sessionRol] = "Sistema";
                     Session[RecursoMaster.sessionUserName] = "jose";
                     Session[RecursoMaster.sessionUserID] = "12";
