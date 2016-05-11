@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Mapping;
+﻿using FluentNHibernate.Mapping;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 {
@@ -11,7 +6,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
     {
         public TableMap()
         {
-            Table("TABLE");
+            Table("CTABLE");
 
             Id(x => x.Id)
               .Column("tab_id")

@@ -74,6 +74,7 @@
     <Compile Include="HibernateDAO\FluentMappings\ScheduleMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\TableMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\TableStatusMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\ZoneMap.cs" />
     <Compile Include="HibernateDAO\HibernateCoordinateDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCurrencyDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDayDAO.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="HibernateDAO\HibernateRestaurantDAO.cs" />
     <Compile Include="HibernateDAO\HibernateScheduleDAO.cs" />
     <Compile Include="HibernateDAO\HibernateTableDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateZoneDAO.cs" />
     <Compile Include="InterfaceDAO\ICoordinateDAO.cs" />
     <Compile Include="InterfaceDAO\ICurrencyDAO.cs" />
     <Compile Include="InterfaceDAO\IDayDAO.cs" />
@@ -106,7 +108,7 @@
     <Compile Include="InterfaceDAO\ICommensalDAO.cs" />
     <Compile Include="InterfaceDAO\IUserAccountDAO.cs" />
     <Compile Include="InterfaceDAO\IProfileDAO.cs" />
-    <Compile Include="InterfaceDAO\IGeneicPersonDAO.cs" />
+    <Compile Include="InterfaceDAO\IGenericPersonDAO.cs" />
     <Compile Include="InterfaceDAO\IPersonDAO.cs" />
     <Compile Include="InterfaceDAO\ICompanyDAO.cs" />
     <Compile Include="FactoryDAO\FactoryDAO.cs" />
@@ -126,15 +128,15 @@
     <Compile Include="HibernateDAO\FluentMappings\ProfileMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\UserAccountMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CommensalMap.cs" />
-    <Compile Include="HibernateDAO\Session\FacrotySession.cs" />
+    <Compile Include="HibernateDAO\Session\FactorySession.cs" />
     <Compile Include="HibernateDAO\HibernateBaseEntityDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCommensalDAO.cs" />
     <Compile Include="HibernateDAO\HibernateStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateUserAccountDAO.cs" />
     <Compile Include="HibernateDAO\HibernateProfileDAO.cs" />
     <Compile Include="HibernateDAO\HibernatePersonDAO.cs" />
-    <Compile Include="HibernateDAO\HibernetNounBaseEntityDAO.cs" />
-    <Compile Include="HibernateDAO\HibernateGeneicPersonDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateNounBaseEntityDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateGenericPersonDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCompanyDAO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -147,7 +149,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

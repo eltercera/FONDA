@@ -5,7 +5,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
 	public class HibernateCompanyDAO  
-		: HibernateGeneicPersonDAO<Company>,ICompanyDAO
+		: HibernateGenericPersonDAO<Company>,ICompanyDAO
 	{
 		
 	}

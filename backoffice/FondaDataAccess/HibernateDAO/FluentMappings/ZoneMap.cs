@@ -2,19 +2,19 @@
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 {
-    public class DayMap : ClassMap<com.ds201625.fonda.Domain.Day>
+    public class ZoneMap : ClassMap<com.ds201625.fonda.Domain.Zone>
     {
-        public DayMap()
+        public ZoneMap()
         {
-            Table("DAY");
+            Table("ZONE");
 
             Id(x => x.Id)
-              .Column("day_id")
+              .Column("zon_id")
               .Not.Nullable()
               .GeneratedBy.Increment();
 
             Map(x => x.Name)
-              .Column("day_name")
+              .Column("zon_name")
               .Not.Nullable();
 
         }

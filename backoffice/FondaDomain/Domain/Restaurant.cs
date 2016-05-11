@@ -71,7 +71,7 @@ namespace com.ds201625.fonda.Domain
             set { _logo = value; }
         }
 
-        public Currency Currency
+        public virtual Currency Currency
         {
             /// <summary>
             /// Obtiene el tipo de moneda de un restaurante

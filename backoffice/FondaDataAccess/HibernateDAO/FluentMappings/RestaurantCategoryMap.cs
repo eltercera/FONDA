@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Mapping;
+﻿using FluentNHibernate.Mapping;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 {
@@ -11,15 +6,15 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
     {
         public RestaurantCategoryMap()
         {
-            Table("RESTAURANTCATEGORY");
+            Table("RESTAURANT_CATEGORY");
 
             Id(x => x.Id)
-              .Column("res_cat_id")
+              .Column("rc_id")
               .Not.Nullable()
               .GeneratedBy.Increment();
 
             Map(x => x.Name)
-              .Column("fk_res_cat_name")
+              .Column("rc_name")
               .Not.Nullable();
 
         }

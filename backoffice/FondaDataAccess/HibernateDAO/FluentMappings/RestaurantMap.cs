@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentNHibernate.Mapping;
+﻿using FluentNHibernate.Mapping;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 {
@@ -41,19 +36,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Column("res_status")
                 .Not.Nullable();
 
-            References(x => x.coordinate.Id)
+            References(x => x.coordinate)
               .Column("fk_res_coordinate")
               .Not.Nullable();
 
-            References(x => x.Currency.Id)
+            References(x => x.Currency)
               .Column("fk_res_currency")
               .Not.Nullable();
 
-            References(x => x.RestaurantCategory.Id)
+            References(x => x.RestaurantCategory)
                .Column("fk_res_restaurantCategory")
                .Not.Nullable();
 
-            References(x => x.Zone.Id)
+            References(x => x.Zone)
                .Column("fk_res_zone")
                .Not.Nullable();
 
@@ -66,11 +61,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .ExtraLazyLoad()
                 .Cascade.All();
 
-            HasMany(x => x.Employees)
+           /* HasMany(x => x.Employees)
                 .KeyColumn("fk_res_employee")
                 .ExtraLazyLoad()
                 .Cascade.All();
-
+                */
             HasMany(x => x.Tables)
                 .KeyColumn("fk_res_table")
                 .ExtraLazyLoad()

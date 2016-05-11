@@ -4,7 +4,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-    class HibernateDishOrderDAO : HibernateBaseEntityDAO<DishOrder>, IDishOrderDAO
+    public class HibernateDishOrderDAO : HibernateBaseEntityDAO<DishOrder>, IDishOrderDAO
     {
 
     }

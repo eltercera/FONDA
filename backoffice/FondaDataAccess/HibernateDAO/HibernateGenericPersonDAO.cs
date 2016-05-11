@@ -4,13 +4,14 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-	public class HibernateGeneicPersonDAO<GenericPerson>
-		: HibernetNounBaseEntityDAO<GenericPerson>,IGeneicPersonDAO<GenericPerson>
+	public class HibernateGenericPersonDAO<T>
+		: HibernateNounBaseEntityDAO<T>,IGenericPersonDAO<T> where T : GenericPerson
 	{
-		public GenericPerson FindBySsn (string ssn)
+		public T FindBySsn (string ssn)
 		{
 			return FindBy ("Ssn", ssn);
 		}
-	}
+
+    }
 }
 
