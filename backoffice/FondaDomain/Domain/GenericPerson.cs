@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
+	
 	/// <summary>
 	/// Persona Generica
 	/// </summary>
@@ -37,6 +39,7 @@ namespace com.ds201625.fonda.Domain
 		/// Obtiene o asigna la direccion
 		/// </summary>
 		/// <value>La Direccion</value>
+		[DataMember]
 		public virtual string Address
 		{
 			get { return _address; }
@@ -47,6 +50,7 @@ namespace com.ds201625.fonda.Domain
 		/// Obtiene o asigna el numero de telefono.
 		/// </summary>
 		/// <value>El numero de telefono</value>
+		[DataMember]
 		public virtual string PhoneNumber
 		{
 			get { return _phoneNumber; }
@@ -57,6 +61,7 @@ namespace com.ds201625.fonda.Domain
 		/// Obtiene o asigna el Identificador Personal
 		/// </summary>
 		/// <value>Identificador Personal</value>
+		[DataMember]
 		public virtual string Ssn
 		{
 			get { return _ssn; }
