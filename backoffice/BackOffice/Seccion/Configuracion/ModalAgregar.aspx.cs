@@ -7,16 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace BackOffice.Seccion.Configuracion
 {
-    public partial class ListarPrivilegio : System.Web.UI.Page
+    public partial class ModalAgregar : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("AgregarModificarPrivilegio.aspx?success=agregar");
         }
     }
 }

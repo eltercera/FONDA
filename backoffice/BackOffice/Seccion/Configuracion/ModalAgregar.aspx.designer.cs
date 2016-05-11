@@ -10,43 +10,61 @@
 namespace BackOffice.Seccion.Configuracion {
     
     
-    public partial class AgregarModificarPrivilegio {
+    public partial class ModalAgregar {
         
         /// <summary>
-        /// Control exitoFormulario.
+        /// Control Usuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl exitoFormulario;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Usuario;
         
         /// <summary>
-        /// Control alertaFormulario.
+        /// Control nameUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertaFormulario;
+        protected global::System.Web.UI.WebControls.TextBox nameUser;
         
         /// <summary>
-        /// Control nombrePrivilegio.
+        /// Control lastNameUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nombrePrivilegio;
+        protected global::System.Web.UI.WebControls.TextBox lastNameUser;
         
         /// <summary>
-        /// Control descripcionPrivilegio.
+        /// Control nss1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox descripcionPrivilegio;
+        protected global::System.Web.UI.WebControls.DropDownList nss1;
+        
+        /// <summary>
+        /// Control nss2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox nss2;
+        
+        /// <summary>
+        /// Control address.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox address;
         
         /// <summary>
         /// Control statusDojoA.
