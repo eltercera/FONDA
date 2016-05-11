@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu>
 
-  <opcion rol="Sistema" nombre="Restaurante" img="fa fa-fw fa-user">
+  <opcion rol="Sistema-Restaurante" nombre="Restaurante" img="fa fa-fw fa-user">
     <subopcion rol="Sistema" nombre="Restaurantes" link="~/Seccion/Restaurant/Restaurante.aspx"/>
     <subopcion rol="Sistema" nombre="Categorias" link="~/Seccion/Restaurant/AgregarCategoria.aspx"/>
     <subopcion rol="Sistema" nombre="Zonas" link="~/Seccion/Restaurant/AgregarZona.aspx"/>
