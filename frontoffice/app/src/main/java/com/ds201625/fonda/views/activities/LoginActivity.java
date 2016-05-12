@@ -130,6 +130,8 @@ public class LoginActivity extends BaseActivity {
 
     private void setOnRegister() {
         this.status = LoginActivityStatus.ON_REGISTER;
+        mEmailView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        mEmailView.setNextFocusDownId(R.id.password);
         mPasswordView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
         mPasswordView.setNextFocusDownId(R.id.password2);
         mPasswordView2.setVisibility(View.VISIBLE);
@@ -142,6 +144,7 @@ public class LoginActivity extends BaseActivity {
 
     private void setOnForgetPass() {
         this.status = LoginActivityStatus.ON_PASSWORD_FORGET;
+        mEmailView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         mPasswordView2.setVisibility(View.GONE);
         mTextViewForgetPass.setVisibility(View.GONE);
         mTextViewRegister.setVisibility(View.GONE);
@@ -153,6 +156,8 @@ public class LoginActivity extends BaseActivity {
     private void setOnLogin() {
         this.status = LoginActivityStatus.ON_LOGIN;
         mPasswordView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        mEmailView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        mEmailView.setNextFocusDownId(R.id.password);
         mPasswordView2.setVisibility(View.GONE);
         mTextViewForgetPass.setVisibility(View.VISIBLE);
         mTextViewRegister.setVisibility(View.VISIBLE);
