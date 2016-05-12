@@ -94,8 +94,10 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/prompt_email"
                         android:inputType="textEmailAddress"
+                        android:imeOptions="actionNext"
                         android:maxLines="1"
                         android:singleLine="true"
+                        android:nextFocusDown="@+id/password"
                         android:textIsSelectable="false"
                         android:textColor="@color/creme"/>
 
@@ -113,7 +115,6 @@
                         android:hint="@string/prompt_password"
                         android:imeActionId="@+id/login"
                         android:imeActionLabel="@string/action_sign_in_short"
-                        android:imeOptions="actionUnspecified"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:singleLine="true"
@@ -132,7 +133,7 @@
                         android:hint="@string/prompt_password2"
                         android:imeActionId="@+id/login"
                         android:imeActionLabel="@string/action_sign_in_short"
-                        android:imeOptions="actionUnspecified"
+                        android:imeOptions="actionDone"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:singleLine="true"

@@ -2,6 +2,7 @@ package com.ds201625.fonda.views.activities;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+
 import com.ds201625.fonda.R;
 
 
@@ -26,6 +28,7 @@ import com.ds201625.fonda.R;
 public class LoginActivity extends BaseActivity {
 
     public enum LoginActivityStatus {
+        ON_INIT,
         ON_LOGIN,
         ON_REGISTER,
         ON_PASSWORD_FORGET
@@ -64,6 +67,7 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        this.status = LoginActivityStatus.ON_INIT;
 
         this.getAllElements();
 
@@ -126,6 +130,8 @@ public class LoginActivity extends BaseActivity {
 
     private void setOnRegister() {
         this.status = LoginActivityStatus.ON_REGISTER;
+        mPasswordView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        mPasswordView.setNextFocusDownId(R.id.password2);
         mPasswordView2.setVisibility(View.VISIBLE);
         mTextViewForgetPass.setVisibility(View.GONE);
         mTextViewRegister.setVisibility(View.GONE);
@@ -146,6 +152,7 @@ public class LoginActivity extends BaseActivity {
 
     private void setOnLogin() {
         this.status = LoginActivityStatus.ON_LOGIN;
+        mPasswordView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         mPasswordView2.setVisibility(View.GONE);
         mTextViewForgetPass.setVisibility(View.VISIBLE);
         mTextViewRegister.setVisibility(View.VISIBLE);
