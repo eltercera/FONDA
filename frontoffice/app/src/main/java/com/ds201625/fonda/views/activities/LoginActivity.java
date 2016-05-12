@@ -40,6 +40,10 @@ public class LoginActivity extends BaseActivity {
     private TextView mTextViewStartSesion;
     private LoginActivityStatus status = LoginActivityStatus.ON_LOGIN;
     private Button mEmailSignInButton;
+    private Button mSignInButton;
+    private Button mRegisterButton;
+    private LinearLayout mLoginLayout;
+    private LinearLayout mInitLayout;
 
 
     private void getAllElements() {
@@ -48,8 +52,12 @@ public class LoginActivity extends BaseActivity {
         mPasswordView2 = (EditText) findViewById(R.id.password2);
         mTextViewForgetPass = (TextView) findViewById(R.id.textViewForgetPass);
         mTextViewRegister = (TextView) findViewById(R.id.textViewRegiter);
-        mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mTextViewStartSesion = (TextView) findViewById(R.id.textViewStartSesion);
+        mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        mSignInButton = (Button) findViewById(R.id.signin_button);
+        mRegisterButton = (Button) findViewById(R.id.register_button);
+        mLoginLayout = (LinearLayout) findViewById(R.id.email_login_form);
+        mInitLayout = (LinearLayout) findViewById(R.id.init_layout);
     }
 
     @Override
@@ -74,6 +82,22 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 attemptLogin();
+            }
+        });
+
+        mSignInButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showLoginForm();
+                setOnLogin();
+            }
+        });
+
+        mRegisterButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLoginForm();
+                setOnRegister();
             }
         });
 
@@ -180,6 +204,11 @@ public class LoginActivity extends BaseActivity {
                     break;
             }
         }
+    }
+
+    private void showLoginForm() {
+        mInitLayout.setVisibility(View.GONE);
+        mLoginLayout.setVisibility(View.VISIBLE);
     }
 
     private boolean isEmailValid(String email) {

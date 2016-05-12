@@ -30,11 +30,40 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/init_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:visibility="visible">
+        <Button
+            android:id="@+id/signin_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/login_start_session"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_gravity="bottom" />
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/login_register"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+
+    <LinearLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:visibility="gone">
 
             <!--<ImageView
                 android:layout_width="@android:dimen/app_icon_size"
@@ -53,7 +82,8 @@
                 android:paddingRight="@dimen/form_right_padding"
                 android:background="#96252525"
                 android:animateLayoutChanges="true"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:visibility="visible">
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -152,6 +182,7 @@
                     android:textColor="@color/creme"
                     android:visibility="gone" />
             </LinearLayout>
-        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
