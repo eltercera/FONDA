@@ -223,6 +223,11 @@ public class LoginActivity extends BaseActivity {
         mLoginLayout.setVisibility(View.VISIBLE);
     }
 
+    private void showInitForm() {
+        mInitLayout.setVisibility(View.VISIBLE);
+        mLoginLayout.setVisibility(View.GONE);
+    }
+
     private boolean isEmailValid(String email) {
         if (email == null) {
             return false;
@@ -241,7 +246,7 @@ public class LoginActivity extends BaseActivity {
         if(status == LoginActivityStatus.ON_LOGIN)
             super.onBackPressed();
         else
-            setOnLogin();
+            showInitForm();
     }
 
     private void seguir() {
