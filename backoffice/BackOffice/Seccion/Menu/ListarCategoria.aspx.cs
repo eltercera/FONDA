@@ -13,31 +13,57 @@ namespace BackOffice.Seccion.Menu
 {
     public partial class ListarCategoria : System.Web.UI.Page
     {
+       
+        public string mencat{
+            get { return this.Tabla.Text;}
+            set { this.Tabla.Text = value;}
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {   //Aqui atrapo el valor que me mandaria el restaurante en este caso el id
+            //int nombreparametro= int.Parse(Request.QueryString["parametrouno"]);
             AlertSuccess_AgregarCategoria.Visible = false;
             AlertSuccess_ModificarCategoria.Visible = false;
              
             if (!this.IsPostBack)  
             {
-                //Aqui se deneran los objetos para hacer consulta y generar la lista de categorias
+                //Aqui se generan los objetos para hacer consulta y generar la lista de categorias
                 FactoryDAO factoryDAO = FactoryDAO.Intance;
                 IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
                 MenuCategory _mencat = _mencatDAO.FindById(1);
                 IList<MenuCategory> obj = _mencatDAO.GetAll();
 
-                DataTable dt = new DataTable();  
-                dt.Columns.AddRange(new DataColumn[2] { new DataColumn("Id", typeof(int)),  new DataColumn("Name", typeof(string))});
+        
                 int longitud = obj.Count;
                 
                 //se recorre el objeto lista y se muestra en la tabla 
                 for (int i=0; i<=longitud-1; i++)
                 {
-                    dt.Rows.Add(obj[i].Id, obj[i].Name);  
+                   //aqui se carga y se arma la tabla html recursomenu es un archivo donde hay cadenas de string muy grandes
+                    mencat += "<tr><td>" + obj[i].Name + "</td>";
+
+                    if (obj[i].Status.ToString() == "Activo")
+                    {
+                        mencat += RecursosMenu1.Activo;
+                    }
+                    else
+                    {
+                        mencat += RecursosMenu1.Inactivo;
+                    }
+
+                    mencat += RecursosMenu1.Acciones;
+                    mencat += RecursosMenu1.CerrarTR;
+                    
+                    
                 }
+               
+
                 
-                GridView1.DataSource = dt;  
-                GridView1.DataBind();  
+               
+  
+
+
             } 
         }
 

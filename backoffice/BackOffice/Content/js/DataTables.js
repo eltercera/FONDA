@@ -46,7 +46,26 @@ $(document).ready(function () {
         ]
     });
 });
+$(document).ready(function () {
+    $('#plantillacategoria').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
 
+$(document).ready(function () {
+    $('#GridView1').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null
+        ]
+    });
+});
 $(document).ready(function () {
     $('#default').DataTable({
         "language": spanish,

@@ -6,7 +6,7 @@ using com.ds201625.fonda.Domain;
 
 namespace FondaDataAccessTest
 {
-    
+    /*
 
 
     [TestFixture]
@@ -110,7 +110,7 @@ namespace FondaDataAccessTest
         }
 
     }
-     
+     */
 
 }
 
