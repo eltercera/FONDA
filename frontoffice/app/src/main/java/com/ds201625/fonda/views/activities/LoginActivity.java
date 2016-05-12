@@ -54,8 +54,8 @@ public class LoginActivity extends BaseActivity {
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView2 = (EditText) findViewById(R.id.password2);
         mTextViewForgetPass = (TextView) findViewById(R.id.textViewForgetPass);
-        mTextViewRegister = (TextView) findViewById(R.id.textViewRegiter);
-        mTextViewStartSesion = (TextView) findViewById(R.id.textViewStartSesion);
+        /*mTextViewRegister = (TextView) findViewById(R.id.textViewRegiter);
+        mTextViewStartSesion = (TextView) findViewById(R.id.textViewStartSesion);*/
         mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mSignInButton = (Button) findViewById(R.id.signin_button);
         mRegisterButton = (Button) findViewById(R.id.register_button);
@@ -92,20 +92,20 @@ public class LoginActivity extends BaseActivity {
         mSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLoginForm();
                 setOnLogin();
+                showLoginForm();
             }
         });
 
         mRegisterButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLoginForm();
                 setOnRegister();
+                showLoginForm();
             }
         });
 
-        mTextViewRegister.setOnClickListener(new OnClickListener() {
+        /*mTextViewRegister.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 setOnRegister();
@@ -117,7 +117,7 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View view) {
                 setOnLogin();
             }
-        });
+        });*/
 
         mTextViewForgetPass.setOnClickListener(new OnClickListener() {
             @Override
@@ -136,8 +136,8 @@ public class LoginActivity extends BaseActivity {
         mPasswordView.setNextFocusDownId(R.id.password2);
         mPasswordView2.setVisibility(View.VISIBLE);
         mTextViewForgetPass.setVisibility(View.GONE);
-        mTextViewRegister.setVisibility(View.GONE);
-        mTextViewStartSesion.setVisibility(View.VISIBLE);
+        /*mTextViewRegister.setVisibility(View.GONE);
+        mTextViewStartSesion.setVisibility(View.VISIBLE);*/
         mEmailSignInButton.setText(getString(R.string.login_register));
         mPasswordView.setVisibility(View.VISIBLE);
     }
@@ -147,8 +147,8 @@ public class LoginActivity extends BaseActivity {
         mEmailView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         mPasswordView2.setVisibility(View.GONE);
         mTextViewForgetPass.setVisibility(View.GONE);
-        mTextViewRegister.setVisibility(View.GONE);
-        mTextViewStartSesion.setVisibility(View.VISIBLE);
+        /*mTextViewRegister.setVisibility(View.GONE);
+        mTextViewStartSesion.setVisibility(View.VISIBLE);*/
         mEmailSignInButton.setText(getString(R.string.login_recover_passwd));
         mPasswordView.setVisibility(View.GONE);
     }
@@ -160,8 +160,8 @@ public class LoginActivity extends BaseActivity {
         mEmailView.setNextFocusDownId(R.id.password);
         mPasswordView2.setVisibility(View.GONE);
         mTextViewForgetPass.setVisibility(View.VISIBLE);
-        mTextViewRegister.setVisibility(View.VISIBLE);
-        mTextViewStartSesion.setVisibility(View.GONE);
+        /*mTextViewRegister.setVisibility(View.VISIBLE);
+        mTextViewStartSesion.setVisibility(View.GONE);*/
         mEmailSignInButton.setText(getString(R.string.login_start_session));
         mPasswordView.setVisibility(View.VISIBLE);
     }
