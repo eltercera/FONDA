@@ -224,6 +224,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void showInitForm() {
+        this.status = LoginActivityStatus.ON_INIT;
         mInitLayout.setVisibility(View.VISIBLE);
         mLoginLayout.setVisibility(View.GONE);
     }
@@ -243,7 +244,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if(status == LoginActivityStatus.ON_LOGIN)
+        if(status == LoginActivityStatus.ON_INIT)
             super.onBackPressed();
         else
             showInitForm();
