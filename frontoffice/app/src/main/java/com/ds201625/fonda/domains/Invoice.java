@@ -11,11 +11,12 @@ public class Invoice extends BaseEntity{
     private Date date;
     private float tax;
     private float total;
-    //falta la propina
     private Restaurant restaurant;
     private Profile profile;
     private Currency currency;
-  //  private InvoiceStatus status;
+    private Payment payment;
+    private Account account;
+
 
     public Invoice() {
         super();
@@ -30,6 +31,21 @@ public class Invoice extends BaseEntity{
         this.date = date;
         this.profile= profile;
     }
+
+
+    public Invoice(float tip, float tax, float total, Restaurant restaurant, Date date,
+                   Profile profile, Currency currency,Payment payment, Account account) {
+        this.tip = tip;
+        this.tax = tax;
+        this.total = total;
+        this.restaurant = restaurant;
+        this.date = date;
+        this.profile= profile;
+        this.currency= currency;
+        this.payment= payment;
+        this.account= account;
+    }
+
 
     public float getTip() {
         return tip;
@@ -77,6 +93,22 @@ public class Invoice extends BaseEntity{
 
     public void setCurrency(Currency currency) {
         this.currency = currency;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
 

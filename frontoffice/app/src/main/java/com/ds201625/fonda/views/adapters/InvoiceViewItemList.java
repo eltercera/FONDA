@@ -5,13 +5,9 @@ import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.Dish;
 import com.ds201625.fonda.domains.DishOrder;
 
 import java.util.ArrayList;
@@ -20,9 +16,9 @@ import java.util.ArrayList;
  * Created by jesus on 13/04/16.
  */
 
-public class CloseViewItemList extends BaseArrayAdapter<DishOrder> {
+public class InvoiceViewItemList extends BaseArrayAdapter<DishOrder> {
 
-    public CloseViewItemList(Context context) {
+    public InvoiceViewItemList(Context context) {
         super(context, R.layout.item_close, R.id.txt,new ArrayList<DishOrder>());
     }
 

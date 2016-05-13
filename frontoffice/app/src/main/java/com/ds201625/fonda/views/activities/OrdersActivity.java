@@ -21,6 +21,9 @@ import com.ds201625.fonda.views.fragments.FacturaFragment;
 import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
 import com.ds201625.fonda.views.fragments.CloseAccountFragment;
 import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
+import com.ds201625.fonda.domains.Dish;
+
+import java.util.ArrayList;
 
 public class OrdersActivity extends BaseNavigationActivity {
 
@@ -77,7 +80,6 @@ public class OrdersActivity extends BaseNavigationActivity {
         setContentView(R.layout.activity_orders);
         super.onCreate(savedInstanceState);
 
-
         //Importante Primero obtener el Tablayout
         tb = (TabLayout) findViewById(R.id.tabsO);
 
@@ -91,7 +93,6 @@ public class OrdersActivity extends BaseNavigationActivity {
         tb.setupWithViewPager(mViewPager);
 
         orderListFrag = new CurrentOrderFragment();
-
 
         //Tab con solo un String como titulo
         mSectionsPagerAdapter.addFragment("Orden Actual", orderListFrag);
