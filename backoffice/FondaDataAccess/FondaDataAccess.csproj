@@ -116,6 +116,13 @@
     <Compile Include="HibernateDAO\HibernetNounBaseEntityDAO.cs" />
     <Compile Include="HibernateDAO\HibernateGeneicPersonDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCompanyDAO.cs" />
+    <Compile Include="InterfaceDAO\ITokenDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateTokenDAO.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\TokenMap.cs" />
+    <Compile Include="FondaDAOExceptions\SaveEntityFondaDAOException.cs" />
+    <Compile Include="FondaDAOExceptions\FondaDAOException.cs" />
+    <Compile Include="InterfaceDAO\IActiveSimpleStatusDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateActiveSimpleStatus.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -145,12 +152,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database1.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database1_log.ldf">
-      <DependentUpon>Database1.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Folder Include="FondaDAOExceptions\" />
   </ItemGroup>
 </Project>

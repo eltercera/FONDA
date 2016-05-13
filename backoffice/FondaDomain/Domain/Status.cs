@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -26,6 +27,7 @@ namespace com.ds201625.fonda.Domain
 		/// Obtiene o asigna el identificador del estado.
 		/// </summary>
 		/// <value>El identificador del estad.</value>
+		[DataMember]
 		public virtual int StatusId
 		{
 			get { return _statusId; }
@@ -36,6 +38,7 @@ namespace com.ds201625.fonda.Domain
 		/// Obtiene o asigna la descripcion del estado.
 		/// </summary>
 		/// <value>The description.</value>
+		[DataMember]
 		public virtual string Description
 		{
 			get { return _description; }
