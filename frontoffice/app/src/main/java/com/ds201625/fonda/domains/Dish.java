@@ -23,12 +23,12 @@ public class Dish extends NounBaseEntity{
         this.currency = currency;
     }
 
-    public Dish(String name,String description, float cost, Currency currency , String image) {
+    public Dish(String name,String description, float cost,String image,Currency currency) {
         this.setName(name);
         this.description = description;
         this.cost = cost;
-        this.currency = currency;
         this.image = image;
+        this.currency = currency;
     }
 
     public String getDescription() {
