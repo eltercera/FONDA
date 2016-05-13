@@ -14,7 +14,11 @@ namespace com.ds201625.fonda.Domain
 		/// <summary>
 		/// Consructor
 		/// </summary>
-		public DeletedStatus () : base () {	}
+		protected DeletedStatus () : base ()
+		{
+			StatusId = 3;
+			Description = "Registro Eliminado";
+		}
 
 		/// <summary>
 		/// Obtiene el Estado eliminado de una entidad
@@ -22,8 +26,10 @@ namespace com.ds201625.fonda.Domain
 		public static DeletedStatus Instance
 		{
 			get {
-				if (_instance == null)
+				if (_instance == null) {
 					_instance = new DeletedStatus ();
+					_instance.StatusId = 4;
+				}
 
 				return _instance;
 			}

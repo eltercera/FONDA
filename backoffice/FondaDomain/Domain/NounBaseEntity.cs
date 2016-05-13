@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -22,6 +23,7 @@ namespace com.ds201625.fonda.Domain
 		/// Obtiene y asigna el nombre de la entidad
 		/// </summary>
 		/// <value>El nombre</value>
+		[DataMember]
 		public virtual string Name
 		{
 			get { return _name; }

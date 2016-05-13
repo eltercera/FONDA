@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -10,7 +11,7 @@ namespace com.ds201625.fonda.Domain
 
 		private string _profileName;
 
-		private GenericPerson _person;
+		private Person _person;
 
 		private SimpleStatus _status;
 
@@ -23,6 +24,7 @@ namespace com.ds201625.fonda.Domain
 		/// Obtiene o asigna el nombre de perfil
 		/// </summary>
 		/// <value>el nombre de perfil</value>
+		[DataMember]
 		public virtual string ProfileName
 		{
 			get { return _profileName; }
@@ -33,7 +35,8 @@ namespace com.ds201625.fonda.Domain
 		///  Obtiene o asigna una persona o organizacion
 		/// </summary>
 		/// <value>una persona o organizacion</value>
-		public virtual GenericPerson Person
+		[DataMember]
+		public virtual Person Person
 		{
 			get { return _person; }
 			set { _person = value; }

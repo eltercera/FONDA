@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
-namespace com.ds201625.fonda
+namespace com.ds201625.fonda.Domain
 {
 	/// <summary>
 	/// Persona (Humano)
 	/// </summary>
-	public class Person
+	public class Person : GenericPerson
 	{
 		/// <summary>
 		/// Apellidos
@@ -31,6 +32,7 @@ namespace com.ds201625.fonda
 		/// Obtiene o asigna el apellido
 		/// </summary>
 		/// <value>El apellido</value>
+		[DataMember]
 		public virtual string LastName
 		{
 			get { return _lastName; }
@@ -41,6 +43,7 @@ namespace com.ds201625.fonda
 		/// Obtiene o asigna el genero
 		/// </summary>
 		/// <value>Genero</value>
+		[DataMember]
 		public virtual char Gender
 		{
 			get { return _gender; }
@@ -51,6 +54,7 @@ namespace com.ds201625.fonda
 		/// Obtiene o asigna la fecha de nacimiento
 		/// </summary>
 		/// <value>La fecha de nacimiento</value>
+		[DataMember]
 		public virtual DateTime BirthDate
 		{
 			get { return _birthDate; }

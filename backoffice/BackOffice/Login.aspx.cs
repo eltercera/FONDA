@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
-
+using BackOffice.Content;
 
 
 namespace BackOffice.Seccion.Configuracion
@@ -78,8 +78,14 @@ namespace BackOffice.Seccion.Configuracion
             }
             else{
                 if (usuario == "fonda" & clave == "12345")
-                { mensajeLogin(false, mensajes.logErr, mensajes.tipoErr);
-                Response.Redirect("inicio.aspx");
+                {
+
+                    Session[RecursoMaster.sessionRol] = "Sistema";
+                    Session[RecursoMaster.sessionUserName] = "jose";
+                    Session[RecursoMaster.sessionUserID] = "12";
+                
+                    mensajeLogin(false, mensajes.logErr, mensajes.tipoErr);
+                Response.Redirect("Default.aspx");
                 }
                 else { 
                             

@@ -39,6 +39,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Account.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Domain\Payment.cs" />
     <Compile Include="Domain\Restaurant.cs" />
     <Compile Include="Domain\RestaurantCategory.cs" />
+    <Compile Include="Domain\Role.cs" />
     <Compile Include="Domain\Schedule.cs" />
     <Compile Include="Domain\Table.cs" />
     <Compile Include="Domain\TableStatus.cs" />
@@ -83,6 +85,8 @@
     <Compile Include="Domain\SimpleStatus.cs" />
     <Compile Include="Domain\Employee.cs" />
     <Compile Include="Domain\Zone.cs" />
+    <Compile Include="Domain\Entity.cs" />
+    <Compile Include="Domain\Token.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

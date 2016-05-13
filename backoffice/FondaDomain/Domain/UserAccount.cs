@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -22,7 +23,7 @@ namespace com.ds201625.fonda.Domain
 		/// </summary>
 		private SimpleStatus _status;
 
-		public UserAccount ()
+		public UserAccount () : base ()
 		{
 			
 		}
@@ -31,6 +32,7 @@ namespace com.ds201625.fonda.Domain
 		/// Obtiene o asigna el correo electronico
 		/// </summary>
 		/// <value>el correo electronico</value>
+		[DataMember]
 		public virtual string Email
 		{
 			get { return _email; }
@@ -41,7 +43,8 @@ namespace com.ds201625.fonda.Domain
 		/// Obtiene o asigna la clave
 		/// </summary>
 		/// <value>la clave</value>
-		public virtual string password
+		[DataMember]
+		public virtual string Password
 		{
 			get { return _password; }
 			set { _password = value; }

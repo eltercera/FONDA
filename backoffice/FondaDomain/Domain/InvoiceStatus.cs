@@ -7,7 +7,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Constructor
         /// </summary>
-        public InvoiceStatus() : base()	{ }
+		protected InvoiceStatus() : base()	{ }
 
         /// <summary>
         /// Cambio el estado de una entidad
