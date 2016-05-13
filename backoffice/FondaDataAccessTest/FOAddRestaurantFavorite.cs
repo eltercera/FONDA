@@ -84,8 +84,8 @@ namespace DataAccess
         {
             getRestaurantDao();
             getCommensalDao();
-            _restaurantId1 = _restaurantDAO.FindById(3);
-            _restaurantId2 = _restaurantDAO.FindById(4);
+            _restaurantId1 = _restaurantDAO.FindById(1);
+            _restaurantId2 = _restaurantDAO.FindById(2);
             //findbyid para traerse objeto de commensal
             _commensalId1 = (Commensal)_commensalDAO.FindById(1);
             AddRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);
@@ -100,8 +100,8 @@ namespace DataAccess
         {
             getRestaurantDao();
             getCommensalDao();
-            _restaurantId1 = _restaurantDAO.FindById(3);
-            _restaurantId2 = _restaurantDAO.FindById(4);
+            _restaurantId1 = _restaurantDAO.FindById(1);
+            _restaurantId2 = _restaurantDAO.FindById(2);
             //findbyid para traerse objeto de commensal
             _commensalId1 = (Commensal)_commensalDAO.FindById(1);
             RemoveRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);

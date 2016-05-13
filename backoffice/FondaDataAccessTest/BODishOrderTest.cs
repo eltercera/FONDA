@@ -37,6 +37,7 @@ namespace DataAccessTest
             generateDishOrder();
 
             // La guardo
+            Assert.IsNotNull(_orderDAO);
             _orderDAO.Save(_dishOrder);
 
             // revision del ID de la DB

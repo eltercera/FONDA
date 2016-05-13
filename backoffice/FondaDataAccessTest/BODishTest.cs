@@ -6,9 +6,8 @@ using com.ds201625.fonda.Domain;
 
 namespace DataAccess
 {
-    /*
-    [TestFixture]
 
+    [TestFixture]
     public class BODishTest
     {
         private FactoryDAO _facDAO;
@@ -35,7 +34,7 @@ namespace DataAccess
             getDishDao();
             generateDish();
 
-            _dishDAO.Save(_dish);
+              _dishDAO.Save(_dish);
 
             Assert.AreNotEqual(_dish.Id, 0);
             _dishId = _dish.Id;
@@ -98,6 +97,5 @@ namespace DataAccess
             Assert.AreEqual(_dish.Suggestion, true);
         }
 
-    }*/
-   
+    }
 }
