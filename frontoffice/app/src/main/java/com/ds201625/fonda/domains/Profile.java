@@ -4,7 +4,7 @@ package com.ds201625.fonda.domains;
  * Clase Dominio de Perfil.
  * OJO: No es la Definitiva, es usada para las pruebas de interfaces.
  */
-public class Profile {
+public class Profile extends BaseEntity {
 
     private String profileName;
 
@@ -21,6 +21,8 @@ public class Profile {
     public Profile(String profileName) {
         this.profileName = profileName;
     }
+
+    public Profile(Integer profileId, String profileName) {this.setId(profileId);this.profileName = profileName;}
 
     public String getProfileName() {
         return profileName;
