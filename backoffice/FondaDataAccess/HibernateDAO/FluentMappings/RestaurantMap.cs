@@ -69,12 +69,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
             HasMany(x => x.Tables)
                 .KeyColumn("fk_res_table")
                 .ExtraLazyLoad()
-                .Cascade.All();*/
+                .Cascade.All();
 
             HasManyToMany(x => x.FavoritesCommensals)
                 .Cascade.All()
                 .ExtraLazyLoad()
-                .Table("RESTAURANT_COMMENSAL");
+                .Table("RESTAURANT_COMMENSAL");*/
 
 
         }

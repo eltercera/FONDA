@@ -194,6 +194,12 @@ namespace com.ds201625.fonda.Domain
         public virtual void AddFavoriteCommensal(Commensal commensal)
         {
             _favoritesCommensal.Add(commensal);
+           
+        }
+
+        public virtual void RemoveFavoriteCommensal(Commensal commensal)
+        {
+            _favoritesCommensal.Remove(commensal);
         }
 
 

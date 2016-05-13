@@ -54,7 +54,13 @@ namespace com.ds201625.fonda.Domain
             _favoritesRestaurants.Add (restaurant);
 		}
 
-		public virtual void AddProfile ( Profile restaurant )
+        public virtual void RemoveFavoriteRestaurant(Restaurant restaurant)
+        {
+            restaurant.RemoveFavoriteCommensal(this);
+            _favoritesRestaurants.Remove(restaurant) ;
+        }
+
+        public virtual void AddProfile ( Profile restaurant )
 		{
 			_profiles.Add (restaurant);
 		}
