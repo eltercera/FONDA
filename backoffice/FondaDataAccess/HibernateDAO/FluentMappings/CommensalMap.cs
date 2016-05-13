@@ -11,7 +11,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 			DiscriminatorValue (@"Commensal");
 
 			Map (x => x.SesionToken)
-				.Column ("gp_email")
+				.Column ("gp_email_c")
 				.Nullable();
 
 			HasMany (x => x.Profiles)
@@ -19,8 +19,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 				.Inverse()
 				.Cascade.All();
 
-			// TODO: Mapedo Many-To-Many a Restaurant
-			// TODO: Mapedo a Reservation
+            // TODO: Mapedo Many-To-Many a Restaurant
+            // TODO: Mapedo a Reservation
+
+            HasManyToMany (x => x.FavoritesRestaurants)
+                .Cascade.All()
+                .ExtraLazyLoad()
+                .Table("RESTAURANT_COMMENSAL");
 		}
 	}
 }

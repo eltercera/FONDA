@@ -72,6 +72,9 @@
     <Compile Include="BODishTest.cs" />
     <Compile Include="BOMenuCategoryTest.cs" />
     <Compile Include="BOTableTest.cs" />
+    <Compile Include="FOAddRestaurantFavorite.cs" />
+    <Compile Include="FOCommensalRegister.cs" />
+    <Compile Include="FORestaurantRegister.cs" />
     <Compile Include="FOUserRegisterTests.cs" />
   </ItemGroup>
   <ItemGroup>

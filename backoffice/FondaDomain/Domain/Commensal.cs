@@ -50,7 +50,8 @@ namespace com.ds201625.fonda.Domain
 
 		public virtual void AddFavoriteRestaurant ( Restaurant restaurant )
 		{
-			_favoritesRestaurants.Add (restaurant);
+            restaurant.AddFavoriteCommensal(this);
+            _favoritesRestaurants.Add (restaurant);
 		}
 
 		public virtual void AddProfile ( Profile restaurant )

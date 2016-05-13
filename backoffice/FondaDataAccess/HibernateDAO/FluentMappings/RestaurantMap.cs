@@ -17,9 +17,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Column("res_name")
                 .Not.Nullable();
 
-            Map(x => x.Nationality)
+            /*Map(x => x.Nationality)
                 .Column("res_name")
-                .Not.Nullable();
+                .Not.Nullable();*/
 
             Map(x => x.Ssn)
                 .Column("res_rif")
@@ -33,10 +33,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Not.Nullable();
 
             References(x => x.Status)
-                .Column("res_status")
-                .Not.Nullable();
+                .Column("res_status");
+               // .Not.Nullable();
 
-            References(x => x.coordinate)
+            /*References(x => x.coordinate)
               .Column("fk_res_coordinate")
               .Not.Nullable();
 
@@ -65,12 +65,17 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .KeyColumn("fk_res_employee")
                 .ExtraLazyLoad()
                 .Cascade.All();
-                */
+               
             HasMany(x => x.Tables)
                 .KeyColumn("fk_res_table")
                 .ExtraLazyLoad()
-                .Cascade.All();
-                
+                .Cascade.All();*/
+
+            HasManyToMany(x => x.FavoritesCommensals)
+                .Cascade.All()
+                .ExtraLazyLoad()
+                .Table("RESTAURANT_COMMENSAL");
+
 
         }
     }
