@@ -3,7 +3,7 @@ using com.ds201625.fonda.Domain;
 
 namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 {
-	public interface ICompanyDAO : IGeneicPersonDAO<Company>
+	public interface ICompanyDAO : IGenericPersonDAO<Company>
 	{
 		
 	}

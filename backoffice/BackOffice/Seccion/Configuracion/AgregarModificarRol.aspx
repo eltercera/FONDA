@@ -34,6 +34,51 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
+     <%--Breadcrumbs--%>
+    <div>
+        <ol class="breadcrumb" style="background-color: rgba(0,0,0,0);">
+            <li>
+                <a href="#">Inicio</a>
+            </li>
+            <li>
+                <a href="#">Configuración</a>
+            </li>
+            <li>
+                <a href="#">Rol</a>
+            </li>
+            <li class="active">  <script>
+                                     var parameter = "success";
+                                     // Obtiene la cadena completa de URL
+                                     var url = location.href;
+                                     /* Obtiene la posicion donde se encuentra el signo ?, 
+                                     ahi es donde empiezan los parametros */
+                                     var index = url.indexOf("?");
+                                     /* Obtiene la posicion donde termina el nombre del parametro
+                                     e inicia el signo = */
+                                     index = url.indexOf(parameter, index) + parameter.length;
+                                     /* Verifica que efectivamente el valor en la posicion actual 
+                                     es el signo = */
+                                     if (url.charAt(index) == "=") {
+                                         // Obtiene el valor del parametro
+                                         var result = url.indexOf("&", index);
+                                         if (result == -1) { result = url.length; };
+                                         // Despliega el valor del parametro
+                                         var op = url.substring(index + 1, result);
+                                     }
+
+                                     if (op) {
+                                         if (op == "modificar")
+                                             document.write("Modificar Rol");
+                                         else
+                                             document.write("Agregar Rol");
+                                     }
+
+    </script>
+            </li>
+
+        </ol>
+    </div>
+    <%--Fin_Breadcrumbs--%>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
     <div class="row m-b-3">

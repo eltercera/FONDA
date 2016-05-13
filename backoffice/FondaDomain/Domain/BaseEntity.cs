@@ -5,7 +5,7 @@ namespace com.ds201625.fonda.Domain
 	/// <summary>
 	/// Entidad Base
 	/// </summary>
-	public class BaseEntity : Entity
+    public class BaseEntity : Entity
     {
 
 		/// <summary>
@@ -30,7 +30,7 @@ namespace com.ds201625.fonda.Domain
 		public virtual int Id
 		{
 			get { return _id; }
-			protected set { _id = value; }
+		    set { _id = value; }
 		}
 
 		public virtual EntityRecordStatus RecordStatus
