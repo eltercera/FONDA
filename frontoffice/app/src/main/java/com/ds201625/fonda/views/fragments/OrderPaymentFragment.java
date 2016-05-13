@@ -29,7 +29,7 @@ import org.w3c.dom.Text;
 public class OrderPaymentFragment extends BaseFragment {
 
 
-    private float amount = 2000;
+    private float amount = 4200;
     private String[] pay = {"Monto Total " +
             " Bs." + amount,
             "Seleccionar Perfil",
@@ -41,6 +41,7 @@ public class OrderPaymentFragment extends BaseFragment {
     private TextView tvTip;
     private View layout;
     private TextView tvAccount;
+    private CreditCardFragment ccFrag;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,16 +53,18 @@ public class OrderPaymentFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //Indicar el layout que va a usar el fragment
-
-       layout = inflater.inflate(R.layout.fragment_order_payment,container,false);
+         layout = inflater.inflate(R.layout.fragment_order_payment,container,false);
+        tvAccount = (TextView)layout.findViewById(R.id.tvAccount);
+        tvTip = (TextView)layout.findViewById(R.id.tvTip);
+        etTip = (EditText)layout.findViewById(R.id.etTip);
+        lv1 =(ListView)layout.findViewById(R.id.lVOrden);
+        spinner = (Spinner) layout.findViewById(R.id.spinner);
 
         // Elements of the list
-        lv1 =(ListView)layout.findViewById(R.id.lVOrden);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1, pay);
         lv1.setAdapter(adapter);
 
         // Allow to choose the payment of the tip, in percent or in the current currency
-        spinner = (Spinner) layout.findViewById(R.id.spinner);
         ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(LTRadapter);
@@ -74,9 +77,6 @@ public class OrderPaymentFragment extends BaseFragment {
     private void setTip()
     {
         try {
-            tvAccount = (TextView)layout.findViewById(R.id.tvAccount);
-            tvTip = (TextView)layout.findViewById(R.id.tvTip);
-            etTip = (EditText)layout.findViewById(R.id.etTip);
             float tip;
             float add;
             int idSpinner = spinner.getSelectedItemPosition();
@@ -123,8 +123,11 @@ public class OrderPaymentFragment extends BaseFragment {
                         //startActivity(cambio);
                         break;
                     case 2:
-                        Intent cambioTDC = new Intent (getContext(), RegistrarTdcActivity.class);
-                        startActivity(cambioTDC);
+                                if (ccFrag == null) {
+                                    ccFrag = new CreditCardFragment();
+                                    OrdersActivity.showFragment(ccFrag);
+                                    System.out.println("ENTROOOOOOOOOOOOOOO A LA TDC");
+                                }
                         break;
                 }
             }
@@ -136,8 +139,7 @@ public class OrderPaymentFragment extends BaseFragment {
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         // Verify and reflects the amount of the tip
-        tvTip = (TextView) layout.findViewById(R.id.tvTip);
-        etTip = (EditText) layout.findViewById(R.id.etTip);
+
         etTip.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
