@@ -11,8 +11,10 @@ public class Invoice extends BaseEntity{
     private Date date;
     private float tax;
     private float total;
+    //falta la propina
     private Restaurant restaurant;
     private Profile profile;
+    private Currency currency;
   //  private InvoiceStatus status;
 
     public Invoice() {
@@ -69,5 +71,12 @@ public class Invoice extends BaseEntity{
 
     public void setProfile(Profile profile) {this.profile = profile;}
 
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
 }
 
