@@ -1,6 +1,7 @@
 package com.ds201625.fonda.data_access.factory;
 
 import com.ds201625.fonda.data_access.retrofit_client.RetroditServiceFactory;
+import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 
 /**
@@ -27,5 +28,9 @@ public class FondaServiceFactory {
     public ProfileService getProfileService()
     {
         return serviceFactory.getProfileService();
+    }
+
+    public CommensalService getCommensalService(){
+        return serviceFactory.getCommensalService();
     }
 }

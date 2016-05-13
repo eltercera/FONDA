@@ -10,4 +10,5 @@ public interface ServiceFactory {
 
     ProfileService getProfileService();
 
+    CommensalService getCommensalService();
 }
