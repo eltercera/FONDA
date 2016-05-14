@@ -61,16 +61,34 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#modificar&quot;&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;.
         /// </summary>
-        internal static string Action {
+        internal static string ActionCategory {
             get {
-                return ResourceManager.GetString("Action", resourceCulture);
+                return ResourceManager.GetString("ActionCategory", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#consultar&quot;&gt;&lt;i class=&quot;fa fa-info-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#modificar&quot;&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;.
+        /// </summary>
+        internal static string ActionRestaurant {
+            get {
+                return ResourceManager.GetString("ActionRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#modificar&quot;&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;.
+        /// </summary>
+        internal static string ActionTable {
+            get {
+                return ResourceManager.GetString("ActionTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;a&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.
         /// </summary>
         internal static string Active {
             get {
@@ -79,7 +97,7 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to &lt;/td&gt;.
         /// </summary>
         internal static string Close {
             get {
@@ -88,7 +106,7 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to &lt;a&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;.
         /// </summary>
         internal static string Inactive {
             get {
