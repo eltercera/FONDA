@@ -42,7 +42,8 @@ Agregar Categoria
                                                 <th class="no-sort">Acciones</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <asp:Literal ID="CategoryT" runat="server"></asp:Literal>
+                                      <!--  <tbody>
                                             <tr>
                                                 <td>Venezolana</td>
                                                 <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
@@ -96,7 +97,7 @@ Agregar Categoria
                                                 <td>Francesa</td>
                                                 <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
                                             </tr>                                               
-                                        </tbody>
+                                        </tbody> --->
                                     </table>       
                                 </div>
                             </div>
@@ -121,14 +122,14 @@ Agregar Categoria
                                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                         <div class="form-group">
                                             <label class="control-label">Nombre</label>
-                                            <asp:TextBox ID="TextBox1" CssClass="form-control" placeholder="ej. China" runat="server" />
+                                            <asp:TextBox ID="NombreCatM" CssClass="form-control" placeholder="ej. China" runat="server" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <asp:Button id="Button3" Text="Modificar" CssClass="btn btn-success" runat="server"/>
-                                <asp:Button id="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                                <asp:Button id="ButtonModificar" Text="Modificar" CssClass="btn btn-success" runat="server"/>
+                                <asp:Button id="ButtonCancelarM" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                             </div>
                         </div>
                     </div>          
@@ -149,14 +150,14 @@ Agregar Categoria
                                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                             <div class="form-group">
                                                 <label class="control-label">Nombre</label>
-                                                <asp:TextBox ID="Value1" CssClass="form-control" placeholder="ej. Americana" runat="server"/>
+                                                <asp:TextBox ID="NombreCatA" CssClass="form-control" placeholder="ej. Americana" runat="server"/>
                                             </div>
                                     </div>
                                  </div>
                             </div>
                          <div class="modal-footer">
-                            <asp:Button id="Button1" Text="Agregar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button2" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonAgregar" Text="Agregar" CssClass="btn btn-success" runat="server"/>
+                            <asp:Button id="ButtonCancelarA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
                      </div>
                 </div>
