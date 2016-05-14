@@ -20,7 +20,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:id="@+id/imageViewM"
+            android:id="@+id/img_morning"
             android:src="@drawable/morning"
             android:scaleType="fitXY"/>
 
@@ -48,7 +48,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:id="@+id/imageViewA"
+            android:id="@+id/img_afternoon"
             android:src="@drawable/afternoon"
             android:scaleType="fitXY"/>
 
@@ -74,7 +74,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:id="@+id/imageViewN"
+            android:id="@+id/img_night"
             android:src="@drawable/night"
             android:scaleType="fitXY"/>
 

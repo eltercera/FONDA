@@ -1,15 +1,19 @@
 package com.ds201625.fonda.views.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.views.activities.FavoritesActivity;
 import com.ds201625.fonda.views.activities.FilterList;
 
 /**
@@ -42,6 +46,16 @@ public class CostFragment extends BaseFragment {
                 FilterList(getActivity(),price);
         list=(ListView)view.findViewById(R.id.listViewRestaurants);
         list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Toast.makeText(getActivity(), "You Clicked at " + price[+position], Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent (getActivity(),FavoritesActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
 

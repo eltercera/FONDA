@@ -1,21 +1,30 @@
 package com.ds201625.fonda.views.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.views.activities.DetailRestaurantActivity;
+import com.ds201625.fonda.views.activities.FavoritesActivity;
 import com.ds201625.fonda.views.activities.FilterList;
+import com.ds201625.fonda.views.activities.RestaurantList;
 
 /**
  * Created by Valentina on 17/04/2016.
  */
 public class TimeFragment extends BaseFragment {
 
+    private ImageView imgMorning;
+    private ImageView imgAfternoon;
+    private ImageView imgNight;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,6 +37,37 @@ public class TimeFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //Indicar el layout que va a usar el fragment
         View view= inflater.inflate(R.layout.fragment_time,container,false);
+
+        imgMorning = (ImageView) view.findViewById(R.id.img_morning);
+        imgMorning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent= new Intent(getActivity(),FavoritesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        imgAfternoon = (ImageView) view.findViewById(R.id.img_afternoon);
+        imgAfternoon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent= new Intent(getActivity(),FavoritesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        imgNight = (ImageView) view.findViewById(R.id.img_night);
+        imgNight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent= new Intent(getActivity(),FavoritesActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         return view;
 
