@@ -118,11 +118,11 @@ namespace DataAccessTests
         [Test]
         public void RestaurantSave()
         {
-            //generateRestaurant();
+            generateRestaurant();
             getRestaurantDao();
-            //_restaurantDAO.Save(_restaurant);
-            //Assert.AreNotEqual(_restaurant.Id, 0);
-            //_restaurantId = _restaurant.Id;
+            _restaurantDAO.Save(_restaurant);
+            Assert.AreNotEqual(_restaurant.Id, 0);
+            _restaurantId = _restaurant.Id;
             generateRestaurant(true);
             _restaurantDAO.Save(_restaurant);
             _restaurantDAO.ResetSession();
