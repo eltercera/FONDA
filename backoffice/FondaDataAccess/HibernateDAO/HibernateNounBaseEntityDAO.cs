@@ -5,9 +5,9 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-	public class HibernetNounBaseEntityDAO<T>
+	public class HibernateNounBaseEntityDAO<T>
 		: HibernateBaseEntityDAO<T>,INounBaseEntityDAO<T>
-		where T : NounBaseEntity
+        where T : NounBaseEntity
 	{
 
 		/// <summary>

@@ -1,19 +1,19 @@
 ﻿using NUnit.Framework;
 using System;
-using Moq;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 
-namespace DataAccess
+namespace DataAccessTest
 {
 
     [TestFixture()]
     public class BODishOrderTest
     {
 
-        private FactoryDAO _facDAO;
+        private FactoryDAOO _facDAO;
         private IDishOrderDAO _orderDAO;
+        private IDishDAO _dishDAO;
         private DishOrder _dishOrder;
         private int _dishOrderID;
 
@@ -37,6 +37,7 @@ namespace DataAccess
             generateDishOrder();
 
             // La guardo
+            Assert.IsNotNull(_orderDAO);
             _orderDAO.Save(_dishOrder);
 
             // revision del ID de la DB
@@ -68,9 +69,13 @@ namespace DataAccess
 
             if ((edit & _dishOrder == null) | _dishOrder == null)
                 _dishOrder = new DishOrder();
-            
-            Mock<Dish> chk = new Mock<Dish>();
-            Dish dish = chk.Object;
+
+            _dishDAO = _facDAO.GetDishDAO();
+            Dish dish;
+            if (!edit)
+                dish = _dishDAO.FindById(1);
+            else
+                dish = _dishDAO.FindById(2);
             _dishOrder.Dish = dish;
             _dishOrder.Count = 5;
 
@@ -80,6 +85,7 @@ namespace DataAccess
         {
             Assert.IsNotNull(_dishOrder);
             Assert.AreEqual(_dishOrder.Count, 5);
+            Assert.IsNotNull(_dishOrder.Dish);
         }
 
         private void getdishOrderDao()
@@ -93,7 +99,7 @@ namespace DataAccess
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAO.Intance;
+                _facDAO = FactoryDAOO.Intance;
         }
 
         [TestFixtureTearDown]
@@ -103,7 +109,7 @@ namespace DataAccess
             {
                 getdishOrderDao();
                 // Eliminacion de la Persona al finalidar todo.
-                _orderDAO.Delete(_dishOrder);
+                // _orderDAO.Delete(account);
 
             }
             _orderDAO.ResetSession();

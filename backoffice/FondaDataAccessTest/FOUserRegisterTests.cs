@@ -6,11 +6,9 @@ using com.ds201625.fonda.Domain;
 
 namespace DataAccessTests
 {
-	[TestFixture ()]
-	public class FOUserRegisterTests
-	{
+	public class FactoryDAO {
 
-		private FactoryDAO _facDAO;
+		private FactoryDAOO _facDAO;
 		private IPersonDAO _personDAO;
 		private IProfileDAO _profileDAO;
 		private ITokenDAO _tokenDAO;
@@ -182,7 +180,7 @@ namespace DataAccessTests
 		private void getDao()
 		{
 			if (_facDAO == null)
-				_facDAO = FactoryDAO.Intance;
+				_facDAO = FactoryDAOO.Intance;
 		}
 
 		private void getPersonDao()

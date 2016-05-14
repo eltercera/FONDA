@@ -20,9 +20,15 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 				.Inverse()
 				.Cascade.All();
 
-			// TODO: Mapedo Many-To-Many a Restaurant
-			// TODO: Mapedo a Reservation
-		}
+            // TODO: Mapedo Many-To-Many a Restaurant
+            // TODO: Mapedo a Reservation
+            
+            HasManyToMany(x => x.FavoritesRestaurants)
+                .Cascade.All()
+                .ExtraLazyLoad()
+                .Table("RESTAURANT_COMMENSAL");
+
+        }
 	}
 }
 

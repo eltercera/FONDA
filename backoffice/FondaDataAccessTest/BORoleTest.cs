@@ -9,7 +9,7 @@ namespace DataAccess
     [TestFixture]
    public class BORoleTest
     {
-        private FactoryDAO _facDAO;
+        private FactoryDAOO _facDAO;
         private IRoleDAO _roleDAO;
         private Role _role;
             private int _roleId;
@@ -86,7 +86,7 @@ namespace DataAccess
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAO.Intance;
+                _facDAO = FactoryDAOO.Intance;
         }
 
 

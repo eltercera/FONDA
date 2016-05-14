@@ -17,7 +17,7 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 		/// Obtine la fabrica de DAO instanciada en la aplicacion web.
 		/// </summary>
 		/// <value>FactoryDAO.</value>
-		public FactoryDAO FactoryDAO
+		public FactoryDAOO FactoryDAO
 		{
 			get { return WebApiApplication.FactoryDAO; }
 		}

@@ -7,7 +7,7 @@ using NHibernate.Tool.hbm2ddl;
 using com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings;
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.Session
 {
-	public class FacrotySession
+	public class FactorySession
 	{
 		private static ISession _session;
 
@@ -44,4 +44,3 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.Session
 		}
 	}
 }
-
