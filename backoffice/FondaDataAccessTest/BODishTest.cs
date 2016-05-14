@@ -6,7 +6,7 @@ using com.ds201625.fonda.Domain;
 
 namespace DataAccess
 {
-    /*
+    
     [TestFixture]
 
     public class BODishTest
@@ -98,6 +98,6 @@ namespace DataAccess
             Assert.AreEqual(_dish.Suggestion, true);
         }
 
-    }*/
+    }
    
 }
