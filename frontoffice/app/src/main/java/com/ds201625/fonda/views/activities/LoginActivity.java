@@ -2,6 +2,7 @@ package com.ds201625.fonda.views.activities;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
@@ -17,7 +18,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.services.CommensalService;
+import com.ds201625.fonda.domains.Commensal;
 
 
 /**
@@ -26,6 +31,7 @@ import com.ds201625.fonda.R;
 public class LoginActivity extends BaseActivity {
 
     public enum LoginActivityStatus {
+        ON_INIT,
         ON_LOGIN,
         ON_REGISTER,
         ON_PASSWORD_FORGET
@@ -40,6 +46,10 @@ public class LoginActivity extends BaseActivity {
     private TextView mTextViewStartSesion;
     private LoginActivityStatus status = LoginActivityStatus.ON_LOGIN;
     private Button mEmailSignInButton;
+    private Button mSignInButton;
+    private Button mRegisterButton;
+    private LinearLayout mLoginLayout;
+    private LinearLayout mInitLayout;
 
 
     private void getAllElements() {
@@ -47,15 +57,20 @@ public class LoginActivity extends BaseActivity {
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView2 = (EditText) findViewById(R.id.password2);
         mTextViewForgetPass = (TextView) findViewById(R.id.textViewForgetPass);
-        mTextViewRegister = (TextView) findViewById(R.id.textViewRegiter);
+        /*mTextViewRegister = (TextView) findViewById(R.id.textViewRegiter);
+        mTextViewStartSesion = (TextView) findViewById(R.id.textViewStartSesion);*/
         mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mTextViewStartSesion = (TextView) findViewById(R.id.textViewStartSesion);
+        mSignInButton = (Button) findViewById(R.id.signin_button);
+        mRegisterButton = (Button) findViewById(R.id.register_button);
+        mLoginLayout = (LinearLayout) findViewById(R.id.email_login_form);
+        mInitLayout = (LinearLayout) findViewById(R.id.init_layout);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        this.status = LoginActivityStatus.ON_INIT;
 
         this.getAllElements();
 
@@ -77,7 +92,23 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
-        mTextViewRegister.setOnClickListener(new OnClickListener() {
+        mSignInButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setOnLogin();
+                showLoginForm();
+            }
+        });
+
+        mRegisterButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setOnRegister();
+                showLoginForm();
+            }
+        });
+
+        /*mTextViewRegister.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 setOnRegister();
@@ -89,7 +120,7 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View view) {
                 setOnLogin();
             }
-        });
+        });*/
 
         mTextViewForgetPass.setOnClickListener(new OnClickListener() {
             @Override
@@ -102,30 +133,38 @@ public class LoginActivity extends BaseActivity {
 
     private void setOnRegister() {
         this.status = LoginActivityStatus.ON_REGISTER;
+        mEmailView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        mEmailView.setNextFocusDownId(R.id.password);
+        mPasswordView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        mPasswordView.setNextFocusDownId(R.id.password2);
         mPasswordView2.setVisibility(View.VISIBLE);
         mTextViewForgetPass.setVisibility(View.GONE);
-        mTextViewRegister.setVisibility(View.GONE);
-        mTextViewStartSesion.setVisibility(View.VISIBLE);
+        /*mTextViewRegister.setVisibility(View.GONE);
+        mTextViewStartSesion.setVisibility(View.VISIBLE);*/
         mEmailSignInButton.setText(getString(R.string.login_register));
         mPasswordView.setVisibility(View.VISIBLE);
     }
 
     private void setOnForgetPass() {
         this.status = LoginActivityStatus.ON_PASSWORD_FORGET;
+        mEmailView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         mPasswordView2.setVisibility(View.GONE);
         mTextViewForgetPass.setVisibility(View.GONE);
-        mTextViewRegister.setVisibility(View.GONE);
-        mTextViewStartSesion.setVisibility(View.VISIBLE);
+        /*mTextViewRegister.setVisibility(View.GONE);
+        mTextViewStartSesion.setVisibility(View.VISIBLE);*/
         mEmailSignInButton.setText(getString(R.string.login_recover_passwd));
         mPasswordView.setVisibility(View.GONE);
     }
 
     private void setOnLogin() {
         this.status = LoginActivityStatus.ON_LOGIN;
+        mPasswordView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        mEmailView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        mEmailView.setNextFocusDownId(R.id.password);
         mPasswordView2.setVisibility(View.GONE);
         mTextViewForgetPass.setVisibility(View.VISIBLE);
-        mTextViewRegister.setVisibility(View.VISIBLE);
-        mTextViewStartSesion.setVisibility(View.GONE);
+        /*mTextViewRegister.setVisibility(View.VISIBLE);
+        mTextViewStartSesion.setVisibility(View.GONE);*/
         mEmailSignInButton.setText(getString(R.string.login_start_session));
         mPasswordView.setVisibility(View.VISIBLE);
     }
@@ -173,7 +212,7 @@ public class LoginActivity extends BaseActivity {
                     seguir();
                     break;
                 case ON_REGISTER:
-                    regiter();
+                    regiter(mEmailView.getText().toString(),mPasswordView.getText().toString());
                     break;
                 case ON_PASSWORD_FORGET:
                     setOnLogin();
@@ -182,9 +221,23 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
+    private void showLoginForm() {
+        mInitLayout.setVisibility(View.GONE);
+        mLoginLayout.setVisibility(View.VISIBLE);
+    }
+
+    private void showInitForm() {
+        this.status = LoginActivityStatus.ON_INIT;
+        mInitLayout.setVisibility(View.VISIBLE);
+        mLoginLayout.setVisibility(View.GONE);
+    }
+
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@");
+        if (email == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        }
     }
 
     private boolean isPasswordValid(String password) {
@@ -194,22 +247,32 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if(status == LoginActivityStatus.ON_LOGIN)
+        if(status == LoginActivityStatus.ON_INIT)
             super.onBackPressed();
         else
-            setOnLogin();
+            showInitForm();
     }
 
     private void seguir() {
         startActivity(new Intent(this,FavoritesActivity.class));
     }
 
-    private void regiter() {
+    private void regiter(String email, String password) {
 
-        AlertDialog dialog = buildSingleDialog("Registro de Cuenta",
-                "El registro de la cuenta "+mEmailView.getText().toString()
-                +" fue satisfactorio.");
-        dialog.show();
+        CommensalService commensalServ = FondaServiceFactory.getInstance().getCommensalService();
+
+        Commensal commensal = commensalServ.RegisterCommensal(email,password);
+
+        if (commensal != null) {
+            AlertDialog dialog = buildSingleDialog("Registro de Cuenta",
+                    "El registro de la cuenta " + mEmailView.getText().toString()
+                            + " fue satisfactorio." + commensal.getId());
+            dialog.show();
+        } else {
+            AlertDialog dialog = buildSingleDialog("Registro de Cuenta",
+                    "Se produjo un error al registrar la cuenta.");
+            dialog.show();
+        }
     }
 }
 

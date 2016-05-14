@@ -9,8 +9,6 @@ import java.util.List;
  */
 public interface ProfileService {
 
-    Profile getProfile(int id);
-
     List<Profile> getProfiles();
 
 }

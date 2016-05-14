@@ -13,9 +13,6 @@ import retrofit2.http.Path;
  */
 public interface ProfileClient {
 
-    @GET("profile/{id}")
-    Profile getProfile(@Path("id") int id);
-
     @GET("profiles")
     Call<List<Profile>> getProfiles();
 

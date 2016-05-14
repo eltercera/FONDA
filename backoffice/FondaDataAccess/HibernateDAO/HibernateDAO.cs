@@ -1,6 +1,7 @@
 ﻿using System;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.Domain;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -33,11 +34,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 			return new HibernateCompanyDAO ();
 		}
 
-		public IStatusDAO GetStatusDAO()
-		{
-			return new HibernateStatusDAO();
-		}
-
         public IDishOrderDAO GetDishOrderDAO()
         {
             return new HibernateDishOrderDAO();
@@ -57,15 +53,28 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return new HibernateMenuCategoryDAO();
         }
+
         public IRoleDAO GetRoleDAO()
         {
             return new HibernateRoleDAO();
 
         }
         public IEmployeeDAO GetEmployeeDAO()
-    {
-        return new HibernateEmployeeDAO();
-    }
+		{
+        	return new HibernateEmployeeDAO();
+		}
+
+		public ITokenDAO GetTokenDAO()
+		{
+			return new HibernateTokenDAO ();
+		}
+
+		public ActiveSimpleStatus GetActiveSimpleStatus()
+		{
+			IActiveSimpleStatusDAO s = new HibernateActiveSimpleStatus ();
+			return s.getActiveSimpleStatus ();
+		}
+
 
     }
 }

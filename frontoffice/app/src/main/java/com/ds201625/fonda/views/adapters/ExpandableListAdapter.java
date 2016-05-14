@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Invoice;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,26 +27,22 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private String[] date;
     private String[] location;
     private String[] shortDescription;
-    private String[] name;
+
 
 
     public ExpandableListAdapter(Context context, List<String> visits,
-                                 Map<String, List<String>> collectionVisits,String[] name, String[] shortDescription, String[] location, String[] date) {
+                                 Map<String, List<String>> collectionVisits, String[] shortDescription, String[] location, String[] date) {
         this.context = context;
         this.collectionVisits = collectionVisits;
         this.date = date;
         this.visits = visits;
         this.location = location;
         this.shortDescription = shortDescription;
-        this.name = name;
+
     }
 
     public Object getChild(int groupPosition, int childPosition) {
         return collectionVisits.get(visits.get(groupPosition)).get(childPosition);
-    }
-
-    public long getChildId(int groupPosition, int childPosition) {
-        return childPosition;
     }
 
 
@@ -60,23 +58,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView item = (TextView) convertView.findViewById(R.id.detail_restaurant);
         item.setText(detail);
         return convertView;
-    }
-
-    public int getChildrenCount(int groupPosition) {
-        return collectionVisits.get(visits.get(groupPosition)).size();
-    }
-
-    public Object getGroup(int groupPosition) {
-        return visits.get(groupPosition);
-    }
-
-
-    public int getGroupCount() {
-        return visits.size();
-    }
-
-    public long getGroupId(int groupPosition) {
-        return groupPosition;
     }
 
     public View getGroupView(int groupPosition, boolean isExpanded,
@@ -108,12 +89,35 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         nameRestaurant.setTypeface(null, Typeface.BOLD);
         nameRestaurant.setText(restaurantList);
-        nameRestaurant.setText(name[groupPosition]);
+     //   nameRestaurant.setText(name[groupPosition]);
         locationRestaurant.setText(location[groupPosition]);
         descriptionRestaurant.setText(shortDescription[groupPosition]);
         dateVisit.setText(date[groupPosition]);
         return convertView;
     }
+
+
+    public int getChildrenCount(int groupPosition) {
+        return collectionVisits.get(visits.get(groupPosition)).size();
+    }
+
+    public Object getGroup(int groupPosition) {
+        return visits.get(groupPosition);
+    }
+
+
+    public int getGroupCount() {
+        return visits.size();
+    }
+
+    public long getGroupId(int groupPosition) {
+        return groupPosition;
+    }
+
+    public long getChildId(int groupPosition, int childPosition) {
+        return childPosition;
+    }
+
 
     public boolean hasStableIds() {
         return true;

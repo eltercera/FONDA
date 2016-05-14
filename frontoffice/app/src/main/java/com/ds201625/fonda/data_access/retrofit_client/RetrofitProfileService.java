@@ -25,11 +25,6 @@ public class RetrofitProfileService implements ProfileService {
     }
 
     @Override
-    public Profile getProfile(int id) {
-        return profileClient.getProfile(id);
-    }
-
-    @Override
     public List<Profile> getProfiles() {
         Call<List<Profile>> call = profileClient.getProfiles();
         List<Profile> a = null;

@@ -50,4 +50,10 @@
         android:title="Cancelar"
         app:showAsAction="ifRoom"
         android:visible="false"/>
+    <item
+        android:id="@+id/action_favorite_save"
+        android:icon="@drawable/ic_save_creme_24dp"
+        android:title="Guardar"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
 </menu>

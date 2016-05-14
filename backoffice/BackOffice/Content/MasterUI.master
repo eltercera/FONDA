@@ -58,8 +58,9 @@
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                  
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
                         <ul class="dropdown-menu message-dropdown">
                             <li class="message-preview">
                                 <a href="#">
@@ -98,7 +99,7 @@
                                             <img class="media-object" src="http://placehold.it/50x50" alt="" />
                                         </span>
                                         <div class="media-body">
-                                            <h5 class="media-heading"><strong>John Smith</strong>
+                                            <h5 class="media-heading" ><strong>John Smith</strong>
                                             </h5>
                                             <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                             <p>Hola ojnadfiiodfnoandfnadjfdisnf dolor sit amet, consectetur...</p>
@@ -139,7 +140,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Doe <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" ><i class="fa fa-user"></i> John Doe <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -158,55 +159,27 @@
                     </li>
                 </ul>
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                          
+                  <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#restaurante"><i class="fa fa-fw fa-user"></i> Restaurante<i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="restaurante" class="collapse">
-                            <li>
-                                <a href="~/Seccion/Restaurant/Restaurante.aspx" runat="server">Restaurantes</a>
-                            </li>
-                            <li>
-                                <a href="~/Seccion/Restaurant/AgregarCategoria.aspx" runat="server">Categorias</a>
-                            </li>
-                            <li>
-                               <a href="~/Seccion/Restaurant/AgregarZona.aspx" runat="server">Zonas</a>
-                           </li>
-                        </ul>
-                    <li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#menu"><i class="fa fa-fw fa-shopping-basket"></i> Menú <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="menu" class="collapse">
-                            <li>
-                                <a href="~/Seccion/Menu/MenuDia.aspx" runat="server">Menú del día</a>
-                            </li>
-                            <li>
-                                <a href="~/Seccion/Menu/default.aspx" runat="server">Menú principal</a>
-                            </li>
-                            <li>
-                               <a href="~/Seccion/Menu/ListarCategoria.aspx" runat="server">Categorías</a>
-                           </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="~/Seccion/Caja/default.aspx" runat="server"><i class="fa fa-fw fa-money"></i> Caja</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#config"><i class="fa fa-fw fa-wrench"></i> Confirguración <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="config" class="collapse">
-                            <li>
-                                <a href="~/Seccion/Configuracion/ListarUsuario.aspx" runat="server">Usuarios</a>
-                            </li>
-                            <li>
-                                <a href="~/Seccion/Configuracion/ListarRol.aspx" runat="server">Roles</a>
-                            </li>
-                            <li>
-                                <a href="~/Seccion/Configuracion/ListarPrivilegio.aspx" runat="server">Privilegios</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+               
+                   
+           <% foreach (KeyValuePair<string, string[,]> opcion in SubpositionOpcinonMenu) %>
+						<% { %>
+                            <li class="dropdown">
+                               <a href="javascript:;"  class="dropdown-toggle" data-toggle="collapse" data-target="#<%=opcion.Key.Split(':')[0]%>"><i class="<%=opcion.Key.Split(':')[1]%>"></i><%=opcion.Key.Split(':')[0]%><i class="fa fa-fw fa-caret-down"></i> </a>
+                                  <ul id="<%=opcion.Key.Split(':')[0]%>" class="collapse" role="menu">
+                                <%for (int i = 0; i < opcion.Value.GetLength(1); i++) %>
+                                <%{
+                                      if (opcion.Value[1, i] != null)
+                                      { %>
+							             <li><a href="<%=Page.ResolveUrl(opcion.Value[1, i]) %>"><%= opcion.Value[0, i]%></a></li>
+                                <%}
+                                  } %>
+                                 </ul>
+					         </li>
+						<% } %> 
+                   
             </div>
             <!-- /.navbar-collapse -->
             </nav>

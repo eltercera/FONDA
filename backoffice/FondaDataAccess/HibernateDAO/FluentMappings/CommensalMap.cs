@@ -10,12 +10,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 		{
 			DiscriminatorValue (@"Commensal");
 
-			Map (x => x.SesionToken)
-				.Column ("gp_email")
-				.Nullable();
-
 			HasMany (x => x.Profiles)
-				.KeyColumn("fk_profile")
+				.KeyColumn("fk_commensal_id")
+				.ExtraLazyLoad()
+				.Cascade.All();
+
+			HasMany (x => x.SesionTokens)
+				.LazyLoad ()
 				.Inverse()
 				.Cascade.All();
 

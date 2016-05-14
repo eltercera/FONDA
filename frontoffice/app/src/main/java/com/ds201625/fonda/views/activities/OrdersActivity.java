@@ -9,9 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.RadioButton;
+import android.widget.Toast;
+
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
+import com.ds201625.fonda.views.fragments.CreditCardFragment;
 import com.ds201625.fonda.views.fragments.CurrentOrderFragment;
 import com.ds201625.fonda.views.fragments.FacturaFragment;
 import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
@@ -26,18 +30,18 @@ public class OrdersActivity extends BaseNavigationActivity {
     /**
      * Iten del Menu
      */
-    private MenuItem cerrarBotton;
-    private MenuItem sendBotton;
-    private MenuItem cancelBotton;
-    private MenuItem buscarBotton;
-    private MenuItem sendPayBotton;
-    private MenuItem cancelPayBotton;
-    private MenuItem downloadBotton;
-
+    private static MenuItem cerrarBotton;
+    private static MenuItem sendBotton;
+    private static MenuItem cancelBotton;
+    private static MenuItem buscarBotton;
+    private static MenuItem sendPayBotton;
+    private static MenuItem cancelPayBotton;
+    private static MenuItem downloadBotton;
+    private static MenuItem saveCCButton;
     /**
      * Fragment de la lista
      */
-    private CurrentOrderFragment orderListFrag;
+    private static CurrentOrderFragment orderListFrag;
 
     /**
      * Boton Flotante
@@ -47,7 +51,7 @@ public class OrdersActivity extends BaseNavigationActivity {
     /**
      * Administrador de Fragments
      */
-    private FragmentManager fm;
+    private static FragmentManager fm;
 
     /**
      * ToolBarr
@@ -58,15 +62,17 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     private ViewPager mViewPager;
 
-    private TabLayout tb;
+    private static TabLayout tb;
 
     private FrameLayout prueba;
 
-    private CloseAccountFragment prueba2;
+    private static CloseAccountFragment prueba2;
 
-    private OrderPaymentFragment ordPay;
+    private static OrderPaymentFragment ordPay;
 
-    private FacturaFragment factFrag;
+    private static FacturaFragment factFrag;
+
+    private static CreditCardFragment ccFrag;
 
 
     @Override
@@ -80,7 +86,7 @@ public class OrdersActivity extends BaseNavigationActivity {
         prueba = (FrameLayout) findViewById(R.id.fragment_container2);
 
         //Inyectarlo al BaseSectionsPagerAdapter
-        mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager(),tb);
+        mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager(), tb);
 
         mViewPager = (ViewPager) findViewById(R.id.containerO);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -89,8 +95,8 @@ public class OrdersActivity extends BaseNavigationActivity {
         orderListFrag = new CurrentOrderFragment();
 
         //Tab con solo un String como titulo
-        mSectionsPagerAdapter.addFragment("Orden Actual",orderListFrag);
-        mSectionsPagerAdapter.addFragment("Historial de Visitas",new HistoryVisitFragment());
+        mSectionsPagerAdapter.addFragment("Orden Actual", orderListFrag);
+        mSectionsPagerAdapter.addFragment("Historial de Visitas", new HistoryVisitFragment());
 
         //Importante ejecutar esto para que se creen los iconos en el tab.
         mSectionsPagerAdapter.iconsSetup();
@@ -101,6 +107,7 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     /**
      * Sobre escritura para la iniciacion del menu en el toolbars
+     *
      * @param menu
      * @return
      */
@@ -115,29 +122,30 @@ public class OrdersActivity extends BaseNavigationActivity {
         sendPayBotton = menu.findItem(R.id.action_favorite_send_pay);
         cancelPayBotton = menu.findItem(R.id.action_favorite_cancel_pay);
         downloadBotton = menu.findItem(R.id.action_favorite_download);
+        saveCCButton = menu.findItem(R.id.action_favorite_save);
         return true;
     }
 
     /**
      * Realiza el intercambio de vistas de fragments
+     *
      * @param fragment el fragment que se quiere mostrar
      */
-    private void showFragment(BaseFragment fragment) {
+    public static void showFragment(BaseFragment fragment) {
         fm.beginTransaction()
-                .replace(R.id.fragment_container2,fragment)
+                .replace(R.id.fragment_container2, fragment)
                 .commit();
         fm.executePendingTransactions();
         tb.setVisibility(View.GONE);
 
         //Muestra y oculta compnentes.
-        if(fragment.equals(orderListFrag)){
-            if(cerrarBotton != null)
+        if (fragment.equals(orderListFrag)) {
+            if (cerrarBotton != null)
                 cerrarBotton.setVisible(true);
-        }
-        else if(fragment.equals(prueba2)) {
-            if(cerrarBotton != null)
+        } else if (fragment.equals(prueba2)) {
+            if (cerrarBotton != null)
                 cerrarBotton.setVisible(false);
-            if ((sendBotton != null) && (cancelBotton != null)){
+            if ((sendBotton != null) && (cancelBotton != null)) {
                 sendBotton.setVisible(true);
                 cancelBotton.setVisible(true);
             }
@@ -145,20 +153,23 @@ public class OrdersActivity extends BaseNavigationActivity {
                 sendPayBotton.setVisible(false);
                 cancelPayBotton.setVisible(false);
             }
-        }
-        else if (fragment.equals(ordPay)) {
-                if (cerrarBotton != null)
-                    cerrarBotton.setVisible(false);
-                if ((sendBotton != null) && (cancelBotton != null)) {
-                    sendBotton.setVisible(false);
-                    cancelBotton.setVisible(false);
-                }
-                if ((sendPayBotton != null) && (cancelPayBotton != null)) {
-                    sendPayBotton.setVisible(true);
-                    cancelPayBotton.setVisible(true);
-                }
+            if (saveCCButton != null)
+                saveCCButton.setVisible(false);
+        } else if (fragment.equals(ordPay)) {
+            if (cerrarBotton != null)
+                cerrarBotton.setVisible(false);
+            if ((sendBotton != null) && (cancelBotton != null)) {
+                sendBotton.setVisible(false);
+                cancelBotton.setVisible(false);
             }
-        else if (fragment.equals(factFrag)) {
+            if ((sendPayBotton != null) && (cancelPayBotton != null)) {
+                sendPayBotton.setVisible(true);
+                cancelPayBotton.setVisible(true);
+            }
+            if (saveCCButton != null)
+                saveCCButton.setVisible(false);
+        } else if (fragment.equals(ccFrag)) {
+            System.out.println("ENTROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
             if (cerrarBotton != null)
                 cerrarBotton.setVisible(false);
             if ((sendBotton != null) && (cancelBotton != null)) {
@@ -169,17 +180,32 @@ public class OrdersActivity extends BaseNavigationActivity {
                 sendPayBotton.setVisible(false);
                 cancelPayBotton.setVisible(false);
             }
+            if (saveCCButton != null)
+                saveCCButton.setVisible(true);
+        } else if (fragment.equals(factFrag)) {
+            if (cerrarBotton != null)
+                cerrarBotton.setVisible(false);
+            if ((sendBotton != null) && (cancelBotton != null)) {
+                sendBotton.setVisible(false);
+                cancelBotton.setVisible(false);
+            }
+            if ((sendPayBotton != null) && (cancelPayBotton != null)) {
+                sendPayBotton.setVisible(false);
+                cancelPayBotton.setVisible(false);
+            }
+            if (saveCCButton != null)
+                saveCCButton.setVisible(false);
             if (downloadBotton != null)
                 downloadBotton.setVisible(true);
         } else {
             if (downloadBotton != null)
                 downloadBotton.setVisible(false);
         }
-
     }
 
     /**
      * Opciones y acciones del menu en el toolbars
+     *
      * @param item
      * @return
      */
@@ -207,6 +233,9 @@ public class OrdersActivity extends BaseNavigationActivity {
             case R.id.action_favorite_download:
                 download();
                 break;
+            case R.id.action_favorite_save:
+                save();
+                break;
         }
         return true;
     }
@@ -219,8 +248,7 @@ public class OrdersActivity extends BaseNavigationActivity {
         cambiarCC();
     }
 
-    public void cambiarCC ()
-    {
+    public void cambiarCC() {
 
         if (prueba2 == null)
             prueba2 = new CloseAccountFragment();
@@ -229,15 +257,19 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     private void salir() {
 
-        Intent cambio = new Intent (this,OrdersActivity.class);
+        Intent cambio = new Intent(this, OrdersActivity.class);
         startActivity(cambio);
     }
 
-    public void cambiarPa ()
-    {
+    public void cambiarPa() {
         if (ordPay == null)
             ordPay = new OrderPaymentFragment();
-         showFragment(ordPay);
+        showFragment(ordPay);
+    }
+
+    private void save() {
+        ccFrag = new CreditCardFragment();
+        Toast.makeText(this, "Guardar bebe ", Toast.LENGTH_SHORT).show();
     }
 
     private void buscar() {
@@ -245,15 +277,35 @@ public class OrdersActivity extends BaseNavigationActivity {
         //Metodo para el boton de buscar
     }
 
-    public void cambiarFac ()
-    {
+    public void cambiarFac() {
         if (factFrag == null)
             factFrag = new FacturaFragment();
         showFragment(factFrag);
     }
 
-    public void download ()
-    {
+    public void download() {
         salir();
     }
+
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        String typeOfCC = null;
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch (view.getId()) {
+            case R.id.rBVisa:
+                if (checked)
+                    typeOfCC = "Visa";
+                Toast.makeText(this, "Tipo de tarjeta " + typeOfCC, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.rBMaster:
+                if (checked)
+                    typeOfCC = "MasterCard";
+                Toast.makeText(this, "Tipo de tarjeta " + typeOfCC, Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
 }

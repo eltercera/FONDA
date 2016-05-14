@@ -13,6 +13,8 @@ public class Profile extends BaseEntity {
         super();
     }
 
+    public Profile(Integer profileId, String profileName) {this.setId(profileId);this.profileName = profileName;}
+
     public String getProfileName() {
         return profileName;
     }
