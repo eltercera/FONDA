@@ -7,22 +7,21 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.views.activities.DetailRestaurantActivity;
 import com.ds201625.fonda.views.activities.FavoritesActivity;
 import com.ds201625.fonda.views.activities.FilterList;
+import com.ds201625.fonda.views.activities.RestaurantListActivity;
 
 /**
  * Created by Valentina on 17/04/2016.
  */
 public class FoodFragment extends BaseFragment {
 
-    ListView list;
+    private ListView list;
 
     String[] location = {
             "La castellana",

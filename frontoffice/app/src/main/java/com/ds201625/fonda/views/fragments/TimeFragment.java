@@ -8,14 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.views.activities.DetailRestaurantActivity;
 import com.ds201625.fonda.views.activities.FavoritesActivity;
-import com.ds201625.fonda.views.activities.FilterList;
-import com.ds201625.fonda.views.activities.RestaurantList;
+import com.ds201625.fonda.views.activities.RestaurantListActivity;
 
 /**
  * Created by Valentina on 17/04/2016.
@@ -43,7 +39,7 @@ public class TimeFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent= new Intent(getActivity(),FavoritesActivity.class);
+                Intent intent= new Intent(getActivity(),RestaurantListActivity.class);
                 startActivity(intent);
             }
         });
@@ -53,7 +49,7 @@ public class TimeFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent= new Intent(getActivity(),FavoritesActivity.class);
+                Intent intent= new Intent(getActivity(),RestaurantListActivity.class);
                 startActivity(intent);
             }
         });
@@ -63,7 +59,7 @@ public class TimeFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent= new Intent(getActivity(),FavoritesActivity.class);
+                Intent intent= new Intent(getActivity(),RestaurantListActivity.class);
                 startActivity(intent);
             }
         });

@@ -18,6 +18,9 @@
 
         <include layout="@layout/toolbar_tabs_default" />
 
+        <include layout="@layout/content_restaurants" />
+
+
         <android.support.v4.view.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
@@ -26,6 +29,8 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
+
     <include layout="@layout/navigation_view_default" />
+
 
 </android.support.v4.widget.DrawerLayout>

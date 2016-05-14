@@ -1,6 +1,7 @@
 package com.ds201625.fonda.views.activities;
 
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,7 +10,8 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 
-public class FavoritesActivity extends BaseNavigationActivity {
+public class RestaurantListActivity extends BaseActivity {
+
     ListView list;
     String[] names = {
             "The dining room",
@@ -37,22 +39,24 @@ public class FavoritesActivity extends BaseNavigationActivity {
             R.mipmap.ic_restaurant005,
 
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_favorites);
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_restaurants);
 
         RestaurantList adapter = new
-                RestaurantList(FavoritesActivity.this, names,location ,shortDescription,imageId);
-        list=(ListView)findViewById(R.id.listViewFavorites);
+                RestaurantList(RestaurantListActivity.this, names,location ,shortDescription,imageId);
+        list=(ListView)findViewById(R.id.listViewRest);
         list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        /*list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(FavoritesActivity.this, "You Clicked at " + names[+position], Toast.LENGTH_SHORT).show();
-                Intent cambio = new Intent (FavoritesActivity.this,DetailRestaurantActivity.class);
+                Toast.makeText(RestaurantListActivity.this, "You Clicked at " + names[+position], Toast.LENGTH_SHORT).show();
+                Intent cambio = new Intent (RestaurantListActivity.this,DetailRestaurantActivity.class);
                 String nombreRest = names[+position];
                 String descriptionRest = shortDescription[+position];
                 String locationRest = location[+position];
@@ -64,6 +68,6 @@ public class FavoritesActivity extends BaseNavigationActivity {
                 startActivity(cambio);
 
             }
-        });
+        });*/
     }
 }
