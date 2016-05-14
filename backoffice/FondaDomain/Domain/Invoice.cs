@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Runtime.Serialization;
 namespace com.ds201625.fonda.Domain
 {
     /// <summary>
@@ -33,13 +33,44 @@ namespace com.ds201625.fonda.Domain
         private InvoiceStatus _status;
 
         /// <summary>
+        /// Restaurant de la cuenta
+        /// </summary>
+        private Restaurant _restaurant;
+
+        /// <summary>
+        /// Perfil de la cuenta
+        /// </summary>
+        private Profile _profile;
+  
+        /// <summary>
         /// Constructor
         /// </summary>
         public Invoice() : base() { }
 
         /// <summary>
+        /// Obtiene o asigna un restaurant a la cuenta
+        /// </summary>
+        [DataMember]
+        public virtual Restaurant  Restaurant
+        {
+            get { return _restaurant; }
+            set { _restaurant = value; }
+        }
+
+        /// <summary>
+        /// Obtiene o asigna un perfil a la cuenta
+        /// </summary>
+        [DataMember]
+        public virtual Profile Profile
+        {
+            get { return _profile; }
+            set { _profile = value; }
+        }
+
+        /// <summary>
         /// Obtiene o asigna la propina de la cuenta
         /// </summary>
+       	[DataMember]
         public virtual float Tip
         {
             get { return _tip; }
@@ -49,6 +80,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna la fecha de pago de la cuenta
         /// </summary>
+        [DataMember]
         public virtual DateTime Date
         {
             get { return _date; }
@@ -58,6 +90,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna el monto total a pagar de la cuenta
         /// </summary>
+        [DataMember]
         public virtual float Total
         {
             get { return _total; }
@@ -67,6 +100,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna el IVA
         /// </summary>
+        [DataMember]
         public virtual float Tax
         {
             get { return _tax; }
