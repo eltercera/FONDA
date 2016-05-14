@@ -68,9 +68,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOCoordinateTest.cs" />
+    <Compile Include="BOCurrencyTest.cs" />
+    <Compile Include="BODayTest.cs" />
     <Compile Include="BODishOrderTest.cs" />
     <Compile Include="BODishTest.cs" />
     <Compile Include="BOMenuCategoryTest.cs" />
+    <Compile Include="BORestaurantCategoryTest.cs" />
+    <Compile Include="BORestaurantTest.cs" />
+    <Compile Include="BOScheduleTest.cs" />
     <Compile Include="BOTableTest.cs" />
     <Compile Include="FOUserRegisterTests.cs" />
   </ItemGroup>
