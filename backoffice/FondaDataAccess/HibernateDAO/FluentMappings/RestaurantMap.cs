@@ -18,7 +18,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable();
 
             Map(x => x.Nationality)
-                .Column("res_name")
+                .Column("res_nationality")
                 .Not.Nullable();
 
             Map(x => x.Ssn)
