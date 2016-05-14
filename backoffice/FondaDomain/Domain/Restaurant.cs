@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
+
 namespace com.ds201625.fonda.Domain
 {
     /// <summary>
@@ -77,7 +77,7 @@ namespace com.ds201625.fonda.Domain
         /// Constructor.
         /// </summary>
 		public Restaurant () : base () { }
-        [DataMember]
+
         public virtual String Address
         {
             /// <summary>
@@ -168,7 +168,7 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe las coordenadas de un restaurante </value>
             set { _coordinate = value; }
         }
-        [DataMember]
+
         public virtual RestaurantCategory RestaurantCategory
         {
             /// <summary>
