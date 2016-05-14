@@ -20,25 +20,26 @@ namespace BackOffice.Seccion.Restaurant
         set { this.CategoryT.Text = value; }
         }
         protected void Page_Load(object sender, EventArgs e)
-        {   //Aqui atrapo el valor que me mandaria el restaurante en este caso el id
-            //int nombreparametro= int.Parse(Request.QueryString["parametrouno"]);
-            //  AlertSuccess_AgregarCategoria.Visible = false;
-            //  AlertSuccess_ModificarCategoria.Visible = false;
+        {
+            AlertSuccess_AgregarCategoria.Visible = false;
+            AlertSuccess_ModificarCategoria.Visible = false;
 
             if (!this.IsPostBack)
             {
-                //Aqui se generan los objetos para hacer consulta y generar la lista de categorias
+                //Genero los objetos para la consulta
+                //Genero la lista de la consulta
                 FactoryDAO factoryDAO = FactoryDAO.Intance;
                 IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
                 IList<RestaurantCategory> listRest = _restcatDAO.GetAll();
 
 
-                int longitud = listRest.Count;
+                int longitud = listRest.Count; //tamano de la lista 
 
-                //se recorre el objeto lista y se muestra en la tabla 
+                //Recorremos la lista
                 for (int i = 0; i <= longitud - 1; i++)
                 {
-                    //aqui se carga y se arma la tabla html recursomenu es un archivo donde hay cadenas de string muy grandes
+                    //Se arma la tabla HTML
+                    // ResourceRestaurant llama a las acciones
                     restcat += "<tr><td>" + listRest[i].Name + "</td>";
 
                     restcat += ResourceRestaurant.ActionTable;
@@ -50,7 +51,7 @@ namespace BackOffice.Seccion.Restaurant
 
         protected void ButtonAgregar_Click(object sender, EventArgs e)
         {
-           // AlertSuccess_AgregarCategoria.Visible = true;
+            AlertSuccess_AgregarCategoria.Visible = true;
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
             RestaurantCategory _restcat = new RestaurantCategory();
@@ -61,7 +62,7 @@ namespace BackOffice.Seccion.Restaurant
 
         protected void ButtonModificar_Click(object sender, EventArgs e)
         {
-          //  AlertSuccess_ModificarCategoria.Visible = true;
+            AlertSuccess_ModificarCategoria.Visible = true;
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
 
