@@ -54,16 +54,8 @@ namespace BackOffice.Seccion.Menu
 
                     mencat += RecursosMenu1.Acciones;
                     mencat += RecursosMenu1.CerrarTR;
-                    
-                    
+
                 }
-               
-
-                
-               
-  
-
-
             } 
         }
 
@@ -83,6 +75,20 @@ namespace BackOffice.Seccion.Menu
         protected void BotonModificarCategoria_Click(object sender, EventArgs e)
         {
             AlertSuccess_ModificarCategoria.Visible = true;
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IMenuCategoryDAO _menucatDAO = factoryDAO.GetMenuCategoryDAO();
+
+            MenuCategory _menu = new MenuCategory();
+            String nombre1 = TextBox1.Text;
+            _menu.Name = nombre1;
+            _menu.Status = ActiveSimpleStatus.Instance;
+            _menucatDAO.Save(_menu);
+
+
+           
+           
         }
+
+    
     }
 }

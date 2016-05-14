@@ -55,117 +55,27 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table id="ListarCategoria" class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th>Estado</th>
-                                                <th class="no-sort">Acciones</th>
- 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Pasta</td>
-                                                <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                
-                                                <td>Carnes</td>
-                                                <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p>A</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                   
-                                            <tr>
-                                                
-                                                <td>Vegetales</td>                              
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                
-                                                <td>Jugos</td>
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                
-                                                <td>Postres</td>
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                
-                                                <td>Postres</td>
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                                <tr>
-                                                
-                                                <td>Postres</td>
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                                <tr>
-                                                
-                                                <td>Postres</td>                                      
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                                <tr>
-                                                
-                                                <td>Postres</td>
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                                <tr>
-                                                
-                                                <td>Ávila Burger</td>
-                                               <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                                <tr>
-                                                
-                                                <td>Postres</td>
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                                <tr>
-                                                
-                                                <td>Postres</td>
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                                <tr>
-                                                
-                                                <td>Postres</td>
-                                               <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p>I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i><a data-toggle="modal" data-target="#"><i class="fa fa-check" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                         
-                                        </tbody>
-                                    </table>       
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-           <!-- aqui se carga la tabla con las categorias busca arreglar la de arriba para que solo salga esa-->
-                <div class="row">
+                                     <div class="row">
                     <table id="plantillacategoria" class="table table-bordered table-striped dataTable">
                         <thead>
                             <tr>
-                                <th>nombre</th>
-                                <th>Status</th>
+                                <th>Nombre</th>
+                                <th>Estatus</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <asp:Literal ID="Tabla" runat="server"></asp:Literal>
                     </table>
                 </div>
+                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+               
+           <!-- aqui se carga la tabla con las categorias busca arreglar la de arriba para que solo salga esa-->
+          
                 <!-- /.row -->
             <!-- /.container-fluid -->
 
@@ -176,7 +86,9 @@
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        
+                          
+                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Modificar Categoría</h4>
                         </div>
                             <div class="modal-body">
@@ -184,11 +96,11 @@
                                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                         <div class="form-group">
                                             <label class="control-label">Nombre de la Categoria del menú</label>
-                                            <asp:TextBox ID="TextBox1" CssClass="form-control" placeholder="Pastas" MaxLength="3" runat="server" />
+                                            <asp:TextBox ID="TextBox1" CssClass="form-control" placeholder="" MaxLength="20"  runat="server" />
                                         </div>
                                     </div>
                                 </div>
-
+                       
                               
                             </div>
                         <div class="modal-footer">
@@ -225,5 +137,6 @@
                         </div>
                      </div>
                 </div>
-    </div>
+    </div> 
+
     </asp:Content>
