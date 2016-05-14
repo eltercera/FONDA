@@ -12,7 +12,7 @@ namespace DataAccessTests
         private FactoryDAO _facDAO;
         private ICoordinateDAO _coordinateDAO;
         private Coordinate _coordinate;
-        private int _tableId;
+        private int _coordinateId;
 
 
         [Test]
@@ -44,7 +44,7 @@ namespace DataAccessTests
         }
 
         [Test]
-        public void TableSave()
+        public void CoordinateSave()
         {
             getCoordinateDao();
             generateCoordinate();
@@ -52,7 +52,7 @@ namespace DataAccessTests
             _coordinateDAO.Save(_coordinate);
 
             Assert.AreNotEqual(_coordinate.Id, 0);
-            _tableId = _coordinate.Id;
+            _coordinateId = _coordinate.Id;
             generateCoordinate(true);
             _coordinateDAO.Save(_coordinate);
             _coordinateDAO.ResetSession();
