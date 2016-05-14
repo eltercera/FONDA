@@ -614,6 +614,11 @@
     <Compile Include="Seccion\Restaurant\Mesas.aspx.designer.cs">
       <DependentUpon>Mesas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Seccion\Restaurant\ResourceRestaurant.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceRestaurant.resx</DependentUpon>
+    </Compile>
     <Compile Include="Seccion\Restaurant\Restaurante.aspx.cs">
       <DependentUpon>Restaurante.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -683,6 +688,12 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Seccion\Restaurant\ResourceRestaurant.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceRestaurant.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
