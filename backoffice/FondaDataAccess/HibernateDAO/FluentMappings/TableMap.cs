@@ -19,7 +19,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             References(x => x.Status)
                 .Column("fk_tab_status")
-                .Not.Nullable();
+                .Not.Nullable()
+                .Cascade.Persist();
 
         }
     }
