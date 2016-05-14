@@ -55,7 +55,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="BOOrderAccount.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -69,17 +68,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOCashPaymentTest.cs" />
-    <Compile Include="BOCreditCardPaymentTest.cs" />
+    <Compile Include="BOCoordinateTest.cs" />
+    <Compile Include="BOCurrencyTest.cs" />
+    <Compile Include="BODayTest.cs" />
     <Compile Include="BODishOrderTest.cs" />
     <Compile Include="BODishTest.cs" />
-    <Compile Include="BOInvoiceTest.cs" />
     <Compile Include="BOMenuCategoryTest.cs" />
+    <Compile Include="BORestaurantCategoryTest.cs" />
+    <Compile Include="BORestaurantTest.cs" />
+    <Compile Include="BOScheduleTest.cs" />
     <Compile Include="BOTableTest.cs" />
-    <Compile Include="FOAddRestaurantFavorite.cs" />
-    <Compile Include="FOCommensalRegister.cs" />
-    <Compile Include="FORegisterZone.cs" />
-    <Compile Include="FORestaurantRegister.cs" />
     <Compile Include="FOUserRegisterTests.cs" />
   </ItemGroup>
   <ItemGroup>

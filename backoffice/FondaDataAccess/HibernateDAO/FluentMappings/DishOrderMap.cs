@@ -25,7 +25,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
             References(x => x.RecordStatus)
                 .Column("fk_dis_record")
                 .Not.Nullable();
-            
+
         }
     }
 }

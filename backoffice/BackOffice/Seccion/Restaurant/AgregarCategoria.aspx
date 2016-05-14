@@ -25,6 +25,25 @@ Agregar Categoria
   </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
+
+    <div id="AlertSuccess_AgregarCategoria" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> La categoría fue agregada <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
+
+    <div id="AlertSuccess_ModificarCategoria" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> La categoría fue modificada <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
+
         <div class="row">
            <div class="col-lg-12">
                         <div class="panel panel-default">
@@ -42,61 +61,8 @@ Agregar Categoria
                                                 <th class="no-sort">Acciones</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Venezolana</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Japonesa</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                   
-                                            <tr>
-                                                <td>Americana</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>China</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Arabe</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mexicana</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                                <tr>
-                                                <td>Italiana</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                                <tr>
-                                                <td>Mediterranea</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Internacional</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Peruana</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tailandesa</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Suiza</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Francesa</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>                                               
-                                        </tbody>
+                                        <!---Acciones de Categoria--->
+                                        <asp:Literal ID="CategoryT" runat="server"></asp:Literal> 
                                     </table>       
                                 </div>
                             </div>
@@ -121,14 +87,14 @@ Agregar Categoria
                                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                         <div class="form-group">
                                             <label class="control-label">Nombre</label>
-                                            <asp:TextBox ID="TextBox1" CssClass="form-control" placeholder="ej. China" runat="server" />
+                                            <asp:TextBox ID="NombreCatM" CssClass="form-control" placeholder="ej. China" runat="server" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <asp:Button id="Button3" Text="Modificar" CssClass="btn btn-success" runat="server"/>
-                                <asp:Button id="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                                <asp:Button id="ButtonModificar" Text="Modificar" CssClass="btn btn-success" runat="server" OnClick="ButtonModificar_Click"/>
+                                <asp:Button id="ButtonCancelarM" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                             </div>
                         </div>
                     </div>          
@@ -149,14 +115,14 @@ Agregar Categoria
                                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                             <div class="form-group">
                                                 <label class="control-label">Nombre</label>
-                                                <asp:TextBox ID="Value1" CssClass="form-control" placeholder="ej. Americana" runat="server"/>
+                                                <asp:TextBox ID="NombreCatA" CssClass="form-control" placeholder="ej. Americana" runat="server"/>
                                             </div>
                                     </div>
                                  </div>
                             </div>
                          <div class="modal-footer">
-                            <asp:Button id="Button1" Text="Agregar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button2" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonAgregar" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAgregar_Click"/>
+                            <asp:Button id="ButtonCancelarA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
                      </div>
                 </div>

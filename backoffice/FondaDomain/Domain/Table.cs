@@ -15,9 +15,9 @@ namespace com.ds201625.fonda.Domain
 		/// La capacidad de la mesa (Mesa de 2, 4, 8, 16 personas)
 		/// </summary>
 		private int _capacity;
-        
+
         /// <summary>
-        /// Estado simple de la mesa (Disponible, No Disponible)
+        /// Estado simple de la mesa (Activo, No Activo)
         /// </summary>
         private TableStatus _status;
 
