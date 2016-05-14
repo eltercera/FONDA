@@ -107,6 +107,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return new HibernateTableDAO();
         }
+
+        public IZoneDAO GetZoneDAO()
+        {
+            return new HibernateZoneDAO();
+        }
+
     }
 }
 

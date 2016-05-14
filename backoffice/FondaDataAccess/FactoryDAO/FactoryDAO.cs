@@ -124,6 +124,11 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         {
             return _factory.GetTableDAO();
         }
+
+        public IZoneDAO GetZoneDAO()
+        {
+            return _factory.GetZoneDAO();
+        }
     }
 }
 
