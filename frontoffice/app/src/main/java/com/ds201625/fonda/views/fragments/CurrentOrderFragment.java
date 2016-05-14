@@ -12,6 +12,7 @@ import android.widget.ListView;
 import com.ds201625.fonda.domains.Currency;
 import com.ds201625.fonda.domains.Dish;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.views.adapters.OrderViewItemList;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
 public class CurrentOrderFragment extends BaseFragment {
 
 
-    private ArrayList<Dish> listDish = new ArrayList<Dish>();
+    private ArrayList<DishOrder> listDishO = new ArrayList<DishOrder>();
 
     ListView list;
     private OrderViewItemList orderList;
@@ -35,9 +36,13 @@ public class CurrentOrderFragment extends BaseFragment {
         Dish dish2 = new Dish("Refresco","Coca-Cola",100,String.valueOf(R.drawable.refresco),currency);
         Dish dish3 = new Dish("Torta","Terciopelo Rojo",500,String.valueOf(R.drawable.redv2),currency);
 
-        listDish.add(dish1);
-        listDish.add(dish2);
-        listDish.add(dish3);
+        DishOrder dishO1 = new DishOrder(dish1,1);
+        DishOrder dishO2 = new DishOrder(dish2,1);
+        DishOrder dishO3 = new DishOrder(dish3,1);
+
+        listDishO.add(dishO1);
+        listDishO.add(dishO2);
+        listDishO.add(dishO3);
     }
 
 
@@ -50,7 +55,7 @@ public class CurrentOrderFragment extends BaseFragment {
         View layout = inflater.inflate(R.layout.fragment_current_order,container,false);
 
         orderList = new OrderViewItemList(getContext());
-        orderList.addAll(listDish);
+        orderList.addAll(listDishO);
 
         list=(ListView)layout.findViewById(R.id.lvOrderList);
         list.setAdapter(orderList);

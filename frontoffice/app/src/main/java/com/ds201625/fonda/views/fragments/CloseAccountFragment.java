@@ -53,7 +53,7 @@ public class CloseAccountFragment extends BaseFragment {
         listDishO.add(dishO1);
         listDishO.add(dishO2);
         listDishO.add(dishO3);
-      //  Account account = new Account(table,listDishO,date);
+
 
     }
 
@@ -79,7 +79,7 @@ public class CloseAccountFragment extends BaseFragment {
         String formattedDate = df.format(c.getTime());
         String formattedHour = dfh.format(c.getTime());
 
-        Account account = new Account(table,listDishO,date,(float)iva,total,sub);
+        Account account = new Account(table,listDishO);
 
 
 
@@ -95,12 +95,17 @@ public class CloseAccountFragment extends BaseFragment {
         TextView txtMontoTota = (TextView) layout.findViewById(R.id.tvMontoTotal);
         TextView txtMonTota = (TextView) layout.findViewById(R.id.tVTotalMoneda);
 
+        //Fecha
         txtDate.setText(formattedDate);
+        //Hora
         txtHour.setText(formattedHour);
+        //Subtotal
         txtMontoSub.setText(String.valueOf(sub));
         txtMonSub.setText(currency.getSymbol());
+        //Iva
         txtMontoIva.setText(String.valueOf(iva));
         txtMonIva.setText(currency.getSymbol());
+        //Total
         txtMontoTota.setText(String.valueOf(total));
         txtMonTota.setText(currency.getSymbol());
 
