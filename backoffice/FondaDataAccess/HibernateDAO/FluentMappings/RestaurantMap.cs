@@ -48,9 +48,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                .Column("fk_res_restaurantCategory")
                .Not.Nullable();
 
-            References(x => x.Zone)
+           /* References(x => x.Zone)
                .Column("fk_res_zone")
-               .Not.Nullable();
+               .Not.Nullable();*/
 
             References(x => x.Schedule)
                .Column("fk_res_schedule")
