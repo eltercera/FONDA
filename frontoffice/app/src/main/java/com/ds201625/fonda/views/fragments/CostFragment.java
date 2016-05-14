@@ -19,12 +19,11 @@ public class CostFragment extends BaseFragment {
 
     ListView list;
 
-    String[] location = {
-            "La castellana",
-            "Los dos caminos",
-            "La California",
-            "Parque central",
-            "El Rosal"} ;
+    String[] price = {
+            "Bs. 0 a 2000",
+            "Bs. 2000 a 5000",
+            "Bs. 5000 a 10000",
+            "Bs. +10000"} ;
 
 
     @Override
@@ -39,13 +38,10 @@ public class CostFragment extends BaseFragment {
         //Indicar el layout que va a usar el fragment
         View view= inflater.inflate(R.layout.fragment_cost,container,false);
 
-        /*FilterList adapter = new
-                FilterList(getActivity(),location);
+        FilterList adapter = new
+                FilterList(getActivity(),price);
         list=(ListView)view.findViewById(R.id.listViewRestaurants);
-        list.setAdapter(adapter);*/
-
-       /* DialogFragment dialog = new TwoActionButtonsDialog();
-        dialog.show(getSupportFragmentManager(), "dialog");*/
+        list.setAdapter(adapter);
 
         return view;
 

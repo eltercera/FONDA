@@ -16,15 +16,6 @@ import com.ds201625.fonda.views.activities.FilterList;
  */
 public class TimeFragment extends BaseFragment {
 
-    ListView list;
-
-    String[] location = {
-            "La castellana",
-            "Los dos caminos",
-            "La California",
-            "Parque central",
-            "El Rosal"} ;
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,11 +28,6 @@ public class TimeFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //Indicar el layout que va a usar el fragment
         View view= inflater.inflate(R.layout.fragment_time,container,false);
-
-        FilterList adapter = new
-                FilterList(getActivity(),location);
-        list=(ListView)view.findViewById(R.id.listViewRestaurants);
-        list.setAdapter(adapter);
 
         return view;
 
