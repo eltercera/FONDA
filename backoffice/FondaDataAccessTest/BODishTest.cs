@@ -10,7 +10,7 @@ namespace DataAccess
     [TestFixture]
     public class BODishTest
     {
-        private FactoryDAOO _facDAO;
+        private FactoryDAO _facDAO;
         private IDishDAO _dishDAO;
         private Dish _dish;
         private int _dishId;
@@ -61,7 +61,7 @@ namespace DataAccess
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAOO.Intance;
+                _facDAO = FactoryDAO.Intance;
         }
 
 

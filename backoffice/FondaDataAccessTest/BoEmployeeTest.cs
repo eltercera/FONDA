@@ -10,7 +10,7 @@ namespace DataAccess
     {
 
 
-        private FactoryDAOO _facDAO;
+        private FactoryDAO _facDAO;
         private IEmployeeDAO _employeeDAO;
         private Employee _employee;
         private DateTime _employeeBirthDate = Convert.ToDateTime("08/08/1991");

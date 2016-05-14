@@ -17,13 +17,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
             Map(x => x.Count)
                 .Column("do_count")
                 .Not.Nullable();
-            
+
             References(x => x.Dish)
                 .Column("fk_dish_id")
-                .Not.Nullable();
-
-            References(x => x.RecordStatus)
-                .Column("fk_dis_record")
+                .Cascade.Delete()
                 .Not.Nullable();
             
         }

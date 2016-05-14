@@ -19,7 +19,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		/// Obtencion de la Fabrica de DAO
 		/// </summary>
 		/// <value>The factory DA.</value>
-		protected FactoryDAOO FactoryDAO
+		protected FactoryDAO FactoryDAO
 		{
 			get { return WebApiApplication.FactoryDAO; }
 		}

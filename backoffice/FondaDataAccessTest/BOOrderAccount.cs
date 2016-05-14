@@ -10,7 +10,7 @@ namespace DataAccessTest
     [TestFixture()]
     class BOOrderAccount
     {
-        private FactoryDAOO _facDAO;
+        private FactoryDAO _facDAO;
         private IOrderAccountDao _orderAccountDAO;
         private IDishOrderDAO _dishOrderDAO;
         private Account account;
@@ -97,7 +97,7 @@ namespace DataAccessTest
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAOO.Intance;
+                _facDAO = FactoryDAO.Intance;
         }
 
         [TestFixtureTearDown]

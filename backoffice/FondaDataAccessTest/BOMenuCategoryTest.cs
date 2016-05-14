@@ -13,7 +13,7 @@ namespace DataAccess
 
     class BOMenuCategoryTest
     {
-        private FactoryDAOO _facDAO;
+        private FactoryDAO _facDAO;
         private IMenuCategoryDAO _mencatDAO;
         private MenuCategory _mencat;
         private int _mencatId;
@@ -68,7 +68,7 @@ namespace DataAccess
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAOO.Intance;
+                _facDAO = FactoryDAO.Intance;
         }
 
 

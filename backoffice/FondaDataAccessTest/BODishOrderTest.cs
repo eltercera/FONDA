@@ -11,7 +11,7 @@ namespace DataAccessTest
     public class BODishOrderTest
     {
 
-        private FactoryDAOO _facDAO;
+        private FactoryDAO _facDAO;
         private IDishOrderDAO _orderDAO;
         private IDishDAO _dishDAO;
         private DishOrder _dishOrder;
@@ -99,7 +99,7 @@ namespace DataAccessTest
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAOO.Intance;
+                _facDAO = FactoryDAO.Intance;
         }
 
         [TestFixtureTearDown]

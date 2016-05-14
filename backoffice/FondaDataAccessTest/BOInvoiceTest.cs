@@ -12,7 +12,7 @@ namespace DataAccessTests
     public class BOInvoiceTests
     {
 
-		private FactoryDAOO _facDAO;
+		private com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO _facDAO;
 
         private IInvoiceDao _invoiceDAO;
         private Invoice _invoice;
@@ -83,7 +83,7 @@ namespace DataAccessTests
         private void getDao()
         {
             if (_facDAO == null)
-				_facDAO = FactoryDAOO.Intance;
+                _facDAO = com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO.Intance;
         }
 
         private void generateInvoice(bool edit = false)

@@ -9,7 +9,7 @@ namespace DataAccess
     [TestFixture()]
     class FOCommensalRegister
     {
-        private FactoryDAOO _facDAO;
+        private FactoryDAO _facDAO;
 
         private ICommensalDAO _commensalDAO;
         private Commensal _commensal;
@@ -61,7 +61,7 @@ namespace DataAccess
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAOO.Intance;
+                _facDAO = FactoryDAO.Intance;
         }
     }
 }

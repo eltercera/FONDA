@@ -14,9 +14,9 @@ namespace com.ds201625.fonda.BackEnd
 		/// <summary>
 		/// instancia del la Fabrica de DAO
 		/// </summary>
-		private static FactoryDAOO _factoryDAO = FactoryDAOO.Intance;
+		private static FactoryDAO _factoryDAO = FactoryDAO.Intance;
 
-		public static FactoryDAOO FactoryDAO
+		public static FactoryDAO FactoryDAO
 		{
 			get { return _factoryDAO; }
 		}

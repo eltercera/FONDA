@@ -10,7 +10,7 @@ namespace DataAccessTest
     public class BOCashPaymentTest
     {
 
-        private FactoryDAOO _facDAO;
+        private FactoryDAO _facDAO;
 
         private ICashPaymentDAO _cashPaymentDAO;
         private CashPayment _cashPayment;
@@ -77,7 +77,7 @@ namespace DataAccessTest
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAOO.Intance;
+                _facDAO = FactoryDAO.Intance;
         }
 
         private void generateCashPayment(bool edit = false)

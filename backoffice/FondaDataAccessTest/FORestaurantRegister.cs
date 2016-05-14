@@ -9,7 +9,7 @@ namespace DataAccess
     [TestFixture()]
     class FORestaurantRegister
     {
-        private FactoryDAOO _facDAO;
+        private FactoryDAO _facDAO;
 
         private IRestaurantDAO _restaurantDAO;
         private Restaurant _restaurant;
@@ -64,7 +64,7 @@ namespace DataAccess
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAOO.Intance;
+                _facDAO = FactoryDAO.Intance;
         }
 
     }

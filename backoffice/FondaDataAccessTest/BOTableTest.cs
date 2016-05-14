@@ -13,7 +13,7 @@ namespace DataAccessTests
     [TestFixture]
     public class BOTableTest
     {
-        private FactoryDAOO _facDAO;
+        private com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO _facDAO;
         private ITableDAO _tableDAO;
         private Table _table;
         private int _tableId;
@@ -60,7 +60,7 @@ namespace DataAccessTests
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAOO.Intance;
+                _facDAO = com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO.Intance;
         }
 
 

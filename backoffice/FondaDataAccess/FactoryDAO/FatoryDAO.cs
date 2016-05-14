@@ -5,22 +5,22 @@ using com.ds201625.fonda.Domain;
 
 namespace com.ds201625.fonda.DataAccess.FactoryDAO
 {
-	public class FactoryDAOO
+	public class FactoryDAO
 	{
-		private static FactoryDAOO _intance;
+		private static FactoryDAO _intance;
 
 		private IFactoryDAO _factory;
 
-		private FactoryDAOO ()
+		private FactoryDAO ()
 		{
 			_factory = new HibernateFactoryDAO();
 		}
 
-		public static FactoryDAOO Intance
+		public static FactoryDAO Intance
 		{
 			get {
 				if (_intance == null)
-					_intance = new FactoryDAOO ();
+					_intance = new FactoryDAO ();
 
 				return _intance;
 			}

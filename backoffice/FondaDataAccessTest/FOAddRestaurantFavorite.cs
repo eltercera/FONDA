@@ -12,7 +12,7 @@ namespace DataAccess
         /// <summary>
         /// FABRICA DE OBJETOS
         /// </summary>
-        private FactoryDAOO _facDAO;
+        private FactoryDAO _facDAO;
         /// <summary>
         /// INTERFAZ DE COMMENSAL AL CUAL SE LE VAN AGREGAR RESTAURANTES
         /// </summary>
@@ -159,7 +159,7 @@ namespace DataAccess
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAOO.Intance;
+                _facDAO = FactoryDAO.Intance;
         }
 
 
