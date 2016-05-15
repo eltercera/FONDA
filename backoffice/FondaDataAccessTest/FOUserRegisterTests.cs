@@ -334,7 +334,29 @@ namespace DataAccessTests
 			CommensalAssertions ();
 
 		}
+			
+		[Test]
+		/// <summary>
+		/// Prueba de unicidad de un token
+		/// </summary>
+		public void TokenDomainTest()
+		{
+			int cant = 2500;
 
+			Token [] t = new Token [cant];
+			for (int i = 0; i < cant; i++)
+			{
+				t [i] = new  Token ();
+			}
+
+			for (int i = 0; i < cant; i++)
+			{
+				for (int j = i+1; j < cant; j++)
+				{
+					Assert.AreNotEqual (t[j].StrToken,t[i].StrToken);
+				}
+			}
+		}
 
 		[SetUp]
 		public void BeginTest()
