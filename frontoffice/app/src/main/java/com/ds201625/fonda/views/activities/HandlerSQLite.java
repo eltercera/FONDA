@@ -19,6 +19,7 @@ public class HandlerSQLite extends SQLiteOpenHelper {
                                     "number TEXT, owner TEXT, id_owner INTEGER, expiration TEXT, cvv INTEGER, type TEXT);";
 
     public HandlerSQLite(Context context) {
+
         super(context,"CreditCard", null, 1);
     }
 
@@ -39,10 +40,8 @@ public class HandlerSQLite extends SQLiteOpenHelper {
     public void save (String number, String name, Integer idOwner, String expiration, Integer cvv, String type){
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
-
         ContentValues addReg = new ContentValues();
         try {
-            db.execSQL(table);
             addReg.put("number", number);
             addReg.put("owner", name);
             addReg.put("id_owner", idOwner);
@@ -65,12 +64,13 @@ public class HandlerSQLite extends SQLiteOpenHelper {
           SQLiteDatabase db = this.getReadableDatabase();
        try {
           db.beginTransaction();
-          String select = "SELECT number FROM creditcard";
+          String select = "SELECT number, owner FROM creditcard";
           Cursor c = db.rawQuery(select, null);
           if (c.getCount() > 0) {
               while (c.moveToNext()) {
                   String numb = c.getString(c.getColumnIndex("number"));
-                  numbers.add(numb);
+                  String name = c.getString(c.getColumnIndex("owner"));
+                  numbers.add(numb+" - "+name);
               }
           }
           db.setTransactionSuccessful();

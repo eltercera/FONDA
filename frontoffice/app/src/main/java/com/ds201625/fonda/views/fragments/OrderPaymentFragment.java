@@ -63,31 +63,30 @@ public class OrderPaymentFragment extends BaseFragment {
         layout = inflater.inflate(R.layout.fragment_order_payment,container,false);
         getAllElements();
         String selectedCCPass = null;
+        float amountRec = 0;
+
         try {
-             selectedCCPass = getArguments().getString("creditC");
+            amountRec = getArguments().getFloat("amount");
+            selectedCCPass = getArguments().getString("creditC");
         }catch (NullPointerException n)
         { n.getMessage();}
         finally {
             if(selectedCCPass != null) {
                 selectCC = selectedCCPass;
+                amount = amountRec;
             }
-        }
-        float amountRec = 0;
-        try {
-            amountRec = getArguments().getFloat("amount");
-        }catch (NullPointerException n)
-        { n.getMessage();}
-        finally {
-
                 amount = amountRec;
 
         }
+
+
+        float always = amount;
         //String that fill the listview
         String[] pay = {"Monto Total " +
-                " Bs." + amount,
+                " Bs." + always,
                 "Seleccionar Perfil",
                 "Tarjeta de Crédito: "+selectCC};
-        // Elements of the list
+        // Add Elements to the list
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1, pay);
         lv1.setAdapter(adapter);
 
@@ -156,9 +155,9 @@ public class OrderPaymentFragment extends BaseFragment {
                         break;
                     case 2:
 
-                                    ccFrag = new CreditCardFragment();
-                                    OrdersActivity.showFragment(ccFrag);
-                                    System.out.println("ENTROOOOOOOOOOOOOOO A LA TDC");
+                         ccFrag = new CreditCardFragment();
+                         OrdersActivity.showFragment(ccFrag);
+                         System.out.println("ENTROOOOOOOOOOOOOOO A LA TDC");
 
 
                         break;

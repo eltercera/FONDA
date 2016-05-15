@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
@@ -28,6 +29,7 @@ import com.ds201625.fonda.views.fragments.CloseAccountFragment;
 import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class OrdersActivity extends BaseNavigationActivity {
 
@@ -54,7 +56,8 @@ public class OrdersActivity extends BaseNavigationActivity {
     private EditText number, name,idOwner,expiration,cvv;
     private RadioButton rBVisa,rBMaster;
     private Spinner spinner;
-
+    private Button saveCC;
+    private float a;
     /**
      * Administrador de Fragments
      */
@@ -91,12 +94,15 @@ public class OrdersActivity extends BaseNavigationActivity {
         rBMaster = (RadioButton) findViewById(R.id.rBMaster);
         rBVisa = (RadioButton) findViewById(R.id.rBVisa);
         spinner = (Spinner) findViewById(R.id.spinnerCC);
+        saveCC = (Button)findViewById(R.id.bSave);
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_orders);
         super.onCreate(savedInstanceState);
+
 
         //Importante Primero obtener el Tablayout
         tb = (TabLayout) findViewById(R.id.tabsO);
@@ -242,7 +248,8 @@ public class OrdersActivity extends BaseNavigationActivity {
                 break;
             case R.id.action_favorite_send:
                 cambiarPa();
-                amount();
+                a = amount();
+                System.out.println(a);
                 break;
             case R.id.action_favorite_cancel:
                 salir();
@@ -324,6 +331,7 @@ public class OrdersActivity extends BaseNavigationActivity {
         showFragment(factFrag);
     }
 
+
     public void download() {
         salir();
     }
@@ -349,7 +357,7 @@ public class OrdersActivity extends BaseNavigationActivity {
     }
 
 
-    public void saveCC(View view){
+    public void saveCC(){
         getAllElements();
         HandlerSQLite handlerSQLite = new HandlerSQLite(this);
         String numberCC = number.getText().toString();
@@ -381,15 +389,16 @@ public class OrdersActivity extends BaseNavigationActivity {
         Bundle args = new Bundle();
         spinner = (Spinner) findViewById(R.id.spinnerCC);
         String cc = spinner.getSelectedItem().toString();
-
             ordPay = new OrderPaymentFragment();
+            args.putFloat("amount",a);
             args.putString("creditC", cc);
             ordPay.setArguments(args);
             showFragment(ordPay);
 
+
     }
 
-    public void amount (){
+    public float amount (){
         Bundle args = new Bundle();
         CloseAccountFragment cls = new CloseAccountFragment();
         float amountT = cls.getAmount();
@@ -398,6 +407,93 @@ public class OrdersActivity extends BaseNavigationActivity {
         args.putFloat("amount", amountT);
         ordPay.setArguments(args);
         showFragment(ordPay);
+        return amountT;
+    }
+
+
+    public void validationCC (View view){
+        getAllElements();
+        saveCC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validate();
+            }
+        });
 
     }
+
+    public void validate(){
+        String numberCC = number.getText().toString();
+        String nameCC = name.getText().toString();
+        String idOwnerCC = idOwner.getText().toString();
+        String expCC = expiration.getText().toString();
+        String cvvCC = cvv.getText().toString();
+        boolean typeMaster = rBMaster.isChecked();
+        boolean typeVisa = rBVisa.isChecked();
+
+        boolean nu = validateCCNumber(numberCC);
+        boolean na = validateNameOwner(nameCC);
+        boolean id = validateIdOwner(idOwnerCC);
+        boolean ex = validateDate(expCC);
+        boolean cv = validateCvv(cvvCC);
+
+        if (nu && na && id && cv && ex || typeMaster || typeVisa){
+            saveCC();
+        }
+        else
+        {
+            Toast.makeText(this, "Debe seleccionar tipo tarjeta", Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
+    public boolean validateCCNumber(String numberC){
+        boolean op = true;
+            if (numberC.isEmpty() || numberC.length() < 20) {
+                op = false;
+                number.setError("Debe contener 20 dígitos");
+            }
+
+        return op;
+
+    }
+
+    private boolean validateNameOwner(String nameO){
+        boolean op = true;
+        if(nameO.isEmpty()){
+          op = false;
+        name.setError("Campo obligatorio");
+    }
+        return op;
+    }
+
+    private boolean validateIdOwner(String id){
+        boolean op = true;
+        if(id.isEmpty()) {
+            op = false;
+            idOwner.setError("Campo obligatorio");
+        }
+        return op;
+    }
+
+    private boolean validateDate(String dateC){
+        boolean op = true;
+        if(dateC.isEmpty()) {
+            op = false;
+            expiration.setError("Campo obligatorio");
+        }
+        return op;
+    }
+
+     private boolean validateCvv(String cvvC){
+        boolean op = true;
+        if(cvvC.isEmpty() || cvvC.length() < 3 ) {
+            op = false;
+            cvv.setError("Debe contener 3 digitos");
+        }
+        return op;
+    }
+
+
+
 }

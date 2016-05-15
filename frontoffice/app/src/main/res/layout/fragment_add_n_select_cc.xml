@@ -62,7 +62,8 @@
                         android:ems="10"
                         android:id="@+id/eT_number"
                         android:inputType="number"
-                        android:maxLength="16" />
+                        android:maxLength="16"
+                        android:longClickable="false" />
                 </android.support.design.widget.TextInputLayout>
 
             </TableRow>
@@ -81,7 +82,8 @@
                         android:layout_height="wrap_content"
                         android:hint="Nombre Tarjetahabiente"
                         android:ems="10"
-                        android:id="@+id/eT_name"/>
+                        android:id="@+id/eT_name"
+                        android:longClickable="false" />
                 </android.support.design.widget.TextInputLayout>
             </TableRow>
             <TableRow
@@ -98,7 +100,8 @@
                         android:inputType="number"
                         android:ems="10"
                         android:id="@+id/eT_idOwner"
-                        android:hint="Cédula de Identidad" />
+                        android:hint="Cédula de Identidad"
+                        android:longClickable="false" />
                 </android.support.design.widget.TextInputLayout>
             </TableRow>
 
@@ -122,7 +125,8 @@
                         android:inputType="datetime"
                         android:ems="10"
                         android:id="@+id/eT_expiring"
-                        android:hint="Fecha de vencimiento" />
+                        android:hint="Fecha de vencimiento"
+                        android:longClickable="false" />
                 </android.support.design.widget.TextInputLayout>
 
             </TableRow>
@@ -148,7 +152,8 @@
                         android:ems="10"
                         android:id="@+id/eT_cvv"
                         android:hint="CVV"
-                        android:maxLength="3" />
+                        android:maxLength="3"
+                        android:longClickable="false" />
                 </android.support.design.widget.TextInputLayout>
 
             </TableRow>
@@ -196,10 +201,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="guardar"
-                    android:id="@+id/button2"
+                    android:id="@+id/bSave"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:onClick="saveCC" />
+                    android:onClick="validationCC"
+                    android:longClickable="false" />
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -211,8 +217,8 @@
                     android:text="Ok"
                     android:id="@+id/button3"
                     android:layout_alignParentBottom="true"
-                    android:layout_toRightOf="@+id/button2"
-                    android:layout_toEndOf="@+id/button2"
+                    android:layout_toRightOf="@+id/bSave"
+                    android:layout_toEndOf="@+id/bSave"
                     android:onClick="acceptCC" />
             </TableRow>
 
@@ -226,7 +232,7 @@
                     android:layout_height="wrap_content"
                     android:text="Clear"
                     android:id="@+id/button4"
-                    android:layout_above="@+id/button2"
+                    android:layout_above="@+id/bSave"
                     android:layout_centerHorizontal="true"
                     android:onClick="eraseCC" />
 
