@@ -26,7 +26,7 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 			if (headres.Authorization == null)
 				return false;
 
-			if (headres.Authorization.Scheme != "Fonda")
+            if (headres.Authorization.Scheme != GeneralRes.FondaAuthSheme)
 				return false;
 
 			// validacion del token
@@ -34,7 +34,7 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 			if (commID == 0 )
 				return false;
 
-			context.Request.Headers.Add ("id", ""+commID);
+            context.Request.Headers.Add(GeneralRes.CommensalIDHeader, commID.ToString());
 
 			return true;
 		}
