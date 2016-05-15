@@ -28,6 +28,7 @@ namespace BackOffice.Seccion.Restaurant
         
         protected void CargarTabla() {
 
+            restcat = string.Empty;
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
             FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -60,6 +61,7 @@ namespace BackOffice.Seccion.Restaurant
             String nombreA = NombreCatA.Text;
             _restcat.Name = nombreA;
             _restcatDAO.Save(_restcat);
+            CargarTabla();
         }
 
         protected void ButtonModificar_Click(object sender, EventArgs e)
@@ -82,6 +84,7 @@ namespace BackOffice.Seccion.Restaurant
             nameM = NombreCatM.Text;
             _restaurant.Name = nameM;
             _restcatDAO.Save(_restaurant);
+            CargarTabla();
         }
 
         protected void Modify_Click(object sender, EventArgs e)
