@@ -53,9 +53,9 @@ namespace DataAccessTests
             _restaurantCategory.Name = "China";
             _restaurant.RestaurantCategory = _restaurantCategory;
 
-            /* Zone _zone = new Zone();
+             Zone _zone = new Zone();
              _zone.Name = "Caracas";
-             _restaurant.Zone = _zone;*/
+             _restaurant.Zone = _zone;
 
             MenuCategory _menuCategories = new MenuCategory() { Name = "Italiana", Status = DisableSimpleStatus.Instance };
             _restaurant.MenuCategories = new List<MenuCategory>();
@@ -88,9 +88,9 @@ namespace DataAccessTests
             _restaurantCategory.Name = "China";
             _restaurant.RestaurantCategory = _restaurantCategory;
 
-            /* Zone _zone = new Zone();
+             Zone _zone = new Zone();
              _zone.Name = "Caracas";
-             _restaurant.Zone = _zone;*/
+             _restaurant.Zone = _zone;
 
             _restaurant.MenuCategories = new List<MenuCategory>() {
                 new MenuCategory() { Name = "Italiana", Status = DisableSimpleStatus.Instance}
@@ -112,7 +112,7 @@ namespace DataAccessTests
             Assert.AreEqual(_restaurant.RestaurantCategory, _restaurantCategory);
             //Assert.AreEqual(_restaurant.MenuCategories[0], _menuCategories);
             Assert.AreEqual(_restaurant.Schedule, _schedule);
-            // Assert.AreEqual(_restaurant.Zone, );
+             Assert.AreEqual(_restaurant.Zone, _zone);
         }
 
         [Test]

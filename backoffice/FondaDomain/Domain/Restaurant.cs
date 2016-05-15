@@ -28,10 +28,10 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private RestaurantCategory _category;
 
-        /*/// <summary>
+        /// <summary>
         /// Zona de ubicacion de un restaurante
         /// </summary>
-        private Zone _zone;*/
+        private Zone _zone;
 
         /// <summary>
         /// Horario de un restaurante
@@ -119,7 +119,7 @@ namespace com.ds201625.fonda.Domain
             set { _category = value; }
         }
 
-        /*public virtual Zone Zone
+        public virtual Zone Zone
         {
             /// <summary>
             /// Obtiene la zona de ubicacion del restaurante
@@ -131,7 +131,7 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe la zona de ubicacion del restaurante</value>
             set { _zone = value; }
         }
-        */
+        
         public virtual Schedule Schedule
         {
             /// <summary>

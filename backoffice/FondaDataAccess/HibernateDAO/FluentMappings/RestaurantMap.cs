@@ -52,9 +52,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                .Not.Nullable()
                .Cascade.Persist();
 
-           /* References(x => x.Zone)
+            References(x => x.Zone)
                .Column("fk_res_zone")
-               .Not.Nullable();*/
+               .Cascade.Persist()
+               .Not.Nullable();
 
             References(x => x.Schedule)
                .Column("fk_res_schedule")
