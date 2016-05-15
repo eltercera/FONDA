@@ -16,9 +16,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
     {
         public HistoryVisitsFondaWebApiController() : base() { }
 
-        [Route("listVisits")]
+        [Route("historyVisits")]
         [HttpGet]        
-        public IHttpActionResult GetId(int idPerson)
+        public IHttpActionResult GetHistoryVisits(int idPerson)
         {
 
             DateTime date1 = new DateTime(2016, 06, 10);
