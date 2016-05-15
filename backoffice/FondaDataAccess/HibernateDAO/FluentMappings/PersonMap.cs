@@ -16,11 +16,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 			
 			Map (x => x.Gender)
 				.Column ("per_Gender")
-				.Not.Nullable();
+				.Nullable();
 			
 			Map (x => x.BirthDate)
 				.Column ("per_birt_date")
-				.Not.Nullable();
+				.Nullable();
 		}
 	}
 }
