@@ -29,7 +29,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 			References (x => x.Status)
 				.Column ("fk_sinple_status_id")
 				.Not.Nullable ()
-				.Cascade.All();
+				.Cascade.Persist();
 
 		}
 	}

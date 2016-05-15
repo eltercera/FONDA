@@ -19,7 +19,7 @@ namespace com.ds201625.fonda.Domain
 
 		public Currency () : base () { }
 
-        public string Symbol
+        public virtual string Symbol
         {
             /// <summary>
             /// Obtiene el simbolo de la moneda usada en un restaurante

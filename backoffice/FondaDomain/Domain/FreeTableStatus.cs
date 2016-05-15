@@ -22,7 +22,7 @@ namespace com.ds201625.fonda.Domain
 		protected FreeTableStatus() : base ()
 		{
 			StatusId = 6;
-			Description = "Mesa Dispoible";
+			Description = "Mesa Disponible";
 		}
 
         /// <summary>

@@ -6,11 +6,10 @@ using com.ds201625.fonda.Domain;
 
 namespace DataAccessTests
 {
-	[TestFixture ()]
 	public class FOUserRegisterTests
-	{
+    {
 
-		private FactoryDAO _facDAO;
+		private com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO _facDAO;
 		private IPersonDAO _personDAO;
 		private IProfileDAO _profileDAO;
 		private ITokenDAO _tokenDAO;
@@ -182,7 +181,7 @@ namespace DataAccessTests
 		private void getDao()
 		{
 			if (_facDAO == null)
-				_facDAO = FactoryDAO.Intance;
+                _facDAO = com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO.Intance;
 		}
 
 		private void getPersonDao()
@@ -335,7 +334,29 @@ namespace DataAccessTests
 			CommensalAssertions ();
 
 		}
+			
+		[Test]
+		/// <summary>
+		/// Prueba de unicidad de un token
+		/// </summary>
+		public void TokenDomainTest()
+		{
+			int cant = 2500;
 
+			Token [] t = new Token [cant];
+			for (int i = 0; i < cant; i++)
+			{
+				t [i] = new  Token ();
+			}
+
+			for (int i = 0; i < cant; i++)
+			{
+				for (int j = i+1; j < cant; j++)
+				{
+					Assert.AreNotEqual (t[j].StrToken,t[i].StrToken);
+				}
+			}
+		}
 
 		[SetUp]
 		public void BeginTest()

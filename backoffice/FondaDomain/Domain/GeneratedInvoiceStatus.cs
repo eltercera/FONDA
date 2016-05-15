@@ -33,7 +33,7 @@ namespace com.ds201625.fonda.Domain
         }
 
         /// <summary>
-        /// Retrona una descripcion de este estado
+        /// Retorna una descripcion de este estado
         /// </summary>
         /// <returns>Pagado en String</returns>
         public override string ToString()

@@ -28,8 +28,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		{
 			String values;
 			int value = 0;
-			if (header.Contains ("id")) {
-				values = header.GetValues ("id").First ();
+            if (header.Contains(GeneralRes.CommensalIDHeader))
+            {
+                values = header.GetValues(GeneralRes.CommensalIDHeader).First();
 				value =  Int32.Parse(values);
 			}
 
