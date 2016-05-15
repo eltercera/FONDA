@@ -86,14 +86,14 @@ public class CloseAccountFragment extends BaseFragment {
         TextView txtDate = (TextView) layout.findViewById(R.id.tvDate);
         TextView txtHour = (TextView) layout.findViewById(R.id.textView20);
 
-        TextView txtMontoSub = (TextView) layout.findViewById(R.id.tVSubTotalValor);
-        TextView txtMonSub = (TextView) layout.findViewById(R.id.tVSubMoneda);
+        TextView txtMontoSub = (TextView) layout.findViewById(R.id.tvSubTotalValor);
+        TextView txtMonSub = (TextView) layout.findViewById(R.id.tvSubMoneda);
 
         TextView txtMontoIva = (TextView) layout.findViewById(R.id.tVIVAValor);
-        TextView txtMonIva = (TextView) layout.findViewById(R.id.tVIVAMoneda);
+        TextView txtMonIva = (TextView) layout.findViewById(R.id.tvIVAMoneda);
 
         TextView txtMontoTota = (TextView) layout.findViewById(R.id.tvMontoTotal);
-        TextView txtMonTota = (TextView) layout.findViewById(R.id.tVTotalMoneda);
+        TextView txtMonTota = (TextView) layout.findViewById(R.id.tvTotalMoneda);
 
         //Fecha
         txtDate.setText(formattedDate);

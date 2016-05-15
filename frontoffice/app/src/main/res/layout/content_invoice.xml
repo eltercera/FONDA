@@ -13,12 +13,14 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Nombre Restaurant"
-        android:id="@+id/tVTitulo"
+        android:id="@+id/tvTitulo"
         android:textSize="25dp"
         android:gravity="center"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/tvCliente"
-        android:layout_alignStart="@+id/tvCliente" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <View
         android:layout_width="fill_parent"
@@ -55,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1600"
-        android:id="@+id/tVSubTotalValor"
+        android:id="@+id/tvSubTotalValor"
         android:layout_alignTop="@+id/view2"
         android:layout_alignRight="@+id/view2"
         android:layout_alignEnd="@+id/view2"
@@ -65,17 +67,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bs. "
-        android:id="@+id/tVSubMoneda"
-        android:layout_alignTop="@+id/tVSubTotalValor"
-        android:layout_toLeftOf="@+id/tVSubTotalValor"
-        android:layout_toStartOf="@+id/tVSubTotalValor" />
+        android:id="@+id/tvSubMoneda"
+        android:layout_alignTop="@+id/tvSubTotalValor"
+        android:layout_toLeftOf="@+id/tvSubTotalValor"
+        android:layout_toStartOf="@+id/tvSubTotalValor" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="IVA"
         android:id="@+id/tVIVA"
-        android:layout_below="@+id/tVSubMoneda"
+        android:layout_below="@+id/tvSubMoneda"
         android:layout_alignLeft="@+id/tvSub"
         android:layout_alignStart="@+id/tvSub" />
 
@@ -84,18 +86,18 @@
         android:layout_height="wrap_content"
         android:text="192"
         android:id="@+id/tVIVAValor"
-        android:layout_below="@+id/tVSubTotalValor"
-        android:layout_alignRight="@+id/tVSubTotalValor"
-        android:layout_alignEnd="@+id/tVSubTotalValor" />
+        android:layout_below="@+id/tvSubTotalValor"
+        android:layout_alignRight="@+id/tvSubTotalValor"
+        android:layout_alignEnd="@+id/tvSubTotalValor" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bs. "
-        android:id="@+id/tVIVAMoneda"
-        android:layout_below="@+id/tVSubTotalValor"
-        android:layout_toLeftOf="@+id/tVSubTotalValor"
-        android:layout_toStartOf="@+id/tVSubTotalValor" />
+        android:id="@+id/tvIVAMoneda"
+        android:layout_below="@+id/tvSubTotalValor"
+        android:layout_toLeftOf="@+id/tvSubTotalValor"
+        android:layout_toStartOf="@+id/tvSubTotalValor" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -112,17 +114,17 @@
         android:text="1792"
         android:id="@+id/tvMontoTotal"
         android:layout_alignTop="@+id/tVTotal"
-        android:layout_toRightOf="@+id/tVTotalMoneda"
-        android:layout_toEndOf="@+id/tVTotalMoneda" />
+        android:layout_toRightOf="@+id/tvTotalMoneda"
+        android:layout_toEndOf="@+id/tvTotalMoneda" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bs. "
-        android:id="@+id/tVTotalMoneda"
+        android:id="@+id/tvTotalMoneda"
         android:layout_alignTop="@+id/tvMontoTotal"
-        android:layout_alignLeft="@+id/tVIVAMoneda"
-        android:layout_alignStart="@+id/tVIVAMoneda" />
+        android:layout_alignLeft="@+id/tvIVAMoneda"
+        android:layout_alignStart="@+id/tvIVAMoneda" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -148,7 +150,7 @@
         android:text="Numero:"
         android:id="@+id/textView21"
         android:layout_marginTop="39dp"
-        android:layout_below="@+id/tVTitulo"
+        android:layout_below="@+id/tvTitulo"
         android:layout_alignLeft="@+id/tVFecha"
         android:layout_alignStart="@+id/tVFecha" />
 
@@ -261,8 +263,8 @@
         android:text="Bs. "
         android:id="@+id/tvMonedaPropina"
         android:layout_below="@+id/tVIVAValor"
-        android:layout_alignLeft="@+id/tVIVAMoneda"
-        android:layout_alignStart="@+id/tVIVAMoneda" />
+        android:layout_alignLeft="@+id/tvIVAMoneda"
+        android:layout_alignStart="@+id/tvIVAMoneda" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -281,5 +283,19 @@
         android:layout_alignLeft="@+id/view"
         android:layout_alignStart="@+id/view"
         android:layout_above="@+id/view2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Direccion Restaurant"
+        android:id="@+id/tvDireccion"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_below="@+id/tvTitulo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

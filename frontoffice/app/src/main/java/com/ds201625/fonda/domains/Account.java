@@ -3,6 +3,7 @@ package com.ds201625.fonda.domains;
 import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Katherina Molina on 10/05/2016.
@@ -10,19 +11,19 @@ import java.util.Date;
 public class Account extends BaseEntity {
 
     private Table table;
-    private ArrayList<DishOrder> listDish;
+    private List<DishOrder> listDish;
 
     public Account() {
         super();
     }
 
-    public Account(Table table, ArrayList<DishOrder> listDish) {
+    public Account(Table table, List<DishOrder> listDish) {
         this.table = table;
         this.listDish = listDish;
     }
 
 
-    public Account(ArrayList<DishOrder> listDish) {
+    public Account(List<DishOrder> listDish) {
         this.listDish = listDish;
     }
 
@@ -34,9 +35,9 @@ public class Account extends BaseEntity {
         this.table = table;
     }
 
-    public ArrayList<DishOrder> getListDish() {return listDish;}
+    public List<DishOrder> getListDish() {return listDish;}
 
-    public void setListDish(ArrayList<DishOrder> listDish) {
+    public void setListDish(List<DishOrder> listDish) {
         this.listDish = listDish;
     }
 
