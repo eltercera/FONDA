@@ -53,8 +53,8 @@
         android:text="Bs. "
         android:id="@+id/tVSubMoneda"
         android:layout_alignTop="@+id/tvSub"
-        android:layout_toRightOf="@+id/textView11"
-        android:layout_toEndOf="@+id/textView11"
+        android:layout_toRightOf="@+id/tvDate"
+        android:layout_toEndOf="@+id/tvDate"
         android:textSize="15dp" />
 
     <TextView
@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="23-04-2016"
-        android:id="@+id/textView11"
+        android:id="@+id/tvDate"
         android:layout_alignTop="@+id/tVFecha"
         android:layout_toRightOf="@+id/tVFecha"
         android:layout_toEndOf="@+id/tVFecha"
@@ -108,8 +108,8 @@
         android:text="Bs. "
         android:id="@+id/textView25"
         android:layout_above="@+id/tvSub"
-        android:layout_toRightOf="@+id/textView11"
-        android:layout_toEndOf="@+id/textView11" />
+        android:layout_toRightOf="@+id/tvDate"
+        android:layout_toEndOf="@+id/tvDate" />
 
     <TextView
         android:layout_width="wrap_content"

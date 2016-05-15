@@ -27,8 +27,8 @@
         android:layout_marginTop="57dp"
         android:id="@+id/view"
         android:layout_below="@+id/textView26"
-        android:layout_alignLeft="@+id/textView11"
-        android:layout_alignStart="@+id/textView11" />
+        android:layout_alignLeft="@+id/tvDate"
+        android:layout_alignStart="@+id/tvDate" />
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
@@ -183,7 +183,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cliente: "
-        android:id="@+id/textView11"
+        android:id="@+id/tvDate"
         android:layout_below="@+id/textView23"
         android:layout_alignLeft="@+id/textView23"
         android:layout_alignStart="@+id/textView23" />
@@ -193,7 +193,7 @@
         android:layout_height="wrap_content"
         android:text="Adriana Da Rocha "
         android:id="@+id/tvCliente"
-        android:layout_alignTop="@+id/textView11"
+        android:layout_alignTop="@+id/tvDate"
         android:layout_toRightOf="@+id/textView23"
         android:layout_toEndOf="@+id/textView23" />
 

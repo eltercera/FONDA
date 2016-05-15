@@ -51,7 +51,7 @@
             android:name=".views.activities.PagoOrdenActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.activities.RegistrarTdcActivity"
+            android:name=".views.activities.RegisterCCActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
          ATTENTION: This was auto-generated to add Google Play services to your project for

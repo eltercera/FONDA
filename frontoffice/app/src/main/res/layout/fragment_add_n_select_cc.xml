@@ -56,13 +56,15 @@
                     android:layout_height="wrap_content"
                     android:layout_column="1">
                     <EditText
-                        android:inputType="textPersonName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Número Tarjeta de Crédito"
                         android:ems="10"
-                        android:id="@+id/profile_name"/>
+                        android:id="@+id/eT_number"
+                        android:inputType="number"
+                        android:maxLength="16" />
                 </android.support.design.widget.TextInputLayout>
+
             </TableRow>
 
             <TableRow
@@ -79,7 +81,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Nombre Tarjetahabiente"
                         android:ems="10"
-                        android:id="@+id/profile_lastnames"/>
+                        android:id="@+id/eT_name"/>
                 </android.support.design.widget.TextInputLayout>
             </TableRow>
             <TableRow
@@ -95,8 +97,8 @@
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:ems="10"
-                        android:id="@+id/profile_ci_rif"
-                        android:hint="Cédula de Identidad o RIF" />
+                        android:id="@+id/eT_idOwner"
+                        android:hint="Cédula de Identidad" />
                 </android.support.design.widget.TextInputLayout>
             </TableRow>
 
@@ -117,9 +119,9 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="date"
+                        android:inputType="datetime"
                         android:ems="10"
-                        android:id="@+id/nacimi"
+                        android:id="@+id/eT_expiring"
                         android:hint="Fecha de vencimiento" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -142,10 +144,11 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="phone"
+                        android:inputType="number"
                         android:ems="10"
-                        android:id="@+id/profile_phone"
-                        android:hint="CVV" />
+                        android:id="@+id/eT_cvv"
+                        android:hint="CVV"
+                        android:maxLength="3" />
                 </android.support.design.widget.TextInputLayout>
 
             </TableRow>
@@ -185,6 +188,51 @@
 
             </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="guardar"
+                    android:id="@+id/button2"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="saveCC" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ok"
+                    android:id="@+id/button3"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@+id/button2"
+                    android:layout_toEndOf="@+id/button2"
+                    android:onClick="acceptCC" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clear"
+                    android:id="@+id/button4"
+                    android:layout_above="@+id/button2"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="eraseCC" />
+
+            </TableRow>
         </TableLayout>
     </ScrollView>
+
+
 </RelativeLayout>
