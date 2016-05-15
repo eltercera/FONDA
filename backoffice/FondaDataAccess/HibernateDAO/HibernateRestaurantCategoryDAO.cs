@@ -2,6 +2,8 @@
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System;
 using System.Collections.Generic;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
+
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -11,5 +13,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return FindAll();
         }
+
     }
 }
