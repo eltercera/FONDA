@@ -21,6 +21,24 @@ NOMBRE DEL RESTAURANTE
   </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
+
+    <div id="AlertSuccess_AddTable" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> La mesa fue agregada <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
+
+    <div id="AlertSuccess_ModifyTable" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> La mesa fue modificada <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
        <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
@@ -42,24 +60,8 @@ NOMBRE DEL RESTAURANTE
                                                 <th class="no-sort">Acciones</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>#1</td>
-                                                <td>6</td>
-                                                <td>4</td>
-                                                <td>@pperez</td>
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p class="stat">I</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></><a data-toggle="modal" data-target="#modificar"></a><a><i class="fa fa-check" aria-hidden="true"></i></a><a><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>#2</td>
-                                                <td>10</td>
-                                                <td>0</td>
-                                                <td></td>
-                                                <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></><a data-toggle="modal" data-target="#modificar"></a><a><i class="fa fa-check" aria-hidden="true"></i></a><a><i class="fa fa-times"></i></a></td>
-                                            </tr>
-                                        </tbody>
+                                        <!---Acciones de Categoria--->
+                                        <asp:Literal ID="TableT" runat="server"></asp:Literal>                                         
                                     </table>       
                                 </div>
                             </div>
@@ -80,21 +82,26 @@ NOMBRE DEL RESTAURANTE
                             <div class="row">
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
                                 <label class="control-label">Cantidad de Puestos</label>
-                                <asp:DropDownList id="DropDownList3" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:DropDownList id="DDLcapacity" CssClass="form-control" AutoPostBack="True" runat="server">
                                     <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
                                     <asp:ListItem>6</asp:ListItem>
                                     <asp:ListItem>8</asp:ListItem>
                                     <asp:ListItem>10</asp:ListItem>
+                                    <asp:ListItem>12</asp:ListItem>
+                                    <asp:ListItem>14</asp:ListItem>
+                                    <asp:ListItem>16</asp:ListItem>
+                                    <asp:ListItem>18</asp:ListItem>
+                                    <asp:ListItem>20</asp:ListItem>
                                 </asp:DropDownList> 
                              </div>
                              </div>
                          </div>       
 
                         <div class="modal-footer">
-                            <asp:Button id="Button1" Text="Modificar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button2" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonModify" Text="Modificar" CssClass="btn btn-success" OnClick="ButtonModify_Click" runat="server"/>
+                            <asp:Button id="ButtonCancelM" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
                     </div>
            </div>
@@ -114,20 +121,25 @@ NOMBRE DEL RESTAURANTE
                             <div class="row">
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
                                 <label class="control-label">Cantidad de Puestos</label>
-                                <asp:DropDownList id="DropDownList1" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:DropDownList id="DDLcapacityA" CssClass="form-control" AutoPostBack="True" runat="server">
                                     <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
                                     <asp:ListItem>6</asp:ListItem>
                                     <asp:ListItem>8</asp:ListItem>
                                     <asp:ListItem>10</asp:ListItem>
+                                    <asp:ListItem>12</asp:ListItem>
+                                    <asp:ListItem>14</asp:ListItem>
+                                    <asp:ListItem>16</asp:ListItem>
+                                    <asp:ListItem>18</asp:ListItem>
+                                    <asp:ListItem>20</asp:ListItem>
                                 </asp:DropDownList> 
                              </div>
                              </div>
                          </div> 
                         <div class="modal-footer">
-                            <asp:Button id="Button3" Text="Agregar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonAdd" Text="Agregar" CssClass="btn btn-success" onclick="ButtonAdd_Click" runat="server"/>
+                            <asp:Button id="ButtonCancelA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
                     
                 </div>   
