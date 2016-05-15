@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 
 namespace com.ds201625.fonda.Domain
@@ -7,6 +8,7 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Plato
     /// </summary>
+    [DataContract]
     public class Dish : NounBaseEntity
     {
         /// <summary>
@@ -52,11 +54,12 @@ namespace com.ds201625.fonda.Domain
             set { _description = value; }
         }
 
-       
+
         /// <summary>
         /// Obtiene o asigna el costo
         /// </summary>
         /// <value>El Costo</value>
+        [DataMember]
         public virtual float Cost
         {
             get { return _cost; }

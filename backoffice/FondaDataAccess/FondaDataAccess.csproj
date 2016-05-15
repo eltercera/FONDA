@@ -166,12 +166,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
-      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
-      <Name>FondaDomain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
@@ -191,7 +185,11 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="FondaDAOExceptions\" />
+    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
+      <Project>{cd756618-286a-4fbc-93a3-0eccb571b18f}</Project>
+      <Name>FondaDomain</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

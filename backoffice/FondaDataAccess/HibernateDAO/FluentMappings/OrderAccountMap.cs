@@ -23,6 +23,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .ExtraLazyLoad()
                 .Cascade.All();
 
+            References(x => x.Commensal)
+                .Column("fk_commensal_id")
+                .Not.Nullable();
+
             References(x => x.Status)
                 .Column("fk_Account_status_id")
                 .Not.Nullable()

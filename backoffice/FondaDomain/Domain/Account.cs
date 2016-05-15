@@ -6,6 +6,7 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Representa una cuenta de un restaurante.
     /// </summary>
+
     public class Account : BaseEntity
     {
         /// <summary>
@@ -17,6 +18,11 @@ namespace com.ds201625.fonda.Domain
         /// Mesa de la cuenta 
         /// </summary>
         private Table _table;
+
+        /// <summary>
+        /// Commensal de la cuenta
+        /// </summary>
+        private Commensal _commensal;
 
         /// <summary>
         /// Lista de ordenes de la cuenta.
@@ -56,6 +62,23 @@ namespace com.ds201625.fonda.Domain
         {
             get { return _status; }
             set { _status = value; }
+        }
+
+        /// <summary>
+        /// Obtiene o asigna un commensal a la cuenta
+        /// </summary>
+        public virtual Commensal Commensal
+        {
+            get{ return _commensal; }
+            set{ _commensal = value; }
+        }
+
+        /// <summary>
+        /// asigna un commensal a la cuenta
+        /// </summary>
+        public virtual void AddCommensal(Commensal commensal)
+        {
+            _commensal = commensal;
         }
 
         /// <summary>

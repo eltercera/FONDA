@@ -13,6 +13,7 @@ namespace DataAccessTest
         private FactoryDAO _facDAO;
         private IOrderAccountDao _orderAccountDAO;
         private IDishOrderDAO _dishOrderDAO;
+        private ICommensalDAO _commensalDAO;
         private Account account;
         private int _OrderAccountID;
 
@@ -69,6 +70,9 @@ namespace DataAccessTest
                 account = new Account();
 
             _dishOrderDAO = _facDAO.GetDishOrderDAO();
+            _commensalDAO = _facDAO.GetCommensalDAO();
+            Commensal owner = (Commensal) _commensalDAO.FindById(1);
+
             DishOrder dishOrder =_dishOrderDAO.FindById(1);
             Assert.IsNotNull(dishOrder);
             DishOrder dishOrder2 = _dishOrderDAO.FindById(2);
@@ -76,6 +80,9 @@ namespace DataAccessTest
 
             account.addDish(dishOrder);
             account.addDish(dishOrder2);
+
+            account.AddCommensal(owner); ;
+
             account.Status = OpenAccountStatus.Instance;
 
         }
