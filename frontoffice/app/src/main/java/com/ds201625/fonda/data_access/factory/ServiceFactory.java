@@ -12,4 +12,5 @@ public interface ServiceFactory {
 
     CommensalService getCommensalService();
 
+    HistoryVisitsRestaurantService getHistoryVisitsService();
 }
