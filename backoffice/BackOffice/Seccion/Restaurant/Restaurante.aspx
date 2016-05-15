@@ -20,6 +20,24 @@ Restaurantes
   </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
+
+    <div id="AlertSuccess_AddRestaurant" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> El restaurante fue agregado <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
+
+    <div id="AlertSuccess_ModifyRestaurant" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> El restaurante fue modificado <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
@@ -168,7 +186,7 @@ Restaurantes
             </div>        
           
                         <div class="modal-footer">
-                            <asp:Button id="Button6" Text="Cerrar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="CloseConsult" Text="Cerrar" CssClass="btn btn-danger" runat="server"/>
                         </div>
  
             </div>
@@ -191,13 +209,13 @@ Restaurantes
                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Nombre</label>
-                            <asp:TextBox ID="TextBox1" CssClass="form-control" placeholder="ej. El Budare" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="NameM" CssClass="form-control" placeholder="ej. El Budare" MaxLength="3" runat="server"/>
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Tipo</label>
-                            <asp:DropDownList id="DropDownList3" CssClass="form-control" AutoPostBack="True" runat="server">
+                            <asp:DropDownList id="CategoryM" CssClass="form-control" AutoPostBack="True" runat="server">
                                 <asp:ListItem> </asp:ListItem>
                                 <asp:ListItem>Venezolana</asp:ListItem>
                                 <asp:ListItem>Americana</asp:ListItem>
@@ -211,7 +229,7 @@ Restaurantes
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="form-group">
                         <label class="control-label">Nacionalidad</label>
-                        <asp:DropDownList id="DropDownList4" CssClass="form-control" AutoPostBack="True" runat="server">
+                        <asp:DropDownList id="NacionalityM" CssClass="form-control" AutoPostBack="True" runat="server">
                             <asp:ListItem> </asp:ListItem>
                             <asp:ListItem>J</asp:ListItem>
                             <asp:ListItem>V</asp:ListItem>
@@ -221,13 +239,13 @@ Restaurantes
                 <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
                         <div class="form-group">
                             <label class="control-label">RIF</label>
-                            <asp:TextBox ID="TextBox2" CssClass="form-control" placeholder="ej. 965831535-1" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="RifM" CssClass="form-control" placeholder="ej. 965831535-1" MaxLength="3" runat="server"/>
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Unidad Monetaria</label>
-                                <asp:DropDownList id="DropDownList5" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:DropDownList id="CurrencyM" CssClass="form-control" AutoPostBack="True" runat="server">
                                     <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>VEF</asp:ListItem>
                                     <asp:ListItem>USD</asp:ListItem>
@@ -240,13 +258,13 @@ Restaurantes
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Direccion</label>
-                            <asp:TextBox ID="TextBox3" CssClass="form-control" placeholder="ej. Calle Madrid con Av. Ppal" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="AddressM" CssClass="form-control" placeholder="ej. Calle Madrid con Av. Ppal" MaxLength="3" runat="server"/>
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Zona</label>
-                        <asp:DropDownList id="DropDownList6" CssClass="form-control" AutoPostBack="True" runat="server">
+                        <asp:DropDownList id="ZoneM" CssClass="form-control" AutoPostBack="True" runat="server">
                             <asp:ListItem> </asp:ListItem>
                             <asp:ListItem>Altamira</asp:ListItem>
                             <asp:ListItem>Las Mercedes</asp:ListItem>
@@ -259,13 +277,13 @@ Restaurantes
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Longitud</label>
-                            <asp:TextBox ID="TextBox8" CssClass="form-control" placeholder="ej. 10.485440 ó -66.821546" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="LongM" CssClass="form-control" placeholder="ej. 10.485440 ó -66.821546" MaxLength="3" runat="server"/>
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Latitud</label>
-                            <asp:TextBox ID="TextBox11" CssClass="form-control" placeholder="ej. 10.485440 ó -66.821546" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="LatM" CssClass="form-control" placeholder="ej. 10.485440 ó -66.821546" MaxLength="3" runat="server"/>
                         </div>
                 </div>
             </div>
@@ -275,25 +293,25 @@ Restaurantes
                             <label class="control-label">Dias de apertura</label>
                             <label>
                             <label class="text-left">
-                                    <asp:CheckBox id="Checkbox" runat="server" value="Lunes" text="Lun"/>
+                                    <asp:CheckBox id="Day1M" runat="server" value="Lunes" text="Lun"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="CheckBox1" runat="server" value="Martes" text="Mar"/>
+                                    <asp:CheckBox id="Day2M" runat="server" value="Martes" text="Mar"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="CheckBox2" runat="server" value="Miercoles" text="Mie"/>
+                                    <asp:CheckBox id="Day3M" runat="server" value="Miercoles" text="Mie"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="Checkbox3" runat="server" value="Jueves" text="Jue"/>
+                                    <asp:CheckBox id="Day4M" runat="server" value="Jueves" text="Jue"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="CheckBox4" runat="server" value="Viernes" text="Vie"/>
+                                    <asp:CheckBox id="Day5M" runat="server" value="Viernes" text="Vie"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="CheckBox5" runat="server" value="Sabado" text="Sab"/>
+                                    <asp:CheckBox id="Day6M" runat="server" value="Sabado" text="Sab"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="CheckBox6" runat="server" value="Domingo" text="Dom"/>
+                                    <asp:CheckBox id="Day7M" runat="server" value="Domingo" text="Dom"/>
                             </label>
                             </label>
                             </div>    
@@ -301,7 +319,7 @@ Restaurantes
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <div class="form-group">
                             <label class="control-label">Hora Apertura</label>
-                                <asp:DropDownList id="DropDownList7" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:DropDownList id="OpeningTimeM" CssClass="form-control" AutoPostBack="True" runat="server">
                                     <asp:ListItem>Apertura</asp:ListItem>
                                     <asp:ListItem>8</asp:ListItem>
                                     <asp:ListItem>9</asp:ListItem>
@@ -312,7 +330,7 @@ Restaurantes
                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <div class="form-group">
                             <label class="control-label">Hora Cierre</label>
-                                <asp:DropDownList id="DropDownList12" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:DropDownList id="ClosingTime" CssClass="form-control" AutoPostBack="True" runat="server">
                                     <asp:ListItem>Cierre</asp:ListItem>
                                     <asp:ListItem>20</asp:ListItem>
                                     <asp:ListItem>21</asp:ListItem>
@@ -332,8 +350,8 @@ Restaurantes
              </div>            
           </div>
                         <div class="modal-footer">
-                            <asp:Button id="Button3" Text="Modificar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonModify" Text="Modificar" CssClass="btn btn-success" runat="server"/>
+                            <asp:Button id="ButtonCancelM" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
 
                     </div>
@@ -356,13 +374,13 @@ Restaurantes
                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Nombre</label>
-                            <asp:TextBox ID="TextBox4" CssClass="form-control" placeholder="ej. El Budare" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="NameA" CssClass="form-control" placeholder="ej. El Budare" MaxLength="3" runat="server"/>
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Tipo</label>
-                            <asp:DropDownList id="DropDownList1" CssClass="form-control" AutoPostBack="True" runat="server">
+                            <asp:DropDownList id="CategoryA" CssClass="form-control" AutoPostBack="True" runat="server">
                                 <asp:ListItem> </asp:ListItem>
                                 <asp:ListItem>Venezolana</asp:ListItem>
                                 <asp:ListItem>Americana</asp:ListItem>
@@ -376,7 +394,7 @@ Restaurantes
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="form-group">
                         <label class="control-label">Nacionalidad</label>
-                        <asp:DropDownList id="DropDownList2" CssClass="form-control" AutoPostBack="True" runat="server">
+                        <asp:DropDownList id="NacionalityA" CssClass="form-control" AutoPostBack="True" runat="server">
                             <asp:ListItem> </asp:ListItem>
                             <asp:ListItem>J</asp:ListItem>
                             <asp:ListItem>V</asp:ListItem>
@@ -386,13 +404,13 @@ Restaurantes
                 <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
                         <div class="form-group">
                             <label class="control-label">RIF</label>
-                            <asp:TextBox ID="TextBox5" CssClass="form-control" placeholder="ej. 965831535-1" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="RifA" CssClass="form-control" placeholder="ej. 965831535-1" MaxLength="3" runat="server"/>
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Unidad Monetaria</label>
-                                <asp:DropDownList id="DropDownList9" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:DropDownList id="CurrencyA" CssClass="form-control" AutoPostBack="True" runat="server">
                                     <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>VEF</asp:ListItem>
                                     <asp:ListItem>USD</asp:ListItem>
@@ -405,13 +423,13 @@ Restaurantes
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Direccion</label>
-                            <asp:TextBox ID="TextBox6" CssClass="form-control" placeholder="ej. Calle Madrid con Av. Ppal" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="AddressA" CssClass="form-control" placeholder="ej. Calle Madrid con Av. Ppal" MaxLength="3" runat="server"/>
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Zona</label>
-                        <asp:DropDownList id="DropDownList8" CssClass="form-control" AutoPostBack="True" runat="server">
+                        <asp:DropDownList id="ZoneA" CssClass="form-control" AutoPostBack="True" runat="server">
                             <asp:ListItem> </asp:ListItem>
                             <asp:ListItem>Altamira</asp:ListItem>
                             <asp:ListItem>Las Mercedes</asp:ListItem>
@@ -424,13 +442,13 @@ Restaurantes
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Longitud</label>
-                            <asp:TextBox ID="TextBox7" CssClass="form-control" placeholder="ej. 10.485440 ó -66.821546" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="LongA" CssClass="form-control" placeholder="ej. 10.485440 ó -66.821546" MaxLength="3" runat="server"/>
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Latitud</label>
-                            <asp:TextBox ID="TextBox9" CssClass="form-control" placeholder="ej. 10.485440 ó -66.821546" MaxLength="3" runat="server"/>
+                            <asp:TextBox ID="LatA" CssClass="form-control" placeholder="ej. 10.485440 ó -66.821546" MaxLength="3" runat="server"/>
                         </div>
                 </div>
             </div>
@@ -440,25 +458,25 @@ Restaurantes
                             <label class="control-label">Dias de apertura</label>
                             <label>
                             <label class="text-left">
-                                    <asp:CheckBox id="Checkbox7" runat="server" value="Lunes" text="Lun"/>
+                                    <asp:CheckBox id="Day1A" runat="server" value="Lunes" text="Lun"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="CheckBox8" runat="server" value="Martes" text="Mar"/>
+                                    <asp:CheckBox id="Day2A" runat="server" value="Martes" text="Mar"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="CheckBox9" runat="server" value="Miercoles" text="Mie"/>
+                                    <asp:CheckBox id="Day3A" runat="server" value="Miercoles" text="Mie"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="Checkbox10" runat="server" value="Jueves" text="Jue"/>
+                                    <asp:CheckBox id="Day4A" runat="server" value="Jueves" text="Jue"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="CheckBox11" runat="server" value="Viernes" text="Vie"/>
+                                    <asp:CheckBox id="Day5A" runat="server" value="Viernes" text="Vie"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="CheckBox12" runat="server" value="Sabado" text="Sab"/>
+                                    <asp:CheckBox id="Day6A" runat="server" value="Sabado" text="Sab"/>
                             </label>
                             <label class="text-left">
-                                    <asp:CheckBox id="CheckBox13" runat="server" value="Domingo" text="Dom"/>
+                                    <asp:CheckBox id="Day7A" runat="server" value="Domingo" text="Dom"/>
                             </label>
                             </label>
                             </div>    
@@ -466,7 +484,7 @@ Restaurantes
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <div class="form-group">
                             <label class="control-label">Hora Apertura</label>
-                                <asp:DropDownList id="DropDownList10" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:DropDownList id="OpeningTimeA" CssClass="form-control" AutoPostBack="True" runat="server">
                                     <asp:ListItem>Apertura</asp:ListItem>
                                     <asp:ListItem>8</asp:ListItem>
                                     <asp:ListItem>9</asp:ListItem>
@@ -477,7 +495,7 @@ Restaurantes
                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <div class="form-group">
                             <label class="control-label">Hora Cierre</label>
-                                <asp:DropDownList id="DropDownList11" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:DropDownList id="ClosingTimeA" CssClass="form-control" AutoPostBack="True" runat="server">
                                     <asp:ListItem>Cierre</asp:ListItem>
                                     <asp:ListItem>20</asp:ListItem>
                                     <asp:ListItem>21</asp:ListItem>
@@ -497,8 +515,8 @@ Restaurantes
              </div> 
             </div>
                         <div class="modal-footer">
-                            <asp:Button id="Button1" Text="Agregar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button2" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonAdd" Text="Agregar" CssClass="btn btn-success" runat="server"/>
+                            <asp:Button id="ButtonCancelA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
             </div>
             </div>

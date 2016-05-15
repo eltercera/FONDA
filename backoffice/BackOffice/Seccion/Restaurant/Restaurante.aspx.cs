@@ -11,7 +11,8 @@ namespace BackOffice.Seccion.Restaurant
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            AlertSuccess_AddRestaurant.Visible = false;
+            AlertSuccess_ModifyRestaurant.Visible = false;
         }
     }
 }
