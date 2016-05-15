@@ -54,9 +54,18 @@ namespace com.ds201625.fonda.Domain
         private IList <Table> _tables;
 
         /// <summary>
+        /// Lista de commensal que tienen restaurante como favorito
+        /// </summary>
+
+        private IList<Commensal> _favoritesCommensal;
+
+        /// <summary>
         /// Constructor.
         /// </summary>
-		public Restaurant () : base () { }
+        public Restaurant () : base () {
+
+            _favoritesCommensal = new List<Commensal>();
+        }
 
         public virtual string Logo
         {
@@ -173,6 +182,24 @@ namespace com.ds201625.fonda.Domain
             /// </summary>
             /// <value>Recibe la lista de mesas de un Restaurante</value>
             set { _tables = value; }
+        }
+
+        public virtual IList<Commensal> FavoritesCommensals
+        {
+            get { return _favoritesCommensal; }
+            set { _favoritesCommensal = value; }
+        }
+
+
+        public virtual void AddFavoriteCommensal(Commensal commensal)
+        {
+            _favoritesCommensal.Add(commensal);
+           
+        }
+
+        public virtual void RemoveFavoriteCommensal(Commensal commensal)
+        {
+            _favoritesCommensal.Remove(commensal);
         }
 
 

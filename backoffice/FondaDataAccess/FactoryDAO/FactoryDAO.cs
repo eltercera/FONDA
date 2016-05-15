@@ -75,6 +75,21 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
             return _factory.GetMenuCategoryDAO();
         }
 
+        public IInvoiceDao GetInvoiceDao()
+        {
+            return _factory.GetInvoiceDAO();
+        }
+
+        public ICashPaymentDAO GetCashPaymentDAO()
+        {
+            return _factory.GetCashPaymentDAO();
+        }
+
+        public ICreditCardPaymentDAO GetCreditCardPaymentDAO()
+        {
+            return _factory.GetCreditCardPaymentDAO();
+        }
+
         public ICoordinateDAO GetCoordinateDAO()
         {
             return _factory.GetCoordinateDAO();
@@ -108,6 +123,11 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         public ITableDAO GetTableDAO()
         {
             return _factory.GetTableDAO();
+        }
+
+        public IZoneDAO GetZoneDAO()
+        {
+            return _factory.GetZoneDAO();
         }
     }
 }

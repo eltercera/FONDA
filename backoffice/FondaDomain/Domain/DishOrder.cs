@@ -16,7 +16,7 @@ namespace com.ds201625.fonda.Domain
         /// Cantidad de veces que se ordeno el plato
         /// </summary>
         private int _count;
-
+        
         /// <summary>
         /// Constructor vacio
         /// </summary>

@@ -55,7 +55,7 @@ namespace DataAccessTests
             // Verificación de la asignacion de Identificador de DB
             Assert.AreNotEqual(_person.Id, 0);
             _personId = _person.Id;
-
+            
             // Agrega los cambio a propiedades
             generatePerson(true);
 
