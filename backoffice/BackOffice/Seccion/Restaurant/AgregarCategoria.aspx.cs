@@ -25,8 +25,7 @@ namespace BackOffice.Seccion.Restaurant
             AlertSuccess_ModificarCategoria.Visible = false;
             CargarTabla();
         }
-
-        int trID = 0;
+        
         protected void CargarTabla() {
 
             //Genero los objetos para la consulta
@@ -45,9 +44,8 @@ namespace BackOffice.Seccion.Restaurant
                 // ResourceRestaurant llama a las acciones
                 restcat += "<tr id= " + listRest[i].Id + "><td>" + listRest[i].Name + "</td>";
 
-                restcat += ResourceRestaurant.ActionTable;
+                restcat += ResourceRestaurant.ActionCategory;
                 restcat += ResourceRestaurant.Close;
-                trID = listRest[i].Id;
 
             }
         }
