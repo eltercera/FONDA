@@ -38,6 +38,12 @@
     </string>
     <string name="title_activity_settings">Settings</string>
 
+    <!-- Strings related to Search -->
+    <string name="filter_morning_schedule">Matutino</string>
+    <string name="filter_afternoon_schedule">Vespertino</string>
+    <string name="filter_night_schedule">Nocturno</string>
+
+
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->

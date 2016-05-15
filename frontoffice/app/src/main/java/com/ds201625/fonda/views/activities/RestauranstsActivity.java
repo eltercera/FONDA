@@ -10,12 +10,6 @@ import com.ds201625.fonda.views.fragments.*;
 
 public class RestauranstsActivity extends  BaseNavigationActivity {
 
-    String[] names = {
-            "The dining room",
-            "Mogi Mirin",
-            "Gordo & Magro",
-            "La Casona",
-            "Tony's"} ;
     String[] location = {
             "La castellana",
             "Los dos caminos",
