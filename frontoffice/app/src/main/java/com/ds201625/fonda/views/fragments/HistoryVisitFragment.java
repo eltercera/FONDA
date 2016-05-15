@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
+import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.Restaurant;
@@ -34,6 +37,8 @@ public class HistoryVisitFragment extends BaseFragment {
     List<String> childList;
     Map<String, List<String>> collectionVisits;
     ExpandableListView expListView;
+    private List<Invoice> p;
+
 
     //ATRIBUTOS DE PRUEBA
 
@@ -88,7 +93,16 @@ public class HistoryVisitFragment extends BaseFragment {
         listRestaurant.add(restaurant3);
         listRestaurant.add(restaurant4);
         listRestaurant.add(restaurant5);
+        HistoryVisitsRestaurantService ps = FondaServiceFactory.getInstance().getHistoryVisitsService();
+        p=ps.getHistoryVisits();
+        ArrayList<Invoice> listaa = new ArrayList<>();
 
+        Iterator iterator = p.listIterator();
+        while (iterator.hasNext()) {
+            Invoice invoice = (Invoice) iterator.next();
+            float algo= invoice.getTotal();
+            System.out.println("holahola"+algo);
+        }
         //lista factura prueba
         listInvoice.add(invoice1);
         listInvoice.add(invoice2);

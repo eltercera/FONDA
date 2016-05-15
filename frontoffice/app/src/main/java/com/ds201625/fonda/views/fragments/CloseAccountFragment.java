@@ -28,6 +28,7 @@ import java.util.Iterator;
  */
 public class CloseAccountFragment extends BaseFragment {
 
+    public static float amount;
 
     private ListView lv1;
 
@@ -80,8 +81,8 @@ public class CloseAccountFragment extends BaseFragment {
         String formattedHour = dfh.format(c.getTime());
 
         Account account = new Account(table,listDishO);
-
-
+        setAmount(total);
+        System.out.println("AMOUNT yunet: " + amount);
 
         TextView txtDate = (TextView) layout.findViewById(R.id.tvDate);
         TextView txtHour = (TextView) layout.findViewById(R.id.textView20);
@@ -126,6 +127,13 @@ public class CloseAccountFragment extends BaseFragment {
         super.onDetach();
     }
 
+    public static float getAmount() {
+        return amount;
+    }
+
+    public static void setAmount(float amount) {
+        CloseAccountFragment.amount = amount;
+    }
 
     public float calcularSubTotal(ArrayList<DishOrder> listDishO){
         float sub = 0;

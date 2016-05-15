@@ -3,6 +3,7 @@ package com.ds201625.fonda.data_access.factory;
 import com.ds201625.fonda.data_access.retrofit_client.RetroditServiceFactory;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
+import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 
 /**
@@ -35,7 +36,13 @@ public class FondaServiceFactory {
         return serviceFactory.getCommensalService();
     }
 
+
     public CurrentOrderService getCurrentOrderService(){
         return serviceFactory.getCurrentOrderService();
+
+	}
+	
+    public HistoryVisitsRestaurantService getHistoryVisitsService(){
+        return serviceFactory.getHistoryVisitsService();
     }
 }
