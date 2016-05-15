@@ -82,7 +82,7 @@ NOMBRE DEL RESTAURANTE
                             <div class="row">
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
                                 <label class="control-label">Cantidad de Puestos</label>
-                                <asp:DropDownList id="DDLcapacity" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:DropDownList id="DDLcapacity" CssClass="form-control" AutoPostBack="False" runat="server">
                                     <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -121,7 +121,7 @@ NOMBRE DEL RESTAURANTE
                             <div class="row">
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
                                 <label class="control-label">Cantidad de Puestos</label>
-                                <asp:DropDownList id="DDLcapacityA" CssClass="form-control" AutoPostBack="True" runat="server">
+                                <asp:DropDownList id="DDLcapacityA" CssClass="form-control" AutoPostBack="False" runat="server">
                                     <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>

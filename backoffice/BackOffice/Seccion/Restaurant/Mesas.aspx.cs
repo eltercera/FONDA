@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,7 +27,7 @@ namespace BackOffice.Seccion.Restaurant
         
         protected void LoadDataTable()
         {
-
+            table = string.Empty;
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
             FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -40,19 +41,27 @@ namespace BackOffice.Seccion.Restaurant
             for (int i = 0; i <= longitud - 1; i++)
             {
                 string status = string.Empty;
+                string user = string.Empty;
+                int quantity = 0;
                 if (listTable[i].Status == FreeTableStatus.Instance)
                 {
                     status = ResourceRestaurant.Active;
+                    user = "N/A";
+                    quantity = 0;
                 }
                 else 
                 if (listTable[i].Status == BusyTableStatus.Instance)
                 {
                     status = ResourceRestaurant.Inactive;
+                    user = "Usuario" + listTable[i].Id;
+                    quantity = listTable[i].Capacity - 1;
+
                 }
 
                     //Se arma la tabla HTML
                     // ResourceRestaurant llama a las acciones
-                    table += "<tr id= " + listTable[i].Id + "><td>" + listTable[i].Id + "<td>" + listTable[i].Capacity + "<td>" + status + "</td>";
+                    table += "<tr id= " + listTable[i].Id + "><td>" + listTable[i].Id + "</td><td>" + listTable[i].Capacity +
+                             "</td><td>" + quantity + "</td><td>" + user + "</td>" + status;
 
                     table += ResourceRestaurant.ActionTable;
                     table += ResourceRestaurant.Close;
@@ -78,12 +87,12 @@ namespace BackOffice.Seccion.Restaurant
         {
             AlertSuccess_ModifyTable.Visible = true;
             FactoryDAO factoryDAO = FactoryDAO.Intance;
-            ITableDAO _restcatDAO = factoryDAO.GetTableDAO();
-            com.ds201625.fonda.Domain.Table _table = new com.ds201625.fonda.Domain.Table();
-            int capacity = Int32.Parse(DDLcapacityA.SelectedValue);
-            _table.Capacity = capacity;
-            _table.Status = FreeTableStatus.Instance;
-            _restcatDAO.Save(_table);
+            ITableDAO _tableDAO = factoryDAO.GetTableDAO();
+            
+            com.ds201625.fonda.Domain.Table _tableM = _tableDAO.FindById(1);     
+             int capacity = Int32.Parse(DDLcapacityA.SelectedValue);
+            _tableM.Capacity = capacity;
+            _tableDAO.Save(_tableM);
             LoadDataTable();
 
         }
