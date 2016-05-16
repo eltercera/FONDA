@@ -10,7 +10,9 @@ import retrofit2.http.GET;
  */
 public interface HistoryVisitsClient {
 
-    @GET("HistoryVisits")
+    @GET("historyVisits")
     Call<List<Invoice>> getHistoryVisits();
+
+
 
 }

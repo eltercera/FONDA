@@ -39,4 +39,6 @@ public class RetrofitHistoryVisitsService implements HistoryVisitsRestaurantServ
 
         return calling;
     }
+
+
 }
