@@ -126,6 +126,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 			return s.getActiveSimpleStatus ();
 		}
 
+        public DisableSimpleStatus GetDisableSimpleStatus()
+        {
+            IDisableSimpleStatusDAO s = new HibernateDisableSimpleStatus();
+            return s.getDisableSimpleStatus();
+        }
+
     }
 }
 
