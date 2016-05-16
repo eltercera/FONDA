@@ -28,6 +28,7 @@ import java.util.Iterator;
  */
 public class CloseAccountFragment extends BaseFragment {
 
+    public static float amount;
 
     private ListView lv1;
 
@@ -53,7 +54,7 @@ public class CloseAccountFragment extends BaseFragment {
         listDishO.add(dishO1);
         listDishO.add(dishO2);
         listDishO.add(dishO3);
-      //  Account account = new Account(table,listDishO,date);
+
 
     }
 
@@ -79,28 +80,33 @@ public class CloseAccountFragment extends BaseFragment {
         String formattedDate = df.format(c.getTime());
         String formattedHour = dfh.format(c.getTime());
 
-        Account account = new Account(table,listDishO,date,(float)iva,total,sub);
-
-
+        Account account = new Account(table,listDishO);
+        setAmount(total);
+        System.out.println("AMOUNT yunet: " + amount);
 
         TextView txtDate = (TextView) layout.findViewById(R.id.tvDate);
         TextView txtHour = (TextView) layout.findViewById(R.id.textView20);
 
-        TextView txtMontoSub = (TextView) layout.findViewById(R.id.tVSubTotalValor);
-        TextView txtMonSub = (TextView) layout.findViewById(R.id.tVSubMoneda);
+        TextView txtMontoSub = (TextView) layout.findViewById(R.id.tvSubTotalValor);
+        TextView txtMonSub = (TextView) layout.findViewById(R.id.tvSubMoneda);
 
         TextView txtMontoIva = (TextView) layout.findViewById(R.id.tVIVAValor);
-        TextView txtMonIva = (TextView) layout.findViewById(R.id.tVIVAMoneda);
+        TextView txtMonIva = (TextView) layout.findViewById(R.id.tvIVAMoneda);
 
         TextView txtMontoTota = (TextView) layout.findViewById(R.id.tvMontoTotal);
-        TextView txtMonTota = (TextView) layout.findViewById(R.id.tVTotalMoneda);
+        TextView txtMonTota = (TextView) layout.findViewById(R.id.tvTotalMoneda);
 
+        //Fecha
         txtDate.setText(formattedDate);
+        //Hora
         txtHour.setText(formattedHour);
+        //Subtotal
         txtMontoSub.setText(String.valueOf(sub));
         txtMonSub.setText(currency.getSymbol());
+        //Iva
         txtMontoIva.setText(String.valueOf(iva));
         txtMonIva.setText(currency.getSymbol());
+        //Total
         txtMontoTota.setText(String.valueOf(total));
         txtMonTota.setText(currency.getSymbol());
 
@@ -121,6 +127,13 @@ public class CloseAccountFragment extends BaseFragment {
         super.onDetach();
     }
 
+    public static float getAmount() {
+        return amount;
+    }
+
+    public static void setAmount(float amount) {
+        CloseAccountFragment.amount = amount;
+    }
 
     public float calcularSubTotal(ArrayList<DishOrder> listDishO){
         float sub = 0;

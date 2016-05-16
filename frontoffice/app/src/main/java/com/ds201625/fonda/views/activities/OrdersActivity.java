@@ -1,6 +1,8 @@
 package com.ds201625.fonda.views.activities;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
@@ -8,8 +10,12 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
@@ -21,9 +27,9 @@ import com.ds201625.fonda.views.fragments.FacturaFragment;
 import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
 import com.ds201625.fonda.views.fragments.CloseAccountFragment;
 import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
-import com.ds201625.fonda.domains.Dish;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class OrdersActivity extends BaseNavigationActivity {
 
@@ -37,6 +43,7 @@ public class OrdersActivity extends BaseNavigationActivity {
     private static MenuItem sendPayBotton;
     private static MenuItem cancelPayBotton;
     private static MenuItem downloadBotton;
+    private static MenuItem acceptCCButton;
     private static MenuItem saveCCButton;
     /**
      * Fragment de la lista
@@ -44,10 +51,13 @@ public class OrdersActivity extends BaseNavigationActivity {
     private static CurrentOrderFragment orderListFrag;
 
     /**
-     * Boton Flotante
+     * Credit Card
      */
-    // private FloatingActionButton fab;
-
+    private EditText number, name,idOwner,expiration,cvv;
+    private RadioButton rBVisa,rBMaster;
+    private Spinner spinner;
+    private Button saveCC;
+    private float a;
     /**
      * Administrador de Fragments
      */
@@ -74,11 +84,25 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     private static CreditCardFragment ccFrag;
 
+    private void getAllElements(){
+        mViewPager = (ViewPager) findViewById(R.id.containerO);
+        number = (EditText)findViewById(R.id.eT_number);
+        name = (EditText) findViewById(R.id.eT_name);
+        idOwner = (EditText) findViewById(R.id.eT_idOwner);
+        expiration = (EditText) findViewById(R.id.eT_expiring);
+        cvv = (EditText) findViewById(R.id.eT_cvv);
+        rBMaster = (RadioButton) findViewById(R.id.rBMaster);
+        rBVisa = (RadioButton) findViewById(R.id.rBVisa);
+        spinner = (Spinner) findViewById(R.id.spinnerCC);
+        saveCC = (Button)findViewById(R.id.bSave);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_orders);
         super.onCreate(savedInstanceState);
+
 
         //Importante Primero obtener el Tablayout
         tb = (TabLayout) findViewById(R.id.tabsO);
@@ -88,7 +112,8 @@ public class OrdersActivity extends BaseNavigationActivity {
         //Inyectarlo al BaseSectionsPagerAdapter
         mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager(), tb);
 
-        mViewPager = (ViewPager) findViewById(R.id.containerO);
+        this.getAllElements();
+
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tb.setupWithViewPager(mViewPager);
 
@@ -102,6 +127,8 @@ public class OrdersActivity extends BaseNavigationActivity {
         mSectionsPagerAdapter.iconsSetup();
 
         fm = getSupportFragmentManager();
+
+
 
     }
 
@@ -122,7 +149,8 @@ public class OrdersActivity extends BaseNavigationActivity {
         sendPayBotton = menu.findItem(R.id.action_favorite_send_pay);
         cancelPayBotton = menu.findItem(R.id.action_favorite_cancel_pay);
         downloadBotton = menu.findItem(R.id.action_favorite_download);
-        saveCCButton = menu.findItem(R.id.action_favorite_save);
+        acceptCCButton = menu.findItem(R.id.action_favorite_accept_cc);
+        saveCCButton = menu.findItem(R.id.action_favorite_save_cc);
         return true;
     }
 
@@ -153,8 +181,6 @@ public class OrdersActivity extends BaseNavigationActivity {
                 sendPayBotton.setVisible(false);
                 cancelPayBotton.setVisible(false);
             }
-            if (saveCCButton != null)
-                saveCCButton.setVisible(false);
         } else if (fragment.equals(ordPay)) {
             if (cerrarBotton != null)
                 cerrarBotton.setVisible(false);
@@ -166,10 +192,7 @@ public class OrdersActivity extends BaseNavigationActivity {
                 sendPayBotton.setVisible(true);
                 cancelPayBotton.setVisible(true);
             }
-            if (saveCCButton != null)
-                saveCCButton.setVisible(false);
         } else if (fragment.equals(ccFrag)) {
-            System.out.println("ENTROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
             if (cerrarBotton != null)
                 cerrarBotton.setVisible(false);
             if ((sendBotton != null) && (cancelBotton != null)) {
@@ -180,8 +203,11 @@ public class OrdersActivity extends BaseNavigationActivity {
                 sendPayBotton.setVisible(false);
                 cancelPayBotton.setVisible(false);
             }
-            if (saveCCButton != null)
+            if ((acceptCCButton != null) && (saveCCButton != null)) {
+                acceptCCButton.setVisible(true);
                 saveCCButton.setVisible(true);
+            }
+
         } else if (fragment.equals(factFrag)) {
             if (cerrarBotton != null)
                 cerrarBotton.setVisible(false);
@@ -193,8 +219,10 @@ public class OrdersActivity extends BaseNavigationActivity {
                 sendPayBotton.setVisible(false);
                 cancelPayBotton.setVisible(false);
             }
-            if (saveCCButton != null)
+            if ((acceptCCButton != null) && (saveCCButton != null)) {
+                acceptCCButton.setVisible(false);
                 saveCCButton.setVisible(false);
+            }
             if (downloadBotton != null)
                 downloadBotton.setVisible(true);
         } else {
@@ -220,6 +248,8 @@ public class OrdersActivity extends BaseNavigationActivity {
                 break;
             case R.id.action_favorite_send:
                 cambiarPa();
+                a = amount();
+                System.out.println(a);
                 break;
             case R.id.action_favorite_cancel:
                 salir();
@@ -233,8 +263,10 @@ public class OrdersActivity extends BaseNavigationActivity {
             case R.id.action_favorite_download:
                 download();
                 break;
-            case R.id.action_favorite_save:
+            case R.id.action_favorite_save_cc:
                 save();
+            case R.id.action_favorite_accept_cc:
+                //acceptCC();
                 break;
         }
         return true;
@@ -268,8 +300,24 @@ public class OrdersActivity extends BaseNavigationActivity {
     }
 
     private void save() {
-        ccFrag = new CreditCardFragment();
-        Toast.makeText(this, "Guardar bebe ", Toast.LENGTH_SHORT).show();
+        getAllElements();
+        HandlerSQLite handlerSQLite = new HandlerSQLite(this);
+        String numberCC = number.getText().toString();
+        String nameCC = name.getText().toString();
+        int idOwnerCC = Integer.parseInt(idOwner.getText().toString());
+        String expCC = expiration.getText().toString();
+        int cvvCC = Integer.parseInt(cvv.getText().toString());
+        boolean typeMaster = rBMaster.isChecked();
+        boolean typeVisa = rBVisa.isChecked();
+        if(typeMaster) {
+            handlerSQLite.save(numberCC, nameCC, idOwnerCC, expCC, cvvCC, "Mastercard");
+        }
+        else if(typeVisa) {
+            handlerSQLite.save(numberCC, nameCC, idOwnerCC, expCC, cvvCC, "Visa");
+        }
+
+        Toast.makeText(this, "Agregado ", Toast.LENGTH_SHORT).show();
+
     }
 
     private void buscar() {
@@ -283,10 +331,10 @@ public class OrdersActivity extends BaseNavigationActivity {
         showFragment(factFrag);
     }
 
+
     public void download() {
         salir();
     }
-
 
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
@@ -307,5 +355,145 @@ public class OrdersActivity extends BaseNavigationActivity {
                 break;
         }
     }
+
+
+    public void saveCC(){
+        getAllElements();
+        HandlerSQLite handlerSQLite = new HandlerSQLite(this);
+        String numberCC = number.getText().toString();
+        String nameCC = name.getText().toString();
+        int idOwnerCC = Integer.parseInt(idOwner.getText().toString());
+        String expCC = expiration.getText().toString();
+        int cvvCC = Integer.parseInt(cvv.getText().toString());
+        boolean typeMaster = rBMaster.isChecked();
+        boolean typeVisa = rBVisa.isChecked();
+        if(typeMaster) {
+            handlerSQLite.save(numberCC, nameCC, idOwnerCC, expCC, cvvCC, "Mastercard");
+        }
+        else if(typeVisa) {
+            handlerSQLite.save(numberCC, nameCC, idOwnerCC, expCC, cvvCC, "Visa");
+        }
+        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, handlerSQLite.read());
+        LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner.setAdapter(LTRadapter);
+        Toast.makeText(this, "Agregado ", Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void eraseCC (View view){
+        HandlerSQLite handlerSQLite = new HandlerSQLite(this);
+        handlerSQLite.erase();
+    }
+
+    public void acceptCC (View view){
+        Bundle args = new Bundle();
+        spinner = (Spinner) findViewById(R.id.spinnerCC);
+        String cc = spinner.getSelectedItem().toString();
+            ordPay = new OrderPaymentFragment();
+            args.putFloat("amount",a);
+            args.putString("creditC", cc);
+            ordPay.setArguments(args);
+            showFragment(ordPay);
+
+
+    }
+
+    public float amount (){
+        Bundle args = new Bundle();
+        CloseAccountFragment cls = new CloseAccountFragment();
+        float amountT = cls.getAmount();
+        System.out.println("AMOUNT: " + amountT);
+        ordPay = new OrderPaymentFragment();
+        args.putFloat("amount", amountT);
+        ordPay.setArguments(args);
+        showFragment(ordPay);
+        return amountT;
+    }
+
+
+    public void validationCC (View view){
+        getAllElements();
+        saveCC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validate();
+            }
+        });
+
+    }
+
+    public void validate(){
+        String numberCC = number.getText().toString();
+        String nameCC = name.getText().toString();
+        String idOwnerCC = idOwner.getText().toString();
+        String expCC = expiration.getText().toString();
+        String cvvCC = cvv.getText().toString();
+        boolean typeMaster = rBMaster.isChecked();
+        boolean typeVisa = rBVisa.isChecked();
+
+        boolean nu = validateCCNumber(numberCC);
+        boolean na = validateNameOwner(nameCC);
+        boolean id = validateIdOwner(idOwnerCC);
+        boolean ex = validateDate(expCC);
+        boolean cv = validateCvv(cvvCC);
+
+        if (nu && na && id && cv && ex || typeMaster || typeVisa){
+            saveCC();
+        }
+        else
+        {
+            Toast.makeText(this, "Debe seleccionar tipo tarjeta", Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
+    public boolean validateCCNumber(String numberC){
+        boolean op = true;
+            if (numberC.isEmpty() || numberC.length() < 20) {
+                op = false;
+                number.setError("Debe contener 20 dígitos");
+            }
+
+        return op;
+
+    }
+
+    private boolean validateNameOwner(String nameO){
+        boolean op = true;
+        if(nameO.isEmpty()){
+          op = false;
+        name.setError("Campo obligatorio");
+    }
+        return op;
+    }
+
+    private boolean validateIdOwner(String id){
+        boolean op = true;
+        if(id.isEmpty()) {
+            op = false;
+            idOwner.setError("Campo obligatorio");
+        }
+        return op;
+    }
+
+    private boolean validateDate(String dateC){
+        boolean op = true;
+        if(dateC.isEmpty()) {
+            op = false;
+            expiration.setError("Campo obligatorio");
+        }
+        return op;
+    }
+
+     private boolean validateCvv(String cvvC){
+        boolean op = true;
+        if(cvvC.isEmpty() || cvvC.length() < 3 ) {
+            op = false;
+            cvv.setError("Debe contener 3 digitos");
+        }
+        return op;
+    }
+
+
 
 }

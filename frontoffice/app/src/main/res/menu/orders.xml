@@ -51,7 +51,13 @@
         app:showAsAction="ifRoom"
         android:visible="false"/>
     <item
-        android:id="@+id/action_favorite_save"
+        android:id="@+id/action_favorite_accept_cc"
+        android:icon="@drawable/ic_done_all_creme_24dp"
+        android:title="Enviar"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+    <item
+        android:id="@+id/action_favorite_save_cc"
         android:icon="@drawable/ic_save_creme_24dp"
         android:title="Guardar"
         app:showAsAction="ifRoom"
