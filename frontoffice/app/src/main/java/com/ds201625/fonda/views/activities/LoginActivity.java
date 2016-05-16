@@ -261,7 +261,7 @@ public class LoginActivity extends BaseActivity {
 
         CommensalService commensalServ = FondaServiceFactory.getInstance().getCommensalService();
 
-        Commensal commensal = commensalServ.RegisterCommensal(email,password);
+        Commensal commensal = commensalServ.RegisterCommensal(email,password,getApplicationContext());
 
         if (commensal != null) {
             AlertDialog dialog = buildSingleDialog("Registro de Cuenta",
