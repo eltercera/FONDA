@@ -54,16 +54,9 @@ Agregar Categoria
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table id="CategoriaRest" class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th class="no-sort">Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <!---Acciones de Categoria--->
-                                        <asp:Literal ID="CategoryT" runat="server"></asp:Literal> 
-                                    </table>       
+                                        <asp:HiddenField ID="CategoryModifyId" runat="server" Value="" />
+
+                                        <asp:Table ID="CategoryRest" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                                 </div>
                             </div>
                         </div>
@@ -121,13 +114,29 @@ Agregar Categoria
                                  </div>
                             </div>
                          <div class="modal-footer">
-                            <asp:Button id="ButtonAgregar" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAgregar_Click"/>
+                            <asp:Button id="ButtonAgregar" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAgregar_Click" OnClientClick="cambiarValor"/>
                             <asp:Button id="ButtonCancelarA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+
+                             <asp:LinkButton ID="elegido" OnClick="LinkButton_Click" runat="server" >Aqui va</asp:LinkButton>
                         </div>
                      </div>
                 </div>
     </div>
+    <script type="text/javascript">
 
+        $(document).ready(function () {
+    $('.table > tbody > tr > td:nth-child(2) > a')
+    .click(function () {
+                var padreId = $(this).parent().parent().attr("data-id");
+                document.getElementById("<%=CategoryModifyId.ClientID%>").value = padreId;
+                var prueba = document.getElementById("<%=CategoryModifyId.ClientID%>").value;
+        alert(padreId);
+                    document.getElementById("<%=elegido.ClientID%>").click();
+            });
+        });
+
+
+    </script>
 
     </asp:Content>
 
