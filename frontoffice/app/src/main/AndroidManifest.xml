@@ -72,6 +72,18 @@
         <activity
             android:name=".views.activities.RegistrarTdcActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.activities.ReserveNewActivity"
+            android:label="Nueva Reservación"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.activities.MenuActivity"
+            android:label="Menu"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.activities.CancelReserveActivity"
+            android:label="Reservación"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--
          ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
