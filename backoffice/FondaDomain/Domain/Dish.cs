@@ -29,7 +29,7 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private SimpleStatus _status;
 
-
+       
         /// <summary>
         /// Sugerencia del dia
         /// </summary>
@@ -52,6 +52,7 @@ namespace com.ds201625.fonda.Domain
             set { _description = value; }
         }
 
+       
         /// <summary>
         /// Obtiene o asigna el costo
         /// </summary>

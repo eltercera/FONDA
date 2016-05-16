@@ -53,7 +53,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return new HibernateMenuCategoryDAO();
         }
-
+			
         public IRoleDAO GetRoleDAO()
         {
             return new HibernateRoleDAO();
@@ -69,12 +69,62 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 			return new HibernateTokenDAO ();
 		}
 
+        public IInvoiceDao GetInvoiceDAO()
+        {
+            return new HibernateInvoiceDAO();
+        }
+
+        public ICreditCardPaymentDAO GetCreditCardPaymentDAO()
+        {
+            return new HibernateCreditCardPaymentDAO();
+        }
+
+        public ICashPaymentDAO GetCashPaymentDAO()
+        {
+            return new HibernateCashPaymentDAO();
+        }
+
+        public ICoordinateDAO GetCoordinateDAO()
+        {
+            return new HibernateCoordinateDAO();
+        }
+
+        public ICurrencyDAO GetCurrencyDAO()
+        {
+            return new HibernateCurrencyDAO();
+        }
+
+        public IDayDAO GetDayDAO()
+        {
+            return new HibernateDayDAO();
+        }
+
+        public IRestaurantCategoryDAO GetRestaurantCategoryDAO()
+        {
+            return new HibernateRestaurantCategoryDAO();
+        }
+
+        public IRestaurantDAO GetRestaurantDAO()
+        {
+            return new HibernateRestaurantDAO();
+        }
+
+        public IScheduleDAO GetScheduleDAO()
+        {
+            return new HibernateScheduleDAO();
+        }
+
+        public ITableDAO GetTableDAO()
+        {
+            return new HibernateTableDAO();
+        }
+
+
 		public ActiveSimpleStatus GetActiveSimpleStatus()
 		{
 			IActiveSimpleStatusDAO s = new HibernateActiveSimpleStatus ();
 			return s.getActiveSimpleStatus ();
 		}
-
 
     }
 }

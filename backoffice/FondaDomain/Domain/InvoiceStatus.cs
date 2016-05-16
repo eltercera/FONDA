@@ -13,7 +13,7 @@ namespace com.ds201625.fonda.Domain
         /// Cambio el estado de una entidad
         /// </summary>
         /// <returns> retorna el estado de la entidad</returns>
-        public InvoiceStatus Change()
+        public virtual InvoiceStatus Change()
         {
             if (Equals(GeneratedInvoiceStatus.Instance))
                 return CanceledInvoiceStatus.Instance;

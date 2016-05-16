@@ -31,7 +31,7 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 			)
 				return false;
 
-			if (headres.Authorization.Scheme != "Basic")
+			if (headres.Authorization.Scheme != GeneralRes.BasicAuthSheme )
 				return false;
 
 			// Obtencion de los datos en xxxxxxx:xxxxxx
@@ -52,7 +52,7 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 
 			// Agregacion en el header el id del usuario
 			// para el uso interno de las acciones
-			context.Request.Headers.Add ("id", ""+commID);
+            context.Request.Headers.Add(GeneralRes.CommensalIDHeader, "" + commID);
 
 			return true;
 		}

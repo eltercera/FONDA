@@ -8,7 +8,6 @@ namespace DataAccess
 {
 
     [TestFixture]
-
     public class BODishTest
     {
         private FactoryDAO _facDAO;

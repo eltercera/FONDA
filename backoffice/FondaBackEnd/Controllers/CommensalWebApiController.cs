@@ -17,6 +17,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		[Route("commensal")]
 		public IHttpActionResult PostCommensal(Commensal commensal)
 		{
+
 			if (commensal == null | commensal.Id != 0)
 				throw new HttpResponseException (HttpStatusCode.BadRequest);
 
