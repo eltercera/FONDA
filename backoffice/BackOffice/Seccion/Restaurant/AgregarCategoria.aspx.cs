@@ -119,16 +119,14 @@ namespace BackOffice.Seccion.Restaurant
 
         protected void ButtonAgregar_Click(object sender, EventArgs e)
         {
-
-
-            //AlertSuccess_AgregarCategoria.Visible = true;
-            //FactoryDAO factoryDAO = FactoryDAO.Intance;
-            //IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            //RestaurantCategory _restcat = new RestaurantCategory();
-            //String nombreA = NombreCatA.Text;
-            //_restcat.Name = nombreA;
-            //_restcatDAO.Save(_restcat);
-            //LoadTable();
+            AlertSuccess_AgregarCategoria.Visible = true;
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
+            RestaurantCategory _restcat = new RestaurantCategory();
+            String nombreA = NombreCatA.Text;
+            _restcat.Name = nombreA;
+            _restcatDAO.Save(_restcat);
+            LoadTable();
         }
 
         protected void ButtonModificar_Click(object sender, EventArgs e)
@@ -154,33 +152,21 @@ namespace BackOffice.Seccion.Restaurant
             LoadTable();
         }
 
-        protected void Modify_Click(object sender, EventArgs e)
-        {
-            
-        }
 
-        protected void LinkButton_Click(object sender, EventArgs e)
-        {
-            string valor = CategoryModifyId.Value;
-            int idDeLaCategoria = int.Parse(valor);
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            RestaurantCategory listRest = _restcatDAO.FindById(idDeLaCategoria);
-            NombreCatM.Text = "";
-            NombreCatM.Text = listRest.Name;
-
-        }
-
-
+        /// <summary>
+        /// Recibe el Id de la fila y obtiene un objeto de tipo categoria
+        /// </summary>
+        /// <param name="Id">Id de la categoria a mostrar</param>
+        /// <returns>Informacion de objeto categoria</returns>
         [WebMethod]
         public static RestaurantCategory GetData(string Id)
         {
-            int idDeLaCategoria = int.Parse(Id);
+            int categoryId = int.Parse(Id);
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            RestaurantCategory listRest = _restcatDAO.FindById(idDeLaCategoria);
+            RestaurantCategory restCategory = _restcatDAO.FindById(categoryId);
 
-            return listRest;
+            return restCategory;
         }
         
 

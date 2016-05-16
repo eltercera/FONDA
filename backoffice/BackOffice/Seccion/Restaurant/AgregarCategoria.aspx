@@ -118,8 +118,6 @@ Agregar Categoria
                          <div class="modal-footer">
                             <asp:Button id="ButtonAgregar" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAgregar_Click" OnClientClick="cambiarValor"/>
                             <asp:Button id="ButtonCancelarA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
-
-                             <asp:LinkButton ID="elegido" OnClick="LinkButton_Click" runat="server" >Aqui va</asp:LinkButton>
                         </div>
                      </div>
                 </div>
@@ -139,7 +137,7 @@ Agregar Categoria
                                     e.preventDefault();
                                     var prueba = document.getElementById("<%=CategoryModifyId.ClientID%>").value;
                                     var params = "{'Id':'" + prueba + "'}";
-                            alert(prueba);
+
                                     $.ajax({
                                     type: "POST",
                                     url: "AgregarCategoria.aspx/GetData",
@@ -147,7 +145,10 @@ Agregar Categoria
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
                                     success: function (response) {
-                                          alert("Vengo del servidor y mi id es"+ response);
+                                        var local = response;
+                                        document.getElementById("<%=NombreCatM.ClientID%>").value = local.d.Name;
+
+                                        
 
                                     },
                                     failure: function (response) {
