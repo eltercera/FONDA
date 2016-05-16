@@ -93,16 +93,19 @@ public class HistoryVisitFragment extends BaseFragment {
         listRestaurant.add(restaurant3);
         listRestaurant.add(restaurant4);
         listRestaurant.add(restaurant5);
+
+    /*    int idPerson = 1;
         HistoryVisitsRestaurantService ps = FondaServiceFactory.getInstance().getHistoryVisitsService();
         p=ps.getHistoryVisits();
-        ArrayList<Invoice> listaa = new ArrayList<>();
+        for (int i = 0; i< p.size(); i ++){
+            System.out.println("mamalooo  "+p.get(i).getTax());
+            String newstring = new SimpleDateFormat("yyyy-MM-dd").format(p.get(i).getDate());
+            System.out.println("mamalooo1  "+newstring);
+        }*/
 
-        Iterator iterator = p.listIterator();
-        while (iterator.hasNext()) {
-            Invoice invoice = (Invoice) iterator.next();
-            float algo= invoice.getTotal();
-            System.out.println("holahola"+algo);
-        }
+
+
+
         //lista factura prueba
         listInvoice.add(invoice1);
         listInvoice.add(invoice2);
@@ -114,12 +117,7 @@ public class HistoryVisitFragment extends BaseFragment {
         //listInvoice.add(invoice8);
         //listInvoice.add(invoice9);
         //listInvoice.add(invoice10);
-       SimpleDateFormat formato = new SimpleDateFormat("yyyyMMdd");
-       try {
-        datepayment = formato.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Nullable
@@ -201,7 +199,9 @@ public class HistoryVisitFragment extends BaseFragment {
     private void createCollection() {
         // preparing detailRestaurant for collection(child)
         collectionVisits = new LinkedHashMap<String, List<String>>();
-        Iterator iterator = pruebaMetodo(1).listIterator();
+        HistoryVisitsRestaurantService ps = FondaServiceFactory.getInstance().getHistoryVisitsService();
+        p=ps.getHistoryVisits();
+        Iterator iterator = p.listIterator();
         while (iterator.hasNext()) {
             Invoice invoice = (Invoice) iterator.next();
             String nameRestaurant = invoice.getRestaurant().getName();
@@ -210,7 +210,7 @@ public class HistoryVisitFragment extends BaseFragment {
             float tax = invoice.getTax();
             float tip= invoice.getTip();
             float totalPayment = invoice.getTotal();
-            Date  datePayment = invoice.getDate();
+            String datePayment = new SimpleDateFormat("yyyy-MM-dd").format(invoice.getDate());
             String name= invoice.getProfile().getProfileName();
             String[] data1 = {"Nombre: "+name, "Restaurant :"+nameRestaurant,"Direccion: "
                     +addresRestaurant,"Categoria: "+categoryRestaurant,"Fecha: "+datePayment,"Propina: "

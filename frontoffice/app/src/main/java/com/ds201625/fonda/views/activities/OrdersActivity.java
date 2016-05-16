@@ -22,13 +22,14 @@ import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.CloseAccountFragment;
 import com.ds201625.fonda.views.fragments.CreditCardFragment;
 import com.ds201625.fonda.views.fragments.CurrentOrderFragment;
-import com.ds201625.fonda.views.fragments.FacturaFragment;
+import com.ds201625.fonda.views.fragments.InvoiceFragment;
 import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
 import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
 import com.ds201625.fonda.views.fragments.ProfileListFragment;
 import java.util.ArrayList;
 
 public class OrdersActivity extends BaseNavigationActivity implements ProfileListFragment.profileListFragmentListener {
+
 
     /**
      * Iten del Menu
@@ -77,7 +78,7 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
     private static OrderPaymentFragment ordPay;
 
-    private static FacturaFragment factFrag;
+    private static InvoiceFragment factFrag;
 
     private static CreditCardFragment ccFrag;
 
@@ -334,7 +335,7 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
     public void cambiarFac() {
         if (factFrag == null)
-            factFrag = new FacturaFragment();
+            factFrag = new InvoiceFragment();
         showFragment(factFrag);
     }
 
