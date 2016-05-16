@@ -20,15 +20,16 @@ namespace BackOffice.Seccion.Restaurant
         {
             AlertSuccess_AgregarCategoria.Visible = false;
             AlertSuccess_ModificarCategoria.Visible = false;
-            CargarTabla();
+            LoadTable();
         }
 
         /// <summary>
         /// Construye una tabla de categorias
         /// Utilizando el control de asp: Table
         /// </summary>
-        protected void CargarTabla() {
+        protected void LoadTable() {
 
+            CleanTable();
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
             FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -76,6 +77,7 @@ namespace BackOffice.Seccion.Restaurant
             CategoriaRest.Rows.AddAt(0, header);
         }
 
+
         /// <summary>
         /// Genera el encabezado de la tabla Categoria
         /// </summary>
@@ -102,7 +104,15 @@ namespace BackOffice.Seccion.Restaurant
 
             return header;
         }
-     
+
+        public void CleanTable()
+        {
+            CategoriaRest.Rows.Clear();
+
+        }
+
+
+
 
         protected void ButtonAgregar_Click(object sender, EventArgs e)
         {
@@ -113,7 +123,7 @@ namespace BackOffice.Seccion.Restaurant
             String nombreA = NombreCatA.Text;
             _restcat.Name = nombreA;
             _restcatDAO.Save(_restcat);
-            CargarTabla();
+            LoadTable();
         }
 
         protected void ButtonModificar_Click(object sender, EventArgs e)
@@ -136,7 +146,7 @@ namespace BackOffice.Seccion.Restaurant
             nameM = NombreCatM.Text;
             _restaurant.Name = nameM;
             _restcatDAO.Save(_restaurant);
-            CargarTabla();
+            LoadTable();
         }
 
         protected void Modify_Click(object sender, EventArgs e)
