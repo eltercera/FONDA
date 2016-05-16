@@ -66,32 +66,34 @@ Agregar Categoria
             <!-- /.container-fluid -->
 
      <!-- Modal modificar categoria-->
-     <div class="modal fade" id="modificar" role="dialog">
-                <div class="modal-dialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Modificar Categoria</h4>
-                        </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="form-group">
-                                            <label class="control-label">Nombre</label>
-                                            <asp:TextBox ID="NombreCatM" CssClass="form-control" placeholder="ej. China" runat="server" />
+             <div class="modal fade" id="modificar" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Modificar Categoria</h4>
+                                </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                                <div class="form-group">
+                                                    <label class="control-label">Nombre</label>
+                                                    <asp:TextBox ID="NombreCatM" CssClass="form-control" placeholder="ej. China" runat="server" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="modal-footer">
+                                        <asp:Button id="ButtonModificar" Text="Modificar" CssClass="btn btn-success" runat="server" OnClick="ButtonModificar_Click"/>
+                                        <asp:Button id="ButtonCancelarM" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <asp:Button id="ButtonModificar" Text="Modificar" CssClass="btn btn-success" runat="server" OnClick="ButtonModificar_Click"/>
-                                <asp:Button id="ButtonCancelarM" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
-                            </div>
-                        </div>
-                    </div>          
-    </div>
+                            </div>          
+            </div>
+
     
          <!-- Modal agregar categoria-->
      <div class="modal fade" id="agregar" role="dialog">
@@ -116,24 +118,55 @@ Agregar Categoria
                          <div class="modal-footer">
                             <asp:Button id="ButtonAgregar" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAgregar_Click" OnClientClick="cambiarValor"/>
                             <asp:Button id="ButtonCancelarA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
-
-                             <asp:LinkButton ID="elegido" OnClick="LinkButton_Click" runat="server" >Aqui va</asp:LinkButton>
                         </div>
                      </div>
                 </div>
     </div>
     <script type="text/javascript">
 
+
+
         $(document).ready(function () {
-    $('.table > tbody > tr > td:nth-child(2) > a')
-    .click(function () {
-                var padreId = $(this).parent().parent().attr("data-id");
-                document.getElementById("<%=CategoryModifyId.ClientID%>").value = padreId;
-                var prueba = document.getElementById("<%=CategoryModifyId.ClientID%>").value;
-        alert(padreId);
-                    document.getElementById("<%=elegido.ClientID%>").click();
-            });
-        });
+            setValue();
+            ajaxRes();
+                });
+
+                    function ajaxRes(){
+                    $('.table > tbody > tr > td:nth-child(2) > a')
+                        .click(function (e) {
+                                    e.preventDefault();
+                                    var prueba = document.getElementById("<%=CategoryModifyId.ClientID%>").value;
+                                    var params = "{'Id':'" + prueba + "'}";
+
+                                    $.ajax({
+                                    type: "POST",
+                                    url: "AgregarCategoria.aspx/GetData",
+                                    data: params,
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (response) {
+                                        var local = response;
+                                        document.getElementById("<%=NombreCatM.ClientID%>").value = local.d.Name;
+
+                                        
+
+                                    },
+                                    failure: function (response) {
+                                          alert("_");
+                                    }
+                                    });
+                        });
+                    }
+                    function setValue() {
+                        $('.table > tbody > tr > td:nth-child(2) > a')
+                        .click(function () {
+                            var padreId = $(this).parent().parent().attr("data-id");
+                            document.getElementById("<%=CategoryModifyId.ClientID%>").value = padreId;
+
+                        });
+                    }
+        
+
 
 
     </script>
