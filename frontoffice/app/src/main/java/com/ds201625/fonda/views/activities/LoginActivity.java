@@ -20,6 +20,9 @@ import android.widget.TextView;
 
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.services.CommensalService;
+import com.ds201625.fonda.domains.Commensal;
 
 
 /**
@@ -209,7 +212,7 @@ public class LoginActivity extends BaseActivity {
                     seguir();
                     break;
                 case ON_REGISTER:
-                    regiter();
+                    regiter(mEmailView.getText().toString(),mPasswordView.getText().toString());
                     break;
                 case ON_PASSWORD_FORGET:
                     setOnLogin();
@@ -254,12 +257,22 @@ public class LoginActivity extends BaseActivity {
         startActivity(new Intent(this,FavoritesActivity.class));
     }
 
-    private void regiter() {
+    private void regiter(String email, String password) {
 
-        AlertDialog dialog = buildSingleDialog("Registro de Cuenta",
-                "El registro de la cuenta "+mEmailView.getText().toString()
-                +" fue satisfactorio.");
-        dialog.show();
+        CommensalService commensalServ = FondaServiceFactory.getInstance().getCommensalService();
+
+        Commensal commensal = commensalServ.RegisterCommensal(email,password);
+
+        if (commensal != null) {
+            AlertDialog dialog = buildSingleDialog("Registro de Cuenta",
+                    "El registro de la cuenta " + mEmailView.getText().toString()
+                            + " fue satisfactorio." + commensal.getId());
+            dialog.show();
+        } else {
+            AlertDialog dialog = buildSingleDialog("Registro de Cuenta",
+                    "Se produjo un error al registrar la cuenta.");
+            dialog.show();
+        }
     }
 }
 

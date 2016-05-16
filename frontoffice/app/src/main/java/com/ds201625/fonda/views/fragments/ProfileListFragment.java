@@ -19,6 +19,7 @@ import com.ds201625.fonda.views.adapters.ProfileViewItemList;
 import com.ds201625.fonda.domains.Profile;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Fragment que contiene la lista de Perfiles.
@@ -44,7 +45,9 @@ public class ProfileListFragment extends BaseFragment {
     }
 
     //Pruebas
-    public void seProfiles(ArrayList<Profile> p){
+    public void seProfiles(List<Profile> p){
+        if (p == null)
+            return;
         profileList.addAll(p);
     }
 

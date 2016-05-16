@@ -55,10 +55,9 @@ public class ProfileFormFragment extends BaseFragment {
      */
     public void setProfile(Profile profile) {
         tvProfileName.setText(profile.getProfileName());
-        tvNames.setText(profile.getNames());
-        tvSsn.setText(profile.getSsn());
-        tvPhone.setText(profile.getPhone());
-        tvCellPhone.setText(profile.getCellPhone());
+        tvNames.setText(profile.getPerson().getName());
+        tvSsn.setText(profile.getPerson().getSsn());
+        tvPhone.setText(profile.getPerson().getPhoneNumber());
         this.profile = profile;
     }
 
@@ -68,10 +67,10 @@ public class ProfileFormFragment extends BaseFragment {
      */
     public void changeProfile() {
         profile.setProfileName(tvProfileName.getText().toString());
-        profile.setNames(tvNames.getText().toString());
+        /*profile.setNames(tvNames.getText().toString());
         profile.setSsn(tvSsn.getText().toString());
         profile.setPhone(tvPhone.getText().toString());
-        profile.setCellPhone(tvCellPhone.getText().toString());
+        profile.setCellPhone(tvCellPhone.getText().toString());*/
     }
 
     @Override
