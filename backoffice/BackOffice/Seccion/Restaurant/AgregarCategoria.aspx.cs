@@ -8,7 +8,8 @@ using System.Web.UI.WebControls;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
-
+using System.Web.Services;
+using System.Web.Script.Serialization;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -45,8 +46,10 @@ namespace BackOffice.Seccion.Restaurant
             {
                 //Crea una nueva fila de la tabla
                 TableRow tRow = new TableRow();
+                //Le asigna el Id a cada fila de la tabla
+                tRow.Attributes["data-id"] = listRest[i].Id.ToString();
                 //Agrega la fila a la tabla existente
-                CategoriaRest.Rows.Add(tRow);
+                CategoryRest.Rows.Add(tRow);
                 for (int j = 0; j <= totalColumns; j++)
                 {
                     //Crea una nueva celda de la tabla
@@ -59,7 +62,7 @@ namespace BackOffice.Seccion.Restaurant
                     {
                         tCell.CssClass = "text-center";
                         //Crea hipervinculo para las acciones
-                        HyperLink action = new HyperLink();
+                        LinkButton action = new LinkButton();
                         action.Attributes["data-toggle"] = "modal";
                         action.Attributes["data-target"] = "#modificar";
                         action.Text = ResourceRestaurant.ActionCategory;
@@ -74,7 +77,7 @@ namespace BackOffice.Seccion.Restaurant
 
             //Agrega el encabezado a la Tabla
             TableHeaderRow header = GenerateTableHeader();
-            CategoriaRest.Rows.AddAt(0, header);
+            CategoryRest.Rows.AddAt(0, header);
         }
 
 
@@ -107,7 +110,7 @@ namespace BackOffice.Seccion.Restaurant
 
         public void CleanTable()
         {
-            CategoriaRest.Rows.Clear();
+            CategoryRest.Rows.Clear();
 
         }
 
@@ -116,14 +119,16 @@ namespace BackOffice.Seccion.Restaurant
 
         protected void ButtonAgregar_Click(object sender, EventArgs e)
         {
-            AlertSuccess_AgregarCategoria.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            RestaurantCategory _restcat = new RestaurantCategory();
-            String nombreA = NombreCatA.Text;
-            _restcat.Name = nombreA;
-            _restcatDAO.Save(_restcat);
-            LoadTable();
+
+
+            //AlertSuccess_AgregarCategoria.Visible = true;
+            //FactoryDAO factoryDAO = FactoryDAO.Intance;
+            //IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
+            //RestaurantCategory _restcat = new RestaurantCategory();
+            //String nombreA = NombreCatA.Text;
+            //_restcat.Name = nombreA;
+            //_restcatDAO.Save(_restcat);
+            //LoadTable();
         }
 
         protected void ButtonModificar_Click(object sender, EventArgs e)
@@ -153,5 +158,21 @@ namespace BackOffice.Seccion.Restaurant
         {
             
         }
+
+        protected void LinkButton_Click(object sender, EventArgs e)
+        {
+            string valor = CategoryModifyId.Value;
+            int idDeLaCategoria = int.Parse(valor);
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
+            RestaurantCategory listRest = _restcatDAO.FindById(idDeLaCategoria);
+            NombreCatM.Text = "";
+            NombreCatM.Text = listRest.Name;
+
+        }
+
+        
+
+
     }
 }

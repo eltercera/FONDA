@@ -142,7 +142,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#contenido_CategoriaRest').DataTable({
+    $('#contenido_CategoryRest').DataTable({
         "language": spanish,
         "aoColumns": [
             null,

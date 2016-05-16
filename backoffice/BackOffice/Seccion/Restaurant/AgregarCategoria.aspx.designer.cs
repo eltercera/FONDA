@@ -31,13 +31,22 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ModificarCategoria;
         
         /// <summary>
-        /// CategoriaRest control.
+        /// CategoryModifyId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table CategoriaRest;
+        protected global::System.Web.UI.WebControls.HiddenField CategoryModifyId;
+        
+        /// <summary>
+        /// CategoryRest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table CategoryRest;
         
         /// <summary>
         /// NombreCatM control.
@@ -92,5 +101,14 @@ namespace BackOffice.Seccion.Restaurant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonCancelarA;
+        
+        /// <summary>
+        /// elegido control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton elegido;
     }
 }
