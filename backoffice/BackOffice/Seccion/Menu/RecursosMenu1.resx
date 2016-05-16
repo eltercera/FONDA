@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accion1" xml:space="preserve">
+    <value>&lt;td class="text-center"&gt;&lt;a runat="server" href="/Seccion/Menu/ModificarCategoria.aspx?id=</value>
+  </data>
+  <data name="Accion2" xml:space="preserve">
+    <value>"&gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;</value>
+  </data>
   <data name="Acciones" xml:space="preserve">
     <value>&lt;td class="text-center"&gt;&lt;a data-toggle="modal" data-target="#modificar"&gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;</value>
   </data>

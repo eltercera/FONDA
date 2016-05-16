@@ -86,13 +86,14 @@ namespace BackOffice.Seccion.Menu
                     mencat += RecursosMenu1.Inactivo;
                 }
 
-                mencat += RecursosMenu1.Acciones;
+                mencat += RecursosMenu1.Accion1;
+                mencat += obj[i].Id;
+                mencat += RecursosMenu1.Accion2;
                 mencat += RecursosMenu1.CerrarTR;
 
-
             }
-       
-     }
+
+        }
 
     //Genera una lista de tipo Menu Categoria
      public IList<MenuCategory> Generar_Lista()

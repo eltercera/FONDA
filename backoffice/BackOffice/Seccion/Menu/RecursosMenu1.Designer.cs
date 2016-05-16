@@ -61,6 +61,24 @@ namespace BackOffice.Seccion.Menu {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a runat=&quot;server&quot; href=&quot;/Seccion/Menu/ModificarCategoria.aspx?id=.
+        /// </summary>
+        internal static string Accion1 {
+            get {
+                return ResourceManager.GetString("Accion1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;.
+        /// </summary>
+        internal static string Accion2 {
+            get {
+                return ResourceManager.GetString("Accion2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#modificar&quot;&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;.
         /// </summary>
         internal static string Acciones {
