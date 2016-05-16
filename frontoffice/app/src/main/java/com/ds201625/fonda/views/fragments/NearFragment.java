@@ -45,7 +45,7 @@ public class NearFragment extends BaseFragment {
                 false);
 
 
-        mMapView = (MapView) v.findViewById(R.id.mapView);
+       /* mMapView = (MapView) v.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
 
         mMapView.onResume();// needed to get the map to display immediately
@@ -77,13 +77,13 @@ public class NearFragment extends BaseFragment {
                 .newCameraPosition(cameraPosition));
 
 
-        // Perform any camera updates here
+        // Perform any camera updates here*/
 
         return v;
     }
 
-    @Override
-    public void onResume() {
+    /*@Override*/
+   /* public void onResume() {
         super.onResume();
         mMapView.onResume();
     }
@@ -104,7 +104,7 @@ public class NearFragment extends BaseFragment {
     public void onLowMemory() {
         super.onLowMemory();
         mMapView.onLowMemory();
-    }
+    }*/
 
 
 

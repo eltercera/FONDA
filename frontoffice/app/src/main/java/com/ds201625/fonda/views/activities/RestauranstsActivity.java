@@ -3,12 +3,20 @@ package com.ds201625.fonda.views.activities;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.*;
 
 public class RestauranstsActivity extends  BaseNavigationActivity {
+
+    //Variables Declaration
+    private MenuItem setAsFavorite;
+    private Toolbar tb;
 
     String[] location = {
             "La castellana",
@@ -57,5 +65,21 @@ public class RestauranstsActivity extends  BaseNavigationActivity {
 
     }
 
+    /**
+     * Sobre escritura para la iniciacion del menu en el toolbars
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.search, menu);
+
+        setAsFavorite = menu.findItem(R.id.action_favorite_save);
+        tb = (Toolbar)findViewById(R.id.toolbar);
+        tb.setVisibility(View.VISIBLE);
+
+        return true;
+    }
 
 }
