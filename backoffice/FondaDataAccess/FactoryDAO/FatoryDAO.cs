@@ -139,7 +139,12 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 		{
 			return _factory.GetActiveSimpleStatus ();
 		}
-	}
+
+        public DisableSimpleStatus GetDisableSimpleStatus()
+        {
+            return _factory.GetDisableSimpleStatus();
+        }
+    }
 }
 
 

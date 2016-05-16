@@ -19,6 +19,7 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 		IEmployeeDAO GetEmployeeDAO();
 		ITokenDAO GetTokenDAO ();
 		ActiveSimpleStatus GetActiveSimpleStatus();
+        DisableSimpleStatus GetDisableSimpleStatus();
 		IInvoiceDao GetInvoiceDAO();
 		ICreditCardPaymentDAO GetCreditCardPaymentDAO();
 		ICashPaymentDAO GetCashPaymentDAO();

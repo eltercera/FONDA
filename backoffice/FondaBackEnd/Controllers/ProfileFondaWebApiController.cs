@@ -78,6 +78,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 return BadRequest();
 
             Profile oldProfile = GetProfileDao().FindById(id);
+            if (!commensal.Profiles.Contains(oldProfile))
+                return BadRequest();
+
             oldProfile.ProfileName = profile.ProfileName;
             oldProfile.Person.Name = profile.Person.Name;
             oldProfile.Person.LastName = profile.Person.LastName;
@@ -95,6 +98,37 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             }
 
             return Created("", oldProfile);
+        }
+
+        [Route("profile/{id}")]
+        [HttpDelete]
+        [FondaAuthToken]
+        public IHttpActionResult deleteProfile(int id)
+        {
+            Commensal commensal = GetCommensal(Request.Headers);
+            if (commensal == null)
+                return BadRequest();
+
+            ICommensalDAO commensalDAO = FactoryDAO.GetCommensalDAO();
+
+            Profile profile = GetProfileDao().FindById(id);
+            if (!commensal.Profiles.Contains(profile))
+                return BadRequest();
+
+            commensal.Profiles.Remove(profile);
+            profile.Status = FactoryDAO.GetDisableSimpleStatus();
+
+            try
+            {
+                commensalDAO.Save(commensal);
+            }
+            catch (SaveEntityFondaDAOException e)
+            {
+                Console.WriteLine(e.ToString());
+                return InternalServerError(e);
+            }
+
+            return Ok();
         }
 
         private IProfileDAO GetProfileDao()
