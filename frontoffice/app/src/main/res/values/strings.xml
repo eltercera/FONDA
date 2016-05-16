@@ -101,4 +101,5 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="nav_close_account">Cerrar</string>
     <string name="title_fragment_close">Cerrar Cuenta</string>
+    <string name="cliente">Cliente:</string>
 </resources>
