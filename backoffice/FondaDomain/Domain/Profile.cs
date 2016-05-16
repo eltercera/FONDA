@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
@@ -14,6 +15,8 @@ namespace com.ds201625.fonda.Domain
 		private Person _person;
 
 		private SimpleStatus _status;
+
+        private IList<Invoice> _invoicesList;
 
 		/// <summary>
 		/// Constructor
@@ -51,6 +54,15 @@ namespace com.ds201625.fonda.Domain
 			get { return _status; }
 			set { _status = value; }
 		}
+
+        /// <summary>
+        /// Obtiene o asigna la lista de facturas de una cuenta
+        /// </summary>
+        public virtual IList<Invoice> Invoices
+        {
+            get { return _invoicesList; }
+            set { _invoicesList = value; }
+        }
 	}
 }
 

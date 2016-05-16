@@ -23,16 +23,27 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Commensal commensal = GetCommensal(Request.Headers);
             if (commensal == null)
                 return BadRequest();
+            Profile profile = GetProfile(commensal);
             IList<Invoice> invoiceList = GetInvoiceList(commensal);
             if (invoiceList == null)
                 return BadRequest();
             return Ok(invoiceList);
         }
 
+        private Profile(Commensal commensal)
+        {
+
+        }
+
         private IList<Invoice> GetInvoiceList(Commensal commensal)
         {
             IInvoiceDao invoice = GetInvoiceDao();
-            return null;
+            return invoice.findAllInvoice(commensal);
+        }
+
+        private IProfileDAO GetProfileDAO()
+        {
+            return FactoryDAO.GetProfileDAO();
         }
 
         private IInvoiceDao GetInvoiceDao()

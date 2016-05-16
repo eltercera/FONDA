@@ -6,5 +6,6 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 {
     public interface IInvoiceDao : IBaseEntityDAO <Invoice>
     {
+        IList<Invoice> findAllInvoice(Profile profile);
     }
 }

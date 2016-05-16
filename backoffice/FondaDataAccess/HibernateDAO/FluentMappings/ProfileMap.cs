@@ -31,6 +31,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 				.Not.Nullable ()
 				.Cascade.Persist();
 
+            HasMany(x => x.Invoices)
+                .KeyColumn("fk_profile_id")
+                .ExtraLazyLoad()
+                .Not.KeyNullable();
+
 		}
 	}
 }
