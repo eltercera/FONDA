@@ -12,9 +12,7 @@ import com.ds201625.fonda.domains.DishOrder;
 
 import java.util.ArrayList;
 
-/**
- * Created by jesus on 13/04/16.
- */
+
 
 public class InvoiceViewItemList extends BaseArrayAdapter<DishOrder> {
 

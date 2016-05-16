@@ -129,7 +129,8 @@
         android:hint="Propina"
         android:layout_toRightOf="@+id/spinner"
         android:layout_below="@+id/lVOrden"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:longClickable="false" />
 
     <Spinner
         android:layout_width="wrap_content"

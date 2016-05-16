@@ -20,7 +20,6 @@ import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.RestaurantCategory;
 import com.ds201625.fonda.domains.Table;
-import com.ds201625.fonda.views.adapters.CloseViewItemList;
 import com.ds201625.fonda.views.adapters.InvoiceViewItemList;
 import java.util.List;
 import java.text.SimpleDateFormat;
@@ -28,12 +27,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * Clase de Prueba para mostar el uso de Fragments
  */
-public class FacturaFragment extends BaseFragment {
+public class InvoiceFragment extends BaseFragment {
 
     private ListView lv1;
 
@@ -107,21 +105,22 @@ public class FacturaFragment extends BaseFragment {
                 profile,currency,payment,account);
 
 
-        TextView txtName = (TextView) layout.findViewById(R.id.tVTitulo);
+        TextView txtName = (TextView) layout.findViewById(R.id.tvTitulo);
+        TextView txtDir = (TextView) layout.findViewById(R.id.tvDireccion);
         TextView txtNum = (TextView) layout.findViewById(R.id.tvNumInvoice);
         TextView txtDate = (TextView) layout.findViewById(R.id.tvDate);
 
         TextView txtCiRif = (TextView) layout.findViewById(R.id.tvCIRIF);
         TextView txtClient = (TextView) layout.findViewById(R.id.tvCliente);
 
-        TextView txtMontoSub = (TextView) layout.findViewById(R.id.tVSubTotalValor);
-        TextView txtMonSub = (TextView) layout.findViewById(R.id.tVSubMoneda);
+        TextView txtMontoSub = (TextView) layout.findViewById(R.id.tvSubTotalValor);
+        TextView txtMonSub = (TextView) layout.findViewById(R.id.tvSubMoneda);
 
         TextView txtMontoIva = (TextView) layout.findViewById(R.id.tVIVAValor);
-        TextView txtMonIva = (TextView) layout.findViewById(R.id.tVIVAMoneda);
+        TextView txtMonIva = (TextView) layout.findViewById(R.id.tvIVAMoneda);
 
         TextView txtMontoTota = (TextView) layout.findViewById(R.id.tvMontoTotal);
-        TextView txtMonTota = (TextView) layout.findViewById(R.id.tVTotalMoneda);
+        TextView txtMonTota = (TextView) layout.findViewById(R.id.tvTotalMoneda);
 
         TextView txtMontoPro = (TextView) layout.findViewById(R.id.tvMontoPropina);
         TextView txtMonPro = (TextView) layout.findViewById(R.id.tvMonedaPropina);
@@ -130,11 +129,14 @@ public class FacturaFragment extends BaseFragment {
         TextView txtPric = (TextView) layout.findViewById(R.id.txt3);
 
         txtName.setGravity(Gravity.CENTER);
+        txtDir.setGravity(Gravity.CENTER);
         txtDesc.setGravity(Gravity.CENTER);
         txtPric.setGravity(Gravity.RIGHT);
 
         //Nombre del Restaurant
         txtName.setText(restaurant.getName());
+        //Direccion del Restaurant
+        txtDir.setText(restaurant.getAddress());
         //Numero de la Factura
         //El numero de la factura deberia ser autogenerado
         txtNum.setText("001");
