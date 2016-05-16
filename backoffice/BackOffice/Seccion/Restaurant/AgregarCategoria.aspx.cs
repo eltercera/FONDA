@@ -171,6 +171,17 @@ namespace BackOffice.Seccion.Restaurant
 
         }
 
+
+        [WebMethod]
+        public static RestaurantCategory GetData(string Id)
+        {
+            int idDeLaCategoria = int.Parse(Id);
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
+            RestaurantCategory listRest = _restcatDAO.FindById(idDeLaCategoria);
+
+            return listRest;
+        }
         
 
 
