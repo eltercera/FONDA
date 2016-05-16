@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -20,7 +21,7 @@ namespace com.ds201625.fonda.Domain
         /// Constructor.
         /// </summary>
         public RestaurantCategory() : base() { }
-
+        [DataMember]
         public virtual string NameCategory
         {
             /// <summary>
