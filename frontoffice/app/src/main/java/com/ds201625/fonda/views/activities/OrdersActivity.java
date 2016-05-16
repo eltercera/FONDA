@@ -1,8 +1,6 @@
 package com.ds201625.fonda.views.activities;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
@@ -17,21 +15,20 @@ import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
+import com.ds201625.fonda.views.fragments.CloseAccountFragment;
 import com.ds201625.fonda.views.fragments.CreditCardFragment;
 import com.ds201625.fonda.views.fragments.CurrentOrderFragment;
 import com.ds201625.fonda.views.fragments.FacturaFragment;
 import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
-import com.ds201625.fonda.views.fragments.CloseAccountFragment;
 import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
-
+import com.ds201625.fonda.views.fragments.ProfileListFragment;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
-public class OrdersActivity extends BaseNavigationActivity {
+public class OrdersActivity extends BaseNavigationActivity implements ProfileListFragment.profileListFragmentListener {
 
     /**
      * Iten del Menu
@@ -181,6 +178,10 @@ public class OrdersActivity extends BaseNavigationActivity {
                 sendPayBotton.setVisible(false);
                 cancelPayBotton.setVisible(false);
             }
+            if ((acceptCCButton != null) && (saveCCButton != null)) {
+                acceptCCButton.setVisible(false);
+                saveCCButton.setVisible(false);
+            }
         } else if (fragment.equals(ordPay)) {
             if (cerrarBotton != null)
                 cerrarBotton.setVisible(false);
@@ -192,23 +193,27 @@ public class OrdersActivity extends BaseNavigationActivity {
                 sendPayBotton.setVisible(true);
                 cancelPayBotton.setVisible(true);
             }
-        } else if (fragment.equals(ccFrag)) {
-            if (cerrarBotton != null)
-                cerrarBotton.setVisible(false);
-            if ((sendBotton != null) && (cancelBotton != null)) {
-                sendBotton.setVisible(false);
-                cancelBotton.setVisible(false);
-            }
-            if ((sendPayBotton != null) && (cancelPayBotton != null)) {
-                sendPayBotton.setVisible(false);
-                cancelPayBotton.setVisible(false);
-            }
             if ((acceptCCButton != null) && (saveCCButton != null)) {
-                acceptCCButton.setVisible(true);
-                saveCCButton.setVisible(true);
+                acceptCCButton.setVisible(false);
+                saveCCButton.setVisible(false);
             }
-
-        } else if (fragment.equals(factFrag)) {
+        } else
+            if (fragment.equals(ccFrag)) {
+                if (cerrarBotton != null)
+                    cerrarBotton.setVisible(false);
+                if ((sendBotton != null) && (cancelBotton != null)) {
+                    sendBotton.setVisible(false);
+                    cancelBotton.setVisible(false);
+                }
+                if ((sendPayBotton != null) && (cancelPayBotton != null)) {
+                    sendPayBotton.setVisible(false);
+                    cancelPayBotton.setVisible(false);
+                }
+                if ((acceptCCButton != null) && (saveCCButton != null)) {
+                    acceptCCButton.setVisible(true);
+                    saveCCButton.setVisible(true);
+                }
+            }else if (fragment.equals(factFrag)) {
             if (cerrarBotton != null)
                 cerrarBotton.setVisible(false);
             if ((sendBotton != null) && (cancelBotton != null)) {
@@ -229,6 +234,8 @@ public class OrdersActivity extends BaseNavigationActivity {
             if (downloadBotton != null)
                 downloadBotton.setVisible(false);
         }
+
+
     }
 
     /**
@@ -495,5 +502,23 @@ public class OrdersActivity extends BaseNavigationActivity {
     }
 
 
+    @Override
+    public void OnProfileSelect(Profile profile) {
 
+    }
+
+    @Override
+    public void OnProfilesSelected(ArrayList<Profile> profile) {
+
+    }
+
+    @Override
+    public void OnProfileSelectionMode() {
+
+    }
+
+    @Override
+    public void OnProfileSelectionModeExit() {
+
+    }
 }

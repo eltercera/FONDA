@@ -222,21 +222,6 @@
                     android:onClick="acceptCC" />
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    style="?android:attr/buttonStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Clear"
-                    android:id="@+id/button4"
-                    android:layout_above="@+id/bSave"
-                    android:layout_centerHorizontal="true"
-                    android:onClick="eraseCC" />
-
-            </TableRow>
         </TableLayout>
     </ScrollView>
 
