@@ -31,13 +31,13 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ModificarCategoria;
         
         /// <summary>
-        /// CategoryT control.
+        /// CategoriaRest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal CategoryT;
+        protected global::System.Web.UI.WebControls.Table CategoriaRest;
         
         /// <summary>
         /// NombreCatM control.

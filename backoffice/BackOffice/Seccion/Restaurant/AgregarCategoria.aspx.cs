@@ -15,20 +15,20 @@ namespace BackOffice.Seccion.Restaurant
     public partial class AgregarCategoria : System.Web.UI.Page
     {
 
-        public string restcat {
-            get { return this.CategoryT.Text; }
-            set { this.CategoryT.Text = value; }
-        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             AlertSuccess_AgregarCategoria.Visible = false;
             AlertSuccess_ModificarCategoria.Visible = false;
             CargarTabla();
         }
-        
+
+        /// <summary>
+        /// Construye una tabla de categorias
+        /// Utilizando el control de asp: Table
+        /// </summary>
         protected void CargarTabla() {
 
-            restcat = string.Empty;
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
             FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -36,17 +36,38 @@ namespace BackOffice.Seccion.Restaurant
             IList<RestaurantCategory> listRest = _restcatDAO.GetAll();
 
 
-            int longitud = listRest.Count; //tamano de la lista 
+            int totalRows = listRest.Count; //tamano de la lista 
+            int totalColumns = 1; //numero de columnas de la tabla
 
             //Recorremos la lista
-            for (int i = 0; i <= longitud - 1; i++)
+            for (int i = 0; i <= totalRows - 1; i++)
             {
-                //Se arma la tabla HTML
-                // ResourceRestaurant llama a las acciones
-                restcat += "<tr id= " + listRest[i].Id + "><td>" + listRest[i].Name + "</td>";
+                //Crea una nueva fila de la tabla
+                TableRow tRow = new TableRow();
+                //Agrega la fila a la tabla existente
+                CategoriaRest.Rows.Add(tRow);
+                for (int j = 0; j <= totalColumns; j++)
+                {
+                    //Crea una nueva celda de la tabla
+                    TableCell tCell = new TableCell();
+                    //Agrega el nombre de la categoria
+                    if (j.Equals(0))
+                        tCell.Text = listRest[i].Name;
+                    //Agrega las acciones de la tabla
+                    else if(j.Equals(1))
+                    {
+                        tCell.CssClass = "text-center";
+                        //Crea hipervinculo para las acciones
+                        HyperLink action = new HyperLink();
+                        action.Attributes["data-toggle"] = "modal";
+                        action.Attributes["data-target"] = "#modificar";
+                        action.Text = ResourceRestaurant.ActionCategory;
+                        tCell.Controls.Add(action);
+                    }
+                    //Agrega la 
+                    tRow.Cells.Add(tCell);
 
-                restcat += ResourceRestaurant.ActionCategory;
-                restcat += ResourceRestaurant.Close;
+                }
 
             }
         }

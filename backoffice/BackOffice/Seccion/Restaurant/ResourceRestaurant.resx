@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActionCategory" xml:space="preserve">
-    <value>&lt;td class="text-center"&gt;&lt;a data-toggle="modal" data-target="#modificar" onclick="Modify_Click"&gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;</value>
+    <value>&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;</value>
     <comment>Acciones disponibles en DataTable de Categoria de Restaurant</comment>
   </data>
   <data name="ActionRestaurant" xml:space="preserve">

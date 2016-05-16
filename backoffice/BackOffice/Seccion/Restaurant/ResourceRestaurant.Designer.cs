@@ -61,7 +61,7 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#modificar&quot; onclick=&quot;Modify_Click&quot;&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;.
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;.
         /// </summary>
         internal static string ActionCategory {
             get {

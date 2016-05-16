@@ -54,16 +54,15 @@ Agregar Categoria
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table id="CategoriaRest" class="table table-bordered table-hover table-striped">
+<%--                                    <table id="CategoriaRest" class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Nombre</th>
                                                 <th class="no-sort">Acciones</th>
                                             </tr>
-                                        </thead>
+                                        </thead>--%>
                                         <!---Acciones de Categoria--->
-                                        <asp:Literal ID="CategoryT" runat="server"></asp:Literal> 
-                                    </table>       
+                                        <asp:Table ID="CategoriaRest" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                                 </div>
                             </div>
                         </div>
