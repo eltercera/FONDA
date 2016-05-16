@@ -5,6 +5,8 @@ import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.data_access.services.TokenService;
+import com.ds201625.fonda.domains.Commensal;
 
 /**
  * Created by rrodriguez on 5/7/16.
@@ -44,5 +46,9 @@ public class FondaServiceFactory {
 	
     public HistoryVisitsRestaurantService getHistoryVisitsService(){
         return serviceFactory.getHistoryVisitsService();
+    }
+
+    public TokenService getTokenService(Commensal commensal){
+        return serviceFactory.getTokenService(commensal);
     }
 }

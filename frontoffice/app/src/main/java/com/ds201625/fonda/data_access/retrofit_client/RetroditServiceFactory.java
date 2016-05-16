@@ -5,6 +5,8 @@ import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.data_access.services.TokenService;
+import com.ds201625.fonda.domains.Commensal;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -32,5 +34,10 @@ public class RetroditServiceFactory implements ServiceFactory {
 	@Override
     public HistoryVisitsRestaurantService  getHistoryVisitsService() {
         return new RetrofitHistoryVisitsService();
+    }
+
+    @Override
+    public TokenService getTokenService(Commensal commensal) {
+        return new RetrofitTokenService(commensal);
     }
 }
