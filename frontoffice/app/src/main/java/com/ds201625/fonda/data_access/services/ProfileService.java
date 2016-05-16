@@ -10,5 +10,7 @@ import java.util.List;
 public interface ProfileService {
 
     List<Profile> getProfiles();
-
+    void AddProfile(Profile profile);
+    void EditProfile(Profile profile);
+    void DeleteProfile(int id);
 }

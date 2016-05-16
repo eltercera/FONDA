@@ -36,4 +36,37 @@ public class RetrofitProfileService implements ProfileService {
 
         return a;
     }
+
+    @Override
+    public void AddProfile(Profile profile) {
+        Call<Profile> call = profileClient.postProfile(profile);
+        Profile aux = null;
+        try{
+            aux = call.execute().body();
+        } catch (IOException e) {
+            Log.v("Fonda: ", e.toString());
+        }
+    }
+
+    @Override
+    public void EditProfile(Profile profile) {
+        Call<Profile> call = profileClient.putProfile(profile,profile.getId());
+        Profile aux = null;
+        try{
+            aux = call.execute().body();
+        } catch (IOException e) {
+            Log.v("Fonda: ", e.toString());
+        }
+    }
+
+    @Override
+    public void DeleteProfile(int id) {
+        Call<String> call = profileClient.DeleteProfile(id);
+        String aux = null;
+        try{
+            aux = call.execute().body();
+        } catch (IOException e) {
+            Log.v("Fonda: ", e.toString());
+        }
+    }
 }
