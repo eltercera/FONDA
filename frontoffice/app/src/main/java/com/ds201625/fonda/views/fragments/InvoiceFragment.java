@@ -31,7 +31,7 @@ import java.util.Iterator;
 /**
  * Clase de Prueba para mostar el uso de Fragments
  */
-public class FacturaFragment extends BaseFragment {
+public class InvoiceFragment extends BaseFragment {
 
     private ListView lv1;
 

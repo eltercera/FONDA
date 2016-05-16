@@ -1,8 +1,6 @@
 package com.ds201625.fonda.views.activities;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
@@ -23,13 +21,10 @@ import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.CreditCardFragment;
 import com.ds201625.fonda.views.fragments.CurrentOrderFragment;
-import com.ds201625.fonda.views.fragments.FacturaFragment;
+import com.ds201625.fonda.views.fragments.InvoiceFragment;
 import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
 import com.ds201625.fonda.views.fragments.CloseAccountFragment;
 import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
-
-import java.util.ArrayList;
-import java.util.regex.Pattern;
 
 public class OrdersActivity extends BaseNavigationActivity {
 
@@ -80,7 +75,7 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     private static OrderPaymentFragment ordPay;
 
-    private static FacturaFragment factFrag;
+    private static InvoiceFragment factFrag;
 
     private static CreditCardFragment ccFrag;
 
@@ -327,7 +322,7 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     public void cambiarFac() {
         if (factFrag == null)
-            factFrag = new FacturaFragment();
+            factFrag = new InvoiceFragment();
         showFragment(factFrag);
     }
 
