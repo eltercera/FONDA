@@ -37,7 +37,7 @@ namespace BackOffice.Seccion.Restaurant
             IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
             IList<RestaurantCategory> listRest = _restcatDAO.GetAll();
 
-
+            
             int totalRows = listRest.Count; //tamano de la lista 
             int totalColumns = 1; //numero de columnas de la tabla
 
@@ -134,17 +134,9 @@ namespace BackOffice.Seccion.Restaurant
             AlertSuccess_ModificarCategoria.Visible = true;
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            IList<RestaurantCategory> listRest = _restcatDAO.GetAll();
-            int longitud = listRest.Count;
             string nameM;
-            int idCat = 0;
-
-            for (int i = 0; i <= longitud - 1; i++)
-            {
-                nameM = listRest[i].Name;
-                idCat = listRest[i].Id;
-            }
-
+            string CategoryID = CategoryModifyId.Value;
+            int idCat = int.Parse(CategoryID);
             RestaurantCategory _restaurant = _restcatDAO.FindById(idCat);
             nameM = NombreCatM.Text;
             _restaurant.Name = nameM;
