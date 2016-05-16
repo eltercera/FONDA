@@ -70,6 +70,37 @@ namespace BackOffice.Seccion.Restaurant
                 }
 
             }
+
+            //Agrega el encabezado a la Tabla
+            TableHeaderRow header = GenerateTableHeader();
+            CategoriaRest.Rows.AddAt(0, header);
+        }
+
+        /// <summary>
+        /// Genera el encabezado de la tabla Categoria
+        /// </summary>
+        /// <returns>Returna un objeto de tipo TableHeaderRow</returns>
+        private TableHeaderRow GenerateTableHeader()
+        {
+            //Se crea la fila en donde se insertara el header
+            TableHeaderRow header = new TableHeaderRow();
+
+            //Se crean las columnas del header
+            TableHeaderCell h1 = new TableHeaderCell();
+            TableHeaderCell h2 = new TableHeaderCell();
+            
+            //Se indica que se trabajara en el header y se asignan los valores a las columnas
+            header.TableSection = TableRowSection.TableHeader;
+            h1.Text = "Nombre";
+            h1.Scope = TableHeaderScope.Column;
+            h2.Text = "Acciones";
+            h2.Scope = TableHeaderScope.Column;
+
+            //Se asignan las columnas a la fila
+            header.Cells.Add(h1);
+            header.Cells.Add(h2);
+
+            return header;
         }
      
 
