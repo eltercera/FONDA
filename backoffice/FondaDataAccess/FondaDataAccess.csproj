@@ -150,20 +150,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BD.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="BD_log.ldf">
-      <DependentUpon>BD.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="bin\Debug\BD.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="bin\Debug\BD_log.ldf">
-      <DependentUpon>BD.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="bin\Debug\FluentNHibernate.dll" />
     <Content Include="bin\Debug\FluentNHibernate.pdb" />
     <Content Include="bin\Debug\FluentNHibernate.xml" />

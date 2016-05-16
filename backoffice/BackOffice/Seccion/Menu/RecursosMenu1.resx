@@ -120,6 +120,12 @@
   <data name="Acciones" xml:space="preserve">
     <value>&lt;td class="text-center"&gt;&lt;a data-toggle="modal" data-target="#modificar"&gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;</value>
   </data>
+  <data name="Acciones_asp1" xml:space="preserve">
+    <value>&lt;td class="text-center" /&gt;&lt;asp:LinkButton runat="server" OnClick="Modificar_Click" data-toggle="modal" data-target="#modificar" data-id=</value>
+  </data>
+  <data name="Acciones_asp2" xml:space="preserve">
+    <value>class="fa fa-pencil"&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;/td&gt;</value>
+  </data>
   <data name="Activo" xml:space="preserve">
     <value>&lt;td class="text-center"&gt;&lt;span class="label label-success"&gt;&lt;i class="fa fa-check"&gt;&lt;p class="stat"&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;</value>
   </data>

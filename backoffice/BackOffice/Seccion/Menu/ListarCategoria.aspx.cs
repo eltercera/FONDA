@@ -52,13 +52,18 @@ namespace BackOffice.Seccion.Menu
         {
             AlertSuccess_ModificarCategoria.Visible = true;
             FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IMenuCategoryDAO _menucatDAO = factoryDAO.GetMenuCategoryDAO();
-
+            IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
             MenuCategory _menu = new MenuCategory();
-            String nombre1 = TextBox1.Text;
-            _menu.Name = nombre1;
-            _menu.Status = ActiveSimpleStatus.Instance;
-            _menucatDAO.Save(_menu);           
+            //retorno el objeto con el id 1, esto obviamente esta cableado
+            MenuCategory _mencat = _mencatDAO.FindById(1);
+            //Asigno el texto del text box en modificar al atributo nombre del objeto
+            _mencat.Name = TextBoxModificar.Text;
+
+            //_mencat.ListDish = null;
+            //_mencat.Status = ActiveSimpleStatus.Instance;
+
+            //Guardo el objeto en la BD, esto lo sobreescribe si el id ya existe
+            _mencatDAO.Save(_mencat);
         }
 
     //metodo donde se llena la tabla desde una lista de objetos

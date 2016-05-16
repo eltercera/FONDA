@@ -96,7 +96,7 @@
                                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                         <div class="form-group">
                                             <label class="control-label">Nombre de la Categoria del menú</label>
-                                            <asp:TextBox ID="TextBox1" CssClass="form-control" placeholder="" MaxLength="20"  runat="server" />
+                                            <asp:TextBox ID="TextBoxModificar" CssClass="form-control" placeholder="" MaxLength="20"  runat="server" />
                                         </div>
                                     </div>
                                 </div>
