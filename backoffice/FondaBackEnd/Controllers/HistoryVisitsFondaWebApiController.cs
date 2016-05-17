@@ -28,16 +28,16 @@ namespace com.ds201625.fonda.BackEnd.Controllers
          //   profile.Id = 1;
 
             RestaurantCategory category1 = new RestaurantCategory();
-            category1.NameCategory = "Romantico";
+            //category1.NameCategory = "Romantico";
 
             RestaurantCategory category2 = new RestaurantCategory();
-            category2.NameCategory = "Casual";
+            //category2.NameCategory = "Casual";
 
             RestaurantCategory category3 = new RestaurantCategory();
-            category3.NameCategory = "Italiano";
+            //category3.NameCategory = "Italiano";
 
             RestaurantCategory category4 = new RestaurantCategory();
-            category4.NameCategory = "Americano";
+            //category4.NameCategory = "Americano";
 
             Restaurant restaurant1 = new Restaurant();
            

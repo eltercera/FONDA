@@ -37,13 +37,33 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
 			return value;
 		}
+        protected int GetRestaurantId(HttpRequestHeaders header)
+        {
+            String values;
+            int value = 0;
+            if (header.Contains(GeneralRes.RestaurantIDHeader))
+            {
+                values = header.GetValues(GeneralRes.RestaurantIDHeader).First();
+                value = Int32.Parse(values);
+            }
 
-		protected Commensal GetCommensal(HttpRequestHeaders header)
+
+            return value;
+        }
+
+        protected Commensal GetCommensal(HttpRequestHeaders header)
 		{
 			ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO ();
 
 			return (Commensal) commensalDao.FindById(GetCommensalId(header));
 		}
-	} 
+        protected Restaurant GetRestaurant(HttpRequestHeaders header, int id)
+        {
+            IRestaurantDAO RestaurantDao = FactoryDAO.GetRestaurantDAO();
+
+            return RestaurantDao.FindById(id);
+        }
+
+    } 
 }
 
