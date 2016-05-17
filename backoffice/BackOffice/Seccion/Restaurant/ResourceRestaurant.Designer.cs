@@ -79,7 +79,7 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#modificar&quot;&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;.
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
         /// </summary>
         internal static string ActionTable {
             get {
@@ -88,7 +88,7 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;span class=&quot;label label-success&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;p class=&quot;stat&quot;&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;.
+        ///   Looks up a localized string similar to &lt;span class=&quot;label label-success&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;p class=&quot;stat&quot;&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;.
         /// </summary>
         internal static string Active {
             get {
@@ -106,7 +106,7 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;p class=&quot;stat&quot;&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;.
+        ///   Looks up a localized string similar to &lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;p class=&quot;stat&quot;&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;.
         /// </summary>
         internal static string Inactive {
             get {

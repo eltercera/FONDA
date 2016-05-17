@@ -147,7 +147,7 @@ Agregar Categoria
                                     success: function (response) {
                                         var local = response;
                                         document.getElementById("<%=NombreCatM.ClientID%>").value = local.d.Name;
-
+                                         
                                         
 
                                     },

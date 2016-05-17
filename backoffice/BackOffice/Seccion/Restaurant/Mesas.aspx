@@ -39,6 +39,7 @@ NOMBRE DEL RESTAURANTE
             </div>
         </div>
     </div>
+
        <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
@@ -49,20 +50,10 @@ NOMBRE DEL RESTAURANTE
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table id="mesa" class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Cantidad de puestos</th>
-                                                <th>Cantidad de comensales</th>
-                                                <th>Reservación realizada por</th>
-                                                <th>Estado</th>
-                                                <th class="no-sort">Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <!---Acciones de Categoria--->
-                                        <asp:Literal ID="TableT" runat="server"></asp:Literal>                                         
-                                    </table>       
+                                        <asp:HiddenField ID="TableModifyId" runat="server" Value="" />
+
+                                        <asp:Table ID="Table" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>                      
+                                             
                                 </div>
                             </div>
                         </div>
@@ -82,7 +73,7 @@ NOMBRE DEL RESTAURANTE
                             <div class="row">
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
                                 <label class="control-label">Cantidad de Puestos</label>
-                                <asp:DropDownList id="DDLcapacity" CssClass="form-control" AutoPostBack="False" runat="server">
+                                <asp:DropDownList id="DDLcapacityM" CssClass="form-control" AutoPostBack="False" runat="server">
                                     <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
@@ -145,5 +136,53 @@ NOMBRE DEL RESTAURANTE
                 </div>   
                </div>
            </div>
-    </div>
+    
+    <script type="text/javascript">
+
+
+
+        $(document).ready(function () {
+            setValue();
+            ajaxRes();
+                });
+
+                    function ajaxRes(){
+                    $('.table > tbody > tr > td:nth-child(6) > a')
+                        .click(function (e) {
+                                    e.preventDefault();
+                                    var prueba = document.getElementById("<%=TableModifyId.ClientID%>").value;
+                                    var params = "{'Id':'" + prueba + "'}";
+
+                                    $.ajax({
+                                    type: "POST",
+                                    url: "Mesas.aspx/GetData",
+                                    data: params,
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (response) {
+                                        var local = response;
+                                        document.getElementById("<%=DDLcapacityM.ClientID%>").value = local.d.Capacity;
+
+                                        
+
+                                    },
+                                    failure: function (response) {
+                                          alert("_");
+                                    }
+                                    });
+                        });
+                    }
+                    function setValue() {
+                        $('.table > tbody > tr > td:nth-child(6) > a')
+                        .click(function () {
+                            var padreId = $(this).parent().parent().attr("data-id");
+                            document.getElementById("<%=TableModifyId.ClientID%>").value = padreId;
+
+                        });
+                    }
+        
+
+
+
+    </script>
 </asp:Content>

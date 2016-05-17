@@ -16,7 +16,7 @@ namespace BackOffice.Seccion.Restaurant
     public partial class AgregarCategoria : System.Web.UI.Page
     {
 
-
+      
         protected void Page_Load(object sender, EventArgs e)
         {
             AlertSuccess_AgregarCategoria.Visible = false;
