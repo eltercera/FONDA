@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="AgregarCategoria.aspx.cs" Inherits="BackOffice.Seccion.Restaurant.AgregarCategoria" EnableEventValidation="false" validateRequest="false" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="AgregarCategoria.aspx.cs" Inherits="BackOffice.Seccion.Restaurant.AgregarCategoria" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 Agregar Categoria
 </asp:Content>
@@ -25,15 +25,6 @@ Agregar Categoria
   </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
-
-        <div id="AlertError_AgregarCategoria" class="row" runat="server">
-        <div class="col-lg-12">
-            <div class="alert alert-danger fade in alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <i class="fa fa-check"></i> <strong>Error</strong> al agregar categoría
-            </div>
-        </div>
-    </div>
 
     <div id="AlertSuccess_AgregarCategoria" class="row" runat="server">
         <div class="col-lg-12">
@@ -107,32 +98,33 @@ Agregar Categoria
          <!-- Modal agregar categoria-->
      <div class="modal fade" id="agregar" role="dialog">
                 <div class="modal-dialog">
+
                     <!-- Modal content-->
                     <div class="modal-content">
-                        <form id ="AddForm">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Agregar Categoria</h4>
                         </div>
-                            <div class="modal-body"> 
+                            <div class="modal-body">
                                  <div class="row">
                                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                             <div class="form-group">
                                                 <label class="control-label">Nombre</label>
-                                                <asp:TextBox ID="NombreCatA" CssClass="form-control" placeholder="ej. Americana" ClientIDMode="Static" runat="server" />
+                                                <asp:TextBox ID="NombreCatA" CssClass="form-control" placeholder="ej. Americana" runat="server"/>
                                             </div>
                                     </div>
                                  </div>
                             </div>
                          <div class="modal-footer">
-                            <asp:Button id="ButtonAgregar" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAgregar_Click" />
+                            <asp:Button id="ButtonAgregar" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAgregar_Click" OnClientClick="cambiarValor"/>
                             <asp:Button id="ButtonCancelarA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
-                       </form>
                      </div>
                 </div>
     </div>
     <script type="text/javascript">
+
+
 
         $(document).ready(function () {
             setValue();
@@ -143,9 +135,8 @@ Agregar Categoria
                     $('.table > tbody > tr > td:nth-child(2) > a')
                         .click(function (e) {
                                     e.preventDefault();
-                                    var rowId = $(this).parent().parent().attr("data-id");
-                                    document.getElementById("<%=CategoryModifyId.ClientID%>").value = rowId;
-                                    var params = "{'Id':'" + rowId + "'}";
+                                    var prueba = document.getElementById("<%=CategoryModifyId.ClientID%>").value;
+                                    var params = "{'Id':'" + prueba + "'}";
 
                                     $.ajax({
                                     type: "POST",
@@ -156,11 +147,8 @@ Agregar Categoria
                                     success: function (response) {
                                         var local = response;
                                         document.getElementById("<%=NombreCatM.ClientID%>").value = local.d.Name;
-<<<<<<< HEAD
                                          
                                         
-=======
->>>>>>> c0a2b0abc7dfd2a5e60c7318945f380ef8c2c01f
 
                                     },
                                     failure: function (response) {
@@ -169,7 +157,19 @@ Agregar Categoria
                                     });
                         });
                     }
-    </script>  
+                    function setValue() {
+                        $('.table > tbody > tr > td:nth-child(2) > a')
+                        .click(function () {
+                            var padreId = $(this).parent().parent().attr("data-id");
+                            document.getElementById("<%=CategoryModifyId.ClientID%>").value = padreId;
+
+                        });
+                    }
+        
+
+
+
+    </script>
 
     </asp:Content>
 
