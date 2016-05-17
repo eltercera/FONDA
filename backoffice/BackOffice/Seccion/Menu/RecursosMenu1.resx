@@ -123,6 +123,9 @@
   <data name="Acciones_asp2" xml:space="preserve">
     <value>class="fa fa-pencil"&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;/td&gt;</value>
   </data>
+  <data name="Accion_Sugerencia" xml:space="preserve">
+    <value>&lt;i class="fa fa-info-circle"&gt;</value>
+  </data>
   <data name="Activo" xml:space="preserve">
     <value>&lt;td class="text-center"&gt;&lt;span class="label label-success"&gt;&lt;i class="fa fa-check"&gt;&lt;p class="stat"&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;</value>
   </data>

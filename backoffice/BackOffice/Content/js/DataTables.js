@@ -97,10 +97,20 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#MenuDia').DataTable({
+    $('#contenido_CategoryMenu').DataTable({
         "language": spanish,
         "aoColumns": [
             null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#contenido_sugerencia_dia').DataTable({
+        "language": spanish,
+        "aoColumns": [
             null,
             { "bSearchable": false },
             { "bSearchable": false }

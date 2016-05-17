@@ -141,8 +141,7 @@ namespace BackOffice.Seccion.Menu
             MenuCategory _menucat = _mencatDAO.FindById(idMenCat);
             nameCM = TextBoxModificar.Text;
             _menucat.Name = nameCM;
-            _menucat.ListDish = null;
-            _menucat.Status = ActiveSimpleStatus.Instance;
+            //_menucat.Status = ActiveSimpleStatus.Instance;
             _mencatDAO.Save(_menucat);
             LoadTable();
 
