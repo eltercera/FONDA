@@ -511,9 +511,6 @@ Restaurantes
                               <input type="file" id="ejemplo_archivo_3"/>
                               <p class="help-block">Imagen .jpg o .png</p>
                          </div>
-                    <div class="form-group">
-                            <label class="control-label" id="labelError" >Error complete todos los datos del formulario</label>
-                        </div>
                 </div>
                         
              </div> 
@@ -524,8 +521,5 @@ Restaurantes
                         </div>
             </div>
             </div>
-            </div>
-
-       
-          
+            </div>      
 </asp:Content>
