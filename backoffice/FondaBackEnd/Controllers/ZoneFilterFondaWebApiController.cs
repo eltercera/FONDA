@@ -22,8 +22,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
           {
 
             Zone zone1 = new Zone();
-
-          zone1.Name = "Alta";
+            zone1.Name = "Alta";
 
             Zone zone2 = new Zone();
             zone2.Name = "Alto Hatillo";
