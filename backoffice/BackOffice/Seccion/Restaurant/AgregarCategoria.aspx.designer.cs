@@ -13,6 +13,15 @@ namespace BackOffice.Seccion.Restaurant {
     public partial class AgregarCategoria {
         
         /// <summary>
+        /// AlertError_AgregarCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertError_AgregarCategoria;
+        
+        /// <summary>
         /// AlertSuccess_AgregarCategoria control.
         /// </summary>
         /// <remarks>

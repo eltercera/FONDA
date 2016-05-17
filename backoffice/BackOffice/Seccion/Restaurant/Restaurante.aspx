@@ -43,7 +43,7 @@ Restaurantes
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i>Restaurantes</h3>
-                                <a data-toggle="modal" data-target="#agregar" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
+                                <a data-toggle="modal" data-target="#agregar" class="btn btn-default pull-right" ><i class="fa fa-plus"></i></a>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="panel-body">
@@ -360,9 +360,9 @@ Restaurantes
         <!-- /Modal Modificar-->
 
             <!-- Modal Agregar-->
-            <div class="modal fade" id="agregar" role="dialog">
+            <div class="modal fade" id="agregar" role="dialog" >
                 <div class="modal-dialog">
-
+                   
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
@@ -512,16 +512,14 @@ Restaurantes
                               <p class="help-block">Imagen .jpg o .png</p>
                          </div>
                 </div>
+                        
              </div> 
             </div>
                         <div class="modal-footer">
-                            <asp:Button id="ButtonAdd" Text="Agregar" CssClass="btn btn-success" runat="server"/>
+                            <asp:Button id="ButtonAdd" Text="Agregar" CssClass="btn btn-success" onclick="ValidarUsuario"  runat="server"/>
                             <asp:Button id="ButtonCancelA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
             </div>
             </div>
-            </div>
-
-       
-          
+            </div>      
 </asp:Content>
