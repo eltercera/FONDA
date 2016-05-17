@@ -49,16 +49,19 @@ namespace BackOffice.Seccion.Restaurant
                 //Agrega la fila a la tabla existente
                 Table.Rows.Add(tRow);
                 // CABLEADO DE RESERVA
-                string status = string.Empty;
+                string statusTable = string.Empty;
                 string user = string.Empty;
+                string status = listTable[i].Status.ToString();
+                string statusActive = FreeTableStatus.Instance.ToString();
+                string statusInactive = FreeTableStatus.Instance.ToString();
                 int quantity = 0;
-                if (listTable[i].Status == FreeTableStatus.Instance)
+                if (status == statusActive)
                 {
                     status = ResourceRestaurant.Active;
                     user = "N/A";
                     quantity = 0;
                 }
-                else if (listTable[i].Status == BusyTableStatus.Instance)
+                else if (status == statusInactive)
                 {
                     status = ResourceRestaurant.Inactive;
                     user = "Usuario" + listTable[i].Id;
@@ -81,10 +84,10 @@ namespace BackOffice.Seccion.Restaurant
                         tCell.Text = quantity.ToString();
                     //Agrega el usuario que realizo la reserva
                     else if (j.Equals(3))
-                        tCell.Text = user.ToString();
+                        tCell.Text = user;
                     //Agrega el status
                     else if (j.Equals(4))
-                        tCell.Text = status.ToString();
+                        tCell.Text = status;
                     //Agrega las acciones
                     else if (j.Equals(5))
                     {
