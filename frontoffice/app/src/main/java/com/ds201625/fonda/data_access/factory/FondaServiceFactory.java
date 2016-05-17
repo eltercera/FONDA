@@ -9,18 +9,32 @@ import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
 
 /**
- * Created by rrodriguez on 5/7/16.
+ * Singelton de fabrica de servicios
  */
 public class FondaServiceFactory {
 
+    /**
+     * Instancia
+     */
     private static FondaServiceFactory instance;
 
+    /**
+     * La fabrica implementada
+     */
     private ServiceFactory serviceFactory;
 
+    /**
+     * Constructor
+     * Usando Retrofit
+     */
     private FondaServiceFactory() {
         serviceFactory = new RetroditServiceFactory();
     }
 
+    /**
+     * Obtiene la instancia
+     * @return
+     */
     public static FondaServiceFactory getInstance(){
         if (instance == null)
             instance = new FondaServiceFactory();
@@ -28,12 +42,19 @@ public class FondaServiceFactory {
         return instance;
     }
 
-
+    /**
+     * Obtiene el servicio de Perfiles
+     * @return
+     */
     public ProfileService getProfileService()
     {
         return serviceFactory.getProfileService();
     }
 
+    /**
+     * Obtiene ser servicio de comensal
+     * @return
+     */
     public CommensalService getCommensalService(){
         return serviceFactory.getCommensalService();
     }
@@ -48,6 +69,11 @@ public class FondaServiceFactory {
         return serviceFactory.getHistoryVisitsService();
     }
 
+    /**
+     * Obtiene os servicios de token
+     * @param commensal
+     * @return
+     */
     public TokenService getTokenService(Commensal commensal){
         return serviceFactory.getTokenService(commensal);
     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.ds201625.fonda.data_access.local_storage.JsonFile;
+import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.retrofit_client.clients.TokenClient;
 import com.ds201625.fonda.data_access.services.TokenService;
@@ -29,16 +30,18 @@ public class RetrofitTokenService implements TokenService{
         tokenClient = RetrofitService.getInstance().createService(
                 TokenClient.class,commensal.getEmail(), commensal.getPassword());
         this.commensal = commensal;
+        Log.v("Fonda",this.commensal.getEmail());
     }
 
     @Override
-    public Token createToken(Context context) {
+    public Token createToken(Context context) throws Exception {
         Call<Token> call = tokenClient.postToken();
         Token token = null;
         try{
              token = call.execute().body();
         } catch (IOException e) {
             Log.v("Fonda: ",e.toString());
+            throw new Exception("Error al obtener token",e);
         }
 
         getFile(context).save(token);
@@ -55,7 +58,7 @@ public class RetrofitTokenService implements TokenService{
     }
 
     @Override
-    public Token getToken(Context context) {
+    public Token getToken(Context context) throws LocalStorageException {
         return getFile(context).getObj();
     }
 }

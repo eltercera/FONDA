@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.retrofit_client.RetrofitProfileService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
@@ -89,7 +90,11 @@ public class ProfileActivity extends BaseNavigationActivity
 
         //pruebas
         ProfileService ps = FondaServiceFactory.getInstance().getProfileService();
-        p=ps.getProfiles();
+        try {
+            p=ps.getProfiles();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         profileListFrag.seProfiles(p);
 
     }

@@ -13,10 +13,13 @@ import java.util.List;
 import retrofit2.Call;
 
 /**
- * Created by rrodriguez on 5/7/16.
+ * Implementacion de la interfaz ProfileService
  */
 public class RetrofitProfileService implements ProfileService {
 
+    /**
+     * Instancia cliente rest ProfileClient
+     */
     private ProfileClient profileClient =
             RetrofitService.getInstance().createService(ProfileClient.class);
 
@@ -25,48 +28,47 @@ public class RetrofitProfileService implements ProfileService {
     }
 
     @Override
-    public List<Profile> getProfiles() {
+    public List<Profile> getProfiles() throws RestClientException {
         Call<List<Profile>> call = profileClient.getProfiles();
-        List<Profile> a = null;
+        List<Profile> profiles = null;
         try{
-            a = call.execute().body();
+            profiles = call.execute().body();
         } catch (IOException e) {
-            Log.v("Fonda: ",e.toString());
+            throw new RestClientException("Error de IO",e);
         }
-
-        return a;
+        return profiles;
     }
 
     @Override
-    public void AddProfile(Profile profile) {
+    public void AddProfile(Profile profile) throws RestClientException {
         Call<Profile> call = profileClient.postProfile(profile);
-        Profile aux = null;
+        Profile ProfileNew = null;
         try{
-            aux = call.execute().body();
+            ProfileNew = call.execute().body();
         } catch (IOException e) {
-            Log.v("Fonda: ", e.toString());
+            throw new RestClientException("Error de IO",e);
         }
     }
 
     @Override
-    public void EditProfile(Profile profile) {
+    public void EditProfile(Profile profile) throws RestClientException {
         Call<Profile> call = profileClient.putProfile(profile,profile.getId());
-        Profile aux = null;
+        Profile profileNew = null;
         try{
-            aux = call.execute().body();
+            profileNew = call.execute().body();
         } catch (IOException e) {
-            Log.v("Fonda: ", e.toString());
+            throw new RestClientException("Error de IO",e);
         }
     }
 
     @Override
-    public void DeleteProfile(int id) {
+    public void DeleteProfile(int id) throws RestClientException {
         Call<String> call = profileClient.DeleteProfile(id);
         String aux = null;
         try{
             aux = call.execute().body();
         } catch (IOException e) {
-            Log.v("Fonda: ", e.toString());
+            throw new RestClientException("Error de IO",e);
         }
     }
 }

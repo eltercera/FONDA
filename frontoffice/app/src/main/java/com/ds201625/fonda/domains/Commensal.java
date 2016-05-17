@@ -3,7 +3,7 @@ package com.ds201625.fonda.domains;
 import java.util.List;
 
 /**
- * Created by rrodriguez on 5/4/16.
+ * Clase dominio de Commansal
  */
 public class Commensal extends UserAccount {
 
@@ -11,7 +11,8 @@ public class Commensal extends UserAccount {
 
     private List<Restaurant> favoritesRestaurants;
 
-    private List<Profile> profiles;
+    // Esto no es necesario
+    //private List<Profile> profiles;
 
     public Commensal() {
         super();
@@ -33,7 +34,8 @@ public class Commensal extends UserAccount {
         this.reservarions.remove(reservation);
     }
 
-    public List<Profile> getProfiles() {
+    // Esto no es necesario
+    /*public List<Profile> getProfiles() {
         return profiles;
     }
 
@@ -47,7 +49,7 @@ public class Commensal extends UserAccount {
 
     public  void removeProfile(Profile profile){
         this.profiles.remove(profile);
-    }
+    }*/
 
     public List<Restaurant> getFavoritesRestaurants() {
         return favoritesRestaurants;

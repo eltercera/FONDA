@@ -2,15 +2,26 @@ package com.ds201625.fonda.data_access.services;
 
 import android.content.Context;
 
-import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.domains.Token;
 
 /**
- * Created by rrodriguez on 5/16/16.
+ * Interfaz para el servicio del token
  */
 public interface TokenService {
 
-    Token getToken(Context context);
+    /**
+     * Obtiene el token
+     * @param context
+     * @return
+     */
+    Token getToken(Context context) throws LocalStorageException;
 
-    Token createToken(Context context);
+    /**
+     * Obtiene un nuevo token
+     * @param context
+     * @return
+     * @throws Exception
+     */
+    Token createToken(Context context) throws Exception;
 }

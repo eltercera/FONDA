@@ -8,11 +8,9 @@ import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
 
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-
+/**
+ * Implementacion de la fabrica de servicios con el uso de retrofit y localStorage.
+ */
 public class RetroditServiceFactory implements ServiceFactory {
 
     @Override

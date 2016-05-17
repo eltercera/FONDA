@@ -1,9 +1,8 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
 import android.content.Context;
-import android.util.Log;
-
 import com.ds201625.fonda.data_access.local_storage.JsonFile;
+import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.data_access.retrofit_client.clients.CommensalClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.CommensalService;
@@ -15,22 +14,27 @@ import java.io.IOException;
 import retrofit2.Call;
 
 /**
- * Created by rrodriguez on 5/12/16.
+ * Implementacion de la interfaz CommensalService
  */
 public class RetrofitCommensalService implements CommensalService {
 
+    /**
+     * Instancia cliente rest CommensalClient
+     */
     private CommensalClient commensalClient =
             RetrofitService.getInstance().createService(CommensalClient.class);
 
+    /**
+     * Instancia para los archivos locales de commensal.
+     */
     private JsonFile<Commensal> localFile;
 
     @Override
-    public Commensal RegisterCommensal(String user, String password, Context context) {
+    public Commensal RegisterCommensal(String user, String password, Context context)
+            throws InvalidDataRetrofitException, RestClientException, LocalStorageException {
 
-        if (user.isEmpty() || password.isEmpty()) {
-            // TODO: Exeption
-            return null;
-        }
+        if (user.isEmpty() || password.isEmpty())
+            throw new InvalidDataRetrofitException("Usuario o password son vacios.");
 
         Commensal commensal = new Commensal();
         commensal.setEmail(user);
@@ -41,14 +45,18 @@ public class RetrofitCommensalService implements CommensalService {
         try{
             rsvCommensal = call.execute().body();
         } catch (IOException e) {
-            Log.v("Fonda: ",e.toString());
+            throw new RestClientException("Error de IO",e);
         }
 
         getFile(context).save(rsvCommensal);
-
         return rsvCommensal;
     }
 
+    /**
+     * Obtiene una instancia del de JsonFile de tipo Commensal.
+     * @param context Contecto de la aplicacion.
+     * @return la instancia JsonFile de tipo Commensal.
+     */
     private JsonFile<Commensal> getFile(Context context) {
 
         if (localFile == null)
@@ -58,8 +66,14 @@ public class RetrofitCommensalService implements CommensalService {
     }
 
     @Override
-    public Commensal getCommensal(Context context) {
+    public Commensal getCommensal(Context context) throws LocalStorageException {
         return getFile(context).getObj();
     }
 
+    @Override
+    public void saveCommensal(Commensal commensal, Context context) throws LocalStorageException {
+        if (commensal!= null) {
+            getFile(context).save(commensal);
+        }
+    }
 }
