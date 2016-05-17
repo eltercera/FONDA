@@ -13,7 +13,7 @@ import retrofit2.http.GET;
  */
 public interface InvoiceClient {
 
-    @GET("invoice")
-    Call<Invoice> getInvoice();
+    @GET("currentInvoice")
+    Call<Invoice> getCurrentInvoice();
 
 }

@@ -30,7 +30,7 @@ public class CurrentOrderFragment extends BaseFragment {
     ListView list;
     private OrderViewItemList orderList;
 
-   // private List<DishOrder> listDishO;
+    private List<DishOrder> listDishOPrueba;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,8 +49,13 @@ public class CurrentOrderFragment extends BaseFragment {
         listDishO.add(dishO3);
 
         //pruebas
-       // CurrentOrderService ps = FondaServiceFactory.getInstance().getCurrentOrderService();
-       // listDishO=ps.getListDishOrder();
+       /*CurrentOrderService ps = FondaServiceFactory.getInstance().getCurrentOrderService();
+       listDishOPrueba=ps.getListDishOrder();
+
+        for (int i = 0; i< listDishOPrueba.size(); i ++){
+            System.out.println("Descripcion Plato:  "+listDishOPrueba.get(i).getDish().getDescription());
+        }
+*/
     }
 
 

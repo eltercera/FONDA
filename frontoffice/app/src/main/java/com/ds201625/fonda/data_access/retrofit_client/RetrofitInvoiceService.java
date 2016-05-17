@@ -24,8 +24,8 @@ public class RetrofitInvoiceService implements InvoiceService {
     }
 
     @Override
-    public Invoice getInvoice() {
-        Call<Invoice> call = invoiceClient.getInvoice();
+    public Invoice getCurrentInvoice() {
+        Call<Invoice> call = invoiceClient.getCurrentInvoice();
         Invoice a = null;
         try{
             a = call.execute().body();

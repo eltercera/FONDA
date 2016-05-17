@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface InvoiceService {
 
-    Invoice getInvoice();
+    Invoice getCurrentInvoice();
 
 }

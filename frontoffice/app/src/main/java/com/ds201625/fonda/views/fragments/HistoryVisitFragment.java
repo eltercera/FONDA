@@ -199,9 +199,9 @@ public class HistoryVisitFragment extends BaseFragment {
     private void createCollection() {
         // preparing detailRestaurant for collection(child)
         collectionVisits = new LinkedHashMap<String, List<String>>();
-        HistoryVisitsRestaurantService ps = FondaServiceFactory.getInstance().getHistoryVisitsService();
-        p=ps.getHistoryVisits();
-        Iterator iterator = p.listIterator();
+        //HistoryVisitsRestaurantService ps = FondaServiceFactory.getInstance().getHistoryVisitsService();
+        //p=ps.getHistoryVisits();
+/*        Iterator iterator = p.listIterator();
         while (iterator.hasNext()) {
             Invoice invoice = (Invoice) iterator.next();
             String nameRestaurant = invoice.getRestaurant().getName();
@@ -223,7 +223,7 @@ public class HistoryVisitFragment extends BaseFragment {
                 }
             }
         }
-
+*/
     }
 
     private void loadChild(String[] restaurantDetails) {

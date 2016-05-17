@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -198,8 +199,7 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
                 acceptCCButton.setVisible(false);
                 saveCCButton.setVisible(false);
             }
-        } else
-            if (fragment.equals(ccFrag)) {
+        } else if (fragment.equals(ccFrag)) {
                 if (cerrarBotton != null)
                     cerrarBotton.setVisible(false);
                 if ((sendBotton != null) && (cancelBotton != null)) {
@@ -213,6 +213,8 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
                 if ((acceptCCButton != null) && (saveCCButton != null)) {
                     acceptCCButton.setVisible(true);
                     saveCCButton.setVisible(true);
+                } else {
+                    Log.v("fonda","Algo es nulo");
                 }
             }else if (fragment.equals(factFrag)) {
             if (cerrarBotton != null)
