@@ -53,7 +53,7 @@ public class FacturaFragment extends BaseFragment {
     RestaurantCategory category = new RestaurantCategory("Casual");
     Restaurant restaurant = new Restaurant("The dining room", "La Castellana", category);
 
-    GenericPerson genericPerson = new GenericPerson();
+    Person genericPerson = new Person();
     Commensal commensal = new Commensal();
     Profile profile = new Profile();
     List<Profile> profiles;

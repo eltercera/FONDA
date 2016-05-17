@@ -3,18 +3,18 @@ package com.ds201625.fonda.views.activities;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.retrofit_client.RetrofitProfileService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.ProfileFormFragment;
 import com.ds201625.fonda.views.fragments.ProfileListFragment;
@@ -63,6 +63,8 @@ public class ProfileActivity extends BaseNavigationActivity
      */
     private List<Profile> p;
 
+    private boolean onForm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_profile);
@@ -88,15 +90,13 @@ public class ProfileActivity extends BaseNavigationActivity
         // Asegura que almenos onCreate se ejecuto en el fragment
         fm.executePendingTransactions();
 
-        //pruebas
-        ProfileService ps = FondaServiceFactory.getInstance().getProfileService();
-        try {
-            p=ps.getProfiles();
-        } catch (RestClientException e) {
-            e.printStackTrace();
-        }
-        profileListFrag.seProfiles(p);
-
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFragment(profileFormFrag);
+                profileFormFrag.setProfile();
+            }
+        });
     }
 
     /**
@@ -114,8 +114,9 @@ public class ProfileActivity extends BaseNavigationActivity
             if(saveBotton != null)
                 saveBotton.setVisible(false);
             fab.setVisibility(View.VISIBLE);
-            profileListFrag.seProfiles(p);
+            onForm = false;
         } else {
+            onForm = true;
             if(saveBotton != null)
                 saveBotton.setVisible(true);
             fab.setVisibility(View.GONE);
@@ -153,11 +154,24 @@ public class ProfileActivity extends BaseNavigationActivity
     }
 
     private void save() {
-        AlertDialog dialog = buildSingleDialog("Actualización de perfil",
-                "La actualización fue satisfactoria.");
-        dialog.show();
         profileFormFrag.changeProfile();
+
+        Profile profile = profileFormFrag.getProfile();
+        ProfileService ps = FondaServiceFactory.getInstance()
+                .getProfileService(SessionData.getInstance().getToken());
+        try {
+            if (profile.getId() == 0) {
+                ps.addProfile(profile);
+            } else {
+                ps.editProfile(profile);
+            }
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
+        profileListFrag.updateList();
+        profileListFrag.updateList();
         showFragment(profileListFrag);
+        hideKyboard();
     }
 
     /**
@@ -185,5 +199,14 @@ public class ProfileActivity extends BaseNavigationActivity
     public void OnProfileSelectionModeExit() {
         tb.setVisibility(View.VISIBLE);
         fab.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!onForm) {
+            super.onBackPressed();
+        } else {
+            showFragment(profileListFrag);
+        }
     }
 }

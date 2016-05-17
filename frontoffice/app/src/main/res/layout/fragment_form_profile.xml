@@ -119,28 +119,7 @@
 
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <ImageView android:id="@+id/imageViewphone"
-                    android:layout_column="0"
-                    android:src="@drawable/cell_phone_24"
-                    android:paddingRight="25dp"
-                    android:layout_gravity="center_vertical" />
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1">
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="phone"
-                        android:ems="10"
-                        android:id="@+id/profile_cell"
-                        android:hint="Celular" />
-                </android.support.design.widget.TextInputLayout>
-            </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"

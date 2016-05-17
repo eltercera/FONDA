@@ -6,6 +6,7 @@ import com.ds201625.fonda.data_access.retrofit_client.clients.ProfileClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.domains.Token;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,11 +21,12 @@ public class RetrofitProfileService implements ProfileService {
     /**
      * Instancia cliente rest ProfileClient
      */
-    private ProfileClient profileClient =
-            RetrofitService.getInstance().createService(ProfileClient.class);
+    private ProfileClient profileClient;
 
-    public RetrofitProfileService() {
+    public RetrofitProfileService(Token token) {
         super();
+        profileClient = RetrofitService.getInstance()
+                .createService(ProfileClient.class,token.getStrToken());
     }
 
     @Override
@@ -40,7 +42,7 @@ public class RetrofitProfileService implements ProfileService {
     }
 
     @Override
-    public void AddProfile(Profile profile) throws RestClientException {
+    public void addProfile(Profile profile) throws RestClientException {
         Call<Profile> call = profileClient.postProfile(profile);
         Profile ProfileNew = null;
         try{
@@ -51,7 +53,7 @@ public class RetrofitProfileService implements ProfileService {
     }
 
     @Override
-    public void EditProfile(Profile profile) throws RestClientException {
+    public void editProfile(Profile profile) throws RestClientException {
         Call<Profile> call = profileClient.putProfile(profile,profile.getId());
         Profile profileNew = null;
         try{
@@ -62,7 +64,7 @@ public class RetrofitProfileService implements ProfileService {
     }
 
     @Override
-    public void DeleteProfile(int id) throws RestClientException {
+    public void deleteProfile(int id) throws RestClientException {
         Call<String> call = profileClient.DeleteProfile(id);
         String aux = null;
         try{

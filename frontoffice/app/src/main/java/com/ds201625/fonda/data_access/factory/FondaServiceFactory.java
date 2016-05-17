@@ -7,6 +7,7 @@ import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Token;
 
 /**
  * Singelton de fabrica de servicios
@@ -46,9 +47,9 @@ public class FondaServiceFactory {
      * Obtiene el servicio de Perfiles
      * @return
      */
-    public ProfileService getProfileService()
+    public ProfileService getProfileService(Token token)
     {
-        return serviceFactory.getProfileService();
+        return serviceFactory.getProfileService(token);
     }
 
     /**
