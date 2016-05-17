@@ -16,11 +16,7 @@ namespace BackOffice.Seccion.Restaurant
 
 
         }
-        protected void Invisible(object sender, EventArgs e)
-        {
-             labelError.Visible = false;
 
-        }
         public void ValidarUsuario(object sender, EventArgs e)
         {
 

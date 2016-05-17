@@ -143,8 +143,9 @@ Agregar Categoria
                     $('.table > tbody > tr > td:nth-child(2) > a')
                         .click(function (e) {
                                     e.preventDefault();
-                                    var prueba = document.getElementById("<%=CategoryModifyId.ClientID%>").value;
-                                    var params = "{'Id':'" + prueba + "'}";
+                                    var rowId = $(this).parent().parent().attr("data-id");
+                                    document.getElementById("<%=CategoryModifyId.ClientID%>").value = rowId;
+                                    var params = "{'Id':'" + rowId + "'}";
 
                                     $.ajax({
                                     type: "POST",
@@ -156,21 +157,11 @@ Agregar Categoria
                                         var local = response;
                                         document.getElementById("<%=NombreCatM.ClientID%>").value = local.d.Name;
 
-                                        
-
                                     },
                                     failure: function (response) {
                                           alert("_");
                                     }
                                     });
-                        });
-                    }
-                    function setValue() {
-                        $('.table > tbody > tr > td:nth-child(2) > a')
-                        .click(function () {
-                            var padreId = $(this).parent().parent().attr("data-id");
-                            document.getElementById("<%=CategoryModifyId.ClientID%>").value = padreId;
-
                         });
                     }
     </script>  
