@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+
 namespace com.ds201625.fonda.Domain
 {
     /// <summary>
@@ -41,11 +42,42 @@ namespace com.ds201625.fonda.Domain
         /// Perfil de la cuenta
         /// </summary>
         private Profile _profile;
-  
+
+        /// <summary>
+        /// Cuenta 
+        /// </summary>
+        private Account _account;
+
+        /// <summary>
+        /// Moneda 
+        /// </summary>
+        private Currency _currency;
+
         /// <summary>
         /// Constructor
         /// </summary>
         public Invoice() : base() { }
+
+        /// <summary>
+        /// Obtiene o asigna una moneda a la factura
+        /// </summary>
+        [DataMember]
+        public virtual Currency Currency
+        {
+            get { return _currency; }
+            set { _currency = value; }
+        }
+
+
+        /// <summary>
+        /// Obtiene o asigna una cuenta a la factura
+        /// </summary>
+        [DataMember]
+        public virtual Account Account
+        {
+            get { return _account; }
+            set { _account = value; }
+        }
 
         /// <summary>
         /// Obtiene o asigna un restaurant a la cuenta

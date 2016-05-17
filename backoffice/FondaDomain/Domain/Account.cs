@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -34,6 +35,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Retorna o asigna la mesa de una cuenta
         /// </summary>
+        [DataMember]
         public virtual Table Table
         {
             get { return _table; }
@@ -43,6 +45,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Retorna o asigna una lista de ordenes
         /// </summary>
+        [DataMember]
         public virtual List<DishOrder> ListDish
         {
             get { return _listDish; }
