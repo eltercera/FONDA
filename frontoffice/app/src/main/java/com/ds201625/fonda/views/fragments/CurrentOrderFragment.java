@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.domains.Currency;
 import com.ds201625.fonda.domains.Dish;
 import com.ds201625.fonda.R;
@@ -28,6 +30,8 @@ public class CurrentOrderFragment extends BaseFragment {
     ListView list;
     private OrderViewItemList orderList;
 
+   // private List<DishOrder> listDishO;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,10 @@ public class CurrentOrderFragment extends BaseFragment {
         listDishO.add(dishO1);
         listDishO.add(dishO2);
         listDishO.add(dishO3);
+
+        //pruebas
+       // CurrentOrderService ps = FondaServiceFactory.getInstance().getCurrentOrderService();
+       // listDishO=ps.getListDishOrder();
     }
 
 
