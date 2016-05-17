@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="AgregarCategoria.aspx.cs" Inherits="BackOffice.Seccion.Restaurant.AgregarCategoria" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="AgregarCategoria.aspx.cs" Inherits="BackOffice.Seccion.Restaurant.AgregarCategoria" EnableEventValidation="false" validateRequest="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 Agregar Categoria
 </asp:Content>
@@ -25,6 +25,15 @@ Agregar Categoria
   </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
+
+        <div id="AlertError_AgregarCategoria" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> <strong>Error</strong> al agregar categoría
+            </div>
+        </div>
+    </div>
 
     <div id="AlertSuccess_AgregarCategoria" class="row" runat="server">
         <div class="col-lg-12">
@@ -98,33 +107,32 @@ Agregar Categoria
          <!-- Modal agregar categoria-->
      <div class="modal fade" id="agregar" role="dialog">
                 <div class="modal-dialog">
-
                     <!-- Modal content-->
                     <div class="modal-content">
+                        <form id ="AddForm">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Agregar Categoria</h4>
                         </div>
-                            <div class="modal-body">
+                            <div class="modal-body"> 
                                  <div class="row">
                                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                             <div class="form-group">
                                                 <label class="control-label">Nombre</label>
-                                                <asp:TextBox ID="NombreCatA" CssClass="form-control" placeholder="ej. Americana" runat="server"/>
+                                                <asp:TextBox ID="NombreCatA" CssClass="form-control" placeholder="ej. Americana" ClientIDMode="Static" runat="server" />
                                             </div>
                                     </div>
                                  </div>
                             </div>
                          <div class="modal-footer">
-                            <asp:Button id="ButtonAgregar" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAgregar_Click" OnClientClick="cambiarValor"/>
+                            <asp:Button id="ButtonAgregar" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAgregar_Click" />
                             <asp:Button id="ButtonCancelarA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
+                       </form>
                      </div>
                 </div>
     </div>
     <script type="text/javascript">
-
-
 
         $(document).ready(function () {
             setValue();
@@ -165,11 +173,7 @@ Agregar Categoria
 
                         });
                     }
-        
-
-
-
-    </script>
+    </script>  
 
     </asp:Content>
 

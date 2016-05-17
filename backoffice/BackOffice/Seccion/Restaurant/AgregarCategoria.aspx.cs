@@ -10,6 +10,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using System.Web.Services;
 using System.Web.Script.Serialization;
+using System.Text.RegularExpressions;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -21,6 +22,8 @@ namespace BackOffice.Seccion.Restaurant
         {
             AlertSuccess_AgregarCategoria.Visible = false;
             AlertSuccess_ModificarCategoria.Visible = false;
+            AlertError_AgregarCategoria.Visible = false;
+            NombreCatA.Attributes.Add("required","required");
             LoadTable();
         }
 
@@ -114,19 +117,38 @@ namespace BackOffice.Seccion.Restaurant
 
         }
 
-
-
-
         protected void ButtonAgregar_Click(object sender, EventArgs e)
         {
-            AlertSuccess_AgregarCategoria.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            RestaurantCategory _restcat = new RestaurantCategory();
             String nombreA = NombreCatA.Text;
-            _restcat.Name = nombreA;
-            _restcatDAO.Save(_restcat);
-            LoadTable();
+            if (CategoryValidate(nombreA)) {
+                AlertSuccess_AgregarCategoria.Visible = true;
+                FactoryDAO factoryDAO = FactoryDAO.Intance;
+                IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
+                RestaurantCategory _restcat = new RestaurantCategory();
+                _restcat.Name = nombreA;
+                _restcatDAO.Save(_restcat);
+                LoadTable();
+            }
+            else
+            {
+                AlertError_AgregarCategoria.Visible = true;
+            }
+            NombreCatA.Text = string.Empty;
+        }
+
+        private bool CategoryValidate(string name) {
+            bool valid=true;
+            string patron = "^[A-Za-z]*$";
+            if (name=="")
+            {
+                valid = false;
+            }
+      
+            if (!Regex.IsMatch(name,patron))
+            {
+                valid = false;
+            }
+            return valid;
         }
 
         protected void ButtonModificar_Click(object sender, EventArgs e)
