@@ -31,13 +31,22 @@ namespace BackOffice.Seccion.Menu {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ModificarCategoria;
         
         /// <summary>
-        /// Tabla control.
+        /// MenuCatModifyId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal Tabla;
+        protected global::System.Web.UI.WebControls.HiddenField MenuCatModifyId;
+        
+        /// <summary>
+        /// CategoryMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table CategoryMenu;
         
         /// <summary>
         /// TextBoxModificar control.

@@ -8,44 +8,126 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using System.Data;
+using System.Web.Services;
 
 namespace BackOffice.Seccion.Menu
 {
     public partial class ListarCategoria : System.Web.UI.Page
     {
-       
-        public string mencat{
-            get { return this.Tabla.Text;}
-            set { this.Tabla.Text = value;}
-        }
-
-
-       
-
+    
         protected void Page_Load(object sender, EventArgs e)
         {   
             AlertSuccess_AgregarCategoria.Visible = false;
             AlertSuccess_ModificarCategoria.Visible = false;
-             
-            if (!this.IsPostBack)  
+            LoadTable();
+        }
+        protected void LoadTable()
+        {
+
+            CleanTable();
+            //Genero los objetos para la consulta
+            //Genero la lista de la consulta
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
+            IList<MenuCategory> listMenuC = _mencatDAO.GetAll();
+
+
+            int totalRows = listMenuC.Count; //tamano de la lista 
+            int totalColumns = 2; //numero de columnas de la tabla
+
+            //Recorremos la lista
+            for (int i = 0; i <= totalRows - 1; i++)
             {
-                IList<MenuCategory> obj = Generar_Lista();
-                Llenar_Tabla(obj);
-            } 
+                //Crea una nueva fila de la tabla
+                TableRow tRow = new TableRow();
+                //Le asigna el Id a cada fila de la tabla
+                tRow.Attributes["data-id"] = listMenuC[i].Id.ToString();
+                //Agrega la fila a la tabla existente
+                CategoryMenu.Rows.Add(tRow);
+                for (int j = 0; j <= totalColumns; j++)
+                {
+                    //Crea una nueva celda de la tabla
+                    TableCell tCell = new TableCell();
+                    //Agrega el nombre de la categoria
+                    if (j.Equals(0))
+                        tCell.Text = listMenuC[i].Name;
+                    if (j.Equals(1))
+                        tCell.Text = listMenuC[i].Status.ToString();
+                    //Agrega las acciones de la tabla
+                    else if (j.Equals(2))
+                    {
+                        tCell.CssClass = "text-center";
+                        //Crea hipervinculo para las acciones
+                        LinkButton action = new LinkButton();
+                        action.Attributes["data-toggle"] = "modal";
+                        action.Attributes["data-target"] = "#modificar";
+                        action.Text = RecursosMenu1.Acciones;
+                        tCell.Controls.Add(action);
+                    }
+                    //Agrega la 
+                    tRow.Cells.Add(tCell);
+
+                }
+            }
+
+                //Agrega el encabezado a la Tabla
+            TableHeaderRow header = GenerateTableHeader();
+            CategoryMenu.Rows.AddAt(0, header);
+        }
+
+
+        /// <summary>
+        /// Genera el encabezado de la tabla Categoria
+        /// </summary>
+        /// <returns>Returna un objeto de tipo TableHeaderRow</returns>
+        private TableHeaderRow GenerateTableHeader()
+        {
+            //Se crea la fila en donde se insertara el header
+            TableHeaderRow header = new TableHeaderRow();
+
+            //Se crean las columnas del header
+            TableHeaderCell h1 = new TableHeaderCell();
+            TableHeaderCell h2 = new TableHeaderCell();
+             TableHeaderCell h3 = new TableHeaderCell();
+            
+            //Se indica que se trabajara en el header y se asignan los valores a las columnas
+            header.TableSection = TableRowSection.TableHeader;
+            h1.Text = "Nombre";
+            h1.Scope = TableHeaderScope.Column;
+            h2.Text = "Estado";
+            h2.Scope = TableHeaderScope.Column;
+            h3.Text = "Acciones";
+            h3.Scope = TableHeaderScope.Column;
+
+            //Se asignan las columnas a la fila
+            header.Cells.Add(h1);
+            header.Cells.Add(h2);
+            header.Cells.Add(h3);
+
+            return header;
+        }
+
+
+        public void CleanTable()
+        {
+            CategoryMenu.Rows.Clear();
+
         }
 
         protected void BotonAgregarCategoria_Click(object sender, EventArgs e)
         {
-            AlertSuccess_AgregarCategoria.Visible = true;
 
+            AlertSuccess_AgregarCategoria.Visible = true;
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
             MenuCategory _mencat = new MenuCategory();
             String nombre = Value1.Text;
             _mencat.Name = nombre;
             _mencat.ListDish = null;
             _mencat.Status = ActiveSimpleStatus.Instance;
-            Guardar_Categoria(_mencat);
-            IList<MenuCategory> obj = Generar_Lista();
-            Llenar_Tabla(obj);
+            _mencatDAO.Save(_mencat);
+
+            LoadTable();
         }
 
         protected void BotonModificarCategoria_Click(object sender, EventArgs e)
@@ -53,68 +135,35 @@ namespace BackOffice.Seccion.Menu
             AlertSuccess_ModificarCategoria.Visible = true;
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
-            MenuCategory _menu = new MenuCategory();
-            //retorno el objeto con el id 1, esto obviamente esta cableado
-            MenuCategory _mencat = _mencatDAO.FindById(1);
-            //Asigno el texto del text box en modificar al atributo nombre del objeto
-            _mencat.Name = TextBoxModificar.Text;
+            string nameCM;
+            string MenuCatID = MenuCatModifyId.Value;
+            int idMenCat = int.Parse(MenuCatID);
+            MenuCategory _menucat = _mencatDAO.FindById(idMenCat);
+            nameCM = TextBoxModificar.Text;
+            _menucat.Name = nameCM;
+            _menucat.ListDish = null;
+            _menucat.Status = ActiveSimpleStatus.Instance;
+            _mencatDAO.Save(_menucat);
+            LoadTable();
 
-            //_mencat.ListDish = null;
-            //_mencat.Status = ActiveSimpleStatus.Instance;
-
-            //Guardo el objeto en la BD, esto lo sobreescribe si el id ya existe
-            _mencatDAO.Save(_mencat);
+          
         }
 
-    //metodo donde se llena la tabla desde una lista de objetos
-        public void Llenar_Tabla(IList<MenuCategory> obj)
+        /// <summary>
+        /// Recibe el Id de la fila y obtiene un objeto de tipo categoria
+        /// </summary>
+        /// <param name="Id">Id de la categoria a mostrar</param>
+        /// <returns>Informacion de objeto categoria</returns>
+        [WebMethod]
+        public static MenuCategory GetData(string Id)
         {
-            int longitud = obj.Count;
-            mencat = null;
-            //se recorre el objeto lista y se muestra en la tabla 
-            for (int i = 0; i <= longitud - 1; i++)
-            {
-                //aqui se carga y se arma la tabla html recursomenu es un archivo donde hay cadenas de string muy grandes
-                mencat += "<tr><td>" + obj[i].Name + "</td>";
+            int menID = int.Parse(Id);
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
+            MenuCategory menCat = _mencatDAO.FindById(menID);
 
-                if (obj[i].Status.ToString() == "Activo")
-                {
-                    mencat += RecursosMenu1.Activo;
-                }
-                else
-                {
-                    mencat += RecursosMenu1.Inactivo;
-                }
-
-                mencat += RecursosMenu1.Accion1;
-                mencat += obj[i].Id;
-                mencat += RecursosMenu1.Accion2;
-                mencat += RecursosMenu1.CerrarTR;
-
-            }
-
+            return menCat;
         }
-
-    //Genera una lista de tipo Menu Categoria
-     public IList<MenuCategory> Generar_Lista()
-     {
-         FactoryDAO factoryDAO = FactoryDAO.Intance;
-         IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
-         IList<MenuCategory> obj = _mencatDAO.GetAll();
-         return obj;
-     }
-
-     //guarda objeto menu categoria en la base de datos
-     public void Guardar_Categoria(MenuCategory obj)
-     {
-
-         FactoryDAO factoryDAO = FactoryDAO.Intance;
-         IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
-         _mencatDAO.Save(obj);
-
-
-     }
-
 
   }  
 }

@@ -55,23 +55,16 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="panel-body">
-                                     <div class="row">
-                    <table id="plantillacategoria" class="table table-bordered table-striped dataTable">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Estatus</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <asp:Literal ID="Tabla" runat="server"></asp:Literal>
-                    </table>
+                                     <div class="table-responsive">
+                                        <asp:HiddenField ID="MenuCatModifyId" runat="server" Value="" />
+
+                                        <asp:Table ID="CategoryMenu" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
+                                </div>
                 </div>
                                         
                                 </div>
                             </div>
                         </div>
-                    </div>
             
                
            <!-- aqui se carga la tabla con las categorias busca arreglar la de arriba para que solo salga esa-->
@@ -96,7 +89,9 @@
                                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                         <div class="form-group">
                                             <label class="control-label">Nombre de la Categoria del menú</label>
-                                            <asp:TextBox ID="TextBoxModificar" CssClass="form-control" placeholder="" MaxLength="20"  runat="server" />
+                                            <asp:TextBox ID="TextBoxModificar" CssClass="form-control" placeholder="" MaxLength="20"  runat="server" name="nombre" required />
+                                        
+                                        
                                         </div>
                                     </div>
                                 </div>
@@ -132,11 +127,62 @@
                                  </div>
                             </div>
                          <div class="modal-footer">
-                            <asp:Button id="BotonAgregarCategoria" Text="Agregar" CssClass="btn btn-success" OnClick="BotonAgregarCategoria_Click" runat="server"/>
+                            <asp:Button id="BotonAgregarCategoria" Text="Agregar" CssClass="btn btn-success" OnClick="BotonAgregarCategoria_Click" OnClientClick="cambiarValor" runat="server"/>
                             <asp:Button id="BotonCancelarCategoria" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
                      </div>
                 </div>
     </div> 
+
+       <script type="text/javascript">
+
+
+
+           $(document).ready(function () {
+               setValue();
+               ajaxRes();
+           });
+
+           function ajaxRes() {
+               $('.table > tbody > tr > td:nth-child(3) > a')
+                   .click(function (e) {
+                       e.preventDefault();
+                       var prueba = document.getElementById("<%=MenuCatModifyId.ClientID%>").value;
+                                    var params = "{'Id':'" + prueba + "'}";
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "ListarCategoria.aspx/GetData",
+                                        data: params,
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: function (response) {
+                                            var local = response;
+                                            document.getElementById("<%=TextBoxModificar.ClientID%>").value = local.d.Name;
+
+
+
+                                    },
+                                        failure: function (response) {
+                                            alert("_");
+                                        }
+                                    });
+                        });
+                        }
+                        function setValue() {
+                            $('.table > tbody > tr > td:nth-child(3) > a')
+                            .click(function () {
+                                var padreId = $(this).parent().parent().attr("data-id");
+                                document.getElementById("<%=MenuCatModifyId.ClientID%>").value = padreId;
+
+                        });
+                        }
+
+
+
+
+
+
+    </script>
 
     </asp:Content>
