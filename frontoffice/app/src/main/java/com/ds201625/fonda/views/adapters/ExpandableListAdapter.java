@@ -23,7 +23,7 @@ import java.util.Map;
  */
 
 /**
- *  Clase para llenar la lista expandible de el historial de visitas de restaurant
+ *  Clase para llenar la lista expandible del historial de visitas de restaurant
  */
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
@@ -35,12 +35,12 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      *Constructor de la clase ExpandableListAdapter
-     * @param context
-     * @param nameRestaurant
-     * @param collectionVisits
-     * @param categoryRestaurant
-     * @param addressRestaurant
-     * @param datePaymentRestaurant
+     * @param context               Context que define los recursos especificos de la aplicacion
+     * @param nameRestaurant        Lista de String que define el nombre del restaurant
+     * @param collectionVisits      Lista de String que define todos los datos del restaurant
+     * @param categoryRestaurant    Lista de string que define la categoria del restaurant
+     * @param addressRestaurant     Lista de string que define la direccion del Restaurant
+     * @param datePaymentRestaurant Lista de string que define la fecha de pago de una visita a un restaurant
      */
     public ExpandableListAdapter(Context context, List<String> nameRestaurant,
                                  Map<String, List<String>> collectionVisits, List<String> categoryRestaurant, List<String> addressRestaurant, List<String> datePaymentRestaurant) {
@@ -54,9 +54,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      * Metodo para obtener el hijo de la lista expandible
-     * @param groupPosition
-     * @param childPosition
-     * @return Lista de String con el nombre del Restaurant
+     * @param groupPosition    Entero que define la posicion del grupo padre de la lista expandible
+     * @param childPosition    Entero que define la posicion del grupo hijo de la lista expandible
+     * @return Lista de String con el nombre del restaurant
      */
     public Object getChild(int groupPosition, int childPosition) {
         return collectionVisits.get(nameRestaurant.get(groupPosition)).get(childPosition);
@@ -64,11 +64,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      * Metodo que pinta la lista expandible de la vista de los hijos
-     * @param groupPosition
-     * @param childPosition
-     * @param isLastChild
-     * @param convertView
-     * @param parent
+     * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
+     * @param childPosition Entero que define la posicion del grupo hijo de la lista expandible
+     * @param isLastChild   Boolean que define el estado de la posicion del grupo hijo de la lista expandible
+     * @param convertView   Vista que define la vista del grupo hijo de la lista expandible
+     * @param parent        Vista que define el grupo de vistas de la lista expandible
      * @return la vista del ConverView de los hijos
      */
     public View getChildView(final int groupPosition, final int childPosition,
@@ -86,10 +86,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      * Metodo que pinta la lista expandible de los padres
-     * @param groupPosition
-     * @param isExpanded
-     * @param convertView
-     * @param parent
+     * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
+     * @param isExpanded    Boolean que define el estado de la expansion de la lista.
+     * @param convertView   Vista que define la vista del grupo hijo de la lista expandible
+     * @param parent        Vista que define el grupo de vistas de la lista expandible
      * @return la vista  del converView del grupo
      */
     public View getGroupView(int groupPosition, boolean isExpanded,
@@ -111,72 +111,78 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView nameRestaurant = (TextView) convertView.findViewById(R.id.name_restaurant);
         TextView locationRestaurant = (TextView) convertView.findViewById(R.id.location_restaurant);
         TextView descriptionRestaurant = (TextView) convertView.findViewById(R.id.description_restaurant);
-        if((restaurantList).equals("The dining room"))
+        if((restaurantList).equals("The dining room")) {
             icon.setImageResource(R.mipmap.ic_restaurant001);
-        if((restaurantList).equals("Mogi Mirin"))
+        }
+        if((restaurantList).equals("Mogi Mirin")) {
             icon.setImageResource(R.mipmap.ic_restaurant002);
-        if((restaurantList).equals("Gordo & Magro"))
+        }
+        if((restaurantList).equals("Gordo & Magro")) {
             icon.setImageResource(R.mipmap.ic_restaurant003);
-        if((restaurantList).equals("La Casona"))
+        }
+        if((restaurantList).equals("La Casona")) {
             icon.setImageResource(R.mipmap.ic_restaurant004);
-        if((restaurantList).equals("Tony's"))
+        }
+        if((restaurantList).equals("Tony's")) {
             icon.setImageResource(R.mipmap.ic_restaurant005);
+        }
         nameRestaurant.setTypeface(null, Typeface.BOLD);
         nameRestaurant.setText(restaurantList);
         locationRestaurant.setText(addressList);
         descriptionRestaurant.setText(categoryList);
         dateVisit.setText(datePaymentList);
+
         return convertView;
     }
 
     /**
-     * metodo qe obtiene el numero de hijos de la lista expandible
-     * @param groupPosition
-     * @return entero con la cantidad de hijos de la lista.
+     * Metodo qe obtiene el numero de hijos de la lista expandible
+     * @param groupPosition  Entero que define la posicion del grupo padre de la lista expandible
+     * @return Entero con la cantidad de hijos de la lista.
      */
     public int getChildrenCount(int groupPosition) {
         return collectionVisits.get(nameRestaurant.get(groupPosition)).size();
     }
 
     /**
-     * metodo que obtiene el grupo la lista expandible
-     * @param groupPosition
-     * @return nombre de restaurant
+     * Metodo que obtiene el grupo la lista expandible
+     * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
+     * @return Nombre de restaurant
      */
     public Object getGroup(int groupPosition) {
         return nameRestaurant.get(groupPosition);
     }
 
     /**
-     * metodo que obtiene el grupo la lista expandible
-     * @param groupPosition
-     * @return direccion de Restaurant
+     * Metodo que obtiene el grupo la lista expandible
+     * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
+     * @return Direccion de Restaurant
      */
     public Object getGroupAddress(int groupPosition) {
         return addressRestaurant.get(groupPosition);
     }
 
     /**
-     * metodo que obtiene el grupo la lista expandible
-     * @param groupPosition
-     * @return categoria de Restaurant
+     * Metodo que obtiene el grupo la lista expandible
+     * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
+     * @return Categoria de Restaurant
      */
     public Object getGroupCategory(int groupPosition) {
         return categoryRestaurant.get(groupPosition);
     }
 
     /**
-     * metodo que obtiene el grupo la lista expandible
-     * @param groupPosition
-     * @return fecha de Restaurant
+     * Metodo que obtiene el grupo la lista expandible
+     * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
+     * @return Fecha de Restaurant
      */
     public Object getGroupDate(int groupPosition) {
         return datePaymentRestaurant.get(groupPosition);
     }
 
     /**
-     * metodo que obtiene la cantidad de elementos del grupo padre de la lista expandible
-     * @return numero de elementos
+     * Metodo que obtiene la cantidad de elementos del grupo padre de la lista expandible
+     * @return Numero de elementos
      */
     public int getGroupCount() {
         return nameRestaurant.size();
@@ -184,8 +190,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      * Metodo que obtiene el id del grupo padre de la lista expadible
-     * @param groupPosition
-     * @return variable long que indica el id del grupo
+     * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
+     * @return Variable long que indica el id del grupo
      */
     public long getGroupId(int groupPosition) {
         return groupPosition;
@@ -193,9 +199,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      * Metodo que obtiene el id del grupo de hijos de la lista expadible
-     * @param groupPosition
-     * @param childPosition
-     * @return variable long que indica el id del grupo
+     * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
+     * @param childPosition Entero que define la posicion del grupo hijo de la lista expandible
+     * @return Variable long que indica el id del grupo
      */
     public long getChildId(int groupPosition, int childPosition) {
         return childPosition;
@@ -203,7 +209,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      * Metodo que verica el estado de los id de la lista expandible
-     * @return variable boolean
+     * @return Variable boolean
      */
     public boolean hasStableIds() {
         return true;
@@ -211,7 +217,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      * Metodo que verifica la seleccion de los hijos de la lista expandible
-     * @return variable boolean
+     * @return Variable boolean
      */
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;

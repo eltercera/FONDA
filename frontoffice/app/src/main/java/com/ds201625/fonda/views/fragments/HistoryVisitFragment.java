@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Clase de Fragment que maneja el Historial de Visitas al Restaurant
+ * Clase de Fragment que maneja el historial de visitas al restaurant
  */
 public class HistoryVisitFragment extends BaseFragment {
     private List<String> groupNameRestaurant;
@@ -29,14 +29,15 @@ public class HistoryVisitFragment extends BaseFragment {
     private List<String> groupAddressRestaurant;
     private List<String> groupDatePaymentRestaurant;
     private List<String> childList;
+    private List<Invoice> listInvoice;
     private Map<String, List<String>> collectionVisits;
     private ExpandableListView expListView;
     private HistoryVisitsRestaurantService histoyVisitsRestaurantService;
-    private List<Invoice> listInvoice;
+    private Iterator iterator;
 
     /**
-     * Metodo que se ejecuta al instanciar el Fragment
-     * @param savedInstanceState
+     * Metodo que se ejecuta al instanciar el fragment
+     * @param savedInstanceState Bundle que define el estado de la instancia
      */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,18 +45,18 @@ public class HistoryVisitFragment extends BaseFragment {
     }
 
     /**
-     * Metodo que crea la vista del historial de visitas o pagos al restaurant
+     * Metodo que crea la vista del historial de visitas o pagos del restaurant
      */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) { createGroupList();
-      View layout =  (inflater.inflate(R.layout.fragment_historial_visitas,container,false));
+      View layout = (inflater.inflate(R.layout.fragment_historial_visitas,container,false));
         createCollection();
 
         expListView = (ExpandableListView) layout.findViewById(R.id.restaurant_list);
         final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
-                getContext(),  groupNameRestaurant,collectionVisits,  groupCategoryRestaurant,
+                getContext(), groupNameRestaurant,collectionVisits, groupCategoryRestaurant,
                 groupAddressRestaurant, groupDatePaymentRestaurant);
         expListView.setAdapter(expListAdapter);
 
@@ -63,12 +64,12 @@ public class HistoryVisitFragment extends BaseFragment {
 
             /** Metodo para cargar la vista del detalle de historial de pagos
              * Metodo
-             * @param parent
-             * @param v
-             * @param groupPosition
-             * @param childPosition
-             * @param id
-             * @return variable boolean
+             * @param parent        Lista expandible que define la vista de la lista
+             * @param v             Vista que define la vista de el grupo hijo
+             * @param groupPosition Entero que define la posicion del grupo Padre
+             * @param childPosition Entero que define la posicion del grupo hijo
+             * @param id            Long que define el id del grupo
+             * @return Variable boolean
              */
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
@@ -97,48 +98,48 @@ public class HistoryVisitFragment extends BaseFragment {
 
         }
         groupNameRestaurant = new ArrayList<String>();
-        groupAddressRestaurant= new ArrayList<String>();
-        groupCategoryRestaurant= new ArrayList<String>();
+        groupAddressRestaurant = new ArrayList<String>();
+        groupCategoryRestaurant = new ArrayList<String>();
         groupDatePaymentRestaurant = new ArrayList<String>();
-        Iterator iterator = listInvoice.listIterator();
+        iterator = listInvoice.listIterator();
         while (iterator.hasNext()) {
             Invoice invoice = (Invoice) iterator.next();
             String nameRestaurant = invoice.getRestaurant().getName();
             String addresRestaurant = invoice.getRestaurant().getAddress();
             String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getNameCategory();
-            Date datePayment = invoice.getDate();
-            String newstring = new SimpleDateFormat("dd-MM-yyyy").format(datePayment);
+            Date date = invoice.getDate();
+            String datePayment = new SimpleDateFormat("dd-MM-yyyy").format(date);
             groupNameRestaurant.add(nameRestaurant);
             groupAddressRestaurant.add(addresRestaurant);
             groupCategoryRestaurant.add(categoryRestaurant);
-            groupDatePaymentRestaurant.add(newstring );
+            groupDatePaymentRestaurant.add(datePayment);
         }
         }
 
     /**
-     * Metodo que maneja el detalle del historial del pago del Restaurant
+     * Metodo que maneja el detalle del historial del pago del restaurant
      */
     private void createCollection() {
         // preparing detailRestaurant for collection(child)
         collectionVisits = new LinkedHashMap<String, List<String>>();
-        Iterator iterator = listInvoice.listIterator();
+        iterator = listInvoice.listIterator();
         while (iterator.hasNext()) {
             Invoice invoice = (Invoice) iterator.next();
             String nameRestaurant = invoice.getRestaurant().getName();
             String addresRestaurant = invoice.getRestaurant().getAddress();
             String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getNameCategory();
             float tax = invoice.getTax();
-            float tip= invoice.getTip();
+            float tip = invoice.getTip();
             float totalPayment = invoice.getTotal();
             String datePayment = new SimpleDateFormat("dd-MM-yyyy").format(invoice.getDate());
-            String name= invoice.getProfile().getProfileName();
-            String[] data1 = {"Nombre: "+name, "Restaurant :"+nameRestaurant,"Direccion: "
+            String name = invoice.getProfile().getProfileName();
+            String[] dataDetailHistoryVisits= {"Nombre: "+name, "Restaurant :"+nameRestaurant,"Direccion: "
                     +addresRestaurant,"Categoria: "+categoryRestaurant,"Fecha: "+datePayment,"Propina: "
                     +tip,"I.V.A: "+tax,"Monto Cancelado: "+totalPayment};
 
             for (String listName : groupNameRestaurant) {
                 if (listName.equals(nameRestaurant)) {
-                    loadChild(data1);
+                    loadChild(dataDetailHistoryVisits);
                     collectionVisits.put(listName, childList);
                 }
             }
@@ -147,11 +148,12 @@ public class HistoryVisitFragment extends BaseFragment {
 
     /**
      * Metodo que carga a una lista el detalle del historial de pagos del restaurant
-     * @param restaurantDetails
+     * @param restaurantDetails Array de String que define los datos del detalle del pago
      */
     private void loadChild(String[] restaurantDetails) {
         childList = new ArrayList<String>();
-        for (String model : restaurantDetails)
+        for (String model : restaurantDetails) {
             childList.add(model);
+        }
     }
 }
