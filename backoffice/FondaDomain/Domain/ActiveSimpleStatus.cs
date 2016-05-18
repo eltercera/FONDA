@@ -18,7 +18,7 @@ namespace com.ds201625.fonda.Domain
 		protected ActiveSimpleStatus () : base () 
 		{
 			StatusId = 1;
-			Description = "Estado Activo Simple";
+			Description = GeneralRes.ActiveSimpleStatusDes;
 		}
 
 		/// <summary>
@@ -40,7 +40,7 @@ namespace com.ds201625.fonda.Domain
 		/// <returns>Activo en String</returns>
 		public override string ToString ()
 		{
-			return "Activo";
+            return GeneralRes.ActiveSimpleStatusString;
 		}
 	}
 }

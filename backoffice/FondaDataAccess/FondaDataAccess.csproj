@@ -76,10 +76,12 @@
     <Compile Include="HibernateDAO\FluentMappings\DayMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\DishMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\DishOrderMap.cs" />
-    <Compile Include="HibernateDAO\FluentMappings\FreeTableStatusMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\EmployeeMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\MenuCategoryMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OpenAccountStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\OrderAccountMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\RoleMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\FreeTableStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\RestaurantCategoryMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\RestaurantMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\ScheduleMap.cs" />
@@ -91,8 +93,10 @@
     <Compile Include="HibernateDAO\HibernateDayDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDishDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDishOrderDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateEmployeeDAO.cs" />
     <Compile Include="HibernateDAO\HibernateMenuCategoryDAO.cs" />
     <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateRoleDAO.cs" />
     <Compile Include="InterfaceDAO\ICashPaymentDAO.cs" />
     <Compile Include="InterfaceDAO\ICreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantCategoryDAO.cs" />
@@ -110,6 +114,7 @@
     <Compile Include="InterfaceDAO\IMenuCategoryDAO.cs" />
     <Compile Include="InterfaceDAO\IOrderAccountDao.cs" />
     <Compile Include="InterfaceDAO\IPaymentDao.cs" />
+    <Compile Include="InterfaceDAO\IRoleDAO.cs" />
     <Compile Include="InterfaceDAO\IRestaurantCategoryDAO.cs" />
     <Compile Include="InterfaceDAO\IRestaurantDAO.cs" />
     <Compile Include="InterfaceDAO\IScheduleDAO.cs" />
@@ -124,8 +129,6 @@
     <Compile Include="InterfaceDAO\IGenericPersonDAO.cs" />
     <Compile Include="InterfaceDAO\IPersonDAO.cs" />
     <Compile Include="InterfaceDAO\ICompanyDAO.cs" />
-    <Compile Include="FactoryDAO\FactoryDAO.cs" />
-    <Compile Include="FactoryDAO\IFactoryDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDAO.cs" />
     <Compile Include="InterfaceDAO\IStatusDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\StatusMap.cs" />
@@ -151,6 +154,15 @@
     <Compile Include="HibernateDAO\HibernateNounBaseEntityDAO.cs" />
     <Compile Include="HibernateDAO\HibernateGenericPersonDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCompanyDAO.cs" />
+    <Compile Include="InterfaceDAO\ITokenDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateTokenDAO.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\TokenMap.cs" />
+    <Compile Include="FondaDAOExceptions\SaveEntityFondaDAOException.cs" />
+    <Compile Include="FondaDAOExceptions\FondaDAOException.cs" />
+    <Compile Include="InterfaceDAO\IActiveSimpleStatusDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateActiveSimpleStatus.cs" />
+    <Compile Include="FactoryDAO\IFactoryDAO.cs" />
+    <Compile Include="FactoryDAO\FatoryDAO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -162,7 +174,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
