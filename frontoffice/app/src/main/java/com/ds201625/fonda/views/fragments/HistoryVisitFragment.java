@@ -29,15 +29,54 @@ import java.util.Map;
  * Clase de Fragment que maneja el historial de visitas al restaurant
  */
 public class HistoryVisitFragment extends BaseFragment {
+    /**
+     * Lista de String que contiene el nombre del restaurante
+      */
     private List<String> groupNameRestaurant;
+
+    /**
+     * Lista de String que contiene la categoria del restaurante
+     */
     private List<String> groupCategoryRestaurant;
+
+    /**
+     * Lista de String que contiene la direccion del restaurante
+     */
     private List<String> groupAddressRestaurant;
+
+    /**
+     * Lista de String que contiene el pago del restaurante
+     */
     private List<String> groupDatePaymentRestaurant;
+
+    /**
+     * Lista de String que contiene el grupo de hijos de la lista expandible
+     */
     private List<String> childList;
+
+    /**
+     * Lista de String que contiene la lista de facturas asociadas a un restaurante
+     */
     private List<Invoice> listInvoice;
+
+    /**
+     * Lista de String que contiene el historial de pagos del restaurant
+     */
     private Map<String, List<String>> collectionVisits;
+
+    /**
+     * Vista de lista expandible
+     */
     private ExpandableListView expListView;
+
+    /**
+     *  Servicio de historial de visitas de un restaurante
+     */
     private HistoryVisitsRestaurantService histoyVisitsRestaurantService;
+
+    /**
+     *  Iterador
+     */
     private Iterator iterator;
 
     /**

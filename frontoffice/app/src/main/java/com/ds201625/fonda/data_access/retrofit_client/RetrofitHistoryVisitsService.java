@@ -18,6 +18,10 @@ import retrofit2.Call;
 /**
  * Created by Adriana on 5/7/16.
  */
+
+/**
+ * Clase que implementa el servicio
+ */
 public class RetrofitHistoryVisitsService implements HistoryVisitsRestaurantService {
 
     private HistoryVisitsClient historyVisitsClient =

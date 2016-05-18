@@ -15,13 +15,6 @@ public class Restaurant extends Company {
         super();
     }
 
-    public Restaurant (String name,String address, RestaurantCategory restaurantCategory) {
-        //thi.logo = logo;
-        this.address = address;
-        this.restaurantCategory = restaurantCategory;
-        this.setName(name);
-    }
-
     public String getLogo() {
         return logo;
 

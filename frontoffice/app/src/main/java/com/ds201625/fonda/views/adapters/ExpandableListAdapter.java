@@ -26,6 +26,7 @@ import java.util.Map;
  *  Clase para llenar la lista expandible del historial de visitas de restaurant
  */
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
+
     private Context context;
     private Map<String, List<String>> collectionVisits;
     private List<String> nameRestaurant;
@@ -138,7 +139,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     /**
      * Metodo qe obtiene el numero de hijos de la lista expandible
      * @param groupPosition  Entero que define la posicion del grupo padre de la lista expandible
-     * @return Entero con la cantidad de hijos de la lista.
+     * @return entero con la cantidad de hijos de la lista.
      */
     public int getChildrenCount(int groupPosition) {
         return collectionVisits.get(nameRestaurant.get(groupPosition)).size();
@@ -147,7 +148,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     /**
      * Metodo que obtiene el grupo la lista expandible
      * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
-     * @return Nombre de restaurant
+     * @return nombre de restaurant
      */
     public Object getGroup(int groupPosition) {
         return nameRestaurant.get(groupPosition);
@@ -156,7 +157,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     /**
      * Metodo que obtiene el grupo la lista expandible
      * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
-     * @return Direccion de Restaurant
+     * @return direccion de Restaurant
      */
     public Object getGroupAddress(int groupPosition) {
         return addressRestaurant.get(groupPosition);
@@ -165,7 +166,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     /**
      * Metodo que obtiene el grupo la lista expandible
      * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
-     * @return Categoria de Restaurant
+     * @return categoria de Restaurant
      */
     public Object getGroupCategory(int groupPosition) {
         return categoryRestaurant.get(groupPosition);
@@ -174,7 +175,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     /**
      * Metodo que obtiene el grupo la lista expandible
      * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
-     * @return Fecha de Restaurant
+     * @return fecha de Restaurant
      */
     public Object getGroupDate(int groupPosition) {
         return datePaymentRestaurant.get(groupPosition);
@@ -182,7 +183,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      * Metodo que obtiene la cantidad de elementos del grupo padre de la lista expandible
-     * @return Numero de elementos
+     * @return numero de elementos
      */
     public int getGroupCount() {
         return nameRestaurant.size();
@@ -191,7 +192,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     /**
      * Metodo que obtiene el id del grupo padre de la lista expadible
      * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
-     * @return Variable long que indica el id del grupo
+     * @return variable long que indica el id del grupo
      */
     public long getGroupId(int groupPosition) {
         return groupPosition;
@@ -201,7 +202,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
      * Metodo que obtiene el id del grupo de hijos de la lista expadible
      * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
      * @param childPosition Entero que define la posicion del grupo hijo de la lista expandible
-     * @return Variable long que indica el id del grupo
+     * @return variable long que indica el id del grupo
      */
     public long getChildId(int groupPosition, int childPosition) {
         return childPosition;
@@ -209,7 +210,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      * Metodo que verica el estado de los id de la lista expandible
-     * @return Variable boolean
+     * @return variable boolean
      */
     public boolean hasStableIds() {
         return true;
@@ -217,10 +218,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     /**
      * Metodo que verifica la seleccion de los hijos de la lista expandible
-     * @return Variable boolean
+     * @return variable boolean
      */
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
-
 }
