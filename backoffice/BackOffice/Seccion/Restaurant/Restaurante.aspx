@@ -534,7 +534,7 @@ Restaurantes
              </div> 
             </div>
                         <div class="modal-footer">
-                            <asp:Button id="ButtonAdd" Text="Agregar" CssClass="btn btn-success" onclick="ValidarUsuario"  runat="server"/>
+                            <asp:Button id="ButtonAdd" Text="Agregar" CssClass="btn btn-success"  runat="server"/>
                             <asp:Button id="ButtonCancelA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
             </div>
