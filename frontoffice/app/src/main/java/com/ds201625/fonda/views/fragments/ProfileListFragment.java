@@ -16,6 +16,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.adapters.ProfileViewItemList;
 import com.ds201625.fonda.domains.Profile;
 
@@ -84,17 +88,23 @@ public class ProfileListFragment extends BaseFragment
                 public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.deleteProfile:
-                            String sal = "Fueron seleccionados los perfiles: ";
+                            String sal = "Fueron eliminados los perfiles.";
                             for (Profile p : profileList.getAllSeletedItems()) {
-                                sal += p.getProfileName() + ", ";
+                                ProfileService ps = FondaServiceFactory.getInstance()
+                                        .getProfileService(SessionData.getInstance().getToken());
+                                try {
+                                    ps.deleteProfile(p.getId());
+                                }
+                                catch (RestClientException e) {
+                                    e.printStackTrace();
+                                }
                             }
-                            Log.v("Elimidados: ", sal);
+                            Log.("Perfiles eliminados", sal);
                             break;
 
                         default:
                             return false;
                     }
-
                     return true;
                 }
 
