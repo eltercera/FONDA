@@ -12,6 +12,7 @@ public class Account extends BaseEntity {
 
     private Table table;
     private List<DishOrder> listDish;
+    private Commensal commensal;
 
     public Account() {
         super();
@@ -44,6 +45,14 @@ public class Account extends BaseEntity {
     public void addDish(DishOrder dish)
     {
         listDish.add(dish);
+    }
+
+    public Commensal getCommensal() {
+        return commensal;
+    }
+
+    public void setCommensal(Commensal commensal) {
+        this.commensal = commensal;
     }
 
 

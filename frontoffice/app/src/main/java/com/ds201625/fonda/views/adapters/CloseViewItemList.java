@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Currency;
 import com.ds201625.fonda.domains.Dish;
 import com.ds201625.fonda.domains.DishOrder;
 
@@ -20,8 +21,11 @@ import java.util.ArrayList;
 
 public class CloseViewItemList extends BaseArrayAdapter<DishOrder> {
 
-    public CloseViewItemList(Context context) {
+    private Currency currency;
+
+    public CloseViewItemList(Context context,Currency currency) {
         super(context, R.layout.item_close, R.id.txt,new ArrayList<DishOrder>());
+        this.currency = currency;
     }
 
     @Override
@@ -42,7 +46,7 @@ public class CloseViewItemList extends BaseArrayAdapter<DishOrder> {
         txtTitle2.setText(item.getDish().getDescription());
         txtTitle.setText(count);
         String cost = String.valueOf(item.getDish().getCost());
-        txtTitle3.setText(item.getDish().getCurrency().getSymbol()+ " " + cost);
+        txtTitle3.setText(currency.getSymbol()+ " " + cost);
 
         return convertView;
     }

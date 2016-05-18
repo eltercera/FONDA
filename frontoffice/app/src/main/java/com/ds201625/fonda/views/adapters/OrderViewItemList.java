@@ -35,7 +35,7 @@ public class OrderViewItemList extends BaseArrayAdapter<DishOrder> {
         txtTitle.setText(item.getDish().getDescription());
         txtTitle2.setText(item.getDish().getName());
         String cost = String.valueOf(item.getDish().getCost());
-        txtTitle3.setText(item.getDish().getCurrency().getSymbol()+ " " + cost);
+        txtTitle3.setText(cost);
         String count = String.valueOf(item.getCount());
         txtTitle4.setText("Cant: " + count);
         imageView.setImageResource(Integer.parseInt(item.getDish().getImage()));
