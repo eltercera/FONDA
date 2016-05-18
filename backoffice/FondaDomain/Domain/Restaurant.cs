@@ -43,10 +43,10 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
 		private IList <MenuCategory> _menuCategories;
 
-       /* /// <summary>
+        /// <summary>
         /// Lista de empleados de un restaurante
         /// </summary>
-        private IList <Employee> _employees;*/
+        private IList <Employee> _employees;
 
         /// <summary>
         /// Lista de las mesas de un restaurante
@@ -159,7 +159,7 @@ namespace com.ds201625.fonda.Domain
             set { _menuCategories = value; }
         }
 
-        /*public virtual IList <Employee> Employees
+        public virtual IList <Employee> Employees
         {
             /// <summary>
             /// Obtiene una lista de empleados de un Restaurante
@@ -171,7 +171,7 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe la lista de empleados de un Restaurante</value>
             set { _employees = value; }
         }
-        */
+        
         public virtual IList <Table> Tables
         {
             /// <summary>
