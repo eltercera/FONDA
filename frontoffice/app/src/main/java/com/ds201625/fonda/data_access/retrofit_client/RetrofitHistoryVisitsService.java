@@ -24,13 +24,23 @@ import retrofit2.Call;
  */
 public class RetrofitHistoryVisitsService implements HistoryVisitsRestaurantService {
 
+    /**
+     * HistoryVisitsCliente que crea el servicio
+     */
     private HistoryVisitsClient historyVisitsClient =
             RetrofitService.getInstance().createService(HistoryVisitsClient.class);
 
+    /**
+     * Constructor de RetrofitHistoryVisitsService
+     */
     public RetrofitHistoryVisitsService() {
         super();
     }
 
+    /**
+     * Metodo que hace la llamada al servicio
+     * @return llamada
+     */
     @Override
     public List<Invoice> getHistoryVisits() {
         Call<List<Invoice>> call = historyVisitsClient.getHistoryVisits();
