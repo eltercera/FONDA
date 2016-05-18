@@ -12,6 +12,11 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.views.adapters.ExpandableListAdapter;
+
+import org.apache.http.params.CoreConnectionPNames;
+
+import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -88,61 +93,75 @@ public class HistoryVisitFragment extends BaseFragment {
      * Metodo que consulta el historial de pagos en el Web Service
      */
     private void createGroupList() {
-        try{
+        try {
             histoyVisitsRestaurantService = FondaServiceFactory.getInstance().getHistoryVisitsService();
-            listInvoice= histoyVisitsRestaurantService.getHistoryVisits();
-        }catch (Exception e){
-            System.out.println("asd");
-        }
-        catch (ExceptionInInitializerError e){
+            if (histoyVisitsRestaurantService == null) {
 
+            }
+            listInvoice = histoyVisitsRestaurantService.getHistoryVisits();
+            groupNameRestaurant = new ArrayList<String>();
+            groupAddressRestaurant = new ArrayList<String>();
+            groupCategoryRestaurant = new ArrayList<String>();
+            groupDatePaymentRestaurant = new ArrayList<String>();
+
+            iterator = listInvoice.listIterator();
+            while (iterator.hasNext()) {
+                Invoice invoice = (Invoice) iterator.next();
+                String nameRestaurant = invoice.getRestaurant().getName();
+                String addresRestaurant = invoice.getRestaurant().getAddress();
+                String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getNameCategory();
+                Date date = invoice.getDate();
+                String datePayment = new SimpleDateFormat("dd-MM-yyyy").format(date);
+                groupNameRestaurant.add(nameRestaurant);
+                groupAddressRestaurant.add(addresRestaurant);
+                groupCategoryRestaurant.add(categoryRestaurant);
+                groupDatePaymentRestaurant.add(datePayment);
+            }
         }
-        groupNameRestaurant = new ArrayList<String>();
-        groupAddressRestaurant = new ArrayList<String>();
-        groupCategoryRestaurant = new ArrayList<String>();
-        groupDatePaymentRestaurant = new ArrayList<String>();
-        iterator = listInvoice.listIterator();
-        while (iterator.hasNext()) {
-            Invoice invoice = (Invoice) iterator.next();
-            String nameRestaurant = invoice.getRestaurant().getName();
-            String addresRestaurant = invoice.getRestaurant().getAddress();
-            String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getNameCategory();
-            Date date = invoice.getDate();
-            String datePayment = new SimpleDateFormat("dd-MM-yyyy").format(date);
-            groupNameRestaurant.add(nameRestaurant);
-            groupAddressRestaurant.add(addresRestaurant);
-            groupCategoryRestaurant.add(categoryRestaurant);
-            groupDatePaymentRestaurant.add(datePayment);
+        catch (NullPointerException e){
+            System.out.println("No es posible realizar la conexión con el Web Server ");
         }
+        catch (Exception e){
+            System.out.println("Error en la Conexión");
         }
+    }
 
     /**
      * Metodo que maneja el detalle del historial del pago del restaurant
      */
     private void createCollection() {
         // preparing detailRestaurant for collection(child)
-        collectionVisits = new LinkedHashMap<String, List<String>>();
-        iterator = listInvoice.listIterator();
-        while (iterator.hasNext()) {
-            Invoice invoice = (Invoice) iterator.next();
-            String nameRestaurant = invoice.getRestaurant().getName();
-            String addresRestaurant = invoice.getRestaurant().getAddress();
-            String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getNameCategory();
-            float tax = invoice.getTax();
-            float tip = invoice.getTip();
-            float totalPayment = invoice.getTotal();
-            String datePayment = new SimpleDateFormat("dd-MM-yyyy").format(invoice.getDate());
-            String name = invoice.getProfile().getProfileName();
-            String[] dataDetailHistoryVisits= {"Nombre: "+name, "Restaurant :"+nameRestaurant,"Direccion: "
-                    +addresRestaurant,"Categoria: "+categoryRestaurant,"Fecha: "+datePayment,"Propina: "
-                    +tip,"I.V.A: "+tax,"Monto Cancelado: "+totalPayment};
+        try{
+            collectionVisits = new LinkedHashMap<String, List<String>>();
+            iterator = listInvoice.listIterator();
+            while (iterator.hasNext()) {
+                Invoice invoice = (Invoice) iterator.next();
+                String nameRestaurant = invoice.getRestaurant().getName();
+                String addresRestaurant = invoice.getRestaurant().getAddress();
+                String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getNameCategory();
+                float tax = invoice.getTax();
+                float tip = invoice.getTip();
+                float totalPayment = invoice.getTotal();
+                String datePayment = new SimpleDateFormat("dd-MM-yyyy").format(invoice.getDate());
+                String name = invoice.getProfile().getProfileName();
+                String[] dataDetailHistoryVisits= {"Nombre: "+name, "Restaurant :"+nameRestaurant,"Direccion: "
+                        +addresRestaurant,"Categoria: "+categoryRestaurant,"Fecha: "+datePayment,"Propina: "
+                        +tip,"I.V.A: "+tax,"Monto Cancelado: "+totalPayment};
 
-            for (String listName : groupNameRestaurant) {
-                if (listName.equals(nameRestaurant)) {
-                    loadChild(dataDetailHistoryVisits);
-                    collectionVisits.put(listName, childList);
+                for (String listName : groupNameRestaurant) {
+                    if (listName.equals(nameRestaurant)) {
+                        loadChild(dataDetailHistoryVisits);
+                        collectionVisits.put(listName, childList);
+                    }
                 }
             }
+        }
+        catch (NullPointerException e){
+            System.out.println("No es posible realizar la conexión con el Web Server ");
+        }
+
+        catch (Exception e){
+            System.out.println("Error en la Conexión");
         }
     }
 
