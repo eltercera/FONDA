@@ -9,26 +9,24 @@ public class Dish extends NounBaseEntity{
     private float cost;
     private String image;
     private Boolean suggestion;
-    private Currency currency;
+
 
     public Dish() {
         super();
     }
 
-    public Dish(String description, float cost, String image, Boolean suggestion,Currency currency ) {
+    public Dish(String description, float cost, String image, Boolean suggestion ) {
         this.description = description;
         this.cost = cost;
         this.image = image;
         this.suggestion = suggestion;
-        this.currency = currency;
     }
 
-    public Dish(String name,String description, float cost,String image,Currency currency) {
+    public Dish(String name,String description, float cost,String image) {
         this.setName(name);
         this.description = description;
         this.cost = cost;
         this.image = image;
-        this.currency = currency;
     }
 
     public String getDescription() {
@@ -63,11 +61,4 @@ public class Dish extends NounBaseEntity{
         this.suggestion = suggestion;
     }
 
-    public Currency getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
-    }
 }

@@ -40,9 +40,9 @@ public class InvoiceFragment extends BaseFragment {
     private ArrayList<DishOrder> listDishO = new ArrayList<DishOrder>();
 
     Currency currency = new Currency("Bs.");
-    Dish dish1 = new Dish("Pasta","Pasta Con Salmon",1000,String.valueOf(R.drawable.salmonpasta),currency);
-    Dish dish2 = new Dish("Refresco","Coca-Cola",100,String.valueOf(R.drawable.refresco),currency);
-    Dish dish3 = new Dish("Torta","Terciopelo Rojo",500,String.valueOf(R.drawable.redv2),currency);
+    Dish dish1 = new Dish("Pasta","Pasta Con Salmon",1000,String.valueOf(R.drawable.salmonpasta));
+    Dish dish2 = new Dish("Refresco","Coca-Cola",100,String.valueOf(R.drawable.refresco));
+    Dish dish3 = new Dish("Torta","Terciopelo Rojo",500,String.valueOf(R.drawable.redv2));
 
     Table table = new Table(1,2);
     Date date = new Date();
@@ -74,7 +74,7 @@ public class InvoiceFragment extends BaseFragment {
 
         View layout = inflater.inflate(R.layout.fragment_factura,container,false);
 
-        invoiceViewItem = new InvoiceViewItemList(getContext());
+        invoiceViewItem = new InvoiceViewItemList(getContext(),currency);
         invoiceViewItem.addAll(listDishO);
 
         float sub = calcularSubTotal(listDishO);

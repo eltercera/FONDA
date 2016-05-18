@@ -36,9 +36,9 @@ public class CurrentOrderFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Currency currency = new Currency("Bs.");
-        Dish dish1 = new Dish("Pasta","Pasta Con Salmon",1000,String.valueOf(R.drawable.salmonpasta),currency);
-        Dish dish2 = new Dish("Refresco","Coca-Cola",100,String.valueOf(R.drawable.refresco),currency);
-        Dish dish3 = new Dish("Torta","Terciopelo Rojo",500,String.valueOf(R.drawable.redv2),currency);
+        Dish dish1 = new Dish("Pasta","Pasta Con Salmon",1000,String.valueOf(R.drawable.salmonpasta));
+        Dish dish2 = new Dish("Refresco","Coca-Cola",100,String.valueOf(R.drawable.refresco));
+        Dish dish3 = new Dish("Torta","Terciopelo Rojo",500,String.valueOf(R.drawable.redv2));
 
         DishOrder dishO1 = new DishOrder(dish1,1);
         DishOrder dishO2 = new DishOrder(dish2,1);
