@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,6 +83,8 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
     private static CreditCardFragment ccFrag;
 
+    private static ProfileListFragment profFrag;
+
     private void getAllElements(){
         mViewPager = (ViewPager) findViewById(R.id.containerO);
         number = (EditText)findViewById(R.id.eT_number);
@@ -92,7 +95,6 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         rBMaster = (RadioButton) findViewById(R.id.rBMaster);
         rBVisa = (RadioButton) findViewById(R.id.rBVisa);
         spinner = (Spinner) findViewById(R.id.spinnerCC);
-        saveCC = (Button)findViewById(R.id.bSave);
 
     }
 
@@ -213,6 +215,9 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
                 if ((acceptCCButton != null) && (saveCCButton != null)) {
                     acceptCCButton.setVisible(true);
                     saveCCButton.setVisible(true);
+                }else
+                {
+                    Log.v("Hola", "PRUEBAAAAA");
                 }
             }else if (fragment.equals(factFrag)) {
             if (cerrarBotton != null)
@@ -272,9 +277,10 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
                 download();
                 break;
             case R.id.action_favorite_save_cc:
-                save();
+                validationCC();
+                break;
             case R.id.action_favorite_accept_cc:
-                //acceptCC();
+                acceptCC();
                 break;
         }
         return true;
@@ -307,26 +313,6 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         showFragment(ordPay);
     }
 
-    private void save() {
-        getAllElements();
-        HandlerSQLite handlerSQLite = new HandlerSQLite(this);
-        String numberCC = number.getText().toString();
-        String nameCC = name.getText().toString();
-        int idOwnerCC = Integer.parseInt(idOwner.getText().toString());
-        String expCC = expiration.getText().toString();
-        int cvvCC = Integer.parseInt(cvv.getText().toString());
-        boolean typeMaster = rBMaster.isChecked();
-        boolean typeVisa = rBVisa.isChecked();
-        if(typeMaster) {
-            handlerSQLite.save(numberCC, nameCC, idOwnerCC, expCC, cvvCC, "Mastercard");
-        }
-        else if(typeVisa) {
-            handlerSQLite.save(numberCC, nameCC, idOwnerCC, expCC, cvvCC, "Visa");
-        }
-
-        Toast.makeText(this, "Agregado ", Toast.LENGTH_SHORT).show();
-
-    }
 
     private void buscar() {
 
@@ -388,12 +374,8 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
     }
 
-    public void eraseCC (View view){
-        HandlerSQLite handlerSQLite = new HandlerSQLite(this);
-        handlerSQLite.erase();
-    }
 
-    public void acceptCC (View view){
+    public void acceptCC (){
         Bundle args = new Bundle();
         spinner = (Spinner) findViewById(R.id.spinnerCC);
         String cc = spinner.getSelectedItem().toString();
@@ -419,12 +401,13 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
     }
 
 
-    public void validationCC (View view){
+    public void validationCC (){
         getAllElements();
-        saveCC.setOnClickListener(new View.OnClickListener() {
+        saveCCButton.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onMenuItemClick(MenuItem item) {
                 validate();
+                return false;
             }
         });
 
@@ -446,6 +429,7 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         boolean cv = validateCvv(cvvCC);
 
         if (nu && na && id && cv && ex || typeMaster || typeVisa){
+
             saveCC();
         }
         else
@@ -461,9 +445,7 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
                 op = false;
                 number.setError("Debe contener 20 dígitos");
             }
-
         return op;
-
     }
 
     private boolean validateNameOwner(String nameO){
@@ -505,7 +487,12 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
     @Override
     public void OnProfileSelect(Profile profile) {
-
+        Bundle args = new Bundle();
+        String nameProf = profile.getProfileName();
+        ordPay = new OrderPaymentFragment();
+        args.putString("profile", nameProf);
+        ordPay.setArguments(args);
+        showFragment(ordPay);
     }
 
     @Override
@@ -522,4 +509,17 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
     public void OnProfileSelectionModeExit() {
 
     }
+
+    public static void changeFrag (int opc){
+        if(opc == 1){
+            profFrag = new ProfileListFragment();
+            showFragment(profFrag);
+        }
+        if(opc == 2) {
+            ccFrag = new CreditCardFragment();
+            showFragment(ccFrag);
+        }
+    }
+
+
 }

@@ -35,9 +35,8 @@ public class OrderPaymentFragment extends BaseFragment {
     private TextView tvTip;
     private View layout;
     private TextView tvAccount;
-    private CreditCardFragment ccFrag;
     private TextView date;
-    private ProfileListFragment profFrag;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -149,13 +148,10 @@ public class OrderPaymentFragment extends BaseFragment {
                         Toast.makeText(getContext(), "Su " + itemSelected, Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                       /* profFrag = new ProfileListFragment();
-                        OrdersActivity.showFragment(profFrag);*/
+                       OrdersActivity.changeFrag(1);
                         break;
                     case 2:
-
-                        ccFrag = new CreditCardFragment();
-                        OrdersActivity.showFragment(ccFrag);
+                        OrdersActivity.changeFrag(2);
                         break;
                 }
             }
