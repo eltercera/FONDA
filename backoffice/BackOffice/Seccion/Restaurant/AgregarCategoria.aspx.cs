@@ -10,6 +10,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using System.Web.Services;
 using System.Web.Script.Serialization;
+using System.Text.RegularExpressions;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -21,6 +22,9 @@ namespace BackOffice.Seccion.Restaurant
         {
             AlertSuccess_AgregarCategoria.Visible = false;
             AlertSuccess_ModificarCategoria.Visible = false;
+            AlertError_AgregarCategoria.Visible = false;
+            AlertError_ModificarCategoria.Visible = false;
+            //NombreCatA.Attributes.Add("required", "required");
             LoadTable();
         }
 
@@ -115,34 +119,63 @@ namespace BackOffice.Seccion.Restaurant
 
         }
 
+        private bool CategoryValidate(string name)
+        {
+            bool valid = true;
+            string patron = "^[A-Za-z]*$";
+            if (name == "")
+            {
+                valid = false;
+            }
 
+            if (!Regex.IsMatch(name, patron))
+            {
+                valid = false;
+            }
+            return valid;
+        }
 
 
         protected void ButtonAgregar_Click(object sender, EventArgs e)
         {
-            AlertSuccess_AgregarCategoria.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            RestaurantCategory _restcat = new RestaurantCategory();
             String nombreA = NombreCatA.Text;
-            _restcat.Name = nombreA;
-            _restcatDAO.Save(_restcat);
-            LoadTable();
+            if (CategoryValidate(nombreA))
+            {
+                AlertSuccess_AgregarCategoria.Visible = true;
+                FactoryDAO factoryDAO = FactoryDAO.Intance;
+                IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
+                RestaurantCategory _restcat = new RestaurantCategory();
+                _restcat.Name = nombreA;
+                _restcatDAO.Save(_restcat);
+                LoadTable();
+            }
+            else
+            {
+                AlertError_AgregarCategoria.Visible = true;
+            }
+            NombreCatA.Text = string.Empty;
         }
 
         protected void ButtonModificar_Click(object sender, EventArgs e)
         {
-            AlertSuccess_ModificarCategoria.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            string nameM;
-            string CategoryID = CategoryModifyId.Value;
-            int idCat = int.Parse(CategoryID);
-            RestaurantCategory _restaurant = _restcatDAO.FindById(idCat);
-            nameM = NombreCatM.Text;
-            _restaurant.Name = nameM;
-            _restcatDAO.Save(_restaurant);
-            LoadTable();
+            string nameM = NombreCatM.Text;
+            if (CategoryValidate(nameM))
+            {
+                AlertSuccess_ModificarCategoria.Visible = true;
+                FactoryDAO factoryDAO = FactoryDAO.Intance;
+                IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
+                string CategoryID = CategoryModifyId.Value;
+                int idCat = int.Parse(CategoryID);
+                RestaurantCategory _restaurant = _restcatDAO.FindById(idCat);
+                _restaurant.Name = nameM;
+                _restcatDAO.Save(_restaurant);
+                LoadTable();
+            }
+            else
+            {
+                AlertError_ModificarCategoria.Visible = true;
+            }
+            NombreCatM.Text = string.Empty;
         }
 
 

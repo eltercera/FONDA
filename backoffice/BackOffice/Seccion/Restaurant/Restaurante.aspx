@@ -21,6 +21,24 @@ Restaurantes
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 
+    <div id="AlertError_ModifyRestaurant" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-ban"></i> <strong>Error</strong> al modificar el restaurante
+            </div>
+        </div>
+    </div>
+
+<div id="AlertError_AddRestaurant" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-ban"></i> <strong>Error</strong> al agregar el restaurante
+            </div>
+        </div>
+    </div>
+
     <div id="AlertSuccess_AddRestaurant" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert alert-success fade in alert-dismissable">

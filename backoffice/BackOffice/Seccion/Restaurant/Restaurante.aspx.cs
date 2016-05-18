@@ -13,8 +13,8 @@ namespace BackOffice.Seccion.Restaurant
         {
             AlertSuccess_AddRestaurant.Visible = false;
             AlertSuccess_ModifyRestaurant.Visible = false;
-
-
+            AlertError_AddRestaurant.Visible = false;
+            AlertError_ModifyRestaurant.Visible = false;
         }
 
         public void ValidarUsuario(object sender, EventArgs e)
@@ -23,15 +23,7 @@ namespace BackOffice.Seccion.Restaurant
             validarUsuario();
         }
 
-        public void mensajeLogin(Boolean visible, string tipo)
-        {
-            switch (tipo)
-            {
-                case "Error":
-                    /*labelError.Visible = visible;*/ break;
-                
-            }
-        }
+
         public void validarUsuario()
         {
             string name = NameA.Text;
@@ -51,7 +43,7 @@ namespace BackOffice.Seccion.Restaurant
                 | category == "" | nationality=="" | zone=="" | currency=="")
             {
                 Console.WriteLine("ERROR ");
-                mensajeLogin(true, "Error");
+
             }
             else
             {

@@ -25,6 +25,23 @@ Agregar Categoria
   </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
+<div id="AlertError_ModificarCategoria" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-ban"></i> <strong>Error</strong> al modificar la categoría
+            </div>
+        </div>
+    </div>
+
+<div id="AlertError_AgregarCategoria" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-ban"></i> <strong>Error</strong> al agregar la categoría
+            </div>
+        </div>
+    </div>
 
     <div id="AlertSuccess_AgregarCategoria" class="row" runat="server">
         <div class="col-lg-12">
