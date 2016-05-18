@@ -58,6 +58,22 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return new HibernateMenuCategoryDAO();
         }
 
+        public IRoleDAO GetRoleDAO()
+        {
+            return new HibernateRoleDAO();
+
+        }
+        public IEmployeeDAO GetEmployeeDAO()
+        {
+            return new HibernateEmployeeDAO();
+        }
+
+        public ITokenDAO GetTokenDAO()
+        {
+            return new HibernateTokenDAO();
+        }
+
+
         public IInvoiceDao GetInvoiceDAO()
         {
             return new HibernateInvoiceDAO();
