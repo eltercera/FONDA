@@ -64,6 +64,29 @@ public class Invoice extends BaseEntity{
         super();
     }
 
+    public Invoice(float tip, float tax, float total, Restaurant restaurant, Date date,
+        Profile profile) {
+        this.tip = tip;
+        this.tax = tax;
+        this.total = total;
+        this.restaurant = restaurant;
+        this.date = date;
+        this.profile= profile;
+    }
+
+    public Invoice(float tip, float tax, float total, Restaurant restaurant, Date date,
+        Profile profile, Currency currency,Payment payment, Account account) {
+        this.tip = tip;
+        this.tax = tax;
+        this.total = total;
+        this.restaurant = restaurant;
+        this.date = date;
+        this.profile= profile;
+        this.currency= currency;
+        this.payment= payment;
+        this.account= account;
+    }
+
     /**
      * Metodo que obtiene la propina de la cuenta
      * @return propina
