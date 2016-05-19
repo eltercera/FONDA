@@ -44,8 +44,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             References(x => x.UserAccount)
                  .Column("fk_useraccount_id")
-                 .Not.Nullable();
-          
+                 .Not.Nullable()
+                 .Cascade.Persist();
+
             References(x => x.Status)
         .Column("fk_simple_status_id")
         .Not.Nullable()

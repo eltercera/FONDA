@@ -157,8 +157,8 @@
     <Compile Include="InterfaceDAO\ITokenDAO.cs" />
     <Compile Include="HibernateDAO\HibernateTokenDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\TokenMap.cs" />
-    <Compile Include="FondaDAOExceptions\SaveEntityFondaDAOException.cs" />
-    <Compile Include="FondaDAOExceptions\FondaDAOException.cs" />
+    <Compile Include="Exceptions\SaveEntityFondaDAOException.cs" />
+    <Compile Include="Exceptions\FondaDAOException.cs" />
     <Compile Include="InterfaceDAO\IActiveSimpleStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateActiveSimpleStatus.cs" />
     <Compile Include="FactoryDAO\IFactoryDAO.cs" />
@@ -174,7 +174,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

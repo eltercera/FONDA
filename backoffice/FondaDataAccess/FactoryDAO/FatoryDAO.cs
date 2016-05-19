@@ -135,15 +135,21 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 			return _factory.GetTableDAO();
 		}
 
-		public ActiveSimpleStatus GetActiveSimpleStatus()
+        public IZoneDAO GetZoneDAO()
+        {
+            return _factory.GetZoneDAO();
+        }
+
+        /*public ActiveSimpleStatus GetActiveSimpleStatus()
 		{
 			return _factory.GetActiveSimpleStatus ();
-		}
+		}*/
 
         public IZoneDAO GetZoneDAO()
         {
             return _factory.GetZoneDAO();
         }
+		
     }
 }
 

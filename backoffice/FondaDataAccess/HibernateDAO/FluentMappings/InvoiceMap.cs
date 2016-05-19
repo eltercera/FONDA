@@ -34,10 +34,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                .Not.Nullable()
                .Cascade.Persist();
 
-            References(x => x.RecordStatus)
+           /* References(x => x.RecordStatus)
                 .Column("fk_inv_status_id")
                 .Not.Nullable()
-                .Cascade.Persist();
+                .Cascade.Persist();*/
 
             /* References(x => x.Currency)
                  .Column("fk_currency_id")

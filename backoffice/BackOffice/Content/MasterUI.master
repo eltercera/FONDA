@@ -205,7 +205,7 @@
             </div>
         </div>
 
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
             <Scripts>
                 <asp:ScriptReference Path="~/Content/js/jquery.js" />
                 <asp:ScriptReference Path="~/Content/js/bootstrap.min.js" />

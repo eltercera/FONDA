@@ -94,7 +94,7 @@ namespace com.ds201625.fonda.Domain
             set { _currency = value; }
         }
 
-        public virtual Coordinate coordinate
+        public virtual Coordinate Coordinate
         {
             /// <summary>
             /// Obtiene las coordenadas de un restaurante
@@ -132,7 +132,7 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe la zona de ubicacion del restaurante</value>
             set { _zone = value; }
         }
-
+        
         public virtual Schedule Schedule
         {
             /// <summary>
@@ -171,7 +171,7 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe la lista de empleados de un Restaurante</value>
             set { _employees = value; }
         }
-
+        
         public virtual IList <Table> Tables
         {
             /// <summary>

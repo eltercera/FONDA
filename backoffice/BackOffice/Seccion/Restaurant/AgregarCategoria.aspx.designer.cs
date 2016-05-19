@@ -13,57 +13,111 @@ namespace BackOffice.Seccion.Restaurant {
     public partial class AgregarCategoria {
         
         /// <summary>
-        /// TextBox1 control.
+        /// AlertError_ModificarCategoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertError_ModificarCategoria;
         
         /// <summary>
-        /// Button3 control.
+        /// AlertError_AgregarCategoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertError_AgregarCategoria;
         
         /// <summary>
-        /// Button4 control.
+        /// AlertSuccess_AgregarCategoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_AgregarCategoria;
         
         /// <summary>
-        /// Value1 control.
+        /// AlertSuccess_ModificarCategoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Value1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ModificarCategoria;
         
         /// <summary>
-        /// Button1 control.
+        /// CategoryModifyId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.HiddenField CategoryModifyId;
         
         /// <summary>
-        /// Button2 control.
+        /// CategoryRest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Table CategoryRest;
+        
+        /// <summary>
+        /// NombreCatM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox NombreCatM;
+        
+        /// <summary>
+        /// ButtonModificar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonModificar;
+        
+        /// <summary>
+        /// ButtonCancelarM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCancelarM;
+        
+        /// <summary>
+        /// NombreCatA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox NombreCatA;
+        
+        /// <summary>
+        /// ButtonAgregar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAgregar;
+        
+        /// <summary>
+        /// ButtonCancelarA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCancelarA;
     }
 }
