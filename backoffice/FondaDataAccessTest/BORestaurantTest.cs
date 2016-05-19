@@ -70,8 +70,7 @@ namespace DataAccessTests
             Address = "Direccion de Prueba", Gender = 'M', BirthDate = Convert.ToDateTime("08/08/1991"), Username = "Usuario",
             Status = _facDAO.GetActiveSimpleStatus(), UserAccount = new UserAccount() { Email = "email@gmail.com", Password = "123",
             Status = _facDAO.GetActiveSimpleStatus()} , Role= new Role() { Name = "Administrador de Sistemas", Descripcion="Es el administrado"} };
-            _restaurant.Employees = new List<Employee>();
-            _restaurant.Employees.Add(_employee);
+
 
             Table _table = new Table() { Capacity = 2, Status = _facDAO.GetFreeTableStatus()  };
             _restaurant.Tables = new List<Table>();
