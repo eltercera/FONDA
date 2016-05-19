@@ -22,14 +22,14 @@ namespace BackOffice.Seccion.Restaurant {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ResourceRestaurant {
+    internal class RestaurantResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourceRestaurant() {
+        internal RestaurantResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace BackOffice.Seccion.Restaurant {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BackOffice.Seccion.Restaurant.ResourceRestaurant", typeof(ResourceRestaurant).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BackOffice.Seccion.Restaurant.RestaurantResource", typeof(RestaurantResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,47 +61,38 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string ActionCategory {
+        internal static string ActionCheckStatus {
             get {
-                return ResourceManager.GetString("ActionCategory", resourceCulture);
+                return ResourceManager.GetString("ActionCheckStatus", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string ActionRestaurant {
+        internal static string ActionInfo {
             get {
-                return ResourceManager.GetString("ActionRestaurant", resourceCulture);
+                return ResourceManager.GetString("ActionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;.
+        /// </summary>
+        internal static string ActionModify {
+            get {
+                return ResourceManager.GetString("ActionModify", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string ActionTableBusyStatus {
+        internal static string ActionUnCheckStatus {
             get {
-                return ResourceManager.GetString("ActionTableBusyStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        internal static string ActionTableFreeStatus {
-            get {
-                return ResourceManager.GetString("ActionTableFreeStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        internal static string ActionTableModify {
-            get {
-                return ResourceManager.GetString("ActionTableModify", resourceCulture);
+                return ResourceManager.GetString("ActionUnCheckStatus", resourceCulture);
             }
         }
         
@@ -111,15 +102,6 @@ namespace BackOffice.Seccion.Restaurant {
         internal static string Active {
             get {
                 return ResourceManager.GetString("Active", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;/td&gt;.
-        /// </summary>
-        internal static string Close {
-            get {
-                return ResourceManager.GetString("Close", resourceCulture);
             }
         }
         

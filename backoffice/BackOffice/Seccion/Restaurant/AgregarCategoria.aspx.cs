@@ -70,7 +70,7 @@ namespace BackOffice.Seccion.Restaurant
                         LinkButton action = new LinkButton();
                         action.Attributes["data-toggle"] = "modal";
                         action.Attributes["data-target"] = "#modificar";
-                        action.Text = ResourceRestaurant.ActionCategory;
+                        action.Text = RestaurantResource.ActionModify;
                         tCell.Controls.Add(action);
                     }
                     //Agrega la 

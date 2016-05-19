@@ -53,13 +53,13 @@ namespace BackOffice.Seccion.Restaurant
                 int quantity = 0;
                 if (status == statusActive)
                 {
-                    status = ResourceRestaurant.Active;
+                    status = RestaurantResource.Active;
                     user = "N/A";
                     quantity = 0;
                 }
                 else if (status == statusInactive)
                 {
-                    status = ResourceRestaurant.Inactive;
+                    status = RestaurantResource.Inactive;
                     user = "Usuario" + listTable[i].Id;
                     quantity = listTable[i].Capacity - 1;
 
@@ -92,11 +92,11 @@ namespace BackOffice.Seccion.Restaurant
                         LinkButton action = new LinkButton();
                         action.Attributes["data-toggle"] = "modal";
                         action.Attributes["data-target"] = "#modificar";
-                        action.Text = ResourceRestaurant.ActionTableModify;
+                        action.Text = RestaurantResource.ActionModify;
                         tCell.Controls.Add(action);
                         LinkButton active = new LinkButton();
                         active.Attributes["OnClick"] = "ChangeStatus";
-                        active.Text = ResourceRestaurant.ActionTableBusyStatus;
+                        active.Text = RestaurantResource.ActionCheckStatus;
                         tCell.Controls.Add(active);
 
                     }
