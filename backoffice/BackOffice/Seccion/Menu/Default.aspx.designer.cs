@@ -31,40 +31,76 @@ namespace BackOffice.Seccion.Menu {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ModificarPlato;
         
         /// <summary>
-        /// TextBox1 control.
+        /// AlertDanger_AgregarPlato control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertDanger_AgregarPlato;
         
         /// <summary>
-        /// TextBox2 control.
+        /// AlertDanger_ModificarPlato control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertDanger_ModificarPlato;
         
         /// <summary>
-        /// TextBox3 control.
+        /// HiddenFieldDishModifyId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldDishModifyId;
         
         /// <summary>
-        /// BotonModificarPlato control.
+        /// TableDish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BotonModificarPlato;
+        protected global::System.Web.UI.WebControls.Table TableDish;
+        
+        /// <summary>
+        /// TextBoxModifyDishName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxModifyDishName;
+        
+        /// <summary>
+        /// TextBoxModifyDishDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxModifyDishDescription;
+        
+        /// <summary>
+        /// TextBoxModifyDishPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBoxModifyDishPrice;
+        
+        /// <summary>
+        /// ButtonModifyDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonModifyDish;
         
         /// <summary>
         /// Button4 control.
@@ -76,48 +112,48 @@ namespace BackOffice.Seccion.Menu {
         protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
-        /// nombrePlato control.
+        /// TextBoxAddDishName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nombrePlato;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxAddDishName;
         
         /// <summary>
-        /// descripcionPlato control.
+        /// TextBoxAddDishDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox descripcionPlato;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxAddDishDescription;
         
         /// <summary>
-        /// precioPlato control.
+        /// TextboxAddDishPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox precioPlato;
+        protected global::System.Web.UI.WebControls.TextBox TextboxAddDishPrice;
         
         /// <summary>
-        /// BotonAgregarPlatillo control.
+        /// ButtonAddDish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BotonAgregarPlatillo;
+        protected global::System.Web.UI.WebControls.Button ButtonAddDish;
         
         /// <summary>
-        /// ButtonCancelarAgregarPlatillo control.
+        /// ButtonCancelAddDish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCancelarAgregarPlatillo;
+        protected global::System.Web.UI.WebControls.Button ButtonCancelAddDish;
     }
 }

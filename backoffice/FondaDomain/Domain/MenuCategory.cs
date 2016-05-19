@@ -76,7 +76,7 @@ namespace com.ds201625.fonda.Domain
         }
 
         /// <summary>
-        /// Cambia el eltado actual de la Categoria.
+        /// Cambia el estado actual de la Categoria.
         /// </summary>
         public virtual void changeStatus()
         {

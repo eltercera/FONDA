@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
-using System.Data;
 using System.Web.Services;
 
 namespace BackOffice.Seccion.Menu
 {
     public partial class ListarCategoria : System.Web.UI.Page
     {
-    
+
         protected void Page_Load(object sender, EventArgs e)
-        {   
+        {
             AlertSuccess_AgregarCategoria.Visible = false;
             AlertSuccess_ModificarCategoria.Visible = false;
+            AlertDanger_AgregarCategoria.Visible = false;
+            AlertDanger_ModificarCategoria.Visible = false;
             LoadTable();
         }
         protected void LoadTable()
@@ -70,7 +68,7 @@ namespace BackOffice.Seccion.Menu
                 }
             }
 
-                //Agrega el encabezado a la Tabla
+            //Agrega el encabezado a la Tabla
             TableHeaderRow header = GenerateTableHeader();
             CategoryMenu.Rows.AddAt(0, header);
         }
@@ -79,7 +77,7 @@ namespace BackOffice.Seccion.Menu
         /// <summary>
         /// Genera el encabezado de la tabla Categoria
         /// </summary>
-        /// <returns>Returna un objeto de tipo TableHeaderRow</returns>
+        /// <returns>Retorna un objeto de tipo TableHeaderRow</returns>
         private TableHeaderRow GenerateTableHeader()
         {
             //Se crea la fila en donde se insertara el header
@@ -88,8 +86,8 @@ namespace BackOffice.Seccion.Menu
             //Se crean las columnas del header
             TableHeaderCell h1 = new TableHeaderCell();
             TableHeaderCell h2 = new TableHeaderCell();
-             TableHeaderCell h3 = new TableHeaderCell();
-            
+            TableHeaderCell h3 = new TableHeaderCell();
+
             //Se indica que se trabajara en el header y se asignan los valores a las columnas
             header.TableSection = TableRowSection.TableHeader;
             h1.Text = "Nombre";
@@ -116,36 +114,61 @@ namespace BackOffice.Seccion.Menu
 
         protected void BotonAgregarCategoria_Click(object sender, EventArgs e)
         {
-
-            AlertSuccess_AgregarCategoria.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
-            MenuCategory _mencat = new MenuCategory();
-            String nombre = Value1.Text;
-            _mencat.Name = nombre;
-            _mencat.ListDish = null;
-            _mencat.Status = ActiveSimpleStatus.Instance;
-            _mencatDAO.Save(_mencat);
-
-            LoadTable();
+            try
+            {
+                FactoryDAO factoryDAO = FactoryDAO.Intance;
+                IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
+                MenuCategory _mencat = new MenuCategory();
+                String nombre = Value1.Text;
+                _mencat.Name = nombre;
+                _mencat.ListDish = null;
+                _mencat.Status = ActiveSimpleStatus.Instance;
+                _mencatDAO.Save(_mencat);
+                AlertSuccess_AgregarCategoria.Visible = true;
+            }
+            //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
+            catch (Exception exc)
+            {
+                AlertDanger_AgregarCategoria.Visible = true;
+                System.Console.WriteLine("Excepcion capturada: {0}", exc);
+            }
+            finally
+            {
+                LoadTable();
+            }
         }
 
         protected void BotonModificarCategoria_Click(object sender, EventArgs e)
         {
-            AlertSuccess_ModificarCategoria.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
-            string nameCM;
-            string MenuCatID = MenuCatModifyId.Value;
-            int idMenCat = int.Parse(MenuCatID);
-            MenuCategory _menucat = _mencatDAO.FindById(idMenCat);
-            nameCM = TextBoxModificar.Text;
-            _menucat.Name = nameCM;
-            //_menucat.Status = ActiveSimpleStatus.Instance;
-            _mencatDAO.Save(_menucat);
-            LoadTable();
 
-          
+            try
+            {
+                FactoryDAO factoryDAO = FactoryDAO.Intance;
+                IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
+                string nameCM;
+                string MenuCatID = MenuCatModifyId.Value;
+                int idMenCat = int.Parse(MenuCatID);
+                MenuCategory _menucat = _mencatDAO.FindById(idMenCat);
+                nameCM = TextBoxModifyCategoryName.Text;
+                _menucat.Name = nameCM;
+                //_menucat.Status = ActiveSimpleStatus.Instance;
+                _mencatDAO.Save(_menucat);
+
+                AlertSuccess_ModificarCategoria.Visible = true;
+
+            }
+            //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
+            catch (Exception exc)
+            {
+                AlertDanger_ModificarCategoria.Visible = true;
+                System.Console.WriteLine("Excepcion capturada: {0}", exc);
+            }
+            finally
+            {
+                LoadTable();
+            }
+
+
         }
 
         /// <summary>
@@ -164,5 +187,5 @@ namespace BackOffice.Seccion.Menu
             return menCat;
         }
 
-  }  
+    }
 }

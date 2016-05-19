@@ -80,9 +80,6 @@
     <Compile Include="InterfaceDAO\IOrderAccountDao.cs" />
     <Compile Include="InterfaceDAO\IPaymentDao.cs" />
     <Compile Include="InterfaceDAO\IRoleDAO.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InterfaceDAO\IBaseEntityDAO.cs" />
     <Compile Include="InterfaceDAO\INounBaseEntityDAO.cs" />
@@ -145,28 +142,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="FakesAssemblies\FluentNHibernate.Fakes.fakesconfig" />
-    <None Include="FakesAssemblies\FluentNHibernate.Fakes.messages" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\FluentNHibernate.dll" />
-    <Content Include="bin\Debug\FluentNHibernate.pdb" />
-    <Content Include="bin\Debug\FluentNHibernate.xml" />
-    <Content Include="bin\Debug\FondaDataAccess.dll" />
-    <Content Include="bin\Debug\FondaDataAccess.pdb" />
-    <Content Include="bin\Debug\FondaDomain.dll" />
-    <Content Include="bin\Debug\FondaDomain.pdb" />
-    <Content Include="bin\Debug\hibernate.cfg.xml" />
-    <Content Include="bin\Debug\Iesi.Collections.dll" />
-    <Content Include="bin\Debug\Iesi.Collections.xml" />
-    <Content Include="bin\Debug\NHibernate.dll" />
-    <Content Include="bin\Debug\NHibernate.xml" />
-    <Content Include="FakesAssemblies\FluentNHibernate.Fakes.dll" />
-    <Content Include="FakesAssemblies\FluentNHibernate.Fakes.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
-    <Folder Include="Fakes\" />
   </ItemGroup>
 </Project>

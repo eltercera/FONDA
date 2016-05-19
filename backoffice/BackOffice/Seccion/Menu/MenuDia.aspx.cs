@@ -11,12 +11,12 @@ using System.Data;
 using System.Web.Services;
 
 namespace BackOffice.Seccion.Menu
-{   
+{
 
     public partial class MenuDia : System.Web.UI.Page
     {
-        IList<Dish> Sugerencia =new List<Dish>();
-        
+        IList<Dish> Sugerencia = new List<Dish>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadTable();
@@ -31,12 +31,12 @@ namespace BackOffice.Seccion.Menu
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
             IList<MenuCategory> listMenuC = _mencatDAO.GetAll();
-            
-            
+
+
             int lenghtListMenuC = listMenuC.Count;
             for (int i = 0; i <= lenghtListMenuC - 1; i++)
             {
-                MenuCategory categoria= listMenuC[i];
+                MenuCategory categoria = listMenuC[i];
                 if (categoria.ListDish != null)
                 {
                     IList<Dish> listDish = categoria.ListDish;
@@ -100,7 +100,7 @@ namespace BackOffice.Seccion.Menu
 
 
             }
-               //Agrega el encabezado a la Tabla
+            //Agrega el encabezado a la Tabla
             TableHeaderRow header = GenerateTableHeader();
             CategoryMenu.Rows.AddAt(0, header);
         }
@@ -118,8 +118,8 @@ namespace BackOffice.Seccion.Menu
             //Se crean las columnas del header
             TableHeaderCell h1 = new TableHeaderCell();
             TableHeaderCell h2 = new TableHeaderCell();
-             TableHeaderCell h3 = new TableHeaderCell();
-            
+            TableHeaderCell h3 = new TableHeaderCell();
+
             //Se indica que se trabajara en el header y se asignan los valores a las columnas
             header.TableSection = TableRowSection.TableHeader;
             h1.Text = "Nombre";
@@ -144,18 +144,18 @@ namespace BackOffice.Seccion.Menu
 
         }
 
-     
 
 
-           /// <summary>
+
+        /// <summary>
         /// Recibe el Id de la fila y obtiene un objeto de tipo categoria
         /// </summary>
         /// <param name="Id">Id de la categoria a mostrar</param>
         /// <returns>Informacion de objeto categoria</returns>
-           
-       [WebMethod]
+
+        [WebMethod]
         public static Dish GetData(string Id)
-    {
+        {
             int menID = int.Parse(Id);
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IDishDAO _mencatDAO = factoryDAO.GetDishDAO();
@@ -163,6 +163,6 @@ namespace BackOffice.Seccion.Menu
 
             return menCat;
 
-    }      
+        }
     }
 }
