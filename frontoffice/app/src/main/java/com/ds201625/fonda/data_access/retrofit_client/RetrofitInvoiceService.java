@@ -14,15 +14,29 @@ import retrofit2.Call;
 /**
  * Created by Yuneth on 5/15/2016.
  */
+
+/**
+ * Clase que implementa el servicio
+ */
 public class RetrofitInvoiceService implements InvoiceService {
 
+    /**
+     * InvoiceClient que crea el servicio
+     */
     private InvoiceClient invoiceClient =
             RetrofitService.getInstance().createService(InvoiceClient.class);
 
+    /**
+     * Constructor de RetrofitInvoiceService
+     */
     public RetrofitInvoiceService() {
         super();
     }
 
+    /**
+     * Metodo que hace la llamada al servicio
+     * @return llamada
+     */
     @Override
     public Invoice getCurrentInvoice() {
         Call<Invoice> call = invoiceClient.getCurrentInvoice();
