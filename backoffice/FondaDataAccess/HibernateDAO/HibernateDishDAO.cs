@@ -5,10 +5,9 @@ using System.Collections.Generic;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-	
     public class HibernateDishDAO
-        : HibernetNounBaseEntityDAO<Dish>, IDishDAO
-    {
+        : HibernateNounBaseEntityDAO<Dish>, IDishDAO
+	{
         public IList<Dish> GetAll()
         {
             return FindAll();

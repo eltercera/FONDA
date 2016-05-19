@@ -184,7 +184,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#CategoriaRest').DataTable({
+    $('#contenido_CategoryRest').DataTable({
         "language": spanish,
         "aoColumns": [
             null,

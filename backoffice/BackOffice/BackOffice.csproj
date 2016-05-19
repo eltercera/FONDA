@@ -47,7 +47,9 @@
       <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL" />
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -59,30 +61,6 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -111,6 +89,27 @@
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -419,27 +418,19 @@
     <Content Include="Default.aspx" />
     <Content Include="inicio.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="scripts\ai.0.15.0-build58334.js" />
-    <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Seccion\Caja\AgregarOrden.aspx" />
     <Content Include="Seccion\Caja\CrearFactura.aspx" />
     <Content Include="Seccion\Caja\Default.aspx" />
     <Content Include="Seccion\Caja\DefaultOrdenesCerradas.aspx" />
     <Content Include="Seccion\Caja\ModificarOrden.aspx" />
-    <Content Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx" />
-    <Content Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarUsuario.aspx" />
-    <Content Include="Seccion\Configuracion\AgregarModificarRol.aspx" />
-    <Content Include="Seccion\Configuracion\Default.aspx" />
-    <Content Include="Seccion\Configuracion\ListarPrivilegio.aspx" />
-    <Content Include="Seccion\Configuracion\ListarPrivilegioUsuario.aspx" />
-    <Content Include="Seccion\Configuracion\ListarRol.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
     <Content Include="Seccion\Menu\MenuDia.aspx" />
     <Content Include="Seccion\Reservas\Default.aspx" />
     <Content Include="Seccion\Restaurant\AgregarCategoria.aspx" />
+    <Content Include="Seccion\Restaurant\AgregarZona.css" />
     <Content Include="Seccion\Restaurant\Mesas.aspx" />
     <Content Include="Seccion\Restaurant\Restaurante.aspx" />
     <Content Include="Seccion\Restaurant\AgregarZona.aspx" />
@@ -450,6 +441,11 @@
     <Compile Include="Content\MasterUI.master.cs">
       <DependentUpon>MasterUI.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Content\RecursoMaster.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RecursoMaster.resx</DependentUpon>
     </Compile>
     <Compile Include="Content\sessionTag.cs" />
     <Compile Include="Global.asax.cs">
@@ -512,20 +508,6 @@
     <Compile Include="Seccion\Caja\ModificarOrden.aspx.designer.cs">
       <DependentUpon>ModificarOrden.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx.cs">
-      <DependentUpon>AgregarModificarPrivilegio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarPrivilegio.aspx.designer.cs">
-      <DependentUpon>AgregarModificarPrivilegio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx.cs">
-      <DependentUpon>AgregarModificarPriviRol.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarPriviRol.aspx.designer.cs">
-      <DependentUpon>AgregarModificarPriviRol.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Seccion\Configuracion\AgregarModificarUsuario.aspx.cs">
       <DependentUpon>AgregarModificarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -533,40 +515,10 @@
     <Compile Include="Seccion\Configuracion\AgregarModificarUsuario.aspx.designer.cs">
       <DependentUpon>AgregarModificarUsuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarRol.aspx.cs">
-      <DependentUpon>AgregarModificarRol.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarRol.aspx.designer.cs">
-      <DependentUpon>AgregarModificarRol.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarPrivilegio.aspx.cs">
-      <DependentUpon>ListarPrivilegio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarPrivilegio.aspx.designer.cs">
-      <DependentUpon>ListarPrivilegio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarPrivilegioUsuario.aspx.cs">
-      <DependentUpon>ListarPrivilegioUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarPrivilegioUsuario.aspx.designer.cs">
-      <DependentUpon>ListarPrivilegioUsuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarRol.aspx.cs">
-      <DependentUpon>ListarRol.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\ListarRol.aspx.designer.cs">
-      <DependentUpon>ListarRol.aspx</DependentUpon>
+    <Compile Include="Seccion\Configuracion\G1RecursosInterfaz.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>G1RecursosInterfaz.resx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\ListarUsuario.aspx.cs">
       <DependentUpon>ListarUsuario.aspx</DependentUpon>
@@ -623,6 +575,7 @@
     <Compile Include="Seccion\Restaurant\Mesas.aspx.designer.cs">
       <DependentUpon>Mesas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Seccion\Restaurant\ResourceRestaurant.Designer.cs" />
     <Compile Include="Seccion\Restaurant\Restaurante.aspx.cs">
       <DependentUpon>Restaurante.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -692,6 +645,17 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\RecursoMaster.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RecursoMaster.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seccion\Configuracion\G1RecursosInterfaz.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>G1RecursosInterfaz.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seccion\Restaurant\ResourceRestaurant.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">

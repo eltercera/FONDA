@@ -13,11 +13,12 @@ namespace BackOffice.Content
         public static string roles = "Sistema";///Roles que puede tener un usuario 
         public static string usuarioN = "Jose";///Nombre del usuario
         public static string usuarioA = "Garcia";///Apellido del usuario
-        public static string usuarioC = "admin@gmail.com";///Correo del usuario
+        public static string usuarioC = "fonda@gmail.com";///Correo del usuario
                                  
         ///Tags asociados a las etiquetas XML
         public static string nameTag = "nombre";
         public static string linkTag = "link";
         public static string imgTag = "img";
+        public static string rolTag = "rol";
     }
 }

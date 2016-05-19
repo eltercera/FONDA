@@ -79,14 +79,13 @@ namespace BackOffice.Seccion.Configuracion
             else{
                 if (usuario == "fonda" & clave == "12345")
                 {
-                    Session[sessionTag.rol] = "Sistema";
-                    Session[sessionTag.usuarioN] = "juan";
-                    Session[sessionTag.usuarioA] = "Perez";
-                    Session[sessionTag.usuarioC] = "admin@gmail.com";
-                    Session[sessionTag.roles] = "Atleta-Dojo-Sistema";
 
+                    Session[RecursoMaster.sessionRol] = "Sistema";
+                    Session[RecursoMaster.sessionUserName] = "jose";
+                    Session[RecursoMaster.sessionUserID] = "12";
+                
                     mensajeLogin(false, mensajes.logErr, mensajes.tipoErr);
-                Response.Redirect("inicio.aspx");
+                Response.Redirect("Default.aspx");
                 }
                 else { 
                             

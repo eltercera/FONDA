@@ -5,8 +5,9 @@ using System.Collections.Generic;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
+
     public class HibernateMenuCategoryDAO
-        : HibernetNounBaseEntityDAO<MenuCategory>, IMenuCategoryDAO
+        : HibernateNounBaseEntityDAO<MenuCategory>, IMenuCategoryDAO
     {
 		public IList<MenuCategory> GetAll ()
 		{

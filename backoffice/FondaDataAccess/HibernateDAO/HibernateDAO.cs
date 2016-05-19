@@ -64,11 +64,70 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         }
         public IEmployeeDAO GetEmployeeDAO()
-		{
-        return new HibernateEmployeeDAO();
-		}
+        {
+            return new HibernateEmployeeDAO();
+        }
+
+        public ITokenDAO GetTokenDAO()
+        {
+            return new HibernateTokenDAO();
+        }
 
 
+        public IInvoiceDao GetInvoiceDAO()
+        {
+            return new HibernateInvoiceDAO();
+        }
+
+        public ICreditCardPaymentDAO GetCreditCardPaymentDAO()
+        {
+            return new HibernateCreditCardPaymentDAO();
+        }
+
+        public ICashPaymentDAO GetCashPaymentDAO()
+        {
+            return new HibernateCashPaymentDAO();
+        }
+
+        public ICoordinateDAO GetCoordinateDAO()
+        {
+            return new HibernateCoordinateDAO();
+        }
+
+        public ICurrencyDAO GetCurrencyDAO()
+        {
+            return new HibernateCurrencyDAO();
+        }
+
+        public IDayDAO GetDayDAO()
+        {
+            return new HibernateDayDAO();
+        }
+
+        public IRestaurantCategoryDAO GetRestaurantCategoryDAO()
+        {
+            return new HibernateRestaurantCategoryDAO();
+        }
+
+        public IRestaurantDAO GetRestaurantDAO()
+        {
+            return new HibernateRestaurantDAO();
+        }
+
+        public IScheduleDAO GetScheduleDAO()
+        {
+            return new HibernateScheduleDAO();
+        }
+
+        public ITableDAO GetTableDAO()
+        {
+            return new HibernateTableDAO();
+        }
+
+        public IZoneDAO GetZoneDAO()
+        {
+            return new HibernateZoneDAO();
+        }
     }
 }
 

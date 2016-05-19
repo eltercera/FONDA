@@ -2,6 +2,7 @@
 using NHibernate;
 using com.ds201625.fonda.DataAccess.HibernateDAO.Session;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.Domain;
 using NHibernate.Criterion;
 using System.Collections.Generic;
@@ -9,18 +10,28 @@ using System.Collections.Generic;
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
 	public class HibernateBaseEntityDAO <T> : IBaseEntityDAO<T>
-		where T : Entity
+        where T : Entity
 	{
 
 		/// <summary>
 		/// Persiste o actualiza una entidad
 		/// </summary>
-		/// <param name="entity"> La entidad </param>
+		/// <param name="entity">La entidad</param>
 		public void Save (T entity)
 		{
-			ITransaction transaction = Session.BeginTransaction ();
-			Session.SaveOrUpdate (entity);
-			transaction.Commit ();
+			try
+			{
+				ITransaction transaction = Session.BeginTransaction ();
+				Session.SaveOrUpdate (entity);
+				transaction.Commit ();
+			}
+			catch(Exception e)
+			{
+				throw new SaveEntityFondaDAOException (
+					"Excepción al guardar un objeto de la entidad " + entity.GetType().ToString(),
+					e);
+			}
+				
 		}
 
 		/// <summary>
@@ -78,13 +89,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		{
 			get
 			{
-				return FacrotySession.GetCurrentSession ();
+				return FactorySession.GetCurrentSession ();
 			}
 		}
 
 		public void ResetSession()
 		{
-			FacrotySession.ResetCurrentSession ();
+			FactorySession.ResetCurrentSession ();
 		}
 	}
 }

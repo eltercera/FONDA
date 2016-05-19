@@ -20,8 +20,8 @@ namespace BackOffice.Seccion.Menu
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadTable();
-
         }
+		
         protected void LoadTable()
         {
 

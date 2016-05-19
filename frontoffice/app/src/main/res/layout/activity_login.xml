@@ -2,18 +2,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal|bottom"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ds201625.fonda.activities.LoginActivity"
+    android:id="@+id/loginLay"
+    tools:context=".views.activities.LoginActivity"
     android:background="@drawable/login_back">
 
-        <LinearLayout
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.6"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView11"
+            android:background="@mipmap/title"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="10dp"
+            android:tint="@color/end" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/init_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:visibility="visible">
+        <Button
+            android:id="@+id/signin_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/login_start_session"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_gravity="bottom" />
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/login_register"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+
+    <LinearLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+        android:layout_weight="1"
+        android:visibility="gone">
 
             <!--<ImageView
                 android:layout_width="@android:dimen/app_icon_size"
@@ -24,14 +74,16 @@
                 android:layout_marginBottom="16dp" />-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:orientation="vertical"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 android:paddingLeft="@dimen/form_left_padding"
                 android:paddingRight="@dimen/form_right_padding"
                 android:background="#96252525"
-                android:animateLayoutChanges="true">
+                android:animateLayoutChanges="true"
+                android:layout_weight="1"
+                android:visibility="visible">
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -45,7 +97,7 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:textIsSelectable="false"
-                        android:textColor="#F1D4AF"/>
+                        android:textColor="@color/creme"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -59,13 +111,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/prompt_password"
-                        android:imeActionId="@+id/login"
-                        android:imeActionLabel="@string/action_sign_in_short"
-                        android:imeOptions="actionUnspecified"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:singleLine="true"
-                        android:textColor="#F1D4AF"/>
+                        android:textColor="@color/creme"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -80,12 +129,12 @@
                         android:hint="@string/prompt_password2"
                         android:imeActionId="@+id/login"
                         android:imeActionLabel="@string/action_sign_in_short"
-                        android:imeOptions="actionUnspecified"
+                        android:imeOptions="actionDone"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:singleLine="true"
                         android:visibility="gone"
-                        android:textColor="#F1D4AF"/>
+                        android:textColor="@color/creme"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -96,29 +145,30 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/login_start_session"
+                    android:textColor="@color/colorPrimary"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/login_forget_pasword"
                     android:id="@+id/textViewForgetPass"
                     android:textAlignment="center"
                     android:layout_marginTop="16dp"
-                    android:textColor="#31708f" />
+                    android:textColor="@color/creme" />
 
-                <TextView
+                <!--<TextView
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/login_register"
                     android:id="@+id/textViewRegiter"
                     android:textAlignment="center"
                     android:layout_marginTop="16dp"
-                    android:textColor="#31708f"/>
+                    android:textColor="@color/creme"/>-->
 
-                <TextView
+                <!--<TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -126,8 +176,10 @@
                     android:id="@+id/textViewStartSesion"
                     android:textAlignment="center"
                     android:layout_marginTop="16dp"
-                    android:textColor="#31708f"
-                    android:visibility="gone" />
+                    android:textColor="@color/creme"
+                    android:visibility="gone" />-->
             </LinearLayout>
-        </LinearLayout>
+
+    </LinearLayout>
+
 </LinearLayout>

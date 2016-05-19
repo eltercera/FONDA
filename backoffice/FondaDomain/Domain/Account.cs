@@ -21,7 +21,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Lista de ordenes de la cuenta.
         /// </summary>
-        private List<DishOrder> _listDish;
+        private IList<DishOrder> _listDish;
 
         /// <summary>
         /// Constructor
@@ -43,7 +43,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Retorna o asigna una lista de ordenes
         /// </summary>
-        public virtual List<DishOrder> ListDish
+        public virtual IList<DishOrder> ListDish
         {
             get { return _listDish; }
             set { _listDish = value; }

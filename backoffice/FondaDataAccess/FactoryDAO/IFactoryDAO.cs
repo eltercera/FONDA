@@ -17,6 +17,20 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         IMenuCategoryDAO GetMenuCategoryDAO();
         IRoleDAO GetRoleDAO();
         IEmployeeDAO GetEmployeeDAO();
+        ITokenDAO GetTokenDAO();
+        //ActiveSimpleStatus GetActiveSimpleStatus();
+        IInvoiceDao GetInvoiceDAO();
+        ICreditCardPaymentDAO GetCreditCardPaymentDAO();
+        ICashPaymentDAO GetCashPaymentDAO();
+        ICoordinateDAO GetCoordinateDAO();
+        ICurrencyDAO GetCurrencyDAO();
+        IDayDAO GetDayDAO();
+        IRestaurantCategoryDAO GetRestaurantCategoryDAO();
+        IRestaurantDAO GetRestaurantDAO();
+        IScheduleDAO GetScheduleDAO();
+        ITableDAO GetTableDAO();
+        IZoneDAO GetZoneDAO();
+
     }
 }
 

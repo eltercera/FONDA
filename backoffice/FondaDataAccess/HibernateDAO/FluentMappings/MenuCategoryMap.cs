@@ -22,6 +22,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Column("fk_cat_status")
                 .Not.Nullable();
 
+            References(x => x.RecordStatus)
+              .Column("fk_cat_record")
+              .Not.Nullable()
+              .Cascade.Persist();
+          
             HasMany(x => x.ListDish)
                 .KeyColumn("fk_menu_dish")
                 .ExtraLazyLoad()

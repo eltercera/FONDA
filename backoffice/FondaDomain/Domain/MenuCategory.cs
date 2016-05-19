@@ -20,11 +20,7 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private  IList<Dish> _listDish;
 
-        /// <summary>
-        /// fk del restaurant
-        /// </summary>
-        private Restaurant _restaurant;
- 
+        
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -52,16 +48,6 @@ namespace com.ds201625.fonda.Domain
         {
             get { return _listDish; }
             set { _listDish = value; }
-        }
-
-        /// <summary>
-        /// Obtiene o asigna la fk del restaurant
-        /// </summary>
-        /// <value>El restaurante</value>
-        public virtual Restaurant Restaurant
-        {
-            get { return _restaurant; }
-            set { _restaurant = value; }
         }
 
         /// <summary>

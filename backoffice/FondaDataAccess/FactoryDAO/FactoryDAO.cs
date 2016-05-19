@@ -75,13 +75,59 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
             return _factory.GetMenuCategoryDAO();
         }
 
-        public IRoleDAO GetRoleDAO()
+        public IInvoiceDao GetInvoiceDao()
         {
-            return _factory.GetRoleDAO();
+            return _factory.GetInvoiceDAO();
         }
-        public IEmployeeDAO GetEmployeeDAO()
+
+        public ICashPaymentDAO GetCashPaymentDAO()
         {
-            return _factory.GetEmployeeDAO();
+            return _factory.GetCashPaymentDAO();
+        }
+
+        public ICreditCardPaymentDAO GetCreditCardPaymentDAO()
+        {
+            return _factory.GetCreditCardPaymentDAO();
+        }
+
+        public ICoordinateDAO GetCoordinateDAO()
+        {
+            return _factory.GetCoordinateDAO();
+        }
+
+        public ICurrencyDAO GetCurrencyDAO()
+        {
+            return _factory.GetCurrencyDAO();
+        }
+
+        public IDayDAO GetDayDAO()
+        {
+            return _factory.GetDayDAO();
+        }
+
+        public IRestaurantCategoryDAO GetRestaurantCategoryDAO()
+        {
+            return _factory.GetRestaurantCategoryDAO();
+        }
+
+        public IRestaurantDAO GetRestaurantDAO()
+        {
+            return _factory.GetRestaurantDAO();
+        }
+
+        public IScheduleDAO GetScheduleDAO()
+        {
+            return _factory.GetScheduleDAO();
+        }
+
+        public ITableDAO GetTableDAO()
+        {
+            return _factory.GetTableDAO();
+        }
+
+        public IZoneDAO GetZoneDAO()
+        {
+            return _factory.GetZoneDAO();
         }
     }
 }

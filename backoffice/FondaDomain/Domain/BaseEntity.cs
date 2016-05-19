@@ -1,10 +1,11 @@
-﻿
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
 	/// <summary>
 	/// Entidad Base
-	/// </summary>
+	[DataContract]
 	public class BaseEntity : Entity
     {
 
@@ -14,38 +15,39 @@ namespace com.ds201625.fonda.Domain
 		private int _id;
 
 
-		private EntityRecordStatus _recordStatus;
+		//private EntityRecordStatus _recordStatus;
 
 		/// <summary>
 		/// Constructor.
 		/// </summary>
 		public BaseEntity() {
-			_recordStatus = InsertedStatus.Instance;
+			//_recordStatus = InsertedStatus.Instance;
 		}
 
 		/// <summary>
 		/// Obtiene o asigna el identificador de la entidad.
 		/// </summary>
 		/// <value>El identificador</value>
+		[DataMember]
 		public virtual int Id
 		{
 			get { return _id; }
-			protected set { _id = value; }
+		    set { _id = value; }
 		}
 
-		public virtual EntityRecordStatus RecordStatus
+		/*public virtual EntityRecordStatus RecordStatus
 		{
 			get { return _recordStatus; }
 			set { _recordStatus = value; }
-		}
+		}*/
 
 		/// <summary>
 		/// Cambiar el estado actual de la entidad
 		/// </summary>
-		public virtual void ChangeRecordStatus()
+		/*public virtual void ChangeRecordStatus()
 		{
 			_recordStatus = _recordStatus.Change ();
-		}
+		}*/
 
     }
 }

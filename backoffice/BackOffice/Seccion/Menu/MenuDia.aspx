@@ -43,6 +43,7 @@ Menú Del Día
            </div>
          </div>
 
+
                 <!-- /.row -->
      <!-- Modal Ver Plato-->
      <div class="modal fade" id="ver_plato" role="dialog">
