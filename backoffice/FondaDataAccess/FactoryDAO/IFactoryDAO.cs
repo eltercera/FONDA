@@ -1,5 +1,6 @@
 ﻿using System;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.Domain;
 
 namespace com.ds201625.fonda.DataAccess.FactoryDAO
 {
@@ -10,7 +11,6 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 		IUserAccountDAO GetUserAccountDAO ();
 		IPersonDAO GetPersonDao ();
 		ICompanyDAO GetCompanyDAO();
-		IStatusDAO GetStatusDAO();
         IOrderAccountDao GetOrderAccountDAO();
         IDishOrderDAO GetDishOrderDAO();
         IDishDAO GetDishDAO();
@@ -18,7 +18,7 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         IRoleDAO GetRoleDAO();
         IEmployeeDAO GetEmployeeDAO();
         ITokenDAO GetTokenDAO();
-        //ActiveSimpleStatus GetActiveSimpleStatus();
+        ActiveSimpleStatus GetActiveSimpleStatus();
         IInvoiceDao GetInvoiceDAO();
         ICreditCardPaymentDAO GetCreditCardPaymentDAO();
         ICashPaymentDAO GetCashPaymentDAO();
