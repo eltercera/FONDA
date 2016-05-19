@@ -100,9 +100,9 @@ namespace BackOffice.Seccion.Restaurant
                 string statusActive = ActiveSimpleStatus.Instance.ToString();
                 string statusInactive = DisableSimpleStatus.Instance.ToString();
                 if (status == statusActive)
-                    status = ResourceRestaurant.Active;
+                    status = RestaurantResource.Active;
                 else if (status == statusInactive)
-                    status = ResourceRestaurant.Inactive;
+                    status = RestaurantResource.Inactive;
 
                 for (int j = 0; j <= totalColumns; j++)
                 {
@@ -124,11 +124,30 @@ namespace BackOffice.Seccion.Restaurant
                     {
                         tCell.CssClass = "text-center";
                         //Crea hipervinculo para las acciones
-                        LinkButton action = new LinkButton();
-                        action.Attributes["data-toggle"] = "modal";
-                        action.Attributes["data-target"] = "#modificar";
-                        action.Text = ResourceRestaurant.ActionRestaurant;
-                        tCell.Controls.Add(action);
+                        LinkButton actionInfo = new LinkButton();
+                        LinkButton actionModify = new LinkButton();
+                        LinkButton actionActive = new LinkButton();
+                        LinkButton actionInactive = new LinkButton();
+
+                        actionInfo.Attributes["data-toggle"] = "modal";
+                        actionInfo.Attributes["data-target"] = "#consultar";
+                        actionInfo.Text = RestaurantResource.ActionInfo;
+                        tCell.Controls.Add(actionInfo);
+
+                        actionModify.Attributes["data-toggle"] = "modal";
+                        actionModify.Attributes["data-target"] = "#modificar";
+                        actionModify.Text = RestaurantResource.ActionModify;
+                        tCell.Controls.Add(actionModify);
+
+                        actionActive.Attributes["data-active"] = "true";
+                        actionActive.Text = RestaurantResource.ActionCheckStatus;
+                        tCell.Controls.Add(actionActive);
+
+                        actionInactive.Attributes["data-active"] = "false";
+                        actionInactive.Text = RestaurantResource.ActionUnCheckStatus;
+                        tCell.Controls.Add(actionInactive);
+
+
                     }
                     //Agrega la celda
                     tRow.Cells.Add(tCell);

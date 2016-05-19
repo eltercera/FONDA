@@ -570,7 +570,6 @@
     <Compile Include="Seccion\Restaurant\Mesas.aspx.designer.cs">
       <DependentUpon>Mesas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Restaurant\ResourceRestaurant.Designer.cs" />
     <Compile Include="Seccion\Restaurant\Restaurante.aspx.cs">
       <DependentUpon>Restaurante.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -584,6 +583,11 @@
     </Compile>
     <Compile Include="Seccion\Restaurant\AgregarZona.aspx.designer.cs">
       <DependentUpon>AgregarZona.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Restaurant\RestaurantResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestaurantResource.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -627,7 +631,6 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\GreatVibes-Regular.otf" />
     <Content Include="Content\MasterUI.master" />
-    <Content Include="Seccion\Restaurant\README.md" />
     <Content Include="Content\js\datatables\Spanish.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -650,7 +653,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>G1RecursosInterfaz.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Seccion\Restaurant\ResourceRestaurant.resx" />
+    <EmbeddedResource Include="Seccion\Restaurant\RestaurantResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RestaurantResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">

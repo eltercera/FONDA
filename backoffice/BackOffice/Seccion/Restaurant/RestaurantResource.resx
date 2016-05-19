@@ -117,33 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActionCategory" xml:space="preserve">
-    <value>&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;</value>
-    <comment>Acciones disponibles en DataTable de Categoria de Restaurant</comment>
-  </data>
-  <data name="ActionRestaurant" xml:space="preserve">
-    <value>&lt;i class="fa fa-info-circle" aria-hidden="true"&gt;&lt;/i&gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
-    <comment>Acciones disponibles en DataTable de Restaurant</comment>
-  </data>
-  <data name="ActionTableBusyStatus" xml:space="preserve">
-    <value>&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
-    <comment>Cambiar a estado inactivo</comment>
-  </data>
-  <data name="ActionTableFreeStatus" xml:space="preserve">
+  <data name="ActionCheckStatus" xml:space="preserve">
     <value>&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;</value>
     <comment>Cambiar a estado activo</comment>
   </data>
-  <data name="ActionTableModify" xml:space="preserve">
+  <data name="ActionInfo" xml:space="preserve">
+    <value>&lt;i class="fa fa-info-circle" aria-hidden="true"&gt;&lt;/i&gt;</value>
+    <comment>Muestra informacion en detalle</comment>
+  </data>
+  <data name="ActionModify" xml:space="preserve">
     <value>&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;</value>
-    <comment>Modificar en DataTable de Mesa</comment>
+    <comment>Acciones disponibles en DataTable de Categoria de Restaurant</comment>
+  </data>
+  <data name="ActionUnCheckStatus" xml:space="preserve">
+    <value>&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
+    <comment>Cambiar a estado inactivo</comment>
   </data>
   <data name="Active" xml:space="preserve">
     <value>&lt;span class="label label-success"&gt;&lt;i class="fa fa-check"&gt;&lt;p class="stat"&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;</value>
     <comment>Estado Activo</comment>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>&lt;/td&gt;</value>
-    <comment>Cerrar</comment>
   </data>
   <data name="Inactive" xml:space="preserve">
     <value>&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;p class="stat"&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;</value>

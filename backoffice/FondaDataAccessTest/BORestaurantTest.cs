@@ -27,6 +27,7 @@ namespace DataAccessTests
 
         private void generateRestaurant(bool edit = false)
         {
+            getDao();
             if (_restaurant != null)
                 return;
 
@@ -131,7 +132,7 @@ namespace DataAccessTests
             _restaurantId = _restaurant.Id;
             generateRestaurant(true);
             _restaurantDAO.Save(_restaurant);
-            _restaurantDAO.ResetSession();
+            //_restaurantDAO.ResetSession();
             _restaurant = null;
         }
 
