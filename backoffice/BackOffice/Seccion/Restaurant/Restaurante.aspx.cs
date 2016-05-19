@@ -18,23 +18,32 @@ namespace BackOffice.Seccion.Restaurant
             AlertError_ModifyRestaurant.Visible = false;
         }
 
+        public void ButtonAdd_Click()
+        {
+            
+           /* if (ValidarRestaurant(NameA.Text, CategoryA.Text, NacionalityA.Text, RifA.Text, CurrencyA.Text,
+                AddressA.Text, ZoneA.Text, LongA.Text, LatA.Text))
+            {
 
-        public bool ValidarRestaurant()
+            }
+            else
+            {
+                AlertError_AddRestaurant.Visible = true;
+            }
+            NameA.Text = string.Empty;
+            RifA.Text = string.Empty;
+            AddressA.Text = string.Empty;
+            LongA.Text = string.Empty;
+            LatA.Text = string.Empty;*/
+        }
+
+        public bool ValidarRestaurant(string name, string category, string nationality, string rif, string currency, string address,
+            string zone, string longitud, string latitud)
         {
             bool valid = true;
             string patronLetras = "^[A-Za-z]*$";
             string patronNumero = "^[0-9]*$";
             string patronFloat = @"^-?[0-9]*(?:\.[0-9]*)?$";
-            string name = NameA.Text;
-            string category = CategoryA.Text;
-            string nationality = NacionalityA.Text;
-            string rif = RifA.Text;
-            string currency = CurrencyA.Text;
-            string address = AddressA.Text;
-            string zone = ZoneA.Text;
-            string longitud = LongA.Text;
-            string latitud = LatA.Text;
-            string logitud = LongA.Text;
 
 
             if (name == "" | rif == "" | address == "" | longitud == "" | latitud == ""
