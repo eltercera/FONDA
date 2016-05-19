@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -17,28 +18,23 @@ namespace BackOffice.Seccion.Restaurant
         {
             AlertSuccess_AddRestaurant.Visible = false;
             AlertSuccess_ModifyRestaurant.Visible = false;
+
             LoadDataTable();
 
 
+
+            AlertError_AddRestaurant.Visible = false;
+            AlertError_ModifyRestaurant.Visible = false;
+
         }
 
-        public void ValidarUsuario(object sender, EventArgs e)
-        {
 
-            validarUsuario();
-        }
-
-        public void mensajeLogin(Boolean visible, string tipo)
+        public bool ValidarRestaurant()
         {
-            switch (tipo)
-            {
-                case "Error":
-                    /*labelError.Visible = visible;*/ break;
-                
-            }
-        }
-        public void validarUsuario()
-        {
+            bool valid = true;
+            string patronLetras = "^[A-Za-z]*$";
+            string patronNumero = "^[0-9]*$";
+            string patronFloat = @"^-?[0-9]*(?:\.[0-9]*)?$";
             string name = NameA.Text;
             string category = CategoryA.Text;
             string nationality = NacionalityA.Text;
@@ -49,21 +45,32 @@ namespace BackOffice.Seccion.Restaurant
             string longitud = LongA.Text;
             string latitud = LatA.Text;
             string logitud = LongA.Text;
-            Console.WriteLine("imprimiendo valor :");
-            Console.WriteLine(name);
 
-            if (name == "" | rif == "" | address == "" | longitud == ""| latitud == "" 
-                | category == "" | nationality=="" | zone=="" | currency=="")
+
+            if (name == "" | rif == "" | address == "" | longitud == "" | latitud == ""
+                | category == "" | nationality == "" | zone == "" | currency == "")
             {
-                Console.WriteLine("ERROR ");
-                mensajeLogin(true, "Error");
+                valid = false;
+
             }
-            else
+            if ((!Regex.IsMatch(name, patronLetras)) | (!Regex.IsMatch(address, patronLetras)))
             {
-                Console.WriteLine("Correcto ");
+                valid = false;
             }
 
+            if ((!Regex.IsMatch(rif, patronNumero)))
+            {
+                valid = false;
+            }
+
+            if ((!Regex.IsMatch(longitud, patronFloat)) | (!Regex.IsMatch(latitud, patronFloat)))
+            {
+
+            }
+
+            return valid;
         }
+
 
         /// <summary>
         /// Construye una tabla de mesas
@@ -245,5 +252,6 @@ namespace BackOffice.Seccion.Restaurant
 
             return restaurant;
         }
+
     }
 }

@@ -22,9 +22,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Column("fk_cat_status")
                 .Not.Nullable()
                 .Cascade.Persist();
-
+/*
             References(x => x.RecordStatus)
-              .Column("fk_cat_record");
+              .Column("fk_cat_record");*/
              
 
             HasMany(x => x.ListDish)

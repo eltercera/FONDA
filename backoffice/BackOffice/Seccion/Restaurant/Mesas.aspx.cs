@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.Services;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using System;
+using System.Collections.Generic;
+using System.Web.Services;
+using System.Web.UI.WebControls;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -99,8 +95,8 @@ namespace BackOffice.Seccion.Restaurant
                         action.Text = ResourceRestaurant.ActionTableModify;
                         tCell.Controls.Add(action);
                         LinkButton active = new LinkButton();
-                        active.Attributes.Add("OnClientClick", "ChangeStatus(listTable[i].Id)");
-                        active.Text = ResourceRestaurant.ActionTableFreeStatus;
+                        active.Attributes["OnClick"] = "ChangeStatus";
+                        active.Text = ResourceRestaurant.ActionTableBusyStatus;
                         tCell.Controls.Add(active);
 
                     }
@@ -210,12 +206,13 @@ namespace BackOffice.Seccion.Restaurant
         }
 
         
-        protected void ChangeStatus(string Id)
+        protected void ChangeStatus(object sender, EventArgs e)
         {
-            int tableId = int.Parse(Id);
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
-            com.ds201625.fonda.Domain.Table _table = _tableDAO.FindById(tableId);
+            string TableID = TableModifyId.Value;
+            int idTable = int.Parse(TableID);
+            com.ds201625.fonda.Domain.Table _table = _tableDAO.FindById(idTable);
             _table.Status = BusyTableStatus.Instance;
             _tableDAO.Save(_table);
             LoadDataTable();

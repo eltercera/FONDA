@@ -39,7 +39,7 @@ namespace DataAccess
         {
 
             Password = "prueba",
-            SesionToken = "prueba",
+            //SesionToken = "prueba",
             Email = "prueba",
             Status = ActiveSimpleStatus.Instance
         };
@@ -87,7 +87,7 @@ namespace DataAccess
             _restaurantId1 = _restaurantDAO.FindById(1);
             _restaurantId2 = _restaurantDAO.FindById(2);
             //findbyid para traerse objeto de commensal
-            _commensalId1 = (Commensal)_commensalDAO.FindById(1);
+            _commensalId1 = (Commensal)_commensalDAO.FindById(5);
             AddRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);
             _commensalDAO.Save(_commensalId1);
         }
@@ -103,7 +103,7 @@ namespace DataAccess
             _restaurantId1 = _restaurantDAO.FindById(1);
             _restaurantId2 = _restaurantDAO.FindById(2);
             //findbyid para traerse objeto de commensal
-            _commensalId1 = (Commensal)_commensalDAO.FindById(1);
+            _commensalId1 = (Commensal)_commensalDAO.FindById(6);
             RemoveRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);
             _commensalDAO.Save(_commensalId1);
         }

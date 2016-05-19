@@ -52,20 +52,13 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
-      <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
-      <Name>FondaDataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
-      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
-      <Name>FondaDomain</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOCashPaymentTest.cs" />
@@ -75,6 +68,8 @@
     <Compile Include="BODayTest.cs" />
     <Compile Include="BODishOrderTest.cs" />
     <Compile Include="BODishTest.cs" />
+    <Compile Include="BoEmployeeTest.cs" />
+    <Compile Include="BORoleTest.cs" />
     <Compile Include="BOInvoiceTest.cs" />
     <Compile Include="BOMenuCategoryTest.cs" />
     <Compile Include="BOOrderAccount.cs" />
@@ -104,6 +99,19 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <!---<ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup> -->
+  <ItemGroup>
+    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
+      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
+      <Name>FondaDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
+      <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
+      <Name>FondaDataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

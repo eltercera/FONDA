@@ -13,6 +13,24 @@ namespace BackOffice.Seccion.Restaurant {
     public partial class Default {
         
         /// <summary>
+        /// AlertError_ModifyRestaurant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertError_ModifyRestaurant;
+        
+        /// <summary>
+        /// AlertError_AddRestaurant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertError_AddRestaurant;
+        
+        /// <summary>
         /// AlertSuccess_AddRestaurant control.
         /// </summary>
         /// <remarks>

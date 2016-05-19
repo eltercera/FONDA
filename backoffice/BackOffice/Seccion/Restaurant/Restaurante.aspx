@@ -21,6 +21,24 @@ Restaurantes
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 
+    <div id="AlertError_ModifyRestaurant" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-ban"></i> <strong>Error</strong> al modificar el restaurante
+            </div>
+        </div>
+    </div>
+
+<div id="AlertError_AddRestaurant" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-ban"></i> <strong>Error</strong> al agregar el restaurante
+            </div>
+        </div>
+    </div>
+
     <div id="AlertSuccess_AddRestaurant" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert alert-success fade in alert-dismissable">
@@ -470,7 +488,11 @@ Restaurantes
              </div> 
             </div>
                         <div class="modal-footer">
+<<<<<<< HEAD
                             <asp:Button id="ButtonAdd" Text="Agregar" CssClass="btn btn-success " OnClick="ButtonAdd_Click" runat="server"/>
+=======
+                            <asp:Button id="ButtonAdd" Text="Agregar" CssClass="btn btn-success"  runat="server"/>
+>>>>>>> e8aefa73d3017eb5c45b0f66be4c92406fe885e4
                             <asp:Button id="ButtonCancelA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
             </div>

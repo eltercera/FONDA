@@ -66,7 +66,14 @@ namespace DataAccessTests
             _schedule.ClosingTime = new TimeSpan(15, 0, 0);
             _restaurant.Schedule = _schedule;
 
-             Table _table = new Table() { Capacity = 2, Status = FreeTableStatus.Instance  };
+            Employee _employee = new Employee() { Name = "José", LastName = "Garcia" , Ssn = "19932801", PhoneNumber = "0414-11-63-457",
+            Address = "Direccion de Prueba", Gender = 'M', BirthDate = Convert.ToDateTime("08/08/1991"), Username = "Usuario",
+            Status = ActiveSimpleStatus.Instance, UserAccount = new UserAccount() { Email = "email@gmail.com", Password = "123",
+            Status = ActiveSimpleStatus.Instance} , Role= new Role() { Name = "Administrador de Sistemas", Descripcion="Es el administrado"} };
+            _restaurant.Employees = new List<Employee>();
+            _restaurant.Employees.Add(_employee);
+
+            Table _table = new Table() { Capacity = 2, Status = FreeTableStatus.Instance  };
             _restaurant.Tables = new List<Table>();
             _restaurant.Tables.Add(_table);
 
