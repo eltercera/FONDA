@@ -122,7 +122,7 @@ namespace BackOffice.Seccion.Menu
                 String nombre = Value1.Text;
                 _mencat.Name = nombre;
                 _mencat.ListDish = null;
-                _mencat.Status = ActiveSimpleStatus.Instance;
+                _mencat.Status = factoryDAO.GetActiveSimpleStatus();
                 _mencatDAO.Save(_mencat);
                 AlertSuccess_AgregarCategoria.Visible = true;
             }
@@ -151,9 +151,9 @@ namespace BackOffice.Seccion.Menu
                 MenuCategory _menucat = _mencatDAO.FindById(idMenCat);
                 nameCM = TextBoxModifyCategoryName.Text;
                 _menucat.Name = nameCM;
-                //_menucat.Status = ActiveSimpleStatus.Instance;
+                _menucat.Status = factoryDAO.GetActiveSimpleStatus();
                 _mencatDAO.Save(_menucat);
-
+             
                 AlertSuccess_ModificarCategoria.Visible = true;
 
             }

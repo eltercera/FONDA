@@ -19,10 +19,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.Session
 					.AddFromAssemblyOf<PersonMap>()
 				)
 
-				.ExposeConfiguration(cfg => new SchemaUpdate(cfg)
-					.Execute(true, true))
-					
-				.Diagnostics(diag => diag.Enable().OutputToConsole())
+                .ExposeConfiguration(cfg => new SchemaUpdate(cfg)
+                    .Execute(true, true))
+
+                .Diagnostics(diag => diag.Enable().OutputToConsole())
 				.BuildSessionFactory();
 
 			return sessionFactory.OpenSession ();

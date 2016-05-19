@@ -20,13 +20,14 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             References(x => x.Status)
                 .Column("fk_cat_status")
-                .Not.Nullable();
+                .Not.Nullable()
+                .Cascade.Persist();
 
-            References(x => x.RecordStatus)
-              .Column("fk_cat_record")
-              .Not.Nullable()
-              .Cascade.Persist();
-          
+            //References(x => x.RecordStatus)
+            //  .Column("fk_cat_record")
+            //  .Not.Nullable()
+            //  .Cascade.Persist();
+
             HasMany(x => x.ListDish)
                 .KeyColumn("fk_menu_dish")
                 .ExtraLazyLoad()
