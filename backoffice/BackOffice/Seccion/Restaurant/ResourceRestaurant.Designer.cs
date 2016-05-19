@@ -70,7 +70,7 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#consultar&quot;&gt;&lt;i class=&quot;fa fa-info-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#modificar&quot;&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;.
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
         /// </summary>
         internal static string ActionRestaurant {
             get {
@@ -79,11 +79,29 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string ActionTable {
+        internal static string ActionTableBusyStatus {
             get {
-                return ResourceManager.GetString("ActionTable", resourceCulture);
+                return ResourceManager.GetString("ActionTableBusyStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
+        /// </summary>
+        internal static string ActionTableFreeStatus {
+            get {
+                return ResourceManager.GetString("ActionTableFreeStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;.
+        /// </summary>
+        internal static string ActionTableModify {
+            get {
+                return ResourceManager.GetString("ActionTableModify", resourceCulture);
             }
         }
         

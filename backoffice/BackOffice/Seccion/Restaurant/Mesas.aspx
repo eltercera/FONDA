@@ -136,11 +136,11 @@ NOMBRE DEL RESTAURANTE
                 </div>   
                </div>
            </div>
-    
+
     <script type="text/javascript">
 
 
-
+//Modificar
         $(document).ready(function () {
             setValue();
             ajaxRes();
@@ -181,7 +181,7 @@ NOMBRE DEL RESTAURANTE
                         });
                     }
         
-
+       
 
 
     </script>

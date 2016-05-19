@@ -122,12 +122,20 @@
     <comment>Acciones disponibles en DataTable de Categoria de Restaurant</comment>
   </data>
   <data name="ActionRestaurant" xml:space="preserve">
-    <value>&lt;td class="text-center"&gt;&lt;a data-toggle="modal" data-target="#consultar"&gt;&lt;i class="fa fa-info-circle" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle="modal" data-target="#modificar"&gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/td&gt;</value>
+    <value>&lt;i class="fa fa-info-circle" aria-hidden="true"&gt;&lt;/i&gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
     <comment>Acciones disponibles en DataTable de Restaurant</comment>
   </data>
-  <data name="ActionTable" xml:space="preserve">
-    <value>&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
-    <comment>Acciones disponibles en DataTable de Mesa</comment>
+  <data name="ActionTableBusyStatus" xml:space="preserve">
+    <value>&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
+    <comment>Cambiar a estado inactivo</comment>
+  </data>
+  <data name="ActionTableFreeStatus" xml:space="preserve">
+    <value>&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;</value>
+    <comment>Cambiar a estado activo</comment>
+  </data>
+  <data name="ActionTableModify" xml:space="preserve">
+    <value>&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;</value>
+    <comment>Modificar en DataTable de Mesa</comment>
   </data>
   <data name="Active" xml:space="preserve">
     <value>&lt;span class="label label-success"&gt;&lt;i class="fa fa-check"&gt;&lt;p class="stat"&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;</value>
