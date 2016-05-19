@@ -96,8 +96,13 @@ namespace BackOffice.Seccion.Restaurant
                         LinkButton action = new LinkButton();
                         action.Attributes["data-toggle"] = "modal";
                         action.Attributes["data-target"] = "#modificar";
-                        action.Text = ResourceRestaurant.ActionTable;
+                        action.Text = ResourceRestaurant.ActionTableModify;
                         tCell.Controls.Add(action);
+                        LinkButton active = new LinkButton();
+                        active.Attributes.Add("OnClientClick", "ChangeStatus(listTable[i].Id)");
+                        active.Text = ResourceRestaurant.ActionTableFreeStatus;
+                        tCell.Controls.Add(active);
+
                     }
                     //Agrega la celda
                     tRow.Cells.Add(tCell);
@@ -157,10 +162,7 @@ namespace BackOffice.Seccion.Restaurant
         public void CleanTable()
         {
             Table.Rows.Clear();
-
         }
-
-
 
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
@@ -197,14 +199,27 @@ namespace BackOffice.Seccion.Restaurant
         /// <param name="Id">Id de la categoria a mostrar</param>
         /// <returns>Informacion de objeto categoria</returns>
         [WebMethod]
-        public static RestaurantCategory GetData(string Id)
+        public static com.ds201625.fonda.Domain.Table GetData(string Id)
         {
-            int categoryId = int.Parse(Id);
+            int tableId = int.Parse(Id);
             FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            RestaurantCategory restCategory = _restcatDAO.FindById(categoryId);
+            ITableDAO _tableDAO = factoryDAO.GetTableDAO();
+            com.ds201625.fonda.Domain.Table _table = _tableDAO.FindById(tableId);
 
-            return restCategory;
+            return _table;
+        }
+
+        
+        protected void ChangeStatus(string Id)
+        {
+            int tableId = int.Parse(Id);
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            ITableDAO _tableDAO = factoryDAO.GetTableDAO();
+            com.ds201625.fonda.Domain.Table _table = _tableDAO.FindById(tableId);
+            _table.Status = BusyTableStatus.Instance;
+            _tableDAO.Save(_table);
+            LoadDataTable();
+
         }
 
     }
