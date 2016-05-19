@@ -28,44 +28,6 @@ namespace BackOffice.Seccion.Restaurant
 
         }
 
-        public bool ValidarRestaurant(string name, string category, string nationality, string rif, string currency, string address,
-            string zone, string longitud, string latitud)
-        {
-            bool valid = true;
-            string patronLetras = "^[A-Za-z]*$";
-            string patronNumero = "^[0-9]*$";
-            string patronPunto = @"[(.)]";
-            string patronFloat = @"^-?[0-9]\d*(\.\d+)?$"; // "^\-{0,1}\d+(.\d+){0,1}$"
-
-
-            if (name == "" | rif == "" | address == "" | longitud == "" | latitud == ""
-                | category == "" | nationality == "" | zone == "" | currency == "")
-            {
-                valid = false;
-
-            }
-            if ((!Regex.IsMatch(name, patronLetras)) | (!Regex.IsMatch(address, patronLetras)))
-            {
-                valid = false;
-            }
-
-            if ((!Regex.IsMatch(rif, patronNumero)))
-            {
-                valid = false;
-            }
-
-            if ((!Regex.IsMatch(longitud, patronFloat)) | (!Regex.IsMatch(latitud, patronFloat)))
-            {
-                valid = false;
-            }
-
-            if ((!Regex.IsMatch(longitud, patronPunto)) | (!Regex.IsMatch(latitud, patronPunto)))
-            {
-                valid = false;
-            }
-
-            return valid;
-        }
 
 
         /// <summary>
@@ -186,7 +148,65 @@ namespace BackOffice.Seccion.Restaurant
             Restaurant.Rows.Clear();
         }
 
+        public bool ValidarRestaurant(string name, string category, string nationality, string rif, string currency, string address,
+            string zone, string longitud, string latitud)
+        {
+            bool valid = true;
+            byte cont = 0;
+            string patronLetras = "^[A-Za-z]*$";
+            string patronNumero = "^[0-9]*$";
+            string patronPunto = @"[(.)]";
+            string patronFloat = @"^-?[0-9]\d*(\.\d+)?$"; // "^\-{0,1}\d+(.\d+){0,1}$"
 
+
+
+            if (name == "" | rif == "" | address == "" | longitud == "" | latitud == ""
+                | category == "" | nationality == "" | zone == "" | currency == "")
+            {
+                valid = false;
+
+            }
+            if ((!Regex.IsMatch(name, patronLetras)) | (!Regex.IsMatch(address, patronLetras)))
+            {
+                valid = false;
+            }
+
+            if ((!Regex.IsMatch(rif, patronNumero)))
+            {
+                valid = false;
+            }
+
+            if ((!Regex.IsMatch(longitud, patronFloat)) | (!Regex.IsMatch(latitud, patronFloat)))
+            {
+                valid = false;
+            }
+
+            if ((!Regex.IsMatch(longitud, patronPunto)) | (!Regex.IsMatch(latitud, patronPunto)))
+            {
+                valid = false;
+            }
+
+            if (Day1A.Checked)
+                cont = cont++;
+            if (Day2A.Checked)
+                cont = cont++;
+            if (Day3A.Checked)
+                cont = cont++;
+            if (Day4A.Checked)
+                cont = cont++;
+            if (Day5A.Checked)
+                cont = cont++;
+            if (Day6A.Checked)
+                cont = cont++;
+            if (Day7A.Checked)
+                cont = cont++;
+            if (cont>0)
+            {
+                valid = false;
+            }
+
+            return valid;
+        }
 
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
