@@ -44,21 +44,21 @@ namespace BackOffice.Seccion.Restaurant
                 valid = false;
 
             }
-             if ((!Regex.IsMatch(name, patronLetras)) | (!Regex.IsMatch(address, patronLetras)))
-             {
-                 valid = false;
-             }
+            if ((!Regex.IsMatch(name, patronLetras)) | (!Regex.IsMatch(address, patronLetras)))
+            {
+                valid = false;
+            }
 
-             if ((!Regex.IsMatch(rif, patronNumero)))
-             {
-                 valid = false;
-             }
+            if ((!Regex.IsMatch(rif, patronNumero)))
+            {
+                valid = false;
+            }
 
             if ((!Regex.IsMatch(longitud, patronFloat)) | (!Regex.IsMatch(latitud, patronFloat)))
             {
                 valid = false;
             }
-            
+
             if ((!Regex.IsMatch(longitud, patronPunto)) | (!Regex.IsMatch(latitud, patronPunto)))
             {
                 valid = false;
@@ -192,34 +192,13 @@ namespace BackOffice.Seccion.Restaurant
         {
             string Name = NameA.Text;
             string Category = CategoryA.Text;
-            string Nacionality = NacionalityA.Text;
+            char Nationality = Convert.ToChar(NacionalityA.Text);
             string Rif = RifA.Text;
             string Currency = CurrencyA.Text;
             string Address = AddressA.Text;
             string Zone = ZoneA.Text;
-            string Long = LongA.Text;
-            string Lat = LatA.Text;
-
-            if (ValidarRestaurant(Name, Category, Nacionality, Rif, Currency,
-                 Address, Zone, Long, Lat))
-             {
-
-             }
-             else
-             {
-                 AlertError_AddRestaurant.Visible = true;
-             }
-             NameA.Text = string.Empty;
-             RifA.Text = string.Empty;
-             AddressA.Text = string.Empty;
-             LongA.Text = string.Empty;
-             LatA.Text = string.Empty;
-
-            /*AlertSuccess_AddRestaurant.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
-            com.ds201625.fonda.Domain.Restaurant _restaurant = new com.ds201625.fonda.Domain.Restaurant();
-            
+            double Long = Convert.ToDouble(LongA.Text);
+            double Lat = Convert.ToDouble(LatA.Text);
             string Day1 = Day1A.Text;
             string Day2 = Day2A.Text;
             string Day3 = Day3A.Text;
@@ -229,9 +208,71 @@ namespace BackOffice.Seccion.Restaurant
             string Day7 = Day7A.Text;
             TimeSpan OT = TimeSpan.Parse(OpeningTimeA.Text);
             TimeSpan CT = TimeSpan.Parse(ClosingTimeA.Text);
+            string logo = "C:/";
+            AlertSuccess_AddRestaurant.Visible = true;
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+            com.ds201625.fonda.Domain.Restaurant _restaurant = new com.ds201625.fonda.Domain.Restaurant();
+
+            _restaurant.Name = Name;
+            RestaurantCategory restcat = new RestaurantCategory();
+            restcat.Name = Category;
+            _restaurant.RestaurantCategory = restcat;
+            _restaurant.Nationality = Nationality;
+            _restaurant.Ssn = Rif;
+            Currency curr = new Currency();
+            curr.Name = Currency;
+            curr.Symbol = "C:/";
+            _restaurant.Currency = curr;
+            _restaurant.Address = Address;
+            Zone zone = new Zone();
+            zone.Name = Zone;
+            _restaurant.Zone = zone;
+            Coordinate coord = new Coordinate();
+            coord.Longitude = Long;
+            coord.Latitude = Lat;
+            _restaurant.Coordinate = coord;
+            Schedule schedule = new Schedule();
+            List<Day> days = new List<Day>();
+            if (Day1A.Checked)
+                days.Add(new Day() {Name = Day1});
+            if (Day2A.Checked)
+                days.Add(new Day() {Name = Day2});
+            if (Day3A.Checked)
+                days.Add(new Day() {Name = Day3});
+            if (Day4A.Checked)
+                days.Add(new Day() {Name = Day4});
+            if (Day5A.Checked)
+                days.Add(new Day() {Name = Day5});
+            if (Day6A.Checked)
+                days.Add(new Day() {Name = Day6});
+            if (Day7A.Checked)
+                days.Add(new Day() { Name = Day7});
+            schedule.Day = days;
+            schedule.OpeningTime = OT;
+            schedule.ClosingTime = CT;
+            _restaurant.Schedule = schedule;
+            _restaurant.Logo = logo;
             _restaurant.Status = ActiveSimpleStatus.Instance;
             _restaurantDAO.Save(_restaurant);
-            LoadDataTable();*/
+            LoadDataTable();
+
+            if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
+                Address, Zone, Long.ToString(), Lat.ToString()))
+            {
+
+            }
+            else
+            {
+                AlertError_AddRestaurant.Visible = true;
+            }
+            NameA.Text = string.Empty;
+            RifA.Text = string.Empty;
+            AddressA.Text = string.Empty;
+            LongA.Text = string.Empty;
+            LatA.Text = string.Empty;
+
+
         }
 
         protected void ButtonModify_Click(object sender, EventArgs e)

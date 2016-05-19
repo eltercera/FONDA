@@ -479,7 +479,7 @@ Restaurantes
             <div class="row">
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
-                              <label for="ejemplo_archivo_1">Imagen del Restaurante</label>
+                              <label for="ImageA">Imagen del Restaurante</label>
                               <input type="file" id="ImageA"/>
                               <p class="help-block">Imagen .jpg o .png</p>
                          </div>
@@ -565,7 +565,6 @@ Restaurantes
 
                         });
                     }
-        
 
 
 

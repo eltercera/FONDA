@@ -18,8 +18,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.Session
 				.Mappings (m => m.FluentMappings
 					.AddFromAssemblyOf<PersonMap>()
 				)
-				.ExposeConfiguration(cfg => new SchemaUpdate(cfg)
-					.Execute(true, true))
+				//.ExposeConfiguration(cfg => new SchemaUpdate(cfg)
+				//	.Execute(true, true))
 				.Diagnostics(diag => diag.Enable().OutputToConsole())
 				.BuildSessionFactory();
 
