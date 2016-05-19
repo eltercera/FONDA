@@ -309,6 +309,11 @@ namespace BackOffice.Seccion.Restaurant
 
         }
 
+        public void setDropDownList()
+        {
+            CurrencyM.SelectedValue = "Caracas";
+        }
+
 
         /// <summary>
         /// Recibe el Id de la fila y obtiene un objeto de tipo categoria
@@ -322,7 +327,7 @@ namespace BackOffice.Seccion.Restaurant
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Restaurant restaurant = _restaurantDAO.FindById(restaurantId);
-
+            ;
             return restaurant;
         }
 

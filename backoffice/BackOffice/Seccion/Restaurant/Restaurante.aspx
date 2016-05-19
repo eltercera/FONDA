@@ -188,11 +188,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Tipo</label>
                             <asp:DropDownList id="CategoryM" CssClass="form-control" AutoPostBack="False" runat="server">
-                                <asp:ListItem> </asp:ListItem>
-                                <asp:ListItem>Venezolana</asp:ListItem>
-                                <asp:ListItem>Americana</asp:ListItem>
-                                <asp:ListItem>Japonesa</asp:ListItem>
-                                <asp:ListItem>China</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                 </div>
@@ -202,9 +197,6 @@ Restaurantes
                     <div class="form-group">
                         <label class="control-label">Nacionalidad</label>
                         <asp:DropDownList id="NacionalityM" CssClass="form-control" AutoPostBack="False" runat="server">
-                            <asp:ListItem> </asp:ListItem>
-                            <asp:ListItem>J</asp:ListItem>
-                            <asp:ListItem>V</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                 </div>
@@ -218,10 +210,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Unidad Monetaria</label>
                                 <asp:DropDownList id="CurrencyM" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem> </asp:ListItem>
-                                    <asp:ListItem>VEF</asp:ListItem>
-                                    <asp:ListItem>USD</asp:ListItem>
-                                    <asp:ListItem>EUR</asp:ListItem>
                                 </asp:DropDownList>
                         </div>
                 </div>
@@ -237,10 +225,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Zona</label>
                         <asp:DropDownList id="ZoneM" CssClass="form-control" AutoPostBack="False" runat="server">
-                            <asp:ListItem> </asp:ListItem>
-                            <asp:ListItem>Altamira</asp:ListItem>
-                            <asp:ListItem>Las Mercedes</asp:ListItem>
-                            <asp:ListItem>Macaracuay</asp:ListItem>
                         </asp:DropDownList>
                         </div>
                 </div>
@@ -292,10 +276,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Hora Apertura</label>
                                 <asp:DropDownList id="OpeningTimeM" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem>Apertura</asp:ListItem>
-                                    <asp:ListItem>8</asp:ListItem>
-                                    <asp:ListItem>9</asp:ListItem>
-                                    <asp:ListItem>10</asp:ListItem>
                                 </asp:DropDownList>
                         </div>
                 </div>
@@ -303,10 +283,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Hora Cierre</label>
                                 <asp:DropDownList id="ClosingTimeM" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem>Cierre</asp:ListItem>
-                                    <asp:ListItem>20</asp:ListItem>
-                                    <asp:ListItem>21</asp:ListItem>
-                                    <asp:ListItem>22</asp:ListItem>
                                 </asp:DropDownList>
                         </div>
                 </div>
@@ -353,11 +329,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Tipo</label>
                             <asp:DropDownList id="CategoryA" CssClass="form-control" AutoPostBack="False" runat="server">
-                                <asp:ListItem> </asp:ListItem>
-                                <asp:ListItem>Venezolana</asp:ListItem>
-                                <asp:ListItem>Americana</asp:ListItem>
-                                <asp:ListItem>Japonesa</asp:ListItem>
-                                <asp:ListItem>China</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                 </div>
@@ -367,9 +338,6 @@ Restaurantes
                     <div class="form-group">
                         <label class="control-label">Nacionalidad</label>
                         <asp:DropDownList id="NacionalityA" CssClass="form-control" AutoPostBack="False" runat="server">
-                            <asp:ListItem> </asp:ListItem>
-                            <asp:ListItem>J</asp:ListItem>
-                            <asp:ListItem>V</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                 </div>
@@ -505,15 +473,15 @@ Restaurantes
                 });
 
                     function ajaxRes(){
-                    $('.table > tbody > tr > td:nth-child(5) > a')
-                        .click(function (e) {
+                        $('.table > tbody > tr > td:nth-child(5) > a[data-target=#consultar]')
+                            .click(function (e) {
                                     e.preventDefault();
                                     var prueba = document.getElementById("<%=RestaurantModifyId.ClientID%>").value;
                                     var params = "{'Id':'" + prueba + "'}";
 
                                     $.ajax({
                                     type: "POST",
-                                    url: "Mesas.aspx/GetData",
+                                    url: "Restaurante.aspx/GetData",
                                     data: params,
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
@@ -557,8 +525,66 @@ Restaurantes
                                     });
                         });
                     }
+
+                            function ajaxRes(){
+                        $('.table > tbody > tr > td:nth-child(5) > a[data-target=#modificar]')
+                            .click(function (e) {
+                                    e.preventDefault();
+                                    var prueba = document.getElementById("<%=RestaurantModifyId.ClientID%>").value;
+                                    var params = "{'Id':'" + prueba + "'}";
+
+                                    $.ajax({
+                                    type: "POST",
+                                    url: "Restaurante.aspx/GetData",
+                                    data: params,
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (response) {
+                                        var local = response;
+                                        debugger;
+                                        document.getElementById("<%=NameC.ClientID%>").value = local.d.Name;
+                                        document.getElementById("<%=CategoryC.ClientID%>").value = local.d.Name;
+                                        document.getElementById("<%=NacionalityC.ClientID%>").value = local.d.Nacionality;
+                                        document.getElementById("<%=RifC.ClientID%>").value = local.d.Rif;
+                                        document.getElementById("<%=CurrencyC.ClientID%>").value = local.d.Currency.Name;
+
+
+
+                                        document.getElementById("<%=NameM.ClientID%>").value = local.d.Name;
+                                        document.getElementById("<%=CategoryM.ClientID%>").value = local.d.Name;
+                                        document.getElementById("<%=NacionalityM.ClientID%>").value = local.d.Nacionality;
+                                        document.getElementById("<%=RifM.ClientID%>").value = local.d.Rif;
+                                        document.getElementById("<%=CurrencyM.ClientID%>").value = local.d.Currency.Symbol + ' ' + local.d.Currency.Name;
+                                        document.getElementById("<%=AddressC.ClientID%>").value = local.d.Address;
+                                        document.getElementById("<%=AddressM.ClientID%>").value = local.d.Address;
+                                        document.getElementById("<%=ZoneC.ClientID%>").value = local.d.Name;
+                                        document.getElementById("<%=ZoneM.ClientID%>").value = local.d.Name;
+                                        document.getElementById("<%=OpeningTimeC.ClientID%>").value = local.d.OpeningTime;
+                                        document.getElementById("<%=OpeningTimeM.ClientID%>").value = local.d.OpeningTime;
+                                        document.getElementById("<%=ClosingTimeC.ClientID%>").value = local.d.OpeningTime;
+                                        document.getElementById("<%=ClosingTimeM.ClientID%>").value = local.d.OpeningTime;
+                                        document.getElementById("<%=LongM.ClientID%>").value = local.d.Coordinate.Longitude;
+                                        document.getElementById("<%=LatM.ClientID%>").value = local.d.Coordinate.Latitude;
+                                        document.getElementById("<%=Day1M.ClientID%>").value = local.d.Day;
+                                        document.getElementById("<%=Day2M.ClientID%>").value = local.d.Day;
+                                        document.getElementById("<%=Day3M.ClientID%>").value = local.d.Day;
+                                        document.getElementById("<%=Day4M.ClientID%>").value = local.d.Day;
+                                        document.getElementById("<%=Day5M.ClientID%>").value = local.d.Day;
+                                        document.getElementById("<%=Day6M.ClientID%>").value = local.d.Day;
+                                        document.getElementById("<%=Day7M.ClientID%>").value = local.d.Day;
+                                        
+
+                                        
+
+                                    },
+                                    failure: function (response) {
+                                          alert("_");
+                                    }
+                                    });
+                        });
+                    }
                     function setValue() {
-                        $('.table > tbody > tr > td:nth-child() > a')
+                        $('.table > tbody > tr > td:nth-child(5) > a')
                         .click(function () {
                             var padreId = $(this).parent().parent().attr("data-id");
                             document.getElementById("<%=RestaurantModifyId.ClientID%>").value = padreId;
