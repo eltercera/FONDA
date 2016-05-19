@@ -22,8 +22,15 @@ namespace com.ds201625.fonda.BackEnd.Controllers
           {
             DateTime date1 = new DateTime(2016, 05, 16);
 
+            Person person = new Person();
+            person.Name = "Adriana";
+            person.LastName = "Da Rocha";
+            person.Ssn = "20.123.134";
+
             Profile profile = new Profile();
-            profile.ProfileName = "Adriana Da Rocha";
+            profile.ProfileName = "Adriana";
+            profile.Person = person;            
+            
 
             RestaurantCategory category2 = new RestaurantCategory();
             category2.NameCategory = "Casual";            

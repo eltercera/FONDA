@@ -21,6 +21,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
           public IHttpActionResult getListDishOrder()
           {
 
+            Account account = new Account();
                         
             Dish dish1 = new Dish();
             dish1.Name = "Pasta";
@@ -48,14 +49,17 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             DishOrder dishO3 = new DishOrder();
             dishO3.Dish = dish3;
             dishO3.Count = 1;
-           
-            
-              List<DishOrder> lista = new List<DishOrder>();
+
+            account.addDish(dishO1);
+            account.addDish(dishO2);
+            account.addDish(dishO3);
+
+          /*  List<DishOrder> lista = new List<DishOrder>();
               lista.Add(dishO1);
               lista.Add(dishO2);
-              lista.Add(dishO3);
+              lista.Add(dishO3);*/
               
-              return Ok(lista);
+              return Ok(account.ListDish);
           }
     }
 }
