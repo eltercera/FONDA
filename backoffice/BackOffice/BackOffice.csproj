@@ -438,7 +438,6 @@
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
     <Content Include="Seccion\Menu\MenuDia.aspx" />
-    <Content Include="Seccion\Menu\ModificarCategoria.aspx" />
     <Content Include="Seccion\Reservas\Default.aspx" />
     <Content Include="Seccion\Restaurant\AgregarCategoria.aspx" />
     <Content Include="Seccion\Restaurant\Mesas.aspx" />
@@ -597,13 +596,6 @@
     </Compile>
     <Compile Include="Seccion\Menu\MenuDia.aspx.designer.cs">
       <DependentUpon>MenuDia.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Menu\ModificarCategoria.aspx.cs">
-      <DependentUpon>ModificarCategoria.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Menu\ModificarCategoria.aspx.designer.cs">
-      <DependentUpon>ModificarCategoria.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Menu\RecursosMenu1.Designer.cs">
       <AutoGen>True</AutoGen>
