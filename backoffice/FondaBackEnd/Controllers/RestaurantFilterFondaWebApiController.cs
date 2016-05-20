@@ -18,108 +18,122 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
         [Route("restaurantFilter")]
         [HttpGet]
-        public IHttpActionResult getRestaurantFilter()
+        public IHttpActionResult getRestaurantFilter(Zone zone)
         {
+            /// <summary>
+            /// Llamar al metodo mediante la interfaz
+            /// para listar los restaurantes que se
+            /// encuentren en una zona
+            /// </summary>
+            /// <returns></returns>
+            /// 
+            IRestaurantDAO restaurantDAO = FactoryDAO.GetRestaurantDAO();
+            
+            IList<Restaurant> listRestaurant = restaurantDAO.findByZone(zone);
+             
+            return Ok(listRestaurant);
+
+
+
             /*
-            String zona = "Altamira";
+        String zona = "Altamira";
 
-            RestaurantCategory category1 = new RestaurantCategory();
-            category1.NameCategory = "Romantico";
+        RestaurantCategory category1 = new RestaurantCategory();
+        category1.NameCategory = "Romantico";
 
-            RestaurantCategory category2 = new RestaurantCategory();
-            category2.NameCategory = "Casual";
+        RestaurantCategory category2 = new RestaurantCategory();
+        category2.NameCategory = "Casual";
 
-            RestaurantCategory category3 = new RestaurantCategory();
-            category3.NameCategory = "Italiano";
+        RestaurantCategory category3 = new RestaurantCategory();
+        category3.NameCategory = "Italiano";
 
-            RestaurantCategory category4 = new RestaurantCategory();
-            category4.NameCategory = "Americano";
+        RestaurantCategory category4 = new RestaurantCategory();
+        category4.NameCategory = "Americano";
 
-            //Agregando zonas//
-            Zone zone1 = new Zone();
-            zone1.Name = "Altamira";
+        //Agregando zonas//
+        Zone zone1 = new Zone();
+        zone1.Name = "Altamira";
 
-            Zone zone2 = new Zone();
-            zone2.Name = "Alto Hatillo";
+        Zone zone2 = new Zone();
+        zone2.Name = "Alto Hatillo";
 
-            Zone zone3 = new Zone();
-            zone3.Name = "Bello Monte";
+        Zone zone3 = new Zone();
+        zone3.Name = "Bello Monte";
 
-            Zone zone4 = new Zone();
-            zone4.Name = "Boleita";
+        Zone zone4 = new Zone();
+        zone4.Name = "Boleita";
 
-            Zone zone5 = new Zone();
-            zone5.Name = "Chacao";
-
-
-
-            Restaurant restaurant1 = new Restaurant();
-
-            restaurant1.Name = "Friday";
-            restaurant1.Address = "Principal de altamira";
-            restaurant1.RestaurantCategory = category2;
-            restaurant1.Zone = zone1;
-
-            Restaurant restaurant2 = new Restaurant();
-            restaurant2.Name = "El Cine";
-            restaurant2.Address = "5ta transversal";
-            restaurant2.RestaurantCategory = category1;
-            restaurant2.Zone = zone2;
-
-            Restaurant restaurant3 = new Restaurant();
-            restaurant3.Name = "Crema Paraiso";
-            restaurant3.Address = "Principal de Bello Monte";
-            restaurant3.RestaurantCategory = category3;
-            restaurant3.Zone = zone3;
-
-            Restaurant restaurant4 = new Restaurant();
-            restaurant4.Name = "La Casona";
-            restaurant4.Address = "Boleita";
-            restaurant4.RestaurantCategory = category3;
-            restaurant4.Zone = zone4;
-
-            Restaurant restaurant5 = new Restaurant();
-            restaurant5.Name = "Tony's";
-            restaurant5.Address = "El Rosal";
-            restaurant5.RestaurantCategory = category4;
-            restaurant5.Zone = zone5;
+        Zone zone5 = new Zone();
+        zone5.Name = "Chacao";
 
 
 
-            List<Restaurant> lista = new List<Restaurant>();
-            if (restaurant1.Zone.Name.Equals(zona))
-            {
+        Restaurant restaurant1 = new Restaurant();
 
-                lista.Add(restaurant1);
-            }
+        restaurant1.Name = "Friday";
+        restaurant1.Address = "Principal de altamira";
+        restaurant1.RestaurantCategory = category2;
+        restaurant1.Zone = zone1;
 
-            if (restaurant2.Zone.Name.Equals(zona))
-            {
+        Restaurant restaurant2 = new Restaurant();
+        restaurant2.Name = "El Cine";
+        restaurant2.Address = "5ta transversal";
+        restaurant2.RestaurantCategory = category1;
+        restaurant2.Zone = zone2;
 
-                lista.Add(restaurant2);
-            }
+        Restaurant restaurant3 = new Restaurant();
+        restaurant3.Name = "Crema Paraiso";
+        restaurant3.Address = "Principal de Bello Monte";
+        restaurant3.RestaurantCategory = category3;
+        restaurant3.Zone = zone3;
 
-            if (restaurant3.Zone.Name.Equals(zona))
-            {
+        Restaurant restaurant4 = new Restaurant();
+        restaurant4.Name = "La Casona";
+        restaurant4.Address = "Boleita";
+        restaurant4.RestaurantCategory = category3;
+        restaurant4.Zone = zone4;
 
-                lista.Add(restaurant3);
-            }
+        Restaurant restaurant5 = new Restaurant();
+        restaurant5.Name = "Tony's";
+        restaurant5.Address = "El Rosal";
+        restaurant5.RestaurantCategory = category4;
+        restaurant5.Zone = zone5;
 
-            if (restaurant4.Zone.Name.Equals(zona))
-            {
 
-                lista.Add(restaurant4);
-            }
 
-            if (restaurant5.Zone.Name.Equals(zona))
-            {
+        List<Restaurant> lista = new List<Restaurant>();
+        if (restaurant1.Zone.Name.Equals(zona))
+        {
 
-                lista.Add(restaurant5);
-            }
+            lista.Add(restaurant1);
+        }
 
-            return Ok(lista);
-            */
-            return null;
+        if (restaurant2.Zone.Name.Equals(zona))
+        {
+
+            lista.Add(restaurant2);
+        }
+
+        if (restaurant3.Zone.Name.Equals(zona))
+        {
+
+            lista.Add(restaurant3);
+        }
+
+        if (restaurant4.Zone.Name.Equals(zona))
+        {
+
+            lista.Add(restaurant4);
+        }
+
+        if (restaurant5.Zone.Name.Equals(zona))
+        {
+
+            lista.Add(restaurant5);
+        }
+
+        return Ok(lista);
+        */
         }
     }
 }

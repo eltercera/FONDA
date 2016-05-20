@@ -20,7 +20,11 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [HttpGet]
         public IHttpActionResult getZoneFilter()
         {
-
+            /// <summary>
+            /// Llamar al metodo mediante la interfaz
+            /// para listar todas las zonas y devolverlo al ws
+            /// </summary>
+            /// <returns></returns>
             IZoneDAO zoneDAO = FactoryDAO.GetZoneDAO();
             
 
