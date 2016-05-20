@@ -14,10 +14,99 @@ namespace DataAccess
         private FactoryDAO _facDAO;
         private ICommensalDAO _commensalDAO;
         private IRestaurantDAO _restaurantDAO;
-        private Commensal _commensal;
         private Restaurant _restaurant1;
-        private Restaurant _restaurant2; 
-    
+        private Commensal _commensal;
+
+        /// <summary>
+        /// Void: createCommensal()
+        /// Explicación: Instancio el objeto Commensal y le introduzco valores para poder hacer las pruebas.
+        /// </summary>
+
+        private void createCommensal()
+        {
+            _commensal = new Commensal()
+            {
+                Password = "12345",
+                //SesionToken = "prueba",
+                Email = "Commensal@gmail.com",
+                Status = ActiveSimpleStatus.Instance
+
+            };
+
+
+
+        }
+        /// <summary>
+        /// Void: createRestaurant()
+        /// Explicación: Instancio el objeto Restaurant y le introduzco valores para poder hacer las pruebas.
+        /// </summary>
+
+        private void createRestaurant()
+        {
+            _restaurant1 = new Restaurant();
+            _restaurant1.Name = "Tierra Mar";
+            _restaurant1.Logo = "C:/";
+            _restaurant1.Nationality = 'V';
+            _restaurant1.Ssn = "123456";
+            _restaurant1.Address = "Av. El ejercito con puente de San Juan";
+            _restaurant1.Status = ActiveSimpleStatus.Instance;
+
+            Currency _currency = new Currency();
+            _currency.Symbol = "C:/";
+            _currency.Name = "Dolar";
+            _restaurant1.Currency = _currency;
+
+            Coordinate _coordinate = new Coordinate();
+            _coordinate.Latitude = 1;
+            _coordinate.Longitude = 4;
+            _restaurant1.Coordinate = _coordinate;
+
+            RestaurantCategory _restaurantCategory = new RestaurantCategory();
+            _restaurantCategory.Name = "China";
+            _restaurant1.RestaurantCategory = _restaurantCategory;
+
+            Zone _zone = new Zone();
+            _zone.Name = "Caracas";
+            _restaurant1.Zone = _zone;
+
+            MenuCategory _menuCategories = new MenuCategory() { Name = "Italiana", Status = DisableSimpleStatus.Instance };
+            _restaurant1.MenuCategories = new List<MenuCategory>();
+            _restaurant1.MenuCategories.Add(_menuCategories);
+
+            Schedule _schedule = new Schedule();
+            _schedule.OpeningTime = new TimeSpan(7, 0, 0);
+            _schedule.ClosingTime = new TimeSpan(15, 0, 0);
+            _restaurant1.Schedule = _schedule;
+
+            Employee _employee = new Employee()
+            {
+                Name = "José",
+                LastName = "Garcia",
+                Ssn = "19932801",
+                PhoneNumber = "0414-11-63-457",
+                Address = "Direccion de Prueba",
+                Gender = 'M',
+                BirthDate = Convert.ToDateTime("08/08/1991"),
+                Username = "Usuario",
+                Status = ActiveSimpleStatus.Instance,
+                UserAccount = new UserAccount()
+                {
+                    Email = "email@gmail.com",
+                    Password = "123",
+                    Status = ActiveSimpleStatus.Instance
+                },
+                Role = new Role() { Name = "Administrador de Sistemas", Descripcion = "Es el administrado" }
+            };
+            //_restaurant1.Employees = new List<Employee>();
+            //_restaurant1.Employees.Add(_employee);
+
+            Table _table = new Table() { Capacity = 2, Status = FreeTableStatus.Instance };
+            _restaurant1.Tables = new List<Table>();
+            _restaurant1.Tables.Add(_table);
+
+        }
+
+
 
         private void getCommensalDao()
         {
@@ -35,7 +124,8 @@ namespace DataAccess
 
         }
         /// <summary>
-        /// VOID PARA INSTANCIAR LA FABRICA
+        /// Void: getDao() 
+        /// Explicación: Sirve para instanciar la clase Factory.
         /// </summary>
         private void getDao()
         {
@@ -43,319 +133,147 @@ namespace DataAccess
                 _facDAO = FactoryDAO.Intance;
         }
 
+        /// <summary>
+        /// Void: addRestaurantToCommensal()
+        /// Explicación: Se pasan dos parametros, un objeto Commensal y un array de Restaurant, se recorre
+        /// el array de Restaurant para así ir pasando uno a uno a la funcion AddFavoriteRestaurant() que se
+        /// encuentra en la clase Commensal y así introducirlo en el objeto Commensal.
+        /// </summary>
+        /// <param name="_commensal"></param>
+        /// <param name="_restarants"></param>
 
-       
-        private Commensal CreateCommensal()
-        {
-
-            if (_commensal == null)
-            {
-                _commensal = new Commensal()
-                {
-                    Email = "Commensal@gmail.com",
-                    Password = "12345",
-                    Status = ActiveSimpleStatus.Instance
-                };
-
-                
-            }
-            
-            return _commensal;
-  
-        }
-        
-        
-        private Restaurant CreateRestaurant(Restaurant _restaurant)
-        {
-            
-            if (_restaurant == null)
-            {
-                _restaurant = new Restaurant()
-                {
-                    Logo = "FondaLogo.jpg",
-                    Currency = new Currency
-                    {
-                        Name = "CurrencyName"
-                    },
-                    Coordinate = new Coordinate
-                    {
-                        Latitude = 9.1234,
-                        Longitude = -80.2034
-                    },
-                    Name = "FondaRestaurant",
-                    Address = "Altamira",
-                    Ssn = "Ni idea",
-                    PhoneNumber = "02129415126",
-                    Zone = new Zone(),
-                    RestaurantCategory = new RestaurantCategory(),
-                    Schedule = new Schedule
-                    {
-                        OpeningTime = new TimeSpan(1, 2, 3, 4),
-                        ClosingTime = new TimeSpan(5, 6, 7, 8),
-                        Day = new List<Day>() { }
-
-                    },
-                    MenuCategories = new List<MenuCategory>(),
-					/**
-					 * No existe esta propiedad en Restaurant
-					 */
-                    //Employees = new List<Employee>(),
-                    Tables = new List<Table>(),
-                    FavoritesCommensals = new List<Commensal>(),
-
-
-                };
-
-            }
-            
-            return _restaurant;
-        }
-
-
-        [Test()]
-        public void TestEmply()
-        {
-            Assert.Null(_commensal);
-            Assert.Null(_restaurant1);
-
-            _commensal = CreateCommensal();
-            _restaurant1 = CreateRestaurant(_restaurant1);
-            
-
-            Assert.NotNull(_commensal);
-            Assert.NotNull(_restaurant1);
-        }
-
-        [Test()]
-        public void TestObject()
-        {
-            Assert.AreEqual(_commensal.Email, "Commensal@gmail.com");
-            Assert.AreNotEqual(_commensal.Email, "Comensalgmail.com");
-            Assert.AreEqual(_restaurant1.Coordinate.Latitude, 9.1234);
-            Assert.AreEqual(_restaurant1.Coordinate.Longitude, -80.2034);
-            Assert.AreEqual(_restaurant2.Address, "Altamira");
-            Assert.AreEqual(_restaurant2.Currency.Name, "CurrencyName");
-
-
-        }
-        
-        [Test()]
-        public void TestAdd()
-        {
-            getRestaurantDao();
-            getCommensalDao();
-
-            try
-            {
-                Restaurant _restaurantId1 = _restaurantDAO.FindById(1);
-                Restaurant _restaurantId2 = _restaurantDAO.FindById(2);
-            }
-            catch (Exception e)
-            {
-				/**
-				 * Esto no es una función es una propiedad.
-				 * si quieres imprimir deverias de usuar algo como
-				 * Console.WriteLine(e.Message);
-				 */
-                //e.Message();
-            }
-
-            
-			/**
-			 * _restaurantId1, _restaurantId2 estan declarado en un cintexto 
-			 * inferior a este. (en el try). 
-			 * Esto no compila.
-			 */
-            //Assert.NotNull(_restaurantId1);
-            //Assert.NotNull(_restaurantId2);
-            //Assert.AreNotSame(_restaurantId1,_restaurantId2);
-            
-
-            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(1);
-            //AddRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);
-            _commensalDAO.Save(_commensalId1);
-
-            
-        }
-
-       
-        public static void AddRestaurantToCommensal
+        public static void addRestaurantToCommensal
             (Commensal _commensal, params Restaurant[] _restarants)
         {
+
             foreach (var restaurant in _restarants)
             {
+
                 _commensal.AddFavoriteRestaurant(restaurant);
+
             }
-        }
 
-
-           
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*/// <summary>
-        /// FABRICA DE OBJETOS
-        /// </summary>
-        private FactoryDAO _facDAO;
-        /// <summary>
-        /// INTERFAZ DE COMMENSAL AL CUAL SE LE VAN AGREGAR RESTAURANTES
-        /// </summary>
-        private ICommensalDAO _commensalDAO;
-        /// <summary>
-        /// INTERFAZ DE LA RESTAURANTE A AGREGAR COMO FAVORTIO
-        /// </summary>
-        private IRestaurantDAO _restaurantDAO;
-        /// <summary>
-        /// RESTAURANTES A AGREGAR MANUALMENTE
-        /// </summary>
-        private Restaurant _restaurantId1;
-        private Restaurant _restaurantId2;
-        /// <summary>
-        /// Ids PARA FINDBYID
-        /// </summary>
-        private int Id1 = 1;
-        private int Id2 = 2;
-        /// <summary>
-        /// COMMENSAL CREADO MANUALMENTE
-        /// </summary>
-        private Commensal _commensalId1;
-        private Commensal _commensal = new Commensal
-        {
-
-            Password = "prueba",
-            //SesionToken = "prueba",
-            Email = "prueba",
-            Status = ActiveSimpleStatus.Instance
-        };
-        /// <summary>
-        /// RESTAURANTES CREADOS MANUALMENTES
-        /// </summary>
-        private Restaurant _restaurant = new Restaurant
-        {
-
-            Address = "prueba",
-            Name = "prueba",
-            Ssn = "prueba",
-            Logo = "prueba"
-        };
-
-        private Restaurant _restaurant2 = new Restaurant
-        {
-
-            Address = "prueba",
-            Name = "prueba",
-            Ssn = "prueba",
-            Logo = "prueba"
-        };
-
-        /// <summary>
-        /// VOID TEST QUE AGREGA RESTAURANT MANUALMENTE
-        /// </summary>
-        [Test()]
-        public void agregarRestaurant()
-        {
-
-            AddRestaurantToCommensal(_commensal, _restaurant, _restaurant2);
-            getCommensalDao();
-            _commensalDAO.Save(_commensal);
         }
         /// <summary>
-        /// VOID TEST QUE AGREGA RESTAURANTE COMO FAVORITO
-        /// CON EL ID DEL COMMENSAL Y LOS ID DE LOS RESTAURANTES
-        /// </summary>
-        [Test()]
-        public void addById()
-        {
-            getRestaurantDao();
-            getCommensalDao();
-            _restaurantId1 = _restaurantDAO.FindById(1);
-            _restaurantId2 = _restaurantDAO.FindById(2);
-            //findbyid para traerse objeto de commensal
-            _commensalId1 = (Commensal)_commensalDAO.FindById(5);
-            AddRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);
-            _commensalDAO.Save(_commensalId1);
-        }
-        /// <summary>
-        /// VOID TEST QUE ELIMINA RESTAURANTE COMO FAVORITO
-        /// CON EL ID DEL COMMENSAL Y LOS ID DE LOS RESTAURANTES
-        /// </summary>
-        [Test()]
-        public void deleteById()
-        {
-            getRestaurantDao();
-            getCommensalDao();
-            _restaurantId1 = _restaurantDAO.FindById(1);
-            _restaurantId2 = _restaurantDAO.FindById(2);
-            //findbyid para traerse objeto de commensal
-            _commensalId1 = (Commensal)_commensalDAO.FindById(6);
-            RemoveRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);
-            _commensalDAO.Save(_commensalId1);
-        }
-        /// <summary>
-        /// VOID QUE AGREGA RESTAURANTE A LA LISTA DEL OBJETO COMMENSAL
+        /// Void: removeRestaurantToCommensal()
+        /// Explicación: Se pasan dos parametros, un objeto Commensal y un array de Restaurant. Se recorre
+        /// el array de Restaurant para así ir pasando uno a uno a la funcion RemoveFavoriteRestaurant() que se
+        /// encuenta en la clase Commensal y así poder sacarlo del objeto Comensal.
         /// </summary>
         /// <param name="commensal"></param>
-        /// OBJETO DE COMMENSAL AL QUE SE LE AGREGARAN RESTAURANTES
         /// <param name="restarants"></param>
-        /// ARREGLO DE RESTAURANTE A AGREGAR COMO FAVORITOS
-        public static void AddRestaurantToCommensal
-            (Commensal commensal, params Restaurant[] restarants)
+
+        public static void removeRestaurantToCommensal
+           (Commensal commensal, params Restaurant[] restarants)
         {
-            foreach (var restaurant in restarants)
-            {
-                commensal.AddFavoriteRestaurant(restaurant);
-            }
-        }
-        /// <summary>
-        /// VOID QUE ELIMINA RESTAURANTE A LA LISTA DEL OBJETO COMMENSAL
-        /// </summary>
-        /// <param name="commensal"></param>
-        /// OBJETO DE COMMENSAL AL QUE SE LE ELIMINARAN RESTAURANTES
-        /// <param name="restarants"></param>
-        /// ARREGLO DE RESTAURANTE A ELIMINARAN COMO FAVORITOS
-        public static void RemoveRestaurantToCommensal
-            (Commensal commensal, params Restaurant[] restarants)
-        {
+
             foreach (var restaurant in restarants)
             {
                 commensal.RemoveFavoriteRestaurant(restaurant);
             }
-        }
-
-        private void getCommensalDao()
-        {
-            getDao();
-            if (_commensalDAO == null)
-                _commensalDAO = _facDAO.GetCommensalDAO();
 
         }
 
-        private void getRestaurantDao()
-        {
-            getDao();
-            if (_restaurantDAO == null)
-                _restaurantDAO = _facDAO.GetRestaurantDAO();
-
-        }
         /// <summary>
-        /// VOID PARA INSTANCIAR LA FABRICA
+        /// Procedimiento: restaurantFavoriteSave()
+        /// Explicación: Esta Prueba unitaria es para insertar un comensal en la tabla USER_ACCOUNT y restaurante
+        /// en la tabla RESTAURANT, además de eso inserta en el N:N de ambas para asi simular que un comensal elige
+        /// un restaurante como favorito. Se pasan dos funciones que instancian dos objetos, uno de restaurante y otro
+        /// de comensal, se hacen las respectivas pruebas y luego se guarda una lista de restarantes en la lista de
+        /// commensal para asi aplicarle Save() e insertar.
+        /// NOTA: esta prueba fue por falta de código de los otros modulos.
         /// </summary>
-        private void getDao()
+
+        [Test()]
+        public void restaurantFavoriteSave()
         {
-            if (_facDAO == null)
-                _facDAO = FactoryDAO.Intance;
+
+            createCommensal();
+            createRestaurant();
+            Assert.NotNull(_commensal);
+            Assert.NotNull(_restaurant1);
+            Assert.AreNotEqual(_commensal.Id, 0);
+            Assert.AreNotEqual(_commensal.Id, 0);
+
+            addRestaurantToCommensal(_commensal, _restaurant1);
+            getCommensalDao();
+            _commensalDAO.Save(_commensal);
+
         }
-        */
+
+        /// <summary>
+        /// Void: addRestaurantFavoriteById()
+        /// Explicación: En esta prueba unitaria, buscamos por id con la funcion FindById() de la interface de
+        /// IRestaurantDAO Y ICommensalDAO para asi traer sus respectivos objetos y guardarlo en el N:N de
+        /// RESTAURANT_COMMENSAL
+        /// </summary>
+
+        [Test()]
+        public void addRestaurantFavoriteById()
+        {
+            getRestaurantDao();
+            getCommensalDao();
+            Restaurant _restaurantId1 = _restaurantDAO.FindById(4);
+            Restaurant _restaurantId2 = _restaurantDAO.FindById(5);
+
+            Assert.NotNull(_restaurantId1);
+            Assert.NotNull(_restaurantId2);
+            Assert.AreEqual(_restaurantId1.Id, 4);
+            Assert.AreEqual(_restaurantId2.Id, 5);
+            Assert.AreNotSame(_restaurantId1, _restaurantId2);
+            Assert.AreNotEqual(_restaurantId1.Id, 0);
+            Assert.AreNotEqual(_restaurantId2.Id, 0);
+
+            //findbyid para traerse objeto de commensal
+            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(8);
+
+            Assert.NotNull(_commensalId1);
+            Assert.AreEqual(_commensalId1.Id, 8);
+            Assert.AreNotEqual(_commensalId1.Id, 0);
+
+            addRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);
+            _commensalDAO.Save(_commensalId1);
+        }
+
+        /// <summary>
+        /// Void: deleteRestaurantFavoriteById()
+        /// Explicación: En esta prueba unitaria, buscamos por id con la funcion FindById() de la interface de
+        /// IRestaurantDAO Y ICommensalDAO para asi traer sus respectivos objetos y eliminarlos en el N:N de
+        /// RESTAURANT_COMMENSAL
+        /// </summary>
+
+        [Test()]
+        public void deleteRestaurantFavoriteById()
+        {
+            getRestaurantDao();
+            getCommensalDao();
+
+            //findbyid para traerse objeto de Restaurant
+
+            Restaurant _restaurantId1 = _restaurantDAO.FindById(4);
+            Restaurant _restaurantId2 = _restaurantDAO.FindById(5);
+
+            Assert.NotNull(_restaurantId1);
+            Assert.NotNull(_restaurantId2);
+            Assert.AreEqual(_restaurantId1.Id, 4);
+            Assert.AreEqual(_restaurantId2.Id, 5);
+            Assert.AreNotSame(_restaurantId1, _restaurantId2);
+            Assert.AreNotEqual(_restaurantId1.Id, 0);
+            Assert.AreNotEqual(_restaurantId2.Id, 0);
+
+
+            //findbyid para traerse objeto de commensal
+            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(8);
+
+            Assert.NotNull(_commensalId1);
+            Assert.AreEqual(_commensalId1.Id, 8);
+            Assert.AreNotEqual(_commensalId1.Id, 0);
+
+
+            removeRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);
+            _commensalDAO.Save(_commensalId1);
+
+        }
 
     }
 
