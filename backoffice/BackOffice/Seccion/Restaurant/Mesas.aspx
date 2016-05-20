@@ -144,7 +144,63 @@ NOMBRE DEL RESTAURANTE
         $(document).ready(function () {
             setValue();
             ajaxRes();
+            On();
+            Off();
                 });
+
+                    function On(){
+                    $('.table > tbody > tr > td:nth-child(6) > a[data-status=true]')
+                        .click(function (e) {
+                                    e.preventDefault();
+                                    var prueba = document.getElementById("<%=TableModifyId.ClientID%>").value;
+                                    var params = "{'Id':'" + prueba + "'}";
+
+                                    $.ajax({
+                                    type: "POST",
+                                    url: "Mesas.aspx/FreeStatus",
+                                    data: params,
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (response) {
+                                        $('.table > tbody > tr > td:nth-child(5)').html(response.d);
+                                        //Aqui voy a cambiar el simbolo de status a disponible
+
+
+                                        
+
+                                    },
+                                    failure: function (response) {
+                                          alert("_");
+                                    }
+                                    });
+                        });
+                    }
+
+                            function Off(){
+                        $('.table > tbody > tr > td:nth-child(6) > a[data-status=false]')
+                        .click(function (e) {
+                                    e.preventDefault();
+                                    var prueba = document.getElementById("<%=TableModifyId.ClientID%>").value;
+                                    var params = "{'Id':'" + prueba + "'}";
+
+                                    $.ajax({
+                                    type: "POST",
+                                    url: "Mesas.aspx/BusyStatus",
+                                    data: params,
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (response) {
+                                        debugger;
+                                        $('.table > tbody > tr > td:nth-child(5)').html(response.d);
+                                        //Aqui voy a cambiar el simbolo de status a no disponible
+
+                                    },
+                                    failure: function (response) {
+                                          alert("_");
+                                    }
+                                    });
+                        });
+                    }
 
                     function ajaxRes(){
                     $('.table > tbody > tr > td:nth-child(6) > a')
