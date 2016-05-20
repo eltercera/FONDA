@@ -155,11 +155,34 @@ Restaurantes
                             <asp:TextBox ID="ClosingTimeC" CssClass="form-control" readonly="true"  runat="server"/>
                         </div>
                 </div>
-                <div class="col-lg-5 col-md-3 col-sm-3 col-xs-3">
+                
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
-                            <label class="control-label">Días laborables</label>
-                            <asp:TextBox ID="DaysC" CssClass="form-control" readonly="true"  runat="server"/>
-                        </div>
+                            <label class="control-label">Dias de apertura</label>
+                            <label>
+                            <label class="text-left">
+                                    <asp:CheckBox id="Day1C" runat="server" value="Lunes" text="Lun"/>
+                            </label>
+                            <label class="text-left">
+                                    <asp:CheckBox id="Day2C" runat="server" value="Martes" text="Mar"/>
+                            </label>
+                            <label class="text-left">
+                                    <asp:CheckBox id="Day3C" runat="server" value="Miercoles" text="Mie"/>
+                            </label>
+                            <label class="text-left">
+                                    <asp:CheckBox id="Day4C" runat="server" value="Jueves" text="Jue"/>
+                            </label>
+                            <label class="text-left">
+                                    <asp:CheckBox id="Day5C" runat="server" value="Viernes" text="Vie"/>
+                            </label>
+                            <label class="text-left">
+                                    <asp:CheckBox id="Day6C" runat="server" value="Sabado" text="Sab"/>
+                            </label>
+                            <label class="text-left">
+                                    <asp:CheckBox id="Day7C" runat="server" value="Domingo" text="Dom"/>
+                            </label>
+                            </label>
+                            </div>    
                 </div>
             </div>   
           
