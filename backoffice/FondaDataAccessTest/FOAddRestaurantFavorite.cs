@@ -77,7 +77,7 @@ namespace DataAccess
                     {
                         Name = "CurrencyName"
                     },
-                    coordinate = new Coordinate
+                    Coordinate = new Coordinate
                     {
                         Latitude = 9.1234,
                         Longitude = -80.2034
@@ -96,7 +96,10 @@ namespace DataAccess
 
                     },
                     MenuCategories = new List<MenuCategory>(),
-                    Employees = new List<Employee>(),
+					/**
+					 * No existe esta propiedad en Restaurant
+					 */
+                    //Employees = new List<Employee>(),
                     Tables = new List<Table>(),
                     FavoritesCommensals = new List<Commensal>(),
 
@@ -128,8 +131,8 @@ namespace DataAccess
         {
             Assert.AreEqual(_commensal.Email, "Commensal@gmail.com");
             Assert.AreNotEqual(_commensal.Email, "Comensalgmail.com");
-            Assert.AreEqual(_restaurant1.coordinate.Latitude, 9.1234);
-            Assert.AreEqual(_restaurant1.coordinate.Longitude, -80.2034);
+            Assert.AreEqual(_restaurant1.Coordinate.Latitude, 9.1234);
+            Assert.AreEqual(_restaurant1.Coordinate.Longitude, -80.2034);
             Assert.AreEqual(_restaurant2.Address, "Altamira");
             Assert.AreEqual(_restaurant2.Currency.Name, "CurrencyName");
 
@@ -149,18 +152,27 @@ namespace DataAccess
             }
             catch (Exception e)
             {
-                e.Message();
+				/**
+				 * Esto no es una función es una propiedad.
+				 * si quieres imprimir deverias de usuar algo como
+				 * Console.WriteLine(e.Message);
+				 */
+                //e.Message();
             }
 
             
-
-            Assert.NotNull(_restaurantId1);
-            Assert.NotNull(_restaurantId2);
-            Assert.AreNotSame(_restaurantId1,_restaurantId2);
+			/**
+			 * _restaurantId1, _restaurantId2 estan declarado en un cintexto 
+			 * inferior a este. (en el try). 
+			 * Esto no compila.
+			 */
+            //Assert.NotNull(_restaurantId1);
+            //Assert.NotNull(_restaurantId2);
+            //Assert.AreNotSame(_restaurantId1,_restaurantId2);
             
 
             Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(1);
-            AddRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);
+            //AddRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);
             _commensalDAO.Save(_commensalId1);
 
             

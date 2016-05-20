@@ -80,7 +80,7 @@ namespace DataAccessTests
 			_person.Address = _dataPersonAddress;
 			_person.Gender = _dataPersonGender;
 			_person.BirthDate = _dataPersonBirthDate;
-			//_person.Status = _facDAO.GetActiveSimpleStatus ();
+			_person.Status = _facDAO.GetActiveSimpleStatus ();
 
 		}
 
@@ -94,7 +94,7 @@ namespace DataAccessTests
 			Assert.AreEqual (_person.Address, _dataPersonAddress);
 			Assert.AreEqual (_person.Gender, _dataPersonGender);
 			Assert.AreEqual (_person.BirthDate, _dataPersonBirthDate);
-	//		Assert.AreEqual (_person.Status, _facDAO.GetActiveSimpleStatus ());
+			Assert.AreEqual (_person.Status, _facDAO.GetActiveSimpleStatus ());
 		}
 
 		// Ayudantes Profile
@@ -107,7 +107,7 @@ namespace DataAccessTests
 			_profile = new Profile ();
 
 			_dataProfileName = "Nombre de Perfil";
-		//	_dataProfileStatus = _facDAO.GetActiveSimpleStatus ();
+			_dataProfileStatus = _facDAO.GetActiveSimpleStatus ();
 
 			_profile.ProfileName = _dataProfileName;
 			_profile.Status = _dataProfileStatus;
@@ -136,7 +136,7 @@ namespace DataAccessTests
 
 			_dataCommensalEmail = "rodriguezrjrr@gmail.com";
 			_dataCommensalPassword = "1234567890";
-	//		_dataCommensalStatus = _facDAO.GetActiveSimpleStatus ();
+			_dataCommensalStatus = _facDAO.GetActiveSimpleStatus ();
 
 			_commensal.Email = _dataCommensalEmail;
 			_commensal.Password = _dataCommensalPassword;
