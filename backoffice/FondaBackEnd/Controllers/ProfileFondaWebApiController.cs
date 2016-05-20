@@ -116,7 +116,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 return BadRequest();
 
             commensal.Profiles.Remove(profile);
-            profile.Status = FactoryDAO.GetDisableSimpleStatus();
+			profile.Status = FactoryDAO.GetDisabledSimpleStatus();
 
             try
             {

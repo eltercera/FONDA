@@ -112,7 +112,6 @@
     <Compile Include="InterfaceDAO\ICoordinateDAO.cs" />
     <Compile Include="InterfaceDAO\ICurrencyDAO.cs" />
     <Compile Include="InterfaceDAO\IDayDAO.cs" />
-    <Compile Include="InterfaceDAO\IDisableSimpleStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IDishDAO.cs" />
     <Compile Include="InterfaceDAO\IDishOrderDAO.cs" />
     <Compile Include="InterfaceDAO\IEmployeeDAO.cs" />
