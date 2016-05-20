@@ -187,14 +187,17 @@ namespace BackOffice.Seccion.Restaurant
             foreach (RestaurantCategory category in listCategories)
             {
                 CategoryA.Items.Add(category.Name);
+                CategoryM.Items.Add(category.Name);
             }
             foreach (Currency currency in listCurrencies)
             {
                 CurrencyA.Items.Add(currency.Name);
+                CurrencyM.Items.Add(currency.Name);
             }
             foreach (Zone zone in listZones)
             {
                 ZoneA.Items.Add(zone.Name);
+                ZoneM.Items.Add(zone.Name);
             }
             //OpeningTimeA
 
@@ -262,7 +265,7 @@ namespace BackOffice.Seccion.Restaurant
 
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
-           string Name = NameA.Text;
+            string Name = NameA.Text;
             string Category = CategoryA.Text;
             char Nationality = Convert.ToChar(NacionalityA.Text);
             string Rif = RifA.Text;
@@ -380,7 +383,7 @@ namespace BackOffice.Seccion.Restaurant
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Restaurant restaurant = _restaurantDAO.FindById(restaurantId);
-            
+
             return restaurant;
         }
 
