@@ -573,17 +573,55 @@ Restaurantes
                         document.getElementById("<%=ClosingTimeM.ClientID%>").value = closingTime;
                         document.getElementById("<%=LongM.ClientID%>").value = local.d.Coordinate.Longitude;
                         document.getElementById("<%=LatM.ClientID%>").value = local.d.Coordinate.Latitude;
-
-                        /* Day se maneja diferente en los checkbox */
-                        document.getElementById("<%=Day1M.ClientID%>").value = local.d.Day;
-                        document.getElementById("<%=Day2M.ClientID%>").value = local.d.Day;
-                        document.getElementById("<%=Day3M.ClientID%>").value = local.d.Day;
-                        document.getElementById("<%=Day4M.ClientID%>").value = local.d.Day;
-                        document.getElementById("<%=Day5M.ClientID%>").value = local.d.Day;
-                        document.getElementById("<%=Day6M.ClientID%>").value = local.d.Day;
-                        document.getElementById("<%=Day7M.ClientID%>").value = local.d.Day;
-
+                        selectDay(local);
                     }
+
+        function selectDay(local) {
+            var days = local.d.Schedule.Day;
+            var day;
+            clearDays();
+            for (var i = 0; i < days.length; i++) {
+                debugger;
+                day = days[i];
+                daysSelected(day.Name);
+            }
+        }
+        function daysSelected(day) {
+            switch(day)
+            {
+                case "Lunes":
+                    $('#<%=Day1M.ClientID%>').attr('checked', true);
+                    break;
+                case "Martes":
+                    $("#<%=Day2M.ClientID%>").attr('checked', true);
+                    break;
+                case "Miercoles":
+                    $("#<%=Day3M.ClientID%>").attr('checked', true);
+                    break;
+                case "Jueves":
+                    $("#<%=Day4M.ClientID%>").attr('checked', true);
+                    break;
+                case "Viernes":
+                    $("#<%=Day5M.ClientID%>").attr('checked', true);
+                    break;
+                case "Sabado":
+                    $("#<%=Day6M.ClientID%>").attr('checked', true);
+                    break;
+                case "Domingo":
+                    $("#<%=Day7M.ClientID%>").attr('checked', true);
+                    break;
+            }
+        }
+        function clearDays(){
+                    $("#<%=Day1M.ClientID%>").attr('checked', false);
+                    $("#<%=Day2M.ClientID%>").attr('checked', false);
+                    $("#<%=Day3M.ClientID%>").attr('checked', false);
+                    $("#<%=Day4M.ClientID%>").attr('checked', false);
+                    $("#<%=Day5M.ClientID%>").attr('checked', false);
+                    $("#<%=Day6M.ClientID%>").attr('checked', false);
+                    $("#<%=Day7M.ClientID%>").attr('checked', false);
+        }
+
 
             /* Concatena los dias laborales a mostrar del Restaurante */
             function daysOfWork(local) {
