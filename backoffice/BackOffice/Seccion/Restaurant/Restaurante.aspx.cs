@@ -18,9 +18,10 @@ namespace BackOffice.Seccion.Restaurant
         {
             AlertSuccess_AddRestaurant.Visible = false;
             AlertSuccess_ModifyRestaurant.Visible = false;
-
+            OpeningTimeA.Attributes.Add("type","number");
+            ClosingTimeA.Attributes.Add("type", "number");
             LoadDataTable();
-
+            FillDropdown();
 
 
             AlertError_AddRestaurant.Visible = false;
@@ -167,59 +168,88 @@ namespace BackOffice.Seccion.Restaurant
             Restaurant.Rows.Clear();
         }
 
+
+        public void FillDropdown()
+        {
+            //Genero los objetos para la consulta
+            //Genero la lista de la consulta
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantCategoryDAO _categoryDAO = factoryDAO.GetRestaurantCategoryDAO();
+            IList<com.ds201625.fonda.Domain.RestaurantCategory> listCategories = _categoryDAO.GetAll();
+            ICurrencyDAO _currencyDAO = factoryDAO.GetCurrencyDAO();
+            IList<com.ds201625.fonda.Domain.Currency> listCurrencies = _currencyDAO.GetAll();
+            IZoneDAO _zoneDAO = factoryDAO.GetZoneDAO();
+            IList<com.ds201625.fonda.Domain.Zone> listZones = _zoneDAO.GetAll();
+
+            foreach (RestaurantCategory category in listCategories)
+            {
+                CategoryA.Items.Add(category.Name);
+            }
+            foreach (Currency currency in listCurrencies)
+            {
+                CurrencyA.Items.Add(currency.Name);
+            }
+            foreach (Zone zone in listZones)
+            {
+                ZoneA.Items.Add(zone.Name);
+            }
+            //OpeningTimeA
+
+        }
         public bool ValidarRestaurant(string name, string category, string nationality, string rif, string currency, string address,
             string zone, string longitud, string latitud)
         {
             bool valid = true;
-            byte cont = 0;
+            int cont = 0;
             string patronLetras = "^[A-Za-z]*$";
             string patronNumero = "^[0-9]*$";
             string patronPunto = @"[(.)]";
             string patronFloat = @"^-?[0-9]\d*(\.\d+)?$"; // "^\-{0,1}\d+(.\d+){0,1}$"
 
 
-
-            if (name == "" | rif == "" | address == "" | longitud == "" | latitud == ""
+            // valida campos vacio
+           /* if (name == "" | rif == "" | address == "" | longitud == "" | latitud == ""
                 | category == "" | nationality == "" | zone == "" | currency == "")
             {
                 valid = false;
 
             }
+            //valida campos de letras
             if ((!Regex.IsMatch(name, patronLetras)) | (!Regex.IsMatch(address, patronLetras)))
             {
                 valid = false;
             }
-
+            //valida campos de letras
             if ((!Regex.IsMatch(rif, patronNumero)))
             {
                 valid = false;
             }
-
+            //valida campos float
             if ((!Regex.IsMatch(longitud, patronFloat)) | (!Regex.IsMatch(latitud, patronFloat)))
             {
                 valid = false;
             }
-
+            
             if ((!Regex.IsMatch(longitud, patronPunto)) | (!Regex.IsMatch(latitud, patronPunto)))
             {
                 valid = false;
-            }
-
+            }*/
+            //Valida que al menos un check esté seleccionado
             if (Day1A.Checked)
-                cont = cont++;
+                cont = cont+1;
             if (Day2A.Checked)
-                cont = cont++;
+                cont = cont + 1;
             if (Day3A.Checked)
-                cont = cont++;
+                cont = cont + 1;
             if (Day4A.Checked)
-                cont = cont++;
+                cont = cont + 1;
             if (Day5A.Checked)
-                cont = cont++;
+                cont = cont + 1;
             if (Day6A.Checked)
-                cont = cont++;
+                cont = cont + 1;
             if (Day7A.Checked)
-                cont = cont++;
-            if (cont>0)
+                cont = cont + 1;
+            if (cont<1)
             {
                 valid = false;
             }
@@ -229,7 +259,7 @@ namespace BackOffice.Seccion.Restaurant
 
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
-            string Name = NameA.Text;
+           string Name = NameA.Text;
             string Category = CategoryA.Text;
             char Nationality = Convert.ToChar(NacionalityA.Text);
             string Rif = RifA.Text;
@@ -249,7 +279,7 @@ namespace BackOffice.Seccion.Restaurant
             TimeSpan CT = TimeSpan.Parse(ClosingTimeA.Text);
             string logo = "C:/";
             AlertSuccess_AddRestaurant.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
+           /* FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Restaurant _restaurant = new com.ds201625.fonda.Domain.Restaurant();
 
@@ -294,7 +324,7 @@ namespace BackOffice.Seccion.Restaurant
             _restaurant.Logo = logo;
             _restaurant.Status = ActiveSimpleStatus.Instance;
             _restaurantDAO.Save(_restaurant);
-            LoadDataTable();
+            LoadDataTable();*/
 
             if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
                 Address, Zone, Long.ToString(), Lat.ToString()))

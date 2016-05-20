@@ -487,7 +487,7 @@ namespace BackOffice.Seccion.Restaurant {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList OpeningTimeA;
+        protected global::System.Web.UI.WebControls.TextBox OpeningTimeA;
         
         /// <summary>
         /// ClosingTimeA control.
@@ -496,7 +496,7 @@ namespace BackOffice.Seccion.Restaurant {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ClosingTimeA;
+        protected global::System.Web.UI.WebControls.TextBox ClosingTimeA;
         
         /// <summary>
         /// ButtonAdd control.

@@ -42,7 +42,8 @@ namespace DataAccessTests
                 editadd = "Editado";
 
             _zone.Name = "Altamira" + editadd;
-           
+            //_zone.Name = "Chacao" + editadd;
+            //_zone.Name = "El Paraíso" + editadd;
 
         }
 

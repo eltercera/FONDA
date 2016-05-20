@@ -354,10 +354,6 @@ Restaurantes
                             <label class="control-label">Tipo</label>
                             <asp:DropDownList id="CategoryA" CssClass="form-control" AutoPostBack="False" runat="server">
                                 <asp:ListItem> </asp:ListItem>
-                                <asp:ListItem>Venezolana</asp:ListItem>
-                                <asp:ListItem>Americana</asp:ListItem>
-                                <asp:ListItem>Japonesa</asp:ListItem>
-                                <asp:ListItem>China</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                 </div>
@@ -384,9 +380,6 @@ Restaurantes
                             <label class="control-label">Unidad Monetaria</label>
                                 <asp:DropDownList id="CurrencyA" CssClass="form-control" AutoPostBack="False" runat="server">
                                     <asp:ListItem> </asp:ListItem>
-                                    <asp:ListItem>VEF</asp:ListItem>
-                                    <asp:ListItem>USD</asp:ListItem>
-                                    <asp:ListItem>EUR</asp:ListItem>
                                 </asp:DropDownList>
                         </div>
                 </div>
@@ -403,9 +396,6 @@ Restaurantes
                             <label class="control-label">Zona</label>
                         <asp:DropDownList id="ZoneA" CssClass="form-control" AutoPostBack="False" runat="server">
                             <asp:ListItem> </asp:ListItem>
-                            <asp:ListItem>Altamira</asp:ListItem>
-                            <asp:ListItem>Las Mercedes</asp:ListItem>
-                            <asp:ListItem>Macaracuay</asp:ListItem>
                         </asp:DropDownList>
                         </div>
                 </div>
@@ -456,23 +446,13 @@ Restaurantes
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <div class="form-group">
                             <label class="control-label">Hora Apertura</label>
-                                <asp:DropDownList id="OpeningTimeA" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem>Apertura</asp:ListItem>
-                                    <asp:ListItem>8</asp:ListItem>
-                                    <asp:ListItem>9</asp:ListItem>
-                                    <asp:ListItem>10</asp:ListItem>
-                                </asp:DropDownList>
+                            <asp:TextBox ID="OpeningTimeA" CssClass="form-control" placeholder="ej. 9"  runat="server"/>
                         </div>
                 </div>
                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <div class="form-group">
-                            <label class="control-label">Hora Cierre</label>
-                                <asp:DropDownList id="ClosingTimeA" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem>Cierre</asp:ListItem>
-                                    <asp:ListItem>20</asp:ListItem>
-                                    <asp:ListItem>21</asp:ListItem>
-                                    <asp:ListItem>22</asp:ListItem>
-                                </asp:DropDownList>
+                            <label class="control-label">Hora Cierre</label> 
+                             <asp:TextBox ID="ClosingTimeA" CssClass="form-control" placeholder="ej. 14"  runat="server"/>
                         </div>
                 </div>
             </div>

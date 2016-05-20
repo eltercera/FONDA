@@ -31,6 +31,8 @@ namespace DataAccessTests
                 _currency = new Currency();
             _currency.Symbol = "C:";
             _currency.Name = "Dolar";
+            //_currency.Name = "Euro";
+            //_currency.Name = "BsF";
         }
 
         private void currencyAssertions(bool edit = false)
