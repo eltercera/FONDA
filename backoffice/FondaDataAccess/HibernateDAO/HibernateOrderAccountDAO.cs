@@ -3,6 +3,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -11,7 +12,14 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         public Account FindByCommensal(Commensal commensal)
         {
             ICriterion criterion = Expression.And(Expression.Eq("Commensal", commensal), Expression.Eq("Status", OpenAccountStatus.Instance));
-            return (Account) (FindAll(criterion)[0]);
+            try
+            {
+                return (Account)(FindAll(criterion)[0]);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("Not Found order account", e);
+            }
         }
     }
 }

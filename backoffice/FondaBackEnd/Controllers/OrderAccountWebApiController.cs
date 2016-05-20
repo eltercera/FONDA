@@ -29,14 +29,15 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             return Ok(account.ListDish);
         }
         
-        [Route("profile/{id}/closedOrden")]
+        [Route("profile/{id}/{tip}/CreditCarPayment/")]
         [HttpPost]
         [FondaAuthToken]
-        public IHttpActionResult requestClosedOrder(int id, float tip, CreditCarPayment payment)
+        public IHttpActionResult requestClosedOrder(int id, float tip,[FromBody] CreditCarPayment payment)
         {
             Commensal commensal = GetCommensal(Request.Headers);
             if (commensal == null)
                 return BadRequest();
+            
             IProfileDAO profileDAO = FactoryDAO.GetProfileDAO();
             IOrderAccountDao orderAccountDao = GetOrderAccountDao();
             IInvoiceDao invoiceDAO = FactoryDAO.GetInvoiceDao();
@@ -53,8 +54,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Console.WriteLine(e.ToString());
                 return InternalServerError(e);
             }
-
-
+            
             Account account = GetAccount(commensal);
             account.Status = FactoryDAO.GetClosedAccountStatus();
             try

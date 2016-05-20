@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FondaDAOExceptions\FondaIndexException.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CanceledInvoiceStatus.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CashPaymentMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CreditCardPaymentMap.cs" />

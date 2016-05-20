@@ -15,13 +15,13 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         public InvoiceWebApiController() : base() { }
 
         [HttpGet]
-        [Route("profile/{id}/invoice")]
+        [Route("profile/{id}/invoices")]
         [FondaAuthToken]
         public IHttpActionResult requestOpenOrder(int id)
         {
-            Profile aux = (FactoryDAO.GetProfileDAO()).FindById(id);
+            Profile profile = (FactoryDAO.GetProfileDAO()).FindById(id);
 
-            IList<Invoice> invoiceList = GetInvoiceList(aux);
+            IList<Invoice> invoiceList = GetInvoiceList(profile);
             if (invoiceList == null)
                 return BadRequest();
             return Ok(invoiceList);
