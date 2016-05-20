@@ -81,7 +81,7 @@ namespace DataAccessTest
             account.addDish(dishOrder);
             account.addDish(dishOrder2);
 
-            account.AddCommensal(owner); ;
+            account.Commensal = owner ;
 
             account.Status = OpenAccountStatus.Instance;
 

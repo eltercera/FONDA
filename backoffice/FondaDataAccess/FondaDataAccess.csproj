@@ -65,7 +65,10 @@
     <Compile Include="HibernateDAO\FluentMappings\InvoiceStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\PaymentMap.cs" />
     <Compile Include="HibernateDAO\HibernateCashPaymentDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateClosedAccountStatus.cs" />
     <Compile Include="HibernateDAO\HibernateCreditCardPaymentDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateGeneratedInvoiceStatus.cs" />
+    <Compile Include="HibernateDAO\HibernateOpenAccountStatus.cs" />
     <Compile Include="HibernateDAO\HibernatePaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateInvoiceDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\AccountStatusMap.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRoleDAO.cs" />
     <Compile Include="InterfaceDAO\ICashPaymentDAO.cs" />
+    <Compile Include="InterfaceDAO\IClosedAccountStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantCategoryDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantDAO.cs" />
@@ -110,8 +114,10 @@
     <Compile Include="InterfaceDAO\IDishDAO.cs" />
     <Compile Include="InterfaceDAO\IDishOrderDAO.cs" />
     <Compile Include="InterfaceDAO\IEmployeeDAO.cs" />
+    <Compile Include="InterfaceDAO\IGeneratedInvoiceStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IInvoiceDao.cs" />
     <Compile Include="InterfaceDAO\IMenuCategoryDAO.cs" />
+    <Compile Include="InterfaceDAO\IOpenAccountStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IOrderAccountDao.cs" />
     <Compile Include="InterfaceDAO\IPaymentDao.cs" />
     <Compile Include="InterfaceDAO\IRoleDAO.cs" />

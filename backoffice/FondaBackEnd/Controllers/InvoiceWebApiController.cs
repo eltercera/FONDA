@@ -15,37 +15,24 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         public InvoiceWebApiController() : base() { }
 
         [HttpGet]
-        [Route("open_order")]
+        [Route("profile/{id}/invoice")]
         [FondaAuthToken]
-        public IHttpActionResult requestOpenOrder()
+        public IHttpActionResult requestOpenOrder(int id)
         {
-            Console.WriteLine("-------------------------------");
-            Commensal commensal = GetCommensal(Request.Headers);
-            if (commensal == null)
-                return BadRequest();
-            Profile profile = GetProfile(commensal);
-            IList<Invoice> invoiceList = GetInvoiceList(commensal);
+            Profile aux = (FactoryDAO.GetProfileDAO()).FindById(id);
+
+            IList<Invoice> invoiceList = GetInvoiceList(aux);
             if (invoiceList == null)
                 return BadRequest();
             return Ok(invoiceList);
         }
-
-        private Profile(Commensal commensal)
-        {
-
-        }
-
-        private IList<Invoice> GetInvoiceList(Commensal commensal)
+        
+        private IList<Invoice> GetInvoiceList(Profile profile)
         {
             IInvoiceDao invoice = GetInvoiceDao();
-            return invoice.findAllInvoice(commensal);
+            return invoice.findAllInvoice(profile);
         }
-
-        private IProfileDAO GetProfileDAO()
-        {
-            return FactoryDAO.GetProfileDAO();
-        }
-
+        
         private IInvoiceDao GetInvoiceDao()
         {
             return FactoryDAO.GetInvoiceDao();

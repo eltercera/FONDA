@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -21,6 +22,11 @@ namespace com.ds201625.fonda.Domain
         /// Cuenta a la que la factura pertenece
         /// </summary>
         private Account _account;
+
+        /// <summary>
+        /// Profile a la que la factura pertenece
+        /// </summary>
+        private Profile _profile;
 
         /// <summary>
         /// Propina de la cuenta
@@ -55,6 +61,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna la propina de la cuenta
         /// </summary>
+        [DataMember]
         public virtual float Tip
         {
             get { return _tip; }
@@ -64,6 +71,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna la fecha de pago de la cuenta
         /// </summary>
+        [DataMember]
         public virtual DateTime Date
         {
             get { return _date; }
@@ -73,6 +81,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna el monto total a pagar de la cuenta
         /// </summary>
+        [DataMember]
         public virtual float Total
         {
             get { return _total; }
@@ -82,6 +91,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna el IVA
         /// </summary>
+        [DataMember]
         public virtual float Tax
         {
             get { return _tax; }
@@ -124,8 +134,16 @@ namespace com.ds201625.fonda.Domain
             set { _account = value; }
         }
 
-
-
+        /// <summary>
+        /// Obtiene o asigna el Profile con
+        /// la que se pago la cuenta
+        /// </summary>
+        public virtual Profile Profile
+        {
+            get{ return _profile; }
+            set{ _profile = value; }
+        }
+        
         /// <summary>
         /// Cambia el eltado actual de la factura.
         /// </summary>

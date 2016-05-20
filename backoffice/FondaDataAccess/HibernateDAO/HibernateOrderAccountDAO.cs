@@ -11,7 +11,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         public Account FindByCommensal(Commensal commensal)
         {
             ICriterion criterion = Expression.And(Expression.Eq("Commensal", commensal), Expression.Eq("Status", OpenAccountStatus.Instance));
-            return (Account) (FindAll(criterion))[0];
+            return (Account) (FindAll(criterion)[0]);
         }
     }
 }

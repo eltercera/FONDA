@@ -74,14 +74,6 @@ namespace com.ds201625.fonda.Domain
         }
 
         /// <summary>
-        /// asigna un commensal a la cuenta
-        /// </summary>
-        public virtual void AddCommensal(Commensal commensal)
-        {
-            _commensal = commensal;
-        }
-
-        /// <summary>
         /// Agrega una orden a la cuenta
         /// </summary>
         /// <param name="dish"> orden pedida </param>

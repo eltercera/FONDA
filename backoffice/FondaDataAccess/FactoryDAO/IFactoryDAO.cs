@@ -29,7 +29,11 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 		IRestaurantDAO GetRestaurantDAO();
 		IScheduleDAO GetScheduleDAO();
 		ITableDAO GetTableDAO();
+        OpenAccountStatus GetOpenAccountStatus();
+        ClosedAccountStatus GetCloseAccountStatus();
+        GeneratedInvoiceStatus GetGeneratedInvoiceStatus();
 
-	}
+
+    }
 }
 
