@@ -18,8 +18,8 @@ namespace BackOffice.Seccion.Restaurant
         {
             AlertSuccess_AddRestaurant.Visible = false;
             AlertSuccess_ModifyRestaurant.Visible = false;
-            OpeningTimeA.Attributes.Add("type","number");
-            ClosingTimeA.Attributes.Add("type", "number");
+            OpeningTimeA.Attributes.Add("type","time");
+            ClosingTimeA.Attributes.Add("type", "time");
             LoadDataTable();
             FillDropdown();
 
@@ -166,12 +166,17 @@ namespace BackOffice.Seccion.Restaurant
             return header;
         }
 
+        /// <summary>
+        /// Limpia las filas de la tabla mostrada en pantalla
+        /// </summary>
         public void CleanTable()
         {
             Restaurant.Rows.Clear();
         }
 
-
+        /// <summary>
+        /// Llena los Dropdownlist de la pagina con informacion de la Base de Datos
+        /// </summary>
         public void FillDropdown()
         {
             //Genero los objetos para la consulta
@@ -184,6 +189,7 @@ namespace BackOffice.Seccion.Restaurant
             IZoneDAO _zoneDAO = factoryDAO.GetZoneDAO();
             IList<com.ds201625.fonda.Domain.Zone> listZones = _zoneDAO.allZone();
 
+            //Se llenan los Dropdownlist con los registros existentes
             foreach (RestaurantCategory category in listCategories)
             {
                 CategoryA.Items.Add(category.Name);
@@ -199,9 +205,21 @@ namespace BackOffice.Seccion.Restaurant
                 ZoneA.Items.Add(zone.Name);
                 ZoneM.Items.Add(zone.Name);
             }
-            //OpeningTimeA
-
         }
+
+        /// <summary>
+        /// Valida los campos enviados por el usuario para crear o actualizar un Restaurante
+        /// </summary>
+        /// <param name="name">Nombre del Restaurante</param>
+        /// <param name="category">Categoria del Restaurante</param>
+        /// <param name="nationality">Nacionalidad</param>
+        /// <param name="rif">Rif del Restaurante</param>
+        /// <param name="currency">Tipo de Moneda usada</param>
+        /// <param name="address">Direccion fisica del Restaurante</param>
+        /// <param name="zone">Zona de ubicacion del restaurante</param>
+        /// <param name="longitud">Coordenada de longitud para ubicacion</param>
+        /// <param name="latitud">Coordenada de latitud para ubicacion</param>
+        /// <returns>true si los datos son validos, false si no son validos</returns>
         public bool ValidarRestaurant(string name, string category, string nationality, string rif, string currency, string address,
             string zone, string longitud, string latitud)
         {
@@ -214,7 +232,7 @@ namespace BackOffice.Seccion.Restaurant
 
 
             // valida campos vacio
-           /* if (name == "" | rif == "" | address == "" | longitud == "" | latitud == ""
+            if (name == "" | rif == "" | address == "" | longitud == "" | latitud == ""
                 | category == "" | nationality == "" | zone == "" | currency == "")
             {
                 valid = false;
@@ -235,11 +253,11 @@ namespace BackOffice.Seccion.Restaurant
             {
                 valid = false;
             }
-            
+            //Valida
             if ((!Regex.IsMatch(longitud, patronPunto)) | (!Regex.IsMatch(latitud, patronPunto)))
             {
                 valid = false;
-            }*/
+            }
             //Valida que al menos un check esté seleccionado
             if (Day1A.Checked)
                 cont = cont+1;
@@ -263,6 +281,9 @@ namespace BackOffice.Seccion.Restaurant
             return valid;
         }
 
+        /// <summary>
+        /// Agrega un nuevo Restaurante
+        /// </summary>
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
             string Name = NameA.Text;
@@ -285,7 +306,8 @@ namespace BackOffice.Seccion.Restaurant
             TimeSpan CT = TimeSpan.Parse(ClosingTimeA.Text);
             string logo = "C:/";
             AlertSuccess_AddRestaurant.Visible = true;
-           /* FactoryDAO factoryDAO = FactoryDAO.Intance;
+
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Restaurant _restaurant = new com.ds201625.fonda.Domain.Restaurant();
 
@@ -309,6 +331,7 @@ namespace BackOffice.Seccion.Restaurant
             _restaurant.Coordinate = coord;
             Schedule schedule = new Schedule();
             List<Day> days = new List<Day>();
+
             if (Day1A.Checked)
                 days.Add(new Day() {Name = Day1});
             if (Day2A.Checked)
@@ -323,14 +346,15 @@ namespace BackOffice.Seccion.Restaurant
                 days.Add(new Day() {Name = Day6});
             if (Day7A.Checked)
                 days.Add(new Day() { Name = Day7});
+
             schedule.Day = days;
             schedule.OpeningTime = OT;
             schedule.ClosingTime = CT;
             _restaurant.Schedule = schedule;
             _restaurant.Logo = logo;
-            _restaurant.Status = ActiveSimpleStatus.Instance;
+            _restaurant.Status = factoryDAO.GetActiveSimpleStatus();
             _restaurantDAO.Save(_restaurant);
-            LoadDataTable();*/
+            LoadDataTable();
 
             if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
                 Address, Zone, Long.ToString(), Lat.ToString()))
@@ -350,26 +374,22 @@ namespace BackOffice.Seccion.Restaurant
 
         }
 
+        /// <summary>
+        /// Modifica la informacion de un Restaurante
+        /// </summary>
         protected void ButtonModify_Click(object sender, EventArgs e)
         {
-            //AlertSuccess_ModifyRestaurant.Visible = true;
-            //FactoryDAO factoryDAO = FactoryDAO.Intance;
-            //ITableDAO _tableDAO = factoryDAO.GetTableDAO();
-            //string TableID = TableModifyId.Value;
-            //int idTable = int.Parse(TableID);
-            //com.ds201625.fonda.Domain.Table _tableM = _tableDAO.FindById(idTable);
-            //int capacity = int.Parse(DDLcapacityM.SelectedValue);
-            //_tableM.Capacity = capacity;
-            //_tableDAO.Save(_tableM);
-            //LoadDataTable();
+            AlertSuccess_ModifyRestaurant.Visible = true;
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+            string RestaurantID = RestaurantModifyId.Value;
+            int idRestaurant = int.Parse(RestaurantID);
+            com.ds201625.fonda.Domain.Restaurant _restaurantM = _restaurantDAO.FindById(idRestaurant);
+
+            _restaurantDAO.Save(_restaurantM);
+            LoadDataTable();
 
         }
-
-        public void setDropDownList()
-        {
-            CurrencyM.SelectedValue = "Caracas";
-        }
-
 
         /// <summary>
         /// Recibe el Id de la fila y obtiene un objeto de tipo categoria
