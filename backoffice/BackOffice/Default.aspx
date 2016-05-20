@@ -123,7 +123,7 @@
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table id="dt-mesa" class="table table-bordered table-hover table-striped">
+                                    <table id="dash-table" class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>

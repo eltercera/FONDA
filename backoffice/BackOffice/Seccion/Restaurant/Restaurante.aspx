@@ -482,43 +482,112 @@ Restaurantes
         $(document).ready(function () {
             setValue();
             ajaxRes();
+            Active();
+            Disable();
                 });
+                       function Active(){
+                        $('.table > tbody > tr > td:nth-child(5) > a[data-status=true]')
+                            .click(function (e) {
+                                        e.preventDefault();
+                                        var rowId = document.getElementById("<%=RestaurantModifyId.ClientID%>").value;
+                                        var status = "Active";
+                                        changeStatus(rowId, status);
+
+                            });
+                        }
+
+                        function Disable(){
+                            $('.table > tbody > tr > td:nth-child(5) > a[data-status=false]')
+                            .click(function (e) {
+                                        e.preventDefault();
+                                        var rowId = document.getElementById("<%=RestaurantModifyId.ClientID%>").value;
+                                var status = "Disable";
+                                        changeStatus(rowId, status);
+                            
+                            });
+                        }
+
+                    function changeStatus(rowId, status) {
+                        var params = "{'Id':'" + rowId + "','Status':'" + status + "'}"
+                            $.ajax({
+                                type: "POST",
+                                url: "Restaurante.aspx/ChangeStatus",
+                                data: params,
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: function (response) {
+                                    $('.table > tbody > tr:nth-child(' + rowId + ') > td:nth-child(4)').html(response.d);
+                                },
+                                failure: function (response) {
+                                    console.log("Peticion al servidor fallida");
+                                }
+                            });
+                    }
 
                     function ajaxRes(){
-                    $('.table > tbody > tr > td:nth-child(5) > a')
+                        $('.table > tbody > tr > td:nth-child(5) > a:first-child')
+                            .click(function (e) {
+                                        e.preventDefault();
+                                        var rowId = document.getElementById("<%=RestaurantModifyId.ClientID%>").value;
+                                        var type = "Info";
+                                        showData(rowId, type);
+                            });
+
+                       $('.table > tbody > tr > td:nth-child(5) > a:nth-child(2)')
                         .click(function (e) {
                                     e.preventDefault();
-                                    var prueba = document.getElementById("<%=RestaurantModifyId.ClientID%>").value;
-                                    var params = "{'Id':'" + prueba + "'}";
+                                    var rowId = document.getElementById("<%=RestaurantModifyId.ClientID%>").value;
+                                    var type = "Modify";
+                                    showData(rowId, type);
+                        });
+                    }
 
-                                    $.ajax({
-                                    type: "POST",
-                                    url: "Mesas.aspx/GetData",
-                                    data: params,
-                                    contentType: "application/json; charset=utf-8",
-                                    dataType: "json",
-                                    success: function (response) {
-                                        var local = response;
+                    function showData(rowId,type) {
+                        $.ajax({
+                            type: "POST",
+                            url: "Restaurante.aspx/GetData",
+                            data: "{'Id':'" + rowId + "'}",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (response) {
+                                if (type === "Info")
+                                    setModalInfo(response);
+                                else if (type === "Modify")
+                                    setModalModify(response);
+                            },
+                            failure: function (response) {
+                                console.log("Peticion al servidor fallida");
+                            }
+                        });
+                    }
+
+                    function setModalInfo(local) {
                                         document.getElementById("<%=NameC.ClientID%>").value = local.d.Name;
-                                        document.getElementById("<%=NameM.ClientID%>").value = local.d.Name;
-                                        document.getElementById("<%=CategoryC.ClientID%>").value = local.d.Name;
-                                        document.getElementById("<%=CategoryM.ClientID%>").value = local.d.Name;
-                                        document.getElementById("<%=NacionalityC.ClientID%>").value = local.d.Nacionality;
-                                        document.getElementById("<%=NacionalityM.ClientID%>").value = local.d.Nacionality;
-                                        document.getElementById("<%=RifC.ClientID%>").value = local.d.Rif;
-                                        document.getElementById("<%=RifM.ClientID%>").value = local.d.Rif;
-                                        document.getElementById("<%=CurrencyC.ClientID%>").value = local.d.Currency;
-                                        document.getElementById("<%=CurrencyM.ClientID%>").value = local.d.Currency;
+                                        document.getElementById("<%=CategoryC.ClientID%>").value = local.d.RestaurantCategory.Name;
+                                        document.getElementById("<%=NacionalityC.ClientID%>").value = local.d.Nationality;
+                                        document.getElementById("<%=RifC.ClientID%>").value = local.d.Ssn;
+                                        document.getElementById("<%=CurrencyC.ClientID%>").value = local.d.Currency.Name;
                                         document.getElementById("<%=AddressC.ClientID%>").value = local.d.Address;
+                                        document.getElementById("<%=ZoneC.ClientID%>").value = local.d.Zone.Name;
+                                        document.getElementById("<%=OpeningTimeC.ClientID%>").value = local.d.Schedule.OpeningTime.Hours;
+                                        document.getElementById("<%=ClosingTimeC.ClientID%>").value = local.d.Schedule.ClosingTime.Hours;
+                    }
+
+                    function setModalModify(local) {
+                                        /* Modificar */
+                                        document.getElementById("<%=NameM.ClientID%>").value = local.d.Name;
+                                        document.getElementById("<%=CategoryM.ClientID%>").value = local.d.RestaurantCategory.Name;
+                                        document.getElementById("<%=NacionalityM.ClientID%>").value = local.d.Nationality;
+                                        document.getElementById("<%=RifM.ClientID%>").value = local.d.Ssn;
+                                        document.getElementById("<%=CurrencyM.ClientID%>").value = local.d.Currency.Name;
                                         document.getElementById("<%=AddressM.ClientID%>").value = local.d.Address;
-                                        document.getElementById("<%=ZoneC.ClientID%>").value = local.d.Name;
-                                        document.getElementById("<%=ZoneM.ClientID%>").value = local.d.Name;
-                                        document.getElementById("<%=OpeningTimeC.ClientID%>").value = local.d.OpeningTime;
-                                        document.getElementById("<%=OpeningTimeM.ClientID%>").value = local.d.OpeningTime;
-                                        document.getElementById("<%=ClosingTimeC.ClientID%>").value = local.d.OpeningTime;
-                                        document.getElementById("<%=ClosingTimeM.ClientID%>").value = local.d.OpeningTime;
-                                        document.getElementById("<%=LongM.ClientID%>").value = local.d.Longitude;
-                                        document.getElementById("<%=LatM.ClientID%>").value = local.d.Latitude;
+                                        document.getElementById("<%=ZoneM.ClientID%>").value = local.d.Zone.Name;
+                                        document.getElementById("<%=OpeningTimeM.ClientID%>").value = local.d.Schedule.OpeningTime.Hours;
+                                        document.getElementById("<%=ClosingTimeM.ClientID%>").value = local.d.Schedule.ClosingTime.Hours;
+                                        document.getElementById("<%=LongM.ClientID%>").value = local.d.Coordinate.Longitude;
+                                        document.getElementById("<%=LatM.ClientID%>").value = local.d.Coordinate.Latitude;
+
+                                        /* Day se maneja diferente en los checkbox */
                                         document.getElementById("<%=Day1M.ClientID%>").value = local.d.Day;
                                         document.getElementById("<%=Day2M.ClientID%>").value = local.d.Day;
                                         document.getElementById("<%=Day3M.ClientID%>").value = local.d.Day;
@@ -526,19 +595,11 @@ Restaurantes
                                         document.getElementById("<%=Day5M.ClientID%>").value = local.d.Day;
                                         document.getElementById("<%=Day6M.ClientID%>").value = local.d.Day;
                                         document.getElementById("<%=Day7M.ClientID%>").value = local.d.Day;
-                                        
 
-                                        
-
-                                    },
-                                    failure: function (response) {
-                                          alert("_");
-                                    }
-                                    });
-                        });
                     }
+
                     function setValue() {
-                        $('.table > tbody > tr > td:nth-child() > a')
+                        $('.table > tbody > tr > td:nth-child(5) > a')
                         .click(function () {
                             var padreId = $(this).parent().parent().attr("data-id");
                             document.getElementById("<%=RestaurantModifyId.ClientID%>").value = padreId;
