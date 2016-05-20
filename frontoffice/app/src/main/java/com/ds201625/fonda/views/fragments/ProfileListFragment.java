@@ -3,6 +3,7 @@ package com.ds201625.fonda.views.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -15,6 +16,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.adapters.ProfileViewItemList;
 import com.ds201625.fonda.domains.Profile;
 
@@ -24,13 +29,15 @@ import java.util.List;
 /**
  * Fragment que contiene la lista de Perfiles.
  */
-public class ProfileListFragment extends BaseFragment {
+public class ProfileListFragment extends BaseFragment
+        implements SwipeRefreshLayout.OnRefreshListener{
 
     //Interface de comunicaciond contra la activity
     profileListFragmentListener mCallBack;
 
     //Elementos de la vista.
     private ListView profiles;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private ProfileViewItemList profileList;
 
     //Para configurar si la lista es multiples secciones o no
@@ -44,13 +51,6 @@ public class ProfileListFragment extends BaseFragment {
         profileList = new ProfileViewItemList(getContext());
     }
 
-    //Pruebas
-    public void seProfiles(List<Profile> p){
-        if (p == null)
-            return;
-        profileList.addAll(p);
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +58,8 @@ public class ProfileListFragment extends BaseFragment {
         View layout = inflater.inflate(R.layout.fragment_profile_list,container,false);
 
         profiles = (ListView)layout.findViewById(R.id.lvProfileList);
+        swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
+        swipeRefreshLayout.setOnRefreshListener(this);
         profiles.setAdapter(profileList);
         if(multi) {
             profiles.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
@@ -86,17 +88,24 @@ public class ProfileListFragment extends BaseFragment {
                 public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.deleteProfile:
-                            String sal = "Fueron seleccionados los perfiles: ";
+                            String sal = "Fueron eliminados los perfiles.";
                             for (Profile p : profileList.getAllSeletedItems()) {
-                                sal += p.getProfileName() + ", ";
+                                ProfileService ps = FondaServiceFactory.getInstance()
+                                        .getProfileService(SessionData.getInstance().getToken());
+                                try {
+                                    ps.deleteProfile(p.getId());
+                                }
+                                catch (RestClientException e) {
+                                    e.printStackTrace();
+                                }
                             }
-                            Log.v("Elimidados: ", sal);
+                            Log.v("Perfiles eliminados: ", sal);
+                            profileList.cleanSelected();
                             break;
 
                         default:
                             return false;
                     }
-
                     return true;
                 }
 
@@ -119,6 +128,18 @@ public class ProfileListFragment extends BaseFragment {
         });
 
         return layout ;
+    }
+
+    @Override
+    public void onRefresh() {
+        updateList();
+    }
+
+    public void updateList() {
+        swipeRefreshLayout.setRefreshing(true);
+        profileList.update();
+        profiles.refreshDrawableState();
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override

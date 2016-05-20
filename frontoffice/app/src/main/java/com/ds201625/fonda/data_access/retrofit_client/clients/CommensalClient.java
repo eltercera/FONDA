@@ -7,10 +7,18 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 /**
- * Created by rrodriguez on 5/12/16.
+ * Interfaz para ser implementada por retrofit
+ * Define los recursos de /api/commensal del
+ * servicio web REST
  */
 public interface CommensalClient {
 
+    /**
+     * Post /api/commensal
+     * Registro de un commensal.
+     * @param commensal Commansal a registrar
+     * @return
+     */
     @POST("commensal")
     Call<Commensal> registerCommensal(@Body Commensal commensal);
 

@@ -1,14 +1,16 @@
 package com.ds201625.fonda.data_access.services;
 
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Profile;
-
 import java.util.List;
 
 /**
- * Created by rrodriguez on 5/7/16.
+ * Interfaz para el servicio de Profiles
  */
 public interface ProfileService {
 
-    List<Profile> getProfiles();
-
+    List<Profile> getProfiles() throws RestClientException;
+    void addProfile(Profile profile) throws RestClientException;
+    void editProfile(Profile profile) throws RestClientException;
+    void deleteProfile(int id) throws RestClientException;
 }

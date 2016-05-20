@@ -101,6 +101,7 @@
     <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRoleDAO.cs" />
     <Compile Include="InterfaceDAO\IBusyTableStatusDAO.cs" />
+    <Compile Include="InterfaceDAO\IDisableSimpleStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICashPaymentDAO.cs" />
     <Compile Include="InterfaceDAO\ICreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantCategoryDAO.cs" />

@@ -32,7 +32,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 			
 			Map (x => x.Ssn)
 				.Column ("gp_ssn")
-				.Unique()
 				.Not.Nullable ();
 
 			References (x => x.Status)

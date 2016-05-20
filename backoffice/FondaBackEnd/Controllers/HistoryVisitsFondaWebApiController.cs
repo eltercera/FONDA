@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
+    /*
     [RoutePrefix("api")]
     public class HistoryVisitsFondaWebApiController : FondaWebApi
     {
@@ -126,4 +127,5 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         }
 
     }
+    */
 }

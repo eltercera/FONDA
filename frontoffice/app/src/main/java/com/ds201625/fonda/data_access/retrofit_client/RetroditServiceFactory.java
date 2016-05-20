@@ -5,17 +5,18 @@ import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.data_access.services.TokenService;
+import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Token;
 
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-
+/**
+ * Implementacion de la fabrica de servicios con el uso de retrofit y localStorage.
+ */
 public class RetroditServiceFactory implements ServiceFactory {
 
     @Override
-    public ProfileService getProfileService() {
-        return new RetrofitProfileService();
+    public ProfileService getProfileService(Token token) {
+        return new RetrofitProfileService(token);
     }
 
     @Override
@@ -32,5 +33,10 @@ public class RetroditServiceFactory implements ServiceFactory {
 	@Override
     public HistoryVisitsRestaurantService  getHistoryVisitsService() {
         return new RetrofitHistoryVisitsService();
+    }
+
+    @Override
+    public TokenService getTokenService(Commensal commensal) {
+        return new RetrofitTokenService(commensal);
     }
 }

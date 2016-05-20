@@ -7,7 +7,7 @@ public class Profile extends BaseEntity {
 
     private String profileName;
 
-    private GenericPerson person;
+    private Person person;
 
     public Profile() {
         super();
@@ -23,11 +23,11 @@ public class Profile extends BaseEntity {
         this.profileName = profileName;
     }
 
-    public GenericPerson getPerson() {
+    public Person getPerson() {
         return person;
     }
 
-    public void setPerson(GenericPerson person) {
+    public void setPerson(Person person) {
         this.person = person;
     }
 }
