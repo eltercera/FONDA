@@ -1,6 +1,7 @@
 ﻿using System;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.HibernateDAO;
+using com.ds201625.fonda.Domain;
 
 namespace com.ds201625.fonda.DataAccess.FactoryDAO
 {
@@ -48,11 +49,6 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 		public ICompanyDAO GetCompanyDAO()
 		{
 			return _factory.GetCompanyDAO ();
-		}
-
-		public IStatusDAO GetStatusDAO()
-		{
-			return _factory.GetStatusDAO ();
 		}
 
         public IOrderAccountDao GetOrderAccountDAO()
@@ -128,6 +124,36 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         public IZoneDAO GetZoneDAO()
         {
             return _factory.GetZoneDAO();
+        }
+
+        public ITokenDAO GetTokenDAO()
+        {
+            return _factory.GetTokenDAO();
+        }
+
+        public IRoleDAO GetRoleDAO()
+        {
+            return _factory.GetRoleDAO();
+        }
+
+        public ActiveSimpleStatus GetActiveSimpleStatus()
+        {
+            return _factory.GetActiveSimpleStatus();
+        }
+
+        public DisableSimpleStatus GetDisabledSimpleStatus()
+        {
+            return _factory.GetDisableSimpleStatus();
+        }
+
+        public FreeTableStatus GetFreeTableStatus()
+        {
+            return _factory.GetFreeTableStatus();
+        }
+
+        public BusyTableStatus GetBusyTableStatus()
+        {
+            return _factory.GetBusyTableStatus();
         }
     }
 }
