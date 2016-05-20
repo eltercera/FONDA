@@ -14,6 +14,7 @@ namespace DataAccess
         private ICommensalDAO _commensalDAO;
         private Commensal _commensal;
         private int _commensalId;
+        
         [Test()]
         public void CommensalDomainTest()
         {

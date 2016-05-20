@@ -22,7 +22,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Column("fk_dish_id")
                 .Cascade.Delete()
                 .Not.Nullable();
-            
+
         }
     }
 }

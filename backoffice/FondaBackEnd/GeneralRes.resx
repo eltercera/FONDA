@@ -129,4 +129,8 @@
     <value>Fonda</value>
     <comment>Sheme de la autorizacion Fonda del RestAuth</comment>
   </data>
+  <data name="RestaurantIDHeader" xml:space="preserve">
+    <value>id</value>
+    <comment>indice en el header en donde se guarda el identificador del restaurant</comment>
+  </data>
 </root>
