@@ -22,6 +22,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 			try
 			{
 				ITransaction transaction = Session.BeginTransaction ();
+				transaction.Begin();
 				Session.SaveOrUpdate (entity);
 				transaction.Commit ();
 			}
@@ -41,6 +42,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		public void Delete (T entity)
 		{
 			ITransaction transaction = Session.BeginTransaction ();
+			transaction.Begin();
 			Session.Delete (entity);
 			transaction.Commit ();
 		}
