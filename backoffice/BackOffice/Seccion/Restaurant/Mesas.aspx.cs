@@ -10,6 +10,7 @@ namespace BackOffice.Seccion.Restaurant
 {
     public partial class Mesas : System.Web.UI.Page
     {
+        FactoryDAO factoryDAO = FactoryDAO.Intance;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,7 +28,6 @@ namespace BackOffice.Seccion.Restaurant
             CleanTable();
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetAll();
 
@@ -162,15 +162,20 @@ namespace BackOffice.Seccion.Restaurant
             return header;
         }
 
+        /// <summary>
+        /// Limpia las filas de la tabla mostrada en pantalla
+        /// </summary>
         public void CleanTable()
         {
             Table.Rows.Clear();
         }
 
+        /// <summary>
+        /// Agrega una nueva mesa
+        /// </summary>
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
             AlertSuccess_AddTable.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             com.ds201625.fonda.Domain.Table _table = new com.ds201625.fonda.Domain.Table();
             int capacity = int.Parse(DDLcapacityA.SelectedValue); 
@@ -180,10 +185,12 @@ namespace BackOffice.Seccion.Restaurant
             LoadDataTable();
         }
 
+        /// <summary>
+        /// Modifica los datos de la mesa
+        /// </summary>
         protected void ButtonModify_Click(object sender, EventArgs e)
         {
-            AlertSuccess_ModifyTable.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            AlertSuccess_ModifyTable.Visible = true;;
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             string TableID = TableModifyId.Value;
             int idTable = int.Parse(TableID);
@@ -212,6 +219,11 @@ namespace BackOffice.Seccion.Restaurant
             return _table;
         }
 
+        /// <summary>
+        /// Cambia el Status de la mesa a Ocupado
+        /// </summary>
+        /// <param name="Id">Recibe el Id de la mesa</param>
+        /// <returns>El estado ocupado a mostrar en la tabla</returns>
         [WebMethod]
         public static string BusyStatus(string Id)
         {
@@ -226,6 +238,11 @@ namespace BackOffice.Seccion.Restaurant
 
         }
 
+        /// <summary>
+        /// Cambia el Status de la mesa a Disponible
+        /// </summary>
+        /// <param name="Id">Recibe el Id de la mesa</param>
+        /// <returns>El estado disponible a mostrar en la tabla</returns>
         [WebMethod]
         public static string FreeStatus(string Id)
         {
