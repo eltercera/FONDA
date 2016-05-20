@@ -217,11 +217,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Tipo</label>
                             <asp:DropDownList id="CategoryM" CssClass="form-control" AutoPostBack="False" runat="server">
-                                <asp:ListItem> </asp:ListItem>
-                                <asp:ListItem>Venezolana</asp:ListItem>
-                                <asp:ListItem>Americana</asp:ListItem>
-                                <asp:ListItem>Japonesa</asp:ListItem>
-                                <asp:ListItem>China</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                 </div>
@@ -231,7 +226,6 @@ Restaurantes
                     <div class="form-group">
                         <label class="control-label">Nacionalidad</label>
                         <asp:DropDownList id="NationalityM" CssClass="form-control" AutoPostBack="False" runat="server">
-                            <asp:ListItem> </asp:ListItem>
                             <asp:ListItem>J</asp:ListItem>
                             <asp:ListItem>V</asp:ListItem>
                         </asp:DropDownList>
@@ -247,10 +241,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Unidad Monetaria</label>
                                 <asp:DropDownList id="CurrencyM" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem> </asp:ListItem>
-                                    <asp:ListItem>VEF</asp:ListItem>
-                                    <asp:ListItem>USD</asp:ListItem>
-                                    <asp:ListItem>EUR</asp:ListItem>
                                 </asp:DropDownList>
                         </div>
                 </div>
@@ -266,10 +256,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Zona</label>
                         <asp:DropDownList id="ZoneM" CssClass="form-control" AutoPostBack="False" runat="server">
-                            <asp:ListItem> </asp:ListItem>
-                            <asp:ListItem>Altamira</asp:ListItem>
-                            <asp:ListItem>Las Mercedes</asp:ListItem>
-                            <asp:ListItem>Macaracuay</asp:ListItem>
                         </asp:DropDownList>
                         </div>
                 </div>
@@ -321,10 +307,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Hora Apertura</label>
                                 <asp:DropDownList id="OpeningTimeM" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem>Apertura</asp:ListItem>
-                                    <asp:ListItem>8</asp:ListItem>
-                                    <asp:ListItem>9</asp:ListItem>
-                                    <asp:ListItem>10</asp:ListItem>
                                 </asp:DropDownList>
                         </div>
                 </div>
@@ -332,10 +314,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Hora Cierre</label>
                                 <asp:DropDownList id="ClosingTimeM" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem>Cierre</asp:ListItem>
-                                    <asp:ListItem>20</asp:ListItem>
-                                    <asp:ListItem>21</asp:ListItem>
-                                    <asp:ListItem>22</asp:ListItem>
                                 </asp:DropDownList>
                         </div>
                 </div>
@@ -382,7 +360,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Tipo</label>
                             <asp:DropDownList id="CategoryA" CssClass="form-control" AutoPostBack="False" runat="server">
-                                <asp:ListItem> </asp:ListItem>
                             </asp:DropDownList>
                         </div>
                 </div>
@@ -392,7 +369,6 @@ Restaurantes
                     <div class="form-group">
                         <label class="control-label">Nacionalidad</label>
                         <asp:DropDownList id="NacionalityA" CssClass="form-control" AutoPostBack="False" runat="server">
-                            <asp:ListItem> </asp:ListItem>
                             <asp:ListItem>J</asp:ListItem>
                             <asp:ListItem>V</asp:ListItem>
                         </asp:DropDownList>
@@ -408,7 +384,6 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Unidad Monetaria</label>
                                 <asp:DropDownList id="CurrencyA" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem> </asp:ListItem>
                                 </asp:DropDownList>
                         </div>
                 </div>
@@ -592,42 +567,84 @@ Restaurantes
                     }
 
                     function setModalInfo(local) {
-                                        document.getElementById("<%=NameC.ClientID%>").value = local.d.Name;
-                                        document.getElementById("<%=CategoryC.ClientID%>").value = local.d.RestaurantCategory.Name;
-                                        document.getElementById("<%=NationalityC.ClientID%>").value = local.d.Nationality;
-                                        document.getElementById("<%=RifC.ClientID%>").value = local.d.Ssn;
-                                        document.getElementById("<%=CurrencyC.ClientID%>").value = local.d.Currency.Name;
-                                        document.getElementById("<%=AddressC.ClientID%>").value = local.d.Address;
-                                        document.getElementById("<%=ZoneC.ClientID%>").value = local.d.Zone.Name;
-                                        document.getElementById("<%=OpeningTimeC.ClientID%>").value = local.d.Schedule.OpeningTime.Hours;
-                        document.getElementById("<%=ClosingTimeC.ClientID%>").value = local.d.Schedule.ClosingTime.Hours;
+                        var openingTime = local.d.Schedule.OpeningTime.Hours + ':' + local.d.Schedule.OpeningTime.Minutes;
+                        var closingTime = local.d.Schedule.ClosingTime.Hours + ':' + local.d.Schedule.ClosingTime.Minutes;
+                        document.getElementById("<%=NameC.ClientID%>").value = local.d.Name;
+                        document.getElementById("<%=CategoryC.ClientID%>").value = local.d.RestaurantCategory.Name;
+                        document.getElementById("<%=NationalityC.ClientID%>").value = local.d.Nationality;
+                        document.getElementById("<%=RifC.ClientID%>").value = local.d.Ssn;
+                        document.getElementById("<%=CurrencyC.ClientID%>").value = local.d.Currency.Name;
+                        document.getElementById("<%=AddressC.ClientID%>").value = local.d.Address;
+                        document.getElementById("<%=ZoneC.ClientID%>").value = local.d.Zone.Name;
+                        document.getElementById("<%=OpeningTimeC.ClientID%>").value = openingTime;
+                        document.getElementById("<%=ClosingTimeC.ClientID%>").value = closingTime;
                         daysOfWork(local);
                     }
 
                     function setModalModify(local) {
-                                        /* Modificar */
-                                        document.getElementById("<%=NameM.ClientID%>").value = local.d.Name;
-                                        document.getElementById("<%=CategoryM.ClientID%>").value = local.d.RestaurantCategory.Name;
-                                        document.getElementById("<%=NationalityM.ClientID%>").value = local.d.Nationality;
-                                        document.getElementById("<%=RifM.ClientID%>").value = local.d.Ssn;
-                                        document.getElementById("<%=CurrencyM.ClientID%>").value = local.d.Currency.Name;
-                                        document.getElementById("<%=AddressM.ClientID%>").value = local.d.Address;
-                                        document.getElementById("<%=ZoneM.ClientID%>").value = local.d.Zone.Name;
-                                        document.getElementById("<%=OpeningTimeM.ClientID%>").value = local.d.Schedule.OpeningTime.Hours;
-                                        document.getElementById("<%=ClosingTimeM.ClientID%>").value = local.d.Schedule.ClosingTime.Hours;
-                                        document.getElementById("<%=LongM.ClientID%>").value = local.d.Coordinate.Longitude;
-                                        document.getElementById("<%=LatM.ClientID%>").value = local.d.Coordinate.Latitude;
-
-                                        /* Day se maneja diferente en los checkbox */
-                                        document.getElementById("<%=Day1M.ClientID%>").value = local.d.Day;
-                                        document.getElementById("<%=Day2M.ClientID%>").value = local.d.Day;
-                                        document.getElementById("<%=Day3M.ClientID%>").value = local.d.Day;
-                                        document.getElementById("<%=Day4M.ClientID%>").value = local.d.Day;
-                                        document.getElementById("<%=Day5M.ClientID%>").value = local.d.Day;
-                                        document.getElementById("<%=Day6M.ClientID%>").value = local.d.Day;
-                                        document.getElementById("<%=Day7M.ClientID%>").value = local.d.Day;
-
+                        /* Modificar */
+                        var openingTime = local.d.Schedule.OpeningTime.Hours + ':' + local.d.Schedule.OpeningTime.Minutes;
+                        var closingTime = local.d.Schedule.ClosingTime.Hours + ':' + local.d.Schedule.ClosingTime.Minutes;
+                        document.getElementById("<%=NameM.ClientID%>").value = local.d.Name;
+                        document.getElementById("<%=CategoryM.ClientID%>").value = local.d.RestaurantCategory.Name;
+                        document.getElementById("<%=NationalityM.ClientID%>").value = local.d.Nationality;
+                        document.getElementById("<%=RifM.ClientID%>").value = local.d.Ssn;
+                        document.getElementById("<%=CurrencyM.ClientID%>").value = local.d.Currency.Name;
+                        document.getElementById("<%=AddressM.ClientID%>").value = local.d.Address;
+                        document.getElementById("<%=ZoneM.ClientID%>").value = local.d.Zone.Name;
+                        document.getElementById("<%=OpeningTimeM.ClientID%>").value = openingTime;
+                        document.getElementById("<%=ClosingTimeM.ClientID%>").value = closingTime;
+                        document.getElementById("<%=LongM.ClientID%>").value = local.d.Coordinate.Longitude;
+                        document.getElementById("<%=LatM.ClientID%>").value = local.d.Coordinate.Latitude;
+                        selectDay(local);
                     }
+
+        function selectDay(local) {
+            var days = local.d.Schedule.Day;
+            var day;
+            clearDays();
+            for (var i = 0; i < days.length; i++) {
+                debugger;
+                day = days[i];
+                daysSelected(day.Name);
+            }
+        }
+        function daysSelected(day) {
+            switch(day)
+            {
+                case "Lunes":
+                    $('#<%=Day1M.ClientID%>').attr('checked', true);
+                    break;
+                case "Martes":
+                    $("#<%=Day2M.ClientID%>").attr('checked', true);
+                    break;
+                case "Miercoles":
+                    $("#<%=Day3M.ClientID%>").attr('checked', true);
+                    break;
+                case "Jueves":
+                    $("#<%=Day4M.ClientID%>").attr('checked', true);
+                    break;
+                case "Viernes":
+                    $("#<%=Day5M.ClientID%>").attr('checked', true);
+                    break;
+                case "Sabado":
+                    $("#<%=Day6M.ClientID%>").attr('checked', true);
+                    break;
+                case "Domingo":
+                    $("#<%=Day7M.ClientID%>").attr('checked', true);
+                    break;
+            }
+        }
+        function clearDays(){
+                    $("#<%=Day1M.ClientID%>").attr('checked', false);
+                    $("#<%=Day2M.ClientID%>").attr('checked', false);
+                    $("#<%=Day3M.ClientID%>").attr('checked', false);
+                    $("#<%=Day4M.ClientID%>").attr('checked', false);
+                    $("#<%=Day5M.ClientID%>").attr('checked', false);
+                    $("#<%=Day6M.ClientID%>").attr('checked', false);
+                    $("#<%=Day7M.ClientID%>").attr('checked', false);
+        }
+
 
             /* Concatena los dias laborales a mostrar del Restaurante */
             function daysOfWork(local) {
@@ -645,8 +662,8 @@ Restaurantes
                     function setValue() {
                         $('.table > tbody > tr > td:nth-child(5) > a')
                         .click(function () {
-                            var padreId = $(this).parent().parent().attr("data-id");
-                            document.getElementById("<%=RestaurantModifyId.ClientID%>").value = padreId;
+                            var rowId = $(this).parent().parent().attr("data-id");
+                            document.getElementById("<%=RestaurantModifyId.ClientID%>").value = rowId;
 
                         });
                     }
