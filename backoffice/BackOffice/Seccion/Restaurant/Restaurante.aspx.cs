@@ -380,7 +380,7 @@ namespace BackOffice.Seccion.Restaurant
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Restaurant restaurant = _restaurantDAO.FindById(restaurantId);
-            ;
+            
             return restaurant;
         }
 

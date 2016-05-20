@@ -112,7 +112,7 @@ Restaurantes
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="form-group">
                         <label class="control-label">Nacionalidad</label>
-                        <asp:TextBox ID="NacionalityC" CssClass="form-control" readonly="true"  runat="server"/>
+                        <asp:TextBox ID="NationalityC" CssClass="form-control" readonly="true"  runat="server"/>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
@@ -153,6 +153,12 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Hora Cierre</label>
                             <asp:TextBox ID="ClosingTimeC" CssClass="form-control" readonly="true"  runat="server"/>
+                        </div>
+                </div>
+                <div class="col-lg-5 col-md-3 col-sm-3 col-xs-3">
+                        <div class="form-group">
+                            <label class="control-label">Días laborables</label>
+                            <asp:TextBox ID="DaysC" CssClass="form-control" readonly="true"  runat="server"/>
                         </div>
                 </div>
             </div>   
@@ -201,7 +207,7 @@ Restaurantes
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="form-group">
                         <label class="control-label">Nacionalidad</label>
-                        <asp:DropDownList id="NacionalityM" CssClass="form-control" AutoPostBack="False" runat="server">
+                        <asp:DropDownList id="NationalityM" CssClass="form-control" AutoPostBack="False" runat="server">
                             <asp:ListItem> </asp:ListItem>
                             <asp:ListItem>J</asp:ListItem>
                             <asp:ListItem>V</asp:ListItem>
@@ -550,6 +556,7 @@ Restaurantes
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function (response) {
+                                debugger;
                                 if (type === "Info")
                                     setModalInfo(response);
                                 else if (type === "Modify")
@@ -564,20 +571,21 @@ Restaurantes
                     function setModalInfo(local) {
                                         document.getElementById("<%=NameC.ClientID%>").value = local.d.Name;
                                         document.getElementById("<%=CategoryC.ClientID%>").value = local.d.RestaurantCategory.Name;
-                                        document.getElementById("<%=NacionalityC.ClientID%>").value = local.d.Nationality;
+                                        document.getElementById("<%=NationalityC.ClientID%>").value = local.d.Nationality;
                                         document.getElementById("<%=RifC.ClientID%>").value = local.d.Ssn;
                                         document.getElementById("<%=CurrencyC.ClientID%>").value = local.d.Currency.Name;
                                         document.getElementById("<%=AddressC.ClientID%>").value = local.d.Address;
                                         document.getElementById("<%=ZoneC.ClientID%>").value = local.d.Zone.Name;
                                         document.getElementById("<%=OpeningTimeC.ClientID%>").value = local.d.Schedule.OpeningTime.Hours;
-                                        document.getElementById("<%=ClosingTimeC.ClientID%>").value = local.d.Schedule.ClosingTime.Hours;
+                        document.getElementById("<%=ClosingTimeC.ClientID%>").value = local.d.Schedule.ClosingTime.Hours;
+                        daysOfWork(local);
                     }
 
                     function setModalModify(local) {
                                         /* Modificar */
                                         document.getElementById("<%=NameM.ClientID%>").value = local.d.Name;
                                         document.getElementById("<%=CategoryM.ClientID%>").value = local.d.RestaurantCategory.Name;
-                                        document.getElementById("<%=NacionalityM.ClientID%>").value = local.d.Nationality;
+                                        document.getElementById("<%=NationalityM.ClientID%>").value = local.d.Nationality;
                                         document.getElementById("<%=RifM.ClientID%>").value = local.d.Ssn;
                                         document.getElementById("<%=CurrencyM.ClientID%>").value = local.d.Currency.Name;
                                         document.getElementById("<%=AddressM.ClientID%>").value = local.d.Address;
@@ -597,6 +605,19 @@ Restaurantes
                                         document.getElementById("<%=Day7M.ClientID%>").value = local.d.Day;
 
                     }
+
+            /* Concatena los dias laborales a mostrar del Restaurante */
+            function daysOfWork(local) {
+              var days = local.d.Schedule.Day;
+                var result = "";
+                for(var i = 0; i < days.length; i++)
+                {
+                    debugger;
+                    result += days[i].Name + ',';
+                }
+           
+                 document.getElementById("<%=DaysC.ClientID%>").value = result;
+            }
 
                     function setValue() {
                         $('.table > tbody > tr > td:nth-child(5) > a')

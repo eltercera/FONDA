@@ -25,6 +25,7 @@ namespace DataAccessTests
             restaurantAssertions();
         }
 
+
         private void generateRestaurant(bool edit = false)
         {
             getDao();
