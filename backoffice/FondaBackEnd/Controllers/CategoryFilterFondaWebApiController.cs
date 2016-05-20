@@ -20,7 +20,11 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [HttpGet]
         public IHttpActionResult getCategoryFilter()
         {
-
+            /// <summary>
+            /// Llamar al metodo mediante la interfaz
+            /// para listar todas las categorias y devolverlo al ws
+            /// </summary>
+            /// <returns></returns>
             IRestaurantCategoryDAO categoryDAO = FactoryDAO.GetRestaurantCategoryDAO();
             
 

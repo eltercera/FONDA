@@ -9,7 +9,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
     public class HibernateZoneDAO : HibernateBaseEntityDAO<Zone>, IZoneDAO
     {
         /// <summary>
-        /// Retorna todas las zonas 
+        /// Metodo que retorna una lista
+        /// de todas las zonas 
         /// </summary>
         /// <returns></returns>
 
