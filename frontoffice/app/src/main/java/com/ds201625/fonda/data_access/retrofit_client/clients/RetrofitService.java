@@ -2,6 +2,9 @@ package com.ds201625.fonda.data_access.retrofit_client.clients;
 
 import android.util.Base64;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -35,7 +38,7 @@ public class RetrofitService {
      * Direccion de base del sevicio web.
      * todo Ver como colocar esto usando el /etc/hosts del telefono.
      */
-    private final String API_BASE_URL = "http://192.168.19.2:8080/api/";
+    private final String API_BASE_URL = "http://190.204.155.186:9000/api/";
 
     /**
      * Cliente http
@@ -45,10 +48,15 @@ public class RetrofitService {
     /**
      * Constructor de los servicios
      */
-    private Retrofit.Builder builder =
-            new Retrofit.Builder()
-                    .baseUrl(API_BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create());
+    private Retrofit.Builder builder;
+    public RetrofitService() {
+        Gson gson = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                .create();
+        this.builder = new Retrofit.Builder()
+                .baseUrl(API_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson));
+    }
 
     /**
      * Crea servicio que no requieran autentificacion
