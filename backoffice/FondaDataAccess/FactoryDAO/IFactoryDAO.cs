@@ -34,6 +34,6 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         ITableDAO GetTableDAO();
         IZoneDAO GetZoneDAO();
 
-    }
+	}
 }
 

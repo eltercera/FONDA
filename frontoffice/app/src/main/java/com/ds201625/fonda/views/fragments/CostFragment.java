@@ -1,16 +1,21 @@
 package com.ds201625.fonda.views.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.views.activities.FavoritesActivity;
 import com.ds201625.fonda.views.activities.FilterList;
+import com.ds201625.fonda.views.activities.RestaurantListActivity;
 
 /**
  * Created by Valentina on 17/04/2016.
@@ -19,12 +24,11 @@ public class CostFragment extends BaseFragment {
 
     ListView list;
 
-    String[] location = {
-            "La castellana",
-            "Los dos caminos",
-            "La California",
-            "Parque central",
-            "El Rosal"} ;
+    String[] price = {
+            "Bs. 0 a 2000",
+            "Bs. 2000 a 5000",
+            "Bs. 5000 a 10000",
+            "Bs. +10000"} ;
 
 
     @Override
@@ -39,13 +43,20 @@ public class CostFragment extends BaseFragment {
         //Indicar el layout que va a usar el fragment
         View view= inflater.inflate(R.layout.fragment_cost,container,false);
 
-        /*FilterList adapter = new
-                FilterList(getActivity(),location);
+        FilterList adapter = new
+                FilterList(getActivity(),price);
         list=(ListView)view.findViewById(R.id.listViewRestaurants);
-        list.setAdapter(adapter);*/
+        list.setAdapter(adapter);
 
-       /* DialogFragment dialog = new TwoActionButtonsDialog();
-        dialog.show(getSupportFragmentManager(), "dialog");*/
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Toast.makeText(getActivity(), "You Clicked at " + price[+position], Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent (getActivity(),RestaurantListActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
 

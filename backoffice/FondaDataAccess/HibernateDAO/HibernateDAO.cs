@@ -69,7 +69,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return new HibernateTokenDAO();
         }
 
-
         public IInvoiceDao GetInvoiceDAO()
         {
             return new HibernateInvoiceDAO();
@@ -125,11 +124,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return new HibernateZoneDAO();
         }
 
-         public ActiveSimpleStatus GetActiveSimpleStatus()
-         {
-             IActiveSimpleStatusDAO s = new HibernateActiveSimpleStatus();
-             return s.getActiveSimpleStatus();
-         }
+		public ActiveSimpleStatus GetActiveSimpleStatus()
+		{
+			IActiveSimpleStatusDAO s = new HibernateActiveSimpleStatus ();
+			return s.getActiveSimpleStatus ();
+		}
 
         public DisableSimpleStatus GetDisableSimpleStatus()
         {

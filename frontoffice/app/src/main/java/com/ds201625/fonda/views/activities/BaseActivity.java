@@ -1,8 +1,10 @@
 package com.ds201625.fonda.views.activities;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.inputmethod.InputMethodManager;
 
 /**
  * Created by rrodriguez on 4/10/16.
@@ -11,6 +13,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         super.onCreate(savedInstanceState);
 
     }
@@ -49,5 +53,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         builder.setNeutralButton("OK",null);
 
         return builder.create();
+    }
+
+    protected void hideKyboard() {
+        InputMethodManager inputMethodManager =
+                (InputMethodManager)  this.getSystemService(INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
     }
 }

@@ -102,6 +102,7 @@
     <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRoleDAO.cs" />
     <Compile Include="InterfaceDAO\IBusyTableStatusDAO.cs" />
+    <Compile Include="InterfaceDAO\IDisableSimpleStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICashPaymentDAO.cs" />
     <Compile Include="InterfaceDAO\ICreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantCategoryDAO.cs" />
@@ -112,7 +113,6 @@
     <Compile Include="InterfaceDAO\ICoordinateDAO.cs" />
     <Compile Include="InterfaceDAO\ICurrencyDAO.cs" />
     <Compile Include="InterfaceDAO\IDayDAO.cs" />
-    <Compile Include="InterfaceDAO\IDisableSimpleStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IDishDAO.cs" />
     <Compile Include="InterfaceDAO\IDishOrderDAO.cs" />
     <Compile Include="InterfaceDAO\IEmployeeDAO.cs" />
@@ -180,7 +180,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -198,12 +198,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database1.mdf">
+    <Content Include="Fonda.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Database1_log.ldf">
+    <Content Include="Fonda_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database1.mdf</DependentUpon>
+      <DependentUpon>Fonda.mdf</DependentUpon>
     </Content>
   </ItemGroup>
 </Project>

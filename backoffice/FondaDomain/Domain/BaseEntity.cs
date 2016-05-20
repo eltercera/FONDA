@@ -35,19 +35,7 @@ namespace com.ds201625.fonda.Domain
 		    set { _id = value; }
 		}
 
-		/*public virtual EntityRecordStatus RecordStatus
-		{
-			get { return _recordStatus; }
-			set { _recordStatus = value; }
-		}*/
-
-		/// <summary>
-		/// Cambiar el estado actual de la entidad
-		/// </summary>
-		/*public virtual void ChangeRecordStatus()
-		{
-			_recordStatus = _recordStatus.Change ();
-		}*/
+		
 
     }
 }

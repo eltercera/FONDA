@@ -1,10 +1,10 @@
 package com.ds201625.fonda.domains;
 
-
 import java.util.List;
-
+/**
+ * Created by rrodriguez on 5/4/16.
+ */
 public class Restaurant extends Company {
-
 
     private String logo;
     private String address;

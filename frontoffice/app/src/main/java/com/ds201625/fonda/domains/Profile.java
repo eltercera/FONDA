@@ -1,25 +1,16 @@
 package com.ds201625.fonda.domains;
 
 /**
- * Clase Dominio de Perfil.
- * OJO: No es la Definitiva, es usada para las pruebas de interfaces.
+ * Created by rrodriguez on 5/4/16.
  */
 public class Profile extends BaseEntity {
 
     private String profileName;
 
-    private String names;
+    private Person person;
 
-    private String ssn;
-
-    private String phone;
-
-    private String cellPhone;
-
-    private String address;
-
-    public Profile(String profileName) {
-        this.profileName = profileName;
+    public Profile() {
+        super();
     }
 
     public Profile(Integer profileId, String profileName) {this.setId(profileId);this.profileName = profileName;}
@@ -32,43 +23,11 @@ public class Profile extends BaseEntity {
         this.profileName = profileName;
     }
 
-    public String getNames() {
-        return names;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setNames(String names) {
-        this.names = names;
-    }
-
-    public String getSsn() {
-        return ssn;
-    }
-
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getCellPhone() {
-        return cellPhone;
-    }
-
-    public void setCellPhone(String cellPhone) {
-        this.cellPhone = cellPhone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

@@ -42,8 +42,8 @@ public class FavoritesActivity extends BaseNavigationActivity {
         setContentView(R.layout.activity_favorites);
         super.onCreate(savedInstanceState);
 
-        FavoriteRestaurantList adapter = new
-                FavoriteRestaurantList(FavoritesActivity.this, names,location ,shortDescription,imageId);
+        RestaurantList adapter = new
+                RestaurantList(FavoritesActivity.this, names,location ,shortDescription,imageId);
         list=(ListView)findViewById(R.id.listViewFavorites);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
