@@ -182,7 +182,7 @@ namespace BackOffice.Seccion.Restaurant
             ICurrencyDAO _currencyDAO = factoryDAO.GetCurrencyDAO();
             IList<com.ds201625.fonda.Domain.Currency> listCurrencies = _currencyDAO.GetAll();
             IZoneDAO _zoneDAO = factoryDAO.GetZoneDAO();
-            IList<com.ds201625.fonda.Domain.Zone> listZones = _zoneDAO.GetAll();
+            IList<com.ds201625.fonda.Domain.Zone> listZones = _zoneDAO.allZone();
 
             foreach (RestaurantCategory category in listCategories)
             {
