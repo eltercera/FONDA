@@ -12,22 +12,22 @@ using Newtonsoft.Json;
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
     [RoutePrefix("api")]
-    public class ZoneFilterFondaWebApiController : FondaWebApi
+    public class CategoryFilterFondaWebApiController : FondaWebApi
     {
-        public ZoneFilterFondaWebApiController() : base() { }
+        public CategoryFilterFondaWebApiController() : base() { }
 
-        [Route("zoneFilter")]
+        [Route("categoryFilter")]
         [HttpGet]
-        public IHttpActionResult getZoneFilter()
+        public IHttpActionResult getCategoryFilter()
         {
 
-            IZoneDAO zoneDAO = FactoryDAO.GetZoneDAO();
+            IRestaurantCategoryDAO categoryDAO = FactoryDAO.GetRestaurantCategoryDAO();
             
 
-            IList<Zone> listZone = zoneDAO.allZone();
+            IList<RestaurantCategory> listCategory = categoryDAO.GetAll();
 
 
-            return Ok(listZone);
+            return Ok(listCategory);
 
 
          }
