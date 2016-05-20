@@ -109,5 +109,22 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             return Ok(commensal.FavoritesRestaurants);
         }
 
+
+
+        [Route("ListaRestaurant")]
+        [HttpGet]
+        public IHttpActionResult getRestaurant()
+        {
+            IRestaurantDAO RestaurantDAO = FactoryDAO.GetRestaurantDAO();
+            IList<Restaurant> listRestaurant = RestaurantDAO.GetAll();
+
+            return Ok(listRestaurant);
+        }
+
+
+
+
+
+
     }
 }
