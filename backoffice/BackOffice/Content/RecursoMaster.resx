@@ -120,6 +120,24 @@
   <data name="addressLogin" xml:space="preserve">
     <value>~/Login.aspx</value>
   </data>
+  <data name="imgTag" xml:space="preserve">
+    <value>img</value>
+  </data>
+  <data name="linkTag" xml:space="preserve">
+    <value>link</value>
+  </data>
+  <data name="nameTag" xml:space="preserve">
+    <value>nombre</value>
+  </data>
+  <data name="rolTag" xml:space="preserve">
+    <value>rol</value>
+  </data>
+  <data name="sessionLastname" xml:space="preserve">
+    <value>Lastname</value>
+  </data>
+  <data name="sessionName" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="sessionRol" xml:space="preserve">
     <value>Rol</value>
   </data>
@@ -128,7 +146,7 @@
     <comment>Contiene El id del usuario</comment>
   </data>
   <data name="sessionUserName" xml:space="preserve">
-    <value>Name</value>
+    <value>UserName</value>
   </data>
   <data name="splitRoles" xml:space="preserve">
     <value>-</value>
