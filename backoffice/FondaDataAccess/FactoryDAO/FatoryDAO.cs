@@ -36,7 +36,7 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 			return _factory.GetProfileDAO ();
 		}
 
-		public IUserAccountDAO UserAccountDAO ()
+		public IUserAccountDAO GetUserAccountDAO ()
 		{
 			return _factory.GetUserAccountDAO ();
 		}

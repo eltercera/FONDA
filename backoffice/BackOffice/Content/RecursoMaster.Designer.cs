@@ -70,6 +70,60 @@ namespace BackOffice.Content {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a img.
+        /// </summary>
+        public static string imgTag {
+            get {
+                return ResourceManager.GetString("imgTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a link.
+        /// </summary>
+        public static string linkTag {
+            get {
+                return ResourceManager.GetString("linkTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a nombre.
+        /// </summary>
+        public static string nameTag {
+            get {
+                return ResourceManager.GetString("nameTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a rol.
+        /// </summary>
+        public static string rolTag {
+            get {
+                return ResourceManager.GetString("rolTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lastname.
+        /// </summary>
+        public static string sessionLastname {
+            get {
+                return ResourceManager.GetString("sessionLastname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Name.
+        /// </summary>
+        public static string sessionName {
+            get {
+                return ResourceManager.GetString("sessionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Rol.
         /// </summary>
         public static string sessionRol {
@@ -88,7 +142,7 @@ namespace BackOffice.Content {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Name.
+        ///   Busca una cadena traducida similar a UserName.
         /// </summary>
         public static string sessionUserName {
             get {
