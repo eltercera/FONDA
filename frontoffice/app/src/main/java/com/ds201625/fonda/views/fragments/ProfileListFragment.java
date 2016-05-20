@@ -99,7 +99,8 @@ public class ProfileListFragment extends BaseFragment
                                     e.printStackTrace();
                                 }
                             }
-                            Log.("Perfiles eliminados", sal);
+                            Log.v("Perfiles eliminados: ", sal);
+                            profileList.cleanSelected();
                             break;
 
                         default:
