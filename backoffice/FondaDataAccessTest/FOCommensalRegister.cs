@@ -14,6 +14,7 @@ namespace DataAccess
         private ICommensalDAO _commensalDAO;
         private Commensal _commensal;
         private int _commensalId;
+        
         [Test()]
         public void CommensalDomainTest()
         {
@@ -45,7 +46,7 @@ namespace DataAccess
                 editadd = "Editado";
 
             _commensal.Password = "prueba";
-            _commensal.SesionToken = "prueba";
+            //_commensal.SesionToken = "prueba";
             _commensal.Email = "prueba";
             _commensal.Status = ActiveSimpleStatus.Instance;
 

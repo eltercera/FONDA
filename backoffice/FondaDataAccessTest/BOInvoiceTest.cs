@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 
 namespace DataAccessTests
@@ -12,7 +12,7 @@ namespace DataAccessTests
     public class BOInvoiceTests
     {
 
-        private FactoryDAO _facDAO;
+		private com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO _facDAO;
 
         private IInvoiceDao _invoiceDAO;
         private Invoice _invoice;
@@ -83,7 +83,7 @@ namespace DataAccessTests
         private void getDao()
         {
             if (_facDAO == null)
-                _facDAO = FactoryDAO.Intance;
+                _facDAO = com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO.Intance;
         }
 
         private void generateInvoice(bool edit = false)

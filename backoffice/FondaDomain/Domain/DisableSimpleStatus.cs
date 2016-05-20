@@ -17,7 +17,7 @@ namespace com.ds201625.fonda.Domain
 		protected DisableSimpleStatus () : base ()
 		{
 			StatusId = 2;
-			Description = "Estado simple Inactivo";
+			Description = GeneralRes.DisableSimpleStatusDes;
 		}
 
 		/// <summary>
@@ -39,7 +39,7 @@ namespace com.ds201625.fonda.Domain
 		/// <returns>No Activo</returns>
 		public override string ToString ()
 		{
-			return "Deshabilitado";
+			return GeneralRes.DisableSimpleStatusString;
 		}
 	}
 }

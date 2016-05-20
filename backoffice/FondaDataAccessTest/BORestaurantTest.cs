@@ -27,6 +27,7 @@ namespace DataAccessTests
 
         private void generateRestaurant(bool edit = false)
         {
+            getDao();
             if (_restaurant != null)
                 return;
 
@@ -37,7 +38,7 @@ namespace DataAccessTests
             _restaurant.Nationality = 'V';
             _restaurant.Ssn = "123456";
             _restaurant.Address = "Av. El ejercito con puente de San Juan";
-            _restaurant.Status = ActiveSimpleStatus.Instance;
+            _restaurant.Status = _facDAO.GetActiveSimpleStatus();
 
             Currency _currency = new Currency();
             _currency.Symbol = "C:/";
@@ -53,11 +54,11 @@ namespace DataAccessTests
             _restaurantCategory.Name = "China";
             _restaurant.RestaurantCategory = _restaurantCategory;
 
-            /* Zone _zone = new Zone();
+             Zone _zone = new Zone();
              _zone.Name = "Caracas";
-             _restaurant.Zone = _zone;*/
+             _restaurant.Zone = _zone;
 
-            MenuCategory _menuCategories = new MenuCategory() { Name = "Italiana", Status = DisableSimpleStatus.Instance };
+            MenuCategory _menuCategories = new MenuCategory() { Name = "Italiana", Status = _facDAO.GetActiveSimpleStatus() };
             _restaurant.MenuCategories = new List<MenuCategory>();
             _restaurant.MenuCategories.Add(_menuCategories);
 
@@ -66,7 +67,13 @@ namespace DataAccessTests
             _schedule.ClosingTime = new TimeSpan(15, 0, 0);
             _restaurant.Schedule = _schedule;
 
-             Table _table = new Table() { Capacity = 2, Status = FreeTableStatus.Instance  };
+            Employee _employee = new Employee() { Name = "José", LastName = "Garcia" , Ssn = "19932801", PhoneNumber = "0414-11-63-457",
+            Address = "Direccion de Prueba", Gender = 'M', BirthDate = Convert.ToDateTime("08/08/1991"), Username = "Usuario",
+            Status = _facDAO.GetActiveSimpleStatus(), UserAccount = new UserAccount() { Email = "email@gmail.com", Password = "123",
+            Status = _facDAO.GetActiveSimpleStatus()} , Role= new Role() { Name = "Administrador de Sistemas", Descripcion="Es el administrado"} };
+
+
+            Table _table = new Table() { Capacity = 2, Status = _facDAO.GetFreeTableStatus()  };
             _restaurant.Tables = new List<Table>();
             _restaurant.Tables.Add(_table);
 
@@ -88,12 +95,12 @@ namespace DataAccessTests
             _restaurantCategory.Name = "China";
             _restaurant.RestaurantCategory = _restaurantCategory;
 
-            /* Zone _zone = new Zone();
+             Zone _zone = new Zone();
              _zone.Name = "Caracas";
-             _restaurant.Zone = _zone;*/
+             _restaurant.Zone = _zone;
 
             _restaurant.MenuCategories = new List<MenuCategory>() {
-                new MenuCategory() { Name = "Italiana", Status = DisableSimpleStatus.Instance}
+                new MenuCategory() { Name = "Italiana", Status = _facDAO.GetActiveSimpleStatus()}
             };
             Schedule _schedule = new Schedule();
             _schedule.OpeningTime = new TimeSpan(7, 0, 0);
@@ -106,13 +113,13 @@ namespace DataAccessTests
             Assert.AreEqual(_restaurant.Nationality, 'V');
             Assert.AreEqual(_restaurant.Ssn, "123456");
             Assert.AreEqual(_restaurant.Address, "Av. El ejercito con puente de San Juan");
-            Assert.AreEqual(_restaurant.Status, ActiveSimpleStatus.Instance);
+            Assert.AreEqual(_restaurant.Status, _facDAO.GetActiveSimpleStatus());
             Assert.AreEqual(_restaurant.Currency, _currency);
             Assert.AreEqual(_restaurant.Coordinate, _coordinate);
             Assert.AreEqual(_restaurant.RestaurantCategory, _restaurantCategory);
             //Assert.AreEqual(_restaurant.MenuCategories[0], _menuCategories);
             Assert.AreEqual(_restaurant.Schedule, _schedule);
-            // Assert.AreEqual(_restaurant.Zone, );
+             Assert.AreEqual(_restaurant.Zone, _zone);
         }
 
         [Test]
@@ -125,7 +132,7 @@ namespace DataAccessTests
             _restaurantId = _restaurant.Id;
             generateRestaurant(true);
             _restaurantDAO.Save(_restaurant);
-            _restaurantDAO.ResetSession();
+            //_restaurantDAO.ResetSession();
             _restaurant = null;
         }
 

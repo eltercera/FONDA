@@ -2,6 +2,8 @@
 using NHibernate;
 using com.ds201625.fonda.DataAccess.HibernateDAO.Session;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.Domain;
 using NHibernate.Criterion;
 using System.Collections.Generic;
 
@@ -14,12 +16,23 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		/// <summary>
 		/// Persiste o actualiza una entidad
 		/// </summary>
-		/// <param name="entity"> La entidad </param>
+		/// <param name="entity">La entidad</param>
 		public void Save (T entity)
 		{
-			ITransaction transaction = Session.BeginTransaction ();
-			Session.SaveOrUpdate (entity);
-			transaction.Commit ();
+			try
+			{
+				ITransaction transaction = Session.BeginTransaction ();
+				transaction.Begin();
+				Session.SaveOrUpdate (entity);
+				transaction.Commit ();
+			}
+			catch(Exception e)
+			{
+				throw new SaveEntityFondaDAOException (
+					"Excepción al guardar un objeto de la entidad " + entity.GetType().ToString(),
+					e);
+			}
+				
 		}
 
 		/// <summary>
@@ -29,6 +42,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		public void Delete (T entity)
 		{
 			ITransaction transaction = Session.BeginTransaction ();
+			transaction.Begin();
 			Session.Delete (entity);
 			transaction.Commit ();
 		}
@@ -42,25 +56,25 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		{
 			return Session.Get<T> (id);
 		}
-        protected IList<T> FindAll(ICriterion restrictions = null, int max = -1, int offset = -1)
-        {
-            ICriteria criteria = Session.CreateCriteria(typeof(T));
 
-            if (restrictions != null)
-                criteria.Add(restrictions);
+		protected IList<T> FindAll(ICriterion restrictions = null, int max = -1, int offset = -1){
+			ICriteria criteria = Session.CreateCriteria (typeof(T));
 
-            if (max > 0)
-                criteria.SetMaxResults(max);
+			if (restrictions != null)
+				criteria.Add (restrictions);
 
-            if (offset > 0)
-                criteria.SetFirstResult(offset);
+			if (max > 0)
+				criteria.SetMaxResults (max);
 
-            IList<T> result = criteria.List<T>();
+			if (offset > 0)
+				criteria.SetFirstResult (offset);
 
-            return result;
-        }
+			IList<T> result = criteria.List<T> ();
 
-        protected T FindBy (string property, object value)
+			return result;
+		}
+
+		protected T FindBy (string property, object value)
 		{
 			ICriteria criteria = Session.CreateCriteria (typeof (T))
 				.Add (Restrictions.Eq (property, value));

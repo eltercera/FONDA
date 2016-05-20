@@ -11,6 +11,7 @@
     <string name="nav_config">Configuraciones</string>
     <string name="nav_profile">Perfil</string>
 
+    <string name="nav_detail_restaurant">Detalle</string>
     <string name="action_settings">Settings</string>
 
     <string name="general_values_name">Nombre</string>
@@ -36,6 +37,12 @@
         completions."
     </string>
     <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Search -->
+    <string name="filter_morning_schedule">Matutino</string>
+    <string name="filter_afternoon_schedule">Vespertino</string>
+    <string name="filter_night_schedule">Nocturno</string>
+
 
     <!-- Strings related to Settings -->
 
@@ -97,4 +104,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_expandable_list">ExpandableList Demo</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="nav_close_account">Cerrar</string>
+    <string name="title_fragment_close">Cerrar Cuenta</string>
 </resources>

@@ -1,6 +1,7 @@
 ﻿using System;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.Domain;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -33,11 +34,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 			return new HibernateCompanyDAO ();
 		}
 
-		public IStatusDAO GetStatusDAO()
-		{
-			return new HibernateStatusDAO();
-		}
-
         public IDishOrderDAO GetDishOrderDAO()
         {
             return new HibernateDishOrderDAO();
@@ -56,6 +52,21 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         public IMenuCategoryDAO GetMenuCategoryDAO()
         {
             return new HibernateMenuCategoryDAO();
+        }
+
+        public IRoleDAO GetRoleDAO()
+        {
+            return new HibernateRoleDAO();
+
+        }
+        public IEmployeeDAO GetEmployeeDAO()
+        {
+            return new HibernateEmployeeDAO();
+        }
+
+        public ITokenDAO GetTokenDAO()
+        {
+            return new HibernateTokenDAO();
         }
 
         public IInvoiceDao GetInvoiceDAO()
@@ -113,6 +124,29 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return new HibernateZoneDAO();
         }
 
+		public ActiveSimpleStatus GetActiveSimpleStatus()
+		{
+			IActiveSimpleStatusDAO s = new HibernateActiveSimpleStatus ();
+			return s.getActiveSimpleStatus ();
+		}
+
+        public DisableSimpleStatus GetDisableSimpleStatus()
+        {
+            IDisableSimpleStatusDAO s = new HibernateDisableSimpleStatus();
+            return s.getDisableSimpleStatus();
+        }
+
+        public FreeTableStatus GetFreeTableStatus()
+        {
+            IFreeTableStatusDAO s = new HibernateFreeTableStatus();
+            return s.getFreeTableStatus();
+        }
+
+        public BusyTableStatus GetBusyTableStatus()
+        {
+            IBusyTableStatusDAO s = new HibernateBusyTableStatus();
+            return s.getBusyTableStatus();
+        }
     }
 }
 

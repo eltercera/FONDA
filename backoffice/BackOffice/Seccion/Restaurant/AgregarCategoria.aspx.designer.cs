@@ -13,6 +13,24 @@ namespace BackOffice.Seccion.Restaurant {
     public partial class AgregarCategoria {
         
         /// <summary>
+        /// AlertError_ModificarCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertError_ModificarCategoria;
+        
+        /// <summary>
+        /// AlertError_AgregarCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertError_AgregarCategoria;
+        
+        /// <summary>
         /// AlertSuccess_AgregarCategoria control.
         /// </summary>
         /// <remarks>
@@ -31,13 +49,22 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ModificarCategoria;
         
         /// <summary>
-        /// CategoryT control.
+        /// CategoryModifyId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal CategoryT;
+        protected global::System.Web.UI.WebControls.HiddenField CategoryModifyId;
+        
+        /// <summary>
+        /// CategoryRest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table CategoryRest;
         
         /// <summary>
         /// NombreCatM control.

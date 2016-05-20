@@ -52,9 +52,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                .Not.Nullable()
                .Cascade.Persist();
 
-           /* References(x => x.Zone)
+            References(x => x.Zone)
                .Column("fk_res_zone")
-               .Not.Nullable();*/
+               .Cascade.Persist()
+               .Not.Nullable();
 
             References(x => x.Schedule)
                .Column("fk_res_schedule")
@@ -65,17 +66,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .KeyColumn("fk_res_mencat")
                 .ExtraLazyLoad()
                 .Cascade.All();
-
-           /* HasMany(x => x.Employees)
-                .KeyColumn("fk_res_employee")
-                .ExtraLazyLoad()
-                .Cascade.All();
-                */
+                
             HasMany(x => x.Tables)
                 .KeyColumn("fk_res_table")
                 .ExtraLazyLoad()
                 .Cascade.All();
-                
+
+            /*HasManyToMany(x => x.FavoritesCommensals)
+            .Cascade.All()
+            .ExtraLazyLoad()
+            .Table("RESTAURANT_COMMENSAL")
+            .AsBag(); */
+
+
 
         }
     }

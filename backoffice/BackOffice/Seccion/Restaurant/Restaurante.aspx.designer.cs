@@ -13,453 +13,507 @@ namespace BackOffice.Seccion.Restaurant {
     public partial class Default {
         
         /// <summary>
-        /// TextBox10 control.
+        /// AlertError_ModifyRestaurant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertError_ModifyRestaurant;
         
         /// <summary>
-        /// TextBox16 control.
+        /// AlertError_AddRestaurant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox16;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertError_AddRestaurant;
         
         /// <summary>
-        /// TextBox17 control.
+        /// AlertSuccess_AddRestaurant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox17;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_AddRestaurant;
         
         /// <summary>
-        /// TextBox12 control.
+        /// AlertSuccess_ModifyRestaurant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ModifyRestaurant;
         
         /// <summary>
-        /// TextBox18 control.
+        /// RestaurantModifyId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox18;
+        protected global::System.Web.UI.WebControls.HiddenField RestaurantModifyId;
         
         /// <summary>
-        /// TextBox13 control.
+        /// Restaurant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::System.Web.UI.WebControls.Table Restaurant;
         
         /// <summary>
-        /// TextBox19 control.
+        /// NameC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox19;
+        protected global::System.Web.UI.WebControls.TextBox NameC;
         
         /// <summary>
-        /// TextBox14 control.
+        /// CategoryC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox14;
+        protected global::System.Web.UI.WebControls.TextBox CategoryC;
         
         /// <summary>
-        /// TextBox15 control.
+        /// NacionalityC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox15;
+        protected global::System.Web.UI.WebControls.TextBox NacionalityC;
         
         /// <summary>
-        /// Button6 control.
+        /// RifC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button6;
+        protected global::System.Web.UI.WebControls.TextBox RifC;
         
         /// <summary>
-        /// TextBox1 control.
+        /// CurrencyC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox CurrencyC;
         
         /// <summary>
-        /// DropDownList3 control.
+        /// AddressC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.TextBox AddressC;
         
         /// <summary>
-        /// DropDownList4 control.
+        /// ZoneC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.TextBox ZoneC;
         
         /// <summary>
-        /// TextBox2 control.
+        /// OpeningTimeC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox OpeningTimeC;
         
         /// <summary>
-        /// DropDownList5 control.
+        /// ClosingTimeC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList5;
+        protected global::System.Web.UI.WebControls.TextBox ClosingTimeC;
         
         /// <summary>
-        /// TextBox3 control.
+        /// CloseConsult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.Button CloseConsult;
         
         /// <summary>
-        /// DropDownList6 control.
+        /// NameM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList6;
+        protected global::System.Web.UI.WebControls.TextBox NameM;
         
         /// <summary>
-        /// TextBox8 control.
+        /// CategoryM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.DropDownList CategoryM;
         
         /// <summary>
-        /// TextBox11 control.
+        /// NacionalityM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
+        protected global::System.Web.UI.WebControls.DropDownList NacionalityM;
         
         /// <summary>
-        /// Checkbox control.
+        /// RifM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Checkbox;
+        protected global::System.Web.UI.WebControls.TextBox RifM;
         
         /// <summary>
-        /// CheckBox1 control.
+        /// CurrencyM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
+        protected global::System.Web.UI.WebControls.DropDownList CurrencyM;
         
         /// <summary>
-        /// CheckBox2 control.
+        /// AddressM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox2;
+        protected global::System.Web.UI.WebControls.TextBox AddressM;
         
         /// <summary>
-        /// Checkbox3 control.
+        /// ZoneM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Checkbox3;
+        protected global::System.Web.UI.WebControls.DropDownList ZoneM;
         
         /// <summary>
-        /// CheckBox4 control.
+        /// LongM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox4;
+        protected global::System.Web.UI.WebControls.TextBox LongM;
         
         /// <summary>
-        /// CheckBox5 control.
+        /// LatM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox5;
+        protected global::System.Web.UI.WebControls.TextBox LatM;
         
         /// <summary>
-        /// CheckBox6 control.
+        /// Day1M control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox6;
+        protected global::System.Web.UI.WebControls.CheckBox Day1M;
         
         /// <summary>
-        /// DropDownList7 control.
+        /// Day2M control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList7;
+        protected global::System.Web.UI.WebControls.CheckBox Day2M;
         
         /// <summary>
-        /// DropDownList12 control.
+        /// Day3M control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList12;
+        protected global::System.Web.UI.WebControls.CheckBox Day3M;
         
         /// <summary>
-        /// Button3 control.
+        /// Day4M control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.CheckBox Day4M;
         
         /// <summary>
-        /// Button4 control.
+        /// Day5M control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button4;
+        protected global::System.Web.UI.WebControls.CheckBox Day5M;
         
         /// <summary>
-        /// TextBox4 control.
+        /// Day6M control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.CheckBox Day6M;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// Day7M control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.CheckBox Day7M;
         
         /// <summary>
-        /// DropDownList2 control.
+        /// OpeningTimeM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
+        protected global::System.Web.UI.WebControls.DropDownList OpeningTimeM;
         
         /// <summary>
-        /// TextBox5 control.
+        /// ClosingTimeM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.DropDownList ClosingTimeM;
         
         /// <summary>
-        /// DropDownList9 control.
+        /// ButtonModify control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList9;
+        protected global::System.Web.UI.WebControls.Button ButtonModify;
         
         /// <summary>
-        /// TextBox6 control.
+        /// ButtonCancelM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.Button ButtonCancelM;
         
         /// <summary>
-        /// DropDownList8 control.
+        /// NameA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList8;
+        protected global::System.Web.UI.WebControls.TextBox NameA;
         
         /// <summary>
-        /// TextBox7 control.
+        /// CategoryA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+        protected global::System.Web.UI.WebControls.DropDownList CategoryA;
         
         /// <summary>
-        /// TextBox9 control.
+        /// NacionalityA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox9;
+        protected global::System.Web.UI.WebControls.DropDownList NacionalityA;
         
         /// <summary>
-        /// Checkbox7 control.
+        /// RifA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Checkbox7;
+        protected global::System.Web.UI.WebControls.TextBox RifA;
         
         /// <summary>
-        /// CheckBox8 control.
+        /// CurrencyA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox8;
+        protected global::System.Web.UI.WebControls.DropDownList CurrencyA;
         
         /// <summary>
-        /// CheckBox9 control.
+        /// AddressA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox9;
+        protected global::System.Web.UI.WebControls.TextBox AddressA;
         
         /// <summary>
-        /// Checkbox10 control.
+        /// ZoneA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox Checkbox10;
+        protected global::System.Web.UI.WebControls.DropDownList ZoneA;
         
         /// <summary>
-        /// CheckBox11 control.
+        /// LongA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox11;
+        protected global::System.Web.UI.WebControls.TextBox LongA;
         
         /// <summary>
-        /// CheckBox12 control.
+        /// LatA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox12;
+        protected global::System.Web.UI.WebControls.TextBox LatA;
         
         /// <summary>
-        /// CheckBox13 control.
+        /// Day1A control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox13;
+        protected global::System.Web.UI.WebControls.CheckBox Day1A;
         
         /// <summary>
-        /// DropDownList10 control.
+        /// Day2A control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList10;
+        protected global::System.Web.UI.WebControls.CheckBox Day2A;
         
         /// <summary>
-        /// DropDownList11 control.
+        /// Day3A control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList11;
+        protected global::System.Web.UI.WebControls.CheckBox Day3A;
         
         /// <summary>
-        /// Button1 control.
+        /// Day4A control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.CheckBox Day4A;
         
         /// <summary>
-        /// Button2 control.
+        /// Day5A control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.CheckBox Day5A;
+        
+        /// <summary>
+        /// Day6A control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Day6A;
+        
+        /// <summary>
+        /// Day7A control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Day7A;
+        
+        /// <summary>
+        /// OpeningTimeA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList OpeningTimeA;
+        
+        /// <summary>
+        /// ClosingTimeA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ClosingTimeA;
+        
+        /// <summary>
+        /// ButtonAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonAdd;
+        
+        /// <summary>
+        /// ButtonCancelA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCancelA;
     }
 }
