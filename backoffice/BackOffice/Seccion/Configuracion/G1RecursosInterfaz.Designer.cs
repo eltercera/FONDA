@@ -61,11 +61,29 @@ namespace BackOffice.Seccion.Configuracion {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a &lt;asp:LinkButton runat=&quot;server&quot; onclick=&quot;Modificar_Click&quot; data-id=&quot;12345&quot;&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat=&quot;server&quot; onclick=&quot;Modificar_Click&quot; data-id=&quot;12345&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat=&quot;server&quot; onclick=&quot;Modificar_Click&quot; data-id=&quot;12345&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;.
+        /// </summary>
+        internal static string action {
+            get {
+                return ResourceManager.GetString("action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a alert alert-success alert-dismissible.
         /// </summary>
         internal static string alertaSuccess {
             get {
                 return ResourceManager.GetString("alertaSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a alert alert-success alert-dismissible.
+        /// </summary>
+        internal static string alertaSuccess1 {
+            get {
+                return ResourceManager.GetString("alertaSuccess1", resourceCulture);
             }
         }
         
@@ -79,11 +97,29 @@ namespace BackOffice.Seccion.Configuracion {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a class.
+        /// </summary>
+        internal static string alertClase1 {
+            get {
+                return ResourceManager.GetString("alertClase1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a role.
         /// </summary>
         internal static string alertRole {
             get {
                 return ResourceManager.GetString("alertRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a role.
+        /// </summary>
+        internal static string alertRole1 {
+            get {
+                return ResourceManager.GetString("alertRole1", resourceCulture);
             }
         }
         
@@ -97,6 +133,15 @@ namespace BackOffice.Seccion.Configuracion {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a alert alert-danger alert-dismissable col-lg-12.
+        /// </summary>
+        internal static string danger1 {
+            get {
+                return ResourceManager.GetString("danger1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a &lt;strong&gt;No se ha Modificado!&lt;/strong&gt;&quot;.
         /// </summary>
         internal static string dangerModificacionFinal {
@@ -106,11 +151,74 @@ namespace BackOffice.Seccion.Configuracion {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a &lt;strong&gt;No se ha Modificado!&lt;/strong&gt;&quot;.
+        /// </summary>
+        internal static string dangerModificacionFinal1 {
+            get {
+                return ResourceManager.GetString("dangerModificacionFinal1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a &quot;&lt;a href=&apos;#&apos; class=&apos;close&apos; data-dismiss=&apos;alert&apos; aria-label=&apos;close&apos;&gt;&amp;times;&lt;/a&gt;.
         /// </summary>
         internal static string dangerModificacioninicio {
             get {
                 return ResourceManager.GetString("dangerModificacioninicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &quot;&lt;a href=&apos;#&apos; class=&apos;close&apos; data-dismiss=&apos;alert&apos; aria-label=&apos;close&apos;&gt;&amp;times;&lt;/a&gt;.
+        /// </summary>
+        internal static string dangerModificacioninicio1 {
+            get {
+                return ResourceManager.GetString("dangerModificacioninicio1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;.
+        /// </summary>
+        internal static string edit {
+            get {
+                return ResourceManager.GetString("edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;.
+        /// </summary>
+        internal static string editstatusA {
+            get {
+                return ResourceManager.GetString("editstatusA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
+        /// </summary>
+        internal static string editstatusI {
+            get {
+                return ResourceManager.GetString("editstatusI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;span class=&quot;label label-success&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;.
+        /// </summary>
+        internal static string statusA {
+            get {
+                return ResourceManager.GetString("statusA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/span&gt;.
+        /// </summary>
+        internal static string statusI {
+            get {
+                return ResourceManager.GetString("statusI", resourceCulture);
             }
         }
     }

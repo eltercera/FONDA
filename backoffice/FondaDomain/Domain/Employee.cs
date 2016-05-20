@@ -19,6 +19,11 @@ namespace com.ds201625.fonda.Domain
         private Role _role;
 
         /// <summary>
+        /// Restaurant al que pertenece un trabajador
+        /// </summary>
+        private Restaurant _restaurant;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public Employee() : base() {}
@@ -54,6 +59,12 @@ namespace com.ds201625.fonda.Domain
             set { _role = value; }
 
         }
+
+        public virtual Restaurant Restaurant
+       {
+           get { return _restaurant; }
+           set { _restaurant = value; }
+       }
 
    }
 }

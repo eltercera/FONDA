@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <menu>
 
-  <opcion rol="Sistema-Restaurante" nombre="Restaurante" img="fa fa-fw fa-user">
+  <opcion rol="Sistema" nombre="Restaurante" img="fa fa-fw fa-user">
     <subopcion rol="Sistema" nombre="Restaurantes" link="~/Seccion/Restaurant/Restaurante.aspx"/>
     <subopcion rol="Sistema" nombre="Categorias" link="~/Seccion/Restaurant/AgregarCategoria.aspx"/>
     <subopcion rol="Sistema" nombre="Zonas" link="~/Seccion/Restaurant/AgregarZona.aspx"/>
   </opcion>
 
 
-  <opcion rol="Sistema" nombre="Menú" img="fa fa-fw fa-shopping-basket">
-    <subopcion rol="Sistema" nombre="Menú del día" link="~/Seccion/Menu/MenuDia.aspx"/>
-    <subopcion rol="Sistema" nombre="Menú principal" link="~/Seccion/Menu/default.aspx"/>
-  <subopcion rol="Sistema" nombre="Categorías" link="~/Seccion/Menu/ListarCategoria.aspx"/>
+  <opcion rol="Sistema-Restaurante" nombre="Menú" img="fa fa-fw fa-shopping-basket">
+    <subopcion rol="Sistema-Restaurante" nombre="Menú del día" link="~/Seccion/Menu/MenuDia.aspx"/>
+    <subopcion rol="Sistema-Restaurante" nombre="Menú principal" link="~/Seccion/Menu/default.aspx"/>
+  <subopcion rol="Sistema-Restaurante" nombre="Categorías" link="~/Seccion/Menu/ListarCategoria.aspx"/>
   </opcion>
   
-  <opcion rol="Sistema" nombre="Caja" img="fa fa-fw fa-money">
-       <subopcion rol="Sistema" nombre="Caja" link="~/Seccion/Menu/ListarCategoria.aspx"/>
+  <opcion rol="Sistema-Restaurante-Caja" nombre="Caja" img="fa fa-fw fa-money">
+       <subopcion rol="Sistema-Restaurante-Caja" nombre="Caja" link="~/Seccion/Menu/ListarCategoria.aspx"/>
    </opcion>
   
   <opcion rol="Sistema" nombre="Confirguración" img="fa fa-fw fa-wrench">
