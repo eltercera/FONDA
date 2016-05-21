@@ -42,7 +42,7 @@
                      <input type="text" id="userIni" placeholder="Usuario" runat="server" class="form-control input-lg"  />         
                      <input type="password" class="form-control input-lg" id="passwordIni" runat="server"  placeholder="Contraseña" required="" />                    
                      <div class="pwstrength_viewport_progress"></div>
-                     <button type="button"  runat="server" name="go" onserverclick="ValidarUsuario" class="btn btn-lg btn-success btn-block" style="background-color: #643C25;border-color: #000;">Entrar</button>
+                     <button type="button"  runat="server" name="go" onserverclick="Uservalidate" class="btn btn-lg btn-success btn-block" style="background-color: #643C25;border-color: #000;">Entrar</button>
                      <div>
                         <a data-toggle="modal" data-target="#modalform" href="#" >¿Olvidaste tu contraseña?</a>
                      </div>
@@ -65,7 +65,7 @@
                                       class="form-control input-lg" value="" />        
                                   </div>
                                   <div class="modal-footer">
-                                   <button type="button"   runat="server"    data-dismiss="modal" onserverclick="EnvioCorreo" class="btn btn-lg btn-success btn-block" style="background-color: #643C25;border-color: #000;"  >Restablecer</button>
+                                   <button type="button"   runat="server"    data-dismiss="modal" onserverclick="Recoverpassword" class="btn btn-lg btn-success btn-block" style="background-color: #643C25;border-color: #000;"  >Restablecer</button>
                                       
                                  
                                   </div>

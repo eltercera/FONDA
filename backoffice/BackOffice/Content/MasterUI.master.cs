@@ -12,7 +12,6 @@ using BackOffice.Content;
 
 public partial class MasterUI : System.Web.UI.MasterPage
 {
-    private string nombre;
     private Dictionary<string, string> opcionMenu = new Dictionary<string, string>();
     private Dictionary<string, string[,]> subpositionOpcinonMenu = new Dictionary<string, string[,]>(); //Se guardaran las sub opciones del menú
 
@@ -37,7 +36,6 @@ public partial class MasterUI : System.Web.UI.MasterPage
             ///verifica si un usuario esta en el sistema
             if (Session[RecursoMaster.sessionUserID] != null)
             {
-                //   Session[RecursoMaster.sessionRol] = "Sistema";// rol del usuario log solo para control de prueba
                 DropDownMenu();
             }
             else
@@ -45,7 +43,7 @@ public partial class MasterUI : System.Web.UI.MasterPage
         }
         catch (NullReferenceException ex)
         {
-            //Response.Redirect(RecursoMaster.addressLogin);
+            
         }
         catch (Exception ex)
         {
@@ -53,7 +51,7 @@ public partial class MasterUI : System.Web.UI.MasterPage
         }
     }
     /// <summary>
-    /// Menu lateral ,permite hacer la carga del mismo
+    /// Metodo que permite permite hacer la carga del Menu lateral 
     /// </summary>
     protected void DropDownMenu()
     {
@@ -100,7 +98,11 @@ public partial class MasterUI : System.Web.UI.MasterPage
         }
         return false;
     }
-
+    /// <summary>
+    /// Metodo que permite el cierre de secion
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     protected void closesecion(object sender, EventArgs e)
     {
 
