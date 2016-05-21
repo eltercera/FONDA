@@ -29,7 +29,7 @@ namespace DataAccessTests
 
             if ((edit & _currency == null) | _currency == null)
                 _currency = new Currency();
-            _currency.Symbol = "C:";
+            _currency.Symbol = "$";
             _currency.Name = "Dolar";
             //_currency.Name = "Euro";
             //_currency.Name = "BsF";
