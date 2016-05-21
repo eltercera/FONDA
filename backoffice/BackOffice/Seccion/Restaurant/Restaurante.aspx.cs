@@ -225,7 +225,6 @@ namespace BackOffice.Seccion.Restaurant
         {
             bool valid = true;
             int cont = 0;
-            string patronLetras = "^[A-Za-z]*$";
             string patronNumero = "^[0-9]*$";
             string patronPunto = @"[(.)]";
             string patronFloat = @"^-?[0-9]\d*(\.\d+)?$"; // "^\-{0,1}\d+(.\d+){0,1}$"
@@ -238,12 +237,7 @@ namespace BackOffice.Seccion.Restaurant
                 valid = false;
 
             }
-            //valida campos de letras
-            if ((!Regex.IsMatch(name, patronLetras)) | (!Regex.IsMatch(address, patronLetras)))
-            {
-                valid = false;
-            }
-            //valida campos de letras
+            //valida campos de numeros
             if ((!Regex.IsMatch(rif, patronNumero)))
             {
                 valid = false;
@@ -293,8 +287,8 @@ namespace BackOffice.Seccion.Restaurant
             string Currency = CurrencyA.Text;
             string Address = AddressA.Text;
             string Zone = ZoneA.Text;
-            double Long = Convert.ToDouble(LongA.Text);
-            double Lat = Convert.ToDouble(LatA.Text);
+            string Long = LongA.Text;
+            string Lat = LatA.Text;
             string Day1 = Day1A.Text;
             string Day2 = Day2A.Text;
             string Day3 = Day3A.Text;
@@ -304,12 +298,11 @@ namespace BackOffice.Seccion.Restaurant
             string Day7 = Day7A.Text;
             TimeSpan OT = TimeSpan.Parse(OpeningTimeA.Text);
             TimeSpan CT = TimeSpan.Parse(ClosingTimeA.Text);
-            string image = ImageA.PostedFile.FileName;
-            string rute = Server.MapPath("~/images/");
-            string logo = rute + image;
+            string logo = ImageA.PostedFile.FileName;
+
 
             if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
-                Address, Zone, Long.ToString(), Lat.ToString()))
+                Address, Zone, Long, Lat))
             {
                 AlertSuccess_AddRestaurant.Visible = true;
                 FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -331,8 +324,8 @@ namespace BackOffice.Seccion.Restaurant
                 zone.Name = Zone;
                 _restaurant.Zone = zone;
                 Coordinate coord = new Coordinate();
-                coord.Longitude = Long;
-                coord.Latitude = Lat;
+                coord.Longitude = Convert.ToDouble(Long);
+                coord.Latitude = Convert.ToDouble(Lat);
                 _restaurant.Coordinate = coord;
                 Schedule schedule = new Schedule();
                 List<Day> days = new List<Day>();
@@ -357,7 +350,6 @@ namespace BackOffice.Seccion.Restaurant
                 schedule.OpeningTime = OT;
                 schedule.ClosingTime = CT;
                 _restaurant.Schedule = schedule;
-                _restaurant.Logo = logo;
                 _restaurant.Status = factoryDAO.GetActiveSimpleStatus();
                 _restaurantDAO.Save(_restaurant);
                 LoadDataTable();
@@ -396,8 +388,8 @@ namespace BackOffice.Seccion.Restaurant
             string Currency = CurrencyM.Text;
             string Address = AddressM.Text;
             string Zone = ZoneM.Text;
-            double Long = Convert.ToDouble(LongM.Text);
-            double Lat = Convert.ToDouble(LatM.Text);
+            string Long = LongM.Text;
+            string Lat = LatM.Text;
             string Day1 = Day1M.Text;
             string Day2 = Day2M.Text;
             string Day3 = Day3M.Text;
@@ -407,12 +399,10 @@ namespace BackOffice.Seccion.Restaurant
             string Day7 = Day7M.Text;
             TimeSpan OT = TimeSpan.Parse(OpeningTimeM.Text);
             TimeSpan CT = TimeSpan.Parse(ClosingTimeM.Text);
-            string image = ImageM.PostedFile.FileName;
-            string rute = Server.MapPath("~/images/");
-            string logo = rute + image;
+            string logo = ImageM.PostedFile.FileName;
 
             if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
-                Address, Zone, Long.ToString(), Lat.ToString()))
+                Address, Zone, Long, Lat))
             {
                 AlertSuccess_ModifyRestaurant.Visible = true;
                 FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -436,8 +426,8 @@ namespace BackOffice.Seccion.Restaurant
                 zone.Name = Zone;
                 _restaurantM.Zone = zone;
                 Coordinate coord = new Coordinate();
-                coord.Longitude = Long;
-                coord.Latitude = Lat;
+                coord.Longitude = Convert.ToDouble(Long);
+                coord.Latitude = Convert.ToDouble(Lat);
                 _restaurantM.Coordinate = coord;
                 Schedule schedule = new Schedule();
                 List<Day> days = new List<Day>();
@@ -462,7 +452,6 @@ namespace BackOffice.Seccion.Restaurant
                 schedule.OpeningTime = OT;
                 schedule.ClosingTime = CT;
                 _restaurantM.Schedule = schedule;
-                _restaurantM.Logo = logo;
                 _restaurantM.Status = factoryDAO.GetActiveSimpleStatus();
                 _restaurantDAO.Save(_restaurantM);
                 LoadDataTable();

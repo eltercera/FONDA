@@ -579,8 +579,9 @@ Restaurantes
                         document.getElementById("<%=OpeningTimeC.ClientID%>").value = openingTime;
                         document.getElementById("<%=ClosingTimeC.ClientID%>").value = closingTime;
                         $("img").attr({
-                            src: local.d.Logo,
-                            alt: " "
+                            src: "/Seccion/Restaurant/images/" + local.d.Logo,
+                            alt: " ",
+                            runat: "server"
                         });
                         daysOfWork(local);
                     }
