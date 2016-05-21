@@ -49,13 +49,13 @@ public class OrderViewItemList extends BaseArrayAdapter<DishOrder> {
         String count = String.valueOf(item.getCount());
         txtCount.setText("Cant: " + count);
 
-        if((txtDescripcion).equals("Pasta Con Salmon")) {
+        if((item.getDish().getDescription()).equals("Pasta Con Salmon")) {
             icon.setImageResource(R.drawable.salmonpasta);
         }
-        if((txtDescripcion).equals("Coca-Cola")) {
+        if((item.getDish().getDescription()).equals("Coca-Cola")) {
             icon.setImageResource(R.drawable.refresco);
         }
-        if((txtDescripcion).equals("Terciopelo Rojo")) {
+        if((item.getDish().getDescription()).equals("Terciopelo Rojo")) {
             icon.setImageResource(R.drawable.redv2);
         }
 

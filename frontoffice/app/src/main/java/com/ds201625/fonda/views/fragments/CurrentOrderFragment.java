@@ -4,19 +4,14 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
-import com.ds201625.fonda.domains.Currency;
-import com.ds201625.fonda.domains.Dish;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.views.adapters.OrderViewItemList;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,7 +62,8 @@ public class CurrentOrderFragment extends BaseFragment {
 
         listDishO = getListSW();
         orderList = new OrderViewItemList(getContext());
-        orderList.addAll(listDishO);
+        if(listDishO != null)
+            orderList.addAll(listDishO);
 
         list=(ListView)layout.findViewById(R.id.lvOrderList);
         list.setAdapter(orderList);
@@ -106,5 +102,4 @@ public class CurrentOrderFragment extends BaseFragment {
         }
         return null;
     }
-
 }
