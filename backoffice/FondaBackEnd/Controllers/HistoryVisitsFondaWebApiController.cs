@@ -24,7 +24,13 @@ namespace com.ds201625.fonda.BackEnd.Controllers
              
               DateTime date1 = new DateTime(2016, 06, 10);
 
+              /*   Person person = new Person();
+                 person.Name = "Adriana";
+                 person.LastName = "Da Rocha";
+               */
+
               Profile profile = new Profile();
+              //   profile.Person = person;
               profile.ProfileName = "Adriana Da Rocha";
            
               RestaurantCategory category1 = new RestaurantCategory();
@@ -44,26 +50,31 @@ namespace com.ds201625.fonda.BackEnd.Controllers
               restaurant1.Name = "The dining room";
               restaurant1.Address = "La Castellana";
               restaurant1.RestaurantCategory = category2;
+              restaurant1.Logo = "ic_restaurant001";
 
               Restaurant restaurant2 = new Restaurant();
               restaurant2.Name = "Mogi Mirin";
               restaurant2.Address = "Los Dos Caminos";
               restaurant2.RestaurantCategory = category1;
+              restaurant2.Logo = "ic_restaurant001";
 
               Restaurant restaurant3 = new Restaurant();
               restaurant3.Name = "Gordo & Magro";
               restaurant3.Address = "La California";
               restaurant3.RestaurantCategory = category3;
+              restaurant3.Logo = "ic_restaurant001";
 
               Restaurant restaurant4 = new Restaurant();
               restaurant4.Name = "La Casona";
               restaurant4.Address = "Parque Central";
               restaurant4.RestaurantCategory = category3;
+              restaurant4.Logo = "ic_restaurant001";
 
               Restaurant restaurant5 = new Restaurant();
               restaurant5.Name = "Tony's";
               restaurant5.Address = "El Rosal";
               restaurant5.RestaurantCategory = category4;
+              restaurant5.Logo = "ic_restaurant001";
  
            
               Invoice invoice1 = new Invoice();
