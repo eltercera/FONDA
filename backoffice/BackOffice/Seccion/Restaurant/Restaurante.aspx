@@ -582,9 +582,6 @@ Restaurantes
                             src: local.d.Logo,
                             alt: " "
                         });
-                        //$("img").attr("src", function () {
-                        //    return local.d.Logo;
-                        //});
                         daysOfWork(local);
                     }
 

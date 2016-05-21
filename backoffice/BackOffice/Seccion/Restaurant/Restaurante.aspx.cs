@@ -307,74 +307,81 @@ namespace BackOffice.Seccion.Restaurant
             string image = ImageA.PostedFile.FileName;
             string rute = Server.MapPath("~/images/");
             string logo = rute + image;
-            AlertSuccess_AddRestaurant.Visible = true;
-
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
-            com.ds201625.fonda.Domain.Restaurant _restaurant = new com.ds201625.fonda.Domain.Restaurant();
-
-            _restaurant.Name = Name;
-            RestaurantCategory restcat = new RestaurantCategory();
-            restcat.Name = Category;
-            _restaurant.RestaurantCategory = restcat;
-            _restaurant.Nationality = Nationality;
-            _restaurant.Ssn = Rif;
-            Currency curr = new Currency();
-            curr.Name = Currency;
-            curr.Symbol = "C:/";
-            _restaurant.Currency = curr;
-            _restaurant.Address = Address;
-            Zone zone = new Zone();
-            zone.Name = Zone;
-            _restaurant.Zone = zone;
-            Coordinate coord = new Coordinate();
-            coord.Longitude = Long;
-            coord.Latitude = Lat;
-            _restaurant.Coordinate = coord;
-            Schedule schedule = new Schedule();
-            List<Day> days = new List<Day>();
-            _restaurant.Logo = logo;
-
-            if (Day1A.Checked)
-                days.Add(new Day() {Name = Day1});
-            if (Day2A.Checked)
-                days.Add(new Day() {Name = Day2});
-            if (Day3A.Checked)
-                days.Add(new Day() {Name = Day3});
-            if (Day4A.Checked)
-                days.Add(new Day() {Name = Day4});
-            if (Day5A.Checked)
-                days.Add(new Day() {Name = Day5});
-            if (Day6A.Checked)
-                days.Add(new Day() {Name = Day6});
-            if (Day7A.Checked)
-                days.Add(new Day() { Name = Day7});
-
-            schedule.Day = days;
-            schedule.OpeningTime = OT;
-            schedule.ClosingTime = CT;
-            _restaurant.Schedule = schedule;
-            _restaurant.Logo = logo;
-            _restaurant.Status = factoryDAO.GetActiveSimpleStatus();
-            _restaurantDAO.Save(_restaurant);
-            LoadDataTable();
 
             if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
                 Address, Zone, Long.ToString(), Lat.ToString()))
             {
+                AlertSuccess_AddRestaurant.Visible = true;
+                FactoryDAO factoryDAO = FactoryDAO.Intance;
+                IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+                com.ds201625.fonda.Domain.Restaurant _restaurant = new com.ds201625.fonda.Domain.Restaurant();
 
+                _restaurant.Name = Name;
+                RestaurantCategory restcat = new RestaurantCategory();
+                restcat.Name = Category;
+                _restaurant.RestaurantCategory = restcat;
+                _restaurant.Nationality = Nationality;
+                _restaurant.Ssn = Rif;
+                Currency curr = new Currency();
+                curr.Name = Currency;
+                curr.Symbol = "C:/";
+                _restaurant.Currency = curr;
+                _restaurant.Address = Address;
+                Zone zone = new Zone();
+                zone.Name = Zone;
+                _restaurant.Zone = zone;
+                Coordinate coord = new Coordinate();
+                coord.Longitude = Long;
+                coord.Latitude = Lat;
+                _restaurant.Coordinate = coord;
+                Schedule schedule = new Schedule();
+                List<Day> days = new List<Day>();
+                _restaurant.Logo = logo;
+
+                if (Day1A.Checked)
+                    days.Add(new Day() { Name = Day1 });
+                if (Day2A.Checked)
+                    days.Add(new Day() { Name = Day2 });
+                if (Day3A.Checked)
+                    days.Add(new Day() { Name = Day3 });
+                if (Day4A.Checked)
+                    days.Add(new Day() { Name = Day4 });
+                if (Day5A.Checked)
+                    days.Add(new Day() { Name = Day5 });
+                if (Day6A.Checked)
+                    days.Add(new Day() { Name = Day6 });
+                if (Day7A.Checked)
+                    days.Add(new Day() { Name = Day7 });
+
+                schedule.Day = days;
+                schedule.OpeningTime = OT;
+                schedule.ClosingTime = CT;
+                _restaurant.Schedule = schedule;
+                _restaurant.Logo = logo;
+                _restaurant.Status = factoryDAO.GetActiveSimpleStatus();
+                _restaurantDAO.Save(_restaurant);
+                LoadDataTable();
             }
             else
             {
                 AlertError_AddRestaurant.Visible = true;
             }
             NameA.Text = string.Empty;
+            NacionalityA.SelectedValue = string.Empty;
             RifA.Text = string.Empty;
             AddressA.Text = string.Empty;
             LongA.Text = string.Empty;
             LatA.Text = string.Empty;
-
-
+            OpeningTimeA.Text = string.Empty;
+            ClosingTimeA.Text = string.Empty;
+            Day1A.Checked = false;
+            Day2A.Checked = false;
+            Day3A.Checked = false;
+            Day4A.Checked = false;
+            Day5A.Checked = false;
+            Day6A.Checked = false;
+            Day7A.Checked = false;
+           
         }
 
         /// <summary>
@@ -382,15 +389,90 @@ namespace BackOffice.Seccion.Restaurant
         /// </summary>
         protected void ButtonModify_Click(object sender, EventArgs e)
         {
-            AlertSuccess_ModifyRestaurant.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
-            string RestaurantID = RestaurantModifyId.Value;
-            int idRestaurant = int.Parse(RestaurantID);
-            com.ds201625.fonda.Domain.Restaurant _restaurantM = _restaurantDAO.FindById(idRestaurant);
+            string Name = NameM.Text;
+            string Category = CategoryM.Text;
+            char Nationality = Convert.ToChar(NationalityM.Text);
+            string Rif = RifM.Text;
+            string Currency = CurrencyM.Text;
+            string Address = AddressM.Text;
+            string Zone = ZoneM.Text;
+            double Long = Convert.ToDouble(LongM.Text);
+            double Lat = Convert.ToDouble(LatM.Text);
+            string Day1 = Day1M.Text;
+            string Day2 = Day2M.Text;
+            string Day3 = Day3M.Text;
+            string Day4 = Day4M.Text;
+            string Day5 = Day5M.Text;
+            string Day6 = Day6M.Text;
+            string Day7 = Day7M.Text;
+            TimeSpan OT = TimeSpan.Parse(OpeningTimeM.Text);
+            TimeSpan CT = TimeSpan.Parse(ClosingTimeM.Text);
+            string image = ImageM.PostedFile.FileName;
+            string rute = Server.MapPath("~/images/");
+            string logo = rute + image;
 
-            _restaurantDAO.Save(_restaurantM);
-            LoadDataTable();
+            if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
+                Address, Zone, Long.ToString(), Lat.ToString()))
+            {
+                AlertSuccess_ModifyRestaurant.Visible = true;
+                FactoryDAO factoryDAO = FactoryDAO.Intance;
+                IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+                string RestaurantID = RestaurantModifyId.Value;
+                int idRestaurant = int.Parse(RestaurantID);
+                com.ds201625.fonda.Domain.Restaurant _restaurantM = _restaurantDAO.FindById(idRestaurant);
+                
+                _restaurantM.Name = Name;
+                RestaurantCategory restcat = new RestaurantCategory();
+                restcat.Name = Category;
+                _restaurantM.RestaurantCategory = restcat;
+                _restaurantM.Nationality = Nationality;
+                _restaurantM.Ssn = Rif;
+                Currency curr = new Currency();
+                curr.Name = Currency;
+                curr.Symbol = "C:/";
+                _restaurantM.Currency = curr;
+                _restaurantM.Address = Address;
+                Zone zone = new Zone();
+                zone.Name = Zone;
+                _restaurantM.Zone = zone;
+                Coordinate coord = new Coordinate();
+                coord.Longitude = Long;
+                coord.Latitude = Lat;
+                _restaurantM.Coordinate = coord;
+                Schedule schedule = new Schedule();
+                List<Day> days = new List<Day>();
+                _restaurantM.Logo = logo;
+
+                if (Day1M.Checked)
+                    days.Add(new Day() { Name = Day1 });
+                if (Day2M.Checked)
+                    days.Add(new Day() { Name = Day2 });
+                if (Day3M.Checked)
+                    days.Add(new Day() { Name = Day3 });
+                if (Day4M.Checked)
+                    days.Add(new Day() { Name = Day4 });
+                if (Day5M.Checked)
+                    days.Add(new Day() { Name = Day5 });
+                if (Day6M.Checked)
+                    days.Add(new Day() { Name = Day6 });
+                if (Day7M.Checked)
+                    days.Add(new Day() { Name = Day7 });
+
+                schedule.Day = days;
+                schedule.OpeningTime = OT;
+                schedule.ClosingTime = CT;
+                _restaurantM.Schedule = schedule;
+                _restaurantM.Logo = logo;
+                _restaurantM.Status = factoryDAO.GetActiveSimpleStatus();
+                _restaurantDAO.Save(_restaurantM);
+                LoadDataTable();
+
+
+            }
+            else
+            {
+                AlertError_ModifyRestaurant.Visible = true;
+            }
 
         }
 
@@ -405,7 +487,7 @@ namespace BackOffice.Seccion.Restaurant
             int restaurantId = int.Parse(Id);
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
-            com.ds201625.fonda.Domain.Restaurant restaurant = _restaurantDAO.FindById(restaurantId);
+            com.ds201625.fonda.Domain.Restaurant restaurant = _restaurantDAO.FindById(restaurantId);       
 
             return restaurant;
         }
