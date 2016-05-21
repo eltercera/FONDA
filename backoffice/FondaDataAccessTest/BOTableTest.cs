@@ -40,7 +40,6 @@ namespace DataAccessTests
             _tableId = _table.Id;
 
             generateTable(true);
-
             _tableDAO.Save(_table);
 
             _tableDAO.ResetSession();

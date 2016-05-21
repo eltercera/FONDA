@@ -10,7 +10,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             CompositeId()
             .KeyReference(x => x.Restaurant,"tab_res")
-            .KeyProperty(x => x.Id,"tab_id");
+            .KeyProperty(x => x.Id, "tab_id");
 
             Map(x => x.Capacity)
               .Column("tab_capacity")
