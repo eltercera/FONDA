@@ -2,7 +2,10 @@ package com.ds201625.fonda.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Invoice;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -113,10 +117,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView locationRestaurant = (TextView) convertView.findViewById(R.id.location_restaurant);
         TextView descriptionRestaurant = (TextView) convertView.findViewById(R.id.description_restaurant);
         if((restaurantList).equals("The dining room")) {
-            icon.setImageResource(R.mipmap.ic_restaurant001);
+            Context context = icon.getContext();
+            int id = context.getResources().getIdentifier("ic_restaurant001", "mipmap", context.getPackageName());
+            icon.setImageResource(id);
         }
         if((restaurantList).equals("Mogi Mirin")) {
-            icon.setImageResource(R.mipmap.ic_restaurant002);
+            Context context = icon.getContext();
+            int id = context.getResources().getIdentifier("ic_restaurant002", "mipmap", context.getPackageName());
+            icon.setImageResource(id);
         }
         if((restaurantList).equals("Gordo & Magro")) {
             icon.setImageResource(R.mipmap.ic_restaurant003);
