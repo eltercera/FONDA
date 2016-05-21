@@ -17,6 +17,11 @@ namespace com.ds201625.fonda.Domain
 		private int _capacity;
 
         /// <summary>
+		/// El numero unico de la mesa en el restaurate
+		/// </summary>
+        private int _number;
+
+        /// <summary>
         /// Estado simple de la mesa (Activo, No Activo)
         /// </summary>
         private TableStatus _status;
@@ -26,21 +31,11 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private Restaurant _restaurant;
 
-        public override int GetHashCode()
+
+        public virtual int Number
         {
-            int hashCode = 0;
-            hashCode = hashCode ^ Id.GetHashCode() ^ Restaurant.GetHashCode();
-            return hashCode;
-        }
-
-        public override bool Equals(object obj)
-        {
-            var other = obj as Table;
-
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-
-            return this.Id == other.Id && this.Restaurant == other.Restaurant;
+            get { return _number; }
+            set { _number = value; }
         }
 
         public virtual Restaurant Restaurant
