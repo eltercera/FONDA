@@ -11,5 +11,17 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return FindAll();
         }
+
+        public IList<Table> GetTables(int restaurant)
+        {
+            IList<Table> tables = GetAll();
+            IList<Table> restaurantTables = new List<Table>();
+            foreach(Table t in tables)
+            {
+                if (t.Restaurant.Id == restaurant)
+                    restaurantTables.Add(t);
+            }
+            return restaurantTables;
+        }
     }
 }

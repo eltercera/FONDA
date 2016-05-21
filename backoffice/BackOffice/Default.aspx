@@ -6,7 +6,7 @@
     ¡Bienvenido!
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    NOMBRE DE RESTAURANT
+    <asp:Label ID="RestaurantName" runat="server"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
 </asp:Content>
@@ -123,33 +123,8 @@
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table id="dash-table" class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Cantidad de puestos</th>
-                                                <th>Cantidad de comensales</th>
-                                                <th>Reservación realizada por</th>
-                                                <th>Estado</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>#1</td>
-                                                <td>6</td>
-                                                <td>4</td>
-                                                <td>@pperez</td>
-                                                <td class="text-center"><span class="label label-danger"><i class="fa fa-times"><p class="stat">I</p></i></span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>#2</td>
-                                                <td>10</td>
-                                                <td>0</td>
-                                                <td></td>
-                                                <td class="text-center"><span class="label label-success"><i class="fa fa-check"><p class="stat">A</p></i></span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>       
+                                     <asp:HiddenField ID="TableModifyId" runat="server" Value="" />
+                                     <asp:Table ID="table" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                                 </div>
                             </div>
                         </div>
