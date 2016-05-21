@@ -42,4 +42,11 @@ public interface ServiceFactory {
     AllRestaurantService getAllRestaurantService();
 
 
+    /**
+     * Obtiene los servicios de todos los restaurantes Favoritos
+     * @param
+     * @return
+     */
+    AllFavoriteRestaurantService getAllFavoriteRestaurantsService();
+
 }

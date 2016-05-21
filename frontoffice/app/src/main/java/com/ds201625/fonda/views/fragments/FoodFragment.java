@@ -12,9 +12,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.views.activities.FavoritesActivity;
+import com.ds201625.fonda.views.activities.AllRestaurantActivity;
 import com.ds201625.fonda.views.activities.FilterList;
-import com.ds201625.fonda.views.activities.RestaurantListActivity;
 
 /**
  * Created by Valentina on 17/04/2016.
@@ -54,7 +53,7 @@ public class FoodFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Toast.makeText(getActivity(), "You Clicked at " + location[+position], Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent (getActivity(),FavoritesActivity.class);
+                Intent intent = new Intent (getActivity(),AllRestaurantActivity.class);
                 startActivity(intent);
             }
         });
