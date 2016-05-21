@@ -108,6 +108,16 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $('#contenido_MenuSugestion').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null
+        ]
+    });
+});
+
+$(document).ready(function () {
     $('#contenido_TableDish').DataTable({
         "language": spanish,
         "aoColumns": [
