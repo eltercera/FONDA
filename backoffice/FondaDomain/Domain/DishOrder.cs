@@ -37,6 +37,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna un plato
         /// </summary>
+        [DataMember]
         public virtual Dish Dish
         {
             get { return _dish; }
