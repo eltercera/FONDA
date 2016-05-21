@@ -1,12 +1,7 @@
 package com.ds201625.fonda.views.activities;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 
@@ -44,12 +39,12 @@ public class RestaurantListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
-
+/*
         RestaurantList adapter = new
                 RestaurantList(RestaurantListActivity.this, names,location ,shortDescription,imageId);
         list=(ListView)findViewById(R.id.listViewRest);
         list.setAdapter(adapter);
-
+*/
         /*list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

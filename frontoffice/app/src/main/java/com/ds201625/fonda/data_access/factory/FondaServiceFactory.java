@@ -1,6 +1,7 @@
 package com.ds201625.fonda.data_access.factory;
 
 import com.ds201625.fonda.data_access.retrofit_client.RetroditServiceFactory;
+import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
@@ -78,4 +79,17 @@ public class FondaServiceFactory {
     public TokenService getTokenService(Commensal commensal){
         return serviceFactory.getTokenService(commensal);
     }
+
+
+    /**
+     * Obtiene los servicios de Comensal
+     * @param
+     * @return
+     */
+    public AllRestaurantService getAllFavoriteRestaurantsService(){
+        return serviceFactory.getAllRestaurantService();
+    }
+
+
+
 }
