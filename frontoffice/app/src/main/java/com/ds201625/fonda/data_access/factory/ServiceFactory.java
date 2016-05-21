@@ -32,4 +32,21 @@ public interface ServiceFactory {
      * @return
      */
     TokenService getTokenService(Commensal commensal);
+
+
+    /**
+     * Obtiene los servicios de todos los restaurantes
+     * @param
+     * @return
+     */
+    AllRestaurantService getAllRestaurantService();
+
+
+    /**
+     * Obtiene los servicios de todos los restaurantes Favoritos
+     * @param
+     * @return
+     */
+    AllFavoriteRestaurantService getAllFavoriteRestaurantsService();
+
 }
