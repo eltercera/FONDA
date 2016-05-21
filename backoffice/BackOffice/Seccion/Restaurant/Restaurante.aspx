@@ -578,7 +578,7 @@ Restaurantes
                         document.getElementById("<%=ZoneC.ClientID%>").value = local.d.Zone.Name;
                         document.getElementById("<%=OpeningTimeC.ClientID%>").value = openingTime;
                         document.getElementById("<%=ClosingTimeC.ClientID%>").value = closingTime;
-                        daysOfWork(local);
+                        selectDay(local);
                     }
 
                     function setModalModify(local) {
@@ -599,43 +599,55 @@ Restaurantes
                         selectDay(local);
                     }
 
-        function selectDay(local) {
+        function selectDay(local)
+        {
             var days = local.d.Schedule.Day;
             var day;
             clearDays();
-            for (var i = 0; i < days.length; i++) {
-                debugger;
+            for (var i = 0; i < days.length; i++)
+            {
                 day = days[i];
                 daysSelected(day.Name);
             }
         }
-        function daysSelected(day) {
+
+        function daysSelected(day)
+        {
             switch(day)
             {
                 case "Lunes":
                     $('#<%=Day1M.ClientID%>').attr('checked', true);
+                    $('#<%=Day1C.ClientID%>').attr('checked', true);
                     break;
                 case "Martes":
                     $("#<%=Day2M.ClientID%>").attr('checked', true);
+                    $("#<%=Day2C.ClientID%>").attr('checked', true);
                     break;
                 case "Miercoles":
                     $("#<%=Day3M.ClientID%>").attr('checked', true);
+                    $("#<%=Day3C.ClientID%>").attr('checked', true);
                     break;
                 case "Jueves":
                     $("#<%=Day4M.ClientID%>").attr('checked', true);
+                    $("#<%=Day4C.ClientID%>").attr('checked', true);
                     break;
                 case "Viernes":
                     $("#<%=Day5M.ClientID%>").attr('checked', true);
+                    $("#<%=Day5C.ClientID%>").attr('checked', true);
                     break;
                 case "Sabado":
                     $("#<%=Day6M.ClientID%>").attr('checked', true);
+                    $("#<%=Day6C.ClientID%>").attr('checked', true);
                     break;
                 case "Domingo":
                     $("#<%=Day7M.ClientID%>").attr('checked', true);
+                    $("#<%=Day7C.ClientID%>").attr('checked', true);
                     break;
             }
         }
-        function clearDays(){
+
+        function clearDays()
+        {
                     $("#<%=Day1M.ClientID%>").attr('checked', false);
                     $("#<%=Day2M.ClientID%>").attr('checked', false);
                     $("#<%=Day3M.ClientID%>").attr('checked', false);
@@ -643,25 +655,22 @@ Restaurantes
                     $("#<%=Day5M.ClientID%>").attr('checked', false);
                     $("#<%=Day6M.ClientID%>").attr('checked', false);
                     $("#<%=Day7M.ClientID%>").attr('checked', false);
+                    $("#<%=Day1C.ClientID%>").attr('checked', false).attr('disabled','disabled');
+                    $("#<%=Day2C.ClientID%>").attr('checked', false).attr('disabled','disabled');
+                    $("#<%=Day3C.ClientID%>").attr('checked', false).attr('disabled','disabled');
+                    $("#<%=Day4C.ClientID%>").attr('checked', false).attr('disabled','disabled');
+                    $("#<%=Day5C.ClientID%>").attr('checked', false).attr('disabled','disabled');
+                    $("#<%=Day6C.ClientID%>").attr('checked', false).attr('disabled','disabled');
+                    $("#<%=Day7C.ClientID%>").attr('checked', false).attr('disabled','disabled');
         }
 
 
-            /* Concatena los dias laborales a mostrar del Restaurante */
-            function daysOfWork(local) {
-              var days = local.d.Schedule.Day;
-                var result = "";
-                for(var i = 0; i < days.length; i++)
-                {
-                    debugger;
-                    result += days[i].Name + ',';
-                }
-           
-                 document.getElementById("<%=DaysC.ClientID%>").value = result;
-            }
 
-                    function setValue() {
+                    function setValue()
+                    {
                         $('.table > tbody > tr > td:nth-child(5) > a')
-                        .click(function () {
+                        .click(function ()
+                        {
                             var rowId = $(this).parent().parent().attr("data-id");
                             document.getElementById("<%=RestaurantModifyId.ClientID%>").value = rowId;
 
