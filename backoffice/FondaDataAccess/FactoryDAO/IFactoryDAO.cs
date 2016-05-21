@@ -37,6 +37,9 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         ITableDAO GetTableDAO();
         IZoneDAO GetZoneDAO();
         IReservationDAO GetReservationDAO();
+        OpenAccountStatus GetOpenAccountStatus();
+        ClosedAccountStatus GetCloseAccountStatus();
+        GeneratedInvoiceStatus GetGeneratedInvoiceStatus();
 
     }
 }
