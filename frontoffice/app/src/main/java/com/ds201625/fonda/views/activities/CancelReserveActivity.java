@@ -4,12 +4,15 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Profile;
 
 /**
  * Created by Jessica on 15/5/2016.
@@ -23,8 +26,16 @@ public class CancelReserveActivity extends BaseNavigationActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_cancel_reserve);
         super.onCreate(savedInstanceState);
+    }
 
-
+    public boolean onActionItemClicked(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_cancel_reserve:
+                ConfirmDialog();
+            break;
+           // return false;
+        }
+        return true;
     }
 
     public void accept() {
@@ -43,7 +54,8 @@ public class CancelReserveActivity extends BaseNavigationActivity {
         cancelReserve = menu.findItem(R.id.action_cancel_reserve);
         tb = (Toolbar)findViewById(R.id.toolbar);
         tb.setVisibility(View.VISIBLE);
-        ConfirmDialog();
+
+        onActionItemClicked(cancelReserve);
         return true;
     }
 
