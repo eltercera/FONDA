@@ -6,6 +6,7 @@ import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.data_access.services.InvoiceService;
 import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.data_access.services.ZoneService;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -38,4 +39,6 @@ public class RetroditServiceFactory implements ServiceFactory {
     public InvoiceService getInvoiceService() {
         return new RetrofitInvoiceService();
     }
+
+    public ZoneService getZoneService() { return new RetrofitZoneService();}
 }

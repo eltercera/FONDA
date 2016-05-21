@@ -18,4 +18,6 @@ public interface ServiceFactory {
     HistoryVisitsRestaurantService getHistoryVisitsService();
 
     InvoiceService getInvoiceService();
+
+    ZoneService getZoneService();
 }
