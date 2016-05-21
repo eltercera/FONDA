@@ -41,6 +41,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             IProfileDAO profileDAO = FactoryDAO.GetProfileDAO();
             IOrderAccountDao orderAccountDao = GetOrderAccountDao();
             IInvoiceDao invoiceDAO = FactoryDAO.GetInvoiceDao();
+            IRestaurantDAO restaurantDAO = FactoryDAO.GetRestaurantDAO();
             ICreditCardPaymentDAO  paymentDAO= FactoryDAO.GetCreditCardPaymentDAO();
             Profile profile = profileDAO.FindById(id);
             if (profile == null)
@@ -77,7 +78,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             invoice.Account = account;
             invoice.Payment = payment;
             invoice.Status = FactoryDAO.GetGeneratedInvoiceStatus();
-            //invoice.Restaurant = account.Table.restaurant;
+            invoice.Restaurant = restaurantDAO.findByTable(account.Table);
             invoice.Tip = tip;
             invoice.Tax = 10;
             invoice.Total = total;

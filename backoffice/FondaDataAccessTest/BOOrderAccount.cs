@@ -71,6 +71,7 @@ namespace DataAccessTest
 
             _dishOrderDAO = _facDAO.GetDishOrderDAO();
             _commensalDAO = _facDAO.GetCommensalDAO();
+            ITableDAO tableDAO = _facDAO.GetTableDAO();
             Commensal owner = (Commensal) _commensalDAO.FindById(1);
 
             DishOrder dishOrder =_dishOrderDAO.FindById(1);
@@ -82,7 +83,7 @@ namespace DataAccessTest
             account.addDish(dishOrder2);
 
             account.Commensal = owner ;
-
+            account.Table = tableDAO.FindById(1);
             account.Status = OpenAccountStatus.Instance;
 
         }

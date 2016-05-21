@@ -14,9 +14,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable()
                 .GeneratedBy.Increment();
 
-            /*References(x => x.Table)
+            References(x => x.Table)
                 .Column("fk_table_id")
-                .Not.Nullable();*/
+                .Not.Nullable();
 
             HasMany(x => x.ListDish)
                 .KeyColumn("fk_order_account")
