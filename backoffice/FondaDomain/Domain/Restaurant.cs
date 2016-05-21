@@ -44,10 +44,6 @@ namespace com.ds201625.fonda.Domain
 		private IList <MenuCategory> _menuCategories;
 
 
-        /// <summary>
-        /// Lista de las mesas de un restaurante
-        /// </summary>
-        private IList <Table> _tables;
 
         /// <summary>
         /// Lista de commensal que tienen restaurante como favorito
@@ -155,18 +151,6 @@ namespace com.ds201625.fonda.Domain
             set { _menuCategories = value; }
         }
         
-        public virtual IList <Table> Tables
-        {
-            /// <summary>
-            /// Obtiene una lista de mesas de un Restaurante
-            /// </summary>
-            get { return _tables; }
-            /// <summary>
-            /// Asigna una lista de mesas de un Restaurante
-            /// </summary>
-            /// <value>Recibe la lista de mesas de un Restaurante</value>
-            set { _tables = value; }
-        }
 
         public virtual IList<Commensal> FavoritesCommensals
         {

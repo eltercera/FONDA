@@ -21,6 +21,34 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private TableStatus _status;
 
+        /// <summary>
+        /// Estado simple de la mesa (Activo, No Activo)
+        /// </summary>
+        private Restaurant _restaurant;
+
+        public override int GetHashCode()
+        {
+            int hashCode = 0;
+            hashCode = hashCode ^ Id.GetHashCode() ^ Restaurant.GetHashCode();
+            return hashCode;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Table;
+
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+
+            return this.Id == other.Id && this.Restaurant == other.Restaurant;
+        }
+
+        public virtual Restaurant Restaurant
+        {
+            get { return _restaurant; }
+            set { _restaurant = value; }
+        }
+
         public virtual int Capacity
         {
             get { return _capacity; }
@@ -33,5 +61,7 @@ namespace com.ds201625.fonda.Domain
             set { _status = value; }
         }
 
+        
     }
+
 }

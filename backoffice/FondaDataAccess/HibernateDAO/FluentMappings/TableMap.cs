@@ -8,10 +8,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
         {
             Table("CTABLE");
 
-            Id(x => x.Id)
-              .Column("tab_id")
-              .Not.Nullable()
-              .GeneratedBy.Increment();
+            CompositeId()
+            .KeyReference(x => x.Restaurant,"tab_res")
+            .KeyProperty(x => x.Id,"tab_id");
 
             Map(x => x.Capacity)
               .Column("tab_capacity")
