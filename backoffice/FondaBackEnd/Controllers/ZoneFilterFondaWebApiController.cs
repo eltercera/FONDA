@@ -26,7 +26,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             /// </summary>
             /// <returns></returns>
             IZoneDAO zoneDAO = FactoryDAO.GetZoneDAO();
-            
+
 
             IList<Zone> listZone = zoneDAO.allZone();
 
@@ -34,6 +34,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             return Ok(listZone);
 
 
-         }
+        }
     }
 }
