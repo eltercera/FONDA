@@ -1,6 +1,6 @@
 package com.ds201625.fonda.data_access.services;
 
-import com.ds201625.fonda.domains.DishOrder;
+import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.domains.Profile;
 
 import java.util.List;
@@ -10,10 +10,10 @@ import java.util.List;
  */
 
 /**
- * Interface de CurrentOrderService
+ * Interface de InvoiceService
  */
-public interface CurrentOrderService {
+public interface InvoiceService {
 
-    List<DishOrder> getListDishOrder();
+    Invoice getCurrentInvoice();
 
 }

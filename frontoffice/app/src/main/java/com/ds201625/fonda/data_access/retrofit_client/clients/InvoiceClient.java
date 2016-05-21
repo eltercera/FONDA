@@ -1,7 +1,7 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
 import com.ds201625.fonda.domains.DishOrder;
-import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.domains.Invoice;
 
 import java.util.List;
 
@@ -13,11 +13,11 @@ import retrofit2.http.GET;
  */
 
 /**
- * Interface que contiene los metodos del servicio de CurrentOrderClient
+ * Interface que contiene los metodos del servicio de InvoiceClient
  */
-public interface CurrentOrderClient {
+public interface InvoiceClient {
 
-    @GET("listDishOrder")
-    Call<List<DishOrder>> getListDishOrder();
+    @GET("currentInvoice")
+    Call<Invoice> getCurrentInvoice();
 
 }
