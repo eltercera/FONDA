@@ -6,7 +6,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
     {
         public ReservationMap()
         {
-            Table("CRESERVATION");
+            Table("RESERVATION");
 
             Id(x => x.Id)
               .Column("res_id")

@@ -30,6 +30,9 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 		IScheduleDAO GetScheduleDAO();
 		ITableDAO GetTableDAO();
         IReservationDAO GetReservationDAO();
+        ActiveReservationStatus GetActiveReservationStatus();
+        CanceledReservationStatus GetCanceledReservationStatus();
+        UsedReservationStatus GetUsedReservationStatus();
 
     }
 }

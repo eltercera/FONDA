@@ -69,6 +69,8 @@
     <Compile Include="HibernateDAO\FluentMappings\ReservationMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\ReservationStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\UsedReservationStatusMap.cs" />
+    <Compile Include="HibernateDAO\HibernateActiveReservationStatusDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateCanceledReservationStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCashPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernatePaymentDAO.cs" />
@@ -103,6 +105,9 @@
     <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
     <Compile Include="HibernateDAO\HibernateReservationDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRoleDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateUsedReservationStatus.cs" />
+    <Compile Include="InterfaceDAO\IActiveReservationStatusDAO.cs" />
+    <Compile Include="InterfaceDAO\ICanceledReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICashPaymentDAO.cs" />
     <Compile Include="InterfaceDAO\ICreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantCategoryDAO.cs" />
@@ -126,6 +131,7 @@
     <Compile Include="InterfaceDAO\IRestaurantDAO.cs" />
     <Compile Include="InterfaceDAO\IScheduleDAO.cs" />
     <Compile Include="InterfaceDAO\ITableDAO.cs" />
+    <Compile Include="InterfaceDAO\IUsedReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IZoneDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InterfaceDAO\IBaseEntityDAO.cs" />
