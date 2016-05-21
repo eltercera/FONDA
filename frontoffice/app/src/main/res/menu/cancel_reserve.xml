@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_cancel_reserve"
-        android:icon="@drawable/ic_save_creme_24dp"
+        android:icon="@drawable/ic_not_interested_cream_24dp"
         android:title="Reserve"
         app:showAsAction="ifRoom"
         android:visible="true"/>

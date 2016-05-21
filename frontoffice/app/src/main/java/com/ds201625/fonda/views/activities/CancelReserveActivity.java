@@ -1,10 +1,13 @@
 package com.ds201625.fonda.views.activities;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 
@@ -20,6 +23,17 @@ public class CancelReserveActivity extends BaseNavigationActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_cancel_reserve);
         super.onCreate(savedInstanceState);
+
+
+    }
+
+    public void accept() {
+        Toast t=Toast.makeText(this,"Su reservación fue cancelada", Toast.LENGTH_SHORT);
+        t.show();
+    }
+
+    public void cancel() {
+        finish();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -29,7 +43,25 @@ public class CancelReserveActivity extends BaseNavigationActivity {
         cancelReserve = menu.findItem(R.id.action_cancel_reserve);
         tb = (Toolbar)findViewById(R.id.toolbar);
         tb.setVisibility(View.VISIBLE);
-
+        ConfirmDialog();
         return true;
+    }
+
+    public void ConfirmDialog(){
+        AlertDialog.Builder confirmCancelDialog = new AlertDialog.Builder(this);
+        confirmCancelDialog.setTitle("Cancelar Reservación");
+        confirmCancelDialog.setMessage("¿Desea cancelar la reservación?");
+        confirmCancelDialog.setCancelable(false);
+        confirmCancelDialog.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface confirmCancelDialog, int id) {
+                accept();
+            }
+        });
+        confirmCancelDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface confirmCancelDialog, int id) {
+                cancel();
+            }
+        });
+        confirmCancelDialog.show();
     }
 }
