@@ -58,11 +58,11 @@ public class FavoritesActivity extends BaseNavigationActivity {
 
         AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                 getAllFavoriteRestaurantsService();
-        restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(1);
+        restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(2);
         /*
-            AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
-                    getAllRestaurantsService();
-            restaurantList = allRestaurant.getAllRestaurant();
+        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                getAllRestaurantsService();
+        restaurantList = allRestaurant.getAllRestaurant();
         */
         for (Restaurant rest : restaurantList){
             Log.v("WEBSERVICE", rest.getId() + "");

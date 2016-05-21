@@ -49,4 +49,18 @@ public interface ServiceFactory {
      */
     AllFavoriteRestaurantService getAllFavoriteRestaurantsService();
 
+    /**
+     * Agrega un restaurante favorito a un comensal logeado
+     * @param
+     * @return
+     */
+    AddFavoriteRestaurantService getAddFavoriteRestaurantService();
+
+    /**
+     * Elimina un restaurante favorito a un comensal logeado
+     * @param
+     * @return
+     */
+    DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService();
+
 }
