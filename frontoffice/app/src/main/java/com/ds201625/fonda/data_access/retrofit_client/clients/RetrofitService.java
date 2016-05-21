@@ -18,7 +18,8 @@ public class RetrofitService {
         return instance;
     }
 
-    private final String API_BASE_URL = "http://201.210.163.221:5300/api/";
+    //"http://201.210.163.221:5300/api/"
+    private final String API_BASE_URL = "http://192.168.1.2:3500/api/";
 
     private OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 

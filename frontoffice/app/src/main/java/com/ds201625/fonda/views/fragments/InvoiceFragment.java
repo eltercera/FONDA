@@ -11,6 +11,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.services.CurrentOrderService;
+import com.ds201625.fonda.data_access.services.InvoiceService;
 import com.ds201625.fonda.domains.Account;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Currency;
@@ -27,46 +30,48 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
-
 /**
- * Clase de Prueba para mostar el uso de Fragments
+ * Clase Fragment que muestra la factura
  */
 public class InvoiceFragment extends BaseFragment {
 
+    /**
+     * Lista
+     */
     private ListView lv1;
 
+    /**
+     * Vista de lista
+     */
     private InvoiceViewItemList invoiceViewItem;
 
-    private ArrayList<DishOrder> listDishO = new ArrayList<DishOrder>();
+    /**
+     * Lista de platos ordenados
+     */
+    private List<DishOrder> listDishO;
 
-    Currency currency = new Currency("Bs.");
-    Dish dish1 = new Dish("Pasta","Pasta Con Salmon",1000,String.valueOf(R.drawable.salmonpasta),currency);
-    Dish dish2 = new Dish("Refresco","Coca-Cola",100,String.valueOf(R.drawable.refresco),currency);
-    Dish dish3 = new Dish("Torta","Terciopelo Rojo",500,String.valueOf(R.drawable.redv2),currency);
+    /**
+     * Factura de la cuenta
+     */
+    private Invoice invoice;
 
-    Table table = new Table(1,2);
-    Date date = new Date();
-    DishOrder dishO1 = new DishOrder(dish1,1);
-    DishOrder dishO2 = new DishOrder(dish2,1);
-    DishOrder dishO3 = new DishOrder(dish3,1);
+    /**
+     *  Servicio de factura de la cuenta
+     */
+    private InvoiceService invoiceService;
 
-    RestaurantCategory category = new RestaurantCategory("Casual");
-    Restaurant restaurant = new Restaurant("The dining room", "La Castellana", category);
-
-    GenericPerson genericPerson = new GenericPerson();
-    Commensal commensal = new Commensal();
-    Profile profile = new Profile();
-    List<Profile> profiles;
-
-
+    /**
+     * Metodo que se ejecuta al instanciar el fragment
+     * @param savedInstanceState Bundle que define el estado de la instancia
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listDishO.add(dishO1);
-        listDishO.add(dishO2);
-        listDishO.add(dishO3);
     }
 
+    /**
+     * Metodo que crea la vista de la factura
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -74,35 +79,20 @@ public class InvoiceFragment extends BaseFragment {
 
         View layout = inflater.inflate(R.layout.fragment_factura,container,false);
 
+        invoice = getinvoiceSW();
+        listDishO = invoice.getAccount().getListDish();
         invoiceViewItem = new InvoiceViewItemList(getContext());
         invoiceViewItem.addAll(listDishO);
 
         float sub = calcularSubTotal(listDishO);
         System.out.println("SubTotal: " + sub);
-        double iva = calcularIVA(sub);
-        System.out.println("IVA: " + iva);
-        float total = calcularTotal(sub,iva);
-        System.out.println("Total: " + total);
+        double iva = invoice.getTax();
+        float total = invoice.getTotal();
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String formattedDate = df.format(c.getTime());
-        float propina = (float) (total*0.10);
-        float totaltotal = total + propina;
+        float propina = invoice.getTip();
 
-        genericPerson.setSsn("19.739.625");
-        genericPerson.setName("Yuneth Molina");
-        profile.setProfileName("Yune");
-        profile.setPerson(genericPerson);
-//        profiles.add(profile);
-    //    commensal.setProfiles(profiles);
-
-        //quizas no necesite el iva, total,sub
-        Account account = new Account(table,listDishO);
-        Payment payment = new Payment();
-        payment.setAmount(total);
-
-        Invoice invoice = new Invoice(propina,(float)iva,total,restaurant,date,
-                profile,currency,payment,account);
 
 
         TextView txtName = (TextView) layout.findViewById(R.id.tvTitulo);
@@ -134,30 +124,30 @@ public class InvoiceFragment extends BaseFragment {
         txtPric.setGravity(Gravity.RIGHT);
 
         //Nombre del Restaurant
-        txtName.setText(restaurant.getName());
+        txtName.setText(invoice.getRestaurant().getName());
         //Direccion del Restaurant
-        txtDir.setText(restaurant.getAddress());
+        txtDir.setText(invoice.getRestaurant().getAddress());
         //Numero de la Factura
         //El numero de la factura deberia ser autogenerado
         txtNum.setText("001");
         //Fecha y hora
         txtDate.setText(formattedDate);
         //Cedula del Cliente o ssn
-        txtCiRif.setText(profile.getPerson().getSsn());
+        txtCiRif.setText(invoice.getProfile().getPerson().getSsn());
         //Nombre del cliente
-        txtClient.setText(profile.getPerson().getName());
+        txtClient.setText(invoice.getProfile().getPerson().getName());
         //Subtotal
         txtMontoSub.setText(String.valueOf(sub));
-        txtMonSub.setText(currency.getSymbol());
+       // txtMonSub.setText(currency.getSymbol());
         //Iva
         txtMontoIva.setText(String.valueOf(iva));
-        txtMonIva.setText(currency.getSymbol());
+        // txtMonIva.setText(currency.getSymbol());
         //Total
-        txtMontoTota.setText(String.valueOf(totaltotal));
-        txtMonTota.setText(currency.getSymbol());
+        txtMontoTota.setText(String.valueOf(total));
+       // txtMonTota.setText(currency.getSymbol());
         //Propina
         txtMontoPro.setText(String.valueOf(propina));
-        txtMonPro.setText(currency.getSymbol());
+      //  txtMonPro.setText(currency.getSymbol());
 
         //Lista de Platos
         lv1=(ListView)layout.findViewById(R.id.lvOrderDish);
@@ -176,7 +166,7 @@ public class InvoiceFragment extends BaseFragment {
         super.onDetach();
     }
 
-    public float calcularSubTotal(ArrayList<DishOrder> listDishO){
+    public float calcularSubTotal(List<DishOrder> listDishO){
         float sub = 0;
         float costo;
         int cant;
@@ -193,19 +183,21 @@ public class InvoiceFragment extends BaseFragment {
     }
 
 
-    public double calcularIVA(float sub){
+    public Invoice getinvoiceSW(){
+        try {
+            invoiceService= FondaServiceFactory.getInstance().getInvoiceService();
+            Invoice invoiceWS=invoiceService.getCurrentInvoice();
 
-        double iva = sub * (0.12);
-
-        return iva;
+            System.out.println("Restaurant de la factura:  " + invoiceWS.getRestaurant().getName());
+            return invoiceWS;
+        }
+        catch (NullPointerException e){
+            System.out.println("No es posible realizar la conexión con el Web Server ");
+        }
+        catch (Exception e){
+            System.out.println("Error en la Conexión");
+        }
+        return null;
     }
-
-    public float calcularTotal(float sub, double iva){
-
-        float result = sub + (float) iva;
-
-        return result;
-    }
-
 
 }

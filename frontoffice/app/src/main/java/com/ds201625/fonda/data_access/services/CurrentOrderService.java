@@ -8,6 +8,10 @@ import java.util.List;
 /**
  * Created by Yuneth on 5/15/2016.
  */
+
+/**
+ * Interface de CurrentOrderService
+ */
 public interface CurrentOrderService {
 
     List<DishOrder> getListDishOrder();

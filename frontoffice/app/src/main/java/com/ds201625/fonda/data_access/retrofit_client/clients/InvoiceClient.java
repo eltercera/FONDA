@@ -11,9 +11,13 @@ import retrofit2.http.GET;
 /**
  * Created by Yuneth on 5/15/2016.
  */
+
+/**
+ * Interface que contiene los metodos del servicio de InvoiceClient
+ */
 public interface InvoiceClient {
 
-    @GET("invoice")
-    Call<Invoice> getInvoice();
+    @GET("currentInvoice")
+    Call<Invoice> getCurrentInvoice();
 
 }

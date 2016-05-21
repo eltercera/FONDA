@@ -8,8 +8,12 @@ import java.util.List;
 /**
  * Created by Yuneth on 5/15/2016.
  */
+
+/**
+ * Interface de InvoiceService
+ */
 public interface InvoiceService {
 
-    Invoice getInvoice();
+    Invoice getCurrentInvoice();
 
 }
