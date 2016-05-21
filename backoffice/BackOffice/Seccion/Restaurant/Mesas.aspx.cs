@@ -12,6 +12,7 @@ namespace BackOffice.Seccion.Restaurant
     {
         FactoryDAO factoryDAO = FactoryDAO.Intance;
         int _idRestaurant =1;
+        com.ds201625.fonda.Domain.Restaurant _restaurant = new com.ds201625.fonda.Domain.Restaurant();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -181,12 +182,15 @@ namespace BackOffice.Seccion.Restaurant
         {
             AlertSuccess_AddTable.Visible = true;
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
+            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Table _table = new com.ds201625.fonda.Domain.Table();
             IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
             int capacity = int.Parse(DDLcapacityA.SelectedValue);
             _table.Capacity = capacity;
             _table.Status = factoryDAO.GetFreeTableStatus();
             _table.Number = listTable.Count+1;
+            _restaurant = _restaurantDAO.FindById(_idRestaurant);
+            _table.Restaurant = _restaurant;
             _tableDAO.Save(_table);
             LoadDataTable();
         }
