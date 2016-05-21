@@ -1,20 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Services;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using BackOffice.Content;
 using BackOffice.Seccion.Restaurant;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
-using com.ds201625.fonda.Domain;
-using System.Data;
-using System.Web.Services;
 
 namespace BackOffice
 {
@@ -26,8 +16,13 @@ namespace BackOffice
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadDataTable();
+            LoadTable_MenuSugestion();
         }
 
+        /// <summary>
+        /// Construye una tabla de mesas
+        /// Utilizando el control de asp: Table
+        /// </summary>
         protected void LoadDataTable()
         {
             CleanTable();
@@ -106,7 +101,7 @@ namespace BackOffice
         }
 
         /// <summary>
-        /// Genera el encabezado de la tabla Categoria
+        /// Genera el encabezado de la tabla Table
         /// </summary>
         /// <returns>Returna un objeto de tipo TableHeaderRow</returns>
         private TableHeaderRow GenerateTableHeader()
@@ -151,11 +146,9 @@ namespace BackOffice
         public void CleanTable()
         {
             table.Rows.Clear();
+            TableDayMenuDashboard.Rows.Clear();
         }
 
-
-            LoadTable_MenuSugestion();
-        }
         //procedimiento que carga latabla de sugerencia del dia en el default importante cargen el test de dish 2 veces
         //y despues el de menu category para que aparezca informacion
         protected void LoadTable_MenuSugestion()
@@ -238,16 +231,15 @@ namespace BackOffice
 
             }
             //Agrega el encabezado a la Tabla
-            TableHeaderRow header = GenerateTableHeader();
+            TableHeaderRow header = GenerateTableHeaderCategory();
             TableDayMenuDashboard.Rows.AddAt(0, header);
         }
-
 
         /// <summary>
         /// Genera el encabezado de la tabla Categoria
         /// </summary>
         /// <returns>Returna un objeto de tipo TableHeaderRow</returns>
-        private TableHeaderRow GenerateTableHeader()
+        private TableHeaderRow GenerateTableHeaderCategory()
         {
             //Se crea la fila en donde se insertara el header
             TableHeaderRow header = new TableHeaderRow();
@@ -274,10 +266,6 @@ namespace BackOffice
             return header;
         }
 
-        public void CleanTable()
-        {
-            TableDayMenuDashboard.Rows.Clear();
 
-        }
     }
 }
