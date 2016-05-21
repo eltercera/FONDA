@@ -304,7 +304,9 @@ namespace BackOffice.Seccion.Restaurant
             string Day7 = Day7A.Text;
             TimeSpan OT = TimeSpan.Parse(OpeningTimeA.Text);
             TimeSpan CT = TimeSpan.Parse(ClosingTimeA.Text);
-            string logo = "C:/";
+            string image = ImageA.PostedFile.FileName;
+            string rute = Server.MapPath("~/images/");
+            string logo = rute + image;
             AlertSuccess_AddRestaurant.Visible = true;
 
             FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -331,6 +333,7 @@ namespace BackOffice.Seccion.Restaurant
             _restaurant.Coordinate = coord;
             Schedule schedule = new Schedule();
             List<Day> days = new List<Day>();
+            _restaurant.Logo = logo;
 
             if (Day1A.Checked)
                 days.Add(new Day() {Name = Day1});

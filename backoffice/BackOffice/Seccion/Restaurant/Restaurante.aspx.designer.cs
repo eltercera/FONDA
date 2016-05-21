@@ -67,6 +67,15 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.WebControls.Table Restaurant;
         
         /// <summary>
+        /// ImageC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage ImageC;
+        
+        /// <summary>
         /// NameC control.
         /// </summary>
         /// <remarks>
@@ -382,6 +391,15 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.WebControls.TextBox ClosingTimeM;
         
         /// <summary>
+        /// ImageM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile ImageM;
+        
+        /// <summary>
         /// ButtonModify control.
         /// </summary>
         /// <remarks>
@@ -560,6 +578,15 @@ namespace BackOffice.Seccion.Restaurant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ClosingTimeA;
+        
+        /// <summary>
+        /// ImageA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile ImageA;
         
         /// <summary>
         /// ButtonAdd control.

@@ -89,7 +89,7 @@ Restaurantes
                  <div class="row">
                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
-                           <img class="img-thumbnail img-responsive img-center" id="ImageC" src="http://placehold.it/150x150" alt=""/>
+                           <img class="img-thumbnail img-responsive img-center" id="ImageC" src="http://placehold.it/150x150" alt="" runat="server"/>
                         </div>
                     </div>
 
@@ -322,7 +322,7 @@ Restaurantes
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                               <label for="ejemplo_archivo_1">Imagen del Restaurante</label>
-                              <input type="file" id="ImageM"/>
+                              <input type="file" id="ImageM" name="ImageM" runat="server"/>
                               <p class="help-block">Imagen .jpg o .png</p>
                          </div>
                 </div>
@@ -464,7 +464,7 @@ Restaurantes
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                               <label for="ImageA">Imagen del Restaurante</label>
-                              <input type="file" id="ImageA"/>
+                              <input type="file" id="ImageA" name="ImageA" runat="server"/>
                               <p class="help-block">Imagen .jpg o .png</p>
                          </div>
                 </div>
@@ -578,6 +578,13 @@ Restaurantes
                         document.getElementById("<%=ZoneC.ClientID%>").value = local.d.Zone.Name;
                         document.getElementById("<%=OpeningTimeC.ClientID%>").value = openingTime;
                         document.getElementById("<%=ClosingTimeC.ClientID%>").value = closingTime;
+                        $("img").attr({
+                            src: local.d.Logo,
+                            alt: " "
+                        });
+                        //$("img").attr("src", function () {
+                        //    return local.d.Logo;
+                        //});
                         daysOfWork(local);
                     }
 
@@ -656,7 +663,6 @@ Restaurantes
                     result += days[i].Name + ',';
                 }
            
-                 document.getElementById("<%=DaysC.ClientID%>").value = result;
             }
 
                     function setValue() {
