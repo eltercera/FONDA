@@ -9,7 +9,8 @@
     <string name="nav_reserve">Reservaciones</string>
     <string name="nav_order">Ordenes</string>
     <string name="nav_config">Configuraciones</string>
-    <string name="nav_profile">Perfil</string>
+    <string name="nav_profile">Perfiles</string>
+    <string name="nav_logout">Cerrar Sesión</string>
 
     <string name="nav_detail_restaurant">Detalle</string>
     <string name="action_settings">Settings</string>
