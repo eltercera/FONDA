@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publicar\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,10 +59,13 @@
   <ItemGroup>
     <Compile Include="Domain\Account.cs" />
     <Compile Include="Domain\AccountStatus.cs" />
+    <Compile Include="Domain\ActiveReservationStatus.cs" />
     <Compile Include="Domain\BaseEntity.cs" />
     <Compile Include="Domain\BusyTableStatus.cs" />
     <Compile Include="Domain\CanceledInvoiceStatus.cs" />
+    <Compile Include="Domain\CanceledReservationStatus.cs" />
     <Compile Include="Domain\CashPayment.cs" />
+    <Compile Include="Domain\ReservationStatus.cs" />
     <Compile Include="Domain\ClosedAccountStatus.cs" />
     <Compile Include="Domain\Coordinate.cs" />
     <Compile Include="Domain\CreditCarPayment.cs" />
@@ -63,12 +81,14 @@
     <Compile Include="Domain\MenuCategory.cs" />
     <Compile Include="Domain\OpenAccountStatus.cs" />
     <Compile Include="Domain\Payment.cs" />
+    <Compile Include="Domain\Reservation.cs" />
     <Compile Include="Domain\Restaurant.cs" />
     <Compile Include="Domain\RestaurantCategory.cs" />
     <Compile Include="Domain\Role.cs" />
     <Compile Include="Domain\Schedule.cs" />
     <Compile Include="Domain\Table.cs" />
     <Compile Include="Domain\TableStatus.cs" />
+    <Compile Include="Domain\UsedReservationStatus.cs" />
     <Compile Include="GeneralRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -98,6 +118,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>GeneralRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

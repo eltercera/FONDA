@@ -141,6 +141,11 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
             return _factory.GetRoleDAO();
         }
 
+        public IReservationDAO GetReservationDAO()
+        {
+            return _factory.GetReservationDAO();
+        }
+
         public ActiveSimpleStatus GetActiveSimpleStatus()
         {
             return _factory.GetActiveSimpleStatus();
@@ -159,6 +164,22 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         public BusyTableStatus GetBusyTableStatus()
         {
             return _factory.GetBusyTableStatus();
+        }
+
+
+        public ActiveReservationStatus GetActiveReservationStatus()
+        {
+            return _factory.GetActiveReservationStatus();
+        }
+
+        public CanceledReservationStatus GetCanceledReservationStatus()
+        {
+            return _factory.GetCanceledReservationStatus();
+        }
+
+        public UsedReservationStatus GetUsedReservationStatus()
+        {
+            return _factory.GetUsedReservationStatus();
         }
     }
 }
