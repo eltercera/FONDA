@@ -38,7 +38,7 @@ namespace DataAccessTests
         private void currencyAssertions(bool edit = false)
         {
             Assert.IsNotNull(_currency);
-            Assert.AreEqual(_currency.Symbol, "C:");
+            Assert.AreEqual(_currency.Symbol, "$");
             Assert.AreEqual(_currency.Name, "Dolar");
         }
 

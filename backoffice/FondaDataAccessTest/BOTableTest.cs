@@ -79,7 +79,7 @@ namespace DataAccessTests
 
             _table.Capacity = 2;
             //FreeTableStatus :(
-            _table.Restaurant = _restaurant;
+            _table.Number = 1;
             _table.Status = _facDAO.GetFreeTableStatus();
 
         }
