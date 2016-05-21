@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FactoryDAO\FactoryDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CanceledInvoiceStatus.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CashPaymentMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CreditCardPaymentMap.cs" />
@@ -64,8 +65,11 @@
     <Compile Include="HibernateDAO\FluentMappings\InvoiceMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\InvoiceStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\PaymentMap.cs" />
+    <Compile Include="HibernateDAO\HibernateBusyTableStatus.cs" />
     <Compile Include="HibernateDAO\HibernateCashPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCreditCardPaymentDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateDisableSimpleStatus.cs" />
+    <Compile Include="HibernateDAO\HibernateFreeTableStatus.cs" />
     <Compile Include="HibernateDAO\HibernatePaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateInvoiceDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\AccountStatusMap.cs" />
@@ -97,6 +101,8 @@
     <Compile Include="HibernateDAO\HibernateMenuCategoryDAO.cs" />
     <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRoleDAO.cs" />
+    <Compile Include="InterfaceDAO\IBusyTableStatusDAO.cs" />
+    <Compile Include="InterfaceDAO\IDisableSimpleStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICashPaymentDAO.cs" />
     <Compile Include="InterfaceDAO\ICreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantCategoryDAO.cs" />
@@ -110,6 +116,7 @@
     <Compile Include="InterfaceDAO\IDishDAO.cs" />
     <Compile Include="InterfaceDAO\IDishOrderDAO.cs" />
     <Compile Include="InterfaceDAO\IEmployeeDAO.cs" />
+    <Compile Include="InterfaceDAO\IFreeTableStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IInvoiceDao.cs" />
     <Compile Include="InterfaceDAO\IMenuCategoryDAO.cs" />
     <Compile Include="InterfaceDAO\IOrderAccountDao.cs" />
@@ -162,7 +169,6 @@
     <Compile Include="InterfaceDAO\IActiveSimpleStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateActiveSimpleStatus.cs" />
     <Compile Include="FactoryDAO\IFactoryDAO.cs" />
-    <Compile Include="FactoryDAO\FatoryDAO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -174,7 +180,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

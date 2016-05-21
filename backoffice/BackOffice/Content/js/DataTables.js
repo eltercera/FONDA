@@ -181,7 +181,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#dt-mesa').DataTable({
+    $('#contenido_dash-table').DataTable({
         "language": spanish,
         "aoColumns": [
             null,
@@ -212,7 +212,7 @@ $(document).ready(function () {
     });
 });
 $(document).ready(function () {
-    $('#mesa').DataTable({
+    $('#contenido_table').DataTable({
         "language": spanish,
         "aoColumns": [
             null,

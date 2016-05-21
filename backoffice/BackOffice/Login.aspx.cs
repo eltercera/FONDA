@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using BackOffice.Content;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
+using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.Domain;
 
 
 namespace BackOffice.Seccion.Configuracion
@@ -67,37 +70,50 @@ namespace BackOffice.Seccion.Configuracion
         }
         public void validarUsuario()
         {
-            string usuario = userIni.Value;
-            string clave = passwordIni.Value;
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IEmployeeDAO _EmploDAO = factoryDAO.GetEmployeeDAO();
+            Employee _employee;
+            _employee = new Employee();
+            string user = userIni.Value;
+            string password = passwordIni.Value;
             Console.WriteLine("imprimiendo valor :");
-            Console.WriteLine(usuario);
+            Console.WriteLine(user);
 
-            if (usuario == "" | clave == "") 
+            if (user == "" | password == "")
             {
                 mensajeLogin(true, mensajes.logErrcamp, mensajes.tipoInfo);
             }
-            else{
-                if (usuario == "fonda" & clave == "12345")
+            else
+            {
+                _employee = _EmploDAO.FindByusername(userIni.Value);
+                string _userPassword = _employee.UserAccount.Password;
+                if (_employee != null & _userPassword == password)
                 {
 
-                    Session[RecursoMaster.sessionRol] = "Sistema";
-                    Session[RecursoMaster.sessionUserName] = "jose";
-                    Session[RecursoMaster.sessionUserID] = "12";
-                
+
+                    Session[RecursoMaster.sessionRol] = _employee.Role.Name;
+                    Session[RecursoMaster.sessionName] = _employee.Name;
+                    Session[RecursoMaster.sessionLastname] = _employee.LastName;
+                    Session[RecursoMaster.sessionUserID] = _employee.Id;
                     mensajeLogin(false, mensajes.logErr, mensajes.tipoErr);
-                Response.Redirect("Default.aspx");
+                    if (_employee.Role.Name == "Sistema")
+                        Response.Redirect("~/Seccion/Restaurant/Restaurante.aspx");
+                    else
+
+                        Response.Redirect("Default.aspx");
                 }
-                else { 
-                            
-                mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
+                else
+                {
+
+                    mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
+                }
             }
-          }
-           
+
         }
 
         public void EnviarCorreo()
         {
-        
+
             String CorreoDestino = RestablecerCorreo.Value;
             if (CorreoDestino != "fonda@gmail.com")
             {
@@ -107,7 +123,7 @@ namespace BackOffice.Seccion.Configuracion
             else
             {
                 mensajeLogin(true, mensajes.logInfo, mensajes.tipoInfo);
-           
+
 
                 string opcion = "true";
                 Response.Redirect("Login.aspx?" + mensajes.tipoInfo + "=" + opcion);

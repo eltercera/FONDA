@@ -4,54 +4,60 @@
 
     <item
         android:id="@+id/close"
-        android:icon="@drawable/card_icon_48"
+        android:icon="@drawable/ic_credit_card_creme_24dp"
         android:title="@string/nav_close_account"
         app:showAsAction="ifRoom"
         android:visible="true"/>
     <item
         android:id="@+id/action_favorite_search"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/ic_search_creme_24dp"
         android:title="Buscar"
         app:showAsAction="ifRoom"
         android:visible="false"/>
     <item
         android:id="@+id/action_favorite_send"
-        android:icon="@android:drawable/ic_menu_send"
+        android:icon="@drawable/ic_done_creme_24dp"
         android:title="Enviar"
         app:showAsAction="ifRoom"
         android:visible="false"/>
     <item
         android:id="@+id/action_favorite_cancel"
-        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:icon="@drawable/ic_clear_creme_24dp"
         android:title="Cancelar"
         app:showAsAction="ifRoom"
         android:visible="false"/>
     <item
         android:id="@+id/action_favorite_download"
-        android:icon="@android:drawable/stat_sys_download"
+        android:icon="@drawable/ic_get_app_creme_24dp"
         android:title="Descargar"
         app:showAsAction="ifRoom"
         android:visible="false"/>
     <item
         android:id="@+id/action_favorite_add"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/ic_add_creme_24dp"
         android:title="Agregar"
         app:showAsAction="ifRoom"
         android:visible="false"/>
     <item
         android:id="@+id/action_favorite_send_pay"
-        android:icon="@android:drawable/ic_menu_send"
+        android:icon="@drawable/ic_done_all_creme_24dp"
         android:title="Enviar"
         app:showAsAction="ifRoom"
         android:visible="false"/>
     <item
         android:id="@+id/action_favorite_cancel_pay"
-        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:icon="@drawable/ic_clear_creme_24dp"
         android:title="Cancelar"
         app:showAsAction="ifRoom"
         android:visible="false"/>
     <item
-        android:id="@+id/action_favorite_save"
+        android:id="@+id/action_favorite_accept_cc"
+        android:icon="@drawable/ic_done_all_creme_24dp"
+        android:title="Enviar"
+        app:showAsAction="ifRoom"
+        android:visible="false"/>
+    <item
+        android:id="@+id/action_favorite_save_cc"
         android:icon="@drawable/ic_save_creme_24dp"
         android:title="Guardar"
         app:showAsAction="ifRoom"

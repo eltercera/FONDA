@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Person;
 import com.ds201625.fonda.domains.Profile;
 
 
@@ -21,9 +22,10 @@ public class ProfileFormFragment extends BaseFragment {
     private Profile profile;
     private TextView tvProfileName;
     private TextView tvNames;
+    private TextView tvLastNames;
     private TextView tvSsn;
     private TextView tvPhone;
-    private TextView tvCellPhone;
+    private TextView tvDirecction;
     private View form;
 
     @Override
@@ -42,10 +44,11 @@ public class ProfileFormFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         form = inflater.inflate(R.layout.fragment_form_profile, container, false);
         tvProfileName = (TextView) form.findViewById(R.id.profile_name);
-        tvNames = (TextView) form.findViewById(R.id.profile_lastnames);
+        tvNames = (TextView) form.findViewById(R.id.profile_names);
         tvSsn = (TextView) form.findViewById(R.id.profile_ci_rif);
         tvPhone = (TextView) form.findViewById(R.id.profile_phone);
-        tvCellPhone = (TextView) form.findViewById(R.id.profile_cell);
+        tvDirecction = (TextView) form.findViewById(R.id.profile_dir);
+        tvLastNames = (TextView) form.findViewById(R.id.profile_lastnames);
         return form;
     }
 
@@ -55,11 +58,28 @@ public class ProfileFormFragment extends BaseFragment {
      */
     public void setProfile(Profile profile) {
         tvProfileName.setText(profile.getProfileName());
-        tvNames.setText(profile.getNames());
-        tvSsn.setText(profile.getSsn());
-        tvPhone.setText(profile.getPhone());
-        tvCellPhone.setText(profile.getCellPhone());
+        tvNames.setText(profile.getPerson().getName());
+        tvLastNames.setText(profile.getPerson().getLastName());
+        tvSsn.setText(profile.getPerson().getSsn());
+        tvPhone.setText(profile.getPerson().getPhoneNumber());
+        tvDirecction.setText(profile.getPerson().getAddress());
         this.profile = profile;
+    }
+
+    public void setProfile() {
+        Profile profile = new Profile();
+        profile.setPerson(new Person());
+        tvProfileName.setText("");
+        tvNames.setText("");
+        tvLastNames.setText("");
+        tvSsn.setText("");
+        tvPhone.setText("");
+        tvDirecction.setText("");
+        this.profile = profile;
+    }
+
+    public Profile getProfile() {
+        return profile;
     }
 
     /**
@@ -67,11 +87,12 @@ public class ProfileFormFragment extends BaseFragment {
      * el formulario.
      */
     public void changeProfile() {
-        profile.setProfileName(tvProfileName.getText().toString());
-        profile.setNames(tvNames.getText().toString());
-        profile.setSsn(tvSsn.getText().toString());
-        profile.setPhone(tvPhone.getText().toString());
-        profile.setCellPhone(tvCellPhone.getText().toString());
+        this.profile.setProfileName(tvProfileName.getText().toString());
+        this.profile.getPerson().setName(tvNames.getText().toString());
+        this.profile.getPerson().setLastName(tvLastNames.getText().toString());
+        this. profile.getPerson().setSsn(tvSsn.getText().toString());
+        this.profile.getPerson().setPhoneNumber(tvPhone.getText().toString());
+        this.profile.getPerson().setAddress(tvDirecction.getText().toString());
     }
 
     @Override

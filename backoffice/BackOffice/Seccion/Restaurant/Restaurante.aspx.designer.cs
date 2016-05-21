@@ -49,85 +49,103 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ModifyRestaurant;
         
         /// <summary>
-        /// TextBox10 control.
+        /// RestaurantModifyId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.HiddenField RestaurantModifyId;
         
         /// <summary>
-        /// TextBox16 control.
+        /// Restaurant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox16;
+        protected global::System.Web.UI.WebControls.Table Restaurant;
         
         /// <summary>
-        /// TextBox17 control.
+        /// NameC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox17;
+        protected global::System.Web.UI.WebControls.TextBox NameC;
         
         /// <summary>
-        /// TextBox12 control.
+        /// CategoryC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::System.Web.UI.WebControls.TextBox CategoryC;
         
         /// <summary>
-        /// TextBox18 control.
+        /// NacionalityC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox18;
+        protected global::System.Web.UI.WebControls.TextBox NacionalityC;
         
         /// <summary>
-        /// TextBox13 control.
+        /// RifC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::System.Web.UI.WebControls.TextBox RifC;
         
         /// <summary>
-        /// TextBox19 control.
+        /// CurrencyC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox19;
+        protected global::System.Web.UI.WebControls.TextBox CurrencyC;
         
         /// <summary>
-        /// TextBox14 control.
+        /// AddressC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox14;
+        protected global::System.Web.UI.WebControls.TextBox AddressC;
         
         /// <summary>
-        /// TextBox15 control.
+        /// ZoneC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox15;
+        protected global::System.Web.UI.WebControls.TextBox ZoneC;
+        
+        /// <summary>
+        /// OpeningTimeC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox OpeningTimeC;
+        
+        /// <summary>
+        /// ClosingTimeC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ClosingTimeC;
         
         /// <summary>
         /// CloseConsult control.
@@ -292,13 +310,13 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.WebControls.DropDownList OpeningTimeM;
         
         /// <summary>
-        /// ClosingTime control.
+        /// ClosingTimeM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ClosingTime;
+        protected global::System.Web.UI.WebControls.DropDownList ClosingTimeM;
         
         /// <summary>
         /// ButtonModify control.
@@ -469,7 +487,7 @@ namespace BackOffice.Seccion.Restaurant {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList OpeningTimeA;
+        protected global::System.Web.UI.WebControls.TextBox OpeningTimeA;
         
         /// <summary>
         /// ClosingTimeA control.
@@ -478,7 +496,7 @@ namespace BackOffice.Seccion.Restaurant {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ClosingTimeA;
+        protected global::System.Web.UI.WebControls.TextBox ClosingTimeA;
         
         /// <summary>
         /// ButtonAdd control.

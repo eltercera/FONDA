@@ -9,20 +9,20 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
         public  RoleMap()
         {
         
- Table("ROLE");
+             Table("ROLE");
 
- Id(x => x.Id)
-     .Column("rol_id")
-     .Not.Nullable()
-     .GeneratedBy.Increment();
+             Id(x => x.Id)
+                 .Column("rol_id")
+                 .Not.Nullable()
+                 .GeneratedBy.Increment();
 
- Map(x => x.Name)
-     .Column("rol_name")
-     .Not.Nullable();
+             Map(x => x.Name)
+                 .Column("rol_name")
+                 .Not.Nullable();
 
- Map(x => x.Descripcion)
-     .Column("rol_descripcion")
-     .Not.Nullable();
+             Map(x => x.Descripcion)
+                 .Column("rol_descripcion")
+                 .Not.Nullable();
 
 
     }

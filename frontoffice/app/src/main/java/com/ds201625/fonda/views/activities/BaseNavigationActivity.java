@@ -8,14 +8,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.logic.SessionData;
 
 /**
  * Clase Base para Activity con el navegador a la izquierda.
  */
 public abstract class BaseNavigationActivity extends BaseActivity
     implements NavigationView.OnNavigationItemSelectedListener{
+
+    private TextView headerEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,11 @@ public abstract class BaseNavigationActivity extends BaseActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        headerEmail = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tvHeaderEmail);
+
+        // todo: Hay un error en el activity de Orders
+        if (this.getClass() != OrdersActivity.class)
+            headerEmail.setText(SessionData.getInstance().getCommensal().getEmail());
 
         if (this.getClass() == FavoritesActivity.class) {
             setCheckedItem(R.id.nav_favorites);
@@ -90,8 +99,6 @@ public abstract class BaseNavigationActivity extends BaseActivity
         } else if (id == R.id.nav_rest) {
             if (this.getClass() != RestauranstsActivity.class)
                 startFondaActivity("RestauranstsActivity");
-        } else if (id == R.id.nav_config) {
-                startFondaActivity("Main2Activity");
         } else if (id == R.id.nav_order) {
             if (this.getClass() != OrdersActivity.class)
                 startFondaActivity("OrdersActivity");

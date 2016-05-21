@@ -1,10 +1,6 @@
 package com.ds201625.fonda.views.activities;
 
-
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Typeface;
-import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -16,10 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-
-
+import android.widget.Toast;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
+import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.logic.SessionData;
 
 
 /**
@@ -27,6 +24,9 @@ import com.ds201625.fonda.R;
  */
 public class LoginActivity extends BaseActivity {
 
+    /**
+     * Estados de para el formulario y acciones.
+     */
     public enum LoginActivityStatus {
         ON_INIT,
         ON_LOGIN,
@@ -38,9 +38,7 @@ public class LoginActivity extends BaseActivity {
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private EditText mPasswordView2;
-    private TextView mTextViewRegister;
     private TextView mTextViewForgetPass;
-    private TextView mTextViewStartSesion;
     private LoginActivityStatus status = LoginActivityStatus.ON_LOGIN;
     private Button mEmailSignInButton;
     private Button mSignInButton;
@@ -48,86 +46,95 @@ public class LoginActivity extends BaseActivity {
     private LinearLayout mLoginLayout;
     private LinearLayout mInitLayout;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
+        // para saltar o no
+        boolean skp = false;
+
+        // inicializa los datos de la sesion
+        if (SessionData.getInstance() == null)
+            try {
+                SessionData.initInstance(getApplicationContext());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        // si existe un token o lo logra obtener uno nuevo vigente salta
+        if (SessionData.getInstance().getToken() != null)
+            skp = true;
+
+        if (skp)
+            skip();
+        else {
+            // inicializacion de la vista
+            setContentView(R.layout.activity_login);
+            this.status = LoginActivityStatus.ON_INIT;
+            this.getAllElements();
+
+            //agrecacion de acciones.
+            mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                    if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                        attemptLogin();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+
+            mEmailSignInButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    attemptLogin();
+                }
+            });
+
+            mSignInButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    setOnLogin();
+                    showLoginForm();
+                }
+            });
+
+            mRegisterButton.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setOnRegister();
+                    showLoginForm();
+                }
+            });
+
+            mTextViewForgetPass.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    setOnForgetPass();
+                }
+            });
+        }
+    }
+
+    /**
+     * Obtiene todos los componentes de la vista.
+     */
     private void getAllElements() {
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView2 = (EditText) findViewById(R.id.password2);
-        mTextViewForgetPass = (TextView) findViewById(R.id.textViewForgetPass);
-        /*mTextViewRegister = (TextView) findViewById(R.id.textViewRegiter);
-        mTextViewStartSesion = (TextView) findViewById(R.id.textViewStartSesion);*/
         mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mSignInButton = (Button) findViewById(R.id.signin_button);
         mRegisterButton = (Button) findViewById(R.id.register_button);
         mLoginLayout = (LinearLayout) findViewById(R.id.email_login_form);
         mInitLayout = (LinearLayout) findViewById(R.id.init_layout);
+        mTextViewForgetPass = (TextView) findViewById(R.id.textViewForgetPass);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        this.status = LoginActivityStatus.ON_INIT;
-
-        this.getAllElements();
-
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
-
-        mSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setOnLogin();
-                showLoginForm();
-            }
-        });
-
-        mRegisterButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setOnRegister();
-                showLoginForm();
-            }
-        });
-
-        /*mTextViewRegister.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setOnRegister();
-            }
-        });
-
-        mTextViewStartSesion.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setOnLogin();
-            }
-        });*/
-
-        mTextViewForgetPass.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setOnForgetPass();
-            }
-        });
-
-    }
-
+    /**
+     * Coloca los componentes en modo de registro
+     */
     private void setOnRegister() {
         this.status = LoginActivityStatus.ON_REGISTER;
         mEmailView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
@@ -136,23 +143,25 @@ public class LoginActivity extends BaseActivity {
         mPasswordView.setNextFocusDownId(R.id.password2);
         mPasswordView2.setVisibility(View.VISIBLE);
         mTextViewForgetPass.setVisibility(View.GONE);
-        /*mTextViewRegister.setVisibility(View.GONE);
-        mTextViewStartSesion.setVisibility(View.VISIBLE);*/
         mEmailSignInButton.setText(getString(R.string.login_register));
         mPasswordView.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Coloca los componentes de la vista en modo de Olvido de contraseña
+     */
     private void setOnForgetPass() {
         this.status = LoginActivityStatus.ON_PASSWORD_FORGET;
         mEmailView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         mPasswordView2.setVisibility(View.GONE);
         mTextViewForgetPass.setVisibility(View.GONE);
-        /*mTextViewRegister.setVisibility(View.GONE);
-        mTextViewStartSesion.setVisibility(View.VISIBLE);*/
         mEmailSignInButton.setText(getString(R.string.login_recover_passwd));
         mPasswordView.setVisibility(View.GONE);
     }
 
+    /**
+     * Coloca los componentes en como de inicio de sesión.
+     */
     private void setOnLogin() {
         this.status = LoginActivityStatus.ON_LOGIN;
         mPasswordView.setImeOptions(EditorInfo.IME_ACTION_DONE);
@@ -160,8 +169,6 @@ public class LoginActivity extends BaseActivity {
         mEmailView.setNextFocusDownId(R.id.password);
         mPasswordView2.setVisibility(View.GONE);
         mTextViewForgetPass.setVisibility(View.VISIBLE);
-        /*mTextViewRegister.setVisibility(View.VISIBLE);
-        mTextViewStartSesion.setVisibility(View.GONE);*/
         mEmailSignInButton.setText(getString(R.string.login_start_session));
         mPasswordView.setVisibility(View.VISIBLE);
     }
@@ -175,6 +182,7 @@ public class LoginActivity extends BaseActivity {
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+        String repassword = mPasswordView2.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -206,13 +214,13 @@ public class LoginActivity extends BaseActivity {
             // perform the user login attempt.
             switch (status) {
                 case ON_LOGIN:
-                    seguir();
+                    login(email,password);
                     break;
                 case ON_REGISTER:
-                    regiter();
+                    regiter(email,password,repassword);
                     break;
                 case ON_PASSWORD_FORGET:
-                    setOnLogin();
+                    // // TODO: 5/16/16 Funcionalidad de recuperación de contraseña
                     break;
             }
         }
@@ -229,6 +237,11 @@ public class LoginActivity extends BaseActivity {
         mLoginLayout.setVisibility(View.GONE);
     }
 
+    /**
+     * Validacion de un email
+     * @param email el correo
+     * @return true si el correo tiene un patron valido false lo contrario
+     */
     private boolean isEmailValid(String email) {
         if (email == null) {
             return false;
@@ -238,10 +251,13 @@ public class LoginActivity extends BaseActivity {
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
+        // // TODO: 5/16/16 Validar un patron de contraseña valida
+        return password.length() >= 6;
     }
 
+    /**
+     * Captura de accion del boton de hardware (back)
+     */
     @Override
     public void onBackPressed() {
         if(status == LoginActivityStatus.ON_INIT)
@@ -250,16 +266,80 @@ public class LoginActivity extends BaseActivity {
             showInitForm();
     }
 
-    private void seguir() {
+    /**
+     * Acción de saltar esta actividad.
+     */
+    private void skip() {
         startActivity(new Intent(this,FavoritesActivity.class));
     }
 
-    private void regiter() {
+    /**
+     * Registro de un commensal.
+     * @param email el correo a registrar
+     * @param password contraseña
+     * @param repassword recontraseñan :)
+     */
+    private void regiter(String email, String password, String repassword) {
+        Toast msj = null;
+        boolean succ = false;
+        if (!password.equals(repassword)){
+            msj = Toast.makeText(getBaseContext(),
+                    "Las contraseñas no coinciden",
+                    Toast.LENGTH_SHORT);
+        } else {
+            try {
+                SessionData.getInstance().registerCommensal(email, password);
+                succ = true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        AlertDialog dialog = buildSingleDialog("Registro de Cuenta",
-                "El registro de la cuenta "+mEmailView.getText().toString()
-                +" fue satisfactorio.");
-        dialog.show();
+            if (succ){
+                msj = Toast.makeText(getBaseContext(),
+                        "Registro Satisfactorio",
+                        Toast.LENGTH_SHORT);
+            } else {
+                msj = Toast.makeText(getBaseContext(),
+                        "Error en el registro",
+                        Toast.LENGTH_SHORT);
+            }
+        }
+        if (msj != null)
+            msj.show();
+
+        if (succ){
+            setOnLogin();
+            showLoginForm();
+        }
     }
+
+    private void login(String email, String password) {
+        boolean succ = false;
+        Commensal commensal;
+        commensal = new Commensal();
+        commensal.setPassword(password);
+        commensal.setEmail(email);
+        try {
+            SessionData.getInstance().addCommensal(commensal);
+        } catch (LocalStorageException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            SessionData.getInstance().loginCommensal();
+            succ = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (succ){
+            skip();
+        } else {
+            Toast.makeText(getBaseContext(),
+                    "Error al iniciar sesión",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }
 

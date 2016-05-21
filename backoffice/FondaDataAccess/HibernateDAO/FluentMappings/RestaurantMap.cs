@@ -66,11 +66,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .KeyColumn("fk_res_mencat")
                 .ExtraLazyLoad()
                 .Cascade.All();
-
-           HasMany(x => x.Employees)
-                .KeyColumn("fk_res_employee")
-                .ExtraLazyLoad()
-                .Cascade.All();
                 
             HasMany(x => x.Tables)
                 .KeyColumn("fk_res_table")
