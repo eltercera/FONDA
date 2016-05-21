@@ -48,24 +48,31 @@
       <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
-      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+      <HintPath>..\..\..\..\FONDA\backoffice\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="FluentNHibernate">
-      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <HintPath>..\..\..\..\FONDA\backoffice\BackOffice\bin\FluentNHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HibernateDAO\FluentMappings\ActiveReservationStatusMap.cs" />
     <Compile Include="FactoryDAO\FactoryDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CanceledInvoiceStatus.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\CanceledReservationStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CashPaymentMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CreditCardPaymentMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\GeneratedInvoiceStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\InvoiceMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\InvoiceStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\PaymentMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\ReservationMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\ReservationStatusMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\UsedReservationStatusMap.cs" />
+    <Compile Include="HibernateDAO\HibernateActiveReservationStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateBusyTableStatus.cs" />
+    <Compile Include="HibernateDAO\HibernateCanceledReservationStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCashPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDisableSimpleStatus.cs" />
@@ -100,9 +107,13 @@
     <Compile Include="HibernateDAO\HibernateEmployeeDAO.cs" />
     <Compile Include="HibernateDAO\HibernateMenuCategoryDAO.cs" />
     <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateReservationDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRoleDAO.cs" />
     <Compile Include="InterfaceDAO\IBusyTableStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IDisableSimpleStatusDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateUsedReservationStatus.cs" />
+    <Compile Include="InterfaceDAO\IActiveReservationStatusDAO.cs" />
+    <Compile Include="InterfaceDAO\ICanceledReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICashPaymentDAO.cs" />
     <Compile Include="InterfaceDAO\ICreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantCategoryDAO.cs" />
@@ -121,11 +132,13 @@
     <Compile Include="InterfaceDAO\IMenuCategoryDAO.cs" />
     <Compile Include="InterfaceDAO\IOrderAccountDao.cs" />
     <Compile Include="InterfaceDAO\IPaymentDao.cs" />
+    <Compile Include="InterfaceDAO\IReservationDAO.cs" />
     <Compile Include="InterfaceDAO\IRoleDAO.cs" />
     <Compile Include="InterfaceDAO\IRestaurantCategoryDAO.cs" />
     <Compile Include="InterfaceDAO\IRestaurantDAO.cs" />
     <Compile Include="InterfaceDAO\IScheduleDAO.cs" />
     <Compile Include="InterfaceDAO\ITableDAO.cs" />
+    <Compile Include="InterfaceDAO\IUsedReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IZoneDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InterfaceDAO\IBaseEntityDAO.cs" />
@@ -180,7 +193,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
