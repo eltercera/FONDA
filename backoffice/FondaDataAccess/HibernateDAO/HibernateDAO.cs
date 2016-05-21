@@ -119,8 +119,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return new HibernateTableDAO();
         }
 
+        public IReservationDAO GetReservationDAO()
+        {
+            return new HibernateReservationDAO();
+        }
 
-		public ActiveSimpleStatus GetActiveSimpleStatus()
+
+        public ActiveSimpleStatus GetActiveSimpleStatus()
 		{
 			IActiveSimpleStatusDAO s = new HibernateActiveSimpleStatus ();
 			return s.getActiveSimpleStatus ();

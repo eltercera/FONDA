@@ -29,7 +29,8 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 		IRestaurantDAO GetRestaurantDAO();
 		IScheduleDAO GetScheduleDAO();
 		ITableDAO GetTableDAO();
+        IReservationDAO GetReservationDAO();
 
-	}
+    }
 }
 

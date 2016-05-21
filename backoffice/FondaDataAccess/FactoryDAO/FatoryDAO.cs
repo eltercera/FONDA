@@ -139,7 +139,12 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 		{
 			return _factory.GetActiveSimpleStatus ();
 		}
-	}
+
+        public IReservationDAO GetReservationDAO()
+        {
+            return _factory.GetReservationDAO();
+        }
+    }
 }
 
 
