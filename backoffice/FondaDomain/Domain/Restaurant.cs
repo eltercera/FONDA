@@ -43,19 +43,16 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
 		private IList <MenuCategory> _menuCategories;
 
-
         /// <summary>
-        /// Lista de las mesas de un restaurante
+        /// Lista de mesas que tiene un restaurante
         /// </summary>
-        private IList <Table> _tables;
+        private IList<Table> _tables;
 
         /// <summary>
         /// Lista de commensal que tienen restaurante como favorito
         /// </summary>
-
         private IList<Commensal> _favoritesCommensal;
 	
-
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -154,11 +151,11 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe la lista de categorias de un Restaurante</value>
             set { _menuCategories = value; }
         }
-        
-        public virtual IList <Table> Tables
+
+        public virtual IList<Table> Tables
         {
             /// <summary>
-            /// Obtiene una lista de mesas de un Restaurante
+            /// Obtiene una lista de categorias del menu de un Restaurante
             /// </summary>
             get { return _tables; }
             /// <summary>
@@ -167,14 +164,14 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe la lista de mesas de un Restaurante</value>
             set { _tables = value; }
         }
+        
 
         public virtual IList<Commensal> FavoritesCommensals
         {
             get { return _favoritesCommensal; }
             set { _favoritesCommensal = value; }
         }
-
-
+        
         public virtual void AddFavoriteCommensal(Commensal commensal)
         {
             _favoritesCommensal.Add(commensal);

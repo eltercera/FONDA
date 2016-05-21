@@ -17,9 +17,32 @@ namespace com.ds201625.fonda.Domain
 		private int _capacity;
 
         /// <summary>
+		/// El numero unico de la mesa en el restaurate
+		/// </summary>
+        private int _number;
+
+        /// <summary>
         /// Estado simple de la mesa (Activo, No Activo)
         /// </summary>
         private TableStatus _status;
+
+        /// <summary>
+        /// Estado simple de la mesa (Activo, No Activo)
+        /// </summary>
+        private Restaurant _restaurant;
+
+
+        public virtual int Number
+        {
+            get { return _number; }
+            set { _number = value; }
+        }
+
+        public virtual Restaurant Restaurant
+        {
+            get { return _restaurant; }
+            set { _restaurant = value; }
+        }
 
         public virtual int Capacity
         {
@@ -33,5 +56,7 @@ namespace com.ds201625.fonda.Domain
             set { _status = value; }
         }
 
+        
     }
+
 }

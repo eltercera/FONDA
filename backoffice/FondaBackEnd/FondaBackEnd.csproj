@@ -86,7 +86,11 @@
       <DependentUpon>GeneralRes.resx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CurrentOrderFondaWebApiController.cs" />
+    <Compile Include="Controllers\InvoiceFondaWebApiController.cs" />
     <Compile Include="Controllers\HistoryVisitsFondaWebApiController.cs" />
+    <Compile Include="Controllers\InvoiceWebApiController.cs" />
+    <Compile Include="Controllers\OrderAccountWebApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

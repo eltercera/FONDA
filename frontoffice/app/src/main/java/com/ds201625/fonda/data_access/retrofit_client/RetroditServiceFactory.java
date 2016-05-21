@@ -1,6 +1,9 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
 import com.ds201625.fonda.data_access.factory.ServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitAllFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
@@ -38,5 +41,15 @@ public class RetroditServiceFactory implements ServiceFactory {
     @Override
     public TokenService getTokenService(Commensal commensal) {
         return new RetrofitTokenService(commensal);
+    }
+
+    @Override
+    public AllRestaurantService getAllRestaurantService() {
+        return new RetrofitAllRestaurantService();
+    }
+
+    @Override
+    public AllFavoriteRestaurantService getAllFavoriteRestaurantsService() {
+        return new RetrofitAllFavoriteRestaurantService();
     }
 }

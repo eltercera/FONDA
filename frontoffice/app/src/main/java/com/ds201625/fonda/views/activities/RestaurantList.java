@@ -9,28 +9,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Restaurant;
+
+import java.util.List;
 
 /**
  * Created by jesus on 13/04/16.
  */
 
-public class RestaurantList extends ArrayAdapter<String> {
+public class RestaurantList extends ArrayAdapter<Restaurant> {
 
     private final Activity context;
     private final String[] name;
     private final Integer[] imageId;
     private final String[] location;
     private final String[] shortDescription;
+    private final List<Restaurant> mRestaurantList;
 
     public RestaurantList(Activity context,
-                          String[] web, String[] location , String[] shortDescription, Integer[] imageId) {
-        super(context, R.layout.list_restaurant, web);
+                                  String[] web,String[] location , String[] shortDescription,Integer[] imageId, List<Restaurant> restaurantList) {
+        super(context, R.layout.list_restaurant, restaurantList);
         this.context = context;
         this.name = web;
         this.imageId = imageId;
         this.location = location;
         this.shortDescription = shortDescription;
-
+        this.mRestaurantList = restaurantList;
     }
 
     @Override
@@ -41,12 +45,29 @@ public class RestaurantList extends ArrayAdapter<String> {
         TextView txtTitle2 = (TextView) rowView.findViewById(R.id.txt2);
         TextView txtTitle3 = (TextView) rowView.findViewById(R.id.txt3);
 
+        int contador = 0;
 
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.img);
-        txtTitle.setText(name[position]);
-        txtTitle2.setText(location[position]);
-        txtTitle3.setText(shortDescription[position]);
-        imageView.setImageResource(imageId[position]);
+
+        for (Restaurant restaurante: this.mRestaurantList){
+            if (contador == position){
+                txtTitle.setText(restaurante.getName());
+                txtTitle2.setText(restaurante.getName());
+
+                //   Log.v("WEBSERVICEList", restaurante.getId() + "");
+                // Log.v("WEBSERVICEList",restaurante.getName());
+                //Log.v("WEBSERVICEList",restaurante.getAddress());
+            }
+            contador++;
+        }
+
+        try {
+            ImageView imageView = (ImageView) rowView.findViewById(R.id.img);
+            txtTitle3.setText(shortDescription[position]);
+            imageView.setImageResource(imageId[position]);
+        }catch (ArrayIndexOutOfBoundsException e){
+            //e.printStackTrace();
+        }
         return rowView;
+
     }
 }

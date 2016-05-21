@@ -29,7 +29,7 @@ namespace BackOffice.Seccion.Restaurant
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
-            IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetAll();
+            IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(1);
 
 
             int totalRows = listTable.Count; //tamano de la lista 

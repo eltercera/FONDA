@@ -141,4 +141,8 @@
     <value>&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;p class="stat"&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;</value>
     <comment>Estado Inactivo</comment>
   </data>
+  <data name="SessionRestaurant" xml:space="preserve">
+    <value>RestaurantID</value>
+    <comment>ID del Restaurante</comment>
+  </data>
 </root>
