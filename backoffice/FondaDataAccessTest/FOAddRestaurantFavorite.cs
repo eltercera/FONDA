@@ -213,22 +213,22 @@ namespace DataAccess
         {
             getRestaurantDao();
             getCommensalDao();
-            Restaurant _restaurantId1 = _restaurantDAO.FindById(4);
-            Restaurant _restaurantId2 = _restaurantDAO.FindById(5);
+            Restaurant _restaurantId1 = _restaurantDAO.FindById(1);
+            Restaurant _restaurantId2 = _restaurantDAO.FindById(2);
 
             Assert.NotNull(_restaurantId1);
             Assert.NotNull(_restaurantId2);
-            Assert.AreEqual(_restaurantId1.Id, 4);
-            Assert.AreEqual(_restaurantId2.Id, 5);
+            Assert.AreEqual(_restaurantId1.Id, 1);
+            Assert.AreEqual(_restaurantId2.Id, 2);
             Assert.AreNotSame(_restaurantId1, _restaurantId2);
             Assert.AreNotEqual(_restaurantId1.Id, 0);
             Assert.AreNotEqual(_restaurantId2.Id, 0);
 
             //findbyid para traerse objeto de commensal
-            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(8);
+            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(6);
 
             Assert.NotNull(_commensalId1);
-            Assert.AreEqual(_commensalId1.Id, 8);
+            Assert.AreEqual(_commensalId1.Id, 6);
             Assert.AreNotEqual(_commensalId1.Id, 0);
 
             addRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);

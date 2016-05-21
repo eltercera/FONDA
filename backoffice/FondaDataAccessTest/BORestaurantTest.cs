@@ -39,7 +39,7 @@ namespace DataAccessTests
             _restaurant.Ssn = "123456";
             _restaurant.Address = "Av. El ejercito con puente de San Juan";
             _restaurant.Status = _facDAO.GetActiveSimpleStatus();
-
+            _restaurant.PhoneNumber = "1223";
             Currency _currency = new Currency();
             _currency.Symbol = "C:/";
             _currency.Name = "Dolar";
@@ -50,9 +50,9 @@ namespace DataAccessTests
             _coordinate.Longitude = 4;
             _restaurant.Coordinate = _coordinate;
 
-            RestaurantCategory _restaurantCategory = new RestaurantCategory();
+            /*RestaurantCategory _restaurantCategory = new RestaurantCategory();
             _restaurantCategory.Name = "China";
-            _restaurant.RestaurantCategory = _restaurantCategory;
+            _restaurant.RestaurantCategory = _restaurantCategory;*/
 
              Zone _zone = new Zone();
              _zone.Name = "Caracas";
@@ -67,10 +67,10 @@ namespace DataAccessTests
             _schedule.ClosingTime = new TimeSpan(15, 0, 0);
             _restaurant.Schedule = _schedule;
 
-            Employee _employee = new Employee() { Name = "José", LastName = "Garcia" , Ssn = "19932801", PhoneNumber = "0414-11-63-457",
+           /* Employee _employee = new Employee() { Name = "José", LastName = "Garcia" , Ssn = "19932801", PhoneNumber = "0414-11-63-457",
             Address = "Direccion de Prueba", Gender = 'M', BirthDate = Convert.ToDateTime("08/08/1991"), Username = "Usuario",
             Status = _facDAO.GetActiveSimpleStatus(), UserAccount = new UserAccount() { Email = "email@gmail.com", Password = "123",
-            Status = _facDAO.GetActiveSimpleStatus()} , Role= new Role() { Name = "Administrador de Sistemas", Descripcion="Es el administrado"} };
+            Status = _facDAO.GetActiveSimpleStatus()} , Role= new Role() { Name = "Administrador de Sistemas", Descripcion="Es el administrado"} };*/
 
 
             Table _table = new Table() { Capacity = 2, Status = _facDAO.GetFreeTableStatus()  };
