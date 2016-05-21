@@ -119,12 +119,17 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return new HibernateTableDAO();
         }
 
+        public IReservationDAO GetReservationDAO()
+        {
+            return new HibernateReservationDAO();
+        }
         public IZoneDAO GetZoneDAO()
         {
             return new HibernateZoneDAO();
         }
 
-		public ActiveSimpleStatus GetActiveSimpleStatus()
+
+        public ActiveSimpleStatus GetActiveSimpleStatus()
 		{
 			IActiveSimpleStatusDAO s = new HibernateActiveSimpleStatus ();
 			return s.getActiveSimpleStatus ();
@@ -147,6 +152,25 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             IBusyTableStatusDAO s = new HibernateBusyTableStatus();
             return s.getBusyTableStatus();
         }
+    
+        public ActiveReservationStatus GetActiveReservationStatus()
+        {
+            IActiveReservationStatusDAO s = new HibernateActiveReservationStatus();
+            return s.getActiveReservationStatus();
+        }
+
+        public CanceledReservationStatus GetCanceledReservationStatus()
+        {
+            ICanceledReservationStatusDAO s = new HibernateCanceledReservationStatus();
+            return s.getCanceledReservationStatus();
+        }
+
+        public UsedReservationStatus GetUsedReservationStatus()
+        {
+            IUsedReservationStatusDAO s = new HibernateUsedReservationStatus();
+            return s.getUsedReservationStatus();
+        }
     }
 }
+
 

@@ -69,9 +69,10 @@
     <Compile Include="BODishOrderTest.cs" />
     <Compile Include="BODishTest.cs" />
     <Compile Include="BoEmployeeTest.cs" />
+    <Compile Include="BOReservationTest.cs" />
+    <Compile Include="BOMenuCategoryTest.cs" />
     <Compile Include="BORoleTest.cs" />
     <Compile Include="BOInvoiceTest.cs" />
-    <Compile Include="BOMenuCategoryTest.cs" />
     <Compile Include="BOOrderAccount.cs" />
     <Compile Include="BORestaurantCategoryTest.cs" />
     <Compile Include="BORestaurantTest.cs" />
