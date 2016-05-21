@@ -27,19 +27,6 @@ public class CurrentOrderServiceTest extends TestCase {
     }
 
 /*
- *  Metodo para probar que la lista esta vacia cuando no se ha conectado con el WS
- */
-    public void testListDishOrderIsEmpty() {
-
-        try {
-            listDishOrder = currentOrderService.getListDishOrder();
-            MoreAsserts.assertEmpty(listDishOrder);
-            assertEquals(0, listDishOrder.size());
-        }
-        catch (NullPointerException e){}
-    }
-
-/*
  *  Metodo para probar que la lista no esta vacia cuando se conecta con el WS
  */
     public void testListDishOrderIsNotEmpty() {

@@ -28,19 +28,6 @@ public class InvoiceServiceTest extends TestCase {
     }
 
     /*
-     *  Metodo para probar que la factura es nula cuando no se ha conectado con el WS
-     */
-    public void testInvoiceIsNull() {
-
-        try {
-            invoice = invoiceService.getCurrentInvoice();
-            assertNull(invoice);
-            assertEquals(null, invoice.getRestaurant().getName());
-        } catch (NullPointerException e) {
-        }
-    }
-
-    /*
    *  Metodo para probar que la factura no es nula cuando se ha conectado con el WS
    */
     public void testInvoiceIsNotNull() {

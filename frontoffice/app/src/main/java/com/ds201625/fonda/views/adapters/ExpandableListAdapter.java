@@ -117,14 +117,16 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView locationRestaurant = (TextView) convertView.findViewById(R.id.location_restaurant);
         TextView descriptionRestaurant = (TextView) convertView.findViewById(R.id.description_restaurant);
         if((restaurantList).equals("The dining room")) {
-            Context context = icon.getContext();
+            icon.setImageResource(R.mipmap.ic_restaurant003);
+           /* Context context = icon.getContext();
             int id = context.getResources().getIdentifier("ic_restaurant001", "mipmap", context.getPackageName());
-            icon.setImageResource(id);
+            icon.setImageResource(id);*/
         }
         if((restaurantList).equals("Mogi Mirin")) {
-            Context context = icon.getContext();
+            icon.setImageResource(R.mipmap.ic_restaurant003);
+          /*  Context context = icon.getContext();
             int id = context.getResources().getIdentifier("ic_restaurant002", "mipmap", context.getPackageName());
-            icon.setImageResource(id);
+            icon.setImageResource(id);*/
         }
         if((restaurantList).equals("Gordo & Magro")) {
             icon.setImageResource(R.mipmap.ic_restaurant003);
