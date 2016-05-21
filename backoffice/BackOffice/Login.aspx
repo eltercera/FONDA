@@ -55,8 +55,14 @@
                               </div>
                                   <div class="modal-body">
                                      <p>Introduzca el correo asociado a su cuenta, de no conocerlo contacte a su administrador</p>
+                                        <input type="text" name="correo" id="user" runat="server" placeholder="Usuario" 
+                                      class="form-control input-lg" value="" />  
                                      <input type="email" name="correo" id="RestablecerCorreo" runat="server" placeholder="Correo" 
-                                      class="form-control input-lg" value="" />         
+                                      class="form-control input-lg" value="" />   
+                                            <input type="password" name="correo" id="password1" runat="server" placeholder="Contraseña nueva" 
+                                      class="form-control input-lg" value="" />  
+                                            <input type="password" name="correo" id="password2" runat="server" placeholder="Repita la contraseña" 
+                                      class="form-control input-lg" value="" />        
                                   </div>
                                   <div class="modal-footer">
                                    <button type="button"   runat="server"    data-dismiss="modal" onserverclick="EnvioCorreo" class="btn btn-lg btn-success btn-block" style="background-color: #643C25;border-color: #000;"  >Restablecer</button>

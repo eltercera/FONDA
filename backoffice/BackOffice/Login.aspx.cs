@@ -87,25 +87,33 @@ namespace BackOffice.Seccion.Configuracion
             else
             {
                 _employee = _EmploDAO.FindByusername(userIni.Value);
-                if (_employee != null & _employee.UserAccount != null)
-                _userPassword = _employee.UserAccount.Password;
-                if (_employee != null &_employee.UserAccount != null & _userPassword == password)
+                if (_employee != null)
                 {
+                    if (_employee.UserAccount != null)
+                    _userPassword = _employee.UserAccount.Password;
+                    if (_employee != null & _employee.UserAccount != null & _userPassword == password)
+                    {
 
-                    Session[RecursoMaster.sessionRol] = _employee.Role.Name;
-                    Session[RecursoMaster.sessionName] = _employee.Name;
-                    Session[RecursoMaster.sessionLastname] = _employee.LastName;
-                    Session[RecursoMaster.sessionUserID] = _employee.Id;
-                    if (_employee.Restaurant != null)
-                    Session[RecursoMaster.sessionRestaurantID] = _employee.Restaurant.Id;
-                    else
-                        Session[RecursoMaster.sessionRestaurantID] ="0";
-                    mensajeLogin(false, mensajes.logErr, mensajes.tipoErr);
-                    if (_employee.Role.Name == "Sistema")
-                        Response.Redirect("~/Seccion/Restaurant/Restaurante.aspx");
-                    else
+                        Session[RecursoMaster.sessionRol] = _employee.Role.Name;
+                        Session[RecursoMaster.sessionName] = _employee.Name;
+                        Session[RecursoMaster.sessionLastname] = _employee.LastName;
+                        Session[RecursoMaster.sessionUserID] = _employee.Id;
+                        if (_employee.Restaurant != null)
+                            Session[RecursoMaster.sessionRestaurantID] = _employee.Restaurant.Id;
+                        else
+                            Session[RecursoMaster.sessionRestaurantID] = "0";
+                        mensajeLogin(false, mensajes.logErr, mensajes.tipoErr);
+                        if (_employee.Role.Name == "Sistema")
+                            Response.Redirect("~/Seccion/Restaurant/Restaurante.aspx");
+                        else
 
-                        Response.Redirect("Default.aspx");
+                            Response.Redirect("Default.aspx");
+                    }
+                    else
+                    {
+
+                        mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
+                    }
                 }
                 else
                 {
@@ -118,24 +126,47 @@ namespace BackOffice.Seccion.Configuracion
 
         public void EnviarCorreo()
         {
-
-            String CorreoDestino = RestablecerCorreo.Value;
-            if (CorreoDestino != "fonda@gmail.com")
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IEmployeeDAO _EmploDAO = factoryDAO.GetEmployeeDAO();
+            Employee _employee;
+            _employee = new Employee();
+            String email = RestablecerCorreo.Value;
+            String passwordnew1 = password1.Value;
+            String passwordnew2 = password2.Value;
+            String username = user.Value;
+            if (email != "" & passwordnew1 != "" & passwordnew2 != "" & username != "")
             {
+                _employee = _EmploDAO.FindByusername(username);
+                  
+                if (_employee != null)
+                {
 
-                mensajeLogin(true, mensajes.logWarning, mensajes.tipoWarning);
+                   
+                if (_employee.UserAccount != null)
+                {
+                    if (passwordnew1.Equals(password2))
+                    {
+                        mensajeLogin(true, mensajes.logInfo, mensajes.tipoInfo);
+
+
+                        string opcion = "true";
+                        Response.Redirect("Login.aspx?" + mensajes.tipoInfo + "=" + opcion);
+                    }
+                    else
+                        mensajeLogin(true, mensajes.logErrpasword, mensajes.tipoWarning);
+                }
+                else
+                    mensajeLogin(true, mensajes.logWarningcamp, mensajes.tipoWarning);
+
             }
             else
-            {
-                mensajeLogin(true, mensajes.logInfo, mensajes.tipoInfo);
+                    mensajeLogin(true, mensajes.logWarningcamp, mensajes.tipoWarning);
+            
+        }  else    
+                mensajeLogin(true, mensajes.logErrcampvac, mensajes.tipoInfo);
+    } 
 
 
-                string opcion = "true";
-                Response.Redirect("Login.aspx?" + mensajes.tipoInfo + "=" + opcion);
-            }
-            RestablecerCorreo.Value = "";
-
-
-        }
+                
     }
 }
