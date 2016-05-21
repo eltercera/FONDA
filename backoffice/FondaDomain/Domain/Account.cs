@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -21,7 +22,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Lista de ordenes de la cuenta.
         /// </summary>
-        private IList<DishOrder> _listDish;
+        private List<DishOrder> _listDish;
 
         /// <summary>
         /// Constructor
@@ -34,16 +35,15 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Retorna o asigna la mesa de una cuenta
         /// </summary>
+        [DataMember]
         public virtual Table Table
         {
             get { return _table; }
             set { _table = value; }
         }
 
-        /// <summary>
-        /// Retorna o asigna una lista de ordenes
-        /// </summary>
-        public virtual IList<DishOrder> ListDish
+        [DataMember]
+        public virtual List<DishOrder> ListDish
         {
             get { return _listDish; }
             set { _listDish = value; }
