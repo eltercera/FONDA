@@ -1,10 +1,8 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
 import android.util.Base64;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import java.io.IOException;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;

@@ -8,6 +8,7 @@ import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
+import com.ds201625.fonda.data_access.services.InvoiceService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
@@ -29,7 +30,6 @@ public class RetroditServiceFactory implements ServiceFactory {
     }
 
     @Override
-
     public CurrentOrderService getCurrentOrderService() {
         return new RetrofitCurrentOrderService();
 
@@ -64,5 +64,8 @@ public class RetroditServiceFactory implements ServiceFactory {
         return new RetrofitDeleteFavoriteRestaurant();
     }
 
+    public InvoiceService getInvoiceService() {
+        return new RetrofitInvoiceService();
+    }
 
 }
