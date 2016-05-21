@@ -152,7 +152,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             IBusyTableStatusDAO s = new HibernateBusyTableStatus();
             return s.getBusyTableStatus();
         }
-    }
+    
         public ActiveReservationStatus GetActiveReservationStatus()
         {
             IActiveReservationStatusDAO s = new HibernateActiveReservationStatus();
@@ -170,7 +170,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             IUsedReservationStatusDAO s = new HibernateUsedReservationStatus();
             return s.getUsedReservationStatus();
         }
+    }
+}
 
-}
-}
 

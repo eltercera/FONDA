@@ -71,6 +71,7 @@
     <Compile Include="HibernateDAO\FluentMappings\ReservationStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\UsedReservationStatusMap.cs" />
     <Compile Include="HibernateDAO\HibernateActiveReservationStatusDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateBusyTableStatus.cs" />
     <Compile Include="HibernateDAO\HibernateCanceledReservationStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCashPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCreditCardPaymentDAO.cs" />
