@@ -53,11 +53,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             account.addDish(dishO1);
             account.addDish(dishO2);
             account.addDish(dishO3);
-
-          /*  List<DishOrder> lista = new List<DishOrder>();
-              lista.Add(dishO1);
-              lista.Add(dishO2);
-              lista.Add(dishO3);*/
               
               return Ok(account.ListDish);
           }
