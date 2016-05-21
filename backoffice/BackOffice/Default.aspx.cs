@@ -71,7 +71,7 @@ namespace BackOffice
                 tRow.Attributes["data-id"] = Sugerencia[i].Id.ToString();
                 String ver_id = Sugerencia[i].Id.ToString();
                 //Agrega la fila a la tabla existente
-                MenuSugestion.Rows.Add(tRow);
+                TableDayMenuDashboard.Rows.Add(tRow);
                 for (int j = 0; j <= totalColumns; j++)
                 {
 
@@ -103,7 +103,7 @@ namespace BackOffice
             }
             //Agrega el encabezado a la Tabla
             TableHeaderRow header = GenerateTableHeader();
-            MenuSugestion.Rows.AddAt(0, header);
+            TableDayMenuDashboard.Rows.AddAt(0, header);
         }
 
 
@@ -140,7 +140,7 @@ namespace BackOffice
 
         public void CleanTable()
         {
-            MenuSugestion.Rows.Clear();
+            TableDayMenuDashboard.Rows.Clear();
 
         }
     }

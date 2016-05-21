@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="ListarCategoria.aspx.cs" Inherits="BackOffice.Seccion.Menu.ListarCategoria" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="True" CodeBehind="ListarCategoria.aspx.cs" Inherits="BackOffice.Seccion.Menu.ListarCategoria" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
     Categorias del Menu
@@ -29,7 +29,7 @@
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 
      <%--Alertas--%> 
-    <div id="AlertSuccess_AgregarCategoria" class="row" runat="server">
+    <div id="AlertSuccess_AddCategory" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert alert-success fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div id="AlertSuccess_ModificarCategoria" class="row" runat="server">
+    <div id="AlertSuccess_ModifyCategory" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert alert-success fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div id="AlertDanger_AgregarCategoria" class="row" runat="server">
+    <div id="AlertDanger_AddCategory" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert  alert-danger fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <div id="AlertDanger_ModificarCategoria" class="row" runat="server">
+    <div id="AlertDanger_ModifyCategory" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert alert-danger fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -73,12 +73,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i>Categorias</h3>
-                    <a data-toggle="modal" data-target="#agregar_categoria" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
+                    <a data-toggle="modal" data-target="#add_category" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <asp:HiddenField ID="MenuCatModifyId" runat="server" Value="" />
+                        <asp:HiddenField ID="HiddenFieldMenuCategoryModifyId" runat="server" Value="" />
                         <asp:Table ID="CategoryMenu" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                     </div>
                 </div>
@@ -88,7 +88,7 @@
     <%--/Tabla Categorias--%>
 
     <!-- Modal modificar categoria-->
-    <div class="modal fade" id="modificar" role="dialog">
+    <div class="modal fade" id="modify_category" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -108,15 +108,15 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <asp:Button ID="BotonModificarCategoria" Text="Modificar" CssClass="btn btn-success" OnClick="BotonModificarCategoria_Click" runat="server" />
-                    <asp:Button ID="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
+                    <asp:Button ID="ButtonModifyCategory" Text="Modificar" CssClass="btn btn-success" OnClick="ButtonModifyCategory_Click" runat="server" />
+                    <asp:Button ID="ButtonCancelModifyCategory" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Modal agregar categoria-->
-    <div class="modal fade" id="agregar_categoria" role="dialog">
+    <div class="modal fade" id="add_category" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -130,14 +130,14 @@
                         <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                             <div class="form-group">
                                 <label class="control-label">Nombre de la Categoria del menú</label>
-                                <asp:TextBox ID="Value1" CssClass="form-control" placeholder="ej. Menú Navideño" runat="server" />
+                                <asp:TextBox ID="TextBoxAddCategoryName" CssClass="form-control" placeholder="ej. Menú Navideño" runat="server" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <asp:Button ID="BotonAgregarCategoria" Text="Agregar" CssClass="btn btn-success" OnClick="BotonAgregarCategoria_Click" runat="server" />
-                    <asp:Button ID="BotonCancelarCategoria" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
+                    <asp:Button ID="ButtonAddCategory" Text="Agregar" CssClass="btn btn-success" OnClick="ButtonAddCategory_Click" runat="server" />
+                    <asp:Button ID="ButtonCancelAddCategory" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
                 </div>
             </div>
         </div>
@@ -152,10 +152,11 @@
         });
 
         function ajaxRes() {
+            <%-- El numero dentro del td:nth-child(3) referencia al numero de la columna de izquierda a derecha donde va a correr el script  --%>
             $('.table > tbody > tr > td:nth-child(3) > a')
                 .click(function (e) {
                     e.preventDefault();
-                    var prueba = document.getElementById("<%=MenuCatModifyId.ClientID%>").value;
+                    var prueba = document.getElementById("<%=HiddenFieldMenuCategoryModifyId.ClientID%>").value;
                     var params = "{'Id':'" + prueba + "'}";
                     $.ajax({
                         type: "POST",
@@ -165,6 +166,7 @@
                         dataType: "json",
                         success: function (response) {
                             var local = response;
+                            <%-- Aqui se ponen tantas asignaciones como inputs haya en el modal --%>
                             document.getElementById("<%=TextBoxModifyCategoryName.ClientID%>").value = local.d.Name;
                         },
                         failure: function (response) {
@@ -178,7 +180,7 @@
                 $('.table > tbody > tr > td:nth-child(3) > a')
                 .click(function () {
                     var padreId = $(this).parent().parent().attr("data-id");
-                    document.getElementById("<%=MenuCatModifyId.ClientID%>").value = padreId;
+                    document.getElementById("<%=HiddenFieldMenuCategoryModifyId.ClientID%>").value = padreId;
             });
         }
     </script>

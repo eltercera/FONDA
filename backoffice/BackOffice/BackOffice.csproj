@@ -544,10 +544,10 @@
     <Compile Include="Seccion\Menu\MenuDia.aspx.designer.cs">
       <DependentUpon>MenuDia.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Menu\RecursosMenu1.Designer.cs">
+    <Compile Include="Seccion\Menu\ResourceMenu.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RecursosMenu1.resx</DependentUpon>
+      <DependentUpon>ResourceMenu.resx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Reservas\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -663,9 +663,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Seccion\Menu\RecursosMenu1.resx">
+    <EmbeddedResource Include="Seccion\Menu\ResourceMenu.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>RecursosMenu1.Designer.cs</LastGenOutput>
+      <LastGenOutput>ResourceMenu.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

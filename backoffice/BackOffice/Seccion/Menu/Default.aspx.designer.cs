@@ -13,40 +13,40 @@ namespace BackOffice.Seccion.Menu {
     public partial class Default {
         
         /// <summary>
-        /// AlertSuccess_AgregarPlato control.
+        /// AlertSuccess_AddDish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_AgregarPlato;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_AddDish;
         
         /// <summary>
-        /// AlertSuccess_ModificarPlato control.
+        /// AlertSuccess_ModifyDish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ModificarPlato;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ModifyDish;
         
         /// <summary>
-        /// AlertDanger_AgregarPlato control.
+        /// AlertDanger_AddDish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertDanger_AgregarPlato;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertDanger_AddDish;
         
         /// <summary>
-        /// AlertDanger_ModificarPlato control.
+        /// AlertDanger_ModifyDish control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertDanger_ModificarPlato;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertDanger_ModifyDish;
         
         /// <summary>
         /// HiddenFieldDishModifyId control.

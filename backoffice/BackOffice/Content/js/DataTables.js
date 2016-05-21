@@ -108,7 +108,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#contenido_MenuSugestion').DataTable({
+    $('#contenido_TableDayMenuDashboard').DataTable({
         "language": spanish,
         "aoColumns": [
             null,
@@ -131,7 +131,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#contenido_sugerencia_dia').DataTable({
+    $('#contenido_TableDayMenu').DataTable({
         "language": spanish,
         "aoColumns": [
             null,

@@ -15,13 +15,13 @@ namespace BackOffice.Seccion.Menu
 
     public partial class MenuDia : System.Web.UI.Page
     {
-        IList<Dish> Sugerencia = new List<Dish>();
+        IList<Dish> ListSuggestionDish = new List<Dish>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             LoadTable();
         }
-		
+
         protected void LoadTable()
         {
 
@@ -44,22 +44,17 @@ namespace BackOffice.Seccion.Menu
 
                     for (int j = 0; j <= lenghtlistDish - 1; j++)
                     {
-
-
                         if (listDish[j].Suggestion == true)
                         {
-                            Sugerencia.Add(listDish[j]);
-
+                            ListSuggestionDish.Add(listDish[j]);
                         }
-
                     }
                 }
-
             }
 
 
 
-            int totalRows = Sugerencia.Count; //tamano de la lista 
+            int totalRows = ListSuggestionDish.Count; //tamano de la lista 
             int totalColumns = 2; //numero de columnas de la tabla
 
             //Recorremos la lista
@@ -68,10 +63,10 @@ namespace BackOffice.Seccion.Menu
                 //Crea una nueva fila de la tabla
                 TableRow tRow = new TableRow();
                 //Le asigna el Id a cada fila de la tabla
-                tRow.Attributes["data-id"] = Sugerencia[i].Id.ToString();
-                String ver_id = Sugerencia[i].Id.ToString();
+                tRow.Attributes["data-id"] = ListSuggestionDish[i].Id.ToString();
+                String ver_id = ListSuggestionDish[i].Id.ToString();
                 //Agrega la fila a la tabla existente
-                CategoryMenu.Rows.Add(tRow);
+                TableDayMenu.Rows.Add(tRow);
                 for (int j = 0; j <= totalColumns; j++)
                 {
 
@@ -79,9 +74,9 @@ namespace BackOffice.Seccion.Menu
                     TableCell tCell = new TableCell();
                     //Agrega el nombre de la categoria
                     if (j.Equals(0))
-                        tCell.Text = Sugerencia[i].Name;
+                        tCell.Text = ListSuggestionDish[i].Name;
                     if (j.Equals(1))
-                        tCell.Text = Sugerencia[i].Cost.ToString();
+                        tCell.Text = ListSuggestionDish[i].Cost.ToString();
                     //Agrega las acciones de la tabla
                     else if (j.Equals(2))
                     {
@@ -90,7 +85,7 @@ namespace BackOffice.Seccion.Menu
                         LinkButton action = new LinkButton();
                         action.Attributes["data-toggle"] = "modal";
                         action.Attributes["data-target"] = "#ver_plato";
-                        action.Text = RecursosMenu1.Accion_Sugerencia;
+                        action.Text = ResourceMenu.ActionMenuDia;
                         tCell.Controls.Add(action);
                     }
                     //Agrega la 
@@ -102,7 +97,7 @@ namespace BackOffice.Seccion.Menu
             }
             //Agrega el encabezado a la Tabla
             TableHeaderRow header = GenerateTableHeader();
-            CategoryMenu.Rows.AddAt(0, header);
+            TableDayMenu.Rows.AddAt(0, header);
         }
 
 
@@ -140,7 +135,7 @@ namespace BackOffice.Seccion.Menu
 
         public void CleanTable()
         {
-            CategoryMenu.Rows.Clear();
+            TableDayMenu.Rows.Clear();
 
         }
 

@@ -35,8 +35,8 @@ Menú Del Día
                    </div>
                    <div class="panel-body">
                        <div class="table-responsive">
-                           <asp:HiddenField ID="SugerenciaId" runat="server" Value="" />
-                           <asp:Table ID="CategoryMenu" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
+                           <asp:HiddenField ID="HiddenFieldSuggestionDishId" runat="server" Value="" />
+                           <asp:Table ID="TableDayMenu" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                        </div>
                    </div>
                </div>
@@ -68,7 +68,7 @@ Menú Del Día
                                                       <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                                              <div class="form-group">
                                                                   <label class="control-label">Nombre del plato</label>
-                                                                  <asp:TextBox ID="dishNombre" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
+                                                                  <asp:TextBox ID="TextBoxSeeDishName" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
                                         
                                                             </div>
                                                       </div>
@@ -77,7 +77,7 @@ Menú Del Día
                                                          <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
                                                             <div class="form-group">
                                                                 <label class="control-label">Descripción del Platillo</label>
-                                                                  <asp:TextBox ID="dishDescripcion" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
+                                                                  <asp:TextBox ID="TextBoxSeeDishDescription" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
                                                             </div>
                                                         </div> 
                                                     </div> 
@@ -85,7 +85,7 @@ Menú Del Día
                                                          <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                                             <div class="form-group">
                                                                 <label class="control-label">Precio</label>
-                                                                 <asp:TextBox ID="dishPrecio" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
+                                                                 <asp:TextBox ID="TextBoxSeeDishPrice" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
                                                             </div>
                                                         </div> 
                                                     </div> 
@@ -114,7 +114,7 @@ Menú Del Día
             $('.table > tbody > tr > td:nth-child(3) > a')
                 .click(function (e) {
                     e.preventDefault();
-                    var prueba = document.getElementById("<%=SugerenciaId.ClientID%>").value;
+                    var prueba = document.getElementById("<%=HiddenFieldSuggestionDishId.ClientID%>").value;
                     var params = "{'Id':'" + prueba + "'}";
 
                     $.ajax({
@@ -125,9 +125,9 @@ Menú Del Día
                         dataType: "json",
                         success: function (response) {
                             var local = response;
-                            document.getElementById("<%=dishNombre.ClientID%>").value = local.d.Name;
-                            document.getElementById("<%=dishDescripcion.ClientID%>").value = local.d.Description;
-                            document.getElementById("<%=dishPrecio.ClientID%>").value = local.d.Cost;
+                            document.getElementById("<%=TextBoxSeeDishName.ClientID%>").value = local.d.Name;
+                            document.getElementById("<%=TextBoxSeeDishDescription.ClientID%>").value = local.d.Description;
+                            document.getElementById("<%=TextBoxSeeDishPrice.ClientID%>").value = local.d.Cost;
 
                             ////aqui es donde tomo los valores de los textbox y se lo mando al modal con el getdata
                             //fijate que aqui estan los valores del modal de mostrar plato con sus elementos 
@@ -143,7 +143,7 @@ Menú Del Día
                    $('.table > tbody > tr > td:nth-child(3) > a')
                    .click(function () {
                        var padreId = $(this).parent().parent().attr("data-id");
-                       document.getElementById("<%=SugerenciaId.ClientID%>").value = padreId;
+                       document.getElementById("<%=HiddenFieldSuggestionDishId.ClientID%>").value = padreId;
 
                                 });
                             }

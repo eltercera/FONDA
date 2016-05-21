@@ -117,22 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Acciones" xml:space="preserve">
-    <value>&lt;a data-toggle="modal"  data-target="#modificar" &gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;</value>
+  <data name="ActionListarCategoria" xml:space="preserve">
+    <value>&lt;a data-toggle="modal"  data-target="#modify_category" &gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;</value>
   </data>
-  <data name="Acciones_asp2" xml:space="preserve">
-    <value>class="fa fa-pencil"&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;/td&gt;</value>
-  </data>
-  <data name="Accion_Sugerencia" xml:space="preserve">
+  <data name="ActionMenuDia" xml:space="preserve">
     <value>&lt;i class="fa fa-info-circle"&gt;</value>
   </data>
-  <data name="Activo" xml:space="preserve">
-    <value>&lt;td class="text-center"&gt;&lt;span class="label label-success"&gt;&lt;i class="fa fa-check"&gt;&lt;p class="stat"&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;</value>
+  <data name="ActionModifyDishMenuPrincipal" xml:space="preserve">
+    <value>&lt;a data-toggle="modal"  data-target="#modify_dish" &gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;</value>
   </data>
-  <data name="CerrarTR" xml:space="preserve">
+  <data name="ActionSetActiveDishMenuPrincipal" xml:space="preserve">
+    <value>&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;</value>
+  </data>
+  <data name="ActionSetInactiveDishMenuPrincipal" xml:space="preserve">
+    <value>&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>&lt;span class="label label-success"&gt;&lt;i class="fa fa-check"&gt;&lt;p class="stat"&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;</value>
+  </data>
+  <data name="AddDishMenuPrincipal" xml:space="preserve">
+    <value />
+  </data>
+  <data name="CloseTR" xml:space="preserve">
     <value>&lt;/tr&gt;</value>
   </data>
-  <data name="Inactivo" xml:space="preserve">
-    <value>&lt;td class="text-center"&gt;&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;p&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;</value>
+  <data name="Inactive" xml:space="preserve">
+    <value>&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;p class="stat"&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;</value>
   </data>
 </root>

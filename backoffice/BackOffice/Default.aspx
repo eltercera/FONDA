@@ -167,8 +167,8 @@
                    </div>
                    <div class="panel-body">
                        <div class="table-responsive">
-                           <asp:HiddenField ID="SugerenciaId" runat="server" Value="" />
-                           <asp:Table ID="MenuSugestion" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
+                           <asp:HiddenField ID="HiddenFieldSuggestionDishId" runat="server" Value="" />
+                           <asp:Table ID="TableDayMenuDashboard" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                        </div>
                    </div>
                </div>

@@ -13,10 +13,10 @@ namespace BackOffice.Seccion.Menu
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            AlertSuccess_AgregarCategoria.Visible = false;
-            AlertSuccess_ModificarCategoria.Visible = false;
-            AlertDanger_AgregarCategoria.Visible = false;
-            AlertDanger_ModificarCategoria.Visible = false;
+            AlertSuccess_AddCategory.Visible = false;
+            AlertSuccess_ModifyCategory.Visible = false;
+            AlertDanger_AddCategory.Visible = false;
+            AlertDanger_ModifyCategory.Visible = false;
             LoadTable();
         }
         protected void LoadTable()
@@ -58,8 +58,8 @@ namespace BackOffice.Seccion.Menu
                         //Crea hipervinculo para las acciones
                         LinkButton action = new LinkButton();
                         action.Attributes["data-toggle"] = "modal";
-                        action.Attributes["data-target"] = "#modificar";
-                        action.Text = RecursosMenu1.Acciones;
+                        action.Attributes["data-target"] = "#modify_category";
+                        action.Text = ResourceMenu.ActionListarCategoria;
                         tCell.Controls.Add(action);
                     }
                     //Agrega la 
@@ -112,24 +112,24 @@ namespace BackOffice.Seccion.Menu
 
         }
 
-        protected void BotonAgregarCategoria_Click(object sender, EventArgs e)
+        protected void ButtonAddCategory_Click(object sender, EventArgs e)
         {
             try
             {
                 FactoryDAO factoryDAO = FactoryDAO.Intance;
                 IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
                 MenuCategory _mencat = new MenuCategory();
-                String nombre = Value1.Text;
+                String nombre = TextBoxAddCategoryName.Text;
                 _mencat.Name = nombre;
                 _mencat.ListDish = null;
                 _mencat.Status = factoryDAO.GetActiveSimpleStatus();
                 _mencatDAO.Save(_mencat);
-                AlertSuccess_AgregarCategoria.Visible = true;
+                AlertSuccess_AddCategory.Visible = true;
             }
             //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
             catch (Exception exc)
             {
-                AlertDanger_AgregarCategoria.Visible = true;
+                AlertDanger_AddCategory.Visible = true;
                 System.Console.WriteLine("Excepcion capturada: {0}", exc);
             }
             finally
@@ -138,7 +138,7 @@ namespace BackOffice.Seccion.Menu
             }
         }
 
-        protected void BotonModificarCategoria_Click(object sender, EventArgs e)
+        protected void ButtonModifyCategory_Click(object sender, EventArgs e)
         {
 
             try
@@ -146,21 +146,21 @@ namespace BackOffice.Seccion.Menu
                 FactoryDAO factoryDAO = FactoryDAO.Intance;
                 IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
                 string nameCM;
-                string MenuCatID = MenuCatModifyId.Value;
+                string MenuCatID = HiddenFieldMenuCategoryModifyId.Value;
                 int idMenCat = int.Parse(MenuCatID);
                 MenuCategory _menucat = _mencatDAO.FindById(idMenCat);
                 nameCM = TextBoxModifyCategoryName.Text;
                 _menucat.Name = nameCM;
                 _menucat.Status = factoryDAO.GetActiveSimpleStatus();
                 _mencatDAO.Save(_menucat);
-             
-                AlertSuccess_ModificarCategoria.Visible = true;
+
+                AlertSuccess_ModifyCategory.Visible = true;
 
             }
             //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
             catch (Exception exc)
             {
-                AlertDanger_ModificarCategoria.Visible = true;
+                AlertDanger_ModifyCategory.Visible = true;
                 System.Console.WriteLine("Excepcion capturada: {0}", exc);
             }
             finally

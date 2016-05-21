@@ -28,8 +28,8 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 
-       <%--Alertas--%>
-    <div id="AlertSuccess_AgregarPlato" class="row" runat="server">
+    <%--Alertas--%>
+    <div id="AlertSuccess_AddDish" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert alert-success fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div id="AlertSuccess_ModificarPlato" class="row" runat="server">
+    <div id="AlertSuccess_ModifyDish" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert alert-success fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-       <div id="AlertDanger_AgregarPlato" class="row" runat="server">
+    <div id="AlertDanger_AddDish" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert  alert-danger fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <div id="AlertDanger_ModificarPlato" class="row" runat="server">
+    <div id="AlertDanger_ModifyDish" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert alert-danger fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -65,12 +65,13 @@
         </div>
     </div>
 
-     <%--/Alertas--%>
+    <%--/Alertas--%>
 
 
 
     <%--Tabla Platos vieja--%>
- <%--   <div class="row">
+
+    <%--   <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                             <div class="panel-heading">
@@ -271,10 +272,10 @@
                 <!-- /.row -->
             <!-- /.container-fluid -->--%>
 
-     <%--/Tabla Platos vieja--%>
+    <%--/Tabla Platos vieja--%>
 
     <%--Tabla Platos nueva--%>
-      <div class="row">
+    <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -292,174 +293,175 @@
         </div>
     </div>
 
-     <%--/ Tabla Platos nueva--%>
+    <%--/ Tabla Platos nueva--%>
 
-       <%-- Modals --%>
-       <!-- Modal modificar plato-->
-     <div class="modal fade" id="modify_dish" role="dialog">
-                <div class="modal-dialog">
+    <%-- Modals --%>
+    <!-- Modal modificar plato-->
+    <div class="modal fade" id="modify_dish" role="dialog">
+        <div class="modal-dialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Modificar Platillo</h4>
-                        </div>
-                            <div class="modal-body">
-                            
-                                <div class="row">
-                                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                         <div class="form-group">
-                                            <label class="control-label">Nombre del platillo</label>
-                                            <asp:TextBox ID="TextBoxModifyDishName" CssClass="form-control" placeholder="Pasta Carbonara" runat="server"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="form-group">
-                                            <label class="control-label">Descripcion del platillo</label>
-                                            <asp:TextBox ID="TextBoxModifyDishDescription" CssClass="form-control" placeholder="Pasta con tocineta y queso parmesano"  runat="server"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="form-group">
-                                            <label class="control-label">Precio del platillo</label>
-                                            <asp:TextBox ID="TextBoxModifyDishPrice" CssClass="form-control" placeholder="1000" MaxLength="5" runat="server"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="form-group">
-                                            <label for="ejemplo_archivo_1">Adjuntar una imagen del platillo</label>
-                                            <input type="file" id="ejemplo_archivo_1"/>
-                                            <p class="help-block">Imagen .jpg o .png</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            
-                                </div>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modificar Platillo</h4>
+                </div>
+                <div class="modal-body">
 
-
-                        <div class="modal-footer">
-                            <asp:Button ID="ButtonModifyDish" Text="Modificar" CssClass="btn btn-success" OnClick="ButtonModifyDish_Click" runat="server" />
-                            <asp:Button ID="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
+                    <div class="row">
+                        <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Nombre del platillo</label>
+                                <asp:TextBox ID="TextBoxModifyDishName" CssClass="form-control" placeholder="" runat="server" />
+                            </div>
                         </div>
                     </div>
-                 </div>
-   </div>
-    <!-- Modal Ver Plato-->
-     <div class="modal fade" id="see_dish" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Platillo</h4>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Descripcion del platillo</label>
+                                <asp:TextBox ID="TextBoxModifyDishDescription" CssClass="form-control" placeholder="" runat="server" />
                             </div>
-                                <div class="modal-body">
-                                     <div class="row">
-                                             <div class="col-lg-4 col-md-10 col-sm-10 col-xs-10">
-                                                    <div class="form-group">
-                                                          <img class="img-thumbnail" src="http://placehold.it/2600x2600" alt=""></td>
-                                                    </div>
-                                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Precio del platillo</label>
+                                <asp:TextBox ID="TextBoxModifyDishPrice" CssClass="form-control" placeholder="" MaxLength="5" runat="server" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label for="ejemplo_archivo_1">Adjuntar una imagen del platillo</label>
+                                <input type="file" id="ejemplo_archivo_1" />
+                                <p class="help-block">Imagen .jpg o .png</p>
+                            </div>
+                        </div>
+                    </div>
 
-                                             <div class="col-lg-8 col-md-10 col-sm-10 col-xs-10">
-                                                   <div class="row">
-                                                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                                             <div class="form-group">
-                                                                <label class="control-label">Nombre del platillo</label>
-                                                                 <p class="form-control-static">ej. Pasta Carbonara</p>
-                                                            </div>
-                                                      </div>
-                                                   </div>  
-                                                   <div class="row">
-                                                         <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Descripcion del platillo</label>
-                                                                      <p class="form-control-static">ej. pasta con tocineta y queso parmesano</p>
-                                                                   </div>
-                                                        </div> 
-                                                    </div> 
-                                                     <div class="row">
-                                                         <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                                            <div class="form-group">
-                                                                <label class="control-label">Precio</label>
-                                                                          <p class="form-control-static">ej. 1000 bsf</p>
-                                                         </div>
-                                                        </div> 
-                                                    </div> 
-                                            </div> 
-                                    
-                                </div>
-                         </div>
-                  
+                </div>
+
+
+                <div class="modal-footer">
+                    <asp:Button ID="ButtonModifyDish" Text="Modificar" CssClass="btn btn-success" OnClick="ButtonModifyDish_Click" runat="server" />
+                    <asp:Button ID="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
                 </div>
             </div>
-         </div>
+        </div>
+    </div>
+
+    <!-- Modal Ver Plato-->
+    <div class="modal fade" id="see_dish" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Platillo</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <img class="img-thumbnail" src="http://placehold.it/2600x2600" alt=""></td>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 col-md-10 col-sm-10 col-xs-10">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <label class="control-label">Nombre del platillo</label>
+                                        <p class="form-control-static">ej. Pasta Carbonara</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <label class="control-label">Descripcion del platillo</label>
+                                        <p class="form-control-static">ej. pasta con tocineta y queso parmesano</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                    <div class="form-group">
+                                        <label class="control-label">Precio</label>
+                                        <p class="form-control-static">ej. 1000 bsf</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- Modal agregar platillo-->
     <div class="modal fade" id="add_dish" role="dialog">
-                <div class="modal-dialog">
+        <div class="modal-dialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Agregar Platillo</h4>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Agregar Platillo</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Nombre del platillo</label>
+                                <asp:TextBox ID="TextBoxAddDishName" CssClass="form-control" placeholder="ej. pasta carbonara" runat="server" />
+                            </div>
                         </div>
-                            <div class="modal-body">
-                              
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                         <div class="form-group">
-                                            <label class="control-label">Nombre del platillo</label>
-                                            <asp:TextBox ID="TextBoxAddDishName" CssClass="form-control" placeholder="ej. pasta carbonara" runat="server"/>
-                                        </div>
-                                    </div>       
-                                </div>
-                                <div class="row">
-                                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="form-group">
-                                            <label class="control-label">Descripcion del platillo</label>
-                                            <asp:TextBox ID="TextBoxAddDishDescription" CssClass="form-control" placeholder="ej. pasta con tocineta y queso parmesano" runat="server"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="form-group">
-                                            <label class="control-label">Precio del platillo</label>
-                                            <asp:TextBox ID="TextboxAddDishPrice" CssClass="form-control" placeholder="ej. 1000" MaxLength="5" runat="server"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="form-group">
-                                            <label for="ejemplo_archivo_1">Adjuntar una imagen del platillo</label>
-                                            <input type="file" id="ejemplo_archivo_1"/>
-                                            <p class="help-block">Imagen .jpg o .png</p>
-                                        </div>
-                                    </div>
-                                </div>
-                        <div class="modal-footer">
-                           <asp:Button id="ButtonAddDish" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAddDish_Click"/>
-                           <asp:Button id="ButtonCancelAddDish" Text="Cancelar" CssClass="btn btn-danger" runat="server" OnClick="ButtonCancelAddDish_Click"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Descripcion del platillo</label>
+                                <asp:TextBox ID="TextBoxAddDishDescription" CssClass="form-control" placeholder="ej. pasta con tocineta y queso parmesano" runat="server" />
+                            </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Precio del platillo</label>
+                                <asp:TextBox ID="TextboxAddDishPrice" CssClass="form-control" placeholder="ej. 1000" MaxLength="5" runat="server" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label for="ejemplo_archivo_1">Adjuntar una imagen del platillo</label>
+                                <input type="file" id="ejemplo_archivo_1" />
+                                <p class="help-block">Imagen .jpg o .png</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="ButtonAddDish" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAddDish_Click" />
+                        <asp:Button ID="ButtonCancelAddDish" Text="Cancelar" CssClass="btn btn-danger" runat="server" OnClick="ButtonCancelAddDish_Click" />
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-      <%-- /Modals --%>
+    <%-- /Modals --%>
 
-      <!-- script -->
+    <!-- script -->
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -468,11 +470,12 @@
         });
 
         function ajaxRes() {
-            $('.table > tbody > tr > td:nth-child(3) > a')
+             <%-- El numero dentro del td:nth-child(3) referencia al numero de la columna de izquierda a derecha donde va a correr el script  --%>
+            $('.table > tbody > tr > td:nth-child(5) > a')
                 .click(function (e) {
                     e.preventDefault();
-                    var prueba = document.getElementById("<%=HiddenFieldDishModifyId.ClientID%>").value;
-                    var params = "{'Id':'" + prueba + "'}";
+                    var test = document.getElementById("<%=HiddenFieldDishModifyId.ClientID%>").value;
+                    var params = "{'Id':'" + test + "'}";
                     $.ajax({
                         type: "POST",
                         url: "Default.aspx/GetData",
@@ -481,7 +484,10 @@
                         dataType: "json",
                         success: function (response) {
                             var local = response;
+             <%-- Aqui se ponen tantas asignaciones como inputs haya en el modal --%>
                             document.getElementById("<%=TextBoxModifyDishName.ClientID%>").value = local.d.Name;
+                            document.getElementById("<%=TextBoxModifyDishDescription.ClientID%>").value = local.d.Description;
+                            document.getElementById("<%=TextBoxModifyDishPrice.ClientID%>").value = local.d.Cost;
                         },
                         failure: function (response) {
                             alert("_");
@@ -491,12 +497,12 @@
             }
 
             function setValue() {
-                $('.table > tbody > tr > td:nth-child(3) > a')
+                $('.table > tbody > tr > td:nth-child(5) > a')
                 .click(function () {
-                    var padreId = $(this).parent().parent().attr("data-id");
-                    document.getElementById("<%=HiddenFieldDishModifyId.ClientID%>").value = padreId;
-            });
-        }
+                    var parentId = $(this).parent().parent().attr("data-id");
+                    document.getElementById("<%=HiddenFieldDishModifyId.ClientID%>").value = parentId;
+                });
+            }
     </script>
 
 </asp:Content>
