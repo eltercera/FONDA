@@ -11,6 +11,7 @@ namespace BackOffice.Seccion.Restaurant
     public partial class Mesas : System.Web.UI.Page
     {
         FactoryDAO factoryDAO = FactoryDAO.Intance;
+        int _idRestaurant =1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,7 +30,7 @@ namespace BackOffice.Seccion.Restaurant
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
-            IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(1);
+            IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
 
 
             int totalRows = listTable.Count; //tamano de la lista 
@@ -181,9 +182,11 @@ namespace BackOffice.Seccion.Restaurant
             AlertSuccess_AddTable.Visible = true;
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             com.ds201625.fonda.Domain.Table _table = new com.ds201625.fonda.Domain.Table();
+            IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
             int capacity = int.Parse(DDLcapacityA.SelectedValue);
             _table.Capacity = capacity;
             _table.Status = factoryDAO.GetFreeTableStatus();
+            _table.Number = listTable.Count+1;
             _tableDAO.Save(_table);
             LoadDataTable();
         }

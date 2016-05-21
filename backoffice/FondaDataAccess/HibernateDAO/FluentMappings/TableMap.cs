@@ -26,6 +26,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable()
                 .Cascade.Persist();
 
+            References(x => x.Restaurant)
+            .Column("fk_tab_restaurant")
+            .Not.Nullable()
+            .Cascade.Persist();
+
         }
     }
 }

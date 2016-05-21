@@ -12,6 +12,7 @@ namespace BackOffice
     {
         FactoryDAO factoryDAO = FactoryDAO.Intance;
         IList<Dish> Sugerencia = new List<Dish>();
+        int _idRestaurant = 1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,7 +30,7 @@ namespace BackOffice
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
-            IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetAll();
+            IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
             
 
 
