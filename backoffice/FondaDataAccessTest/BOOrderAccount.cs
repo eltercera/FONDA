@@ -5,7 +5,7 @@ using NUnit.Framework;
 using System;
 
 
-namespace DataAccessTest
+namespace FondaDataAccessTest
 {
     [TestFixture()]
     class BOOrderAccount

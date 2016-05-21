@@ -5,7 +5,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 
-namespace DataAccessTests
+namespace FondaDataAccessTest
 {
     [TestFixture]
     public class BORestaurantTest
