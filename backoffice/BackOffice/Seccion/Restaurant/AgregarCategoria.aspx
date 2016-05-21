@@ -25,6 +25,42 @@ Agregar Categoria
   </div>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
+<div id="AlertError_ModificarCategoria" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-ban"></i> <strong>Error</strong> al modificar la categoría
+            </div>
+        </div>
+    </div>
+
+<div id="AlertError_AgregarCategoria" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-ban"></i> <strong>Error</strong> al agregar la categoría
+            </div>
+        </div>
+    </div>
+
+    <div id="AlertSuccess_AgregarCategoria" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> La categoría fue agregada <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
+
+    <div id="AlertSuccess_ModificarCategoria" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> La categoría fue modificada <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
+
         <div class="row">
            <div class="col-lg-12">
                         <div class="panel panel-default">
@@ -35,69 +71,9 @@ Agregar Categoria
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table id="CategoriaRest" class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Nombre</th>
-                                                <th class="no-sort">Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Venezolana</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Japonesa</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                   
-                                            <tr>
-                                                <td>Americana</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>China</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Arabe</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Mexicana</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                                <tr>
-                                                <td>Italiana</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                                <tr>
-                                                <td>Mediterranea</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Internacional</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Peruana</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tailandesa</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Suiza</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Francesa</td>
-                                                <td class="text-center"><a data-toggle="modal" data-target="#modificar"><i class="fa fa-pencil"></i></a></td>
-                                            </tr>                                               
-                                        </tbody>
-                                    </table>       
+                                        <asp:HiddenField ID="CategoryModifyId" runat="server" Value="" />
+
+                                        <asp:Table ID="CategoryRest" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                                 </div>
                             </div>
                         </div>
@@ -107,32 +83,34 @@ Agregar Categoria
             <!-- /.container-fluid -->
 
      <!-- Modal modificar categoria-->
-     <div class="modal fade" id="modificar" role="dialog">
-                <div class="modal-dialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Modificar Categoria</h4>
-                        </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
-                                        <div class="form-group">
-                                            <label class="control-label">Nombre</label>
-                                            <asp:TextBox ID="TextBox1" CssClass="form-control" placeholder="ej. China" runat="server" />
+             <div class="modal fade" id="modificar" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Modificar Categoria</h4>
+                                </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                                <div class="form-group">
+                                                    <label class="control-label">Nombre</label>
+                                                    <asp:TextBox ID="NombreCatM" CssClass="form-control" placeholder="ej. China" runat="server" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="modal-footer">
+                                        <asp:Button id="ButtonModificar" Text="Modificar" CssClass="btn btn-success" runat="server" OnClick="ButtonModificar_Click"/>
+                                        <asp:Button id="ButtonCancelarM" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <asp:Button id="Button3" Text="Modificar" CssClass="btn btn-success" runat="server"/>
-                                <asp:Button id="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
-                            </div>
-                        </div>
-                    </div>          
-    </div>
+                            </div>          
+            </div>
+
     
          <!-- Modal agregar categoria-->
      <div class="modal fade" id="agregar" role="dialog">
@@ -149,19 +127,66 @@ Agregar Categoria
                                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                             <div class="form-group">
                                                 <label class="control-label">Nombre</label>
-                                                <asp:TextBox ID="Value1" CssClass="form-control" placeholder="ej. Americana" runat="server"/>
+                                                <asp:TextBox ID="NombreCatA" CssClass="form-control" placeholder="ej. Americana" runat="server"/>
                                             </div>
                                     </div>
                                  </div>
                             </div>
                          <div class="modal-footer">
-                            <asp:Button id="Button1" Text="Agregar" CssClass="btn btn-success" runat="server"/>
-                            <asp:Button id="Button2" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonAgregar" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ButtonAgregar_Click" OnClientClick="cambiarValor"/>
+                            <asp:Button id="ButtonCancelarA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
                         </div>
                      </div>
                 </div>
     </div>
+    <script type="text/javascript">
 
+
+
+        $(document).ready(function () {
+            setValue();
+            ajaxRes();
+                });
+
+                    function ajaxRes(){
+                    $('.table > tbody > tr > td:nth-child(2) > a')
+                        .click(function (e) {
+                                    e.preventDefault();
+                                    var prueba = document.getElementById("<%=CategoryModifyId.ClientID%>").value;
+                                    var params = "{'Id':'" + prueba + "'}";
+
+                                    $.ajax({
+                                    type: "POST",
+                                    url: "AgregarCategoria.aspx/GetData",
+                                    data: params,
+                                    contentType: "application/json; charset=utf-8",
+                                    dataType: "json",
+                                    success: function (response) {
+                                        var local = response;
+                                        document.getElementById("<%=NombreCatM.ClientID%>").value = local.d.Name;
+                                         
+                                        
+
+                                    },
+                                    failure: function (response) {
+                                          alert("_");
+                                    }
+                                    });
+                        });
+                    }
+                    function setValue() {
+                        $('.table > tbody > tr > td:nth-child(2) > a')
+                        .click(function () {
+                            var padreId = $(this).parent().parent().attr("data-id");
+                            document.getElementById("<%=CategoryModifyId.ClientID%>").value = padreId;
+
+                        });
+                    }
+        
+
+
+
+    </script>
 
     </asp:Content>
 

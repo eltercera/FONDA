@@ -1,7 +1,6 @@
 package com.ds201625.fonda.views.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -19,9 +18,9 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.activities.OrdersActivity;
-import com.ds201625.fonda.views.activities.RegistrarTdcActivity;
 
-import org.w3c.dom.Text;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * Clase de Prueba para mostar el uso de Fragments
@@ -29,11 +28,8 @@ import org.w3c.dom.Text;
 public class OrderPaymentFragment extends BaseFragment {
 
 
-    private float amount = 4200;
-    private String[] pay = {"Monto Total " +
-            " Bs." + amount,
-            "Seleccionar Perfil",
-            "Seleccionar TDC"};
+    private float amount;
+    private String selectCC = "";
     private ListView lv1;
     private String [] values = {" % ", " Bs. "};
     private Spinner spinner;
@@ -42,6 +38,7 @@ public class OrderPaymentFragment extends BaseFragment {
     private View layout;
     private TextView tvAccount;
     private CreditCardFragment ccFrag;
+    private TextView date;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,18 +46,47 @@ public class OrderPaymentFragment extends BaseFragment {
 
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //Indicar el layout que va a usar el fragment
-         layout = inflater.inflate(R.layout.fragment_order_payment,container,false);
+    private void getAllElements(){
         tvAccount = (TextView)layout.findViewById(R.id.tvAccount);
         tvTip = (TextView)layout.findViewById(R.id.tvTip);
         etTip = (EditText)layout.findViewById(R.id.etTip);
         lv1 =(ListView)layout.findViewById(R.id.lVOrden);
+        date = (TextView)layout.findViewById(R.id.tvDate);
         spinner = (Spinner) layout.findViewById(R.id.spinner);
+    }
 
-        // Elements of the list
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //Indicar el layout que va a usar el fragment
+        layout = inflater.inflate(R.layout.fragment_order_payment,container,false);
+        getAllElements();
+        String selectedCCPass = null;
+        float amountRec = 0;
+
+        try {
+            amountRec = getArguments().getFloat("amount");
+            selectedCCPass = getArguments().getString("creditC");
+        }catch (NullPointerException n)
+        { n.getMessage();}
+        finally {
+            if(selectedCCPass != null) {
+                selectCC = selectedCCPass;
+                amount = amountRec;
+            }
+                amount = amountRec;
+
+        }
+
+
+        float always = amount;
+        //String that fill the listview
+        String[] pay = {"Monto Total " +
+                " Bs." + always,
+                "Seleccionar Perfil",
+                "Tarjeta de Crédito: "+selectCC};
+        // Add Elements to the list
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1, pay);
         lv1.setAdapter(adapter);
 
@@ -68,11 +94,16 @@ public class OrderPaymentFragment extends BaseFragment {
         ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(LTRadapter);
-
+        //sets date
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = df.format(c.getTime());
+        date.setText(formattedDate);
         EventReg();
 
         return layout;
     }
+
 
     private void setTip()
     {
@@ -123,21 +154,23 @@ public class OrderPaymentFragment extends BaseFragment {
                         //startActivity(cambio);
                         break;
                     case 2:
-                                if (ccFrag == null) {
-                                    ccFrag = new CreditCardFragment();
-                                    OrdersActivity.showFragment(ccFrag);
-                                    System.out.println("ENTROOOOOOOOOOOOOOO A LA TDC");
-                                }
+
+                         ccFrag = new CreditCardFragment();
+                         OrdersActivity.showFragment(ccFrag);
+                         System.out.println("ENTROOOOOOOOOOOOOOO A LA TDC");
+
+
                         break;
                 }
             }
         });
     }
 
-    //La vista ha sido creada y cualquier configuración guardada está cargada
+     //La vista ha sido creada y cualquier configuración guardada está cargada
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
+        EventReg();
         // Verify and reflects the amount of the tip
 
         etTip.addTextChangedListener(new TextWatcher() {

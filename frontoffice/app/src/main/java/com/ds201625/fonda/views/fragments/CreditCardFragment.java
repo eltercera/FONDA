@@ -4,17 +4,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.views.activities.HandlerSQLite;
 
 
 /**
@@ -22,10 +18,10 @@ import com.ds201625.fonda.domains.Profile;
  */
 public class CreditCardFragment extends BaseFragment {
 
-    //Elementos de la vista
+    //View elements
     private Spinner spn;
-    private String [] values = {" 1234568901234567890 ", " 09876543211234567890"};
     private View form;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,9 +34,11 @@ public class CreditCardFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         form = inflater.inflate(R.layout.fragment_add_n_select_cc, container, false);
         spn = (Spinner) form.findViewById(R.id.spinnerCC);
-        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
+        HandlerSQLite handlerSQLite = new HandlerSQLite(this.getContext());
+        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, handlerSQLite.read());
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spn.setAdapter(LTRadapter);
+
         return form;
     }
 
@@ -54,5 +52,6 @@ public class CreditCardFragment extends BaseFragment {
     public void onDetach() {
         super.onDetach();
     }
+
 
 }

@@ -53,21 +53,21 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return new HibernateMenuCategoryDAO();
         }
-			
+
         public IRoleDAO GetRoleDAO()
         {
             return new HibernateRoleDAO();
 
         }
         public IEmployeeDAO GetEmployeeDAO()
-		{
-        	return new HibernateEmployeeDAO();
-		}
+        {
+            return new HibernateEmployeeDAO();
+        }
 
-		public ITokenDAO GetTokenDAO()
-		{
-			return new HibernateTokenDAO ();
-		}
+        public ITokenDAO GetTokenDAO()
+        {
+            return new HibernateTokenDAO();
+        }
 
         public IInvoiceDao GetInvoiceDAO()
         {
@@ -123,6 +123,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return new HibernateReservationDAO();
         }
+        public IZoneDAO GetZoneDAO()
+        {
+            return new HibernateZoneDAO();
+        }
 
 
         public ActiveSimpleStatus GetActiveSimpleStatus()
@@ -131,6 +135,24 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 			return s.getActiveSimpleStatus ();
 		}
 
+        public DisableSimpleStatus GetDisableSimpleStatus()
+        {
+            IDisableSimpleStatusDAO s = new HibernateDisableSimpleStatus();
+            return s.getDisableSimpleStatus();
+        }
+
+        public FreeTableStatus GetFreeTableStatus()
+        {
+            IFreeTableStatusDAO s = new HibernateFreeTableStatus();
+            return s.getFreeTableStatus();
+        }
+
+        public BusyTableStatus GetBusyTableStatus()
+        {
+            IBusyTableStatusDAO s = new HibernateBusyTableStatus();
+            return s.getBusyTableStatus();
+        }
+    }
         public ActiveReservationStatus GetActiveReservationStatus()
         {
             IActiveReservationStatusDAO s = new HibernateActiveReservationStatus();

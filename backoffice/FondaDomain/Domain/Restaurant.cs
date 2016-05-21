@@ -43,10 +43,6 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
 		private IList <MenuCategory> _menuCategories;
 
-        /// <summary>
-        /// Lista de empleados de un restaurante
-        /// </summary>
-        private IList <Employee> _employees;
 
         /// <summary>
         /// Lista de las mesas de un restaurante
@@ -94,7 +90,7 @@ namespace com.ds201625.fonda.Domain
             set { _currency = value; }
         }
 
-        public virtual Coordinate coordinate
+        public virtual Coordinate Coordinate
         {
             /// <summary>
             /// Obtiene las coordenadas de un restaurante
@@ -132,7 +128,7 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe la zona de ubicacion del restaurante</value>
             set { _zone = value; }
         }
-
+        
         public virtual Schedule Schedule
         {
             /// <summary>
@@ -158,20 +154,7 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe la lista de categorias de un Restaurante</value>
             set { _menuCategories = value; }
         }
-
-        public virtual IList <Employee> Employees
-        {
-            /// <summary>
-            /// Obtiene una lista de empleados de un Restaurante
-            /// </summary>
-            get { return _employees; }
-            /// <summary>
-            /// Asigna una lista de empleados de un Restaurante
-            /// </summary>
-            /// <value>Recibe la lista de empleados de un Restaurante</value>
-            set { _employees = value; }
-        }
-
+        
         public virtual IList <Table> Tables
         {
             /// <summary>

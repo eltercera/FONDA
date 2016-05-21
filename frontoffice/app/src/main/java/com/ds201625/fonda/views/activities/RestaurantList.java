@@ -24,7 +24,7 @@ public class RestaurantList extends ArrayAdapter<String> {
 
     public RestaurantList(Activity context,
                           String[] web, String[] location , String[] shortDescription, Integer[] imageId) {
-        super(context, R.layout.list_favorite_restaurant, web);
+        super(context, R.layout.list_restaurant, web);
         this.context = context;
         this.name = web;
         this.imageId = imageId;
@@ -36,7 +36,7 @@ public class RestaurantList extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View rowView = inflater.inflate(R.layout.list_favorite_restaurant, null, true);
+        View rowView = inflater.inflate(R.layout.list_restaurant, null, true);
         TextView txtTitle = (TextView) rowView.findViewById(R.id.txt);
         TextView txtTitle2 = (TextView) rowView.findViewById(R.id.txt2);
         TextView txtTitle3 = (TextView) rowView.findViewById(R.id.txt3);

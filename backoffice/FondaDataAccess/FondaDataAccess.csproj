@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HibernateDAO\FluentMappings\ActiveReservationStatusMap.cs" />
+    <Compile Include="FactoryDAO\FactoryDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CanceledInvoiceStatus.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CanceledReservationStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CashPaymentMap.cs" />
@@ -73,6 +74,8 @@
     <Compile Include="HibernateDAO\HibernateCanceledReservationStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCashPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCreditCardPaymentDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateDisableSimpleStatus.cs" />
+    <Compile Include="HibernateDAO\HibernateFreeTableStatus.cs" />
     <Compile Include="HibernateDAO\HibernatePaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateInvoiceDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\AccountStatusMap.cs" />
@@ -105,6 +108,8 @@
     <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
     <Compile Include="HibernateDAO\HibernateReservationDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRoleDAO.cs" />
+    <Compile Include="InterfaceDAO\IBusyTableStatusDAO.cs" />
+    <Compile Include="InterfaceDAO\IDisableSimpleStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateUsedReservationStatus.cs" />
     <Compile Include="InterfaceDAO\IActiveReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICanceledReservationStatusDAO.cs" />
@@ -121,6 +126,7 @@
     <Compile Include="InterfaceDAO\IDishDAO.cs" />
     <Compile Include="InterfaceDAO\IDishOrderDAO.cs" />
     <Compile Include="InterfaceDAO\IEmployeeDAO.cs" />
+    <Compile Include="InterfaceDAO\IFreeTableStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IInvoiceDao.cs" />
     <Compile Include="InterfaceDAO\IMenuCategoryDAO.cs" />
     <Compile Include="InterfaceDAO\IOrderAccountDao.cs" />
@@ -170,12 +176,11 @@
     <Compile Include="InterfaceDAO\ITokenDAO.cs" />
     <Compile Include="HibernateDAO\HibernateTokenDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\TokenMap.cs" />
-    <Compile Include="FondaDAOExceptions\SaveEntityFondaDAOException.cs" />
-    <Compile Include="FondaDAOExceptions\FondaDAOException.cs" />
+    <Compile Include="Exceptions\SaveEntityFondaDAOException.cs" />
+    <Compile Include="Exceptions\FondaDAOException.cs" />
     <Compile Include="InterfaceDAO\IActiveSimpleStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateActiveSimpleStatus.cs" />
     <Compile Include="FactoryDAO\IFactoryDAO.cs" />
-    <Compile Include="FactoryDAO\FatoryDAO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -203,14 +208,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Reservation.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Reservation_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Reservation.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
 </Project>

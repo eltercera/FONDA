@@ -12,6 +12,12 @@ public class Table {
         super();
     }
 
+    public Table(Integer number, Integer capacity) {
+        this.number = number;
+        this.capacity = capacity;
+    }
+
+
     public Integer getNumber() {
         return number;
     }

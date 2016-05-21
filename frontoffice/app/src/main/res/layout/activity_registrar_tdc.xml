@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".views.activities.RegistrarTdcActivity"
+    tools:context=".views.activities.RegisterCCActivity"
     android:orientation="vertical">
 
     <TableRow

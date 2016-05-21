@@ -5,7 +5,8 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
 	public class HibernateStatusDAO<T> : HibernateBaseEntityDAO<T>, IStatusDAO<T>
-		where T : Status
+        where T: Status
+
 	{
 
 	}

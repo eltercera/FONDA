@@ -28,7 +28,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
 
             References(x => x.Status)
-                .Column("fk_dis_status");
+                .Column("fk_dis_status")
+                .Cascade.Persist();
                 
 
             /*     References(x => x.RecordStatus)

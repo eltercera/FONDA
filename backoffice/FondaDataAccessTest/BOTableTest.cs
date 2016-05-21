@@ -73,6 +73,7 @@ namespace DataAccessTests
                 _table = new Table();
 
             _table.Capacity = 2;
+            //FreeTableStatus :(
             _table.Status = FreeTableStatus.Instance;
 
         }
@@ -82,6 +83,7 @@ namespace DataAccessTests
         {
             Assert.IsNotNull(_table);
             Assert.AreEqual(_table.Capacity, 2);
+            //FreeTableStatus :(
             Assert.AreEqual(_table.Status, FreeTableStatus.Instance);
         }
 

@@ -3,7 +3,7 @@ package com.ds201625.fonda.domains;
 /**
  * Clase base Nombrada.
  */
-public class NounBaseEntity extends BaseEntity {
+public abstract class NounBaseEntity extends BaseEntity {
 
     /**
      * Sustantivo de la entidad
