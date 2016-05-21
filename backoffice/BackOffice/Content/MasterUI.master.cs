@@ -108,6 +108,7 @@ public partial class MasterUI : System.Web.UI.MasterPage
         Session[RecursoMaster.sessionName] = null;
         Session[RecursoMaster.sessionLastname] = null;
         Session[RecursoMaster.sessionUserID] = null;
+        Session[RecursoMaster.sessionRestaurantID] = null;
         Response.Redirect("~/Login.aspx");
 
     }

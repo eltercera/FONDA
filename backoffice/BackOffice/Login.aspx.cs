@@ -75,6 +75,7 @@ namespace BackOffice.Seccion.Configuracion
             Employee _employee;
             _employee = new Employee();
             string user = userIni.Value;
+              string _userPassword="";
             string password = passwordIni.Value;
             Console.WriteLine("imprimiendo valor :");
             Console.WriteLine(user);
@@ -86,15 +87,19 @@ namespace BackOffice.Seccion.Configuracion
             else
             {
                 _employee = _EmploDAO.FindByusername(userIni.Value);
-                string _userPassword = _employee.UserAccount.Password;
-                if (_employee != null & _userPassword == password)
+                if (_employee != null & _employee.UserAccount != null)
+                _userPassword = _employee.UserAccount.Password;
+                if (_employee != null &_employee.UserAccount != null & _userPassword == password)
                 {
-
 
                     Session[RecursoMaster.sessionRol] = _employee.Role.Name;
                     Session[RecursoMaster.sessionName] = _employee.Name;
                     Session[RecursoMaster.sessionLastname] = _employee.LastName;
                     Session[RecursoMaster.sessionUserID] = _employee.Id;
+                    if (_employee.Restaurant != null)
+                    Session[RecursoMaster.sessionRestaurantID] = _employee.Restaurant.Id;
+                    else
+                        Session[RecursoMaster.sessionRestaurantID] ="0";
                     mensajeLogin(false, mensajes.logErr, mensajes.tipoErr);
                     if (_employee.Role.Name == "Sistema")
                         Response.Redirect("~/Seccion/Restaurant/Restaurante.aspx");
