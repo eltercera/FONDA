@@ -17,6 +17,8 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
@@ -28,21 +30,28 @@ import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
 import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
 import com.ds201625.fonda.views.fragments.ProfileListFragment;
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrdersActivity extends BaseNavigationActivity implements ProfileListFragment.profileListFragmentListener {
 
-
+    private static int pos;
     /**
      * Iten del Menu
      */
     private static MenuItem cerrarBotton;
     private static MenuItem sendBotton;
     private static MenuItem cancelBotton;
-    private static MenuItem buscarBotton;
+    private static MenuItem searchHistButton;
     private static MenuItem sendPayBotton;
     private static MenuItem cancelPayBotton;
     private static MenuItem downloadBotton;
+    /**
+     * Button that accepts the credit card selected
+     */
     private static MenuItem acceptCCButton;
+    /**
+     * Button that saves a new credit card
+     */
     private static MenuItem saveCCButton;
     /**
      * Fragment de la lista
@@ -50,22 +59,19 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
     private static CurrentOrderFragment orderListFrag;
 
     /**
-     * Credit Card
+     * Interface for the Credit Card
      */
     private EditText number, name,idOwner,expiration,cvv;
     private RadioButton rBVisa,rBMaster;
     private Spinner spinner;
-    private Button saveCC;
+    /**
+     * Amount of the check (subtotal+tax)
+     */
     private float a;
     /**
      * Administrador de Fragments
      */
     private static FragmentManager fm;
-
-    /**
-     * ToolBarr
-     */
-    // private Toolbar tb;
 
     private BaseSectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -80,10 +86,16 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
     private static OrderPaymentFragment ordPay;
 
     private static InvoiceFragment factFrag;
-
+    /**
+     * Fragment for saving Credit Card
+     */
     private static CreditCardFragment ccFrag;
-
+    /**
+     * Fragment of the List of Profiles
+     */
     private static ProfileListFragment profFrag;
+
+    private static HistoryVisitFragment histFrag;
 
     private void getAllElements(){
         mViewPager = (ViewPager) findViewById(R.id.containerO);
@@ -118,10 +130,10 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         tb.setupWithViewPager(mViewPager);
 
         orderListFrag = new CurrentOrderFragment();
-
+        histFrag =  new HistoryVisitFragment();
         //Tab con solo un String como titulo
         mSectionsPagerAdapter.addFragment("Orden Actual", orderListFrag);
-        mSectionsPagerAdapter.addFragment("Historial de Visitas", new HistoryVisitFragment());
+        mSectionsPagerAdapter.addFragment("Historial de Visitas", histFrag);
 
         //Importante ejecutar esto para que se creen los iconos en el tab.
         mSectionsPagerAdapter.iconsSetup();
@@ -140,12 +152,13 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.orders, menu);
         cerrarBotton = menu.findItem(R.id.close);
         sendBotton = menu.findItem(R.id.action_favorite_send);
         cancelBotton = menu.findItem(R.id.action_favorite_cancel);
-        buscarBotton = menu.findItem(R.id.action_favorite_search);
+        searchHistButton = menu.findItem(R.id.action_favorite_search_hist);
         sendPayBotton = menu.findItem(R.id.action_favorite_send_pay);
         cancelPayBotton = menu.findItem(R.id.action_favorite_cancel_pay);
         downloadBotton = menu.findItem(R.id.action_favorite_download);
@@ -167,10 +180,18 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         tb.setVisibility(View.GONE);
 
         //Muestra y oculta compnentes.
-        if (fragment.equals(orderListFrag)) {
+
+            if (fragment.equals(orderListFrag)) {
+                if (cerrarBotton != null)
+                    cerrarBotton.setVisible(true);
+            }
+        if(fragment.equals(histFrag)){
             if (cerrarBotton != null)
-                cerrarBotton.setVisible(true);
-        } else if (fragment.equals(prueba2)) {
+            cerrarBotton.setVisible(false);
+            if (searchHistButton != null)
+                searchHistButton.setVisible(true);
+        }
+        else if (fragment.equals(prueba2)) {
             if (cerrarBotton != null)
                 cerrarBotton.setVisible(false);
             if ((sendBotton != null) && (cancelBotton != null)) {
@@ -252,7 +273,7 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
             case R.id.close:
                 cerrar();
                 break;
-            case R.id.action_favorite_search:
+            case R.id.action_favorite_search_hist:
                 buscar();
                 break;
             case R.id.action_favorite_send:
@@ -326,6 +347,10 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         salir();
     }
 
+    /**
+     * Allows to select only one radio button
+     * @param view
+     */
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         String typeOfCC = null;
@@ -346,7 +371,9 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         }
     }
 
-
+    /**
+     * Saves the credit card on SqLite Database
+     */
     public void saveCC(){
         getAllElements();
         HandlerSQLite handlerSQLite = new HandlerSQLite(this);
@@ -370,7 +397,9 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
     }
 
-
+    /**
+     * Gets the credit card selected
+     */
     public void acceptCC (){
         Bundle args = new Bundle();
         spinner = (Spinner) findViewById(R.id.spinnerCC);
@@ -380,15 +409,16 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
             args.putString("creditC", cc);
             ordPay.setArguments(args);
             showFragment(ordPay);
-
-
     }
 
+    /**
+     * Obtains the total amount (subtotal + tax) from the previous fragment
+     * @return amountT amount of the bill
+     */
     public float amount (){
         Bundle args = new Bundle();
         CloseAccountFragment cls = new CloseAccountFragment();
         float amountT = cls.getAmount();
-        System.out.println("AMOUNT: " + amountT);
         ordPay = new OrderPaymentFragment();
         args.putFloat("amount", amountT);
         ordPay.setArguments(args);
@@ -396,7 +426,9 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         return amountT;
     }
 
-
+    /**
+     * Validates all fields on fragment Credit Card
+     */
     public void validationCC (){
         getAllElements();
         saveCCButton.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -409,6 +441,9 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
     }
 
+    /**
+     * Contains the methods that validate the fields
+     */
     public void validate(){
         String numberCC = number.getText().toString();
         String nameCC = name.getText().toString();
@@ -435,6 +470,12 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         }
 
     }
+
+    /**
+     * validates that the Credit Card number is larger that 20 numbers
+     * @param numberC number of credit card
+     * @return true if its not 20 digits and false if it is
+     */
     public boolean validateCCNumber(String numberC){
         boolean op = true;
             if (numberC.isEmpty() || numberC.length() < 20) {
@@ -444,6 +485,11 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         return op;
     }
 
+    /**
+     * Validates if the field is empty
+     * @param nameO name of the owner
+     * @return true if its not empty and false if it is
+     */
     private boolean validateNameOwner(String nameO){
         boolean op = true;
         if(nameO.isEmpty()){
@@ -453,6 +499,11 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         return op;
     }
 
+    /**
+     * Validates if the field is empty
+     * @param id id of the owner
+     * @return op true if its not empty and false if it is
+     */
     private boolean validateIdOwner(String id){
         boolean op = true;
         if(id.isEmpty()) {
@@ -462,6 +513,11 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         return op;
     }
 
+    /**
+     * Validates if the field is empty
+     * @param dateC date of expiring
+     * @return op true if its not empty and false if it is
+     */
     private boolean validateDate(String dateC){
         boolean op = true;
         if(dateC.isEmpty()) {
@@ -471,6 +527,11 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         return op;
     }
 
+    /**
+     * Validates if the field is empty
+     * @param cvvC
+     * @return op true if its not empty and false if it is
+     */
      private boolean validateCvv(String cvvC){
         boolean op = true;
         if(cvvC.isEmpty() || cvvC.length() < 3 ) {
@@ -480,7 +541,10 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         return op;
     }
 
-
+    /**
+     * Methods implemented of the profile
+     * @param profile profiles saved
+     */
     @Override
     public void OnProfileSelect(Profile profile) {
         Bundle args = new Bundle();
@@ -506,10 +570,21 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
     }
 
+    /**
+     * changes the fragment depending of the parameter
+     * @param opc
+     */
     public static void changeFrag (int opc){
         if(opc == 1){
+            List<Profile> p;
             profFrag = new ProfileListFragment();
-            showFragment(profFrag);
+            Bundle args = new Bundle();
+            args.putBoolean("multiSelect",true);
+            profFrag.setArguments(args);
+            ProfileService ps = FondaServiceFactory.getInstance().getProfileService();
+            p=ps.getProfiles();
+            profFrag.seProfiles(p);
+
         }
         if(opc == 2) {
             ccFrag = new CreditCardFragment();
