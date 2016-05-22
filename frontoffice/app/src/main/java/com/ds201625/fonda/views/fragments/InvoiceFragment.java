@@ -180,17 +180,12 @@ public class InvoiceFragment extends BaseFragment {
         Invoice invoiceWS;
         logicInvoice = new LogicInvoice();
         try {
-            invoiceWS=logicInvoice.getInvoiceSW().getCurrentInvoice();
+            invoiceWS=logicInvoice.getInvoiceSW();
             System.out.println("Restaurant de la factura:  " + invoiceWS.getRestaurant().getName());
             return invoiceWS;
-        }
-        catch (RestClientException e) {
+        } catch (RestClientException e) {
             e.printStackTrace();
-        }
-        catch (NullPointerException e){
-            System.out.println("No es posible realizar la conexión con el Web Server ");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error en la Conexión");
         }
         return null;

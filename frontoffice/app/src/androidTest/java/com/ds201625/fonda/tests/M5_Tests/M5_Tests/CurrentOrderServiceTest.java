@@ -3,6 +3,7 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests;
 import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.domains.DishOrder;
 
@@ -45,8 +46,12 @@ public class CurrentOrderServiceTest extends TestCase {
      */
     public void testListDishOrderIsNotEmpty() {
 
+        try {
         listDishOrder = currentOrderService.getListDishOrder();
         assertFalse(listDishOrder.isEmpty());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
     }
 
     /*
@@ -59,8 +64,11 @@ public class CurrentOrderServiceTest extends TestCase {
             MoreAsserts.assertNotEmpty(listDishOrder);
             assertEquals(3, listDishOrder.size());
         }
-        catch (NullPointerException e){
+        catch (NullPointerException e) {
             fail("No esta conectado al WS");
+        }
+        catch (RestClientException e) {
+            e.printStackTrace();
         }
     }
 
@@ -69,9 +77,15 @@ public class CurrentOrderServiceTest extends TestCase {
      */
     public void testDishOrderIsNotEmpty() {
 
+        try {
         String nameDish = "Pasta";
         listDishOrder = currentOrderService.getListDishOrder();
         assertEquals(nameDish, listDishOrder.get(0).getDish().getName());
+        }
+        catch (RestClientException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -80,8 +94,13 @@ public class CurrentOrderServiceTest extends TestCase {
      */
     public void testRestaurantInvoiceIsNotNull() {
 
+        try {
         listDishOrder = currentOrderService.getListDishOrder();
         assertNotNull(listDishOrder.get(0).getDish());
+        }
+        catch (RestClientException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -93,8 +112,11 @@ public class CurrentOrderServiceTest extends TestCase {
             listDishOrder = currentOrderService.getListDishOrder();
             assertNotNull(listDishOrder);
         }
-        catch (NullPointerException e){
+        catch (NullPointerException e) {
             fail("No esta conectado al WS");
+        }
+        catch (RestClientException e) {
+            e.printStackTrace();
         }
     }
 

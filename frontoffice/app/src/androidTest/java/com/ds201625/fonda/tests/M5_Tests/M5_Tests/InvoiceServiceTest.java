@@ -3,6 +3,7 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests;
 import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.InvoiceService;
 import com.ds201625.fonda.domains.DishOrder;
@@ -53,6 +54,9 @@ public class InvoiceServiceTest extends TestCase {
         catch (NullPointerException e){
             fail("No esta conectado al WS");
         }
+        catch (RestClientException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -70,6 +74,9 @@ public class InvoiceServiceTest extends TestCase {
         catch (NullPointerException e){
             fail("No esta conectado al WS");
         }
+        catch (RestClientException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -77,9 +84,13 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testRestaurantInvoiceIsNotEmpty() {
 
+        try {
         String nameRestaurant = "The dining room";
         invoice = invoiceService.getCurrentInvoice();
         assertEquals(nameRestaurant, invoice.getRestaurant().getName());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -88,8 +99,12 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testRestaurantInvoiceIsNotNull() {
 
+        try {
         invoice = invoiceService.getCurrentInvoice();
         assertNotNull(invoice.getRestaurant());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -97,9 +112,13 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testProfileInvoiceIsNotEmpty() {
 
+        try {
         String nameProfile = "Adriana";
         invoice = invoiceService.getCurrentInvoice();
         assertEquals(nameProfile, invoice.getProfile().getProfileName());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -108,8 +127,12 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testProfileInvoiceIsNotNull() {
 
+        try {
         invoice = invoiceService.getCurrentInvoice();
         assertNotNull(invoice.getProfile());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -118,9 +141,12 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testAccountInvoiceIsNotEmpty() {
 
-
+        try {
         invoice = invoiceService.getCurrentInvoice();
         assertEquals(3, invoice.getAccount().getListDish().size());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -129,8 +155,12 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testAccountInvoiceIsNotNull() {
 
+        try {
         invoice = invoiceService.getCurrentInvoice();
         assertNotNull(invoice.getAccount());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -138,8 +168,12 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testCurrencyInvoiceIsNotEmpty() {
 
+        try {
         invoice = invoiceService.getCurrentInvoice();
         assertEquals("Bolivar", invoice.getCurrency().getName());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -148,8 +182,12 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testCurrencyInvoiceIsNotNull() {
 
+        try {
         invoice = invoiceService.getCurrentInvoice();
         assertNotNull(invoice.getCurrency());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
