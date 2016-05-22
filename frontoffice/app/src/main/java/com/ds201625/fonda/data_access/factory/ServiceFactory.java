@@ -66,4 +66,5 @@ public interface ServiceFactory {
 
     InvoiceService getInvoiceService();
 
+    ZoneService getZoneService();
 }
