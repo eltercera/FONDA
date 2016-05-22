@@ -19,6 +19,9 @@ import java.util.ArrayList;
 
 
 
+/**
+ *  Clase para llenar la lista del cierre de cuenta
+ */
 public class CloseViewItemList extends BaseArrayAdapter<DishOrder> {
 
 

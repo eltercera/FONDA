@@ -14,22 +14,45 @@ import java.util.List;
 /**
  * Created by Katherina Molina on 19/05/2016.
  */
+
+/**
+ * Clase De pruebas unitarias de la lista de platos ordenados de una persona en sus visitas a restaurant
+ */
 public class CurrentOrderServiceTest extends TestCase {
 
-
+    /*
+       Lista de platos ordenados
+    */
     private List<DishOrder> listDishOrder;
+
+    /*
+       Variable de la clase CurrentOrderService
+    */
     private CurrentOrderService currentOrderService;
 
-
+    /**
+     * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
+     * @throws Exception
+     */
     protected void setUp() throws Exception {
         super.setUp();
         currentOrderService = FondaServiceFactory.getInstance().getCurrentOrderService();
     }
 
-/*
- *  Metodo para probar que la lista no esta vacia cuando se conecta con el WS
- */
+
+    /**
+     *  Metodo para probar que la lista no esta vacia cuando se conecta con el WS
+     */
     public void testListDishOrderIsNotEmpty() {
+
+        listDishOrder = currentOrderService.getListDishOrder();
+        assertFalse(listDishOrder.isEmpty());
+    }
+
+    /*
+     *  Metodo que prueba que existan elementos en la lista
+     */
+    public void testListDishOrderElements() {
 
         try {
             listDishOrder = currentOrderService.getListDishOrder();
@@ -41,9 +64,49 @@ public class CurrentOrderServiceTest extends TestCase {
         }
     }
 
+    /**
+     * Metodo que prueba que el objeto Dish de la lista de platos no este vacio
+     */
+    public void testDishOrderIsNotEmpty() {
+
+        String nameDish = "Pasta";
+        listDishOrder = currentOrderService.getListDishOrder();
+        assertEquals(nameDish, listDishOrder.get(0).getDish().getName());
+
+    }
+
+    /**
+     * Metodo que prueba que el objeto Dish de la lista de platos no sea nulo
+     */
+    public void testRestaurantInvoiceIsNotNull() {
+
+        listDishOrder = currentOrderService.getListDishOrder();
+        assertNotNull(listDishOrder.get(0).getDish());
+    }
+
+    /**
+     * Metodo que prueba que la lista de platos no sea nula
+     */
+    public void testListDishOrderIsNotNull() {
+
+        try {
+            listDishOrder = currentOrderService.getListDishOrder();
+            assertNotNull(listDishOrder);
+        }
+        catch (NullPointerException e){
+            fail("No esta conectado al WS");
+        }
+    }
+
+    /**
+     * Metodo para limpiar los objetos de las pruebas unitarias
+     * @throws Exception
+     */
     protected void tearDown() throws Exception {
         super.tearDown();
         listDishOrder = null;
     }
+
+
 
 }
