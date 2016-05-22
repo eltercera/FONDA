@@ -9,6 +9,7 @@ using BackOffice.Content;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using BackOffice.Seccion.Restaurant;
 
 
 namespace BackOffice.Seccion.Configuracion
@@ -18,6 +19,8 @@ namespace BackOffice.Seccion.Configuracion
   
         protected void Page_Load(object sender, EventArgs e)
         {
+
+
             errorLogin.Visible = false;
             warningLog.Visible = false;
 
@@ -31,14 +34,14 @@ namespace BackOffice.Seccion.Configuracion
             else
                 successLog.Visible = false;
         }
-
         public void Uservalidate(object sender, EventArgs e)
         {
+
             Uservalidate();
         }
-
         public void Recoverpassword(object sender, EventArgs e)
         {
+
             Recoverpassword();
         }
 
@@ -74,6 +77,7 @@ namespace BackOffice.Seccion.Configuracion
                     successLog.InnerText = message; break;
             }
         }
+
        
    /// <summary>
    /// Metodo que valida el intento de ingreso al sistema
@@ -89,6 +93,8 @@ namespace BackOffice.Seccion.Configuracion
             string password = passwordIni.Value;
             Console.WriteLine("imprimiendo valor :");
             Console.WriteLine(user);
+            //Restaurante
+            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
 
             if (user == "" | password == "")
             {
@@ -108,6 +114,13 @@ namespace BackOffice.Seccion.Configuracion
                         Session[RecursoMaster.sessionName] = _employee.Name;
                         Session[RecursoMaster.sessionLastname] = _employee.LastName;
                         Session[RecursoMaster.sessionUserID] = _employee.Id;
+                        //Manejo de Restaurante
+                        string RestaurantID = _employee.Restaurant.Id.ToString();
+                        int idRestaurant = int.Parse(RestaurantID);
+                        com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(idRestaurant);
+                        Session[RestaurantResource.SessionRestaurant] = _restaurant.Id.ToString();
+                        Session[RestaurantResource.SessionNameRest] = _restaurant.Name.ToString();
+
                         if (_employee.Restaurant != null)
                             Session[RecursoMaster.sessionRestaurantID] = _employee.Restaurant.Id;
                         else
@@ -132,7 +145,6 @@ namespace BackOffice.Seccion.Configuracion
             }
 
         }
-
        /// <summary>
         /// Metodo encargado de validar los campos de resstablecer contraseña 
        /// </summary>
@@ -147,8 +159,12 @@ namespace BackOffice.Seccion.Configuracion
 
             if (email != "" & passwordnew1 != "" & passwordnew2 != "" & username != "")
             {
+               
+
                 if (_employee != null)
                 {
+
+
                     if (_employee.UserAccount != null)
                     {
                         if (email.Equals(_employee.UserAccount.Email))
@@ -165,14 +181,17 @@ namespace BackOffice.Seccion.Configuracion
                     }
                     else
                         mensajeLogin(true, mensajes.logWarningcamp, mensajes.tipoWarning);
+
                 }
                 else
                     mensajeLogin(true, mensajes.logWarningcamp, mensajes.tipoWarning);
+
             }
             else
                 mensajeLogin(true, mensajes.logErrcampvac, mensajes.tipoInfo);
             return false;
         }
+
 
         /// <summary>
         /// Metodo encargado de restablecer la contraseña 
@@ -196,7 +215,6 @@ namespace BackOffice.Seccion.Configuracion
              }
                  
          } 
-
         /// <summary>
         /// Metodo encargado de restablecer la nueva contraseña del usuario
         /// </summary>
@@ -208,6 +226,8 @@ namespace BackOffice.Seccion.Configuracion
              if (this.password1.Value != "")
              _employee.UserAccount.Password = this.password1.Value;
             
-        }      
+        }
+
+                
     }
 }

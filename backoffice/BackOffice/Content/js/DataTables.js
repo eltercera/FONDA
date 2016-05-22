@@ -46,7 +46,26 @@ $(document).ready(function () {
         ]
     });
 });
+$(document).ready(function () {
+    $('#plantillacategoria').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
 
+$(document).ready(function () {
+    $('#GridView1').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null
+        ]
+    });
+});
 $(document).ready(function () {
     $('#default').DataTable({
         "language": spanish,
@@ -78,10 +97,43 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#MenuDia').DataTable({
+    $('#contenido_CategoryMenu').DataTable({
         "language": spanish,
         "aoColumns": [
             null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#contenido_TableDayMenuDashboard').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#contenido_TableDish').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false },
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#contenido_TableDayMenu').DataTable({
+        "language": spanish,
+        "aoColumns": [
             null,
             { "bSearchable": false },
             { "bSearchable": false }
@@ -129,7 +181,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#dt-mesa').DataTable({
+    $('#contenido_dash-table').DataTable({
         "language": spanish,
         "aoColumns": [
             null,
@@ -160,7 +212,7 @@ $(document).ready(function () {
     });
 });
 $(document).ready(function () {
-    $('#mesa').DataTable({
+    $('#contenido_table').DataTable({
         "language": spanish,
         "aoColumns": [
             null,
@@ -189,20 +241,6 @@ $(document).ready(function () {
         "language": spanish,
         "bAutoWidth": false,
         "aoColumns": [
-            null,
-            null,
-            null,
-            { "bSearchable": false },
-            { "bSearchable": false }
-        ]
-    });
-});
-
-$(document).ready(function () {
-    $('#TablaEmployee').DataTable({
-        "language": spanish,
-        "aoColumns": [
-            null,
             null,
             null,
             null,
