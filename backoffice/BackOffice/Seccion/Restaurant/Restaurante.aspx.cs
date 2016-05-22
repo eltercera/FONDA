@@ -179,6 +179,7 @@ namespace BackOffice.Seccion.Restaurant
         /// </summary>
         public void FillDropdown()
         {
+            ClearDropdown();
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
             FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -206,6 +207,38 @@ namespace BackOffice.Seccion.Restaurant
                 ZoneM.Items.Add(zone.Name);
             }
         }
+
+        public void ClearDropdown()
+        {
+            //Genero los objetos para la consulta
+            //Genero la lista de la consulta
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantCategoryDAO _categoryDAO = factoryDAO.GetRestaurantCategoryDAO();
+            IList<com.ds201625.fonda.Domain.RestaurantCategory> listCategories = _categoryDAO.GetAll();
+            ICurrencyDAO _currencyDAO = factoryDAO.GetCurrencyDAO();
+            IList<com.ds201625.fonda.Domain.Currency> listCurrencies = _currencyDAO.GetAll();
+            IZoneDAO _zoneDAO = factoryDAO.GetZoneDAO();
+            IList<com.ds201625.fonda.Domain.Zone> listZones = _zoneDAO.allZone();
+
+            //Se llenan los Dropdownlist con los registros existentes
+            foreach (RestaurantCategory category in listCategories)
+            {
+                CategoryA.Items.Clear();
+                CategoryM.Items.Clear();
+            }
+            foreach (Currency currency in listCurrencies)
+            {
+                CurrencyA.Items.Clear();
+                CurrencyM.Items.Clear();
+            }
+            foreach (Zone zone in listZones)
+            {
+                ZoneA.Items.Clear();
+                ZoneM.Items.Clear();
+            }
+        }
+
+
 
         /// <summary>
         /// Valida los campos enviados por el usuario para crear o actualizar un Restaurante
