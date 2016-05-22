@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -16,6 +17,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// obtiene o asigna el monto a pagar
         /// </summary>
+        [DataMember]
         public virtual float Amount
         {
             get { return _amount; }

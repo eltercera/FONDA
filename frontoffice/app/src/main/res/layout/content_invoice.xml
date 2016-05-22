@@ -177,14 +177,14 @@
         android:layout_height="wrap_content"
         android:text="20615821"
         android:id="@+id/tvCIRIF"
-        android:layout_below="@+id/tvDate"
-        android:layout_toRightOf="@+id/textView21"
-        android:layout_toEndOf="@+id/textView21" />
+        android:layout_above="@+id/tvCliente"
+        android:layout_alignLeft="@+id/tvNumInvoice"
+        android:layout_alignStart="@+id/tvNumInvoice" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cliente: "
+        android:text="@string/cliente"
         android:id="@+id/tvDate"
         android:layout_below="@+id/textView23"
         android:layout_alignLeft="@+id/textView23"

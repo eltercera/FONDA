@@ -6,7 +6,7 @@ Mesas
 Mesas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-NOMBRE DEL RESTAURANTE
+<%=Session["NameRestaurant"]%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
    <div>
@@ -52,7 +52,7 @@ NOMBRE DEL RESTAURANTE
                                 <div class="table-responsive">
                                         <asp:HiddenField ID="TableModifyId" runat="server" Value="" />
 
-                                        <asp:Table ID="Table" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>                      
+                                        <asp:Table ID="table" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>                      
                                              
                                 </div>
                             </div>
@@ -74,7 +74,6 @@ NOMBRE DEL RESTAURANTE
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
                                 <label class="control-label">Cantidad de Puestos</label>
                                 <asp:DropDownList id="DDLcapacityM" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
                                     <asp:ListItem>6</asp:ListItem>
@@ -113,7 +112,6 @@ NOMBRE DEL RESTAURANTE
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
                                 <label class="control-label">Cantidad de Puestos</label>
                                 <asp:DropDownList id="DDLcapacityA" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
                                     <asp:ListItem>6</asp:ListItem>
@@ -144,34 +142,73 @@ NOMBRE DEL RESTAURANTE
         $(document).ready(function () {
             setValue();
             ajaxRes();
+            Free();
+            Busy();
                 });
+
+                    function Free(){
+                    $('.table > tbody > tr > td:nth-child(6) > a[data-status=true]')
+                        .click(function (e) {
+                                    e.preventDefault();
+                                    var rowId = document.getElementById("<%=TableModifyId.ClientID%>").value;
+                                    var status = "Free";
+                                    changeStatus(rowId, status);
+
+                        });
+                    }
+
+                    function Busy(){
+                        $('.table > tbody > tr > td:nth-child(6) > a[data-status=false]')
+                        .click(function (e) {
+                                    e.preventDefault();
+                                    var rowId = document.getElementById("<%=TableModifyId.ClientID%>").value;
+                                    var status = "Busy";
+                                    changeStatus(rowId, status);
+                            
+                        });
+                    }
+
+                function changeStatus(rowId, status) {
+                    var params = "{'Id':'" + rowId + "','Status':'" + status + "'}"
+                    debugger;
+                        $.ajax({
+                            type: "POST",
+                            url: "Mesas.aspx/ChangeStatus",
+                            data: params,
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (response) {
+                                $('.table > tbody > tr:nth-child(' + rowId + ') > td:nth-child(5)').html(response.d);
+                            },
+                            failure: function (response) {
+                                console.log("Peticion al servidor fallida");
+                            }
+                        });
+                    }
 
                     function ajaxRes(){
                     $('.table > tbody > tr > td:nth-child(6) > a')
                         .click(function (e) {
                                     e.preventDefault();
-                                    var prueba = document.getElementById("<%=TableModifyId.ClientID%>").value;
-                                    var params = "{'Id':'" + prueba + "'}";
+                                    var rowId = document.getElementById("<%=TableModifyId.ClientID%>").value;
 
                                     $.ajax({
                                     type: "POST",
                                     url: "Mesas.aspx/GetData",
-                                    data: params,
+                                    data: "{'Id':'" + rowId + "'}",
                                     contentType: "application/json; charset=utf-8",
                                     dataType: "json",
                                     success: function (response) {
                                         var local = response;
                                         document.getElementById("<%=DDLcapacityM.ClientID%>").value = local.d.Capacity;
-
-                                        
-
                                     },
                                     failure: function (response) {
-                                          alert("_");
+                                        console.log("Peticion al servidor fallida");
                                     }
                                     });
                         });
                     }
+
                     function setValue() {
                         $('.table > tbody > tr > td:nth-child(6) > a')
                         .click(function () {

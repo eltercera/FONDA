@@ -29,14 +29,16 @@ namespace DataAccessTests
 
             if ((edit & _currency == null) | _currency == null)
                 _currency = new Currency();
-            _currency.Symbol = "C:";
+            _currency.Symbol = "$";
             _currency.Name = "Dolar";
+            //_currency.Name = "Euro";
+            //_currency.Name = "BsF";
         }
 
         private void currencyAssertions(bool edit = false)
         {
             Assert.IsNotNull(_currency);
-            Assert.AreEqual(_currency.Symbol, "C:");
+            Assert.AreEqual(_currency.Symbol, "$");
             Assert.AreEqual(_currency.Name, "Dolar");
         }
 

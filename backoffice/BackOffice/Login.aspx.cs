@@ -9,6 +9,7 @@ using BackOffice.Content;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using BackOffice.Seccion.Restaurant;
 
 
 namespace BackOffice.Seccion.Configuracion
@@ -89,6 +90,8 @@ namespace BackOffice.Seccion.Configuracion
             string password = passwordIni.Value;
             Console.WriteLine("imprimiendo valor :");
             Console.WriteLine(user);
+            //Restaurante
+            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
 
             if (user == "" | password == "")
             {
@@ -108,6 +111,13 @@ namespace BackOffice.Seccion.Configuracion
                         Session[RecursoMaster.sessionName] = _employee.Name;
                         Session[RecursoMaster.sessionLastname] = _employee.LastName;
                         Session[RecursoMaster.sessionUserID] = _employee.Id;
+                        //Manejo de Restaurante
+                        string RestaurantID = _employee.Restaurant.Id.ToString();
+                        int idRestaurant = int.Parse(RestaurantID);
+                        com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(idRestaurant);
+                        Session[RestaurantResource.SessionRestaurant] = _restaurant.Id.ToString();
+                        Session[RestaurantResource.SessionNameRest] = _restaurant.Name.ToString();
+
                         if (_employee.Restaurant != null)
                             Session[RecursoMaster.sessionRestaurantID] = _employee.Restaurant.Id;
                         else

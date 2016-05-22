@@ -29,7 +29,11 @@ namespace DataAccessTests
 
             if ((edit & _restaurantCategory == null) | _restaurantCategory == null)
                 _restaurantCategory = new RestaurantCategory();
-            _restaurantCategory.Name = "China";
+             _restaurantCategory.Name = "China";
+            // _restaurantCategory.Name = "Japonesa";
+            //_restaurantCategory.Name = "Mexicana";
+            //_restaurantCategory.Name = "Criolla";
+            //_restaurantCategory.Name = "Chatarra";
         }
 
         private void RestaurantCategoryAssertions(bool edit = false)

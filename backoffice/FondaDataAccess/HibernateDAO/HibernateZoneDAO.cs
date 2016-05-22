@@ -20,5 +20,17 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return FindAll();
             
         }
+
+        /// <summary>
+        /// Devuelve una zona a partir de un nombre
+        /// </summary>
+        /// <param name="name">Nombre de la zona</param>
+        /// <returns>Objeto tipo Zone</returns>
+        public Zone GetZone(string name)
+        {
+            Zone zone = new Zone();
+            zone = FindBy("zon_name", name);
+            return zone;
+        }
     }
 }

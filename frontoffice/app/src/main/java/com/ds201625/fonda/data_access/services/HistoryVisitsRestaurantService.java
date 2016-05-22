@@ -6,10 +6,13 @@ import com.ds201625.fonda.domains.Invoice;
 import java.util.List;
 
 /**
- * Created by Adriana on 5/15/2016.
+ * Created by Adri on 5/15/2016.
+ */
+
+/**
+ * Interface de HistoryVisitsRestaurantService
  */
 public  interface HistoryVisitsRestaurantService {
 
     List<Invoice> getHistoryVisits();
-
 }

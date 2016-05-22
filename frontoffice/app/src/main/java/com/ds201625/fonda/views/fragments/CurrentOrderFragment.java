@@ -4,58 +4,66 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.ds201625.fonda.domains.Currency;
-import com.ds201625.fonda.domains.Dish;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.DishOrder;
+import com.ds201625.fonda.logic.LogicCurrentOrder;
 import com.ds201625.fonda.views.adapters.OrderViewItemList;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase de Prueba para mostar el uso de Fragments
+ * Clase Fragment que muestra la orden actual realizada por el cliente
  */
 public class CurrentOrderFragment extends BaseFragment {
 
 
-    private ArrayList<DishOrder> listDishO = new ArrayList<DishOrder>();
+    /**
+     * Lista
+     */
+    private ListView list;
 
-    ListView list;
+    /**
+     * Vista de lista
+     */
     private OrderViewItemList orderList;
 
+    /**
+     * Lista de DishOrder que contiene la lista de platos ordenados
+     */
+    private List<DishOrder> listDishO;
+
+    /**
+     *  Atributo de tipo LogicCurrentOrder que controla el acceso al WS
+     */
+    private LogicCurrentOrder logicCurrentOrder;
+
+    /**
+     * Metodo que se ejecuta al instanciar el fragment
+     * @param savedInstanceState Bundle que define el estado de la instancia
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Currency currency = new Currency("Bs.");
-        Dish dish1 = new Dish("Pasta","Pasta Con Salmon",1000,String.valueOf(R.drawable.salmonpasta),currency);
-        Dish dish2 = new Dish("Refresco","Coca-Cola",100,String.valueOf(R.drawable.refresco),currency);
-        Dish dish3 = new Dish("Torta","Terciopelo Rojo",500,String.valueOf(R.drawable.redv2),currency);
-
-        DishOrder dishO1 = new DishOrder(dish1,1);
-        DishOrder dishO2 = new DishOrder(dish2,1);
-        DishOrder dishO3 = new DishOrder(dish3,1);
-
-        listDishO.add(dishO1);
-        listDishO.add(dishO2);
-        listDishO.add(dishO3);
     }
 
 
-
+    /**
+     * Metodo que crea la vista de la orden actual
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                              Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         //Indicar el layout que va a usar el fragment
         View layout = inflater.inflate(R.layout.fragment_current_order,container,false);
 
+        listDishO = getListSW();
         orderList = new OrderViewItemList(getContext());
-        orderList.addAll(listDishO);
+        if(listDishO != null)
+            orderList.addAll(listDishO);
 
         list=(ListView)layout.findViewById(R.id.lvOrderList);
         list.setAdapter(orderList);
@@ -64,9 +72,6 @@ public class CurrentOrderFragment extends BaseFragment {
 
 
     }
-
-
-
 
     @Override
     public void onAttach(Context context) {
@@ -78,6 +83,25 @@ public class CurrentOrderFragment extends BaseFragment {
         super.onDetach();
     }
 
-
-
+    /**
+     * Metodo que obtiene los elementos del WS
+     */
+    public List<DishOrder> getListSW(){
+        List<DishOrder> listDishOWS;
+        logicCurrentOrder = new LogicCurrentOrder();
+        try {
+            listDishOWS = logicCurrentOrder.getCurrentOrderSW().getListDishOrder();
+            for (int i = 0; i < listDishOWS.size(); i++) {
+                System.out.println("Descripcion Plato:  " + listDishOWS.get(i).getDish().getDescription());
+            }
+            return listDishOWS;
+        }
+        catch (NullPointerException e){
+            System.out.println("No es posible realizar la conexión con el Web Server ");
+        }
+        catch (Exception e){
+            System.out.println("Error en la Conexión");
+        }
+        return null;
+    }
 }
