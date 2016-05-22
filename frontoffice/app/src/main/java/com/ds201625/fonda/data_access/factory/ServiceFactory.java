@@ -84,6 +84,10 @@ public interface ServiceFactory {
      * @return
      */
     PaymentService setPaymentService();
+
+    FilterByZoneService getFilterByZoneService();
+
+    FilterByCategoryService getFilterByCategoryService();
 }
 
 
