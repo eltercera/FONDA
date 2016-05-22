@@ -19,6 +19,9 @@ import java.util.ArrayList;
 
 
 
+/**
+ *  Clase para llenar la lista del cierre de cuenta
+ */
 public class CloseViewItemList extends BaseArrayAdapter<DishOrder> {
 
 
@@ -69,7 +72,7 @@ public class CloseViewItemList extends BaseArrayAdapter<DishOrder> {
     @Override
     public View getSelectedView(DishOrder item, View convertView) {
         //TODO: Colocar un color desente
-      //  convertView.setBackgroundColor(getContext().getResources()
+        //  convertView.setBackgroundColor(getContext().getResources()
         //        .getColor(R.color.colorPrimaryDark));
         return convertView;
     }

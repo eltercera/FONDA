@@ -1,3 +1,4 @@
+
 package com.ds201625.fonda.views.fragments;
 
 import android.os.Bundle;
@@ -8,15 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.logic.LogicHistoryVisits;
 import com.ds201625.fonda.views.adapters.ExpandableListAdapter;
 
-import org.apache.http.params.CoreConnectionPNames;
-
-import java.io.IOException;
-import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -86,6 +83,11 @@ public class HistoryVisitFragment extends BaseFragment {
     private Iterator iterator;
 
     /**
+     *  atributo de tipo LogicHistoryVisits
+     */
+    LogicHistoryVisits historyvisits;
+
+    /**
      * Metodo que se ejecuta al instanciar el fragment
      * @param savedInstanceState Bundle que define el estado de la instancia
      */
@@ -139,11 +141,9 @@ public class HistoryVisitFragment extends BaseFragment {
      */
     private void createGroupList() {
         try {
-            histoyVisitsRestaurantService = FondaServiceFactory.getInstance().getHistoryVisitsService();
-            if (histoyVisitsRestaurantService == null) {
+            historyvisits = new LogicHistoryVisits();
 
-            }
-            listInvoice = histoyVisitsRestaurantService.getHistoryVisits();
+            listInvoice =   historyvisits.algo().getHistoryVisits();
             groupNameRestaurant = new ArrayList<String>();
             groupAddressRestaurant = new ArrayList<String>();
             groupCategoryRestaurant = new ArrayList<String>();
@@ -157,7 +157,6 @@ public class HistoryVisitFragment extends BaseFragment {
                 String addresRestaurant = invoice.getRestaurant().getAddress();
                 String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getNameCategory();
                 String logoRestaurant = invoice.getRestaurant().getLogo();
-                System.out.println("El logo"+logoRestaurant);
                 Date date = invoice.getDate();
                 String datePayment = new SimpleDateFormat("dd-MM-yyyy").format(date);
                 groupNameRestaurant.add(nameRestaurant);
@@ -179,7 +178,6 @@ public class HistoryVisitFragment extends BaseFragment {
      * Metodo que maneja el detalle del historial del pago del restaurant
      */
     private void createCollection() {
-        // preparing detailRestaurant for collection(child)
         try{
             collectionVisits = new LinkedHashMap<String, List<String>>();
             iterator = listInvoice.listIterator();
@@ -225,3 +223,4 @@ public class HistoryVisitFragment extends BaseFragment {
         }
     }
 }
+

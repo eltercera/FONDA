@@ -73,6 +73,7 @@ public class CloseAccountFragment extends BaseFragment {
 
         View layout = inflater.inflate(R.layout.fragment_close_account,container,false);
 
+        //Llamada al metodo que se comunica con el WS
         listDishO = getListSW();
         closeViewItem = new CloseViewItemList(getContext());
         closeViewItem.addAll(listDishO);
@@ -110,13 +111,13 @@ public class CloseAccountFragment extends BaseFragment {
         txtHour.setText(formattedHour);
         //Subtotal
         txtMontoSub.setText(String.valueOf(sub));
-       //txtMonSub.setText(currency.getSymbol());
+        //txtMonSub.setText(currency.getSymbol());
         //Iva
         txtMontoIva.setText(String.valueOf(iva));
-       // txtMonIva.setText(currency.getSymbol());
+        // txtMonIva.setText(currency.getSymbol());
         //Total
         txtMontoTota.setText(String.valueOf(total));
-       // txtMonTota.setText(currency.getSymbol());
+        // txtMonTota.setText(currency.getSymbol());
 
 
         lv1=(ListView)layout.findViewById(R.id.lVOrden);
@@ -143,6 +144,9 @@ public class CloseAccountFragment extends BaseFragment {
         CloseAccountFragment.amount = amount;
     }
 
+    /**
+     * Metodo que obtiene el subTotal de la Cuenta
+     */
     public float calcularSubTotal(List<DishOrder> listDishO){
         float sub = 0;
         float costo;
@@ -159,7 +163,9 @@ public class CloseAccountFragment extends BaseFragment {
         return sub;
     }
 
-
+    /**
+     * Metodo que obtiene el IVA de la Cuenta
+     */
     public double calcularIVA(float sub){
 
         double iva = sub * (0.12);
@@ -167,6 +173,9 @@ public class CloseAccountFragment extends BaseFragment {
         return iva;
     }
 
+    /**
+     * Metodo que obtiene el Total de la Cuenta
+     */
     public float calcularTotal(float sub, double iva){
 
         float result = sub + (float) iva;
@@ -174,6 +183,9 @@ public class CloseAccountFragment extends BaseFragment {
         return result;
     }
 
+    /**
+     * Metodo que obtiene los elementos del WS
+     */
     public List<DishOrder> getListSW(){
         List<DishOrder> listDishOWS;
         try {
