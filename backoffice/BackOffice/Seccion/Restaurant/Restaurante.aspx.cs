@@ -223,7 +223,7 @@ namespace BackOffice.Seccion.Restaurant
         {
             bool valid = true;
             int cont = 0;
-            string patronNumero = "^[0-9]*$";
+            string patronNumero = "^[0-9]{1,9}$";
             string patronPunto = @"[(.)]";
             string patronFloat = @"^-?[0-9]\d*(\.\d+)?$"; // "^\-{0,1}\d+(.\d+){0,1}$"
 

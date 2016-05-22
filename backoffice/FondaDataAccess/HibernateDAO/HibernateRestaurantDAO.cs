@@ -119,6 +119,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return (Restaurant)crit.List()[0];
         }
 
+        public bool Geoposition(double _latitudUser, double _longitudUser, int _idRestaurant) {
+            bool came = false;
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+
+            // Consigue el Restaurante de la Base de Datos
+            com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(_idRestaurant);
+
+            if (_restaurant.Coordinate.Latitude==_latitudUser && _restaurant.Coordinate.Longitude == _longitudUser)
+            {
+                came = true;
+            }
+            return came;
+        }
     }
 
 
