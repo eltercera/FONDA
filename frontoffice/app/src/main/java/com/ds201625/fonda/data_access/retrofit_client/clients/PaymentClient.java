@@ -13,13 +13,13 @@ import retrofit2.http.POST;
 
 
 /**
- * Interface to be implemented by retrofit
+ * Interfaz a ser implementada por retrofit
  */
 public interface PaymentClient {
 
        /**
         * Post /api/payment
-        * Sends the payments to create the bill
+        * Envia el pagopara crear la factura
         */
        @POST("payment")
        Call<Invoice> setPayments(@Body Invoice invoice);

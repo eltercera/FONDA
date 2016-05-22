@@ -10,15 +10,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 import static android.provider.BaseColumns._ID;
+
 /**
- * Created by Hp on 14/05/2016.
+ * Clase que maneja la base de datos interna SQLite
  */
 public class HandlerSQLite extends SQLiteOpenHelper {
 
     private static HandlerSQLite instance;
 
     /**
-     * Table on the data base
+     * Tabla que se agrega en la BD
      */
     private  String table = "CREATE TABLE creditcard (" + _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                     "number TEXT, owner TEXT, id_owner INTEGER, expiration TEXT, cvv INTEGER, type TEXT);";
@@ -34,7 +35,7 @@ public class HandlerSQLite extends SQLiteOpenHelper {
     }
 
     /**
-     * When is created
+     * Cuando se  crea
      * @param db
      */
     @Override
@@ -49,7 +50,7 @@ public class HandlerSQLite extends SQLiteOpenHelper {
     }
 
     /**
-     * When its upgraded
+     * Cuando se actualiza
      * @param db
      * @param oldVersion
      * @param newVersion
@@ -63,7 +64,7 @@ public class HandlerSQLite extends SQLiteOpenHelper {
     }
 
     /**
-     * Saves the Credit card on SQLite Database
+     * Guarda la TDC en SQLite Database
      * @param number
      * @param name
      * @param idOwner
@@ -94,7 +95,7 @@ public class HandlerSQLite extends SQLiteOpenHelper {
     }
 
     /**
-     * Reads all the credit cards saved an shows the number of credit card and the name of the owner
+     * Lee la base de datos y muestra el numero de la tarjeta de credito y nombre del dueño
      * @return
      */
    public ArrayList<String> read (){
@@ -122,7 +123,7 @@ public class HandlerSQLite extends SQLiteOpenHelper {
    }
 
     /**
-     * Erase the data base
+     * Borra la base de datos
      */
     public void erase (){
         SQLiteDatabase db = this.getReadableDatabase();

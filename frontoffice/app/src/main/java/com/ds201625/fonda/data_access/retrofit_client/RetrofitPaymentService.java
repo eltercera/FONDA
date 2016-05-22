@@ -14,16 +14,24 @@ import java.io.IOException;
 
 import retrofit2.Call;
 
+
 /**
- * Created by Melanie on 22/05/2016.
+ * Implementacion de la interfaz
  */
 public class RetrofitPaymentService implements PaymentService {
 
     /**
-     * Instance rest cliente PaymentClient
+     * Instancia rest del cliente PaymentCLient
      */
     private PaymentClient paymentClient = RetrofitService.getInstance().createService(PaymentClient.class);
 
+    /**
+     * Envia el pago para hacer la factura
+     * @param invoice
+     * @return
+     * @throws RestClientException
+     * @throws InvalidDataRetrofitException
+     */
     @Override
     public Invoice setPayments(Invoice invoice) throws RestClientException, InvalidDataRetrofitException {
 

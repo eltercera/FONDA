@@ -67,6 +67,10 @@ public interface ServiceFactory {
 
     CategoryService getCategoryService();
 
+    /**
+     * Manda el pago para crear la factura
+     * @return
+     */
     PaymentService setPaymentService();
 }
 

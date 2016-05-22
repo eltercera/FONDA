@@ -138,7 +138,10 @@ public class FondaServiceFactory {
         return serviceFactory.getZoneService();
     }
 
-
+    /**
+     * Envia los pagos
+     * @return
+     */
     public PaymentService setPaymentService() {
         return serviceFactory.setPaymentService();
     }
