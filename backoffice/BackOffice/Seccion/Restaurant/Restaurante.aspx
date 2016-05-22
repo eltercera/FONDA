@@ -330,7 +330,7 @@ Restaurantes
           </div>
                         <div class="modal-footer">
                             <asp:Button id="ButtonModify" Text="Modificar" CssClass="btn btn-success" onclick="ButtonModify_Click" runat ="server"/>
-                            <asp:Button id="ButtonCancelM" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonCancelM" Text="Cancelar" CssClass="btn btn-danger" class="close" data-dismiss="modal" runat="server"/>
                         </div>
 
                     </div>
@@ -475,7 +475,7 @@ Restaurantes
             </div>
                         <div class="modal-footer">
                             <asp:Button id="ButtonAdd" Text="Agregar" CssClass="btn btn-success " OnClick="ButtonAdd_Click" runat="server"/>
-                            <asp:Button id="ButtonCancelA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonCancelA" Text="Cancelar" CssClass="btn btn-danger" class="close" data-dismiss="modal" runat="server"/>
                         </div>
             </div>
             </div>
