@@ -85,6 +85,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             oldProfile.Person.Name = profile.Person.Name;
             oldProfile.Person.LastName = profile.Person.LastName;
             oldProfile.Person.PhoneNumber = profile.Person.PhoneNumber;
+            oldProfile.Person.Address = profile.Person.Address;
             oldProfile.Person.Ssn = profile.Person.Ssn;
 
             try

@@ -43,7 +43,8 @@ public abstract class BaseNavigationActivity extends BaseActivity
 
         // todo: Hay un error en el activity de Orders
         if (this.getClass() != OrdersActivity.class)
-            headerEmail.setText(SessionData.getInstance().getCommensal().getEmail());
+            if (SessionData.getInstance().getCommensal()!= null)
+                headerEmail.setText(SessionData.getInstance().getCommensal().getEmail());
 
         if (this.getClass() == FavoritesActivity.class) {
             setCheckedItem(R.id.nav_favorites);
@@ -113,8 +114,7 @@ public abstract class BaseNavigationActivity extends BaseActivity
         } else if (id == R.id.nav_logout) {
             try {
                 SessionData.getInstance().logoutCommensal();
-                if (this.getClass() != LoginActivity.class)
-                    startFondaActivity("LoginActivity");
+                this.startActivity(new Intent(this,Class.forName("com.ds201625.fonda.views.activities.LoginActivity")));
             }
             catch (Exception e){
                 e.printStackTrace();
