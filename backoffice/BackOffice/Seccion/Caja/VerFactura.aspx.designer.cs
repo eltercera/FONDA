@@ -10,60 +10,60 @@
 namespace BackOffice.Seccion.Caja {
     
     
-    public partial class AgregarOrden {
+    public partial class VerFactura {
         
         /// <summary>
-        /// exitoFormulario control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl exitoFormulario;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// alertaFormulario control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertaFormulario;
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
-        /// Menu1 control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Menu1;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// label22 control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label22;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// Button1 control.
+        /// Pago control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Table Pago;
         
         /// <summary>
-        /// Button2 control.
+        /// LabelMontoTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Label LabelMontoTotal;
     }
 }

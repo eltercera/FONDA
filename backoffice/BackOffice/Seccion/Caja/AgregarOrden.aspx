@@ -36,237 +36,28 @@
         </div>
     </div>
     <!-- /.row -->
-    <div class="row col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-        <div class="row">
-            <div class="col-lg-11">
+    <div class="row">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Pastas </h3>
+                        <h3 class="panel-title">Menu</h3>
+                        
+                        <div class="clearfix"></div>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table id="Menu1" class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th style="vertical-align: middle">Plato</th>
 
-                                        <th style="vertical-align: middle">Precio</th>
-                                        <th style="vertical-align: middle">IVA</th>
-                                        <th style="vertical-align: middle">Cantidad</th>
-                                        <th style="vertical-align: middle">Total</th>
-
-                                        <th style="vertical-align: middle">Accion</th>
-
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-
-                                    <td style="vertical-align: middle">Pasta Carbonara</td>
-
-                                    <td style="vertical-align: middle">2350</td>
-                                    <td style="vertical-align: middle">650</td>
-                                    <td style="vertical-align: middle">
-                                        <input type="number" name="quantity" min="1" max="10"></td>
-                                    <td style="vertical-align: middle">3000</td>
-
-                                    <td style="text-align: center; vertical-align: middle"><a data-toggle="modal" data-target="#"><i class="fa fa-check"></i></a></td>
-
-                                </tr>
-                                <tr>
-
-                                    <td style="vertical-align: middle">Pasta con Vegetales</td>
-
-                                    <td style="vertical-align: middle">2350</td>
-                                    <td style="vertical-align: middle">650</td>
-                                    <td style="vertical-align: middle">
-                                        <input type="number" name="quantity" min="1" max="10"></td>
-                                    <td style="vertical-align: middle">3000</td>
-
-                                    <td style="text-align: center; vertical-align: middle"><a data-toggle="modal" data-target="#"><i class="fa fa-check"></i></a></td>
-
-                                </tr>
-                                <tr>
-
-                                    <td style="vertical-align: middle">Pasta con Salmon</td>
-
-                                    <td style="vertical-align: middle">2350</td>
-                                    <td style="vertical-align: middle">650</td>
-                                    <td style="vertical-align: middle">
-                                        <input type="number" name="quantity" min="1" max="10"></td>
-                                    <td style="vertical-align: middle">3000</td>
-
-                                    <td style="text-align: center; vertical-align: middle"><a data-toggle="modal" data-target="#"><i class="fa fa-check"></i></a></td>
-
-                                </tr>
-                                </tbody>
-                            </table>
+                            <asp:Table ID="Menu1" CssClass="table table-bordered table-hover table-striped" runat="server" ></asp:Table>
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /.row -->
-
-        <!-- /.row -->
-
-
-        <div class="row">
-            <div class="col-lg-11">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Carnes </h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table id="Menu2" class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th style="vertical-align: middle">Plato</th>
-
-                                        <th style="vertical-align: middle">Precio</th>
-                                        <th style="vertical-align: middle">IVA</th>
-                                        <th style="vertical-align: middle">Cantidad</th>
-                                        <th style="vertical-align: middle">Total</th>
-
-                                        <th style="vertical-align: middle">Accion</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                   <tr>
-
-                                    <td style="vertical-align: middle">Pasta Carbonara</td>
-
-                                    <td style="vertical-align: middle">2350</td>
-                                    <td style="vertical-align: middle">650</td>
-                                    <td style="vertical-align: middle">
-                                        <input type="number" name="quantity" min="1" max="10"></td>
-                                    <td style="vertical-align: middle">3000</td>
-
-                                    <td style="text-align: center; vertical-align: middle"><a data-toggle="modal" data-target="#"><i class="fa fa-check"></i></a></td>
-
-                                </tr>
-                                <tr>
-
-                                    <td style="vertical-align: middle">Pasta con Vegetales</td>
-
-                                    <td style="vertical-align: middle">2350</td>
-                                    <td style="vertical-align: middle">650</td>
-                                    <td style="vertical-align: middle">
-                                        <input type="number" name="quantity" min="1" max="10"></td>
-                                    <td style="vertical-align: middle">3000</td>
-
-                                    <td style="text-align: center; vertical-align: middle"><a data-toggle="modal" data-target="#"><i class="fa fa-check"></i></a></td>
-
-                                </tr>
-                                <tr>
-
-                                    <td style="vertical-align: middle">Pasta con Salmon</td>
-
-                                    <td style="vertical-align: middle">2350</td>
-                                    <td style="vertical-align: middle">650</td>
-                                    <td style="vertical-align: middle">
-                                        <input type="number" name="quantity" min="1" max="10"></td>
-                                    <td style="vertical-align: middle">3000</td>
-
-                                    <td style="text-align: center; vertical-align: middle"><a data-toggle="modal" data-target="#"><i class="fa fa-check"></i></a></td>
-
-                                </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- /.row -->
-
-        <div class="row">
-            <div class="col-lg-11">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><i class="fa fa-cutlery fa-fw"></i>Pescados y Mariscos </h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table id="Menu3" class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th style="vertical-align: middle">Plato</th>
-
-                                        <th style="vertical-align: middle">Precio</th>
-                                        <th style="vertical-align: middle">IVA</th>
-                                        <th style="vertical-align: middle">Cantidad</th>
-                                        <th style="vertical-align: middle">Total</th>
-
-                                        <th style="vertical-align: middle">Accion</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                   <tr>
-
-                                    <td style="vertical-align: middle">Pasta Carbonara</td>
-
-                                    <td style="vertical-align: middle">2350</td>
-                                    <td style="vertical-align: middle">650</td>
-                                    <td style="vertical-align: middle">
-                                        <input type="number" name="quantity" min="1" max="10"></td>
-                                    <td style="vertical-align: middle">3000</td>
-
-                                    <td style="text-align: center; vertical-align: middle"><a data-toggle="modal" data-target="#"><i class="fa fa-check"></i></a></td>
-
-                                </tr>
-                                <tr>
-
-                                    <td style="vertical-align: middle">Pasta con Vegetales</td>
-
-                                    <td style="vertical-align: middle">2350</td>
-                                    <td style="vertical-align: middle">650</td>
-                                    <td style="vertical-align: middle">
-                                        <input type="number" name="quantity" min="1" max="10"></td>
-                                    <td style="vertical-align: middle">3000</td>
-
-                                    <td style="text-align: center; vertical-align: middle"><a data-toggle="modal" data-target="#"><i class="fa fa-check"></i></a></td>
-
-                                </tr>
-                                <tr>
-
-                                    <td style="vertical-align: middle">Pasta con Salmon</td>
-
-                                    <td style="vertical-align: middle">2350</td>
-                                    <td style="vertical-align: middle">650</td>
-                                    <td style="vertical-align: middle">
-                                        <input type="number" name="quantity" min="1" max="10"></td>
-                                    <td style="vertical-align: middle">3000</td>
-
-                                    <td style="text-align: center; vertical-align: middle"><a data-toggle="modal" data-target="#"><i class="fa fa-check"></i></a></td>
-
-                                </tr>
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
 
 
 
-    </div>
-
-
-
-
-
+    <asp:Label id="label22" runat="server" Text="EPALE" ></asp:Label>>
 
 
 
@@ -278,55 +69,6 @@
         </div>
     </div>
 
-
-
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            $('#Menu1').DataTable({
-                "language": spanish,
-                "bAutoWidth": false,
-                "aoColumns": [
-                    null,
-                     null,
-                    null,
-                    null,
-                    { "bSearchable": false },
-                    { "bSearchable": false }
-                ]
-            });
-        });
-
-        $(document).ready(function () {
-            $('#Menu2').DataTable({
-                "language": spanish,
-                "bAutoWidth": false,
-                "aoColumns": [
-                    null,
-                     null,
-                    null,
-                    null,
-                    { "bSearchable": false },
-                    { "bSearchable": false }
-                ]
-            });
-        });
-
-        $(document).ready(function () {
-            $('#Menu3').DataTable({
-                "language": spanish,
-                "bAutoWidth": false,
-                "aoColumns": [
-                    null,
-                     null,
-                    null,
-                    null,
-                    { "bSearchable": false },
-                    { "bSearchable": false }
-                ]
-            });
-        });
-    </script>
 
 
 </asp:Content>

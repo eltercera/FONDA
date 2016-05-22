@@ -4,6 +4,8 @@ using NHibernate.Criterion;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
+using System.Collections.Generic;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -21,5 +23,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 throw new FondaIndexException("Not Found order account", e);
             }
         }
+
+        public IList<Account> GetAll()
+        {
+            return FindAll();
+        }
+
+       
     }
 }
+

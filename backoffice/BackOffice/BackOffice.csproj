@@ -421,6 +421,8 @@
     <Content Include="Seccion\Caja\Default.aspx" />
     <Content Include="Seccion\Caja\DefaultOrdenesCerradas.aspx" />
     <Content Include="Seccion\Caja\ModificarOrden.aspx" />
+    <Content Include="Seccion\Caja\VerDetalleOrden.aspx" />
+    <Content Include="Seccion\Caja\VerFactura.aspx" />
     <Content Include="Seccion\Configuracion\AgregarModificarUsuario.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
@@ -504,6 +506,25 @@
     </Compile>
     <Compile Include="Seccion\Caja\ModificarOrden.aspx.designer.cs">
       <DependentUpon>ModificarOrden.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Caja\ResourceCaja.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceCaja.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.cs">
+      <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.designer.cs">
+      <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Caja\VerFactura.aspx.cs">
+      <DependentUpon>VerFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Caja\VerFactura.aspx.designer.cs">
+      <DependentUpon>VerFactura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\AgregarModificarUsuario.aspx.cs">
       <DependentUpon>AgregarModificarUsuario.aspx</DependentUpon>
@@ -642,10 +663,24 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoMaster.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Seccion\Caja\ResourceCaja.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceCaja.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Seccion\Configuracion\G1RecursosInterfaz.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>G1RecursosInterfaz.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
+      <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
+      <Name>FondaDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
+      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
+      <Name>FondaDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

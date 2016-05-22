@@ -174,26 +174,55 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#ListarOrden').DataTable({
+    $('#contenido_ListarOrden').DataTable({
         "language": spanish,
         "aoColumns": [
             null,
-            { "bSearchable": false },
+            null,
+            null,
+            null,
             { "bSearchable": false }
         ]
     });
 });
 
 $(document).ready(function () {
-    $('#Detalle').DataTable({
+    $('#contenido_Detalle').DataTable({
         "language": spanish,
-        "bAutoWidth": false,
         "aoColumns": [
             null,
             null,
             null,
-            { "bSearchable": false },
+            null,
             { "bSearchable": false }
         ]
     });
+});
+
+$(document).ready(function () {
+    $('#contenido_Pago').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+            $('#contenido_Menu1').DataTable({
+                "language": spanish,
+                "bAutoWidth": false,
+                "aoColumns": [
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
 });

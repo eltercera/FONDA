@@ -10,18 +10,16 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using System.Web.Services;
 using System.Web.Script.Serialization;
-using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class CrearFactura : System.Web.UI.Page
+    public partial class VerFactura : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int id = int.Parse(Request.QueryString["id"]);
-            AlertSuccess_AgregarFactura.Visible = false;
+
+
             LoadTable();
-            fillDropDown(id);
 
 
         }
@@ -150,84 +148,6 @@ namespace BackOffice.Seccion.Caja
         {
             Pago.Rows.Clear();
 
-        }
-        protected void ButtonCloseOrder_Click(object sender, EventArgs e)
-        {
-            int id = int.Parse(Request.QueryString["id"]);
-            
-            //Genero los objetos para la consulta
-            //Genero la lista de la consulta
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IOrderAccountDao _OrderAccountDAO = factoryDAO.GetOrderAccountDAO();
-            // cambio el estado de la cuenta a cerrada
-            
-            Account orderAccount = _OrderAccountDAO.FindById(id);
-            orderAccount.Status = factoryDAO.GetClosedAccountStatus();
-            try
-            {
-                _OrderAccountDAO.Save(orderAccount);
-            }
-            catch (SaveEntityFondaDAOException ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-
-
-            AlertSuccess_AgregarFactura.Visible = true;
-
-            IInvoiceDao _invoiceDAO = factoryDAO.GetInvoiceDao();
-            Invoice _invoice = new Invoice();
-            IPaymentDao<CreditCarPayment> _creditCardPaymentDAO = factoryDAO.GetCreditCardPaymentDAO();
-            CreditCarPayment _creditCardPayment = new CreditCarPayment();
-
-            int numCard = int.Parse(NumCard.Text);
-            //agrego el pago
-            _creditCardPayment.LastCardDigits = numCard;           
-            _creditCardPayment.Amount = _OrderAccountDAO.FindById(id).getMonto();
-            _creditCardPaymentDAO.Save(_creditCardPayment);
-            // agrego la factura
-
-            
-            IList<Profile> profiles = orderAccount.Commensal.Profiles;
-            String selectedProfile = DropDownProfiles.Text;
-            int count = profiles.Count();
-            Profile profile = new Profile();
-            for (int i = 0; i < count; i++)
-            {
-                if (profiles[i].ProfileName == selectedProfile)
-                {
-                    profile = profiles[i];
-                }
-            }
-            
-           // _invoice.Restaurant = 
-            
-            _invoice.Tip = 200;
-            _invoice.Tax = 10;
-            _invoice.Total = _OrderAccountDAO.FindById(id).getMonto();
-            _invoice.Date = DateTime.Now;
-            _invoice.Account = _OrderAccountDAO.FindById(id);
-            _invoice.Status = GeneratedInvoiceStatus.Instance;
-            _invoice.Payment = _creditCardPayment;
-            _invoice.Profile = profile;
-            _invoiceDAO.Save(_invoice); 
-            
-
-        }
-
-        public void fillDropDown(int id)
-        {
-
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IOrderAccountDao _OrderAccountDAO = factoryDAO.GetOrderAccountDAO();
-            Commensal comensal = _OrderAccountDAO.FindById(id).Commensal;
-            IList<Profile> profiles = comensal.Profiles;
-
-            foreach (Profile profile in profiles)
-            {
-                DropDownProfiles.Items.Add(profile.ProfileName);
-                
-            }
         }
 
     }

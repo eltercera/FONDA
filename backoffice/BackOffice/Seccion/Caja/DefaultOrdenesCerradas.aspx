@@ -24,58 +24,23 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
    
-    <div class="text-right">
-                   <asp:Button id="Button2" Text="Cerrar Caja" CssClass="btn btn-primary" runat="server" OnClick="Button1_Click"/>
-    </div>
-
     <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Ordenes Cerradas </h3>
-                </div>
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table id="Detalle" class="table table-bordered table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th style="vertical-align: middle">N° Orden</th>
-                                    <th style="vertical-align: middle">Cliente</th>                          
-                                    <th style="vertical-align: middle">Fecha</th>
-                                    <th style="vertical-align: middle">Monto Total</th>
-                                    <th style="vertical-align: middle">Accion</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="vertical-align: middle">#1</td>
-                                    <td style="vertical-align: middle">@pperez</td>
-                                    <td style="vertical-align: middle">10/10/2014</td>
-                                    <td style="vertical-align: middle">8000</td>
-                                    <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_factura"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align: middle">#2</td>
-                                    <td style="vertical-align: middle">@jero1604</td>
-                                    <td style="vertical-align: middle">10/10/2014</td>
-                                    <td style="vertical-align: middle">6000</td>
-                                    <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_factura"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td style="vertical-align: middle">#3</td>
-                                    <td style="vertical-align: middle">@vero12</td>
-                                    <td style="vertical-align: middle">10/10/2014</td>
-                                    <td style="vertical-align: middle">7000</td>
-                                    <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_factura"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-       
+           <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i>Cuentas Cerradas</h3>
+                                
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responsive">
+
+                                        <asp:Table ID="Detalle" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
     <!-- /.row -->
 
     <!-- Modal Ver Detalle Orden-->
