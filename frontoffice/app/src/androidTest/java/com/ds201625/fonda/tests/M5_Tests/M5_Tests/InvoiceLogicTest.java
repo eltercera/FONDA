@@ -41,7 +41,7 @@ public class InvoiceLogicTest extends TestCase {
     public void testInvoiceIsNotNull() {
 
         try {
-            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+            invoice = invoiceLogic.getInvoiceSW();
             assertNotNull(invoice);
         }
         catch (NullPointerException e){
@@ -58,7 +58,7 @@ public class InvoiceLogicTest extends TestCase {
     public void testInvoiceElements() {
 
         try {
-            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+            invoice = invoiceLogic.getInvoiceSW();
             assertNotNull(invoice);
             assertEquals("The dining room", invoice.getRestaurant().getName());
             assertEquals("Adriana", invoice.getProfile().getProfileName());
@@ -74,56 +74,50 @@ public class InvoiceLogicTest extends TestCase {
      * Metodo que prueba que el objeto Restaurant de la factura no este vacio
      */
     public void testRestaurantInvoiceIsNotEmpty() {
-
-        String nameRestaurant = "The dining room";
         try {
-            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        String nameRestaurant = "The dining room";
+        invoice = invoiceLogic.getInvoiceSW();
+        assertEquals(nameRestaurant, invoice.getRestaurant().getName());
         } catch (RestClientException e) {
             e.printStackTrace();
         }
-        assertEquals(nameRestaurant, invoice.getRestaurant().getName());
-
     }
 
     /**
      * Metodo que prueba que el objeto Restaurant de la factura no es nulo
      */
     public void testRestaurantInvoiceIsNotNull() {
-
         try {
-            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW();
+        assertNotNull(invoice.getRestaurant());
         } catch (RestClientException e) {
             e.printStackTrace();
         }
-        assertNotNull(invoice.getRestaurant());
     }
 
     /**
      * Metodo que prueba que el objeto Profile de la factura no este vacio
      */
     public void testProfileInvoiceIsNotEmpty() {
-
-        String nameProfile = "Adriana";
         try {
-            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        String nameProfile = "Adriana";
+        invoice = invoiceLogic.getInvoiceSW();
+        assertEquals(nameProfile, invoice.getProfile().getProfileName());
         } catch (RestClientException e) {
             e.printStackTrace();
         }
-        assertEquals(nameProfile, invoice.getProfile().getProfileName());
-
     }
 
     /**
      * Metodo que prueba que el objeto Profile de la factura no es nulo
      */
     public void testProfileInvoiceIsNotNull() {
-
         try {
-            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW();
+        assertNotNull(invoice.getProfile());
         } catch (RestClientException e) {
             e.printStackTrace();
         }
-        assertNotNull(invoice.getProfile());
     }
 
 
@@ -132,40 +126,36 @@ public class InvoiceLogicTest extends TestCase {
      */
     public void testAccountInvoiceIsNotEmpty() {
 
-
         try {
-            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW();
+        assertEquals(3, invoice.getAccount().getListDish().size());
         } catch (RestClientException e) {
             e.printStackTrace();
         }
-        assertEquals(3, invoice.getAccount().getListDish().size());
-
     }
 
     /**
      * Metodo que prueba que el objeto Account de la factura no es nulo
      */
     public void testAccountInvoiceIsNotNull() {
-
         try {
-            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW();
+        assertNotNull(invoice.getAccount());
         } catch (RestClientException e) {
             e.printStackTrace();
         }
-        assertNotNull(invoice.getAccount());
     }
 
     /**
      * Metodo que prueba que el objeto Currency de la factura no este vacio
      */
     public void testCurrencyInvoiceIsNotEmpty() {
-
         try {
-            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW();
+        assertEquals("Bolivar", invoice.getCurrency().getName());
         } catch (RestClientException e) {
             e.printStackTrace();
         }
-        assertEquals("Bolivar", invoice.getCurrency().getName());
 
     }
 
@@ -173,13 +163,13 @@ public class InvoiceLogicTest extends TestCase {
      * Metodo que prueba que el objeto Currency de la factura no es nulo
      */
     public void testCurrencyInvoiceIsNotNull() {
-
         try {
-            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW();
+        assertNotNull(invoice.getCurrency());
         } catch (RestClientException e) {
             e.printStackTrace();
         }
-        assertNotNull(invoice.getCurrency());
+
     }
 
     /**

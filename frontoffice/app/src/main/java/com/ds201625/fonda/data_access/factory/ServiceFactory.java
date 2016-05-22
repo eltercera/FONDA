@@ -80,10 +80,14 @@ public interface ServiceFactory {
     CategoryService getCategoryService();
 
     /**
-     * Obtiene el servicio de pagar
+     * Obtiene el servicio de pago
      * @return
      */
     PaymentService setPaymentService();
+
+    FilterByZoneService getFilterByZoneService();
+
+    FilterByCategoryService getFilterByCategoryService();
 }
 
 

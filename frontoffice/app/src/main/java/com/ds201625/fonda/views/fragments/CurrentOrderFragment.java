@@ -91,19 +91,14 @@ public class CurrentOrderFragment extends BaseFragment {
         List<DishOrder> listDishOWS;
         logicCurrentOrder = new LogicCurrentOrder();
         try {
-            listDishOWS = logicCurrentOrder.getCurrentOrderSW().getListDishOrder();
+            listDishOWS = logicCurrentOrder.getCurrentOrderSW();
             for (int i = 0; i < listDishOWS.size(); i++) {
                 System.out.println("Descripcion Plato:  " + listDishOWS.get(i).getDish().getDescription());
             }
             return listDishOWS;
-        }
-        catch (RestClientException e) {
+        } catch (RestClientException e) {
             e.printStackTrace();
-        }
-        catch (NullPointerException e){
-            System.out.println("No es posible realizar la conexión con el Web Server ");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error en la Conexión");
         }
         return null;

@@ -418,15 +418,15 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * Allows to select only one radio button
+     * Permite la seleccion de solo un radioButton
      * @param view
      */
     public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
+        // Es el boton seleccionado?
         String typeOfCC = null;
         boolean checked = ((RadioButton) view).isChecked();
 
-        // Check which radio button was clicked
+        // Revisa cual esta seleccionado
         switch (view.getId()) {
             case R.id.rBVisa:
                 if (checked)
@@ -442,7 +442,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * Saves the credit card on SqLite Database
+     * Guarda la TDC en SqLite Database
      */
     public void saveCC(){
         getAllElements();
@@ -469,7 +469,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * Gets the credit card selected
+     * Obtiene la TDC seleccionada
      */
     public void acceptCC (){
         getAllElements();
@@ -483,7 +483,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * Obtains the total amount (subtotal + tax) from the previous fragment
+     * Obtiene el monto total (subtotal + iva)
      * @return amountT amount of the bill
      */
     public float amount (){
@@ -498,7 +498,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * Validates all fields on fragment Credit Card
+     * Valida los campos de la TDC
      */
     public void validationCC (){
         getAllElements();
@@ -513,7 +513,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * Contains the methods that validate the fields
+     * Contiene los metodos que validan los campos
      */
     public void validate(){
         String numberCC = number.getText().toString();
@@ -543,23 +543,23 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * validates that the Credit Card number is larger that 20 numbers
-     * @param numberC number of credit card
-     * @return true if its not 20 digits and false if it is
+     * Valida que el numero de la TDC sea igual a 16 digitos y que no este vacio
+     * @param numberC numero de la tdc
+     * @return true si no tiene 20 digitosn y false si sí
      */
     public boolean validateCCNumber(String numberC){
         boolean op = true;
-            if (numberC.isEmpty() || numberC.length() < 20) {
+            if (numberC.isEmpty() || numberC.length() < 16) {
                 op = false;
-                number.setError("Debe contener 20 dígitos");
+                number.setError("Debe contener 16 dígitos");
             }
         return op;
     }
 
     /**
-     * Validates if the field is empty
-     * @param nameO name of the owner
-     * @return true if its not empty and false if it is
+     * Valida si el campo es vacio
+     * @param nameO nombre del tarjetahabiente
+     * @return true si no esta vacio y false si lo esta
      */
     private boolean validateNameOwner(String nameO){
         boolean op = true;
@@ -571,9 +571,9 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * Validates if the field is empty
-     * @param id id of the owner
-     * @return op true if its not empty and false if it is
+     * Valida si el campo es vacio
+     * @param id id del tarjetahabiente
+     * @return op true si no esta vacio y false si lo esta
      */
     private boolean validateIdOwner(String id){
         boolean op = true;
@@ -585,9 +585,9 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * Validates if the field is empty
-     * @param dateC date of expiring
-     * @return op true if its not empty and false if it is
+     * Valida si el campo es vacio
+     * @param dateC fecha de vencimiento
+     * @return op true si no esta vacio y false si lo esta
      */
     private boolean validateDate(String dateC){
         boolean op = true;
@@ -599,10 +599,10 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * Validates if the field is empty
+     * Valida si el campo es vacio
      * @param cvvC
-     * @return op true if its not empty and false if it is
-     */
+     * @return op ttrue si no esta vacio y false si lo esta
+    */
      private boolean validateCvv(String cvvC){
         boolean op = true;
         if(cvvC.isEmpty() || cvvC.length() < 3 ) {
@@ -613,8 +613,8 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * Methods implemented of the profile
-     * @param profile profiles saved
+     * Metodos que implementa el perfil
+     * @param profile perfiles guardados
      */
     @Override
     public void OnProfileSelect(Profile profile) {
@@ -642,7 +642,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
     /**
-     * changes the fragment depending of the parameter
+     * Cambia de fragment dependiendo del parametro
      * @param opc
      */
     public static void changeFrag (int opc){

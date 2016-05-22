@@ -10,10 +10,17 @@ import com.ds201625.fonda.domains.CreditCarPayment;
 import com.ds201625.fonda.domains.Invoice;
 
 /**
- * Created by Hp on 22/05/2016.
+ * Paymentservice interface
  */
 public interface PaymentService {
 
+    /**
+     * Registra el pago para una factura
+     * @param invoice
+     * @return
+     * @throws RestClientException
+     * @throws InvalidDataRetrofitException
+     */
     Invoice setPayments(Invoice invoice) throws RestClientException, InvalidDataRetrofitException;
 
     }

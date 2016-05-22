@@ -47,11 +47,12 @@ public class CurrentOrderServiceTest extends TestCase {
     public void testListDishOrderIsNotEmpty() {
 
         try {
-            listDishOrder = currentOrderService.getListDishOrder();
+
+        listDishOrder = currentOrderService.getListDishOrder();
+        assertFalse(listDishOrder.isEmpty());
         } catch (RestClientException e) {
             e.printStackTrace();
         }
-        assertFalse(listDishOrder.isEmpty());
     }
 
     /*
@@ -64,7 +65,7 @@ public class CurrentOrderServiceTest extends TestCase {
             MoreAsserts.assertNotEmpty(listDishOrder);
             assertEquals(3, listDishOrder.size());
         }
-        catch (NullPointerException e){
+        catch (NullPointerException e) {
             fail("No esta conectado al WS");
         } catch (RestClientException e) {
             e.printStackTrace();
@@ -76,13 +77,18 @@ public class CurrentOrderServiceTest extends TestCase {
      */
     public void testDishOrderIsNotEmpty() {
 
-        String nameDish = "Pasta";
         try {
+            String nameDish = "Pasta";
             listDishOrder = currentOrderService.getListDishOrder();
-        } catch (RestClientException e) {
+            assertEquals(nameDish, listDishOrder.get(0).getDish().getName());
+        }
+        catch (NullPointerException e){
+            fail("No esta conectado al WS");
+        }
+        catch (RestClientException e) {
             e.printStackTrace();
         }
-        assertEquals(nameDish, listDishOrder.get(0).getDish().getName());
+
 
     }
 
@@ -92,11 +98,12 @@ public class CurrentOrderServiceTest extends TestCase {
     public void testRestaurantInvoiceIsNotNull() {
 
         try {
-            listDishOrder = currentOrderService.getListDishOrder();
-        } catch (RestClientException e) {
+        listDishOrder = currentOrderService.getListDishOrder();
+        assertNotNull(listDishOrder.get(0).getDish());
+        }
+        catch (RestClientException e) {
             e.printStackTrace();
         }
-        assertNotNull(listDishOrder.get(0).getDish());
     }
 
     /**
@@ -108,11 +115,12 @@ public class CurrentOrderServiceTest extends TestCase {
             listDishOrder = currentOrderService.getListDishOrder();
             assertNotNull(listDishOrder);
         }
-        catch (NullPointerException e){
+        catch (NullPointerException e) {
             fail("No esta conectado al WS");
         } catch (RestClientException e) {
             e.printStackTrace();
         }
+
     }
 
     /**
