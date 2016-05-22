@@ -430,7 +430,7 @@
     <Content Include="Seccion\Restaurant\Mesas.aspx" />
     <Content Include="Seccion\Restaurant\Restaurante.aspx" />
     <Content Include="Seccion\Restaurant\AgregarZona.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="App_Data\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -633,15 +633,14 @@
     <Content Include="Content\fonts\GreatVibes-Regular.otf" />
     <Content Include="Content\MasterUI.master" />
     <Content Include="Content\js\datatables\Spanish.json" />
-    <None Include="Web.Debug.config">
+    <None Include="App_Data\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
+    <None Include="App_Data\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
