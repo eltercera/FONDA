@@ -54,7 +54,7 @@ public class FavoritesActivity extends BaseNavigationActivity {
             }
 
         super.onCreate(savedInstanceState);
-        
+
         // si existe un token o lo logra obtener uno nuevo vigente salta
         if (SessionData.getInstance().getToken() == null) {
             skip();
