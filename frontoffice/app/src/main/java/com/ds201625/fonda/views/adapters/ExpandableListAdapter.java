@@ -49,7 +49,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
      * @param datePaymentRestaurant Lista de string que define la fecha de pago de una visita a un restaurant
      */
     public ExpandableListAdapter(Context context, List<String> nameRestaurant,
-                                 Map<String, List<String>> collectionVisits, List<String> categoryRestaurant, List<String> addressRestaurant, List<String> logoRestaurant, List<String> datePaymentRestaurant) {
+                                 Map<String, List<String>> collectionVisits, List<String> categoryRestaurant,
+                                 List<String> addressRestaurant, List<String> logoRestaurant,
+                                 List<String> datePaymentRestaurant) {
         this.context = context;
         this.collectionVisits = collectionVisits;
         this.nameRestaurant = nameRestaurant;

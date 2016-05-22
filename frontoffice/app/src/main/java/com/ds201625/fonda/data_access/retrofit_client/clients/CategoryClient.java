@@ -9,7 +9,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 /**
- * Interfaz para los metodos del servicio de ZoneClient
+ * Interfaz para los metodos del servicio de CategoryClient
  */
 public interface CategoryClient {
 

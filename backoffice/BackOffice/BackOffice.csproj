@@ -140,6 +140,8 @@
     <Content Include="Content\img\Logo.png" />
     <Content Include="Content\img\LogoWeb.png" />
     <Content Include="Content\img\rsz_logo.png" />
+    <Content Include="Content\img\panel1.jpg" />
+    <Content Include="Content\img\Rst3.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\DataTables.js" />
@@ -431,7 +433,7 @@
     <Content Include="Seccion\Restaurant\Mesas.aspx" />
     <Content Include="Seccion\Restaurant\Restaurante.aspx" />
     <Content Include="Seccion\Restaurant\AgregarZona.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="App_Data\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -634,15 +636,21 @@
     <Content Include="Content\fonts\GreatVibes-Regular.otf" />
     <Content Include="Content\MasterUI.master" />
     <Content Include="Content\js\datatables\Spanish.json" />
-    <None Include="Web.Debug.config">
+    <None Include="App_Data\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
+    <None Include="App_Data\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
