@@ -14,6 +14,7 @@ namespace BackOffice
     {
         FactoryDAO factoryDAO = FactoryDAO.Intance;
         IList<Dish> Sugerencia = new List<Dish>();
+        int commensal = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -57,7 +58,7 @@ namespace BackOffice
                 //Le asigna el Id a cada fila de la tabla
                 tRow.Attributes["data-id"] = listTable[i].Id.ToString();
                 //Agrega la fila a la tabla existente
-                table.Rows.Add(tRow);
+                tableDefault.Rows.Add(tRow);
                 // CABLEADO DE RESERVA
                 string statusTable = string.Empty;
                 string user = string.Empty;
@@ -91,7 +92,10 @@ namespace BackOffice
                         tCell.Text = listTable[i].Capacity.ToString();
                     //Agrega el numero de comensales
                     else if (j.Equals(2))
+                    {
                         tCell.Text = quantity.ToString();
+                        commensal = quantity + commensal;
+                    }
                     //Agrega el usuario que realizo la reserva
                     else if (j.Equals(3))
                         tCell.Text = user;
@@ -107,10 +111,12 @@ namespace BackOffice
                 }
 
             }
+            
+            commensalLabel.Text = commensal.ToString();
 
             //Agrega el encabezado a la Tabla de MEsas
             TableHeaderRow header = GenerateTableHeader();
-            table.Rows.AddAt(0, header);
+            tableDefault.Rows.AddAt(0, header);
 
             //Agregar Table de Menu
             IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
@@ -222,7 +228,7 @@ namespace BackOffice
         /// </summary>
         public void CleanTable()
         {
-            table.Rows.Clear();
+            tableDefault.Rows.Clear();
             TableDayMenuDashboard.Rows.Clear();
         }
        
@@ -256,7 +262,6 @@ namespace BackOffice
 
             return header;
         }
-
 
     }
 }

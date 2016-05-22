@@ -187,7 +187,7 @@ Restaurantes
             </div>   
           
                         <div class="modal-footer">
-                            <asp:Button id="CloseConsult" Text="Cerrar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="CloseConsult" Text="Cerrar" CssClass="btn btn-danger"  class="close" data-dismiss="modal" runat="server"/>
                         </div>
  
             </div>
