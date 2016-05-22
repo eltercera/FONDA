@@ -53,8 +53,7 @@ public class InvoiceServiceTest extends TestCase {
         }
         catch (NullPointerException e){
             fail("No esta conectado al WS");
-        }
-        catch (RestClientException e) {
+        } catch (RestClientException e) {
             e.printStackTrace();
         }
     }
@@ -73,8 +72,7 @@ public class InvoiceServiceTest extends TestCase {
         }
         catch (NullPointerException e){
             fail("No esta conectado al WS");
-        }
-        catch (RestClientException e) {
+        } catch (RestClientException e) {
             e.printStackTrace();
         }
     }
@@ -85,9 +83,9 @@ public class InvoiceServiceTest extends TestCase {
     public void testRestaurantInvoiceIsNotEmpty() {
 
         try {
-        String nameRestaurant = "The dining room";
-        invoice = invoiceService.getCurrentInvoice();
-        assertEquals(nameRestaurant, invoice.getRestaurant().getName());
+            String nameRestaurant = "The dining room";
+            invoice = invoiceService.getCurrentInvoice();
+            assertEquals(nameRestaurant, invoice.getRestaurant().getName());
         } catch (RestClientException e) {
             e.printStackTrace();
         }
@@ -100,6 +98,7 @@ public class InvoiceServiceTest extends TestCase {
     public void testRestaurantInvoiceIsNotNull() {
 
         try {
+
         invoice = invoiceService.getCurrentInvoice();
         assertNotNull(invoice.getRestaurant());
         } catch (RestClientException e) {
@@ -114,7 +113,7 @@ public class InvoiceServiceTest extends TestCase {
 
         try {
         String nameProfile = "Adriana";
-        invoice = invoiceService.getCurrentInvoice();
+            invoice = invoiceService.getCurrentInvoice();
         assertEquals(nameProfile, invoice.getProfile().getProfileName());
         } catch (RestClientException e) {
             e.printStackTrace();
@@ -140,7 +139,6 @@ public class InvoiceServiceTest extends TestCase {
      * Metodo que prueba que el objeto Account de la factura no este vacio
      */
     public void testAccountInvoiceIsNotEmpty() {
-
         try {
         invoice = invoiceService.getCurrentInvoice();
         assertEquals(3, invoice.getAccount().getListDish().size());
