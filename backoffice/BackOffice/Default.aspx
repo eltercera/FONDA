@@ -74,11 +74,11 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-pencil-square-o fa-5x"></i>
+                            <i class="fa fa-users fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">10</div>
-                            <div>Mesas disponibles</div>
+                            <div class="huge"></div>
+                            <div>Comensales en sistema</div>
                         </div>
                     </div>
                 </div>
@@ -124,10 +124,15 @@
                             <div class="panel-body">
                                 <div class="table-responsive">
                                         <asp:HiddenField ID="TableModifyId" runat="server" Value="" />
-                                        <asp:Table ID="table" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>                      
-                                        
+                                        <asp:Table ID="tableDefault" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>                                                              
                                 </div>
                             </div>
+                            <a id="A2" href="~/Seccion/Restaurant/Mesas.aspx" runat="server">
+                            <div class="panel-footer">
+                                <span class="pull-right">Ver más<i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>

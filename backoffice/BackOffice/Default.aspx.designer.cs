@@ -31,13 +31,22 @@ namespace BackOffice {
         protected global::System.Web.UI.WebControls.HiddenField TableModifyId;
         
         /// <summary>
-        /// table control.
+        /// tableDefault control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table table;
+        protected global::System.Web.UI.WebControls.Table tableDefault;
+        
+        /// <summary>
+        /// A2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A2;
         
         /// <summary>
         /// HiddenFieldSuggestionDishId control.
