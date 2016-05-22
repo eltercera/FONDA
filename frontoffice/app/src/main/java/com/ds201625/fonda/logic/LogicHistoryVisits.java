@@ -21,7 +21,7 @@ public class LogicHistoryVisits {
      * Metodo que controla la llamada al ws para el manejo de pagos del restaurant
      * @return historial de visitas
      */
-    public HistoryVisitsRestaurantService algo (){
+    public HistoryVisitsRestaurantService apihistoryVisits (){
         histoyVisitsRestaurantService = FondaServiceFactory.getInstance().getHistoryVisitsService();
         return histoyVisitsRestaurantService;
     }

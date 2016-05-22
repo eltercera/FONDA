@@ -1,4 +1,4 @@
-package com.ds201625.fonda.tests;
+package com.ds201625.fonda.tests.M5_Tests;
 
 import android.test.MoreAsserts;
 
@@ -106,7 +106,6 @@ public class CurrentOrderServiceTest extends TestCase {
         super.tearDown();
         listDishOrder = null;
     }
-
 
 
 }

@@ -143,7 +143,7 @@ public class HistoryVisitFragment extends BaseFragment {
         try {
             historyvisits = new LogicHistoryVisits();
 
-            listInvoice =   historyvisits.algo().getHistoryVisits();
+            listInvoice =   historyvisits.apihistoryVisits().getHistoryVisits();
             groupNameRestaurant = new ArrayList<String>();
             groupAddressRestaurant = new ArrayList<String>();
             groupCategoryRestaurant = new ArrayList<String>();

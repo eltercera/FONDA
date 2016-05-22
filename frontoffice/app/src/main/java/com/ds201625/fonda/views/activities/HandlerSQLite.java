@@ -15,14 +15,25 @@ import static android.provider.BaseColumns._ID;
  */
 public class HandlerSQLite extends SQLiteOpenHelper {
 
+    /**
+     * Table on th data base
+     */
     private  String table = "CREATE TABLE creditcard (" + _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                     "number TEXT, owner TEXT, id_owner INTEGER, expiration TEXT, cvv INTEGER, type TEXT);";
 
+    /**
+     * Constructor
+     * @param context
+     */
     public HandlerSQLite(Context context) {
 
         super(context,"CreditCard", null, 1);
     }
 
+    /**
+     * When is created
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -37,6 +48,16 @@ public class HandlerSQLite extends SQLiteOpenHelper {
         onCreate(db);
 
     }
+
+    /**
+     * Saves the Credit card on SQLite Database
+     * @param number
+     * @param name
+     * @param idOwner
+     * @param expiration
+     * @param cvv
+     * @param type
+     */
     public void save (String number, String name, Integer idOwner, String expiration, Integer cvv, String type){
         SQLiteDatabase db = this.getWritableDatabase();
         db.beginTransaction();
@@ -59,6 +80,10 @@ public class HandlerSQLite extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * Reads all the credit cards saved an shows the number of credit card and the name of the owner
+     * @return
+     */
    public ArrayList<String> read (){
           ArrayList<String> numbers = new ArrayList<>();
           SQLiteDatabase db = this.getReadableDatabase();
@@ -82,6 +107,10 @@ public class HandlerSQLite extends SQLiteOpenHelper {
        }
        return numbers;
    }
+
+    /**
+     * Erase the data base
+     */
     public void erase (){
         SQLiteDatabase db = this.getReadableDatabase();
         db.beginTransaction();
