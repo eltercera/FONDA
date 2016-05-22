@@ -20,5 +20,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
         IList<Restaurant> findByCategory(RestaurantCategory category);
 
         bool Geoposition(double _latitudUser, double _longitudUser, int _idRestaurant);
+        bool ValidateHour(int _idRestaurant, DateTime _hour);
+        bool ValidateDay(int _idRestaurant, DateTime _hour);
     }
 }
