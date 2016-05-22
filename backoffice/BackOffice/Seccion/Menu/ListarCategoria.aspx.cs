@@ -17,9 +17,9 @@ namespace BackOffice.Seccion.Menu
             AlertSuccess_ModifyCategory.Visible = false;
             AlertDanger_AddCategory.Visible = false;
             AlertDanger_ModifyCategory.Visible = false;
-            LoadTable();
+            LoadMenuCategoryTable();
         }
-        protected void LoadTable()
+        protected void LoadMenuCategoryTable()
         {
 
             CleanTable();
@@ -50,7 +50,20 @@ namespace BackOffice.Seccion.Menu
                     if (j.Equals(0))
                         tCell.Text = listMenuC[i].Name;
                     if (j.Equals(1))
-                        tCell.Text = listMenuC[i].Status.ToString();
+                    {
+                        tCell.CssClass = "text-center";
+
+                        if (listMenuC[i].Status.StatusId == 1)
+                        {
+                            tCell.Text = ResourceMenu.Active;
+
+                        }
+                        else if (listMenuC[i].Status.StatusId == 2)
+                        {
+                            tCell.Text = ResourceMenu.Inactive;
+                        }
+                    }
+                      
                     //Agrega las acciones de la tabla
                     else if (j.Equals(2))
                     {
@@ -59,8 +72,22 @@ namespace BackOffice.Seccion.Menu
                         LinkButton action = new LinkButton();
                         action.Attributes["data-toggle"] = "modal";
                         action.Attributes["data-target"] = "#modify_category";
-                        action.Text = ResourceMenu.ActionListarCategoria;
+                        action.Text = ResourceMenu.ActionModificarCategoria;
                         tCell.Controls.Add(action);
+
+                        LinkButton LinkButtonActivateCategory = new LinkButton();
+                        LinkButtonActivateCategory.Attributes["data-toggle"] = "modal";
+                        LinkButtonActivateCategory.Attributes["data-target"] = "#activate_category";
+                        LinkButtonActivateCategory.Text = ResourceMenu.ActionActivateCategory;
+                        LinkButtonActivateCategory.ToolTip = "Activar Categoria";
+                        tCell.Controls.Add(LinkButtonActivateCategory);
+
+                        LinkButton LinkButtonDactivateCategory = new LinkButton();
+                        LinkButtonDactivateCategory.Attributes["data-toggle"] = "modal";
+                        LinkButtonDactivateCategory.Attributes["data-target"] = "#deactivate_category";
+                        LinkButtonDactivateCategory.Text = ResourceMenu.ActionInactivateCategory;
+                        LinkButtonDactivateCategory.ToolTip = "Remover Sugerencia";
+                        tCell.Controls.Add(LinkButtonDactivateCategory);
                     }
                     //Agrega la 
                     tRow.Cells.Add(tCell);
@@ -129,15 +156,53 @@ namespace BackOffice.Seccion.Menu
             //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
             catch (Exception exc)
             {
-                AlertDanger_AddCategory.Visible = true;
+                AlertDanger_ModifyCategory.Visible = true;
                 System.Console.WriteLine("Excepcion capturada: {0}", exc);
             }
             finally
             {
-                LoadTable();
+                LoadMenuCategoryTable();
             }
         }
 
+
+        protected void ButtonActivateCategory_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //creo una instancia del factory
+                FactoryDAO _factoryDAO = FactoryDAO.Intance;
+                //creo una instancia del IMenuCategoryDAO
+                IMenuCategoryDAO _categoryDAO = _factoryDAO.GetMenuCategoryDAO();
+                //obtengo el id del plato desde el hidden field
+                string _CategoryIdString = HiddenFieldMenuCategoryModifyId.Value;
+                //convierto el id en integer
+                int _CategoryIdInt = int.Parse(_CategoryIdString);
+                //busco el plato por el id que lo asigna a la variable
+                MenuCategory _category = _categoryDAO.FindById(_CategoryIdInt);
+                //cambio el estado a activo                            
+                _category.Status = _factoryDAO.GetActiveSimpleStatus(); 
+                //guardo el plato
+                _categoryDAO.Save(_category);
+                //muestro la alerta de exito
+                 AlertSuccess_ModifyCategory.Visible = true;
+
+            }
+            //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
+            catch (Exception exc)
+            {
+                //si da error muestro la alerta de fallo
+                //AlertDanger_ModifyDish.Visible = true;
+                System.Console.WriteLine("Excepcion capturada: {0}", exc);
+            }
+            finally
+            {
+                //cargo la tabla
+                //ListSuggestionDish = null;
+               LoadMenuCategoryTable();
+            }
+
+        }
         protected void ButtonModifyCategory_Click(object sender, EventArgs e)
         {
 
@@ -165,7 +230,7 @@ namespace BackOffice.Seccion.Menu
             }
             finally
             {
-                LoadTable();
+                LoadMenuCategoryTable();
             }
 
 
@@ -187,5 +252,43 @@ namespace BackOffice.Seccion.Menu
             return menCat;
         }
 
+        protected void ButtonDeactivateCategory_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                //creo una instancia del factory
+                FactoryDAO _factoryDAO = FactoryDAO.Intance;
+                //creo una instancia del IMenuCategoryDAO
+                IMenuCategoryDAO _categoryDAO = _factoryDAO.GetMenuCategoryDAO();
+                //obtengo el id del plato desde el hidden field
+                string _CategoryIdString = HiddenFieldMenuCategoryModifyId.Value;
+                //convierto el id en integer
+                int _CategoryIdInt = int.Parse(_CategoryIdString);
+                //busco el plato por el id que lo asigna a la variable
+                MenuCategory _category = _categoryDAO.FindById(_CategoryIdInt);
+                //cambio el estado a activo                            
+                _category.Status = _factoryDAO.GetDisabledSimpleStatus();
+                //guardo el plato
+                _categoryDAO.Save(_category);
+                //muestro la alerta de exito
+                AlertSuccess_ModifyCategory.Visible = true;
+
+            }
+            //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
+            catch (Exception exc)
+            {
+                //si da error muestro la alerta de fallo
+                //AlertDanger_ModifyDish.Visible = true;
+                System.Console.WriteLine("Excepcion capturada: {0}", exc);
+            }
+            finally
+            {
+                //cargo la tabla
+                //ListSuggestionDish = null;
+                LoadMenuCategoryTable();
+            }
+
+        }
     }
 }

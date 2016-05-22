@@ -117,14 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ActionListarCategoria" xml:space="preserve">
-    <value>&lt;a data-toggle="modal"  data-target="#modify_category" &gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;</value>
+  <data name="ActionActivateCategory" xml:space="preserve">
+    <value>&lt;a data-toggle="modal" data-target="#activate_category"&gt;&lt;i class="fa fa-check"&gt;&lt;/i&gt;&lt;/a&gt;</value>
+  </data>
+  <data name="ActionInactivateCategory" xml:space="preserve">
+    <value>&lt;a data-toggle="modal" data-target="#deactivate_category"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;</value>
   </data>
   <data name="ActionMenuDia" xml:space="preserve">
-    <value>&lt;i class="fa fa-info-circle"&gt;</value>
+    <value>&lt;a data-toggle="modal"  data-target="#ver_plato" &gt;&lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;</value>
+    <comment>&lt;i class="fa fa-info-circle"&gt;</comment>
+  </data>
+  <data name="ActionModificarCategoria" xml:space="preserve">
+    <value>&lt;a data-toggle="modal"  data-target="#modify_category" &gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;</value>
+    <comment>&lt;a data-toggle="modal"  data-target="#modify_category" &gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;</comment>
   </data>
   <data name="ActionModifyDishMenuPrincipal" xml:space="preserve">
     <value>&lt;a data-toggle="modal"  data-target="#modify_dish" &gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;</value>
+  </data>
+  <data name="ActionRemoveSuggestion" xml:space="preserve">
+    <value>&lt;a data-toggle="modal"  data-target="#remove_suggestion" &gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
+    <comment>&lt;a data-toggle="modal" data-target="remove_suggestion"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;</comment>
   </data>
   <data name="ActionSetActiveDishMenuPrincipal" xml:space="preserve">
     <value>&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;</value>

@@ -61,20 +61,38 @@ namespace BackOffice.Seccion.Menu {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot;  data-target=&quot;#modify_category&quot; &gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;.
+        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot; data-target=&quot;#activate_category&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/a&gt;.
         /// </summary>
-        internal static string ActionListarCategoria {
+        internal static string ActionActivateCategory {
             get {
-                return ResourceManager.GetString("ActionListarCategoria", resourceCulture);
+                return ResourceManager.GetString("ActionActivateCategory", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot;&gt;.
+        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot; data-target=&quot;#deactivate_category&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;.
+        /// </summary>
+        internal static string ActionInactivateCategory {
+            get {
+                return ResourceManager.GetString("ActionInactivateCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot;  data-target=&quot;#ver_plato&quot; &gt;&lt;i class=&quot;fa fa-info-circle&quot;&gt;&lt;/i&gt;.
         /// </summary>
         internal static string ActionMenuDia {
             get {
                 return ResourceManager.GetString("ActionMenuDia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot;  data-target=&quot;#modify_category&quot; &gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;.
+        /// </summary>
+        internal static string ActionModificarCategoria {
+            get {
+                return ResourceManager.GetString("ActionModificarCategoria", resourceCulture);
             }
         }
         
@@ -84,6 +102,15 @@ namespace BackOffice.Seccion.Menu {
         internal static string ActionModifyDishMenuPrincipal {
             get {
                 return ResourceManager.GetString("ActionModifyDishMenuPrincipal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot;  data-target=&quot;#remove_suggestion&quot; &gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
+        /// </summary>
+        internal static string ActionRemoveSuggestion {
+            get {
+                return ResourceManager.GetString("ActionRemoveSuggestion", resourceCulture);
             }
         }
         

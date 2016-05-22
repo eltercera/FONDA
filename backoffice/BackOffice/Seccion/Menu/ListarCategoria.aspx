@@ -143,6 +143,70 @@
         </div>
     </div>
 
+
+
+
+      <!-- Modal desactivar estado-->
+        <div class="modal fade" id="deactivate_category" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Desactivar Sugerencia</h4>
+                            </div>
+                                <div class="modal-body">
+                                     <div class="row">
+                                             <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label">¿Desea desactivar el estado de esta categoria?</label>
+                                                    </div>
+                                            </div>    
+                                     </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button ID="ButtonDeactivateCategory" Text="Aceptar" CssClass="btn btn-success" OnClick="ButtonDeactivateCategory_Click" runat="server" />
+                                    <asp:Button ID="ButtonCancelDeactivateCategory" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
+                                </div>
+                      </div>
+                </div>
+         </div>
+
+     <!-- Modal activar estado-->
+        <div class="modal fade" id="activate_category" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Desactivar Sugerencia</h4>
+                            </div>
+                                <div class="modal-body">
+                                     <div class="row">
+                                             <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label">¿Desea activar el estado de esta categoria?</label>
+                                                    </div>
+                                            </div>    
+                                     </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button ID="ButtonActivateCategory" Text="Aceptar" CssClass="btn btn-success" OnClick="ButtonActivateCategory_Click" runat="server" />
+                                    <asp:Button ID="ButtonCancelActivateCategory" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
+                                </div>
+                      </div>
+                </div>
+         </div>
+
+
+
+
+
+
+
+
       <!-- script -->
     <script type="text/javascript">
 
@@ -181,8 +245,8 @@
                 .click(function () {
                     var padreId = $(this).parent().parent().attr("data-id");
                     document.getElementById("<%=HiddenFieldMenuCategoryModifyId.ClientID%>").value = padreId;
-            });
-        }
+                });
+            }
     </script>
 
 </asp:Content>
