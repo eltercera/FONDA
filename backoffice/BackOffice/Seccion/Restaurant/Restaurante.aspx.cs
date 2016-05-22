@@ -20,6 +20,8 @@ namespace BackOffice.Seccion.Restaurant
             AlertSuccess_ModifyRestaurant.Visible = false;
             OpeningTimeA.Attributes.Add("type","time");
             ClosingTimeA.Attributes.Add("type", "time");
+            OpeningTimeM.Attributes.Add("type", "time");
+            ClosingTimeM.Attributes.Add("type", "time");
             LoadDataTable();
             FillDropdown();
 
@@ -177,6 +179,7 @@ namespace BackOffice.Seccion.Restaurant
         /// </summary>
         public void FillDropdown()
         {
+            ClearDropdown();
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
             FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -204,6 +207,38 @@ namespace BackOffice.Seccion.Restaurant
                 ZoneM.Items.Add(zone.Name);
             }
         }
+
+        public void ClearDropdown()
+        {
+            //Genero los objetos para la consulta
+            //Genero la lista de la consulta
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantCategoryDAO _categoryDAO = factoryDAO.GetRestaurantCategoryDAO();
+            IList<com.ds201625.fonda.Domain.RestaurantCategory> listCategories = _categoryDAO.GetAll();
+            ICurrencyDAO _currencyDAO = factoryDAO.GetCurrencyDAO();
+            IList<com.ds201625.fonda.Domain.Currency> listCurrencies = _currencyDAO.GetAll();
+            IZoneDAO _zoneDAO = factoryDAO.GetZoneDAO();
+            IList<com.ds201625.fonda.Domain.Zone> listZones = _zoneDAO.allZone();
+
+            //Se llenan los Dropdownlist con los registros existentes
+            foreach (RestaurantCategory category in listCategories)
+            {
+                CategoryA.Items.Clear();
+                CategoryM.Items.Clear();
+            }
+            foreach (Currency currency in listCurrencies)
+            {
+                CurrencyA.Items.Clear();
+                CurrencyM.Items.Clear();
+            }
+            foreach (Zone zone in listZones)
+            {
+                ZoneA.Items.Clear();
+                ZoneM.Items.Clear();
+            }
+        }
+
+
 
         /// <summary>
         /// Valida los campos enviados por el usuario para crear o actualizar un Restaurante
@@ -251,25 +286,25 @@ namespace BackOffice.Seccion.Restaurant
                 valid = false;
             }
             //Valida que al menos un check esté seleccionado
-            if (Day1A.Checked)
+            if ((Day1A.Checked) || (Day1M.Checked))
                 cont = cont+1;
-            if (Day2A.Checked)
+            if ((Day2A.Checked) || (Day2M.Checked))
                 cont = cont + 1;
-            if (Day3A.Checked)
+            if ((Day3A.Checked) || (Day3M.Checked))
                 cont = cont + 1;
-            if (Day4A.Checked)
+            if ((Day4A.Checked) || (Day4M.Checked))
                 cont = cont + 1;
-            if (Day5A.Checked)
+            if ((Day5A.Checked) || (Day5M.Checked))
                 cont = cont + 1;
-            if (Day6A.Checked)
+            if ((Day6A.Checked) || (Day6M.Checked))
                 cont = cont + 1;
-            if (Day7A.Checked)
+            if ((Day7A.Checked) || (Day7M.Checked))
                 cont = cont + 1;
             if (cont<1)
             {
                 valid = false;
             }
-
+           
             return valid;
         }
 

@@ -75,7 +75,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             restaurant.Zone = _zoneDAO.GetZone(Zone);
             restaurant.Coordinate = coordinate;
             restaurant.Schedule = _scheduleDAO.GetSchedule(OpeningTime, ClosingTime, Days);
-
             restaurant.Status = _facDAO.GetActiveSimpleStatus();
 
             return restaurant;
@@ -104,8 +103,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             _restaurant.Address = newRestaurant.Address;
             _restaurant.RestaurantCategory = newRestaurant.RestaurantCategory;
             _restaurant.Currency = newRestaurant.Currency;
+            _restaurant.Zone = newRestaurant.Zone;
             _restaurant.Coordinate = newRestaurant.Coordinate;
             _restaurant.Schedule = newRestaurant.Schedule;
+            _restaurant.Status = _facDAO.GetActiveSimpleStatus();
 
             return _restaurant;
         }
