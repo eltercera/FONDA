@@ -130,6 +130,7 @@ public class InvoiceFragment extends BaseFragment {
         //Iva
         txtMontoIva.setText(String.valueOf(iva));
         txtMonIva.setText(invoice.getCurrency().getSymbol());
+
         //Total
         txtMontoTota.setText(String.valueOf(total));
         txtMonTota.setText(invoice.getCurrency().getSymbol());
