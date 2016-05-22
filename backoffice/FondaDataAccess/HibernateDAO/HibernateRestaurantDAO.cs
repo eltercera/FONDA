@@ -3,6 +3,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System;
 using System.Collections.Generic;
 using NHibernate.Criterion;
+using NHibernate;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -108,5 +109,15 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
             return _restaurant;
         }
+
+        public Restaurant findByTable(Table table)
+        {
+            ICriteria crit = Session.CreateCriteria(typeof(Restaurant));
+            // Inner Join
+            crit.CreateAlias("Tables", "sm");
+            crit.Add(Restrictions.Eq("sm.Id", table.Id));
+            return (Restaurant)crit.List()[0];
+        }
+
     }
 }

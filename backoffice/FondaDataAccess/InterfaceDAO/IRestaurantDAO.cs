@@ -15,5 +15,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
         Restaurant ModifyRestaurant(int idRestaurant, Restaurant newRestaurant);
 
         IList<Restaurant> findByZone(Zone zone);
+
+        Restaurant findByTable(Table table);
     }
 }
