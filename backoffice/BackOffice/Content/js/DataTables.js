@@ -251,7 +251,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#TablaEmployee').DataTable({
+    $('#contenido_TablaEmployee').DataTable({
         "language": spanish,
         "aoColumns": [
             null,

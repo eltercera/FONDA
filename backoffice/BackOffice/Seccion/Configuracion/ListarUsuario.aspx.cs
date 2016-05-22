@@ -41,14 +41,9 @@ namespace BackOffice.Seccion.Configuracion
             _employeeDAO = _facDAO.GetEmployeeDAO();
             #endregion
 
-            if (_role == "Sistema")
-                _employeeList = _employeeDAO.GetAll();
-            if (_role == "Restaurante")
-            {
-                string _idrest = (string)(Session[RecursoMaster.sessionRestaurantID]); 
-                _employeeList = _employeeDAO.GetAll();
-            }
-                
+            _employeeList = _employeeDAO.GetAll();
+
+            string _idrest = (string)(Session[RecursoMaster.sessionRestaurantID]);
 
             #region Llenar Tabla Employee
             if (_employeeList != null)
@@ -57,7 +52,6 @@ namespace BackOffice.Seccion.Configuracion
                 {
                     //creo una nueva fila
                     TableRow tRow = new TableRow();
-
                     //genero las celdas que estaran en la fina
                     TableCell tCellName = new TableCell();
                     TableCell tCellLastName = new TableCell();
@@ -121,8 +115,22 @@ namespace BackOffice.Seccion.Configuracion
                     tCellAction.Controls.Add(editStatusI);
                     tRow.Cells.Add(tCellAction);
 
-                    this.TablaEmployee.Rows.Add(tRow);
+
+                    if (_role == "Restaurante")
+                    {
+                        if (_employee.Restaurant != null)
+                            if (_employee.Restaurant.Id.ToString() == _idrest)
+                                this.TablaEmployee.Rows.Add(tRow);
+                    }
+                    else
+                    {
+                        this.TablaEmployee.Rows.Add(tRow);
+                    }
+ 
                 }
+                //Agrega el encabezado a la Tabla
+                TableHeaderRow header = HeaderTabletEmployee();
+                this.TablaEmployee.Rows.AddAt(0, header);
             }
             #endregion
 
@@ -131,24 +139,19 @@ namespace BackOffice.Seccion.Configuracion
         protected void LoadTable()
         {
             string _role = (string)(Session[RecursoMaster.sessionRol]);
+            ClearTable();
             LoadDataTable(_role);
         }
         
         protected void ClearTable()
         {
-           int _lengt = this.TablaEmployee.Rows.Count;
-
-           while (_lengt > 1)
-           {
-               this.TablaEmployee.Rows.RemoveAt(1);
-               _lengt = this.TablaEmployee.Rows.Count;
-           }
+            this.TablaEmployee.Rows.Clear();
         }
 
-        protected void HeaderTabletEmployee()
+        protected TableHeaderRow HeaderTabletEmployee()
         {
             //creo una nueva fila
-            TableRow tRow = new TableRow();
+            TableHeaderRow tRow = new TableHeaderRow();
 
             //genero las celdas que estaran en la fina
             TableHeaderCell tHCellName = new TableHeaderCell();
@@ -158,31 +161,38 @@ namespace BackOffice.Seccion.Configuracion
             TableHeaderCell tHCellStatus = new TableHeaderCell();
             TableHeaderCell tHCellAction = new TableHeaderCell();
 
+            tRow.TableSection = TableRowSection.TableHeader;
             //nombre del empleado
             tHCellName.Text = "Nombre";
+            tHCellName.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellName);
 
             //apellido del empleado
             tHCellLastName.Text = "Apellido";
+            tHCellLastName.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellLastName);
 
             //ssn del empleado
             tHCellSsn.Text = "CI";
+            tHCellSsn.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellSsn);
 
             //rol del empleado
             tHCellRole.Text = "Rol";
+            tHCellRole.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellRole);
 
             //status del empleado
             tHCellStatus.Text = "Status";
+            tHCellStatus.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellStatus);
 
             //acciones
             tHCellAction.Text = "Acciones";
+            tHCellAction.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellAction);
 
-            this.TablaEmployee.Rows.Add(tRow);
+            return tRow;
         }
 
         protected void ModalInfo_Click(object sender, EventArgs e)
@@ -193,14 +203,20 @@ namespace BackOffice.Seccion.Configuracion
         protected void Add_Click(object sender, EventArgs e)
         {
             ClearModalAddModify();
-            ChangeRole();
+            string _role = (string)(Session[RecursoMaster.sessionRol]);
+            ChangeRole(_role);
+            if (_role == "Sistema")
+                ChangeRestaurant();
             ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
         }
 
         protected void Modify_Click(object sender, EventArgs e)
         {
             ClearModalAddModify();
-            ChangeRole();
+            string _role = (string)(Session[RecursoMaster.sessionRol]);
+            ChangeRole(_role);
+            if (_role == "Sistema")
+                ChangeRestaurant();
 
             LinkButton clickedLink = (LinkButton)sender;
             int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
@@ -242,15 +258,15 @@ namespace BackOffice.Seccion.Configuracion
             this.lastNameUser.Attributes["placeholder"] = "Apellido";
             this.nss1.Text = "";
             this.nss2.Text = "";
-            this.nss2.Attributes["placeholder"] = "ej. 965831535-1";
+            this.nss2.Attributes["placeholder"] = "Ej. 19245998";
             this.address.Text = "";
             this.address.Attributes["placeholder"] = "Dirección";
             this.email.Text = "";
-            this.email.Attributes["placeholder"] = "Email";
+            this.email.Attributes["placeholder"] = "nickname@ejemplo.com";
             this.phoneNumber.Text = "";
-            this.phoneNumber.Attributes["placeholder"] = "Teléfono";
+            this.phoneNumber.Attributes["placeholder"] = "Ej. 04127890544";
             this.birtDate.Text = "";
-            this.birtDate.Attributes["placeholder"] = "";
+            this.birtDate.Attributes["placeholder"] = "DD/MM/AA";
             this.role.Items.Clear();
             this.role.Items.Add("");
             this.gender.Text = "";
@@ -265,7 +281,7 @@ namespace BackOffice.Seccion.Configuracion
             this.ButtonAddModify.Text = "Agregar";     
         }
 
-        protected void ChangeRole()
+        protected void ChangeRole(string _role1)
         {
             _facDAO = FactoryDAO.Intance;
             _roleDAO = _facDAO.GetRoleDAO();
@@ -274,15 +290,34 @@ namespace BackOffice.Seccion.Configuracion
             {
                 foreach (Role _role in _roleList)
                 {
-                    this.role.Items.Add(new ListItem(_role.Name, _role.Id.ToString()));
+                    if ((_role1 != "Restaurante") && (_role.Id.ToString() == "3"))
+                        this.role.Items.Add(new ListItem(_role.Name, _role.Id.ToString()));
+                    if (_role.Id.ToString() != "3")
+                        this.role.Items.Add(new ListItem(_role.Name, _role.Id.ToString()));
+                }
+            }
+        }
+
+        protected void ChangeRestaurant()
+        {
+            _facDAO = FactoryDAO.Intance;
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            IList<com.ds201625.fonda.Domain.Restaurant> _restList = _restaurantDAO.GetAll();
+            if (_restList != null)
+            {
+                foreach (com.ds201625.fonda.Domain.Restaurant _rest in _restList)
+                {
+                        this.restaurant.Items.Add(new ListItem(_rest.Name, _rest.Id.ToString()));
                 }
             }
         }
 
         protected void SetEmployee(Employee _employee)
         {
+            string _roleUser = (string)(Session[RecursoMaster.sessionRol]);
             Role _role;
-            
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            com.ds201625.fonda.Domain.Restaurant _restaurant;
             if (this.nameUser.Text != "")
                 _employee.Name = this.nameUser.Text;
             if (this.lastNameUser.Text != "")
@@ -307,7 +342,6 @@ namespace BackOffice.Seccion.Configuracion
                 _role = _roleDAO.FindById(int.Parse(this.role.SelectedValue));
                 _employee.Role = _role;
             }
-
             if (this.ButtonAddModify.Text == "Agregar")
             {
                 if (this.email.Text != "" && this.password.Text != "")
@@ -320,11 +354,35 @@ namespace BackOffice.Seccion.Configuracion
 
             }
             else
+            {
                 if (this.ButtonAddModify.Text == "Modificar")
                 {
                     if (this.email.Text != "")
                         _employee.UserAccount.Email = this.email.Text;
+
                 }
+            }
+
+            if (_roleUser == "Sistema")
+            {
+                if (_employee.Role.Name != "Sistema")
+                {
+                    if (this.restaurant.Text != "")
+                    {
+                        _restaurant = _restaurantDAO.FindById(int.Parse(this.restaurant.SelectedValue));
+                        _employee.Restaurant = _restaurant;
+                    }
+                }
+                else
+                    _employee.Restaurant = null;
+
+            }
+            else
+            {
+                    string _idrest = (string)(Session[RecursoMaster.sessionRestaurantID]);
+                    _restaurant = _restaurantDAO.FindById(int.Parse(_idrest));
+                    _employee.Restaurant = _restaurant;
+            }
         }
 
         protected void ModalAddModify_Click(object sender, EventArgs e)
@@ -356,11 +414,6 @@ namespace BackOffice.Seccion.Configuracion
                 {
                     this.menssageUsername.Attributes.Clear();
                     this.menssageUsername.InnerHtml = "";
-                }
-
-                if (_emailValid && _ssnValid && _userNameValid)
-                {
-                    _employee.Status = _facDAO.GetActiveSimpleStatus();
                 }
             }
             if (ButtonAddModify.Text == "Modificar")
@@ -394,6 +447,14 @@ namespace BackOffice.Seccion.Configuracion
             {
 
                 SetEmployee(_employee);
+                if (ButtonAddModify.Text == "Agregar")
+                {
+                    if (_emailValid && _ssnValid && _userNameValid)
+                    {
+                         _employee.Status = _facDAO.GetActiveSimpleStatus();
+                    }
+                }
+
                 if (_employee.UserAccount.Id.ToString() == "0")
                 {
                     _userAccountDAO.Save(_employee.UserAccount);
