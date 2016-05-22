@@ -1,6 +1,7 @@
 ﻿using System;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.HibernateDAO;
+using com.ds201625.fonda.Domain;
 
 namespace com.ds201625.fonda.DataAccess.FactoryDAO
 {
@@ -35,12 +36,17 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 			return _factory.GetProfileDAO ();
 		}
 
-		public IUserAccountDAO UserAccountDAO ()
+		public IUserAccountDAO GetUserAccountDAO ()
 		{
 			return _factory.GetUserAccountDAO ();
 		}
 
-		public IPersonDAO GetPersonDao ()
+        public IEmployeeDAO GetEmployeeDAO()
+        {
+            return _factory.GetEmployeeDAO();
+        }
+
+        public IPersonDAO GetPersonDao ()
 		{
 			return _factory.GetPersonDao ();
 		}
@@ -48,11 +54,6 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 		public ICompanyDAO GetCompanyDAO()
 		{
 			return _factory.GetCompanyDAO ();
-		}
-
-		public IStatusDAO GetStatusDAO()
-		{
-			return _factory.GetStatusDAO ();
 		}
 
         public IOrderAccountDao GetOrderAccountDAO()
@@ -129,6 +130,74 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         {
             return _factory.GetZoneDAO();
         }
+
+        public ITokenDAO GetTokenDAO()
+        {
+            return _factory.GetTokenDAO();
+        }
+
+        public IRoleDAO GetRoleDAO()
+        {
+            return _factory.GetRoleDAO();
+        }
+
+        public IReservationDAO GetReservationDAO()
+        {
+            return _factory.GetReservationDAO();
+        }
+
+        public ActiveSimpleStatus GetActiveSimpleStatus()
+        {
+            return _factory.GetActiveSimpleStatus();
+        }
+
+        public DisableSimpleStatus GetDisabledSimpleStatus()
+        {
+            return _factory.GetDisableSimpleStatus();
+        }
+
+        public FreeTableStatus GetFreeTableStatus()
+        {
+            return _factory.GetFreeTableStatus();
+        }
+
+        public BusyTableStatus GetBusyTableStatus()
+        {
+            return _factory.GetBusyTableStatus();
+        }
+
+
+        public ActiveReservationStatus GetActiveReservationStatus()
+        {
+            return _factory.GetActiveReservationStatus();
+        }
+
+        public CanceledReservationStatus GetCanceledReservationStatus()
+        {
+            return _factory.GetCanceledReservationStatus();
+        }
+
+        public UsedReservationStatus GetUsedReservationStatus()
+        {
+            return _factory.GetUsedReservationStatus();
+        }
+		
+		public OpenAccountStatus GetOpenAccountStatus()
+        {
+            return _factory.GetOpenAccountStatus();
+        }
+
+        public ClosedAccountStatus GetClosedAccountStatus()
+        {
+            return _factory.GetCloseAccountStatus();
+        }
+
+        public GeneratedInvoiceStatus GetGeneratedInvoiceStatus()
+        {
+            return _factory.GetGeneratedInvoiceStatus();
+        }
+
+      
     }
 }
 

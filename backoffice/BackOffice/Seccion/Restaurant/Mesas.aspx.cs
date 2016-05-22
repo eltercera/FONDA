@@ -10,6 +10,9 @@ namespace BackOffice.Seccion.Restaurant
 {
     public partial class Mesas : System.Web.UI.Page
     {
+        FactoryDAO factoryDAO = FactoryDAO.Intance;
+        int _idRestaurant =1;
+        com.ds201625.fonda.Domain.Restaurant _restaurant = new com.ds201625.fonda.Domain.Restaurant();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,11 +28,17 @@ namespace BackOffice.Seccion.Restaurant
         protected void LoadDataTable()
         {
             CleanTable();
+            //ID del restaurante donde nos encontramos
+            int _idRestaurant = 0;
+            if (Session["RestaurantID"] != null)
+            {
+                string idRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();
+                _idRestaurant = int.Parse(idRestaurant);
+            }
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
-            IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetAll();
+            IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
 
 
             int totalRows = listTable.Count; //tamano de la lista 
@@ -43,13 +52,13 @@ namespace BackOffice.Seccion.Restaurant
                 //Le asigna el Id a cada fila de la tabla
                 tRow.Attributes["data-id"] = listTable[i].Id.ToString();
                 //Agrega la fila a la tabla existente
-                Table.Rows.Add(tRow);
+                table.Rows.Add(tRow);
                 // CABLEADO DE RESERVA
                 string statusTable = string.Empty;
                 string user = string.Empty;
                 string status = listTable[i].Status.ToString();
                 string statusActive = FreeTableStatus.Instance.ToString();
-                string statusInactive = FreeTableStatus.Instance.ToString();
+                string statusInactive = BusyTableStatus.Instance.ToString();
                 int quantity = 0;
                 if (status == statusActive)
                 {
@@ -83,21 +92,31 @@ namespace BackOffice.Seccion.Restaurant
                         tCell.Text = user;
                     //Agrega el status
                     else if (j.Equals(4))
+                    {
                         tCell.Text = status;
+                        tCell.CssClass = "text-center";
+                    }
                     //Agrega las acciones
                     else if (j.Equals(5))
                     {
                         tCell.CssClass = "text-center";
                         //Crea hipervinculo para las acciones
-                        LinkButton action = new LinkButton();
-                        action.Attributes["data-toggle"] = "modal";
-                        action.Attributes["data-target"] = "#modificar";
-                        action.Text = RestaurantResource.ActionModify;
-                        tCell.Controls.Add(action);
-                        LinkButton active = new LinkButton();
-                        active.Attributes["OnClick"] = "ChangeStatus";
-                        active.Text = RestaurantResource.ActionCheckStatus;
-                        tCell.Controls.Add(active);
+                        LinkButton actionModify = new LinkButton();
+                        LinkButton actionActive = new LinkButton();
+                        LinkButton actionInactive = new LinkButton();
+
+                        actionModify.Attributes["data-toggle"] = "modal";
+                        actionModify.Attributes["data-target"] = "#modificar";
+                        actionModify.Text = RestaurantResource.ActionModify;
+                        tCell.Controls.Add(actionModify);
+
+                        actionActive.Attributes["data-status"] = "true";
+                        actionActive.Text = RestaurantResource.ActionCheckStatus;
+                        tCell.Controls.Add(actionActive);
+
+                        actionInactive.Attributes["data-status"] = "false";
+                        actionInactive.Text = RestaurantResource.ActionUnCheckStatus;
+                        tCell.Controls.Add(actionInactive);
 
                     }
                     //Agrega la celda
@@ -109,7 +128,7 @@ namespace BackOffice.Seccion.Restaurant
 
             //Agrega el encabezado a la Tabla
             TableHeaderRow header = GenerateTableHeader();
-            Table.Rows.AddAt(0, header);
+            table.Rows.AddAt(0, header);
         }
 
         /// <summary>
@@ -155,33 +174,45 @@ namespace BackOffice.Seccion.Restaurant
             return header;
         }
 
+        /// <summary>
+        /// Limpia las filas de la tabla mostrada en pantalla
+        /// </summary>
         public void CleanTable()
         {
-            Table.Rows.Clear();
+            table.Rows.Clear();
         }
 
+        /// <summary>
+        /// Agrega una nueva mesa
+        /// </summary>
         protected void ButtonAdd_Click(object sender, EventArgs e)
         {
             AlertSuccess_AddTable.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
+            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Table _table = new com.ds201625.fonda.Domain.Table();
-            int capacity = int.Parse(DDLcapacityA.SelectedValue); 
+            IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
+            int capacity = int.Parse(DDLcapacityA.SelectedValue);
             _table.Capacity = capacity;
-            _table.Status = FreeTableStatus.Instance;
+            _table.Status = factoryDAO.GetFreeTableStatus();
+            _table.Number = listTable.Count+1;
+            _restaurant = _restaurantDAO.FindById(_idRestaurant);
+            _table.Restaurant = _restaurant;
             _tableDAO.Save(_table);
             LoadDataTable();
         }
 
+        /// <summary>
+        /// Modifica los datos de la mesa
+        /// </summary>
         protected void ButtonModify_Click(object sender, EventArgs e)
         {
-            AlertSuccess_ModifyTable.Visible = true;
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            AlertSuccess_ModifyTable.Visible = true; ;
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             string TableID = TableModifyId.Value;
             int idTable = int.Parse(TableID);
-            com.ds201625.fonda.Domain.Table _tableM = _tableDAO.FindById(idTable);     
-             int capacity = int.Parse(DDLcapacityM.SelectedValue);
+            com.ds201625.fonda.Domain.Table _tableM = _tableDAO.FindById(idTable);
+            int capacity = int.Parse(DDLcapacityM.SelectedValue);
             _tableM.Capacity = capacity;
             _tableDAO.Save(_tableM);
             LoadDataTable();
@@ -205,17 +236,35 @@ namespace BackOffice.Seccion.Restaurant
             return _table;
         }
 
-        
-        protected void ChangeStatus(object sender, EventArgs e)
+        /// <summary>
+        /// Cambia el Status de la mesa
+        /// </summary>
+        /// <param name="Id">Recibe el Id de la mesa</param>
+        /// <param name="Status">Recibe el Status al que se va a cambiar</param>
+        /// <returns>El Status a mostrar en la tabla</returns>
+        [WebMethod]
+        public static string ChangeStatus(string Id, string Status)
         {
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
-            string TableID = TableModifyId.Value;
+            string TableID = Id;
+            string response = "";
             int idTable = int.Parse(TableID);
             com.ds201625.fonda.Domain.Table _table = _tableDAO.FindById(idTable);
-            _table.Status = BusyTableStatus.Instance;
+
+            if (Status.Equals("Free"))
+            {
+                _table.Status = factoryDAO.GetFreeTableStatus();
+                response = RestaurantResource.Active;
+            }
+            else if(Status.Equals("Busy"))
+            {
+                _table.Status = factoryDAO.GetBusyTableStatus();
+                response = RestaurantResource.Inactive; 
+            }
+
             _tableDAO.Save(_table);
-            LoadDataTable();
+            return response;
 
         }
 

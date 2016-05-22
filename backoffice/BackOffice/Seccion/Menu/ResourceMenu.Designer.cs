@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BackOffice.Seccion.Restaurant {
+namespace BackOffice.Seccion.Menu {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace BackOffice.Seccion.Restaurant {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class RestaurantResource {
+    internal class ResourceMenu {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal RestaurantResource() {
+        internal ResourceMenu() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace BackOffice.Seccion.Restaurant {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BackOffice.Seccion.Restaurant.RestaurantResource", typeof(RestaurantResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BackOffice.Seccion.Menu.ResourceMenu", typeof(ResourceMenu).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,47 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot;  data-target=&quot;#modify_category&quot; &gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle=&quot;modal&quot; data-target=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;.
         /// </summary>
-        internal static string ActionCheckStatus {
+        internal static string ActionListarCategoria {
             get {
-                return ResourceManager.GetString("ActionCheckStatus", resourceCulture);
+                return ResourceManager.GetString("ActionListarCategoria", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot;&gt;.
         /// </summary>
-        internal static string ActionInfo {
+        internal static string ActionMenuDia {
             get {
-                return ResourceManager.GetString("ActionInfo", resourceCulture);
+                return ResourceManager.GetString("ActionMenuDia", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot;  data-target=&quot;#modify_dish&quot; &gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string ActionModify {
+        internal static string ActionModifyDishMenuPrincipal {
             get {
-                return ResourceManager.GetString("ActionModify", resourceCulture);
+                return ResourceManager.GetString("ActionModifyDishMenuPrincipal", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot; data-target=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/a&gt;.
         /// </summary>
-        internal static string ActionUnCheckStatus {
+        internal static string ActionSetActiveDishMenuPrincipal {
             get {
-                return ResourceManager.GetString("ActionUnCheckStatus", resourceCulture);
+                return ResourceManager.GetString("ActionSetActiveDishMenuPrincipal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot; data-target=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/a&gt;.
+        /// </summary>
+        internal static string ActionSetInactiveDishMenuPrincipal {
+            get {
+                return ResourceManager.GetString("ActionSetInactiveDishMenuPrincipal", resourceCulture);
             }
         }
         
@@ -106,29 +115,29 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;p class=&quot;stat&quot;&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;.
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string AddDishMenuPrincipal {
+            get {
+                return ResourceManager.GetString("AddDishMenuPrincipal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;/tr&gt;.
+        /// </summary>
+        internal static string CloseTR {
+            get {
+                return ResourceManager.GetString("CloseTR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;p class=&quot;stat&quot;&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;.
         /// </summary>
         internal static string Inactive {
             get {
                 return ResourceManager.GetString("Inactive", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to NameRestaurant.
-        /// </summary>
-        internal static string SessionNameRest {
-            get {
-                return ResourceManager.GetString("SessionNameRest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to RestaurantID.
-        /// </summary>
-        internal static string SessionRestaurant {
-            get {
-                return ResourceManager.GetString("SessionRestaurant", resourceCulture);
             }
         }
     }

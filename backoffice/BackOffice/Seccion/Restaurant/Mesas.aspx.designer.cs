@@ -40,13 +40,13 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.WebControls.HiddenField TableModifyId;
         
         /// <summary>
-        /// Table control.
+        /// table control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table;
+        protected global::System.Web.UI.WebControls.Table table;
         
         /// <summary>
         /// DDLcapacityM control.
