@@ -10,6 +10,6 @@
 namespace BackOffice.Seccion.Reservas {
     
     
-    public partial class Default {
+    public partial class ConsultarReservas {
     }
 }
