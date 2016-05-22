@@ -296,7 +296,6 @@ public class OrderPaymentFragment extends BaseFragment {
      * Manda la informacion de la factura al web service
      */
     public void postPayment() {
-        //ESTE OBJETO SE GENERA CON INFORMACION SACADA DE OTRO LADO
         CloseAccountFragment cls = new CloseAccountFragment();
         Invoice invoice = new Invoice();
         List<DishOrder> lista = cls.getListDishO();
@@ -329,9 +328,7 @@ public class OrderPaymentFragment extends BaseFragment {
         logicPayment = new LogicPayment();
         try {
             payment = logicPayment.paymentService(invoice);
-            //PRUEBA DE QUE HACE EL POST
-            System.out.println("TAX1 : "+ payment.getTax());
-        } catch (RestClientException e) {
+            } catch (RestClientException e) {
             System.out.println(e.getMessage());
         } catch (InvalidDataRetrofitException e) {
             System.out.println(e.getMessage());
