@@ -1,4 +1,4 @@
-package com.ds201625.fonda.tests.M5_Tests;
+package com.ds201625.fonda.tests.M5_Tests.M5_Tests;
 
 import android.test.MoreAsserts;
 

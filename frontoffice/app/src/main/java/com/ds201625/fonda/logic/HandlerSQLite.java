@@ -1,11 +1,11 @@
-package com.ds201625.fonda.views.activities;
+package com.ds201625.fonda.logic;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -15,11 +15,14 @@ import static android.provider.BaseColumns._ID;
  */
 public class HandlerSQLite extends SQLiteOpenHelper {
 
+    private static HandlerSQLite instance;
+
     /**
-     * Table on th data base
+     * Table on the data base
      */
     private  String table = "CREATE TABLE creditcard (" + _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                     "number TEXT, owner TEXT, id_owner INTEGER, expiration TEXT, cvv INTEGER, type TEXT);";
+
 
     /**
      * Constructor
@@ -36,11 +39,21 @@ public class HandlerSQLite extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-        db.execSQL(table);
+        try {
+            db.execSQL(table);
+        }
+        catch(SQLiteException s){
+            System.out.println("Base de Datos ya existe");
+        }
 
     }
 
+    /**
+     * When its upgraded
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
@@ -114,7 +127,6 @@ public class HandlerSQLite extends SQLiteOpenHelper {
     public void erase (){
         SQLiteDatabase db = this.getReadableDatabase();
         db.beginTransaction();
-        ContentValues addReg = new ContentValues();
         try {
             db.execSQL("DROP TABLE IF EXISTS creditcard");
             db.setTransactionSuccessful();
@@ -125,5 +137,10 @@ public class HandlerSQLite extends SQLiteOpenHelper {
             db.close();
         }
     }
+
+    public static HandlerSQLite getInstance(Context context){
+        return instance;
+    }
+
 
 }

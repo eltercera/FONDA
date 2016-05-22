@@ -1,42 +1,37 @@
 package com.ds201625.fonda.logic;
 
-import android.content.Context;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.PaymentService;
-import com.ds201625.fonda.domains.CreditCarPayment;
+import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.domains.Invoice;
 
 /**
  * Created by Hp on 22/05/2016.
  */
 public class LogicPayment {
+
     /**
-     * Contexto de la aplicacion
+     * variable de tipo PaymentService
      */
-    private Context context;
-    /**
-     * Singelton instance
-     */
-    private static LogicPayment instance;
-
-    public void registerPayment(int idProfile, float tip, String last4Digits) throws Exception {
-        CreditCarPayment newBill;
-        newBill = setPaymentService().registerPayment(idProfile, tip, last4Digits,context);
-        if (newBill == null) {
-           throw new Exception("No se logro crear el usuario");
-        }
-
-    }
-
-    private PaymentService setPaymentService(){
-        return FondaServiceFactory.getInstance().setPaymentService();
-    }
+    private Invoice payment;
 
     /**
-     * Get the instance
+     * Metodo que controla la llamada al ws para el manejo de facturas
+     * @param invoice
      * @return
+     * @throws RestClientException
+     * @throws InvalidDataRetrofitException
      */
-    public  static LogicPayment getInstance() {
-        return instance;
+    public Invoice paymentService (Invoice invoice) throws RestClientException, InvalidDataRetrofitException {
+
+        try {
+            payment = FondaServiceFactory.getInstance().setPaymentService().setPayments(invoice);
+        } catch (RestClientException e) {
+            throw new RestClientException("Error de IO",e);
+        } catch (InvalidDataRetrofitException e) {
+            throw new InvalidDataRetrofitException("Invoice es nulo.");
+        }
+        return payment;
     }
 
 }

@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.*;
 import com.ds201625.fonda.logic.LogicInvoice;
 import com.ds201625.fonda.views.adapters.InvoiceViewItemList;
@@ -182,6 +183,9 @@ public class InvoiceFragment extends BaseFragment {
             invoiceWS=logicInvoice.getInvoiceSW().getCurrentInvoice();
             System.out.println("Restaurant de la factura:  " + invoiceWS.getRestaurant().getName());
             return invoiceWS;
+        }
+        catch (RestClientException e) {
+            e.printStackTrace();
         }
         catch (NullPointerException e){
             System.out.println("No es posible realizar la conexión con el Web Server ");

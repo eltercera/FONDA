@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.views.activities.HandlerSQLite;
+import com.ds201625.fonda.logic.HandlerSQLite;
 
 
 /**

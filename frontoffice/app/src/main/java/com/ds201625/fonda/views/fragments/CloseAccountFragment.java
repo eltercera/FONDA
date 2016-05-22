@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.logic.LogicCurrentOrder;
 import com.ds201625.fonda.views.adapters.CloseViewItemList;
@@ -190,6 +191,9 @@ public class CloseAccountFragment extends BaseFragment {
                         getDescription());
             }
             return listDishOWS;
+        }
+        catch (RestClientException e) {
+            e.printStackTrace();
         }
         catch (NullPointerException e){
             System.out.println("No es posible realizar la conexión con el Web Server ");
