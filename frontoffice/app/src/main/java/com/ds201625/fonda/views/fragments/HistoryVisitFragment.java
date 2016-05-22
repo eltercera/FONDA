@@ -45,6 +45,12 @@ public class HistoryVisitFragment extends BaseFragment {
     private List<String> groupAddressRestaurant;
 
     /**
+     * Lista de String que contiene la direccion del restaurante
+     */
+    private List<String> groupLogoRestaurant;
+
+
+    /**
      * Lista de String que contiene el pago del restaurante
      */
     private List<String> groupDatePaymentRestaurant;
@@ -101,7 +107,7 @@ public class HistoryVisitFragment extends BaseFragment {
         expListView = (ExpandableListView) layout.findViewById(R.id.restaurant_list);
         final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
                 getContext(), groupNameRestaurant,collectionVisits, groupCategoryRestaurant,
-                groupAddressRestaurant, groupDatePaymentRestaurant);
+                groupAddressRestaurant, groupLogoRestaurant, groupDatePaymentRestaurant);
         expListView.setAdapter(expListAdapter);
 
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -141,6 +147,7 @@ public class HistoryVisitFragment extends BaseFragment {
             groupNameRestaurant = new ArrayList<String>();
             groupAddressRestaurant = new ArrayList<String>();
             groupCategoryRestaurant = new ArrayList<String>();
+            groupLogoRestaurant = new ArrayList<String>();
             groupDatePaymentRestaurant = new ArrayList<String>();
 
             iterator = listInvoice.listIterator();
@@ -149,12 +156,15 @@ public class HistoryVisitFragment extends BaseFragment {
                 String nameRestaurant = invoice.getRestaurant().getName();
                 String addresRestaurant = invoice.getRestaurant().getAddress();
                 String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getNameCategory();
+                String logoRestaurant = invoice.getRestaurant().getLogo();
+                System.out.println("El logo"+logoRestaurant);
                 Date date = invoice.getDate();
                 String datePayment = new SimpleDateFormat("dd-MM-yyyy").format(date);
                 groupNameRestaurant.add(nameRestaurant);
                 groupAddressRestaurant.add(addresRestaurant);
                 groupCategoryRestaurant.add(categoryRestaurant);
                 groupDatePaymentRestaurant.add(datePayment);
+                groupLogoRestaurant.add(logoRestaurant);
             }
         }
         catch (NullPointerException e){

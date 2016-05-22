@@ -13,6 +13,7 @@ import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Token;
+import com.ds201625.fonda.data_access.services.ZoneService;
 
 /**
  * Implementacion de la fabrica de servicios con el uso de retrofit y localStorage.
@@ -68,4 +69,5 @@ public class RetroditServiceFactory implements ServiceFactory {
         return new RetrofitInvoiceService();
     }
 
+    public ZoneService getZoneService() { return new RetrofitZoneService();}
 }

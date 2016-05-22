@@ -36,6 +36,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private List<String> nameRestaurant;
     private List<String> categoryRestaurant;
     private List<String> addressRestaurant;
+    private List<String> logoRestaurant;
     private List<String> datePaymentRestaurant;
 
     /**
@@ -48,13 +49,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
      * @param datePaymentRestaurant Lista de string que define la fecha de pago de una visita a un restaurant
      */
     public ExpandableListAdapter(Context context, List<String> nameRestaurant,
-                                 Map<String, List<String>> collectionVisits, List<String> categoryRestaurant, List<String> addressRestaurant, List<String> datePaymentRestaurant) {
+                                 Map<String, List<String>> collectionVisits, List<String> categoryRestaurant, List<String> addressRestaurant, List<String> logoRestaurant, List<String> datePaymentRestaurant) {
         this.context = context;
         this.collectionVisits = collectionVisits;
         this.nameRestaurant = nameRestaurant;
         this.datePaymentRestaurant = datePaymentRestaurant;
         this.categoryRestaurant = categoryRestaurant;
         this.addressRestaurant = addressRestaurant;
+        this.logoRestaurant = logoRestaurant;
     }
 
     /**
@@ -103,6 +105,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         String addressList = (String) getGroupAddress(groupPosition);
         String categoryList = (String) getGroupCategory(groupPosition);
         String datePaymentList =(String) getGroupDate(groupPosition);
+        String logoList = (String) getGroupLogo(groupPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) context
@@ -112,31 +115,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         ImageView icon = (ImageView) convertView.findViewById(R.id.restaurant);
+        Context context = icon.getContext();
+        int idLogo = context.getResources().getIdentifier(logoList, "mipmap", context.getPackageName());
+        icon.setImageResource(idLogo);
+
         TextView dateVisit = (TextView) convertView.findViewById(R.id.date_visit);
         TextView nameRestaurant = (TextView) convertView.findViewById(R.id.name_restaurant);
         TextView locationRestaurant = (TextView) convertView.findViewById(R.id.location_restaurant);
         TextView descriptionRestaurant = (TextView) convertView.findViewById(R.id.description_restaurant);
-        if((restaurantList).equals("The dining room")) {
-            icon.setImageResource(R.mipmap.ic_restaurant003);
-           /* Context context = icon.getContext();
-            int id = context.getResources().getIdentifier("ic_restaurant001", "mipmap", context.getPackageName());
-            icon.setImageResource(id);*/
-        }
-        if((restaurantList).equals("Mogi Mirin")) {
-            icon.setImageResource(R.mipmap.ic_restaurant003);
-          /*  Context context = icon.getContext();
-            int id = context.getResources().getIdentifier("ic_restaurant002", "mipmap", context.getPackageName());
-            icon.setImageResource(id);*/
-        }
-        if((restaurantList).equals("Gordo & Magro")) {
-            icon.setImageResource(R.mipmap.ic_restaurant003);
-        }
-        if((restaurantList).equals("La Casona")) {
-            icon.setImageResource(R.mipmap.ic_restaurant004);
-        }
-        if((restaurantList).equals("Tony's")) {
-            icon.setImageResource(R.mipmap.ic_restaurant005);
-        }
+
         nameRestaurant.setTypeface(null, Typeface.BOLD);
         nameRestaurant.setText(restaurantList);
         locationRestaurant.setText(addressList);
@@ -173,6 +160,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return addressRestaurant.get(groupPosition);
     }
 
+    /**
+     * Metodo que obtiene el grupo la lista expandible
+     * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
+     * @return logo de Restaurant
+     */
+    public Object getGroupLogo(int groupPosition) {
+        return logoRestaurant.get(groupPosition);
+    }
     /**
      * Metodo que obtiene el grupo la lista expandible
      * @param groupPosition Entero que define la posicion del grupo padre de la lista expandible
