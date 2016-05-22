@@ -45,6 +45,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
              References(x => x.Account)
                 .Column("fk_account_id")
+                .Not.LazyLoad()
                 .Not.Nullable(); 
 
              References(x => x.Payment)

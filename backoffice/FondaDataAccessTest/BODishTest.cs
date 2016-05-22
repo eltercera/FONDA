@@ -77,7 +77,7 @@ namespace FondaDataAccessTest
             _dish.Cost = 195;
             _dish.Image = null;
             _dish.Suggestion = true;
-            _dish.Status = ActiveSimpleStatus.Instance;
+            _dish.Status = _facDAO.GetActiveSimpleStatus();
 
         }
 
@@ -90,7 +90,7 @@ namespace FondaDataAccessTest
             Assert.AreEqual(_dish.Description, "con carne");
             Assert.AreEqual(_dish.Cost, 195);
             Assert.AreEqual(_dish.Image, null);
-            Assert.AreEqual(_dish.Status, ActiveSimpleStatus.Instance);
+            Assert.AreEqual(_dish.Status, _facDAO.GetActiveSimpleStatus());
             Assert.AreEqual(_dish.Suggestion, true);
         }
 
