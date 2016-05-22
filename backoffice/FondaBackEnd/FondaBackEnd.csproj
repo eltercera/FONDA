@@ -76,9 +76,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CostFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\CategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\FavoritesRestaurantsFondaWebApiController.cs" />
-    <Compile Include="Controllers\RestaurantFilterFondaWebApiController.cs" />
+    <Compile Include="Controllers\PaymentFondaWebApiController.cs" />
+    <Compile Include="Controllers\RestaurantZoneFilterFondaWebApiController - Copia.cs" />
+    <Compile Include="Controllers\RestaurantCategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\ZoneFilterFondaWebApiController.cs" />
     <Compile Include="GeneralRes.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -105,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\backend.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,52 +1,49 @@
-package com.ds201625.fonda.tests;
+package com.ds201625.fonda.tests.M5_Tests;
 
 import android.test.MoreAsserts;
 
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.CurrentOrderService;
-import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
-import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.logic.LogicHistoryVisits;
 
 import junit.framework.TestCase;
 
 import java.util.List;
 
 /**
- * Created by Adri on 21/05/2016.
+ * Created by Adri on 5/21/2016.
  */
 
 /**
- * Clase De pruebas unitarias del historial de pagos de una persona en sus visitas a restaurant
+ * clase de pruebas de logica de historial de visitas
  */
-public class HistoryVisitsServiceTest extends TestCase {
-
+public class HistoryVisitLogicTest extends TestCase {
     /*
-     Lista de Invoice que contiene los pagos de los restaurant
-     */
+         Lista de Invoice que contiene los pagos de los restaurant
+         */
     private List<Invoice> listInvoice;
 
     /**
      * variable de la clase HistoryVisitsRestaurantService
      */
-    private HistoryVisitsRestaurantService historyVisitsRestaurantService;
+    private LogicHistoryVisits historyVisitsRestaurantService;
 
     /**
-     * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
+     * Metodo que se encarga de instanciar los objetos de las pruebas unitarias de la logica de pagos
+     *
      * @throws Exception
      */
     protected void setUp() throws Exception {
         super.setUp();
-        historyVisitsRestaurantService = FondaServiceFactory.getInstance().getHistoryVisitsService();
+        historyVisitsRestaurantService = new LogicHistoryVisits();
     }
 
     /**
      *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
      */
-   public void testHistoryVisitsIsNotEmpty() {
+    public void testHistoryVisitsIsNotEmpty() {
 
-           listInvoice = historyVisitsRestaurantService.getHistoryVisits();
-            assertFalse(listInvoice.isEmpty());
+        listInvoice =   historyVisitsRestaurantService.apihistoryVisits().getHistoryVisits();
+        assertFalse(listInvoice.isEmpty());
     }
 
     /**
@@ -55,7 +52,7 @@ public class HistoryVisitsServiceTest extends TestCase {
     public void testRestaurantInvoiceIsNotEmpty() {
 
         String nameRestaurant = "The dining room";
-        listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+        listInvoice = historyVisitsRestaurantService.apihistoryVisits().getHistoryVisits();
         assertEquals(nameRestaurant, listInvoice.get(0).getRestaurant().getName());
 
     }
@@ -66,7 +63,7 @@ public class HistoryVisitsServiceTest extends TestCase {
     public void testProfilesInvoiceIsNotEmpty(){
 
         String nameProfile = "Adriana Da Rocha";
-        listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+        listInvoice = historyVisitsRestaurantService.apihistoryVisits().getHistoryVisits();
         assertEquals(nameProfile, listInvoice.get(1).getProfile().getProfileName());
 
     }
@@ -76,7 +73,7 @@ public class HistoryVisitsServiceTest extends TestCase {
      */
     public void testInvoiceIsNotEmpty() {
         float total = 350;
-        listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+        listInvoice =historyVisitsRestaurantService.apihistoryVisits().getHistoryVisits();
         assertEquals(total, listInvoice.get(2).getTotal());
     }
 
@@ -85,7 +82,7 @@ public class HistoryVisitsServiceTest extends TestCase {
      */
     public void testRestaurantInvoiceIsNotNull() {
 
-        listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+        listInvoice = historyVisitsRestaurantService.apihistoryVisits().getHistoryVisits();
         assertNotNull(listInvoice.get(2).getRestaurant());
     }
 
@@ -94,7 +91,7 @@ public class HistoryVisitsServiceTest extends TestCase {
      */
     public void testProfileInvoiceIsNotNull() {
 
-        listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+        listInvoice = historyVisitsRestaurantService.apihistoryVisits().getHistoryVisits();
         assertNotNull(listInvoice.get(2).getProfile());
     }
 
@@ -104,7 +101,7 @@ public class HistoryVisitsServiceTest extends TestCase {
     public void testHistoryVisitsIsNotNull() {
 
         try {
-            listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+            listInvoice = historyVisitsRestaurantService.apihistoryVisits().getHistoryVisits();
             assertNotNull(listInvoice);
         }
         catch (NullPointerException e){
@@ -118,7 +115,7 @@ public class HistoryVisitsServiceTest extends TestCase {
     public void testElementLsit() {
 
         try {
-            listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+            listInvoice =historyVisitsRestaurantService.apihistoryVisits().getHistoryVisits();
             MoreAsserts.assertNotEmpty(listInvoice );
             assertEquals(6, listInvoice .size());
         }
@@ -137,3 +134,4 @@ public class HistoryVisitsServiceTest extends TestCase {
     }
 
 }
+

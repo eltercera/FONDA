@@ -1,10 +1,7 @@
 package com.ds201625.fonda.data_access.factory;
-
-
 import com.ds201625.fonda.data_access.services.*;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Token;
-import com.ds201625.fonda.domains.Invoice;
 
 /**
  * Interfaz para una fabrica de servivios.
@@ -67,4 +64,10 @@ public interface ServiceFactory {
     InvoiceService getInvoiceService();
 
     ZoneService getZoneService();
+
+    CategoryService getCategoryService();
+
+    PaymentService setPaymentService();
 }
+
+

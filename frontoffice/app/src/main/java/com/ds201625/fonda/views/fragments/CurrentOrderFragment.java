@@ -7,10 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.CurrentOrderService;
+
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.DishOrder;
+import com.ds201625.fonda.logic.LogicCurrentOrder;
 import com.ds201625.fonda.views.adapters.OrderViewItemList;
 import java.util.List;
 
@@ -36,9 +36,9 @@ public class CurrentOrderFragment extends BaseFragment {
     private List<DishOrder> listDishO;
 
     /**
-     *  Servicio de orden actual
+     *  Atributo de tipo LogicCurrentOrder que controla el acceso al WS
      */
-    private CurrentOrderService currentOrderService;
+    private LogicCurrentOrder logicCurrentOrder;
 
     /**
      * Metodo que se ejecuta al instanciar el fragment
@@ -56,7 +56,7 @@ public class CurrentOrderFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                              Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         //Indicar el layout que va a usar el fragment
         View layout = inflater.inflate(R.layout.fragment_current_order,container,false);
 
@@ -83,12 +83,14 @@ public class CurrentOrderFragment extends BaseFragment {
         super.onDetach();
     }
 
-
+    /**
+     * Metodo que obtiene los elementos del WS
+     */
     public List<DishOrder> getListSW(){
         List<DishOrder> listDishOWS;
+        logicCurrentOrder = new LogicCurrentOrder();
         try {
-            currentOrderService = FondaServiceFactory.getInstance().getCurrentOrderService();
-            listDishOWS = currentOrderService.getListDishOrder();
+            listDishOWS = logicCurrentOrder.getCurrentOrderSW().getListDishOrder();
             for (int i = 0; i < listDishOWS.size(); i++) {
                 System.out.println("Descripcion Plato:  " + listDishOWS.get(i).getDish().getDescription());
             }

@@ -16,26 +16,72 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.services.InvoiceService;
+import com.ds201625.fonda.domains.DishOrder;
+import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.views.activities.OrdersActivity;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Clase de Prueba para mostar el uso de Fragments
  */
 public class OrderPaymentFragment extends BaseFragment {
 
-
+    /**
+     * Receives the amount
+     */
     private float amount;
+    /**
+     * Shows which is the selected Credit card
+     */
     private String selectCC = "";
+    /**
+     * ListView of Amount, credit card and profile
+     */
     private ListView lv1;
+    /**
+     * Values of the combo box for the tip
+     */
     private String [] values = {" % ", " Bs. "};
+    /**
+     * Spinner that shows the saved creditcards
+     */
     private Spinner spinner;
+    /**
+     * Receives the amount of tip
+     */
     private EditText etTip;
+    /**
+     * Set the amount of tip in currency
+     */
     private TextView tvTip;
+    /**
+     * View
+     */
     private View layout;
+    /**
+     * Sets the total of the bill (Subtota+tax+tip)
+     */
     private TextView tvAccount;
+    /**
+     * Shows the actual date
+     */
     private TextView date;
+    /**
+     * Shows the amount of the check (Subtotal+tax)
+     */
+    private float always;
+    /**
+     *
+     */
+    private InvoiceService invoiceService;
+    /**
+     * Calendar
+     */
+    private Calendar c;
 
 
     @Override
@@ -44,6 +90,9 @@ public class OrderPaymentFragment extends BaseFragment {
 
     }
 
+    /**
+     * Contains all the asignations
+     */
     private void getAllElements(){
         tvAccount = (TextView)layout.findViewById(R.id.tvAccount);
         tvTip = (TextView)layout.findViewById(R.id.tvTip);
@@ -56,7 +105,8 @@ public class OrderPaymentFragment extends BaseFragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         //Indicar el layout que va a usar el fragment
         layout = inflater.inflate(R.layout.fragment_order_payment,container,false);
         getAllElements();
@@ -78,22 +128,24 @@ public class OrderPaymentFragment extends BaseFragment {
         }
 
 
-        float always = amount;
+        always = amount;
         //String that fill the listview
         String[] pay = {"Monto Total " +
                 " Bs." + always,
                 "Seleccionar Perfil",
                 "Tarjeta de Crédito: "+selectCC};
         // Add Elements to the list
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1, pay);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+                android.R.layout.simple_list_item_1, pay);
         lv1.setAdapter(adapter);
 
         // Allow to choose the payment of the tip, in percent or in the current currency
-        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, values);
+        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getActivity(),
+                android.R.layout.simple_spinner_item, values);
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(LTRadapter);
         //sets date
-        Calendar c = Calendar.getInstance();
+        c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         String formattedDate = df.format(c.getTime());
         date.setText(formattedDate);
@@ -102,7 +154,9 @@ public class OrderPaymentFragment extends BaseFragment {
         return layout;
     }
 
-
+    /**
+     * Sets the tip of type percet or type currency according to type selected
+     */
     private void setTip()
     {
         try {
@@ -134,6 +188,9 @@ public class OrderPaymentFragment extends BaseFragment {
         }
     }
 
+    /**
+     * Gets the item selected on Fragment Credit Card and Fragment Profile and shows it on listview
+     */
     private void EventReg(){
         lv1 = (ListView)layout.findViewById(R.id.lVOrden);
 
@@ -158,7 +215,10 @@ public class OrderPaymentFragment extends BaseFragment {
         });
     }
 
-     //La vista ha sido creada y cualquier configuración guardada está cargada
+    /**
+     * It activates when the view is restored
+     * @param savedInstanceState
+     */
     @Override
     public void onViewStateRestored(Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
@@ -182,6 +242,7 @@ public class OrderPaymentFragment extends BaseFragment {
             }
         });
     }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -193,6 +254,23 @@ public class OrderPaymentFragment extends BaseFragment {
         super.onDetach();
     }
 
+    /**
+     * Sends the information of the bill to Web Service
+     */
+    public void setBill(){
 
+        try {
+            invoiceService = FondaServiceFactory.getInstance().getInvoiceService();
+
+
+
+        }
+        catch (NullPointerException e){
+            System.out.println("No es posible realizar la conexión con el Web Server ");
+        }
+        catch (Exception e){
+            System.out.println("Error en la Conexión");
+        }
+    }
 
 }
