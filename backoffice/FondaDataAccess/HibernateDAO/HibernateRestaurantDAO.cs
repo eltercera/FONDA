@@ -7,7 +7,7 @@ using NHibernate;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-    public class HibernateRestaurantDAO: HibernateNounBaseEntityDAO<Restaurant>, IRestaurantDAO
+    public class HibernateRestaurantDAO : HibernateNounBaseEntityDAO<Restaurant>, IRestaurantDAO
     {
         FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
 
@@ -120,4 +120,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         }
 
     }
+
+
 }
+
