@@ -98,7 +98,7 @@ namespace BackOffice.Seccion.Restaurant
                     TableCell tCell = new TableCell();
                     //Agrega el ID de la mesa
                     if (j.Equals(0))
-                        tCell.Text = listTable[i].Id.ToString();
+                        tCell.Text = listTable[i].Number.ToString();
                     //Agrega la capacidad de la mesa
                     else if (j.Equals(1))
                         tCell.Text = listTable[i].Capacity.ToString();
