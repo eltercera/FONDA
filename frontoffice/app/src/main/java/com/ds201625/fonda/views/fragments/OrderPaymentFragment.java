@@ -15,10 +15,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.activities.OrdersActivity;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -37,8 +35,8 @@ public class OrderPaymentFragment extends BaseFragment {
     private TextView tvTip;
     private View layout;
     private TextView tvAccount;
-    private CreditCardFragment ccFrag;
     private TextView date;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -150,16 +148,10 @@ public class OrderPaymentFragment extends BaseFragment {
                         Toast.makeText(getContext(), "Su " + itemSelected, Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        //Intent cambio = new Intent (getContext(),ProfileListFragment.class);
-                        //startActivity(cambio);
+                       OrdersActivity.changeFrag(1);
                         break;
                     case 2:
-
-                         ccFrag = new CreditCardFragment();
-                         OrdersActivity.showFragment(ccFrag);
-                         System.out.println("ENTROOOOOOOOOOOOOOO A LA TDC");
-
-
+                        OrdersActivity.changeFrag(2);
                         break;
                 }
             }

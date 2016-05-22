@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
@@ -14,7 +15,7 @@ namespace com.ds201625.fonda.Domain
 		private Person _person;
 
 		private SimpleStatus _status;
-
+        
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -51,6 +52,7 @@ namespace com.ds201625.fonda.Domain
 			get { return _status; }
 			set { _status = value; }
 		}
+        
 	}
 }
 

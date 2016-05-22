@@ -8,9 +8,12 @@ import retrofit2.http.GET;
 /**
  * Created by Adriana on 5/7/16.
  */
+
+/**
+ * Interface que contiene los metodos del servicio de HistoryVisitsClient
+ */
 public interface HistoryVisitsClient {
 
-    @GET("HistoryVisits")
+    @GET("historyVisits")
     Call<List<Invoice>> getHistoryVisits();
-
 }
