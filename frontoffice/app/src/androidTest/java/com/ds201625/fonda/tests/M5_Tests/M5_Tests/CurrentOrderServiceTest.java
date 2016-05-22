@@ -82,6 +82,9 @@ public class CurrentOrderServiceTest extends TestCase {
             listDishOrder = currentOrderService.getListDishOrder();
             assertEquals(nameDish, listDishOrder.get(0).getDish().getName());
         }
+        catch (NullPointerException e){
+            fail("No esta conectado al WS");
+        }
         catch (RestClientException e) {
             e.printStackTrace();
         }

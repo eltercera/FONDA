@@ -46,7 +46,6 @@ public class CurrentOrderLogicTest extends TestCase {
 
         try {
         listDishOrder = currentOrderLogic.getCurrentOrderSW();
-
         assertFalse(listDishOrder.isEmpty());
         } catch (RestClientException e) {
             e.printStackTrace();
