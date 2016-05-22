@@ -40,9 +40,10 @@ public class FondaServiceFactory {
 
     /**
      * Obtiene la instancia
+     *
      * @return
      */
-    public static FondaServiceFactory getInstance(){
+    public static FondaServiceFactory getInstance() {
         if (instance == null)
             instance = new FondaServiceFactory();
 
@@ -51,81 +52,91 @@ public class FondaServiceFactory {
 
     /**
      * Obtiene el servicio de Perfiles
+     *
      * @return
      */
-    public ProfileService getProfileService(Token token)
-    {
+    public ProfileService getProfileService(Token token) {
         return serviceFactory.getProfileService(token);
     }
 
     /**
      * Obtiene ser servicio de comensal
+     *
      * @return
      */
-    public CommensalService getCommensalService(){
+    public CommensalService getCommensalService() {
         return serviceFactory.getCommensalService();
     }
 
 
-    public CurrentOrderService getCurrentOrderService(){
+    public CurrentOrderService getCurrentOrderService() {
         return serviceFactory.getCurrentOrderService();
 
     }
 
-    public HistoryVisitsRestaurantService getHistoryVisitsService(){
+    public HistoryVisitsRestaurantService getHistoryVisitsService() {
         return serviceFactory.getHistoryVisitsService();
     }
 
     /**
      * Obtiene os servicios de token
+     *
      * @param commensal
      * @return
      */
-    public TokenService getTokenService(Commensal commensal){
+    public TokenService getTokenService(Commensal commensal) {
         return serviceFactory.getTokenService(commensal);
     }
 
 
     /**
      * Obtiene los servicios de Comensal
+     *
      * @param
      * @return
      */
-    public AllRestaurantService getAllRestaurantsService(){
+    public AllRestaurantService getAllRestaurantsService() {
         return serviceFactory.getAllRestaurantService();
     }
 
     /**
      * Obtiene los servicios de Comensal
+     *
      * @param
      * @return
      */
-    public AllFavoriteRestaurantService getAllFavoriteRestaurantsService(){
+    public AllFavoriteRestaurantService getAllFavoriteRestaurantsService() {
         return serviceFactory.getAllFavoriteRestaurantsService();
     }
 
     /**
      * Obtiene los servicios de Comensal
+     *
      * @param
      * @return
      */
-    public AddFavoriteRestaurantService getAddFavortieRestaurantService(){
+    public AddFavoriteRestaurantService getAddFavortieRestaurantService() {
         return serviceFactory.getAddFavoriteRestaurantService();
     }
 
     /**
      * Obtiene los servicios de Comensal
+     *
      * @param
      * @return
      */
-    public DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService(){
+    public DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService() {
         return serviceFactory.getDeleteFavoriteRestaurantService();
     }
 
 
-    public InvoiceService getInvoiceService(){
+    public InvoiceService getInvoiceService() {
         return serviceFactory.getInvoiceService();
     }
 
-    public ZoneService getZoneService() { return serviceFactory.getZoneService();}
+    public ZoneService getZoneService() {
+        return serviceFactory.getZoneService();
+    }
+
 }
+
