@@ -4,7 +4,7 @@ using com.ds201625.fonda.Domain;
 using NUnit.Framework;
 
 
-namespace DataAccessTests
+namespace FondaDataAccessTest
 {
     [TestFixture]
     public class BODayTest

@@ -121,11 +121,12 @@ $(document).ready(function () {
     $('#contenido_TableDish').DataTable({
         "language": spanish,
         "aoColumns": [
-            null,
-            { "bSearchable": false },
-            { "bSearchable": false },
-            { "bSearchable": false },
-            { "bSearchable": false }
+          { "bSearchable": true },
+           { "bSearchable": false },
+           { "bSearchable": true },
+           { "bSearchable": false },
+           { "bSearchable": false },
+           { "bSearchable": false }
         ]
     });
 });
