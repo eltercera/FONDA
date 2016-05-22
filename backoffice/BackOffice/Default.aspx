@@ -82,12 +82,10 @@
                         </div>
                     </div>
                 </div>
-                <a id="A1" href="~/Seccion/Restaurant/Mesas.aspx" runat="server">
-                    <div class="panel-footer">
+                   <div class="panel-footer">
                         <br />
                         <div class="clearfix"></div>
                     </div>
-                </a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
