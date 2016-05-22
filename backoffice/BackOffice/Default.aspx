@@ -77,18 +77,15 @@
                             <i class="fa fa-users fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge"></div>
-                            <div>Comensales en sistema</div>
+                            <div class="huge"><asp:Label ID="commensalLabel" runat="server"></asp:Label></div>
+                            <div>Comensales actuales</div>
                         </div>
                     </div>
                 </div>
-                <a id="A1" href="~/Seccion/Restaurant/Mesas.aspx" runat="server">
-                    <div class="panel-footer">
-                        <span class="pull-left">Ver más</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                   <div class="panel-footer">
+                        <br />
                         <div class="clearfix"></div>
                     </div>
-                </a>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">

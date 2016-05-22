@@ -14,6 +14,7 @@ namespace BackOffice
     {
         FactoryDAO factoryDAO = FactoryDAO.Intance;
         IList<Dish> Sugerencia = new List<Dish>();
+        int commensal = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -91,7 +92,10 @@ namespace BackOffice
                         tCell.Text = listTable[i].Capacity.ToString();
                     //Agrega el numero de comensales
                     else if (j.Equals(2))
+                    {
                         tCell.Text = quantity.ToString();
+                        commensal = quantity + commensal;
+                    }
                     //Agrega el usuario que realizo la reserva
                     else if (j.Equals(3))
                         tCell.Text = user;
@@ -107,6 +111,8 @@ namespace BackOffice
                 }
 
             }
+            
+            commensalLabel.Text = commensal.ToString();
 
             //Agrega el encabezado a la Tabla de MEsas
             TableHeaderRow header = GenerateTableHeader();
@@ -256,10 +262,6 @@ namespace BackOffice
 
             return header;
         }
-
-            //public int commensalCount () {
-                
-            //}
 
     }
 }

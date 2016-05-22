@@ -126,12 +126,82 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
             // Consigue el Restaurante de la Base de Datos
             com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(_idRestaurant);
+            
+            Decimal _latitudDecimal= Math.Round(Convert.ToDecimal(_latitudUser), 2);
+            Decimal _longitudDecimal = Math.Round(Convert.ToDecimal(_longitudUser), 2);
 
-            if (_restaurant.Coordinate.Latitude==_latitudUser && _restaurant.Coordinate.Longitude == _longitudUser)
-            {
+            Decimal _latitudRestaurantDecimal= Math.Round(Convert.ToDecimal(_restaurant.Coordinate.Latitude), 2);
+            Decimal _longitudRestaurantDecimal = Math.Round(Convert.ToDecimal(_restaurant.Coordinate.Longitude), 2);
+
+            if (_latitudRestaurantDecimal == _latitudDecimal && _longitudRestaurantDecimal == _longitudDecimal)
+            { 
                 came = true;
             }
             return came;
+        }
+
+        public bool ValidateHour(int _idRestaurant,DateTime _hour)
+        {
+            bool valid = true;
+            TimeSpan _hourSpan;
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(_idRestaurant);
+            _hourSpan = _hour.TimeOfDay;
+            //_hourSpan = _hourSpan.;
+            if (_hourSpan< _restaurant.Schedule.OpeningTime || _hourSpan>_restaurant.Schedule.ClosingTime)
+            {
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        public bool ValidateDay(int _idRestaurant, DateTime _date)
+        {
+            bool valid = false;
+            DayOfWeek _day;
+            IList<Day> _daysRestaurant;
+            string nameDayOfWeek="";
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(_idRestaurant);
+            _day = _date.DayOfWeek;
+            _daysRestaurant = _restaurant.Schedule.Day;
+            if ((int) _day ==7)
+            {
+                nameDayOfWeek = "Domingo";
+            }
+            if ((int) _day == 1)
+            {
+                nameDayOfWeek = "Lunes";
+            }
+            if ((int) _day == 2)
+            {
+                nameDayOfWeek = "Martes";
+            }
+            if ((int)_day == 3)
+            {
+                nameDayOfWeek = "Miercoles";
+            }
+            if ((int)_day == 4)
+            {
+                nameDayOfWeek = "Jueves";
+            }
+            if ((int)_day == 5)
+            {
+                nameDayOfWeek = "Viernes";
+            }
+            if ((int)_day == 3)
+            {
+                nameDayOfWeek = "Sabado";
+            }
+
+            foreach (Day d in _daysRestaurant)
+            {
+                if (d.Name == nameDayOfWeek)
+                    valid = true;
+            }
+
+            return valid;
         }
 
         public IList<Restaurant> findByCategory(RestaurantCategory category)
