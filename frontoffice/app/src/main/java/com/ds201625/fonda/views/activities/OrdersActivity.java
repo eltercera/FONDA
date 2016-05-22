@@ -509,7 +509,10 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
     public static void changeFrag (int opc){
         if(opc == 1){
             profFrag = new ProfileListFragment();
-            showFragment(profFrag);
+            Bundle args = new Bundle();
+            args.putBoolean("multiSelect",true);
+            profFrag.setArguments(args);
+            //showFragment(profFrag);
         }
         if(opc == 2) {
             ccFrag = new CreditCardFragment();

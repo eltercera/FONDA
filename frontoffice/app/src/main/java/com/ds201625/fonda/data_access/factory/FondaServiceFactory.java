@@ -70,8 +70,8 @@ public class FondaServiceFactory {
     public CurrentOrderService getCurrentOrderService(){
         return serviceFactory.getCurrentOrderService();
 
-	}
-	
+    }
+
     public HistoryVisitsRestaurantService getHistoryVisitsService(){
         return serviceFactory.getHistoryVisitsService();
     }

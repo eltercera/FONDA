@@ -15,5 +15,4 @@ import java.util.List;
 public  interface HistoryVisitsRestaurantService {
 
     List<Invoice> getHistoryVisits();
-
 }

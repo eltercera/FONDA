@@ -13,12 +13,22 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 {
     
     [RoutePrefix("api")]
+    /// <summary>
+    /// clase que controla la api del ws
+    /// </summary>
     public class HistoryVisitsFondaWebApiController : FondaWebApi
     {
+        /// <summary>
+        /// Metodo que controla la lista de pagos de una persona en restaurant
+        /// </summary>
         public HistoryVisitsFondaWebApiController() : base() { }
 
         [Route("historyVisits")]
         [HttpGet]
+        /// <summary>
+        ///Metodo que obtiene la lista del historial de pagos del restaurant
+        /// </summary>
+        /// <returns> lista de pagos</returns>
           public IHttpActionResult getHistoryVisits()
           {
 

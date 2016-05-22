@@ -35,5 +35,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             crit.Add(Restrictions.Eq("sm.Id", table.Id));
             return (Restaurant)crit.List()[0];
         }
+
+        public IList<Restaurant> findByCategory(RestaurantCategory category)
+        {
+            ICriterion criterion = Expression.Eq("RestaurantCategory", category);
+            return (FindAll(criterion));
+        }
     }
 }
