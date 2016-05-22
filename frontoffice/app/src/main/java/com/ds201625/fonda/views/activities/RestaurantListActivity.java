@@ -1,44 +1,77 @@
 package com.ds201625.fonda.views.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.services.FilterByZoneService;
+import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.Zone;
+import com.google.gson.Gson;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class RestaurantListActivity extends BaseActivity {
 
-    ListView list;
-    String[] names = {
-            "The dining room",
-            "Mogi Mirin",
-            "Gordo & Magro",
-            "La Casona",
-            "Tony's"} ;
-    String[] location = {
-            "La castellana",
-            "Los dos caminos",
-            "La California",
-            "Parque central",
-            "El Rosal"} ;
-    String[] shortDescription = {
-            "Casual",
-            "Romantico",
-            "Italiano",
-            "Italiano",
-            "Americano"} ;
-    Integer[] imageId = {
-            R.mipmap.ic_restaurant001,
-            R.mipmap.ic_restaurant002,
-            R.mipmap.ic_restaurant003,
-            R.mipmap.ic_restaurant004,
-            R.mipmap.ic_restaurant005,
-
-    };
+    private RestaurantList adapter;
+    private ListView list;
+    /**
+     * Lista para guardar los restaurantes ya filtrados
+     */
+    private List<Restaurant> restaurantList;
+    /**
+     * Selección de la zona del fragmento anterior
+     */
+    private Zone selectedZone;
+    /**
+     * Servicio para filtrar por zona
+     */
+    private FilterByZoneService filterByZoneService;
+    /**
+     * Iterador
+     */
+    private Iterator iterator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
+        list=(ListView)findViewById(R.id.listViewRestaurants);
+
+        String jsonMyObject = null;
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            jsonMyObject = extras.getString("zona");
+        }
+        selectedZone = new Gson().fromJson(jsonMyObject, Zone.class);
+        System.out.println("LA ZONAA: "+selectedZone.getName());
+       /* try{
+
+            filterByZoneService = FondaServiceFactory.getInstance().getFilterByZoneService();
+            restaurantList = filterByZoneService.getRestaurant(selectedZone);
+            iterator = restaurantList.listIterator();
+
+            while (iterator.hasNext()) {
+                Restaurant restaurant = (Restaurant) iterator.next();
+                String nameRestaurant = restaurant.getName();
+
+            }
+            
+           // Log.v("DETAIL", selectedZone.getName());
+        }catch (Exception e){
+            e.printStackTrace();
+        }*/
+
+      /*  if (extras.getString("zona").equals("zona")){
+        }*/
+
+
+       /* AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                getAllRestaurantsService();
+        restaurantList = allRestaurant.getAllRestaurant();*/
 /*
         RestaurantList adapter = new
                 RestaurantList(RestaurantListActivity.this, names,location ,shortDescription,imageId);

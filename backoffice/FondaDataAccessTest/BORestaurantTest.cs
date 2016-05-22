@@ -38,12 +38,12 @@ namespace FondaDataAccessTest
             _restaurant.Name = "Mundo de la Carne";
             _restaurant.Logo = "C:/";
             _restaurant.Nationality = 'V';
-            _restaurant.Ssn = "1234578";
+            _restaurant.Ssn = "123457";
             _restaurant.Address = "Av. Paéz";
             _restaurant.Status = _facDAO.GetActiveSimpleStatus();
 
             Currency _currency = new Currency();
-            _currency.Name = "Euro";
+            _currency.Name = "Euro2";
             _currency.Symbol = "€";
             _restaurant.Currency = _currency;
 
@@ -53,7 +53,7 @@ namespace FondaDataAccessTest
             _restaurant.Coordinate = _coordinate;
 
             RestaurantCategory _restaurantCategory = new RestaurantCategory();
-            _restaurantCategory.Name = "China";
+            _restaurantCategory.Name = "China2";
             _restaurant.RestaurantCategory = _restaurantCategory;
 
              Zone _zone = new Zone();
@@ -68,7 +68,7 @@ namespace FondaDataAccessTest
             _schedule.OpeningTime = new TimeSpan(11, 0, 0);
             _schedule.ClosingTime = new TimeSpan(22, 0, 0);
             Day _lunes = new Day();
-            _schedule.Day = new List<Day>() { new Day() { Name="Lunes" }, new Day() { Name = "Marte" }, new Day() { Name = "Miercoles" } };
+            _schedule.Day = new List<Day>() { new Day() { Name="Lunes2" }, new Day() { Name = "Marte2" }, new Day() { Name = "Miercoles2" } };
             _restaurant.Schedule = _schedule;
 
 

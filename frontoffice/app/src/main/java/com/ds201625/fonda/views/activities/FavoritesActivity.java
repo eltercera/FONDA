@@ -11,6 +11,7 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.SessionData;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -52,32 +53,64 @@ public class FavoritesActivity extends BaseNavigationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_favorites);
+
+        /**
+         * Esta es la validacion de si el usuario ya esta loggeado o no.
+         */
+        // para saltar o no
+        boolean skp = false;
+
+        // inicializa los datos de la sesion
+        if (SessionData.getInstance() == null)
+            try {
+                SessionData.initInstance(getApplicationContext());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+
         super.onCreate(savedInstanceState);
 
-        list=(ListView)findViewById(R.id.listViewFavorites);
+        if (SessionData.getInstance().getToken() == null) {
+            skip();
+            return;
+        }
+        else {
+            /**
+             * Esto es lo que tenia el Modulo de Favoritos en principio.
+             */
+            list = (ListView) findViewById(R.id.listViewFavorites);
 
-        AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                getAllFavoriteRestaurantsService();
-        restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(1);
+            AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                    getAllFavoriteRestaurantsService();
+            restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(2);
         /*
-            AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
-                    getAllRestaurantsService();
-            restaurantList = allRestaurant.getAllRestaurant();
+        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                getAllRestaurantsService();
+        restaurantList = allRestaurant.getAllRestaurant();
         */
-        for (Restaurant rest : restaurantList){
+/*        for (Restaurant rest : restaurantList){
             Log.v("WEBSERVICE", rest.getId() + "");
             Log.v("WEBSERVICE",rest.getName());
             Log.v("WEBSERVICE",rest.getAddress());
+        }*/
+
+            setupListView();
         }
+    }
 
-        setupListView();
-
+    /**
+     * Acción de saltar esta actividad.
+     */
+    private void skip() {
+        startActivity(new Intent(this,LoginActivity.class));
     }
 
     private void setupListView(){
         RestaurantList adapter = new
                 RestaurantList(FavoritesActivity.this, names,location ,shortDescription,imageId,restaurantList);
-        list.setAdapter(adapter);
+        //list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

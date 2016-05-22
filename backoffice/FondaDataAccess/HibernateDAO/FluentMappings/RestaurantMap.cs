@@ -23,6 +23,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             Map(x => x.Ssn)
                 .Column("res_rif")
+                .Unique()
                 .Not.Nullable();
 
             Map(x => x.Address)
@@ -50,6 +51,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
             References(x => x.RestaurantCategory)
                .Column("fk_res_restaurantCategory")
                //.Not.Nullable()
+               .Not.LazyLoad()
                .Cascade.Persist();
 
             References(x => x.Zone)

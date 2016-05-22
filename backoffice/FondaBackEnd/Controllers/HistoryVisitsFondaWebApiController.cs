@@ -11,14 +11,24 @@ using Newtonsoft.Json;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
-    /*
+    
     [RoutePrefix("api")]
+    /// <summary>
+    /// clase que controla la api del ws
+    /// </summary>
     public class HistoryVisitsFondaWebApiController : FondaWebApi
     {
+        /// <summary>
+        /// Metodo que controla la lista de pagos de una persona en restaurant
+        /// </summary>
         public HistoryVisitsFondaWebApiController() : base() { }
 
         [Route("historyVisits")]
         [HttpGet]
+        /// <summary>
+        ///Metodo que obtiene la lista del historial de pagos del restaurant
+        /// </summary>
+        /// <returns> lista de pagos</returns>
           public IHttpActionResult getHistoryVisits()
           {
 
@@ -30,7 +40,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                  person.LastName = "Da Rocha";
                */
 
-              /*Profile profile = new Profile();
+              Profile profile = new Profile();
               //   profile.Person = person;
               profile.ProfileName = "Adriana Da Rocha";
            
@@ -58,25 +68,25 @@ namespace com.ds201625.fonda.BackEnd.Controllers
               restaurant2.Name = "Mogi Mirin";
               restaurant2.Address = "Los Dos Caminos";
               restaurant2.RestaurantCategory = category1;
-              restaurant2.Logo = "ic_restaurant001";
+              restaurant2.Logo = "ic_restaurant002";
 
               Restaurant restaurant3 = new Restaurant();
               restaurant3.Name = "Gordo & Magro";
               restaurant3.Address = "La California";
               restaurant3.RestaurantCategory = category3;
-              restaurant3.Logo = "ic_restaurant001";
+              restaurant3.Logo = "ic_restaurant003";
 
               Restaurant restaurant4 = new Restaurant();
               restaurant4.Name = "La Casona";
               restaurant4.Address = "Parque Central";
               restaurant4.RestaurantCategory = category3;
-              restaurant4.Logo = "ic_restaurant001";
+              restaurant4.Logo = "ic_restaurant004";
 
               Restaurant restaurant5 = new Restaurant();
               restaurant5.Name = "Tony's";
               restaurant5.Address = "El Rosal";
               restaurant5.RestaurantCategory = category4;
-              restaurant5.Logo = "ic_restaurant001";
+              restaurant5.Logo = "ic_restaurant005";
  
            
               Invoice invoice1 = new Invoice();
@@ -138,5 +148,5 @@ namespace com.ds201625.fonda.BackEnd.Controllers
               return Ok(lista);
           }
     }
-    */
+    
 }

@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.views.activities.HandlerSQLite;
+import com.ds201625.fonda.logic.HandlerSQLite;
 
 
 /**
@@ -35,7 +35,8 @@ public class CreditCardFragment extends BaseFragment {
         form = inflater.inflate(R.layout.fragment_add_n_select_cc, container, false);
         spn = (Spinner) form.findViewById(R.id.spinnerCC);
         HandlerSQLite handlerSQLite = new HandlerSQLite(this.getContext());
-        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, handlerSQLite.read());
+        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getContext(),
+                android.R.layout.simple_spinner_item, handlerSQLite.read());
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spn.setAdapter(LTRadapter);
 

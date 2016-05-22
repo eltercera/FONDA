@@ -42,8 +42,8 @@ namespace FondaDataAccessTest
                 editadd = "Editado";
 
             _zone.Name = "Altamira" + editadd;
-            //_zone.Name = "Chacao" + editadd;
-            //_zone.Name = "El Paraíso" + editadd;
+            _zone.Name = "Chacao" + editadd;
+            _zone.Name = "El Paraíso" + editadd;
 
         }
 
@@ -55,7 +55,9 @@ namespace FondaDataAccessTest
 
             Assert.IsNotNull(_zone);
             Assert.AreEqual(_zone.Name, "Altamira" + editadd);
-           
+            Assert.AreEqual(_zone.Name, "Chacao" + editadd);
+            Assert.AreEqual(_zone.Name, "El Paraíso" + editadd);
+
         }
 
         [Test()]

@@ -72,7 +72,7 @@ namespace FondaDataAccessTest
             _dishOrderDAO = _facDAO.GetDishOrderDAO();
             _commensalDAO = _facDAO.GetCommensalDAO();
             ITableDAO tableDAO = _facDAO.GetTableDAO();
-            Commensal owner = (Commensal) _commensalDAO.FindById(1);
+            Commensal owner = (Commensal) _commensalDAO.FindById(13);
 
             DishOrder dishOrder =_dishOrderDAO.FindById(1);
             Assert.IsNotNull(dishOrder);

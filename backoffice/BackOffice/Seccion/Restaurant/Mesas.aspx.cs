@@ -28,6 +28,13 @@ namespace BackOffice.Seccion.Restaurant
         protected void LoadDataTable()
         {
             CleanTable();
+            //ID del restaurante donde nos encontramos
+            int _idRestaurant = 0;
+            if (Session["RestaurantID"] != null)
+            {
+                string idRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();
+                _idRestaurant = int.Parse(idRestaurant);
+            }
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();

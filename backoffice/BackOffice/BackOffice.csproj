@@ -123,6 +123,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\styleslogin.css" />
     <Content Include="Content\css\bootstrap-rtl.css" />
     <Content Include="Content\css\bootstrap-rtl.min.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -419,7 +420,6 @@
     <Content Include="Seccion\Caja\Default.aspx" />
     <Content Include="Seccion\Caja\DefaultOrdenesCerradas.aspx" />
     <Content Include="Seccion\Caja\ModificarOrden.aspx" />
-    <Content Include="Seccion\Configuracion\AgregarModificarUsuario.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
@@ -503,13 +503,6 @@
     </Compile>
     <Compile Include="Seccion\Caja\ModificarOrden.aspx.designer.cs">
       <DependentUpon>ModificarOrden.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarUsuario.aspx.cs">
-      <DependentUpon>AgregarModificarUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarUsuario.aspx.designer.cs">
-      <DependentUpon>AgregarModificarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\G1RecursosInterfaz.Designer.cs">
       <AutoGen>True</AutoGen>
