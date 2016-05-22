@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+
 namespace com.ds201625.fonda.Domain
 {
     /// <summary>
@@ -10,7 +11,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Restaurante al que la factura pertenece
         /// </summary>
-        private Restaurant _restaurante;
+        private Restaurant _restaurant;
 
         /// <summary>
         /// Pago al que la factura pertenece
@@ -21,6 +22,11 @@ namespace com.ds201625.fonda.Domain
         /// Cuenta a la que la factura pertenece
         /// </summary>
         private Account _account;
+
+        /// <summary>
+        /// Profile a la que la factura pertenece
+        /// </summary>
+        private Profile _profile;
 
         /// <summary>
         /// Propina de la cuenta
@@ -46,21 +52,47 @@ namespace com.ds201625.fonda.Domain
         /// Estado de la cuenta
         /// </summary>
         private InvoiceStatus _status;
-
+        
         /// <summary>
-        /// Restaurant de la cuenta
+        /// Moneda 
         /// </summary>
-        private Restaurant _restaurant;
+        private Currency _currency;
 
-        /// <summary>
-        /// Perfil de la cuenta
-        /// </summary>
-        private Profile _profile;
-  
         /// <summary>
         /// Constructor
         /// </summary>
         public Invoice() : base() { }
+
+        /// <summary>
+        /// Obtiene o asigna una moneda a la factura
+        /// </summary>
+        [DataMember]
+        public virtual Currency Currency
+        {
+            get { return _currency; }
+            set { _currency = value; }
+        }
+
+
+        /// <summary>
+        /// Obtiene o asigna una cuenta a la factura
+        /// </summary>
+        [DataMember]
+        public virtual Account Account
+        {
+            get { return _account; }
+            set { _account = value; }
+        }
+
+        /// <summary>
+        /// Obtiene o asigna un restaurant a la cuenta
+        /// </summary>
+        [DataMember]
+        public virtual Restaurant  Restaurant
+        {
+            get { return _restaurant; }
+            set { _restaurant = value; }
+        }
 
         /// <summary>
         /// Obtiene o asigna un perfil a la cuenta
@@ -75,7 +107,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna la propina de la cuenta
         /// </summary>
-       	[DataMember]
+        [DataMember]
         public virtual float Tip
         {
             get { return _tip; }
@@ -120,16 +152,7 @@ namespace com.ds201625.fonda.Domain
             get { return _status; }
             set { _status = value; }
         }
-
-        /// <summary>
-        /// Obtiene o asigna un restaurante
-        /// </summary>
-        public virtual Restaurant Restaurant
-        {
-            get { return _restaurante; }
-            set { _restaurante = value; }
-        }
-
+        
         /// <summary>
         /// Obtiene o asigna un pago
         /// </summary>
@@ -138,17 +161,7 @@ namespace com.ds201625.fonda.Domain
             get { return _payment; }
             set { _payment = value; }
         }
-
-        /// <summary>
-        /// Obtiene o asigna una cuenta
-        /// </summary>
-        public virtual Account Account
-        {
-            get { return _account; }
-            set { _account = value; }
-        }
-
-
+        
 
         /// <summary>
         /// Cambia el eltado actual de la factura.

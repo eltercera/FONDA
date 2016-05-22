@@ -1,12 +1,11 @@
 package com.ds201625.fonda.views.activities;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,21 +16,21 @@ import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
+import com.ds201625.fonda.views.fragments.CloseAccountFragment;
 import com.ds201625.fonda.views.fragments.CreditCardFragment;
 import com.ds201625.fonda.views.fragments.CurrentOrderFragment;
-import com.ds201625.fonda.views.fragments.FacturaFragment;
+import com.ds201625.fonda.views.fragments.InvoiceFragment;
 import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
-import com.ds201625.fonda.views.fragments.CloseAccountFragment;
 import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
-
+import com.ds201625.fonda.views.fragments.ProfileListFragment;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 
-public class OrdersActivity extends BaseNavigationActivity {
+public class OrdersActivity extends BaseNavigationActivity implements ProfileListFragment.profileListFragmentListener {
+
 
     /**
      * Iten del Menu
@@ -80,9 +79,11 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     private static OrderPaymentFragment ordPay;
 
-    private static FacturaFragment factFrag;
+    private static InvoiceFragment factFrag;
 
     private static CreditCardFragment ccFrag;
+
+    private static ProfileListFragment profFrag;
 
     private void getAllElements(){
         mViewPager = (ViewPager) findViewById(R.id.containerO);
@@ -94,7 +95,6 @@ public class OrdersActivity extends BaseNavigationActivity {
         rBMaster = (RadioButton) findViewById(R.id.rBMaster);
         rBVisa = (RadioButton) findViewById(R.id.rBVisa);
         spinner = (Spinner) findViewById(R.id.spinnerCC);
-        saveCC = (Button)findViewById(R.id.bSave);
 
     }
 
@@ -181,6 +181,10 @@ public class OrdersActivity extends BaseNavigationActivity {
                 sendPayBotton.setVisible(false);
                 cancelPayBotton.setVisible(false);
             }
+            if ((acceptCCButton != null) && (saveCCButton != null)) {
+                acceptCCButton.setVisible(false);
+                saveCCButton.setVisible(false);
+            }
         } else if (fragment.equals(ordPay)) {
             if (cerrarBotton != null)
                 cerrarBotton.setVisible(false);
@@ -192,23 +196,26 @@ public class OrdersActivity extends BaseNavigationActivity {
                 sendPayBotton.setVisible(true);
                 cancelPayBotton.setVisible(true);
             }
-        } else if (fragment.equals(ccFrag)) {
-            if (cerrarBotton != null)
-                cerrarBotton.setVisible(false);
-            if ((sendBotton != null) && (cancelBotton != null)) {
-                sendBotton.setVisible(false);
-                cancelBotton.setVisible(false);
-            }
-            if ((sendPayBotton != null) && (cancelPayBotton != null)) {
-                sendPayBotton.setVisible(false);
-                cancelPayBotton.setVisible(false);
-            }
             if ((acceptCCButton != null) && (saveCCButton != null)) {
-                acceptCCButton.setVisible(true);
-                saveCCButton.setVisible(true);
+                acceptCCButton.setVisible(false);
+                saveCCButton.setVisible(false);
             }
-
-        } else if (fragment.equals(factFrag)) {
+        } else if (fragment.equals(ccFrag)) {
+                if (cerrarBotton != null)
+                    cerrarBotton.setVisible(false);
+                if ((sendBotton != null) && (cancelBotton != null)) {
+                    sendBotton.setVisible(false);
+                    cancelBotton.setVisible(false);
+                }
+                if ((sendPayBotton != null) && (cancelPayBotton != null)) {
+                    sendPayBotton.setVisible(false);
+                    cancelPayBotton.setVisible(false);
+                }
+                if ((acceptCCButton != null) && (saveCCButton != null)) {
+                    acceptCCButton.setVisible(true);
+                    saveCCButton.setVisible(true);
+             }
+            }else if (fragment.equals(factFrag)) {
             if (cerrarBotton != null)
                 cerrarBotton.setVisible(false);
             if ((sendBotton != null) && (cancelBotton != null)) {
@@ -229,6 +236,8 @@ public class OrdersActivity extends BaseNavigationActivity {
             if (downloadBotton != null)
                 downloadBotton.setVisible(false);
         }
+
+
     }
 
     /**
@@ -264,9 +273,10 @@ public class OrdersActivity extends BaseNavigationActivity {
                 download();
                 break;
             case R.id.action_favorite_save_cc:
-                save();
+                validationCC();
+                break;
             case R.id.action_favorite_accept_cc:
-                //acceptCC();
+                acceptCC();
                 break;
         }
         return true;
@@ -299,26 +309,6 @@ public class OrdersActivity extends BaseNavigationActivity {
         showFragment(ordPay);
     }
 
-    private void save() {
-        getAllElements();
-        HandlerSQLite handlerSQLite = new HandlerSQLite(this);
-        String numberCC = number.getText().toString();
-        String nameCC = name.getText().toString();
-        int idOwnerCC = Integer.parseInt(idOwner.getText().toString());
-        String expCC = expiration.getText().toString();
-        int cvvCC = Integer.parseInt(cvv.getText().toString());
-        boolean typeMaster = rBMaster.isChecked();
-        boolean typeVisa = rBVisa.isChecked();
-        if(typeMaster) {
-            handlerSQLite.save(numberCC, nameCC, idOwnerCC, expCC, cvvCC, "Mastercard");
-        }
-        else if(typeVisa) {
-            handlerSQLite.save(numberCC, nameCC, idOwnerCC, expCC, cvvCC, "Visa");
-        }
-
-        Toast.makeText(this, "Agregado ", Toast.LENGTH_SHORT).show();
-
-    }
 
     private void buscar() {
 
@@ -327,7 +317,7 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     public void cambiarFac() {
         if (factFrag == null)
-            factFrag = new FacturaFragment();
+            factFrag = new InvoiceFragment();
         showFragment(factFrag);
     }
 
@@ -380,12 +370,8 @@ public class OrdersActivity extends BaseNavigationActivity {
 
     }
 
-    public void eraseCC (View view){
-        HandlerSQLite handlerSQLite = new HandlerSQLite(this);
-        handlerSQLite.erase();
-    }
 
-    public void acceptCC (View view){
+    public void acceptCC (){
         Bundle args = new Bundle();
         spinner = (Spinner) findViewById(R.id.spinnerCC);
         String cc = spinner.getSelectedItem().toString();
@@ -411,12 +397,13 @@ public class OrdersActivity extends BaseNavigationActivity {
     }
 
 
-    public void validationCC (View view){
+    public void validationCC (){
         getAllElements();
-        saveCC.setOnClickListener(new View.OnClickListener() {
+        saveCCButton.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onMenuItemClick(MenuItem item) {
                 validate();
+                return false;
             }
         });
 
@@ -438,6 +425,7 @@ public class OrdersActivity extends BaseNavigationActivity {
         boolean cv = validateCvv(cvvCC);
 
         if (nu && na && id && cv && ex || typeMaster || typeVisa){
+
             saveCC();
         }
         else
@@ -453,9 +441,7 @@ public class OrdersActivity extends BaseNavigationActivity {
                 op = false;
                 number.setError("Debe contener 20 dígitos");
             }
-
         return op;
-
     }
 
     private boolean validateNameOwner(String nameO){
@@ -494,6 +480,42 @@ public class OrdersActivity extends BaseNavigationActivity {
         return op;
     }
 
+
+    @Override
+    public void OnProfileSelect(Profile profile) {
+        Bundle args = new Bundle();
+        String nameProf = profile.getProfileName();
+        ordPay = new OrderPaymentFragment();
+        args.putString("profile", nameProf);
+        ordPay.setArguments(args);
+        showFragment(ordPay);
+    }
+
+    @Override
+    public void OnProfilesSelected(ArrayList<Profile> profile) {
+
+    }
+
+    @Override
+    public void OnProfileSelectionMode() {
+
+    }
+
+    @Override
+    public void OnProfileSelectionModeExit() {
+
+    }
+
+    public static void changeFrag (int opc){
+        if(opc == 1){
+            profFrag = new ProfileListFragment();
+            showFragment(profFrag);
+        }
+        if(opc == 2) {
+            ccFrag = new CreditCardFragment();
+            showFragment(ccFrag);
+        }
+    }
 
 
 }

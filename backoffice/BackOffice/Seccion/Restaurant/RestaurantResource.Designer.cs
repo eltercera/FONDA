@@ -115,6 +115,15 @@ namespace BackOffice.Seccion.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NameRestaurant.
+        /// </summary>
+        internal static string SessionNameRest {
+            get {
+                return ResourceManager.GetString("SessionNameRest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RestaurantID.
         /// </summary>
         internal static string SessionRestaurant {

@@ -35,7 +35,7 @@ namespace DataAccessTests
 
             if ((edit & _restaurant == null) | _restaurant == null)
                 _restaurant = new Restaurant();
-            _restaurant.Name = "Pundo del Pollo";
+            _restaurant.Name = "Mundo de la Carne";
             _restaurant.Logo = "C:/";
             _restaurant.Nationality = 'V';
             _restaurant.Ssn = "1234578";

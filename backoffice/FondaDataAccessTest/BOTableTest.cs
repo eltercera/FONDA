@@ -74,12 +74,13 @@ namespace DataAccessTests
 
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
-            com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(1);
+            Restaurant _restaurant = _restaurantDAO.FindById(1);
             _restaurantDAO.FindById(1);
 
             _table.Capacity = 2;
             //FreeTableStatus :(
             _table.Number = 1;
+            _table.Restaurant = _restaurant;
             _table.Status = _facDAO.GetFreeTableStatus();
 
         }

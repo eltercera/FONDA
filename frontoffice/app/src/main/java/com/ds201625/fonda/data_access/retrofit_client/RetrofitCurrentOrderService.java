@@ -16,17 +16,31 @@ import java.util.List;
 import retrofit2.Call;
 
 /**
- * Created by rrodriguez on 5/7/16.
+ * Created by Yuneth on 5/15/2016.
+ */
+
+/**
+ * Clase que implementa el servicio
  */
 public class RetrofitCurrentOrderService implements CurrentOrderService {
 
+    /**
+     * CurrentOrderClient que crea el servicio
+     */
     private CurrentOrderClient currentOrderClient =
             RetrofitService.getInstance().createService(CurrentOrderClient.class);
 
+    /**
+     * Constructor de RetrofitCurrentOrderService
+     */
     public RetrofitCurrentOrderService() {
         super();
     }
 
+    /**
+     * Metodo que hace la llamada al servicio
+     * @return llamada
+     */
     @Override
     public List<DishOrder> getListDishOrder() {
         Call<List<DishOrder>> call = currentOrderClient.getListDishOrder();
