@@ -98,7 +98,7 @@
                 <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
                         <div class="form-group">
                             <label class="control-label">Cédula</label>
-                            <asp:TextBox ID="nss2" CssClass="form-control" placeholder="ej. 965831535" runat="server"/>
+                            <asp:TextBox ID="nss2" CssClass="form-control" placeholder="Ej. 19245998" runat="server"/>
                             <div id="menssageSsn" style="color:#FF9999" runat="server" ></div>
                         </div>
                 </div>
@@ -113,7 +113,7 @@
                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Teléfono</label>
-                            <asp:TextBox ID="phoneNumber" CssClass="form-control" placeholder="Teléfono" runat="server"/>
+                            <asp:TextBox ID="phoneNumber" CssClass="form-control" placeholder="Ej. 04127890544" runat="server"/>
                         </div>
                       </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
@@ -154,7 +154,7 @@
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <asp:TextBox ID="email" CssClass="form-control" placeholder="Email" runat="server"/>
+                            <asp:TextBox ID="email" CssClass="form-control" placeholder="nickname@ejemplo.com" runat="server"/>
                             <div id="menssageEmail" style="color:#FF9999" runat="server" ></div>
                         </div>
                 </div>
@@ -163,14 +163,27 @@
                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Password</label>
-                            <asp:TextBox ID="password" CssClass="form-control" placeholder="Password" runat="server"/>
+                            <asp:TextBox type="password" ID="password" CssClass="form-control" placeholder="Password" runat="server"/>
                         </div>
                       </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Repetir Password</label>
-                            <asp:TextBox ID="repitPassword" CssClass="form-control" placeholder="Repetir Password" runat="server"/>
+                            <asp:TextBox type="password" ID="repitPassword" CssClass="form-control" placeholder="Repetir Password" runat="server"/>
                         </div>
+                </div>
+            </div>
+                    <div class="row">
+                        
+                <div class="col-lg-3 col-md-10 col-sm-10 col-xs-10">
+                    </div>
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                    <div class="form-group">
+                        <label class="control-label">Restaurant</label>
+                        <asp:DropDownList id="restaurant" CssClass="form-control" runat="server">
+                            <asp:ListItem></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
                 </div>
             </div>
             </div>
