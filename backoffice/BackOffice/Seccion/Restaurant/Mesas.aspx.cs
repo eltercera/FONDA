@@ -30,6 +30,7 @@ namespace BackOffice.Seccion.Restaurant
         {
             CleanTable();
             //ID del restaurante donde nos encontramos
+            //Validamos que la Session de Gerente este iniciada
             int _idRestaurant = 0;
             if (Session["RestaurantID"] != null)
             {
@@ -44,11 +45,13 @@ namespace BackOffice.Seccion.Restaurant
                 }
             }           
             //Genero los objetos para la consulta
-            //Genero la lista de la consulta
+            //Genero la lista de mesas por restaurant
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
+            //Genero la lista de reservas por restaurant
             IReservationDAO _reservationDAO = factoryDAO.GetReservationDAO();
             IList<Reservation> listReservation = _reservationDAO.FindByRestaurant(_idRestaurant);
+            //Fecha del sistema
             DateTime today = DateTime.Now;
             DateTime now = new DateTime(today.Year, today.Month, today.Day, today.Hour, today.Minute, 0);
 
@@ -72,10 +75,13 @@ namespace BackOffice.Seccion.Restaurant
                     string user = string.Empty;
                     string status = listTable[i].Status.ToString();
                     int quantity = 0;
+                    //Cantidad de reservas para ese restaurant
                 for (int r = 0; r <= totalRowsReservation - 1; r++)
                 {
+                    //Fecha de reserva
                     DateTime reservationDate = listReservation[r].ReserveDate;
 
+                    //Chequear si hay una reserva en curso o no y asigna los datos de reserva
                     if ((now == reservationDate) && (listTable[i].Id == listReservation[r].ReserveTable.Id))
                         {
                             status = RestaurantResource.Inactive;
@@ -98,7 +104,7 @@ namespace BackOffice.Seccion.Restaurant
                     TableCell tCell = new TableCell();
                     //Agrega el ID de la mesa
                     if (j.Equals(0))
-                        tCell.Text = listTable[i].Id.ToString();
+                        tCell.Text = listTable[i].Number.ToString();
                     //Agrega la capacidad de la mesa
                     else if (j.Equals(1))
                         tCell.Text = listTable[i].Capacity.ToString();

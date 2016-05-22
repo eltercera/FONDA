@@ -107,19 +107,7 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
-    $('#contenido_tableDefault').DataTable({
-        "language": spanish,
-        "aoColumns": [
-            null,
-            null,
-            null,
-            null,
-            { "bSearchable": false },
-            { "bSearchable": false }
-        ]
-    });
-});
+
 
 $(document).ready(function () {
     $('#contenido_TableDayMenuDashboard').DataTable({
@@ -127,6 +115,18 @@ $(document).ready(function () {
         "aoColumns": [
             null,
             null
+        ]
+    });
+});
+$(document).ready(function () {
+    $('#contenido_tableDefault').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
         ]
     });
 });
