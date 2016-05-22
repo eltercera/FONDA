@@ -83,7 +83,6 @@
     <Compile Include="Controllers\RestaurantZoneFilterFondaWebApiController - Copia.cs" />
     <Compile Include="Controllers\RestaurantCategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\RestaurantFondaWebApiController.cs" />
-    <Compile Include="Controllers\RestaurantFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\ZoneFilterFondaWebApiController.cs" />
     <Compile Include="GeneralRes.Designer.cs">
       <AutoGen>True</AutoGen>
