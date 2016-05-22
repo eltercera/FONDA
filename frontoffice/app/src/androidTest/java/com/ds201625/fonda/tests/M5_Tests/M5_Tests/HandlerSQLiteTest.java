@@ -1,15 +1,10 @@
-package com.ds201625.fonda.tests.M5_Tests;
+package com.ds201625.fonda.tests.M5_Tests.M5_Tests;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
-import android.test.InstrumentationTestCase;
 import android.test.RenamingDelegatingContext;
-import android.test.mock.MockContext;
 
-import com.ds201625.fonda.views.activities.HandlerSQLite;
-
-import junit.framework.TestCase;
+import com.ds201625.fonda.logic.HandlerSQLite;
 
 import java.util.ArrayList;
 
@@ -17,23 +12,23 @@ import java.util.ArrayList;
  * Created by Hp on 21/05/2016.
  */
 public class HandlerSQLiteTest extends AndroidTestCase {
-    private Context c;
+
     private SQLiteDatabase dbr;
     private SQLiteDatabase dbw;
     private RenamingDelegatingContext context;
     private ArrayList<String> cc;
     HandlerSQLite db;
+    private SQLiteDatabase bd;
 
     protected void setUp() throws Exception{
         super.setUp();
-        MockContext context = new MockContext();
-        db = HandlerSQLite.getInstance(context);
+        RenamingDelegatingContext context = new RenamingDelegatingContext(getContext(), "test_db");
+        db = new HandlerSQLite(context);
         dbw = db.getWritableDatabase();
         dbr = db.getReadableDatabase();
     }
 
     public void testCreateDB (){
-
         db.onCreate(dbw);
         assertNotNull(dbw);
     }
@@ -56,7 +51,13 @@ public class HandlerSQLiteTest extends AndroidTestCase {
         db.onCreate(dbw);
         db.erase();
         cc =  db.read();
-        assertNull(cc);
+       assertEquals(cc.isEmpty(),true);
     }
 
+    public void tearDown() throws Exception {
+        super.tearDown();
+        db = null;
+        dbw = null;
+        dbr = null;
+    }
 }

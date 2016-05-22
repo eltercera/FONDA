@@ -17,13 +17,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
+import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.InvoiceService;
-import com.ds201625.fonda.domains.DishOrder;
+import com.ds201625.fonda.data_access.services.PaymentService;
 import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.logic.LogicPayment;
 import com.ds201625.fonda.views.activities.OrdersActivity;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 
 /**
  * Clase de Prueba para mostar el uso de Fragments
@@ -83,6 +86,17 @@ public class OrderPaymentFragment extends BaseFragment {
      */
     private Calendar c;
 
+    /**
+     * Payment
+     */
+    Invoice payment;
+
+    /**
+     * logicPayment
+     */
+    LogicPayment logicPayment;
+
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,6 +121,7 @@ public class OrderPaymentFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        postPayment();
         //Indicar el layout que va a usar el fragment
         layout = inflater.inflate(R.layout.fragment_order_payment,container,false);
         getAllElements();
@@ -272,5 +287,30 @@ public class OrderPaymentFragment extends BaseFragment {
             System.out.println("Error en la Conexión");
         }
     }
+
+    private void postPayment() {
+        //ESTE OBJETO SE GENERA CON INFORMACION SACADA DE OTRO LADO
+        //Invoice invoice = new Invoice();
+        float a=150;
+        //invoice.setTax(a);
+        Invoice invoice = new Invoice();
+        invoice = null;
+
+        logicPayment = new LogicPayment();
+        try {
+            payment = logicPayment.paymentService(invoice);
+            //PRUEBA DE QUE HACE EL POST
+            System.out.println("TAX1 : "+ payment.getTax());
+        } catch (RestClientException e) {
+            System.out.println(e.getMessage());
+        } catch (InvalidDataRetrofitException e) {
+            System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println("Error");
+        }
+
+
+    }
+
 
 }

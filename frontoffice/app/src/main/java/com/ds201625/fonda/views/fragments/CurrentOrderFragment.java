@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.logic.LogicCurrentOrder;
 import com.ds201625.fonda.views.adapters.OrderViewItemList;
@@ -95,6 +96,9 @@ public class CurrentOrderFragment extends BaseFragment {
                 System.out.println("Descripcion Plato:  " + listDishOWS.get(i).getDish().getDescription());
             }
             return listDishOWS;
+        }
+        catch (RestClientException e) {
+            e.printStackTrace();
         }
         catch (NullPointerException e){
             System.out.println("No es posible realizar la conexión con el Web Server ");

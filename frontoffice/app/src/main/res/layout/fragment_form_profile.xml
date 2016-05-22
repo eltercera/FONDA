@@ -88,7 +88,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:ems="10"
                         android:id="@+id/profile_ci_rif"
                         android:hint="Cédula de Identidad o RIF" />
