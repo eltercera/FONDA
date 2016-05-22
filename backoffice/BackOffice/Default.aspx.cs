@@ -45,10 +45,15 @@ namespace BackOffice
             //Genero la lista de la consulta
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
+            IReservationDAO _reservationDAO = factoryDAO.GetReservationDAO();
+            IList<Reservation> listReservation = _reservationDAO.FindByRestaurant(_idRestaurant);
+            DateTime today = DateTime.Now;
+            DateTime now = new DateTime(today.Year, today.Month, today.Day, today.Hour, today.Minute, 0);
 
 
             int totalRows = listTable.Count; //tamano de la lista 
             int totalColumns = 4; //numero de columnas de la tabla
+            int totalRowsReservation = listReservation.Count; //tamano de la lista de reserva
 
             //Recorremos la lista
             for (int i = 0; i <= totalRows - 1; i++)
@@ -59,27 +64,31 @@ namespace BackOffice
                 tRow.Attributes["data-id"] = listTable[i].Id.ToString();
                 //Agrega la fila a la tabla existente
                 tableDefault.Rows.Add(tRow);
-                // CABLEADO DE RESERVA
-                string statusTable = string.Empty;
+                #region CABLEADO RESERVA
                 string user = string.Empty;
                 string status = listTable[i].Status.ToString();
-                string statusActive = FreeTableStatus.Instance.ToString();
-                string statusInactive = BusyTableStatus.Instance.ToString();
                 int quantity = 0;
-                if (status == statusActive)
+                for (int r = 0; r <= totalRowsReservation - 1; r++)
                 {
-                    status = RestaurantResource.Active;
-                    user = "N/A";
-                    quantity = 0;
-                }
-                else if (status == statusInactive)
-                {
-                    status = RestaurantResource.Inactive;
-                    user = "Usuario" + listTable[i].Id;
-                    quantity = listTable[i].Capacity - 1;
+                    DateTime reservationDate = new DateTime(); 
+                    reservationDate = listReservation[r].ReserveDate;
 
+                    if ((now == reservationDate) && (listTable[i].Id == listReservation[r].ReserveTable.Id))
+                    {
+                        status = RestaurantResource.Inactive;
+                        user = "Usuario" + listTable[i].Id;
+                        quantity = listReservation[r].CommensalNumber;
+                    }
+                    else if ((now != reservationDate) || (listTable[i].Id != listReservation[r].ReserveTable.Id))
+                    {
+                        status = RestaurantResource.Active;
+                        user = "N/A";
+                        quantity = 0;
+
+                    }
                 }
-                // TERMINA EL CABLEADO DE RESERVA
+                #endregion
+                
                 for (int j = 0; j <= totalColumns; j++)
                 {
                     //Crea una nueva celda de la tabla
