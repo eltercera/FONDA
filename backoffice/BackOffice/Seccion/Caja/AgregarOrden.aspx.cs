@@ -21,16 +21,24 @@ namespace BackOffice.Seccion.Caja
             
             exitoFormulario.Visible = false;
             alertaFormulario.Visible = false;
-             OnInit(e);
 
+            loadPage();
+           
+
+         
         }
 
+          protected void Page_Init(object sender, EventArgs e)
+           {
+               exitoFormulario.Visible = false;
+               alertaFormulario.Visible = false;
+            if (!this.IsPostBack)
+                loadPage();
+           }
 
-
-
-         protected void Page_Init(EventArgs e)
-        {    
-
+        protected void loadPage()
+        {
+            
                 CleanTable();
 
 
@@ -43,7 +51,7 @@ namespace BackOffice.Seccion.Caja
                 int totalRows = listDish.Count;
                 int totalColumns = 5; //numero de columnas de la tabla
 
-
+          
 
                 //Recorremos la lista
                 for (int i = 0; i <= totalRows - 1; i++)
@@ -70,8 +78,10 @@ namespace BackOffice.Seccion.Caja
                         else if (j.Equals(1))
                         {
 
-                            tCell.Text = ResourceCaja.AgregarCantidadOrden;
-                        }
+                        tCell.Text = ResourceCaja.AgregarCantidadOrden;
+
+                        
+                    }
                         else if (j.Equals(2))
                         {
                             tCell.Text = listDish[i].Cost.ToString();
@@ -87,17 +97,17 @@ namespace BackOffice.Seccion.Caja
                         else if (j.Equals(5))
                         {
                             CheckBox checkbox = new CheckBox();
-                            checkbox.ID = "chk"+listDish[i].Id.ToString();
-                            checkbox.Text = "";
-                       
+                            checkbox.ID = listDish[i].Id.ToString();
+
                         tCell.Controls.Add(checkbox);
                         }
 
                         //Agrega la 
                         tRow.Cells.Add(tCell);
 
+                        tRow.Controls.Add(tCell);
                     }
-
+                    Menu1.Controls.Add(tRow);
                 }
 
 
@@ -109,7 +119,7 @@ namespace BackOffice.Seccion.Caja
 
             }
 
-        
+         
         /// <summary>
         /// Genera el encabezado de la tabla Categoria
         /// </summary>
@@ -161,82 +171,54 @@ namespace BackOffice.Seccion.Caja
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IDishDAO _DishDAO = factoryDAO.GetDishDAO();
-            IList<Dish> listDish = _DishDAO.GetAll();
 
+           
+                FactoryDAO factoryDAO = FactoryDAO.Intance;
+                IDishDAO _DishDAO = factoryDAO.GetDishDAO();
+                IList<Dish> listDish = _DishDAO.GetAll();
+            IDishOrderDAO _DishOrder = factoryDAO.GetDishOrderDAO();
           
+
+            Account account = new Account();
+            IOrderAccountDao _orderAccount = factoryDAO.GetOrderAccountDAO();
+
             int totalRows = listDish.Count;
+            int i = 0;
 
-            
-            try
-            {
-                HtmlTable t = new HtmlTable(); 
-                t = (HtmlTable)FindControl("Menu1");
-                foreach (HtmlTableRow trc in t.Rows) 
-                {
-                   
-                    foreach (HtmlTableCell tc in trc.Cells)
-                    {
-                        foreach (Control htc in tc.Controls)
-                        {
-                            CheckBox chkbox = (CheckBox)htc.FindControl("0");
-                            if (htc is CheckBox)
+            foreach (TableRow row in Menu1.Rows)
+                  {               
+                      foreach (TableCell cell in row.Cells)
+                      {
+                          foreach (Control ctrl in cell.Controls)
+                          {
+                                                 
+                            CheckBox box = ctrl.FindControl(listDish[i].Id.ToString()) as CheckBox;                       
+                       
+                            if (box is CheckBox)
+                              {                              
+                                  if (box.Checked)
+                                  {
+                                    DishOrder dishOrder = new DishOrder();
+                                    dishOrder.Count = 1;
+                                    dishOrder.Dish.Id = listDish[i].Id;
+                                    account.addDish(dishOrder);
+                                  }
+                              }
+                            i++;
+                          }
+                    
+                      }
+                  }
 
-                            {
+            // Salvar en bd.
 
-                                if (((CheckBox)htc).Checked == true)
+        //    account.Commensal =
+         //   account.Table =
+         //   account.Status = OpenAccountStatus.Instance;
+         //   _orderAccount.Save(account);
 
-                                {
-                                    label22.Text = "q 1234";
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception d)
-            {
-                Response.Write(d.Message);
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            /*     for (int i = 0; i <= totalRows - 1; i++) { 
-
-                 foreach (Control control in Menu1.Controls)
-                 {
-
-                     if (control is CheckBox)
-
-                     {
-
-                         if (((CheckBox)control).Checked == false)
-
-                         {
-                             label22.Text = "q 1234";
-                         }
-                     }
-                 }
-
-
-             }*/
-
+        //    string idrest = (string)(Session[RecursoMaster.sessionRestaurantID]);
+        //    string iduser = (string)(Session[RecursoMaster.sessionUserID]);
 
 
 

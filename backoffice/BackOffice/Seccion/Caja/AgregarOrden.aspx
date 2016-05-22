@@ -57,14 +57,14 @@
 
 
 
-    <asp:Label id="label22" runat="server" Text="EPALE" ></asp:Label>>
+    <asp:Label id="label22" runat="server"></asp:Label>
 
 
 
 
     <div class="row col-lg-offset-8 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
         <div class="col-md-10 col-sm-10 col-xs-10 ">
-            <asp:Button ID="Button1" Text="Aceptar" CssClass="btn btn-success col-md-5 col-sm-5 col-xs-5 m-r-1" runat="server" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" Text="Aceptar" CssClass="btn btn-success col-md-5 col-sm-5 col-xs-5 m-r-1" runat="server" OnClick="Button1_Click"/>
             <asp:Button ID="Button2" Text="Cancelar" CssClass="btn btn-danger col-md-5 col-sm-5 col-xs-5" runat="server" OnClick="Button2_Click" />
         </div>
     </div>
