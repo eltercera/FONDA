@@ -1,18 +1,20 @@
 package com.ds201625.fonda.views.activities;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.services.AllRestaurantService;
+import com.ds201625.fonda.domains.Restaurant;
+
+import java.util.List;
 
 public class RestaurantListActivity extends BaseActivity {
 
-    ListView list;
+    private RestaurantList adapter;
+    private ListView list;
+    private List<Restaurant> restaurantList;
     String[] names = {
             "The dining room",
             "Mogi Mirin",
@@ -45,11 +47,15 @@ public class RestaurantListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
 
+        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                getAllRestaurantsService();
+        restaurantList = allRestaurant.getAllRestaurant();
+/*
         RestaurantList adapter = new
                 RestaurantList(RestaurantListActivity.this, names,location ,shortDescription,imageId);
         list=(ListView)findViewById(R.id.listViewRest);
         list.setAdapter(adapter);
-
+*/
         /*list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

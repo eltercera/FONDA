@@ -14,10 +14,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".views.activities.PagoOrdenActivity">
+        tools:context=".views.activities.AllRestaurantsActivty">
 
         <include layout="@layout/toolbar_default" />
-        <include layout="@layout/content_orders" />
+
+        <include layout="@layout/content_all_restaurant" />
 
     </android.support.design.widget.CoordinatorLayout>
 

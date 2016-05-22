@@ -1,13 +1,21 @@
 package com.ds201625.fonda.data_access.factory;
 
 import com.ds201625.fonda.data_access.retrofit_client.RetroditServiceFactory;
+import com.ds201625.fonda.data_access.services.AddFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.AllRestaurantService;
+import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
+import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
+import com.ds201625.fonda.data_access.services.InvoiceService;
+import com.ds201625.fonda.data_access.services.PaymentService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Token;
+import com.ds201625.fonda.data_access.services.ZoneService;
 
 /**
  * Singelton de fabrica de servicios
@@ -78,4 +86,64 @@ public class FondaServiceFactory {
     public TokenService getTokenService(Commensal commensal){
         return serviceFactory.getTokenService(commensal);
     }
+
+
+    /**
+     * Obtiene los servicios de Comensal
+     * @param
+     * @return
+     */
+    public AllRestaurantService getAllRestaurantsService(){
+        return serviceFactory.getAllRestaurantService();
+    }
+
+    /**
+     * Obtiene los servicios de Comensal
+     * @param
+     * @return
+     */
+    public AllFavoriteRestaurantService getAllFavoriteRestaurantsService(){
+        return serviceFactory.getAllFavoriteRestaurantsService();
+    }
+
+    /**
+     * Obtiene los servicios de Comensal
+     * @param
+     * @return
+     */
+    public AddFavoriteRestaurantService getAddFavortieRestaurantService(){
+        return serviceFactory.getAddFavoriteRestaurantService();
+    }
+
+    /**
+     * Obtiene los servicios de Comensal
+     * @param
+     * @return
+     */
+    public DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService(){
+        return serviceFactory.getDeleteFavoriteRestaurantService();
+    }
+
+
+    public InvoiceService getInvoiceService(){
+        return serviceFactory.getInvoiceService();
+    }
+
+    /**
+     * Obtiene las zonas
+     * @return
+     */
+    public ZoneService getZoneService() {
+        return serviceFactory.getZoneService();
+    }
+
+
+    public PaymentService setPaymentService() {
+        return serviceFactory.setPaymentService();
+    }
+
+    public CategoryService getCategoryService(){
+        return serviceFactory.getCategoryService();
+    }
 }
+

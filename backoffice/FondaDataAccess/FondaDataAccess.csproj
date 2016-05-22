@@ -43,15 +43,17 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate">
-      <HintPath>..\..\..\..\FONDA\backoffice\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentNHibernate">
-      <HintPath>..\..\..\..\FONDA\backoffice\BackOffice\bin\FluentNHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -59,6 +61,7 @@
   <ItemGroup>
     <Compile Include="HibernateDAO\FluentMappings\ActiveReservationStatusMap.cs" />
     <Compile Include="FactoryDAO\FactoryDAO.cs" />
+    <Compile Include="FondaDAOExceptions\FondaIndexException.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CanceledInvoiceStatus.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CanceledReservationStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CashPaymentMap.cs" />
@@ -74,9 +77,12 @@
     <Compile Include="HibernateDAO\HibernateBusyTableStatus.cs" />
     <Compile Include="HibernateDAO\HibernateCanceledReservationStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCashPaymentDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateClosedAccountStatus.cs" />
     <Compile Include="HibernateDAO\HibernateCreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDisableSimpleStatus.cs" />
     <Compile Include="HibernateDAO\HibernateFreeTableStatus.cs" />
+    <Compile Include="HibernateDAO\HibernateGeneratedInvoiceStatus.cs" />
+    <Compile Include="HibernateDAO\HibernateOpenAccountStatus.cs" />
     <Compile Include="HibernateDAO\HibernatePaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateInvoiceDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\AccountStatusMap.cs" />
@@ -115,6 +121,7 @@
     <Compile Include="InterfaceDAO\IActiveReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICanceledReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICashPaymentDAO.cs" />
+    <Compile Include="InterfaceDAO\IClosedAccountStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantCategoryDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantDAO.cs" />
@@ -128,8 +135,10 @@
     <Compile Include="InterfaceDAO\IDishOrderDAO.cs" />
     <Compile Include="InterfaceDAO\IEmployeeDAO.cs" />
     <Compile Include="InterfaceDAO\IFreeTableStatusDAO.cs" />
+    <Compile Include="InterfaceDAO\IGeneratedInvoiceStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IInvoiceDao.cs" />
     <Compile Include="InterfaceDAO\IMenuCategoryDAO.cs" />
+    <Compile Include="InterfaceDAO\IOpenAccountStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IOrderAccountDao.cs" />
     <Compile Include="InterfaceDAO\IPaymentDao.cs" />
     <Compile Include="InterfaceDAO\IReservationDAO.cs" />
@@ -185,12 +194,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
-      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
-      <Name>FondaDomain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
@@ -209,5 +212,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
+      <Project>{cd756618-286a-4fbc-93a3-0eccb571b18f}</Project>
+      <Name>FondaDomain</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -8,20 +8,30 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Currency;
 import com.ds201625.fonda.domains.DishOrder;
 
 import java.util.ArrayList;
 
-/**
- * Created by jesus on 13/04/16.
- */
 
+/**
+ *  Clase para llenar la lista de la factura
+ */
 public class InvoiceViewItemList extends BaseArrayAdapter<DishOrder> {
 
+    /**
+     *Constructor de la clase InvoiceViewItemList
+     * @param context Context que define los recursos especificos de la aplicacion
+     */
     public InvoiceViewItemList(Context context) {
         super(context, R.layout.item_close, R.id.txt,new ArrayList<DishOrder>());
     }
 
+    /**
+     * Metodo que pinta la lista de platos
+     * @param item Objeto de tipo DishOrder que define lo que va dentro de la lista
+     * @return la vista  del converView del grupo
+     */
     @Override
     public View createView(DishOrder item) {
         View convertView;
@@ -29,18 +39,18 @@ public class InvoiceViewItemList extends BaseArrayAdapter<DishOrder> {
         LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
         convertView = inflater.inflate(R.layout.item_close, null, true);
 
-        TextView txtTitle2 = (TextView) convertView.findViewById(R.id.txt2);
-        TextView txtTitle = (TextView) convertView.findViewById(R.id.txt);
-        TextView txtTitle3 = (TextView) convertView.findViewById(R.id.txt3);
+        TextView txtDescripcion = (TextView) convertView.findViewById(R.id.txt2);
+        TextView txtCount = (TextView) convertView.findViewById(R.id.txt);
+        TextView txtCost = (TextView) convertView.findViewById(R.id.txt3);
 
-        txtTitle3.setGravity(Gravity.RIGHT);
-        txtTitle2.setGravity(Gravity.CENTER);
+        txtCost.setGravity(Gravity.RIGHT);
+        txtDescripcion.setGravity(Gravity.CENTER);
 
         String count = String.valueOf(item.getCount());
-        txtTitle2.setText(item.getDish().getDescription());
-        txtTitle.setText(count);
+        txtDescripcion.setText(item.getDish().getDescription());
+        txtCount.setText(count);
         String cost = String.valueOf(item.getDish().getCost());
-        txtTitle3.setText(item.getDish().getCurrency().getSymbol()+ " " + cost);
+        txtCost.setText(cost);
 
         return convertView;
     }
@@ -55,7 +65,7 @@ public class InvoiceViewItemList extends BaseArrayAdapter<DishOrder> {
     @Override
     public View getSelectedView(DishOrder item, View convertView) {
         //TODO: Colocar un color desente
-      //  convertView.setBackgroundColor(getContext().getResources()
+        //  convertView.setBackgroundColor(getContext().getResources()
         //        .getColor(R.color.colorPrimaryDark));
         return convertView;
     }

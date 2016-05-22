@@ -8,23 +8,23 @@ public class Restaurant extends Company {
 
     private String logo;
     private String address;
-    private RestaurantCategory category;
+    private RestaurantCategory restaurantCategory;
     private List<Table> tables;
 
     public Restaurant () {
         super();
     }
 
-    public Restaurant (String name,String address, RestaurantCategory category) {
+    public Restaurant (String name,String address, RestaurantCategory restaurantCategory) {
         //thi.logo = logo;
         this.address = address;
-        this.category = category;
-        this.category = category;
+        this.restaurantCategory = restaurantCategory;
         this.setName(name);
     }
 
     public String getLogo() {
         return logo;
+
     }
 
     public void setLogo(String logo) {
@@ -38,11 +38,11 @@ public class Restaurant extends Company {
     }
 
     public RestaurantCategory getRestaurantCategory() {
-        return category;
+        return restaurantCategory;
     }
 
-    public void setRestaurantCategory(RestaurantCategory category) {
-        this.category = category;
+    public void setRestaurantCategory(RestaurantCategory restaurantCategory) {
+        this.restaurantCategory = restaurantCategory;
     }
 
     public List getListTable() {

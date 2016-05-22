@@ -43,6 +43,22 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.core">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.core.interfaces">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.interfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.util">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.util.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NUnit.VisualStudio.TestAdapter">
+      <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
@@ -106,13 +122,13 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup> -->
   <ItemGroup>
-    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
-      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
-      <Name>FondaDomain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
       <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
       <Name>FondaDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
+      <Project>{cd756618-286a-4fbc-93a3-0eccb571b18f}</Project>
+      <Name>FondaDomain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
