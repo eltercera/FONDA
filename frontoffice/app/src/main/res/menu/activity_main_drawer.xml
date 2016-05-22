@@ -23,10 +23,6 @@
             android:icon="@drawable/nav_profile"
             android:title="Perfiles" />
         <item
-            android:id="@+id/nav_config"
-            android:icon="@android:drawable/ic_menu_preferences"
-            android:title="@string/nav_config" />
-        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_power_settings_black_24dp"
             android:title="@string/nav_logout" />
