@@ -64,11 +64,11 @@ public class FavoritesActivity extends BaseNavigationActivity {
                 getAllRestaurantsService();
         restaurantList = allRestaurant.getAllRestaurant();
         */
-        for (Restaurant rest : restaurantList){
+/*        for (Restaurant rest : restaurantList){
             Log.v("WEBSERVICE", rest.getId() + "");
             Log.v("WEBSERVICE",rest.getName());
             Log.v("WEBSERVICE",rest.getAddress());
-        }
+        }*/
 
         setupListView();
 
@@ -77,7 +77,7 @@ public class FavoritesActivity extends BaseNavigationActivity {
     private void setupListView(){
         RestaurantList adapter = new
                 RestaurantList(FavoritesActivity.this, names,location ,shortDescription,imageId,restaurantList);
-        list.setAdapter(adapter);
+        //list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

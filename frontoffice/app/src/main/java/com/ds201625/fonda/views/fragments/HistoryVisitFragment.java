@@ -1,3 +1,4 @@
+
 package com.ds201625.fonda.views.fragments;
 
 import android.os.Bundle;
@@ -222,3 +223,4 @@ public class HistoryVisitFragment extends BaseFragment {
         }
     }
 }
+

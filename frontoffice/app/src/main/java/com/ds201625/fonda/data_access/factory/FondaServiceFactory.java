@@ -66,19 +66,12 @@ public class FondaServiceFactory {
         return serviceFactory.getCommensalService();
     }
 
-    /**
-     * Metodo que obtiene un servicio de orden
-     * @return servicio  de platos de la orden
-     */
+
     public CurrentOrderService getCurrentOrderService(){
         return serviceFactory.getCurrentOrderService();
 
-	}
+    }
 
-    /**
-     * Metodo que obtiene un servicio de historial de pagos
-     * @return servicio historial de pagos
-     */
     public HistoryVisitsRestaurantService getHistoryVisitsService(){
         return serviceFactory.getHistoryVisitsService();
     }
@@ -129,10 +122,7 @@ public class FondaServiceFactory {
         return serviceFactory.getDeleteFavoriteRestaurantService();
     }
 
-    /**
-     * Metodo que obtiene un servicio de factura
-     * @return factura
-     */
+
     public InvoiceService getInvoiceService(){
         return serviceFactory.getInvoiceService();
     }

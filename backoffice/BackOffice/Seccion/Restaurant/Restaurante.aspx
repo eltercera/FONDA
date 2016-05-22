@@ -360,6 +360,7 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Tipo</label>
                             <asp:DropDownList id="CategoryA" CssClass="form-control" AutoPostBack="False" runat="server">
+                            <asp:ListItem> </asp:ListItem>
                             </asp:DropDownList>
                         </div>
                 </div>
@@ -384,6 +385,7 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Unidad Monetaria</label>
                                 <asp:DropDownList id="CurrencyA" CssClass="form-control" AutoPostBack="False" runat="server">
+                            <asp:ListItem> </asp:ListItem>
                                 </asp:DropDownList>
                         </div>
                 </div>
