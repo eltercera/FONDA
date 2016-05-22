@@ -18,15 +18,18 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         public IHttpActionResult ReservationRequest(int restaurantId, Reservation reserve)
         {
             ITableDAO _table = GetTableDAO();
+            IRestaurantDAO _restaurant = GetRestaurantDAO();
             IReservationDAO _reservation = GetReservationDAO();
+            bool validHour = true, validDate = false;
 
             IList<Reservation> listReservation = _reservation.FindByRestaurant(restaurantId);
             IList<Table> listTable = _table.TablesAvailableByDate(restaurantId, listReservation, reserve.ReserveDate);
             listTable = _table.TablesAvailableByCapacity(listTable, reserve.CommensalNumber);
 
+            validHour = _restaurant.ValidateHour(restaurantId, reserve.ReserveDate);
+            validDate = _restaurant.ValidateDay(restaurantId, reserve.ReserveDate);
 
-
-            if (listTable.Count == 0)
+            if (listTable.Count == 0 || !(validHour && validDate))
                 return BadRequest();
 
             Table table = listTable[0];

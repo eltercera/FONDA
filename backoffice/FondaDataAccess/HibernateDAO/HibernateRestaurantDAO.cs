@@ -111,6 +111,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return _restaurant;
         }
 
+        /*
         public Restaurant findByTable(Table table)
         {
             ICriteria crit = Session.CreateCriteria(typeof(Restaurant));
@@ -118,7 +119,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             crit.CreateAlias("Tables", "sm");
             crit.Add(Restrictions.Eq("sm.Id", table.Id));
             return (Restaurant)crit.List()[0];
-        }
+        }*/
 
         public bool Geoposition(double _latitudUser, double _longitudUser, int _idRestaurant) {
             bool came = false;
@@ -190,7 +191,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             {
                 nameDayOfWeek = "Viernes";
             }
-            if ((int)_day == 3)
+            if ((int)_day == 6)
             {
                 nameDayOfWeek = "Sabado";
             }
