@@ -162,7 +162,13 @@ public class FavoritesActivity extends BaseNavigationActivity {
             Log.v("WEBSERVICE",rest.getAddress());
         }*/
 
-            setupListView();
+            try {
+                setupListView();
+            }catch (NullPointerException ex){
+                ex.printStackTrace();
+                Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
+                        Toast.LENGTH_LONG).show();
+            }
         }
     }
 
