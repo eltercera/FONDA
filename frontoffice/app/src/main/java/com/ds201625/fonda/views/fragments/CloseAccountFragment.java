@@ -61,7 +61,8 @@ public class CloseAccountFragment extends BaseFragment {
      */
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
 
         View layout = inflater.inflate(R.layout.fragment_close_account,container,false);
@@ -185,7 +186,8 @@ public class CloseAccountFragment extends BaseFragment {
         try {
             listDishOWS = logicCurrentOrder.getCurrentOrderSW().getListDishOrder();
             for (int i = 0; i < listDishOWS.size(); i++) {
-                System.out.println("Descripcion Plato:  " + listDishOWS.get(i).getDish().getDescription());
+                System.out.println("Descripcion Plato:  " + listDishOWS.get(i).getDish().
+                        getDescription());
             }
             return listDishOWS;
         }
