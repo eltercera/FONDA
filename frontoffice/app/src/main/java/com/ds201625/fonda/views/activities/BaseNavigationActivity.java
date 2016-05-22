@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.logic.SessionData;
 
 /**
@@ -108,6 +110,16 @@ public abstract class BaseNavigationActivity extends BaseActivity
         } else if (id == R.id.nav_reserve) {
             if (this.getClass() != ReserveActivity.class)
                 startFondaActivity("ReserveActivity");
+        } else if (id == R.id.nav_logout) {
+            try {
+                SessionData.getInstance().logoutCommensal();
+                if (this.getClass() != LoginActivity.class)
+                    startFondaActivity("LoginActivity");
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+
         }
 
         this.getDrawer().closeDrawer(GravityCompat.START);

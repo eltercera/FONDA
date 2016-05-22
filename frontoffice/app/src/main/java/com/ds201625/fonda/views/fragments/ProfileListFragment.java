@@ -100,6 +100,7 @@ public class ProfileListFragment extends BaseFragment
                                 }
                             }
                             Log.v("Perfiles eliminados: ", sal);
+                            mCallBack.OnProfileSelectionModeExit();
                             profileList.cleanSelected();
                             break;
 

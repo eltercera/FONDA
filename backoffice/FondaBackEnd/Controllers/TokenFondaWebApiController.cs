@@ -38,6 +38,37 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 			return Ok (token);
 		}
 
-	}
+        [FondaAuthLogin]
+        [Route("token/{id}")]
+        [HttpDelete]
+        public IHttpActionResult deleteToken(int id)
+        {
+            Commensal commensal = GetCommensal(Request.Headers);
+            if (commensal == null)
+                return BadRequest();
+
+            ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO();
+            ITokenDAO tokenDAO = FactoryDAO.GetTokenDAO();
+            Token token = tokenDAO.FindById(id);
+
+            commensal.RemoveToken(token);
+
+            try
+            {
+                commensalDao.Save(commensal);
+                tokenDAO.Delete(token);
+            }
+            catch (SaveEntityFondaDAOException e)
+            {
+                Console.WriteLine(e.ToString());
+                return InternalServerError(e);
+            }
+
+            return Ok(token);
+        }
+
+
+
+    }
 }
 

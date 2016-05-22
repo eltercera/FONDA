@@ -58,7 +58,28 @@ public class RetrofitTokenService implements TokenService{
     }
 
     @Override
-    public Token getToken(Context context) throws LocalStorageException {
-        return getFile(context).getObj();
+    public Token getToken(Context context) throws Exception {
+        Token token = getFile(context).getObj();
+        return token;
+    }
+
+    @Override
+    public void removeToken(Context context) throws LocalStorageException, RestClientException {
+        Token localToken = null;
+        try {
+            localToken = getToken(context);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        Call<Token> call = tokenClient.deleteToken(localToken.getId());
+
+        try{
+            call.execute();
+            Token token = null;
+            getFile(context).save(token);
+        } catch (IOException e) {
+            throw new RestClientException("Error de IO",e);
+        }
     }
 }
