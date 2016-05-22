@@ -17,5 +17,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
         IList<Restaurant> findByZone(Zone zone);
 
         Restaurant findByTable(Table table);
+
+        bool Geoposition(double _latitudUser, double _longitudUser, int _idRestaurant);
     }
 }
