@@ -10,27 +10,6 @@ import com.ds201625.fonda.views.fragments.*;
 
 public class RestauranstsActivity extends  BaseNavigationActivity {
 
-    String[] location = {
-            "La castellana",
-            "Los dos caminos",
-            "La California",
-            "Parque central",
-            "El Rosal"} ;
-    String[] shortDescription = {
-            "Casual",
-            "Romantico",
-            "Italiano",
-            "Italiano",
-            "Americano"} ;
-    Integer[] imageId = {
-            R.mipmap.ic_restaurant001,
-            R.mipmap.ic_restaurant002,
-            R.mipmap.ic_restaurant003,
-            R.mipmap.ic_restaurant004,
-            R.mipmap.ic_restaurant005,
-
-    };
-
     private ViewPager viewPager;
     private BaseSectionsPagerAdapter RestaurantFilters;
 

@@ -71,10 +71,12 @@ public class RetroditServiceFactory implements ServiceFactory {
         return new RetrofitInvoiceService();
     }
 
-    public ZoneService getZoneService() { return new RetrofitZoneService();}
+    @Override
+    public ZoneService getZoneService() {
+        return new RetrofitZoneService();
+    }
 
-
-   @Override
+    @Override
     public CategoryService getCategoryService() {
         return new RetrofitCategoryService();
     }
@@ -83,7 +85,6 @@ public class RetroditServiceFactory implements ServiceFactory {
     public PaymentService setPaymentService() {
         return new RetrofitPaymentService();
     }
-
 
 }
 

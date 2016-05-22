@@ -27,6 +27,20 @@ public class RetrofitPaymentService implements PaymentService {
      */
     private PaymentClient paymentClient = RetrofitService.getInstance().createService(PaymentClient.class);
 
+
+    /**
+     * Gets an instamce of Json File of type CreditCardPayment
+     * @param context Context of aplication
+     * @return the instance of json of type CreditCardPayment.
+     */
+    private JsonFile<CreditCarPayment> getFile(Context context) {
+
+        if (localFile == null)
+            localFile = new JsonFile<>("Paymentlocal", context,CreditCarPayment.class);
+
+        return localFile;
+    }
+
     /**
      *
      * @param idProfile
@@ -37,8 +51,8 @@ public class RetrofitPaymentService implements PaymentService {
      * @throws RestClientException
      * @throws LocalStorageException
      */
+    @Override
     public CreditCarPayment registerPayment(int idProfile, float tip, String digits, Context context) throws RestClientException, LocalStorageException {
-
         CreditCarPayment creditCarP = new CreditCarPayment();
         String lastDigits = digits.substring(16,20);
         int last4Digits = Integer.parseInt(lastDigits);
@@ -54,18 +68,6 @@ public class RetrofitPaymentService implements PaymentService {
         getFile(context).save(rsvPayment);
 
         return rsvPayment;
-    }
-    /**
-     * Gets an instamce of Json File of type CreditCardPayment
-     * @param context Context of aplication
-     * @return the instance of json of type CreditCardPayment.
-     */
-    private JsonFile<CreditCarPayment> getFile(Context context) {
-
-        if (localFile == null)
-            localFile = new JsonFile<>("Paymentlocal", context,CreditCarPayment.class);
-
-        return localFile;
     }
 
 

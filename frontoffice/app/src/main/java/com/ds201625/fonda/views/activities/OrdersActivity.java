@@ -34,7 +34,8 @@ import com.ds201625.fonda.views.fragments.ProfileListFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrdersActivity extends BaseNavigationActivity implements ProfileListFragment.profileListFragmentListener {
+public class OrdersActivity extends BaseNavigationActivity implements
+        ProfileListFragment.profileListFragmentListener {
 
     private static int pos;
     /**
@@ -459,7 +460,8 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         else if(typeVisa) {
             handlerSQLite.save(numberCC, nameCC, idOwnerCC, expCC, cvvCC, "Visa");
         }
-        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, handlerSQLite.read());
+        ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
+                handlerSQLite.read());
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(LTRadapter);
         Toast.makeText(this, "Agregado ", Toast.LENGTH_SHORT).show();

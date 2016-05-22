@@ -10,19 +10,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.CurrentOrderService;
-import com.ds201625.fonda.domains.Account;
-import com.ds201625.fonda.domains.Currency;
-import com.ds201625.fonda.domains.Dish;
 import com.ds201625.fonda.domains.DishOrder;
-import com.ds201625.fonda.domains.Table;
+import com.ds201625.fonda.logic.LogicCurrentOrder;
 import com.ds201625.fonda.views.adapters.CloseViewItemList;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -49,9 +42,9 @@ public class CloseAccountFragment extends BaseFragment {
     private List<DishOrder> listDishO;
 
     /**
-     *  Servicio de orden actual
+     *  Atributo de tipo LogicCurrentOrder que controla el acceso al WS
      */
-    private CurrentOrderService currentOrderService;
+    private LogicCurrentOrder logicCurrentOrder;
 
 
     /**
@@ -68,7 +61,8 @@ public class CloseAccountFragment extends BaseFragment {
      */
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
 
         View layout = inflater.inflate(R.layout.fragment_close_account,container,false);
@@ -188,11 +182,12 @@ public class CloseAccountFragment extends BaseFragment {
      */
     public List<DishOrder> getListSW(){
         List<DishOrder> listDishOWS;
+        logicCurrentOrder = new LogicCurrentOrder();
         try {
-            currentOrderService = FondaServiceFactory.getInstance().getCurrentOrderService();
-            listDishOWS = currentOrderService.getListDishOrder();
+            listDishOWS = logicCurrentOrder.getCurrentOrderSW().getListDishOrder();
             for (int i = 0; i < listDishOWS.size(); i++) {
-                System.out.println("Descripcion Plato:  " + listDishOWS.get(i).getDish().getDescription());
+                System.out.println("Descripcion Plato:  " + listDishOWS.get(i).getDish().
+                        getDescription());
             }
             return listDishOWS;
         }

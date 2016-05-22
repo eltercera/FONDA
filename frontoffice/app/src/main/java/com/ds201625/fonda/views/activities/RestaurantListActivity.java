@@ -4,10 +4,17 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.services.AllRestaurantService;
+import com.ds201625.fonda.domains.Restaurant;
+
+import java.util.List;
 
 public class RestaurantListActivity extends BaseActivity {
 
-    ListView list;
+    private RestaurantList adapter;
+    private ListView list;
+    private List<Restaurant> restaurantList;
     String[] names = {
             "The dining room",
             "Mogi Mirin",
@@ -39,6 +46,10 @@ public class RestaurantListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurants);
+
+        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                getAllRestaurantsService();
+        restaurantList = allRestaurant.getAllRestaurant();
 /*
         RestaurantList adapter = new
                 RestaurantList(RestaurantListActivity.this, names,location ,shortDescription,imageId);
