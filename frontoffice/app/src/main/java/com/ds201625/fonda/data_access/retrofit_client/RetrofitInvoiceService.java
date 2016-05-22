@@ -38,15 +38,15 @@ public class RetrofitInvoiceService implements InvoiceService {
      * @return llamada
      */
     @Override
-    public Invoice getCurrentInvoice() {
+    public Invoice getCurrentInvoice() throws RestClientException {
         Call<Invoice> call = invoiceClient.getCurrentInvoice();
-        Invoice a = null;
+        Invoice invoiceNew = null;
         try{
-            a = call.execute().body();
+            invoiceNew = call.execute().body();
         } catch (IOException e) {
-            Log.v("Fonda: ",e.toString());
+            throw new RestClientException("Error de IO",e);
         }
 
-        return a;
+        return invoiceNew;
     }
 }

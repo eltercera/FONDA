@@ -67,6 +67,7 @@ public class RetroditServiceFactory implements ServiceFactory {
         return new RetrofitDeleteFavoriteRestaurant();
     }
 
+    @Override
     public InvoiceService getInvoiceService() {
         return new RetrofitInvoiceService();
     }
