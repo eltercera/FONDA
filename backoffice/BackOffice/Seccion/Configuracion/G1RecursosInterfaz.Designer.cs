@@ -97,7 +97,7 @@ namespace BackOffice.Seccion.Configuracion {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/button&gt;.
+        ///   Busca una cadena traducida similar a &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot; onclick=&quot;ClearAlert&quot;&gt;&amp;times;&lt;/button&gt;.
         /// </summary>
         internal static string buttonAlert {
             get {

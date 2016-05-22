@@ -1,4 +1,5 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using BackOffice.Content;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System;
@@ -18,99 +19,170 @@ namespace BackOffice.Seccion.Configuracion
         private IRoleDAO _roleDAO;
         private IUserAccountDAO _userAccountDAO;
         private IList<Role> _roleList;
-        private Employee _employee;
-        //string idrest=(string)(Session[RecursoMaster.sessionRestaurantID]);     
+        private Employee _employee;   
         protected void Page_Load(object sender, EventArgs e)
+        {
+            ClearAlert();
+                LoadTable();
+        }
+
+        protected void ClearAlert ()
+        {
+            this.alert.Attributes.Clear();
+            this.alert.InnerHtml = "";
+        }
+
+        protected void LoadDataTable (string _role)
         {
             #region Attributes DAO
             _facDAO = FactoryDAO.Intance;
             _roleDAO = _facDAO.GetRoleDAO();
             _roleList = _roleDAO.GetAll();
             _employeeDAO = _facDAO.GetEmployeeDAO();
-            _employeeList = _employeeDAO.GetAll();
             #endregion
 
-            #region ClearAlert
-            this.alert.Attributes.Clear();
-            this.alert.InnerHtml = "";
+            if (_role == "Sistema")
+                _employeeList = _employeeDAO.GetAll();
+            if (_role == "Restaurante")
+            {
+                string _idrest = (string)(Session[RecursoMaster.sessionRestaurantID]); 
+                _employeeList = _employeeDAO.GetAll();
+            }
+                
+
+            #region Llenar Tabla Employee
+            if (_employeeList != null)
+            {
+                foreach (Employee _employee in _employeeList)
+                {
+                    //creo una nueva fila
+                    TableRow tRow = new TableRow();
+
+                    //genero las celdas que estaran en la fina
+                    TableCell tCellName = new TableCell();
+                    TableCell tCellLastName = new TableCell();
+                    TableCell tCellSsn = new TableCell();
+                    TableCell tCellRole = new TableCell();
+                    TableCell tCellStatus = new TableCell();
+                    TableCell tCellAction = new TableCell();
+                    Label status = new Label();
+
+                    //botones de las acciones
+                    LinkButton edit = new LinkButton();
+                    LinkButton editStatusA = new LinkButton();
+                    LinkButton editStatusI = new LinkButton();
+
+                    //boton modificar
+                    edit.Click += new EventHandler(Modify_Click);
+                    edit.Attributes.Add("data-id", _employee.Id.ToString());
+                    edit.Text = G1RecursosInterfaz.edit;
+
+                    //boton Modificar status Activo
+                    editStatusA.Click += new EventHandler(ModifyStatus_Click);
+                    editStatusA.Attributes.Add("data-id", _employee.Id.ToString());
+                    editStatusA.Text = G1RecursosInterfaz.editstatusA;
+
+                    //boton Modificar status Inactivo
+                    editStatusI.Click += new EventHandler(ModifyStatus_Click);
+                    editStatusI.Attributes.Add("data-id", _employee.Id.ToString());
+                    editStatusI.Text = G1RecursosInterfaz.editstatusI;
+
+                    //nombre del empleado
+                    tCellName.Text = _employee.Name;
+                    tRow.Cells.Add(tCellName);
+
+                    //apellido del empleado
+                    tCellLastName.Text = _employee.LastName;
+                    tRow.Cells.Add(tCellLastName);
+
+                    //ssn del empleado
+                    tCellSsn.Text = _employee.Ssn;
+                    tRow.Cells.Add(tCellSsn);
+
+                    //rol del empleado
+                    tCellRole.Text = _employee.Role.Name;
+                    tRow.Cells.Add(tCellRole);
+
+                    //validacion de status
+                    if (_employee.Status.ToString() == "Activo")
+                        status.Text = G1RecursosInterfaz.statusA;
+                    else
+                        status.Text = G1RecursosInterfaz.statusI;
+
+                    //status del empleado
+                    tCellStatus.HorizontalAlign = HorizontalAlign.Center;
+                    tCellStatus.Controls.Add(status);
+                    tRow.Cells.Add(tCellStatus);
+
+                    //botodes de las acciones
+                    tCellAction.HorizontalAlign = HorizontalAlign.Center;
+                    tCellAction.Controls.Add(edit);
+                    tCellAction.Controls.Add(editStatusA);
+                    tCellAction.Controls.Add(editStatusI);
+                    tRow.Cells.Add(tCellAction);
+
+                    this.TablaEmployee.Rows.Add(tRow);
+                }
+            }
             #endregion
 
-         #region Llenar Tabla Employee
-             if (_employeeList != null)
-             {
-                 foreach (Employee _employee in _employeeList)
-                 {
-                     //creo una nueva fila
-                     TableRow tRow = new TableRow();
+        }
 
-                     //genero las celdas que estaran en la fina
-                     TableCell tCellName = new TableCell();
-                     TableCell tCellLastName = new TableCell();
-                     TableCell tCellSsn = new TableCell();
-                     TableCell tCellRole = new TableCell();
-                     TableCell tCellStatus = new TableCell();
-                     TableCell tCellAction = new TableCell();
-                     Label status = new Label();
+        protected void LoadTable()
+        {
+            string _role = (string)(Session[RecursoMaster.sessionRol]);
+            LoadDataTable(_role);
+        }
+        
+        protected void ClearTable()
+        {
+           int _lengt = this.TablaEmployee.Rows.Count;
 
-                     //botones de las acciones
-                     LinkButton edit = new LinkButton();
-                     LinkButton editStatusA = new LinkButton();
-                     LinkButton editStatusI = new LinkButton();
+           while (_lengt > 1)
+           {
+               this.TablaEmployee.Rows.RemoveAt(1);
+               _lengt = this.TablaEmployee.Rows.Count;
+           }
+        }
 
-                     //boton modificar
-                     edit.Click += new EventHandler(Modify_Click);
-                     edit.Attributes.Add("data-id",_employee.Id.ToString());
-                     edit.Text = G1RecursosInterfaz.edit;
+        protected void HeaderTabletEmployee()
+        {
+            //creo una nueva fila
+            TableRow tRow = new TableRow();
 
-                     //boton Modificar status Activo
-                     editStatusA.Click += new EventHandler(Modify_Click);
-                     editStatusA.Attributes.Add("data-id", _employee.Id.ToString());
-                     editStatusA.Text = G1RecursosInterfaz.editstatusA;
+            //genero las celdas que estaran en la fina
+            TableHeaderCell tHCellName = new TableHeaderCell();
+            TableHeaderCell tHCellLastName = new TableHeaderCell();
+            TableHeaderCell tHCellSsn = new TableHeaderCell();
+            TableHeaderCell tHCellRole = new TableHeaderCell();
+            TableHeaderCell tHCellStatus = new TableHeaderCell();
+            TableHeaderCell tHCellAction = new TableHeaderCell();
 
-                     //boton Modificar status Inactivo
-                     editStatusI.Click += new EventHandler(Modify_Click);
-                     editStatusI.Attributes.Add("data-id", _employee.Id.ToString());
-                     editStatusI.Text = G1RecursosInterfaz.editstatusI;
+            //nombre del empleado
+            tHCellName.Text = "Nombre";
+            tRow.Cells.Add(tHCellName);
 
-                     //nombre del empleado
-                     tCellName.Text = _employee.Name;
-                     tRow.Cells.Add(tCellName);
+            //apellido del empleado
+            tHCellLastName.Text = "Apellido";
+            tRow.Cells.Add(tHCellLastName);
 
-                     //apellido del empleado
-                     tCellLastName.Text = _employee.LastName;
-                     tRow.Cells.Add(tCellLastName);
+            //ssn del empleado
+            tHCellSsn.Text = "CI";
+            tRow.Cells.Add(tHCellSsn);
 
-                     //ssn del empleado
-                     tCellSsn.Text = _employee.Ssn;
-                     tRow.Cells.Add(tCellSsn);
+            //rol del empleado
+            tHCellRole.Text = "Rol";
+            tRow.Cells.Add(tHCellRole);
 
-                     //rol del empleado
-                     tCellRole.Text = _employee.Role.Name;
-                     tRow.Cells.Add(tCellRole);
+            //status del empleado
+            tHCellStatus.Text = "Status";
+            tRow.Cells.Add(tHCellStatus);
 
-                     //validacion de status
-                     if (_employee.Status.ToString() == "Activo")
-                         status.Text = G1RecursosInterfaz.statusA;
-                     else
-                         status.Text = G1RecursosInterfaz.statusI;
+            //acciones
+            tHCellAction.Text = "Acciones";
+            tRow.Cells.Add(tHCellAction);
 
-                     //status del empleado
-                     tCellStatus.HorizontalAlign = HorizontalAlign.Center;
-                     tCellStatus.Controls.Add(status);
-                     tRow.Cells.Add(tCellStatus);
-
-                     //botodes de las acciones
-                     tCellAction.HorizontalAlign = HorizontalAlign.Center;
-                     tCellAction.Controls.Add(edit);
-                     tCellAction.Controls.Add(editStatusA);
-                     tCellAction.Controls.Add(editStatusI);
-                     tRow.Cells.Add(tCellAction);
-
-                     this.TablaEmployee.Rows.Add(tRow);
-                 }
-             }
-         #endregion
-
+            this.TablaEmployee.Rows.Add(tRow);
         }
 
         protected void ModalInfo_Click(object sender, EventArgs e)
@@ -336,6 +408,7 @@ namespace BackOffice.Seccion.Configuracion
                     Alerts("Modify");
                 }
                 ClearModalAddModify();
+
             }
             else
             {
@@ -434,6 +507,24 @@ namespace BackOffice.Seccion.Configuracion
                 return false;
             }
             return true;
+        }
+
+        protected void ModifyStatus_Click(object sender, EventArgs e)
+        {
+            _facDAO = FactoryDAO.Intance;
+            _employeeDAO = _facDAO.GetEmployeeDAO();
+            _employee = new Employee();
+
+            LinkButton clickedLink = (LinkButton)sender;
+            int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
+            _employee = _employeeDAO.FindById(_idEmployee);
+            
+            if(clickedLink.Text == G1RecursosInterfaz.editstatusA) 
+                _employee.Status = _facDAO.GetActiveSimpleStatus();
+            if (clickedLink.Text == G1RecursosInterfaz.editstatusI)
+                _employee.Status = _facDAO.GetDisabledSimpleStatus();
+            _employeeDAO.Save(_employee);
+            Alerts("Status");
         }
     }
 }

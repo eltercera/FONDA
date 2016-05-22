@@ -151,7 +151,7 @@
     <value>&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/span&gt;</value>
   </data>
   <data name="buttonAlert" xml:space="preserve">
-    <value>&lt;button type="button" class="close" data-dismiss="alert" aria-hidden="true"&gt;&amp;times;&lt;/button&gt;</value>
+    <value>&lt;button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="ClearAlert"&gt;&amp;times;&lt;/button&gt;</value>
   </data>
   <data name="iconDanger" xml:space="preserve">
     <value>&lt;i class="fa fa-ban"&gt;&lt;/i&gt;</value>

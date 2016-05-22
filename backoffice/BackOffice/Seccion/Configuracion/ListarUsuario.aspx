@@ -35,6 +35,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i>Usuarios</h3>
+                                <asp:LinkButton runat="server" class="btn btn-default pull-right"><i class="fa fa-refresh"></i></asp:LinkButton>
                                 <asp:LinkButton runat="server" class="btn btn-default pull-right" onclick="Add_Click"><i class="fa fa-plus"></i></asp:LinkButton>
                                 <div class="clearfix"></div>
                             </div>
