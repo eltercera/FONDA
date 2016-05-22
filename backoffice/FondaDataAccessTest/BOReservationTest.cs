@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessTests
+namespace FondaDataAccessTest
 {
     [TestFixture]
     public class BOReservationTest
