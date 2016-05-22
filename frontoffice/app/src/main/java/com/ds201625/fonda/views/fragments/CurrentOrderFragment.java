@@ -56,7 +56,7 @@ public class CurrentOrderFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                              Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         //Indicar el layout que va a usar el fragment
         View layout = inflater.inflate(R.layout.fragment_current_order,container,false);
 
@@ -83,7 +83,9 @@ public class CurrentOrderFragment extends BaseFragment {
         super.onDetach();
     }
 
-
+    /**
+     * Metodo que obtiene los elementos del WS
+     */
     public List<DishOrder> getListSW(){
         List<DishOrder> listDishOWS;
         try {
