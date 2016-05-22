@@ -197,3 +197,17 @@ $(document).ready(function () {
         ]
     });
 });
+
+$(document).ready(function () {
+    $('#TablaEmployee').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
