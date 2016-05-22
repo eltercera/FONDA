@@ -27,28 +27,31 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return restaurantTables;
         }
 
-        /* public IList<Reservation> ReservationsOfTable(int table)
-         {
-             IList<Reservation> tables = ;
-
-         }*/
-
-        public IList<Table> TablesAvailableByDate(IList<Reservation> listReservation, DateTime date)
+        public IList<Table> TablesAvailableByDate(int restaurantId, IList<Reservation> listReservation, DateTime date)
         {
-            IList<Table> tablesAvailible = new List<Table>();
+            IList<Table> tablesUnavailable = new List<Table>();
+            IList<Table> tablesAvailable = GetTables(restaurantId);
+
 
             foreach ( Reservation t in listReservation)
             {
                 if (t.ReserveDate == date && t.ReserveTable != null)
-                    tablesAvailible.Add(t.ReserveTable);  
+                    tablesUnavailable.Add(t.ReserveTable);  
             }
 
-            return tablesAvailible;
+            if(tablesUnavailable.Count != 0)
+            {
+                foreach (Table t in tablesAvailable)
+                {
+                    tablesAvailable.Remove(t);
+                }
+            }
+
+            return tablesAvailable;
         }
 
         public IList<Table> TablesAvailableByCapacity(IList<Table> listTable, int commensalNumber)
         {
-            //IList<Table> tables=GetTables(restaurant);
             IList<Table> tablesAvailible = new List<Table>();
 
             foreach (Table t in listTable)

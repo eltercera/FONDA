@@ -15,15 +15,34 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
         [HttpPost]
         [Route("restaurante/{restaurantId}/reserva")]
-        public IHttpActionResult ReservationRequest(int restaurantId)
+        public IHttpActionResult ReservationRequest(int restaurantId, Reservation reserve)
         {
-            return Ok();
+            ITableDAO _table = GetTableDAO();
+            IReservationDAO _reservation = GetReservationDAO();
+
+            IList<Reservation> listReservation = _reservation.FindByRestaurant(restaurantId);
+            IList<Table> listTable = _table.TablesAvailableByDate(restaurantId, listReservation, reserve.ReserveDate);
+            listTable = _table.TablesAvailableByCapacity(listTable, reserve.CommensalNumber);
+
+
+
+            if (listTable.Count == 0)
+                return BadRequest();
+
+            Table table = listTable[0];
+            return Ok(table);
         }
 
         [HttpPost]
         [Route("restaurante/{restauranteId}/llegada")]
-        public IHttpActionResult GeopositionNotification(int restauranteId)
+        public IHttpActionResult GeopositionNotification(int restauranteId, Coordinate coords)
         {
+            IRestaurantDAO _restaurant = GetRestaurantDAO();
+            bool match = _restaurant.Geoposition(coords.Latitude, coords.Longitude, restauranteId);
+
+            if (!match)
+                return BadRequest();
+
             return Ok();
         }
 
@@ -39,6 +58,15 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             return FactoryDAO.GetRestaurantDAO(); 
         }
 
+        private ITableDAO GetTableDAO()
+        {
+            return FactoryDAO.GetTableDAO();
+        }
+
+        private IReservationDAO GetReservationDAO()
+        {
+            return FactoryDAO.GetReservationDAO();
+        }
 
     }
 }

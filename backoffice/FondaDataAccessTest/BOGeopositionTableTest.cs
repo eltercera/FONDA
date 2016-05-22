@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace com.ds201625.fonda.Tests.DataAccess
 {
     [TestFixture]
-    class GenerateTableAvalibleTest
+    public class BOGeopositionTableTest
     {
         private FactoryDAO factoryDAO;
         private ITableDAO _tableDAO;
@@ -19,7 +19,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         private IRestaurantDAO _restaurantDAO;
 
         [Test]
-        public void CoordinateTest()
+        public void TableAvailableTest()
         {
             factoryDAO = FactoryDAO.Intance;
             _tableDAO = factoryDAO.GetTableDAO();
@@ -39,12 +39,11 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _reservation.ReserveStatus = factoryDAO.GetActiveReservationStatus();
 
             reservations = _reservationDAO.FindByRestaurant(_restaurant.Id);
-            tables = _tableDAO.TablesAvailableByDate(reservations, _reservation.ReserveDate);
+            tables = _tableDAO.TablesAvailableByDate(1,reservations, _reservation.ReserveDate);
             tablesAvalibles = _tableDAO.TablesAvailableByCapacity(tables,_reservation.CommensalNumber);
         }
 
         [Test]
-
         public void GeopositionTest() {
             factoryDAO = FactoryDAO.Intance;
             _restaurantDAO = factoryDAO.GetRestaurantDAO();

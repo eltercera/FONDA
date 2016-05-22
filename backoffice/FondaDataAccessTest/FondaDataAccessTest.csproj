@@ -84,7 +84,7 @@
     <Compile Include="FORegisterZone.cs" />
     <Compile Include="FORestaurantRegister.cs" />
     <Compile Include="FOUserRegisterTests.cs" />
-    <Compile Include="GenerateTableAvalibleTest.cs" />
+    <Compile Include="BOGeopositionTableTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

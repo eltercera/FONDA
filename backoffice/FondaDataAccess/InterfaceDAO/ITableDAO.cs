@@ -8,7 +8,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
     {
         IList<Table> GetAll();
         IList<Table> GetTables(int restaurant);
-        IList<Table> TablesAvailableByDate(IList<Reservation> listReservation, DateTime date);
+        IList<Table> TablesAvailableByDate(int restaurantIdI, IList<Reservation> listReservation, DateTime date);
         IList<Table> TablesAvailableByCapacity(IList<Table> listTable, int commensalNumber);
     }
 }

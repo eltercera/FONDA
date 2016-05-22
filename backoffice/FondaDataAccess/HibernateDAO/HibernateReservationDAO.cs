@@ -11,6 +11,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return FindAll();
         }
+
         public IList<Reservation> FindByRestaurant(int restaurant)
         {
             IList<Reservation> reservations = GetAll();
