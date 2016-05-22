@@ -21,6 +21,8 @@ namespace com.ds201625.fonda.Tests.DataAccess
         [Test]
         public void TableAvailableTest()
         {
+            bool validHour = false;
+            bool validDay = false;
             factoryDAO = FactoryDAO.Intance;
             _tableDAO = factoryDAO.GetTableDAO();
             _restaurantDAO = factoryDAO.GetRestaurantDAO();
@@ -38,18 +40,13 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _reservation.CommensalNumber = 3;
             _reservation.ReserveStatus = factoryDAO.GetActiveReservationStatus();
 
-            if (_restaurantDAO.ValidateHour(3, _reservation.ReserveDate))
-            {
-                if (_restaurantDAO.ValidateDay(3, _reservation.ReserveDate))
-                {
+            validHour =_restaurantDAO.ValidateHour(3, _reservation.ReserveDate);
+
+            validDay = _restaurantDAO.ValidateDay(3, _reservation.ReserveDate);
+               
                     reservations = _reservationDAO.FindByRestaurant(_restaurant.Id);
                     tables = _tableDAO.TablesAvailableByDate(3, reservations, _reservation.ReserveDate);
                     tablesAvalibles = _tableDAO.TablesAvailableByCapacity(tables, _reservation.CommensalNumber);
-                }
-            }
-            else {
-                //la reserva no se puede realizar
-            }
             
         }
 
