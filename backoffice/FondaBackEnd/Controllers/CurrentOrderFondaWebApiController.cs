@@ -12,12 +12,22 @@ using Newtonsoft.Json;
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
     [RoutePrefix("api")]
+    /// <summary>
+    /// clase que controla la api del ws
+    /// </summary>
     public class CurrentOrderFondaWebApiController : FondaWebApi
     {
+        /// <summary>
+        /// Metodo que controla la lista de platos de una orden 
+        /// </summary>
         public CurrentOrderFondaWebApiController() : base() { }
 
         [Route("listDishOrder")]
         [HttpGet]
+        /// <summary>
+        ///Metodo que obtiene la lista de platos de la orden
+        /// </summary>
+        /// <returns> lista de platos de la orden</returns>
           public IHttpActionResult getListDishOrder()
           {
 

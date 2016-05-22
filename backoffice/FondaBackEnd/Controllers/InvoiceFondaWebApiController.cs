@@ -12,12 +12,22 @@ using Newtonsoft.Json;
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
     [RoutePrefix("api")]
+    /// <summary>
+    /// clase que controla la api del ws
+    /// </summary>
     public class InvoiceFondaWebApiController : FondaWebApi
     {
+        /// <summary>
+        /// Metodo que controla el pago de la orden
+        /// </summary>
         public InvoiceFondaWebApiController() : base() { }
 
         [Route("currentInvoice")]
         [HttpGet]
+        /// <summary>
+        ///Metodo que obtiene el pago de la orden
+        /// </summary>
+        /// <returns> pago de la orden</returns>
           public IHttpActionResult getCurrentInvoice()
           {
             DateTime date1 = new DateTime(2016, 05, 16);
