@@ -22,33 +22,6 @@ namespace BackOffice {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
         
         /// <summary>
-        /// HiddenFieldSuggestionDishId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldSuggestionDishId;
-        
-        /// <summary>
-        /// TableDayMenuDashboard control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table TableDayMenuDashboard;
-        
-        /// <summary>
-        /// RestaurantName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label RestaurantName;
-        
-        /// <summary>
         /// TableModifyId control.
         /// </summary>
         /// <remarks>
@@ -65,5 +38,23 @@ namespace BackOffice {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table table;
+        
+        /// <summary>
+        /// HiddenFieldSuggestionDishId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldSuggestionDishId;
+        
+        /// <summary>
+        /// TableDayMenuDashboard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table TableDayMenuDashboard;
     }
 }

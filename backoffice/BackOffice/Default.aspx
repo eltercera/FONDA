@@ -6,7 +6,7 @@
     ¡Bienvenido!
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    <asp:Label ID="RestaurantName" runat="server"></asp:Label>
+<%=Session["NameRestaurant"]%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
 </asp:Content>
@@ -123,8 +123,9 @@
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                     <asp:HiddenField ID="TableModifyId" runat="server" Value="" />
-                                     <asp:Table ID="table" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
+                                        <asp:HiddenField ID="TableModifyId" runat="server" Value="" />
+                                        <asp:Table ID="table" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>                      
+                                        
                                 </div>
                             </div>
                         </div>
@@ -262,5 +263,5 @@
         </div>
     </div>
     <!-- /.row -->                  
-    
+
 </asp:Content>
