@@ -50,7 +50,7 @@ public class CostFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(getActivity(), "You Clicked at " + price[+position], Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "You Clicked at " + price[+position], Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent (getActivity(),RestaurantListActivity.class);
                 startActivity(intent);
             }

@@ -68,6 +68,10 @@ public interface ServiceFactory {
     CategoryService getCategoryService();
 
     PaymentService setPaymentService();
+
+    FilterByZoneService getFilterByZoneService();
+
+    FilterByCategoryService getFilterByCategoryService();
 }
 
 

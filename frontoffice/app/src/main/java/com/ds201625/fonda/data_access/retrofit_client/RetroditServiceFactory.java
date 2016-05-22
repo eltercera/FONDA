@@ -8,6 +8,8 @@ import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.FilterByCategoryService;
+import com.ds201625.fonda.data_access.services.FilterByZoneService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.data_access.services.InvoiceService;
 import com.ds201625.fonda.data_access.services.PaymentService;
@@ -86,5 +88,14 @@ public class RetroditServiceFactory implements ServiceFactory {
         return new RetrofitPaymentService();
     }
 
+    @Override
+    public FilterByZoneService getFilterByZoneService() {
+        return new RetrofitFilterByZoneService();
+    }
+
+    @Override
+    public FilterByCategoryService getFilterByCategoryService() {
+        return new RetrofitFilterByCategoryService();
+    }
 }
 
