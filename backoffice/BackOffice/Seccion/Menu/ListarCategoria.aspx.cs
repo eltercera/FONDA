@@ -5,6 +5,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using System.Web.Services;
+using System.Text.RegularExpressions;
 
 namespace BackOffice.Seccion.Menu
 {
@@ -143,6 +144,8 @@ namespace BackOffice.Seccion.Menu
         {
             try
             {
+                String CategoryAdd = TextBoxAddCategoryName.Text;
+                 if (MenuCategoryValidate(CategoryAdd)) { 
                 FactoryDAO factoryDAO = FactoryDAO.Intance;
                 IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
                 MenuCategory _mencat = new MenuCategory();
@@ -152,6 +155,12 @@ namespace BackOffice.Seccion.Menu
                 _mencat.Status = factoryDAO.GetActiveSimpleStatus();
                 _mencatDAO.Save(_mencat);
                 AlertSuccess_AddCategory.Visible = true;
+
+                 }
+                 else
+                 {
+                     AlertDanger_AddCategory.Visible = true;
+                 }
             }
             //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
             catch (Exception exc)
@@ -161,6 +170,7 @@ namespace BackOffice.Seccion.Menu
             }
             finally
             {
+                TextBoxAddCategoryName.Text = string.Empty;
                 LoadMenuCategoryTable();
             }
         }
@@ -168,8 +178,10 @@ namespace BackOffice.Seccion.Menu
 
         protected void ButtonActivateCategory_Click(object sender, EventArgs e)
         {
+
             try
             {
+                 
                 //creo una instancia del factory
                 FactoryDAO _factoryDAO = FactoryDAO.Intance;
                 //creo una instancia del IMenuCategoryDAO
@@ -186,7 +198,7 @@ namespace BackOffice.Seccion.Menu
                 _categoryDAO.Save(_category);
                 //muestro la alerta de exito
                  AlertSuccess_ModifyCategory.Visible = true;
-
+                
             }
             //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
             catch (Exception exc)
@@ -199,28 +211,40 @@ namespace BackOffice.Seccion.Menu
             {
                 //cargo la tabla
                 //ListSuggestionDish = null;
+
                LoadMenuCategoryTable();
             }
-
         }
+        
+    
+    
+
         protected void ButtonModifyCategory_Click(object sender, EventArgs e)
         {
 
             try
             {
-                FactoryDAO factoryDAO = FactoryDAO.Intance;
-                IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
-                string nameCM;
-                string MenuCatID = HiddenFieldMenuCategoryModifyId.Value;
-                int idMenCat = int.Parse(MenuCatID);
-                MenuCategory _menucat = _mencatDAO.FindById(idMenCat);
-                nameCM = TextBoxModifyCategoryName.Text;
-                _menucat.Name = nameCM;
-                _menucat.Status = factoryDAO.GetActiveSimpleStatus();
-                _mencatDAO.Save(_menucat);
+                String CategoryModify = TextBoxModifyCategoryName.Text;
+                if (MenuCategoryValidate(CategoryModify))
+                {
+                    FactoryDAO factoryDAO = FactoryDAO.Intance;
+                    IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
+                    string nameCM;
+                    string MenuCatID = HiddenFieldMenuCategoryModifyId.Value;
+                    int idMenCat = int.Parse(MenuCatID);
+                    MenuCategory _menucat = _mencatDAO.FindById(idMenCat);
+                    nameCM = TextBoxModifyCategoryName.Text;
+                    _menucat.Name = nameCM;
+                    _menucat.Status = factoryDAO.GetActiveSimpleStatus();
+                    _mencatDAO.Save(_menucat);
 
-                AlertSuccess_ModifyCategory.Visible = true;
-
+                    AlertSuccess_ModifyCategory.Visible = true;
+                }
+                else
+                {
+                    AlertDanger_ModifyCategory.Visible = true;
+                }
+            
             }
             //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
             catch (Exception exc)
@@ -230,12 +254,33 @@ namespace BackOffice.Seccion.Menu
             }
             finally
             {
+                TextBoxModifyCategoryName.Text = string.Empty;
                 LoadMenuCategoryTable();
             }
 
 
         }
 
+        /// <summary>
+        /// Valida los datos ingresados al agregar categoria
+        /// </summary>
+        /// <param name="name">Nombre de la categoria</param>
+        /// <returns>Devuelve true si son validos los datos, false si son incorrectos</returns>
+        private bool MenuCategoryValidate(string name)
+        {
+            bool valid = true;
+            string patron = "^[A-Za-z]*$";
+            if (name == "")
+            {
+                valid = false;
+            }
+
+            if (!Regex.IsMatch(name, patron))
+            {
+                valid = false;
+            }
+            return valid;
+        }
         /// <summary>
         /// Recibe el Id de la fila y obtiene un objeto de tipo categoria
         /// </summary>
