@@ -32,7 +32,7 @@ namespace BackOffice.Seccion.Restaurant
             int _idRestaurant = 0;
             if (Session["RestaurantID"] != null)
             {
-                string idRestaurant = (string)Session[RestaurantResource.SessionRestaurant];
+                string idRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();
                 _idRestaurant = int.Parse(idRestaurant);
             }
             //Genero los objetos para la consulta
