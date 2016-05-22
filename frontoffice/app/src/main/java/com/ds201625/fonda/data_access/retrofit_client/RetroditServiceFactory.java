@@ -1,16 +1,19 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
 import com.ds201625.fonda.data_access.factory.ServiceFactory;
-import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitAllFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.AddFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
+import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
+import com.ds201625.fonda.data_access.services.InvoiceService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Token;
+import com.ds201625.fonda.data_access.services.ZoneService;
 
 /**
  * Implementacion de la fabrica de servicios con el uso de retrofit y localStorage.
@@ -28,7 +31,6 @@ public class RetroditServiceFactory implements ServiceFactory {
     }
 
     @Override
-
     public CurrentOrderService getCurrentOrderService() {
         return new RetrofitCurrentOrderService();
 
@@ -52,4 +54,20 @@ public class RetroditServiceFactory implements ServiceFactory {
     public AllFavoriteRestaurantService getAllFavoriteRestaurantsService() {
         return new RetrofitAllFavoriteRestaurantService();
     }
+
+    @Override
+    public AddFavoriteRestaurantService getAddFavoriteRestaurantService() {
+        return new RetrofitAddFavoriteRestaurantService();
+    }
+
+    @Override
+    public DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService() {
+        return new RetrofitDeleteFavoriteRestaurant();
+    }
+
+    public InvoiceService getInvoiceService() {
+        return new RetrofitInvoiceService();
+    }
+
+    public ZoneService getZoneService() { return new RetrofitZoneService();}
 }

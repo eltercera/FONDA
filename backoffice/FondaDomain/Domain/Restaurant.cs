@@ -60,7 +60,7 @@ namespace com.ds201625.fonda.Domain
 
             _favoritesCommensal = new List<Commensal>();
         }
-
+        [DataMember]
         public virtual string Logo
         {
             /// <summary>

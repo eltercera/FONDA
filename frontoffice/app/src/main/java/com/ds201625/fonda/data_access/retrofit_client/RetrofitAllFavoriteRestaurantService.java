@@ -1,5 +1,7 @@
-package com.ds201625.fonda.data_access.retrofit_client.clients;
+package com.ds201625.fonda.data_access.retrofit_client;
 
+import com.ds201625.fonda.data_access.retrofit_client.clients.AllFavoriteRestaurantClient;
+import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.domains.Restaurant;
 

@@ -1,15 +1,19 @@
 package com.ds201625.fonda.data_access.factory;
 
 import com.ds201625.fonda.data_access.retrofit_client.RetroditServiceFactory;
+import com.ds201625.fonda.data_access.services.AddFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
+import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
+import com.ds201625.fonda.data_access.services.InvoiceService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Token;
+import com.ds201625.fonda.data_access.services.ZoneService;
 
 /**
  * Singelton de fabrica de servicios
@@ -100,5 +104,28 @@ public class FondaServiceFactory {
         return serviceFactory.getAllFavoriteRestaurantsService();
     }
 
+    /**
+     * Obtiene los servicios de Comensal
+     * @param
+     * @return
+     */
+    public AddFavoriteRestaurantService getAddFavortieRestaurantService(){
+        return serviceFactory.getAddFavoriteRestaurantService();
+    }
 
+    /**
+     * Obtiene los servicios de Comensal
+     * @param
+     * @return
+     */
+    public DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService(){
+        return serviceFactory.getDeleteFavoriteRestaurantService();
+    }
+
+
+    public InvoiceService getInvoiceService(){
+        return serviceFactory.getInvoiceService();
+    }
+
+    public ZoneService getZoneService() { return serviceFactory.getZoneService();}
 }

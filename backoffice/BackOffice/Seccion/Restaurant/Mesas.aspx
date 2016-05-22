@@ -6,7 +6,7 @@ Mesas
 Mesas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-NOMBRE DEL RESTAURANTE
+<%=Session["NameRestaurant"]%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
    <div>
