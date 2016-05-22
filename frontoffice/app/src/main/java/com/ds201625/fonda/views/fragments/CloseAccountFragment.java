@@ -78,7 +78,8 @@ public class CloseAccountFragment extends BaseFragment {
         //Llamada al metodo que se comunica con el WS
         listDishO = getListSW();
         closeViewItem = new CloseViewItemList(getContext());
-        closeViewItem.addAll(listDishO);
+        if(listDishO != null)
+          closeViewItem.addAll(listDishO);
 
         float sub = calcularSubTotal(listDishO);
         System.out.println("SubTotal: " + sub);
