@@ -21,6 +21,7 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.logic.LogicPayment;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.CloseAccountFragment;
@@ -117,7 +118,7 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
 
     /**
-     *
+     * Assigns the elements of interface
      */
     private void getAllElements(){
         mViewPager = (ViewPager) findViewById(R.id.containerO);
@@ -333,7 +334,12 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
                 exit();
                 break;
             case R.id.action_favorite_send_pay:
-                cambiarFac();
+                try {
+                    cambiarFac();
+                }
+                catch(NullPointerException n){
+
+                }
                 break;
             case R.id.action_favorite_cancel_pay:
                 close();
@@ -384,8 +390,24 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
     }
 
     public void cambiarFac() {
-        if (factFrag == null)
-            factFrag = new InvoiceFragment();
+        getAllElements();
+        try {
+            String cc = spinner.getSelectedItem().toString();
+            String[] numbers = cc.split("-");
+            String numberCC = numbers[0].toString();
+            int profile = 1;
+            if (factFrag == null)
+                try {
+                    LogicPayment.getInstance().registerPayment(profile, a, numberCC);
+                } catch (Exception e) {
+                    e.getMessage();
+                }
+        }
+        catch(NullPointerException e){
+            e.getMessage();
+            System.out.println("Spinner vacio");
+        }
+        factFrag = new InvoiceFragment();
         showFragment(factFrag);
     }
 
@@ -448,8 +470,8 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
      * Gets the credit card selected
      */
     public void acceptCC (){
+        getAllElements();
         Bundle args = new Bundle();
-        spinner = (Spinner) findViewById(R.id.spinnerCC);
         String cc = spinner.getSelectedItem().toString();
             ordPay = new OrderPaymentFragment();
             args.putFloat("amount",a);
@@ -646,4 +668,6 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
             searchBotton.setVisible(true);
         }
     }
+
+
 }
