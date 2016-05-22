@@ -11,24 +11,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.CurrentOrderService;
-import com.ds201625.fonda.data_access.services.InvoiceService;
-import com.ds201625.fonda.domains.Account;
-import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Currency;
-import com.ds201625.fonda.domains.Dish;
 import com.ds201625.fonda.domains.*;
-import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.domains.RestaurantCategory;
-import com.ds201625.fonda.domains.Table;
+import com.ds201625.fonda.logic.LogicInvoice;
 import com.ds201625.fonda.views.adapters.InvoiceViewItemList;
 import java.util.List;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 /**
  * Clase Fragment que muestra la factura
@@ -56,9 +44,9 @@ public class InvoiceFragment extends BaseFragment {
     private Invoice invoice;
 
     /**
-     *  Servicio de factura de la cuenta
+     *  Atributo de tipo LogicInvoice que controla el acceso al WS
      */
-    private InvoiceService invoiceService;
+    private LogicInvoice logicInvoice;
 
     /**
      * Metodo que se ejecuta al instanciar el fragment
@@ -186,9 +174,10 @@ public class InvoiceFragment extends BaseFragment {
      * Metodo que obtiene los elementos del WS
      */
     public Invoice getinvoiceSW(){
+        Invoice invoiceWS;
+        logicInvoice = new LogicInvoice();
         try {
-            invoiceService= FondaServiceFactory.getInstance().getInvoiceService();
-            Invoice invoiceWS=invoiceService.getCurrentInvoice();
+            invoiceWS=logicInvoice.getInvoiceSW().getCurrentInvoice();
             System.out.println("Restaurant de la factura:  " + invoiceWS.getRestaurant().getName());
             return invoiceWS;
         }
