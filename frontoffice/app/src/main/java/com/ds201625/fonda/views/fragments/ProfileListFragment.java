@@ -69,7 +69,7 @@ public class ProfileListFragment extends BaseFragment
                                                       boolean checked) {
                     Log.d("Messahe:", position + " Is StateChanged");
                     profileList.setSelectedItem(position, checked);
-                    mode.setTitle(profileList.countSelected() + " Selected");
+                    mode.setTitle(profileList.countSelected() + " Seleccionado(s)");
                 }
 
                 @Override
@@ -100,8 +100,10 @@ public class ProfileListFragment extends BaseFragment
                                 }
                             }
                             Log.v("Perfiles eliminados: ", sal);
-                            mCallBack.OnProfileSelectionModeExit();
                             profileList.cleanSelected();
+                            mCallBack.OnProfileSelectionModeExit();
+                            mode.finish();
+                            updateList();
                             break;
 
                         default:
