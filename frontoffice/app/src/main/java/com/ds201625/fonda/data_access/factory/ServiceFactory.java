@@ -20,8 +20,16 @@ public interface ServiceFactory {
      */
     CommensalService getCommensalService();
 
+    /**
+     * Obtiene el servicio de platos ordenados
+     * @return
+     */
     CurrentOrderService getCurrentOrderService();
 
+    /**
+     * Obtiene el servicio de historial de visitas
+     * @return
+     */
     HistoryVisitsRestaurantService getHistoryVisitsService();
 
     /**
@@ -61,13 +69,25 @@ public interface ServiceFactory {
      */
     DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService();
 
+    /**
+     * Obtiene el servicio de factura
+     * @return
+     */
     InvoiceService getInvoiceService();
 
     ZoneService getZoneService();
 
     CategoryService getCategoryService();
 
+    /**
+     * Obtiene el servicio de pago
+     * @return
+     */
     PaymentService setPaymentService();
+
+    FilterByZoneService getFilterByZoneService();
+
+    FilterByCategoryService getFilterByCategoryService();
 }
 
 

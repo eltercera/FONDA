@@ -1,18 +1,23 @@
 package com.ds201625.fonda.views.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.ZoneService;
+import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.Zone;
 import com.ds201625.fonda.views.activities.FilterZoneList;
+import com.ds201625.fonda.views.activities.RestaurantListActivity;
+import com.google.gson.Gson;
 
 import java.util.Iterator;
 import java.util.List;
@@ -44,14 +49,6 @@ public class ZoneFragment extends BaseFragment {
     private Iterator iterator;
 
 
-    /*String[] location = {
-            "La castellana",
-            "Los dos caminos",
-            "La California",
-            "Parque central",
-            "El Rosal"} ;*/
-
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,18 +68,20 @@ public class ZoneFragment extends BaseFragment {
 
         while (iterator.hasNext()) {
             Zone zone = (Zone) iterator.next();
-            String nameZona = zone.getName();
-            System.out.println("Zona: "+nameZona);
+            //String nameZona = zone.getName();
+            //System.out.println("Zona: "+nameZona);
         }
-      /*  list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(getActivity(), "You Clicked at " + location[+position], Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent (getActivity(),RestaurantListActivity.class);
+                Zone _zone = getSelectedZone(position);
+                intent.putExtra("zona", new Gson().toJson(_zone));
                 startActivity(intent);
             }
-        });*/
+        });
+
         setupListView();
         return view;
 
@@ -93,6 +92,24 @@ public class ZoneFragment extends BaseFragment {
         list.setAdapter(adapter);
 
     }
+
+    /**
+     * Metodo para devolver la posicion de cada zona en el list view
+     * @param position
+     * @return
+     */
+    private Zone getSelectedZone(int position){
+        int counter =0;
+        for (Zone zone: this.listZone){
+            if (counter == position){
+                return zone;
+            }
+            counter++;
+        }
+        return null;
+    }
+
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

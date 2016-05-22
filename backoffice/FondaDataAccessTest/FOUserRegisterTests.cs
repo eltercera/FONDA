@@ -12,7 +12,6 @@ namespace FondaDataAccessTest
 		private com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO _facDAO;
 		private IPersonDAO _personDAO;
 		private IProfileDAO _profileDAO;
-		private ITokenDAO _tokenDAO;
 		private ICommensalDAO _commensalDAO;
 
 		private Person _person;
@@ -40,8 +39,6 @@ namespace FondaDataAccessTest
 		private string _dataCommensalPassword;
 		private SimpleStatus _dataCommensalStatus;
 
-		private DateTime _dataTokenCreate;
-		private DateTime _dataTokenExpite;
 		private string _dataTokenStrToken;
 
 
@@ -66,6 +63,8 @@ namespace FondaDataAccessTest
 			_dataPersonLastName = "Rodríguez Rojas" + editadd;
 			if (!edit)
 				_dataPersonSsn = "" + rand.Next(19000000,30000000);
+
+			Console.WriteLine ("SSn Creado: " + _dataPersonSsn);
 			
 			_dataPersonPhoneNumber = "0414-"+rand.Next(100,999)+"-44-45";
 			_dataPersonAddress = "Direccion de Prueba " + editadd;
@@ -148,8 +147,6 @@ namespace FondaDataAccessTest
 
 			_commensal.AddToken (_token);
 
-			_dataTokenCreate = _token.Created;
-			_dataTokenExpite = _token.Expiration;
 			_dataTokenStrToken = _token.StrToken;
 
 		}
@@ -159,6 +156,7 @@ namespace FondaDataAccessTest
 			Assert.IsNotNull (_commensal);
 			Assert.IsNotNull (_commensal.Profiles);
 			Assert.IsNotNull (_commensal.SesionTokens);
+			Console.WriteLine ("Numero: " + _commensal.Profiles.Count);
 			Assert.AreEqual (1, _commensal.Profiles.Count);
 			Assert.AreEqual (1, _commensal.SesionTokens.Count);
 
@@ -170,8 +168,6 @@ namespace FondaDataAccessTest
 
 			ProfileAssertions ();
 
-			//Assert.AreEqual (_token.Created, _dataTokenCreate);
-			//Assert.AreEqual (_token.Expiration, _dataTokenExpite);
 			Assert.AreEqual (_token.StrToken, _dataTokenStrToken);
 			Assert.AreEqual (_token.Commensal, _commensal);
 		}
@@ -330,7 +326,7 @@ namespace FondaDataAccessTest
 			_profile = null;
 			_person = null;
 
-			_commensal = (Commensal)_commensalDAO.FindById (_tokenId);
+			_commensal = (Commensal)_commensalDAO.FindById (_comensalId);
 			CommensalAssertions ();
 
 		}

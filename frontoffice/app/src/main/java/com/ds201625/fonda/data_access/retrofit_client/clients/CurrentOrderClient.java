@@ -17,6 +17,12 @@ import retrofit2.http.GET;
  */
 public interface CurrentOrderClient {
 
+
+    /**
+     * Get /api/listDishOrder
+     * Obtiene la lista de los platos ordenados.
+     * @return
+     */
     @GET("listDishOrder")
     Call<List<DishOrder>> getListDishOrder();
 

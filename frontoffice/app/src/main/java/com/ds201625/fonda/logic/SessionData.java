@@ -114,6 +114,11 @@ public class SessionData {
         this.token = tokenTest;
     }
 
+    public void logoutCommensal() throws Exception {
+        removeToken();
+        removeCommensal();
+    }
+
     /**
      * Guarda localmente a un commensal
      * @param commensal
@@ -145,6 +150,33 @@ public class SessionData {
             tokenTest = getTokenServ().createToken(this.context);
         }
         this.token = tokenTest;
+    }
+
+    private void removeToken() throws Exception {
+
+        if (this.commensal == null)
+            return;
+
+        Token tokenTest = getTokenServ().getToken(this.context);
+        if (tokenTest != null) {
+            TokenService service = getTokenServ();
+            service.removeToken(context);
+        }
+        this.token = null;
+    }
+
+    private void removeCommensal() throws Exception {
+
+        if (this.commensal == null)
+            return;
+
+        Commensal commensal = getCommensalsrv().getCommensal(this.context);
+        if (commensal != null) {
+            CommensalService service = getCommensalsrv();
+            service.deleteCommensal(context);
+        }
+
+        this.commensal = null;
     }
 
     /**
