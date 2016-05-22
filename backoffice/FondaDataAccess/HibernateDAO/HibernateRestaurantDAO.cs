@@ -26,7 +26,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             ICriterion criterion = Expression.Eq("Zone", zone);
             return (FindAll(criterion));
 		}
-		
+		/*
         public Restaurant findByTable(Table table)
         {
             ICriteria crit = Session.CreateCriteria(typeof(Restaurant));
@@ -34,7 +34,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             crit.CreateAlias("Tables", "sm");
             crit.Add(Restrictions.Eq("sm.Id", table.Id));
             return (Restaurant)crit.List()[0];
-        }
+        }*/
 
         public IList<Restaurant> findByCategory(RestaurantCategory category)
         {
