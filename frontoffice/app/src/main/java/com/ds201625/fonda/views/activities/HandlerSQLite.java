@@ -95,7 +95,7 @@ public class HandlerSQLite extends SQLiteOpenHelper {
               while (c.moveToNext()) {
                   String numb = c.getString(c.getColumnIndex("number"));
                   String name = c.getString(c.getColumnIndex("owner"));
-                  numbers.add(numb+" - "+name);
+                  numbers.add(numb+"-"+name);
               }
           }
           db.setTransactionSuccessful();

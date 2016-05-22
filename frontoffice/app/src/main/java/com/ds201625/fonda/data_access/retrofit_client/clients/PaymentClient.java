@@ -1,7 +1,6 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
-import com.ds201625.fonda.domains.Invoice;
-
+import com.ds201625.fonda.domains.CreditCarPayment;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -12,14 +11,14 @@ import retrofit2.http.POST;
 
 
 /**
- * Interfaz para ser implementada por retrofit
+ * Interface to be implemented by retrofit
  */
 public interface PaymentClient {
 
        /**
         * Post /api/payment
-        * Envia los pagos de las facturas
+        * Sends the payments to create the bill
         */
        @POST("payment")
-       Call<Invoice> setPayments(@Body Invoice invoice);
+       Call<CreditCarPayment> requestClosedOrder(int profileId, float tip, @Body CreditCarPayment creditCarPayment);
 }

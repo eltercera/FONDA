@@ -10,6 +10,7 @@ import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.data_access.services.InvoiceService;
+import com.ds201625.fonda.data_access.services.PaymentService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
@@ -134,6 +135,11 @@ public class FondaServiceFactory {
      */
     public ZoneService getZoneService() {
         return serviceFactory.getZoneService();
+    }
+
+
+    public PaymentService setPaymentService() {
+        return serviceFactory.setPaymentService();
     }
 
     public CategoryService getCategoryService(){

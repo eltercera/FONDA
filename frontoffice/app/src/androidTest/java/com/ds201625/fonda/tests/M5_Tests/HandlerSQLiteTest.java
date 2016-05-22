@@ -1,4 +1,4 @@
-package com.ds201625.fonda.tests;
+package com.ds201625.fonda.tests.M5_Tests;
 
 import android.database.sqlite.SQLiteDatabase;
 
