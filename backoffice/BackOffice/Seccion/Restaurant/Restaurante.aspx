@@ -556,7 +556,6 @@ Restaurantes
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function (response) {
-                                debugger;
                                 if (type === "Info")
                                     setModalInfo(response);
                                 else if (type === "Modify")
@@ -585,7 +584,7 @@ Restaurantes
                             alt: " ",
                             runat: "server"
                         });
-                        daysOfWork(local);
+                        selectDay(local);
                     }
 
                     function setModalModify(local) {
@@ -616,57 +615,57 @@ Restaurantes
                 daysSelected(day.Name);
             }
         }
+
         function daysSelected(day) {
             switch(day)
             {
                 case "Lunes":
-                    $('#<%=Day1M.ClientID%>').attr('checked', true);
-                    $('#<%=Day1C.ClientID%>').attr('checked', true);
+                    $('#<%=Day1M.ClientID%>').prop('checked', true);
+                    $('#<%=Day1C.ClientID%>').prop('checked', true).prop('disabled', true);
                     break;
                 case "Martes":
-                    $("#<%=Day2M.ClientID%>").attr('checked', true);
-                    $("#<%=Day2C.ClientID%>").attr('checked', true);
+                    $("#<%=Day2M.ClientID%>").prop('checked', true);
+                    $("#<%=Day2C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
                 case "Miercoles":
-                    $("#<%=Day3M.ClientID%>").attr('checked', true);
-                    $("#<%=Day3C.ClientID%>").attr('checked', true);
+                    $("#<%=Day3M.ClientID%>").prop('checked', true);
+                    $("#<%=Day3C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
                 case "Jueves":
-                    $("#<%=Day4M.ClientID%>").attr('checked', true);
-                    $("#<%=Day4C.ClientID%>").attr('checked', true);
+                    $("#<%=Day4M.ClientID%>").prop('checked', true);
+                    $("#<%=Day4C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
                 case "Viernes":
-                    $("#<%=Day5M.ClientID%>").attr('checked', true);
-                    $("#<%=Day5C.ClientID%>").attr('checked', true);
+                    $("#<%=Day5M.ClientID%>").prop('checked', true);
+                    $("#<%=Day5C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
                 case "Sabado":
-                    $("#<%=Day6M.ClientID%>").attr('checked', true);
-                    $("#<%=Day6C.ClientID%>").attr('checked', true);
+                    $("#<%=Day6M.ClientID%>").prop('checked', true);
+                    $("#<%=Day6C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
                 case "Domingo":
-                    $("#<%=Day7M.ClientID%>").attr('checked', true);
-                    $("#<%=Day7C.ClientID%>").attr('checked', true);
+                    $("#<%=Day7M.ClientID%>").prop('checked', true);
+                    $("#<%=Day7C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
             }
         }
+
         function clearDays(){
-                    $("#<%=Day1M.ClientID%>").attr('checked', false);
-                    $("#<%=Day2M.ClientID%>").attr('checked', false);
-                    $("#<%=Day3M.ClientID%>").attr('checked', false);
-                    $("#<%=Day4M.ClientID%>").attr('checked', false);
-                    $("#<%=Day5M.ClientID%>").attr('checked', false);
-                    $("#<%=Day6M.ClientID%>").attr('checked', false);
-                    $("#<%=Day7M.ClientID%>").attr('checked', false);
-                    $("#<%=Day1C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day2C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day3C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day4C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day5C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day6C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day7C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-        }
-
-
+            $("#<%=Day1M.ClientID%>").attr('checked', false);
+            $("#<%=Day2M.ClientID%>").attr('checked', false);
+            $("#<%=Day3M.ClientID%>").attr('checked', false);
+            $("#<%=Day4M.ClientID%>").attr('checked', false);
+            $("#<%=Day5M.ClientID%>").attr('checked', false);
+            $("#<%=Day6M.ClientID%>").attr('checked', false);
+            $("#<%=Day7M.ClientID%>").attr('checked', false);
+            $("#<%=Day1C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day2C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day3C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day4C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day5C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day6C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day7C.ClientID%>").prop('disabled', false).prop('checked', false);
+      }
           
 
                     function setValue() {
