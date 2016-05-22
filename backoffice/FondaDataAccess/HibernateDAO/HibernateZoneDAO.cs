@@ -29,7 +29,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         public Zone GetZone(string name)
         {
             Zone zone = new Zone();
-            zone = FindBy("zon_name", name);
+            zone = FindBy("Name", name);
             return zone;
         }
     }
