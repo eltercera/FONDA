@@ -7,7 +7,6 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Representa una cuenta de un restaurante.
     /// </summary>
-    [DataContract]
     public class Account : BaseEntity
     {
         /// <summary>
@@ -29,6 +28,7 @@ namespace com.ds201625.fonda.Domain
         /// Lista de ordenes de la cuenta.
         /// </summary>
         private IList<DishOrder> _listDish;
+
 
         /// <summary>
         /// Constructor

@@ -31,7 +31,7 @@ public class CloseViewItemList extends BaseArrayAdapter<DishOrder> {
      * @param context  Context que define los recursos especificos de la aplicacion
      */
     public CloseViewItemList(Context context) {
-        super(context, R.layout.item_close, R.id.txt,new ArrayList<DishOrder>());
+        super(context, R.layout.item_close, R.id.txt);
     }
 
     /**
