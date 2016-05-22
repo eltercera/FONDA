@@ -55,9 +55,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Column("fk_profile_id")
                 .Not.Nullable();
 
-           /*  References(x => x.Restaurant)
+            References(x => x.Restaurant)
                 .Column("fk_restaurant_id")
-                .Not.Nullable(); */
+                .Not.Nullable(); 
                 
 
             

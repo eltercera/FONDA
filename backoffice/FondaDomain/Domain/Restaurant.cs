@@ -189,8 +189,7 @@ namespace com.ds201625.fonda.Domain
             get { return _favoritesCommensal; }
             set { _favoritesCommensal = value; }
         }
-
-
+        
         public virtual void AddFavoriteCommensal(Commensal commensal)
         {
             _favoritesCommensal.Add(commensal);
