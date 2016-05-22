@@ -625,6 +625,8 @@
     <Content Include="Content\fonts\GreatVibes-Regular.otf" />
     <Content Include="Content\MasterUI.master" />
     <Content Include="Content\js\datatables\Spanish.json" />
+    <None Include="Properties\PublishProfiles\backend.pubxml" />
+    <None Include="Properties\PublishProfiles\backoffice.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

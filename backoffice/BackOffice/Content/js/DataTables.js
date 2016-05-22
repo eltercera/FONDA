@@ -135,11 +135,12 @@ $(document).ready(function () {
     $('#contenido_TableDish').DataTable({
         "language": spanish,
         "aoColumns": [
-            null,
-            { "bSearchable": false },
-            { "bSearchable": false },
-            { "bSearchable": false },
-            { "bSearchable": false }
+          { "bSearchable": true },
+           { "bSearchable": false },
+           { "bSearchable": true },
+           { "bSearchable": false },
+           { "bSearchable": false },
+           { "bSearchable": false }
         ]
     });
 });
@@ -267,7 +268,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    $('#TablaEmployee').DataTable({
+    $('#contenido_TablaEmployee').DataTable({
         "language": spanish,
         "aoColumns": [
             null,

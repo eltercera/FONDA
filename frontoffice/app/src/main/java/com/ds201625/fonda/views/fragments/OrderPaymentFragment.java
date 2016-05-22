@@ -145,7 +145,7 @@ public class OrderPaymentFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        postPayment();
+
         //Indicar el layout que va a usar el fragment
         layout = inflater.inflate(R.layout.fragment_order_payment,container,false);
         getAllElements();
@@ -295,17 +295,18 @@ public class OrderPaymentFragment extends BaseFragment {
     /**
      * Manda la informacion de la factura al web service
      */
-    private void postPayment() {
+    public void postPayment() {
         //ESTE OBJETO SE GENERA CON INFORMACION SACADA DE OTRO LADO
         CloseAccountFragment cls = new CloseAccountFragment();
+        Invoice invoice = new Invoice();
         List<DishOrder> lista = cls.getListDishO();
         Payment paym = new Payment();
         Currency curr = new Currency();
         Profile prof = new Profile();
         Restaurant rest = new Restaurant();
         Account acc = new Account();
+        Date date = invoice.getDate();
 
-        
         paym.setAmount(always);
 
         acc.setListDish(lista);
@@ -314,11 +315,10 @@ public class OrderPaymentFragment extends BaseFragment {
         prof.setProfileName("Melanie");
         rest.setName("El Tinajero");
 
-        Invoice invoice = new Invoice();
-        invoice = null;
+
         invoice.setAccount(acc);
         invoice.setCurrency(curr);
-        invoice.setDate(c.getTime());
+        invoice.setDate(date);
         invoice.setPayment(paym);
         invoice.setProfile(prof);
         invoice.setRestaurant(rest);

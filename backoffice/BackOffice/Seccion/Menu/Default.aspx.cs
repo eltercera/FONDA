@@ -18,115 +18,137 @@ namespace BackOffice.Seccion.Menu
         {
             AlertSuccess_AddDish.Visible = false;
             AlertSuccess_ModifyDish.Visible = false;
+            AlertSuccess_ActivateDish.Visible = false;
+            AlertSuccess_DeactivateDish.Visible = false;
             AlertDanger_AddDish.Visible = false;
             AlertDanger_ModifyDish.Visible = false;
+            AlertDanger_ActivateDish.Visible = false;
+            AlertDanger_DeactivateDish.Visible = false;
+            AlertWarning_ActivateDish.Visible = false;
+            AlertWarning_DeactivateDish.Visible = false;
+
+           
             LoadDishTable();
         }
 
         protected void LoadDishTable()
         {
-
+           
+            FillMenuCategoryDropdown();
             CleanTable();
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
-
-            //FactoryDAO factoryDAO = FactoryDAO.Intance;
-            //IMenuCategoryDAO _mencatDAO = factoryDAO.GetMenuCategoryDAO();
-            //IList<MenuCategory> listMenuC = _mencatDAO.GetAll();
-
             FactoryDAO _factoryDAO = FactoryDAO.Intance;
             IDishDAO _dishDAO = _factoryDAO.GetDishDAO();
             IMenuCategoryDAO _menCatDAO = _factoryDAO.GetMenuCategoryDAO();
-            IList<Dish> _listDish = _dishDAO.GetAll();
             IList<MenuCategory> _listMenCat = _menCatDAO.GetAll();
 
-            int totalRows = _listDish.Count; //tamano de la lista 
-            int totalColumns = 4; //numero de columnas de la tabla
+            int totalRowsCategory = _listMenCat.Count; //tamano de la lista 
+            int totalColumns = 5; //numero de columnas de la tabla
 
-            //Recorremos la lista
-            for (int i = 0; i <= totalRows - 1; i++)
+            //Recorremos la lista de categorias
+            for (int k = 0; k <= totalRowsCategory - 1; k++)
             {
-                //Crea una nueva fila de la tabla
-                TableRow tRow = new TableRow();
-                //Le asigna el Id a cada fila de la tabla
-                tRow.Attributes["data-id"] = _listDish[i].Id.ToString();
-                //Agrega la fila a la tabla existente
-                TableDish.Rows.Add(tRow);
-                for (int j = 0; j <= totalColumns; j++)
+                if (_listMenCat != null)
                 {
-                    //Crea una nueva celda de la tabla
-                    TableCell tCell = new TableCell();
-                    //Agrega el nombre de la categoria
-                    if (j.Equals(0))
-                        tCell.Text = _listDish[i].Name;
-                    if (j.Equals(1))
-                        tCell.Text = _listDish[i].Cost.ToString();
+                    IList<Dish> _listDish = new List<Dish>();
 
-                    //Agrega el checkbox de sugerencia de la tabla
-                    else if (j.Equals(2))
+                    _listDish = _listMenCat[k].ListDish;
+                    if (_listDish != null)
                     {
-                        tCell.CssClass = "text-center";
-                        //Crea hipervinculo para las acciones
-
-                        //LinkButton action = new LinkButton();
-                        //action.Attributes["data-toggle"] = "modal";
-                        //action.Attributes["data-target"] = "#modificar";
-                        //action.Text = ResourceMenu.Acciones;
-
-                        CheckBox CheckBoxSuggestion = new CheckBox();
-                        CheckBoxSuggestion.ToolTip = "Marcar Sugerencia";
-                        CheckBoxSuggestion.Checked = false;
-                        tCell.Controls.Add(CheckBoxSuggestion);
-                    }
-                    if (j.Equals(3))
-                    {
-                        tCell.CssClass = "text-center";
-
-                        if (_listDish[i].Status.StatusId == 1)
+                        int totalRows = _listDish.Count; //tamano de la lista platos
+                                                         //recorro la lista de platos
+                        for (int i = 0; i <= totalRows - 1; i++)
                         {
-                            tCell.Text = ResourceMenu.Active;
+                            //Crea una nueva fila de la tabla
+                            TableRow tRow = new TableRow();
+                            //Le asigna el Id a cada fila de la tabla
+                            tRow.Attributes["data-id"] = _listDish[i].Id.ToString();
+                            //Agrega la fila a la tabla existente
+                            TableDish.Rows.Add(tRow);
+                            for (int j = 0; j <= totalColumns; j++)
+                            {
+                                //Crea una nueva celda de la tabla
+                                TableCell tCell = new TableCell();
+                                //Agrega el nombre de la categoria
+                                if (j.Equals(0))
+                                    tCell.Text = _listDish[i].Name;
+                                if (j.Equals(1))
+                                    tCell.Text = _listDish[i].Cost.ToString();
+                                if (j.Equals(2))
+                                    tCell.Text = _listMenCat[k].Name;
 
-                        }
-                        else if (_listDish[i].Status.StatusId == 2)
-                        {
-                            tCell.Text = ResourceMenu.Inactive;
+                                //Agrega el checkbox de sugerencia de la tabla
+                                else if (j.Equals(3))
+                                {
+                                    tCell.CssClass = "text-center";
+                                    if (_listDish[i].Suggestion == true)
+                                    {
+                                        tCell.Text = ResourceMenu.Active;
+
+                                    }
+                                    if (_listDish[i].Suggestion == false)
+                                    {
+                                        tCell.Text = ResourceMenu.Inactive;
+                                    }
+                                }
+                                if (j.Equals(4))
+                                {
+                                    tCell.CssClass = "text-center";
+
+                                    if (_listDish[i].Status.StatusId == 1)
+                                    {
+                                        tCell.Text = ResourceMenu.Active;
+
+                                    }
+                                    else if (_listDish[i].Status.StatusId == 2)
+                                    {
+                                        tCell.Text = ResourceMenu.Inactive;
+                                    }
+                                }
+                                //Agrega las acciones de la tabla
+                                else if (j.Equals(5))
+                                {
+                                    tCell.CssClass = "text-center";
+                                    //Crea hipervinculo para las acciones
+                                    LinkButton LinkButtonModifyDish = new LinkButton();
+                                    LinkButtonModifyDish.Attributes["data-toggle"] = "modal";
+                                    LinkButtonModifyDish.Attributes["data-target"] = "#modify_dish";
+                                    LinkButtonModifyDish.Text = ResourceMenu.ActionModifyDishMenuPrincipal;
+                                    LinkButtonModifyDish.ToolTip = "Modificar Plato";
+                                    tCell.Controls.Add(LinkButtonModifyDish);
+
+                                    LinkButton LinkButtonChangeDishStatusActive = new LinkButton();
+                                    LinkButtonChangeDishStatusActive.Attributes["data-toggle"] = "modal";
+                                    LinkButtonChangeDishStatusActive.Attributes["data-target"] = "#activate_dish";
+                                    LinkButtonChangeDishStatusActive.Text = ResourceMenu.ActionSetActiveDishMenuPrincipal;
+                                    LinkButtonChangeDishStatusActive.ToolTip = "Activar Plato";
+                                    tCell.Controls.Add(LinkButtonChangeDishStatusActive);
+
+                                    LinkButton LinkButtonChangeDishStatusInactive = new LinkButton();
+                                    LinkButtonChangeDishStatusInactive.Attributes["data-toggle"] = "modal";
+                                    LinkButtonChangeDishStatusInactive.Attributes["data-target"] = "#deactivate_dish";
+                                    LinkButtonChangeDishStatusInactive.Text = ResourceMenu.ActionSetInactiveDishMenuPrincipal;
+                                    LinkButtonChangeDishStatusInactive.ToolTip = "Desactivar Plato";
+                                    tCell.Controls.Add(LinkButtonChangeDishStatusInactive);
+
+                                    LinkButton LinkButtonChangeSuggestion = new LinkButton();
+                                    LinkButtonChangeSuggestion.Attributes["data-toggle"] = "modal";
+                                    LinkButtonChangeSuggestion.Attributes["data-target"] = "#";
+                                    LinkButtonChangeSuggestion.Text = ResourceMenu.ActionDefaultSuggestion;
+                                    LinkButtonChangeSuggestion.ToolTip = "Hacer Sugerencia";
+                                    tCell.Controls.Add(LinkButtonChangeSuggestion);
+                                }
+                                //Agrega la 
+                                tRow.Cells.Add(tCell);
+
+                            }
                         }
                     }
-                    //  tCell.Text = _listDish[i].Status.ToString();
-
-                    //Agrega las acciones de la tabla
-                    else if (j.Equals(4))
-                    {
-                        tCell.CssClass = "text-center";
-                        //Crea hipervinculo para las acciones
-                        LinkButton LinkButtonModifyDish = new LinkButton();
-                        LinkButtonModifyDish.Attributes["data-toggle"] = "modal";
-                        LinkButtonModifyDish.Attributes["data-target"] = "#modify_dish";
-                        LinkButtonModifyDish.Text = ResourceMenu.ActionModifyDishMenuPrincipal;
-                        LinkButtonModifyDish.ToolTip = "Modificar Plato";
-                        tCell.Controls.Add(LinkButtonModifyDish);
-
-                        LinkButton LinkButtonChangeDishStatusActive = new LinkButton();
-                        LinkButtonChangeDishStatusActive.Attributes["data-toggle"] = "modal";
-                        LinkButtonChangeDishStatusActive.Attributes["data-target"] = "#";
-                        LinkButtonChangeDishStatusActive.Text = ResourceMenu.ActionSetActiveDishMenuPrincipal;
-                        LinkButtonChangeDishStatusActive.ToolTip = "Activar Plato";
-                        //   LinkButtonChangeDishStatusActive.Click += LinkButtonChangeDishStatusActive_Click();
-                        tCell.Controls.Add(LinkButtonChangeDishStatusActive);
-
-
-                        LinkButton LinkButtonChangeDishStatusInactive = new LinkButton();
-                        LinkButtonChangeDishStatusInactive.Attributes["data-toggle"] = "modal";
-                        LinkButtonChangeDishStatusInactive.Attributes["data-target"] = "#";
-                        LinkButtonChangeDishStatusInactive.Text = ResourceMenu.ActionSetInactiveDishMenuPrincipal;
-                        LinkButtonChangeDishStatusInactive.ToolTip = "Desactivar Plato";
-                        tCell.Controls.Add(LinkButtonChangeDishStatusInactive);
-                    }
-                    //Agrega la 
-                    tRow.Cells.Add(tCell);
 
                 }
-            }
+         }
+            
 
             //Agrega el encabezado a la Tabla
             TableHeaderRow header = GenerateDishTableHeader();
@@ -266,19 +288,21 @@ namespace BackOffice.Seccion.Menu
             TableHeaderCell h3 = new TableHeaderCell();
             TableHeaderCell h4 = new TableHeaderCell();
             TableHeaderCell h5 = new TableHeaderCell();
-
+            TableHeaderCell h6 = new TableHeaderCell();
             //Se indica que se trabajara en el header y se asignan los valores a las columnas
             header.TableSection = TableRowSection.TableHeader;
             h1.Text = "Plato";
             h1.Scope = TableHeaderScope.Column;
             h2.Text = "Precio";
             h2.Scope = TableHeaderScope.Column;
-            h3.Text = "Sugerencia del dia";
+            h3.Text = "Categoría";
             h3.Scope = TableHeaderScope.Column;
-            h4.Text = "Estado";
+            h4.Text = "Sugerencia del dia";
             h4.Scope = TableHeaderScope.Column;
-            h5.Text = "Acciones";
+            h5.Text = "Estado";
             h5.Scope = TableHeaderScope.Column;
+            h6.Text = "Acciones";
+            h6.Scope = TableHeaderScope.Column;
 
             //Se asignan las columnas a la fila
             header.Cells.Add(h1);
@@ -286,16 +310,20 @@ namespace BackOffice.Seccion.Menu
             header.Cells.Add(h3);
             header.Cells.Add(h4);
             header.Cells.Add(h5);
-
+            header.Cells.Add(h6);
             return header;
         }
 
-
         public void CleanTable()
         {
-            //TableCategory.Rows.Clear();  
+
             TableDish.Rows.Clear();
 
+        }
+
+        public void CleanMenuCategoryDropDown()
+        {
+            DropDownListMenuCategoryAddDish.Items.Clear();
         }
 
         protected void ButtonModifyDish_Click(object sender, EventArgs e)
@@ -353,10 +381,17 @@ namespace BackOffice.Seccion.Menu
             {
                 //creo una instancia del factory
                 FactoryDAO _factoryDAO = FactoryDAO.Intance;
-                //creo una instancia del IDishDAO
-                IDishDAO _dishDAO = _factoryDAO.GetDishDAO();
                 //Creo una instancia de Dish
                 Dish _dish = new Dish();
+                //obtengo el IMenuCategoryDAO
+                IMenuCategoryDAO _menCatDAO = _factoryDAO.GetMenuCategoryDAO();
+                //creao la lista de categorias
+                IList<MenuCategory> _listMenCat = _menCatDAO.GetAll();
+                //creo un objeto tipo MenuCategory
+                MenuCategory _menCat = new MenuCategory();
+                //obtengo el objeto por el id del valor seleccionado en el DropDownList
+                _menCat = _menCatDAO.FindById(int.Parse(DropDownListMenuCategoryAddDish.SelectedValue));
+
 
                 //Lleno los campos del objeto Dish en la BD con los inputs del modal
                 _dish.Name = TextBoxAddDishName.Text;
@@ -369,8 +404,11 @@ namespace BackOffice.Seccion.Menu
                 _dish.Cost = float.Parse(TextboxAddDishPrice.Text);
                 //status en activo por defecto
                 _dish.Status = _factoryDAO.GetActiveSimpleStatus();
-                //guardo el plato
-                _dishDAO.Save(_dish);
+                //guardo el plato en la lista de platos de la categoria
+                _menCat.ListDish.Add(_dish);
+                //guardo la categoria
+                _menCatDAO.Save(_menCat);
+
 
                 //muestro la alerta de exito
                 AlertSuccess_AddDish.Visible = true;
@@ -384,25 +422,85 @@ namespace BackOffice.Seccion.Menu
             }
             finally
             {
+                CleanMenuCategoryDropDown();
                 //cargo la tabla
                 LoadDishTable();
             }
         }
-
-
-        //protected EventHandler LinkButtonChangeDishStatusActive_Click()
-        //{
-        //    return true;
-        //}
 
         protected void ButtonCancelAddDish_Click(object sender, EventArgs e)
         {
 
         }
 
+        protected void ButtonModifySuggestion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //creo una instancia del factory
+                FactoryDAO _factoryDAO = FactoryDAO.Intance;
+                //creo una instancia del IDishDAO
+                IDishDAO _dishDAO = _factoryDAO.GetDishDAO();
+                //obtengo el id del plato desde el hidden field
+                string _dishIdString = HiddenFieldDishModifyId.Value;
+                //convierto el id en integer
+                int _dishIdInt = int.Parse(_dishIdString);
+                //busco el plato por el id que lo asigna a la variable
+                Dish _dish = _dishDAO.FindById(_dishIdInt);
 
 
+                if (_dish.Suggestion == true)
+                {
+                    _dish.Suggestion = false;
+                }
+                else
+                {
+                    _dish.Suggestion = true;
+                }
 
+                //guardo el plato
+                _dishDAO.Save(_dish);
+
+                //muestro la alerta de exito
+                AlertSuccess_ModifyDish.Visible = true;
+
+            }
+            //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
+            catch (Exception exc)
+            {
+                //si da error muestro la alerta de fallo
+                AlertDanger_ModifyDish.Visible = true;
+                System.Console.WriteLine("Excepcion capturada: {0}", exc);
+            }
+            finally
+            {
+                //cargo la tabla
+                LoadDishTable();
+            }
+        }
+
+        /// <summary>
+        /// Llena el Dropdownlist de la la categoria del menu con informacion de la Base de Datos
+        /// </summary>
+        public void FillMenuCategoryDropdown()
+        {
+            //Genero los objetos para la consulta
+            //Genero la lista de la consulta
+            FactoryDAO _factoryDAO = FactoryDAO.Intance;
+            IMenuCategoryDAO _menCatDAO = _factoryDAO.GetMenuCategoryDAO();
+            IList<MenuCategory> _listMenCat = _menCatDAO.GetAll();
+            int i = 0;
+            //Se llenan los Dropdownlist con los registros existentes
+            foreach (MenuCategory _mencat in _listMenCat)
+            {
+
+                DropDownListMenuCategoryAddDish.Items.Add(_mencat.Name);
+                DropDownListMenuCategoryAddDish.Items[i].Value = _mencat.Id.ToString();
+                //  DropDownListMenuCategoryModifyDish.Items.Add(_mencat.Name);
+
+                i++;
+            }
+        }
 
 
 
@@ -421,5 +519,105 @@ namespace BackOffice.Seccion.Menu
 
             return _dish;
         }
+
+        protected void ButtonActivateDish_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                //creo una instancia del factory
+                FactoryDAO _factoryDAO = FactoryDAO.Intance;
+                //creo una instancia del IDishDAO
+                IDishDAO _dishDAO = _factoryDAO.GetDishDAO();
+                //obtengo el id del plato desde el hidden field
+                string _dishIdString = HiddenFieldDishModifyId.Value;
+                //convierto el id en integer
+                int _dishIdInt = int.Parse(_dishIdString);
+                //busco el plato por el id que lo asigna a la variable
+                Dish _dish = _dishDAO.FindById(_dishIdInt);
+                //cambio el estado a activo  
+                if (_dish.Status.StatusId == 1)
+                {
+                    //muestro la alerta de fallo
+                    AlertWarning_ActivateDish.Visible = true;
+                }
+                else if (_dish.Status.StatusId == 2)
+                {
+                    _dish.Status = _factoryDAO.GetActiveSimpleStatus();
+                    //guardo el plato
+                    _dishDAO.Save(_dish);
+                    //muestro la alerta de exito
+                    AlertSuccess_ActivateDish.Visible = true;
+                }
+                else
+                {
+                    //muestro la alerta de advertencia
+                    AlertDanger_ActivateDish.Visible = true;
+                }
+            }
+            //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
+            catch (Exception exc)
+            {
+                //si da error muestro la alerta de fallo
+                AlertDanger_ActivateDish.Visible = true;
+                System.Console.WriteLine("Excepcion capturada: {0}", exc);
+            }
+            finally
+            {
+                //cargo la tabla
+                LoadDishTable();
+            }
+        }
+
+        protected void ButtonDeactivateDish_Click(object sender, EventArgs e)
+        {
+
+
+            try
+            {
+                //creo una instancia del factory
+                FactoryDAO _factoryDAO = FactoryDAO.Intance;
+                //creo una instancia del IDishDAO
+                IDishDAO _dishDAO = _factoryDAO.GetDishDAO();
+                //obtengo el id del plato desde el hidden field
+                string _dishIdString = HiddenFieldDishModifyId.Value;
+                //convierto el id en integer
+                int _dishIdInt = int.Parse(_dishIdString);
+                //busco el plato por el id que lo asigna a la variable
+                Dish _dish = _dishDAO.FindById(_dishIdInt);
+                //cambio el estado a activo  
+                if (_dish.Status.StatusId == 2)
+                {
+                    //muestro la alerta de advertencia
+                    AlertWarning_DeactivateDish.Visible = true;
+                }
+                else if (_dish.Status.StatusId == 1)
+                {
+                    _dish.Status = _factoryDAO.GetDisabledSimpleStatus();
+                    //guardo el plato
+                    _dishDAO.Save(_dish);
+                    //muestro la alerta de exito
+                    AlertSuccess_DeactivateDish.Visible = true;
+                }
+                else
+                {
+                    //muestro la alerta de fallo
+                    AlertDanger_DeactivateDish.Visible = true;
+                }
+            }
+            //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
+            catch (Exception exc)
+            {
+                //si da error muestro la alerta de fallo
+                AlertDanger_DeactivateDish.Visible = true;
+                System.Console.WriteLine("Excepcion capturada: {0}", exc);
+            }
+            finally
+            {
+                //cargo la tabla
+                LoadDishTable();
+            }
+        }
+
     }
 }
