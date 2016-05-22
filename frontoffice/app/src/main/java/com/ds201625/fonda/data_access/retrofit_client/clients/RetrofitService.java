@@ -36,13 +36,8 @@ public class RetrofitService {
      * Direccion de base del sevicio web.
      * todo Ver como colocar esto usando el /etc/hosts del telefono.
      */
-<<<<<<< HEAD
-    private final String API_BASE_URL = "http://192.168.57.1:3500/api/";
-//"http://190.204.155.186:9000/api/";
-=======
-    private final String API_BASE_URL = "http://fonda.eltercera.com.ve:8080/api/";
 
->>>>>>> commensal-profile-management
+    private final String API_BASE_URL = "http://fonda.eltercera.com.ve:8080/api/";
     /**
      * Cliente http
      */
