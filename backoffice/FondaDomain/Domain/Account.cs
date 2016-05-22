@@ -41,7 +41,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Retorna o asigna la mesa de una cuenta
         /// </summary>
-        [DataMember]
+        //[DataMember]
         public virtual Table Table
         {
             get { return _table; }
@@ -89,6 +89,6 @@ namespace com.ds201625.fonda.Domain
         {
             _status = _status.Change();
         }
-
+        
     }
 }
