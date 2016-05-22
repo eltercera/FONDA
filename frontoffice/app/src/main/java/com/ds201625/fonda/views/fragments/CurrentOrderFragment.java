@@ -83,7 +83,9 @@ public class CurrentOrderFragment extends BaseFragment {
         super.onDetach();
     }
 
-
+    /**
+     * Metodo que obtiene los elementos del WS
+     */
     public List<DishOrder> getListSW(){
         List<DishOrder> listDishOWS;
         try {

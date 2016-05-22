@@ -13,7 +13,9 @@ import com.ds201625.fonda.domains.DishOrder;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ *  Clase para llenar la lista de los platos ordenados
+ */
 public class OrderViewItemList extends BaseArrayAdapter<DishOrder> {
 
     /**

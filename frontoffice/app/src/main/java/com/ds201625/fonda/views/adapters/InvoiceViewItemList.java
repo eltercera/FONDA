@@ -14,7 +14,9 @@ import com.ds201625.fonda.domains.DishOrder;
 import java.util.ArrayList;
 
 
-
+/**
+ *  Clase para llenar la lista de la factura
+ */
 public class InvoiceViewItemList extends BaseArrayAdapter<DishOrder> {
 
     /**
