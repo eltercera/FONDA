@@ -32,7 +32,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 				return InternalServerError (e);
 			}
 
-			return Created ("hola prueba",commensal);
+			return Created ("",commensal);
 		}
 
 		private ICommensalDAO GetCommensalDao()
