@@ -70,14 +70,15 @@ public class RetroditServiceFactory implements ServiceFactory {
         return new RetrofitInvoiceService();
     }
 
-    public ZoneService getZoneService() { return new RetrofitZoneService();}
+    @Override
+    public ZoneService getZoneService() {
+        return new RetrofitZoneService();
+    }
 
-
-   @Override
+    @Override
     public CategoryService getCategoryService() {
         return new RetrofitCategoryService();
     }
-
 
 }
 
