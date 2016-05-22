@@ -1,16 +1,9 @@
-package com.ds201625.fonda.tests.M5_Tests;
+package com.ds201625.fonda.tests.M5_Tests.M5_Tests;
 
-import android.test.MoreAsserts;
-
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.CurrentOrderService;
-import com.ds201625.fonda.data_access.services.InvoiceService;
-import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.logic.LogicInvoice;
 
 import junit.framework.TestCase;
-
-import java.util.List;
 
 /**
  * Created by Katherina Molina on 19/05/2016.
@@ -19,7 +12,7 @@ import java.util.List;
 /**
  * Clase De pruebas unitarias de la factura al cerrar la cuenta de una persona en su visita a restaurant
  */
-public class InvoiceServiceTest extends TestCase {
+public class InvoiceLogicTest extends TestCase {
 
     /*
          Objeto Invoice que contiene el pago de la cuenta
@@ -29,7 +22,7 @@ public class InvoiceServiceTest extends TestCase {
     /**
      * variable de la clase InvoiceService
      */
-    private InvoiceService invoiceService;
+    private LogicInvoice invoiceLogic;
 
     /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
@@ -37,7 +30,7 @@ public class InvoiceServiceTest extends TestCase {
      */
     protected void setUp() throws Exception {
         super.setUp();
-        invoiceService = FondaServiceFactory.getInstance().getInvoiceService();
+        invoiceLogic = new LogicInvoice();
     }
 
 
@@ -47,7 +40,7 @@ public class InvoiceServiceTest extends TestCase {
     public void testInvoiceIsNotNull() {
 
         try {
-            invoice = invoiceService.getCurrentInvoice();
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
             assertNotNull(invoice);
         }
         catch (NullPointerException e){
@@ -62,7 +55,7 @@ public class InvoiceServiceTest extends TestCase {
     public void testInvoiceElements() {
 
         try {
-            invoice = invoiceService.getCurrentInvoice();
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
             assertNotNull(invoice);
             assertEquals("The dining room", invoice.getRestaurant().getName());
             assertEquals("Adriana", invoice.getProfile().getProfileName());
@@ -78,7 +71,7 @@ public class InvoiceServiceTest extends TestCase {
     public void testRestaurantInvoiceIsNotEmpty() {
 
         String nameRestaurant = "The dining room";
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertEquals(nameRestaurant, invoice.getRestaurant().getName());
 
     }
@@ -88,7 +81,7 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testRestaurantInvoiceIsNotNull() {
 
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertNotNull(invoice.getRestaurant());
     }
 
@@ -98,7 +91,7 @@ public class InvoiceServiceTest extends TestCase {
     public void testProfileInvoiceIsNotEmpty() {
 
         String nameProfile = "Adriana";
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertEquals(nameProfile, invoice.getProfile().getProfileName());
 
     }
@@ -108,7 +101,7 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testProfileInvoiceIsNotNull() {
 
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertNotNull(invoice.getProfile());
     }
 
@@ -119,7 +112,7 @@ public class InvoiceServiceTest extends TestCase {
     public void testAccountInvoiceIsNotEmpty() {
 
 
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertEquals(3, invoice.getAccount().getListDish().size());
 
     }
@@ -129,7 +122,7 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testAccountInvoiceIsNotNull() {
 
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertNotNull(invoice.getAccount());
     }
 
@@ -138,7 +131,7 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testCurrencyInvoiceIsNotEmpty() {
 
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertEquals("Bolivar", invoice.getCurrency().getName());
 
     }
@@ -148,7 +141,7 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testCurrencyInvoiceIsNotNull() {
 
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertNotNull(invoice.getCurrency());
     }
 
@@ -159,6 +152,7 @@ public class InvoiceServiceTest extends TestCase {
     protected void tearDown() throws Exception {
         super.tearDown();
         invoice = null;
+        invoiceLogic = null;
     }
 
 }

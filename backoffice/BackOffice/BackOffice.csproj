@@ -140,8 +140,6 @@
     <Content Include="Content\img\Logo.png" />
     <Content Include="Content\img\LogoWeb.png" />
     <Content Include="Content\img\rsz_logo.png" />
-    <Content Include="Content\img\panel1.jpg" />
-    <Content Include="Content\img\Rst3.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\DataTables.js" />
@@ -422,7 +420,6 @@
     <Content Include="Seccion\Caja\Default.aspx" />
     <Content Include="Seccion\Caja\DefaultOrdenesCerradas.aspx" />
     <Content Include="Seccion\Caja\ModificarOrden.aspx" />
-    <Content Include="Seccion\Configuracion\AgregarModificarUsuario.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
@@ -433,7 +430,7 @@
     <Content Include="Seccion\Restaurant\Mesas.aspx" />
     <Content Include="Seccion\Restaurant\Restaurante.aspx" />
     <Content Include="Seccion\Restaurant\AgregarZona.aspx" />
-    <Content Include="App_Data\Web.config" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -506,13 +503,6 @@
     </Compile>
     <Compile Include="Seccion\Caja\ModificarOrden.aspx.designer.cs">
       <DependentUpon>ModificarOrden.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarUsuario.aspx.cs">
-      <DependentUpon>AgregarModificarUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Configuracion\AgregarModificarUsuario.aspx.designer.cs">
-      <DependentUpon>AgregarModificarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\G1RecursosInterfaz.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -636,21 +626,15 @@
     <Content Include="Content\fonts\GreatVibes-Regular.otf" />
     <Content Include="Content\MasterUI.master" />
     <Content Include="Content\js\datatables\Spanish.json" />
-    <None Include="App_Data\Web.Debug.config">
+    <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="App_Data\Web.Release.config">
+    <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <Content Include="web.config" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
