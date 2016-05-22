@@ -429,6 +429,7 @@
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
     <Content Include="Seccion\Menu\MenuDia.aspx" />
     <Content Include="Seccion\Reservas\ConsultarReservas.aspx" />
+    <Content Include="Seccion\Reservas\Default.aspx" />
     <Content Include="Seccion\Restaurant\AgregarCategoria.aspx" />
     <Content Include="Seccion\Restaurant\AgregarZona.css" />
     <Content Include="Seccion\Restaurant\Mesas.aspx" />
@@ -555,6 +556,13 @@
     </Compile>
     <Compile Include="Seccion\Reservas\ConsultarReservas.aspx.designer.cs">
       <DependentUpon>ConsultarReservas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Reservas\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Reservas\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Restaurant\AgregarCategoria.aspx.cs">
       <DependentUpon>AgregarCategoria.aspx</DependentUpon>

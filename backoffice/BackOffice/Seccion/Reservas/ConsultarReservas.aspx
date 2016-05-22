@@ -1,19 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="ConsultarReservas.aspx.cs" Inherits="BackOffice.Seccion.Reservas.ConsultarReservas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
-    Reservaciones
+    Reservas
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    
+    Reservaciones
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-Reservaciones
+
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
       <%--Breadcrumbs--%>
     <div>
         <ol class="breadcrumb" style="background-color: rgba(0,0,0,0);">
             <li>
-                <a href="../Reservas/ConsultarReservas.aspx">Inicio</a>
+                <a href="../Reservas/Default.aspx">Inicio</a>
             </li>
 
             <li>
@@ -26,86 +26,31 @@ Reservaciones
     <%--Fin_Breadcrumbs--%>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
-        <div class="row">
+      <div class="row">
            <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Reservaciones</h3>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table id="Reservaciones" class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                            
-                                            <th style="vertical-align: middle">Usuario</th>
-                                            <th style="vertical-align: middle">Fecha de Reserva</th>
-                                            <th style="vertical-align: middle">Fecha de Creación de Reserva</th>
-                                            <th style="vertical-align: middle">Cantidad de Comensales</th>
-                                            <th style="vertical-align: middle">Mesa</th>
-                                            <th style="vertical-align: middle">Status</th>
-                                   
- 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                              
-                                          
-                                            <td style="vertical-align: middle">@jess27p</td>
-                                            <td style="vertical-align: middle">27/09/2016</td>
-                                            <td style="vertical-align: middle">26/08/2016</td>
-                                            <td style="vertical-align: middle">3</td>
-                                            <td style="vertical-align: middle">5</td>
-                                            <td style="vertical-align: middle">Activa</td>
-                                            <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></td>
+               <div class="panel panel-default">
+                   <div class="panel-heading">
+                       <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Reservaciones</h3>
+                   <div class="clearfix"></div>
+                   </div>
+                   <div class="panel-body">
+                       <div class="table-responsive">
+                           <asp:HiddenField ID="HiddenFieldSuggestionDishId" runat="server" Value="" />
+                           <asp:Table ID="TableReservations" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
+                       </div>
+                   </div>
+               </div>
+           </div>
+         </div>
 
-                                       
-                                         
-                                        </tr>
-                                            <tr>
-                                            <td style="vertical-align: middle">Pasta Carbonara</td>
-                                            <td style="vertical-align: middle">2350</td>
-                                            <td style="vertical-align: middle">3000</td>
-                                            <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></td>
-                                     
-                                        </tr>
-                                            <tr>
-                                          
-                                            <td style="vertical-align: middle">Pasta con Vegetales</td>
-                                            <td style="vertical-align: middle">2350</td>
-                                            <td style="vertical-align: middle">3000</td>
-                                            <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></td>
-                                     </tr>
-                                            <tr>
-                                           
-                                            <td style="vertical-align: middle">Pasta con Salmon</td>
-                                            <td style="vertical-align: middle">2350</td>
-                                            <td style="vertical-align: middle">3000</td>
-                                            <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></i></td>
-                                                
-                                        </tr>
-                                                
-                                             
-                                        </tbody>
-                                    </table>       
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           
-                <!-- /.row -->
-     <!-- Modal Ver Plato-->
-     <div class="modal fade" id="ver_plato" role="dialog">
+     <div class="modal fade" id="ver_reservas" role="dialog">
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
                     <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Platillo</h4>
+                                <h4 class="modal-title">Reservaciones</h4>
                             </div>
                                 <div class="modal-body">
                                      <div class="row">
@@ -119,24 +64,57 @@ Reservaciones
                                                    <div class="row">
                                                       <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                                              <div class="form-group">
-                                                                <label class="control-label">Nombre del platillo</label>
-                                                                      <p class="form-control-static">ej. pasta carbonara</p>
-                                                           </div>
+                                                                  <label class="control-label">Fecha de Reservacion</label>
+                                                                  <asp:TextBox ID="TextBoxSeeDishName" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
+                                        
+                                                            </div>
                                                       </div>
                                                    </div>  
                                                    <div class="row">
                                                          <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
                                                             <div class="form-group">
-                                                                <label class="control-label">Descripcion del platillo</label>
-                                                               <p class="form-control-static">ej. pasta con tocineta y queso parmesano</p>
+                                                                <label class="control-label">Fecha de Creación</label>
+                                                                  <asp:TextBox ID="TextBoxSeeDishDescription" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
                                                             </div>
                                                         </div> 
                                                     </div> 
                                                      <div class="row">
                                                          <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                                                             <div class="form-group">
-                                                                <label class="control-label">Precio</label>
-                                                                    <p class="form-control-static">ej. 1000 bsf</p>
+                                                                <label class="control-label">Cantidad de Comensales</label>
+                                                                 <asp:TextBox ID="TextBoxSeeDishPrice" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
+                                                            </div>
+                                                        </div> 
+                                                    </div> 
+                                                 <div class="row">
+                                                         <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Restaurante</label>
+                                                                  <asp:TextBox ID="TextBox1" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
+                                                            </div>
+                                                        </div> 
+                                                    </div> 
+                                                 <div class="row">
+                                                         <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Mesa</label>
+                                                                  <asp:TextBox ID="TextBox2" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
+                                                            </div>
+                                                        </div> 
+                                                    </div> 
+                                                 <div class="row">
+                                                         <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Usuario</label>
+                                                                  <asp:TextBox ID="TextBox3" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
+                                                            </div>
+                                                        </div> 
+                                                    </div> 
+                                                 <div class="row">
+                                                         <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
+                                                            <div class="form-group">
+                                                                <label class="control-label">Status</label>
+                                                                  <asp:TextBox ID="TextBox4" CssClass="form-control" placeholder="" MaxLength="20" Enabled="false" runat="server"/>
                                                             </div>
                                                         </div> 
                                                     </div> 
@@ -147,6 +125,51 @@ Reservaciones
                     
                 </div>
             </div>
+
+
+     <%-- codigo de jascript pendiente aqui el numero 3 es para seleccionar elementos de la 3era columna de la tabla   --%>
+       <%--  en el modal es importante que las areas de texto donde se muestran las cosas en el modal sean del tipo asp textBox si no no furula --%>
+         <%--recordar que deben de correr primero la prueba de dish 2 o 3 veces y despues la de menu category por que si no no va a parecer nada en la tabla--%>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setValue();
+            ajaxRes();
+        });
+        function ajaxRes() {
+            $('.table > tbody > tr > td:nth-child(3) > a')
+                .click(function (e) {
+                    e.preventDefault();
+                    var prueba = document.getElementById("<%=HiddenFieldSuggestionDishId.ClientID%>").value;
+                    var params = "{'Id':'" + prueba + "'}";
+                    $.ajax({
+                        type: "POST",
+                        url: "MenuDia.aspx/GetData",
+                        data: params,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (response) {
+                            var local = response;
+                            document.getElementById("<%=TextBoxSeeDishName.ClientID%>").value = local.d.Name;
+                            document.getElementById("<%=TextBoxSeeDishDescription.ClientID%>").value = local.d.Description;
+                            document.getElementById("<%=TextBoxSeeDishPrice.ClientID%>").value = local.d.Cost;
+                            ////aqui es donde tomo los valores de los textbox y se lo mando al modal con el getdata
+                            //fijate que aqui estan los valores del modal de mostrar plato con sus elementos 
+                            //el sabe que es el modal de mostrar plato por que asi defini el evento cuando arme la tabla
+                           },
+                           failure: function (response) {
+                               alert("_");
+                           }
+                       });
+                });
+               }
+               <%--function setValue() {
+                   $('.table > tbody > tr > td:nth-child(3) > a')
+                   .click(function () {
+                       var padreId = $(this).parent().parent().attr("data-id");
+                       document.getElementById("<%=HiddenFieldSuggestionDishId.ClientID%>").value = padreId;
+                                });
+                            }--%>
+    </script>
 
             <!-- /.container-fluid -->
 </asp:Content>

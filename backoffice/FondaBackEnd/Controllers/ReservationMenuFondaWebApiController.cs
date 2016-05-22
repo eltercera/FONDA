@@ -29,7 +29,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             IMenuCategoryDAO menuDao = FactoryDAO.GetMenuCategoryDAO();
 
 
-            IList<MenuCategory> listCategory = menuDao.GetAll();
+            IList<MenuCategory> listCategory = menuDao.FindByRestaurant(restaurant);
 
 
             return Ok(listCategory);
