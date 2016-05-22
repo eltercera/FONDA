@@ -16,6 +16,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.HandlerSQLite;
 import com.ds201625.fonda.logic.LogicPayment;
@@ -490,7 +491,9 @@ public class OrdersActivity extends BaseNavigationActivity implements
         Bundle args = new Bundle();
         CloseAccountFragment cls = new CloseAccountFragment();
         float amountT = cls.getAmount();
+        double iva = cls.getIva();
         ordPay = new OrderPaymentFragment();
+        args.putDouble("iva",iva);
         args.putFloat("amount", amountT);
         ordPay.setArguments(args);
         showFragment(ordPay);

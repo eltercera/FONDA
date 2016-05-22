@@ -19,12 +19,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Clase Fragment que muestra el cierre de cuenta
  */
 public class CloseAccountFragment extends BaseFragment {
 
+    /**
+     * Monto a cancelar (subtotal + iva)
+     */
     public static float amount;
 
     /**
@@ -46,7 +50,10 @@ public class CloseAccountFragment extends BaseFragment {
      *  Atributo de tipo LogicCurrentOrder que controla el acceso al WS
      */
     private LogicCurrentOrder logicCurrentOrder;
-
+    /**
+     * Monto a cancelar de iva
+     */
+    private float iva;
 
     /**
      * Metodo que se ejecuta al instanciar el fragment
@@ -75,7 +82,7 @@ public class CloseAccountFragment extends BaseFragment {
 
         float sub = calcularSubTotal(listDishO);
         System.out.println("SubTotal: " + sub);
-        double iva = calcularIVA(sub);
+        iva = calcularIVA(sub);
         System.out.println("IVA: " + iva);
         float total = calcularTotal(sub,iva);
         System.out.println("Total: " + total);
@@ -86,6 +93,8 @@ public class CloseAccountFragment extends BaseFragment {
         String formattedHour = dfh.format(c.getTime());
 
         setAmount(total);
+        setIva(iva);
+        setListDishO(listDishO);
         System.out.println("AMOUNT yunet: " + amount);
 
         TextView txtDate = (TextView) layout.findViewById(R.id.tvDate);
@@ -139,6 +148,22 @@ public class CloseAccountFragment extends BaseFragment {
         CloseAccountFragment.amount = amount;
     }
 
+    public List<DishOrder> getListDishO() {
+        return listDishO;
+    }
+
+    public void setListDishO(List<DishOrder> listDishO) {
+        this.listDishO = listDishO;
+    }
+
+    public float getIva() {
+        return iva;
+    }
+
+    public void setIva(float iva) {
+        this.iva = iva;
+    }
+
     /**
      * Metodo que obtiene el subTotal de la Cuenta
      */
@@ -161,9 +186,9 @@ public class CloseAccountFragment extends BaseFragment {
     /**
      * Metodo que obtiene el IVA de la Cuenta
      */
-    public double calcularIVA(float sub){
+    public float calcularIVA(float sub){
 
-        double iva = sub * (0.12);
+        float iva = sub * (12/100);
 
         return iva;
     }

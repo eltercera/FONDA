@@ -104,10 +104,21 @@ public class OrderPaymentFragment extends BaseFragment {
      */
     LogicPayment logicPayment;
 
-
+    /**
+     * Monto de la propina
+     */
     private float tip;
+    /**
+     * Monto total (propina + subtotal + iva)
+     */
     private float add;
-    private int idSpinner = spinner.getSelectedItemPosition();
+    /**
+     * Spinner que guarda el tipo de moneda y el porcentaje de la propina
+     */
+    private int idSpinner;
+    /**
+     * Fecha conformato
+     */
     private String formattedDate;
 
 
@@ -186,7 +197,8 @@ public class OrderPaymentFragment extends BaseFragment {
      * Muestra la propina dwependiendo del tipo seleccionado
      */
     private void setTip()
-    {
+        {
+            idSpinner = spinner.getSelectedItemPosition();
         try {
 
 
@@ -285,17 +297,20 @@ public class OrderPaymentFragment extends BaseFragment {
      */
     private void postPayment() {
         //ESTE OBJETO SE GENERA CON INFORMACION SACADA DE OTRO LADO
-        List<DishOrder> lista = null;
+        CloseAccountFragment cls = new CloseAccountFragment();
+        List<DishOrder> lista = cls.getListDishO();
         Payment paym = new Payment();
         Currency curr = new Currency();
         Profile prof = new Profile();
         Restaurant rest = new Restaurant();
         Account acc = new Account();
+
+        
         paym.setAmount(always);
 
         acc.setListDish(lista);
         curr.setSymbol("Bs");
-        float tax=150;
+        float tax = cls.getIva();
         prof.setProfileName("Melanie");
         rest.setName("El Tinajero");
 
