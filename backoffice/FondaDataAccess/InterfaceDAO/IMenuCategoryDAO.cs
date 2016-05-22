@@ -8,7 +8,5 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
     public interface IMenuCategoryDAO : INounBaseEntityDAO<MenuCategory>
     {
 		IList<MenuCategory> GetAll ();
-        IList<MenuCategory> FindByRestaurant(Restaurant restaurant);
-
     }
 }
