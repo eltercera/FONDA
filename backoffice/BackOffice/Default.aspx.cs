@@ -70,7 +70,7 @@ namespace BackOffice
                 {
                     status = RestaurantResource.Active;
                     user = "N/A";
-                    quantity = 1;
+                    quantity = 0;
                 }
                 else if (status == statusInactive)
                 {
