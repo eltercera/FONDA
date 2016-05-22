@@ -10,6 +10,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
     public class HibernateScheduleDAO : HibernateBaseEntityDAO<Schedule> , IScheduleDAO
     {
+        FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
+
         /// <summary>
         /// Devuelve la lista de todos los horarios de la Base de Datos
         /// </summary>
@@ -25,16 +27,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <param name="openingTime"></param>
         /// <param name="closingTime"></param>
         /// <returns></returns>
-        public Schedule GetSchedule(TimeSpan openingTime, TimeSpan closingTime)
+        public Schedule GetSchedule(TimeSpan OpeningTime, TimeSpan ClosingTime, bool[] Days)
         {
-            Schedule schedule = new Schedule();
-            IList<Schedule> listSchedule = GetAll();
-            foreach(Schedule sch in listSchedule)
-            {
-                if (openingTime.Equals(sch.OpeningTime) && closingTime.Equals(sch.ClosingTime))
-                    schedule = sch;
-            }
 
+            IDayDAO _dayDAO = _facDAO.GetDayDAO();
+
+            Schedule schedule = new Schedule();
+            schedule.OpeningTime = OpeningTime;
+            schedule.ClosingTime = ClosingTime;
+
+            IList<Day> listDays = _dayDAO.GetDay(Days);
+            schedule.Day = listDays;
+
+            
             return schedule;
         }
     }
