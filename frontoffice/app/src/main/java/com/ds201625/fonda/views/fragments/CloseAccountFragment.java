@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.logic.LogicCurrentOrder;
 import com.ds201625.fonda.views.adapters.CloseViewItemList;
@@ -18,12 +19,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Clase Fragment que muestra el cierre de cuenta
  */
 public class CloseAccountFragment extends BaseFragment {
 
+    /**
+     * Monto a cancelar (subtotal + iva)
+     */
     public static float amount;
 
     /**
@@ -45,7 +50,10 @@ public class CloseAccountFragment extends BaseFragment {
      *  Atributo de tipo LogicCurrentOrder que controla el acceso al WS
      */
     private LogicCurrentOrder logicCurrentOrder;
-
+    /**
+     * Monto a cancelar de iva
+     */
+    private float iva;
 
     /**
      * Metodo que se ejecuta al instanciar el fragment
@@ -70,11 +78,12 @@ public class CloseAccountFragment extends BaseFragment {
         //Llamada al metodo que se comunica con el WS
         listDishO = getListSW();
         closeViewItem = new CloseViewItemList(getContext());
-        closeViewItem.addAll(listDishO);
+        if(listDishO != null)
+          closeViewItem.addAll(listDishO);
 
         float sub = calcularSubTotal(listDishO);
         System.out.println("SubTotal: " + sub);
-        double iva = calcularIVA(sub);
+        iva = calcularIVA(sub);
         System.out.println("IVA: " + iva);
         float total = calcularTotal(sub,iva);
         System.out.println("Total: " + total);
@@ -85,6 +94,8 @@ public class CloseAccountFragment extends BaseFragment {
         String formattedHour = dfh.format(c.getTime());
 
         setAmount(total);
+        setIva(iva);
+        setListDishO(listDishO);
         System.out.println("AMOUNT yunet: " + amount);
 
         TextView txtDate = (TextView) layout.findViewById(R.id.tvDate);
@@ -138,6 +149,22 @@ public class CloseAccountFragment extends BaseFragment {
         CloseAccountFragment.amount = amount;
     }
 
+    public List<DishOrder> getListDishO() {
+        return listDishO;
+    }
+
+    public void setListDishO(List<DishOrder> listDishO) {
+        this.listDishO = listDishO;
+    }
+
+    public float getIva() {
+        return iva;
+    }
+
+    public void setIva(float iva) {
+        this.iva = iva;
+    }
+
     /**
      * Metodo que obtiene el subTotal de la Cuenta
      */
@@ -160,9 +187,9 @@ public class CloseAccountFragment extends BaseFragment {
     /**
      * Metodo que obtiene el IVA de la Cuenta
      */
-    public double calcularIVA(float sub){
+    public float calcularIVA(float sub){
 
-        double iva = sub * (0.12);
+        float iva = sub * (12/100);
 
         return iva;
     }
@@ -184,17 +211,15 @@ public class CloseAccountFragment extends BaseFragment {
         List<DishOrder> listDishOWS;
         logicCurrentOrder = new LogicCurrentOrder();
         try {
-            listDishOWS = logicCurrentOrder.getCurrentOrderSW().getListDishOrder();
+            listDishOWS = logicCurrentOrder.getCurrentOrderSW();
             for (int i = 0; i < listDishOWS.size(); i++) {
                 System.out.println("Descripcion Plato:  " + listDishOWS.get(i).getDish().
                         getDescription());
             }
             return listDishOWS;
-        }
-        catch (NullPointerException e){
-            System.out.println("No es posible realizar la conexión con el Web Server ");
-        }
-        catch (Exception e){
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             System.out.println("Error en la Conexión");
         }
         return null;

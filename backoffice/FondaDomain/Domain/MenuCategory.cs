@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -44,6 +44,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Retorna o asigna una lista de platos
         /// </summary>
+        [DataMember]
         public virtual IList<Dish> ListDish
         {
             get { return _listDish; }

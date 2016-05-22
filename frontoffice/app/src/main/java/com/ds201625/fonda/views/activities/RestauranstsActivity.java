@@ -27,7 +27,7 @@ public class RestauranstsActivity extends  BaseNavigationActivity {
         RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_zone),new ZoneFragment());
         RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_cost),new CostFragment());
         RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_time),new TimeFragment());
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_near),new NearFragment());
+        //RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_near),new NearFragment());
 
         viewPager.setAdapter(RestaurantFilters);
         tabLayout.setupWithViewPager(viewPager);

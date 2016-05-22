@@ -17,61 +17,72 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
+import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.InvoiceService;
+import com.ds201625.fonda.data_access.services.PaymentService;
+import com.ds201625.fonda.domains.Account;
+import com.ds201625.fonda.domains.Currency;
 import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.domains.Payment;
+import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.LogicPayment;
 import com.ds201625.fonda.views.activities.OrdersActivity;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
- * Clase de Prueba para mostar el uso de Fragments
+ * Clase que maneja el Fragment de pago de orden
  */
 public class OrderPaymentFragment extends BaseFragment {
 
     /**
-     * Receives the amount
+     * Recibe el monto
      */
     private float amount;
     /**
-     * Shows which is the selected Credit card
+     * Muestra cual es la TDC seleccionada
      */
     private String selectCC = "";
     /**
-     * ListView of Amount, credit card and profile
+     * ListView del monto, TDC y perfil
      */
     private ListView lv1;
     /**
-     * Values of the combo box for the tip
+     * Valores para el combo Box de propina
      */
     private String [] values = {" % ", " Bs. "};
     /**
-     * Spinner that shows the saved creditcards
+     * Spinner que muestra las TDC guardadas en la BD
      */
     private Spinner spinner;
     /**
-     * Receives the amount of tip
+     * Recibe el monto de la porpina
      */
     private EditText etTip;
     /**
-     * Set the amount of tip in currency
+     * Muestra el monto de la propina en moneda
      */
     private TextView tvTip;
     /**
-     * View
+     * Vista
      */
     private View layout;
     /**
-     * Sets the total of the bill (Subtota+tax+tip)
+     * Muestra el total de la cuenta (Subtotal+iva + propina)
      */
     private TextView tvAccount;
     /**
-     * Shows the actual date
+     * Mestra la fecha actual
      */
     private TextView date;
     /**
-     * Shows the amount of the check (Subtotal+tax)
+     * Muestra el total de la cuenta hasta el momento (Subtotal+iva)
      */
     private float always;
     /**
@@ -79,9 +90,36 @@ public class OrderPaymentFragment extends BaseFragment {
      */
     private InvoiceService invoiceService;
     /**
-     * Calendar
+     * Calendario
      */
     private Calendar c;
+
+    /**
+     * Payment
+     */
+    Invoice payment;
+
+    /**
+     * logicPayment
+     */
+    LogicPayment logicPayment;
+
+    /**
+     * Monto de la propina
+     */
+    private float tip;
+    /**
+     * Monto total (propina + subtotal + iva)
+     */
+    private float add;
+    /**
+     * Spinner que guarda el tipo de moneda y el porcentaje de la propina
+     */
+    private int idSpinner;
+    /**
+     * Fecha conformato
+     */
+    private String formattedDate;
 
 
     @Override
@@ -91,7 +129,7 @@ public class OrderPaymentFragment extends BaseFragment {
     }
 
     /**
-     * Contains all the asignations
+     * Contiene todas las declaraciones
      */
     private void getAllElements(){
         tvAccount = (TextView)layout.findViewById(R.id.tvAccount);
@@ -107,6 +145,7 @@ public class OrderPaymentFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         //Indicar el layout que va a usar el fragment
         layout = inflater.inflate(R.layout.fragment_order_payment,container,false);
         getAllElements();
@@ -129,25 +168,25 @@ public class OrderPaymentFragment extends BaseFragment {
 
 
         always = amount;
-        //String that fill the listview
+        //String que llena el listview
         String[] pay = {"Monto Total " +
                 " Bs." + always,
                 "Seleccionar Perfil",
                 "Tarjeta de Crédito: "+selectCC};
-        // Add Elements to the list
+        // Agrega elementos a la lista
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_list_item_1, pay);
         lv1.setAdapter(adapter);
 
-        // Allow to choose the payment of the tip, in percent or in the current currency
+        // Permite escoger el pago de la propina, en moneda o porcentaje
         ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this.getActivity(),
                 android.R.layout.simple_spinner_item, values);
         LTRadapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(LTRadapter);
-        //sets date
+        //Muestra la fecha
         c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        String formattedDate = df.format(c.getTime());
+        formattedDate = df.format(c.getTime());
         date.setText(formattedDate);
         EventReg();
 
@@ -155,14 +194,13 @@ public class OrderPaymentFragment extends BaseFragment {
     }
 
     /**
-     * Sets the tip of type percet or type currency according to type selected
+     * Muestra la propina dwependiendo del tipo seleccionado
      */
     private void setTip()
-    {
+        {
+            idSpinner = spinner.getSelectedItemPosition();
         try {
-            float tip;
-            float add;
-            int idSpinner = spinner.getSelectedItemPosition();
+
 
         if (idSpinner==0)
             {
@@ -189,7 +227,7 @@ public class OrderPaymentFragment extends BaseFragment {
     }
 
     /**
-     * Gets the item selected on Fragment Credit Card and Fragment Profile and shows it on listview
+     * Obtiene el item seleccionado en el fragment  y lo retorna al listview
      */
     private void EventReg(){
         lv1 = (ListView)layout.findViewById(R.id.lVOrden);
@@ -216,7 +254,7 @@ public class OrderPaymentFragment extends BaseFragment {
     }
 
     /**
-     * It activates when the view is restored
+     * Se activa cuando la vista se restaura
      * @param savedInstanceState
      */
     @Override
@@ -255,22 +293,54 @@ public class OrderPaymentFragment extends BaseFragment {
     }
 
     /**
-     * Sends the information of the bill to Web Service
+     * Manda la informacion de la factura al web service
      */
-    public void setBill(){
+    public void postPayment() {
+        //ESTE OBJETO SE GENERA CON INFORMACION SACADA DE OTRO LADO
+        CloseAccountFragment cls = new CloseAccountFragment();
+        Invoice invoice = new Invoice();
+        List<DishOrder> lista = cls.getListDishO();
+        Payment paym = new Payment();
+        Currency curr = new Currency();
+        Profile prof = new Profile();
+        Restaurant rest = new Restaurant();
+        Account acc = new Account();
+        Date date = invoice.getDate();
 
+        paym.setAmount(always);
+
+        acc.setListDish(lista);
+        curr.setSymbol("Bs");
+        float tax = cls.getIva();
+        prof.setProfileName("Melanie");
+        rest.setName("El Tinajero");
+
+
+        invoice.setAccount(acc);
+        invoice.setCurrency(curr);
+        invoice.setDate(date);
+        invoice.setPayment(paym);
+        invoice.setProfile(prof);
+        invoice.setRestaurant(rest);
+        invoice.setTax(tax);
+        invoice.setTip(tip);
+        invoice.setTotal(add);
+
+        logicPayment = new LogicPayment();
         try {
-            invoiceService = FondaServiceFactory.getInstance().getInvoiceService();
+            payment = logicPayment.paymentService(invoice);
+            //PRUEBA DE QUE HACE EL POST
+            System.out.println("TAX1 : "+ payment.getTax());
+        } catch (RestClientException e) {
+            System.out.println(e.getMessage());
+        } catch (InvalidDataRetrofitException e) {
+            System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println("Error");
+        }
 
 
-
-        }
-        catch (NullPointerException e){
-            System.out.println("No es posible realizar la conexión con el Web Server ");
-        }
-        catch (Exception e){
-            System.out.println("Error en la Conexión");
-        }
     }
+
 
 }

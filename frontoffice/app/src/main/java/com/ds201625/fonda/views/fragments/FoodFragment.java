@@ -9,13 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.domains.RestaurantCategory;
 import com.ds201625.fonda.views.activities.FilterCategoryList;
+import com.ds201625.fonda.views.activities.RestaurantListActivity;
+import com.google.gson.Gson;
 
 import java.util.Iterator;
 import java.util.List;
@@ -66,21 +67,22 @@ public class FoodFragment extends BaseFragment {
         iterator = listCategory.listIterator();
 
 
-        FilterCategoryList adapter = new
-                FilterCategoryList(getActivity(),listCategory);
-
-        list.setAdapter(adapter);
-
-       /* list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        while (iterator.hasNext()) {
+            RestaurantCategory category = (RestaurantCategory) iterator.next();
+            String nameZona = category.getName();
+        }
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(getActivity(), "You Clicked at " + location[+position], Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent (getActivity(),AllRestaurantActivity.class);
+                Intent intent = new Intent (getActivity(),RestaurantListActivity.class);
+                RestaurantCategory _category = getSelectedCategory(position);
+                intent.putExtra("categoria", new Gson().toJson(_category));
                 startActivity(intent);
             }
         });
-*/
+
+
         setupListView();
         return view;
 
@@ -90,6 +92,22 @@ public class FoodFragment extends BaseFragment {
         FilterCategoryList adapter = new FilterCategoryList(getActivity(), listCategory);
         list.setAdapter(adapter);
 
+    }
+
+    /**
+     * Metodo para devolver la posicion de cada categoria en el list view
+     * @param position
+     * @return
+     */
+    private RestaurantCategory getSelectedCategory(int position){
+        int counter =0;
+        for (RestaurantCategory restaurantCategory: this.listCategory){
+            if (counter == position){
+                return restaurantCategory;
+            }
+            counter++;
+        }
+        return null;
     }
 
     @Override
