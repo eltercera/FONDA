@@ -6,7 +6,6 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Representa la orden de una cuenta
     /// </summary>
-    [DataContract]
     public class DishOrder : BaseEntity
     {
         /// <summary>
