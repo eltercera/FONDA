@@ -14,7 +14,9 @@ import com.ds201625.fonda.domains.DishOrder;
 import java.util.ArrayList;
 
 
-
+/**
+ *  Clase para llenar la lista de la factura
+ */
 public class InvoiceViewItemList extends BaseArrayAdapter<DishOrder> {
 
     /**
@@ -63,7 +65,7 @@ public class InvoiceViewItemList extends BaseArrayAdapter<DishOrder> {
     @Override
     public View getSelectedView(DishOrder item, View convertView) {
         //TODO: Colocar un color desente
-      //  convertView.setBackgroundColor(getContext().getResources()
+        //  convertView.setBackgroundColor(getContext().getResources()
         //        .getColor(R.color.colorPrimaryDark));
         return convertView;
     }

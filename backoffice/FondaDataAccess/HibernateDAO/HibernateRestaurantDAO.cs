@@ -11,7 +11,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
     {
         FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
 
-        /// <summary>
+		/// <summary>
         /// Devuelve todos los restaurantes
         /// </summary>
         /// <returns>Una lista de restaurantes</returns>
@@ -30,8 +30,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             ICriterion criterion = Expression.Eq("Zone", zone);
             return (FindAll(criterion));
-        }
-
+		}
+		
         /// <summary>
         /// Genera un nuevo Restaurante a partir de los datos suministrados por el usuario
         /// </summary>
@@ -132,6 +132,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 came = true;
             }
             return came;
+        }
+
+        public IList<Restaurant> findByCategory(RestaurantCategory category)
+        {
+            ICriterion criterion = Expression.Eq("RestaurantCategory", category);
+            return (FindAll(criterion));
         }
     }
 

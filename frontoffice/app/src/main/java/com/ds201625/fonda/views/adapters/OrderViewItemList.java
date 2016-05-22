@@ -13,7 +13,9 @@ import com.ds201625.fonda.domains.DishOrder;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ *  Clase para llenar la lista de los platos ordenados
+ */
 public class OrderViewItemList extends BaseArrayAdapter<DishOrder> {
 
     /**
@@ -49,18 +51,11 @@ public class OrderViewItemList extends BaseArrayAdapter<DishOrder> {
         String count = String.valueOf(item.getCount());
         txtCount.setText("Cant: " + count);
 
-        if((item.getDish().getDescription()).equals("Pasta Con Salmon")) {
-            icon.setImageResource(R.drawable.salmonpasta);
-        }
-        if((item.getDish().getDescription()).equals("Coca-Cola")) {
-            icon.setImageResource(R.drawable.refresco);
-        }
-        if((item.getDish().getDescription()).equals("Terciopelo Rojo")) {
-            icon.setImageResource(R.drawable.redv2);
-        }
+        String image = item.getDish().getImage();
 
-//        icon.setImageResource(Integer.parseInt(item.getDish().getImage()));
-
+        Context context = icon.getContext();
+        int idImage = context.getResources().getIdentifier(image, "drawable", context.getPackageName());
+        icon.setImageResource(idImage);
 
         return convertView;
 
