@@ -198,12 +198,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Fonda.mdf">
+    <Content Include="Database1.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Fonda_log.ldf">
+    <Content Include="Database1_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Fonda.mdf</DependentUpon>
+      <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
   </ItemGroup>
 </Project>
