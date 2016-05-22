@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.logic.LogicHistoryVisits;
@@ -140,10 +141,11 @@ public class HistoryVisitFragment extends BaseFragment {
      * Metodo que consulta el historial de pagos en el Web Service
      */
     private void createGroupList() {
+
         try {
             historyvisits = new LogicHistoryVisits();
+            listInvoice = historyvisits.apihistoryVisits();
 
-            listInvoice =   historyvisits.apihistoryVisits().getHistoryVisits();
             groupNameRestaurant = new ArrayList<String>();
             groupAddressRestaurant = new ArrayList<String>();
             groupCategoryRestaurant = new ArrayList<String>();
@@ -165,11 +167,9 @@ public class HistoryVisitFragment extends BaseFragment {
                 groupDatePaymentRestaurant.add(datePayment);
                 groupLogoRestaurant.add(logoRestaurant);
             }
-        }
-        catch (NullPointerException e){
-            System.out.println("No es posible realizar la conexión con el Web Server ");
-        }
-        catch (Exception e){
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             System.out.println("Error en la Conexión");
         }
     }

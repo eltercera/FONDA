@@ -7,7 +7,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
     {
         IList<Restaurant> GetAll();
         IList<Restaurant> findByZone(Zone zone);
-        Restaurant findByTable(Table table);
+        //Restaurant findByTable(Table table);
         IList<Restaurant> findByCategory(RestaurantCategory category);
     }
 }

@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.logic.LogicCurrentOrder;
 import com.ds201625.fonda.views.adapters.CloseViewItemList;
@@ -184,17 +185,15 @@ public class CloseAccountFragment extends BaseFragment {
         List<DishOrder> listDishOWS;
         logicCurrentOrder = new LogicCurrentOrder();
         try {
-            listDishOWS = logicCurrentOrder.getCurrentOrderSW().getListDishOrder();
+            listDishOWS = logicCurrentOrder.getCurrentOrderSW();
             for (int i = 0; i < listDishOWS.size(); i++) {
                 System.out.println("Descripcion Plato:  " + listDishOWS.get(i).getDish().
                         getDescription());
             }
             return listDishOWS;
-        }
-        catch (NullPointerException e){
-            System.out.println("No es posible realizar la conexión con el Web Server ");
-        }
-        catch (Exception e){
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             System.out.println("Error en la Conexión");
         }
         return null;

@@ -69,6 +69,11 @@ namespace com.ds201625.fonda.Domain
 			_sesionTokens.Add (token);
 		}
 
+        public virtual void RemoveToken ( Token token)
+        {   
+            _sesionTokens.Remove(token);
+        }
+
 	}
 }
 

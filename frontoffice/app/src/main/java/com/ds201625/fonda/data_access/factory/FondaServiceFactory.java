@@ -16,6 +16,7 @@ import com.ds201625.fonda.data_access.services.PaymentService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.domains.Token;
 import com.ds201625.fonda.data_access.services.ZoneService;
 
@@ -70,12 +71,19 @@ public class FondaServiceFactory {
         return serviceFactory.getCommensalService();
     }
 
-
+    /**
+     * Obtiene ser servicio de orden actual
+     * @return
+     */
     public CurrentOrderService getCurrentOrderService(){
         return serviceFactory.getCurrentOrderService();
 
 	}
-	
+
+    /**
+     * Obtiene ser servicio de historial de visitas
+     * @return
+     */
     public HistoryVisitsRestaurantService getHistoryVisitsService(){
         return serviceFactory.getHistoryVisitsService();
     }
@@ -126,7 +134,10 @@ public class FondaServiceFactory {
         return serviceFactory.getDeleteFavoriteRestaurantService();
     }
 
-
+    /**
+     * Obtiene ser servicio de factura
+     * @return
+     */
     public InvoiceService getInvoiceService(){
         return serviceFactory.getInvoiceService();
     }
@@ -139,6 +150,10 @@ public class FondaServiceFactory {
         return serviceFactory.getZoneService();
     }
 
+    /**
+     * Obtiene ser servicio de pago
+     * @return
+     */
     public PaymentService setPaymentService() {
         return serviceFactory.setPaymentService();
     }

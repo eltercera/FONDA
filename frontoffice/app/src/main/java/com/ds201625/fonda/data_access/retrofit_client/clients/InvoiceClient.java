@@ -17,6 +17,12 @@ import retrofit2.http.GET;
  */
 public interface InvoiceClient {
 
+
+    /**
+     * Get /api/currentInvoice
+     * Obtiene la factura de la cuenta cerrada
+     * @return
+     */
     @GET("currentInvoice")
     Call<Invoice> getCurrentInvoice();
 

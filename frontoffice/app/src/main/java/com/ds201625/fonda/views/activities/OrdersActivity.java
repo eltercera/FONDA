@@ -3,7 +3,6 @@ package com.ds201625.fonda.views.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -11,16 +10,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.logic.HandlerSQLite;
 import com.ds201625.fonda.logic.LogicPayment;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
@@ -399,7 +396,10 @@ public class OrdersActivity extends BaseNavigationActivity implements
             int profile = 1;
             if (factFrag == null)
                 try {
-                    LogicPayment.getInstance().registerPayment(profile, a, numberCC);
+                    /**
+                     * Esto no compila
+                     */
+//                    LogicPayment.getInstance().registerPayment(profile, a, numberCC);
                 } catch (Exception e) {
                     e.getMessage();
                 }
