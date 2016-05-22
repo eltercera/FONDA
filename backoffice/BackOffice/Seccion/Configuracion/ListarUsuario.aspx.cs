@@ -1,4 +1,5 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using BackOffice.Content;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System;
@@ -18,132 +19,222 @@ namespace BackOffice.Seccion.Configuracion
         private IRoleDAO _roleDAO;
         private IUserAccountDAO _userAccountDAO;
         private IList<Role> _roleList;
-
+        private Employee _employee;   
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!(IsPostBack))
-            //{ 
+            ClearAlert();
+                LoadTable();
+        }
 
+        protected void ClearAlert ()
+        {
+            this.alert.Attributes.Clear();
+            this.alert.InnerHtml = "";
+        }
+
+        protected void LoadDataTable (string _role)
+        {
+            #region Attributes DAO
             _facDAO = FactoryDAO.Intance;
             _roleDAO = _facDAO.GetRoleDAO();
             _roleList = _roleDAO.GetAll();
-
-            if (IsPostBack)
-            {
-                if (_roleList != null)
-                {
-                    foreach (Role _role in _roleList)
-                    {
-                        this.role.Items.Add(new ListItem(_role.Name, _role.Id.ToString()));
-                    }
-                }
-              }
-            
-
-            this.alert.Attributes.Clear();
-            this.alert.InnerHtml = "";
-
-            
             _employeeDAO = _facDAO.GetEmployeeDAO();
-            _employeeList = _employeeDAO.GetAll();
+            #endregion
 
+            if (_role == "Sistema")
+                _employeeList = _employeeDAO.GetAll();
+            if (_role == "Restaurante")
+            {
+                string _idrest = (string)(Session[RecursoMaster.sessionRestaurantID]); 
+                _employeeList = _employeeDAO.GetAll();
+            }
+                
 
+            #region Llenar Tabla Employee
+            if (_employeeList != null)
+            {
+                foreach (Employee _employee in _employeeList)
+                {
+                    //creo una nueva fila
+                    TableRow tRow = new TableRow();
 
-             if (_employeeList != null)
-             {
-                 foreach (Employee _employee in _employeeList)
-                 {
-                     //creo una nueva fila
-                     TableRow tRow = new TableRow();
+                    //genero las celdas que estaran en la fina
+                    TableCell tCellName = new TableCell();
+                    TableCell tCellLastName = new TableCell();
+                    TableCell tCellSsn = new TableCell();
+                    TableCell tCellRole = new TableCell();
+                    TableCell tCellStatus = new TableCell();
+                    TableCell tCellAction = new TableCell();
+                    Label status = new Label();
 
-                     //genero las celdas que estaran en la fina
-                     TableCell tCellName = new TableCell();
-                     TableCell tCellLastName = new TableCell();
-                     TableCell tCellSsn = new TableCell();
-                     TableCell tCellRole = new TableCell();
-                     TableCell tCellStatus = new TableCell();
-                     TableCell tCellAction = new TableCell();
-                     Label status = new Label();
+                    //botones de las acciones
+                    LinkButton edit = new LinkButton();
+                    LinkButton editStatusA = new LinkButton();
+                    LinkButton editStatusI = new LinkButton();
 
-                     //botones de las acciones
-                     LinkButton edit = new LinkButton();
-                     LinkButton editStatusA = new LinkButton();
-                     LinkButton editStatusI = new LinkButton();
+                    //boton modificar
+                    edit.Click += new EventHandler(Modify_Click);
+                    edit.Attributes.Add("data-id", _employee.Id.ToString());
+                    edit.Text = G1RecursosInterfaz.edit;
 
-                     //boton modificar
-                     edit.Click += new EventHandler(Modificar_Click);
-                     edit.Attributes.Add("data-id",_employee.Id.ToString());
-                     edit.Text = G1RecursosInterfaz.edit;
+                    //boton Modificar status Activo
+                    editStatusA.Click += new EventHandler(ModifyStatus_Click);
+                    editStatusA.Attributes.Add("data-id", _employee.Id.ToString());
+                    editStatusA.Text = G1RecursosInterfaz.editstatusA;
 
-                     //boton Modificar status Activo
-                     editStatusA.Click += new EventHandler(Modificar_Click);
-                     editStatusA.Attributes.Add("data-id", _employee.Id.ToString());
-                     editStatusA.Text = G1RecursosInterfaz.editstatusA;
+                    //boton Modificar status Inactivo
+                    editStatusI.Click += new EventHandler(ModifyStatus_Click);
+                    editStatusI.Attributes.Add("data-id", _employee.Id.ToString());
+                    editStatusI.Text = G1RecursosInterfaz.editstatusI;
 
-                     //boton Modificar status Inactivo
-                     editStatusI.Click += new EventHandler(Modificar_Click);
-                     editStatusI.Attributes.Add("data-id", _employee.Id.ToString());
-                     editStatusI.Text = G1RecursosInterfaz.editstatusI;
+                    //nombre del empleado
+                    tCellName.Text = _employee.Name;
+                    tRow.Cells.Add(tCellName);
 
-                     //nombre del empleado
-                     tCellName.Text = _employee.Name;
-                     tRow.Cells.Add(tCellName);
+                    //apellido del empleado
+                    tCellLastName.Text = _employee.LastName;
+                    tRow.Cells.Add(tCellLastName);
 
-                     //apellido del empleado
-                     tCellLastName.Text = _employee.LastName;
-                     tRow.Cells.Add(tCellLastName);
+                    //ssn del empleado
+                    tCellSsn.Text = _employee.Ssn;
+                    tRow.Cells.Add(tCellSsn);
 
-                     //ssn del empleado
-                     tCellSsn.Text = _employee.Ssn;
-                     tRow.Cells.Add(tCellSsn);
+                    //rol del empleado
+                    tCellRole.Text = _employee.Role.Name;
+                    tRow.Cells.Add(tCellRole);
 
-                     //rol del empleado
-                     tCellRole.Text = _employee.Role.Name;
-                     tRow.Cells.Add(tCellRole);
+                    //validacion de status
+                    if (_employee.Status.ToString() == "Activo")
+                        status.Text = G1RecursosInterfaz.statusA;
+                    else
+                        status.Text = G1RecursosInterfaz.statusI;
 
-                     //validacion de status
-                     if (_employee.Status.ToString() == "Activo")
-                         status.Text = G1RecursosInterfaz.statusA;
-                     else
-                         status.Text = G1RecursosInterfaz.statusI;
+                    //status del empleado
+                    tCellStatus.HorizontalAlign = HorizontalAlign.Center;
+                    tCellStatus.Controls.Add(status);
+                    tRow.Cells.Add(tCellStatus);
 
-                     //status del empleado
-                     tCellStatus.HorizontalAlign = HorizontalAlign.Center;
-                     tCellStatus.Controls.Add(status);
-                     tRow.Cells.Add(tCellStatus);
+                    //botodes de las acciones
+                    tCellAction.HorizontalAlign = HorizontalAlign.Center;
+                    tCellAction.Controls.Add(edit);
+                    tCellAction.Controls.Add(editStatusA);
+                    tCellAction.Controls.Add(editStatusI);
+                    tRow.Cells.Add(tCellAction);
 
-                     //botodes de las acciones
-                     tCellAction.HorizontalAlign = HorizontalAlign.Center;
-                     tCellAction.Controls.Add(edit);
-                     tCellAction.Controls.Add(editStatusA);
-                     tCellAction.Controls.Add(editStatusI);
-                     tRow.Cells.Add(tCellAction);
-
-                     this.TablaEmployee.Rows.Add(tRow);
-                 }
-             }
-
-
-
-
-           
+                    this.TablaEmployee.Rows.Add(tRow);
+                }
+            }
+            #endregion
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void LoadTable()
         {
-            Response.Redirect("../Configuracion/AgregarModificarUsuario.aspx?success=agregar");
+            string _role = (string)(Session[RecursoMaster.sessionRol]);
+            LoadDataTable(_role);
+        }
+        
+        protected void ClearTable()
+        {
+           int _lengt = this.TablaEmployee.Rows.Count;
+
+           while (_lengt > 1)
+           {
+               this.TablaEmployee.Rows.RemoveAt(1);
+               _lengt = this.TablaEmployee.Rows.Count;
+           }
+        }
+
+        protected void HeaderTabletEmployee()
+        {
+            //creo una nueva fila
+            TableRow tRow = new TableRow();
+
+            //genero las celdas que estaran en la fina
+            TableHeaderCell tHCellName = new TableHeaderCell();
+            TableHeaderCell tHCellLastName = new TableHeaderCell();
+            TableHeaderCell tHCellSsn = new TableHeaderCell();
+            TableHeaderCell tHCellRole = new TableHeaderCell();
+            TableHeaderCell tHCellStatus = new TableHeaderCell();
+            TableHeaderCell tHCellAction = new TableHeaderCell();
+
+            //nombre del empleado
+            tHCellName.Text = "Nombre";
+            tRow.Cells.Add(tHCellName);
+
+            //apellido del empleado
+            tHCellLastName.Text = "Apellido";
+            tRow.Cells.Add(tHCellLastName);
+
+            //ssn del empleado
+            tHCellSsn.Text = "CI";
+            tRow.Cells.Add(tHCellSsn);
+
+            //rol del empleado
+            tHCellRole.Text = "Rol";
+            tRow.Cells.Add(tHCellRole);
+
+            //status del empleado
+            tHCellStatus.Text = "Status";
+            tRow.Cells.Add(tHCellStatus);
+
+            //acciones
+            tHCellAction.Text = "Acciones";
+            tRow.Cells.Add(tHCellAction);
+
+            this.TablaEmployee.Rows.Add(tRow);
         }
 
         protected void ModalInfo_Click(object sender, EventArgs e)
         {
             Response.Redirect("../Configuracion/AgregarModificarUsuario.aspx?success=agregar");
         }
-        protected void ModalAgregar_Click(object sender, EventArgs e)
-        { 
-            ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#formUser').modal('show');", true);
+
+        protected void Add_Click(object sender, EventArgs e)
+        {
+            ClearModalAddModify();
+            ChangeRole();
+            ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
         }
-        protected void ClearModalAgregar()
+
+        protected void Modify_Click(object sender, EventArgs e)
+        {
+            ClearModalAddModify();
+            ChangeRole();
+
+            LinkButton clickedLink = (LinkButton)sender;
+            int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
+
+            _facDAO = FactoryDAO.Intance;
+            _employeeDAO = _facDAO.GetEmployeeDAO();
+            _employee = _employeeDAO.FindById(_idEmployee);
+
+            this.nameUser.Text = _employee.Name;
+            this.lastNameUser.Text = _employee.LastName;
+            this.address.Text = _employee.Address;
+            this.phoneNumber.Text = _employee.PhoneNumber;
+            this.nss1.Text = _employee.Ssn.Substring(0, 1);
+            int _length = (_employee.Ssn.Length) - 2;
+            this.nss2.Text = _employee.Ssn.Substring(2, _length);
+            this.gender.Text = _employee.Gender.ToString();
+            this.birtDate.Text = _employee.BirthDate.ToString();
+            this.userNameU.Text = _employee.Username;
+            this.role.Text = _employee.Role.Id.ToString();
+            this.email.Text = _employee.UserAccount.Email;
+            this.password.Enabled = false;
+            this.repitPassword.Enabled = false;
+            this.ButtonAddModify.Text = "Modificar";
+            this.ButtonAddModify.Attributes.Add("data-id", _idEmployee.ToString());
+            ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
+
+        }
+
+        protected void Cancel_Click(object sender, EventArgs e)
+        {
+            Alerts("Cancel");
+        }
+
+        protected void ClearModalAddModify()
         {
             this.nameUser.Text = "";
             this.nameUser.Attributes["placeholder"] = "Nombre";
@@ -169,50 +260,29 @@ namespace BackOffice.Seccion.Configuracion
             this.repitPassword.Attributes["placeholder"] = "Repetir Password";
             this.userNameU.Text = "";
             this.userNameU.Attributes["placeholder"] = "Usuario";
-            this.statusI.Checked = true;
-            this.ButtonAgrMod.Text = "Agregar";
+            this.password.Enabled = true;
+            this.repitPassword.Enabled = true;
+            this.ButtonAddModify.Text = "Agregar";     
         }
-        protected void ButtonCancelar_Click(object sender, EventArgs e)
-        {
-            this.alert.Attributes[G1RecursosInterfaz.alertClase] = G1RecursosInterfaz.danger;
-            this.alert.Attributes[G1RecursosInterfaz.alertRole] = "alert";
-            this.alert.InnerHtml = G1RecursosInterfaz.dangerModificacioninicio + "El Rol" + G1RecursosInterfaz.dangerModificacionFinal;
-        }
-        protected void ModalAgregarModificar_Click(object sender, EventArgs e)
+
+        protected void ChangeRole()
         {
             _facDAO = FactoryDAO.Intance;
-            _employeeDAO = _facDAO.GetEmployeeDAO();
             _roleDAO = _facDAO.GetRoleDAO();
-            _userAccountDAO = _facDAO.GetUserAccountDAO();
-            Employee _employee = new Employee();
-           
-            if (ButtonAgrMod.Text == "Agregar")
+            _roleList = _roleDAO.GetAll();
+            if (_roleList != null)
             {
-                _employee = new Employee();
-                SetEmployee(_employee);
+                foreach (Role _role in _roleList)
+                {
+                    this.role.Items.Add(new ListItem(_role.Name, _role.Id.ToString()));
+                }
             }
-            if (ButtonAgrMod.Text == "Modificar")
-            {
-                Button clickedLink = (Button)sender;
-                int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
-                _employee = _employeeDAO.FindById(_idEmployee);
-                SetEmployee(_employee);
-            }
-
-            _userAccountDAO.Save(_employee.UserAccount);
-           _employeeDAO.Save(_employee);
-            //Alert Si modifico o no
-            ClearModalAgregar();
         }
 
-        protected void SetEmployee (Employee _employee)
+        protected void SetEmployee(Employee _employee)
         {
             Role _role;
-            if (this.role.Text != "")
-            {
-                _role = _roleDAO.FindById(int.Parse(this.role.SelectedValue));
-                _employee.Role = _role;
-            }
+            
             if (this.nameUser.Text != "")
                 _employee.Name = this.nameUser.Text;
             if (this.lastNameUser.Text != "")
@@ -226,14 +296,19 @@ namespace BackOffice.Seccion.Configuracion
                 string _ssn = this.nss1.Text + "-" + this.nss2.Text;
                 _employee.Ssn = _ssn;
             }
-            if (this.gender.Text != "")   
+            if (this.gender.Text != "")
                 _employee.Gender = char.Parse(this.gender.SelectedValue);
             if (this.birtDate.Text != "")
                 _employee.BirthDate = DateTime.Parse(this.birtDate.Text);
             if (this.userNameU.Text != "")
                 _employee.Username = this.userNameU.Text;
+            if (this.role.Text != "")
+            {
+                _role = _roleDAO.FindById(int.Parse(this.role.SelectedValue));
+                _employee.Role = _role;
+            }
 
-            if (this.ButtonAgrMod.Text == "Agregar")
+            if (this.ButtonAddModify.Text == "Agregar")
             {
                 if (this.email.Text != "" && this.password.Text != "")
                 {
@@ -242,50 +317,214 @@ namespace BackOffice.Seccion.Configuracion
                     _userAccount.Password = this.password.Text;
                     _employee.UserAccount = _userAccount;
                 }
-               // _employee.RecordStatus = InsertedStatus.Instance;
 
             }
             else
-                if (this.ButtonAgrMod.Text == "Modificar")
+                if (this.ButtonAddModify.Text == "Modificar")
                 {
-                    if (_employee.UserAccount.Email != this.email.Text)
-                    {
+                    if (this.email.Text != "")
                         _employee.UserAccount.Email = this.email.Text;
-                    }
                 }
-            
         }
 
-        protected void Modificar_Click(object sender, EventArgs e)
+        protected void ModalAddModify_Click(object sender, EventArgs e)
         {
-            LinkButton clickedLink = (LinkButton)sender;
-            int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
-
             _facDAO = FactoryDAO.Intance;
             _employeeDAO = _facDAO.GetEmployeeDAO();
-           // _roleDAO = _facDAO.GetRoleDAO();
+            _roleDAO = _facDAO.GetRoleDAO();
+            _userAccountDAO = _facDAO.GetUserAccountDAO();
+            _employee = new Employee();
+            bool _emailValid, _ssnValid, _userNameValid;
 
-            Employee _employee = _employeeDAO.FindById(_idEmployee);
+            _emailValid = ValidationEmail();
+            _ssnValid = ValidationSsn();
+            _userNameValid = ValidationUsername();
+
+            if (ButtonAddModify.Text == "Agregar")
+            {
+                if (_emailValid)
+                {
+                    this.menssageEmail.Attributes.Clear();
+                    this.menssageEmail.InnerHtml = "";
+                }
+                if (_ssnValid)
+                {
+                    this.menssageSsn.Attributes.Clear();
+                    this.menssageSsn.InnerHtml = "";
+                }
+                if (_userNameValid)
+                {
+                    this.menssageUsername.Attributes.Clear();
+                    this.menssageUsername.InnerHtml = "";
+                }
+
+                if (_emailValid && _ssnValid && _userNameValid)
+                {
+                    _employee.Status = _facDAO.GetActiveSimpleStatus();
+                }
+            }
+            if (ButtonAddModify.Text == "Modificar")
+            {
+                Button clickedLink = (Button)sender;
+                int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
+                _employee = _employeeDAO.FindById(_idEmployee);
+                string _ssn = this.nss1.Text + "-" + this.nss2.Text;
+
+                if (this.email.Text == _employee.UserAccount.Email)
+                {
+                    _emailValid = true;
+                    this.menssageEmail.Attributes.Clear();
+                    this.menssageEmail.InnerHtml = "";
+                }
+                if (_ssn == _employee.Ssn)
+                {
+                    _ssnValid = true;
+                    this.menssageSsn.Attributes.Clear();
+                    this.menssageSsn.InnerHtml = "";
+                }
+                if (this.userNameU.Text == _employee.Username)
+                {
+                    _userNameValid = true;
+                    this.menssageUsername.Attributes.Clear();
+                    this.menssageUsername.InnerHtml = "";
+                }
+            }
+
+            if (_emailValid && _ssnValid && _userNameValid) 
+            {
+
+                SetEmployee(_employee);
+                if (_employee.UserAccount.Id.ToString() == "0")
+                {
+                    _userAccountDAO.Save(_employee.UserAccount);
+                }
+                _employeeDAO.Save(_employee);
+                if (ButtonAddModify.Text == "Agregar")
+                {
+                    Alerts("Add");
+                }
+                if (ButtonAddModify.Text == "Modificar")
+                {
+                    Alerts("Modify");
+                }
+                ClearModalAddModify();
+
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
+            }
+           
             
-            this.nameUser.Text = _employee.Name;
-            this.lastNameUser.Text = _employee.LastName;
-            this.address.Text = _employee.Address;
-            this.phoneNumber.Text = _employee.PhoneNumber;
-            this.nss1.Text = _employee.Ssn.Substring(0,1);
-            int _length = (_employee.Ssn.Length) - 2;
-            this.nss2.Text = _employee.Ssn.Substring(2, _length);
-            this.gender.Text = _employee.Gender.ToString();
-            this.birtDate.Text = _employee.BirthDate.ToString();
-            this.userNameU.Text = _employee.Username;
-            //this.statusA.Checked = true;
-            this.role.Text = _employee.Role.Id.ToString();
-            this.email.Text = _employee.UserAccount.Email;
-            this.password.Enabled = false;
-            this.repitPassword.Enabled = false;
-            this.ButtonAgrMod.Text = "Modificar";
-            this.ButtonAgrMod.Attributes.Add("data-id", _idEmployee.ToString());
-            ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#formUser').modal('show');", true);
+        } 
 
+        protected void Alerts(string _success)
+        {
+            switch (_success)
+            {
+                case "Add":     this.alert.Attributes[G1RecursosInterfaz.alertClase] = G1RecursosInterfaz.success;
+                                this.alert.Attributes[G1RecursosInterfaz.alertRole] = "alert";
+                                this.alert.InnerHtml = G1RecursosInterfaz.buttonAlert + G1RecursosInterfaz.iconSuccess + "El Empleado ha sido" + G1RecursosInterfaz.strongAdd;
+                                break;
+
+                case "Modify":  this.alert.Attributes[G1RecursosInterfaz.alertClase] = G1RecursosInterfaz.success;
+                                this.alert.Attributes[G1RecursosInterfaz.alertRole] = "alert";
+                                this.alert.InnerHtml = G1RecursosInterfaz.buttonAlert + G1RecursosInterfaz.iconSuccess + "El Empleado ha sido" + G1RecursosInterfaz.strongModify;
+                                break;
+
+                case "Status":  this.alert.Attributes[G1RecursosInterfaz.alertClase] = G1RecursosInterfaz.success;
+                                this.alert.Attributes[G1RecursosInterfaz.alertRole] = "alert";
+                                this.alert.InnerHtml = G1RecursosInterfaz.buttonAlert + G1RecursosInterfaz.iconSuccess + "El Status del Empleado ha sido" + G1RecursosInterfaz.strongModify;
+                                break;
+
+                case "DangerAdd":    this.alert.Attributes[G1RecursosInterfaz.alertClase] = G1RecursosInterfaz.danger;
+                                     this.alert.Attributes[G1RecursosInterfaz.alertRole] = "alert";
+                                     this.alert.InnerHtml = G1RecursosInterfaz.buttonAlert + G1RecursosInterfaz.iconDanger + G1RecursosInterfaz.strongError + "al agregar el Empleado";
+                                     break;
+
+                case "DangerModify":  this.alert.Attributes[G1RecursosInterfaz.alertClase] = G1RecursosInterfaz.danger;
+                                      this.alert.Attributes[G1RecursosInterfaz.alertRole] = "alert";
+                                      this.alert.InnerHtml = G1RecursosInterfaz.buttonAlert + G1RecursosInterfaz.iconDanger + G1RecursosInterfaz.strongError + "al modificar el Empleado";
+                                      break;
+
+                case "DangerStatus":  this.alert.Attributes[G1RecursosInterfaz.alertClase] = G1RecursosInterfaz.danger;
+                                      this.alert.Attributes[G1RecursosInterfaz.alertRole] = "alert";
+                                      this.alert.InnerHtml = G1RecursosInterfaz.buttonAlert + G1RecursosInterfaz.iconDanger + G1RecursosInterfaz.strongError + "al modificar Status del Empleado";
+                                      break;
+
+                case "Exception":
+                    break;
+
+                case "Cancel":  this.alert.Attributes[G1RecursosInterfaz.alertClase] = G1RecursosInterfaz.danger;
+                                this.alert.Attributes[G1RecursosInterfaz.alertRole] = "alert";
+                                this.alert.InnerHtml = G1RecursosInterfaz.buttonAlert + "La acción ha sido" + G1RecursosInterfaz.strogCancel;
+                                break;
+
+                case "DangerEmail": this.menssageEmail.InnerHtml = G1RecursosInterfaz.iconDanger + G1RecursosInterfaz.strongNot + "Disponible!";
+                                    break;
+
+                case "DangerUsername":  this.menssageUsername.InnerHtml = G1RecursosInterfaz.iconDanger + G1RecursosInterfaz.strongNot + "Disponible!";
+                                        break;
+
+                case "DangerSsn": this.menssageSsn.InnerHtml = G1RecursosInterfaz.iconDanger + " Ya Existe!";
+                                        break;
+            }
+        }
+
+        protected bool ValidationEmail()
+        {
+                _userAccountDAO = _facDAO.GetUserAccountDAO();
+                UserAccount _userAccount = new UserAccount();
+                 _userAccount = _userAccountDAO.FindByEmail(this.email.Text);
+                 if (_userAccount != null)
+                {
+                    Alerts("DangerEmail");
+                    return false;
+                }
+            return true;
+        }
+
+        protected bool ValidationUsername()
+        {
+            _employee = new Employee();
+            _employee = _employeeDAO.FindByusername(this.userNameU.Text);
+            if (_employee != null)
+            {
+                Alerts("DangerUsername");
+                return false;
+            }
+            return true;
+        }
+
+        protected bool ValidationSsn()
+        {
+            _employee = new Employee();
+            string _ssn = this.nss1.Text + "-" + this.nss2.Text;
+            _employee = _employeeDAO.FindBySsn(_ssn);
+            if (_employee != null)
+            {
+                Alerts("DangerSsn");
+                return false;
+            }
+            return true;
+        }
+
+        protected void ModifyStatus_Click(object sender, EventArgs e)
+        {
+            _facDAO = FactoryDAO.Intance;
+            _employeeDAO = _facDAO.GetEmployeeDAO();
+            _employee = new Employee();
+
+            LinkButton clickedLink = (LinkButton)sender;
+            int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
+            _employee = _employeeDAO.FindById(_idEmployee);
+            
+            if(clickedLink.Text == G1RecursosInterfaz.editstatusA) 
+                _employee.Status = _facDAO.GetActiveSimpleStatus();
+            if (clickedLink.Text == G1RecursosInterfaz.editstatusI)
+                _employee.Status = _facDAO.GetDisabledSimpleStatus();
+            _employeeDAO.Save(_employee);
+            Alerts("Status");
         }
     }
 }
