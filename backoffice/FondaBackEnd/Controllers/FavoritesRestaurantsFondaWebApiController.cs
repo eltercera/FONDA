@@ -44,13 +44,14 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             }
             return Ok(commensal);
         }
+        
         /// <summary>
-        /// funcion que agrega restaurante a la lista de favoritos de un 
-        /// commensal, recibe id del restaurante a agregar, devuelve lista
-        /// actualizada 
+        /// 
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="idcommensal"></param>
+        /// <param name="idrestaurant"></param>
         /// <returns></returns>
+
         [Route("addfavorite/{idcommensal}/{idrestaurant}")]
         [HttpGet]
         ///[FondaAuthToken]
@@ -60,7 +61,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Commensal commensal = (Commensal)GetCommensalDao().FindById(idcommensal);
             ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO();
             Restaurant restaurant = GetRestaurantDao().FindById(idrestaurant);
-            //commensal.AddFavoriteRestaurant(restaurant);
             bool existe = false;
             IList<Restaurant> favorites;
             if (commensal == null)
@@ -121,7 +121,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         {
             Commensal commensal = (Commensal)GetCommensalDao().FindById(id);
 
-            /*foreach (var restaurant in commensal.FavoritesRestaurants)
+            foreach (var restaurant in commensal.FavoritesRestaurants)
             {
                 restaurant.RestaurantCategory = new RestaurantCategory
                 {
@@ -129,7 +129,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                     Id = restaurant.RestaurantCategory.Id
                 };
 
-            }*/
+            }
 
             return Ok(commensal.FavoritesRestaurants);
 

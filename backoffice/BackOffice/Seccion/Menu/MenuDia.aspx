@@ -96,7 +96,36 @@ Menú Del Día
                     
                 </div>
             </div>
+         </div>
 
+         
+         <!-- Modal Desactivar sugerencia-->
+        <div class="modal fade" id="remove_suggestion" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Desactivar Sugerencia</h4>
+                            </div>
+                                <div class="modal-body">
+                                     <div class="row">
+                                             <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Desea desactivar la sugerencia del día a este platillo</label>
+                                                    </div>
+                                            </div>    
+                                     </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button ID="ButtonModifySuggestion" Text="Aceptar" CssClass="btn btn-success" OnClick="ButtonModifySuggestion_Click" runat="server" />
+                                    <asp:Button ID="Button4" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
+                                </div>
+                      </div>
+                </div>
+         </div>
+     
 
      <%-- codigo de jascript pendiente aqui el numero 3 es para seleccionar elementos de la 3era columna de la tabla   --%>
        <%--  en el modal es importante que las areas de texto donde se muestran las cosas en el modal sean del tipo asp textBox si no no furula --%>
@@ -132,21 +161,21 @@ Menú Del Día
                             ////aqui es donde tomo los valores de los textbox y se lo mando al modal con el getdata
                             //fijate que aqui estan los valores del modal de mostrar plato con sus elementos 
                             //el sabe que es el modal de mostrar plato por que asi defini el evento cuando arme la tabla
-                           },
-                           failure: function (response) {
-                               alert("_");
-                           }
-                       });
+                        },
+                        failure: function (response) {
+                            alert("_");
+                        }
+                    });
                 });
-               }
-               function setValue() {
-                   $('.table > tbody > tr > td:nth-child(3) > a')
-                   .click(function () {
-                       var padreId = $(this).parent().parent().attr("data-id");
-                       document.getElementById("<%=HiddenFieldSuggestionDishId.ClientID%>").value = padreId;
+            }
+            function setValue() {
+                $('.table > tbody > tr > td:nth-child(3) > a')
+                .click(function () {
+                    var padreId = $(this).parent().parent().attr("data-id");
+                    document.getElementById("<%=HiddenFieldSuggestionDishId.ClientID%>").value = padreId;
 
-                                });
-                            }
+                   });
+               }
 
 
 

@@ -4,7 +4,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 
-namespace DataAccessTest
+namespace FondaDataAccessTest
 {
     [TestFixture()]
     public class BOCashPaymentTest
