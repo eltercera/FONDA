@@ -13,12 +13,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         }
 
         public IList<Reservation> FindByRestaurant(int restaurant)
-        {
+        { 
             IList<Reservation> reservations = GetAll();
             IList<Reservation> reservationsRestaurant = new List<Reservation>();
 
             foreach (Reservation t in reservations)
-            {
+            { 
                 if (t.ReserveRestaurant.Id == restaurant)
                     reservationsRestaurant.Add(t);
             }
