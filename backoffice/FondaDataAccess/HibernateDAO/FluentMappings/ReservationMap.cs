@@ -27,7 +27,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             References(x => x.ReserveRestaurant)
               .Column("fk_res_restaurant");
-            //.Not.Nullable();
+           //   .Not.Nullable();
 
             References(x => x.ReserveTable)
               .Column("fk_res_table");
@@ -37,6 +37,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Column("fk_res_status")
                 .Not.Nullable()
                 .Cascade.Persist();
+
+            References(x => x.ReserveUser)
+              .Column("fk_res_user");
+            //  .Not.Nullable();
 
         }
     }

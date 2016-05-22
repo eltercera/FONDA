@@ -77,16 +77,60 @@ namespace DataAccessTests
             _reservation.CommensalNumber = 3;
             _reservation.ReserveStatus = ActiveReservationStatus.Instance;
 
+            //Restaurant _restaurant = new Restaurant();
+            //_restaurant.Id = 1;
+            //_restaurant.Name = "Tierra Mar";
+            //_restaurant.Logo = "C:/";
+            //_restaurant.Nationality = 'V';
+            //_restaurant.Ssn = "123456";
+            //_restaurant.Address = "Av. El ejercito con puente de San Juan";
+            //_restaurant.Status = _facDAO.GetActiveSimpleStatus();
+            //_reservation.ReserveRestaurant = _restaurant;
+            
+
+            //UserAccount _commensal = new UserAccount();
+            //_commensal.SesionTokens = null;
+            //_commensal.FavoritesRestaurants = null;
+            //_commensal.Profiles = null;
+            //_commensal.Id = 1;
+            //_commensal.Email = "josefg19@gmail.com";
+            //_commensal.Password = "12345";
+            //_commensal.Status = ActiveSimpleStatus.Instance;
+            //_reservation.ReserveUser = _commensal;
+
         }
 
 
         private void reservationAssertions(bool edit = false)
         {
+            //UserAccount _commensal = new UserAccount();
+            //_commensal.SesionTokens = null;
+            //_commensal.FavoritesRestaurants = null;
+            //_commensal.Profiles = null;
+            //_commensal.Id = 1;
+            //_commensal.Email = "josefg19@gmail.com";
+            //_commensal.Password = "12345";
+            //_commensal.Status = ActiveSimpleStatus.Instance;
+            //_reservation.ReserveUser = _commensal;
+
+            //Restaurant _restaurant = new Restaurant();
+            //_restaurant.Id = 1;
+            //_restaurant.Name = "Tierra Mar";
+            //_restaurant.Logo = "C:/";
+            //_restaurant.Nationality = 'V';
+            //_restaurant.Ssn = "123456";
+            //_restaurant.Address = "Av. El ejercito con puente de San Juan";
+            //_restaurant.Status = _facDAO.GetActiveSimpleStatus();
+            //_reservation.ReserveRestaurant = _restaurant;
+
             Assert.IsNotNull(_reservation);
             Assert.AreEqual(_reservation.ReserveDate, new DateTime(2016, 09, 27, 15, 30, 00));
             Assert.AreEqual(_reservation.CreateDate, new DateTime(2016, 09, 15, 14, 30, 00));
             Assert.AreEqual(_reservation.CommensalNumber, 3);
             Assert.AreEqual(_reservation.ReserveStatus, ActiveReservationStatus.Instance);
+            //Assert.AreEqual(_reservation.ReserveUser, _commensal);
+            //Assert.AreEqual(_reservation.ReserveRestaurant, _restaurant);
+
         }
 
         [TestFixtureTearDown]

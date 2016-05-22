@@ -12,6 +12,11 @@ namespace com.ds201625.fonda.Domain
     public class Reservation : BaseEntity
     {
         /// <summary>
+        /// Usuario que realizo la reserva
+        /// </summary>
+        private Commensal _reserveUser;
+
+        /// <summary>
         /// Fecha de reservación
         /// </summary>
         private DateTime _reserveDate;
@@ -44,7 +49,14 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
 		/// Constructor
 		/// </summary>
-		public Reservation() : base () { }
+		public Reservation() : base () {
+          //  _reserveUser = new Commensal();
+        }
+        public virtual Commensal ReserveUser
+        {
+            get { return _reserveUser; }
+            set { _reserveUser = value; }
+        }
 
         public virtual DateTime ReserveDate
         {
@@ -81,7 +93,5 @@ namespace com.ds201625.fonda.Domain
             get { return _reserveStatus; }
             set { _reserveStatus = value; }
         }
-
-
     }
 }
