@@ -9,6 +9,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using System.Data;
 using System.Web.Services;
+using System.Text.RegularExpressions;
 
 namespace BackOffice.Seccion.Menu
 {
@@ -331,33 +332,43 @@ namespace BackOffice.Seccion.Menu
 
             try
             {
-                //creo una instancia del factory
-                FactoryDAO _factoryDAO = FactoryDAO.Intance;
-                //creo una instancia del IDishDAO
-                IDishDAO _dishDAO = _factoryDAO.GetDishDAO();
-                //obtengo el id del plato desde el hidden field
-                string _dishIdString = HiddenFieldDishModifyId.Value;
-                //convierto el id en integer
-                int _dishIdInt = int.Parse(_dishIdString);
-                //busco el plato por el id que lo asigna a la variable
-                Dish _dish = _dishDAO.FindById(_dishIdInt);
+                String dishM = TextBoxModifyDishName.Text;
+                String descriptionM = TextBoxModifyDishDescription.Text;
+                String costM = TextBoxModifyDishPrice.Text;
 
-                //Lleno los campos del objeto Dish en la BD con los inputs del modal
-                _dish.Name = TextBoxModifyDishName.Text;
-                // _mencat.ListDish = null; Deberia añadir el plato a la lista de donde se llamo el modal de add_dish
-                _dish.Description = TextBoxModifyDishDescription.Text;
-                //hay que manejar la carga de imagenes de platos
-                // _dish.Image = null;
-                //sugerencia en falso por defecto
-                //    _dish.Suggestion = false;
-                _dish.Cost = float.Parse(TextBoxModifyDishPrice.Text);
+                if (DishValidate(dishM, descriptionM, costM))
+                {
+                    //creo una instancia del factory
+                    FactoryDAO _factoryDAO = FactoryDAO.Intance;
+                    //creo una instancia del IDishDAO
+                    IDishDAO _dishDAO = _factoryDAO.GetDishDAO();
+                    //obtengo el id del plato desde el hidden field
+                    string _dishIdString = HiddenFieldDishModifyId.Value;
+                    //convierto el id en integer
+                    int _dishIdInt = int.Parse(_dishIdString);
+                    //busco el plato por el id que lo asigna a la variable
+                    Dish _dish = _dishDAO.FindById(_dishIdInt);
 
-                //guardo el plato
-                _dishDAO.Save(_dish);
+                    //Lleno los campos del objeto Dish en la BD con los inputs del modal
+                    _dish.Name = TextBoxModifyDishName.Text;
+                    // _mencat.ListDish = null; Deberia añadir el plato a la lista de donde se llamo el modal de add_dish
+                    _dish.Description = TextBoxModifyDishDescription.Text;
+                    //hay que manejar la carga de imagenes de platos
+                    // _dish.Image = null;
+                    //sugerencia en falso por defecto
+                    //    _dish.Suggestion = false;
+                    _dish.Cost = float.Parse(TextBoxModifyDishPrice.Text);
 
-                //muestro la alerta de exito
-                AlertSuccess_ModifyDish.Visible = true;
+                    //guardo el plato
+                    _dishDAO.Save(_dish);
 
+                    //muestro la alerta de exito
+                    AlertSuccess_ModifyDish.Visible = true;
+                }
+                else
+                {
+                    AlertDanger_ModifyDish.Visible = true;
+                }
             }
             //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
             catch (Exception exc)
@@ -368,10 +379,50 @@ namespace BackOffice.Seccion.Menu
             }
             finally
             {
+                TextBoxModifyDishName.Text = string.Empty;
+                TextBoxModifyDishDescription.Text = string.Empty;
+                TextBoxModifyDishPrice.Text = string.Empty;
+
                 //cargo la tabla
                 LoadDishTable();
+
             }
 
+        }
+
+        /// <summary>
+        /// Valida los datos ingresados al agregar categoria
+        /// </summary>
+        /// <param name="name">Nombre del plato</param>
+        /// /// <param name="description">Descripcion del plato</param>
+        /// /// <param name="cost">EL precio del plato</param>
+        /// <returns>Devuelve true si son validos los datos, false si son incorrectos</returns>
+        private bool DishValidate(string name, string description, string cost)
+        {
+            bool valid = true;
+            string patron = "^[A-Za-z]*$";
+            string patronFloat = "^[0-9]*$"; // "^\-{0,1}\d+(.\d+){0,1}$"
+
+            if (name == "" || description == "" || cost == null)
+            {
+                valid = false;
+            }
+
+            if (!Regex.IsMatch(name, patron))
+            {
+                valid = false;
+            }
+
+            if (!Regex.IsMatch(description, patron))
+            {
+                valid = false;
+            }
+
+            if (!Regex.IsMatch(cost, patronFloat))
+            {
+                valid = false;
+            }
+            return valid;
         }
 
         protected void ButtonAddDish_Click(object sender, EventArgs e)
@@ -379,39 +430,52 @@ namespace BackOffice.Seccion.Menu
 
             try
             {
-                //creo una instancia del factory
-                FactoryDAO _factoryDAO = FactoryDAO.Intance;
-                //Creo una instancia de Dish
-                Dish _dish = new Dish();
-                //obtengo el IMenuCategoryDAO
-                IMenuCategoryDAO _menCatDAO = _factoryDAO.GetMenuCategoryDAO();
-                //creao la lista de categorias
-                IList<MenuCategory> _listMenCat = _menCatDAO.GetAll();
-                //creo un objeto tipo MenuCategory
-                MenuCategory _menCat = new MenuCategory();
-                //obtengo el objeto por el id del valor seleccionado en el DropDownList
-                _menCat = _menCatDAO.FindById(int.Parse(DropDownListMenuCategoryAddDish.SelectedValue));
+                String dishA = TextBoxAddDishName.Text;
+                String descriptionA = TextBoxAddDishDescription.Text;
+                String costA = TextboxAddDishPrice.Text;
+
+                if ((DishValidate(dishA, descriptionA, costA)))
+                {
+
+                    //creo una instancia del factory
+                    FactoryDAO _factoryDAO = FactoryDAO.Intance;
+                    //Creo una instancia de Dish
+                    Dish _dish = new Dish();
+                    //obtengo el IMenuCategoryDAO
+                    IMenuCategoryDAO _menCatDAO = _factoryDAO.GetMenuCategoryDAO();
+                    //creao la lista de categorias
+                    IList<MenuCategory> _listMenCat = _menCatDAO.GetAll();
+                    //creo un objeto tipo MenuCategory
+                    MenuCategory _menCat = new MenuCategory();
+                    //obtengo el objeto por el id del valor seleccionado en el DropDownList
+                    _menCat = _menCatDAO.FindById(int.Parse(DropDownListMenuCategoryAddDish.SelectedValue));
 
 
-                //Lleno los campos del objeto Dish en la BD con los inputs del modal
-                _dish.Name = TextBoxAddDishName.Text;
-                // _mencat.ListDish = null; Deberia añadir el plato a la lista de donde se llamo el modal de add_dish
-                _dish.Description = TextBoxAddDishDescription.Text;
-                //hay que manejar la carga de imagenes de platos
-                _dish.Image = null;
-                //sugerencia en falso por defecto
-                _dish.Suggestion = false;
-                _dish.Cost = float.Parse(TextboxAddDishPrice.Text);
-                //status en activo por defecto
-                _dish.Status = _factoryDAO.GetActiveSimpleStatus();
-                //guardo el plato en la lista de platos de la categoria
-                _menCat.ListDish.Add(_dish);
-                //guardo la categoria
-                _menCatDAO.Save(_menCat);
+                    //Lleno los campos del objeto Dish en la BD con los inputs del modal
+                    _dish.Name = TextBoxAddDishName.Text;
+                    // _mencat.ListDish = null; Deberia añadir el plato a la lista de donde se llamo el modal de add_dish
+                    _dish.Description = TextBoxAddDishDescription.Text;
+                    //hay que manejar la carga de imagenes de platos
+                    _dish.Image = null;
+                    //sugerencia en falso por defecto
+                    _dish.Suggestion = false;
+                    _dish.Cost = float.Parse(TextboxAddDishPrice.Text);
+                    //status en activo por defecto
+                    _dish.Status = _factoryDAO.GetActiveSimpleStatus();
+                    //guardo el plato en la lista de platos de la categoria
+                    _menCat.ListDish.Add(_dish);
+                    //guardo la categoria
+                    _menCatDAO.Save(_menCat);
 
 
-                //muestro la alerta de exito
-                AlertSuccess_AddDish.Visible = true;
+                    //muestro la alerta de exito
+                    AlertSuccess_AddDish.Visible = true;
+                }
+                else
+                {
+                    AlertDanger_AddDish.Visible = true;
+
+                }
             }
             //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
             catch (Exception exc)
@@ -425,9 +489,11 @@ namespace BackOffice.Seccion.Menu
                 CleanMenuCategoryDropDown();
                 //cargo la tabla
                 LoadDishTable();
+                TextBoxAddDishName.Text = string.Empty;
+                TextBoxAddDishDescription.Text = string.Empty;
+                TextboxAddDishPrice.Text = string.Empty;
             }
         }
-
         protected void ButtonCancelAddDish_Click(object sender, EventArgs e)
         {
 
@@ -484,21 +550,29 @@ namespace BackOffice.Seccion.Menu
         /// </summary>
         public void FillMenuCategoryDropdown()
         {
-            //Genero los objetos para la consulta
-            //Genero la lista de la consulta
-            FactoryDAO _factoryDAO = FactoryDAO.Intance;
-            IMenuCategoryDAO _menCatDAO = _factoryDAO.GetMenuCategoryDAO();
-            IList<MenuCategory> _listMenCat = _menCatDAO.GetAll();
-            int i = 0;
-            //Se llenan los Dropdownlist con los registros existentes
-            foreach (MenuCategory _mencat in _listMenCat)
+            try
             {
+                //Genero los objetos para la consulta
+                //Genero la lista de la consulta
+                FactoryDAO _factoryDAO = FactoryDAO.Intance;
+                IMenuCategoryDAO _menCatDAO = _factoryDAO.GetMenuCategoryDAO();
+                IList<MenuCategory> _listMenCat = _menCatDAO.GetAll();
+                int i = 0;
+                //Se llenan los Dropdownlist con los registros existentes
+                foreach (MenuCategory _mencat in _listMenCat)
+                {
 
-                DropDownListMenuCategoryAddDish.Items.Add(_mencat.Name);
-                DropDownListMenuCategoryAddDish.Items[i].Value = _mencat.Id.ToString();
-                //  DropDownListMenuCategoryModifyDish.Items.Add(_mencat.Name);
+                    DropDownListMenuCategoryAddDish.Items.Add(_mencat.Name);
+                    DropDownListMenuCategoryAddDish.Items[i].Value = _mencat.Id.ToString();
+                    //  DropDownListMenuCategoryModifyDish.Items.Add(_mencat.Name);
 
-                i++;
+                    i++;
+                }
+            }
+            catch (Exception exc)
+            {
+                System.Console.WriteLine("Excepcion capturada: {0}", exc);
+
             }
         }
 
