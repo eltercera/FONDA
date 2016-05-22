@@ -13,6 +13,7 @@ import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Token;
+import com.ds201625.fonda.data_access.services.ZoneService;
 
 /**
  * Singelton de fabrica de servicios
@@ -126,4 +127,5 @@ public class FondaServiceFactory {
         return serviceFactory.getInvoiceService();
     }
 
+    public ZoneService getZoneService() { return serviceFactory.getZoneService();}
 }
