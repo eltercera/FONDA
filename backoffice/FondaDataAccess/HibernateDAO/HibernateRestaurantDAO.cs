@@ -59,11 +59,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             IZoneDAO _zoneDAO = _facDAO.GetZoneDAO();
             IScheduleDAO _scheduleDAO = _facDAO.GetScheduleDAO();
 
-
+            //se genera objeto de coordinate
             Coordinate coordinate = new Coordinate();
             coordinate.Latitude = Lat;
             coordinate.Longitude = Long;
-
+            // se crea objetos de restaurante 
             Restaurant restaurant = new Restaurant();
             restaurant.Name = Name;
             restaurant.Logo = Logo;
@@ -127,17 +127,17 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
             // Consigue el Restaurante de la Base de Datos
             com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(_idRestaurant);
-            
+            //convertir coordenadas a decimal para cortarlas asi se puede detectar coicidencia en una misma zona
             Decimal _latitudDecimal= Math.Round(Convert.ToDecimal(_latitudUser), 2);
             Decimal _longitudDecimal = Math.Round(Convert.ToDecimal(_longitudUser), 2);
-
             Decimal _latitudRestaurantDecimal= Math.Round(Convert.ToDecimal(_restaurant.Coordinate.Latitude), 2);
             Decimal _longitudRestaurantDecimal = Math.Round(Convert.ToDecimal(_restaurant.Coordinate.Longitude), 2);
-
+            // compara coordenadas del restaurante con coordenadas del usuario
             if (_latitudRestaurantDecimal == _latitudDecimal && _longitudRestaurantDecimal == _longitudDecimal)
-            { 
+            {   //si es true el usuario llegó
                 came = true;
             }
+            //si es false no ha llegado
             return came;
         }
 
@@ -148,9 +148,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(_idRestaurant);
             _hourSpan = _hour.TimeOfDay;
-            //_hourSpan = _hourSpan.;
+            //compara que la reserva no se haga en un horario fuera del que trabaja el restaurante
             if (_hourSpan< _restaurant.Schedule.OpeningTime || _hourSpan>_restaurant.Schedule.ClosingTime)
             {
+                //si es false la reserva no puede ser registrada
                 valid = false;
             }
 
@@ -165,8 +166,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             string nameDayOfWeek="";
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(_idRestaurant);
+            //convierte el date de la reserva por un DayOfWeek para poder saber el dia de la semana será la reserva
             _day = _date.DayOfWeek;
             _daysRestaurant = _restaurant.Schedule.Day;
+            //convierte el dia de la semana a un dia de la semana que coicida con los registrados en restaurant
             if ((int) _day ==7)
             {
                 nameDayOfWeek = "Domingo";
@@ -195,7 +198,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             {
                 nameDayOfWeek = "Sabado";
             }
-
+            //si el dia de la reserva coicide con los dias que trabaja el restaurante se hace true
             foreach (Day d in _daysRestaurant)
             {
                 if (d.Name == nameDayOfWeek)

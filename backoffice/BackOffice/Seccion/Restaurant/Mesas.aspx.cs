@@ -209,10 +209,12 @@ namespace BackOffice.Seccion.Restaurant
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Table _table = new com.ds201625.fonda.Domain.Table();
+            //busca las mesas del restaurante
             IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
             int capacity = int.Parse(DDLcapacityA.SelectedValue);
             _table.Capacity = capacity;
             _table.Status = factoryDAO.GetFreeTableStatus();
+            //le asigna un numero unico a la mesa para ese restaurante
             _table.Number = listTable.Count+1;
             _restaurant = _restaurantDAO.FindById(_idRestaurant);
             _table.Restaurant = _restaurant;

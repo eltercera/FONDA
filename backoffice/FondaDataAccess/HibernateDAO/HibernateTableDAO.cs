@@ -15,9 +15,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         public IList<Table> GetTables(int restaurant)
         {
+            //busca las mesas de un restaurante
             IList<Table> tables = GetAll();
             IList<Table> restaurantTables = new List<Table>();
             Restaurant _restaurant = new Restaurant();
+            //si la mesa es del restaurante la guarda en unaa lista
             foreach(Table t in tables)
             {
 
@@ -32,13 +34,15 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             IList<Table> tablesUnavailable = new List<Table>();
             IList<Table> tablesAvailable = GetTables(restaurantId);
 
-
+            //busca las reservas que existan en la fecha de la nueva reserva
             foreach ( Reservation t in listReservation)
             {
                 if (t.ReserveDate == date && t.ReserveTable != null)
                     tablesUnavailable.Add(t.ReserveTable);  
             }
 
+            //si la la lista que se llenaba en el foreach anterior no esta vacia 
+            //quita las mesas con reservas que coincidan con la reserva nueva de la lista que tiene todas las tables
             if(tablesUnavailable.Count != 0)
             {
                 foreach (Table t in tablesAvailable)
@@ -51,9 +55,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         }
 
         public IList<Table> TablesAvailableByCapacity(IList<Table> listTable, int commensalNumber)
-        {
+        { 
             IList<Table> tablesAvailible = new List<Table>();
-
+            //recibe una lista de mesas y las compara con el numero de comensal de las reservas
+            //si la mesa tiene capacidad las guarda en una lista
             foreach (Table t in listTable)
             {
                 if ((t.Capacity >= commensalNumber))

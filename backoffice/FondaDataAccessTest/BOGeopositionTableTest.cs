@@ -40,7 +40,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _reservation.CommensalNumber = 3;
             _reservation.ReserveStatus = factoryDAO.GetActiveReservationStatus();
 
-            validHour =_restaurantDAO.ValidateHour(3, _reservation.ReserveDate);
+            validHour =_restaurantDAO.ValidateHour(1, _reservation.ReserveDate);
 
             validDay = _restaurantDAO.ValidateDay(3, _reservation.ReserveDate);
                

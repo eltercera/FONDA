@@ -220,7 +220,7 @@ namespace BackOffice.Seccion.Restaurant
             IZoneDAO _zoneDAO = factoryDAO.GetZoneDAO();
             IList<com.ds201625.fonda.Domain.Zone> listZones = _zoneDAO.allZone();
 
-            //Se llenan los Dropdownlist con los registros existentes
+            //Se limpia los Dropdownlist con los registros existentes
             foreach (RestaurantCategory category in listCategories)
             {
                 CategoryA.Items.Clear();
@@ -258,8 +258,11 @@ namespace BackOffice.Seccion.Restaurant
         {
             bool valid = true;
             int cont = 0;
-            string patronNumero = "^[0-9]{1,9}$";
+            //expresion regular para el rif, valida que sea numerico y de tamaño 9
+            string patronNumero = "^[0-9]{9}$";
+            //valida que la coordenada siempre tenga un punto
             string patronPunto = @"[(.)]";
+            //patron que valida la coordenada acepte floats 
             string patronFloat = @"^-?[0-9]\d*(\.\d+)?$"; // "^\-{0,1}\d+(.\d+){0,1}$"
 
 
