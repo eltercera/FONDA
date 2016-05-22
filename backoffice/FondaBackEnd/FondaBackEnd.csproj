@@ -79,6 +79,7 @@
     <Compile Include="Controllers\CategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\FavoritesRestaurantsFondaWebApiController.cs" />
     <Compile Include="Controllers\ReservationFondaWebApiController.cs" />
+    <Compile Include="Controllers\ReservationMenuFondaWebApiController.cs" />
     <Compile Include="Controllers\RestaurantFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\ZoneFilterFondaWebApiController.cs" />
     <Compile Include="GeneralRes.Designer.cs">

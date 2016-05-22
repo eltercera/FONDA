@@ -1,25 +1,25 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="MenuDia.aspx.cs" Inherits="BackOffice.Seccion.Menu.MenuDia" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="ConsultarReservas.aspx.cs" Inherits="BackOffice.Seccion.Reservas.ConsultarReservas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
-    Menu del Dia
+    Reservaciones
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    Menú
+    
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-Menú Del Día
+Reservaciones
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
       <%--Breadcrumbs--%>
     <div>
         <ol class="breadcrumb" style="background-color: rgba(0,0,0,0);">
             <li>
-                <a href="../Menu/Default.aspx">Inicio</a>
+                <a href="../Reservas/ConsultarReservas.aspx">Inicio</a>
             </li>
 
             <li>
-                <a href="#">Menú</a>
+                <a href="#">Reservaciones</a>
             </li>
-            <li class="active">Menú Del Día
+            <li class="active">Reservaciones
             </li>
         </ol>
     </div>
@@ -30,19 +30,21 @@ Menú Del Día
            <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Menu del día</h3>
+                                <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Reservaciones</h3>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responsive">
-                                    <table id="MenuDia" class="table table-bordered table-hover table-striped">
+                                    <table id="Reservaciones" class="table table-bordered table-hover table-striped">
                                         <thead>
                                             <tr>
                                             
-                                            <th style="vertical-align: middle">Plato</th>
-                                            <th style="vertical-align: middle">Precio</th>
-                                            <th style="vertical-align: middle">Total</th>
-                                            <th style="vertical-align: middle">Acciones</th>
+                                            <th style="vertical-align: middle">Usuario</th>
+                                            <th style="vertical-align: middle">Fecha de Reserva</th>
+                                            <th style="vertical-align: middle">Fecha de Creación de Reserva</th>
+                                            <th style="vertical-align: middle">Cantidad de Comensales</th>
+                                            <th style="vertical-align: middle">Mesa</th>
+                                            <th style="vertical-align: middle">Status</th>
                                    
  
                                             </tr>
@@ -51,9 +53,12 @@ Menú Del Día
                                             <tr>
                                               
                                           
-                                            <td style="vertical-align: middle">Pasta Carbonara</td>
-                                            <td style="vertical-align: middle">2350</td>
-                                            <td style="vertical-align: middle">3000</td>
+                                            <td style="vertical-align: middle">@jess27p</td>
+                                            <td style="vertical-align: middle">27/09/2016</td>
+                                            <td style="vertical-align: middle">26/08/2016</td>
+                                            <td style="vertical-align: middle">3</td>
+                                            <td style="vertical-align: middle">5</td>
+                                            <td style="vertical-align: middle">Activa</td>
                                             <td class="text-center" style="text-align:center; vertical-align:middle"><a data-toggle="modal" data-target="#ver_plato"><i class="fa fa-info-circle" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#"><i class="fa fa-times"></td>
 
                                        
