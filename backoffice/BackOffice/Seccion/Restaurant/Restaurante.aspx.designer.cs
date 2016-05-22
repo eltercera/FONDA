@@ -373,6 +373,15 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.WebControls.CheckBox Day7M;
         
         /// <summary>
+        /// ShowOpeningTimeM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ShowOpeningTimeM;
+        
+        /// <summary>
         /// OpeningTimeM control.
         /// </summary>
         /// <remarks>
@@ -380,6 +389,15 @@ namespace BackOffice.Seccion.Restaurant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox OpeningTimeM;
+        
+        /// <summary>
+        /// ShowClosingTimeM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ShowClosingTimeM;
         
         /// <summary>
         /// ClosingTimeM control.
