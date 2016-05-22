@@ -94,7 +94,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
                     DeleteFavoriteRestaurantService deleteFavoriteRestaurantServ = FondaServiceFactory.getInstance().
                             getDeleteFavoriteRestaurantService();
-                    Commensal comensal = deleteFavoriteRestaurantServ.deleteFavoriteRestaurant(9
+                    Commensal comensal = deleteFavoriteRestaurantServ.deleteFavoriteRestaurant(1
                             , selectedRestaurant.getId());
 
                     try {
@@ -113,7 +113,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
                     AddFavoriteRestaurantService addFavoriteRestaurant = FondaServiceFactory.getInstance().
                             getAddFavortieRestaurantService();
 
-                    Commensal comensal = addFavoriteRestaurant.AddFavoriteRestaurant(9, selectedRestaurant.getId());
+                    Commensal comensal = addFavoriteRestaurant.AddFavoriteRestaurant(1, selectedRestaurant.getId());
 
                     try {
                         Log.v(TAG, comensal.getId() + "");
@@ -173,7 +173,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
         AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                 getAllFavoriteRestaurantsService();
-        List<Restaurant> restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(9);
+        List<Restaurant> restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(1);
 
         for(Restaurant restaurant : restaurantList){
             if (restaurant.getId() == selectedRestaurant.getId()){

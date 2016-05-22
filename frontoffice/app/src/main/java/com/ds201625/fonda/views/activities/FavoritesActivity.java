@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
@@ -105,10 +105,16 @@ public class FavoritesActivity extends BaseNavigationActivity {
 
                 list=(ListView)findViewById(R.id.listViewFavorites);
 
-                AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                        getAllFavoriteRestaurantsService();
+                /*
+                    AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                            getAllFavoriteRestaurantsService();
 
-                restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(9);
+                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(1);
+                 */
+                AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                        getAllRestaurantsService();
+                restaurantList = allRestaurant.getAllRestaurant();
+
 
                 try {
                     for (Restaurant rest : restaurantList) {
@@ -176,7 +182,7 @@ public class FavoritesActivity extends BaseNavigationActivity {
     private void setupListView(){
         adapter = new
                 RestaurantList(FavoritesActivity.this, names,location ,shortDescription,imageId,restaurantList);
-        //list.setAdapter(adapter);
+        list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
