@@ -1,26 +1,14 @@
-package com.ds201625.fonda.tests.M5_Tests.M5_Tests;
+package com.ds201625.fonda.tests.M5_Tests;
 
-import android.test.MoreAsserts;
-
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.CurrentOrderService;
-import com.ds201625.fonda.data_access.services.InvoiceService;
-import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.logic.LogicInvoice;
 
 import junit.framework.TestCase;
 
-import java.util.List;
-
 /**
- * Created by Katherina Molina on 19/05/2016.
+ * Clase De pruebas unitarias de los perfiles
  */
-
-/**
- * Clase De pruebas unitarias de la factura al cerrar la cuenta de una persona en su visita a restaurant
- */
-public class InvoiceServiceTest extends TestCase {
+public class ProfileLogicTest extends TestCase {
 
     /*
          Objeto Invoice que contiene el pago de la cuenta
@@ -30,7 +18,7 @@ public class InvoiceServiceTest extends TestCase {
     /**
      * variable de la clase InvoiceService
      */
-    private InvoiceService invoiceService;
+    private LogicInvoice invoiceLogic;
 
     /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
@@ -38,7 +26,7 @@ public class InvoiceServiceTest extends TestCase {
      */
     protected void setUp() throws Exception {
         super.setUp();
-        invoiceService = FondaServiceFactory.getInstance().getInvoiceService();
+        invoiceLogic = new LogicInvoice();
     }
 
 
@@ -48,13 +36,11 @@ public class InvoiceServiceTest extends TestCase {
     public void testInvoiceIsNotNull() {
 
         try {
-            invoice = invoiceService.getCurrentInvoice();
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
             assertNotNull(invoice);
         }
         catch (NullPointerException e){
             fail("No esta conectado al WS");
-        } catch (RestClientException e) {
-            e.printStackTrace();
         }
     }
 
@@ -65,15 +51,13 @@ public class InvoiceServiceTest extends TestCase {
     public void testInvoiceElements() {
 
         try {
-            invoice = invoiceService.getCurrentInvoice();
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
             assertNotNull(invoice);
             assertEquals("The dining room", invoice.getRestaurant().getName());
             assertEquals("Adriana", invoice.getProfile().getProfileName());
         }
         catch (NullPointerException e){
             fail("No esta conectado al WS");
-        } catch (RestClientException e) {
-            e.printStackTrace();
         }
     }
 
@@ -82,13 +66,9 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testRestaurantInvoiceIsNotEmpty() {
 
-        try {
-            String nameRestaurant = "The dining room";
-            invoice = invoiceService.getCurrentInvoice();
-            assertEquals(nameRestaurant, invoice.getRestaurant().getName());
-        } catch (RestClientException e) {
-            e.printStackTrace();
-        }
+        String nameRestaurant = "The dining room";
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        assertEquals(nameRestaurant, invoice.getRestaurant().getName());
 
     }
 
@@ -97,13 +77,8 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testRestaurantInvoiceIsNotNull() {
 
-        try {
-
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertNotNull(invoice.getRestaurant());
-        } catch (RestClientException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -111,13 +86,9 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testProfileInvoiceIsNotEmpty() {
 
-        try {
         String nameProfile = "Adriana";
-            invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertEquals(nameProfile, invoice.getProfile().getProfileName());
-        } catch (RestClientException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -126,12 +97,8 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testProfileInvoiceIsNotNull() {
 
-        try {
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertNotNull(invoice.getProfile());
-        } catch (RestClientException e) {
-            e.printStackTrace();
-        }
     }
 
 
@@ -139,12 +106,10 @@ public class InvoiceServiceTest extends TestCase {
      * Metodo que prueba que el objeto Account de la factura no este vacio
      */
     public void testAccountInvoiceIsNotEmpty() {
-        try {
-        invoice = invoiceService.getCurrentInvoice();
+
+
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertEquals(3, invoice.getAccount().getListDish().size());
-        } catch (RestClientException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -153,12 +118,8 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testAccountInvoiceIsNotNull() {
 
-        try {
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertNotNull(invoice.getAccount());
-        } catch (RestClientException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -166,12 +127,8 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testCurrencyInvoiceIsNotEmpty() {
 
-        try {
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertEquals("Bolivar", invoice.getCurrency().getName());
-        } catch (RestClientException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -180,12 +137,8 @@ public class InvoiceServiceTest extends TestCase {
      */
     public void testCurrencyInvoiceIsNotNull() {
 
-        try {
-        invoice = invoiceService.getCurrentInvoice();
+        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
         assertNotNull(invoice.getCurrency());
-        } catch (RestClientException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -195,6 +148,7 @@ public class InvoiceServiceTest extends TestCase {
     protected void tearDown() throws Exception {
         super.tearDown();
         invoice = null;
+        invoiceLogic = null;
     }
 
 }

@@ -145,7 +145,7 @@ public class Invoice extends BaseEntity{
      * Metodo que asigna la fecha del pago de la cuenta
      * @param date
      */
-    public void setDate(long date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

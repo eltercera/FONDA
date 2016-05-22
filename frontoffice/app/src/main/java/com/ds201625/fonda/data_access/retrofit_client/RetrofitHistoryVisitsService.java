@@ -3,12 +3,10 @@ package com.ds201625.fonda.data_access.retrofit_client;
 import android.util.Log;
 
 import com.ds201625.fonda.data_access.retrofit_client.clients.HistoryVisitsClient;
-import com.ds201625.fonda.data_access.retrofit_client.clients.ProfileClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
-import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Invoice;
-import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 
 import java.io.IOException;
 import java.util.List;
@@ -42,13 +40,13 @@ public class RetrofitHistoryVisitsService implements HistoryVisitsRestaurantServ
      * @return llamada
      */
     @Override
-    public List<Invoice> getHistoryVisits() {
+    public List<Invoice> getHistoryVisits() throws RestClientException {
         Call<List<Invoice>> call = historyVisitsClient.getHistoryVisits();
         List<Invoice> calling = null;
         try{
             calling = call.execute().body();
         } catch (IOException e) {
-            Log.v("Fonda: ",e.toString());
+            throw new RestClientException("Error de IO",e);
         }
 
         return calling;

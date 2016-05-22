@@ -47,7 +47,8 @@ namespace com.ds201625.fonda.Domain
             get { return _table; }
             set { _table = value; }
         }
-        
+
+        [DataMember]
         public virtual IList<DishOrder> ListDish
         {
             get { return _listDish; }

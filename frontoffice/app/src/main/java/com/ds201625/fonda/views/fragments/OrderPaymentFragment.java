@@ -303,7 +303,7 @@ public class OrderPaymentFragment extends BaseFragment {
         invoice = null;
         invoice.setAccount(acc);
         invoice.setCurrency(curr);
-        invoice.setDate(Date.parse(formattedDate));
+        invoice.setDate(c.getTime());
         invoice.setPayment(paym);
         invoice.setProfile(prof);
         invoice.setRestaurant(rest);

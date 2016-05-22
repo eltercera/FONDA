@@ -25,6 +25,16 @@ public interface CommensalService {
     Commensal RegisterCommensal(String user, String password, Context context)
             throws InvalidDataRetrofitException, RestClientException, LocalStorageException;
 
+
+
+    /**
+     * Borra el commenal guardado localmente si existe
+     * @param context Contexto para el borrado local
+     * @return Booleano de si se elimino o no.
+     * @throws LocalStorageException
+     */
+    void deleteCommensal(Context context) throws LocalStorageException;
+
     /**
      * Obtiene el commensal guardado localmente si existe
      * @param context Contexto para el guardado local

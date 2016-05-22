@@ -3,6 +3,7 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests;
 import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.domains.DishOrder;
@@ -45,8 +46,13 @@ public class HistoryVisitsServiceTest extends TestCase {
      */
    public void testHistoryVisitsIsNotEmpty() {
 
+       try {
            listInvoice = historyVisitsRestaurantService.getHistoryVisits();
-            assertFalse(listInvoice.isEmpty());
+           assertFalse(listInvoice.isEmpty());
+       } catch (RestClientException e) {
+           e.printStackTrace();
+       }
+
     }
 
     /**
@@ -55,8 +61,13 @@ public class HistoryVisitsServiceTest extends TestCase {
     public void testRestaurantInvoiceIsNotEmpty() {
 
         String nameRestaurant = "The dining room";
-        listInvoice = historyVisitsRestaurantService.getHistoryVisits();
-        assertEquals(nameRestaurant, listInvoice.get(0).getRestaurant().getName());
+        try {
+            listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+            assertEquals(nameRestaurant, listInvoice.get(0).getRestaurant().getName());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -66,8 +77,13 @@ public class HistoryVisitsServiceTest extends TestCase {
     public void testProfilesInvoiceIsNotEmpty(){
 
         String nameProfile = "Adriana Da Rocha";
-        listInvoice = historyVisitsRestaurantService.getHistoryVisits();
-        assertEquals(nameProfile, listInvoice.get(1).getProfile().getProfileName());
+        try {
+            listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+            assertEquals(nameProfile, listInvoice.get(1).getProfile().getProfileName());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -76,8 +92,13 @@ public class HistoryVisitsServiceTest extends TestCase {
      */
     public void testInvoiceIsNotEmpty() {
         float total = 350;
-        listInvoice = historyVisitsRestaurantService.getHistoryVisits();
-        assertEquals(total, listInvoice.get(2).getTotal());
+        try {
+            listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+            assertEquals(total, listInvoice.get(2).getTotal());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -85,8 +106,13 @@ public class HistoryVisitsServiceTest extends TestCase {
      */
     public void testRestaurantInvoiceIsNotNull() {
 
-        listInvoice = historyVisitsRestaurantService.getHistoryVisits();
-        assertNotNull(listInvoice.get(2).getRestaurant());
+        try {
+            listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+            assertNotNull(listInvoice.get(2).getRestaurant());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -94,8 +120,13 @@ public class HistoryVisitsServiceTest extends TestCase {
      */
     public void testProfileInvoiceIsNotNull() {
 
-        listInvoice = historyVisitsRestaurantService.getHistoryVisits();
-        assertNotNull(listInvoice.get(2).getProfile());
+        try {
+            listInvoice = historyVisitsRestaurantService.getHistoryVisits();
+            assertNotNull(listInvoice.get(2).getProfile());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -106,9 +137,8 @@ public class HistoryVisitsServiceTest extends TestCase {
         try {
             listInvoice = historyVisitsRestaurantService.getHistoryVisits();
             assertNotNull(listInvoice);
-        }
-        catch (NullPointerException e){
-            fail("No esta conectado al WS");
+        } catch (RestClientException e) {
+            e.printStackTrace();
         }
     }
 
@@ -124,6 +154,8 @@ public class HistoryVisitsServiceTest extends TestCase {
         }
         catch (NullPointerException e){
             fail("No esta conectado al WS");
+        } catch (RestClientException e) {
+            e.printStackTrace();
         }
     }
 

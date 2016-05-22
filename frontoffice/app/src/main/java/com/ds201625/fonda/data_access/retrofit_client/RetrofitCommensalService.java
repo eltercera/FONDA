@@ -9,6 +9,7 @@ import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.domains.Commensal;
 
 
+import java.io.File;
 import java.io.IOException;
 
 import retrofit2.Call;
@@ -52,6 +53,9 @@ public class RetrofitCommensalService implements CommensalService {
         return rsvCommensal;
     }
 
+
+
+
     /**
      * Obtiene una instancia del de JsonFile de tipo Commensal.
      * @param context Contecto de la aplicacion.
@@ -60,7 +64,7 @@ public class RetrofitCommensalService implements CommensalService {
     private JsonFile<Commensal> getFile(Context context) {
 
         if (localFile == null)
-            localFile = new JsonFile<Commensal>("CommenslaLocal", context,Commensal.class);
+            localFile = new JsonFile<Commensal>("CommensalLocal", context,Commensal.class);
 
         return localFile;
     }
@@ -75,5 +79,11 @@ public class RetrofitCommensalService implements CommensalService {
         if (commensal!= null) {
             getFile(context).save(commensal);
         }
+    }
+
+    @Override
+    public void deleteCommensal(Context context) throws LocalStorageException {
+        Commensal commensal = null;
+        getFile(context).save(commensal);
     }
 }

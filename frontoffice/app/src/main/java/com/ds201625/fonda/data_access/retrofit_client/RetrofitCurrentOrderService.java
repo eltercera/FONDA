@@ -42,15 +42,15 @@ public class RetrofitCurrentOrderService implements CurrentOrderService {
      * @return llamada
      */
     @Override
-    public List<DishOrder> getListDishOrder() {
+    public List<DishOrder> getListDishOrder() throws RestClientException {
         Call<List<DishOrder>> call = currentOrderClient.getListDishOrder();
-        List<DishOrder> a = null;
+        List<DishOrder> listDishOrder = null;
         try{
-            a = call.execute().body();
+            listDishOrder = call.execute().body();
         } catch (IOException e) {
-            Log.v("Fonda: ",e.toString());
+            throw new RestClientException("Error de IO",e);
         }
 
-        return a;
+        return listDishOrder;
     }
 }
