@@ -9,11 +9,21 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 /**
- * Created by rrodriguez on 5/7/16.
+ * Created by Yuneth on 5/15/2016.
+ */
+
+/**
+ * Interface que contiene los metodos del servicio de CurrentOrderClient
  */
 public interface CurrentOrderClient {
 
-    @GET("ListDishOrder")
+
+    /**
+     * Get /api/listDishOrder
+     * Obtiene la lista de los platos ordenados.
+     * @return
+     */
+    @GET("listDishOrder")
     Call<List<DishOrder>> getListDishOrder();
 
 }

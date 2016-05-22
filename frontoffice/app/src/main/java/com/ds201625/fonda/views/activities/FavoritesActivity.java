@@ -62,50 +62,109 @@ public class FavoritesActivity extends BaseNavigationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_favorites);
-        super.onCreate(savedInstanceState);
-        try {
-            Commensal log = SessionData.getInstance().getCommensal();
+        /**
+         * Esta es la validacion de si el usuario ya esta loggeado o no.
+         */
+        // para saltar o no
+        boolean skp = false;
 
-            String emailToWebService;
-            try{
-                emailToWebService=log.getEmail()+"/";
-                Log.v(TAG,"Email->"+emailToWebService);
-                RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
-                        getLogedCommensalService();
+        // inicializa los datos de la sesion
+        if (SessionData.getInstance() == null) {
+            try {
+                SessionData.initInstance(getApplicationContext());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        super.onCreate(savedInstanceState);
+
+        if (SessionData.getInstance().getToken() == null) {
+            skip();
+            return;
+        }
+        else {
+            try {
+                Commensal log = SessionData.getInstance().getCommensal();
+
+                String emailToWebService;
+                try{
+                    emailToWebService=log.getEmail()+"/";
+                    Log.v(TAG,"Email->"+emailToWebService);
+                    RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
+                            getLogedCommensalService();
 
 //                logedComensal =getComensal.getLogedCommensal(emailToWebService);
-             //   Log.v(TAG,logedComensal.getId()+"");
+                    //   Log.v(TAG,logedComensal.getId()+"");
 
 
-            }catch(NullPointerException nu){
-                nu.printStackTrace();
+                }catch(NullPointerException nu){
+                    nu.printStackTrace();
+                }
+
+
+                list=(ListView)findViewById(R.id.listViewFavorites);
+
+                AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                        getAllFavoriteRestaurantsService();
+
+                restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(9);
+
+                try {
+                    for (Restaurant rest : restaurantList) {
+                        Log.v("WEBSERVICE", rest.getId() + "");
+                        Log.v("WEBSERVICE", rest.getName());
+                        Log.v("WEBSERVICE", rest.getAddress());
+                    }
+                    setupListView();
+                }catch (NullPointerException ex){
+                    // Log.v(TAG,R.string.favorite_conexion_fail_message );
+
+                    Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
+                            Toast.LENGTH_LONG).show();
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
             }
 
 
-            list=(ListView)findViewById(R.id.listViewFavorites);
+
+
+
+
+
+            /**
+             * Esto es lo que tenia el Modulo de Favoritos en principio.
+             */
+
+         /*
+            list = (ListView) findViewById(R.id.listViewFavorites);
 
             AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                     getAllFavoriteRestaurantsService();
+            restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(2);
+        */
+        /*
+        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                getAllRestaurantsService();
+        restaurantList = allRestaurant.getAllRestaurant();
+        */
+/*        for (Restaurant rest : restaurantList){
+            Log.v("WEBSERVICE", rest.getId() + "");
+            Log.v("WEBSERVICE",rest.getName());
+            Log.v("WEBSERVICE",rest.getAddress());
+        }*/
 
-            restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(9);
-
-            try {
-                for (Restaurant rest : restaurantList) {
-                    Log.v("WEBSERVICE", rest.getId() + "");
-                    Log.v("WEBSERVICE", rest.getName());
-                    Log.v("WEBSERVICE", rest.getAddress());
-                }
-                setupListView();
-            }catch (NullPointerException ex){
-               // Log.v(TAG,R.string.favorite_conexion_fail_message );
-
-                Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
-                        Toast.LENGTH_LONG).show();
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
+            setupListView();
         }
+    }
+
+    /**
+     * Acción de saltar esta actividad.
+     */
+    private void skip() {
+        startActivity(new Intent(this,LoginActivity.class));
     }
 
     /**
@@ -117,7 +176,7 @@ public class FavoritesActivity extends BaseNavigationActivity {
     private void setupListView(){
         adapter = new
                 RestaurantList(FavoritesActivity.this, names,location ,shortDescription,imageId,restaurantList);
-        list.setAdapter(adapter);
+        //list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

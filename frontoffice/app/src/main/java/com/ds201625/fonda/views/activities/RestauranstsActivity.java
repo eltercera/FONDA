@@ -10,27 +10,6 @@ import com.ds201625.fonda.views.fragments.*;
 
 public class RestauranstsActivity extends  BaseNavigationActivity {
 
-    String[] location = {
-            "La castellana",
-            "Los dos caminos",
-            "La California",
-            "Parque central",
-            "El Rosal"} ;
-    String[] shortDescription = {
-            "Casual",
-            "Romantico",
-            "Italiano",
-            "Italiano",
-            "Americano"} ;
-    Integer[] imageId = {
-            R.mipmap.ic_restaurant001,
-            R.mipmap.ic_restaurant002,
-            R.mipmap.ic_restaurant003,
-            R.mipmap.ic_restaurant004,
-            R.mipmap.ic_restaurant005,
-
-    };
-
     private ViewPager viewPager;
     private BaseSectionsPagerAdapter RestaurantFilters;
 
@@ -48,7 +27,7 @@ public class RestauranstsActivity extends  BaseNavigationActivity {
         RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_zone),new ZoneFragment());
         RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_cost),new CostFragment());
         RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_time),new TimeFragment());
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_near),new NearFragment());
+        //RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_near),new NearFragment());
 
         viewPager.setAdapter(RestaurantFilters);
         tabLayout.setupWithViewPager(viewPager);
