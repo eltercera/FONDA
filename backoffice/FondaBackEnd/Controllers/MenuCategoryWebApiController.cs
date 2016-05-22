@@ -18,20 +18,19 @@ namespace com.ds201625.fonda.BackEnd.Controllers
     {
         public MenuCategoryWebApiController() : base() { }
 
-        [Route("MenuCategory")]
-
+        /// <summary>
+        /// Llamar al metodo mediante la interfaz 
+        /// para listar las categorias del menu y 
+        /// devolverlo al web service
+        /// </summary>
+        /// <returns>La lista de categorias</returns>
+        [Route("menuCategory")]
         [HttpGet]
-
-        public IHttpActionResult getMenuCategory(int id)
+        public IHttpActionResult getMenuCategory()
         {
             IMenuCategoryDAO catmenuDAO = FactoryDAO.GetMenuCategoryDAO();
-            IRestaurantDAO restaurantDAO = FactoryDAO.GetRestaurantDAO();
-            Restaurant restaurant = restaurantDAO.FindById(id);
-
-
-            IList<MenuCategory> listMenuC = restaurant.MenuCategories;
-
-            return Ok(listMenuC);
+            IList<MenuCategory> _listMenCat = catmenuDAO.GetAll();
+            return Ok(_listMenCat);
 
         }
 
