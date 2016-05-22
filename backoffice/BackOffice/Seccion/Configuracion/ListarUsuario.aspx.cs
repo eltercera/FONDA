@@ -312,12 +312,13 @@ namespace BackOffice.Seccion.Configuracion
             }
         }
 
-        protected void SetEmployee(Employee _employee)
+        protected Employee SetEmployee(Employee _employee)
         {
             string _roleUser = (string)(Session[RecursoMaster.sessionRol]);
             Role _role;
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Restaurant _restaurant;
+            _employee = new Employee();
             if (this.nameUser.Text != "")
                 _employee.Name = this.nameUser.Text;
             if (this.lastNameUser.Text != "")
@@ -383,6 +384,8 @@ namespace BackOffice.Seccion.Configuracion
                     _restaurant = _restaurantDAO.FindById(int.Parse(_idrest));
                     _employee.Restaurant = _restaurant;
             }
+
+            return _employee;
         }
 
         protected void ModalAddModify_Click(object sender, EventArgs e)
@@ -446,7 +449,7 @@ namespace BackOffice.Seccion.Configuracion
             if (_emailValid && _ssnValid && _userNameValid) 
             {
 
-                SetEmployee(_employee);
+                _employee = SetEmployee(_employee);
                 if (ButtonAddModify.Text == "Agregar")
                 {
                     if (_emailValid && _ssnValid && _userNameValid)
