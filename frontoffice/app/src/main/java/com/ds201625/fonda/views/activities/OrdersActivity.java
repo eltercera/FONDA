@@ -3,9 +3,10 @@ package com.ds201625.fonda.views.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,19 +34,19 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
 
     /**
-     * Iten del Menu
+     * Item del Menu
      */
-    private static MenuItem cerrarBotton;
+    private static MenuItem closeBotton;
     private static MenuItem sendBotton;
     private static MenuItem cancelBotton;
-    private static MenuItem buscarBotton;
+    private static MenuItem searchBotton;
     private static MenuItem sendPayBotton;
     private static MenuItem cancelPayBotton;
     private static MenuItem downloadBotton;
     private static MenuItem acceptCCButton;
     private static MenuItem saveCCButton;
     /**
-     * Fragment de la lista
+     * Fragment de la lista de platos
      */
     private static CurrentOrderFragment orderListFrag;
 
@@ -63,27 +64,50 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
     private static FragmentManager fm;
 
     /**
-     * ToolBarr
+     * Variable par usar el TabLayout
      */
-    // private Toolbar tb;
-
     private BaseSectionsPagerAdapter mSectionsPagerAdapter;
 
     private ViewPager mViewPager;
 
+    /**
+     * Variable del TabLayout
+     */
     private static TabLayout tb;
 
     private FrameLayout prueba;
 
-    private static CloseAccountFragment prueba2;
+    /**
+     * Fragment de Cierre de cuenta
+     */
+    private static CloseAccountFragment closeAccFrag;
 
+    /**
+     * Fragment de pago de orden
+     */
     private static OrderPaymentFragment ordPay;
 
+    /**
+     * Fragment de factura
+     */
     private static InvoiceFragment factFrag;
 
+    /**
+     * Fragment de tarjeta de credito
+     */
     private static CreditCardFragment ccFrag;
 
+    /**
+     * Fragment de lista de profile
+     */
     private static ProfileListFragment profFrag;
+
+    /**
+     * Fragment de historial de visitas
+     */
+    private static HistoryVisitFragment histVisFrag;
+
+
 
     private void getAllElements(){
         mViewPager = (ViewPager) findViewById(R.id.containerO);
@@ -118,17 +142,19 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         tb.setupWithViewPager(mViewPager);
 
         orderListFrag = new CurrentOrderFragment();
+        histVisFrag = new HistoryVisitFragment();
 
         //Tab con solo un String como titulo
         mSectionsPagerAdapter.addFragment("Orden Actual", orderListFrag);
-        mSectionsPagerAdapter.addFragment("Historial de Visitas", new HistoryVisitFragment());
+        mSectionsPagerAdapter.addFragment("Historial de Visitas", histVisFrag);
 
         //Importante ejecutar esto para que se creen los iconos en el tab.
         mSectionsPagerAdapter.iconsSetup();
 
         fm = getSupportFragmentManager();
 
-
+       // Probando que desaparesca el buscar
+        //changeTab(mSectionsPagerAdapter);
 
     }
 
@@ -142,10 +168,10 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.orders, menu);
-        cerrarBotton = menu.findItem(R.id.close);
+        closeBotton = menu.findItem(R.id.close);
         sendBotton = menu.findItem(R.id.action_favorite_send);
         cancelBotton = menu.findItem(R.id.action_favorite_cancel);
-        buscarBotton = menu.findItem(R.id.action_favorite_search);
+        searchBotton = menu.findItem(R.id.action_favorite_search);
         sendPayBotton = menu.findItem(R.id.action_favorite_send_pay);
         cancelPayBotton = menu.findItem(R.id.action_favorite_cancel_pay);
         downloadBotton = menu.findItem(R.id.action_favorite_download);
@@ -168,11 +194,34 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
         //Muestra y oculta compnentes.
         if (fragment.equals(orderListFrag)) {
-            if (cerrarBotton != null)
-                cerrarBotton.setVisible(true);
-        } else if (fragment.equals(prueba2)) {
-            if (cerrarBotton != null)
-                cerrarBotton.setVisible(false);
+            if (closeBotton != null)
+                closeBotton.setVisible(true);
+            if (searchBotton != null)
+                searchBotton.setVisible(false);
+        }
+        else if (fragment.equals(histVisFrag)) {
+            if (searchBotton != null)
+                searchBotton.setVisible(true);
+            if (closeBotton != null)
+                closeBotton.setVisible(false);
+            if ((sendBotton != null) && (cancelBotton != null)) {
+                sendBotton.setVisible(false);
+                cancelBotton.setVisible(false);
+            }
+            if ((sendPayBotton != null) && (cancelPayBotton != null)) {
+                sendPayBotton.setVisible(false);
+                cancelPayBotton.setVisible(false);
+            }
+            if ((acceptCCButton != null) && (saveCCButton != null)) {
+                acceptCCButton.setVisible(false);
+                saveCCButton.setVisible(false);
+            }
+        }
+        else if (fragment.equals(closeAccFrag)) {
+            if (closeBotton != null)
+                closeBotton.setVisible(false);
+            if (searchBotton != null)
+                searchBotton.setVisible(false);
             if ((sendBotton != null) && (cancelBotton != null)) {
                 sendBotton.setVisible(true);
                 cancelBotton.setVisible(true);
@@ -186,8 +235,10 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
                 saveCCButton.setVisible(false);
             }
         } else if (fragment.equals(ordPay)) {
-            if (cerrarBotton != null)
-                cerrarBotton.setVisible(false);
+            if (closeBotton != null)
+                closeBotton.setVisible(false);
+            if (searchBotton != null)
+                searchBotton.setVisible(false);
             if ((sendBotton != null) && (cancelBotton != null)) {
                 sendBotton.setVisible(false);
                 cancelBotton.setVisible(false);
@@ -201,8 +252,10 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
                 saveCCButton.setVisible(false);
             }
         } else if (fragment.equals(ccFrag)) {
-                if (cerrarBotton != null)
-                    cerrarBotton.setVisible(false);
+                if (closeBotton != null)
+                    closeBotton.setVisible(false);
+            if (searchBotton != null)
+                searchBotton.setVisible(false);
                 if ((sendBotton != null) && (cancelBotton != null)) {
                     sendBotton.setVisible(false);
                     cancelBotton.setVisible(false);
@@ -216,8 +269,10 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
                     saveCCButton.setVisible(true);
              }
             }else if (fragment.equals(factFrag)) {
-            if (cerrarBotton != null)
-                cerrarBotton.setVisible(false);
+            if (closeBotton != null)
+                closeBotton.setVisible(false);
+            if (searchBotton != null)
+                searchBotton.setVisible(false);
             if ((sendBotton != null) && (cancelBotton != null)) {
                 sendBotton.setVisible(false);
                 cancelBotton.setVisible(false);
@@ -250,7 +305,7 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.close:
-                cerrar();
+                close();
                 break;
             case R.id.action_favorite_search:
                 buscar();
@@ -261,13 +316,13 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
                 System.out.println(a);
                 break;
             case R.id.action_favorite_cancel:
-                salir();
+                exit();
                 break;
             case R.id.action_favorite_send_pay:
                 cambiarFac();
                 break;
             case R.id.action_favorite_cancel_pay:
-                cambiarCC();
+                close();
                 break;
             case R.id.action_favorite_download:
                 download();
@@ -282,22 +337,18 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
         return true;
     }
 
-    private void cerrar() {
+    private void close() {
      /*   AlertDialog dialog = buildSingleDialog("Cierre de Cuenta",
                 "Se puede proceder con el cierre.");
         dialog.show();
     */
-        cambiarCC();
+        if (closeAccFrag == null)
+            closeAccFrag = new CloseAccountFragment();
+        showFragment(closeAccFrag);
     }
 
-    public void cambiarCC() {
 
-        if (prueba2 == null)
-            prueba2 = new CloseAccountFragment();
-        showFragment(prueba2);
-    }
-
-    private void salir() {
+    private void exit() {
 
         Intent cambio = new Intent(this, OrdersActivity.class);
         startActivity(cambio);
@@ -313,6 +364,9 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
     private void buscar() {
 
         //Metodo para el boton de buscar
+        AlertDialog dialog = buildSingleDialog("Historial",
+                "Busqueda");
+        dialog.show();
     }
 
     public void cambiarFac() {
@@ -323,7 +377,7 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
 
 
     public void download() {
-        salir();
+        exit();
     }
 
     public void onRadioButtonClicked(View view) {
@@ -518,4 +572,13 @@ public class OrdersActivity extends BaseNavigationActivity implements ProfileLis
     }
 
 
+    public void changeTab(BaseSectionsPagerAdapter mSectionsPagerAdapter){
+        if(mSectionsPagerAdapter.getItem(0).isAdded()){
+            if (searchBotton != null)
+            searchBotton.setVisible(false);
+        }else if(mSectionsPagerAdapter.getItem(1).isAdded()){
+            if (searchBotton != null)
+            searchBotton.setVisible(true);
+        }
+    }
 }

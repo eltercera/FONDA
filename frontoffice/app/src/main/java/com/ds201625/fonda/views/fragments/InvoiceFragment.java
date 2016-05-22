@@ -138,16 +138,16 @@ public class InvoiceFragment extends BaseFragment {
         txtClient.setText(invoice.getProfile().getPerson().getName());
         //Subtotal
         txtMontoSub.setText(String.valueOf(sub));
-       // txtMonSub.setText(currency.getSymbol());
+        txtMonSub.setText(invoice.getCurrency().getSymbol());
         //Iva
         txtMontoIva.setText(String.valueOf(iva));
-        // txtMonIva.setText(currency.getSymbol());
+         txtMonIva.setText(invoice.getCurrency().getSymbol());
         //Total
         txtMontoTota.setText(String.valueOf(total));
-       // txtMonTota.setText(currency.getSymbol());
+        txtMonTota.setText(invoice.getCurrency().getSymbol());
         //Propina
         txtMontoPro.setText(String.valueOf(propina));
-      //  txtMonPro.setText(currency.getSymbol());
+        txtMonPro.setText(invoice.getCurrency().getSymbol());
 
         //Lista de Platos
         lv1=(ListView)layout.findViewById(R.id.lvOrderDish);
@@ -182,12 +182,13 @@ public class InvoiceFragment extends BaseFragment {
         return sub;
     }
 
-
+    /**
+     * Metodo que obtiene los elementos del WS
+     */
     public Invoice getinvoiceSW(){
         try {
             invoiceService= FondaServiceFactory.getInstance().getInvoiceService();
             Invoice invoiceWS=invoiceService.getCurrentInvoice();
-
             System.out.println("Restaurant de la factura:  " + invoiceWS.getRestaurant().getName());
             return invoiceWS;
         }
