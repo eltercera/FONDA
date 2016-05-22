@@ -97,7 +97,16 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 return BadRequest();
             commensal.RemoveFavoriteRestaurant(restaurant);
             commensal.AddFavoriteRestaurant(restaurant);
-            commensalDao.Save(commensal);
+            try
+            {
+                commensalDao.Save(commensal);
+            }
+            catch (SaveEntityFondaDAOException e)
+            {
+                Console.WriteLine(e.ToString());
+                return InternalServerError(e);
+            }
+
             return Ok(commensal);
         }
 
@@ -122,6 +131,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             return FactoryDAO.GetCommensalDAO();
         }
 
+
+
         [Route("findRestaurantFavorites/{id}")]
         [HttpGet]
         public IHttpActionResult findRestaurantFavorites(int id)
@@ -131,6 +142,18 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             return Ok(commensal.FavoritesRestaurants);
 
         }
+
+        [Route("findCommensalEmail/{email}")]
+        [HttpGet]
+        public IHttpActionResult findCommensalEmail(string email)
+        {
+            
+            UserAccount comm = GetCommensalDao().FindByEmail(email);
+            return Ok(comm);
+
+        }
+
+
 
 
 
