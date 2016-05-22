@@ -57,6 +57,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             References(x => x.Restaurant)
                 .Column("fk_restaurant_id")
+                .Not.LazyLoad()
                 .Not.Nullable(); 
                 
 

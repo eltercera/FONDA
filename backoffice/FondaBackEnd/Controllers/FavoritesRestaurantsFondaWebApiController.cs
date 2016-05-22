@@ -91,7 +91,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             IRestaurantDAO RestaurantDAO = FactoryDAO.GetRestaurantDAO();
             IList<Restaurant> listRestaurant = RestaurantDAO.GetAll();
 
-            /*foreach (var restaurant in listRestaurant)
+            foreach (var restaurant in listRestaurant)
             {
                 restaurant.RestaurantCategory = new RestaurantCategory
                 {
@@ -99,7 +99,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                     Id = restaurant.RestaurantCategory.Id
                 };    
 
-            }*/
+            }
 
             return Ok(listRestaurant);
         }

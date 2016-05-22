@@ -7,7 +7,6 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Representa una cuenta de un restaurante.
     /// </summary>
-    [DataContract]
     public class Account : BaseEntity
     {
         /// <summary>
