@@ -13,9 +13,9 @@ using Newtonsoft.Json;
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
     [RoutePrefix("api")]
-    public class RestaurantFilterFondaWebApiController : FondaWebApi
+    public class RestaurantZoneFilterFondaWebApiController : FondaWebApi
     {
-        public RestaurantFilterFondaWebApiController() : base() { }
+        public RestaurantZoneFilterFondaWebApiController() : base() { }
 
         [Route("zone/{id}")]
         [HttpGet]
