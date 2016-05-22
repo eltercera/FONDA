@@ -15,11 +15,14 @@ import static android.provider.BaseColumns._ID;
  */
 public class HandlerSQLite extends SQLiteOpenHelper {
 
+    private static HandlerSQLite instance;
+
     /**
-     * Table on th data base
+     * Table on the data base
      */
     private  String table = "CREATE TABLE creditcard (" + _ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                     "number TEXT, owner TEXT, id_owner INTEGER, expiration TEXT, cvv INTEGER, type TEXT);";
+
 
     /**
      * Constructor
@@ -41,6 +44,12 @@ public class HandlerSQLite extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * When its upgraded
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
@@ -125,5 +134,10 @@ public class HandlerSQLite extends SQLiteOpenHelper {
             db.close();
         }
     }
+
+    public static HandlerSQLite getInstance(Context context){
+        return instance;
+    }
+
 
 }
