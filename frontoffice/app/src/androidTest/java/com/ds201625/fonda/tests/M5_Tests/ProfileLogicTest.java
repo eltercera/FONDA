@@ -1,5 +1,6 @@
 package com.ds201625.fonda.tests.M5_Tests;
 
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.logic.LogicInvoice;
 
@@ -41,6 +42,8 @@ public class ProfileLogicTest extends TestCase {
         }
         catch (NullPointerException e){
             fail("No esta conectado al WS");
+        } catch (RestClientException e) {
+            e.printStackTrace();
         }
     }
 
@@ -58,6 +61,8 @@ public class ProfileLogicTest extends TestCase {
         }
         catch (NullPointerException e){
             fail("No esta conectado al WS");
+        } catch (RestClientException e) {
+            e.printStackTrace();
         }
     }
 
@@ -67,7 +72,11 @@ public class ProfileLogicTest extends TestCase {
     public void testRestaurantInvoiceIsNotEmpty() {
 
         String nameRestaurant = "The dining room";
-        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        try {
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertEquals(nameRestaurant, invoice.getRestaurant().getName());
 
     }
@@ -77,7 +86,11 @@ public class ProfileLogicTest extends TestCase {
      */
     public void testRestaurantInvoiceIsNotNull() {
 
-        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        try {
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertNotNull(invoice.getRestaurant());
     }
 
@@ -87,7 +100,11 @@ public class ProfileLogicTest extends TestCase {
     public void testProfileInvoiceIsNotEmpty() {
 
         String nameProfile = "Adriana";
-        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        try {
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertEquals(nameProfile, invoice.getProfile().getProfileName());
 
     }
@@ -97,7 +114,11 @@ public class ProfileLogicTest extends TestCase {
      */
     public void testProfileInvoiceIsNotNull() {
 
-        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        try {
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertNotNull(invoice.getProfile());
     }
 
@@ -108,7 +129,11 @@ public class ProfileLogicTest extends TestCase {
     public void testAccountInvoiceIsNotEmpty() {
 
 
-        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        try {
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertEquals(3, invoice.getAccount().getListDish().size());
 
     }
@@ -118,7 +143,11 @@ public class ProfileLogicTest extends TestCase {
      */
     public void testAccountInvoiceIsNotNull() {
 
-        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        try {
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertNotNull(invoice.getAccount());
     }
 
@@ -127,7 +156,11 @@ public class ProfileLogicTest extends TestCase {
      */
     public void testCurrencyInvoiceIsNotEmpty() {
 
-        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        try {
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertEquals("Bolivar", invoice.getCurrency().getName());
 
     }
@@ -137,7 +170,11 @@ public class ProfileLogicTest extends TestCase {
      */
     public void testCurrencyInvoiceIsNotNull() {
 
-        invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        try {
+            invoice = invoiceLogic.getInvoiceSW().getCurrentInvoice();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertNotNull(invoice.getCurrency());
     }
 

@@ -3,6 +3,7 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests;
 import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.domains.DishOrder;
 
@@ -45,7 +46,11 @@ public class CurrentOrderServiceTest extends TestCase {
      */
     public void testListDishOrderIsNotEmpty() {
 
-        listDishOrder = currentOrderService.getListDishOrder();
+        try {
+            listDishOrder = currentOrderService.getListDishOrder();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertFalse(listDishOrder.isEmpty());
     }
 
@@ -61,6 +66,8 @@ public class CurrentOrderServiceTest extends TestCase {
         }
         catch (NullPointerException e){
             fail("No esta conectado al WS");
+        } catch (RestClientException e) {
+            e.printStackTrace();
         }
     }
 
@@ -70,7 +77,11 @@ public class CurrentOrderServiceTest extends TestCase {
     public void testDishOrderIsNotEmpty() {
 
         String nameDish = "Pasta";
-        listDishOrder = currentOrderService.getListDishOrder();
+        try {
+            listDishOrder = currentOrderService.getListDishOrder();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertEquals(nameDish, listDishOrder.get(0).getDish().getName());
 
     }
@@ -80,7 +91,11 @@ public class CurrentOrderServiceTest extends TestCase {
      */
     public void testRestaurantInvoiceIsNotNull() {
 
-        listDishOrder = currentOrderService.getListDishOrder();
+        try {
+            listDishOrder = currentOrderService.getListDishOrder();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertNotNull(listDishOrder.get(0).getDish());
     }
 
@@ -95,6 +110,8 @@ public class CurrentOrderServiceTest extends TestCase {
         }
         catch (NullPointerException e){
             fail("No esta conectado al WS");
+        } catch (RestClientException e) {
+            e.printStackTrace();
         }
     }
 

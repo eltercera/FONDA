@@ -396,7 +396,10 @@ public class OrdersActivity extends BaseNavigationActivity implements
             int profile = 1;
             if (factFrag == null)
                 try {
-                    LogicPayment.getInstance().registerPayment(profile, a, numberCC);
+                    /**
+                     * Esto no compila
+                     */
+//                    LogicPayment.getInstance().registerPayment(profile, a, numberCC);
                 } catch (Exception e) {
                     e.getMessage();
                 }

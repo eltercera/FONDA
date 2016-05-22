@@ -2,6 +2,7 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests;
 
 import android.test.MoreAsserts;
 
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.logic.LogicCurrentOrder;
 
@@ -42,8 +43,14 @@ public class CurrentOrderLogicTest extends TestCase {
      *  Metodo para probar que la lista no esta vacia cuando se conecta con el WS
      */
     public void testListDishOrderIsNotEmpty() {
-
-        listDishOrder = currentOrderLogic.getCurrentOrderSW().getListDishOrder();
+        /**
+         * Esto no tenia el try catch y da error
+         */
+        try {
+            listDishOrder = currentOrderLogic.getCurrentOrderSW().getListDishOrder();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertFalse(listDishOrder.isEmpty());
     }
 
@@ -59,6 +66,8 @@ public class CurrentOrderLogicTest extends TestCase {
         }
         catch (NullPointerException e){
             fail("No esta conectado al WS");
+        } catch (RestClientException e) {
+            e.printStackTrace();
         }
     }
 
@@ -68,7 +77,11 @@ public class CurrentOrderLogicTest extends TestCase {
     public void testDishOrderIsNotEmpty() {
 
         String nameDish = "Pasta";
-        listDishOrder = currentOrderLogic.getCurrentOrderSW().getListDishOrder();
+        try {
+            listDishOrder = currentOrderLogic.getCurrentOrderSW().getListDishOrder();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertEquals(nameDish, listDishOrder.get(0).getDish().getName());
 
     }
@@ -78,7 +91,11 @@ public class CurrentOrderLogicTest extends TestCase {
      */
     public void testRestaurantInvoiceIsNotNull() {
 
-        listDishOrder = currentOrderLogic.getCurrentOrderSW().getListDishOrder();
+        try {
+            listDishOrder = currentOrderLogic.getCurrentOrderSW().getListDishOrder();
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
         assertNotNull(listDishOrder.get(0).getDish());
     }
 
@@ -88,7 +105,11 @@ public class CurrentOrderLogicTest extends TestCase {
     public void testListDishOrderIsNotNull() {
 
         try {
-            listDishOrder = currentOrderLogic.getCurrentOrderSW().getListDishOrder();
+            try {
+                listDishOrder = currentOrderLogic.getCurrentOrderSW().getListDishOrder();
+            } catch (RestClientException e) {
+                e.printStackTrace();
+            }
             assertNotNull(listDishOrder);
         }
         catch (NullPointerException e){

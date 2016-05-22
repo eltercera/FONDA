@@ -8,16 +8,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
-<<<<<<< HEAD
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.SessionData;
 import com.google.gson.Gson;
 
 import java.util.List;
-=======
-import com.ds201625.fonda.logic.SessionData;
->>>>>>> commensal-profile-management
 
 public class FavoritesActivity extends BaseNavigationActivity {
 
@@ -57,6 +54,9 @@ public class FavoritesActivity extends BaseNavigationActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_favorites);
 
+        /**
+         * Esta es la validacion de si el usuario ya esta loggeado o no.
+         */
         // para saltar o no
         boolean skp = false;
 
@@ -68,14 +68,23 @@ public class FavoritesActivity extends BaseNavigationActivity {
                 e.printStackTrace();
             }
 
+
+
         super.onCreate(savedInstanceState);
 
-<<<<<<< HEAD
-        list=(ListView)findViewById(R.id.listViewFavorites);
+        if (SessionData.getInstance().getToken() == null) {
+            skip();
+            return;
+        }
+        else {
+            /**
+             * Esto es lo que tenia el Modulo de Favoritos en principio.
+             */
+            list = (ListView) findViewById(R.id.listViewFavorites);
 
-        AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                getAllFavoriteRestaurantsService();
-        restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(2);
+            AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                    getAllFavoriteRestaurantsService();
+            restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(2);
         /*
         AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
                 getAllRestaurantsService();
@@ -87,8 +96,15 @@ public class FavoritesActivity extends BaseNavigationActivity {
             Log.v("WEBSERVICE",rest.getAddress());
         }*/
 
-        setupListView();
+            setupListView();
+        }
+    }
 
+    /**
+     * Acción de saltar esta actividad.
+     */
+    private void skip() {
+        startActivity(new Intent(this,LoginActivity.class));
     }
 
     private void setupListView(){
@@ -103,30 +119,10 @@ public class FavoritesActivity extends BaseNavigationActivity {
 //                Toast.makeText(FavoritesActivity.this, "You Clicked at " + names[+position], Toast.LENGTH_SHORT).show();
                 Intent cambio = new Intent(FavoritesActivity.this, DetailRestaurantActivity.class);
                 /*
-=======
-        // si existe un token o lo logra obtener uno nuevo vigente salta
-        if (SessionData.getInstance().getToken() == null) {
-            skip();
-            return;
-        }
-        else{
-            RestaurantList adapter = new
-                    RestaurantList(FavoritesActivity.this, names,location ,shortDescription,imageId);
-            list=(ListView)findViewById(R.id.listViewFavorites);
-            list.setAdapter(adapter);
-            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view,
-                                        int position, long id) {
-                    Toast.makeText(FavoritesActivity.this, "You Clicked at " + names[+position], Toast.LENGTH_SHORT).show();
-                    Intent cambio = new Intent (FavoritesActivity.this,DetailRestaurantActivity.class);
->>>>>>> commensal-profile-management
                     String nombreRest = names[+position];
                     String descriptionRest = shortDescription[+position];
                     String locationRest = location[+position];
                     Integer imageRest = imageId[+position];
-<<<<<<< HEAD
                     cambio.putExtra("NOMBRE", nombreRest);
                     cambio.putExtra("LOCATION", locationRest);
                     cambio.putExtra("DESCRIPTION", descriptionRest);
@@ -138,25 +134,6 @@ public class FavoritesActivity extends BaseNavigationActivity {
                 startActivity(cambio);
             }
         });
-=======
-                    cambio.putExtra("NOMBRE",nombreRest);
-                    cambio.putExtra("LOCATION",locationRest);
-                    cambio.putExtra("DESCRIPTION",descriptionRest);
-                    cambio.putExtra("IMAGE",imageRest);
-                    startActivity(cambio);
-
-                }
-            });
-        }
-
-    }
-
-    /**
-     * Acción de saltar esta actividad.
-     */
-    private void skip() {
-        startActivity(new Intent(this,LoginActivity.class));
->>>>>>> commensal-profile-management
     }
 
     private Restaurant getSelectedRestaurant(int position){
