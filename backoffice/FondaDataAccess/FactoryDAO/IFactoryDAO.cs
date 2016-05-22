@@ -22,9 +22,6 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         DisableSimpleStatus GetDisableSimpleStatus();
         FreeTableStatus GetFreeTableStatus();
         BusyTableStatus GetBusyTableStatus();
-        ActiveReservationStatus GetActiveReservationStatus();
-        CanceledReservationStatus GetCanceledReservationStatus();
-        UsedReservationStatus GetUsedReservationStatus();
         IInvoiceDao GetInvoiceDAO();
         ICreditCardPaymentDAO GetCreditCardPaymentDAO();
         ICashPaymentDAO GetCashPaymentDAO();
@@ -36,11 +33,7 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         IScheduleDAO GetScheduleDAO();
         ITableDAO GetTableDAO();
         IZoneDAO GetZoneDAO();
-        IReservationDAO GetReservationDAO();
-        OpenAccountStatus GetOpenAccountStatus();
-        ClosedAccountStatus GetCloseAccountStatus();
-        GeneratedInvoiceStatus GetGeneratedInvoiceStatus();
-     
-    }
+
+	}
 }
 

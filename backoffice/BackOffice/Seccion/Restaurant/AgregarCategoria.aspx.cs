@@ -17,8 +17,6 @@ namespace BackOffice.Seccion.Restaurant
     public partial class AgregarCategoria : System.Web.UI.Page
     {
 
-        FactoryDAO factoryDAO = FactoryDAO.Intance;
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -39,8 +37,9 @@ namespace BackOffice.Seccion.Restaurant
 
             CleanTable();
             //Genero los objetos para la consulta
-            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
             //Genero la lista de la consulta
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
             IList<RestaurantCategory> listRest = _restcatDAO.GetAll();
 
 
@@ -66,15 +65,13 @@ namespace BackOffice.Seccion.Restaurant
                     //Agrega las acciones de la tabla
                     else if (j.Equals(1))
                     {
-                        //Centrar contenido de las celdas
                         tCell.CssClass = "text-center";
                         //Crea hipervinculo para las acciones
-                        LinkButton actionModify = new LinkButton();
-                        //Agregar atributos de la celda
-                        actionModify.Attributes["data-toggle"] = "modal";
-                        actionModify.Attributes["data-target"] = "#modificar";
-                        actionModify.Text = RestaurantResource.ActionModify;
-                        tCell.Controls.Add(actionModify);
+                        LinkButton action = new LinkButton();
+                        action.Attributes["data-toggle"] = "modal";
+                        action.Attributes["data-target"] = "#modificar";
+                        action.Text = RestaurantResource.ActionModify;
+                        tCell.Controls.Add(action);
                     }
                     //Agrega la 
                     tRow.Cells.Add(tCell);
@@ -116,20 +113,12 @@ namespace BackOffice.Seccion.Restaurant
             return header;
         }
 
-        /// <summary>
-        /// Limpia las filas de la tabla mostrada en pantalla
-        /// </summary>
         public void CleanTable()
         {
             CategoryRest.Rows.Clear();
 
         }
 
-        /// <summary>
-        /// Valida los datos ingresados al agregar categoria
-        /// </summary>
-        /// <param name="name">Nombre de la categoria</param>
-        /// <returns>Devuelve true si son validos los datos, false si son incorrectos</returns>
         private bool CategoryValidate(string name)
         {
             bool valid = true;
@@ -146,15 +135,14 @@ namespace BackOffice.Seccion.Restaurant
             return valid;
         }
 
-        /// <summary>
-        /// Agrega una nueva categoria
-        /// </summary>
+
         protected void ButtonAgregar_Click(object sender, EventArgs e)
         {
             String nombreA = NombreCatA.Text;
             if (CategoryValidate(nombreA))
             {
                 AlertSuccess_AgregarCategoria.Visible = true;
+                FactoryDAO factoryDAO = FactoryDAO.Intance;
                 IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
                 RestaurantCategory _restcat = new RestaurantCategory();
                 _restcat.Name = nombreA;
@@ -168,15 +156,13 @@ namespace BackOffice.Seccion.Restaurant
             NombreCatA.Text = string.Empty;
         }
 
-        /// <summary>
-        /// Modifica una categoria
-        /// </summary>
         protected void ButtonModificar_Click(object sender, EventArgs e)
         {
             string nameM = NombreCatM.Text;
             if (CategoryValidate(nameM))
             {
                 AlertSuccess_ModificarCategoria.Visible = true;
+                FactoryDAO factoryDAO = FactoryDAO.Intance;
                 IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
                 string CategoryID = CategoryModifyId.Value;
                 int idCat = int.Parse(CategoryID);
