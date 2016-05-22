@@ -5,23 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Zone;
+
+import java.util.List;
 
 
-public class FilterList extends ArrayAdapter<String> {
+public class FilterZoneList extends ArrayAdapter<Zone> {
 
     private final Activity context;
-    private final String[] name;
+    private final List<Zone> listZone;
 
-    public FilterList(Activity context,
-                      String[] web) {
-        super(context, R.layout.filter_list, web);
+    public FilterZoneList(Activity context,
+                          List<Zone> _listZone) {
+        super(context, R.layout.filter_list, _listZone);
         this.context = context;
-        this.name = web;
-
+        this.listZone = _listZone;
     }
 
     @Override
@@ -30,8 +31,14 @@ public class FilterList extends ArrayAdapter<String> {
         View rowView = inflater.inflate(R.layout.list_restaurant_filter, null, true);
         TextView txtTitle = (TextView) rowView.findViewById(R.id.txt);
 
-        txtTitle.setText(name[position]);
+        int counter = 0;
 
+        for (Zone zone: this.listZone){
+            if (counter == position){
+                txtTitle.setText(zone.getName());
+            }
+            counter++;
+        }
         return rowView;
     }
 }

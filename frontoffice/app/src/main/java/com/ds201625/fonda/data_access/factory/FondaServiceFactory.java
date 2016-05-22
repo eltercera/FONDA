@@ -4,6 +4,7 @@ import com.ds201625.fonda.data_access.retrofit_client.RetroditServiceFactory;
 import com.ds201625.fonda.data_access.services.AddFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllRestaurantService;
+import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
@@ -127,5 +128,15 @@ public class FondaServiceFactory {
         return serviceFactory.getInvoiceService();
     }
 
-    public ZoneService getZoneService() { return serviceFactory.getZoneService();}
+    /**
+     * Obtiene las zonas
+     * @return
+     */
+    public ZoneService getZoneService() {
+        return serviceFactory.getZoneService();
+    }
+
+    public CategoryService getCategoryService(){
+        return serviceFactory.getCategoryService();
+    }
 }

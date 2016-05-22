@@ -4,6 +4,7 @@ import com.ds201625.fonda.data_access.factory.ServiceFactory;
 import com.ds201625.fonda.data_access.services.AddFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllRestaurantService;
+import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
@@ -69,5 +70,13 @@ public class RetroditServiceFactory implements ServiceFactory {
         return new RetrofitInvoiceService();
     }
 
-    public ZoneService getZoneService() { return new RetrofitZoneService();}
+    @Override
+    public ZoneService getZoneService() {
+        return new RetrofitZoneService();
+    }
+
+    @Override
+    public CategoryService getCategoryService() {
+        return new RetrofitCategoryService();
+    }
 }
