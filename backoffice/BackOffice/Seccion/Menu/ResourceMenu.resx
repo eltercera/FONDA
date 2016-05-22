@@ -119,41 +119,50 @@
   </resheader>
   <data name="ActionActivateCategory" xml:space="preserve">
     <value>&lt;a data-toggle="modal" data-target="#activate_category"&gt;&lt;i class="fa fa-check"&gt;&lt;/i&gt;&lt;/a&gt;</value>
+    <comment>acion para activar la categoria en ListarCategoria</comment>
+  </data>
+  <data name="ActionDefaultSuggestion" xml:space="preserve">
+    <value>&lt;a data-toggle="modal"  data-target="#suggestion" &gt;&lt;i class="fa fa-star"&gt;&lt;/i&gt;</value>
+    <comment>Accion para cambiar sugerencia en MenuPrincipal</comment>
   </data>
   <data name="ActionInactivateCategory" xml:space="preserve">
     <value>&lt;a data-toggle="modal" data-target="#deactivate_category"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;</value>
+    <comment>accion para desactivar la categoria en ListarCategoria</comment>
   </data>
   <data name="ActionMenuDia" xml:space="preserve">
     <value>&lt;a data-toggle="modal"  data-target="#ver_plato" &gt;&lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;</value>
-    <comment>&lt;i class="fa fa-info-circle"&gt;</comment>
+    <comment>accion para ver el detalle del plato en MenuDia</comment>
   </data>
   <data name="ActionModificarCategoria" xml:space="preserve">
     <value>&lt;a data-toggle="modal"  data-target="#modify_category" &gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;</value>
-    <comment>&lt;a data-toggle="modal"  data-target="#modify_category" &gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;</comment>
+    <comment>Accion para modificar categoria en ListarCategoria</comment>
   </data>
   <data name="ActionModifyDishMenuPrincipal" xml:space="preserve">
     <value>&lt;a data-toggle="modal"  data-target="#modify_dish" &gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;</value>
+    <comment>Accion para modificar el plato en MenuPrincipal</comment>
   </data>
   <data name="ActionRemoveSuggestion" xml:space="preserve">
     <value>&lt;a data-toggle="modal"  data-target="#remove_suggestion" &gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
-    <comment>&lt;a data-toggle="modal" data-target="remove_suggestion"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;</comment>
+    <comment>Accion para quitar la sugerencia en MenuDia</comment>
   </data>
   <data name="ActionSetActiveDishMenuPrincipal" xml:space="preserve">
-    <value>&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;</value>
+    <value>&lt;a data-toggle="modal" data-target="#activate_dish"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;</value>
+    <comment>Accion para activar el plato en MenuPrincipal</comment>
   </data>
   <data name="ActionSetInactiveDishMenuPrincipal" xml:space="preserve">
-    <value>&lt;a data-toggle="modal" data-target="#"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/a&gt;</value>
+    <value>&lt;a data-toggle="modal" data-target="#deactivate_dish"&gt;&lt;i class="fa fa-times" aria-hidden="true"&gt;&lt;/i&gt;&lt;/a&gt;</value>
+    <comment>Accion para desactivar el plato en MenuPrincipal</comment>
   </data>
   <data name="Active" xml:space="preserve">
     <value>&lt;span class="label label-success"&gt;&lt;i class="fa fa-check"&gt;&lt;p class="stat"&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;</value>
-  </data>
-  <data name="AddDishMenuPrincipal" xml:space="preserve">
-    <value />
+    <comment>Icono de activo</comment>
   </data>
   <data name="CloseTR" xml:space="preserve">
     <value>&lt;/tr&gt;</value>
+    <comment>Cierre de la fila</comment>
   </data>
   <data name="Inactive" xml:space="preserve">
     <value>&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;p class="stat"&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;</value>
+    <comment>Icono de desactivado</comment>
   </data>
 </root>
