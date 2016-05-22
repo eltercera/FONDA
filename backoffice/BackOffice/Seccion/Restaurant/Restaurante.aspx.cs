@@ -20,6 +20,8 @@ namespace BackOffice.Seccion.Restaurant
             AlertSuccess_ModifyRestaurant.Visible = false;
             OpeningTimeA.Attributes.Add("type","time");
             ClosingTimeA.Attributes.Add("type", "time");
+            OpeningTimeM.Attributes.Add("type", "time");
+            ClosingTimeM.Attributes.Add("type", "time");
             LoadDataTable();
             FillDropdown();
 
@@ -251,25 +253,25 @@ namespace BackOffice.Seccion.Restaurant
                 valid = false;
             }
             //Valida que al menos un check esté seleccionado
-            if (Day1A.Checked)
+            if ((Day1A.Checked) || (Day1M.Checked))
                 cont = cont+1;
-            if (Day2A.Checked)
+            if ((Day2A.Checked) || (Day2M.Checked))
                 cont = cont + 1;
-            if (Day3A.Checked)
+            if ((Day3A.Checked) || (Day3M.Checked))
                 cont = cont + 1;
-            if (Day4A.Checked)
+            if ((Day4A.Checked) || (Day4M.Checked))
                 cont = cont + 1;
-            if (Day5A.Checked)
+            if ((Day5A.Checked) || (Day5M.Checked))
                 cont = cont + 1;
-            if (Day6A.Checked)
+            if ((Day6A.Checked) || (Day6M.Checked))
                 cont = cont + 1;
-            if (Day7A.Checked)
+            if ((Day7A.Checked) || (Day7M.Checked))
                 cont = cont + 1;
             if (cont<1)
             {
                 valid = false;
             }
-
+           
             return valid;
         }
 

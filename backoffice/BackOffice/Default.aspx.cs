@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Web.UI.WebControls;
 using BackOffice.Content;
 using BackOffice.Seccion.Restaurant;
+using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
@@ -31,8 +32,13 @@ namespace BackOffice
             int _idRestaurant = 0;
             if (Session["RestaurantID"] != null)
             {
-                string idRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();
-                _idRestaurant = int.Parse(idRestaurant);
+                try {
+                    string idRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();
+                    _idRestaurant = int.Parse(idRestaurant);
+                    }
+                catch (Exception e) {
+                    throw new CastException("Error al transformar un tipo de dato string a int", e);
+                }
             }
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
