@@ -2,6 +2,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System;
 using System.Collections.Generic;
+using NHibernate.Criterion;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -27,6 +28,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     restaurantTables.Add(t);
             }
             return restaurantTables;
+        }
+
+        public IList<Table> findByStatus(Status status, int restaurant)
+        {
+            ICriterion criterion = Expression.And(Expression.Eq("Restaurant.Id", restaurant), Expression.Eq("Status", FreeTableStatus.Instance));
+            return (FindAll(criterion));
         }
 
         public IList<Table> TablesAvailableByDate(int restaurantId, IList<Reservation> listReservation, DateTime date)
@@ -67,5 +74,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
             return tablesAvailible;
         }
+
     }
 }

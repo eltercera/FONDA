@@ -244,17 +244,6 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
-    $('#ListarOrden').DataTable({
-        "language": spanish,
-        "aoColumns": [
-            null,
-            { "bSearchable": false },
-            { "bSearchable": false }
-        ]
-    });
-});
-
-$(document).ready(function () {
     $('#Detalle').DataTable({
         "language": spanish,
         "bAutoWidth": false,
@@ -263,6 +252,46 @@ $(document).ready(function () {
             null,
             null,
             { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#TablaEmployee').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#contenido_ListarOrden').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#contenido_Detalle').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
             { "bSearchable": false }
         ]
     });
@@ -283,6 +312,20 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $('#contenido_Pago').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable": false }
+        ]
+    });
+});
+
+
+$(document).ready(function () {
     $('#contenido_Restaurant').DataTable({
         "language": spanish,
         "aoColumns": [
@@ -294,3 +337,20 @@ $(document).ready(function () {
         ]
     });
 });
+
+
+$(document).ready(function () {
+            $('#contenido_Menu1').DataTable({
+                "language": spanish,
+                "bAutoWidth": false,
+                "aoColumns": [
+                    null,
+                     null,
+                    null,
+                    null,
+                    { "bSearchable": false },
+                    { "bSearchable": false }
+                ]
+            });
+});
+
