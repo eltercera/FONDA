@@ -101,11 +101,14 @@ $(document).ready(function () {
         "language": spanish,
         "aoColumns": [
             null,
+            null,
             { "bSearchable": false },
             { "bSearchable": false }
         ]
     });
 });
+
+
 
 $(document).ready(function () {
     $('#contenido_TableDayMenuDashboard').DataTable({
@@ -113,6 +116,18 @@ $(document).ready(function () {
         "aoColumns": [
             null,
             null
+        ]
+    });
+});
+$(document).ready(function () {
+    $('#contenido_tableDefault').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
         ]
     });
 });
@@ -226,6 +241,8 @@ $(document).ready(function () {
     });
 });
 
+
+
 $(document).ready(function () {
     $('#ListarOrden').DataTable({
         "language": spanish,
@@ -259,6 +276,19 @@ $(document).ready(function () {
             null,
             null,
             null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#contenido_Restaurant').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false },
             { "bSearchable": false },
             { "bSearchable": false }
         ]

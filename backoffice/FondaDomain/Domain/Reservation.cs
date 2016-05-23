@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,6 +47,7 @@ namespace com.ds201625.fonda.Domain
 		/// </summary>
 		public Reservation() : base () { }
 
+        [DataMember]
         public virtual DateTime ReserveDate
         {
             get { return _reserveDate; }
@@ -58,6 +60,7 @@ namespace com.ds201625.fonda.Domain
             set { _createDate = value; }
         }
 
+        [DataMember]
         public virtual int CommensalNumber
         {
             get { return _commensalNumber; }

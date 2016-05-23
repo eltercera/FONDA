@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Services;
 using System.Web.UI.WebControls;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -29,20 +30,36 @@ namespace BackOffice.Seccion.Restaurant
         {
             CleanTable();
             //ID del restaurante donde nos encontramos
+            //Validamos que la Session de Gerente este iniciada
             int _idRestaurant = 0;
             if (Session["RestaurantID"] != null)
             {
-                string idRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();
-                _idRestaurant = int.Parse(idRestaurant);
-            }
+                try
+                {
+                    string idRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();
+                    _idRestaurant = int.Parse(idRestaurant);
+                }
+                catch (Exception e)
+                {
+                    throw new CastException("Error al transformar un tipo de dato string a int", e);
+                }
+            }           
             //Genero los objetos para la consulta
-            //Genero la lista de la consulta
+            //Genero la lista de mesas por restaurant
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
+            //Genero la lista de reservas por restaurant
+            IReservationDAO _reservationDAO = factoryDAO.GetReservationDAO();
+            IList<Reservation> listReservation = _reservationDAO.FindByRestaurant(_idRestaurant);
+            //Fecha del sistema
+            DateTime today = DateTime.Now;
+            DateTime now = new DateTime(today.Year, today.Month, today.Day, today.Hour, today.Minute, 0);
+
 
 
             int totalRows = listTable.Count; //tamano de la lista 
             int totalColumns = 5; //numero de columnas de la tabla
+            int totalRowsReservation = listReservation.Count; //tamano de la lista de reserva
 
             //Recorremos la lista
             for (int i = 0; i <= totalRows - 1; i++)
@@ -53,34 +70,53 @@ namespace BackOffice.Seccion.Restaurant
                 tRow.Attributes["data-id"] = listTable[i].Id.ToString();
                 //Agrega la fila a la tabla existente
                 table.Rows.Add(tRow);
-                // CABLEADO DE RESERVA
-                string statusTable = string.Empty;
-                string user = string.Empty;
-                string status = listTable[i].Status.ToString();
-                string statusActive = FreeTableStatus.Instance.ToString();
-                string statusInactive = BusyTableStatus.Instance.ToString();
-                int quantity = 0;
-                if (status == statusActive)
+
+                #region CABLEADO RESERVA
+                    string user = string.Empty;
+                    string status = listTable[i].Status.ToString();
+                    int quantity = 0;
+
+                //Verificamos que existan reservas
+                if (totalRowsReservation != 0)
+                {
+                    //Cantidad de reservas para ese restaurant
+                    for (int r = 0; r <= totalRowsReservation - 1; r++)
+                    {
+                        //Fecha de reserva
+                        DateTime reservationDate = listReservation[r].ReserveDate;
+
+                        //Chequear si hay una reserva en curso o no y asigna los datos de reserva
+                        if ((now == reservationDate) && (listTable[i].Id == listReservation[r].ReserveTable.Id))
+                        {
+                            status = RestaurantResource.Inactive;
+                            user = "Usuario" + listTable[i].Id;
+                            quantity = listReservation[r].CommensalNumber;
+                        }
+                        else if ((now != reservationDate) || (listTable[i].Id != listReservation[r].ReserveTable.Id))
+                        {
+                            status = RestaurantResource.Active;
+                            user = "N/A";
+                            quantity = 0;
+
+                        }
+                    }
+                }
+                else if (totalRowsReservation == 0)
                 {
                     status = RestaurantResource.Active;
                     user = "N/A";
                     quantity = 0;
-                }
-                else if (status == statusInactive)
-                {
-                    status = RestaurantResource.Inactive;
-                    user = "Usuario" + listTable[i].Id;
-                    quantity = listTable[i].Capacity - 1;
 
                 }
-                // TERMINA EL CABLEADO DE RESERVA
-                for (int j = 0; j <= totalColumns; j++)
+               #endregion
+
+                    for (int j = 0; j <= totalColumns; j++)
                 {
                     //Crea una nueva celda de la tabla
                     TableCell tCell = new TableCell();
                     //Agrega el ID de la mesa
                     if (j.Equals(0))
-                        tCell.Text = listTable[i].Id.ToString();
+                        tCell.Text = listTable[i].Number.ToString();
                     //Agrega la capacidad de la mesa
                     else if (j.Equals(1))
                         tCell.Text = listTable[i].Capacity.ToString();
@@ -191,10 +227,12 @@ namespace BackOffice.Seccion.Restaurant
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Table _table = new com.ds201625.fonda.Domain.Table();
+            //busca las mesas del restaurante
             IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
             int capacity = int.Parse(DDLcapacityA.SelectedValue);
             _table.Capacity = capacity;
             _table.Status = factoryDAO.GetFreeTableStatus();
+            //le asigna un numero unico a la mesa para ese restaurante
             _table.Number = listTable.Count+1;
             _restaurant = _restaurantDAO.FindById(_idRestaurant);
             _table.Restaurant = _restaurant;

@@ -78,6 +78,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOCashPaymentTest.cs" />
+    <Compile Include="BOChangeCategoryTest.cs" />
+    <Compile Include="BOChangeDishTest.cs" />
     <Compile Include="BOCoordinateTest.cs" />
     <Compile Include="BOCreditCardPaymentTest.cs" />
     <Compile Include="BOCurrencyTest.cs" />
@@ -85,6 +87,8 @@
     <Compile Include="BODishOrderTest.cs" />
     <Compile Include="BODishTest.cs" />
     <Compile Include="BoEmployeeTest.cs" />
+    <Compile Include="BOListCategoryTest.cs" />
+    <Compile Include="BOListDishTest.cs" />
     <Compile Include="BOReservationTest.cs" />
     <Compile Include="BOMenuCategoryTest.cs" />
     <Compile Include="BORoleTest.cs" />
@@ -100,6 +104,7 @@
     <Compile Include="FORegisterZone.cs" />
     <Compile Include="FORestaurantRegister.cs" />
     <Compile Include="FOUserRegisterTests.cs" />
+    <Compile Include="BOGeopositionTableTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
