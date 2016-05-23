@@ -108,7 +108,7 @@
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Fecha de Nacimiento</label>
-                            <asp:TextBox ID="birtDate" CssClass="form-control" placeholder="DD/MM/AA" MaxLength="9" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
+                            <asp:TextBox ID="birtDate" CssClass="form-control" placeholder="DD/MM/YYYY" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
                             <div id="messageBirthdate" style="color:#FF9999" runat="server" ></div>
                         </div>
                 </div>

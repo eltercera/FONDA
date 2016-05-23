@@ -275,7 +275,7 @@ namespace BackOffice.Seccion.Configuracion
             this.phoneNumber.Text = "";
             this.phoneNumber.Attributes["placeholder"] = "Ej. 04127890544";
             this.birtDate.Text = "";
-            this.birtDate.Attributes["placeholder"] = "DD/MM/AA";
+            this.birtDate.Attributes["placeholder"] = "DD/MM/YYYY";
             this.role.Items.Clear();
             this.role.Items.Add("");
             this.gender.Text = "";
@@ -577,7 +577,7 @@ namespace BackOffice.Seccion.Configuracion
                 case "InvalidFormatPasswordEqual": this.messagePasswordEqual.InnerHtml = G1RecursosInterfaz.iconDanger + " Las contraseñas no coinciden";
                                         break;
 
-                case "InvalidFormatBirthdate": this.messageBirthdate.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato de fecha inválido (DD/MM/YY)";
+                case "InvalidFormatBirthdate": this.messageBirthdate.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato de fecha inválido (DD/MM/YYYY)";
                                         break;
 
                 case "Empty": this.messageEmpty.InnerHtml = G1RecursosInterfaz.iconExclamation + " Uno o mas Campos Obligatorios Vacíos";
@@ -690,7 +690,7 @@ namespace BackOffice.Seccion.Configuracion
             string patronTexto = "^[A-Z a-z]*$";
             string patronAlphaNumerico1 = "^[A-Z0-9(.) a-z]*$";
             string patronAlphaNumerico2 = "^[A-Z0-9a-z]*$";
-            string patronFecha = "^[0-9(/{2,2})]*$";
+            string patronFecha = @"(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d";
             string patronEmail = @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
             string Name = nameUser.Text;
             string LastName = lastNameUser.Text;
