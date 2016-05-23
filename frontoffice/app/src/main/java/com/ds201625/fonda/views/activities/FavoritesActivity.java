@@ -93,9 +93,8 @@ public class FavoritesActivity extends BaseNavigationActivity {
                     Log.v(TAG,"Email->"+emailToWebService);
                     RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
                             getLogedCommensalService();
-
-//                logedComensal =getComensal.getLogedCommensal(emailToWebService);
-                    //   Log.v(TAG,logedComensal.getId()+"");
+                    logedComensal =getComensal.getLogedCommensal(emailToWebService);
+                    Log.v(TAG,logedComensal.getId()+"");
 
 
                 }catch(NullPointerException nu){
@@ -197,6 +196,7 @@ public class FavoritesActivity extends BaseNavigationActivity {
                 Intent detailActivity = new Intent(FavoritesActivity.this, DetailRestaurantActivity.class);
                 Restaurant test = getSelectedRestaurant(position);
                 detailActivity.putExtra("restaurant", new Gson().toJson(test));
+                detailActivity.putExtra("commensal", new Gson().toJson(logedComensal));
                 startActivity(detailActivity);
             }
         });
