@@ -63,31 +63,46 @@ namespace BackOffice
                 tRow.Attributes["data-id"] = listTable[i].Id.ToString();
                 //Agrega la fila a la tabla existente
                 tableDefault.Rows.Add(tRow);
+
                 #region CABLEADO RESERVA
                 string user = string.Empty;
                 string status = listTable[i].Status.ToString();
                 int quantity = 0;
-                for (int r = 0; r <= totalRowsReservation - 1; r++)
+
+                //Verificamos que existan reservas
+                if (totalRowsReservation != 0)
                 {
-                    DateTime reservationDate = new DateTime(); 
-                    reservationDate = listReservation[r].ReserveDate;
-
-                    if ((now == reservationDate) && (listTable[i].Id == listReservation[r].ReserveTable.Id))
+                    //Cantidad de reservas para ese restaurant
+                    for (int r = 0; r <= totalRowsReservation - 1; r++)
                     {
-                        status = RestaurantResource.Inactive;
-                        user = "Usuario" + listTable[i].Id;
-                        quantity = listReservation[r].CommensalNumber;
-                    }
-                    else if ((now != reservationDate) || (listTable[i].Id != listReservation[r].ReserveTable.Id))
-                    {
-                        status = RestaurantResource.Active;
-                        user = "N/A";
-                        quantity = 0;
+                        //Fecha de reserva
+                        DateTime reservationDate = listReservation[r].ReserveDate;
 
+                        //Chequear si hay una reserva en curso o no y asigna los datos de reserva
+                        if ((now == reservationDate) && (listTable[i].Id == listReservation[r].ReserveTable.Id))
+                        {
+                            status = RestaurantResource.Inactive;
+                            user = "Usuario" + listTable[i].Id;
+                            quantity = listReservation[r].CommensalNumber;
+                        }
+                        else if ((now != reservationDate) || (listTable[i].Id != listReservation[r].ReserveTable.Id))
+                        {
+                            status = RestaurantResource.Active;
+                            user = "N/A";
+                            quantity = 0;
+
+                        }
                     }
                 }
+                else if (totalRowsReservation == 0)
+                {
+                    status = RestaurantResource.Active;
+                    user = "N/A";
+                    quantity = 0;
+
+                }
                 #endregion
-                
+
                 for (int j = 0; j <= totalColumns; j++)
                 {
                     //Crea una nueva celda de la tabla

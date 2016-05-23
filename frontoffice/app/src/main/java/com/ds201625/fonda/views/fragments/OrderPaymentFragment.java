@@ -120,7 +120,10 @@ public class OrderPaymentFragment extends BaseFragment {
      * Fecha conformato
      */
     private String formattedDate;
-
+    /**
+     * Indica el perfil en curso
+     */
+    private String currentP="Adriana";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -155,7 +158,7 @@ public class OrderPaymentFragment extends BaseFragment {
         try {
             amountRec = getArguments().getFloat("amount");
             selectedCCPass = getArguments().getString("creditC");
-        }catch (NullPointerException n)
+             }catch (NullPointerException n)
         { n.getMessage();}
         finally {
             if(selectedCCPass != null) {
@@ -164,6 +167,7 @@ public class OrderPaymentFragment extends BaseFragment {
             }
                 amount = amountRec;
 
+
         }
 
 
@@ -171,7 +175,7 @@ public class OrderPaymentFragment extends BaseFragment {
         //String que llena el listview
         String[] pay = {"Monto Total " +
                 " Bs." + always,
-                "Seleccionar Perfil",
+                "Perfil: "+currentP,
                 "Tarjeta de Crédito: "+selectCC};
         // Agrega elementos a la lista
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
@@ -243,7 +247,7 @@ public class OrderPaymentFragment extends BaseFragment {
                         Toast.makeText(getContext(), "Su " + itemSelected, Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                       OrdersActivity.changeFrag(1);
+                        Toast.makeText(getContext(), "Su Perfil", Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
                         OrdersActivity.changeFrag(2);
@@ -296,7 +300,6 @@ public class OrderPaymentFragment extends BaseFragment {
      * Manda la informacion de la factura al web service
      */
     public void postPayment() {
-        //ESTE OBJETO SE GENERA CON INFORMACION SACADA DE OTRO LADO
         CloseAccountFragment cls = new CloseAccountFragment();
         Invoice invoice = new Invoice();
         List<DishOrder> lista = cls.getListDishO();
@@ -313,7 +316,7 @@ public class OrderPaymentFragment extends BaseFragment {
         curr.setSymbol("Bs");
         float tax = cls.getIva();
         prof.setProfileName("Melanie");
-        rest.setName("El Tinajero");
+        rest.setName("The Dining Room");
 
 
         invoice.setAccount(acc);
@@ -329,9 +332,7 @@ public class OrderPaymentFragment extends BaseFragment {
         logicPayment = new LogicPayment();
         try {
             payment = logicPayment.paymentService(invoice);
-            //PRUEBA DE QUE HACE EL POST
-            System.out.println("TAX1 : "+ payment.getTax());
-        } catch (RestClientException e) {
+            } catch (RestClientException e) {
             System.out.println(e.getMessage());
         } catch (InvalidDataRetrofitException e) {
             System.out.println(e.getMessage());

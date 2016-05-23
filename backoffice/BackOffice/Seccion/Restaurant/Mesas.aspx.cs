@@ -75,14 +75,18 @@ namespace BackOffice.Seccion.Restaurant
                     string user = string.Empty;
                     string status = listTable[i].Status.ToString();
                     int quantity = 0;
-                    //Cantidad de reservas para ese restaurant
-                for (int r = 0; r <= totalRowsReservation - 1; r++)
-                {
-                    //Fecha de reserva
-                    DateTime reservationDate = listReservation[r].ReserveDate;
 
-                    //Chequear si hay una reserva en curso o no y asigna los datos de reserva
-                    if ((now == reservationDate) && (listTable[i].Id == listReservation[r].ReserveTable.Id))
+                //Verificamos que existan reservas
+                if (totalRowsReservation != 0)
+                {
+                    //Cantidad de reservas para ese restaurant
+                    for (int r = 0; r <= totalRowsReservation - 1; r++)
+                    {
+                        //Fecha de reserva
+                        DateTime reservationDate = listReservation[r].ReserveDate;
+
+                        //Chequear si hay una reserva en curso o no y asigna los datos de reserva
+                        if ((now == reservationDate) && (listTable[i].Id == listReservation[r].ReserveTable.Id))
                         {
                             status = RestaurantResource.Inactive;
                             user = "Usuario" + listTable[i].Id;
@@ -95,10 +99,18 @@ namespace BackOffice.Seccion.Restaurant
                             quantity = 0;
 
                         }
+                    }
                 }
-                #endregion
+                else if (totalRowsReservation == 0)
+                {
+                    status = RestaurantResource.Active;
+                    user = "N/A";
+                    quantity = 0;
 
-                for (int j = 0; j <= totalColumns; j++)
+                }
+               #endregion
+
+                    for (int j = 0; j <= totalColumns; j++)
                 {
                     //Crea una nueva celda de la tabla
                     TableCell tCell = new TableCell();
