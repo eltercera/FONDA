@@ -2,14 +2,19 @@ package com.ds201625.fonda.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.AllRestaurantService;
+import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
+import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.SessionData;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -19,6 +24,8 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
     private RestaurantList adapter;
     private ListView list;
     private List<Restaurant> restaurantList;
+    private String TAG = "AllRestaurantActivity";
+    private Commensal logedComensal;
 
     String[] names = {
             "The dining room",
@@ -53,20 +60,54 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
         super.onCreate(savedInstanceState);
         list=(ListView)findViewById(R.id.listViewRestaurants);
 
-        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
-                getAllRestaurantsService();
-        restaurantList = allRestaurant.getAllRestaurant();
 
-        try{
-            for (Restaurant restaurant:restaurantList){
-//                Log.v("ALLREST",restaurant.getName());
+        try {
+            Commensal log = SessionData.getInstance().getCommensal();
+
+            String emailToWebService;
+            try{
+                emailToWebService=log.getEmail()+"/";
+                Log.v(TAG, "Email->" + emailToWebService);
+                RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
+                        getLogedCommensalService();
+                logedComensal =getComensal.getLogedCommensal(emailToWebService);
+
+                Log.v(TAG,logedComensal.getId()+"");
+
+
+            }catch(NullPointerException nu){
+                nu.printStackTrace();
+            }
+
+
+            list=(ListView)findViewById(R.id.listViewFavorites);
+
+                /*
+                    AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                            getAllFavoriteRestaurantsService();
+
+                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(1);
+                 */
+            AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                    getAllRestaurantsService();
+            restaurantList = allRestaurant.getAllRestaurant();
+
+
+            try {
+                for (Restaurant rest : restaurantList) {
+                    Log.v("WEBSERVICE", rest.getId() + "");
+                    Log.v("WEBSERVICE", rest.getName());
+                    Log.v("WEBSERVICE", rest.getAddress());
+                }
+                setupListView();
+            }catch (NullPointerException ex){
+                // Log.v(TAG,R.string.favorite_conexion_fail_message );
+                Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
+                        Toast.LENGTH_LONG).show();
             }
         }catch (Exception e){
             e.printStackTrace();
         }
-
-        setupListView();
-
     }
 
     private void setupListView(){

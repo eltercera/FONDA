@@ -187,7 +187,7 @@ Restaurantes
             </div>   
           
                         <div class="modal-footer">
-                            <asp:Button id="CloseConsult" Text="Cerrar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="CloseConsult" Text="Cerrar" CssClass="btn btn-danger"  class="close" data-dismiss="modal" runat="server"/>
                         </div>
  
             </div>
@@ -306,6 +306,7 @@ Restaurantes
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <div class="form-group">
                             <label class="control-label">Hora Apertura</label>
+                                <asp:TextBox ID="ShowOpeningTimeM" CssClass="form-control" readonly="true"  runat="server"/>
                                 <asp:TextBox id="OpeningTimeM" CssClass="form-control" AutoPostBack="False" runat="server">
                                 </asp:TextBox>
                         </div>
@@ -313,6 +314,7 @@ Restaurantes
                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                         <div class="form-group">
                             <label class="control-label">Hora Cierre</label>
+                                <asp:TextBox ID="ShowClosingTimeM" CssClass="form-control" readonly="true"  runat="server"/>
                                 <asp:TextBox id="ClosingTimeM" CssClass="form-control" AutoPostBack="False" runat="server">
                                 </asp:TextBox>
                         </div>
@@ -330,7 +332,7 @@ Restaurantes
           </div>
                         <div class="modal-footer">
                             <asp:Button id="ButtonModify" Text="Modificar" CssClass="btn btn-success" onclick="ButtonModify_Click" runat ="server"/>
-                            <asp:Button id="ButtonCancelM" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonCancelM" Text="Cancelar" CssClass="btn btn-danger" class="close" data-dismiss="modal" runat="server"/>
                         </div>
 
                     </div>
@@ -475,7 +477,7 @@ Restaurantes
             </div>
                         <div class="modal-footer">
                             <asp:Button id="ButtonAdd" Text="Agregar" CssClass="btn btn-success " OnClick="ButtonAdd_Click" runat="server"/>
-                            <asp:Button id="ButtonCancelA" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                            <asp:Button id="ButtonCancelA" Text="Cancelar" CssClass="btn btn-danger" class="close" data-dismiss="modal" runat="server"/>
                         </div>
             </div>
             </div>
@@ -556,7 +558,6 @@ Restaurantes
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function (response) {
-                                debugger;
                                 if (type === "Info")
                                     setModalInfo(response);
                                 else if (type === "Modify")
@@ -569,8 +570,18 @@ Restaurantes
                     }
 
                     function setModalInfo(local) {
-                        var openingTime = local.d.Schedule.OpeningTime.Hours + ':' + local.d.Schedule.OpeningTime.Minutes;
-                        var closingTime = local.d.Schedule.ClosingTime.Hours + ':' + local.d.Schedule.ClosingTime.Minutes;
+                        /* Modal que muestra la informacion del Restaurante */
+
+                        // Hora de Apertura del Restaurante
+                        var openingTimeHour = local.d.Schedule.OpeningTime.Hours;
+                        var openingTimeMinutes = local.d.Schedule.OpeningTime.Minutes;
+                        var openingTime = new Date(0, 0, 0, openingTimeHour, openingTimeMinutes, 0, 0);
+
+                        //Hora de Cierre del Restaurante
+                        var closingTimeHour = local.d.Schedule.ClosingTime.Hours;
+                        var closingTimeMinutes = local.d.Schedule.ClosingTime.Minutes;
+                        var closingTime = new Date(0, 0, 0, closingTimeHour, closingTimeMinutes, 0, 0);
+
                         document.getElementById("<%=NameC.ClientID%>").value = local.d.Name;
                         document.getElementById("<%=CategoryC.ClientID%>").value = local.d.RestaurantCategory.Name;
                         document.getElementById("<%=NationalityC.ClientID%>").value = local.d.Nationality;
@@ -578,20 +589,33 @@ Restaurantes
                         document.getElementById("<%=CurrencyC.ClientID%>").value = local.d.Currency.Name;
                         document.getElementById("<%=AddressC.ClientID%>").value = local.d.Address;
                         document.getElementById("<%=ZoneC.ClientID%>").value = local.d.Zone.Name;
-                        document.getElementById("<%=OpeningTimeC.ClientID%>").value = openingTime;
-                        document.getElementById("<%=ClosingTimeC.ClientID%>").value = closingTime;
-                        $("img").attr({
+                        document.getElementById("<%=OpeningTimeC.ClientID%>").value = openingTime.toLocaleTimeString();
+                        document.getElementById("<%=ClosingTimeC.ClientID%>").value = closingTime.toLocaleTimeString();
+
+                        /* Imagen del Restaurante */
+                        $("img").attr(
+                        {
                             src: "/Seccion/Restaurant/images/" + local.d.Logo,
                             alt: " ",
                             runat: "server"
                         });
-                        daysOfWork(local);
+                        selectDay(local);
                     }
 
-                    function setModalModify(local) {
-                        /* Modificar */
-                        var openingTime = local.d.Schedule.OpeningTime.Hours + ':' + local.d.Schedule.OpeningTime.Minutes;
-                        var closingTime = local.d.Schedule.ClosingTime.Hours + ':' + local.d.Schedule.ClosingTime.Minutes;
+        function setModalModify(local)
+        {
+                        /* Mpdal que para modificar la informacion del Restaurante */
+
+                        // Hora de Apertura del Restaurante
+                        var openingTimeHour = local.d.Schedule.OpeningTime.Hours;
+                        var openingTimeMinutes = local.d.Schedule.OpeningTime.Minutes;
+                        var openingTime = new Date(0, 0, 0, openingTimeHour, openingTimeMinutes, 0, 0);
+
+                        //Hora de Cierre del Restaurante
+                        var closingTimeHour = local.d.Schedule.ClosingTime.Hours;
+                        var closingTimeMinutes = local.d.Schedule.ClosingTime.Minutes;
+                        var closingTime = new Date(0, 0, 0, closingTimeHour, closingTimeMinutes, 0, 0);
+
                         document.getElementById("<%=NameM.ClientID%>").value = local.d.Name;
                         document.getElementById("<%=CategoryM.ClientID%>").value = local.d.RestaurantCategory.Name;
                         document.getElementById("<%=NationalityM.ClientID%>").value = local.d.Nationality;
@@ -599,84 +623,90 @@ Restaurantes
                         document.getElementById("<%=CurrencyM.ClientID%>").value = local.d.Currency.Name;
                         document.getElementById("<%=AddressM.ClientID%>").value = local.d.Address;
                         document.getElementById("<%=ZoneM.ClientID%>").value = local.d.Zone.Name;
-                        document.getElementById("<%=OpeningTimeM.ClientID%>").value = openingTime;
-                        document.getElementById("<%=ClosingTimeM.ClientID%>").value = closingTime;
+                        document.getElementById("<%=ShowOpeningTimeM.ClientID%>").value = openingTime.toLocaleTimeString();
+                        document.getElementById("<%=ShowClosingTimeM.ClientID%>").value = closingTime.toLocaleTimeString();
                         document.getElementById("<%=LongM.ClientID%>").value = local.d.Coordinate.Longitude;
                         document.getElementById("<%=LatM.ClientID%>").value = local.d.Coordinate.Latitude;
                         selectDay(local);
-                    }
+        }
 
-        function selectDay(local) {
+        // Recorre los dias laborables del Restaurante
+        function selectDay(local)
+        {
             var days = local.d.Schedule.Day;
             var day;
             clearDays();
-            for (var i = 0; i < days.length; i++) {
-                debugger;
+            for (var i = 0; i < days.length; i++)
+            {
                 day = days[i];
                 daysSelected(day.Name);
             }
         }
+
+        // Selecciona los dias laborables por el Restaurante en los checkboxes
         function daysSelected(day) {
             switch(day)
             {
                 case "Lunes":
-                    $('#<%=Day1M.ClientID%>').attr('checked', true);
-                    $('#<%=Day1C.ClientID%>').attr('checked', true);
+                    $('#<%=Day1M.ClientID%>').prop('checked', true);
+                    $('#<%=Day1C.ClientID%>').prop('checked', true).prop('disabled', true);
                     break;
                 case "Martes":
-                    $("#<%=Day2M.ClientID%>").attr('checked', true);
-                    $("#<%=Day2C.ClientID%>").attr('checked', true);
+                    $("#<%=Day2M.ClientID%>").prop('checked', true);
+                    $("#<%=Day2C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
                 case "Miercoles":
-                    $("#<%=Day3M.ClientID%>").attr('checked', true);
-                    $("#<%=Day3C.ClientID%>").attr('checked', true);
+                    $("#<%=Day3M.ClientID%>").prop('checked', true);
+                    $("#<%=Day3C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
                 case "Jueves":
-                    $("#<%=Day4M.ClientID%>").attr('checked', true);
-                    $("#<%=Day4C.ClientID%>").attr('checked', true);
+                    $("#<%=Day4M.ClientID%>").prop('checked', true);
+                    $("#<%=Day4C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
                 case "Viernes":
-                    $("#<%=Day5M.ClientID%>").attr('checked', true);
-                    $("#<%=Day5C.ClientID%>").attr('checked', true);
+                    $("#<%=Day5M.ClientID%>").prop('checked', true);
+                    $("#<%=Day5C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
                 case "Sabado":
-                    $("#<%=Day6M.ClientID%>").attr('checked', true);
-                    $("#<%=Day6C.ClientID%>").attr('checked', true);
+                    $("#<%=Day6M.ClientID%>").prop('checked', true);
+                    $("#<%=Day6C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
                 case "Domingo":
-                    $("#<%=Day7M.ClientID%>").attr('checked', true);
-                    $("#<%=Day7C.ClientID%>").attr('checked', true);
+                    $("#<%=Day7M.ClientID%>").prop('checked', true);
+                    $("#<%=Day7C.ClientID%>").prop('checked', true).prop('disabled', true);
                     break;
             }
         }
-        function clearDays(){
-                    $("#<%=Day1M.ClientID%>").attr('checked', false);
-                    $("#<%=Day2M.ClientID%>").attr('checked', false);
-                    $("#<%=Day3M.ClientID%>").attr('checked', false);
-                    $("#<%=Day4M.ClientID%>").attr('checked', false);
-                    $("#<%=Day5M.ClientID%>").attr('checked', false);
-                    $("#<%=Day6M.ClientID%>").attr('checked', false);
-                    $("#<%=Day7M.ClientID%>").attr('checked', false);
-                    $("#<%=Day1C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day2C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day3C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day4C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day5C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day6C.ClientID%>").attr('checked', false).attr('disabled','disabled');
-                    $("#<%=Day7C.ClientID%>").attr('checked', false).attr('disabled','disabled');
+
+        /// Limpia los checkboxes usados en el Modal de consultar y modificar 
+        function clearDays()
+        {
+            $("#<%=Day1M.ClientID%>").attr('checked', false);
+            $("#<%=Day2M.ClientID%>").attr('checked', false);
+            $("#<%=Day3M.ClientID%>").attr('checked', false);
+            $("#<%=Day4M.ClientID%>").attr('checked', false);
+            $("#<%=Day5M.ClientID%>").attr('checked', false);
+            $("#<%=Day6M.ClientID%>").attr('checked', false);
+            $("#<%=Day7M.ClientID%>").attr('checked', false);
+            $("#<%=Day1C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day2C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day3C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day4C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day5C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day6C.ClientID%>").prop('disabled', false).prop('checked', false);
+            $("#<%=Day7C.ClientID%>").prop('disabled', false).prop('checked', false);
         }
-
-
           
-
-                    function setValue() {
+        //Obtiene el valor de la fila seleccionada en la tabla de Restaurante
+        function setValue()
+        {
                         $('.table > tbody > tr > td:nth-child(5) > a')
-                        .click(function () {
+                        .click(function ()
+                        {
                             var rowId = $(this).parent().parent().attr("data-id");
                             document.getElementById("<%=RestaurantModifyId.ClientID%>").value = rowId;
-
                         });
-                    }
+        }
 
 
 

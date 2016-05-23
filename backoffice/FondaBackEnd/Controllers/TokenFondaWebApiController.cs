@@ -8,6 +8,9 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
 	[RoutePrefix("api")]
+	/// <summary>
+	/// Token fonda web API controller.
+	/// </summary>
 	public class TokenFondaWebApiController : FondaWebApi
 	{
 		public TokenFondaWebApiController () : base () {}
@@ -15,6 +18,10 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		[FondaAuthLogin]
 		[Route("token")]
 		[HttpPost]
+		/// <summary>
+		/// Gets the token.
+		/// </summary>
+		/// <returns>The token.</returns>
 		public IHttpActionResult getToken()
 		{
 			Commensal commensal = GetCommensal (Request.Headers);
@@ -41,6 +48,11 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [FondaAuthLogin]
         [Route("token/{id}")]
         [HttpDelete]
+		/// <summary>
+		/// Deletes the token.
+		/// </summary>
+		/// <returns>The token.</returns>
+		/// <param name="id">Identifier.</param>
         public IHttpActionResult deleteToken(int id)
         {
             Commensal commensal = GetCommensal(Request.Headers);
