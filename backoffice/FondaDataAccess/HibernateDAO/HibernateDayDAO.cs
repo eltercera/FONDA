@@ -1,5 +1,6 @@
 ﻿using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using System.Collections.Generic;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -10,37 +11,52 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="name">Nombre del dia</param>
         /// <returns>Objeto de tipo Dia</returns>
-        public Day GetDay(string name)
+        public IList<Day> GetDay(bool[] days)
         {
-            Day day = new Day();
-            switch (name)
+            IList<Day> listDays = new List<Day>();
+            for (int i = 0; i < days.Length; i++)
             {
-                case "Lunes":
+                Day day = new Day();
+                if(i.Equals(0) && days[i])
+                {
                     day = FindById(1);
-                    break;
-                case "Martes":
+                    listDays.Add(day);
+                }
+                else if (i.Equals(1) && days[i])
+                {
                     day = FindById(2);
-                    break;
-                case "Miercoles":
+                    listDays.Add(day);
+                }
+                else if(i.Equals(2) && days[i])
+                {
                     day = FindById(3);
-                    break;
-                case "Jueves":
+                    listDays.Add(day);
+                }
+                else if (i.Equals(3) && days[i])
+                {
                     day = FindById(4);
-                    break;
-                case "Viernes":
+                    listDays.Add(day);
+                }
+                else if (i.Equals(4) && days[i])
+                {
                     day = FindById(5);
-                    break;
-                case "Sabado":
+                    listDays.Add(day);
+                }
+                else if (i.Equals(5) && days[i])
+                {
                     day = FindById(6);
-                    break;
-                case "Domingo":
+                    listDays.Add(day);
+                }
+                else if (i.Equals(6) && days[i])
+                {
                     day = FindById(7);
-                    break;
-                default:
-                    break;
+                    listDays.Add(day);
+
+                }
+
             }
 
-            return day;
+            return listDays;
         }
     }
 }

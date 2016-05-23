@@ -22,8 +22,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         public Currency GetCurrency(string name)
         {
             Currency currency = new Currency();
-            currency = FindBy("cur_name", name);
+            currency = FindBy("Name", name);
+
             return currency;
         }
+
+
     }
 }

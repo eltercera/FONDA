@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@ namespace com.ds201625.fonda.Domain
 		/// La capacidad de la mesa (Mesa de 2, 4, 8, 16 personas)
 		/// </summary>
 		private int _capacity;
+
 
         /// <summary>
 		/// El numero unico de la mesa en el restaurate
@@ -31,7 +33,7 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private Restaurant _restaurant;
 
-
+        [DataMember]
         public virtual int Number
         {
             get { return _number; }
