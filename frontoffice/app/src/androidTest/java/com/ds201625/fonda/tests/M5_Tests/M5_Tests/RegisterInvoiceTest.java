@@ -25,29 +25,53 @@ import java.util.List;
  */
 
 /**
- * Clase De pruebas unitarias del historial de pagos de una persona en sus visitas a restaurant
+ * Clase De pruebas unitarias del registro de la factura
  */
 public class RegisterInvoiceTest extends TestCase {
 
     /*
-     Lista de Invoice que contiene los pagos de los restaurant
+      Variable de tipo Invoice
      */
     private Invoice invoice;
 
+    /*
+      Variable de tipo Restaurant
+     */
     private Restaurant restaurant;
 
+    /*
+     Variable de tipo Profile
+   */
     private Profile profile;
 
+    /*
+     Variable de tipo Account
+   */
     private Account account;
 
+    /*
+     Variable de tipo RestaurantCategory
+   */
     private RestaurantCategory category;
 
+    /*
+    Variable de tipo Payment
+  */
     private Payment payment;
 
+    /*
+   Variable de tipo lista de DishOrder
+ */
     private List<DishOrder> listDish;
 
+    /*
+   Variable de tipo PaymentService
+ */
     private PaymentService paymentService;
 
+    /*
+   Variable de tipo Invoice para comparar
+ */
     private Invoice invoicePayment;
 
     /**
@@ -66,7 +90,7 @@ public class RegisterInvoiceTest extends TestCase {
     }
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que una factura se registra
      */
    public void testInvoice() {
        try {
@@ -82,7 +106,7 @@ public class RegisterInvoiceTest extends TestCase {
    }
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que la factura al registrarse no sea nula
      */
     public void testInvoiceIsNotNull() {
         try {
@@ -97,6 +121,9 @@ public class RegisterInvoiceTest extends TestCase {
         }
     }
 
+    /**
+     *  Metodo que prueba que el restaurant en la factura se registra
+     */
     public void testRestaurantInvoice() {
         try {
 
@@ -112,7 +139,7 @@ public class RegisterInvoiceTest extends TestCase {
     }
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que el restaurant en la factura no es nulo
      */
     public void testRestaurantInvoiceNotNull() {
         try {
@@ -127,7 +154,9 @@ public class RegisterInvoiceTest extends TestCase {
         }
     }
 
-
+    /**
+     *  Metodo que prueba que el Profile en la factura se registra
+     */
     public void testProfileInvoice() {
         try {
 
@@ -143,7 +172,7 @@ public class RegisterInvoiceTest extends TestCase {
     }
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que el Profile en la factura no es nulo
      */
     public void testProfileInvoiceNotNull() {
         try {
@@ -158,6 +187,9 @@ public class RegisterInvoiceTest extends TestCase {
         }
     }
 
+    /**
+     *  Metodo que prueba que la CategoryRestaurant en el restaurant en la factura se registra
+     */
    public void testCategoryRestaurantInvoice() {
         try {
 
@@ -175,7 +207,7 @@ public class RegisterInvoiceTest extends TestCase {
     }
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que la CategoryRestaurant en el restaurant en la factura no es nulo
      */
    public void testCategoryRestaurantInvoiceIsNotNull() {
         try {
@@ -192,7 +224,7 @@ public class RegisterInvoiceTest extends TestCase {
     }
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que el Account en la factura no es nulo
      */
     public void testAccountInvoiceIsNotNull() {
         try {
