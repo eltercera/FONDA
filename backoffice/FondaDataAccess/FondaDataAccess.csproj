@@ -57,7 +57,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\CastException.cs" />
+    <Compile Include="Exceptions\AddEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\ClearTableEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\FindAllFondaDAOException.cs" />
+    <Compile Include="Exceptions\FindByEmailUserAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\FindByFondaDAOException.cs" />
+    <Compile Include="Exceptions\FindByIdFondaDAOException.cs" />
+    <Compile Include="Exceptions\FindByusernameEmployeFondaDAOException.cs" />
+    <Compile Include="Exceptions\FondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\GetAllEmployeFondaDAOException.cs" />
+    <Compile Include="Exceptions\GetAllRoleFondaDAOException.cs" />
+    <Compile Include="Exceptions\LoadDataTableEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\LoadTabletEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\MofifyEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\ValidationEmailEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\ValidationSsnEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\ValidationUsernameEmployeeFondaBackOfficeException.cs" />
     <Compile Include="HibernateDAO\FluentMappings\ActiveReservationStatusMap.cs" />
     <Compile Include="FactoryDAO\FactoryDAO.cs" />
     <Compile Include="FondaDAOExceptions\FondaIndexException.cs" />
@@ -211,7 +226,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
