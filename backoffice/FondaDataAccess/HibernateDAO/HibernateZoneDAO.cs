@@ -28,8 +28,14 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Objeto tipo Zone</returns>
         public Zone GetZone(string name)
         {
-            Zone zone = new Zone();
-            zone = FindBy("Name", name);
+            Zone zone = FindBy("Name", name);
+            if (zone == null)
+            {
+                Zone newZone = new Zone();
+                newZone.Name = name;
+                return newZone;
+            }
+
             return zone;
         }
     }
