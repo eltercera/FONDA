@@ -93,8 +93,11 @@ public class FavoritesActivity extends BaseNavigationActivity {
                     Log.v(TAG,"Email->"+emailToWebService);
                     RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
                             getLogedCommensalService();
-                    logedComensal =getComensal.getLogedCommensal(emailToWebService);
+                    //logedComensal =getComensal.getLogedCommensal(emailToWebService);
+                    logedComensal =getComensal.getLogedCommensal("pato@gmail.com/");
                     Log.v(TAG,logedComensal.getId()+"");
+
+
 
 
                 }catch(NullPointerException nu){
@@ -103,16 +106,15 @@ public class FavoritesActivity extends BaseNavigationActivity {
 
 
                 list=(ListView)findViewById(R.id.listViewFavorites);
-
                     AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                             getAllFavoriteRestaurantsService();
 
                     restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
-                /*
-                AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+
+        /*        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
                         getAllRestaurantsService();
                 restaurantList = allRestaurant.getAllRestaurant();
-       */
+*/
 
 
                 try {
@@ -160,14 +162,6 @@ public class FavoritesActivity extends BaseNavigationActivity {
             Log.v("WEBSERVICE",rest.getName());
             Log.v("WEBSERVICE",rest.getAddress());
         }*/
-
-            try {
-                setupListView();
-            }catch (NullPointerException ex){
-                ex.printStackTrace();
-                Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
-                        Toast.LENGTH_LONG).show();
-            }
         }
     }
 

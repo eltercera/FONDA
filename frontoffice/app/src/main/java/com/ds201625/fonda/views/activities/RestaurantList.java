@@ -1,6 +1,7 @@
 package com.ds201625.fonda.views.activities;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,9 +54,10 @@ public class RestaurantList extends ArrayAdapter<Restaurant> {
                 txtTitle.setText(restaurante.getName());
                 txtTitle2.setText(restaurante.getName());
 
-                //   Log.v("WEBSERVICEList", restaurante.getId() + "");
-                // Log.v("WEBSERVICEList",restaurante.getName());
-                //Log.v("WEBSERVICEList",restaurante.getAddress());
+                 Log.v("WEBSERVICEList", restaurante.getId() + "");
+                 Log.v("WEBSERVICEList", restaurante.getName());
+
+                 Log.v("WEBSERVICEList", restaurante.getAddress());
             }
             contador++;
         }
