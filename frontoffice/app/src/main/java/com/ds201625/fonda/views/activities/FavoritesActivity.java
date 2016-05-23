@@ -93,8 +93,7 @@ public class FavoritesActivity extends BaseNavigationActivity {
                     Log.v(TAG,"Email->"+emailToWebService);
                     RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
                             getLogedCommensalService();
-                    //logedComensal =getComensal.getLogedCommensal(emailToWebService);
-                    logedComensal =getComensal.getLogedCommensal("pato@gmail.com/");
+                    logedComensal =getComensal.getLogedCommensal(emailToWebService);
                     Log.v(TAG,logedComensal.getId()+"");
 
 
