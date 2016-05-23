@@ -46,28 +46,9 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene el precio del plato
         /// </summary>
-        [DataMember(Name = "Cost")]
         public virtual float Dishcost
         {
-            get { return _dish.Cost;  }
-        }
-
-        /// <summary>
-        /// Obtiene el nombre del plato
-        /// </summary>
-        [DataMember(Name = "Name")]
-        public virtual String DishName
-        {
-            get { return _dish.Name; }
-        }
-
-        /// <summary>
-        /// Obtiene la descripcion del plato
-        /// </summary>
-        [DataMember (Name = "Description")]
-        public virtual String DishDescription
-        {
-            get { return _dish.Description; }
+            get { return _dish.Cost; }
         }
     }
 }

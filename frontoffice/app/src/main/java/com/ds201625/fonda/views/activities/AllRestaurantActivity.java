@@ -92,7 +92,7 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
                 */
                 Restaurant test = getSelectedRestaurant(position);
 
-                cambio.putExtra("restaurante", new Gson().toJson(test));
+                cambio.putExtra("restaurant", new Gson().toJson(test));
                 startActivity(cambio);
             }
         });
