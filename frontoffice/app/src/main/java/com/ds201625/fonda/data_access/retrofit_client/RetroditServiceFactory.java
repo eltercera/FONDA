@@ -102,7 +102,7 @@ public class RetroditServiceFactory implements ServiceFactory {
 
     @Override
     public ReservationService getAllReservesService() {
-        return new RetrofitFilterByCategoryService();
+        return new RetrofitReservationService();
     }
 }
 

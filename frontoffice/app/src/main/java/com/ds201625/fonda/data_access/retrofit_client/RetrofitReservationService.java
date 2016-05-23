@@ -1,9 +1,11 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
 import com.ds201625.fonda.data_access.retrofit_client.clients.AllFavoriteRestaurantClient;
+import com.ds201625.fonda.data_access.retrofit_client.clients.ReservationClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.ReservationService;
+import com.ds201625.fonda.domains.Reservation;
 import com.ds201625.fonda.domains.Restaurant;
 
 import java.io.IOException;
@@ -16,18 +18,18 @@ import retrofit2.Call;
  */
 public class RetrofitReservationService implements ReservationService {
 
-    private AllFavoriteRestaurantClient currentAllFavoriteRestaurantClient =
-            RetrofitService.getInstance().createService(AllFavoriteRestaurantClient.class);
+    private ReservationClient currentReservationClient =
+            RetrofitService.getInstance().createService(ReservationClient.class);
 
     public RetrofitReservationService() {
         super();
     }
 
     @Override
-    public List<Restaurant> getAllFavoriteRestaurant(int fk1) {
+    public List<Reservation> getAllReserves(int id) {
 
-        Call<List<Restaurant>> call = currentAllFavoriteRestaurantClient.getAllFavoriteRestaurant(fk1);
-        List<Restaurant> test = null;
+        Call<List<Reservation>> call = currentReservationClient.getReservation();
+        List<Reservation> test = null;
         try {
             test =call.execute().body();
         } catch (IOException e) {
