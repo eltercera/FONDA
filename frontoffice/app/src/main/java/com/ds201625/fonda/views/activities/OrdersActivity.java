@@ -117,7 +117,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
 
 
     /**
-     * Assigns the elements of interface
+     * Asigna los elementos de la vista
      */
     private void getAllElements(){
         mViewPager = (ViewPager) findViewById(R.id.containerO);
@@ -179,7 +179,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Infla el menu
         getMenuInflater().inflate(R.menu.orders, menu);
         closeBotton = menu.findItem(R.id.close);
         sendBotton = menu.findItem(R.id.action_favorite_send);
@@ -356,23 +356,27 @@ public class OrdersActivity extends BaseNavigationActivity implements
         return true;
     }
 
+    /**
+     * Envia a la pantalla de cierre la cuenta
+     */
     private void close() {
-     /*   AlertDialog dialog = buildSingleDialog("Cierre de Cuenta",
-                "Se puede proceder con el cierre.");
-        dialog.show();
-    */
-        if (closeAccFrag == null)
+           if (closeAccFrag == null)
             closeAccFrag = new CloseAccountFragment();
         showFragment(closeAccFrag);
     }
 
-
+    /**
+     * Sale de la orden
+     */
     private void exit() {
 
         Intent cambio = new Intent(this, OrdersActivity.class);
         startActivity(cambio);
     }
 
+    /**
+     * Cambia a la pantalla de pago de orden
+     */
     public void cambiarPa() {
         if (ordPay == null)
             ordPay = new OrderPaymentFragment();
@@ -380,6 +384,9 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
 
+    /**
+     * Realiza la busqueda de un historial de pago
+     */
     private void buscar() {
 
         //Metodo para el boton de buscar
@@ -388,32 +395,24 @@ public class OrdersActivity extends BaseNavigationActivity implements
         dialog.show();
     }
 
+    /**
+     * Cambia a la pantalla de factura
+     */
     public void cambiarFac() {
-        getAllElements();
         try {
-            String cc = spinner.getSelectedItem().toString();
-            String[] numbers = cc.split("-");
-            String numberCC = numbers[0].toString();
-            int profile = 1;
-            if (factFrag == null)
-                try {
-                    /**
-                     * Esto no compila
-                     */
-//                    LogicPayment.getInstance().registerPayment(profile, a, numberCC);
-                } catch (Exception e) {
-                    e.getMessage();
-                }
+            ordPay.postPayment();
         }
-        catch(NullPointerException e){
-            e.getMessage();
-            System.out.println("Spinner vacio");
+        catch(Exception e){
+            System.out.println("Ha ocurrido un error al guardar la factura");
         }
         factFrag = new InvoiceFragment();
         showFragment(factFrag);
     }
 
 
+    /**
+     * Permite la descarga del archivo y su envio por correo
+     */
     public void download() {
         exit();
     }
@@ -655,7 +654,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
             Bundle args = new Bundle();
             args.putBoolean("multiSelect",true);
             profFrag.setArguments(args);
-
+            showFragment(profFrag);
         }
         if(opc == 2) {
             ccFrag = new CreditCardFragment();
