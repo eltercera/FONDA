@@ -18,6 +18,7 @@ namespace BackOffice.Seccion.Menu
         protected void Page_Load(object sender, EventArgs e)
         {
             AlertSuccess_AddDish.Visible = false;
+            AlertSuccess_SuggestionDish.Visible = false;
             AlertSuccess_ModifyDish.Visible = false;
             AlertSuccess_ActivateDish.Visible = false;
             AlertSuccess_DeactivateDish.Visible = false;
@@ -503,6 +504,7 @@ namespace BackOffice.Seccion.Menu
         {
             try
             {
+                
                 //creo una instancia del factory
                 FactoryDAO _factoryDAO = FactoryDAO.Intance;
                 //creo una instancia del IDishDAO
@@ -513,23 +515,30 @@ namespace BackOffice.Seccion.Menu
                 int _dishIdInt = int.Parse(_dishIdString);
                 //busco el plato por el id que lo asigna a la variable
                 Dish _dish = _dishDAO.FindById(_dishIdInt);
-
-
-                if (_dish.Suggestion == true)
+                if (_dish.Status.StatusId == 1)
                 {
-                    _dish.Suggestion = false;
+                    if (_dish.Suggestion == true)
+                    {
+                        _dish.Suggestion = false;
+                    }
+                    else
+                    {
+                        _dish.Suggestion = true;
+                    }
+
+                    //guardo el plato
+                    _dishDAO.Save(_dish);
+
+                    //muestro la alerta de exito
+                    AlertSuccess_SuggestionDish.Visible = true;
+
                 }
                 else
                 {
-                    _dish.Suggestion = true;
+                    AlertDanger_ModifyDish.Visible = true;
                 }
 
-                //guardo el plato
-                _dishDAO.Save(_dish);
-
-                //muestro la alerta de exito
-                AlertSuccess_ModifyDish.Visible = true;
-
+               
             }
             //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
             catch (Exception exc)
