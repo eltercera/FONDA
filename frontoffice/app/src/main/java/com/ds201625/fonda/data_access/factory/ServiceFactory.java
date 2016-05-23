@@ -95,5 +95,7 @@ public interface ServiceFactory {
     FilterByZoneService getFilterByZoneService();
 
     FilterByCategoryService getFilterByCategoryService();
+
+    AllReservesService getAllReservesService();
 }
 

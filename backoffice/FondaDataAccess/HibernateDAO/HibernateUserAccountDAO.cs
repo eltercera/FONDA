@@ -4,6 +4,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using System.Collections.Generic;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -17,7 +18,22 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		/// <returns>La cuenta de usuario.</returns>
 		public UserAccount FindByEmail (string email)
 		{
-			return FindBy("Email", email);
+            try
+            {
+                return FindBy("Email", email);
+            }
+            catch (FindByFondaDAOException e)
+            {
+                throw new FindByEmailUserAccountFondaDAOException(
+                    "Excepción al consultar Email "+ email,
+                    e);
+            }
+            catch (Exception e)
+            {
+                throw new FindByEmailUserAccountFondaDAOException(
+                    "Excepción al consultar Email " + email,
+                    e);
+            }
 		}
 
 	}

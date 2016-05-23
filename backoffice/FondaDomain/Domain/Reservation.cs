@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +11,11 @@ namespace com.ds201625.fonda.Domain
     /// </summary>
     public class Reservation : BaseEntity
     {
+        /// <summary>
+        /// Usuario que realizo la reserva
+        /// </summary>
+        private Commensal _reserveUser;
+
         /// <summary>
         /// Fecha de reservación
         /// </summary>
@@ -42,12 +46,18 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private ReservationStatus _reserveStatus;
 
+
         /// <summary>
 		/// Constructor
 		/// </summary>
 		public Reservation() : base () { }
 
-        [DataMember]
+        public virtual Commensal ReserveUser
+        {
+            get { return _reserveUser; }
+            set { _reserveUser = value; }
+        }
+
         public virtual DateTime ReserveDate
         {
             get { return _reserveDate; }
@@ -60,7 +70,6 @@ namespace com.ds201625.fonda.Domain
             set { _createDate = value; }
         }
 
-        [DataMember]
         public virtual int CommensalNumber
         {
             get { return _commensalNumber; }

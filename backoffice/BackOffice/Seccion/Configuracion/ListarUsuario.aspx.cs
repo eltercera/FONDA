@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 namespace BackOffice.Seccion.Configuracion
 {
@@ -318,7 +319,7 @@ namespace BackOffice.Seccion.Configuracion
             Role _role;
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             com.ds201625.fonda.Domain.Restaurant _restaurant;
-            _employee = new Employee();
+            //_employee = new Employee();
             if (this.nameUser.Text != "")
                 _employee.Name = this.nameUser.Text;
             if (this.lastNameUser.Text != "")
@@ -390,96 +391,101 @@ namespace BackOffice.Seccion.Configuracion
 
         protected void ModalAddModify_Click(object sender, EventArgs e)
         {
-            _facDAO = FactoryDAO.Intance;
-            _employeeDAO = _facDAO.GetEmployeeDAO();
-            _roleDAO = _facDAO.GetRoleDAO();
-            _userAccountDAO = _facDAO.GetUserAccountDAO();
-            _employee = new Employee();
-            bool _emailValid, _ssnValid, _userNameValid;
-
-            _emailValid = ValidationEmail();
-            _ssnValid = ValidationSsn();
-            _userNameValid = ValidationUsername();
-
-            if (ButtonAddModify.Text == "Agregar")
+            if (ValidarCampo(ButtonAddModify.Text))
             {
-                if (_emailValid)
-                {
-                    this.menssageEmail.Attributes.Clear();
-                    this.menssageEmail.InnerHtml = "";
-                }
-                if (_ssnValid)
-                {
-                    this.menssageSsn.Attributes.Clear();
-                    this.menssageSsn.InnerHtml = "";
-                }
-                if (_userNameValid)
-                {
-                    this.menssageUsername.Attributes.Clear();
-                    this.menssageUsername.InnerHtml = "";
-                }
-            }
-            if (ButtonAddModify.Text == "Modificar")
-            {
-                Button clickedLink = (Button)sender;
-                int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
-                _employee = _employeeDAO.FindById(_idEmployee);
-                string _ssn = this.nss1.Text + "-" + this.nss2.Text;
+                _facDAO = FactoryDAO.Intance;
+                _employeeDAO = _facDAO.GetEmployeeDAO();
+                _roleDAO = _facDAO.GetRoleDAO();
+                _userAccountDAO = _facDAO.GetUserAccountDAO();
+                _employee = new Employee();
+                bool _emailValid, _ssnValid, _userNameValid;
 
-                if (this.email.Text == _employee.UserAccount.Email)
-                {
-                    _emailValid = true;
-                    this.menssageEmail.Attributes.Clear();
-                    this.menssageEmail.InnerHtml = "";
-                }
-                if (_ssn == _employee.Ssn)
-                {
-                    _ssnValid = true;
-                    this.menssageSsn.Attributes.Clear();
-                    this.menssageSsn.InnerHtml = "";
-                }
-                if (this.userNameU.Text == _employee.Username)
-                {
-                    _userNameValid = true;
-                    this.menssageUsername.Attributes.Clear();
-                    this.menssageUsername.InnerHtml = "";
-                }
-            }
+                _emailValid = ValidationEmail();
+                _ssnValid = ValidationSsn();
+                _userNameValid = ValidationUsername();
 
-            if (_emailValid && _ssnValid && _userNameValid) 
-            {
-
-                _employee = SetEmployee(_employee);
                 if (ButtonAddModify.Text == "Agregar")
                 {
-                    if (_emailValid && _ssnValid && _userNameValid)
+                    if (_emailValid)
                     {
-                         _employee.Status = _facDAO.GetActiveSimpleStatus();
+                        this.menssageEmail.Attributes.Clear();
+                        this.menssageEmail.InnerHtml = "";
                     }
-                }
-
-                if (_employee.UserAccount.Id.ToString() == "0")
-                {
-                    _userAccountDAO.Save(_employee.UserAccount);
-                }
-                _employeeDAO.Save(_employee);
-                if (ButtonAddModify.Text == "Agregar")
-                {
-                    Alerts("Add");
+                    if (_ssnValid)
+                    {
+                        this.menssageSsn.Attributes.Clear();
+                        this.menssageSsn.InnerHtml = "";
+                    }
+                    if (_userNameValid)
+                    {
+                        this.menssageUsername.Attributes.Clear();
+                        this.menssageUsername.InnerHtml = "";
+                    }
                 }
                 if (ButtonAddModify.Text == "Modificar")
                 {
-                    Alerts("Modify");
-                }
-                ClearModalAddModify();
+                    Button clickedLink = (Button)sender;
+                    int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
+                    _employee = _employeeDAO.FindById(_idEmployee);
+                    string _ssn = this.nss1.Text + "-" + this.nss2.Text;
 
+                    if (this.email.Text == _employee.UserAccount.Email)
+                    {
+                        _emailValid = true;
+                        this.menssageEmail.Attributes.Clear();
+                        this.menssageEmail.InnerHtml = "";
+                    }
+                    if (_ssn == _employee.Ssn)
+                    {
+                        _ssnValid = true;
+                        this.menssageSsn.Attributes.Clear();
+                        this.menssageSsn.InnerHtml = "";
+                    }
+                    if (this.userNameU.Text == _employee.Username)
+                    {
+                        _userNameValid = true;
+                        this.menssageUsername.Attributes.Clear();
+                        this.menssageUsername.InnerHtml = "";
+                    }
+                }
+
+                if (_emailValid && _ssnValid && _userNameValid)
+                {
+
+                    _employee = SetEmployee(_employee);
+                    if (ButtonAddModify.Text == "Agregar")
+                    {
+                        if (_emailValid && _ssnValid && _userNameValid)
+                        {
+                            _employee.Status = _facDAO.GetActiveSimpleStatus();
+                        }
+                    }
+
+                    if (_employee.UserAccount.Id.ToString() == "0")
+                    {
+                        _userAccountDAO.Save(_employee.UserAccount);
+                    }
+                    _employeeDAO.Save(_employee);
+                    if (ButtonAddModify.Text == "Agregar")
+                    {
+                        Alerts("Add");
+                    }
+                    if (ButtonAddModify.Text == "Modificar")
+                    {
+                        Alerts("Modify");
+                    }
+                    ClearModalAddModify();
+
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
+                }
             }
             else
             {
                 ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
             }
-           
-            
         } 
 
         protected void Alerts(string _success)
@@ -532,6 +538,43 @@ namespace BackOffice.Seccion.Configuracion
 
                 case "DangerSsn": this.menssageSsn.InnerHtml = G1RecursosInterfaz.iconDanger + " Ya Existe!";
                                         break;
+
+                case "InvalidFormatName": this.messageNameUser.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo letras y espacios";
+                                        break;
+
+                case "InvalidFormatLastName": this.messageLastName.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo letras y espacios";
+                                        break;
+
+                case "InvalidFormatDni": this.messageDni.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo números";
+                                        break;
+
+                case "InvalidFormatPhone": this.messagePhone.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo";
+                                        break;
+
+                case "InvalidFormatAddress": this.messageAddress.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo Alfanumérico con espacios";
+                                        break;
+
+                case "InvalidFormatUser": this.messageUser.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo Alfanumérico y sin espacios";
+                                        break;
+
+                case "InvalidFormatEmail": this.messageEmail.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato de Correo Inválido!";
+                                        break;
+
+                case "InvalidFormatPassword1": this.messagePassword1.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo Alfanumérico y sin espacios";
+                                        break;
+
+                case "InvalidFormatPassword2": this.messagePassword2.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo Alfanumérico y sin espacios";
+                                        break;
+
+                case "InvalidFormatPasswordEqual": this.messagePasswordEqual.InnerHtml = G1RecursosInterfaz.iconDanger + " Las contraseñas no coinciden";
+                                        break;
+
+                case "InvalidFormatBirthdate": this.messageBirthdate.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato de fecha inválido (DD/MM/YY)";
+                                        break;
+
+                case "Empty": this.messageEmpty.InnerHtml = G1RecursosInterfaz.iconExclamation + " Uno o mas Campos Obligatorios Vacíos";
+                                        break;
+
             }
         }
 
@@ -589,6 +632,211 @@ namespace BackOffice.Seccion.Configuracion
                 _employee.Status = _facDAO.GetDisabledSimpleStatus();
             _employeeDAO.Save(_employee);
             Alerts("Status");
+        }
+
+        protected bool ValidarCampo(String accion)
+        {
+            int good = 0;
+            int bad = 0;
+            string _role = (string)(Session[RecursoMaster.sessionRol]);
+            string patronNumero = "^[0-9]*$";
+            string patronTexto = "^[A-Z a-z]*$";
+            string patronAlphaNumerico1 = "^[A-Z0-9(.) a-z]*$";
+            string patronAlphaNumerico2 = "^[A-Z0-9a-z]*$";
+            string patronFecha = "^[0-9(/{2,2})]*$";
+            string patronEmail = @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            string Name = nameUser.Text;
+            string LastName = lastNameUser.Text;
+            //char Nationality = Convert.ToChar(nss1.Text);
+            string Identity = nss1.Text;
+            string Dni = nss2.Text;
+            string Birthdate = birtDate.Text;
+            string Phone = phoneNumber.Text;
+            //char Gender = Convert.ToChar(gender.Text);
+            string Address = address.Text;
+            string Role = role.Text;
+            string UserName = userNameU.Text;
+            string Email = email.Text;
+            string Password1 = password.Text;
+            string Password2 = repitPassword.Text;
+            string Restaurant = restaurant.Text;
+
+            if (accion == "Agregar")
+            {
+                if (Name == "" | LastName == "" | Identity == "" | Phone == "" | Role == ""
+                    | UserName == "" | Email == "" | Password1 == "" | Password2 == "" | (_role != "Sistema" && Restaurant==""))
+                {
+                    Alerts("Empty");
+                    bad = ++bad;
+                    return false;
+                }
+                else
+                {
+                    this.messageEmpty.Attributes.Clear();
+                    this.messageEmpty.InnerHtml = "";
+                }
+            }
+
+            if (accion == "Modificar")
+            {
+                if (Name == "" | LastName == "" | Identity == "" | Phone == "" | Role == ""
+                    | UserName == "" | Email == "" | (_role != "Sistema" && Restaurant == ""))
+                {
+                    Alerts("Empty");
+                    bad = ++bad;
+                    return false;
+                }
+                else
+                {
+                    this.messageEmpty.Attributes.Clear();
+                    this.messageEmpty.InnerHtml = "";
+                }
+                
+            }
+
+            if ((!Regex.IsMatch(Name, patronTexto)))
+            {
+                Alerts("InvalidFormatName");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messageNameUser.Attributes.Clear();
+                this.messageNameUser.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(LastName, patronTexto)))
+            {
+                Alerts("InvalidFormatLastName");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messageLastName.Attributes.Clear();
+                this.messageLastName.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Dni, patronNumero)))
+            {
+                Alerts("InvalidFormatDni");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messageDni.Attributes.Clear();
+                this.messageDni.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Birthdate, patronFecha)))
+            {
+                  Alerts("InvalidFormatBirthdate");
+                  bad = ++bad;
+            }
+            else
+            {
+            good = ++good;
+            this.messageBirthdate.Attributes.Clear();
+            this.messageBirthdate.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Phone, patronNumero)))
+            {
+                Alerts("InvalidFormatPhone");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messagePhone.Attributes.Clear();
+                this.messagePhone.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Address, patronAlphaNumerico1)))
+            {
+                Alerts("InvalidFormatAddress");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messageAddress.Attributes.Clear();
+                this.messageAddress.InnerHtml = "";
+            }
+
+
+
+            if ((!Regex.IsMatch(UserName, patronAlphaNumerico2)))
+            {
+                Alerts("InvalidFormatUser");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messageUser.Attributes.Clear();
+                this.messageUser.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Email, patronEmail)))
+            {
+                Alerts("InvalidFormatEmail");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.menssageEmail.Attributes.Clear();
+                this.menssageEmail.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Password1, patronAlphaNumerico2)))
+            {
+                Alerts("InvalidFormatPassword1");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messagePassword1.Attributes.Clear();
+                this.messagePassword1.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Password2, patronAlphaNumerico2)))
+            {
+                Alerts("InvalidFormatPassword2");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messagePassword2.Attributes.Clear();
+                this.messagePassword2.InnerHtml = "";
+            }
+
+            if (!(Password1 == Password2))
+            {
+                Alerts("InvalidFormatPasswordEqual");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messagePasswordEqual.Attributes.Clear();
+                this.messagePasswordEqual.InnerHtml = "";
+            }
+
+
+            if (bad == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

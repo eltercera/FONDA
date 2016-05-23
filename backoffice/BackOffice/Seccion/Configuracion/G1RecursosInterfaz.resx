@@ -177,4 +177,7 @@
   <data name="strongNot" xml:space="preserve">
     <value>&lt;strong&gt; No &lt;/strong&gt;</value>
   </data>
+  <data name="iconExclamation" xml:space="preserve">
+    <value>&lt;i class="fa fa-exclamation-circle" aria-hidden="true"&gt;&lt;/i&gt;</value>
+  </data>
 </root>
