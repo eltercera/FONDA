@@ -101,6 +101,7 @@ $(document).ready(function () {
         "language": spanish,
         "aoColumns": [
             null,
+            null,
             { "bSearchable": false },
             { "bSearchable": false }
         ]
