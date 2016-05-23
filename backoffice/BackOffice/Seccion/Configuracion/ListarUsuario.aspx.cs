@@ -242,7 +242,7 @@ namespace BackOffice.Seccion.Configuracion
             int _length = (_employee.Ssn.Length) - 2;
             this.nss2.Text = _employee.Ssn.Substring(2, _length);
             this.gender.Text = _employee.Gender.ToString();
-            this.birtDate.Text = _employee.BirthDate.ToString();
+            this.birtDate.Text = _employee.BirthDate.ToString("dd/MM/yyyy");
             this.userNameU.Text = _employee.Username;
             this.role.Text = _employee.Role.Id.ToString();
             this.email.Text = _employee.UserAccount.Email;
