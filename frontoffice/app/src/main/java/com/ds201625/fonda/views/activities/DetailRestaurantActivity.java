@@ -1,5 +1,6 @@
 package com.ds201625.fonda.views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -50,7 +51,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
         try{
             selectedRestaurant = new Gson().fromJson(jsonMyObject, Restaurant.class);
             logedCommensal= new Gson().fromJson(jsonMyOtherObject, Commensal.class);
-            Log.v(TAG, logedCommensal.getId()+"");
+            Log.v(TAG, logedCommensal.getId() + "");
             Log.v(TAG, selectedRestaurant.getName());
         }catch (Exception e){
             e.printStackTrace();
@@ -76,6 +77,19 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
         setAsFavorite = menu.findItem(R.id.action_favorite_save);
         tb = (Toolbar)findViewById(R.id.toolbar);
         tb.setVisibility(View.VISIBLE);
+        MenuItem makeReserve = menu.findItem(R.id.action_make_order);
+
+        makeReserve.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent cambio = new Intent(DetailRestaurantActivity.this, DetailRestaurantActivity.class);
+                cambio.putExtra("restaurant", new Gson().toJson(selectedRestaurant));
+                startActivity(cambio);
+
+                return false;
+            }
+        });
+
 
         setAsFavorite = menu.findItem(R.id.action_set_favorite);
 
@@ -214,5 +228,9 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
         }
         return toReturn;
+    }
+
+    private void CallReserveActivity(){
+
     }
 }
