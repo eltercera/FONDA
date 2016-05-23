@@ -15,6 +15,7 @@ public interface ReservationClient {
     /**
      * Get /api/profiles
      * Obtiene la lista de las reservaciones.
+     *
      * @return
      */
 
@@ -30,11 +31,15 @@ public interface ReservationClient {
 /*    @POST("reservation")
     Call<Reservation> postReservation(@Body Reservation reservation);
 
-    *//**
+    */
+
+    /**
      * Delete /api/profile/{id}
      * Elimina un profile
+     *
      * @param id identificador del profile.
      * @return
      */
     @DELETE("reservation/{id}")
     Call<String> deleteReservation(@Path("id") int id);
+}

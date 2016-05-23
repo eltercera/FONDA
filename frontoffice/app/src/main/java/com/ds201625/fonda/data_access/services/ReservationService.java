@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Jessica on 21/05/16.
  */
-public interface AllReservesService {
+public interface ReservationService {
     List<Reservation> getAllReserves (int fk1);
 
 }

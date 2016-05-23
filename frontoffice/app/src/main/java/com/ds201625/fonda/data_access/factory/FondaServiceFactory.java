@@ -3,7 +3,7 @@ package com.ds201625.fonda.data_access.factory;
 import com.ds201625.fonda.data_access.retrofit_client.RetroditServiceFactory;
 import com.ds201625.fonda.data_access.services.AddFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.AllReservesService;
+import com.ds201625.fonda.data_access.services.ReservationService;
 import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.data_access.services.CommensalService;
@@ -17,7 +17,6 @@ import com.ds201625.fonda.data_access.services.PaymentService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.domains.Token;
 import com.ds201625.fonda.data_access.services.ZoneService;
 
@@ -184,7 +183,7 @@ public class FondaServiceFactory {
      * @param
      * @return
      */
-    public AllReservesService getAllReservesService(){
+    public ReservationService getAllReservesService(){
         return serviceFactory.getAllReservesService();
     }
 }
