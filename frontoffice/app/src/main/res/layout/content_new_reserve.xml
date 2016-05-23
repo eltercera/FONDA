@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".views.activities.ReserveNewActivity"
+    android:background="@drawable/bckg">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testdate"
+        android:id="@+id/tvCalendar"
+        android:textSize="@dimen/abc_text_size_large_material"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/tvDateReservation"
+        android:layout_alignRight="@+id/tvClock"
+        android:layout_alignEnd="@+id/tvClock"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testhour"
+        android:id="@+id/tvClock"
+        android:textSize="@dimen/abc_text_size_large_material"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/tvTimeReservation"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Fecha de Reservación"
+        android:id="@+id/tvDateReservation"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/restaurantName"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Hora de Reservación"
+        android:id="@+id/tvTimeReservation"
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/tvCalendar"
+        android:layout_alignLeft="@+id/tvDateReservation"
+        android:layout_alignStart="@+id/tvDateReservation"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Número de Comensales"
+        android:id="@+id/tvDinersNumber"
+        android:layout_marginTop="62dp"
+        android:layout_below="@+id/tvClock"
+        android:layout_alignLeft="@+id/tvTimeReservation"
+        android:layout_alignStart="@+id/tvTimeReservation"
+        android:layout_centerHorizontal="true"/>
+
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/npPickDiners"
+        android:orientation="vertical"
+        android:layout_below="@+id/tvDinersNumber"
+        android:layout_toRightOf="@+id/restaurantName"
+        android:layout_toEndOf="@+id/restaurantName"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Restaurante"
+        android:id="@+id/restaurantName"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold|italic"
+        android:textSize="@dimen/abc_text_size_headline_material" />
+
+
+</RelativeLayout>

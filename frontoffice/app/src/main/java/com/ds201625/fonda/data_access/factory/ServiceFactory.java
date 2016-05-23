@@ -96,6 +96,6 @@ public interface ServiceFactory {
 
     FilterByCategoryService getFilterByCategoryService();
 
-    AllReservesService getAllReservesService();
+    ReservationService getAllReservesService();
 }
 
