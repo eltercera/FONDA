@@ -37,6 +37,14 @@
             </div>
         </div>
     </div>
+        <div id="AlertSuccess_SuggestionDish" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i>El platillo fue <u>pasado a Sugerencia del día</u> <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
 
     <div id="AlertSuccess_ModifyDish" class="row" runat="server">
         <div class="col-lg-12">
