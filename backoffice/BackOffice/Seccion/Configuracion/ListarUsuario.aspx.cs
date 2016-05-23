@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace BackOffice.Seccion.Configuracion
 {
@@ -139,9 +140,16 @@ namespace BackOffice.Seccion.Configuracion
 
         protected void LoadTable()
         {
-            string _role = (string)(Session[RecursoMaster.sessionRol]);
-            ClearTable();
-            LoadDataTable(_role);
+            try
+            {
+                string _role = (string)(Session[RecursoMaster.sessionRol]);
+                ClearTable();
+                LoadDataTable(_role);
+            }
+            catch (Exception e)
+            {
+                Alerts("Exception");
+            }
         }
         
         protected void ClearTable()
@@ -580,40 +588,79 @@ namespace BackOffice.Seccion.Configuracion
 
         protected bool ValidationEmail()
         {
+            try
+            {
                 _userAccountDAO = _facDAO.GetUserAccountDAO();
                 UserAccount _userAccount = new UserAccount();
-                 _userAccount = _userAccountDAO.FindByEmail(this.email.Text);
-                 if (_userAccount != null)
+                _userAccount = _userAccountDAO.FindByEmail(this.email.Text);
+                if (_userAccount != null)
                 {
                     Alerts("DangerEmail");
                     return false;
                 }
-            return true;
+                return true;
+            }
+            catch (FindByEmailUserAccountFondaDAOException e)
+            {
+                throw new ValidationEmailEmployeeFondaBackOfficeException(
+                    "Excepción al validar Email del Empleado",
+                    e);
+            }
+            catch (Exception e)
+            {
+                throw new GetAllEmployeFondaDAOException(
+                    "Excepción al validar Email del Empleado",
+                    e);
+            }
         }
 
         protected bool ValidationUsername()
         {
-            _employee = new Employee();
-            _employee = _employeeDAO.FindByusername(this.userNameU.Text);
-            if (_employee != null)
+            try
             {
-                Alerts("DangerUsername");
-                return false;
+                _employee = new Employee();
+                _employee = _employeeDAO.FindByusername(this.userNameU.Text);
+                if (_employee != null)
+                {
+                    Alerts("DangerUsername");
+                    return false;
+                }
+                return true;
             }
-            return true;
+            catch (FindByusernameEmployeFondaDAOException e)
+            {
+                throw new ValidationUsernameEmployeeFondaBackOfficeException(
+                    "Excepción al validar Username del Empleado",
+                    e);
+            }
+            catch (Exception e)
+            {
+                throw new GetAllEmployeFondaDAOException(
+                    "Excepción al validar Username del Empleado",
+                    e);
+            }
         }
 
         protected bool ValidationSsn()
         {
-            _employee = new Employee();
-            string _ssn = this.nss1.Text + "-" + this.nss2.Text;
-            _employee = _employeeDAO.FindBySsn(_ssn);
-            if (_employee != null)
+            try
             {
-                Alerts("DangerSsn");
-                return false;
+                _employee = new Employee();
+                string _ssn = this.nss1.Text + "-" + this.nss2.Text;
+                _employee = _employeeDAO.FindBySsn(_ssn);
+                if (_employee != null)
+                {
+                    Alerts("DangerSsn");
+                    return false;
+                }
+                return true;
             }
-            return true;
+            catch (Exception e)
+            {
+                throw new ValidationSsnEmployeeFondaBackOfficeException(
+                    "Excepción al validar Ssn del Empleado",
+                    e);
+            }
         }
 
         protected void ModifyStatus_Click(object sender, EventArgs e)
