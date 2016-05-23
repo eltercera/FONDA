@@ -649,12 +649,11 @@ public class OrdersActivity extends BaseNavigationActivity implements
      */
     public static void changeFrag (int opc){
         if(opc == 1){
-            List<Profile> p;
-            profFrag = new ProfileListFragment();
-            Bundle args = new Bundle();
-            args.putBoolean("multiSelect",true);
-            profFrag.setArguments(args);
-            showFragment(profFrag);
+
+                Bundle args = new Bundle();
+                args.putString("profile","Adriana");
+
+
         }
         if(opc == 2) {
             ccFrag = new CreditCardFragment();

@@ -148,7 +148,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="El Tinajero"
+        android:text="The Dining Room"
         android:id="@+id/textView6"
         android:textSize="25dp"
         android:textAlignment="center"
