@@ -25,5 +25,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
             return status;
         }
+
     }
 }

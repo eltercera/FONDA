@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\CastException.cs" />
     <Compile Include="HibernateDAO\FluentMappings\ActiveReservationStatusMap.cs" />
     <Compile Include="FactoryDAO\FactoryDAO.cs" />
     <Compile Include="FondaDAOExceptions\FondaIndexException.cs" />
