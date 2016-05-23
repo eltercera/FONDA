@@ -67,6 +67,15 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.WebControls.Table Restaurant;
         
         /// <summary>
+        /// ImageC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage ImageC;
+        
+        /// <summary>
         /// NameC control.
         /// </summary>
         /// <remarks>
@@ -85,13 +94,13 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.WebControls.TextBox CategoryC;
         
         /// <summary>
-        /// NacionalityC control.
+        /// NationalityC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox NacionalityC;
+        protected global::System.Web.UI.WebControls.TextBox NationalityC;
         
         /// <summary>
         /// RifC control.
@@ -148,6 +157,69 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.WebControls.TextBox ClosingTimeC;
         
         /// <summary>
+        /// Day1C control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Day1C;
+        
+        /// <summary>
+        /// Day2C control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Day2C;
+        
+        /// <summary>
+        /// Day3C control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Day3C;
+        
+        /// <summary>
+        /// Day4C control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Day4C;
+        
+        /// <summary>
+        /// Day5C control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Day5C;
+        
+        /// <summary>
+        /// Day6C control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Day6C;
+        
+        /// <summary>
+        /// Day7C control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Day7C;
+        
+        /// <summary>
         /// CloseConsult control.
         /// </summary>
         /// <remarks>
@@ -175,13 +247,13 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.WebControls.DropDownList CategoryM;
         
         /// <summary>
-        /// NacionalityM control.
+        /// NationalityM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList NacionalityM;
+        protected global::System.Web.UI.WebControls.DropDownList NationalityM;
         
         /// <summary>
         /// RifM control.
@@ -301,13 +373,31 @@ namespace BackOffice.Seccion.Restaurant {
         protected global::System.Web.UI.WebControls.CheckBox Day7M;
         
         /// <summary>
+        /// ShowOpeningTimeM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ShowOpeningTimeM;
+        
+        /// <summary>
         /// OpeningTimeM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList OpeningTimeM;
+        protected global::System.Web.UI.WebControls.TextBox OpeningTimeM;
+        
+        /// <summary>
+        /// ShowClosingTimeM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ShowClosingTimeM;
         
         /// <summary>
         /// ClosingTimeM control.
@@ -316,7 +406,16 @@ namespace BackOffice.Seccion.Restaurant {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ClosingTimeM;
+        protected global::System.Web.UI.WebControls.TextBox ClosingTimeM;
+        
+        /// <summary>
+        /// ImageM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile ImageM;
         
         /// <summary>
         /// ButtonModify control.
@@ -497,6 +596,15 @@ namespace BackOffice.Seccion.Restaurant {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ClosingTimeA;
+        
+        /// <summary>
+        /// ImageA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile ImageA;
         
         /// <summary>
         /// ButtonAdd control.

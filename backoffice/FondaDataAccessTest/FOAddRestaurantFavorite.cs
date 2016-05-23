@@ -5,7 +5,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System.Collections.Generic;
 
-namespace DataAccess
+namespace FondaDataAccessTest
 {
     [TestFixture()]
     class FOAddRestaurantFavorite : BaseEntity
@@ -69,7 +69,7 @@ namespace DataAccess
             _zone.Name = "Caracas";
             _restaurant1.Zone = _zone;
 
-            MenuCategory _menuCategories = new MenuCategory() { Name = "Italiana", Status = DisableSimpleStatus.Instance };
+           MenuCategory _menuCategories = new MenuCategory() { Name = "Italiana", Status = DisableSimpleStatus.Instance };
             _restaurant1.MenuCategories = new List<MenuCategory>();
             _restaurant1.MenuCategories.Add(_menuCategories);
 
@@ -97,12 +97,7 @@ namespace DataAccess
                 },
                 Role = new Role() { Name = "Administrador de Sistemas", Descripcion = "Es el administrado" }
             };
-            //_restaurant1.Employees = new List<Employee>();
-            //_restaurant1.Employees.Add(_employee);
-
-            Table _table = new Table() { Capacity = 2, Status = FreeTableStatus.Instance };
-            _restaurant1.Tables = new List<Table>();
-            _restaurant1.Tables.Add(_table);
+           
 
         }
 
@@ -137,7 +132,7 @@ namespace DataAccess
         /// Void: addRestaurantToCommensal()
         /// Explicación: Se pasan dos parametros, un objeto Commensal y un array de Restaurant, se recorre
         /// el array de Restaurant para así ir pasando uno a uno a la funcion AddFavoriteRestaurant() que se
-        /// encuentra en la clase Commensal y así introducirlo en el objeto Commensal.
+       /// encuentra en la clase Commensal y así introducirlo en el objeto Commensal.
         /// </summary>
         /// <param name="_commensal"></param>
         /// <param name="_restarants"></param>
@@ -213,22 +208,22 @@ namespace DataAccess
         {
             getRestaurantDao();
             getCommensalDao();
-            Restaurant _restaurantId1 = _restaurantDAO.FindById(4);
-            Restaurant _restaurantId2 = _restaurantDAO.FindById(5);
+            Restaurant _restaurantId1 = _restaurantDAO.FindById(1);
+            Restaurant _restaurantId2 = _restaurantDAO.FindById(2);
 
             Assert.NotNull(_restaurantId1);
             Assert.NotNull(_restaurantId2);
-            Assert.AreEqual(_restaurantId1.Id, 4);
-            Assert.AreEqual(_restaurantId2.Id, 5);
+            Assert.AreEqual(_restaurantId1.Id, 1);
+            Assert.AreEqual(_restaurantId2.Id, 2);
             Assert.AreNotSame(_restaurantId1, _restaurantId2);
             Assert.AreNotEqual(_restaurantId1.Id, 0);
             Assert.AreNotEqual(_restaurantId2.Id, 0);
 
             //findbyid para traerse objeto de commensal
-            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(8);
+            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(6);
 
             Assert.NotNull(_commensalId1);
-            Assert.AreEqual(_commensalId1.Id, 8);
+            Assert.AreEqual(_commensalId1.Id, 6);
             Assert.AreNotEqual(_commensalId1.Id, 0);
 
             addRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);

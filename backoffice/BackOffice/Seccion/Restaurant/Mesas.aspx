@@ -6,7 +6,7 @@ Mesas
 Mesas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-NOMBRE DEL RESTAURANTE
+<%=Session["NameRestaurant"]%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
    <div>
@@ -74,7 +74,6 @@ NOMBRE DEL RESTAURANTE
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
                                 <label class="control-label">Cantidad de Puestos</label>
                                 <asp:DropDownList id="DDLcapacityM" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
                                     <asp:ListItem>6</asp:ListItem>
@@ -113,7 +112,6 @@ NOMBRE DEL RESTAURANTE
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
                                 <label class="control-label">Cantidad de Puestos</label>
                                 <asp:DropDownList id="DDLcapacityA" CssClass="form-control" AutoPostBack="False" runat="server">
-                                    <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
                                     <asp:ListItem>6</asp:ListItem>

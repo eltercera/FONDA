@@ -11,37 +11,51 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.DishOrder;
 
 import java.util.ArrayList;
-/**
- * Created by jesus on 13/04/16.
- */
+import java.util.List;
 
+/**
+ *  Clase para llenar la lista de los platos ordenados
+ */
 public class OrderViewItemList extends BaseArrayAdapter<DishOrder> {
 
+    /**
+     *Constructor de la clase OrderViewItemList
+     * @param context               Context que define los recursos especificos de la aplicacion
+     */
     public OrderViewItemList(Context context) {
-        super(context, R.layout.list_current_order, R.id.txt,new ArrayList<DishOrder>());
+        super(context, R.layout.list_current_order, R.id.txt);
 
     }
 
+    /**
+     * Metodo que pinta la lista de platos
+     * @param item Objeto de tipo DishOrder que define lo que va dentro de la lista
+     * @return la vista  del converView del grupo
+     */
     @Override
     public View createView(DishOrder item) {
         View convertView;
 
         LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
         convertView = inflater.inflate(R.layout.list_current_order, null, true);
-        TextView txtTitle = (TextView) convertView.findViewById(R.id.txt);
-        TextView txtTitle2 = (TextView) convertView.findViewById(R.id.txt2);
-        TextView txtTitle3 = (TextView) convertView.findViewById(R.id.txt3);
-        TextView txtTitle4 = (TextView) convertView.findViewById(R.id.txt4);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.img);
+        TextView txtDescripcion = (TextView) convertView.findViewById(R.id.txt);
+        TextView txtName = (TextView) convertView.findViewById(R.id.txt2);
+        TextView txtCost = (TextView) convertView.findViewById(R.id.txt3);
+        TextView txtCount = (TextView) convertView.findViewById(R.id.txt4);
+        ImageView icon = (ImageView) convertView.findViewById(R.id.img);
 
-        txtTitle.setText(item.getDish().getDescription());
-        txtTitle2.setText(item.getDish().getName());
+        txtDescripcion.setText(item.getDish().getDescription());
+        txtName.setText(item.getDish().getName());
         String cost = String.valueOf(item.getDish().getCost());
-        txtTitle3.setText(item.getDish().getCurrency().getSymbol()+ " " + cost);
+        txtCost.setText(cost);
         String count = String.valueOf(item.getCount());
-        txtTitle4.setText("Cant: " + count);
-        imageView.setImageResource(Integer.parseInt(item.getDish().getImage()));
+        txtCount.setText("Cant: " + count);
 
+        String image = item.getDish().getImage();
+
+        Context context = icon.getContext();
+        int idImage = context.getResources().getIdentifier(image, "drawable", context.getPackageName());
+        icon.setImageResource(idImage);
 
         return convertView;
 

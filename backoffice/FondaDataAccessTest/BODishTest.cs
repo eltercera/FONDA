@@ -4,11 +4,9 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 
-namespace DataAccess
+namespace FondaDataAccessTest
 {
-    
     [TestFixture]
-
     public class BODishTest
     {
         private FactoryDAO _facDAO;
@@ -34,7 +32,6 @@ namespace DataAccess
         {
             getDishDao();
             generateDish();
-
             _dishDAO.Save(_dish);
 
             Assert.AreNotEqual(_dish.Id, 0);
@@ -80,7 +77,7 @@ namespace DataAccess
             _dish.Cost = 195;
             _dish.Image = null;
             _dish.Suggestion = true;
-            _dish.Status = ActiveSimpleStatus.Instance;
+            _dish.Status = _facDAO.GetActiveSimpleStatus();
 
         }
 
@@ -88,16 +85,15 @@ namespace DataAccess
 
         private void dishAssertions(bool edit = false)
         {
-
             Assert.IsNotNull(_dish);
             Assert.AreEqual(_dish.Name, "Pasta");
             Assert.AreEqual(_dish.Description, "con carne");
             Assert.AreEqual(_dish.Cost, 195);
             Assert.AreEqual(_dish.Image, null);
-            Assert.AreEqual(_dish.Status, ActiveSimpleStatus.Instance);
+            Assert.AreEqual(_dish.Status, _facDAO.GetActiveSimpleStatus());
             Assert.AreEqual(_dish.Suggestion, true);
         }
 
     }
-   
 }
+

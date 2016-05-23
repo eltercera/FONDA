@@ -90,5 +90,11 @@ namespace com.ds201625.fonda.Domain
             _reservations.Remove(reservation);
         }
     }
+        public virtual void RemoveToken ( Token token)
+        {   
+            _sesionTokens.Remove(token);
+        }
+
+	}
 }
 

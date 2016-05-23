@@ -67,6 +67,15 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.WebControls.TextBox nss2;
         
         /// <summary>
+        /// Control menssageSsn.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menssageSsn;
+        
+        /// <summary>
         /// Control birtDate.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,15 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.WebControls.TextBox userNameU;
         
         /// <summary>
+        /// Control menssageUsername.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menssageUsername;
+        
+        /// <summary>
         /// Control email.
         /// </summary>
         /// <remarks>
@@ -128,6 +146,15 @@ namespace BackOffice.Seccion.Configuracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox email;
+        
+        /// <summary>
+        /// Control menssageEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl menssageEmail;
         
         /// <summary>
         /// Control password.
@@ -148,39 +175,30 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.WebControls.TextBox repitPassword;
         
         /// <summary>
-        /// Control statusA.
+        /// Control restaurant.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton statusA;
+        protected global::System.Web.UI.WebControls.DropDownList restaurant;
         
         /// <summary>
-        /// Control statusI.
+        /// Control ButtonAddModify.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton statusI;
+        protected global::System.Web.UI.WebControls.Button ButtonAddModify;
         
         /// <summary>
-        /// Control ButtonAgrMod.
+        /// Control ButtonCancel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonAgrMod;
-        
-        /// <summary>
-        /// Control ButtonCancelar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCancelar;
+        protected global::System.Web.UI.WebControls.Button ButtonCancel;
     }
 }

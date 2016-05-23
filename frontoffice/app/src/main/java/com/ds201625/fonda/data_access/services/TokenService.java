@@ -15,7 +15,7 @@ public interface TokenService {
      * @param context
      * @return
      */
-    Token getToken(Context context) throws LocalStorageException;
+    Token getToken(Context context) throws LocalStorageException, Exception;
 
     /**
      * Obtiene un nuevo token
@@ -24,4 +24,13 @@ public interface TokenService {
      * @throws Exception
      */
     Token createToken(Context context) throws Exception;
+
+    /**
+     * Elimina un token al cerrar sesion
+     * @param context
+     * @return
+     * @throws Exception
+     */
+    void removeToken(Context context) throws Exception;
+
 }

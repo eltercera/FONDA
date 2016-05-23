@@ -15,23 +15,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
     public class FavoritesRestaurantsFondaWebApiController : FondaWebApi
     {
         public FavoritesRestaurantsFondaWebApiController() : base() { }
-        /// <summary>
-        /// funcion que consulta lista de restaurantes favoritos
-        /// de un comensal, validacion de correo y password se hace
-        /// por el auth y el tokken por header
-        /// </summary>
-        /// <returns></returns>
-        [Route("favoritesrestaurants")]
-        [HttpGet]
-        [FondaAuthToken]
-        public IHttpActionResult getFavorites()
-        {
-            Commensal commensal = GetCommensal(Request.Headers);
-            if (commensal == null)
-                return BadRequest();
 
-            return Ok(commensal.FavoritesRestaurants);
-        }
+      
         /// <summary>
         /// elimina un restaurante de la lista de favoritos de un
         /// commensal, recibe id int del restaurant a agregar,
@@ -39,15 +24,15 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [Route("deletefavorite")]
-        [HttpPost]
-        [FondaAuthToken]
-        public IHttpActionResult deletefavorite(int id)
+        [Route("deletefavorite/{idcommensal}/{idrestaurant}")]
+        [HttpGet]
+        //[FondaAuthToken]
+        public IHttpActionResult deletefavorite(int idcommensal, int idrestaurant)
         {
-            Commensal commensal = GetCommensal(Request.Headers);
-            Restaurant restaurant = GetRestaurant(Request.Headers, id);
-            commensal.RemoveFavoriteRestaurant(restaurant);
+            Commensal commensal = (Commensal)GetCommensalDao().FindById(idcommensal);
             ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO();
+            Restaurant restaurant = GetRestaurantDao().FindById(idrestaurant);
+            commensal.RemoveFavoriteRestaurant(restaurant);
             try
             {
                 commensalDao.Save(commensal);
@@ -57,56 +42,44 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Console.WriteLine(e.ToString());
                 return InternalServerError(e);
             }
-            return Ok(commensal.FavoritesRestaurants);
+            return Ok(commensal);
         }
+        
         /// <summary>
-        /// funcion que agrega restaurante a la lista de favoritos de un 
-        /// commensal, recibe id del restaurante a agregar, devuelve lista
-        /// actualizada 
+        /// 
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="idcommensal"></param>
+        /// <param name="idrestaurant"></param>
         /// <returns></returns>
-        [Route("addfavorite")]
-        [HttpPost]
-        [FondaAuthToken]
-        public IHttpActionResult addfavorite(int id)
+
+        [Route("addfavorite/{idcommensal}/{idrestaurant}")]
+        [HttpGet]
+        ///[FondaAuthToken]
+        public IHttpActionResult addfavorite(int idcommensal, int idrestaurant)
         {
-            
-            Commensal commensal = GetCommensal(Request.Headers);
-            Restaurant restaurant = GetRestaurant(Request.Headers,id);
+
+            Commensal commensal = (Commensal)GetCommensalDao().FindById(idcommensal);
             ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO();
-            
+            Restaurant restaurant = GetRestaurantDao().FindById(idrestaurant);
             bool existe = false;
             IList<Restaurant> favorites;
             if (commensal == null)
                 return BadRequest();
             if (restaurant == null)
                 return BadRequest();
-            favorites = commensal.FavoritesRestaurants;
-
-            foreach (var restauranteList in favorites)
+            commensal.RemoveFavoriteRestaurant(restaurant);
+            commensal.AddFavoriteRestaurant(restaurant);
+            try
             {
-                if (restaurant == restauranteList)
-                {
-                    existe = true;
-                }
+                commensalDao.Save(commensal);
+            }
+            catch (SaveEntityFondaDAOException e)
+            {
+                Console.WriteLine(e.ToString());
+                return InternalServerError(e);
             }
 
-            if (existe == false)
-            {
-
-                commensal.AddFavoriteRestaurant(restaurant);
-                try
-                {
-                    commensalDao.Save(commensal);
-                }
-                catch (SaveEntityFondaDAOException e)
-                {
-                    Console.WriteLine(e.ToString());
-                    return InternalServerError(e);
-                }
-            }
-            return Ok(commensal.FavoritesRestaurants);
+            return Ok(commensal);
         }
 
 
@@ -118,7 +91,58 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             IRestaurantDAO RestaurantDAO = FactoryDAO.GetRestaurantDAO();
             IList<Restaurant> listRestaurant = RestaurantDAO.GetAll();
 
+            foreach (var restaurant in listRestaurant)
+            {
+                restaurant.RestaurantCategory = new RestaurantCategory
+                {
+                    Name = restaurant.RestaurantCategory.Name,
+                    Id = restaurant.RestaurantCategory.Id
+                };    
+
+            }
+
             return Ok(listRestaurant);
+        }
+
+        private IRestaurantDAO GetRestaurantDao()
+        {
+            return FactoryDAO.GetRestaurantDAO();
+        }
+        private ICommensalDAO GetCommensalDao()
+        {
+            return FactoryDAO.GetCommensalDAO();
+        }
+
+
+
+        [Route("findRestaurantFavorites/{id}")]
+        [HttpGet]
+        public IHttpActionResult findRestaurantFavorites(int id)
+        {
+            Commensal commensal = (Commensal)GetCommensalDao().FindById(id);
+
+            foreach (var restaurant in commensal.FavoritesRestaurants)
+            {
+                restaurant.RestaurantCategory = new RestaurantCategory
+                {
+                    Name = restaurant.RestaurantCategory.Name,
+                    Id = restaurant.RestaurantCategory.Id
+                };
+
+            }
+
+            return Ok(commensal.FavoritesRestaurants);
+
+        }
+
+        [Route("findCommensalEmail/{email}")]
+        [HttpGet]
+        public IHttpActionResult findCommensalEmail(string email)
+        {
+
+            UserAccount comm = GetCommensalDao().FindByEmail(email);
+            return Ok(comm);
+
         }
 
 

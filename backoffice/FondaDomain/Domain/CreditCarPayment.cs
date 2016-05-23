@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -15,6 +16,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna el valor de los digitos de la tarjeta
         /// </summary>
+        [DataMember]
         public virtual int LastCardDigits
         {
             get { return lastCardDigits; }

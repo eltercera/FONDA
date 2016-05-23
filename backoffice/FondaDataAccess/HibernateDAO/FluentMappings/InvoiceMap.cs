@@ -30,7 +30,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                .Not.Nullable();
 
             References(x => x.Status)
-               .Column("i_status")          /*TODO : Cambiar nombre de columna a fk_status_id */
+               .Column("fk_status_id")
                .Not.Nullable()
                .Cascade.Persist();
 
@@ -45,19 +45,22 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
              References(x => x.Account)
                 .Column("fk_account_id")
+                .Not.LazyLoad()
                 .Not.Nullable(); 
 
              References(x => x.Payment)
                 .Column("fk_payment_id")
-                .Not.Nullable(); 
+                .Not.Nullable();
 
-           /*  References(x => x.Restaurant)
-                .Column("fk_restaurant_id")
-                .Not.Nullable(); */
-
-            /* References(x => x.Profile)
+            References(x => x.Profile)
                 .Column("fk_profile_id")
-                .Not.Nullable(); */
+                .Not.Nullable();
+
+            References(x => x.Restaurant)
+                .Column("fk_restaurant_id")
+                .Not.LazyLoad()
+                .Not.Nullable(); 
+                
 
             
 

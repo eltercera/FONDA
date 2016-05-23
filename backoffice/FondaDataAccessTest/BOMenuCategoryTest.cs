@@ -4,10 +4,10 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 
-namespace DataAccess
+namespace FondaDataAccessTest
 {
     
-    
+
 
     [TestFixture]
 
@@ -18,6 +18,7 @@ namespace DataAccess
         private MenuCategory _mencat;
         private int _mencatId;
         private IDishDAO _dishDAO;
+        
 
         /// <summary>
         /// Prueba de Dominio.
@@ -81,15 +82,14 @@ namespace DataAccess
             if ((edit & _mencat == null) | _mencat == null)
                 _mencat = new MenuCategory();
 
-
             _dishDAO = _facDAO.GetDishDAO();
             Dish plato = _dishDAO.FindById(1);
             Dish plato2 = _dishDAO.FindById(2);
             _mencat.Name = "pastas";
             _mencat.ListDish.Add(plato);
             _mencat.ListDish.Add(plato2);
-            _mencat.Status = ActiveSimpleStatus.Instance;
-            
+            _mencat.Status = _facDAO.GetActiveSimpleStatus();
+
 
 
 
@@ -104,12 +104,13 @@ namespace DataAccess
             Assert.IsNotNull(_mencat);
             Assert.AreEqual(_mencat.Name, "pastas");
             Assert.IsNotNull(_mencat.ListDish);
-            Assert.AreEqual(_mencat.Status, ActiveSimpleStatus.Instance);
+            Assert.AreEqual(_mencat.Status, _facDAO.GetActiveSimpleStatus());
             //Assert.AreEqual(_mencat.RecordStatus, null);
 
         }
 
     }
-   
+     
+    
 }
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -44,6 +44,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Retorna o asigna una lista de platos
         /// </summary>
+        [DataMember]
         public virtual IList<Dish> ListDish
         {
             get { return _listDish; }
@@ -62,7 +63,7 @@ namespace com.ds201625.fonda.Domain
         }
 
         /// <summary>
-        /// Cambia el eltado actual de la Categoria.
+        /// Cambia el estado actual de la Categoria.
         /// </summary>
         public virtual void changeStatus()
         {

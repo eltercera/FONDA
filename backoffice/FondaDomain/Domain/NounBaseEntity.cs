@@ -3,10 +3,11 @@ using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
-	/// <summary>
-	/// Entidad con nombre (Sustantivo)
-	/// </summary>
-	public class NounBaseEntity : BaseEntity
+    /// <summary>
+    /// Entidad con nombre (Sustantivo)
+    /// </summary>
+    [DataContract]
+    public class NounBaseEntity : BaseEntity
 	{
 
 		/// <summary>

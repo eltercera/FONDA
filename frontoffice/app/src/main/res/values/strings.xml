@@ -9,7 +9,8 @@
     <string name="nav_reserve">Reservaciones</string>
     <string name="nav_order">Ordenes</string>
     <string name="nav_config">Configuraciones</string>
-    <string name="nav_profile">Perfil</string>
+    <string name="nav_profile">Perfiles</string>
+    <string name="nav_logout">Cerrar Sesión</string>
 
     <string name="nav_detail_restaurant">Detalle</string>
     <string name="action_settings">Settings</string>
@@ -107,4 +108,16 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="nav_close_account">Cerrar</string>
     <string name="title_fragment_close">Cerrar Cuenta</string>
+    <string name="title_activity_all_restaurant">Lista de Restaurantes</string>
+
+
+    <!--STRINGS CONSTANT FOR FAVORITES-->
+    <string name="favorite_conexion_fail_message">No se ha podido establecer la conexion.</string>
+    <string name="favorite__fail_message">No se ha podido establecer la conexion.</string>
+    <string name="favorite_remove_success_meessage">Se ha eliminado el restaurante de su lista de favoritos.</string>
+    <string name="favorite_remove_fail_meessage">No se ha eliminado el restaurante de su lista de favoritos.</string>
+    <string name="favorite_add_success_meessage">Se ha agregado el restaurante de su lista de favoritos.</string>
+    <string name="favorite_add_fail_meessage">No e ha agregado el restaurante de su lista de favoritos.</string>
+    <string name="cliente">Cliente:</string>
+
 </resources>

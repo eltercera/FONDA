@@ -1,6 +1,4 @@
 package com.ds201625.fonda.data_access.factory;
-
-
 import com.ds201625.fonda.data_access.services.*;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Token;
@@ -22,8 +20,16 @@ public interface ServiceFactory {
      */
     CommensalService getCommensalService();
 
+    /**
+     * Obtiene el servicio de platos ordenados
+     * @return
+     */
     CurrentOrderService getCurrentOrderService();
 
+    /**
+     * Obtiene el servicio de historial de visitas
+     * @return
+     */
     HistoryVisitsRestaurantService getHistoryVisitsService();
 
     /**
@@ -32,4 +38,62 @@ public interface ServiceFactory {
      * @return
      */
     TokenService getTokenService(Commensal commensal);
+
+
+    /**
+     * Obtiene los servicios de todos los restaurantes
+     * @param
+     * @return
+     */
+    AllRestaurantService getAllRestaurantService();
+
+
+    /**
+     * Obtiene los servicios de todos los restaurantes Favoritos
+     * @param
+     * @return
+     */
+    AllFavoriteRestaurantService getAllFavoriteRestaurantsService();
+
+    /**
+     * Agrega un restaurante favorito a un comensal logeado
+     * @param
+     * @return
+     */
+    AddFavoriteRestaurantService getAddFavoriteRestaurantService();
+
+    /**
+     * Elimina un restaurante favorito a un comensal logeado
+     * @param
+     * @return
+     */
+    DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService();
+
+
+    /**
+     * Devuelve a un comensal logeado
+     * @param
+     * @return
+     */
+    RequireLogedCommensalService getLogedCommensalService();
+    /**
+     * Obtiene el servicio de factura
+     * @return
+     */
+    InvoiceService getInvoiceService();
+
+    ZoneService getZoneService();
+
+    CategoryService getCategoryService();
+
+    /**
+     * Obtiene el servicio de pago
+     * @return
+     */
+    PaymentService setPaymentService();
+
+    FilterByZoneService getFilterByZoneService();
+
+    FilterByCategoryService getFilterByCategoryService();
 }
+
