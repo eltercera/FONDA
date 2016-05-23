@@ -10,16 +10,7 @@
 namespace BackOffice.Seccion.Caja {
     
     
-    public partial class CrearFactura {
-        
-        /// <summary>
-        /// AlertSuccess_AgregarFactura control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_AgregarFactura;
+    public partial class VerDetalleOrden {
         
         /// <summary>
         /// Label1 control.
@@ -67,42 +58,6 @@ namespace BackOffice.Seccion.Caja {
         protected global::System.Web.UI.WebControls.Table Pago;
         
         /// <summary>
-        /// NumCard control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox NumCard;
-        
-        /// <summary>
-        /// DropDownProfiles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownProfiles;
-        
-        /// <summary>
-        /// ButtonPay control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonPay;
-        
-        /// <summary>
-        /// ButtonCancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCancel;
-        
-        /// <summary>
         /// LabelMontoTotal control.
         /// </summary>
         /// <remarks>
@@ -110,14 +65,5 @@ namespace BackOffice.Seccion.Caja {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelMontoTotal;
-        
-        /// <summary>
-        /// ButtonPayment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ButtonPayment;
     }
 }

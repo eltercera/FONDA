@@ -420,6 +420,8 @@
     <Content Include="Seccion\Caja\Default.aspx" />
     <Content Include="Seccion\Caja\DefaultOrdenesCerradas.aspx" />
     <Content Include="Seccion\Caja\ModificarOrden.aspx" />
+    <Content Include="Seccion\Caja\VerDetalleOrden.aspx" />
+    <Content Include="Seccion\Caja\VerFactura.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
@@ -503,6 +505,25 @@
     </Compile>
     <Compile Include="Seccion\Caja\ModificarOrden.aspx.designer.cs">
       <DependentUpon>ModificarOrden.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Caja\ResourceCaja.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceCaja.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.cs">
+      <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.designer.cs">
+      <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Caja\VerFactura.aspx.cs">
+      <DependentUpon>VerFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Caja\VerFactura.aspx.designer.cs">
+      <DependentUpon>VerFactura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\G1RecursosInterfaz.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -642,6 +663,10 @@
     <EmbeddedResource Include="Content\RecursoMaster.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoMaster.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seccion\Caja\ResourceCaja.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceCaja.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Seccion\Configuracion\G1RecursosInterfaz.resx">
       <Generator>ResXFileCodeGenerator</Generator>

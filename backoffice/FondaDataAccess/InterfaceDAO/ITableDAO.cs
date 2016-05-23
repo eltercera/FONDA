@@ -7,5 +7,6 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
     {
         IList<Table> GetAll();
         IList<Table> GetTables(int restaurant);
+        IList<Table> findByStatus(Status status, int restaurant);
     }
 }

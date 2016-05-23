@@ -11,6 +11,11 @@ namespace com.ds201625.fonda.Domain
     public class Account : BaseEntity
     {
         /// <summary>
+        /// Fecha de la cuenta
+        /// </summary>
+        private DateTime _date;
+
+        /// <summary>
         /// Estado de la cuenta
         /// </summary>
         private AccountStatus _status;
@@ -90,5 +95,26 @@ namespace com.ds201625.fonda.Domain
             _status = _status.Change();
         }
 
+        /// <summary>
+        /// Obtiene el precio total de todas las ordenes
+        /// </summary>
+        public virtual float getMonto()
+        {
+            float total = 0;
+            for (int i = 0; i < _listDish.Count; i++)
+            {
+                total = _listDish[i].Dish.Cost + total;
+            }
+            return total;
+        }
+
+        /// <summary>
+        /// Retorna o asigna una fecha
+        /// </summary>
+        public virtual DateTime Date
+        {
+            get { return _date; }
+            set { _date = value; }
+        }
     }
 }
