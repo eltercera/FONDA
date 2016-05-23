@@ -4,6 +4,7 @@ using com.ds201625.fonda.Domain;
 using System.Collections.Generic;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.BackEnd.ActionFilters;
 using System.Web;
 using Newtonsoft.Json;
 using System.Net;
@@ -26,6 +27,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// <returns>La lista de categorias</returns>
         [Route("menuCategory")]
         [HttpGet]
+        [FondaAuthToken]
         public IHttpActionResult getMenuCategory()
         {
             IMenuCategoryDAO catmenuDAO = FactoryDAO.GetMenuCategoryDAO();

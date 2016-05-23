@@ -281,7 +281,7 @@ namespace BackOffice.Seccion.Menu
         private bool DishValidate(string name, string description, string cost)
         {
             bool valid = true;
-            string patron = "^[A-Za-z]*$";
+           // string patron = "^[A-Za-z]*$";
             string patronFloat = "^[0-9]*$"; // "^\-{0,1}\d+(.\d+){0,1}$"
 
             if (name == "" || description == "" || cost == null)
@@ -289,15 +289,15 @@ namespace BackOffice.Seccion.Menu
                 valid = false;
             }
 
-            if (!Regex.IsMatch(name, patron))
-            {
-                valid = false;
-            }
+         //   if (!Regex.IsMatch(name, patron))
+        //    {
+         //       valid = false;
+        //    }
 
-            if (!Regex.IsMatch(description, patron))
-            {
-                valid = false;
-            }
+      //      if (!Regex.IsMatch(description, patron))
+        //    {
+        //        valid = false;
+        //    }
 
             if (!Regex.IsMatch(cost, patronFloat))
             {
