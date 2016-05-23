@@ -299,12 +299,12 @@ public class OrdersActivity extends BaseNavigationActivity implements
                 acceptCCButton.setVisible(false);
                 saveCCButton.setVisible(false);
             }
-            if (downloadBotton != null)
-                downloadBotton.setVisible(true);
-        } else {
+           /* if (downloadBotton != null)
+                downloadBotton.setVisible(true);*/
+        } /*else {
             if (downloadBotton != null)
                 downloadBotton.setVisible(false);
-        }
+        }*/
 
 
     }
