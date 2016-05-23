@@ -14,15 +14,7 @@ namespace DataAccessTests
         private Coordinate _coordinate;
         private int _coordinateId;
 
-
-        [Test]
-        public void CoordinateTest()
-        {
-            generateCoordinate();
-            coordinateAssertions();
-
-        }
-
+        [SetUp]
         private void generateCoordinate(bool edit = false)
         {
             if (_coordinate != null)
@@ -35,6 +27,15 @@ namespace DataAccessTests
             _coordinate.Longitude = -66.813324;
 
         }
+
+        [Test]
+        public void CoordinateTest()
+        {
+            generateCoordinate();
+            coordinateAssertions();
+
+        }
+
 
         private void coordinateAssertions(bool edit = false)
         {

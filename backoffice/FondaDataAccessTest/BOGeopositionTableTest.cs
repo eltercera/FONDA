@@ -21,8 +21,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         [Test]
         public void TableAvailableTest()
         {
-            bool validHour = false;
-            bool validDay = false;
+            bool validHour = false, validDay = false;
             factoryDAO = FactoryDAO.Intance;
             _tableDAO = factoryDAO.GetTableDAO();
             _restaurantDAO = factoryDAO.GetRestaurantDAO();
@@ -39,15 +38,21 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _reservation.CreateDate = new DateTime(2016, 09, 15, 14, 30, 00);
             _reservation.CommensalNumber = 3;
             _reservation.ReserveStatus = factoryDAO.GetActiveReservationStatus();
-
-            validHour =_restaurantDAO.ValidateHour(1, _reservation.ReserveDate);
-
+            //si la hora no coicide con la del restaurante regresa false
+            validHour =_restaurantDAO.ValidateHour(3, _reservation.ReserveDate);
+            //si reservan en un dia que tiene el restaurante regresa true
             validDay = _restaurantDAO.ValidateDay(3, _reservation.ReserveDate);
                
                     reservations = _reservationDAO.FindByRestaurant(_restaurant.Id);
                     tables = _tableDAO.TablesAvailableByDate(3, reservations, _reservation.ReserveDate);
                     tablesAvalibles = _tableDAO.TablesAvailableByCapacity(tables, _reservation.CommensalNumber);
-            
+
+            /*if (tablesAvalibles.Count == 0 || !(validHour && validDay))
+            {
+            }*/
+            Assert.AreEqual(validHour, true);
+            Assert.AreEqual(validDay, true);
+            Assert.AreNotSame(tablesAvalibles.Count,0);
         }
 
         [Test]
@@ -58,7 +63,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
             double longitud = -66.814397;
             bool ok = false;
             ok = _restaurantDAO.Geoposition(latitud,longitud,1);
-
+            Assert.AreEqual(ok,true);
         }
 
     }
