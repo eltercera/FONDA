@@ -21,8 +21,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Objeto tipo Currency</returns>
         public Currency GetCurrency(string name)
         {
-            Currency currency = new Currency();
-            currency = FindBy("Name", name);
+            Currency currency = FindBy("Name", name);
+            if (currency == null)
+            {
+                Currency newCurrency = new Currency();
+                newCurrency.Name = name;
+                return newCurrency;
+            }
 
             return currency;
         }

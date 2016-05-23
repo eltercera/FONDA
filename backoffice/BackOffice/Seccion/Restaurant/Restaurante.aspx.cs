@@ -254,7 +254,7 @@ namespace BackOffice.Seccion.Restaurant
         /// <param name="latitud">Coordenada de latitud para ubicacion</param>
         /// <returns>true si los datos son validos, false si no son validos</returns>
         public bool ValidarRestaurant(string name, string category, string nationality, string rif, string currency, string address,
-            string zone, string longitud, string latitud)
+            string zone, string longitud, string latitud, string otime, string ctime)
         {
             bool valid = true;
             int cont = 0;
@@ -268,7 +268,7 @@ namespace BackOffice.Seccion.Restaurant
 
             // valida campos vacio
             if (name == "" | rif == "" | address == "" | longitud == "" | latitud == ""
-                | category == "" | nationality == "" | zone == "" | currency == "")
+                | category == "" | nationality == "" | zone == "" | currency == "" | otime == "" | ctime == "")
             {
                 valid = false;
 
@@ -359,7 +359,7 @@ namespace BackOffice.Seccion.Restaurant
 
             //Verifica si los campos ingresados son validos
             if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
-                Address, Zone, Long, Lat))
+                Address, Zone, Long, Lat, OpeningTimeA.Text, ClosingTimeA.Text))
             {
 
                 //Genera un nuevo Restaurante
@@ -441,10 +441,6 @@ namespace BackOffice.Seccion.Restaurant
             double LongD = Convert.ToDouble(Long);
             double LatD = Convert.ToDouble(Lat);
 
-            //Horario de apertura y cierre
-            TimeSpan OT = TimeSpan.Parse(OpeningTimeM.Text);
-            TimeSpan CT = TimeSpan.Parse(ClosingTimeM.Text);
-
             //Dias laborales
             bool Day1 = Day1M.Checked;
             bool Day2 = Day2M.Checked;
@@ -457,8 +453,13 @@ namespace BackOffice.Seccion.Restaurant
             #endregion
 
             if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
-                Address, Zone, Long, Lat))
+                Address, Zone, Long, Lat, OpeningTimeM.Text, ShowClosingTimeM.Text))
             {
+
+                //Horario de apertura y cierre
+                TimeSpan OT = TimeSpan.Parse(OpeningTimeM.Text);
+                TimeSpan CT = TimeSpan.Parse(ClosingTimeM.Text);
+
                 // Obtiene id de la Base de Datos
                 string RestaurantID = RestaurantModifyId.Value;
                 int idRestaurant = int.Parse(RestaurantID);

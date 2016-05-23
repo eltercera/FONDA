@@ -524,7 +524,8 @@ Restaurantes
                                 contentType: "application/json; charset=utf-8",
                                 dataType: "json",
                                 success: function (response) {
-                                    $('.table > tbody > tr:nth-child(' + rowId + ') > td:nth-child(4)').html(response.d);
+                                    debugger;
+                                    $('.table > tbody > tr[data-id=' + rowId + '] > td:nth-child(4)').html(response.d);
                                 },
                                 failure: function (response) {
                                     console.log("Peticion al servidor fallida");
