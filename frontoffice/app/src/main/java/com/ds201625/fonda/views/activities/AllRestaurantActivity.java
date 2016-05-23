@@ -90,8 +90,7 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
                 try{
                     emailToWebService=log.getEmail()+"/";
                     Log.v(TAG,"Email->"+emailToWebService);
-                    RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
-                            getLogedCommensalService();
+                    RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().getLogedCommensalService();
                     //logedComensal =getComensal.getLogedCommensal(emailToWebService);
                     logedComensal =getComensal.getLogedCommensal("pato@gmail.com/");
                     Log.v(TAG,logedComensal.getId()+"");
