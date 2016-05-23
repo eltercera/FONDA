@@ -118,7 +118,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
                     Commensal comensal = addFavoriteRestaurant.AddFavoriteRestaurant(logedCommensal.getId(), selectedRestaurant.getId());
 
-                    
+
                     try {
                         Log.v(TAG, comensal.getId() + "");
                     } catch (Exception e) {
