@@ -18,10 +18,8 @@
        <subopcion rol="Sistema-Restaurante-Caja" nombre="Caja" link="~/Seccion/Caja/Default.aspx"/>
    </opcion>
   
-  <opcion rol="Sistema" nombre="Confirguración" img="fa fa-fw fa-wrench">
-    <subopcion rol="Sistema" nombre="Usuarios" link="~/Seccion/Configuracion/ListarUsuario.aspx#"/>
-    <subopcion rol="Sistema" nombre="Roles" link="~/Seccion/Configuracion/ListarRol.aspx"/>
-    <subopcion rol="Sistema" nombre="Privilegios" link="~/Seccion/Configuracion/ListarPrivilegio.aspx"/>
+  <opcion rol="Sistema-Restaurante" nombre="Confirguración" img="fa fa-fw fa-wrench">
+    <subopcion rol="Sistema-Restaurante" nombre="Usuarios" link="~/Seccion/Configuracion/ListarUsuario.aspx#"/>
   </opcion>
 
 </menu>

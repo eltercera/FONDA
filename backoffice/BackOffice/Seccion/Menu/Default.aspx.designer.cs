@@ -22,6 +22,15 @@ namespace BackOffice.Seccion.Menu {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_AddDish;
         
         /// <summary>
+        /// AlertSuccess_SuggestionDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_SuggestionDish;
+        
+        /// <summary>
         /// AlertSuccess_ModifyDish control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,24 @@ namespace BackOffice.Seccion.Menu {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ModifyDish;
+        
+        /// <summary>
+        /// AlertSuccess_ActivateDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_ActivateDish;
+        
+        /// <summary>
+        /// AlertSuccess_DeactivateDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_DeactivateDish;
         
         /// <summary>
         /// AlertDanger_AddDish control.
@@ -47,6 +74,42 @@ namespace BackOffice.Seccion.Menu {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertDanger_ModifyDish;
+        
+        /// <summary>
+        /// AlertDanger_ActivateDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertDanger_ActivateDish;
+        
+        /// <summary>
+        /// AlertDanger_DeactivateDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertDanger_DeactivateDish;
+        
+        /// <summary>
+        /// AlertWarning_ActivateDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertWarning_ActivateDish;
+        
+        /// <summary>
+        /// AlertWarning_DeactivateDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertWarning_DeactivateDish;
         
         /// <summary>
         /// HiddenFieldDishModifyId control.
@@ -139,6 +202,15 @@ namespace BackOffice.Seccion.Menu {
         protected global::System.Web.UI.WebControls.TextBox TextboxAddDishPrice;
         
         /// <summary>
+        /// DropDownListMenuCategoryAddDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListMenuCategoryAddDish;
+        
+        /// <summary>
         /// ButtonAddDish control.
         /// </summary>
         /// <remarks>
@@ -155,5 +227,59 @@ namespace BackOffice.Seccion.Menu {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonCancelAddDish;
+        
+        /// <summary>
+        /// ButtonDeactivateDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonDeactivateDish;
+        
+        /// <summary>
+        /// ButtonCancelDeactivateDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCancelDeactivateDish;
+        
+        /// <summary>
+        /// ButtonActivateDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonActivateDish;
+        
+        /// <summary>
+        /// ButtonCancelActivateDish control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCancelActivateDish;
+        
+        /// <summary>
+        /// ButtonModifySuggestion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonModifySuggestion;
+        
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

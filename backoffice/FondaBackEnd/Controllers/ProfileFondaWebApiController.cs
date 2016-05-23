@@ -11,6 +11,9 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
 	[RoutePrefix("api")]
+	/// <summary>
+	/// Profile fonda web API controller.
+	/// </summary>
 	public class ProfileFondaWebApiController : FondaWebApi
 	{
 		public ProfileFondaWebApiController () : base () {}
@@ -18,6 +21,10 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		[Route("profiles")]
 		[HttpGet]
 		[FondaAuthToken]
+		/// <summary>
+		/// Obtiene los perfiles del commensal
+		/// </summary>
+		/// <returns>The profiles.</returns>
 		public IHttpActionResult getProfiles()
 		{
 			Commensal commensal = GetCommensal (Request.Headers);
@@ -30,6 +37,11 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [Route("profile")]
         [HttpPost]
         [FondaAuthToken]
+		/// <summary>
+		/// Posts the profile.
+		/// </summary>
+		/// <returns>The profile.</returns>
+		/// <param name="profile">Profile.</param>
         public IHttpActionResult postProfile(Profile profile)
         {
             Commensal commensal = GetCommensal(Request.Headers);
@@ -65,6 +77,12 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [Route("profile/{id}")]
         [HttpPut]
         [FondaAuthToken]
+		/// <summary>
+		/// Puts the profile.
+		/// </summary>
+		/// <returns>The profile.</returns>
+		/// <param name="profile">Profile.</param>
+		/// <param name="id">Identifier.</param>
         public IHttpActionResult putProfile(Profile profile, int id)
         {
             Commensal commensal = GetCommensal(Request.Headers);
@@ -104,6 +122,11 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [Route("profile/{id}")]
         [HttpDelete]
         [FondaAuthToken]
+		/// <summary>
+		/// Deletes the profile.
+		/// </summary>
+		/// <returns>The profile.</returns>
+		/// <param name="id">Identifier.</param>
         public IHttpActionResult deleteProfile(int id)
         {
             Commensal commensal = GetCommensal(Request.Headers);
@@ -163,6 +186,10 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         //    return Ok();
         //}
 
+		/// <summary>
+		/// Gets the profile DAO.
+		/// </summary>
+		/// <returns>The profile DAO.</returns>
         private IProfileDAO GetProfileDao()
         {
             return FactoryDAO.GetProfileDAO();

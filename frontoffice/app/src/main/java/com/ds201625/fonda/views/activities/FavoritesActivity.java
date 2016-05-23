@@ -6,10 +6,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
+import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.SessionData;
 import com.google.gson.Gson;
@@ -19,9 +22,15 @@ import java.util.List;
 public class FavoritesActivity extends BaseNavigationActivity {
 
 
-    private RestaurantList adapter;
+    // UI references.
     private ListView list;
+
+    private RestaurantList adapter;
     private List<Restaurant> restaurantList;
+    private Commensal logedComensal;
+    private String TAG ="FavoritesActivity";
+
+    //Declaracion de
     String[] names = {
             "The dining room",
             "Mogi Mirin",
@@ -53,7 +62,6 @@ public class FavoritesActivity extends BaseNavigationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_favorites);
-
         /**
          * Esta es la validacion de si el usuario ya esta loggeado o no.
          */
@@ -61,14 +69,13 @@ public class FavoritesActivity extends BaseNavigationActivity {
         boolean skp = false;
 
         // inicializa los datos de la sesion
-        if (SessionData.getInstance() == null)
+        if (SessionData.getInstance() == null) {
             try {
                 SessionData.initInstance(getApplicationContext());
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
+        }
 
         super.onCreate(savedInstanceState);
 
@@ -77,14 +84,72 @@ public class FavoritesActivity extends BaseNavigationActivity {
             return;
         }
         else {
+            try {
+                Commensal log = SessionData.getInstance().getCommensal();
+
+                String emailToWebService;
+                try{
+                    emailToWebService=log.getEmail()+"/";
+                    Log.v(TAG,"Email->"+emailToWebService);
+                    RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
+                            getLogedCommensalService();
+                    logedComensal =getComensal.getLogedCommensal(emailToWebService);
+                    Log.v(TAG,logedComensal.getId()+"");
+
+
+                }catch(NullPointerException nu){
+                    nu.printStackTrace();
+                }
+
+
+                list=(ListView)findViewById(R.id.listViewFavorites);
+
+                    AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                            getAllFavoriteRestaurantsService();
+
+                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
+                /*
+                AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                        getAllRestaurantsService();
+                restaurantList = allRestaurant.getAllRestaurant();
+       */
+
+
+                try {
+                    for (Restaurant rest : restaurantList) {
+                        Log.v("WEBSERVICE", rest.getId() + "");
+                        Log.v("WEBSERVICE", rest.getName());
+                        Log.v("WEBSERVICE", rest.getAddress());
+                    }
+                    setupListView();
+                }catch (NullPointerException ex){
+                    // Log.v(TAG,R.string.favorite_conexion_fail_message );
+
+                    Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
+                            Toast.LENGTH_LONG).show();
+                }
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+
+
+
+
+
             /**
              * Esto es lo que tenia el Modulo de Favoritos en principio.
              */
+
+         /*
             list = (ListView) findViewById(R.id.listViewFavorites);
 
             AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                     getAllFavoriteRestaurantsService();
             restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(2);
+        */
         /*
         AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
                 getAllRestaurantsService();
@@ -96,7 +161,13 @@ public class FavoritesActivity extends BaseNavigationActivity {
             Log.v("WEBSERVICE",rest.getAddress());
         }*/
 
-            setupListView();
+            try {
+                setupListView();
+            }catch (NullPointerException ex){
+                ex.printStackTrace();
+                Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
+                        Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -107,45 +178,45 @@ public class FavoritesActivity extends BaseNavigationActivity {
         startActivity(new Intent(this,LoginActivity.class));
     }
 
+    /**
+     * Inicializa el ListView y le asigna valores.
+     * @param
+     * @return
+     */
+
     private void setupListView(){
-        RestaurantList adapter = new
+        adapter = new
                 RestaurantList(FavoritesActivity.this, names,location ,shortDescription,imageId,restaurantList);
-        //list.setAdapter(adapter);
+        list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-//                Toast.makeText(FavoritesActivity.this, "You Clicked at " + names[+position], Toast.LENGTH_SHORT).show();
-                Intent cambio = new Intent(FavoritesActivity.this, DetailRestaurantActivity.class);
-                /*
-                    String nombreRest = names[+position];
-                    String descriptionRest = shortDescription[+position];
-                    String locationRest = location[+position];
-                    Integer imageRest = imageId[+position];
-                    cambio.putExtra("NOMBRE", nombreRest);
-                    cambio.putExtra("LOCATION", locationRest);
-                    cambio.putExtra("DESCRIPTION", descriptionRest);
-                    cambio.putExtra("IMAGE", imageRest);
-                */
+                Intent detailActivity = new Intent(FavoritesActivity.this, DetailRestaurantActivity.class);
                 Restaurant test = getSelectedRestaurant(position);
-
-                cambio.putExtra("restaurante", new Gson().toJson(test));
-                startActivity(cambio);
+                detailActivity.putExtra("restaurant", new Gson().toJson(test));
+                detailActivity.putExtra("commensal", new Gson().toJson(logedComensal));
+                startActivity(detailActivity);
             }
         });
     }
 
+
+    /**
+     * Devuelve el restaurante Seleccionado por el usuario.
+     * @param position
+     * @return Restaurant.
+     */
     private Restaurant getSelectedRestaurant(int position){
         int contador =0;
-        for (Restaurant rest: this.restaurantList){
+        for (Restaurant restaurant: this.restaurantList){
             if (contador == position){
-                Log.v("WEBSERVICEcanguro", rest.getName());
-                return rest;
+                Log.v(TAG, restaurant.getName());
+                return restaurant;
             }
             contador++;
         }
-
         return null;
     }
 }

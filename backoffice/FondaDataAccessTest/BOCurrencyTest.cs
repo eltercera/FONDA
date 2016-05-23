@@ -2,9 +2,9 @@
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using NUnit.Framework;
+using System.Collections.Generic;
 
-
-namespace DataAccessTests
+namespace FondaDataAccessTest
 {
     [TestFixture]
     public class BOCurrencyTest
@@ -12,63 +12,68 @@ namespace DataAccessTests
         private FactoryDAO _facDAO;
         private ICurrencyDAO _currencyDAO;
         private Currency _currency;
-        private int _currencyId;
+        private Currency _result;
 
-
-        [Test]
-        public void CurrencyTest()
-        {
-            generateCurrency();
-            currencyAssertions();
-        }
-
-        private void generateCurrency(bool edit = false)
-        {
-            if (_currency != null)
-                return;
-
-            if ((edit & _currency == null) | _currency == null)
-                _currency = new Currency();
-            _currency.Symbol = "$";
-            _currency.Name = "Dolar";
-            //_currency.Name = "Euro";
-            //_currency.Name = "BsF";
-        }
-
-        private void currencyAssertions(bool edit = false)
-        {
-            Assert.IsNotNull(_currency);
-            Assert.AreEqual(_currency.Symbol, "$");
-            Assert.AreEqual(_currency.Name, "Dolar");
-        }
-
-        [Test]
-        public void TableSave()
-        {
-            generateCurrency();
-            getCurrencyDao();
-            _currencyDAO.Save(_currency);
-            Assert.AreNotEqual(_currency.Id, 0);
-            _currencyId = _currency.Id;
-            generateCurrency(true);
-            _currencyDAO.Save(_currency);
-            _currencyDAO.ResetSession();
-            _currency = null;
-
-        }
-
-        private void getCurrencyDao()
-        {
-            getDao();
-            if (_currencyDAO == null)
-                _currencyDAO = _facDAO.GetCurrencyDAO();
-
-        }
-
-        private void getDao()
+        [SetUp]
+        public void Init()
         {
             if (_facDAO == null)
                 _facDAO = FactoryDAO.Intance;
+
+            _currencyDAO = _facDAO.GetCurrencyDAO();
+
+            _currency = new Currency();
+            _currency.Symbol = "$";
+            _currency.Name = "Dolar";
+        }
+
+        [Test]
+        public void SameCurrency()
+        {
+            string name = _currency.Name;
+            _result = _currencyDAO.GetCurrency(name);
+
+            Assert.IsNotNull(_result);
+            Assert.AreEqual(1, _result.Id);
+
+        }
+
+        [Test]
+        public void CurrencySave()
+        {
+            _result = _currencyDAO.GetCurrency(_currency.Name);
+            _currencyDAO.Save(_currency);
+
+            Assert.IsNotNull(_result);
+            Assert.AreEqual(1, _result.Id);
+            Assert.AreEqual("Dolar", _result.Name);
+            Assert.AreEqual("$", _result.Symbol);            
+            
+        }
+
+        [Test]
+        public void CurrencyUpdate()
+        {
+            _currency = _currencyDAO.GetCurrency(_currency.Name);
+            _currency.Name = "Euro";
+            _currency.Symbol = "@";
+            _currencyDAO.Save(_currency);
+            _result = _currencyDAO.GetCurrency(_currency.Name);
+
+            Assert.IsNotNull(_result);
+            Assert.AreEqual(1, _result.Id);
+            Assert.AreEqual("Euro", _result.Name);
+            Assert.AreEqual("@", _result.Symbol);
+        }
+
+        [Test]
+        public void CurrencyDelete()
+        {
+            _currency = _currencyDAO.GetCurrency(_currency.Name);
+            _currencyDAO.Delete(_currency);
+            _result = _currencyDAO.GetCurrency(_currency.Name);
+
+            Assert.IsNull(_result);
         }
 
         [TestFixtureTearDown]

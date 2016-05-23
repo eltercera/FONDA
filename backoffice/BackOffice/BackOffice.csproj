@@ -428,7 +428,6 @@
     <Content Include="Seccion\Menu\MenuDia.aspx" />
     <Content Include="Seccion\Reservas\Default.aspx" />
     <Content Include="Seccion\Restaurant\AgregarCategoria.aspx" />
-    <Content Include="Seccion\Restaurant\AgregarZona.css" />
     <Content Include="Seccion\Restaurant\Mesas.aspx" />
     <Content Include="Seccion\Restaurant\Restaurante.aspx" />
     <Content Include="Seccion\Restaurant\AgregarZona.aspx" />
@@ -647,6 +646,8 @@
     <Content Include="Content\fonts\GreatVibes-Regular.otf" />
     <Content Include="Content\MasterUI.master" />
     <Content Include="Content\js\datatables\Spanish.json" />
+    <None Include="Properties\PublishProfiles\backend.pubxml" />
+    <None Include="Properties\PublishProfiles\backoffice.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

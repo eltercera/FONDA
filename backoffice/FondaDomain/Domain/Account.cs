@@ -7,7 +7,6 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Representa una cuenta de un restaurante.
     /// </summary>
-    [DataContract]
     public class Account : BaseEntity
     {
         /// <summary>
@@ -35,6 +34,7 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private IList<DishOrder> _listDish;
 
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -46,7 +46,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Retorna o asigna la mesa de una cuenta
         /// </summary>
-        [DataMember]
+        //[DataMember]
         public virtual Table Table
         {
             get { return _table; }
@@ -95,6 +95,7 @@ namespace com.ds201625.fonda.Domain
             _status = _status.Change();
         }
 
+
         /// <summary>
         /// Obtiene el precio total de todas las ordenes
         /// </summary>
@@ -116,5 +117,6 @@ namespace com.ds201625.fonda.Domain
             get { return _date; }
             set { _date = value; }
         }
+
     }
 }

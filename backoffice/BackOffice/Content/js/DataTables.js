@@ -101,11 +101,14 @@ $(document).ready(function () {
         "language": spanish,
         "aoColumns": [
             null,
+            null,
             { "bSearchable": false },
             { "bSearchable": false }
         ]
     });
 });
+
+
 
 $(document).ready(function () {
     $('#contenido_TableDayMenuDashboard').DataTable({
@@ -116,16 +119,29 @@ $(document).ready(function () {
         ]
     });
 });
+$(document).ready(function () {
+    $('#contenido_tableDefault').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
 
 $(document).ready(function () {
     $('#contenido_TableDish').DataTable({
         "language": spanish,
         "aoColumns": [
-            null,
-            { "bSearchable": false },
-            { "bSearchable": false },
-            { "bSearchable": false },
-            { "bSearchable": false }
+          { "bSearchable": true },
+           { "bSearchable": false },
+           { "bSearchable": true },
+           { "bSearchable": false },
+           { "bSearchable": false },
+           { "bSearchable": false }
         ]
     });
 });
@@ -226,6 +242,7 @@ $(document).ready(function () {
 });
 
 
+
 $(document).ready(function () {
     $('#Detalle').DataTable({
         "language": spanish,
@@ -281,6 +298,20 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $('#contenido_TablaEmployee').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
     $('#contenido_Pago').DataTable({
         "language": spanish,
         "aoColumns": [
@@ -292,6 +323,21 @@ $(document).ready(function () {
         ]
     });
 });
+
+
+$(document).ready(function () {
+    $('#contenido_Restaurant').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false },
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
+
 
 $(document).ready(function () {
             $('#contenido_Menu1').DataTable({
@@ -307,3 +353,4 @@ $(document).ready(function () {
                 ]
             });
 });
+
