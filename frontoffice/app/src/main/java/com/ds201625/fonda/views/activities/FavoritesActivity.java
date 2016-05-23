@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.AllRestaurantService;
+import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
@@ -104,15 +104,15 @@ public class FavoritesActivity extends BaseNavigationActivity {
 
                 list=(ListView)findViewById(R.id.listViewFavorites);
 
-                /*
                     AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                             getAllFavoriteRestaurantsService();
 
-                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(1);
-                 */
+                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
+                /*
                 AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
                         getAllRestaurantsService();
                 restaurantList = allRestaurant.getAllRestaurant();
+       */
 
 
                 try {
