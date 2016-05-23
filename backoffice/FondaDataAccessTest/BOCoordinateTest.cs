@@ -14,7 +14,6 @@ namespace FondaDataAccessTest
         private Coordinate _coordinate;
         private int _coordinateId;
 
-        [SetUp]
         private void generateCoordinate(bool edit = false)
         {
             if (_coordinate != null)
