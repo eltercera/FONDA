@@ -132,6 +132,15 @@
                                 <label class="control-label">Nombre de la Categoria del menú</label>
                                 <asp:TextBox ID="TextBoxAddCategoryName" CssClass="form-control" placeholder="ej. Menú Navideño" runat="server" />
                             </div>
+                        </div>                    
+                    </div>
+                    <div class="row">
+                         <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Restaurant</label>
+                                <asp:DropDownList ID="DropDownListRestaurantAddCategory" CssClass="form-control"  AutoPostBack="False" runat="server">
+                                </asp:DropDownList>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -217,7 +226,7 @@
 
         function ajaxRes() {
             <%-- El numero dentro del td:nth-child(3) referencia al numero de la columna de izquierda a derecha donde va a correr el script  --%>
-            $('.table > tbody > tr > td:nth-child(3) > a')
+            $('.table > tbody > tr > td:nth-child(4) > a')
                 .click(function (e) {
                     e.preventDefault();
                     var prueba = document.getElementById("<%=HiddenFieldMenuCategoryModifyId.ClientID%>").value;
@@ -241,7 +250,7 @@
             }
 
             function setValue() {
-                $('.table > tbody > tr > td:nth-child(3) > a')
+                $('.table > tbody > tr > td:nth-child(4) > a')
                 .click(function () {
                     var padreId = $(this).parent().parent().attr("data-id");
                     document.getElementById("<%=HiddenFieldMenuCategoryModifyId.ClientID%>").value = padreId;

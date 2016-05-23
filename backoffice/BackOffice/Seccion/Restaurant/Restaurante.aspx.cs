@@ -254,7 +254,7 @@ namespace BackOffice.Seccion.Restaurant
         /// <param name="latitud">Coordenada de latitud para ubicacion</param>
         /// <returns>true si los datos son validos, false si no son validos</returns>
         public bool ValidarRestaurant(string name, string category, string nationality, string rif, string currency, string address,
-            string zone, string longitud, string latitud)
+            string zone, string longitud, string latitud, string otime, string ctime)
         {
             bool valid = true;
             int cont = 0;
@@ -268,7 +268,7 @@ namespace BackOffice.Seccion.Restaurant
 
             // valida campos vacio
             if (name == "" | rif == "" | address == "" | longitud == "" | latitud == ""
-                | category == "" | nationality == "" | zone == "" | currency == "")
+                | category == "" | nationality == "" | zone == "" | currency == "" | otime == "" | ctime == "")
             {
                 valid = false;
 
@@ -310,6 +310,62 @@ namespace BackOffice.Seccion.Restaurant
            
             return valid;
         }
+
+        public bool ValidateRestaurantM(string name, string category, string nationality, string rif, string currency, string address,
+string zone, string longitud, string latitud, string otime, string ctime)
+        {
+            bool valid = true;
+            int cont = 0;
+            string patronNumero = "^[0-9]*$";
+            string patronPunto = @"[(.)]";
+            string patronFloat = @"^-?[0-9]\d*(\.\d+)?$"; // "^\-{0,1}\d+(.\d+){0,1}$"
+
+
+            // valida campos vacio
+            if (name == "" | rif == "" | address == "" | longitud == "" | latitud == ""
+                | category == "" | nationality == "" | zone == "" | currency == "" | otime == "" | ctime == "")
+            {
+                valid = false;
+
+            }
+            //valida campos de numeros
+            if ((!Regex.IsMatch(rif, patronNumero)))
+            {
+                valid = false;
+            }
+            //valida campos float
+            if ((!Regex.IsMatch(longitud, patronFloat)) | (!Regex.IsMatch(latitud, patronFloat)))
+            {
+                valid = false;
+            }
+            //Valida
+            if ((!Regex.IsMatch(longitud, patronPunto)) | (!Regex.IsMatch(latitud, patronPunto)))
+            {
+                valid = false;
+            }
+            //Valida que al menos un check esté seleccionado
+            if (Day1M.Checked)
+                cont = cont + 1;
+            if (Day2M.Checked)
+                cont = cont + 1;
+            if (Day3M.Checked)
+                cont = cont + 1;
+            if (Day4M.Checked)
+                cont = cont + 1;
+            if (Day5M.Checked)
+                cont = cont + 1;
+            if (Day6M.Checked)
+                cont = cont + 1;
+            if (Day7M.Checked)
+                cont = cont + 1;
+            if (cont < 1)
+            {
+                valid = false;
+            }
+
+            return valid;
+        }
+
 
         /// <summary>
         /// Agrega un nuevo Restaurante
@@ -359,7 +415,7 @@ namespace BackOffice.Seccion.Restaurant
 
             //Verifica si los campos ingresados son validos
             if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
-                Address, Zone, Long, Lat))
+                Address, Zone, Long, Lat, OpeningTimeA.Text, ClosingTimeA.Text))
             {
 
                 //Genera un nuevo Restaurante
@@ -441,10 +497,6 @@ namespace BackOffice.Seccion.Restaurant
             double LongD = Convert.ToDouble(Long);
             double LatD = Convert.ToDouble(Lat);
 
-            //Horario de apertura y cierre
-            TimeSpan OT = TimeSpan.Parse(OpeningTimeM.Text);
-            TimeSpan CT = TimeSpan.Parse(ClosingTimeM.Text);
-
             //Dias laborales
             bool Day1 = Day1M.Checked;
             bool Day2 = Day2M.Checked;
@@ -456,9 +508,14 @@ namespace BackOffice.Seccion.Restaurant
             bool[] days = new bool[] { Day1, Day2, Day3, Day4, Day5, Day6 };
             #endregion
 
-            if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
-                Address, Zone, Long, Lat))
+            if (ValidateRestaurantM(Name, Category, Nationality.ToString(), Rif, Currency,
+                Address, Zone, Long, Lat, OpeningTimeM.Text, ShowClosingTimeM.Text))
             {
+
+                //Horario de apertura y cierre
+                TimeSpan OT = TimeSpan.Parse(OpeningTimeM.Text);
+                TimeSpan CT = TimeSpan.Parse(ClosingTimeM.Text);
+
                 // Obtiene id de la Base de Datos
                 string RestaurantID = RestaurantModifyId.Value;
                 int idRestaurant = int.Parse(RestaurantID);

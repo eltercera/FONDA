@@ -1,5 +1,6 @@
 package com.ds201625.fonda.views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -41,18 +42,21 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
         setContentView(R.layout.activity_detail_restaurant);
         super.onCreate(savedInstanceState);
         String jsonMyObject = null;
+        String jsonMyOtherObject = null;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             jsonMyObject = extras.getString("restaurant");
+            jsonMyOtherObject = extras.getString("commensal");
         }
-        selectedRestaurant = new Gson().fromJson(jsonMyObject, Restaurant.class);
         try{
+            selectedRestaurant = new Gson().fromJson(jsonMyObject, Restaurant.class);
+            logedCommensal= new Gson().fromJson(jsonMyOtherObject, Commensal.class);
+            Log.v(TAG, logedCommensal.getId() + "");
             Log.v(TAG, selectedRestaurant.getName());
         }catch (Exception e){
             e.printStackTrace();
         }
 
-       // logedCommensal= getLogedCommensal();
 
 
         tvRestaurantName = (TextView)findViewById(R.id.text_view_restaurant_name);
@@ -73,6 +77,19 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
         setAsFavorite = menu.findItem(R.id.action_favorite_save);
         tb = (Toolbar)findViewById(R.id.toolbar);
         tb.setVisibility(View.VISIBLE);
+        MenuItem makeReserve = menu.findItem(R.id.action_make_order);
+
+        makeReserve.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent cambio = new Intent(DetailRestaurantActivity.this, DetailRestaurantActivity.class);
+                cambio.putExtra("restaurant", new Gson().toJson(selectedRestaurant));
+                startActivity(cambio);
+
+                return false;
+            }
+        });
+
 
         setAsFavorite = menu.findItem(R.id.action_set_favorite);
 
@@ -94,7 +111,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
                     DeleteFavoriteRestaurantService deleteFavoriteRestaurantServ = FondaServiceFactory.getInstance().
                             getDeleteFavoriteRestaurantService();
-                    Commensal comensal = deleteFavoriteRestaurantServ.deleteFavoriteRestaurant(1
+                    Commensal comensal = deleteFavoriteRestaurantServ.deleteFavoriteRestaurant(logedCommensal.getId()
                             , selectedRestaurant.getId());
 
                     try {
@@ -113,7 +130,8 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
                     AddFavoriteRestaurantService addFavoriteRestaurant = FondaServiceFactory.getInstance().
                             getAddFavortieRestaurantService();
 
-                    Commensal comensal = addFavoriteRestaurant.AddFavoriteRestaurant(1, selectedRestaurant.getId());
+                    Commensal comensal = addFavoriteRestaurant.AddFavoriteRestaurant(logedCommensal.getId(), selectedRestaurant.getId());
+
 
                     try {
                         Log.v(TAG, comensal.getId() + "");
@@ -173,7 +191,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
         AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                 getAllFavoriteRestaurantsService();
-        List<Restaurant> restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(1);
+        List<Restaurant> restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(logedCommensal.getId());
 
         for(Restaurant restaurant : restaurantList){
             if (restaurant.getId() == selectedRestaurant.getId()){
@@ -210,5 +228,9 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
         }
         return toReturn;
+    }
+
+    private void CallReserveActivity(){
+
     }
 }

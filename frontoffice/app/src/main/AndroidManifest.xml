@@ -55,12 +55,6 @@
             android:name=".views.activities.ReserveActivity"
             android:label="@string/nav_reserve"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".views.activities.SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity
-            android:name=".views.activities.RegistrarTdcActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
         <!--
          ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.

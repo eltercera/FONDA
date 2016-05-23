@@ -24,6 +24,12 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             get { return WebApiApplication.FactoryDAO; }
         }
 
+		/// <summary>
+		/// Obtiene el ID del Commensal al que
+		/// se encuentra en el Header
+		/// </summary>
+		/// <returns>El identificador del commensal.</returns>
+		/// <param name="header">Header de la prticion.</param>
         protected int GetCommensalId(HttpRequestHeaders header)
         {
             String values;
@@ -37,6 +43,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
             return value;
         }
+
         protected int GetRestaurantId(HttpRequestHeaders header)
         {
             String values;
@@ -51,12 +58,18 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             return value;
         }
 
+		/// <summary>
+		/// Obtiene el comensal al que pertenese el token pasado por la pericion
+		/// </summary>
+		/// <returns>The commensal.</returns>
+		/// <param name="header">Header.</param>
         protected Commensal GetCommensal(HttpRequestHeaders header)
         {
             ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO();
 
             return (Commensal)commensalDao.FindById(GetCommensalId(header));
         }
+
         protected Restaurant GetRestaurant(HttpRequestHeaders header, int id)
         {
             IRestaurantDAO RestaurantDao = FactoryDAO.GetRestaurantDAO();

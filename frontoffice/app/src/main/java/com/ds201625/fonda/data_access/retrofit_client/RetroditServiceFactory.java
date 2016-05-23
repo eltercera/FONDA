@@ -1,6 +1,5 @@
 
 package com.ds201625.fonda.data_access.retrofit_client;
-
 import com.ds201625.fonda.data_access.factory.ServiceFactory;
 import com.ds201625.fonda.data_access.services.AddFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
@@ -16,6 +15,7 @@ import com.ds201625.fonda.data_access.services.InvoiceService;
 import com.ds201625.fonda.data_access.services.PaymentService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
+import com.ds201625.fonda.data_access.services.ReservationService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.data_access.services.ZoneService;
 import com.ds201625.fonda.domains.Commensal;
@@ -105,4 +105,10 @@ public class RetroditServiceFactory implements ServiceFactory {
     public FilterByCategoryService getFilterByCategoryService() {
         return new RetrofitFilterByCategoryService();
     }
+
+    @Override
+    public ReservationService getAllReservesService() {
+        return new RetrofitReservationService();
+    }
 }
+

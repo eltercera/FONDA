@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.AllRestaurantService;
+import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
@@ -93,9 +93,10 @@ public class FavoritesActivity extends BaseNavigationActivity {
                     Log.v(TAG,"Email->"+emailToWebService);
                     RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
                             getLogedCommensalService();
+                    logedComensal =getComensal.getLogedCommensal(emailToWebService);
+                    Log.v(TAG,logedComensal.getId()+"");
 
-//                logedComensal =getComensal.getLogedCommensal(emailToWebService);
-                    //   Log.v(TAG,logedComensal.getId()+"");
+
 
 
                 }catch(NullPointerException nu){
@@ -104,16 +105,15 @@ public class FavoritesActivity extends BaseNavigationActivity {
 
 
                 list=(ListView)findViewById(R.id.listViewFavorites);
-
-                /*
                     AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                             getAllFavoriteRestaurantsService();
 
-                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(1);
-                 */
-                AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
+
+        /*        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
                         getAllRestaurantsService();
                 restaurantList = allRestaurant.getAllRestaurant();
+*/
 
 
                 try {
@@ -161,14 +161,6 @@ public class FavoritesActivity extends BaseNavigationActivity {
             Log.v("WEBSERVICE",rest.getName());
             Log.v("WEBSERVICE",rest.getAddress());
         }*/
-
-            try {
-                setupListView();
-            }catch (NullPointerException ex){
-                ex.printStackTrace();
-                Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
-                        Toast.LENGTH_LONG).show();
-            }
         }
     }
 
@@ -197,6 +189,7 @@ public class FavoritesActivity extends BaseNavigationActivity {
                 Intent detailActivity = new Intent(FavoritesActivity.this, DetailRestaurantActivity.class);
                 Restaurant test = getSelectedRestaurant(position);
                 detailActivity.putExtra("restaurant", new Gson().toJson(test));
+                detailActivity.putExtra("commensal", new Gson().toJson(logedComensal));
                 startActivity(detailActivity);
             }
         });

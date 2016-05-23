@@ -24,95 +24,82 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 
-    <div class="row">
-        <div class="col-lg-10 col-md-8 col-sm-8 col-xs-8">
-            <div id="exitoFormulario" class="alert alert-success alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" runat="server">
-                La orden ha sido agregada con <strong>EXITO</strong>!
-            </div>
-            <div id="alertaFormulario" class="alert alert-danger alert-dismissable col-lg-12 col-md-10 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" runat="server">
-                La orden <strong>NO SE HA PODIDO AGREGAR!</strong>
+    <div id="AlertSuccess_AgregarFactura" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> La Orden fue cerrada <strong>exitosamente!</strong>
             </div>
         </div>
     </div>
     <!-- /.row -->
-    
+        
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Factura #1 Cliente: @dhshga </h3>
-                        <h3 class="panel-title">Avila Burger, Las Mercedes. 10/10/2015 </h3>
+                        <h3 class="panel-title">Factura <asp:Label ID="Label1" runat="server"></asp:Label> Cliente: <asp:Label ID="Label2" runat="server"></asp:Label> </h3>
+                        <h3 class="panel-title">Restaurante: <asp:Label ID="Label3" runat="server"></asp:Label>, <asp:Label ID="Label4" runat="server"></asp:Label> </h3>
+                        <div class="clearfix"></div>
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th style="vertical-align: middle">Plato</th>
-                                        <th style="vertical-align: middle">Cantidad</th>
-                                        <th style="vertical-align: middle">Precio</th>
-                                        <th style="vertical-align: middle">IVA</th>
-                                        <th style="vertical-align: middle">Total</th>
 
-                                    </tr>
-
-                                </thead>
-                                <tbody>
-                                    <tr>
-
-                                        <td style="vertical-align: middle">La silla Burger</td>
-                                        <td style="vertical-align: middle">2</td>
-                                        <td style="vertical-align: middle">3000</td>
-                                        <td style="vertical-align: middle">120</td>
-                                        <td style="vertical-align: middle">3200</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td style="vertical-align: middle">Meat Burger</td>
-                                        <td style="vertical-align: middle">1</td>
-                                        <td style="vertical-align: middle">3000</td>
-                                        <td style="vertical-align: middle">120</td>
-                                        <td style="vertical-align: middle">3200</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="vertical-align: middle">Bacon Burger</td>
-                                        <td style="vertical-align: middle">2</td>
-                                        <td style="vertical-align: middle">4000</td>
-                                        <td style="vertical-align: middle">120</td>
-                                        <td style="vertical-align: middle">4200</td>
-
-                                    </tr>
-                                    <tr>
-                                        <td style="vertical-align: middle"></td>
-                                        <td style="vertical-align: middle"></td>
-                                        <td style="vertical-align: middle"></td>
-                                        <th style="vertical-align: middle">Monto Total</th>
-                                        <td style="vertical-align: middle">10600</td>
-
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <asp:Table ID="Pago" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
 
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+   
         <!-- /.row -->
 
+    <!-- Modal crear factura / cerrar orden-->
 
+             <div class="modal fade" id="modificar" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Añada los últimos 4 digitos de su tarjeta</h4>
+                                </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                                                <div class="form-group">
+                                                    <label class="control-label">Tarjeta</label>
+                                                    <asp:TextBox ID="NumCard" CssClass="form-control" placeholder="ej. 1234" runat="server" />
+                                                    <label class="control-label">Seleccionar Perfil</label>
+                                                    <asp:DropDownList id="DropDownProfiles" CssClass="form-control" AutoPostBack="False" runat="server">
+                                                        
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button id="ButtonPay" Text="Pagar" CssClass="btn btn-success" runat="server" OnClick="ButtonCloseOrder_Click"/>
+                                        <asp:Button id="ButtonCancel" Text="Cancelar" CssClass="btn btn-danger" runat="server"/>
+                                    </div>
+                                </div>
+                            </div>          
+            </div>
+
+   
     
-  <div>
-      <p class="text-center">
-                <b>Metodo de Pago:  </b>
-
-                <input type="radio" name="metodo" value="Tarjeta" checked="checked" />
-                Tarjeta
-        <input type="radio" name="metodo" value="Efectivo" />
-                Efectivo
-          <asp:Button ID="Button1" Text="Pagar" CssClass="btn btn-success pull-right" runat="server" OnClick="Button1_Click" />
-            </p>
-</div>
+    <div class="text-right">
+        <p class="text-center">
+            <asp:Label ID="LabelMontoTotal" runat="server" Font-Bold="true"></asp:Label>
+        </p>
+      
+        
+          <asp:LinkButton ID="ButtonPayment" data-toggle="modal" data-target="#modificar" Text="Pagar" CssClass="btn btn-success pull-right" runat="server" > </asp:LinkButton>
+            
+    </div>
 
 
    

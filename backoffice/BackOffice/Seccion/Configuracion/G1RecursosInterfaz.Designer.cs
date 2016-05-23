@@ -160,6 +160,15 @@ namespace BackOffice.Seccion.Configuracion {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-exclamation-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
+        /// </summary>
+        internal static string iconExclamation {
+            get {
+                return ResourceManager.GetString("iconExclamation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;.
         /// </summary>
         internal static string iconSuccess {
