@@ -14,12 +14,17 @@ public partial class MasterUI : System.Web.UI.MasterPage
 {
     private Dictionary<string, string> opcionMenu = new Dictionary<string, string>();
     private Dictionary<string, string[,]> subpositionOpcinonMenu = new Dictionary<string, string[,]>(); //Se guardaran las sub opciones del menú
-
+    /// <summary>
+    /// metodo encargado de setear las opciones dle menu
+    /// </summary>
     public Dictionary<string, string> OpcionMenu
     {
         get { return opcionMenu; }
         set { opcionMenu = value; }
     }
+    /// <summary>
+    /// metodo encargado de setear las subopciones del menu
+    /// </summary>
     public Dictionary<string, string[,]> SubpositionOpcinonMenu
     {
         get { return subpositionOpcinonMenu; }
