@@ -27,7 +27,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// <returns>La lista de categorias</returns>
         [Route("menuCategory")]
         [HttpGet]
-        [FondaAuthToken]
         public IHttpActionResult getMenuCategory()
         {
             IMenuCategoryDAO catmenuDAO = FactoryDAO.GetMenuCategoryDAO();
