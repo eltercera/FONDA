@@ -40,6 +40,15 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.WebControls.TextBox nameUser;
         
         /// <summary>
+        /// Control messageNameUser.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageNameUser;
+        
+        /// <summary>
         /// Control lastNameUser.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace BackOffice.Seccion.Configuracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox lastNameUser;
+        
+        /// <summary>
+        /// Control messageLastName.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageLastName;
         
         /// <summary>
         /// Control nss1.
@@ -76,6 +94,15 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menssageSsn;
         
         /// <summary>
+        /// Control messageDni.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageDni;
+        
+        /// <summary>
         /// Control birtDate.
         /// </summary>
         /// <remarks>
@@ -85,6 +112,15 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.WebControls.TextBox birtDate;
         
         /// <summary>
+        /// Control messageBirthdate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageBirthdate;
+        
+        /// <summary>
         /// Control phoneNumber.
         /// </summary>
         /// <remarks>
@@ -92,6 +128,15 @@ namespace BackOffice.Seccion.Configuracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox phoneNumber;
+        
+        /// <summary>
+        /// Control messagePhone.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messagePhone;
         
         /// <summary>
         /// Control gender.
@@ -110,6 +155,15 @@ namespace BackOffice.Seccion.Configuracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox address;
+        
+        /// <summary>
+        /// Control messageAddress.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageAddress;
         
         /// <summary>
         /// Control role.
@@ -139,6 +193,15 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menssageUsername;
         
         /// <summary>
+        /// Control messageUser.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageUser;
+        
+        /// <summary>
         /// Control email.
         /// </summary>
         /// <remarks>
@@ -157,6 +220,15 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl menssageEmail;
         
         /// <summary>
+        /// Control messageEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageEmail;
+        
+        /// <summary>
         /// Control password.
         /// </summary>
         /// <remarks>
@@ -164,6 +236,15 @@ namespace BackOffice.Seccion.Configuracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox password;
+        
+        /// <summary>
+        /// Control messagePassword1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messagePassword1;
         
         /// <summary>
         /// Control repitPassword.
@@ -175,6 +256,24 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.WebControls.TextBox repitPassword;
         
         /// <summary>
+        /// Control messagePassword2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messagePassword2;
+        
+        /// <summary>
+        /// Control messagePasswordEqual.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messagePasswordEqual;
+        
+        /// <summary>
         /// Control restaurant.
         /// </summary>
         /// <remarks>
@@ -182,6 +281,15 @@ namespace BackOffice.Seccion.Configuracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList restaurant;
+        
+        /// <summary>
+        /// Control messageEmpty.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageEmpty;
         
         /// <summary>
         /// Control ButtonAddModify.

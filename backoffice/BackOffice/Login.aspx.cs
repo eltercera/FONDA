@@ -32,12 +32,20 @@ namespace BackOffice.Seccion.Configuracion
             else
                 successLog.Visible = false;
         }
-
+        /// <summary>
+        /// metodos que se encarga de activar la validacion del usuario 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Uservalidate(object sender, EventArgs e)
         {
             Uservalidate();
         }
-
+        /// <summary>
+        /// Metodo que se encarga de activar la recuperacion de contraseña
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Recoverpassword(object sender, EventArgs e)
         {
             Recoverpassword();
@@ -211,7 +219,7 @@ namespace BackOffice.Seccion.Configuracion
          } 
 
         /// <summary>
-        /// Metodo encargado de restablecer la nueva contraseña del usuario
+        /// Metodo encargado de setear la nueva contraseña al usuario
         /// </summary>
         /// <param name="_employee"></param>
         protected void SetEmployee(Employee _employee)

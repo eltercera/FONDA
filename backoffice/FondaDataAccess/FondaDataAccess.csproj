@@ -43,20 +43,18 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\CastException.cs" />
@@ -192,6 +190,22 @@
     <Compile Include="InterfaceDAO\IActiveSimpleStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateActiveSimpleStatus.cs" />
     <Compile Include="FactoryDAO\IFactoryDAO.cs" />
+    <Compile Include="Exceptions\AddEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\ClearTableEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\FindAllFondaDAOException.cs" />
+    <Compile Include="Exceptions\FindByEmailUserAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\FindByFondaDAOException.cs" />
+    <Compile Include="Exceptions\FindByIdFondaDAOException.cs" />
+    <Compile Include="Exceptions\FindByusernameEmployeFondaDAOException.cs" />
+    <Compile Include="Exceptions\FondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\GetAllEmployeFondaDAOException.cs" />
+    <Compile Include="Exceptions\GetAllRoleFondaDAOException.cs" />
+    <Compile Include="Exceptions\LoadDataTableEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\LoadTabletEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\MofifyEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\ValidationEmailEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\ValidationSsnEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\ValidationUsernameEmployeeFondaBackOfficeException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -216,8 +230,17 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
-      <Project>{cd756618-286a-4fbc-93a3-0eccb571b18f}</Project>
+      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database2.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database2_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Database2.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
 </Project>
