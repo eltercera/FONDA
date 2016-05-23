@@ -6,6 +6,7 @@
 
     <string name="nav_favorites">Favoritos</string>
     <string name="nav_rest">Restaurantes</string>
+    <string name="nav_all_rest">Todos los Restaurantes</string>
     <string name="nav_reserve">Reservaciones</string>
     <string name="nav_order">Ordenes</string>
     <string name="nav_config">Configuraciones</string>

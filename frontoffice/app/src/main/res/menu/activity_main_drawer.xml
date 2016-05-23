@@ -11,6 +11,10 @@
             android:icon="@drawable/nav_rest"
             android:title="@string/nav_rest" />
         <item
+            android:id="@+id/nav_all_rest"
+            android:icon="@drawable/nav_rest"
+            android:title="@string/nav_all_rest" />
+        <item
             android:id="@+id/nav_reserve"
             android:icon="@drawable/nav_reserve"
             android:title="@string/nav_reserve" />
