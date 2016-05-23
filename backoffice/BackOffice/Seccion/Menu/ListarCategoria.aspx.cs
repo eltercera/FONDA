@@ -317,16 +317,16 @@ namespace BackOffice.Seccion.Menu
         private bool MenuCategoryValidate(string name)
         {
             bool valid = true;
-            string patron = "^[A-Za-z]*$";
+        
             if (name == "")
             {
                 valid = false;
             }
 
-            if (!Regex.IsMatch(name, patron))
-            {
-                valid = false;
-            }
+            //if (!Regex.IsMatch(name, patron))
+            //{
+            //    valid = false;
+            //}
             return valid;
         }
         /// <summary>
