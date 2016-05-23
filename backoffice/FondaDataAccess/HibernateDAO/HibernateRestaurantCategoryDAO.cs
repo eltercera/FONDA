@@ -25,10 +25,17 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Objeto tipo RestaurantCategory</returns>
         public RestaurantCategory GetRestaurantCategory(string name)
         {
-            RestaurantCategory category = new RestaurantCategory();
-            category = FindBy("rc_name", name);
+            RestaurantCategory category = FindBy("Name", name);
+            if (category == null)
+            {
+                RestaurantCategory newCategory = new RestaurantCategory();
+                newCategory.Name = name;
+                return newCategory;
+            }
+
             return category;
         }
+
 
     }
 }

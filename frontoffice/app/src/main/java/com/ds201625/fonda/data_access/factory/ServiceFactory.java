@@ -69,6 +69,13 @@ public interface ServiceFactory {
      */
     DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService();
 
+
+    /**
+     * Devuelve a un comensal logeado
+     * @param
+     * @return
+     */
+    RequireLogedCommensalService getLogedCommensalService();
     /**
      * Obtiene el servicio de factura
      * @return
@@ -91,5 +98,4 @@ public interface ServiceFactory {
 
     AllReservesService getAllReservesService();
 }
-
 

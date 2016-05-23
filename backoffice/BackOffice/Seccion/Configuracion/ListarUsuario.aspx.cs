@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 namespace BackOffice.Seccion.Configuracion
 {
@@ -41,14 +42,9 @@ namespace BackOffice.Seccion.Configuracion
             _employeeDAO = _facDAO.GetEmployeeDAO();
             #endregion
 
-            if (_role == "Sistema")
-                _employeeList = _employeeDAO.GetAll();
-            if (_role == "Restaurante")
-            {
-                string _idrest = (string)(Session[RecursoMaster.sessionRestaurantID]); 
-                _employeeList = _employeeDAO.GetAll();
-            }
-                
+            _employeeList = _employeeDAO.GetAll();
+
+            string _idrest = (string)(Session[RecursoMaster.sessionRestaurantID]);
 
             #region Llenar Tabla Employee
             if (_employeeList != null)
@@ -57,7 +53,6 @@ namespace BackOffice.Seccion.Configuracion
                 {
                     //creo una nueva fila
                     TableRow tRow = new TableRow();
-
                     //genero las celdas que estaran en la fina
                     TableCell tCellName = new TableCell();
                     TableCell tCellLastName = new TableCell();
@@ -121,8 +116,22 @@ namespace BackOffice.Seccion.Configuracion
                     tCellAction.Controls.Add(editStatusI);
                     tRow.Cells.Add(tCellAction);
 
-                    this.TablaEmployee.Rows.Add(tRow);
+
+                    if (_role == "Restaurante")
+                    {
+                        if (_employee.Restaurant != null)
+                            if (_employee.Restaurant.Id.ToString() == _idrest)
+                                this.TablaEmployee.Rows.Add(tRow);
+                    }
+                    else
+                    {
+                        this.TablaEmployee.Rows.Add(tRow);
+                    }
+ 
                 }
+                //Agrega el encabezado a la Tabla
+                TableHeaderRow header = HeaderTabletEmployee();
+                this.TablaEmployee.Rows.AddAt(0, header);
             }
             #endregion
 
@@ -131,24 +140,19 @@ namespace BackOffice.Seccion.Configuracion
         protected void LoadTable()
         {
             string _role = (string)(Session[RecursoMaster.sessionRol]);
+            ClearTable();
             LoadDataTable(_role);
         }
         
         protected void ClearTable()
         {
-           int _lengt = this.TablaEmployee.Rows.Count;
-
-           while (_lengt > 1)
-           {
-               this.TablaEmployee.Rows.RemoveAt(1);
-               _lengt = this.TablaEmployee.Rows.Count;
-           }
+            this.TablaEmployee.Rows.Clear();
         }
 
-        protected void HeaderTabletEmployee()
+        protected TableHeaderRow HeaderTabletEmployee()
         {
             //creo una nueva fila
-            TableRow tRow = new TableRow();
+            TableHeaderRow tRow = new TableHeaderRow();
 
             //genero las celdas que estaran en la fina
             TableHeaderCell tHCellName = new TableHeaderCell();
@@ -158,31 +162,38 @@ namespace BackOffice.Seccion.Configuracion
             TableHeaderCell tHCellStatus = new TableHeaderCell();
             TableHeaderCell tHCellAction = new TableHeaderCell();
 
+            tRow.TableSection = TableRowSection.TableHeader;
             //nombre del empleado
             tHCellName.Text = "Nombre";
+            tHCellName.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellName);
 
             //apellido del empleado
             tHCellLastName.Text = "Apellido";
+            tHCellLastName.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellLastName);
 
             //ssn del empleado
             tHCellSsn.Text = "CI";
+            tHCellSsn.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellSsn);
 
             //rol del empleado
             tHCellRole.Text = "Rol";
+            tHCellRole.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellRole);
 
             //status del empleado
             tHCellStatus.Text = "Status";
+            tHCellStatus.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellStatus);
 
             //acciones
             tHCellAction.Text = "Acciones";
+            tHCellAction.Scope = TableHeaderScope.Column;
             tRow.Cells.Add(tHCellAction);
 
-            this.TablaEmployee.Rows.Add(tRow);
+            return tRow;
         }
 
         protected void ModalInfo_Click(object sender, EventArgs e)
@@ -193,14 +204,20 @@ namespace BackOffice.Seccion.Configuracion
         protected void Add_Click(object sender, EventArgs e)
         {
             ClearModalAddModify();
-            ChangeRole();
+            string _role = (string)(Session[RecursoMaster.sessionRol]);
+            ChangeRole(_role);
+            if (_role == "Sistema")
+                ChangeRestaurant();
             ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
         }
 
         protected void Modify_Click(object sender, EventArgs e)
         {
             ClearModalAddModify();
-            ChangeRole();
+            string _role = (string)(Session[RecursoMaster.sessionRol]);
+            ChangeRole(_role);
+            if (_role == "Sistema")
+                ChangeRestaurant();
 
             LinkButton clickedLink = (LinkButton)sender;
             int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
@@ -242,15 +259,15 @@ namespace BackOffice.Seccion.Configuracion
             this.lastNameUser.Attributes["placeholder"] = "Apellido";
             this.nss1.Text = "";
             this.nss2.Text = "";
-            this.nss2.Attributes["placeholder"] = "ej. 965831535-1";
+            this.nss2.Attributes["placeholder"] = "Ej. 19245998";
             this.address.Text = "";
             this.address.Attributes["placeholder"] = "Dirección";
             this.email.Text = "";
-            this.email.Attributes["placeholder"] = "Email";
+            this.email.Attributes["placeholder"] = "nickname@ejemplo.com";
             this.phoneNumber.Text = "";
-            this.phoneNumber.Attributes["placeholder"] = "Teléfono";
+            this.phoneNumber.Attributes["placeholder"] = "Ej. 04127890544";
             this.birtDate.Text = "";
-            this.birtDate.Attributes["placeholder"] = "";
+            this.birtDate.Attributes["placeholder"] = "DD/MM/AA";
             this.role.Items.Clear();
             this.role.Items.Add("");
             this.gender.Text = "";
@@ -265,7 +282,7 @@ namespace BackOffice.Seccion.Configuracion
             this.ButtonAddModify.Text = "Agregar";     
         }
 
-        protected void ChangeRole()
+        protected void ChangeRole(string _role1)
         {
             _facDAO = FactoryDAO.Intance;
             _roleDAO = _facDAO.GetRoleDAO();
@@ -274,15 +291,35 @@ namespace BackOffice.Seccion.Configuracion
             {
                 foreach (Role _role in _roleList)
                 {
-                    this.role.Items.Add(new ListItem(_role.Name, _role.Id.ToString()));
+                    if ((_role1 != "Restaurante") && (_role.Id.ToString() == "3"))
+                        this.role.Items.Add(new ListItem(_role.Name, _role.Id.ToString()));
+                    if (_role.Id.ToString() != "3")
+                        this.role.Items.Add(new ListItem(_role.Name, _role.Id.ToString()));
                 }
             }
         }
 
-        protected void SetEmployee(Employee _employee)
+        protected void ChangeRestaurant()
         {
+            _facDAO = FactoryDAO.Intance;
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            IList<com.ds201625.fonda.Domain.Restaurant> _restList = _restaurantDAO.GetAll();
+            if (_restList != null)
+            {
+                foreach (com.ds201625.fonda.Domain.Restaurant _rest in _restList)
+                {
+                        this.restaurant.Items.Add(new ListItem(_rest.Name, _rest.Id.ToString()));
+                }
+            }
+        }
+
+        protected Employee SetEmployee(Employee _employee)
+        {
+            string _roleUser = (string)(Session[RecursoMaster.sessionRol]);
             Role _role;
-            
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            com.ds201625.fonda.Domain.Restaurant _restaurant;
+            //_employee = new Employee();
             if (this.nameUser.Text != "")
                 _employee.Name = this.nameUser.Text;
             if (this.lastNameUser.Text != "")
@@ -307,7 +344,6 @@ namespace BackOffice.Seccion.Configuracion
                 _role = _roleDAO.FindById(int.Parse(this.role.SelectedValue));
                 _employee.Role = _role;
             }
-
             if (this.ButtonAddModify.Text == "Agregar")
             {
                 if (this.email.Text != "" && this.password.Text != "")
@@ -320,102 +356,136 @@ namespace BackOffice.Seccion.Configuracion
 
             }
             else
+            {
                 if (this.ButtonAddModify.Text == "Modificar")
                 {
                     if (this.email.Text != "")
                         _employee.UserAccount.Email = this.email.Text;
+
                 }
+            }
+
+            if (_roleUser == "Sistema")
+            {
+                if (_employee.Role.Name != "Sistema")
+                {
+                    if (this.restaurant.Text != "")
+                    {
+                        _restaurant = _restaurantDAO.FindById(int.Parse(this.restaurant.SelectedValue));
+                        _employee.Restaurant = _restaurant;
+                    }
+                }
+                else
+                    _employee.Restaurant = null;
+
+            }
+            else
+            {
+                    string _idrest = (string)(Session[RecursoMaster.sessionRestaurantID]);
+                    _restaurant = _restaurantDAO.FindById(int.Parse(_idrest));
+                    _employee.Restaurant = _restaurant;
+            }
+
+            return _employee;
         }
 
         protected void ModalAddModify_Click(object sender, EventArgs e)
         {
-            _facDAO = FactoryDAO.Intance;
-            _employeeDAO = _facDAO.GetEmployeeDAO();
-            _roleDAO = _facDAO.GetRoleDAO();
-            _userAccountDAO = _facDAO.GetUserAccountDAO();
-            _employee = new Employee();
-            bool _emailValid, _ssnValid, _userNameValid;
-
-            _emailValid = ValidationEmail();
-            _ssnValid = ValidationSsn();
-            _userNameValid = ValidationUsername();
-
-            if (ButtonAddModify.Text == "Agregar")
+            if (ValidarCampo(ButtonAddModify.Text))
             {
-                if (_emailValid)
+                _facDAO = FactoryDAO.Intance;
+                _employeeDAO = _facDAO.GetEmployeeDAO();
+                _roleDAO = _facDAO.GetRoleDAO();
+                _userAccountDAO = _facDAO.GetUserAccountDAO();
+                _employee = new Employee();
+                bool _emailValid, _ssnValid, _userNameValid;
+
+                _emailValid = ValidationEmail();
+                _ssnValid = ValidationSsn();
+                _userNameValid = ValidationUsername();
+
+                if (ButtonAddModify.Text == "Agregar")
                 {
-                    this.menssageEmail.Attributes.Clear();
-                    this.menssageEmail.InnerHtml = "";
+                    if (_emailValid)
+                    {
+                        this.menssageEmail.Attributes.Clear();
+                        this.menssageEmail.InnerHtml = "";
+                    }
+                    if (_ssnValid)
+                    {
+                        this.menssageSsn.Attributes.Clear();
+                        this.menssageSsn.InnerHtml = "";
+                    }
+                    if (_userNameValid)
+                    {
+                        this.menssageUsername.Attributes.Clear();
+                        this.menssageUsername.InnerHtml = "";
+                    }
                 }
-                if (_ssnValid)
+                if (ButtonAddModify.Text == "Modificar")
                 {
-                    this.menssageSsn.Attributes.Clear();
-                    this.menssageSsn.InnerHtml = "";
-                }
-                if (_userNameValid)
-                {
-                    this.menssageUsername.Attributes.Clear();
-                    this.menssageUsername.InnerHtml = "";
+                    Button clickedLink = (Button)sender;
+                    int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
+                    _employee = _employeeDAO.FindById(_idEmployee);
+                    string _ssn = this.nss1.Text + "-" + this.nss2.Text;
+
+                    if (this.email.Text == _employee.UserAccount.Email)
+                    {
+                        _emailValid = true;
+                        this.menssageEmail.Attributes.Clear();
+                        this.menssageEmail.InnerHtml = "";
+                    }
+                    if (_ssn == _employee.Ssn)
+                    {
+                        _ssnValid = true;
+                        this.menssageSsn.Attributes.Clear();
+                        this.menssageSsn.InnerHtml = "";
+                    }
+                    if (this.userNameU.Text == _employee.Username)
+                    {
+                        _userNameValid = true;
+                        this.menssageUsername.Attributes.Clear();
+                        this.menssageUsername.InnerHtml = "";
+                    }
                 }
 
                 if (_emailValid && _ssnValid && _userNameValid)
                 {
-                    _employee.Status = _facDAO.GetActiveSimpleStatus();
-                }
-            }
-            if (ButtonAddModify.Text == "Modificar")
-            {
-                Button clickedLink = (Button)sender;
-                int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
-                _employee = _employeeDAO.FindById(_idEmployee);
-                string _ssn = this.nss1.Text + "-" + this.nss2.Text;
 
-                if (this.email.Text == _employee.UserAccount.Email)
-                {
-                    _emailValid = true;
-                    this.menssageEmail.Attributes.Clear();
-                    this.menssageEmail.InnerHtml = "";
-                }
-                if (_ssn == _employee.Ssn)
-                {
-                    _ssnValid = true;
-                    this.menssageSsn.Attributes.Clear();
-                    this.menssageSsn.InnerHtml = "";
-                }
-                if (this.userNameU.Text == _employee.Username)
-                {
-                    _userNameValid = true;
-                    this.menssageUsername.Attributes.Clear();
-                    this.menssageUsername.InnerHtml = "";
-                }
-            }
+                    _employee = SetEmployee(_employee);
+                    if (ButtonAddModify.Text == "Agregar")
+                    {
+                        if (_emailValid && _ssnValid && _userNameValid)
+                        {
+                            _employee.Status = _facDAO.GetActiveSimpleStatus();
+                        }
+                    }
 
-            if (_emailValid && _ssnValid && _userNameValid) 
-            {
+                    if (_employee.UserAccount.Id.ToString() == "0")
+                    {
+                        _userAccountDAO.Save(_employee.UserAccount);
+                    }
+                    _employeeDAO.Save(_employee);
+                    if (ButtonAddModify.Text == "Agregar")
+                    {
+                        Alerts("Add");
+                    }
+                    if (ButtonAddModify.Text == "Modificar")
+                    {
+                        Alerts("Modify");
+                    }
+                    ClearModalAddModify();
 
-                SetEmployee(_employee);
-                if (_employee.UserAccount.Id.ToString() == "0")
-                {
-                    _userAccountDAO.Save(_employee.UserAccount);
                 }
-                _employeeDAO.Save(_employee);
-                if (ButtonAddModify.Text == "Agregar")
+                else
                 {
-                    Alerts("Add");
+                    ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
                 }
-                if (ButtonAddModify.Text == "Modificar")
-                {
-                    Alerts("Modify");
-                }
-                ClearModalAddModify();
-
             }
             else
             {
                 ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
             }
-           
-            
         } 
 
         protected void Alerts(string _success)
@@ -468,6 +538,43 @@ namespace BackOffice.Seccion.Configuracion
 
                 case "DangerSsn": this.menssageSsn.InnerHtml = G1RecursosInterfaz.iconDanger + " Ya Existe!";
                                         break;
+
+                case "InvalidFormatName": this.messageNameUser.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo letras y espacios";
+                                        break;
+
+                case "InvalidFormatLastName": this.messageLastName.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo letras y espacios";
+                                        break;
+
+                case "InvalidFormatDni": this.messageDni.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo números";
+                                        break;
+
+                case "InvalidFormatPhone": this.messagePhone.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo";
+                                        break;
+
+                case "InvalidFormatAddress": this.messageAddress.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo Alfanumérico con espacios";
+                                        break;
+
+                case "InvalidFormatUser": this.messageUser.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo Alfanumérico y sin espacios";
+                                        break;
+
+                case "InvalidFormatEmail": this.messageEmail.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato de Correo Inválido!";
+                                        break;
+
+                case "InvalidFormatPassword1": this.messagePassword1.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo Alfanumérico y sin espacios";
+                                        break;
+
+                case "InvalidFormatPassword2": this.messagePassword2.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato Inválido! Sólo Alfanumérico y sin espacios";
+                                        break;
+
+                case "InvalidFormatPasswordEqual": this.messagePasswordEqual.InnerHtml = G1RecursosInterfaz.iconDanger + " Las contraseñas no coinciden";
+                                        break;
+
+                case "InvalidFormatBirthdate": this.messageBirthdate.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato de fecha inválido (DD/MM/YY)";
+                                        break;
+
+                case "Empty": this.messageEmpty.InnerHtml = G1RecursosInterfaz.iconExclamation + " Uno o mas Campos Obligatorios Vacíos";
+                                        break;
+
             }
         }
 
@@ -525,6 +632,211 @@ namespace BackOffice.Seccion.Configuracion
                 _employee.Status = _facDAO.GetDisabledSimpleStatus();
             _employeeDAO.Save(_employee);
             Alerts("Status");
+        }
+
+        protected bool ValidarCampo(String accion)
+        {
+            int good = 0;
+            int bad = 0;
+            string _role = (string)(Session[RecursoMaster.sessionRol]);
+            string patronNumero = "^[0-9]*$";
+            string patronTexto = "^[A-Z a-z]*$";
+            string patronAlphaNumerico1 = "^[A-Z0-9(.) a-z]*$";
+            string patronAlphaNumerico2 = "^[A-Z0-9a-z]*$";
+            string patronFecha = "^[0-9(/{2,2})]*$";
+            string patronEmail = @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            string Name = nameUser.Text;
+            string LastName = lastNameUser.Text;
+            //char Nationality = Convert.ToChar(nss1.Text);
+            string Identity = nss1.Text;
+            string Dni = nss2.Text;
+            string Birthdate = birtDate.Text;
+            string Phone = phoneNumber.Text;
+            //char Gender = Convert.ToChar(gender.Text);
+            string Address = address.Text;
+            string Role = role.Text;
+            string UserName = userNameU.Text;
+            string Email = email.Text;
+            string Password1 = password.Text;
+            string Password2 = repitPassword.Text;
+            string Restaurant = restaurant.Text;
+
+            if (accion == "Agregar")
+            {
+                if (Name == "" | LastName == "" | Identity == "" | Phone == "" | Role == ""
+                    | UserName == "" | Email == "" | Password1 == "" | Password2 == "" | (_role != "Sistema" && Restaurant==""))
+                {
+                    Alerts("Empty");
+                    bad = ++bad;
+                    return false;
+                }
+                else
+                {
+                    this.messageEmpty.Attributes.Clear();
+                    this.messageEmpty.InnerHtml = "";
+                }
+            }
+
+            if (accion == "Modificar")
+            {
+                if (Name == "" | LastName == "" | Identity == "" | Phone == "" | Role == ""
+                    | UserName == "" | Email == "" | (_role != "Sistema" && Restaurant == ""))
+                {
+                    Alerts("Empty");
+                    bad = ++bad;
+                    return false;
+                }
+                else
+                {
+                    this.messageEmpty.Attributes.Clear();
+                    this.messageEmpty.InnerHtml = "";
+                }
+                
+            }
+
+            if ((!Regex.IsMatch(Name, patronTexto)))
+            {
+                Alerts("InvalidFormatName");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messageNameUser.Attributes.Clear();
+                this.messageNameUser.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(LastName, patronTexto)))
+            {
+                Alerts("InvalidFormatLastName");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messageLastName.Attributes.Clear();
+                this.messageLastName.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Dni, patronNumero)))
+            {
+                Alerts("InvalidFormatDni");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messageDni.Attributes.Clear();
+                this.messageDni.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Birthdate, patronFecha)))
+            {
+                  Alerts("InvalidFormatBirthdate");
+                  bad = ++bad;
+            }
+            else
+            {
+            good = ++good;
+            this.messageBirthdate.Attributes.Clear();
+            this.messageBirthdate.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Phone, patronNumero)))
+            {
+                Alerts("InvalidFormatPhone");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messagePhone.Attributes.Clear();
+                this.messagePhone.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Address, patronAlphaNumerico1)))
+            {
+                Alerts("InvalidFormatAddress");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messageAddress.Attributes.Clear();
+                this.messageAddress.InnerHtml = "";
+            }
+
+
+
+            if ((!Regex.IsMatch(UserName, patronAlphaNumerico2)))
+            {
+                Alerts("InvalidFormatUser");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messageUser.Attributes.Clear();
+                this.messageUser.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Email, patronEmail)))
+            {
+                Alerts("InvalidFormatEmail");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.menssageEmail.Attributes.Clear();
+                this.menssageEmail.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Password1, patronAlphaNumerico2)))
+            {
+                Alerts("InvalidFormatPassword1");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messagePassword1.Attributes.Clear();
+                this.messagePassword1.InnerHtml = "";
+            }
+
+            if ((!Regex.IsMatch(Password2, patronAlphaNumerico2)))
+            {
+                Alerts("InvalidFormatPassword2");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messagePassword2.Attributes.Clear();
+                this.messagePassword2.InnerHtml = "";
+            }
+
+            if (!(Password1 == Password2))
+            {
+                Alerts("InvalidFormatPasswordEqual");
+                bad = ++bad;
+            }
+            else
+            {
+                good = ++good;
+                this.messagePasswordEqual.Attributes.Clear();
+                this.messagePasswordEqual.InnerHtml = "";
+            }
+
+
+            if (bad == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

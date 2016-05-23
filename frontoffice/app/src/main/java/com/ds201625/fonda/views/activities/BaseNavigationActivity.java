@@ -11,8 +11,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.logic.SessionData;
 
 /**
@@ -56,6 +54,8 @@ public abstract class BaseNavigationActivity extends BaseActivity
             setCheckedItem(R.id.nav_profile);
         } else if (this.getClass() == ReserveActivity.class) {
             setCheckedItem(R.id.nav_reserve);
+        }else if (this.getClass() == AllRestaurantActivity.class) {
+            setCheckedItem(R.id.nav_all_rest);
         }
     }
 
@@ -105,6 +105,9 @@ public abstract class BaseNavigationActivity extends BaseActivity
         } else if (id == R.id.nav_order) {
             if (this.getClass() != OrdersActivity.class)
                 startFondaActivity("OrdersActivity");
+        }else if (id == R.id.nav_all_rest) {
+            if (this.getClass() != AllRestaurantActivity.class)
+                startFondaActivity("AllRestaurantActivity");
         } else if (id == R.id.nav_profile) {
             if (this.getClass() != ProfileActivity.class)
                 startFondaActivity("ProfileActivity");

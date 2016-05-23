@@ -6,14 +6,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.AddFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.SessionData;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -23,28 +27,40 @@ import java.util.List;
  */
 public class DetailRestaurantActivity extends BaseNavigationActivity{
 
-    //Variables Declaration
+    //Declaracion de varialbes globales de la clase
+
     private MenuItem setAsFavorite;
     private Toolbar tb;
     private Restaurant selectedRestaurant;
+    private TextView tvRestaurantName;
+    private String TAG = "DetailRestaurantActivity";
+    private Commensal logedCommensal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_detail_restaurant);
         super.onCreate(savedInstanceState);
         String jsonMyObject = null;
+        String jsonMyOtherObject = null;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            jsonMyObject = extras.getString("restaurante");
+            jsonMyObject = extras.getString("restaurant");
+            jsonMyOtherObject = extras.getString("commensal");
         }
-        selectedRestaurant = new Gson().fromJson(jsonMyObject, Restaurant.class);
         try{
-            Log.v("DETAIL", selectedRestaurant.getName());
+            selectedRestaurant = new Gson().fromJson(jsonMyObject, Restaurant.class);
+            logedCommensal= new Gson().fromJson(jsonMyOtherObject, Commensal.class);
+            Log.v(TAG, logedCommensal.getId()+"");
+            Log.v(TAG, selectedRestaurant.getName());
         }catch (Exception e){
             e.printStackTrace();
-            //hubo un fallo al acceder al restaurante.
         }
 
+
+
+        tvRestaurantName = (TextView)findViewById(R.id.text_view_restaurant_name);
+
+        setupDataOfView();
     }
 
     /**
@@ -63,12 +79,11 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
         setAsFavorite = menu.findItem(R.id.action_set_favorite);
 
-        Log.v("detail","creandomenuoption con"+selectedRestaurant.getName());
 
         if (isFavorite()){
-            setAsFavorite.setIcon(R.drawable.ic_clear_creme_24dp);
+            setAsFavorite.setIcon(R.drawable.ic_star_yellow);
         }else {
-            setAsFavorite.setIcon(R.drawable.ic_add_creme_24dp);
+            setAsFavorite.setIcon(R.drawable.ic_full_star_24dp);
         }
         tb = (Toolbar)findViewById(R.id.toolbar);
         tb.setVisibility(View.VISIBLE);
@@ -78,82 +93,50 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
             public boolean onMenuItemClick(MenuItem item) {
 
 
-                if (isFavorite()){
+                if (isFavorite()) {
 
                     DeleteFavoriteRestaurantService deleteFavoriteRestaurantServ = FondaServiceFactory.getInstance().
                             getDeleteFavoriteRestaurantService();
-                    Commensal comensal = deleteFavoriteRestaurantServ.deleteFavoriteRestaurant(2, selectedRestaurant.getId());
+                    Commensal comensal = deleteFavoriteRestaurantServ.deleteFavoriteRestaurant(logedCommensal.getId()
+                            , selectedRestaurant.getId());
 
                     try {
-                        Log.v("WEBSERVICE", comensal.getId() + "");
+                        Log.v(TAG, comensal.getId() + "");
                     } catch (Exception e) {
                         e.printStackTrace();
-                    }
+                        Toast.makeText(getApplicationContext(), R.string.favorite_remove_fail_meessage,
+                                Toast.LENGTH_LONG).show();
 
-                }else{
+                    }
+                    Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
+                            Toast.LENGTH_LONG).show();
+                    setAsFavorite.setIcon(R.drawable.ic_full_star_24dp);
+                } else {
 
                     AddFavoriteRestaurantService addFavoriteRestaurant = FondaServiceFactory.getInstance().
                             getAddFavortieRestaurantService();
 
-                    Commensal comensal = addFavoriteRestaurant.AddFavoriteRestaurant(2, selectedRestaurant.getId());
+                    Commensal comensal = addFavoriteRestaurant.AddFavoriteRestaurant(logedCommensal.getId(), selectedRestaurant.getId());
+
 
                     try {
-                        Log.v("WEBSERVICE", comensal.getId() + "");
+                        Log.v(TAG, comensal.getId() + "");
                     } catch (Exception e) {
                         e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), R.string.favorite_add_fail_meessage,
+                                Toast.LENGTH_LONG).show();
+
                     }
-
+                    Toast.makeText(getApplicationContext(), R.string.favorite_add_success_meessage,
+                            Toast.LENGTH_LONG).show();
+                    setAsFavorite.setIcon(R.drawable.ic_star_yellow);
                 }
 
-                /*
-                MALO
-                DeleteFavoriteRestaurantService removeFavoriteRestaurant = FondaServiceFactory.getInstance().
-                        getRemoveFavoriteRestaurantService();
-
-                Commensal comensal = removeFavoriteRestaurant.RemoveFavoriteRestaurant(2, selectedRestaurant.getId());
-                */
-         /*       try {
-                    Log.v("WEBSERVICE", comensal.getId() + "");
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    Log.v("WEBSERVICE", "ERRROROOOOOOOOOOOOOOOOOOOOOOOOOR");
-                }
-           */     /*
-                Log.v("CLICK", "le di clicksito");
-                //if (isFavorite()){
-                Log.v("WEBSERVICE", "Entrando en Is Favorite");
-                Log.v("WEBSERVICE", "EL ID DEL RESTAURANTE ES: " + selectedRestaurant.getId());
-
-                DeleteFavoriteRestaurantService removeFavoriteRestaurant = FondaServiceFactory.getInstance().
-                        getRemoveFavoriteRestaurantService();
-                Commensal comensal = removeFavoriteRestaurant.RemoveFavoriteRestaurant(2,1);
-                try {
-
-                    Log.v("WEBSERVICE", "EL WEBSERVICE RESPONDIO");
-                    Log.v("WEBSERVICE", comensal.getId() + "");
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                */
-            /*
-            }else{
-                    Log.v("WEBSERVICE","Entrando en Is NOT Favorite");
-*/
-            /*    AddFavoriteRestaurantService addFavoriteRestaurant = FondaServiceFactory.getInstance().
-                        getAddFavortieRestaurantService();
-
-                Commensal comensal = addFavoriteRestaurant.AddFavoriteRestaurant(1, selectedRestaurant.getId());
-
-                try {
-                    Log.v("WEBSERVICE", comensal.getId() + "");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }*/
                 return false;
             }
 
         });
+
         return true;
     }
 
@@ -171,11 +154,30 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
         return true;
     }
 
+    /**
+     * Le asigna los valores del restaurante seleccionado a la vista..
+     * @param
+     * @return
+     */
+    private void setupDataOfView(){
+
+        try {
+            tvRestaurantName.setText(selectedRestaurant.getName());
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+    };
+
+    /**
+     * Devuelve el estado del restaurante seleccionado (si es favorito) con respecto al usuario.
+     * @param
+     * @return Boolean.
+     */
     private boolean isFavorite(){
 
         AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                 getAllFavoriteRestaurantsService();
-        List<Restaurant> restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(2);
+        List<Restaurant> restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(logedCommensal.getId());
 
         for(Restaurant restaurant : restaurantList){
             if (restaurant.getId() == selectedRestaurant.getId()){
@@ -186,4 +188,31 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
         return false;
     }
 
+
+    /**
+     * Devuelve el Commensal logeado.
+     * @param
+     * @return Commensal.
+     */
+    private Commensal getLogedCommensal(){
+        Commensal log= SessionData.getInstance().getCommensal();
+        String emailToWebService;
+        Commensal toReturn = null;
+        try{
+            emailToWebService=log.getEmail()+"/";
+            RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
+                    getLogedCommensalService();
+
+            toReturn =getComensal.getLogedCommensal(emailToWebService);
+            Log.v(TAG,toReturn.getId()+"");
+
+
+        }catch(NullPointerException nu){
+            nu.printStackTrace();
+            Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
+                    Toast.LENGTH_LONG).show();
+
+        }
+        return toReturn;
+    }
 }

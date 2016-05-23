@@ -8,6 +8,9 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
 	[RoutePrefix("api")]
+	/// <summary>
+	/// Commensal web API controller.
+	/// </summary>
 	public class CommensalWebApiController : FondaWebApi
 	{
 		public CommensalWebApiController () { }
@@ -15,6 +18,11 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
 		[HttpPost]
 		[Route("commensal")]
+		/// <summary>
+		/// Posts de un commensal.
+		/// </summary>
+		/// <returns>El commensal.</returns>
+		/// <param name="commensal">Commensal creado.</param>
 		public IHttpActionResult PostCommensal(Commensal commensal)
 		{
 
@@ -35,6 +43,10 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 			return Created ("",commensal);
 		}
 
+		/// <summary>
+		/// Obtinene el DAO necesario.
+		/// </summary>
+		/// <returns>The commensal DAO.</returns>
 		private ICommensalDAO GetCommensalDao()
 		{
 			return FactoryDAO.GetCommensalDAO ();

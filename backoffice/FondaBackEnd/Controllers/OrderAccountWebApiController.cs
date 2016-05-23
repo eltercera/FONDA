@@ -26,7 +26,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             if (account == null)
                 return BadRequest();
             /// Cambiar a Excepcion
-            return Ok(account.ListDish);
+            return Ok(account);
         }
         
         [Route("profile/{id}/{tip}/CreditCarPayment/")]

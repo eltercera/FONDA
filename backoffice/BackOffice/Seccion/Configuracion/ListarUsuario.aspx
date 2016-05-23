@@ -74,13 +74,15 @@
                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Nombre</label>
-                            <asp:TextBox ID="nameUser" CssClass="form-control" placeholder="Nombre" runat="server"/>
+                            <asp:TextBox ID="nameUser" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
+                            <div id="messageNameUser" style="color:#FF9999" runat="server"></div>
                         </div>
                       </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Apellido</label>
-                            <asp:TextBox ID="lastNameUser" CssClass="form-control" placeholder="Apellido" runat="server"/>
+                            <asp:TextBox ID="lastNameUser" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
+                            <div id="messageLastName" style="color:#FF9999" runat="server"></div>
                         </div>
                 </div>
             </div>
@@ -98,14 +100,16 @@
                 <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
                         <div class="form-group">
                             <label class="control-label">Cédula</label>
-                            <asp:TextBox ID="nss2" CssClass="form-control" placeholder="ej. 965831535" runat="server"/>
+                            <asp:TextBox ID="nss2" CssClass="form-control" placeholder="Ej. 19245998" MaxLength="9" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
                             <div id="menssageSsn" style="color:#FF9999" runat="server" ></div>
+                            <div id="messageDni" style="color:#FF9999" runat="server" ></div>
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Fecha de Nacimiento</label>
-                            <asp:TextBox ID="birtDate" CssClass="form-control" placeholder="DD/MM/AA" runat="server"/>
+                            <asp:TextBox ID="birtDate" CssClass="form-control" placeholder="DD/MM/AA" MaxLength="9" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
+                            <div id="messageBirthdate" style="color:#FF9999" runat="server" ></div>
                         </div>
                 </div>
             </div>
@@ -113,7 +117,8 @@
                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Teléfono</label>
-                            <asp:TextBox ID="phoneNumber" CssClass="form-control" placeholder="Teléfono" runat="server"/>
+                            <asp:TextBox ID="phoneNumber" CssClass="form-control" placeholder="Ej. 04127890544" MaxLength="11" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
+                            <div id="messagePhone" style="color:#FF9999" runat="server" ></div>
                         </div>
                       </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
@@ -123,7 +128,7 @@
                                 <asp:ListItem></asp:ListItem>
                                 <asp:ListItem value="F">F</asp:ListItem>
                                 <asp:ListItem value="M">M</asp:ListItem>
-                                </asp:DropDownList>
+                                </asp:DropDownList><span style="color:#FF6633" class="form-control-feedback">*</span>
                         </div>
                 </div>
             </div>
@@ -131,7 +136,8 @@
                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Dirección</label>
-                            <asp:TextBox ID="address" CssClass="form-control" placeholder="Dirección" runat="server"/>
+                            <asp:TextBox ID="address" CssClass="form-control" placeholder="Dirección" MaxLength="30" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
+                            <div id="messageAddress" style="color:#FF9999" runat="server" ></div>
                         </div>
                       </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
@@ -139,7 +145,7 @@
                             <label class="control-label">Rol</label>
                                <asp:DropDownList id="role" CssClass="form-control" runat="server">
                                 <asp:ListItem></asp:ListItem>
-                                </asp:DropDownList>
+                                </asp:DropDownList><span style="color:#FF6633" class="form-control-feedback">*</span>
                         </div>
                 </div>
             </div>
@@ -147,15 +153,17 @@
                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Usuario</label>
-                            <asp:TextBox ID="userNameU" CssClass="form-control" placeholder="Usuario" runat="server"/>
-                            <div id="menssageUsername" style="color:#FF9999" runat="server"></div>
+                            <asp:TextBox ID="userNameU" CssClass="form-control" placeholder="Usuario" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
+                            <div id="menssageUsername" style="color:#FF9999" runat="server">
+                            </div><div id="messageUser" style="color:#FF9999" runat="server"></div>
                         </div>
                       </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Email</label>
-                            <asp:TextBox ID="email" CssClass="form-control" placeholder="Email" runat="server"/>
+                            <asp:TextBox ID="email" CssClass="form-control" placeholder="nickname@ejemplo.com" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
                             <div id="menssageEmail" style="color:#FF9999" runat="server" ></div>
+                            <div id="messageEmail" style="color:#FF9999" runat="server" ></div>
                         </div>
                 </div>
             </div>
@@ -163,16 +171,33 @@
                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Password</label>
-                            <asp:TextBox ID="password" CssClass="form-control" placeholder="Password" runat="server"/>
+                            <asp:TextBox type="password" ID="password" CssClass="form-control" placeholder="Password" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
+                            <div id="messagePassword1" style="color:#FF9999" runat="server" ></div>
                         </div>
                       </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Repetir Password</label>
-                            <asp:TextBox ID="repitPassword" CssClass="form-control" placeholder="Repetir Password" runat="server"/>
+                            <asp:TextBox type="password" ID="repitPassword" CssClass="form-control" MaxLength="10" placeholder="Repetir Password" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
+                            <div id="messagePassword2" style="color:#FF9999" runat="server" ></div>
+                            <div id="messagePasswordEqual" style="color:#FF9999" runat="server" ></div>
                         </div>
                 </div>
             </div>
+                    <div class="row">
+                        
+                <div class="col-lg-3 col-md-10 col-sm-10 col-xs-10">
+                    </div>
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                    <div class="form-group">
+                        <label class="control-label">Restaurant</label>
+                        <asp:DropDownList id="restaurant" CssClass="form-control" runat="server">
+                            <asp:ListItem></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                </div>
+            </div>
+                    <div id="messageEmpty" style="color:#FF6633" runat="server" ></div>
             </div>
                         <div class="modal-footer">
                             <asp:Button id="ButtonAddModify" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="ModalAddModify_Click"/>
