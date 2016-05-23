@@ -23,28 +23,56 @@ import java.util.List;
 /**
  * Created by Adri 5/22/2016.
  */
+
+/**
+ * Clase De pruebas unitarias del registro de la factura en logic
+ */
 public class RegisterInvoiceLogicTest extends TestCase {
 
 
     /*
-     Lista de Invoice que contiene los pagos de los restaurant
-     */
+     Variable de tipo Invoice
+    */
     private Invoice invoice;
 
+    /*
+      Variable de tipo Restaurant
+     */
     private Restaurant restaurant;
 
+    /*
+     Variable de tipo Profile
+   */
     private Profile profile;
 
+    /*
+     Variable de tipo Account
+   */
     private Account account;
 
+    /*
+    Variable de tipo RestaurantCategory
+  */
     private RestaurantCategory category;
 
+    /*
+    Variable de tipo Payment
+  */
     private Payment payment;
 
+    /*
+   Variable de tipo lista de DishOrder
+ */
     private DishOrder dishOrder;
 
+    /*
+   Variable de tipo PaymentService
+ */
     private LogicPayment logicPayment;
 
+    /*
+   Variable de tipo Invoice para comparar
+ */
     private Invoice invoicePayment;
 
     /**
@@ -65,7 +93,7 @@ public class RegisterInvoiceLogicTest extends TestCase {
     }
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que una factura se registra
      */
     public void testInvoice() {
         try {
@@ -81,7 +109,7 @@ public class RegisterInvoiceLogicTest extends TestCase {
     }
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que la factura al registrarse no sea nula
      */
     public void testInvoiceIsNotNull() {
         try {
@@ -96,6 +124,9 @@ public class RegisterInvoiceLogicTest extends TestCase {
         }
     }
 
+    /**
+     *  Metodo que prueba que el restaurant en la factura se registra
+     */
     public void testRestaurantInvoice() {
         try {
 
@@ -111,7 +142,7 @@ public class RegisterInvoiceLogicTest extends TestCase {
     }
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que el restaurant en la factura no es nulo
      */
     public void testRestaurantInvoiceNotNull() {
         try {
@@ -126,7 +157,9 @@ public class RegisterInvoiceLogicTest extends TestCase {
         }
     }
 
-
+    /**
+     *  Metodo que prueba que el Profile en la factura se registra
+     */
     public void testProfileInvoice() {
         try {
 
@@ -142,7 +175,7 @@ public class RegisterInvoiceLogicTest extends TestCase {
     }
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que el Profile en la factura no es nulo
      */
     public void testProfileInvoiceNotNull() {
         try {
@@ -157,6 +190,9 @@ public class RegisterInvoiceLogicTest extends TestCase {
         }
     }
 
+    /**
+     *  Metodo que prueba que la CategoryRestaurant en el restaurant en la factura se registra
+     */
     public void testCategoryRestaurantInvoice() {
         try {
 
@@ -174,7 +210,7 @@ public class RegisterInvoiceLogicTest extends TestCase {
     }
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que la CategoryRestaurant en el restaurant en la factura no es nulo
      */
     public void testCategoryRestaurantInvoiceIsNotNull() {
         try {
@@ -192,7 +228,7 @@ public class RegisterInvoiceLogicTest extends TestCase {
 
 
     /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
+     *  Metodo que prueba que el pago de la factura no sea nulo
      */
     public void testPaymentInvoiceIsNotNull() {
         try {
@@ -207,11 +243,6 @@ public class RegisterInvoiceLogicTest extends TestCase {
             e1.printStackTrace();
         }
     }
-
-    /**
-     *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
-     */
-
 
 
 
