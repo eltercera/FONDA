@@ -5,6 +5,8 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.DELETE;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
@@ -15,6 +17,7 @@ public interface ReservationClient {
     /**
      * Get /api/profiles
      * Obtiene la lista de las reservaciones.
+     *
      * @return
      */
 
@@ -30,11 +33,16 @@ public interface ReservationClient {
 /*    @POST("reservation")
     Call<Reservation> postReservation(@Body Reservation reservation);
 
-    *//**
+    */
+
+    /**
      * Delete /api/profile/{id}
      * Elimina un profile
+     *
      * @param id identificador del profile.
      * @return
      */
     @DELETE("reservation/{id}")
     Call<String> deleteReservation(@Path("id") int id);
+
+}

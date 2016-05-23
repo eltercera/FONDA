@@ -21,12 +21,15 @@ import java.util.List;
 
 public class AllRestaurantActivity extends BaseNavigationActivity {
 
-    private RestaurantList adapter;
+    // UI references.
     private ListView list;
-    private List<Restaurant> restaurantList;
-    private String TAG = "AllRestaurantActivity";
-    private Commensal logedComensal;
 
+    private RestaurantList adapter;
+    private List<Restaurant> restaurantList;
+    private Commensal logedComensal;
+    private String TAG ="FavoritesActivity";
+
+    //Declaracion de
     String[] names = {
             "The dining room",
             "Mogi Mirin",
@@ -51,67 +54,132 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
             R.mipmap.ic_restaurant003,
             R.mipmap.ic_restaurant004,
             R.mipmap.ic_restaurant005,
+
     };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_all_restaurant);
-        super.onCreate(savedInstanceState);
-        list=(ListView)findViewById(R.id.listViewRestaurants);
+        setContentView(R.layout.activity_favorites);
+        /**
+         * Esta es la validacion de si el usuario ya esta loggeado o no.
+         */
+        // para saltar o no
+        boolean skp = false;
 
-
-        try {
-            Commensal log = SessionData.getInstance().getCommensal();
-
-            String emailToWebService;
-            try{
-                emailToWebService=log.getEmail()+"/";
-                Log.v(TAG, "Email->" + emailToWebService);
-                RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
-                        getLogedCommensalService();
-                logedComensal =getComensal.getLogedCommensal(emailToWebService);
-
-                Log.v(TAG,logedComensal.getId()+"");
-
-
-            }catch(NullPointerException nu){
-                nu.printStackTrace();
+        // inicializa los datos de la sesion
+        if (SessionData.getInstance() == null) {
+            try {
+                SessionData.initInstance(getApplicationContext());
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+        }
+
+        super.onCreate(savedInstanceState);
+
+        if (SessionData.getInstance().getToken() == null) {
+            skip();
+            return;
+        }
+        else {
+            try {
+                Commensal log = SessionData.getInstance().getCommensal();
+
+                String emailToWebService;
+                try{
+                    emailToWebService=log.getEmail()+"/";
+                    Log.v(TAG,"Email->"+emailToWebService);
+                    RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
+                            getLogedCommensalService();
+                    //logedComensal =getComensal.getLogedCommensal(emailToWebService);
+                    logedComensal =getComensal.getLogedCommensal("pato@gmail.com/");
+                    Log.v(TAG,logedComensal.getId()+"");
 
 
-            list=(ListView)findViewById(R.id.listViewFavorites);
 
-                /*
+
+                }catch(NullPointerException nu){
+                    nu.printStackTrace();
+                }
+
+
+                list=(ListView)findViewById(R.id.listViewFavorites);
+    /*
                     AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                             getAllFavoriteRestaurantsService();
 
-                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(1);
-                 */
-            AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
-                    getAllRestaurantsService();
-            restaurantList = allRestaurant.getAllRestaurant();
+                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
+    */
+                AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                        getAllRestaurantsService();
+                restaurantList = allRestaurant.getAllRestaurant();
 
 
-            try {
-                for (Restaurant rest : restaurantList) {
-                    Log.v("WEBSERVICE", rest.getId() + "");
-                    Log.v("WEBSERVICE", rest.getName());
-                    Log.v("WEBSERVICE", rest.getAddress());
+
+                try {
+                    for (Restaurant rest : restaurantList) {
+                        Log.v("WEBSERVICE", rest.getId() + "");
+                        Log.v("WEBSERVICE", rest.getName());
+                        Log.v("WEBSERVICE", rest.getAddress());
+                    }
+                    setupListView();
+                }catch (NullPointerException ex){
+                    // Log.v(TAG,R.string.favorite_conexion_fail_message );
+
+                    Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
+                            Toast.LENGTH_LONG).show();
                 }
-                setupListView();
-            }catch (NullPointerException ex){
-                // Log.v(TAG,R.string.favorite_conexion_fail_message );
-                Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
-                        Toast.LENGTH_LONG).show();
+
+            }catch (Exception e){
+                e.printStackTrace();
             }
-        }catch (Exception e){
-            e.printStackTrace();
+
+
+
+
+
+
+
+            /**
+             * Esto es lo que tenia el Modulo de Favoritos en principio.
+             */
+
+         /*
+            list = (ListView) findViewById(R.id.listViewFavorites);
+
+            AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                    getAllFavoriteRestaurantsService();
+            restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(2);
+        */
+        /*
+        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                getAllRestaurantsService();
+        restaurantList = allRestaurant.getAllRestaurant();
+        */
+/*        for (Restaurant rest : restaurantList){
+            Log.v("WEBSERVICE", rest.getId() + "");
+            Log.v("WEBSERVICE",rest.getName());
+            Log.v("WEBSERVICE",rest.getAddress());
+        }*/
         }
     }
 
+    /**
+     * Acción de saltar esta actividad.
+     */
+    private void skip() {
+        startActivity(new Intent(this,LoginActivity.class));
+    }
+
+    /**
+     * Inicializa el ListView y le asigna valores.
+     * @param
+     * @return
+     */
+
     private void setupListView(){
-        RestaurantList adapter = new
+        adapter = new
                 RestaurantList(AllRestaurantActivity.this, names,location ,shortDescription,imageId,restaurantList);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -119,36 +187,32 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-//                Toast.makeText(FavoritesActivity.this, "You Clicked at " + names[+position], Toast.LENGTH_SHORT).show();
-                Intent cambio = new Intent(AllRestaurantActivity.this, DetailRestaurantActivity.class);
-                /*
-                    String nombreRest = names[+position];
-                    String descriptionRest = shortDescription[+position];
-                    String locationRest = location[+position];
-                    Integer imageRest = imageId[+position];
-                    cambio.putExtra("NOMBRE", nombreRest);
-                    cambio.putExtra("LOCATION", locationRest);
-                    cambio.putExtra("DESCRIPTION", descriptionRest);
-                    cambio.putExtra("IMAGE", imageRest);
-                */
+                Intent detailActivity = new Intent(AllRestaurantActivity.this, DetailRestaurantActivity.class);
                 Restaurant test = getSelectedRestaurant(position);
-
-                cambio.putExtra("restaurant", new Gson().toJson(test));
-                startActivity(cambio);
+                detailActivity.putExtra("restaurant", new Gson().toJson(test));
+                detailActivity.putExtra("commensal", new Gson().toJson(logedComensal));
+                startActivity(detailActivity);
             }
         });
     }
+
+
+    /**
+     * Devuelve el restaurante Seleccionado por el usuario.
+     * @param position
+     * @return Restaurant.
+     */
     private Restaurant getSelectedRestaurant(int position){
         int contador =0;
-        for (Restaurant rest: this.restaurantList){
+        for (Restaurant restaurant: this.restaurantList){
             if (contador == position){
-//                Log.v("WEBSERVICEcanguro", rest.getName());
-                return rest;
+                Log.v(TAG, restaurant.getName());
+                return restaurant;
             }
             contador++;
         }
-
         return null;
     }
+
 
 }
