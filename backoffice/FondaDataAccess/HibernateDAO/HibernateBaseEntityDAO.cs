@@ -5,6 +5,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.Domain;
 using NHibernate.Criterion;
+using NHibernate;
 using System.Collections.Generic;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
@@ -21,10 +22,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		{
 			try
 			{
-				ITransaction transaction = Session.BeginTransaction ();
+				ISession session = Session;
+				ITransaction transaction = session.BeginTransaction ();
 				transaction.Begin();
-				Session.SaveOrUpdate (entity);
+				session.SaveOrUpdate (entity);
+				session.Flush();
 				transaction.Commit ();
+
 			}
 			catch(Exception e)
 			{
@@ -41,10 +45,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		/// <param name="entity">La entidad</param>
 		public void Delete (T entity)
 		{
-			ITransaction transaction = Session.BeginTransaction ();
+			ISession session = Session;
+			ITransaction transaction = session.BeginTransaction ();
 			transaction.Begin();
-			Session.Delete (entity);
+			session.Delete (entity);
+			session.Flush();
 			transaction.Commit ();
+
 		}
 
 		/// <summary>
@@ -56,7 +63,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		{
             try
             {
-                return Session.Get<T>(id);
+				ISession session = Session;
+				ITransaction transaction = session.BeginTransaction ();
+				transaction.Begin();
+				T ret = session.Get<T>(id);
+				transaction.Commit ();
+	            return ret;
             }
             catch (Exception e)
             {
@@ -119,13 +131,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		{
 			get
 			{
-				return FactorySession.GetCurrentSession ();
+				return NHibernateSessionManager.GetCurrentSession();
 			}
 		}
 
 		public void ResetSession()
 		{
-			FactorySession.ResetCurrentSession ();
+			NHibernateSessionManager.CloseSession();
 		}
 	}
 }

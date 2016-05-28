@@ -29,5 +29,15 @@ namespace com.ds201625.fonda.BackEnd
 				new CamelCasePropertyNamesContractResolver ();
 			config.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;
         }
+
+		protected void Application_BeginRequest(object sender, EventArgs e)
+		{
+			
+		}
+
+		protected void Application_EndRequest(object sender, EventArgs e)
+		{
+			FactoryDAO.Intance.closeSession();
+		}
     }
 }
