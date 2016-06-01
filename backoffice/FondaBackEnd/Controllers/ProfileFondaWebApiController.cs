@@ -74,13 +74,22 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 return InternalServerError(e);
             }*/
 
+			// TODO: Uso de Excepciones personalizadas.
+
+			// Obtención del commando
 			BaseCommand command = FacCommand.CreateCreateProfileCommand ();
 
+			// Agregacion de parametros
 			command.SetParameter (0, commensal);
 			command.SetParameter (1, profile);
 
+			// Ejecucion del commando
 			command.Run ();
-			return Created("", (Profile) command.Result);
+
+			//obtención de respuesta
+			Profile result = (Profile) command.Result;
+
+			return Created("", result);
         }
 
         [Route("profile/{id}")]
