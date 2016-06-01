@@ -110,13 +110,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\backend.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <None Include="Properties\PublishProfiles\Backend.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -129,6 +129,14 @@
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
       <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaBeckEndLogic\FondaBeckEndLogic.csproj">
+      <Project>{A1BE7D6C-7750-4795-AABF-B397E079C918}</Project>
+      <Name>FondaBeckEndLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
+      <Project>{947FFFE1-55FB-410B-8EA0-ECC534F1D552}</Project>
+      <Name>FondaLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

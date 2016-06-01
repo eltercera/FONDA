@@ -6,6 +6,8 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 
+using com.ds201625.fonda.BackEndLogic;
+
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
     /// <summary>
@@ -83,6 +85,11 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
             return MenuCategoryDao.FindById(id);
         }
+
+		protected BackendFactoryCommand FacCommand
+		{
+			get { return BackendFactoryCommand.Instance; }
+		}
     }
 
 

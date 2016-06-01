@@ -8,6 +8,9 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
 
+using com.ds201625.fonda.Logic;
+
+
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
 	[RoutePrefix("api")]
@@ -48,7 +51,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             if (commensal == null)
                 return BadRequest();
 
-            //IProfileDAO profileDAO = GetProfileDao();
+            /*//IProfileDAO profileDAO = GetProfileDao();
             ICommensalDAO commensalDAO = FactoryDAO.GetCommensalDAO();
 
             if (profile.ProfileName == null || profile.Person == null || profile.Person.Name == null
@@ -69,9 +72,15 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             {
                 Console.WriteLine(e.ToString());
                 return InternalServerError(e);
-            }
+            }*/
 
-            return Created("", profile);
+			BaseCommand command = FacCommand.CreateCreateProfileCommand ();
+
+			command.SetParameter (0, commensal);
+			command.SetParameter (1, profile);
+
+			command.Run ();
+			return Created("", (Profile) command.Result);
         }
 
         [Route("profile/{id}")]
