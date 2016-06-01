@@ -7,6 +7,7 @@ using System.Web.Routing;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using Newtonsoft.Json.Serialization;
 
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace com.ds201625.fonda.BackEnd
 {
     public class WebApiApplication : System.Web.HttpApplication

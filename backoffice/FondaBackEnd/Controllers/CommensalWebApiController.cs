@@ -25,7 +25,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		/// <param name="commensal">Commensal creado.</param>
 		public IHttpActionResult PostCommensal(Commensal commensal)
 		{
-
+			Logger.Debug ("Inicio de solicitud de creacion de Commensa (" + commensal + ")");
 			if (commensal == null | commensal.Id != 0)
 				throw new HttpResponseException (HttpStatusCode.BadRequest);
 

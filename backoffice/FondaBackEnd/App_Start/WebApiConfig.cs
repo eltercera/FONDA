@@ -9,6 +9,8 @@ namespace com.ds201625.fonda.BackEnd
     {
         public static void Register(HttpConfiguration config)
         {
+			log4net.Config.XmlConfigurator.Configure();
+
             // Web API configuration and services
 
             // Web API routes

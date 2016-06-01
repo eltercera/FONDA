@@ -56,6 +56,9 @@
     <Reference Include="Npgsql">
       <HintPath>..\packages\Npgsql.3.0.5\lib\net45\Npgsql.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -107,6 +110,7 @@
     <Compile Include="Controllers\TokenFondaWebApiController.cs" />
     <Compile Include="Controllers\ProfileFondaWebApiController.cs" />
     <Compile Include="Controllers\CommensalWebApiController.cs" />
+    <Compile Include="Log.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
