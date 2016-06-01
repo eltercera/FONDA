@@ -34,7 +34,7 @@ namespace com.ds201625.fonda.BackEndLogic
 		/// Obtiene un CreateProfileCommand.
 		/// </summary>
 		/// <returns>Comando CreateProfileCommand.</returns>
-		public BaseCommand CreateCreateProfileCommand()
+		public ICommand CreateCreateProfileCommand()
 		{
 			return new CreateProfileCommand ();
 		}

@@ -6,7 +6,7 @@ namespace com.ds201625.fonda.Logic
 	/// <summary>
 	/// Clase Abstracta base para comandos
 	/// </summary>
-	public abstract class BaseCommand
+	public abstract class BaseCommand : ICommand
 	{
 		/// <summary>
 		/// Los parametros

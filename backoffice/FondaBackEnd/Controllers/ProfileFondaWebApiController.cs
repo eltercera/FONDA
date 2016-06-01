@@ -77,7 +77,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 			// TODO: Uso de Excepciones personalizadas.
 
 			// Obtención del commando
-			BaseCommand command = FacCommand.CreateCreateProfileCommand ();
+			ICommand command = FacCommand.CreateCreateProfileCommand ();
 
 			// Agregacion de parametros
 			command.SetParameter (0, commensal);
