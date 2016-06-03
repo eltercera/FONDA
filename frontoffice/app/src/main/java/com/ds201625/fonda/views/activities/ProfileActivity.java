@@ -14,6 +14,8 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.ProfileFormFragment;
@@ -154,6 +156,9 @@ public class ProfileActivity extends BaseNavigationActivity
     }
 
     private void save() {
+
+        FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
+
         profileFormFrag.changeProfile();
 
         Profile profile = profileFormFrag.getProfile();
@@ -161,11 +166,18 @@ public class ProfileActivity extends BaseNavigationActivity
                 .getProfileService(SessionData.getInstance().getToken());
         try {
             if (profile.getId() == 0) {
-                ps.addProfile(profile);
+                Command cmd = facCmd.createCreateProfileCommand();
+
+                cmd.setParameter(0,profile);
+
+                cmd.run();
+
             } else {
                 ps.editProfile(profile);
             }
         } catch (RestClientException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         profileListFrag.updateList();
