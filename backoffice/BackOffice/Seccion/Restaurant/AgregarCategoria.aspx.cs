@@ -133,14 +133,12 @@ namespace BackOffice.Seccion.Restaurant
         private bool CategoryValidate(string name)
         {
             bool valid = true;
-            //expresion regular para validar campos de letra
             string patron = "^[A-Za-z]*$";
-            //valida que el campo no este vacio 
             if (name == "")
             {
                 valid = false;
             }
-            // valida la expresion regular con el campo name
+
             if (!Regex.IsMatch(name, patron))
             {
                 valid = false;
@@ -154,7 +152,6 @@ namespace BackOffice.Seccion.Restaurant
         protected void ButtonAgregar_Click(object sender, EventArgs e)
         {
             String nombreA = NombreCatA.Text;
-            //si el campo es valido se registra la la nueva categoria y activa el mensaje de éxito
             if (CategoryValidate(nombreA))
             {
                 AlertSuccess_AgregarCategoria.Visible = true;
@@ -166,7 +163,6 @@ namespace BackOffice.Seccion.Restaurant
             }
             else
             {
-                //mensaje de error por insertar caracteres invalidos
                 AlertError_AgregarCategoria.Visible = true;
             }
             NombreCatA.Text = string.Empty;

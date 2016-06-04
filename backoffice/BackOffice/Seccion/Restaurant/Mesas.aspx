@@ -6,7 +6,7 @@ Mesas
 Mesas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-<%=Session["NameRestaurant"]%>
+NOMBRE DEL RESTAURANTE
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
    <div>
@@ -74,6 +74,7 @@ Mesas
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
                                 <label class="control-label">Cantidad de Puestos</label>
                                 <asp:DropDownList id="DDLcapacityM" CssClass="form-control" AutoPostBack="False" runat="server">
+                                    <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
                                     <asp:ListItem>6</asp:ListItem>
@@ -112,6 +113,7 @@ Mesas
                             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-">
                                 <label class="control-label">Cantidad de Puestos</label>
                                 <asp:DropDownList id="DDLcapacityA" CssClass="form-control" AutoPostBack="False" runat="server">
+                                    <asp:ListItem> </asp:ListItem>
                                     <asp:ListItem>2</asp:ListItem>
                                     <asp:ListItem>4</asp:ListItem>
                                     <asp:ListItem>6</asp:ListItem>
@@ -178,7 +180,7 @@ Mesas
                             contentType: "application/json; charset=utf-8",
                             dataType: "json",
                             success: function (response) {
-                                $('.table > tbody > tr[data-id=' + rowId + '] > td:nth-child(5)').html(response.d);
+                                $('.table > tbody > tr:nth-child(' + rowId + ') > td:nth-child(5)').html(response.d);
                             },
                             failure: function (response) {
                                 console.log("Peticion al servidor fallida");

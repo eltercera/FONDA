@@ -129,11 +129,32 @@
   <data name="danger" xml:space="preserve">
     <value>alert alert-danger alert-dismissable col-lg-12</value>
   </data>
-  <data name="strongModify" xml:space="preserve">
-    <value>&lt;strong&gt; Modificado!&lt;/strong&gt;"</value>
+  <data name="dangerModificacionFinal" xml:space="preserve">
+    <value>&lt;strong&gt;No se ha Modificado!&lt;/strong&gt;"</value>
+  </data>
+  <data name="dangerModificacioninicio" xml:space="preserve">
+    <value>"&lt;a href='#' class='close' data-dismiss='alert' aria-label='close'&gt;&amp;times;&lt;/a&gt;</value>
   </data>
   <data name="action" xml:space="preserve">
     <value>&lt;asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"&gt;&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"&gt;&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat="server" onclick="Modificar_Click" data-id="12345"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;</value>
+  </data>
+  <data name="alertaSuccess1" xml:space="preserve">
+    <value>alert alert-success alert-dismissible</value>
+  </data>
+  <data name="alertClase1" xml:space="preserve">
+    <value>class</value>
+  </data>
+  <data name="alertRole1" xml:space="preserve">
+    <value>role</value>
+  </data>
+  <data name="danger1" xml:space="preserve">
+    <value>alert alert-danger alert-dismissable col-lg-12</value>
+  </data>
+  <data name="dangerModificacionFinal1" xml:space="preserve">
+    <value>&lt;strong&gt;No se ha Modificado!&lt;/strong&gt;"</value>
+  </data>
+  <data name="dangerModificacioninicio1" xml:space="preserve">
+    <value>"&lt;a href='#' class='close' data-dismiss='alert' aria-label='close'&gt;&amp;times;&lt;/a&gt;</value>
   </data>
   <data name="edit" xml:space="preserve">
     <value>&lt;i class="fa fa-pencil"&gt;&lt;/i&gt;</value>
@@ -149,35 +170,5 @@
   </data>
   <data name="statusI" xml:space="preserve">
     <value>&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;&lt;/span&gt;</value>
-  </data>
-  <data name="buttonAlert" xml:space="preserve">
-    <value>&lt;button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="ClearAlert"&gt;&amp;times;&lt;/button&gt;</value>
-  </data>
-  <data name="iconDanger" xml:space="preserve">
-    <value>&lt;i class="fa fa-ban"&gt;&lt;/i&gt;</value>
-  </data>
-  <data name="iconSuccess" xml:space="preserve">
-    <value>&lt;i class="fa fa-check"&gt;&lt;/i&gt;</value>
-  </data>
-  <data name="strogCancel" xml:space="preserve">
-    <value>&lt;strong&gt; Cancelada!&lt;/strong&gt;</value>
-  </data>
-  <data name="strongAdd" xml:space="preserve">
-    <value>&lt;strong&gt; Agregado!&lt;/strong&gt;"</value>
-  </data>
-  <data name="strongError" xml:space="preserve">
-    <value>&lt;strong&gt; Error&lt;/strong&gt;</value>
-  </data>
-  <data name="success" xml:space="preserve">
-    <value>alert alert-success fade in alert-dismissable</value>
-  </data>
-  <data name="buttonAlert2" xml:space="preserve">
-    <value>&lt;button type="button" data-dismiss="alert" aria-hidden="true"&gt;&amp;times;&lt;/button&gt;</value>
-  </data>
-  <data name="strongNot" xml:space="preserve">
-    <value>&lt;strong&gt; No &lt;/strong&gt;</value>
-  </data>
-  <data name="iconExclamation" xml:space="preserve">
-    <value>&lt;i class="fa fa-exclamation-circle" aria-hidden="true"&gt;&lt;/i&gt;</value>
   </data>
 </root>

@@ -103,15 +103,6 @@ namespace BackOffice.Seccion.Menu {
         protected global::System.Web.UI.WebControls.TextBox TextBoxAddCategoryName;
         
         /// <summary>
-        /// DropDownListRestaurantAddCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListRestaurantAddCategory;
-        
-        /// <summary>
         /// ButtonAddCategory control.
         /// </summary>
         /// <remarks>
@@ -128,41 +119,5 @@ namespace BackOffice.Seccion.Menu {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonCancelAddCategory;
-        
-        /// <summary>
-        /// ButtonDeactivateCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonDeactivateCategory;
-        
-        /// <summary>
-        /// ButtonCancelDeactivateCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCancelDeactivateCategory;
-        
-        /// <summary>
-        /// ButtonActivateCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonActivateCategory;
-        
-        /// <summary>
-        /// ButtonCancelActivateCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCancelActivateCategory;
     }
 }

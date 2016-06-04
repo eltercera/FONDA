@@ -85,15 +85,6 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword passwordIni;
         
         /// <summary>
-        /// Control user.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText user;
-        
-        /// <summary>
         /// Control RestablecerCorreo.
         /// </summary>
         /// <remarks>
@@ -101,23 +92,5 @@ namespace BackOffice.Seccion.Configuracion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl RestablecerCorreo;
-        
-        /// <summary>
-        /// Control password1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword password1;
-        
-        /// <summary>
-        /// Control password2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword password2;
     }
 }

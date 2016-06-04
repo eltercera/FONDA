@@ -13,30 +13,30 @@ namespace BackOffice.Seccion.Caja {
     public partial class Default {
         
         /// <summary>
-        /// AccountPopOrder control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField AccountPopOrder;
+        protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// ListarOrden control.
+        /// Button5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table ListarOrden;
+        protected global::System.Web.UI.WebControls.Button Button5;
         
         /// <summary>
-        /// Detalle control.
+        /// Button6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Detalle;
+        protected global::System.Web.UI.WebControls.Button Button6;
     }
 }

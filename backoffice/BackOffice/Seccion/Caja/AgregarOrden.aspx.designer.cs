@@ -31,24 +31,6 @@ namespace BackOffice.Seccion.Caja {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertaFormulario;
         
         /// <summary>
-        /// Menu1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Menu1;
-        
-        /// <summary>
-        /// DropDownTables control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownTables;
-        
-        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
@@ -58,12 +40,12 @@ namespace BackOffice.Seccion.Caja {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// ButtonMesa control.
+        /// Button2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ButtonMesa;
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

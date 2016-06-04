@@ -15,16 +15,15 @@ namespace BackOffice.Seccion.Menu
 
     public partial class MenuDia : System.Web.UI.Page
     {
-        //IList<Dish> ListSuggestionDish = new List<Dish>();
+        IList<Dish> ListSuggestionDish = new List<Dish>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadDayMenuTable();
+            LoadTable();
         }
 
-        protected void LoadDayMenuTable()
+        protected void LoadTable()
         {
-            IList<Dish> ListSuggestionDish = new List<Dish>();
 
             CleanTable();
             //Genero los objetos para la consulta
@@ -88,13 +87,6 @@ namespace BackOffice.Seccion.Menu
                         action.Attributes["data-target"] = "#ver_plato";
                         action.Text = ResourceMenu.ActionMenuDia;
                         tCell.Controls.Add(action);
-
-                        LinkButton LinkButtonRemoveSuggestion = new LinkButton();
-                        LinkButtonRemoveSuggestion.Attributes["data-toggle"] = "modal";
-                        LinkButtonRemoveSuggestion.Attributes["data-target"] = "#remove_suggestion";
-                        LinkButtonRemoveSuggestion.Text = ResourceMenu.ActionRemoveSuggestion;
-                        LinkButtonRemoveSuggestion.ToolTip = "Remover Sugerencia";
-                        tCell.Controls.Add(LinkButtonRemoveSuggestion);
                     }
                     //Agrega la 
                     tRow.Cells.Add(tCell);
@@ -104,10 +96,8 @@ namespace BackOffice.Seccion.Menu
 
             }
             //Agrega el encabezado a la Tabla
-            TableHeaderRow header = GenerateTableDayMenuHeader();
+            TableHeaderRow header = GenerateTableHeader();
             TableDayMenu.Rows.AddAt(0, header);
-            //listMenuC = null;
-            //ListSuggestionDish = null;
         }
 
 
@@ -115,7 +105,7 @@ namespace BackOffice.Seccion.Menu
         /// Genera el encabezado de la tabla Categoria
         /// </summary>
         /// <returns>Returna un objeto de tipo TableHeaderRow</returns>
-        private TableHeaderRow GenerateTableDayMenuHeader()
+        private TableHeaderRow GenerateTableHeader()
         {
             //Se crea la fila en donde se insertara el header
             TableHeaderRow header = new TableHeaderRow();
@@ -149,49 +139,6 @@ namespace BackOffice.Seccion.Menu
 
         }
 
-        protected void ButtonModifySuggestion_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //creo una instancia del factory
-                FactoryDAO _factoryDAO = FactoryDAO.Intance;
-                //creo una instancia del IDishDAO
-                IDishDAO _dishDAO = _factoryDAO.GetDishDAO();
-                //obtengo el id del plato desde el hidden field
-                string _dishIdString = HiddenFieldSuggestionDishId.Value;
-                //convierto el id en integer
-                int _dishIdInt = int.Parse(_dishIdString);
-                //busco el plato por el id que lo asigna a la variable
-                Dish _dish = _dishDAO.FindById(_dishIdInt);
-
-                _dish.Suggestion = false;
-
-
-
-
-
-
-                //guardo el plato
-
-                _dishDAO.Save(_dish);
-                //muestro la alerta de exito
-                //AlertSuccess_ModifyDish.Visible = true;
-
-            }
-            //Deberiamos cambiar al tipo de excepcion correcta una vez definamos las excepciones
-            catch (Exception exc)
-            {
-                //si da error muestro la alerta de fallo
-                //AlertDanger_ModifyDish.Visible = true;
-                System.Console.WriteLine("Excepcion capturada: {0}", exc);
-            }
-            finally
-            {
-                //cargo la tabla
-                //ListSuggestionDish = null;
-                LoadDayMenuTable();
-            }
-        }
 
 
 

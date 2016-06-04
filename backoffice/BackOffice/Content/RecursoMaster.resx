@@ -138,9 +138,6 @@
   <data name="sessionName" xml:space="preserve">
     <value>Name</value>
   </data>
-  <data name="sessionRestaurantID" xml:space="preserve">
-    <value>RestaurantID</value>
-  </data>
   <data name="sessionRol" xml:space="preserve">
     <value>Rol</value>
   </data>

@@ -79,11 +79,29 @@ namespace BackOffice.Seccion.Configuracion {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a alert alert-success alert-dismissible.
+        /// </summary>
+        internal static string alertaSuccess1 {
+            get {
+                return ResourceManager.GetString("alertaSuccess1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a class.
         /// </summary>
         internal static string alertClase {
             get {
                 return ResourceManager.GetString("alertClase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a class.
+        /// </summary>
+        internal static string alertClase1 {
+            get {
+                return ResourceManager.GetString("alertClase1", resourceCulture);
             }
         }
         
@@ -97,20 +115,11 @@ namespace BackOffice.Seccion.Configuracion {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot; onclick=&quot;ClearAlert&quot;&gt;&amp;times;&lt;/button&gt;.
+        ///   Busca una cadena traducida similar a role.
         /// </summary>
-        internal static string buttonAlert {
+        internal static string alertRole1 {
             get {
-                return ResourceManager.GetString("buttonAlert", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a &lt;button type=&quot;button&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/button&gt;.
-        /// </summary>
-        internal static string buttonAlert2 {
-            get {
-                return ResourceManager.GetString("buttonAlert2", resourceCulture);
+                return ResourceManager.GetString("alertRole1", resourceCulture);
             }
         }
         
@@ -120,6 +129,51 @@ namespace BackOffice.Seccion.Configuracion {
         internal static string danger {
             get {
                 return ResourceManager.GetString("danger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a alert alert-danger alert-dismissable col-lg-12.
+        /// </summary>
+        internal static string danger1 {
+            get {
+                return ResourceManager.GetString("danger1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;strong&gt;No se ha Modificado!&lt;/strong&gt;&quot;.
+        /// </summary>
+        internal static string dangerModificacionFinal {
+            get {
+                return ResourceManager.GetString("dangerModificacionFinal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;strong&gt;No se ha Modificado!&lt;/strong&gt;&quot;.
+        /// </summary>
+        internal static string dangerModificacionFinal1 {
+            get {
+                return ResourceManager.GetString("dangerModificacionFinal1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &quot;&lt;a href=&apos;#&apos; class=&apos;close&apos; data-dismiss=&apos;alert&apos; aria-label=&apos;close&apos;&gt;&amp;times;&lt;/a&gt;.
+        /// </summary>
+        internal static string dangerModificacioninicio {
+            get {
+                return ResourceManager.GetString("dangerModificacioninicio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &quot;&lt;a href=&apos;#&apos; class=&apos;close&apos; data-dismiss=&apos;alert&apos; aria-label=&apos;close&apos;&gt;&amp;times;&lt;/a&gt;.
+        /// </summary>
+        internal static string dangerModificacioninicio1 {
+            get {
+                return ResourceManager.GetString("dangerModificacioninicio1", resourceCulture);
             }
         }
         
@@ -151,33 +205,6 @@ namespace BackOffice.Seccion.Configuracion {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-ban&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        internal static string iconDanger {
-            get {
-                return ResourceManager.GetString("iconDanger", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-exclamation-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        internal static string iconExclamation {
-            get {
-                return ResourceManager.GetString("iconExclamation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        internal static string iconSuccess {
-            get {
-                return ResourceManager.GetString("iconSuccess", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a &lt;span class=&quot;label label-success&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;.
         /// </summary>
         internal static string statusA {
@@ -192,60 +219,6 @@ namespace BackOffice.Seccion.Configuracion {
         internal static string statusI {
             get {
                 return ResourceManager.GetString("statusI", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a &lt;strong&gt; Cancelada!&lt;/strong&gt;.
-        /// </summary>
-        internal static string strogCancel {
-            get {
-                return ResourceManager.GetString("strogCancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a &lt;strong&gt; Agregado!&lt;/strong&gt;&quot;.
-        /// </summary>
-        internal static string strongAdd {
-            get {
-                return ResourceManager.GetString("strongAdd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a &lt;strong&gt; Error&lt;/strong&gt;.
-        /// </summary>
-        internal static string strongError {
-            get {
-                return ResourceManager.GetString("strongError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a &lt;strong&gt; Modificado!&lt;/strong&gt;&quot;.
-        /// </summary>
-        internal static string strongModify {
-            get {
-                return ResourceManager.GetString("strongModify", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a &lt;strong&gt; No &lt;/strong&gt;.
-        /// </summary>
-        internal static string strongNot {
-            get {
-                return ResourceManager.GetString("strongNot", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a alert alert-success fade in alert-dismissable.
-        /// </summary>
-        internal static string success {
-            get {
-                return ResourceManager.GetString("success", resourceCulture);
             }
         }
     }

@@ -101,14 +101,11 @@ $(document).ready(function () {
         "language": spanish,
         "aoColumns": [
             null,
-            null,
             { "bSearchable": false },
             { "bSearchable": false }
         ]
     });
 });
-
-
 
 $(document).ready(function () {
     $('#contenido_TableDayMenuDashboard').DataTable({
@@ -119,29 +116,16 @@ $(document).ready(function () {
         ]
     });
 });
-$(document).ready(function () {
-    $('#contenido_tableDefault').DataTable({
-        "language": spanish,
-        "aoColumns": [
-            null,
-            null,
-            null,
-            { "bSearchable": false },
-            { "bSearchable": false }
-        ]
-    });
-});
 
 $(document).ready(function () {
     $('#contenido_TableDish').DataTable({
         "language": spanish,
         "aoColumns": [
-          { "bSearchable": true },
-           { "bSearchable": false },
-           { "bSearchable": true },
-           { "bSearchable": false },
-           { "bSearchable": false },
-           { "bSearchable": false }
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false },
+            { "bSearchable": false },
+            { "bSearchable": false }
         ]
     });
 });
@@ -241,7 +225,16 @@ $(document).ready(function () {
     });
 });
 
-
+$(document).ready(function () {
+    $('#ListarOrden').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false }
+        ]
+    });
+});
 
 $(document).ready(function () {
     $('#Detalle').DataTable({
@@ -256,101 +249,3 @@ $(document).ready(function () {
         ]
     });
 });
-
-$(document).ready(function () {
-    $('#TablaEmployee').DataTable({
-        "language": spanish,
-        "aoColumns": [
-            null,
-            null,
-            null,
-            null,
-            { "bSearchable": false },
-            { "bSearchable": false }
-        ]
-    });
-});
-
-$(document).ready(function () {
-    $('#contenido_ListarOrden').DataTable({
-        "language": spanish,
-        "aoColumns": [
-            null,
-            null,
-            null,
-            null,
-            { "bSearchable": false }
-        ]
-    });
-});
-
-$(document).ready(function () {
-    $('#contenido_Detalle').DataTable({
-        "language": spanish,
-        "aoColumns": [
-            null,
-            null,
-            null,
-            null,
-            { "bSearchable": false }
-        ]
-    });
-});
-
-$(document).ready(function () {
-    $('#contenido_TablaEmployee').DataTable({
-        "language": spanish,
-        "aoColumns": [
-            null,
-            null,
-            null,
-            null,
-            { "bSearchable": false },
-            { "bSearchable": false }
-        ]
-    });
-});
-
-$(document).ready(function () {
-    $('#contenido_Pago').DataTable({
-        "language": spanish,
-        "aoColumns": [
-            null,
-            null,
-            null,
-            null,
-            { "bSearchable": false }
-        ]
-    });
-});
-
-
-$(document).ready(function () {
-    $('#contenido_Restaurant').DataTable({
-        "language": spanish,
-        "aoColumns": [
-            null,
-            { "bSearchable": false },
-            { "bSearchable": false },
-            { "bSearchable": false },
-            { "bSearchable": false }
-        ]
-    });
-});
-
-
-$(document).ready(function () {
-            $('#contenido_Menu1').DataTable({
-                "language": spanish,
-                "bAutoWidth": false,
-                "aoColumns": [
-                    null,
-                     null,
-                    null,
-                    null,
-                    { "bSearchable": false },
-                    { "bSearchable": false }
-                ]
-            });
-});
-

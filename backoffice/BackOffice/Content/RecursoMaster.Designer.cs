@@ -124,15 +124,6 @@ namespace BackOffice.Content {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a RestaurantID.
-        /// </summary>
-        public static string sessionRestaurantID {
-            get {
-                return ResourceManager.GetString("sessionRestaurantID", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Rol.
         /// </summary>
         public static string sessionRol {
