@@ -235,7 +235,7 @@ namespace BackOffice.Seccion.Restaurant
             //le asigna un numero unico a la mesa para ese restaurante
             _table.Number = listTable.Count+1;
             _restaurant = _restaurantDAO.FindById(_idRestaurant);
-            _table.Restaurant = _restaurant;
+          //  _table.Restaurant = _restaurant;
             _tableDAO.Save(_table);
             LoadDataTable();
         }

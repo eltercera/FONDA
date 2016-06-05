@@ -55,6 +55,7 @@
     <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
       <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\AddEmployeeFondaBackOfficeException.cs" />
@@ -188,7 +189,6 @@
     <Compile Include="HibernateDAO\FluentMappings\ProfileMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\UserAccountMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CommensalMap.cs" />
-    <Compile Include="HibernateDAO\Session\FactorySession.cs" />
     <Compile Include="HibernateDAO\HibernateBaseEntityDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCommensalDAO.cs" />
     <Compile Include="HibernateDAO\HibernateStatusDAO.cs" />
@@ -206,6 +206,7 @@
     <Compile Include="InterfaceDAO\IActiveSimpleStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateActiveSimpleStatus.cs" />
     <Compile Include="FactoryDAO\IFactoryDAO.cs" />
+    <Compile Include="HibernateDAO\Session\SessionManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

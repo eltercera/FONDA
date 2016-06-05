@@ -40,7 +40,8 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         OpenAccountStatus GetOpenAccountStatus();
         ClosedAccountStatus GetCloseAccountStatus();
         GeneratedInvoiceStatus GetGeneratedInvoiceStatus();
-     
+
+		void CloseSession ();
     }
 }
 

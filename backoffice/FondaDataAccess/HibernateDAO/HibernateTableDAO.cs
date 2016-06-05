@@ -16,18 +16,14 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         public IList<Table> GetTables(int restaurant)
         {
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             //busca las mesas de un restaurante
             IList<Table> tables = GetAll();
             IList<Table> restaurantTables = new List<Table>();
-            Restaurant _restaurant = new Restaurant();
+            Restaurant _restaurant = _restaurantDAO.FindById(restaurant);
             //si la mesa es del restaurante la guarda en unaa lista
-            foreach(Table t in tables)
-            {
 
-                if (t.Restaurant.Id == restaurant)
-                    restaurantTables.Add(t);
-            }
-            return restaurantTables;
+            return _restaurant.Tables;
         }
 
         public IList<Table> findByStatus(Status status, int restaurant)

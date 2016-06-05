@@ -28,22 +28,11 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private TableStatus _status;
 
-        /// <summary>
-        /// Estado simple de la mesa (Activo, No Activo)
-        /// </summary>
-        private Restaurant _restaurant;
-
         [DataMember]
         public virtual int Number
         {
             get { return _number; }
             set { _number = value; }
-        }
-
-        public virtual Restaurant Restaurant
-        {
-            get { return _restaurant; }
-            set { _restaurant = value; }
         }
 
         public virtual int Capacity

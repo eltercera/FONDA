@@ -2,6 +2,7 @@
 using System;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.DataAccess.HibernateDAO.Session;
 using com.ds201625.fonda.Domain;
 
 namespace FondaDataAccessTest
@@ -133,7 +134,9 @@ namespace FondaDataAccessTest
 
 			_commensal = new Commensal ();
 
-			_dataCommensalEmail = "rodriguezrjrr@gmail.com";
+			Random r = new Random ();
+
+			_dataCommensalEmail = r.Next(100,600)+"rodriguezrjrr@gmail.com";
 			_dataCommensalPassword = "1234567890";
 			_dataCommensalStatus = _facDAO.GetActiveSimpleStatus ();
 
@@ -358,6 +361,7 @@ namespace FondaDataAccessTest
 		public void BeginTest()
 		{
 			getDao ();
+			NHibernateSessionManager.CloseSession();
 		}
 
 		[TearDown]

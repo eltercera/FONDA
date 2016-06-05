@@ -197,7 +197,10 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
             return _factory.GetGeneratedInvoiceStatus();
         }
 
-      
+		public void closeSession()
+		{
+			_factory.CloseSession ();
+		}
     }
 }
 
