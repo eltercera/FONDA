@@ -243,6 +243,27 @@ namespace BackOffice.Seccion.Caja
 
         }
 
+        private int GetSessionRestaurantId()
+        {
+            string idSessionRestaurant;
+            int idRestaurant;
+
+            try
+            {
+                idSessionRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            //REVISAR USO DE TRY PARSE PARA MANEJAR CASTEOS ERRONEOS    
+            bool castSessionRestaurant = int.TryParse(idSessionRestaurant, out idRestaurant);
+
+            return idRestaurant;
+        }
+
         public void fillDropDown()
         {
             FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -250,25 +271,11 @@ namespace BackOffice.Seccion.Caja
             IList<com.ds201625.fonda.Domain.Table> listTable;
             IList<com.ds201625.fonda.Domain.Table> availableTable;
 
-            string idSessionRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();
+            int idRestaurant = GetSessionRestaurantId();
 
-            int idRestaurant;
-            
-            
-            
-            //REVISAR USO DE TRY PARSE PARA MANEJAR CASTEOS ERRONEOS    
-            bool castSessionRestaurant =   int.TryParse(idSessionRestaurant, out idRestaurant);
-
-            if(castSessionRestaurant)
+            //REVISAR MANEJO DE EXCEPCIONES
+            try
             {
-            }
-
-
-
-
-                //REVISAR MANEJO DE EXCEPCIONES
-                try
-                {
                     listTable = _TableDAO.GetTables(idRestaurant);
                     availableTable = _TableDAO.GetAvailableTables(listTable);
 
