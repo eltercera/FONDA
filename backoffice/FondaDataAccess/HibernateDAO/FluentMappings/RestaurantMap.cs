@@ -70,7 +70,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Cascade.All();
 
             HasMany(x => x.Tables)
-            .KeyColumn("fk_res_table")
+            .KeyColumn("fk_tab_restaurant")
             .ExtraLazyLoad()
             .Cascade.All();
 
