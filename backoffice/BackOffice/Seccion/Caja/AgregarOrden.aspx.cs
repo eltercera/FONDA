@@ -12,6 +12,7 @@ using System.Web.Services;
 using System.Web.Script.Serialization;
 using System.Web.UI.HtmlControls;
 using BackOffice.Content;
+using BackOffice.Seccion.Restaurant;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -244,14 +245,43 @@ namespace BackOffice.Seccion.Caja
 
         public void fillDropDown()
         {
-           // string idrest = (string)(Session[RecursoMaster.sessionRestaurantID]);
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             ITableDAO _TableDAO = factoryDAO.GetTableDAO();
-            IList<com.ds201625.fonda.Domain.Table> listTable = _TableDAO.findByStatus(FreeTableStatus.Instance, 1);
-            
-            
+            IList<com.ds201625.fonda.Domain.Table> listTable;
+            IList<com.ds201625.fonda.Domain.Table> availableTable;
 
-            foreach (com.ds201625.fonda.Domain.Table table in listTable)
+            string idSessionRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();
+
+            int idRestaurant;
+            
+            
+            
+            //REVISAR USO DE TRY PARSE PARA MANEJAR CASTEOS ERRONEOS    
+            bool castSessionRestaurant =   int.TryParse(idSessionRestaurant, out idRestaurant);
+
+            if(castSessionRestaurant)
+            {
+            }
+
+
+
+
+                //REVISAR MANEJO DE EXCEPCIONES
+                try
+                {
+                    listTable = _TableDAO.GetTables(idRestaurant);
+                    availableTable = _TableDAO.GetAvailableTables(listTable);
+
+                }
+                catch (Exception)
+                {
+                    //TODO: Excepcion personalizada
+                    throw;
+                }
+
+
+
+            foreach (com.ds201625.fonda.Domain.Table table in availableTable)
             {
                 DropDownTables.Items.Add(table.Id.ToString());
             }

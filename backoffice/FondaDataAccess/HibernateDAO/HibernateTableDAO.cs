@@ -8,12 +8,18 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
     public class HibernateTableDAO : HibernateBaseEntityDAO<Table>, ITableDAO
     {
-        private com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO _facDAO;
+        private FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
+
         public IList<Table> GetAll()
         {
             return FindAll();
         }
 
+        /// <summary>
+        /// Retorna una lista de Mesas de un restaurante
+        /// </summary>
+        /// <param name="restaurant">Recibe el ID de un Restaurante</param>
+        /// <returns>Retorna una Lista de Table</returns>
         public IList<Table> GetTables(int restaurant)
         {
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
@@ -26,11 +32,35 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return _restaurant.Tables;
         }
 
-        public IList<Table> findByStatus(Status status, int restaurant)
+        /// <summary>
+        /// Retorna una lista de Mesas disponibles
+        /// </summary>
+        /// <param name="listTables">Recibe la lista de mesas de un Restaurante</param>
+        /// <returns>Retorna una Lista de Table</returns>
+        public IList<Table> GetAvailableTables(IList<Table> listTables)
         {
-            ICriterion criterion = Expression.And(Expression.Eq("Restaurant.Id", restaurant), Expression.Eq("Status", FreeTableStatus.Instance));
-            return (FindAll(criterion));
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            //se crea una lista de tables
+            IList<Table> tables= new List<Table>();
+            //se recorre la lista de todas las tables de un restaurante
+            foreach (Table t in listTables)
+            {
+                //si la table esta disponible la guarda en la lista de tables a retornar
+                if (t.Status.Equals(FreeTableStatus.Instance))
+                {
+                    tables.Add(t);
+                }
+            }
+
+
+            return tables;
         }
+
+        //public IList<Table> findByStatus(Status status, int restaurant)
+        //{
+        //    ICriterion criterion = Expression.And(Expression.Eq("Restaurant.Id", restaurant), Expression.Eq("Status", FreeTableStatus.Instance));
+        //    return (FindAll(criterion));
+        //}
 
         public IList<Table> TablesAvailableByDate(int restaurantId, IList<Reservation> listReservation, DateTime date)
         {
