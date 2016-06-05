@@ -78,7 +78,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             invoice.Account = account;
             invoice.Payment = payment;
             invoice.Status = FactoryDAO.GetGeneratedInvoiceStatus();
-            invoice.Restaurant = account.Table.Restaurant;// restaurantDAO.findByTable(account.Table);
+      //      invoice.Restaurant = account.Table.Restaurant;// restaurantDAO.findByTable(account.Table);
             invoice.Tip = tip;
             invoice.Tax = 10;
             invoice.Total = total;
