@@ -170,24 +170,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             IUsedReservationStatusDAO s = new HibernateUsedReservationStatus();
             return s.getUsedReservationStatus();
         }
-
-		public OpenAccountStatus GetOpenAccountStatus()
-        {
-            IOpenAccountStatusDAO status = new HibernateOpenAccountStatus();
-            return status.getOpenAccountStatus();
-        }
-
-        public ClosedAccountStatus GetCloseAccountStatus()
-        {
-            IClosedAccountStatusDAO status = new HibernateClosedAccountStatus();
-            return status.getClosedAccountStatus();
-        }
-        
-        public GeneratedInvoiceStatus GetGeneratedInvoiceStatus()
-        {
-            IGeneratedInvoiceStatusDAO status = new HibernateGeneratedInvoiceStatus();
-            return status.getGeneatedInvoiceStatus();
-        }
     }
 }
 

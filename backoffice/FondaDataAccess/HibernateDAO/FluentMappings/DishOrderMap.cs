@@ -20,7 +20,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             References(x => x.Dish)
                 .Column("fk_dish_id")
-                .Not.LazyLoad()
                 .Cascade.Delete()
                 .Not.Nullable();
 

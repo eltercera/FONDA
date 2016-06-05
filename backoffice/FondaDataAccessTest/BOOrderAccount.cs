@@ -5,7 +5,7 @@ using NUnit.Framework;
 using System;
 
 
-namespace FondaDataAccessTest
+namespace DataAccessTest
 {
     [TestFixture()]
     class BOOrderAccount
@@ -13,7 +13,6 @@ namespace FondaDataAccessTest
         private FactoryDAO _facDAO;
         private IOrderAccountDao _orderAccountDAO;
         private IDishOrderDAO _dishOrderDAO;
-        private ICommensalDAO _commensalDAO;
         private Account account;
         private int _OrderAccountID;
 
@@ -70,10 +69,6 @@ namespace FondaDataAccessTest
                 account = new Account();
 
             _dishOrderDAO = _facDAO.GetDishOrderDAO();
-            _commensalDAO = _facDAO.GetCommensalDAO();
-            ITableDAO tableDAO = _facDAO.GetTableDAO();
-            Commensal owner = (Commensal) _commensalDAO.FindById(13);
-
             DishOrder dishOrder =_dishOrderDAO.FindById(1);
             Assert.IsNotNull(dishOrder);
             DishOrder dishOrder2 = _dishOrderDAO.FindById(2);
@@ -81,9 +76,6 @@ namespace FondaDataAccessTest
 
             account.addDish(dishOrder);
             account.addDish(dishOrder2);
-
-            account.Commensal = owner ;
-            account.Table = tableDAO.FindById(1);
             account.Status = OpenAccountStatus.Instance;
 
         }

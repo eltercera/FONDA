@@ -21,9 +21,7 @@ namespace com.ds201625.fonda.Domain
 
 		private IList <Profile> _profiles;
 
-        private IList<Reservation> _reservations;
-
-        public Commensal () : base ()
+		public Commensal () : base ()
 		{
 			_favoritesRestaurants = new List<Restaurant> ();
 			_profiles = new List<Profile> ();
@@ -48,13 +46,7 @@ namespace com.ds201625.fonda.Domain
 			set { _profiles = value; }
 		}
 
-        public virtual IList<Reservation> Reservations
-        {
-            get { return _reservations; }
-            set { _reservations = value; }
-        }
-
-        public virtual void AddFavoriteRestaurant ( Restaurant restaurant )
+		public virtual void AddFavoriteRestaurant ( Restaurant restaurant )
 		{
             restaurant.AddFavoriteCommensal(this);
             _favoritesRestaurants.Add (restaurant);
@@ -77,24 +69,6 @@ namespace com.ds201625.fonda.Domain
 			_sesionTokens.Add (token);
 		}
 
-        public virtual void RemoveToken ( Token token)
-        {   
-            _sesionTokens.Remove(token);
-        }
-
-
-        public virtual void AddReservation(Reservation reservation)
-        {
-            reservation.ReserveUser = this;
-            _reservations.Add(reservation);
-        }
-
-        public virtual void RemoveReservation(Reservation reservation)
-        {
-            reservation.ReserveUser = this;
-            _reservations.Remove(reservation);
-        }
-
-    }
+	}
 }
 

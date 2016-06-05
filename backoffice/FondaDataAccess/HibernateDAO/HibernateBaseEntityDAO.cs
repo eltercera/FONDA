@@ -54,65 +54,37 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		/// <returns> Objeto de la entidad.</returns>
 		public T FindById (int id)
 		{
-            try
-            {
-                return Session.Get<T>(id);
-            }
-            catch (Exception e)
-            {
-                throw new FindByIdFondaDAOException (
-                    "Excepción al consultar por el Id " + id.ToString(),
-                    e);
-            }
+			return Session.Get<T> (id);
 		}
 
-		protected IList<T> FindAll(ICriterion restrictions = null, int max = -1, int offset = -1)
-        {
-            try 
-            { 
-			    ICriteria criteria = Session.CreateCriteria (typeof(T));
+		protected IList<T> FindAll(ICriterion restrictions = null, int max = -1, int offset = -1){
+			ICriteria criteria = Session.CreateCriteria (typeof(T));
 
-			    if (restrictions != null)
-				    criteria.Add (restrictions);
+			if (restrictions != null)
+				criteria.Add (restrictions);
 
-			    if (max > 0)
-				    criteria.SetMaxResults (max);
+			if (max > 0)
+				criteria.SetMaxResults (max);
 
-			    if (offset > 0)
-				    criteria.SetFirstResult (offset);
+			if (offset > 0)
+				criteria.SetFirstResult (offset);
 
-			    IList<T> result = criteria.List<T> ();
+			IList<T> result = criteria.List<T> ();
 
-			    return result;
-            }
-            catch (Exception e)
-            {
-                throw new FindAllFondaDAOException(
-                    "Excepción consultar lista de Entitys",
-                    e);
-            }
+			return result;
 		}
 
 		protected T FindBy (string property, object value)
 		{
-            try
-            {
-                ICriteria criteria = Session.CreateCriteria(typeof(T))
-                    .Add(Restrictions.Eq(property, value));
-                criteria.SetMaxResults(1);
+			ICriteria criteria = Session.CreateCriteria (typeof (T))
+				.Add (Restrictions.Eq (property, value));
+			criteria.SetMaxResults (1);
 
-                IList<T> result = criteria.List<T>();
+			IList<T> result = criteria.List<T> ();
 
-                if (result.Count == 0)
-                    return default(T);
-                return result[0];
-            }
-            catch (Exception e)
-            {
-                throw new FindByFondaDAOException(
-                    "Excepción consultar por restrictions property " + property +" y value "+ value,
-                    e);
-            }
+			if (result.Count == 0)
+				return default (T);
+			return result [0];
 		}
 
 		protected ISession Session

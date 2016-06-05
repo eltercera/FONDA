@@ -6,6 +6,5 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
     public interface ICurrencyDAO : INounBaseEntityDAO<Currency>
     {
         IList<Currency> GetAll();
-        Currency GetCurrency(string name);
     }
 }

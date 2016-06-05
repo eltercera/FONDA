@@ -21,7 +21,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
 			Map (x => x.Email)
 				.Column ("gp_email")
-				.Unique()
 				.Not.Nullable ();
 
 			Map (x => x.Password)

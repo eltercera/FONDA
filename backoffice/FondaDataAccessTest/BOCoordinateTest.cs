@@ -4,7 +4,7 @@ using com.ds201625.fonda.Domain;
 using NUnit.Framework;
 
 
-namespace FondaDataAccessTest
+namespace DataAccessTests
 {
     [TestFixture]
     public class BOCoordinateTest
@@ -31,16 +31,16 @@ namespace FondaDataAccessTest
             if ((edit & _coordinate == null) | _coordinate == null)
                 _coordinate = new Coordinate();
 
-            _coordinate.Latitude = 10.497600;
-            _coordinate.Longitude = -66.813324;
+            _coordinate.Latitude = 2;
+            _coordinate.Longitude = 3;
 
         }
 
         private void coordinateAssertions(bool edit = false)
         {
             Assert.IsNotNull(_coordinate);
-            //Assert.AreEqual(_coordinate.Latitude, 2);
-            //Assert.AreEqual(_coordinate.Longitude, 3);
+            Assert.AreEqual(_coordinate.Latitude, 2);
+            Assert.AreEqual(_coordinate.Longitude, 3);
         }
 
         [Test]

@@ -28,12 +28,14 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             References(x => x.Status)
                 .Column("fk_dis_status")
-                .Not.Nullable()
                 .Cascade.Persist();
 
+       /*     References(x => x.RecordStatus)
+                .Column("fk_dis_record")
+                .Not.Nullable();*/
+
             Map(x => x.Suggestion)
-                .Column("dis_suggestion")
-                 .Not.Nullable();
+                .Column("dis_suggestion");
 
             Map(x => x.Cost)
                 .Column("dis_cost")

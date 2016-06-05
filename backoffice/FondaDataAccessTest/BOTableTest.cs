@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaDataAccessTest
+namespace DataAccessTests
 {
     [TestFixture]
     public class BOTableTest
@@ -17,7 +17,6 @@ namespace FondaDataAccessTest
         private ITableDAO _tableDAO;
         private Table _table;
         private int _tableId;
-        private IRestaurantDAO _restaurantDAO;
 
 
         [Test]
@@ -40,6 +39,7 @@ namespace FondaDataAccessTest
             _tableId = _table.Id;
 
             generateTable(true);
+
             _tableDAO.Save(_table);
 
             _tableDAO.ResetSession();
@@ -72,16 +72,9 @@ namespace FondaDataAccessTest
             if ((edit & _table == null) | _table == null)
                 _table = new Table();
 
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
-            Restaurant _restaurant = _restaurantDAO.FindById(1);
-            _restaurantDAO.FindById(1);
-
             _table.Capacity = 2;
             //FreeTableStatus :(
-            _table.Number = 1;
-            _table.Restaurant = _restaurant;
-            _table.Status = _facDAO.GetFreeTableStatus();
+            _table.Status = FreeTableStatus.Instance;
 
         }
 
@@ -91,7 +84,7 @@ namespace FondaDataAccessTest
             Assert.IsNotNull(_table);
             Assert.AreEqual(_table.Capacity, 2);
             //FreeTableStatus :(
-            //Assert.AreEqual(_table.Status, FreeTableStatus.Instance);
+            Assert.AreEqual(_table.Status, FreeTableStatus.Instance);
         }
 
         [TestFixtureTearDown]

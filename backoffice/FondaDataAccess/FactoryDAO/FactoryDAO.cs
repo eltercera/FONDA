@@ -181,23 +181,6 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
         {
             return _factory.GetUsedReservationStatus();
         }
-		
-		public OpenAccountStatus GetOpenAccountStatus()
-        {
-            return _factory.GetOpenAccountStatus();
-        }
-
-        public ClosedAccountStatus GetClosedAccountStatus()
-        {
-            return _factory.GetCloseAccountStatus();
-        }
-
-        public GeneratedInvoiceStatus GetGeneratedInvoiceStatus()
-        {
-            return _factory.GetGeneratedInvoiceStatus();
-        }
-
-      
     }
 }
 

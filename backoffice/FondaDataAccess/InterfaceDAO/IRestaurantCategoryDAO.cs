@@ -6,8 +6,5 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
     public interface IRestaurantCategoryDAO : IBaseEntityDAO<RestaurantCategory>
     {
         IList<RestaurantCategory> GetAll();
-
-        RestaurantCategory GetRestaurantCategory(string name);
-
     }
 }

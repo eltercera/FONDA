@@ -15,7 +15,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             Map(x => x.Name)
               .Column("day_name")
-              .Unique()
               .Not.Nullable();
 
         }

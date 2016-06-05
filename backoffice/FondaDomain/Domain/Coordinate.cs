@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,7 +26,6 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private Double _latitude;
 
-        [DataMember]
         public virtual Double Longitude
         {
             /// <summary>
@@ -41,7 +39,7 @@ namespace com.ds201625.fonda.Domain
             set { _longitude = value; }
         }
 
-        [DataMember]
+
         public virtual Double Latitude
         {
             /// <summary>

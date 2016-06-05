@@ -47,36 +47,18 @@
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\..\..\FONDA\backoffice\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\..\..\FONDA\backoffice\BackOffice\bin\FluentNHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
-      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\AddEmployeeFondaBackOfficeException.cs" />
-    <Compile Include="Exceptions\CastException.cs" />
-    <Compile Include="Exceptions\ClearTableEmployeeFondaBackOfficeException.cs" />
-    <Compile Include="Exceptions\FindAllFondaDAOException.cs" />
-    <Compile Include="Exceptions\FindByEmailUserAccountFondaDAOException.cs" />
-    <Compile Include="Exceptions\FindByFondaDAOException.cs" />
-    <Compile Include="Exceptions\FindByIdFondaDAOException.cs" />
-    <Compile Include="Exceptions\FindByusernameEmployeFondaDAOException.cs" />
-    <Compile Include="Exceptions\FondaBackOfficeException.cs" />
-    <Compile Include="Exceptions\GetAllEmployeFondaDAOException.cs" />
-    <Compile Include="Exceptions\GetAllRoleFondaDAOException.cs" />
-    <Compile Include="Exceptions\LoadDataTableEmployeeFondaBackOfficeException.cs" />
-    <Compile Include="Exceptions\LoadTabletEmployeeFondaBackOfficeException.cs" />
-    <Compile Include="Exceptions\MofifyEmployeeFondaBackOfficeException.cs" />
-    <Compile Include="Exceptions\ValidationEmailEmployeeFondaBackOfficeException.cs" />
-    <Compile Include="Exceptions\ValidationSsnEmployeeFondaBackOfficeException.cs" />
-    <Compile Include="Exceptions\ValidationUsernameEmployeeFondaBackOfficeException.cs" />
     <Compile Include="HibernateDAO\FluentMappings\ActiveReservationStatusMap.cs" />
     <Compile Include="FactoryDAO\FactoryDAO.cs" />
-    <Compile Include="FondaDAOExceptions\FondaIndexException.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CanceledInvoiceStatus.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CanceledReservationStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CashPaymentMap.cs" />
@@ -92,12 +74,9 @@
     <Compile Include="HibernateDAO\HibernateBusyTableStatus.cs" />
     <Compile Include="HibernateDAO\HibernateCanceledReservationStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCashPaymentDAO.cs" />
-    <Compile Include="HibernateDAO\HibernateClosedAccountStatus.cs" />
     <Compile Include="HibernateDAO\HibernateCreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateDisableSimpleStatus.cs" />
     <Compile Include="HibernateDAO\HibernateFreeTableStatus.cs" />
-    <Compile Include="HibernateDAO\HibernateGeneratedInvoiceStatus.cs" />
-    <Compile Include="HibernateDAO\HibernateOpenAccountStatus.cs" />
     <Compile Include="HibernateDAO\HibernatePaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateInvoiceDAO.cs" />
     <Compile Include="HibernateDAO\FluentMappings\AccountStatusMap.cs" />
@@ -136,7 +115,6 @@
     <Compile Include="InterfaceDAO\IActiveReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICanceledReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICashPaymentDAO.cs" />
-    <Compile Include="InterfaceDAO\IClosedAccountStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICreditCardPaymentDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantCategoryDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRestaurantDAO.cs" />
@@ -150,10 +128,8 @@
     <Compile Include="InterfaceDAO\IDishOrderDAO.cs" />
     <Compile Include="InterfaceDAO\IEmployeeDAO.cs" />
     <Compile Include="InterfaceDAO\IFreeTableStatusDAO.cs" />
-    <Compile Include="InterfaceDAO\IGeneratedInvoiceStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IInvoiceDao.cs" />
     <Compile Include="InterfaceDAO\IMenuCategoryDAO.cs" />
-    <Compile Include="InterfaceDAO\IOpenAccountStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IOrderAccountDao.cs" />
     <Compile Include="InterfaceDAO\IPaymentDao.cs" />
     <Compile Include="InterfaceDAO\IReservationDAO.cs" />
@@ -209,6 +185,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
+      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
+      <Name>FondaDomain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5 %28x86 y x64%29</ProductName>
@@ -229,9 +211,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
-      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
-      <Name>FondaDomain</Name>
-    </ProjectReference>
+    <Content Include="Database1.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database1_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
 </Project>
