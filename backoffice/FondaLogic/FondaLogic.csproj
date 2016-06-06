@@ -41,11 +41,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="Commands\OrderAccount\CommandCloseOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandCreateOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetOrders.cs" />
+    <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
+    <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Factory\" />
+    <Folder Include="Commands\Login\" />
+    <Folder Include="Commands\Menu\" />
+    <Folder Include="Commands\Restaurant\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
+      <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
+      <Name>FondaDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
+      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
+      <Name>FondaDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

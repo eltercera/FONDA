@@ -23,6 +23,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
         }
 
+
+
         public IList<Account> GetAll()
         {
             return FindAll();

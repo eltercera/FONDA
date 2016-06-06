@@ -1,0 +1,38 @@
+﻿using com.ds201625.fonda;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
+using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FondaLogic.Commands.OrderAccount
+{
+    public class CommandGetOrder : Command<int, Entity>
+    {
+        /// <summary>
+        /// Metodo que ejecuta el comando para consultar una orden
+        /// </summary>
+        /// <param name="param">Id de la Orden</param>
+        /// <returns>La orden</returns>
+        public override Entity Execute(int param)
+        {
+            try
+            {
+                //Metodos para acceder a la BD
+                FactoryDAO _facDAO = FactoryDAO.Intance;
+                IOrderAccountDao _orderDAO = _facDAO.GetOrderAccountDAO();
+
+
+                return (Entity)_orderDAO.FindById(param);
+            }
+            catch (NullReferenceException ex)
+            {
+                //TODO: Arrojar Excepcion personalizada
+                //TODO: Escribir en el Log la excepcion
+                throw;
+            }
+        }
+    }
+}
