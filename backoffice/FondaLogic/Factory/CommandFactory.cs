@@ -1,4 +1,5 @@
 ﻿using com.ds201625.fonda;
+using com.ds201625.fonda.Domain;
 using FondaLogic.Commands.OrderAccount;
 using System.Collections.Generic;
 
@@ -17,7 +18,7 @@ namespace FondaLogic.Factory
         /// Metodo de la fabrica para el Comando CommandGetOrders
         /// </summary>
         /// <returns>comando CommandGetOrders</returns>
-        public static Command<int, IList<Entity>> GetCommandGetOrders()
+        public static Command<int, IList<Account>> GetCommandGetOrders()
         {
             return new CommandGetOrders();
         }

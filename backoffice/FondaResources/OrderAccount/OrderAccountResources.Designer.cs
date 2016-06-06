@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BackOffice.Seccion.Caja {
+namespace FondaResources.OrderAccount {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace BackOffice.Seccion.Caja {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ResourceCaja {
+    public class OrderAccountResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourceCaja() {
+        internal OrderAccountResources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BackOffice.Seccion.Caja.ResourceCaja", typeof(ResourceCaja).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.OrderAccount.OrderAccountResources", typeof(OrderAccountResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace BackOffice.Seccion.Caja {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-money fa-fw&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string Action2Account {
+        public static string Action2Account {
             get {
                 return ResourceManager.GetString("Action2Account", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil-square-o&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string Action3Account {
+        public static string Action3Account {
             get {
                 return ResourceManager.GetString("Action3Account", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string ActionAccount {
+        public static string ActionAccount {
             get {
                 return ResourceManager.GetString("ActionAccount", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string ActionCheckStatus {
+        public static string ActionCheckStatus {
             get {
                 return ResourceManager.GetString("ActionCheckStatus", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string ActionUnCheckStatus {
+        public static string ActionUnCheckStatus {
             get {
                 return ResourceManager.GetString("ActionUnCheckStatus", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;span class=&quot;label label-success&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;p class=&quot;stat&quot;&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;.
         /// </summary>
-        internal static string Active {
+        public static string Active {
             get {
                 return ResourceManager.GetString("Active", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;input runat=&quot;server&quot; type=&quot;number&quot; name=&quot;quantity&quot; min=&quot;1&quot; max=&quot;10&quot; value=1 /&gt;.
         /// </summary>
-        internal static string AgregarCantidadOrden {
+        public static string AgregarCantidadOrden {
             get {
                 return ResourceManager.GetString("AgregarCantidadOrden", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &quot;&gt;.
         /// </summary>
-        internal static string Cerrar {
+        public static string Cerrar {
             get {
                 return ResourceManager.GetString("Cerrar", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;/a&gt;.
         /// </summary>
-        internal static string Cerrar2 {
+        public static string Cerrar2 {
             get {
                 return ResourceManager.GetString("Cerrar2", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;input runat=&quot;server&quot; type=&quot;checkbox&quot; /&gt;.
         /// </summary>
-        internal static string CheckBoxAgregar {
+        public static string CheckBoxAgregar {
             get {
                 return ResourceManager.GetString("CheckBoxAgregar", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;p class=&quot;stat&quot;&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;.
         /// </summary>
-        internal static string Inactive {
+        public static string Inactive {
             get {
                 return ResourceManager.GetString("Inactive", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/ModificarOrden.aspx?id=.
         /// </summary>
-        internal static string ModificarFactura {
+        public static string ModificarFactura {
             get {
                 return ResourceManager.GetString("ModificarFactura", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil-square-o&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string ModificarFactura2 {
+        public static string ModificarFactura2 {
             get {
                 return ResourceManager.GetString("ModificarFactura2", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/VerFactura.aspx?id=.
         /// </summary>
-        internal static string VerDetalleFactura {
+        public static string VerDetalleFactura {
             get {
                 return ResourceManager.GetString("VerDetalleFactura", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string VerDetalleFactura2 {
+        public static string VerDetalleFactura2 {
             get {
                 return ResourceManager.GetString("VerDetalleFactura2", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/VerDetalleOrden.aspx?id=.
         /// </summary>
-        internal static string VerDetalleOrden {
+        public static string VerDetalleOrden {
             get {
                 return ResourceManager.GetString("VerDetalleOrden", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string VerDetalleOrden2 {
+        public static string VerDetalleOrden2 {
             get {
                 return ResourceManager.GetString("VerDetalleOrden2", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/CrearFactura.aspx?id=.
         /// </summary>
-        internal static string VerFactura {
+        public static string VerFactura {
             get {
                 return ResourceManager.GetString("VerFactura", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace BackOffice.Seccion.Caja {
         /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-money fa-fw&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string VerFactura2 {
+        public static string VerFactura2 {
             get {
                 return ResourceManager.GetString("VerFactura2", resourceCulture);
             }
