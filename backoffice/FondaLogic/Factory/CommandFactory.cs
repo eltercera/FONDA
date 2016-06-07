@@ -18,7 +18,7 @@ namespace FondaLogic.Factory
         /// Metodo de la fabrica para el Comando CommandGetOrders
         /// </summary>
         /// <returns>comando CommandGetOrders</returns>
-        public static Command<int, IList<Account>> GetCommandGetOrders()
+        public static Command<IList<Account>> GetCommandGetOrders()
         {
             return new CommandGetOrders();
         }
@@ -27,7 +27,7 @@ namespace FondaLogic.Factory
         /// Metodo de la fabrica para el ComandoGetOrder
         /// </summary>
         /// <returns>comando CommandGetOrder</returns>
-        public static Command<int, Entity> GetCommandGetOrder()
+        public static Command<Entity> GetCommandGetOrder()
         {
             return new CommandGetOrder();
         }

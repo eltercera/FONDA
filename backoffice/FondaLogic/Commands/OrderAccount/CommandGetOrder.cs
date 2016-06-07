@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandGetOrder : Command<int, Entity>
+    public class CommandGetOrder : Command<Entity>
     {
+
         /// <summary>
         /// Metodo que ejecuta el comando para consultar una orden
         /// </summary>
         /// <param name="param">Id de la Orden</param>
         /// <returns>La orden</returns>
-        public override Entity Execute(int param)
+        public override Entity Execute()
         {
             try
             {
@@ -25,7 +26,7 @@ namespace FondaLogic.Commands.OrderAccount
                 IOrderAccountDao _orderDAO = _facDAO.GetOrderAccountDAO();
 
 
-                return (Entity)_orderDAO.FindById(param);
+                return (Entity)_orderDAO.FindById(1);
             }
             catch (NullReferenceException ex)
             {

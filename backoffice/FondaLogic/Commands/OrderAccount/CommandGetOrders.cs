@@ -10,16 +10,17 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandGetOrders : Command<int, IList<Account>>
+    public class CommandGetOrders : Command<IList<Account>>
     {
 
         FactoryDAO _facDAO = FactoryDAO.Intance;
+
         /// <summary>
         /// Metodo que ejecuta el comando que consulta las ordenes segun un Restaurante
         /// </summary>
         /// <param name="param">Id del Restaurante</param>
         /// <returns>Lista de Ordenes</returns>
-        public override IList<Account> Execute(int restaurantId)
+        public override IList<Account> Execute()
         {
             try
             {
@@ -27,8 +28,10 @@ namespace FondaLogic.Commands.OrderAccount
                 IOrderAccountDao _orderDAO;
                 //Obtengo la instancia del DAO a utilizar
                 _orderDAO = _facDAO.GetOrderAccountDAO();
-                //Realizo la operacion del DAO
-                return  _orderDAO.GetAll();
+                //Obtengo el objeto con la informacion enviada
+                Restaurant res = (Restaurant)Entity;
+
+                return  _orderDAO.FindByRestaurant(res);
             }
             catch (NullReferenceException ex)
             {

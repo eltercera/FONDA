@@ -26,6 +26,10 @@ namespace com.ds201625.fonda.Factory
         #region Restaurant
 
         //Instancia los objetos del dominio invocando al constructor(es) de la entidad
+        public static Entity GetRestaurant()
+        {
+            return new Restaurant();
+        }
 
         #endregion
 

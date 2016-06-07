@@ -2,6 +2,7 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
 using FondaResources.OrderAccount;
@@ -35,18 +36,33 @@ namespace com.ds201625.fonda.BackOffice.Presenter
         /// <summary>
         /// Metodo encargad de llenar la tabla de Ordenes
         /// </summary>
-        public void GetOrders()
+        public void GetOrders(string restaurantId)
         {
+            int result;
+            //Define objeto a recibir
+            IList<Account> listAccount;
+            //Objeto a enviar como parametro
+            Restaurant res = null;
+            //Invoca a comando del tipo deseado
+            Command<IList<Account>> commandGetOrders;
+
+
             try
             {
-                //Define objeto a recibir
-                IList<Account> listAccount;
-                //Invoca a comando del tipo deseado
-                Command<int, IList<Account>> commandGetOrders;
+
+                //Obtener el parametro
+                if (int.TryParse(restaurantId, out result))
+                {
+                    res = (Restaurant) EntityFactory.GetRestaurant();
+                    res.Id = result;
+                }
+
                 //Obtiene la instancia del comando
                 commandGetOrders = CommandFactory.GetCommandGetOrders();
+                //Se envia el atributo usado como parametro a traves de Entity
+                commandGetOrders.Entity = res;
                 //Ejecuta el comando deseado
-                listAccount = commandGetOrders.Execute(1);
+                listAccount = commandGetOrders.Execute();
 
                 //Revisa si la lista no esta vacia
                 if (listAccount != null)

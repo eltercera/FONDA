@@ -11,6 +11,7 @@ using com.ds201625.fonda.Domain;
 using System.Web.Services;
 using System.Web.Script.Serialization;
 using BackOfficeModel.OrderAccount;
+using BackOffice.Seccion.Restaurant;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -72,7 +73,7 @@ namespace BackOffice.Seccion.Caja
         protected void Page_Load(object sender, EventArgs e)
         {
             //Llama al presentador para llenar la tabla de ordenes
-            _presenter.GetOrders();
+            _presenter.GetOrders(Session[RestaurantResource.SessionRestaurant].ToString());
         }
 
 
