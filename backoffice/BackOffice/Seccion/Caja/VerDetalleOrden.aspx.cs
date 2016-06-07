@@ -72,7 +72,7 @@ namespace BackOffice.Seccion.Caja
                     }
                     else if (j.Equals(2))
                     {
-                        tCell.Text = listDishOrder[i].Dish.Cost.ToString();
+                        tCell.Text = (listDishOrder[i].Dish.Cost - (listDishOrder[i].Dish.Cost * 0.1)).ToString();
                     }
                     else if (j.Equals(3))
                     {
@@ -80,7 +80,7 @@ namespace BackOffice.Seccion.Caja
                     }
                     else if (j.Equals(4))
                     {
-                        tCell.Text = ((listDishOrder[i].Dish.Cost * 0.1)+ listDishOrder[i].Dish.Cost).ToString();
+                        tCell.Text = listDishOrder[i].Dish.Cost.ToString();
                     }
                     //Agrega la 
                     tRow.Cells.Add(tCell);

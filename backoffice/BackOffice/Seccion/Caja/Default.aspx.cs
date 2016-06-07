@@ -40,7 +40,7 @@ namespace BackOffice.Seccion.Caja
             for (int i = 0; i <= totalRows - 1; i++)
             {
                 //con un if aqui, o con la funcion en el accountDAO..
-                if (listAccount[i].Status.StatusId == 7)
+                if (listAccount[i].Status.StatusId == 20)
                 {
                     //Crea una nueva fila de la tabla
                     TableRow tRow = new TableRow();
@@ -58,43 +58,35 @@ namespace BackOffice.Seccion.Caja
                         //Agrega las acciones de la tabla
                         else if (j.Equals(1))
                         {
-                            tCell.Text = ((listAccount[i].Commensal).Profiles[0]).Person.Name;
+                            tCell.Text = listAccount[i].Commensal.Email.ToString();
                         }
                         else if (j.Equals(2))
                         {
+                            tCell.CssClass = "text-center";
                             LinkButton action1 = new LinkButton();
+                            LinkButton action2 = new LinkButton();
+                            LinkButton action3 = new LinkButton();
 
                             action1.Text += ResourceCaja.VerDetalleOrden;
                             action1.Text += listAccount[i].Id;
                             action1.Text += ResourceCaja.Cerrar;
                             action1.Text += ResourceCaja.VerDetalleOrden2;
                             action1.Text += ResourceCaja.Cerrar2;
-
                             tCell.Controls.Add(action1);
-
-                            LinkButton action2 = new LinkButton();
 
                             action2.Text += ResourceCaja.VerFactura;
                             action2.Text += listAccount[i].Id;
                             action2.Text += ResourceCaja.Cerrar;
                             action2.Text += ResourceCaja.VerFactura2;
                             action2.Text += ResourceCaja.Cerrar2;
-
-
                             tCell.Controls.Add(action2);
 
-                            LinkButton action3 = new LinkButton();
-
                             action2.Text += ResourceCaja.ModificarFactura;
-                            action2.Text += listAccount[i].Id;
+                            action2.Text += listAccount[i].Id; 
                             action2.Text += ResourceCaja.Cerrar;
                             action2.Text += ResourceCaja.ModificarFactura2;
                             action2.Text += ResourceCaja.Cerrar2;
-
                             tCell.Controls.Add(action3);
-
-
-
                         }
                         //Agrega la 
                         tRow.Cells.Add(tCell);

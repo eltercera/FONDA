@@ -160,7 +160,7 @@ namespace BackOffice.Seccion.Caja {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/ModificarOrden.aspx?id=.
+        ///   Looks up a localized string similar to &lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/ModificarOrden.aspx?id=.
         /// </summary>
         internal static string ModificarFactura {
             get {
@@ -214,7 +214,7 @@ namespace BackOffice.Seccion.Caja {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/CrearFactura.aspx?id=.
+        ///   Looks up a localized string similar to &lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/CrearFactura.aspx?id=.
         /// </summary>
         internal static string VerFactura {
             get {
