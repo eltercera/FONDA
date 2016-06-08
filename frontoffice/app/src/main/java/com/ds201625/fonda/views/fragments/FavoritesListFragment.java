@@ -24,39 +24,13 @@ import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.adapters.FavoriteRestViewItemList;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Hp on 06/06/2016.
  */
 public class FavoritesListFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
-    //Declaracion de
-    String[] names = {
-            "The dining room",
-            "Mogi Mirin",
-            "Gordo & Magro",
-            "La Casona",
-            "Tony's"} ;
-    String[] location = {
-            "La castellana",
-            "Los dos caminos",
-            "La California",
-            "Parque central",
-            "El Rosal"} ;
-    String[] shortDescription = {
-            "Casual",
-            "Romantico",
-            "Italiano",
-            "Italiano",
-            "Americano"} ;
-    Integer[] imageId = {
-            R.mipmap.ic_restaurant001,
-            R.mipmap.ic_restaurant002,
-            R.mipmap.ic_restaurant003,
-            R.mipmap.ic_restaurant004,
-            R.mipmap.ic_restaurant005,
-
-    };
-
+   
     //Interface de comunicacion contra la activity
     favoritesListFragmentListener mCallBack;
 
@@ -86,12 +60,15 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
         swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
         swipeRefreshLayout.setOnRefreshListener(this);
 
-        restaurants.setAdapter(favoritesList);
         Commensal log = SessionData.getInstance().getCommensal();
         emailToWebService=log.getEmail()+"/";
         RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().getLogedCommensalService();
         logedComensal =getComensal.getLogedCommensal(emailToWebService);
-
+        FavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                getFavoriteRestaurantService();
+        List<Restaurant> restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
+        favoritesList.addAll(restaurantList);
+        restaurants.setAdapter(favoritesList);
         if(multi) {
             restaurants.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
             restaurants.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
