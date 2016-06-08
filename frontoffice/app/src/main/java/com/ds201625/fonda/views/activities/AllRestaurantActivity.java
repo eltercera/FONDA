@@ -102,13 +102,8 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
                 }
 
 
-                list=(ListView)findViewById(R.id.listViewFavorites);
-    /*
-                    AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                            getAllFavoriteRestaurantsService();
+                list=(ListView)findViewById(R.id.lvFavoriteList);
 
-                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
-    */
                 AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
                         getAllRestaurantsService();
                 restaurantList = allRestaurant.getAllRestaurant();

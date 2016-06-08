@@ -2,6 +2,8 @@ package com.ds201625.fonda.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,17 +12,33 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.views.fragments.FavoritesListFragment;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class FavoritesActivity extends BaseNavigationActivity {
+public class FavoritesActivity extends BaseNavigationActivity implements
+        FavoritesListFragment.favoritesListFragmentListener {
 
+    /**
+     * Administrador de Fragments
+     */
+    private FragmentManager fm;
+
+    /**
+     * ToolBar
+     */
+    private Toolbar tb;
+    /**
+     * Fragmento favoritos
+     */
+    private FavoritesListFragment fv;
 
     // UI references.
     private ListView list;
@@ -61,7 +79,7 @@ public class FavoritesActivity extends BaseNavigationActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_favorites);
+        setContentView(R.layout.activity_favorites2);
         /**
          * Esta es la validacion de si el usuario ya esta loggeado o no.
          */
@@ -88,61 +106,82 @@ public class FavoritesActivity extends BaseNavigationActivity {
                 Commensal log = SessionData.getInstance().getCommensal();
 
                 String emailToWebService;
-                try{
-                    emailToWebService=log.getEmail()+"/";
-                    Log.v(TAG,"Email->"+emailToWebService);
+                try {
+                    emailToWebService = log.getEmail() + "/";
+                    Log.v(TAG, "Email->" + emailToWebService);
                     RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
                             getLogedCommensalService();
-                    logedComensal =getComensal.getLogedCommensal(emailToWebService);
-                    Log.v(TAG,logedComensal.getId()+"");
+                    logedComensal = getComensal.getLogedCommensal(emailToWebService);
+                    Log.v(TAG, logedComensal.getId() + "");
 
 
+                    // Obtencion de los componentes necesaios de la vista
+                    tb = (Toolbar) findViewById(R.id.toolbar);
+                    fm = getSupportFragmentManager();
+
+                    // Creacion de fragmen y pase argumento
+                    fv = new FavoritesListFragment();
+                    Bundle args = new Bundle();
+                    args.putBoolean("multiSelect", true);
+                    fv.setArguments(args);
+
+                    //Lanzamiento de profileListFrag como el principal
+                    fm.beginTransaction()
+                            .replace(R.id.fragment_container_fav, fv)
+                            .commit();
+
+               /*<ListView
+                android:id="@+id/listViewFavorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+                </ListView>*/
+                    // Asegura que almenos onCreate se ejecuto en el fragment
+                    fm.executePendingTransactions();
+
+           /* fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showFragment(profileFormFrag);
+                    profileFormFrag.setProfile();
+                }
+            });*/
 
 
-                }catch(NullPointerException nu){
+                } catch (NullPointerException nu) {
                     nu.printStackTrace();
                 }
 
+                list = (ListView) findViewById(R.id.lvFavoriteList);
+                FavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                        getFavoriteRestaurantService();
 
-                list=(ListView)findViewById(R.id.listViewFavorites);
-                    AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                            getAllFavoriteRestaurantsService();
-
-                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
-
-        /*        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
-                        getAllRestaurantsService();
-                restaurantList = allRestaurant.getAllRestaurant();
-*/
+                restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
 
 
-                try {
+               // setupListView();
+               try {
                     for (Restaurant rest : restaurantList) {
                         Log.v("WEBSERVICE", rest.getId() + "");
                         Log.v("WEBSERVICE", rest.getName());
                         Log.v("WEBSERVICE", rest.getAddress());
                     }
-                    setupListView();
-                }catch (NullPointerException ex){
+
+                } catch (NullPointerException ex) {
                     // Log.v(TAG,R.string.favorite_conexion_fail_message );
 
                     Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
                             Toast.LENGTH_LONG).show();
                 }
 
-            }catch (Exception e){
+           }catch (Exception e){
                 e.printStackTrace();
             }
 
 
-
-
-
-
-
-            /**
-             * Esto es lo que tenia el Modulo de Favoritos en principio.
-             */
+                /**
+                 * Esto es lo que tenia el Modulo de Favoritos en principio.
+                 */
 
          /*
             list = (ListView) findViewById(R.id.listViewFavorites);
@@ -161,7 +200,7 @@ public class FavoritesActivity extends BaseNavigationActivity {
             Log.v("WEBSERVICE",rest.getName());
             Log.v("WEBSERVICE",rest.getAddress());
         }*/
-        }
+            }
     }
 
     /**
@@ -212,4 +251,28 @@ public class FavoritesActivity extends BaseNavigationActivity {
         }
         return null;
     }
+
+    @Override
+    public void OnFavoriteSelect(Restaurant r) {
+
+    }
+
+    @Override
+    public void OnFavoriteSelected(ArrayList<Restaurant> r) {
+
+    }
+
+    @Override
+    public void OnFavoriteSelectionMode() {
+        tb.setVisibility(View.GONE);
+        //fab.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void OnFavoriteSelectionModeExit() {
+        tb.setVisibility(View.VISIBLE);
+        //fab.setVisibility(View.VISIBLE);
+    }
+
+
 }
