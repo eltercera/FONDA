@@ -36,7 +36,12 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> {
                 .getFavoriteRestaurantService();
         List<Restaurant> list = null;
         clear();
-        list = ps.getAllFavoriteRestaurant(id);
+        try {
+            list = ps.getAllFavoriteRestaurant(id);
+        } catch (RestClientException e) {
+            e.printStackTrace();
+            Log.v("Fonda",e.toString());
+        }
         if (list != null)
             addAll(list);
         notifyDataSetChanged();
@@ -44,25 +49,25 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> {
 
     @Override
     public View createView(Restaurant item) {
-
+        View convertView;
         LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
-        View rowView = inflater.inflate(R.layout.list_restaurant, null, true);
+        convertView = inflater.inflate(R.layout.list_restaurant, null, true);
 
-        TextView txtTitle = (TextView) rowView.findViewById(R.id.txt);
-        TextView txtTitle2 = (TextView) rowView.findViewById(R.id.txt2);
-        TextView txtTitle3 = (TextView) rowView.findViewById(R.id.txt3);
-        ImageView icon = (ImageView) rowView.findViewById(R.id.imageRest);
+        TextView txtName = (TextView) convertView.findViewById(R.id.txt);
+        TextView txtAdd = (TextView) convertView.findViewById(R.id.txt2);
+        TextView txtCategory = (TextView) convertView.findViewById(R.id.txt3);
+        ImageView icon = (ImageView) convertView.findViewById(R.id.imageRest);
 
 
-            txtTitle.setText(item.getName());
-            txtTitle2.setText(item.getAddress());
-            txtTitle3.setText(item.getRestaurantCategory().getNameCategory());
+            txtName.setText(item.getName());
+            txtAdd.setText(item.getAddress());
+            txtCategory.setText(item.getRestaurantCategory().getName());
             String image = item.getLogo();
             Context context = icon.getContext();
-            int idImage = context.getResources().getIdentifier(image, "drawable", context.getPackageName());
+            int idImage = context.getResources().getIdentifier(image, "mipmap", context.getPackageName());
             icon.setImageResource(idImage);
 
-        return rowView;
+        return convertView;
 
     }
 
