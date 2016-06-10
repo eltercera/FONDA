@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
@@ -106,8 +107,8 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
 
                 if (isFavorite()) {
-
-                    FavoriteRestaurantService deleteFavorite = FondaServiceFactory.getInstance().getFavoriteRestaurantService();
+                    try{
+                        FavoriteRestaurantService deleteFavorite = FondaServiceFactory.getInstance().getFavoriteRestaurantService();
                     Commensal comensal = deleteFavorite.deleteFavoriteRestaurant(logedCommensal.getId()
                             , selectedRestaurant.getId());
 
@@ -122,8 +123,11 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
                     Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
                             Toast.LENGTH_LONG).show();
                     setAsFavorite.setIcon(R.drawable.ic_star_border_creme_24dp);
+                    } catch (RestClientException e) {
+                        e.printStackTrace();
+                    }
                 } else {
-
+                    try{
                     FavoriteRestaurantService addFavoriteRestaurant = FondaServiceFactory.getInstance().
                             getFavoriteRestaurantService();
 
@@ -141,6 +145,9 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
                     Toast.makeText(getApplicationContext(), R.string.favorite_add_success_meessage,
                             Toast.LENGTH_LONG).show();
                     setAsFavorite.setIcon(R.drawable.ic_star_yellow);
+                    } catch (RestClientException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 return false;
@@ -185,7 +192,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
      * @return Boolean.
      */
     private boolean isFavorite(){
-
+    try{
         FavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                 getFavoriteRestaurantService();
         List<Restaurant> restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(logedCommensal.getId());
@@ -195,7 +202,9 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
                 return true;
             }
         }
-
+    } catch (RestClientException e) {
+        e.printStackTrace();
+    }
         return false;
     }
 

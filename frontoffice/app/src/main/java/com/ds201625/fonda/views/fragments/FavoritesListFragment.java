@@ -1,5 +1,6 @@
 package com.ds201625.fonda.views.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
@@ -21,6 +23,7 @@ import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.views.activities.LoginActivity;
 import com.ds201625.fonda.views.adapters.FavoriteRestViewItemList;
 
 import java.util.ArrayList;
@@ -43,13 +46,14 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
     private boolean multi;
     private Commensal logedComensal;
     private String emailToWebService;
+    private List<Restaurant> restaurantList;
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        favoritesList = new FavoriteRestViewItemList(getContext());
         multi = getArguments().getBoolean("multiSelect");
+        favoritesList = new FavoriteRestViewItemList(getContext());
     }
 
     @Nullable
@@ -60,15 +64,11 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
         swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
         swipeRefreshLayout.setOnRefreshListener(this);
 
-        Commensal log = SessionData.getInstance().getCommensal();
-        emailToWebService=log.getEmail()+"/";
-        RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().getLogedCommensalService();
-        logedComensal =getComensal.getLogedCommensal(emailToWebService);
-        FavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                getFavoriteRestaurantService();
-        List<Restaurant> restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
+        restaurantList = getListSW();
+
         favoritesList.addAll(restaurantList);
         restaurants.setAdapter(favoritesList);
+
         if(multi) {
             restaurants.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
             restaurants.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
@@ -98,10 +98,15 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
                         case R.id.deleteFavorites:
                             String sal = "Fueron eliminados los Favoritos.";
                             for (Restaurant r : favoritesList.getAllSeletedItems()) {
-                                 FavoriteRestaurantService favservice = FondaServiceFactory.getInstance().
+                                FavoriteRestaurantService favservice = FondaServiceFactory.getInstance().
                                         getFavoriteRestaurantService();
+                                try{
 
                                 favservice.deleteFavoriteRestaurant(logedComensal.getId(),r.getId());
+
+                                } catch (RestClientException e) {
+                                    e.printStackTrace();
+                                }
                             }
                             Log.v("Favoritos eliminados: ", sal);
                             favoritesList.cleanSelected();
@@ -124,7 +129,17 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
             });
 
         }
-            return layout ;
+
+        restaurants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Restaurant item = favoritesList.getItem(position);
+                mCallBack.OnFavoriteSelect(item);
+            }
+        });
+
+
+        return layout ;
     }
 
     @Override
@@ -166,5 +181,37 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
          */
         void OnFavoriteSelectionModeExit();
     }
+
+
+    /**
+     * Metodo que obtiene los elementos del WS
+     */
+    public List<Restaurant> getListSW(){
+        List<Restaurant> listRestWS;
+
+            try {
+                Commensal log = SessionData.getInstance().getCommensal();
+                try {
+
+                    emailToWebService=log.getEmail()+"/";
+                    RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().getLogedCommensalService();
+                    logedComensal =getComensal.getLogedCommensal(emailToWebService);
+                    FavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                            getFavoriteRestaurantService();
+                    listRestWS = allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
+                    return listRestWS;
+                } catch (RestClientException e) {
+                    e.printStackTrace();
+                }
+                catch (NullPointerException nu) {
+                    nu.printStackTrace();
+                }
+            } catch (Exception e) {
+                System.out.println("Error en la Conexión");
+            }
+
+        return null;
+    }
+
 
 }
