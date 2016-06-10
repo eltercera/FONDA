@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandGetOrder : Command<Entity>
+    public class CommandGetOrder : Command
     {
-        public CommandGetOrder(Entity receiver) : base(receiver)
+        public CommandGetOrder(Object receiver) : base(receiver)
         {
         }
 
@@ -20,7 +20,7 @@ namespace FondaLogic.Commands.OrderAccount
         /// </summary>
         /// <param name="param">Id de la Orden</param>
         /// <returns>La orden</returns>
-        public override Entity Execute()
+        public override void Execute()
         {
             try
             {
@@ -29,7 +29,7 @@ namespace FondaLogic.Commands.OrderAccount
                 IOrderAccountDao _orderDAO = _facDAO.GetOrderAccountDAO();
 
 
-                return (Entity)_orderDAO.FindById(1);
+                 Receiver = _orderDAO.FindById(1);
             }
             catch (NullReferenceException ex)
             {

@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandGetOrders : Command<IList<Account>>
+    public class CommandGetOrders : Command
     {
 
         FactoryDAO _facDAO = FactoryDAO.Intance;
 
-        public CommandGetOrders(Entity receiver) : base(receiver)
+        public CommandGetOrders(Object receiver) : base(receiver)
         {
         }
 
@@ -24,7 +24,7 @@ namespace FondaLogic.Commands.OrderAccount
         /// </summary>
         /// <param name="param">Id del Restaurante</param>
         /// <returns>Lista de Ordenes</returns>
-        public override IList<Account> Execute()
+        public override void Execute()
         {
             try
             {
@@ -36,7 +36,7 @@ namespace FondaLogic.Commands.OrderAccount
 
                 Restaurant res = (Restaurant)Receiver ;
 
-                return  _orderDAO.FindByRestaurant(res);
+                IList<Account> listAccounts = _orderDAO.FindByRestaurant(res);
             }
             catch (NullReferenceException ex)
             {
