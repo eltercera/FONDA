@@ -43,12 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OrderAccount\AgregarOrdenPresenter.cs" />
-    <Compile Include="OrderAccount\DefaultPresenter.cs" />
-    <Compile Include="OrderAccount\ResourceCaja.Designer.cs">
-      <DependentUpon>ResourceCaja.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <Compile Include="OrderAccount\OrdersPresenter.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,12 +73,6 @@
       <Project>{3184fe34-d7e3-44f6-95d9-25d1045bffc8}</Project>
       <Name>FondaResources</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="OrderAccount\ResourceCaja.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourceCaja.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
