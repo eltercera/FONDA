@@ -10,17 +10,18 @@ namespace FondaLogic
     /// <summary>
     /// Comando Base para el patron comando
     /// </summary>
-    public abstract class Command<Output> 
+    public abstract class Command : ICommand
     {
 
-        private Entity receiver;
+        private Object receiver;
 
-        public Entity Receiver
+        public Object Receiver
         {
             get { return receiver; }
+            set { receiver = value; }
         }
 
-        public Command(Entity receiver)
+        public Command(Object receiver)
         {
             this.receiver = receiver;
         }
@@ -31,7 +32,7 @@ namespace FondaLogic
         /// </summary>
         /// <param name="param">E</param>
         /// <returns></returns>
-        public abstract Output Execute();
+        public abstract void Execute();
 
     }
 }
