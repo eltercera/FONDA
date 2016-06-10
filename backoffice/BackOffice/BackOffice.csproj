@@ -473,7 +473,6 @@
     </Compile>
     <Compile Include="Seccion\Caja\AgregarOrden.aspx.cs">
       <DependentUpon>AgregarOrden.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seccion\Caja\AgregarOrden.aspx.designer.cs">
       <DependentUpon>AgregarOrden.aspx</DependentUpon>
@@ -494,7 +493,6 @@
     </Compile>
     <Compile Include="Seccion\Caja\DefaultOrdenesCerradas.aspx.cs">
       <DependentUpon>DefaultOrdenesCerradas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seccion\Caja\DefaultOrdenesCerradas.aspx.designer.cs">
       <DependentUpon>DefaultOrdenesCerradas.aspx</DependentUpon>
@@ -505,11 +503,6 @@
     </Compile>
     <Compile Include="Seccion\Caja\ModificarOrden.aspx.designer.cs">
       <DependentUpon>ModificarOrden.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Caja\ResourceCaja.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ResourceCaja.resx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.cs">
       <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
@@ -666,10 +659,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoMaster.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Seccion\Caja\ResourceCaja.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourceCaja.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Seccion\Configuracion\G1RecursosInterfaz.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>G1RecursosInterfaz.Designer.cs</LastGenOutput>
@@ -680,6 +669,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BackOfficeModel\BackOfficeModel.csproj">
+      <Project>{0c4a3e0c-4e85-46b0-a6b0-a6dc2bce3d8b}</Project>
+      <Name>BackOfficeModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BackOfficePresenter\BackOfficePresenter.csproj">
+      <Project>{fde7b2a6-7496-4680-ab18-a336eebbe62e}</Project>
+      <Name>BackOfficePresenter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
       <Project>{4a769797-45c6-4ad9-95fd-7b950d937d1c}</Project>
       <Name>FondaDataAccess</Name>
@@ -687,6 +684,10 @@
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
       <Project>{cd756618-286a-4fbc-93a3-0eccb571b18f}</Project>
       <Name>FondaDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
+      <Project>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</Project>
+      <Name>FondaLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
