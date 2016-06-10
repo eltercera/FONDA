@@ -143,12 +143,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             UserAccount comm = GetCommensalDao().FindByEmail(email);
             return Ok(comm);
 
-        }
-
-
-
-      
-
+        }  
 
     }
 }
