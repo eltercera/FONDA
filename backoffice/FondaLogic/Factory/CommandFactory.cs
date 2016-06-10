@@ -1,6 +1,7 @@
 ﻿using com.ds201625.fonda;
 using com.ds201625.fonda.Domain;
 using FondaLogic.Commands.OrderAccount;
+using FondaLogic.Log;
 using System.Collections.Generic;
 
 namespace FondaLogic.Factory
@@ -10,6 +11,18 @@ namespace FondaLogic.Factory
     /// </summary>
     public class CommandFactory
     {
+        #region Logger
+
+        /// <summary>
+        /// Inicializa el Logger de la aplicacion
+        /// </summary>
+        public static void InitLog()
+        {
+            new Logger();
+        }
+
+        #endregion
+
         #region OrderAccount
 
         //Se obtienen los comandos a a utilizar
@@ -17,10 +30,11 @@ namespace FondaLogic.Factory
         /// <summary>
         /// Metodo de la fabrica para el Comando CommandGetOrders
         /// </summary>
+        /// <param name="entity">Parametro a trabajar</param>
         /// <returns>comando CommandGetOrders</returns>
-        public static Command<IList<Account>> GetCommandGetOrders()
+        public static Command<IList<Account>> GetCommandGetOrders(Entity entity)
         {
-            return new CommandGetOrders();
+            return new CommandGetOrders(entity);
         }
 
         /// <summary>
@@ -29,7 +43,9 @@ namespace FondaLogic.Factory
         /// <returns>comando CommandGetOrder</returns>
         public static Command<Entity> GetCommandGetOrder()
         {
-            return new CommandGetOrder();
+            //TODO: Implementar
+            // return new CommandGetOrder();
+            return null;
         }
 
 

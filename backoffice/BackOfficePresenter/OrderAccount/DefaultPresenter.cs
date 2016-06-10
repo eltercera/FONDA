@@ -57,10 +57,9 @@ namespace com.ds201625.fonda.BackOffice.Presenter
                     res.Id = result;
                 }
 
-                //Obtiene la instancia del comando
-                commandGetOrders = CommandFactory.GetCommandGetOrders();
-                //Se envia el atributo usado como parametro a traves de Entity
-                commandGetOrders.Entity = res;
+                //Obtiene la instancia del comando enviado el restaurante como parametro
+                commandGetOrders = CommandFactory.GetCommandGetOrders(res);
+
                 //Ejecuta el comando deseado
                 listAccount = commandGetOrders.Execute();
 

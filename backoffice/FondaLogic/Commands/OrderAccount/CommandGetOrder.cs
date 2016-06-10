@@ -11,6 +11,9 @@ namespace FondaLogic.Commands.OrderAccount
 {
     public class CommandGetOrder : Command<Entity>
     {
+        public CommandGetOrder(Entity receiver) : base(receiver)
+        {
+        }
 
         /// <summary>
         /// Metodo que ejecuta el comando para consultar una orden

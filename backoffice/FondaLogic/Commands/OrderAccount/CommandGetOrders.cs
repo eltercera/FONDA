@@ -15,6 +15,10 @@ namespace FondaLogic.Commands.OrderAccount
 
         FactoryDAO _facDAO = FactoryDAO.Intance;
 
+        public CommandGetOrders(Entity receiver) : base(receiver)
+        {
+        }
+
         /// <summary>
         /// Metodo que ejecuta el comando que consulta las ordenes segun un Restaurante
         /// </summary>
@@ -29,7 +33,8 @@ namespace FondaLogic.Commands.OrderAccount
                 //Obtengo la instancia del DAO a utilizar
                 _orderDAO = _facDAO.GetOrderAccountDAO();
                 //Obtengo el objeto con la informacion enviada
-                Restaurant res = (Restaurant)Entity;
+
+                Restaurant res = (Restaurant)Receiver ;
 
                 return  _orderDAO.FindByRestaurant(res);
             }
