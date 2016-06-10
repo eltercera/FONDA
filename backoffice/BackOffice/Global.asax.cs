@@ -6,6 +6,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
+using FondaLogic.Factory;
 
 namespace BackOffice
 {
@@ -15,6 +16,7 @@ namespace BackOffice
         {
             // Code that runs on application startup
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            CommandFactory.InitLog();
         }
     }
 }

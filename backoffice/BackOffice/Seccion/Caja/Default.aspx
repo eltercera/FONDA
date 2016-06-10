@@ -37,7 +37,7 @@
                                 <div class="table-responsive">
                                         <asp:HiddenField ID="AccountPopOrder" runat="server" Value="" />
 
-                                        <asp:Table ID="ListarOrden" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
+                                        <asp:Table ID="_orderList" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                                 </div>
                             </div>
                         </div>

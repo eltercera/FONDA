@@ -89,6 +89,7 @@
     <Compile Include="BoEmployeeTest.cs" />
     <Compile Include="BOListCategoryTest.cs" />
     <Compile Include="BOListDishTest.cs" />
+    <Compile Include="BOObjectCastTest.cs" />
     <Compile Include="BOReservationTest.cs" />
     <Compile Include="BOMenuCategoryTest.cs" />
     <Compile Include="BORoleTest.cs" />

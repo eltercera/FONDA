@@ -10,6 +10,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
     class HibernateOrderAccountDAO : HibernateBaseEntityDAO<Account>, IOrderAccountDao
     {
+        /// <summary>
+        /// Obtiene la orden de un comensal
+        /// </summary>
+        /// <param name="commensal">Un objeto de tipo Commensal</param>
+        /// <returns>Un objeto Account</returns>
         public Account FindByCommensal(Commensal commensal)
         {
             ICriterion criterion = Expression.And(Expression.Eq("Commensal", commensal), Expression.Eq("Status", OpenAccountStatus.Instance));
@@ -23,6 +28,21 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
         }
 
+        /// <summary>
+        /// Obtiene las ordenes de un Restaurante
+        /// </summary>
+        /// <param name="restaurant">Un objeto de tipo Restaurant</param>
+        /// <returns>Una lista de Account</returns>
+        public IList<Account> FindByRestaurant(Restaurant restaurant)
+        {
+            //TODO: Devolver una lista de Ordenes
+            return new List<Account>();
+        }
+
+        /// <summary>
+        /// Obtiene todas las ordenes del Sistema
+        /// </summary>
+        /// <returns>Una lista de Account</returns>
         public IList<Account> GetAll()
         {
             return FindAll();
