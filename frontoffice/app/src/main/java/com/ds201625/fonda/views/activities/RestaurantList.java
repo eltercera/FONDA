@@ -63,7 +63,7 @@ public class RestaurantList extends ArrayAdapter<Restaurant> {
         }
 
         try {
-            ImageView imageView = (ImageView) rowView.findViewById(R.id.img);
+            ImageView imageView = (ImageView) rowView.findViewById(R.id.imageRest);
             txtTitle3.setText(shortDescription[position]);
             imageView.setImageResource(imageId[position]);
         }catch (ArrayIndexOutOfBoundsException e){
