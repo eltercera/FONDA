@@ -12,7 +12,7 @@ using System.Web.Services;
 using System.Web.Script.Serialization;
 
 namespace BackOffice.Seccion.Caja
-{
+{/*
     public partial class DefaultOrdenesCerradas : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -150,5 +150,5 @@ namespace BackOffice.Seccion.Caja
         {
 
         }
-    }
+    }*/
 }

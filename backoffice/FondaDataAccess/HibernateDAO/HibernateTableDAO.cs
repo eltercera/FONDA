@@ -8,7 +8,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
     public class HibernateTableDAO : HibernateBaseEntityDAO<Table>, ITableDAO
     {
-        private com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO _facDAO;
+        private com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
         public IList<Table> GetAll()
         {
             return FindAll();

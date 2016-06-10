@@ -22,13 +22,13 @@ namespace BackOffice.Seccion.Caja {
         protected global::System.Web.UI.WebControls.HiddenField AccountPopOrder;
         
         /// <summary>
-        /// ListarOrden control.
+        /// _orderList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table ListarOrden;
+        protected global::System.Web.UI.WebControls.Table _orderList;
         
         /// <summary>
         /// Detalle control.
