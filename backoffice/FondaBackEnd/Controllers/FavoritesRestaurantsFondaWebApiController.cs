@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Web.Http;
 using System.Linq;
 using System.Collections;
@@ -9,8 +9,8 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using System.Collections.Generic;
 
-/*namespace com.ds201625.fonda.BackEnd.Controllers
-{/*
+namespace com.ds201625.fonda.BackEnd.Controllers
+{
     [RoutePrefix("api")]
     public class FavoritesRestaurantsFondaWebApiController : FondaWebApi
     {
@@ -24,7 +24,7 @@ using System.Collections.Generic;
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-     /*   [Route("deletefavorite/{idcommensal}/{idrestaurant}")]
+        [Route("deletefavorite/{idcommensal}/{idrestaurant}")]
         [HttpGet]
         //[FondaAuthToken]
         public IHttpActionResult deletefavorite(int idcommensal, int idrestaurant)
@@ -143,12 +143,7 @@ using System.Collections.Generic;
             UserAccount comm = GetCommensalDao().FindByEmail(email);
             return Ok(comm);
 
-        }
-
-
-
-      
-
+        }  
 
     }
 }*/
