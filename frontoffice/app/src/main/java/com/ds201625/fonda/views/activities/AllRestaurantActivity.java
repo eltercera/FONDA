@@ -2,6 +2,8 @@ package com.ds201625.fonda.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,11 +17,15 @@ import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.views.fragments.FavoritesListFragment;
+import com.ds201625.fonda.views.fragments.RestaurantListFragment;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AllRestaurantActivity extends BaseNavigationActivity {
+public class AllRestaurantActivity extends BaseNavigationActivity
+        implements RestaurantListFragment.restaurantListFragmentListener {
 
     // UI references.
     private ListView list;
@@ -27,40 +33,27 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
     private RestaurantList adapter;
     private List<Restaurant> restaurantList;
     private Commensal logedComensal;
-    private String TAG ="FavoritesActivity";
+    private String TAG ="AllRestaurantActivity";
 
-    //Declaracion de
-    String[] names = {
-            "The dining room",
-            "Mogi Mirin",
-            "Gordo & Magro",
-            "La Casona",
-            "Tony's"} ;
-    String[] location = {
-            "La castellana",
-            "Los dos caminos",
-            "La California",
-            "Parque central",
-            "El Rosal"} ;
-    String[] shortDescription = {
-            "Casual",
-            "Romantico",
-            "Italiano",
-            "Italiano",
-            "Americano"} ;
-    Integer[] imageId = {
-            R.mipmap.ic_restaurant001,
-            R.mipmap.ic_restaurant002,
-            R.mipmap.ic_restaurant003,
-            R.mipmap.ic_restaurant004,
-            R.mipmap.ic_restaurant005,
+    /**
+     * Administrador de Fragments
+     */
+    private FragmentManager fm;
 
-    };
+    /**
+     * ToolBar
+     */
+    private Toolbar tb;
+    /**
+     * Fragmento AllRestaurant
+     */
+    private RestaurantListFragment AllRestaurantFrag;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_favorites);
+        setContentView(R.layout.activity_all_restaurant);
         /**
          * Esta es la validacion de si el usuario ya esta loggeado o no.
          */
@@ -83,78 +76,25 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
             return;
         }
         else {
-            try {
-                Commensal log = SessionData.getInstance().getCommensal();
 
-                String emailToWebService;
-                try{
-                    emailToWebService=log.getEmail()+"/";
-                    Log.v(TAG,"Email->"+emailToWebService);
-                    RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().getLogedCommensalService();
-                    logedComensal =getComensal.getLogedCommensal(emailToWebService);
-                    Log.v(TAG,logedComensal.getId()+"");
+            // Obtencion de los componentes necesaios de la vista
+            tb = (Toolbar) findViewById(R.id.toolbar);
+            fm = getSupportFragmentManager();
 
+            // Creacion de fragmen y pase argumento
+            AllRestaurantFrag = new RestaurantListFragment();
+            Bundle args = new Bundle();
+            args.putBoolean("multiSelect", true);
+            AllRestaurantFrag.setArguments(args);
 
-
-
-                }catch(NullPointerException nu){
-                    nu.printStackTrace();
-                }
+            //Lanzamiento de profileListFrag como el principal
+            fm.beginTransaction()
+                    .replace(R.id.fragment_container_rest, AllRestaurantFrag)
+                    .commit();
 
 
-                list=(ListView)findViewById(R.id.lvFavoriteList);
-
-                AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
-                        getAllRestaurantsService();
-                restaurantList = allRestaurant.getAllRestaurant();
-
-
-
-                try {
-                    for (Restaurant rest : restaurantList) {
-                        Log.v("WEBSERVICE", rest.getId() + "");
-                        Log.v("WEBSERVICE", rest.getName());
-                        Log.v("WEBSERVICE", rest.getAddress());
-                    }
-                    setupListView();
-                }catch (NullPointerException ex){
-                    // Log.v(TAG,R.string.favorite_conexion_fail_message );
-
-                    Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
-                            Toast.LENGTH_LONG).show();
-                }
-
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-
-
-
-
-
-
-
-            /**
-             * Esto es lo que tenia el Modulo de Favoritos en principio.
-             */
-
-         /*
-            list = (ListView) findViewById(R.id.listViewFavorites);
-
-            AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                    getAllFavoriteRestaurantsService();
-            restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(2);
-        */
-        /*
-        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
-                getAllRestaurantsService();
-        restaurantList = allRestaurant.getAllRestaurant();
-        */
-/*        for (Restaurant rest : restaurantList){
-            Log.v("WEBSERVICE", rest.getId() + "");
-            Log.v("WEBSERVICE",rest.getName());
-            Log.v("WEBSERVICE",rest.getAddress());
-        }*/
+            // Asegura que almenos onCreate se ejecuto en el fragment
+            fm.executePendingTransactions();
         }
     }
 
@@ -169,7 +109,7 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
      * Inicializa el ListView y le asigna valores.
      * @param
      * @return
-     */
+
 
     private void setupListView(){
         adapter = new
@@ -188,14 +128,14 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
             }
         });
     }
-
+     */
 
     /**
      * Devuelve el restaurante Seleccionado por el usuario.
-     * @param position
+     * @param //position
      * @return Restaurant.
      */
-    private Restaurant getSelectedRestaurant(int position){
+  /* private Restaurant getSelectedRestaurant(int position){
         int contador =0;
         for (Restaurant restaurant: this.restaurantList){
             if (contador == position){
@@ -205,7 +145,26 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
             contador++;
         }
         return null;
+    }*/
+
+
+    @Override
+    public void OnRestaurantSelect(Restaurant r) {
+
     }
 
+    @Override
+    public void OnRestaurantSelected(ArrayList<Restaurant> r) {
 
+    }
+
+    @Override
+    public void OnRestaurantSelectionMode() {
+        tb.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void OnRestaurantSelectionModeExit() {
+        tb.setVisibility(View.VISIBLE);
+    }
 }

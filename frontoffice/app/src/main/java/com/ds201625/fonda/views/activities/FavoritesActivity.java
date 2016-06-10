@@ -53,7 +53,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_favorites2);
+        setContentView(R.layout.activity_favorites);
         /**
          * Esta es la validacion de si el usuario ya esta loggeado o no.
          */

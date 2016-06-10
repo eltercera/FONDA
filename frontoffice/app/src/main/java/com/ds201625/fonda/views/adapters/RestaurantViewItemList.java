@@ -12,10 +12,7 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.ProfileService;
-import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.logic.SessionData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,29 +20,14 @@ import java.util.List;
 /**
  * Adapter para la vista de la lista de Profiles
  */
-public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> {
+public class RestaurantViewItemList extends BaseArrayAdapter<Restaurant> {
 
 
-    public FavoriteRestViewItemList(Context context) {
-        super(context, R.layout.list_restaurant,R.id.txt);
+    public RestaurantViewItemList(Context context) {
+        super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
 
     }
 
-    public void update(int id) {
-        FavoriteRestaurantService ps = FondaServiceFactory.getInstance()
-                .getFavoriteRestaurantService();
-        List<Restaurant> list = null;
-        clear();
-        try {
-            list = ps.getAllFavoriteRestaurant(id);
-        } catch (RestClientException e) {
-            e.printStackTrace();
-            Log.v("Fonda",e.toString());
-        }
-        if (list != null)
-            addAll(list);
-        notifyDataSetChanged();
-    }
 
     @Override
     public View createView(Restaurant item) {
