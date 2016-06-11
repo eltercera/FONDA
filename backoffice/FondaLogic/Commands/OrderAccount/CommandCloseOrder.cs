@@ -46,10 +46,5 @@ namespace FondaLogic.Commands.OrderAccount
             }
         }
 
-        protected override void Validate()
-        {
-            //TODO: Implementar validacion del parametro
-            throw new NotImplementedException();
-        }
     }
 }

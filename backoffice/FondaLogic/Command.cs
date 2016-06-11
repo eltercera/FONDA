@@ -24,16 +24,12 @@ namespace FondaLogic
         public Command(Object receiver)
         {
             this.receiver = receiver;
-            this.Validate();
         }
 
         /// <summary>
         /// Metodo para ejecutar el comando
         /// </summary>
-        /// <param name="param">E</param>
-        /// <returns></returns>
         public abstract void Execute();
 
-        protected abstract void Validate();
     }
 }

@@ -1,6 +1,8 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using FondaLogic;
+using FondaLogic.Factory;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -13,8 +15,10 @@ namespace com.ds201625.fonda.Tests.DataAccess
     [TestFixture()]
     public class BOCommandOrders
     {
-
-        IList<Account> listClosedOrders;
+        private int restaurantId;
+        private Command commandGetOrders;
+        private IList<Account> listAccount;
+        private IList<Account> listClosedOrders;
         private FactoryDAO _facDAO;
         private IOrderAccountDao _orderAccountDAO;
         private Restaurant _restaurant;
@@ -32,10 +36,8 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _restaurant.Id = 1;
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             _restaurant = _restaurantDAO.FindById(_restaurant.Id);
-            //nA1 = 1;
-            //nA2 = 2;
-            //listClosedOrders.Add(nA1);
-            //listClosedOrders.Add(nA2);
+            restaurantId = 1;
+
         }
 
         [Test]
@@ -45,6 +47,20 @@ namespace com.ds201625.fonda.Tests.DataAccess
             listClosedOrders = _orderAccountDAO.ClosedOrdersByRestaurant(_restaurant);
             Assert.IsNotNull(listClosedOrders);
             //            Assert.AreEqual(1, _result.Id);
+        }
+
+        [Test]
+        public void CommandGetOrdersTest()
+        {
+
+            commandGetOrders = CommandFactory.GetCommandGetOrders(restaurantId);
+      
+            commandGetOrders.Execute();
+
+            listAccount = (IList<Account>)commandGetOrders.Receiver;
+
+            Assert.IsNotNull(listAccount);
+
         }
 
     }

@@ -32,9 +32,9 @@ namespace FondaLogic.Factory
         /// </summary>
         /// <param name="entity">Parametro a trabajar</param>
         /// <returns>comando CommandGetOrders</returns>
-        public static Command GetCommandGetOrders(Entity entity)
+        public static Command GetCommandGetOrders(object receiver)
         {
-            return new CommandGetOrders(entity);
+            return new CommandGetOrders(receiver);
         }
 
         /// <summary>

@@ -15,9 +15,19 @@ namespace FondaLogic.Commands.OrderAccount
     {
 
         FactoryDAO _facDAO = FactoryDAO.Intance;
+        int restaurantId;
 
         public CommandGetOrders(Object receiver) : base(receiver)
         {
+            try
+            {
+                restaurantId = (int) receiver;
+            }
+            catch (Exception)
+            {
+                //TODO: Enviar excepcion personalizada
+                throw;
+            }
         }
 
 
@@ -25,8 +35,6 @@ namespace FondaLogic.Commands.OrderAccount
         /// <summary>
         /// Metodo que ejecuta el comando que consulta las ordenes segun un Restaurante
         /// </summary>
-        /// <param name="param">Id del Restaurante</param>
-        /// <returns>Lista de Ordenes</returns>
         public override void Execute()
         {
             try
@@ -35,11 +43,8 @@ namespace FondaLogic.Commands.OrderAccount
                 IOrderAccountDao _orderDAO;
                 //Obtengo la instancia del DAO a utilizar
                 _orderDAO = _facDAO.GetOrderAccountDAO();
-                //Obtengo el objeto con la informacion enviada
 
-                Restaurant res = (Restaurant)Receiver ;
-
-                IList<Account> listAccounts = _orderDAO.FindByRestaurant(res);
+                IList<Account> listAccounts = _orderDAO.FindByRestaurant(restaurantId);
             }
             catch (NullReferenceException ex)
             {
@@ -49,9 +54,5 @@ namespace FondaLogic.Commands.OrderAccount
             }
         }
 
-        protected override void Validate()
-        {
-            Log.Validate.CommandGetOrdersParameter(this);
-        }
     }
 }

@@ -11,25 +11,34 @@ namespace FondaLogic.Commands.OrderAccount
 {
     public class CommandGetOrder : Command
     {
+        FactoryDAO _facDAO = FactoryDAO.Intance;
+        int orderId;
+
         public CommandGetOrder(Object receiver) : base(receiver)
         {
+            try
+            {
+                orderId = (int)receiver;
+            }
+            catch (Exception)
+            {
+                //TODO: Enviar excepcion personalizada
+                throw;
+            }
         }
 
         /// <summary>
         /// Metodo que ejecuta el comando para consultar una orden
         /// </summary>
-        /// <param name="param">Id de la Orden</param>
-        /// <returns>La orden</returns>
         public override void Execute()
         {
             try
             {
                 //Metodos para acceder a la BD
-                FactoryDAO _facDAO = FactoryDAO.Intance;
                 IOrderAccountDao _orderDAO = _facDAO.GetOrderAccountDAO();
 
 
-                 Receiver = _orderDAO.FindById(1);
+                 Receiver = _orderDAO.FindById(orderId);
             }
             catch (NullReferenceException ex)
             {
@@ -39,10 +48,5 @@ namespace FondaLogic.Commands.OrderAccount
             }
         }
 
-        protected override void Validate()
-        {
-            //TODO: Implementar validacion del parametro
-            throw new NotImplementedException();
-        }
     }
 }

@@ -36,8 +36,6 @@ namespace com.ds201625.fonda.BackOffice.Presenter
             int result;
             //Define objeto a recibir
             IList<Account> listAccount;
-            //Objeto a enviar como parametro
-            Restaurant res = null;
             //Invoca a comando del tipo deseado
             Command commandGetOrders;
 
@@ -46,20 +44,21 @@ namespace com.ds201625.fonda.BackOffice.Presenter
             {
 
                 //Obtener el parametro
-                if (int.TryParse(restaurantId, out result))
+                if (!int.TryParse(restaurantId, out result))
                 {
-                    res = (Restaurant) EntityFactory.GetRestaurant();
-                    res.Id = result;
+                    //TODO: Arrojar excepcion personalizada
+                    throw new Exception();
                 }
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetOrders = CommandFactory.GetCommandGetOrders(res);
+                commandGetOrders = CommandFactory.GetCommandGetOrders(result);
 
                 //Ejecuta el comando deseado
                 commandGetOrders.Execute();
 
                 //Se obtiene el resultado de la operacion
                 listAccount = (IList<Account>) commandGetOrders.Receiver;
+
 
                 //Revisa si la lista no esta vacia
                 if (listAccount != null)
