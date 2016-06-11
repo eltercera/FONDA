@@ -1,6 +1,7 @@
 ﻿using com.ds201625.fonda;
 using com.ds201625.fonda.Domain;
 using FondaLogic.Commands.OrderAccount;
+using FondaLogic.Commands.Login;
 using System.Collections.Generic;
 
 namespace FondaLogic.Factory
@@ -50,7 +51,15 @@ namespace FondaLogic.Factory
         #region Login
 
         //Defincion de los comandos a implementar del modulo Login
+        public static Command<Employee> GetCommandGetEmployeeByUser()
+        {
+            return new CommandGetEmployeeByUser();
+        }
 
+        public static Command<Restaurant> GetCommandGetRestaurantById()
+        {
+            return new CommandGetRestaurantById();
+        }
         #endregion
     }
 }

@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Login\LoginPresenter.cs" />
     <Compile Include="OrderAccount\AgregarOrdenPresenter.cs" />
     <Compile Include="OrderAccount\DefaultPresenter.cs" />
     <Compile Include="OrderAccount\ResourceCaja.Designer.cs">
@@ -53,7 +54,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Login\" />
     <Folder Include="Menu\" />
     <Folder Include="Restaurant\" />
   </ItemGroup>
