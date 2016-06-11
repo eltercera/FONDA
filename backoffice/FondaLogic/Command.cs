@@ -18,14 +18,14 @@ namespace FondaLogic
         public Object Receiver
         {
             get { return receiver; }
-            set { receiver = value; }
+            protected set { receiver = value; }
         }
 
         public Command(Object receiver)
         {
             this.receiver = receiver;
+            this.Validate();
         }
-
 
         /// <summary>
         /// Metodo para ejecutar el comando
@@ -34,5 +34,6 @@ namespace FondaLogic
         /// <returns></returns>
         public abstract void Execute();
 
+        protected abstract void Validate();
     }
 }

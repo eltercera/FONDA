@@ -101,6 +101,7 @@
     <Compile Include="BOScheduleTest.cs" />
     <Compile Include="BOTableTest.cs" />
     <Compile Include="BOUserAcountTest.cs" />
+    <Compile Include="BOValidationsTest.cs" />
     <Compile Include="FOAddRestaurantFavorite.cs" />
     <Compile Include="FOCommensalRegister.cs" />
     <Compile Include="FORegisterZone.cs" />
@@ -136,6 +137,10 @@
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
       <Project>{cd756618-286a-4fbc-93a3-0eccb571b18f}</Project>
       <Name>FondaDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
+      <Project>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</Project>
+      <Name>FondaLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -57,6 +57,7 @@
     <Compile Include="FondaCommandException\CommandException.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Log\Logger.cs" />
+    <Compile Include="Log\Validate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
