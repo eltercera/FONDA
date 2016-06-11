@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace com.ds201625.fonda.Tests.DataAccess
 {
     [TestFixture()]
-    public class BOCommandOrders
+    public class BOCommandOrdersTest
     {
 
         IList<Account> listClosedOrders;
@@ -44,7 +44,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
             listClosedOrders = _orderAccountDAO.ClosedOrdersByRestaurant(_restaurant);
             Assert.IsNotNull(listClosedOrders);
-            //            Assert.AreEqual(1, _result.Id);
         }
 
     }
