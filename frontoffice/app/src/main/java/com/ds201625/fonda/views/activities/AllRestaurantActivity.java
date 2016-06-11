@@ -14,6 +14,8 @@ import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.google.gson.Gson;
 
@@ -112,6 +114,22 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
                 AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
                         getAllRestaurantsService();
                 restaurantList = allRestaurant.getAllRestaurant();
+
+
+                FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
+
+                Command cmd = facCmd.allRestaurantCommand();
+
+
+                try {
+                    cmd.run();
+
+                    restaurantList = (List<Restaurant>) cmd.getResult();
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
 
 

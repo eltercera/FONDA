@@ -1,6 +1,10 @@
 package com.ds201625.fonda.logic;
 
+import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
+import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.CreateProfileCommand;
+import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllRestaurantCommand;
+import com.ds201625.fonda.logic.Commands.FavoriteCommands.DeleteFavoriteRestaurantCommand;
 
 /**
  * Fabrica de comandos
@@ -33,4 +37,35 @@ public class FondaCommandFactory {
         return  new CreateProfileCommand();
     }
 
+    /**
+     * Crea un AddFavoriteRestaurantCommand
+     * @return comando AddFavoriteRestaurantCommand
+     */
+    public Command addFavoriteRestaurantCommand() {
+        return  new AddFavoriteRestaurantCommand();
+    }
+
+    /**
+     * Crea un DeleteFavoriteRestaurantCommand
+     * @return comando DeleteFavoriteRestaurantCommand
+     */
+    public Command deleteFavoriteRestaurantCommand() {
+        return  new DeleteFavoriteRestaurantCommand();
+    }
+
+    /**
+     * Crea un AllFavoriteRestaurantCommand
+     * @return comando AllFavoriteRestaurantCommand
+     */
+    public Command allFavoriteRestaurantCommand() {
+        return  new AllFavoriteRestaurantCommand();
+    }
+
+    /**
+     * Crea un AllRestaurantCommand
+     * @return comando AllRestaurantCommand
+     */
+    public Command allRestaurantCommand() {
+        return  new AllRestaurantCommand();
+    }
 }

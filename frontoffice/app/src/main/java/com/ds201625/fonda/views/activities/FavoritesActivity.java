@@ -10,10 +10,12 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.google.gson.Gson;
 
@@ -105,10 +107,27 @@ public class FavoritesActivity extends BaseNavigationActivity {
 
 
                 list=(ListView)findViewById(R.id.listViewFavorites);
-                    AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                            getAllFavoriteRestaurantsService();
+              /*  FavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                        getFavoriteRestaurantService();
 
-                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
+                restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
+*/
+                FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
+
+                Command cmd = facCmd.allFavoriteRestaurantCommand();
+
+
+                try {
+                    cmd.setParameter(0,logedComensal.getId());
+                    cmd.run();
+
+                    restaurantList = (List<Restaurant>) cmd.getResult();
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
 
         /*        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
                         getAllRestaurantsService();

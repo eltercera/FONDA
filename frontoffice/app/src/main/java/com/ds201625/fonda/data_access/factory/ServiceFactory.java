@@ -47,27 +47,12 @@ public interface ServiceFactory {
      */
     AllRestaurantService getAllRestaurantService();
 
-
-    /**
-     * Obtiene los servicios de todos los restaurantes Favoritos
-     * @param
-     * @return
-     */
-    AllFavoriteRestaurantService getAllFavoriteRestaurantsService();
-
     /**
      * Agrega un restaurante favorito a un comensal logeado
      * @param
      * @return
      */
-    AddFavoriteRestaurantService getAddFavoriteRestaurantService();
-
-    /**
-     * Elimina un restaurante favorito a un comensal logeado
-     * @param
-     * @return
-     */
-    DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService();
+    FavoriteRestaurantService getFavoriteRestaurantService();
 
 
     /**
@@ -97,5 +82,6 @@ public interface ServiceFactory {
     FilterByCategoryService getFilterByCategoryService();
 
     ReservationService getAllReservesService();
+
 }
 
