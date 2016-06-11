@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
@@ -52,6 +53,8 @@ public class FavoritesActivity extends BaseNavigationActivity implements
     private List<Restaurant> restaurantList;
     private Commensal logedComensal;
     private String TAG ="FavoritesActivity";
+    private String emailToWebService;
+    private Restaurant selectedRestaurant;
 
     /**
      * Iten del Menu para favorito
@@ -169,7 +172,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_set_favorite:
-                isFavorite();
+                removeFavorite();
                 break;
             case R.id.action_make_order:
                 goReserve();
@@ -183,8 +186,37 @@ public class FavoritesActivity extends BaseNavigationActivity implements
         startActivity(r);
     }
 
-    private void isFavorite() {
+    private void removeFavorite() {
         //Valida que es un favorito o lo quita
+
+        try {
+            Commensal log = SessionData.getInstance().getCommensal();
+            try {
+
+                emailToWebService=log.getEmail()+"/";
+                RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
+                        getLogedCommensalService();
+                logedComensal =getComensal.getLogedCommensal(emailToWebService);
+                Restaurant restaurant = detailRestaurantFrag.getRestaurant();
+                FavoriteRestaurantService favservice = FondaServiceFactory.getInstance().
+                        getFavoriteRestaurantService();
+
+                favservice.deleteFavoriteRestaurant(logedComensal.getId(),restaurant.getId());
+
+                showFragment(fv);
+            } catch (RestClientException e) {
+                e.printStackTrace();
+            }
+            catch (NullPointerException nu) {
+                nu.printStackTrace();
+            }
+        } catch (Exception e) {
+            System.out.println("Error en la Conexión");
+        }
+         hideKyboard();
+
+
+
     }
 
 
