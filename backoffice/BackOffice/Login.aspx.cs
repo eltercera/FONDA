@@ -348,11 +348,18 @@ namespace BackOffice.Seccion.Configuracion
                 }
                 else
                 {
-                    Session[RecursoMaster.sessionRol] = "Sistema";
+
+                    Session[RecursoMaster.sessionRol] = _info[0];
+                    Session[RecursoMaster.sessionName] = _info[1];
+                    Session[RecursoMaster.sessionLastname] = _info[2];
+                    Session[RecursoMaster.sessionUserID] = _info[3];
+                    System.Diagnostics.Debug.WriteLine("soy admin");
+                    
                 }
-                if (Session[RecursoMaster.sessionRol] == "Sistema")
+                if (Session[RecursoMaster.sessionRol].ToString() == "Sistema")
                 {
                     Response.Redirect("~/Seccion/Restaurant/Restaurante.aspx");
+                    
                 }
                 else
                 {
@@ -366,7 +373,7 @@ namespace BackOffice.Seccion.Configuracion
             System.Diagnostics.Debug.WriteLine(Session[RestaurantResource.SessionRestaurant]);
             System.Diagnostics.Debug.WriteLine(Session[RestaurantResource.SessionNameRest]);*/
 
-        }
+                }
 
         public void Recoverpassword(object sender, EventArgs e)
         {
