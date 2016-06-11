@@ -5,6 +5,7 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System.Collections.Generic;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -56,7 +57,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         public IList<Account> ClosedOrdersByRestaurant(Restaurant restaurant)
         {
-            ICriterion criterion = Expression.And(Expression.Eq("Restaurant", restaurant), Expression.Eq("Status", ClosedAccountStatus.Instance));
+            ICriterion criterion = Expression.Eq("Status", ClosedAccountStatus.Instance);
             try
             {
                 IList<Account> list = new List<Account>();

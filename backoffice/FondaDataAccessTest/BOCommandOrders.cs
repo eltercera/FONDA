@@ -30,6 +30,8 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _restaurant = new Restaurant();
             listClosedOrders = new List<Account>();
             _restaurant.Id = 1;
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            _restaurant = _restaurantDAO.FindById(_restaurant.Id);
             //nA1 = 1;
             //nA2 = 2;
             //listClosedOrders.Add(nA1);

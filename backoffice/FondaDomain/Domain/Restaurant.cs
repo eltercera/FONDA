@@ -53,7 +53,12 @@ namespace com.ds201625.fonda.Domain
         /// Lista de commensal que tienen restaurante como favorito
         /// </summary>
         private IList<Commensal> _favoritesCommensal;
-	
+
+        /// <summary>
+        /// Lista de cuentas 
+        /// </summary>
+        private IList<Account> _accounts;
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -165,7 +170,20 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe la lista de mesas de un Restaurante</value>
             set { _tables = value; }
         }
-        
+
+        public virtual IList<Account> Accounts
+        {
+            /// <summary>
+            /// Obtiene una lista de cuentas de un restaurante
+            /// </summary>
+            get { return _accounts; }
+            /// <summary>
+            /// Asigna una lista de cuentas de un restaurante
+            /// </summary>
+            /// <value>Recibe la lista de cuentas de un restaurante </value>
+            set { _accounts = value; }
+        }
+
 
         public virtual IList<Commensal> FavoritesCommensals
         {

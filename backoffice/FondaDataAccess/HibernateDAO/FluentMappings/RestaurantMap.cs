@@ -80,6 +80,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
             .Table("RESTAURANT_COMMENSAL")
             .AsBag(); */
 
+            HasMany(x => x.Accounts)
+            .KeyColumn("fk_acc_restaurant")
+            .ExtraLazyLoad()
+            .Cascade.All();
 
 
         }
