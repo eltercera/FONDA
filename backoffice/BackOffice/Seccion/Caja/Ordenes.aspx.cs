@@ -15,7 +15,7 @@ using BackOffice.Seccion.Restaurant;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class Default : System.Web.UI.Page, IDefaultModel
+    public partial class Default : System.Web.UI.Page, IOrdersModel
     {
         #region Presenter
 

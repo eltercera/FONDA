@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IModel.cs" />
-    <Compile Include="OrderAccount\IAgregarOrdenModel.cs" />
-    <Compile Include="OrderAccount\IDefaultModel.cs" />
+    <Compile Include="OrderAccount\IClosedOrdersModel.cs" />
+    <Compile Include="OrderAccount\IOrdersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

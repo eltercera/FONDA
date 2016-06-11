@@ -13,14 +13,14 @@ namespace com.ds201625.fonda.BackOffice.Presenter
     public class DefaultPresenter : BackOfficePresenter.Presenter
     {
         //Enlace entre el Modelo y la Vista
-        private IDefaultModel _view;
+        private IOrdersModel _view;
 
         
         /// <summary>
         /// Constructor de la clase
         /// </summary>
         /// <param name="viewDefault">Interfaz</param>
-        public DefaultPresenter(IDefaultModel viewDefault)
+        public DefaultPresenter(IOrdersModel viewDefault)
             : base(viewDefault) 
         {
             //Se genera el enlace entre el modelo y la vista
