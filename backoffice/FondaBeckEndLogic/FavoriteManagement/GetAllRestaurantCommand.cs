@@ -12,52 +12,41 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 
 namespace FondaBeckEndLogic.ProfileManagement
 {
-    class GetFavoriteRestaurantCommand : BaseCommand
+    class GetAllRestaurantCommand : BaseCommand 
     {
-        public GetFavoriteRestaurantCommand() : base() { }
+        public GetAllRestaurantCommand() : base() { }
 
-		protected override Parameter[] InitParameters ()
-		{
-            // Requiere 2 Parametros
-            Parameter[] paramters = new Parameter[1];
-
-            // [0] El Commensal
-            paramters[0] = new Parameter(typeof(Commensal), true);
+        protected override Parameter[] InitParameters()
+        {
+            // Requiere 0 Parametros
+            Parameter[] paramters = new Parameter[0];
 
             return paramters;
-		}
-
-       
+        }
 
 		protected override void Invoke()
 		{
-            Commensal favorites;
-            // Obtencion de parametros
-            Commensal commensal = (Commensal)GetParameter(0);
+            IList<Restaurant> listRestaurant;
 
             // Obtiene el dao que se requiere
-            ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
-           
+            IRestaurantDAO RestaurantDAO = FacDao.GetRestaurantDAO();
+          
             //VALIDACIONES DE CAMPOS
 
-           /* // Validacion basica de datos
-            if (commensal.Id == null || profile.Person == null || profile.Person.Name == null
-                || profile.Person.LastName == null || profile.Person
-                .Ssn == null)
-                // TODO: Crear Excepcion personalizada
-                throw new Exception("Datos de Perfil Invalidos");*/
+      
 
             // Ejecucion del Buscar.		
 			try
 			{
-                favorites = (Commensal)commensalDAO.FindById(commensal.Id);  //PREGUNTAR POR EL NEW RESTAURANT
-                foreach (var restaurant in favorites.FavoritesRestaurants)
+                listRestaurant = (IList<Restaurant>)RestaurantDAO.GetAll();
+                foreach (var restaurant in listRestaurant)
                 {
                     restaurant.RestaurantCategory = new RestaurantCategory
                     {
                         Name = restaurant.RestaurantCategory.Name,
                         Id = restaurant.RestaurantCategory.Id
                     };
+
                 }
 			}
 			catch (SaveEntityFondaDAOException e)  ////CAMBIAR EXEPCIONES
@@ -70,9 +59,9 @@ namespace FondaBeckEndLogic.ProfileManagement
 				// TODO: Crear Excepcion personalizada
 				throw new Exception("Error Desconocido",e);
 			}
-
+            //FALTA LOGGER
 			// Guardar el resultado.
-            Result = favorites;
+            Result = listRestaurant;
 		}
 	}
 }

@@ -18,7 +18,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         public FavoritesRestaurantsFondaWebApiController() : base() { }
 
       
-        /// <summary>
+       /*/// <summary>
         /// elimina un restaurante de la lista de favoritos de un
         /// commensal, recibe id int del restaurant a agregar,
         /// retorna lista de favoritos actualizada
@@ -44,8 +44,47 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 return InternalServerError(e);
             }
             return Ok(commensal);
+        }*/
+        /// <summary>
+        /// elimina un restaurante de la lista de favoritos de un
+        /// commensal, recibe id int del restaurant a agregar,
+        /// retorna lista de favoritos actualizada
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Route("deletefavorite/{idcommensal}/{idrestaurant}")]
+        [HttpGet]
+        //[FondaAuthToken]
+        public IHttpActionResult deletefavorite(int idcommensal, int idrestaurant)
+        {
+            Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+            commensal.Id = idcommensal;                       //PREGUNTAR ID
+
+            //Creación del restaurant con id
+            Restaurant restaurant = new Restaurant();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+            restaurant.Id = idrestaurant;                       //PREGUNTAR ID
+
+            // Obtención del commando
+            ICommand command = FacCommand.DeleteFavoriteRestaurantCommand();
+            
+                // Agregacion de parametros
+                command.SetParameter(0, commensal);
+                command.SetParameter(1, restaurant);
+
+                // Ejecucion del commando
+                command.Run();
+
+                // Obtención de respuesta
+
+                Commensal result = (Commensal)command.Result;
+           
+           /* catch (SaveEntityFondaDAOException e)
+            {
+                Console.WriteLine(e.ToString());
+                return InternalServerError(e);
+            }*/
+            return Ok(result);
         }
-        
         /// <summary>
         /// 
         /// </summary>
@@ -58,54 +97,59 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         ///[FondaAuthToken]
         public IHttpActionResult addfavorite(int idcommensal, int idrestaurant)
         {
+            //Creación del commensal con id
+            Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+            commensal.Id = idcommensal;                       //PREGUNTAR ID
 
-            Commensal commensal = (Commensal)GetCommensalDao().FindById(idcommensal);
-            ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO();
-            Restaurant restaurant = GetRestaurantDao().FindById(idrestaurant);
-            bool existe = false;
-            IList<Restaurant> favorites;
-            if (commensal == null)
-                return BadRequest();
-            if (restaurant == null)
-                return BadRequest();
-            commensal.RemoveFavoriteRestaurant(restaurant);
-            commensal.AddFavoriteRestaurant(restaurant);
-            try
-            {
-                commensalDao.Save(commensal);
-            }
-            catch (SaveEntityFondaDAOException e)
-            {
-                Console.WriteLine(e.ToString());
-                return InternalServerError(e);
-            }
+            //Creación del restaurant con id
+            Restaurant restaurant = new Restaurant();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+            restaurant.Id = idrestaurant;                       //PREGUNTAR ID
 
-            return Ok(commensal);
+            // Obtención del commando
+            ICommand command = FacCommand.CreateFavoriteRestaurantCommand();
+
+            // Agregacion de parametros
+            command.SetParameter(0, commensal);
+            command.SetParameter(1, restaurant);
+
+            // Ejecucion del commando
+            command.Run();
+
+            // Obtención de respuesta
+            Commensal result = (Commensal)command.Result;
+           
+       
+            return Ok(result);
         }
-
-
 
         [Route("ListaRestaurant")]
         [HttpGet]
         public IHttpActionResult getRestaurant()
-        {
-            IRestaurantDAO RestaurantDAO = FactoryDAO.GetRestaurantDAO();
-            IList<Restaurant> listRestaurant = RestaurantDAO.GetAll();
-
-            foreach (var restaurant in listRestaurant)
+        {        
+            // Obtención del commando
+            ICommand command = FacCommand.GetAllRestaurantCommand();       
+    
+            // Ejecucion del commando
+            try
             {
-                restaurant.RestaurantCategory = new RestaurantCategory
-                {
-                    Name = restaurant.RestaurantCategory.Name,
-                    Id = restaurant.RestaurantCategory.Id
-                };    
+                command.Run();
+            }
+            catch(Exception e)
+            {
 
             }
+          
 
-            return Ok(listRestaurant);
+            // Obtención de respuesta
+            IList<Restaurant> result = (IList<Restaurant>)command.Result;
+                                  
+            return Ok(result);
         }
 
-        private IRestaurantDAO GetRestaurantDao()
+
+
+        private IRestaurantDAO GetRestaurantDao()   //ESTO NO SE DEBERIA QUITAR
+
         {
             return FactoryDAO.GetRestaurantDAO();
         }
@@ -137,41 +181,27 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                        
             return Ok(result.FavoritesRestaurants);
         }
-      /*  [Route("findRestaurantFavorites/{id}")]
-        [HttpGet]
-        public IHttpActionResult findRestaurantFavorites(int id)
-        {
-            Commensal commensal = (Commensal)GetCommensalDao().FindById(id);
-
-            foreach (var restaurant in commensal.FavoritesRestaurants)
-            {
-                restaurant.RestaurantCategory = new RestaurantCategory
-                {
-                    Name = restaurant.RestaurantCategory.Name,
-                    Id = restaurant.RestaurantCategory.Id
-                };
-
-            }
-
-            return Ok(commensal.FavoritesRestaurants);
-
-        }*/
-      
-
+    
         [Route("findCommensalEmail/{email}")]
         [HttpGet]
         public IHttpActionResult findCommensalEmail(string email)
         {
+            UserAccount commensal = new UserAccount();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+            commensal.Email = email;
+            // Obtención del commando
+            ICommand command = FacCommand.GetCommensalEmailCommand();
+            // Agregacion de parametros
+            command.SetParameter(0, commensal);
 
-            UserAccount comm = GetCommensalDao().FindByEmail(email);
-            return Ok(comm);
+            // Ejecucion del commando
+            command.Run();
+
+            // Obtención de respuesta
+            UserAccount result = (UserAccount)command.Result;
+
+            return Ok(result);
 
         }
-
-
-
-
-
 
     }
 }

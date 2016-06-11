@@ -31,7 +31,11 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProfileManagement\GetFavoriteRestaurantCommand.cs" />
+    <Compile Include="FavoriteManagement\CreateFavoriteRestaurantCommand.cs" />
+    <Compile Include="FavoriteManagement\DeleteFavoriteRestaurantCommand.cs" />
+    <Compile Include="FavoriteManagement\GetAllRestaurantCommand.cs" />
+    <Compile Include="FavoriteManagement\GetCommensalEmailCommand.cs" />
+    <Compile Include="FavoriteManagement\GetFavoriteRestaurantCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BackendFactoryCommand.cs" />
     <Compile Include="ProfileManagement\CreateProfileCommand.cs" />
