@@ -53,6 +53,10 @@ namespace BackOfficePresenter.OrderAccount
                 //Instancia del comando
                 //commandCloseOrder = CommandFactory.GetCommandCloseOrder;
             }
+            catch(Exception ex)
+            {
+
+            }
                 
         }
     }
