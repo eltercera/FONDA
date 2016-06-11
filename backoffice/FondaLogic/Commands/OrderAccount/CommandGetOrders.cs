@@ -2,6 +2,7 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace FondaLogic.Commands.OrderAccount
         public CommandGetOrders(Object receiver) : base(receiver)
         {
         }
+
+
 
         /// <summary>
         /// Metodo que ejecuta el comando que consulta las ordenes segun un Restaurante
@@ -44,6 +47,11 @@ namespace FondaLogic.Commands.OrderAccount
                 //TODO: Escribir en el Log la excepcion
                 throw;
             }
+        }
+
+        protected override void Validate()
+        {
+            Log.Validate.CommandGetOrdersParameter(this);
         }
     }
 }
