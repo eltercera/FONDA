@@ -191,7 +191,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
      * @param
      * @return Boolean.
      */
-    private boolean isFavorite(){
+    public boolean isFavorite(){
     try{
         FavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                 getFavoriteRestaurantService();

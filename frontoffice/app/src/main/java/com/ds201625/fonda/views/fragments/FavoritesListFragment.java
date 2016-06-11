@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
@@ -108,8 +109,10 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
                                         getFavoriteRestaurantService();
                                 try{
 
-                                favservice.deleteFavoriteRestaurant(logedComensal.getId(),r.getId());
-
+                                    favservice.deleteFavoriteRestaurant(logedComensal.getId(),r.getId());
+                                    Toast.makeText(FavoritesListFragment.super.getContext(),
+                                            "Se han eliminado "+favoritesList.countSelected()+" Restaurantes de Favoritos",
+                                            Toast.LENGTH_LONG).show();
                                 } catch (RestClientException e) {
                                     e.printStackTrace();
                                 }

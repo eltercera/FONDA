@@ -205,6 +205,8 @@ public class AllRestaurantActivity extends BaseNavigationActivity
                 getFavoriteRestaurantService();
 
                 favservice.AddFavoriteRestaurant(logedComensal.getId(),restaurant.getId());
+                Toast.makeText(getApplicationContext(), R.string.favorite_add_success_meessage,
+                        Toast.LENGTH_LONG).show();
             } catch (RestClientException e) {
                 e.printStackTrace();
             }
