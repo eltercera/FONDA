@@ -15,10 +15,10 @@ namespace com.ds201625.fonda.Tests.DataAccess
     [TestFixture()]
     public class BOCommandOrdersTest
     {
-        private int restaurantId;
-        private Command commandGetOrders;
-        private IList<Account> listAccount;
-        private IList<Account> listClosedOrders;
+        private int _restaurantId, _orderId;
+        private Command _command;
+        private IList<Account> _listAccount;
+        private IList<Account> _listClosedOrders;
         private FactoryDAO _facDAO;
         private IOrderAccountDao _orderAccountDAO;
         private Restaurant _restaurant;
@@ -32,11 +32,11 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
             _orderAccountDAO = _facDAO.GetOrderAccountDAO();
             _restaurant = new Restaurant();
-            listClosedOrders = new List<Account>();
+            _listClosedOrders = new List<Account>();
             _restaurant.Id = 1;
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             _restaurant = _restaurantDAO.FindById(_restaurant.Id);
-            restaurantId = 1;
+            _restaurantId = _orderId = 1;
 
         }
 
@@ -44,21 +44,34 @@ namespace com.ds201625.fonda.Tests.DataAccess
         public void ClosedOrdersTest()
         {
 
-            listClosedOrders = _orderAccountDAO.ClosedOrdersByRestaurant(_restaurant);
-            Assert.IsNotNull(listClosedOrders);
+            _listClosedOrders = _orderAccountDAO.ClosedOrdersByRestaurant(_restaurant);
+            Assert.IsNotNull(_listClosedOrders);
         }
 
         [Test]
         public void CommandGetOrdersTest()
         {
 
-            commandGetOrders = CommandFactory.GetCommandGetOrders(restaurantId);
-      
-            commandGetOrders.Execute();
+            _command = CommandFactory.GetCommandGetOrders(_restaurantId);
 
-            listAccount = (IList<Account>)commandGetOrders.Receiver;
+            _command.Execute();
 
-            Assert.IsNotNull(listAccount);
+            _listAccount = (IList<Account>)_command.Receiver;
+
+            Assert.IsNotNull(_listAccount);
+
+        }
+
+        [Test]
+        public void CommandGetOrderTest()
+        {
+            _command = CommandFactory.GetCommandGetOrder(_orderId);
+
+            _command.Execute();
+
+            _account = (Account)_command.Receiver;
+
+            Assert.IsNotNull(_account);
 
         }
 
