@@ -7,8 +7,6 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 	public interface INounBaseEntityDAO <T> : IBaseEntityDAO<T>
         where T : NounBaseEntity
 	{
-	
-		IList<T> FindAllLikeName (string query = null, int max = -1, int page = 1);
 
 	}
 }

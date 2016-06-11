@@ -78,11 +78,16 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		}
 
 		protected IList<T> FindAll(
-			ICriterion restrictions = null, int max = -1, int offset = -1, Order order = null)
+			ICriterion restrictions = null, int max = -1, int offset = -1, Order order = null,
+			string baseAlias = null)
         {
             try 
             { 
-			    ICriteria criteria = Session.CreateCriteria (typeof(T));
+				ICriteria criteria;
+				if(baseAlias == null)
+					criteria = Session.CreateCriteria (typeof(T));
+				else
+					criteria = Session.CreateCriteria (typeof(T),baseAlias);
 
 			    if (restrictions != null)
 				    criteria.Add (restrictions);

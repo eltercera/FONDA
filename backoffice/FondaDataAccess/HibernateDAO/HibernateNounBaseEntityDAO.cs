@@ -11,17 +11,26 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         where T : NounBaseEntity
 	{
 
-		public IList<T> FindAllLikeName (string query = null, int max = -1, int page = 1)
+		protected IList<T> FindAllLikeName (
+			string query = null, int max = -1, int page = 1,ICriterion restric = null,
+			string baseAlias = null)
 		{
-			return FindAllSortedByName (
-				true, Restrictions.InsensitiveLike("Name","%" + query + "%"),max, (page - 1) * max);
+			ICriterion newRestric;
+			if (restric != null)
+				newRestric = Restrictions.And (
+					restric, Restrictions.InsensitiveLike ("Name", "%" + query + "%"));
+			else
+				newRestric = Restrictions.InsensitiveLike ("Name", "%" + query + "%");
+
+			return FindAllSortedByName (true, newRestric,max, (page - 1) * max,baseAlias);
 		}
 
 		protected IList<T> FindAllSortedByName(
-			bool asc, ICriterion restrictions = null, int max = -1, int offset = -1)
+			bool asc, ICriterion restrictions = null, int max = -1, int offset = -1,
+			string baseAlias = null)
 		{
 			Order order = asc ? Order.Asc ("Name") : Order.Desc("Name");
-			return FindAll(restrictions, max, offset, order);
+			return FindAll(restrictions, max, offset, order,baseAlias);
 		}
 	}
 }

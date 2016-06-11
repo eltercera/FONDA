@@ -38,5 +38,18 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
             return zone;
         }
+
+		#region 3era entrga
+
+		public IList<Zone> FindAllWithRestaurants (string query = null, int max = -1, int page = 1)
+		{
+			DetachedCriteria critRest = DetachedCriteria.For<Restaurant> ("rest")
+				.Add (Property.ForName ("rest.Zone.Id").EqProperty ("thezone.Id"))
+				.SetProjection (Projections.Count ("rest.Zone.Id"));
+
+			return FindAllLikeName(query,max,page,Subqueries.Lt (0, critRest),"thezone");
+		}
+
+		#endregion
     }
 }

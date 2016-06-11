@@ -22,9 +22,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 			IList<Zone> zones;
 
 			if (filters == null)
-				zones = zoneDao.FindAllLikeName ();
+				zones = zoneDao.FindAllWithRestaurants ();
 			else
-				zones = zoneDao.FindAllLikeName (filters.Q, filters.Max, filters.Page);
+				zones = zoneDao.FindAllWithRestaurants (filters.Q, filters.Max, filters.Page);
 
 			return Ok (zones);
 

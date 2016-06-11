@@ -22,9 +22,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 			IList<RestaurantCategory> categories;
 
 			if (filters == null)
-				categories = resCatDao.FindAllLikeName ();
+				categories = resCatDao.FindAllWithRestaurants ();
 			else
-				categories = resCatDao.FindAllLikeName (filters.Q, filters.Max, filters.Page);
+				categories = resCatDao.FindAllWithRestaurants (filters.Q, filters.Max, filters.Page);
 
 			return Ok (categories);
 			

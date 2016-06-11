@@ -7,5 +7,11 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
     {
         IList<Zone> allZone();
         Zone GetZone(string name);
+
+		#region 3era entrega
+
+		IList<Zone> FindAllWithRestaurants (string query = null, int max = -1, int page = 1);
+
+		#endregion
     }
 }
