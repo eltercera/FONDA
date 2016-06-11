@@ -47,5 +47,27 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             return FindAll();
         }
+
+        /// <summary>
+        /// Obtiene las ordenes cerradas de un Restaurante
+        /// </summary>
+        /// <param name="restaurant">Un objeto de tipo Restaurant</param>
+        /// <returns>Una lista de Close Account</returns>
+
+        public IList<Account> ClosedOrdersByRestaurant(Restaurant restaurant)
+        {
+            ICriterion criterion = Expression.And(Expression.Eq("Restaurant", restaurant), Expression.Eq("Status", ClosedAccountStatus.Instance));
+            try
+            {
+                IList<Account> list = new List<Account>();
+                list = (FindAll(criterion));
+                return list;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("No se encontraron ordenes cerradas", e);
+            }
+
+        }
     }
 }

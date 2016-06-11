@@ -9,5 +9,6 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
         Account FindByCommensal(Commensal commensal);
         IList<Account> FindByRestaurant(Restaurant restaurant);
         IList<Account> GetAll();
+        IList<Account> ClosedOrdersByRestaurant(Restaurant restaurant);
     }
 }
