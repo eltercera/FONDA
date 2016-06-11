@@ -1,7 +1,6 @@
 package com.ds201625.fonda.views.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,13 +18,14 @@ import android.widget.ListView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.SessionData;
-import com.ds201625.fonda.views.activities.LoginActivity;
 import com.ds201625.fonda.views.adapters.FavoriteRestViewItemList;
+import com.ds201625.fonda.views.adapters.RestaurantViewItemList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,16 +33,16 @@ import java.util.List;
 /**
  * Created by Hp on 06/06/2016.
  */
-public class FavoritesListFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
+public class RestaurantListFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
    
     //Interface de comunicacion contra la activity
-    favoritesListFragmentListener mCallBack;
+    restaurantListFragmentListener mCallBack;
 
     /**
      * Elementos de la vista
      */
     private ListView restaurants;
-    private FavoriteRestViewItemList favoritesList;
+    private RestaurantViewItemList restList;
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean multi;
     private Commensal logedComensal;
@@ -54,26 +54,21 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         multi = getArguments().getBoolean("multiSelect");
-        favoritesList = new FavoriteRestViewItemList(getContext());
+        restList = new RestaurantViewItemList(getContext());
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.fragment_favorites_list,container,false);
-        restaurants = (ListView)layout.findViewById(R.id.lvFavoriteList);
-        swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
-        swipeRefreshLayout.setOnRefreshListener(this);
+        View layout = inflater.inflate(R.layout.fragment_restaurants_list,container,false);
+        restaurants = (ListView)layout.findViewById(R.id.lvRestaurantList);
+        //swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
+        //swipeRefreshLayout.setOnRefreshListener(this);
 
-        try {
         restaurantList = getListSW();
-        favoritesList.addAll(restaurantList);
-        restaurants.setAdapter(favoritesList);
-    }
-    catch(NullPointerException n){
-        n.getMessage();
-    }
 
+        restList.addAll(restaurantList);
+        restaurants.setAdapter(restList);
 
         if(multi) {
             restaurants.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
@@ -82,14 +77,14 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
                 public void onItemCheckedStateChanged(ActionMode mode, int position, long id,
                                                       boolean checked) {
                     Log.d("Message:", position + " Is StateChanged");
-                    favoritesList.setSelectedItem(position, checked);
-                    mode.setTitle(favoritesList.countSelected() + " Seleccionado(s)");
+                    restList.setSelectedItem(position, checked);
+                    mode.setTitle(restList.countSelected() + " Seleccionado(s)");
                 }
 
                 @Override
                 public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                    mCallBack.OnFavoriteSelectionMode();
-                    mode.getMenuInflater().inflate(R.menu.favorites_multiselect, menu);
+                    mCallBack.OnRestaurantSelectionMode();
+                    mode.getMenuInflater().inflate(R.menu.favorites_add_multiselect, menu);
                     return true;
                 }
 
@@ -101,24 +96,23 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
                 @Override
                 public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                     switch (item.getItemId()) {
-                        case R.id.deleteFavorites:
-                            String sal = "Fueron eliminados los Favoritos.";
-                            for (Restaurant r : favoritesList.getAllSeletedItems()) {
+                        case R.id.action_set_favorite:
+                            String sal = "Fueron seleccionados los Favoritos.";
+                            for (Restaurant r : restList.getAllSeletedItems()) {
                                 FavoriteRestaurantService favservice = FondaServiceFactory.getInstance().
                                         getFavoriteRestaurantService();
                                 try{
 
-                                favservice.deleteFavoriteRestaurant(logedComensal.getId(),r.getId());
+                                favservice.AddFavoriteRestaurant(logedComensal.getId(),r.getId());
 
                                 } catch (RestClientException e) {
                                     e.printStackTrace();
                                 }
                             }
-                            Log.v("Favoritos eliminados: ", sal);
-                            favoritesList.cleanSelected();
-                            mCallBack.OnFavoriteSelectionModeExit();
+                            Log.v("Favoritos seleccionados: ", sal);
+                            restList.cleanSelected();
+                            mCallBack.OnRestaurantSelectionModeExit();
                             mode.finish();
-                            updateList();
                             break;
 
                         default:
@@ -129,8 +123,8 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
 
                 @Override
                 public void onDestroyActionMode(ActionMode mode) {
-                    mCallBack.OnFavoriteSelectionModeExit();
-                    favoritesList.cleanSelected();
+                    mCallBack.OnRestaurantSelectionModeExit();
+                    restList.cleanSelected();
                 }
             });
 
@@ -139,8 +133,8 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
         restaurants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Restaurant item = favoritesList.getItem(position);
-                mCallBack.OnFavoriteSelect(item);
+                Restaurant item = restList.getItem(position);
+                mCallBack.OnRestaurantSelect(item);
             }
         });
 
@@ -150,14 +144,14 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
 
     @Override
     public void onRefresh() {
-        updateList();
+
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            mCallBack = (favoritesListFragmentListener) context;
+            mCallBack = (restaurantListFragmentListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()
                     + " must implement OnHeadlineSelectedListener");
@@ -170,38 +164,31 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
     }
 
 
-    public void updateList() {
-        swipeRefreshLayout.setRefreshing(true);
-        favoritesList.update(logedComensal.getId());
-        restaurants.refreshDrawableState();
-        swipeRefreshLayout.setRefreshing(false);
-    }
-
     /**
      * Interface de la comunicacion contra una Activity
      */
-    public interface favoritesListFragmentListener {
+    public interface restaurantListFragmentListener {
         /**
-         * Cuando es seleccionado un restaurante favorito
+         * Cuando es seleccionado un restaurante
          * @param r
          */
-        void OnFavoriteSelect(Restaurant r);
+        void OnRestaurantSelect(Restaurant r);
 
         /**
          * Cuando Son seleccionados varios.
          * @param r
          */
-        void OnFavoriteSelected(ArrayList<Restaurant> r);
+        void OnRestaurantSelected(ArrayList<Restaurant> r);
 
         /**
          * Cuando el modo se seleccion inicia
          */
-        void OnFavoriteSelectionMode();
+        void OnRestaurantSelectionMode();
 
         /**
          * Cuando el modo de seleccion finaliza
          */
-        void OnFavoriteSelectionModeExit();
+        void OnRestaurantSelectionModeExit();
     }
 
 
@@ -218,9 +205,9 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
                     emailToWebService=log.getEmail()+"/";
                     RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().getLogedCommensalService();
                     logedComensal =getComensal.getLogedCommensal(emailToWebService);
-                    FavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                            getFavoriteRestaurantService();
-                    listRestWS = allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
+                    AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+                            getAllRestaurantsService();
+                    listRestWS = allRestaurant.getAllRestaurant();
                     return listRestWS;
                 } catch (RestClientException e) {
                     e.printStackTrace();

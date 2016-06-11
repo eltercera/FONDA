@@ -108,7 +108,7 @@ public class FondaServiceFactory {
 
 
     /**
-     * Obtiene los servicios de Comensal
+     * Obtiene los servicios de restaurantes favoritos
      * @param
      * @return
      */

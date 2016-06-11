@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Web.Http;
 using System.Linq;
 using System.Collections;
@@ -18,6 +18,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
         [Route("ListaRestaurant")]
         [HttpGet]
+
         public IHttpActionResult getRestaurant()
         {
             IRestaurantDAO RestaurantDAO = FactoryDAO.GetRestaurantDAO();
@@ -29,7 +30,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 {
                     Name = restaurant.RestaurantCategory.Name,
                     Id = restaurant.RestaurantCategory.Id
-                };    
+                };
 
             }
 
@@ -78,9 +79,5 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         }
 
 
-
-
-
-
     }
-}
+}*/

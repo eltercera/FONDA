@@ -25,7 +25,7 @@ public class RetrofitAllRestaurantService implements AllRestaurantService {
     }
 
     @Override
-    public List<Restaurant> getAllRestaurant() {
+    public List<Restaurant> getAllRestaurant() throws RestClientException {
 
         Call<List<Restaurant>> call = currentAllRestaurantClient.getAllRestaurant();
         List<Restaurant> test = null;

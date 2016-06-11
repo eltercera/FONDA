@@ -1,5 +1,6 @@
 package com.ds201625.fonda.data_access.services;
 
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Restaurant;
 
 import java.util.List;
@@ -9,6 +10,6 @@ import java.util.List;
  */
 public interface AllRestaurantService {
 
-    List<Restaurant> getAllRestaurant();
+    List<Restaurant> getAllRestaurant() throws RestClientException;
 
 }
