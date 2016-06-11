@@ -49,12 +49,14 @@ namespace BackOfficePresenter.OrderAccount
                     res = (Restaurant)EntityFactory.GetRestaurant();
                     res.Id = result;
                 }
-            }
-            catch
-            { }
+
                 //Instancia del comando
                 //commandCloseOrder = CommandFactory.GetCommandCloseOrder;
-            
+            }
+            catch(Exception ex)
+            {
+
+            }
                 
         }
     }
