@@ -213,8 +213,38 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             ICriterion criterion = Expression.Eq("RestaurantCategory", category);
             return (FindAll(criterion));
         }
+
+		#region 3era entrega
+
+		public IList<Restaurant> FindByFilters (
+			string query, int idZone, int  idCategory, int max , int page)
+		{
+			Conjunction generalCriterial = Restrictions.Conjunction();
+
+			if (query != null && query != String.Empty)
+			{
+				query = "%" + query + "%";
+				generalCriterial.Add(Restrictions.Disjunction ()
+					.Add (Restrictions.InsensitiveLike ("Name", query))
+					.Add (Restrictions.InsensitiveLike ("Address", query))
+				);
+			}
+
+			if (idZone > 0)
+			{
+				generalCriterial.Add (Restrictions.Eq ("Zone.Id", idZone));
+			}
+
+			if (idCategory > 0)
+			{
+				generalCriterial.Add (Restrictions.Eq ("RestaurantCategory.Id", idCategory));
+			}
+
+			return FindAllSortedByName (true,generalCriterial, max, (page - 1) * max);
+		}
+
+		#endregion
+
     }
-
-
 }
 

@@ -6,7 +6,7 @@ using NHibernate.Criterion;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-    public class HibernateZoneDAO : HibernateBaseEntityDAO<Zone>, IZoneDAO
+	public class HibernateZoneDAO : HibernateNounBaseEntityDAO<Zone>, IZoneDAO
     {
         /// <summary>
         /// Metodo que retorna una lista

@@ -113,6 +113,7 @@ namespace com.ds201625.fonda.Domain
             set { _category = value; }
         }
 
+		[DataMember]
         public virtual Zone Zone
         {
             /// <summary>

@@ -107,19 +107,25 @@
     <Compile Include="Controllers\TokenFondaWebApiController.cs" />
     <Compile Include="Controllers\ProfileFondaWebApiController.cs" />
     <Compile Include="Controllers\CommensalWebApiController.cs" />
+    <Compile Include="Controllers\RestaurantsFondaWebApiController.cs" />
+    <Compile Include="Controllers\UrlFilters\UrlFilters.cs" />
+    <Compile Include="Controllers\UrlFilters\RestaurantsUrlFilters.cs" />
+    <Compile Include="Controllers\RestaurantCategoriesWebApiController.cs" />
+    <Compile Include="Controllers\ZonesFondaWebApiController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\backend.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <None Include="Properties\PublishProfiles\Backend.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\UrlFilters\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
