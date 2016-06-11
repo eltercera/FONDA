@@ -8,6 +8,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using System.Collections.Generic;
+using com.ds201625.fonda.Logic;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -114,8 +115,29 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         }
 
 
-
         [Route("findRestaurantFavorites/{id}")]
+        [HttpGet]
+        public IHttpActionResult findRestaurantFavorites(int id)
+        {
+            //Creación del commensal con id
+            Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+            commensal.Id = id;                       //PREGUNTAR ID
+
+            // Obtención del commando
+            ICommand command = FacCommand.GetFavoriteRestaurantCommand();
+
+            // Agregacion de parametros
+            command.SetParameter(0, commensal);
+
+            // Ejecucion del commando
+            command.Run();
+
+            // Obtención de respuesta
+            Commensal result = (Commensal)command.Result;
+                       
+            return Ok(result.FavoritesRestaurants);
+        }
+      /*  [Route("findRestaurantFavorites/{id}")]
         [HttpGet]
         public IHttpActionResult findRestaurantFavorites(int id)
         {
@@ -133,7 +155,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
             return Ok(commensal.FavoritesRestaurants);
 
-        }
+        }*/
+      
 
         [Route("findCommensalEmail/{email}")]
         [HttpGet]

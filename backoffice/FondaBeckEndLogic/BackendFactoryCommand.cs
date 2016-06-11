@@ -1,5 +1,6 @@
 ﻿using System;
 using com.ds201625.fonda.Logic;
+using FondaBeckEndLogic.ProfileManagement;
 
 namespace com.ds201625.fonda.BackEndLogic
 {
@@ -38,6 +39,14 @@ namespace com.ds201625.fonda.BackEndLogic
 		{
 			return new CreateProfileCommand ();
 		}
+        /// <summary>
+        /// Obtiene un GetFavoriteRestaurantCommand.
+        /// </summary>
+        /// <returns>Comando CreateProfileCommand.</returns>
+        public ICommand GetFavoriteRestaurantCommand()
+        {
+            return new GetFavoriteRestaurantCommand();
+        }
 	}
 }
 
