@@ -65,10 +65,15 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
         swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
         swipeRefreshLayout.setOnRefreshListener(this);
 
+        try {
         restaurantList = getListSW();
-
         favoritesList.addAll(restaurantList);
         restaurants.setAdapter(favoritesList);
+    }
+    catch(NullPointerException n){
+        n.getMessage();
+    }
+
 
         if(multi) {
             restaurants.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);

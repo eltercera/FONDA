@@ -77,7 +77,7 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> {
     public View getSelectedView(Restaurant item, View convertView) {
 
         convertView.setBackgroundColor(getContext().getResources()
-                .getColor(R.color.colorPrimaryDark));
+                .getColor(R.color.creme));
         return convertView;
     }
 
