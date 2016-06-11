@@ -39,14 +39,46 @@ namespace com.ds201625.fonda.BackEndLogic
 		{
 			return new CreateProfileCommand ();
 		}
+
+   
         /// <summary>
         /// Obtiene un GetFavoriteRestaurantCommand.
         /// </summary>
-        /// <returns>Comando CreateProfileCommand.</returns>
+        /// <returns>Comando GetFavoriteRestaurantCommand().</returns>
         public ICommand GetFavoriteRestaurantCommand()
         {
             return new GetFavoriteRestaurantCommand();
         }
+
+        /// <summary>
+        /// Obtiene un GetCommensalEmailCommand.
+        /// </summary>
+        /// <returns>Comando GetCommensalEmailCommand.</returns>
+        public ICommand GetCommensalEmailCommand()
+        {
+            return new GetCommensalEmailCommand();
+        }
+
+        /// <summary>
+        /// Obtiene un GetCommensalEmailCommand.
+        /// </summary>
+        /// <returns>Comando GetCommensalEmailCommand.</returns>
+        public ICommand GetAllRestaurantCommand()
+        {
+            return new GetAllRestaurantCommand();
+        }
+        
+        public ICommand CreateFavoriteRestaurantCommand()
+        {
+            return new CreateFavoriteRestaurantCommand();
+        }
+
+        public ICommand DeleteFavoriteRestaurantCommand()
+        {
+            return new DeleteFavoriteRestaurantCommand();
+        }
+     
 	}
+	
 }
 
