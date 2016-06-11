@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -17,6 +19,8 @@ import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.views.fragments.BaseFragment;
+import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
 import com.ds201625.fonda.views.fragments.FavoritesListFragment;
 import com.google.gson.Gson;
 
@@ -40,6 +44,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      */
     private FavoritesListFragment fv;
 
+    private DetailRestaurantFragment detailRestaurantFrag;
     // UI references.
     private ListView list;
 
@@ -48,7 +53,13 @@ public class FavoritesActivity extends BaseNavigationActivity implements
     private Commensal logedComensal;
     private String TAG ="FavoritesActivity";
 
+    /**
+     * Iten del Menu para favorito
+     */
+    private MenuItem favoriteBotton;
+    private MenuItem reserveBotton;
 
+    private boolean onForm;
 
 
     @Override
@@ -83,6 +94,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
                     // Creacion de fragmen y pase argumento
                     fv = new FavoritesListFragment();
+                    detailRestaurantFrag = new DetailRestaurantFragment();
                     Bundle args = new Bundle();
                     args.putBoolean("multiSelect", true);
                     fv.setArguments(args);
@@ -106,28 +118,80 @@ public class FavoritesActivity extends BaseNavigationActivity implements
         startActivity(new Intent(this,LoginActivity.class));
     }
 
+    /**
+     * Realiza el intercambio de vistas de fragments
+     * @param fragment el fragment que se quiere mostrar
+     */
+    private void showFragment(BaseFragment fragment) {
+        fm.beginTransaction()
+                .replace(R.id.fragment_container_fav,fragment)
+                .commit();
+        fm.executePendingTransactions();
 
+        //Muestra y oculta compnentes.
+        if(fragment.equals(fv)){
+            if(favoriteBotton != null)
+                favoriteBotton.setVisible(false);
+            if(reserveBotton != null)
+                reserveBotton.setVisible(false);
+            onForm = false;
+        } else {
+            if(favoriteBotton != null)
+                favoriteBotton.setVisible(true);
+            if(reserveBotton != null)
+                reserveBotton.setVisible(true);
+            onForm = true;
+
+        }
+    }
 
     /**
-     * Devuelve el restaurante Seleccionado por el usuario.
-     * @param // position
-     * @return Restaurant.
+     * Sobre escritura para la iniciacion del menu en el toolbars
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.detail_restaurant, menu);
 
-    private Restaurant getSelectedRestaurant(int position){
-        int contador =0;
-        for (Restaurant restaurant: this.restaurantList){
-            if (contador == position){
-                Log.v(TAG, restaurant.getName());
-                return restaurant;
-            }
-            contador++;
+        favoriteBotton = menu.findItem(R.id.action_set_favorite);
+        reserveBotton = menu.findItem(R.id.action_make_order);
+        return true;
+    }
+
+    /**
+     * Opciones y acciones del menu en el toolbars
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_set_favorite:
+                isFavorite();
+                break;
+            case R.id.action_make_order:
+                goReserve();
+                break;
         }
-        return null;
-    } */
+        return true;
+    }
+
+    private void goReserve() {
+        Intent r = new Intent(this,ReserveActivity.class);
+        startActivity(r);
+    }
+
+    private void isFavorite() {
+        //Valida que es un favorito o lo quita
+    }
+
 
     @Override
     public void OnFavoriteSelect(Restaurant r) {
-
+        showFragment(detailRestaurantFrag);
+        detailRestaurantFrag.setRestaurant(r);
     }
 
     @Override
@@ -145,5 +209,13 @@ public class FavoritesActivity extends BaseNavigationActivity implements
         tb.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (!onForm) {
+            super.onBackPressed();
+        } else {
+            showFragment(fv);
+        }
+    }
 
 }

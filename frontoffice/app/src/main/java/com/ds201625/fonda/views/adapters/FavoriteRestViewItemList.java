@@ -27,7 +27,7 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> {
 
 
     public FavoriteRestViewItemList(Context context) {
-        super(context, R.layout.list_restaurant,R.id.txt);
+        super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
 
     }
 

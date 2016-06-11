@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -17,6 +19,8 @@ import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.views.fragments.BaseFragment;
+import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
 import com.ds201625.fonda.views.fragments.FavoritesListFragment;
 import com.ds201625.fonda.views.fragments.RestaurantListFragment;
 import com.google.gson.Gson;
@@ -36,6 +40,12 @@ public class AllRestaurantActivity extends BaseNavigationActivity
     private String TAG ="AllRestaurantActivity";
 
     /**
+     * Iten del Menu para favorito
+     */
+    private MenuItem favoriteBotton;
+    private MenuItem reserveBotton;
+
+    /**
      * Administrador de Fragments
      */
     private FragmentManager fm;
@@ -47,9 +57,11 @@ public class AllRestaurantActivity extends BaseNavigationActivity
     /**
      * Fragmento AllRestaurant
      */
-    private RestaurantListFragment AllRestaurantFrag;
+    private RestaurantListFragment allRestaurantFrag;
 
+    private DetailRestaurantFragment detailRestaurantFrag;
 
+    private boolean onForm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,14 +94,16 @@ public class AllRestaurantActivity extends BaseNavigationActivity
             fm = getSupportFragmentManager();
 
             // Creacion de fragmen y pase argumento
-            AllRestaurantFrag = new RestaurantListFragment();
+            allRestaurantFrag = new RestaurantListFragment();
+            detailRestaurantFrag = new DetailRestaurantFragment();
+
             Bundle args = new Bundle();
             args.putBoolean("multiSelect", true);
-            AllRestaurantFrag.setArguments(args);
+            allRestaurantFrag.setArguments(args);
 
             //Lanzamiento de profileListFrag como el principal
             fm.beginTransaction()
-                    .replace(R.id.fragment_container_rest, AllRestaurantFrag)
+                    .replace(R.id.fragment_container_rest, allRestaurantFrag)
                     .commit();
 
 
@@ -105,52 +119,81 @@ public class AllRestaurantActivity extends BaseNavigationActivity
         startActivity(new Intent(this,LoginActivity.class));
     }
 
-    /**
-     * Inicializa el ListView y le asigna valores.
-     * @param
-     * @return
-
-
-    private void setupListView(){
-        adapter = new
-                RestaurantList(AllRestaurantActivity.this, names,location ,shortDescription,imageId,restaurantList);
-        list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Intent detailActivity = new Intent(AllRestaurantActivity.this, DetailRestaurantActivity.class);
-                Restaurant test = getSelectedRestaurant(position);
-                detailActivity.putExtra("restaurant", new Gson().toJson(test));
-                detailActivity.putExtra("commensal", new Gson().toJson(logedComensal));
-                startActivity(detailActivity);
-            }
-        });
-    }
-     */
 
     /**
-     * Devuelve el restaurante Seleccionado por el usuario.
-     * @param //position
-     * @return Restaurant.
+     * Realiza el intercambio de vistas de fragments
+     * @param fragment el fragment que se quiere mostrar
      */
-  /* private Restaurant getSelectedRestaurant(int position){
-        int contador =0;
-        for (Restaurant restaurant: this.restaurantList){
-            if (contador == position){
-                Log.v(TAG, restaurant.getName());
-                return restaurant;
-            }
-            contador++;
+    private void showFragment(BaseFragment fragment) {
+        fm.beginTransaction()
+                .replace(R.id.fragment_container_rest,fragment)
+                .commit();
+        fm.executePendingTransactions();
+
+        //Muestra y oculta compnentes.
+        if(fragment.equals(allRestaurantFrag)){
+            if(favoriteBotton != null)
+                favoriteBotton.setVisible(false);
+            if(reserveBotton != null)
+                reserveBotton.setVisible(false);
+            onForm = false;
+        } else {
+            if(favoriteBotton != null)
+                favoriteBotton.setVisible(true);
+            if(reserveBotton != null)
+                reserveBotton.setVisible(true);
+            onForm = true;
+
         }
-        return null;
-    }*/
+    }
 
+
+    /**
+     * Sobre escritura para la iniciacion del menu en el toolbars
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.detail_restaurant, menu);
+
+        favoriteBotton = menu.findItem(R.id.action_set_favorite);
+        reserveBotton = menu.findItem(R.id.action_make_order);
+        return true;
+    }
+
+    /**
+     * Opciones y acciones del menu en el toolbars
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_set_favorite:
+                save();
+                break;
+            case R.id.action_make_order:
+                goReserve();
+                break;
+        }
+        return true;
+    }
+
+    private void goReserve() {
+        Intent r = new Intent(this,ReserveActivity.class);
+        startActivity(r);
+    }
+
+    private void save() {
+        //Guardar todos los favoritos
+    }
 
     @Override
     public void OnRestaurantSelect(Restaurant r) {
-
+        showFragment(detailRestaurantFrag);
+        detailRestaurantFrag.setRestaurant(r);
     }
 
     @Override
@@ -166,5 +209,14 @@ public class AllRestaurantActivity extends BaseNavigationActivity
     @Override
     public void OnRestaurantSelectionModeExit() {
         tb.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!onForm) {
+            super.onBackPressed();
+        } else {
+            showFragment(allRestaurantFrag);
+        }
     }
 }

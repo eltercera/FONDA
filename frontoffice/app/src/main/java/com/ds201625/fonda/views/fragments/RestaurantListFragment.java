@@ -1,5 +1,6 @@
 package com.ds201625.fonda.views.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -61,15 +62,15 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_restaurants_list,container,false);
         restaurants = (ListView)layout.findViewById(R.id.lvRestaurantList);
-        swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
-        swipeRefreshLayout.setOnRefreshListener(this);
+        //swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
+        //swipeRefreshLayout.setOnRefreshListener(this);
 
         restaurantList = getListSW();
 
         restList.addAll(restaurantList);
         restaurants.setAdapter(restList);
 
-    /*    if(multi) {
+        if(multi) {
             restaurants.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
             restaurants.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
                 @Override
@@ -82,8 +83,8 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
 
                 @Override
                 public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                    mCallBack.OnFavoriteSelectionMode();
-                    mode.getMenuInflater().inflate(R.menu.favorites_multiselect, menu);
+                    mCallBack.OnRestaurantSelectionMode();
+                    mode.getMenuInflater().inflate(R.menu.favorites_add_multiselect, menu);
                     return true;
                 }
 
@@ -95,24 +96,23 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
                 @Override
                 public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                     switch (item.getItemId()) {
-                        case R.id.deleteFavorites:
-                            String sal = "Fueron eliminados los Favoritos.";
+                        case R.id.action_set_favorite:
+                            String sal = "Fueron seleccionados los Favoritos.";
                             for (Restaurant r : restList.getAllSeletedItems()) {
                                 FavoriteRestaurantService favservice = FondaServiceFactory.getInstance().
                                         getFavoriteRestaurantService();
                                 try{
 
-                                favservice.deleteFavoriteRestaurant(logedComensal.getId(),r.getId());
+                                favservice.AddFavoriteRestaurant(logedComensal.getId(),r.getId());
 
                                 } catch (RestClientException e) {
                                     e.printStackTrace();
                                 }
                             }
-                            Log.v("Favoritos eliminados: ", sal);
+                            Log.v("Favoritos seleccionados: ", sal);
                             restList.cleanSelected();
-                            mCallBack.OnFavoriteSelectionModeExit();
+                            mCallBack.OnRestaurantSelectionModeExit();
                             mode.finish();
-                            updateList();
                             break;
 
                         default:
@@ -123,12 +123,12 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
 
                 @Override
                 public void onDestroyActionMode(ActionMode mode) {
-                    mCallBack.OnFavoriteSelectionModeExit();
+                    mCallBack.OnRestaurantSelectionModeExit();
                     restList.cleanSelected();
                 }
             });
 
-        }*/
+        }
 
         restaurants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -147,13 +147,22 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
 
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mCallBack = (restaurantListFragmentListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
 
-  /*  public void updateList() {
-        swipeRefreshLayout.setRefreshing(true);
-        favoritesList.update(logedComensal.getId());
-        restaurants.refreshDrawableState();
-        swipeRefreshLayout.setRefreshing(false);
-    }*/
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
 
     /**
      * Interface de la comunicacion contra una Activity

@@ -7,12 +7,12 @@
             android:icon="@drawable/ic_grade_creme_24dp"
             android:title="Favorite"
             app:showAsAction="ifRoom"
-            android:visible="true"/>
+            android:visible="false"/>
         <item
             android:id="@+id/action_make_order"
             android:icon="@drawable/nav_reserve"
             android:title="Order"
             app:showAsAction="ifRoom"
-            android:visible="true"/>
+            android:visible="false"/>
     </group>
 </menu>

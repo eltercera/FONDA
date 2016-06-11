@@ -1,5 +1,6 @@
 package com.ds201625.fonda.views.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -144,7 +145,23 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
 
     @Override
     public void onRefresh() {
+        updateList();
+    }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mCallBack = (favoritesListFragmentListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 
 
@@ -160,7 +177,7 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
      */
     public interface favoritesListFragmentListener {
         /**
-         * Cuando es seleccionado un perfil
+         * Cuando es seleccionado un restaurante favorito
          * @param r
          */
         void OnFavoriteSelect(Restaurant r);
