@@ -7,9 +7,8 @@ using System.Web.UI.WebControls;
 
 namespace BackOfficeModel.OrderAccount
 {
-   public interface IAgregarOrdenModel : IModel
+    public interface IClosedOrdersModel: IModel
     {
-        //DropDownList 
-        Table TableMenu { get; set; }
+        Table ClosedOrdersTable { get; set; }
     }
 }

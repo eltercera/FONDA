@@ -18,7 +18,7 @@ namespace FondaLogic
         public Object Receiver
         {
             get { return receiver; }
-            set { receiver = value; }
+            protected set { receiver = value; }
         }
 
         public Command(Object receiver)
@@ -26,12 +26,9 @@ namespace FondaLogic
             this.receiver = receiver;
         }
 
-
         /// <summary>
         /// Metodo para ejecutar el comando
         /// </summary>
-        /// <param name="param">E</param>
-        /// <returns></returns>
         public abstract void Execute();
 
     }

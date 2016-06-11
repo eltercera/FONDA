@@ -30,22 +30,21 @@ namespace FondaLogic.Factory
         /// <summary>
         /// Metodo de la fabrica para el Comando CommandGetOrders
         /// </summary>
-        /// <param name="entity">Parametro a trabajar</param>
+        /// <param name="entity">Id del Restaurante</param>
         /// <returns>comando CommandGetOrders</returns>
-        public static Command GetCommandGetOrders(Entity entity)
+        public static Command GetCommandGetOrders(object receiver)
         {
-            return new CommandGetOrders(entity);
+            return new CommandGetOrders(receiver);
         }
 
         /// <summary>
         /// Metodo de la fabrica para el ComandoGetOrder
         /// </summary>
+        /// <param name="receiver">Id de la orden</param>
         /// <returns>comando CommandGetOrder</returns>
-        public static Command GetCommandGetOrder()
+        public static Command GetCommandGetOrder(object receiver)
         {
-            //TODO: Implementar
-            // return new CommandGetOrder();
-            return null;
+            return new CommandGetOrder(receiver);
         }
 
 

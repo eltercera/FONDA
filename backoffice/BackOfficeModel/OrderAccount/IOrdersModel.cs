@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BackOfficeModel.OrderAccount
 {
-    public interface IDefaultModel : IModel
+    public interface IOrdersModel : IModel
     {
         Table OrdersTable { get; set; }
     }

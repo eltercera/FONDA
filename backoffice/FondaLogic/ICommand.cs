@@ -9,5 +9,6 @@ namespace FondaLogic
     public interface ICommand
     {
         void Execute();
+
     }
 }

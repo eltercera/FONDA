@@ -416,11 +416,9 @@
     <Content Include="Default.aspx" />
     <Content Include="inicio.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Seccion\Caja\AgregarOrden.aspx" />
     <Content Include="Seccion\Caja\CrearFactura.aspx" />
-    <Content Include="Seccion\Caja\Default.aspx" />
-    <Content Include="Seccion\Caja\DefaultOrdenesCerradas.aspx" />
-    <Content Include="Seccion\Caja\ModificarOrden.aspx" />
+    <Content Include="Seccion\Caja\Ordenes.aspx" />
+    <Content Include="Seccion\Caja\OrdenesCerradas.aspx" />
     <Content Include="Seccion\Caja\VerDetalleOrden.aspx" />
     <Content Include="Seccion\Caja\VerFactura.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
@@ -471,12 +469,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Caja\AgregarOrden.aspx.cs">
-      <DependentUpon>AgregarOrden.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Caja\AgregarOrden.aspx.designer.cs">
-      <DependentUpon>AgregarOrden.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Seccion\Caja\CrearFactura.aspx.cs">
       <DependentUpon>CrearFactura.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -484,25 +476,18 @@
     <Compile Include="Seccion\Caja\CrearFactura.aspx.designer.cs">
       <DependentUpon>CrearFactura.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Caja\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Seccion\Caja\Ordenes.aspx.cs">
+      <DependentUpon>Ordenes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Seccion\Caja\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Seccion\Caja\Ordenes.aspx.designer.cs">
+      <DependentUpon>Ordenes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Caja\DefaultOrdenesCerradas.aspx.cs">
-      <DependentUpon>DefaultOrdenesCerradas.aspx</DependentUpon>
+    <Compile Include="Seccion\Caja\OrdenesCerradas.aspx.cs">
+      <DependentUpon>OrdenesCerradas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Caja\DefaultOrdenesCerradas.aspx.designer.cs">
-      <DependentUpon>DefaultOrdenesCerradas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Caja\ModificarOrden.aspx.cs">
-      <DependentUpon>ModificarOrden.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Caja\ModificarOrden.aspx.designer.cs">
-      <DependentUpon>ModificarOrden.aspx</DependentUpon>
+    <Compile Include="Seccion\Caja\OrdenesCerradas.aspx.designer.cs">
+      <DependentUpon>OrdenesCerradas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.cs">
       <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
