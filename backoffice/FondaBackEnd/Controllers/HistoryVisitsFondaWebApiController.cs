@@ -91,30 +91,30 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
 
               Invoice invoice1 = (Invoice)EntityFactory.GetInvoice(restaurant1, null,
-                null, profile, 350, 50, null, 1);
+                profile, 350, 50, null, 1);
 
 
               Invoice invoice2 = (Invoice)EntityFactory.GetInvoice(restaurant2, null,
 
-                null, profile, 300, 350, 50, null, 2);
+               profile, 300, 350, 50, null, 2);
 
               Invoice invoice3 = (Invoice)EntityFactory.GetInvoice(restaurant3, null,
 
-                null, profile, 300, 350, 50, null, 3);
+               profile, 300, 350, 50, null, 3);
 
               Invoice invoice4 = (Invoice)EntityFactory.GetInvoice(restaurant4, null,
 
-                null, profile, 300, 350, 50, null, 4);
+                profile, 300, 350, 50, null, 4);
 
 
               Invoice invoice5 = (Invoice)EntityFactory.GetInvoice(restaurant5, null,
 
-                null, profile, 300, 350, 50, null, 5);
+                profile, 300, 350, 50, null, 5);
 
 
               Invoice invoice6 = (Invoice)EntityFactory.GetInvoice(restaurant1, null,
 
-                null, profile, 300, 350, 50, null, 6);
+               profile, 300, 350, 50, null, 6);
 
               List<Invoice> lista = new List<Invoice>();
               lista.Add(invoice1);

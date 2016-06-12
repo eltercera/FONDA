@@ -25,14 +25,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="account">Un objeto de tipo Account</param>
         /// <returns>Un objeto Invoice</returns>
-        public Invoice FindGenerateInvoiceByAccount(Account _account)
+        public IList<Invoice> FindGenerateInvoiceByAccount(Account _account)
         {
-            ICriterion criterion = Expression.And(Expression.Eq("Account.Id", _account.Id), Expression.Eq("Status", GeneratedInvoiceStatus.Instance));
-            try
+           try
             {
-                Invoice _invoice = new Invoice();
-                _invoice = (Invoice)(FindAll(criterion)[0]);
-                return _invoice;
+                IList<Invoice> _invoices = new List<Invoice>();
+                _invoices = _account.Invoices;
+                return _invoices;
             }
             catch (ArgumentOutOfRangeException e)
             {

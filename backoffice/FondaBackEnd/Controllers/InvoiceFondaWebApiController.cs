@@ -97,7 +97,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
             Invoice invoice1 = (Invoice)EntityFactory.GetInvoice(restaurant1, null,
 
-                account, profile, 179, 1971, 192, currency, 2);
+            profile, 179, 1971, 192, currency, 2);
 
 
             return Ok(invoice1);

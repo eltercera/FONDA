@@ -79,7 +79,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             
             Invoice invoice = (Invoice)EntityFactory.GetInvoice(null, payment,
 
-                account, profile, tip, total, 10, null, 2);
+             profile, tip, total, 10, null, 2);
 
       //      invoice.Restaurant = account.Table.Restaurant;// restaurantDAO.findByTable(account.Table);
 

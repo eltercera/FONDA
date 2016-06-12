@@ -16,13 +16,11 @@ namespace FondaDataAccessTest
         private IOrderAccountDao _acccountDAO;
         private Account _account;
         private IList<Account> _listInvoices;
-        private int number;
-        private IDishOrderDAO _dishOrderDAO;
-        private ICommensalDAO _commensalDAO;
+        private int _number;
         private Table _table;
         private Commensal _commensal;
         private IList<DishOrder> _listOrder;
-        private int _orderAccountId, _number, _restaurantId;
+        private int _restaurantId;
 
         [SetUp]
         public void Init()
@@ -58,8 +56,8 @@ namespace FondaDataAccessTest
         public void GenerateNumberInvoice()
         {
 
-            number = _acccountDAO.GenerateNumberAccount(_restaurant);
-            Assert.IsNotNull(number);
+            _number = _acccountDAO.GenerateNumberAccount(_restaurant);
+            Assert.IsNotNull(_number);
         }
 
         [Test]

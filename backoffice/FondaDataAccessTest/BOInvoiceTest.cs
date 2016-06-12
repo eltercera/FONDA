@@ -65,7 +65,7 @@ namespace FondaDataAccessTest
         public void FindGenerateInvoiceByAccountTest()
         {
 
-            _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
+            _listInvoices = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
             Assert.IsNotNull(_invoice);
         }
 
