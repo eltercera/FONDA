@@ -6,20 +6,18 @@ using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 
-
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandGetClosedOrders : Command
+    public class CommandDetailOrder : Command
     {
-
         FactoryDAO _facDAO = FactoryDAO.Intance;
-        Restaurant _restaurant = new Restaurant();
+        Account _orderAccount = new Account();
 
-        public CommandGetClosedOrders(Object receiver) : base(receiver)
+        public CommandDetailOrder(Object receiver) : base(receiver)
         {
             try
             {
-                _restaurant = (Restaurant)receiver;
+                _orderAccount = (Account)receiver;
             }
             catch (Exception)
             {
@@ -27,13 +25,6 @@ namespace FondaLogic.Commands.OrderAccount
                 throw;
             }
         }
-
-
-
-
-        /// <summary>
-        /// Metodo que ejecuta el comando que consulta las ordenes segun un Restaurante
-        /// </summary>
         public override void Execute()
         {
             try
@@ -43,10 +34,10 @@ namespace FondaLogic.Commands.OrderAccount
                 //Obtengo la instancia del DAO a utilizar
                 _orderDAO = _facDAO.GetOrderAccountDAO();
                 //Obtengo el objeto con la informacion enviada
-                IList<Account> listClosedOrders = _orderDAO.ClosedOrdersByRestaurant(_restaurant);
-                Receiver = listClosedOrders;
+                IList<Dish> listDetailOrder = _orderDAO.GetDishesByAccount(_orderAccount);
+                Receiver = listDetailOrder;
 
-        }
+            }
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
@@ -54,6 +45,6 @@ namespace FondaLogic.Commands.OrderAccount
                 throw;
             }
         }
-
     }
+
 }

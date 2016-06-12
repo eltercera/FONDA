@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="IModel.cs" />
     <Compile Include="OrderAccount\IClosedOrdersModel.cs" />
+    <Compile Include="OrderAccount\IDetailOrderModel.cs" />
     <Compile Include="OrderAccount\IOrdersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

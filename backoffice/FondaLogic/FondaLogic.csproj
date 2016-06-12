@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="Commands\OrderAccount\CommandDetailOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetClosedOrders.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetInvoice.cs" />
