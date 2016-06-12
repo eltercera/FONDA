@@ -38,6 +38,7 @@ namespace BackOfficePresenter.OrderAccount
             IList<Account> listAccount;
             //Invoca al comando
             Command commandClosedOrders;
+            Command commandGetInvoice;
             Restaurant _restaurant = null;
 
             try
@@ -51,6 +52,7 @@ namespace BackOfficePresenter.OrderAccount
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
                 commandClosedOrders = CommandFactory.GetCommandClosedOrders(_restaurant);
+                
                 //Ejecuta el comando deseado
                 commandClosedOrders.Execute();
 
