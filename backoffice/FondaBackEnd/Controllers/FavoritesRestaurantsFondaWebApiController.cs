@@ -8,103 +8,140 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using System.Collections.Generic;
+using com.ds201625.fonda.BackEndLogic;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
     [RoutePrefix("api")]
+
+    /// <summary>
+    /// favorites restaurants fonda web API controller.
+    /// </summary>
     public class FavoritesRestaurantsFondaWebApiController : FondaWebApi
     {
+        /// <summary>
+        /// constructor de restaurant favoritos fonda web API controller.
+        /// </summary>
         public FavoritesRestaurantsFondaWebApiController() : base() { }
 
-      
         /// <summary>
         /// elimina un restaurante de la lista de favoritos de un
         /// commensal, recibe id int del restaurant a agregar,
         /// retorna lista de favoritos actualizada
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="idCommensal"></param>
+        /// <param name="idRestaurant"></param>
         /// <returns></returns>
-        [Route("deletefavorite/{idcommensal}/{idrestaurant}")]
+        
+        [Route("deletefavorite/{idCommensal}/{idRestaurant}")]
         [HttpGet]
         //[FondaAuthToken]
         public IHttpActionResult deletefavorite(int idcommensal, int idrestaurant)
         {
-            Commensal commensal = (Commensal)GetCommensalDao().FindById(idcommensal);
-            ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO();
-            Restaurant restaurant = GetRestaurantDao().FindById(idrestaurant);
-            commensal.RemoveFavoriteRestaurant(restaurant);
+            Commensal result;   //PREGUNTAR SI ES PRIVADA O CUANDO SON STATIC
             try
             {
-                commensalDao.Save(commensal);
+                Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+                commensal.Id = idcommensal;                       //PREGUNTAR ID
+
+                //Creación del restaurant con id
+                Restaurant restaurant = new Restaurant();  
+                restaurant.Id = idrestaurant;                    
+
+                // Obtención del commando
+                ICommand command = FacCommand.DeleteFavoriteRestaurantCommand();
+
+                // Agregacion de parametros
+                command.SetParameter(0, commensal);
+                command.SetParameter(1, restaurant);
+
+                // Ejecucion del commando
+                command.Run();
+
+                // Obtención de respuesta
+                result = (Commensal)command.Result;
             }
             catch (SaveEntityFondaDAOException e)
             {
                 Console.WriteLine(e.ToString());
                 return InternalServerError(e);
             }
-            return Ok(commensal);
+            return Ok(result);
         }
-        
+
         /// <summary>
-        /// 
+        /// metodo que agrega un restaurant favorito de un comensal
         /// </summary>
-        /// <param name="idcommensal"></param>
-        /// <param name="idrestaurant"></param>
+        /// <param name="idCommensal"></param>
+        /// <param name="idRestaurant"></param>
         /// <returns></returns>
 
-        [Route("addfavorite/{idcommensal}/{idrestaurant}")]
+        [Route("addfavorite/{idCommensal}/{idRestaurant}")]
         [HttpGet]
         ///[FondaAuthToken]
         public IHttpActionResult addfavorite(int idcommensal, int idrestaurant)
         {
-
-            Commensal commensal = (Commensal)GetCommensalDao().FindById(idcommensal);
-            ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO();
-            Restaurant restaurant = GetRestaurantDao().FindById(idrestaurant);
-            bool existe = false;
-            IList<Restaurant> favorites;
-            if (commensal == null)
-                return BadRequest();
-            if (restaurant == null)
-                return BadRequest();
-            commensal.RemoveFavoriteRestaurant(restaurant);
-            commensal.AddFavoriteRestaurant(restaurant);
+            Commensal result;
             try
             {
-                commensalDao.Save(commensal);
+                //Creación del commensal con id
+                Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+                commensal.Id = idcommensal;                       //PREGUNTAR ID
+
+                //Creación del restaurant con id
+                Restaurant restaurant = new Restaurant();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+                restaurant.Id = idrestaurant;                       //PREGUNTAR ID
+
+                // Obtención del commando
+                ICommand command = FacCommand.CreateFavoriteRestaurantCommand();
+
+                // Agregacion de parametros
+                command.SetParameter(0, commensal);
+                command.SetParameter(1, restaurant);
+
+                // Ejecucion del commando
+                command.Run();
+
+                // Obtención de respuesta
+                result = (Commensal)command.Result;
             }
             catch (SaveEntityFondaDAOException e)
             {
-                Console.WriteLine(e.ToString());
+                 Console.WriteLine(e.ToString());
                 return InternalServerError(e);
             }
-
-            return Ok(commensal);
+            return Ok(result);
         }
 
-
-
+        /// <summary>
+        /// metodo que lista todos los restaurant
+        /// </summary>
+        /// <returns></returns>
+       
         [Route("ListaRestaurant")]
         [HttpGet]
         public IHttpActionResult getRestaurant()
         {
-            IRestaurantDAO RestaurantDAO = FactoryDAO.GetRestaurantDAO();
-            IList<Restaurant> listRestaurant = RestaurantDAO.GetAll();
-
-            foreach (var restaurant in listRestaurant)
+            IList<Restaurant> result;
+            try
             {
-                restaurant.RestaurantCategory = new RestaurantCategory
-                {
-                    Name = restaurant.RestaurantCategory.Name,
-                    Id = restaurant.RestaurantCategory.Id
-                };    
-
+                // Obtención del commando
+                ICommand command = FacCommand.GetAllRestaurantCommand();
+                // Ejecucion del commando
+                command.Run();
+                result = (IList<Restaurant>)command.Result;
             }
-
-            return Ok(listRestaurant);
+            catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return InternalServerError(e);
+            }                    
+            return Ok(result);
         }
 
-        private IRestaurantDAO GetRestaurantDao()
+
+        private IRestaurantDAO GetRestaurantDao()   //ESTO NO SE DEBERIA QUITAR
+
         {
             return FactoryDAO.GetRestaurantDAO();
         }
@@ -113,42 +150,75 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             return FactoryDAO.GetCommensalDAO();
         }
 
-
-
-        [Route("findRestaurantFavorites/{id}")]
+        /// <summary>
+        /// metodo que lista los restaurant favoritos de un commensal
+        /// </summary>
+        /// <param name="idCommensal"></param>
+        /// <returns></returns>
+        
+        [Route("findRestaurantFavorites/{idCommensal}")]
         [HttpGet]
-        public IHttpActionResult findRestaurantFavorites(int id)
+        public IHttpActionResult findRestaurantFavorites(int idCommensal)
         {
-            Commensal commensal = (Commensal)GetCommensalDao().FindById(id);
-
-            foreach (var restaurant in commensal.FavoritesRestaurants)
+            Commensal result;
+            try
             {
-                restaurant.RestaurantCategory = new RestaurantCategory
-                {
-                    Name = restaurant.RestaurantCategory.Name,
-                    Id = restaurant.RestaurantCategory.Id
-                };
+                //Creación del commensal con id
+                Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+                commensal.Id = idCommensal;                       //PREGUNTAR ID
 
+                // Obtención del commando
+                ICommand command = FacCommand.GetFavoriteRestaurantCommand();
+
+                // Agregacion de parametros
+                command.SetParameter(0, commensal);
+
+                // Ejecucion del commando
+                command.Run();
+
+                // Obtención de respuesta
+                result = (Commensal)command.Result;
             }
-
-            return Ok(commensal.FavoritesRestaurants);
-
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return InternalServerError(e);
+            } 
+            return Ok(result.FavoritesRestaurants);
         }
+
+        /// <summary>
+        /// metodo que busca la existencia de un commensal
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
 
         [Route("findCommensalEmail/{email}")]
         [HttpGet]
         public IHttpActionResult findCommensalEmail(string email)
         {
+            UserAccount result;
+            try
+            {
+                UserAccount commensal = new UserAccount();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+                commensal.Email = email;
+                // Obtención del commando
+                ICommand command = FacCommand.GetCommensalEmailCommand();
+                // Agregacion de parametros
+                command.SetParameter(0, commensal);
 
-            UserAccount comm = GetCommensalDao().FindByEmail(email);
-            return Ok(comm);
+                // Ejecucion del commando
+                command.Run();
 
+                // Obtención de respuesta
+                result = (UserAccount)command.Result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return InternalServerError(e);
+            } 
+            return Ok(result);
         }
-
-
-
-
-
-
     }
 }

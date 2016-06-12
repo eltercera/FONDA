@@ -80,7 +80,7 @@ namespace FondaDataAccessTest
             _table.Capacity = 2;
             //FreeTableStatus :(
             _table.Number = 1;
-            _table.Restaurant = _restaurant;
+           // _table.Restaurant = _restaurant;
             _table.Status = _facDAO.GetFreeTableStatus();
 
         }

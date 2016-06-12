@@ -7,6 +7,8 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
     public interface IOrderAccountDao : IBaseEntityDAO<Account>
     {
         Account FindByCommensal(Commensal commensal);
+        IList<Account> FindByRestaurant(int restaurant);
         IList<Account> GetAll();
+        IList<Account> ClosedOrdersByRestaurant(Restaurant restaurant);
     }
 }

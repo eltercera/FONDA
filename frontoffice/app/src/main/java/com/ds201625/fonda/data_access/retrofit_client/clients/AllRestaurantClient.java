@@ -12,6 +12,11 @@ import retrofit2.http.GET;
  */
 public interface AllRestaurantClient {
 
+    /**
+     * Get /api/ListaRestaurant
+     * Obtiene la lista de los restaurantes.
+     * @return
+     */
     @GET("ListaRestaurant")
     Call<List<Restaurant>> getAllRestaurant();
 }

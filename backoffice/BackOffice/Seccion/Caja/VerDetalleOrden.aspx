@@ -31,7 +31,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Orden # <asp:Label ID="Label1" runat="server"></asp:Label> Cliente: <asp:Label ID="Label2" runat="server"></asp:Label> </h3>
-                        <h3 class="panel-title">Restaurante: <asp:Label ID="Label3" runat="server"></asp:Label>, <asp:Label ID="Label4" runat="server"></asp:Label> </h3>
+                        <h3 class="panel-title">Restaurante: <asp:Label ID="Label3" runat="server"></asp:Label><%=Session["NameRestaurant"]%><asp:Label ID="Label4" runat="server"></asp:Label> </h3>
                         <div class="clearfix"></div>
                     </div>
                     <div class="panel-body">

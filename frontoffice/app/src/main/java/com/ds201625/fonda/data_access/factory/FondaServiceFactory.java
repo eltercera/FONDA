@@ -1,15 +1,13 @@
 package com.ds201625.fonda.data_access.factory;
 
 import com.ds201625.fonda.data_access.retrofit_client.RetroditServiceFactory;
-import com.ds201625.fonda.data_access.services.AddFavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.data_access.services.ReservationService;
 import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
-import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.FilterByCategoryService;
 import com.ds201625.fonda.data_access.services.FilterByZoneService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
@@ -108,31 +106,14 @@ public class FondaServiceFactory {
         return serviceFactory.getAllRestaurantService();
     }
 
-    /**
-     * Obtiene los servicios de Comensal
-     * @param
-     * @return
-     */
-    public AllFavoriteRestaurantService getAllFavoriteRestaurantsService(){
-        return serviceFactory.getAllFavoriteRestaurantsService();
-    }
 
     /**
-     * Obtiene los servicios de Comensal
+     * Obtiene los servicios de restaurantes favoritos
      * @param
      * @return
      */
-    public AddFavoriteRestaurantService getAddFavortieRestaurantService(){
-        return serviceFactory.getAddFavoriteRestaurantService();
-    }
-
-    /**
-     * Obtiene los servicios de Comensal
-     * @param
-     * @return
-     */
-    public DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService(){
-        return serviceFactory.getDeleteFavoriteRestaurantService();
+    public FavoriteRestaurantService getFavoriteRestaurantService(){
+        return serviceFactory.getFavoriteRestaurantService();
     }
 
     /**

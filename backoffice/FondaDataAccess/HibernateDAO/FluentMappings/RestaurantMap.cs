@@ -69,6 +69,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .ExtraLazyLoad()
                 .Cascade.All();
 
+            HasMany(x => x.Tables)
+            .KeyColumn("fk_tab_restaurant")
+            .ExtraLazyLoad()
+            .Cascade.All();
 
             /*HasManyToMany(x => x.FavoritesCommensals)
             .Cascade.All()
@@ -76,6 +80,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
             .Table("RESTAURANT_COMMENSAL")
             .AsBag(); */
 
+            HasMany(x => x.Accounts)
+            .KeyColumn("fk_acc_restaurant")
+            .ExtraLazyLoad()
+            .Cascade.All();
 
 
         }
