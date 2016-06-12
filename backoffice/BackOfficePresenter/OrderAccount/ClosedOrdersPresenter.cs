@@ -38,18 +38,19 @@ namespace BackOfficePresenter.OrderAccount
             IList<Account> listAccount;
             //Invoca al comando
             Command commandClosedOrders;
+            Restaurant _restaurant = null;
 
             try
             {
                 //Obtener el parametro
                 if (!int.TryParse(restaurantId, out result))
                 {
-                    //TODO: Arrojar excepcion personalizada
-                    throw new Exception();
+                    _restaurant = new Restaurant();
+                    _restaurant.Id = result;
                 }
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandClosedOrders = CommandFactory.GetCommandClosedOrders(result);
+                commandClosedOrders = CommandFactory.GetCommandClosedOrders(_restaurant);
                 //Ejecuta el comando deseado
                 commandClosedOrders.Execute();
 
@@ -98,14 +99,15 @@ namespace BackOfficePresenter.OrderAccount
                     {
                         //Crea una nueva celda de la tabla
                         TableCell tCell = new TableCell();
-                        //Agrega el nombre de la categoria
+                        //Agrega el numero de la cuenta 
                         if (j.Equals(0))
-                            tCell.Text = data[i].Id.ToString();
-                        //Agrega las acciones de la tabla
+                            tCell.Text = data[i].Number.ToString();
+                        //Agrega la fecha de la orden
                         else if (j.Equals(1))
                         {
-                            tCell.Text = ((data[i].Commensal).Profiles[0]).Person.Name;
+                        tCell.Text = data[i].Date.ToString();
                         }
+                        //Agrega las acciones
                         else if (j.Equals(2))
                         {
                             LinkButton action1 = new LinkButton();
@@ -115,32 +117,8 @@ namespace BackOfficePresenter.OrderAccount
                             action1.Text += OrderAccountResources.Cerrar;
                             action1.Text += OrderAccountResources.VerDetalleOrden2;
                             action1.Text += OrderAccountResources.Cerrar2;
-
                             tCell.Controls.Add(action1);
-
-                            LinkButton action2 = new LinkButton();
-
-                            action2.Text += OrderAccountResources.VerFactura;
-                            action2.Text += data[i].Id;
-                            action2.Text += OrderAccountResources.Cerrar;
-                            action2.Text += OrderAccountResources.VerFactura2;
-                            action2.Text += OrderAccountResources.Cerrar2;
-
-
-                            tCell.Controls.Add(action2);
-
-                            LinkButton action3 = new LinkButton();
-
-                            action2.Text += OrderAccountResources.ModificarFactura;
-                            action2.Text += data[i].Id;
-                            action2.Text += OrderAccountResources.Cerrar;
-                            action2.Text += OrderAccountResources.ModificarFactura2;
-                            action2.Text += OrderAccountResources.Cerrar2;
-
-                            tCell.Controls.Add(action3);
-
-
-
+                        
                         }
                         //Agrega la celda a la fila
                         tRow.Cells.Add(tCell);
@@ -154,7 +132,7 @@ namespace BackOfficePresenter.OrderAccount
         }
 
         /// <summary>
-        /// Genera el encabezado de la tabla Ordenes
+        /// Genera el encabezado de la tabla Ordenes Cerradas
         /// </summary>
         /// <returns>Returna un objeto de tipo TableHeaderRow</returns>
         private TableHeaderRow GenerateTableHeader()
@@ -171,7 +149,7 @@ namespace BackOfficePresenter.OrderAccount
             header.TableSection = TableRowSection.TableHeader;
             h1.Text = "# Orden";
             h1.Scope = TableHeaderScope.Column;
-            h2.Text = "Nombre";
+            h2.Text = "Fecha";
             h2.Scope = TableHeaderScope.Column;
             h3.Text = "Accion";
 

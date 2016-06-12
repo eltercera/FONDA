@@ -38,7 +38,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter
             IList<Account> listAccount;
             //Invoca a comando del tipo deseado
             Command commandGetOrders;
-
+            Restaurant _restaurant = null;
+            
 
             try
             {
@@ -46,8 +47,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter
                 //Obtener el parametro
                 if (!int.TryParse(restaurantId, out result))
                 {
-                    //TODO: Arrojar excepcion personalizada
-                    throw new Exception();
+                    _restaurant = new Restaurant();
+                    _restaurant.Id = result;
                 }
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro

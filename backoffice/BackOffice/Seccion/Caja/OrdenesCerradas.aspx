@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="OrdenesCerradas.aspx.cs" Inherits="BackOffice.Seccion.Caja.DefaultOrdenesCerradas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="OrdenesCerradas.aspx.cs" Inherits="BackOffice.Seccion.Caja.OrdenesCerradas" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
@@ -35,7 +35,7 @@
                             <div class="panel-body">
                                 <div class="table-responsive">
 
-                                        <asp:Table ID="Detalle" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
+                                        <asp:Table ID="_closedOrders" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                                 </div>
                             </div>
                         </div>

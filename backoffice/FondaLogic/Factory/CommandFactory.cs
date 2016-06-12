@@ -54,7 +54,7 @@ namespace FondaLogic.Factory
         /// <returns>comando CommandClosedOrders</returns>
         public static Command GetCommandClosedOrders(object receiver)
         {
-            return new CommandClosedOrders(receiver);
+            return new CommandGetClosedOrders(receiver);
         }
 
 

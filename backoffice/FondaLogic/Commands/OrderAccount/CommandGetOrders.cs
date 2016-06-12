@@ -45,6 +45,8 @@ namespace FondaLogic.Commands.OrderAccount
                 _orderDAO = _facDAO.GetOrderAccountDAO();
 
                 IList<Account> listAccounts = _orderDAO.FindByRestaurant(restaurantId);
+
+                Receiver = listAccounts;
             }
             catch (NullReferenceException ex)
             {
