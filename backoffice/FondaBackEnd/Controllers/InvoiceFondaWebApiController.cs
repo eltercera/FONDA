@@ -89,7 +89,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Table table = new Table();
             table.Number = 1;
 
-            Account account = new Account(table, lista);
+            Account account = (Account) EntityFactory.GetAccount(table, lista);
 
             Currency currency = new Currency();
             currency.Name = "Bolivar";

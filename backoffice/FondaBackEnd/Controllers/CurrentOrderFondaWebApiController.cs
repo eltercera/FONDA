@@ -8,6 +8,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -31,7 +32,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
           public IHttpActionResult getListDishOrder()
           {
 
-            Account account = new Account();
+            Account account = (Account)EntityFactory.GetInvoice();
                         
             Dish dish1 = new Dish();
             dish1.Name = "Pasta";

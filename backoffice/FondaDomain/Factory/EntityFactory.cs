@@ -1,4 +1,5 @@
 ﻿using com.ds201625.fonda.Domain;
+using System.Collections.Generic;
 
 namespace com.ds201625.fonda.Factory
 {
@@ -11,9 +12,19 @@ namespace com.ds201625.fonda.Factory
 
         //Instancia los objetos del dominio invocando al constructor(es) de la entidad
 
-        public static Entity GetOrderAccount()
+        public static Entity GetAccount()
         {
             return new Account();
+        }
+
+        public static Entity GetAccount(Table table, Commensal commensal, IList<DishOrder> listOrder, int number)
+        {
+            return new Account(table, commensal, listOrder, number);
+        }
+
+        public static Entity GetAccount(Table table, IList<DishOrder> listOrder)
+        {
+            return new Account(table, listOrder);
         }
 
         public static Entity GetInvoice()
