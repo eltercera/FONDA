@@ -13,6 +13,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable()
                 .GeneratedBy.Increment();
 
+            Map(x => x.Number)
+              .Column("i_number")
+              .Not.Nullable();
+
             Map(x => x.Tip)
                 .Column("i_tip")
                 .Not.Nullable();
