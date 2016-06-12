@@ -97,7 +97,7 @@ namespace BackOffice.Seccion.Caja
             }
         
             
-                LabelMontoTotal.Text = "MONTO TOTAL: " + _OrderAccountDAO.FindById(id).getMonto().ToString();
+                LabelMontoTotal.Text = "MONTO TOTAL: " + _OrderAccountDAO.FindById(id).GetAmount().ToString();
             
 
 
@@ -163,7 +163,9 @@ namespace BackOffice.Seccion.Caja
             // cambio el estado de la cuenta a cerrada
 
             Account orderAccount = _OrderAccountDAO.FindById(id);
-            orderAccount.Status = factoryDAO.GetClosedAccountStatus();
+            //MALENA REVISA ESTO, PORQUE EN LA SIGUIENTE LINEA SE LE CAMBIA EL STATUS CUANDO SE CIERRA
+            //LA ORDEN
+            //orderAccount.Status = factoryDAO.GetClosedAccountStatus();
             try
             {
                 _OrderAccountDAO.Save(orderAccount);
@@ -186,7 +188,7 @@ namespace BackOffice.Seccion.Caja
             int numCard = int.Parse(NumCard.Text);
             //agrego el pago
             _creditCardPayment.LastCardDigits = numCard;
-            _creditCardPayment.Amount = _OrderAccountDAO.FindById(id).getMonto();
+            _creditCardPayment.Amount = _OrderAccountDAO.FindById(id).GetAmount();
             _creditCardPaymentDAO.Save(_creditCardPayment);
             // agrego la factura
 

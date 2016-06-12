@@ -63,9 +63,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             dishO3.Dish = dish3;
             dishO3.Count = 1;
 
-            account.addDish(dishO1);
-            account.addDish(dishO2);
-            account.addDish(dishO3);
+            account.AddDish(dishO1);
+            account.AddDish(dishO2);
+            account.AddDish(dishO3);
               
               return Ok(account.ListDish);
           }

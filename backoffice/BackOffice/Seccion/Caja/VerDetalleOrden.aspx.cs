@@ -92,7 +92,7 @@ namespace BackOffice.Seccion.Caja
             // de comprobar que nunca este vacia la orden para existir.
             if (_OrderAccountDAO.FindById(id).ListDish.Any())
             {
-                LabelMontoTotal.Text = "MONTO TOTAL: " + _OrderAccountDAO.FindById(id).getMonto().ToString();
+                LabelMontoTotal.Text = "MONTO TOTAL: " + _OrderAccountDAO.FindById(id).GetAmount().ToString();
             }
 
 
