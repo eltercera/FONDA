@@ -36,6 +36,11 @@ namespace com.ds201625.fonda.Domain
         private IList<DishOrder> _listDish;
 
         /// <summary>
+        /// Lista de facturas de la cuenta.
+        /// </summary>
+        //private IList<Invoice> _listInvoice;
+
+        /// <summary>
 		/// El numero unico de la orden
 		/// </summary>
         private int _number;
@@ -109,6 +114,13 @@ namespace com.ds201625.fonda.Domain
             get { return _listDish; }
         }
 
+        /// <summary>
+        /// Obtiene o asigna el numero de la orden
+        /// </summary>
+        //public virtual IList<Invoice> Invoice
+        //{
+        //    get { return _listInvoice; }
+        //}
         /// <summary>
         /// Obtiene o asigna un estado a la cuenta
         /// </summary>
