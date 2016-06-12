@@ -9,6 +9,7 @@ namespace com.ds201625.fonda.Domain
     /// </summary>
     public class Account : BaseEntity
     {
+        #region Fields
         /// <summary>
         /// Fecha de la cuenta
         /// </summary>
@@ -38,7 +39,9 @@ namespace com.ds201625.fonda.Domain
 		/// El numero unico de la orden
 		/// </summary>
         private int _number;
+        #endregion
 
+        #region Constructors
         /// <summary>
         /// Constructor
         /// </summary>
@@ -48,13 +51,48 @@ namespace com.ds201625.fonda.Domain
         }
 
         /// <summary>
+        /// Constructor para crear una orden nueva
+        /// </summary>
+        /// <param name="table">Mesa del Restaurante asignada</param>
+        /// <param name="commensal">Datos del comensal</param>
+        /// <param name="listOrder">Ordenes hechas por el comensal</param>
+        /// <param name="number">Numero de la cuenta</param>
+        public Account(Table table, Commensal commensal, IList<DishOrder> listOrder, int number) : base()
+        {
+            this._date = DateTime.Now;
+            this._status = new OpenAccountStatus();
+            this._table = table;
+            this._commensal = commensal;
+            this._listDish = listOrder;
+            this._number = number;
+        }
+
+        public Account(Table table, IList<DishOrder> listOrder) : base()
+        {
+            this._date = DateTime.Now;
+            this._status = new OpenAccountStatus();
+            this._table = table;
+            this._listDish = listOrder;
+        }
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Retorna o asigna una fecha
+        /// </summary>
+        public virtual DateTime Date
+        {
+            get { return _date; }
+        }
+
+        /// <summary>
         /// Retorna o asigna la mesa de una cuenta
         /// </summary>
         //[DataMember]
         public virtual Table Table
         {
             get { return _table; }
-            set { _table = value; }
         }
 
         /// <summary>
@@ -63,14 +101,12 @@ namespace com.ds201625.fonda.Domain
         public virtual int Number
         {
             get { return _number; }
-            set { _number = value; }
         }
 
         [DataMember]
         public virtual IList<DishOrder> ListDish
         {
             get { return _listDish; }
-            set { _listDish = value; }
         }
 
         /// <summary>
@@ -79,7 +115,6 @@ namespace com.ds201625.fonda.Domain
         public virtual AccountStatus Status
         {
             get { return _status; }
-            set { _status = value; }
         }
 
         /// <summary>
@@ -90,20 +125,32 @@ namespace com.ds201625.fonda.Domain
             get{ return _commensal; }
             set{ _commensal = value; }
         }
+        #endregion
 
+
+        #region Methods
         /// <summary>
         /// Agrega una orden a la cuenta
         /// </summary>
         /// <param name="dish"> orden pedida </param>
-        public virtual void addDish(DishOrder dish)
+        public virtual void AddDish(DishOrder dish)
         {
             _listDish.Add(dish);
         }
 
         /// <summary>
+        /// Elimina una orden a la cuenta
+        /// </summary>
+        /// <param name="dish">orden pedida </param>
+        public virtual void RemoveDish(DishOrder dish)
+        {
+            _listDish.Remove(dish);
+        }
+
+        /// <summary>
         /// Cambia el eltado actual del cuenta.
         /// </summary>
-        public virtual void changeStatus()
+        public virtual void ChangeStatus()
         {
             _status = _status.Change();
         }
@@ -112,7 +159,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene el precio total de todas las ordenes
         /// </summary>
-        public virtual float getMonto()
+        public virtual float GetAmount()
         {
             float total = 0;
             for (int i = 0; i < _listDish.Count; i++)
@@ -121,15 +168,8 @@ namespace com.ds201625.fonda.Domain
             }
             return total;
         }
+        #endregion
 
-        /// <summary>
-        /// Retorna o asigna una fecha
-        /// </summary>
-        public virtual DateTime Date
-        {
-            get { return _date; }
-            set { _date = value; }
-        }
 
     }
 }

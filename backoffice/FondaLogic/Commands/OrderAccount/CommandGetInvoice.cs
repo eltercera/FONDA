@@ -1,6 +1,8 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using com.ds201625.fonda.Factory;
+using FondaLogic.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +15,7 @@ namespace FondaLogic.Commands.OrderAccount
     {
 
         FactoryDAO _facDAO = FactoryDAO.Intance;
-        Account _account = new Account();
+        Account _account = (Account)EntityFactory.GetInvoice();
 
         public CommandGetInvoice(Object receiver) : base(receiver)
         {

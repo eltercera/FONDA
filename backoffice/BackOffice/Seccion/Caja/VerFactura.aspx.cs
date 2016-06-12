@@ -94,7 +94,7 @@ namespace BackOffice.Seccion.Caja
             // Si la orden no esta vacia entonces a;ado un label para ense;ar el monto total. 
             if (_OrderAccountDAO.FindById(id).ListDish.Any())
             {
-                LabelMontoTotal.Text = "MONTO TOTAL: " + _OrderAccountDAO.FindById(id).getMonto().ToString();
+                LabelMontoTotal.Text = "MONTO TOTAL: " + _OrderAccountDAO.FindById(id).GetAmount().ToString();
             }
 
 

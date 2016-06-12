@@ -79,12 +79,12 @@ namespace FondaDataAccessTest
             DishOrder dishOrder2 = _dishOrderDAO.FindById(2);
             Assert.IsNotNull(dishOrder2);
 
-            account.addDish(dishOrder);
-            account.addDish(dishOrder2);
+            account.AddDish(dishOrder);
+            account.AddDish(dishOrder2);
 
             account.Commensal = owner ;
-            account.Table = tableDAO.FindById(1);
-            account.Status = OpenAccountStatus.Instance;
+ //           account.Table = tableDAO.FindById(1);
+ //           account.Status = OpenAccountStatus.Instance;
 
         }
 
