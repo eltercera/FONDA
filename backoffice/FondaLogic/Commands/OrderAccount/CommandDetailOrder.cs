@@ -29,13 +29,13 @@ namespace FondaLogic.Commands.OrderAccount
         {
             try
             {
-                //Defino el DAO
-                IOrderAccountDao _orderDAO;
-                //Obtengo la instancia del DAO a utilizar
-                _orderDAO = _facDAO.GetOrderAccountDAO();
-                //Obtengo el objeto con la informacion enviada
-                IList<Dish> listDetailOrder = _orderDAO.GetDishesByAccount(_orderAccount);
-                Receiver = listDetailOrder;
+                ////Defino el DAO
+                //IOrderAccountDao _orderDAO;
+                ////Obtengo la instancia del DAO a utilizar
+                //_orderDAO = _facDAO.GetOrderAccountDAO();
+                ////Obtengo el objeto con la informacion enviada
+                //IList<Dish> listDetailOrder = _orderDAO.GetDishesByAccount(_orderAccount);
+                //Receiver = listDetailOrder;
 
             }
             catch (NullReferenceException ex)

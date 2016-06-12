@@ -19,6 +19,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         private Command _command;
         private IList<Account> _listAccount;
         private IList<Account> _listClosedOrders;
+        private IList<Invoice> _listInvoices;
         private FactoryDAO _facDAO;
         private IOrderAccountDao _orderAccountDAO;
         private Restaurant _restaurant;
@@ -46,8 +47,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _invoiceDAO = _facDAO.GetInvoiceDao();
             IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
             _account = _accountDAO.FindById(_account.Id);
-
-
+            _listInvoices = new List<Invoice>();            
         }
 
         [Test]
@@ -58,13 +58,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
             Assert.IsNotNull(_listClosedOrders);
         }
 
-        [Test]
-        public void FindGenerateInvoiceByAccountTest()
-        {
-
-            _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
-            Assert.IsNotNull(_invoice);
-        }
         [Test]
         public void CommandGetOrdersTest()
         {

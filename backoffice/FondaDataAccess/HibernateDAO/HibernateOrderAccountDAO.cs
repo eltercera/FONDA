@@ -80,5 +80,47 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
 
         }
+
+        /// <summary>
+        /// Obtiene la factura de una orden
+        /// </summary>
+        /// <param name="account">Un objeto de tipo Account</param>
+        /// <returns>Un objeto Invoice</returns>
+        public IList<Account> FindAccountByRestaurant(Restaurant _restaurant)
+        {
+            ICriterion criterion = (Expression.Eq("Restaurant.Id", _restaurant.Id));
+            try
+            {
+                IList<Account> _list = new List<Account>();
+                //_list = (FindAll(criterion));
+                return _list;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("Not Found invoice", e);
+            }
+        }
+
+        public int GenerateNumberInvoice(Restaurant _restaurant)
+        {
+            try
+            {
+                IList<Account> _list = new List<Account>();
+                _list = FindAccountByRestaurant(_restaurant);
+                int _length = 0;
+
+                if (!(_list == null))
+                {
+                    _length = _list.Count;
+                    _length = _length + 1;
+                }
+
+                return _length;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("Not Found invoice", e);
+            }
+        }
     }
 }
