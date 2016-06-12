@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FDE7B2A6-7496-4680-AB18-A336EEBBE62E}</ProjectGuid>
+    <ProjectGuid>{CA0E4233-6BDC-4C4D-85EF-65A0494B33A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BackOfficePresenter</RootNamespace>
-    <AssemblyName>BackOfficePresenter</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>FondaBackOfficeLogicTest</RootNamespace>
+    <AssemblyName>FondaBackOfficeLogicTest</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,9 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,38 +44,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrderAccount\ClosedOrdersPresenter.cs" />
-    <Compile Include="OrderAccount\DetailOrderPresenter.cs" />
-    <Compile Include="OrderAccount\OrdersPresenter.cs" />
-    <Compile Include="Presenter.cs" />
+    <Compile Include="BOCommandOrdersTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Login\" />
-    <Folder Include="Menu\" />
-    <Folder Include="Restaurant\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BackOfficeModel\BackOfficeModel.csproj">
-      <Project>{0C4A3E0C-4E85-46B0-A6B0-A6DC2BCE3D8B}</Project>
-      <Name>BackOfficeModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
-      <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
+      <Project>{4a769797-45c6-4ad9-95fd-7b950d937d1c}</Project>
       <Name>FondaDataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
-      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
+      <Project>{cd756618-286a-4fbc-93a3-0eccb571b18f}</Project>
       <Name>FondaDomain</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
-      <Project>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</Project>
+      <Project>{64636df8-e693-4abb-8964-5c7fa5a6a50e}</Project>
       <Name>FondaLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FondaResources\FondaResources.csproj">
-      <Project>{3184FE34-D7E3-44F6-95D9-25D1045BFFC8}</Project>
-      <Name>FondaResources</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

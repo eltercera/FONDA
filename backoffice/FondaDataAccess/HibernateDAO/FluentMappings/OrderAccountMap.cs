@@ -18,6 +18,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Column("oa_number")
               .Not.Nullable();
 
+            Map(x => x.Date)
+               .Column("oa_date")
+               .Not.Nullable();
+
             References(x => x.Table)
                 .Column("fk_table_id")
                 .Not.Nullable();
@@ -36,10 +40,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable()
                 .Cascade.Persist();
 
-           /* References(x => x.RecordStatus)
-                .Column("fk_record_status_id")
-                .Not.Nullable()
-                .Cascade.Persist();*/
+
             
         }
     }
