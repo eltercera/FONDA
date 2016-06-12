@@ -38,18 +38,19 @@ namespace BackOfficePresenter.OrderAccount
             IList<Account> listAccount;
             //Invoca al comando
             Command commandClosedOrders;
+            Restaurant _restaurant = null;
 
             try
             {
                 //Obtener el parametro
                 if (!int.TryParse(restaurantId, out result))
                 {
-                    //TODO: Arrojar excepcion personalizada
-                    throw new Exception();
+                    _restaurant = new Restaurant();
+                    _restaurant.Id = result;
                 }
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandClosedOrders = CommandFactory.GetCommandClosedOrders(result);
+                commandClosedOrders = CommandFactory.GetCommandClosedOrders(_restaurant);
                 //Ejecuta el comando deseado
                 commandClosedOrders.Execute();
 
