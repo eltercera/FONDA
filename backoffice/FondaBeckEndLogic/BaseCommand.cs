@@ -45,6 +45,9 @@ namespace com.ds201625.fonda.BackEndLogic
 		/// <param name="data">Data.</param>
 		public void SetParameter(int index, Object data)
 		{
+			if (_parameters == null)
+				return;
+			
 			if ( index < 0 || index >= _parameters.Length)
 				throw ParameterIndexOutOfRangeException.Generate(this, index);
 
@@ -67,6 +70,9 @@ namespace com.ds201625.fonda.BackEndLogic
 		/// <param name="index">Index.</param>
 		protected Object GetParameter(int index)
 		{
+			if (_parameters == null)
+				return null;
+
 			if ( index < 0 || index >= _parameters.Length)
 				throw ParameterIndexOutOfRangeException.Generate(this, index);
 			return _parameters [index].Data;

@@ -76,6 +76,21 @@ namespace com.ds201625.fonda.BackEndLogic
         {
             return new DeleteFavoriteRestaurantCommand();
         }
+
+		public ICommand CreateGetZonesCommand ()
+		{
+			return new GetZonesCommand ();
+		}
+
+		public ICommand CreateGetRestaurantsCategoriesCommand ()
+		{
+			return new GetRestaurantsCategoriesCommand ();
+		}
+
+		public ICommand CreateGetRestaurantsCommand ()
+		{
+			return new GetRestaurantsCommand ();
+		}
      
 	}
 	
