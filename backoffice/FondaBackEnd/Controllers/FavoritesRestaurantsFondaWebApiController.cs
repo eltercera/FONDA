@@ -9,6 +9,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using System.Collections.Generic;
 using com.ds201625.fonda.BackEndLogic;
+using com.ds201625.fonda.FondaBackEnd.Exceptions;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -61,10 +62,23 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 // Obtención de respuesta
                 result = (Commensal)command.Result;
             }
-            catch (SaveEntityFondaDAOException e)
+            catch (DeleteFondaDAOException e)
             {
-                Console.WriteLine(e.ToString());
-                return InternalServerError(e);
+                throw new DeleteFavoriteRestaurantFondaWebApiControllerException(
+                  "Excepción en el controller web api, al eliminar restaurant favorito de un comensal", e);
+               
+            }
+            catch (NullReferenceException e)
+            {
+                throw new DeleteFavoriteRestaurantFondaWebApiControllerException(
+                   "Excepción en el controller web api,"+
+                "apuntador nulo al intentar eliminar un restaurant favorito del comensal",
+                   e);
+            }
+            catch (Exception e)
+            {
+                throw new DeleteFavoriteRestaurantFondaWebApiControllerException(
+                  "Error al intentar eliminar un restaurant favorito de un comensal", e);
             }
             return Ok(result);
         }
@@ -107,8 +121,19 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             }
             catch (SaveEntityFondaDAOException e)
             {
-                 Console.WriteLine(e.ToString());
-                return InternalServerError(e);
+                throw new AddFavoriteRestaurantFondaWebApiControllerException(
+                     "Excepción en el conroller web api, al agregar restaurant favorito de un comensal", e);
+            }
+            catch (NullReferenceException e)
+            {
+                throw new AddFavoriteRestaurantFondaWebApiControllerException(
+                 "Excepción, apuntador nulo al agregrar un restaurant favorito del comensal",
+                 e);
+            }
+            catch (Exception e)
+            {
+                throw new AddFavoriteRestaurantFondaWebApiControllerException(
+                   "Error al agregar restaurant favorito de un comensali", e);
             }
             return Ok(result);
         }
@@ -131,11 +156,22 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 command.Run();
                 result = (IList<Restaurant>)command.Result;
             }
-            catch(Exception e)
+            catch (FindAllFondaDAOException e)
             {
-                Console.WriteLine(e.ToString());
-                return InternalServerError(e);
-            }                    
+                throw new GetAllRestaurantsFondaWebApiControllerException(
+                     "Excepción en el conroller web api, al obtener la lista de restaurantes", e);
+            }
+            catch (NullReferenceException e)
+            {
+                throw new GetAllRestaurantsFondaWebApiControllerException(
+                 "Excepción,referencia nula del objeto al obtener la lista de restaurantes",
+                 e);
+            }
+            catch (Exception e)
+            {
+                throw new GetAllRestaurantsFondaWebApiControllerException(
+                   "Error al obtener la lista de restaurantes disponibles", e);
+            }                 
             return Ok(result);
         }
 
@@ -179,11 +215,24 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 // Obtención de respuesta
                 result = (Commensal)command.Result;
             }
+            catch (FindByIdFondaDAOException e)
+            {
+                throw new FindFavoriteRestaurantFondaWebApiControllerException(
+                     "Excepción en el conroller web api, al obtener la lista de restaurantes favoritos del comensal",
+                     e);
+            }
+            catch (NullReferenceException e)
+            {
+                throw new FindFavoriteRestaurantFondaWebApiControllerException(
+                 "Excepción, referencia de objeto nula al buscar la lista de restaurantes favoritos del comensal",
+                 e);
+            }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
-                return InternalServerError(e);
-            } 
+                throw new FindFavoriteRestaurantFondaWebApiControllerException(
+                 "Error al obtener la lista de los restaurantes Favoritos del comensal",
+                 e);
+            }                 
             return Ok(result.FavoritesRestaurants);
         }
 
@@ -213,11 +262,24 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 // Obtención de respuesta
                 result = (UserAccount)command.Result;
             }
+            catch (FindByEmailUserAccountFondaDAOException e)
+            {
+                throw new FindByEmailUserAccountFondaWebApiControllerException(
+                   "Excepción en el web api controller, al buscar el comensal por email",
+                   e);
+            }
+            catch (NullReferenceException e)
+            {
+                throw new FindByEmailUserAccountFondaWebApiControllerException(
+                 "Excepción, apuntador nulo al buscar un comensal por email",
+                 e);
+            }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
-                return InternalServerError(e);
-            } 
+                throw new FindByEmailUserAccountFondaWebApiControllerException(
+                 "Error al buscar el comensal por email",
+                 e);
+            }
             return Ok(result);
         }
     }

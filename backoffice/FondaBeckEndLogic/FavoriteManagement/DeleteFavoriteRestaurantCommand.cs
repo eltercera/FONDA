@@ -70,7 +70,7 @@ namespace FondaBeckEndLogic.ProfileManagement
             catch (NullReferenceException e)
             {
                 throw new DeleteFavoriteRestaurantCommandException(
-                   "Excepción, apuntador nulo al intetar eliminar un restaurant favorito del comensal",
+                   "Excepción, apuntador nulo al intentar eliminar un restaurant favorito del comensal",
                    e);
             }
             catch (Exception e)
