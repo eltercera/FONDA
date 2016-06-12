@@ -47,6 +47,16 @@ namespace FondaLogic.Factory
             return new CommandGetOrder(receiver);
         }
 
+        /// <summary>
+        /// Metodo de la fabrica para el ComandoClosedOrders
+        /// </summary>
+        /// <param name="receiver">Id del restaurant</param>
+        /// <returns>comando CommandClosedOrders</returns>
+        public static Command GetCommandClosedOrders(object receiver)
+        {
+            return new CommandClosedOrders(receiver);
+        }
+
 
         #endregion
 

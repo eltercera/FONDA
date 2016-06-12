@@ -59,6 +59,11 @@ namespace com.ds201625.fonda.Domain
         private Currency _currency;
 
         /// <summary>
+		/// El numero unico de la factura
+		/// </summary>
+        private int _number;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public Invoice() : base() { }
@@ -145,6 +150,15 @@ namespace com.ds201625.fonda.Domain
         }
 
         /// <summary>
+        /// Obtiene o asigna el numero de la factura
+        /// </summary>
+        public virtual int Number
+        {
+            get { return _number; }
+            set { _number = value; }
+        }
+
+        /// <summary>
         /// Obtiene o asigna el status de la cuenta
         /// </summary>
         public virtual InvoiceStatus Status
@@ -161,10 +175,10 @@ namespace com.ds201625.fonda.Domain
             get { return _payment; }
             set { _payment = value; }
         }
-        
+
 
         /// <summary>
-        /// Cambia el eltado actual de la factura.
+        /// Cambia el estado actual de la factura.
         /// </summary>
         public virtual void changeStatus()
         {

@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandCloseOrder : Command
+    public class CommandClosedOrders : Command
     {
 
         FactoryDAO _facDAO = FactoryDAO.Intance;
 
-        public CommandCloseOrder(Object receiver) : base(receiver)
+        public CommandClosedOrders(Object receiver) : base(receiver)
         {
         }
 

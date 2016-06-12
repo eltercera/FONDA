@@ -34,6 +34,10 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private IList<DishOrder> _listDish;
 
+        /// <summary>
+		/// El numero unico de la cuenta
+		/// </summary>
+        private int _number;
 
         /// <summary>
         /// Constructor
@@ -51,6 +55,15 @@ namespace com.ds201625.fonda.Domain
         {
             get { return _table; }
             set { _table = value; }
+        }
+
+        /// <summary>
+        /// Obtiene o asigna el numero de la orden
+        /// </summary>
+        public virtual int Number
+        {
+            get { return _number; }
+            set { _number = value; }
         }
 
         [DataMember]
