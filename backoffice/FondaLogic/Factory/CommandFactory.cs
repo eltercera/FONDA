@@ -54,7 +54,18 @@ namespace FondaLogic.Factory
         /// <returns>comando CommandClosedOrders</returns>
         public static Command GetCommandClosedOrders(object receiver)
         {
-            return new CommandGetClosedOrders(receiver);
+            return new CommandClosedOrders(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el ComandoDetailOrder
+        /// </summary>
+        /// <param name="receiver">Id de la orden</param>
+        /// <returns>comando CommandDetailOrder</returns>
+        /// 
+        public static Command GetDetailOrder(object receiver)
+        {
+            return new CommandDetailOrder(receiver);
         }
 
 

@@ -45,8 +45,4 @@
             </div>
         </div>
         <!-- /.row -->
-    <p class="text-center">
-            <asp:Label ID="LabelMontoTotal" runat="server" Font-Bold="true"></asp:Label>
-     </p>
-
     </asp:Content>

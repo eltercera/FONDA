@@ -12,6 +12,8 @@ using System.Web.Services;
 using System.Web.Script.Serialization;
 using BackOfficeModel.OrderAccount;
 using BackOffice.Seccion.Restaurant;
+using System.Web.SessionState;
+using FondaResources.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -56,6 +58,13 @@ namespace BackOffice.Seccion.Caja
             {
                 throw new NotImplementedException();
             }
+        }
+
+        string IOrdersModel.Session
+        {
+            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
+
+            set { Session[OrderAccountResources.SessionIdAccount] = value; }
         }
 
         #endregion

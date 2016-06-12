@@ -34,6 +34,7 @@ namespace FondaDataAccessTest
             _dishOrder = new DishOrder();
             _listDishOrder = new List<DishOrder>();
             _account = (Account)EntityFactory.GetAccount(_table,_commensal,_listDishOrder,_number);
+            _account.Id = 1;
             accountId = 1;
 
 
