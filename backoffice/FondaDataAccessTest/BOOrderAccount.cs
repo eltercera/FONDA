@@ -36,11 +36,9 @@ namespace FondaDataAccessTest
             _listInvoices = new List<Account>();
 
             _restaurantId = 1;
-            _account = (Account)EntityFactory.GetAccount(_table, _commensal, _listOrder, _number);
+            _account = (Account)EntityFactory.GetAccount();
             _account.Id = 2;
             _acccountDAO = _facDAO.GetOrderAccountDAO();
-
-
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             _restaurant = _restaurantDAO.FindById(_restaurantId);
             IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
