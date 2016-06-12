@@ -48,6 +48,9 @@
     <Compile Include="BaseCommand.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Parameter.cs" />
+    <Compile Include="Exceptions\InvalidTypeOfParameter.cs" />
+    <Compile Include="Exceptions\ParameterIndexOutOfRangeException.cs" />
+    <Compile Include="Exceptions\RequieredParameterNotFoundException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

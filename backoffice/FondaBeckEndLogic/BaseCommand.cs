@@ -1,5 +1,6 @@
 ﻿using System;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.BackEndLogic
 {
@@ -45,8 +46,7 @@ namespace com.ds201625.fonda.BackEndLogic
 		public void SetParameter(int index, Object data)
 		{
 			if ( index < 0 || index >= _parameters.Length)
-				// TODO: Exeption personalizada
-				throw new Exception("Index (" + index + " fuera de rango." );
+				throw ParameterIndexOutOfRangeException.Generate(this, index);
 
 			_parameters [index].Data = data;
 		}
@@ -68,8 +68,7 @@ namespace com.ds201625.fonda.BackEndLogic
 		protected Object GetParameter(int index)
 		{
 			if ( index < 0 || index >= _parameters.Length)
-				// TODO: Exeption personalizada
-				throw new Exception("Index (" + index + " fuera de rango." );
+				throw ParameterIndexOutOfRangeException.Generate(this, index);
 			return _parameters [index].Data;
 		}
 
@@ -92,8 +91,7 @@ namespace com.ds201625.fonda.BackEndLogic
 			for (int i = 0; i < _parameters.Length; i++)
 			{
 				if (_parameters[i].IsRequiered() && _parameters[i].Data == null)
-					// TODO: Exeption personalizada
-					throw new Exception("Parametro requerido no espesificado index (" + i + ")");
+					throw RequieredParameterNotFoundException.Generate(this, i);
 			}
 		}
 
