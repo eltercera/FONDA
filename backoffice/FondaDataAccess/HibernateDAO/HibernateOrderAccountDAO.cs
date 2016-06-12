@@ -11,6 +11,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
     public class HibernateOrderAccountDAO : HibernateBaseEntityDAO<Account>, IOrderAccountDao
     {
+        private FactoryDAO.FactoryDAO _facDAO= FactoryDAO.FactoryDAO.Intance;
         /// <summary>
         /// Obtiene la orden de un comensal
         /// </summary>

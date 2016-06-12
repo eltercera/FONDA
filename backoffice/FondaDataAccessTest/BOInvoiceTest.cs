@@ -35,7 +35,7 @@ namespace FondaDataAccessTest
             _listOrder = new List<DishOrder>();
             _restaurantId = 1;
             _account = (Account)EntityFactory.GetAccount(_table, _commensal, _listOrder, _number);
-            _account.Id = 2;
+            _accountId = 2;
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
 
