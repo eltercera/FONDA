@@ -88,6 +88,9 @@ namespace com.ds201625.fonda.BackEndLogic
 		/// </summary>
 		private void ValidateParameters()
 		{
+			if (_parameters == null)
+				return;
+			
 			for (int i = 0; i < _parameters.Length; i++)
 			{
 				if (_parameters[i].IsRequiered() && _parameters[i].Data == null)
