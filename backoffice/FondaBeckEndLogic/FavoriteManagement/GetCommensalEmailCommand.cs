@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using com.ds201625.fonda.BackEndLogic;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
+using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 
-
-
-namespace FondaBeckEndLogic.ProfileManagement
+namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
 {
     /// <summary>
     /// Get Commensal Email Command
@@ -54,15 +51,23 @@ namespace FondaBeckEndLogic.ProfileManagement
             {
                  answer = (UserAccount)commensalDAO.FindByEmail(commensal.Email);
             }
-            catch (SaveEntityFondaDAOException e)  ////CAMBIAR EXEPCIONES
+            catch (FindByEmailUserAccountFondaDAOException e)
             {
-                // TODO: Crear Excepcion personalizada
-                throw new Exception("Error al gualrdar los datos", e);
+                throw new GetCommensalEmailCommandException(
+                   "Excepción al buscar el comensal por email",
+                   e);
+            }
+            catch (NullReferenceException e)
+            {
+                throw new GetCommensalEmailCommandException(
+                 "Excepción, apuntador nulo al buscar un comensal por email",
+                 e);
             }
             catch (Exception e)
             {
-                // TODO: Crear Excepcion personalizada
-                throw new Exception("Error Desconocido", e);
+                throw new GetCommensalEmailCommandException(
+                 "Error al buscar el comensal",
+                 e);
             }
             //FALTA LOGGER
             // Guardar el resultado.

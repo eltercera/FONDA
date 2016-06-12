@@ -33,10 +33,10 @@
   <ItemGroup>
     <Compile Include="Exceptions\CreateFavoriteRestaurantCommandException.cs" />
     <Compile Include="Exceptions\DeleteFavoriteRestaurantCommandException .cs" />
-    <Compile Include="Exceptions\GetCommensalEmailCommandException.cs" />
-    <Compile Include="Exceptions\GetFavoriteRestaurantFondaCommandException.cs" />
     <Compile Include="Exceptions\FondaBackendLogicException.cs" />
     <Compile Include="Exceptions\GetAllRestaurantsCommandException.cs" />
+    <Compile Include="Exceptions\GetCommensalEmailCommandException.cs" />
+    <Compile Include="Exceptions\GetFavoriteRestaurantFondaCommandException.cs" />
     <Compile Include="FavoriteManagement\CreateFavoriteRestaurantCommand.cs" />
     <Compile Include="FavoriteManagement\DeleteFavoriteRestaurantCommand.cs" />
     <Compile Include="FavoriteManagement\GetAllRestaurantCommand.cs" />

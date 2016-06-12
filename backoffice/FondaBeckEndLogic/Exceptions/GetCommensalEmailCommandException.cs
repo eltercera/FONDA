@@ -1,18 +1,20 @@
-﻿using System;
+﻿using com.ds201625.fonda.BackEndLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using com.ds201625.fonda.BackEndLogic;
 
-namespace com.ds201625.fonda.BackEndLogic.Exceptions
+namespace com.ds201625.fonda.FondaBackEndLogic.Exceptions
 {
-    public class GetFavoriteRestaurantFondaCommandException : FondaBackendLogicException
+    public class GetCommensalEmailCommandException : FondaBackendLogicException
     {
-        public GetFavoriteRestaurantFondaCommandException () : base() {	}
+        public GetCommensalEmailCommandException () : base() {	}
 
-		public GetFavoriteRestaurantFondaCommandException (string message) : base(message) {	}
+		public GetCommensalEmailCommandException(string message) : base(message) {	}
 
-        public GetFavoriteRestaurantFondaCommandException(string message, Exception InnerException)
+        public GetCommensalEmailCommandException(string message, Exception InnerException)
 			: base(message, InnerException) {	}
     }
 }
