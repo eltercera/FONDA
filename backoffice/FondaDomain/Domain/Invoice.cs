@@ -8,6 +8,7 @@ namespace com.ds201625.fonda.Domain
     /// </summary>
     public class Invoice : BaseEntity
     {
+        #region Fields
         /// <summary>
         /// Restaurante al que la factura pertenece
         /// </summary>
@@ -62,12 +63,72 @@ namespace com.ds201625.fonda.Domain
 		/// El numero unico de la factura
 		/// </summary>
         private int _number;
+        #endregion
 
+        #region Constructors
         /// <summary>
         /// Constructor
         /// </summary>
         public Invoice() : base() { }
 
+        /// <summary>
+        /// Constructor de Factura
+        /// </summary>
+        /// <param name="restaurant">Restaurante al que pertenece la factura</param>
+        /// <param name="payment">Pago de la factura</param>
+        /// <param name="account">Orden de la factura</param>
+        /// <param name="profile">Perfil de la factura</param>
+        /// <param name="tip">Propina de la factura</param>
+        /// <param name="date">Fecha de la factura</param>
+        /// <param name="total">Total de la factura</param>
+        /// <param name="tax">Impuesto de la factura</param>
+        /// <param name="currency">Tipo de Moneda</param>
+        public Invoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
+            float tip, DateTime date, float total, float tax, Currency currency) 
+            : base()
+        {
+            this._restaurant = restaurant;
+            this._payment = payment;
+            this._account = account;
+            this._profile = profile;
+            this._tip = tip;
+            this._date = date;
+            this._total = total;
+            this._tax = tax;
+            this._status = new GeneratedInvoiceStatus();
+            this._currency = currency;
+        }
+
+        /// <summary>
+        /// Constructor de Factura sin propina
+        /// </summary>
+        /// <param name="restaurant">Restaurante al que pertenece la factura</param>
+        /// <param name="payment">Pago de la factura</param>
+        /// <param name="account">Orden de la factura</param>
+        /// <param name="profile">Perfil de la factura</param>
+        /// <param name="date">Fecha de la factura</param>
+        /// <param name="total">Total de la factura</param>
+        /// <param name="tax">Impuesto de la factura</param>
+        /// <param name="currency">Tipo de Moneda</param>
+        public Invoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
+            DateTime date, float total, float tax, Currency currency)
+            : base()
+        {
+            this._restaurant = restaurant;
+            this._payment = payment;
+            this._account = account;
+            this._profile = profile;
+            this._tip = 0;
+            this._date = date;
+            this._total = total;
+            this._tax = tax;
+            this._status = new GeneratedInvoiceStatus();
+            this._currency = currency;
+        }
+
+        #endregion
+
+        #region Properties
         /// <summary>
         /// Obtiene o asigna una moneda a la factura
         /// </summary>
@@ -175,7 +236,7 @@ namespace com.ds201625.fonda.Domain
             get { return _payment; }
             set { _payment = value; }
         }
-
+        #endregion
 
         /// <summary>
         /// Cambia el estado actual de la factura.
