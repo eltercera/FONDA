@@ -34,10 +34,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="restaurant">Un objeto de tipo Restaurant</param>
         /// <returns>Una lista de Account</returns>
-        public IList<Account> FindByRestaurant(int restaurant)
+        public IList<Account> FindByRestaurant(Restaurant restaurant)
         {
-            //TODO: Devolver una lista de Ordenes
-            return new List<Account>();
+            ICriterion criterion = Expression.Eq("Status", OpenAccountStatus.Instance);
+            try
+            {
+                IList<Account> list = new List<Account>();
+                list = (FindAll(criterion));
+                return list;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("No se encontraron ordenes", e);
+            }
         }
 
         /// <summary>

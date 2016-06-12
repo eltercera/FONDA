@@ -131,7 +131,9 @@
     <Compile Include="HibernateDAO\HibernateOrderAccountDAO.cs" />
     <Compile Include="HibernateDAO\HibernateReservationDAO.cs" />
     <Compile Include="HibernateDAO\HibernateRoleDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateCanceledInvoiceStatus.cs" />
     <Compile Include="InterfaceDAO\IBusyTableStatusDAO.cs" />
+    <Compile Include="InterfaceDAO\ICanceledInvoiceStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IDisableSimpleStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateUsedReservationStatus.cs" />
     <Compile Include="InterfaceDAO\IActiveReservationStatusDAO.cs" />
