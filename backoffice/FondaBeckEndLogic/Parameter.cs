@@ -44,6 +44,8 @@ namespace com.ds201625.fonda.BackEndLogic
 		{
 			set
 			{
+				if (value == null)
+					return;
 				if (!_dataType.IsAssignableFrom(value.GetType()))
 					throw InvalidTypeOfParameterException.Generate(_dataType,value.GetType());
 				_data = value;

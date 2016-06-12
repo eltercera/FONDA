@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="Controllers\CategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\CostFilterFondaWebApiController.cs" />
+    <Compile Include="Controllers\FavoritesRestaurantsFondaWebApiController.cs" />
     <Compile Include="Controllers\MenuCategoryWebApiController.cs" />
     <Compile Include="Controllers\PaymentFondaWebApiController.cs" />
     <Compile Include="Controllers\RestaurantCategoryFilterFondaWebApiController.cs" />
@@ -88,9 +89,9 @@
     <Compile Include="Controllers\RestaurantFondaWebApiController.cs" />
     <Compile Include="Controllers\ZoneFilterFondaWebApiController.cs" />
     <Compile Include="Exceptions\AddFavoriteRestaurantFondaWebApiControllerException.cs" />
-    <Compile Include="Exceptions\FindFavoriteRestaurantFondaWebApiControllerException.cs" />
-    <Compile Include="Exceptions\FindByEmailUserAccountFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\DeleteFavoriteRestaurantFondaWebApiControllerException .cs" />
+    <Compile Include="Exceptions\FindByEmailUserAccountFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\FindFavoriteRestaurantFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FondaBackendException.cs" />
     <Compile Include="Exceptions\GetAllRestaurantsFondaWebApiControllerException.cs" />
     <Compile Include="GeneralRes.Designer.cs">
@@ -115,6 +116,11 @@
     <Compile Include="Controllers\TokenFondaWebApiController.cs" />
     <Compile Include="Controllers\ProfileFondaWebApiController.cs" />
     <Compile Include="Controllers\CommensalWebApiController.cs" />
+    <Compile Include="Controllers\RestaurantsFondaWebApiController.cs" />
+    <Compile Include="Controllers\UrlFilters\UrlFilters.cs" />
+    <Compile Include="Controllers\UrlFilters\RestaurantsUrlFilters.cs" />
+    <Compile Include="Controllers\RestaurantCategoriesWebApiController.cs" />
+    <Compile Include="Controllers\ZonesFondaWebApiController.cs" />
     <Compile Include="Log.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\UrlFilters\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">

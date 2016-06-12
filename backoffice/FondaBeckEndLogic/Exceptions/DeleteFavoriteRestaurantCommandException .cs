@@ -1,10 +1,11 @@
-﻿using System;
+﻿using com.ds201625.fonda.BackEndLogic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace com.ds201625.fonda.BackEndLogic.Exceptions
+namespace com.ds201625.fonda.FondaBackEndLogic.Exceptions
 {
     public class DeleteFavoriteRestaurantCommandException : FondaBackendLogicException
     {

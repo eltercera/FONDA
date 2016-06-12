@@ -41,9 +41,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebService", "WebService", "{7027CB04-C59A-420D-BA4B-9FC0F59BD12A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FondaBackEnd", "FondaBackEnd\FondaBackEnd.csproj", "{10A96533-96E6-48F2-A687-0FDCC1A76B28}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A1BE7D6C-7750-4795-AABF-B397E079C918} = {A1BE7D6C-7750-4795-AABF-B397E079C918}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FondaBackOfficeLogicTest", "FondaBackOfficeLogicTest\FondaBackOfficeLogicTest.csproj", "{CA0E4233-6BDC-4C4D-85EF-65A0494B33A0}"
 EndProject

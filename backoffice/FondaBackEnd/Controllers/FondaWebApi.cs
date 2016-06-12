@@ -98,6 +98,19 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 			get { return Log.Log.Logger; }
 		}
 
+		protected void LogDebug (string msg = "")
+		{
+			if (Logger.IsDebugEnabled)
+				Logger.Debug("("+this.ToString () + "): " + msg);
+		}
+
+		protected void LogException (Exception e,string msg = "")
+		{
+			Logger.Error (
+				"("+this.ToString () + ") "
+				+ msg +	": " + e.Message);
+		}
+
     }
 
 
