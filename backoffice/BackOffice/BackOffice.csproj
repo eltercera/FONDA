@@ -43,10 +43,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -107,6 +103,9 @@
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920">
+      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -655,19 +654,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BackOfficeModel\BackOfficeModel.csproj">
-      <Project>{0c4a3e0c-4e85-46b0-a6b0-a6dc2bce3d8b}</Project>
+      <Project>{0C4A3E0C-4E85-46B0-A6B0-A6DC2BCE3D8B}</Project>
       <Name>BackOfficeModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\BackOfficePresenter\BackOfficePresenter.csproj">
-      <Project>{fde7b2a6-7496-4680-ab18-a336eebbe62e}</Project>
+      <Project>{FDE7B2A6-7496-4680-AB18-A336EEBBE62E}</Project>
       <Name>BackOfficePresenter</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
-      <Project>{4a769797-45c6-4ad9-95fd-7b950d937d1c}</Project>
+      <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
       <Name>FondaDataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
-      <Project>{cd756618-286a-4fbc-93a3-0eccb571b18f}</Project>
+      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">

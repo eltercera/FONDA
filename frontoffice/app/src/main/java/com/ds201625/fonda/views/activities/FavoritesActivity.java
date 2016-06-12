@@ -192,7 +192,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
         try {
             Commensal log = SessionData.getInstance().getCommensal();
             try {
-
+                favoriteBotton.setIcon(R.drawable.ic_star_yellow);
                 emailToWebService=log.getEmail()+"/";
                 RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
                         getLogedCommensalService();
@@ -202,7 +202,8 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                         getFavoriteRestaurantService();
 
                 favservice.deleteFavoriteRestaurant(logedComensal.getId(),restaurant.getId());
-
+                Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
+                        Toast.LENGTH_LONG).show();
                 showFragment(fv);
             } catch (RestClientException e) {
                 e.printStackTrace();
