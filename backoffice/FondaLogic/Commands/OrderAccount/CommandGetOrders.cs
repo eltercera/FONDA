@@ -52,11 +52,10 @@ namespace FondaLogic.Commands.OrderAccount
             {
                 //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetOrders exceptionGetOrders = new CommandExceptionGetOrders(
-                    //Arrojar
-                    FondaResources.General.Errors.NullReferenceExceptionMessage,
+                    FondaResources.General.Errors.NullExceptionReferenceCode,
                     FondaResources.OrderAccount.Errors.ClassNameGetOrders,
                     FondaResources.OrderAccount.Errors.CommandMethod,
-                    FondaResources.OrderAccount.Errors.ErrorMessageGetOrders,
+                    FondaResources.General.Errors.NullExceptionReferenceMessage,
                     ex);
 
                 Logger.WriteErrorLog(exceptionGetOrders);

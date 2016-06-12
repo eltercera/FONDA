@@ -117,8 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NullReferenceExceptionCode" xml:space="preserve">
+  <data name="NullExceptionReferenceCode" xml:space="preserve">
     <value>BO-00-001</value>
     <comment>Codigo de error para referencia a valor Nulo</comment>
+  </data>
+  <data name="NullExceptionReferenceMessage" xml:space="preserve">
+    <value>Valor inexistente o nulo</value>
+    <comment>Mensaje de error para referencia a valor Nulo</comment>
   </data>
 </root>

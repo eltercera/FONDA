@@ -1,6 +1,8 @@
 ﻿using com.ds201625.fonda;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using FondaLogic.FondaCommandException;
+using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,13 +40,23 @@ namespace FondaLogic.Commands.OrderAccount
                 IOrderAccountDao _orderDAO = _facDAO.GetOrderAccountDAO();
 
 
-                 Receiver = _orderDAO.FindById(orderId);
+                Receiver = _orderDAO.FindById(orderId);
+
             }
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                //TODO: Escribir en el Log la excepcion
-                throw;
+                CommandExceptionGetOrder exceptionGetOrders = new CommandExceptionGetOrder(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.OrderAccount.Errors.ClassNameGetOrder,
+                FondaResources.OrderAccount.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(exceptionGetOrders);
+
+                throw exceptionGetOrders;
             }
         }
 
