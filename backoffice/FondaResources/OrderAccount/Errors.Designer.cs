@@ -97,6 +97,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandGetOrder.
+        /// </summary>
+        public static string ClassNameGetOrder {
+            get {
+                return ResourceManager.GetString("ClassNameGetOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGetOrders.
         /// </summary>
         public static string ClassNameGetOrders {
@@ -147,6 +156,15 @@ namespace FondaResources.OrderAccount {
         public static string ErrorMessageGetInvoice {
             get {
                 return ResourceManager.GetString("ErrorMessageGetInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al obtener una orden.
+        /// </summary>
+        public static string ErrorMessageGetOrder {
+            get {
+                return ResourceManager.GetString("ErrorMessageGetOrder", resourceCulture);
             }
         }
         

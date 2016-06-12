@@ -16,9 +16,23 @@ namespace com.ds201625.fonda.Factory
             return new Account();
         }
 
-        public static Entity GetPayment()
+        public static Entity GetInvoice()
         {
-            return new Payment();
+            return new Invoice();
+        }
+
+        public static Entity GetInvoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
+            float tip, float total, float tax, Currency currency, int number)
+        {
+            return new Invoice(restaurant, payment, account, profile,
+            tip, total, tax, currency, number);
+        }
+
+        public static Entity GetInvoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
+            float total, float tax, Currency currency, int number)
+        {
+            return new Invoice(restaurant, payment, account, profile,
+            total, tax, currency, number);
         }
 
         #endregion

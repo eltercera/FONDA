@@ -60,6 +60,22 @@ namespace FondaLogic.Factory
 
         #endregion
 
+        #region Invoice
+
+        //Se obtienen los comandos a a utilizar
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandGetInvoice
+        /// </summary>
+        /// <param name="entity">Id del Restaurante</param>
+        /// <returns>comando CommandGetOrders</returns>
+        public static Command GetCommandInvoice(object receiver)
+        {
+            return new CommandGetInvoice(receiver);
+        }
+
+        #endregion
+
         #region Restaurant
 
         //Defincion de los comandos a implementar del modulo Restaurante

@@ -8,6 +8,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -87,56 +88,34 @@ namespace com.ds201625.fonda.BackEnd.Controllers
               restaurant5.Address = "El Rosal";
               restaurant5.RestaurantCategory = category4;
               restaurant5.Logo = "ic_restaurant005";
- 
-           
-              Invoice invoice1 = new Invoice();
-              invoice1.Profile = profile;
-              invoice1.Restaurant = restaurant1;
-              invoice1.Tip = 300;
-              invoice1.Tax = 50;
-              invoice1.Total = 350;
-              invoice1.Date = date1.ToUniversalTime();
 
-              Invoice invoice2 = new Invoice();
-              invoice2.Profile = profile;
-              invoice2.Restaurant = restaurant2;
-              invoice2.Tip = 300;
-              invoice2.Tax = 50;
-              invoice2.Total = 350;
-              invoice2.Date = date1.ToUniversalTime();
 
-              Invoice invoice3 = new Invoice();
-              invoice3.Profile = profile;
-              invoice3.Restaurant = restaurant3;
-              invoice3.Tip = 300;
-              invoice3.Tax = 50;
-              invoice3.Total = 350;
-              invoice3.Date = date1.ToUniversalTime();
+              Invoice invoice1 = (Invoice)EntityFactory.GetInvoice(restaurant1, null,
+                null, profile, 350, 50, null, 1);
 
-              Invoice invoice4 = new Invoice();
-              invoice4.Profile = profile;
-              invoice4.Restaurant = restaurant4;
-              invoice4.Tip = 300;
-              invoice4.Tax = 50;
-              invoice4.Total = 350;
-              invoice4.Date = date1.ToUniversalTime();
 
-              Invoice invoice5 = new Invoice();
-              invoice5.Profile = profile;
-              invoice5.Restaurant = restaurant5;
-              invoice5.Tip = 300;
-              invoice5.Tax = 50;
-              invoice5.Total = 350;
-              invoice5.Date = date1.ToUniversalTime();
+              Invoice invoice2 = (Invoice)EntityFactory.GetInvoice(restaurant2, null,
 
-              Invoice invoice6 = new Invoice();
-              invoice6.Profile = profile;
-              invoice6.Restaurant = restaurant1;
-              invoice6.Tip = 300;
-              invoice6.Tax = 50;
-              invoice6.Total = 350;
-              invoice6.Date = date1.ToUniversalTime();
-            
+                null, profile, 300, 350, 50, null, 2);
+
+              Invoice invoice3 = (Invoice)EntityFactory.GetInvoice(restaurant3, null,
+
+                null, profile, 300, 350, 50, null, 3);
+
+              Invoice invoice4 = (Invoice)EntityFactory.GetInvoice(restaurant4, null,
+
+                null, profile, 300, 350, 50, null, 4);
+
+
+              Invoice invoice5 = (Invoice)EntityFactory.GetInvoice(restaurant5, null,
+
+                null, profile, 300, 350, 50, null, 5);
+
+
+              Invoice invoice6 = (Invoice)EntityFactory.GetInvoice(restaurant1, null,
+
+                null, profile, 300, 350, 50, null, 6);
+
               List<Invoice> lista = new List<Invoice>();
               lista.Add(invoice1);
               lista.Add(invoice2);

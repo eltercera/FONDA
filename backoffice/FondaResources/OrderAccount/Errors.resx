@@ -133,6 +133,10 @@
     <value>CommandGetInvoice</value>
     <comment>Comando para obtener una factura</comment>
   </data>
+  <data name="ClassNameGetOrder" xml:space="preserve">
+    <value>CommandGetOrder</value>
+    <comment>Comando para obtener una orden</comment>
+  </data>
   <data name="ClassNameGetOrders" xml:space="preserve">
     <value>CommandGetOrders</value>
     <comment>Comando para obtener las ordenes de un Restaurante</comment>
@@ -156,6 +160,10 @@
   <data name="ErrorMessageGetInvoice" xml:space="preserve">
     <value>Error al obtener la factura de una orden cerrada</value>
     <comment>Mensaje de error para CommandGetInvoice</comment>
+  </data>
+  <data name="ErrorMessageGetOrder" xml:space="preserve">
+    <value>Error al obtener una orden</value>
+    <comment>Mensaje de error para CommandGetOrder</comment>
   </data>
   <data name="ErrorMessageGetOrders" xml:space="preserve">
     <value>Error obteniendo las ordenes de un Restaurante</value>
