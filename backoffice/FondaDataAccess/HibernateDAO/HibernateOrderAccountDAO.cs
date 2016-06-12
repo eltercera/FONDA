@@ -9,9 +9,9 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-    public class HibernateOrderAccountDAO : HibernateBaseEntityDAO<Account>, IOrderAccountDao
+    class HibernateOrderAccountDAO : HibernateBaseEntityDAO<Account>, IOrderAccountDao
     {
-        private FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
+        private FactoryDAO.FactoryDAO _facDAO;
         /// <summary>
         /// Obtiene la orden de un comensal
         /// </summary>
@@ -82,17 +82,20 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         }
 
         /// <summary>
-        /// Obtiene la factura de una orden
+        /// Obtiene las cuentas de un Restaurante
         /// </summary>
-        /// <param name="account">Un objeto de tipo Account</param>
-        /// <returns>Un objeto Invoice</returns>
-        public IList<Account> FindAccountByRestaurant(Restaurant _restaurant)
+        /// <param name="idRestaurant">Un ID de Restaurant tipo int</param>
+        /// <returns>Una List de Accounts</returns>
+        public IList<Account> FindAccountByRestaurant(int _idRestaurant)
         {
-            ICriterion criterion = (Expression.Eq("Restaurant.Id", _restaurant.Id));
+            Restaurant _restaurant;
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            
             try
             {
+                _restaurant = _restaurantDAO.FindById(_idRestaurant);
                 IList<Account> _list = new List<Account>();
-                //_list = (FindAll(criterion));
+                _list = _restaurant.Accounts;
                 return _list;
             }
             catch (ArgumentOutOfRangeException e)
@@ -101,12 +104,18 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
         }
 
-        public int GenerateNumberInvoice(Restaurant _restaurant)
+        /// <summary>
+        /// Obtiene el numero unico de la orden
+        /// </summary>
+        /// <param name="Restaurant">Un objeto Restaurant</param>
+        /// <returns>Un int que es el numero unico de Cuenta</returns>
+
+        public int GenerateNumberAccount(Restaurant _restaurant)
         {
             try
             {
                 IList<Account> _list = new List<Account>();
-                _list = FindAccountByRestaurant(_restaurant);
+                _list = FindAccountByRestaurant(_restaurant.Id);
                 int _length = 0;
 
                 if (!(_list == null))

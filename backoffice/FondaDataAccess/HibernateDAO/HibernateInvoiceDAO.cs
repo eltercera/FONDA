@@ -60,6 +60,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
         }
 
+        /// <summary>
+        /// Obtiene el numero unico de la factura
+        /// </summary>
+        /// <param name="Restaurant">Un objeto Restaurant</param>
+        /// <returns>Un int que es el numero unico del invoice</returns>
+
         public int GenerateNumberInvoice(Restaurant _restaurant)
         {
              try
