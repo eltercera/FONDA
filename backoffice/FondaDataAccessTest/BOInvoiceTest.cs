@@ -117,7 +117,7 @@ namespace FondaDataAccessTest
             total = total + (dishOrder.Dish.Cost*dishOrder.Count);
         }
                 
-
+        /*
             _invoice.Payment = payment;
             _invoice.Date = _invoiceDate;
             _invoice.Status = GeneratedInvoiceStatus.Instance;
@@ -125,6 +125,8 @@ namespace FondaDataAccessTest
             _invoice.Tip = 200;
             _invoice.Total = total;
             _invoice.Account = orderAccount;
+
+        */
 
         }
 

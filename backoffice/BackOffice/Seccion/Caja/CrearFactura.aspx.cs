@@ -206,7 +206,7 @@ namespace BackOffice.Seccion.Caja
             IRestaurantDAO _restaurant = factoryDAO.GetRestaurantDAO();
 
 
-
+            /*
 
             _invoice.Restaurant = _restaurant.FindById(1);
             _invoice.Tip = 10;
@@ -219,7 +219,7 @@ namespace BackOffice.Seccion.Caja
             _invoice.Profile = profile;
             _invoiceDAO.Save(_invoice);
 
-
+            */
         }
 
         public void fillDropDown(int id)

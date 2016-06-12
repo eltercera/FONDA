@@ -79,12 +79,11 @@ namespace com.ds201625.fonda.Domain
         /// <param name="account">Orden de la factura</param>
         /// <param name="profile">Perfil de la factura</param>
         /// <param name="tip">Propina de la factura</param>
-        /// <param name="date">Fecha de la factura</param>
         /// <param name="total">Total de la factura</param>
         /// <param name="tax">Impuesto de la factura</param>
         /// <param name="currency">Tipo de Moneda</param>
         public Invoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
-            float tip, DateTime date, float total, float tax, Currency currency) 
+            float tip, float total, float tax, Currency currency, int number) 
             : base()
         {
             this._restaurant = restaurant;
@@ -92,11 +91,12 @@ namespace com.ds201625.fonda.Domain
             this._account = account;
             this._profile = profile;
             this._tip = tip;
-            this._date = date;
+            this._date = DateTime.Now;
             this._total = total;
             this._tax = tax;
             this._status = new GeneratedInvoiceStatus();
             this._currency = currency;
+            this._number = number;
         }
 
         /// <summary>
@@ -106,12 +106,11 @@ namespace com.ds201625.fonda.Domain
         /// <param name="payment">Pago de la factura</param>
         /// <param name="account">Orden de la factura</param>
         /// <param name="profile">Perfil de la factura</param>
-        /// <param name="date">Fecha de la factura</param>
         /// <param name="total">Total de la factura</param>
         /// <param name="tax">Impuesto de la factura</param>
         /// <param name="currency">Tipo de Moneda</param>
         public Invoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
-            DateTime date, float total, float tax, Currency currency)
+            float total, float tax, Currency currency, int number)
             : base()
         {
             this._restaurant = restaurant;
@@ -119,11 +118,13 @@ namespace com.ds201625.fonda.Domain
             this._account = account;
             this._profile = profile;
             this._tip = 0;
-            this._date = date;
+            this._date = DateTime.Now;
             this._total = total;
             this._tax = tax;
             this._status = new GeneratedInvoiceStatus();
             this._currency = currency;
+            this._number = number;
+
         }
 
         #endregion
@@ -136,7 +137,6 @@ namespace com.ds201625.fonda.Domain
         public virtual Currency Currency
         {
             get { return _currency; }
-            set { _currency = value; }
         }
 
 
@@ -147,7 +147,6 @@ namespace com.ds201625.fonda.Domain
         public virtual Account Account
         {
             get { return _account; }
-            set { _account = value; }
         }
 
         /// <summary>
@@ -157,7 +156,6 @@ namespace com.ds201625.fonda.Domain
         public virtual Restaurant  Restaurant
         {
             get { return _restaurant; }
-            set { _restaurant = value; }
         }
 
         /// <summary>
@@ -167,7 +165,6 @@ namespace com.ds201625.fonda.Domain
         public virtual Profile Profile
         {
             get { return _profile; }
-            set { _profile = value; }
         }
 
         /// <summary>
@@ -177,7 +174,6 @@ namespace com.ds201625.fonda.Domain
         public virtual float Tip
         {
             get { return _tip; }
-            set { _tip = value; }
         }
 
         /// <summary>
@@ -187,7 +183,6 @@ namespace com.ds201625.fonda.Domain
         public virtual DateTime Date
         {
             get { return _date; }
-            set { _date = value; }
         }
 
         /// <summary>
@@ -197,7 +192,6 @@ namespace com.ds201625.fonda.Domain
         public virtual float Total
         {
             get { return _total; }
-            set { _total = value; }
         }
 
         /// <summary>
@@ -207,7 +201,6 @@ namespace com.ds201625.fonda.Domain
         public virtual float Tax
         {
             get { return _tax; }
-            set { _tax = value; }
         }
 
         /// <summary>
@@ -216,7 +209,6 @@ namespace com.ds201625.fonda.Domain
         public virtual int Number
         {
             get { return _number; }
-            set { _number = value; }
         }
 
         /// <summary>
@@ -234,7 +226,6 @@ namespace com.ds201625.fonda.Domain
         public virtual Payment Payment
         {
             get { return _payment; }
-            set { _payment = value; }
         }
         #endregion
 
