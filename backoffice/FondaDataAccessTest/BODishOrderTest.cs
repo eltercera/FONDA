@@ -28,8 +28,7 @@ namespace FondaDataAccessTest
             _dishOrder = new DishOrder();
             _listDishOrder = new List<DishOrder>();
             accountId = 1;
-            _account.Id = 1;
-            _dishOrder = _dishOrderDAO.FindById(_account.Id);
+            _dishOrder = _dishOrderDAO.FindById(accountId);
 
 
         }
