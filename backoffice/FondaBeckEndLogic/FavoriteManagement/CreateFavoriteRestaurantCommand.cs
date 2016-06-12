@@ -28,8 +28,6 @@ namespace FondaBeckEndLogic.ProfileManagement
             return paramters;
         }
      
-       
-
 		protected override void Invoke()
 		{
             Commensal commensal;
@@ -40,12 +38,9 @@ namespace FondaBeckEndLogic.ProfileManagement
             // Obtiene el DAO que se requiere
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
             IRestaurantDAO restaurantDAO = FacDao.GetRestaurantDAO();
-           
-            //VALIDACIONES DE CAMPOS
-
-            if ((idCommensal == null) || (idRestaurant == null))
-                throw new Exception("Datos de Perfil Invalidos");
-               
+           //VALIDACIONES DE CAMPOS
+            if ((idCommensal == null) || (idRestaurant == null)) 
+                throw new Exception("Datos Invalidos");
             // Ejecucion del agregar.		
 			try
 			{
@@ -54,12 +49,11 @@ namespace FondaBeckEndLogic.ProfileManagement
                 commensal.RemoveFavoriteRestaurant(restaurant);
                 commensal.AddFavoriteRestaurant(restaurant);
                 commensalDAO.Save(commensal);
-
-			}
+            }
 			catch (SaveEntityFondaDAOException e)  ////CAMBIAR EXEPCIONES
 			{
 				// TODO: Crear Excepcion personalizada
-				throw new Exception("Error al gualrdar los datos",e);
+				throw new Exception("",e);
 			}
 			catch (Exception e)
 			{
@@ -67,7 +61,7 @@ namespace FondaBeckEndLogic.ProfileManagement
 				throw new Exception("Error Desconocido",e);
 			}
             //FALTA LOGGER
-			// Guardar el resultado.
+			// Guarda el resultado.
             Result = commensal;
 		}
 	}

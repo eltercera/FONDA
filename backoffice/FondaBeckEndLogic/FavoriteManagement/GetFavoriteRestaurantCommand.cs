@@ -18,7 +18,7 @@ namespace FondaBeckEndLogic.ProfileManagement
 
 		protected override Parameter[] InitParameters ()
 		{
-            // Requiere 2 Parametros
+            // Requiere 1 Parametros
             Parameter[] paramters = new Parameter[1];
 
             // [0] El Commensal
@@ -26,8 +26,6 @@ namespace FondaBeckEndLogic.ProfileManagement
 
             return paramters;
 		}
-
-       
 
 		protected override void Invoke()
 		{
@@ -38,16 +36,10 @@ namespace FondaBeckEndLogic.ProfileManagement
             // Obtiene el dao que se requiere
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
            
-            //VALIDACIONES DE CAMPOS
-
-           /* // Validacion basica de datos
-            if (commensal.Id == null || profile.Person == null || profile.Person.Name == null
-                || profile.Person.LastName == null || profile.Person
-                .Ssn == null)
-                // TODO: Crear Excepcion personalizada
-                throw new Exception("Datos de Perfil Invalidos");*/
-
-            // Ejecucion del Buscar.		
+            //VALIDACIONES DE CAMPOS--ESTO ES NECESARIO?
+            if (commensal.Id == null) 
+                throw new Exception("Datos de Perfil Invalidos");
+          // Ejecucion del Buscar.		
 			try
 			{
                 favorites = (Commensal)commensalDAO.FindById(commensal.Id);  //PREGUNTAR POR EL NEW RESTAURANT

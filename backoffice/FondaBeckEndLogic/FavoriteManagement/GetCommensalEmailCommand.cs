@@ -28,7 +28,6 @@ namespace FondaBeckEndLogic.ProfileManagement
             return paramters;
 		}
 
-
         protected override void Invoke()
         {
             UserAccount answer;
@@ -37,16 +36,10 @@ namespace FondaBeckEndLogic.ProfileManagement
 
             // Obtiene el dao que se requiere
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
-
-            //VALIDACIONES DE CAMPOS
-
             // Ejecucion del Buscar.		
             try
             {
-    
-                answer = (UserAccount)commensalDAO.FindByEmail(commensal.Email);
-                //PREGUNTAR POR EL NEW RESTAURANT
-               
+                 answer = (UserAccount)commensalDAO.FindByEmail(commensal.Email);
             }
             catch (SaveEntityFondaDAOException e)  ////CAMBIAR EXEPCIONES
             {

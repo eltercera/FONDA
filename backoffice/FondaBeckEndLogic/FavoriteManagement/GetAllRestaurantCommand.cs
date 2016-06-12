@@ -20,24 +20,17 @@ namespace FondaBeckEndLogic.ProfileManagement
         {
             // Requiere 0 Parametros
             Parameter[] paramters = new Parameter[0];
-
             return paramters;
         }
 
 		protected override void Invoke()
 		{
             IList<Restaurant> listRestaurant;
-
-            // Obtiene el dao que se requiere
-            IRestaurantDAO RestaurantDAO = FacDao.GetRestaurantDAO();
-          
-            //VALIDACIONES DE CAMPOS
-
-      
-
-            // Ejecucion del Buscar.		
 			try
 			{
+                // Obtiene el dao que se requiere
+                IRestaurantDAO RestaurantDAO = FacDao.GetRestaurantDAO();
+                // Ejecucion del Buscar.	
                 listRestaurant = (IList<Restaurant>)RestaurantDAO.GetAll();
                 foreach (var restaurant in listRestaurant)
                 {
