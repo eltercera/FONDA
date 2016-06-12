@@ -13,8 +13,15 @@ using com.ds201625.fonda.Logic;
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
     [RoutePrefix("api")]
+
+    /// <summary>
+    /// favorites restaurants fonda web API controller.
+    /// </summary>
     public class FavoritesRestaurantsFondaWebApiController : FondaWebApi
     {
+        /// <summary>
+        /// constructor de restaurant favoritos fonda web API controller.
+        /// </summary>
         public FavoritesRestaurantsFondaWebApiController() : base() { }
 
         /// <summary>

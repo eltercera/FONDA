@@ -13,10 +13,20 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 
 namespace FondaBeckEndLogic.ProfileManagement
 {
+    /// <summary>
+    /// Get Commensal Email Command
+    /// </summary>
     class GetCommensalEmailCommand : BaseCommand
     {
+        /// <summary>
+        /// constructor obtener comensal
+        /// </summary>
         public GetCommensalEmailCommand() : base() { }
 
+        /// <summary>
+        /// metodo que inicializa los parametros
+        /// </summary>
+        /// <returns>paramters</returns>
 		protected override Parameter[] InitParameters ()
 		{
             // Requiere 1 Parametro
@@ -28,6 +38,9 @@ namespace FondaBeckEndLogic.ProfileManagement
             return paramters;
 		}
 
+        /// <summary>
+        /// metodo invoke que ejecuta el buscar comensal por email 
+        /// </summary>
         protected override void Invoke()
         {
             UserAccount answer;

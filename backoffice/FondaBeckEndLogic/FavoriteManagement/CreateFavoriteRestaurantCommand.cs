@@ -11,10 +11,20 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 
 namespace FondaBeckEndLogic.ProfileManagement
 {
+    /// <summary>
+    /// Create Favorite Restaurant Command.
+    /// </summary>
     class CreateFavoriteRestaurantCommand : BaseCommand 
     {
+        /// <summary>
+        /// constructor create Favorite restaurant command
+        /// </summary>
          public CreateFavoriteRestaurantCommand() : base() { }
-
+         
+         /// <summary>
+         /// metodo que inicializa los parametros
+         /// </summary>
+         /// <returns>paramters</returns>
 		protected override Parameter[] InitParameters ()
 		{
             // Requiere 2 Parametros
@@ -27,7 +37,10 @@ namespace FondaBeckEndLogic.ProfileManagement
             paramters[1] = new Parameter(typeof(Restaurant), true);
             return paramters;
         }
-     
+
+        /// <summary>
+        /// metodo invoke que ejecuta el agregar restaurant favorito
+        /// </summary>
 		protected override void Invoke()
 		{
             Commensal commensal;

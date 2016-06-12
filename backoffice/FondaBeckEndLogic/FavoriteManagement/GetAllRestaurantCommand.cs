@@ -12,10 +12,20 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 
 namespace FondaBeckEndLogic.ProfileManagement
 {
-    class GetAllRestaurantCommand : BaseCommand 
-    {
+    /// <summary>
+    /// Get All Restaurant Command.
+    /// </summary>
+    class GetAllRestaurantCommand : BaseCommand
+    {  
+        /// <summary>
+        /// constructor obtener todos los restaurant command
+        /// </summary>
         public GetAllRestaurantCommand() : base() { }
 
+        /// <summary>
+        /// metodo que inicializa los parametros
+        /// </summary>
+        /// <returns>paramters</returns>
         protected override Parameter[] InitParameters()
         {
             // Requiere 0 Parametros
@@ -23,6 +33,9 @@ namespace FondaBeckEndLogic.ProfileManagement
             return paramters;
         }
 
+        /// <summary>
+        /// metodo invoke que ejecuta la obtencion de todos los restaurantes
+        /// </summary>
 		protected override void Invoke()
 		{
             IList<Restaurant> listRestaurant;
@@ -30,7 +43,7 @@ namespace FondaBeckEndLogic.ProfileManagement
 			{
                 // Obtiene el dao que se requiere
                 IRestaurantDAO RestaurantDAO = FacDao.GetRestaurantDAO();
-                // Ejecucion del Buscar.	
+                // Ejecucion del obtener.	
                 listRestaurant = (IList<Restaurant>)RestaurantDAO.GetAll();
                 foreach (var restaurant in listRestaurant)
                 {

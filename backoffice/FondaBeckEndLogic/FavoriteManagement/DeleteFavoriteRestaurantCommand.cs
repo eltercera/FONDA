@@ -12,11 +12,21 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 
 namespace FondaBeckEndLogic.ProfileManagement
 {
+    /// <summary>
+    /// Delete Favorite Restaurant Command.
+    /// </summary>
     class DeleteFavoriteRestaurantCommand : BaseCommand
     {
 
+        /// <summary>
+        /// constructor delete Favorite restaurant command
+        /// </summary>
         public DeleteFavoriteRestaurantCommand() : base() { }
 
+        /// <summary>
+        /// metodo que inicializa los parametros
+        /// </summary>
+        /// <returns>paramters</returns>
 		protected override Parameter[] InitParameters ()
         { 
             // Requiere 2 Parametros
@@ -30,6 +40,9 @@ namespace FondaBeckEndLogic.ProfileManagement
             return paramters;
 		}
 
+        /// <summary>
+        /// metodo invoke que ejecuta el borrar restaurant favorito de un comensal
+        /// </summary>
         protected override void Invoke()
         {
             Commensal commensal;
