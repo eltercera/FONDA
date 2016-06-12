@@ -44,6 +44,10 @@
     <Compile Include="ProfileManagementTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BackOffice\BackOffice.csproj">
+      <Project>{f1ceac46-0e2b-45f1-8edc-d99f77b9dd26}</Project>
+      <Name>BackOffice</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
       <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>

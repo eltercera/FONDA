@@ -132,6 +132,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BackOffice\BackOffice.csproj">
+      <Project>{f1ceac46-0e2b-45f1-8edc-d99f77b9dd26}</Project>
+      <Name>BackOffice</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
       <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
       <Name>FondaDataAccess</Name>
