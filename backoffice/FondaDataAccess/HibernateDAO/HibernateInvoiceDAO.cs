@@ -47,6 +47,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Un objeto Invoice</returns>
         public IList<Invoice> FindInvoiceByRestaurant(Restaurant _restaurant)
         {
+
             ICriterion criterion =(Expression.Eq("Restaurant.Id", _restaurant.Id));
             try
             {
