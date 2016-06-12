@@ -2,12 +2,11 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace FondaLogic.Commands.OrderAccount
 {
@@ -15,22 +14,21 @@ namespace FondaLogic.Commands.OrderAccount
     {
 
         FactoryDAO _facDAO = FactoryDAO.Intance;
-        int restaurantId;
+        Restaurant _restaurant = new Restaurant();
 
         public CommandGetOrders(Object receiver) : base(receiver)
         {
             try
             {
-                restaurantId = (int) receiver;
+                _restaurant = (Restaurant)receiver;
             }
-            catch (Exception)
+            catch (NullReferenceException ex)
             {
                 //TODO: Enviar excepcion personalizada
                 throw;
             }
+
         }
-
-
 
         /// <summary>
         /// Metodo que ejecuta el comando que consulta las ordenes segun un Restaurante
@@ -44,14 +42,27 @@ namespace FondaLogic.Commands.OrderAccount
                 //Obtengo la instancia del DAO a utilizar
                 _orderDAO = _facDAO.GetOrderAccountDAO();
 
-                IList<Account> listAccounts = _orderDAO.FindByRestaurant(restaurantId);
+                IList<Account> listAccounts = _orderDAO.FindByRestaurant(_restaurant);
+
+                Receiver = listAccounts;
             }
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                //TODO: Escribir en el Log la excepcion
-                throw;
+                CommandExceptionGetOrders exceptionGetOrders = new CommandExceptionGetOrders(
+                    FondaResources.General.Errors.NullExceptionReferenceCode,
+                    FondaResources.OrderAccount.Errors.ClassNameGetOrders,
+                    FondaResources.OrderAccount.Errors.CommandMethod,
+                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    ex);
+
+                Logger.WriteErrorLog(exceptionGetOrders);
+
+                throw exceptionGetOrders;
             }
+
+
+
         }
 
     }

@@ -14,7 +14,7 @@ namespace com.ds201625.fonda.Domain
 		/// </summary>
 		public CanceledInvoiceStatus() : base ()
 		{
-			StatusId = 9;
+			StatusId = 14;
 			Description = "Factura Candelada";
 		}
 

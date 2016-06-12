@@ -12,7 +12,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         public GeneratedInvoiceStatus getGeneatedInvoiceStatus()
         {
-            GeneratedInvoiceStatus status = FindById(10);
+            GeneratedInvoiceStatus status = FindById(13);
             if (status == null)
             {
                 status = GeneratedInvoiceStatus.Instance;

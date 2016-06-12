@@ -14,7 +14,7 @@ namespace com.ds201625.fonda.Domain
 		/// </summary>
 		public GeneratedInvoiceStatus() : base ()
 		{
-			StatusId = 10;
+			StatusId = 13;
 			Description = "Factura Generada";
 		}
 

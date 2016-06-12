@@ -14,7 +14,7 @@ namespace com.ds201625.fonda.Domain
 		/// </summary>
 		protected ClosedAccountStatus() : base ()
 		{
-			StatusId = 8;
+			StatusId = 12;
 			Description = "Cuenta de Ordenes Cerrada";
 		}
 

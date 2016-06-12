@@ -5,6 +5,7 @@ using System.Web.Http;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.BackEnd.ActionFilters;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -74,16 +75,13 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 total += dish.Dishcost * dish.Count;
             }
             
-            Invoice invoice = new Invoice();
-            invoice.Account = account;
-            invoice.Payment = payment;
-            invoice.Status = FactoryDAO.GetGeneratedInvoiceStatus();
+            Invoice invoice = (Invoice)EntityFactory.GetInvoice(null, payment,
+
+                account, profile, tip, total, 10, null, 2);
+
       //      invoice.Restaurant = account.Table.Restaurant;// restaurantDAO.findByTable(account.Table);
-            invoice.Tip = tip;
-            invoice.Tax = 10;
-            invoice.Total = total;
-            invoice.Profile = profile;
-            invoice.Date = DateTime.Now;
+
+
 
             try
             {

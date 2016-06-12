@@ -8,6 +8,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -96,15 +97,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             currency.Name = "Bolivar";
             currency.Symbol = "Bs.";
 
-            Invoice invoice1 = new Invoice();
-            invoice1.Profile = profile;
-            invoice1.Restaurant = restaurant1;
-            invoice1.Tip = 179;
-            invoice1.Tax = 192;
-            invoice1.Total = 1971;
-            invoice1.Date = date1.ToUniversalTime();
-            invoice1.Account = account;
-            invoice1.Currency = currency;
+            Invoice invoice1 = (Invoice)EntityFactory.GetInvoice(restaurant1, null,
+
+                account, profile, 179, 1971, 192, currency, 2);
 
 
             return Ok(invoice1);

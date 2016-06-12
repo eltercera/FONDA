@@ -14,6 +14,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable()
                 .GeneratedBy.Increment();
 
+            Map(x => x.Number)
+              .Column("oa_number")
+              .Not.Nullable();
+
             References(x => x.Table)
                 .Column("fk_table_id")
                 .Not.Nullable();

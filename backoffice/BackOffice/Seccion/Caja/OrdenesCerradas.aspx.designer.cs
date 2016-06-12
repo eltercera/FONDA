@@ -10,16 +10,16 @@
 namespace BackOffice.Seccion.Caja {
     
     
-    public partial class DefaultOrdenesCerradas {
+    public partial class OrdenesCerradas {
         
         /// <summary>
-        /// Detalle control.
+        /// _closedOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Detalle;
+        protected global::System.Web.UI.WebControls.Table _closedOrders;
         
         /// <summary>
         /// Button5 control.

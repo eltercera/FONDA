@@ -117,67 +117,60 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Action2Account" xml:space="preserve">
-    <value>&lt;i class="fa fa-money fa-fw"&gt;&lt;/i&gt;</value>
-    <comment>Acciones disponibles en DataTable de Restaurant</comment>
+  <data name="ClassNameCloseOrder" xml:space="preserve">
+    <value>CommandCloseOrder</value>
+    <comment>Comando para cerrar una orden abierta</comment>
   </data>
-  <data name="Action3Account" xml:space="preserve">
-    <value>&lt;i class="fa fa-pencil-square-o"&gt;&lt;/i&gt;</value>
-    <comment>Acciones disponibles en DataTable de Mesa</comment>
+  <data name="ClassNameGenerateInvoice" xml:space="preserve">
+    <value>CommandGenerateInvoice</value>
+    <comment>Comando para generar una factura</comment>
   </data>
-  <data name="ActionAccount" xml:space="preserve">
-    <value>&lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;</value>
-    <comment>Acciones disponibles en DataTable de Categoria de Restaurant</comment>
+  <data name="ClassNameGetCloseOrders" xml:space="preserve">
+    <value>CommandGetCloseOrders</value>
+    <comment>Comando para obtener las ordenes cerradas de un Restaurante</comment>
   </data>
-  <data name="ActionCheckStatus" xml:space="preserve">
-    <value>&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;</value>
+  <data name="ClassNameGetInvoice" xml:space="preserve">
+    <value>CommandGetInvoice</value>
+    <comment>Comando para obtener una factura</comment>
   </data>
-  <data name="ActionUnCheckStatus" xml:space="preserve">
-    <value>&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
+  <data name="ClassNameGetOrder" xml:space="preserve">
+    <value>CommandGetOrder</value>
+    <comment>Comando para obtener una orden</comment>
   </data>
-  <data name="Active" xml:space="preserve">
-    <value>&lt;td class="text-center"&gt;&lt;span class="label label-success"&gt;&lt;i class="fa fa-check"&gt;&lt;p class="stat"&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;</value>
-    <comment>Estado Activo</comment>
+  <data name="ClassNameGetOrders" xml:space="preserve">
+    <value>CommandGetOrders</value>
+    <comment>Comando para obtener las ordenes de un Restaurante</comment>
   </data>
-  <data name="AgregarCantidadOrden" xml:space="preserve">
-    <value>&lt;input runat="server" type="number" name="quantity" min="1" max="10" value=1 /&gt;</value>
+  <data name="ClassNamePayOrder" xml:space="preserve">
+    <value>CommandPayOrder</value>
+    <comment>Comando para pagar una orden abierta</comment>
   </data>
-  <data name="Cerrar" xml:space="preserve">
-    <value>"&gt;</value>
+  <data name="CommandMethod" xml:space="preserve">
+    <value>Execute</value>
+    <comment>Metodo disparador del Error para Comando</comment>
   </data>
-  <data name="Cerrar2" xml:space="preserve">
-    <value>&lt;/a&gt;</value>
+  <data name="ErrorMessageGenerateInvoice" xml:space="preserve">
+    <value>Error al crear la factura para una orden cerrada</value>
+    <comment>Mensaje de error para CommandGenerateInvoice</comment>
   </data>
-  <data name="CheckBoxAgregar" xml:space="preserve">
-    <value>&lt;input runat="server" type="checkbox" /&gt;</value>
+  <data name="ErrorMessageGetCloseOrders" xml:space="preserve">
+    <value>Error obteniendo las ordenes cerradas de un Restaurante</value>
+    <comment>Mensaje de error para CommandGetCloseOrders</comment>
   </data>
-  <data name="Inactive" xml:space="preserve">
-    <value>&lt;td class="text-center"&gt;&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;p class="stat"&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;</value>
-    <comment>Estado Inactivo</comment>
+  <data name="ErrorMessageGetInvoice" xml:space="preserve">
+    <value>Error al obtener la factura de una orden cerrada</value>
+    <comment>Mensaje de error para CommandGetInvoice</comment>
   </data>
-  <data name="ModificarFactura" xml:space="preserve">
-    <value>&lt;a runat="server" href="/Seccion/Caja/ModificarOrden.aspx?id=</value>
+  <data name="ErrorMessageGetOrder" xml:space="preserve">
+    <value>Error al obtener una orden</value>
+    <comment>Mensaje de error para CommandGetOrder</comment>
   </data>
-  <data name="ModificarFactura2" xml:space="preserve">
-    <value>&lt;i class="fa fa-pencil-square-o"&gt;&lt;/i&gt;</value>
+  <data name="ErrorMessageGetOrders" xml:space="preserve">
+    <value>Error obteniendo las ordenes de un Restaurante</value>
+    <comment>Mensaje de error para CommandGetOrders</comment>
   </data>
-  <data name="VerDetalleFactura" xml:space="preserve">
-    <value>&lt;a runat="server" href="/Seccion/Caja/VerFactura.aspx?id=</value>
-  </data>
-  <data name="VerDetalleFactura2" xml:space="preserve">
-    <value>&lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;</value>
-  </data>
-  <data name="VerDetalleOrden" xml:space="preserve">
-    <value>&lt;a runat="server" href="/Seccion/Caja/VerDetalleOrden.aspx?id=</value>
-  </data>
-  <data name="VerDetalleOrden2" xml:space="preserve">
-    <value>&lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;</value>
-  </data>
-  <data name="VerFactura" xml:space="preserve">
-    <value>&lt;a runat="server" href="/Seccion/Caja/CrearFactura.aspx?id=</value>
-    <comment>Cerrar</comment>
-  </data>
-  <data name="VerFactura2" xml:space="preserve">
-    <value>&lt;i class="fa fa-money fa-fw"&gt;&lt;/i&gt;</value>
+  <data name="ErrorMessagePayOrder" xml:space="preserve">
+    <value>Error al pagar una orden abierta en un Restaurante</value>
+    <comment>Mensaje de error para CommandPayOrder</comment>
   </data>
 </root>
