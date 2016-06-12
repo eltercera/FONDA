@@ -54,6 +54,7 @@
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
+    <Compile Include="FondaCommandException\CommandExceptionGetOrder.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetOrders.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Log\Logger.cs" />

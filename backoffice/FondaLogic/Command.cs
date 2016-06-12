@@ -13,6 +13,7 @@ namespace FondaLogic
     public abstract class Command : ICommand
     {
 
+        #region Receiver
         private Object receiver;
 
         public Object Receiver
@@ -20,11 +21,18 @@ namespace FondaLogic
             get { return receiver; }
             protected set { receiver = value; }
         }
+        #endregion
 
+        #region Constructor
+        /// <summary>
+        /// Constructor de la clase comando
+        /// </summary>
+        /// <param name="receiver">recibe un objeto</param>
         public Command(Object receiver)
         {
             this.receiver = receiver;
         }
+        #endregion
 
         /// <summary>
         /// Metodo para ejecutar el comando

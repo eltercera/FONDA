@@ -52,7 +52,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter
                 }
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetOrders = CommandFactory.GetCommandGetOrders(result);
+                commandGetOrders = CommandFactory.GetCommandGetOrders(_restaurant);
 
                 //Ejecuta el comando deseado
                 commandGetOrders.Execute();

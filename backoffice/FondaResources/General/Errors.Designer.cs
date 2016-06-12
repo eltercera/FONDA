@@ -63,18 +63,18 @@ namespace FondaResources.General {
         /// <summary>
         ///   Looks up a localized string similar to BO-00-001.
         /// </summary>
-        public static string ClassNameCommandGetOrdersClassNameCommandGetOrd {
+        public static string NullExceptionReferenceCode {
             get {
-                return ResourceManager.GetString("ClassNameCommandGetOrdersClassNameCommandGetOrd", resourceCulture);
+                return ResourceManager.GetString("NullExceptionReferenceCode", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Se ha hecho referencia a un valor inexistente o nulo.
+        ///   Looks up a localized string similar to Valor inexistente o nulo.
         /// </summary>
-        public static string NullReferenceExceptionMessage {
+        public static string NullExceptionReferenceMessage {
             get {
-                return ResourceManager.GetString("NullReferenceExceptionMessage", resourceCulture);
+                return ResourceManager.GetString("NullExceptionReferenceMessage", resourceCulture);
             }
         }
     }
