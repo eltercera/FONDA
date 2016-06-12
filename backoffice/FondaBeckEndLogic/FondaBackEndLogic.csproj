@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A1BE7D6C-7750-4795-AABF-B397E079C918}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FondaBeckEndLogic</RootNamespace>
+    <AssemblyName>FondaBeckEndLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Exceptions\CreateFavoriteRestaurantCommandException.cs" />
+    <Compile Include="Exceptions\DeleteFavoriteRestaurantCommandException .cs" />
+    <Compile Include="Exceptions\GetCommensalEmailCommandException.cs" />
+    <Compile Include="Exceptions\GetFavoriteRestaurantFondaCommandException.cs" />
+    <Compile Include="Exceptions\FondaBackendLogicException.cs" />
+    <Compile Include="Exceptions\GetAllRestaurantsCommandException.cs" />
+    <Compile Include="FavoriteManagement\CreateFavoriteRestaurantCommand.cs" />
+    <Compile Include="FavoriteManagement\DeleteFavoriteRestaurantCommand.cs" />
+    <Compile Include="FavoriteManagement\GetAllRestaurantCommand.cs" />
+    <Compile Include="FavoriteManagement\GetCommensalEmailCommand.cs" />
+    <Compile Include="FavoriteManagement\GetFavoriteRestaurantCommand.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BackendFactoryCommand.cs" />
+    <Compile Include="ProfileManagement\CreateProfileCommand.cs" />
+    <Compile Include="BaseCommand.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="Parameter.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
+      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
+      <Name>FondaDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
+      <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
+      <Name>FondaDataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+</Project>

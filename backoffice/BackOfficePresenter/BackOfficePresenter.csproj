@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BackOfficeModel\BackOfficeModel.csproj">
-      <Project>{0c4a3e0c-4e85-46b0-a6b0-a6dc2bce3d8b}</Project>
+      <Project>{0C4A3E0C-4E85-46B0-A6B0-A6DC2BCE3D8B}</Project>
       <Name>BackOfficeModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
@@ -66,11 +66,11 @@
       <Name>FondaDomain</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
-      <Project>{64636df8-e693-4abb-8964-5c7fa5a6a50e}</Project>
+      <Project>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</Project>
       <Name>FondaLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaResources\FondaResources.csproj">
-      <Project>{3184fe34-d7e3-44f6-95d9-25d1045bffc8}</Project>
+      <Project>{3184FE34-D7E3-44F6-95D9-25D1045BFFC8}</Project>
       <Name>FondaResources</Name>
     </ProjectReference>
   </ItemGroup>

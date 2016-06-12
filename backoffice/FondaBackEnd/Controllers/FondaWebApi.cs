@@ -5,6 +5,10 @@ using System.Linq;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using log4net;
+using com.ds201625.fonda.BackEnd.Log;
+
+using com.ds201625.fonda.BackEndLogic;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -83,6 +87,17 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
             return MenuCategoryDao.FindById(id);
         }
+
+		protected BackendFactoryCommand FacCommand
+		{
+			get { return BackendFactoryCommand.Instance; }
+		}
+
+		protected ILog Logger
+		{
+			get { return Log.Log.Logger; }
+		}
+
     }
 
 

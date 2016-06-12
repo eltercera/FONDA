@@ -45,19 +45,18 @@
   <ItemGroup>
     <Reference Include="nunit.core">
       <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
-      <Private>False</Private>
+      <Package>nunit</Package>
     </Reference>
     <Reference Include="nunit.core.interfaces">
       <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.interfaces.dll</HintPath>
-      <Private>False</Private>
+      <Package>nunit</Package>
     </Reference>
     <Reference Include="nunit.util">
       <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\nunit.util.dll</HintPath>
-      <Private>False</Private>
+      <Package>nunit</Package>
     </Reference>
     <Reference Include="NUnit.VisualStudio.TestAdapter">
       <HintPath>..\packages\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="nunit.framework">
@@ -135,7 +134,7 @@
       <Name>FondaDataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
-      <Project>{cd756618-286a-4fbc-93a3-0eccb571b18f}</Project>
+      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
