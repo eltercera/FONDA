@@ -8,7 +8,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using System.Collections.Generic;
-using com.ds201625.fonda.Logic;
+using com.ds201625.fonda.BackEndLogic;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
