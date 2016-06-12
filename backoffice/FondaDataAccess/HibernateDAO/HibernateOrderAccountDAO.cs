@@ -9,9 +9,8 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-    class HibernateOrderAccountDAO : HibernateBaseEntityDAO<Account>, IOrderAccountDao
+    public class HibernateOrderAccountDAO : HibernateBaseEntityDAO<Account>, IOrderAccountDao
     {
-        private FactoryDAO.FactoryDAO _facDAO;
         /// <summary>
         /// Obtiene la orden de un comensal
         /// </summary>
