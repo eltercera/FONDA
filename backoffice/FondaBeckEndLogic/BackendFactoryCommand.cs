@@ -1,6 +1,6 @@
 ﻿using System;
-using FondaBeckEndLogic.ProfileManagement;
 using System.Windows.Input;
+using com.ds201625.fonda.BackEndLogic.FavoriteManagement;
 
 
 namespace com.ds201625.fonda.BackEndLogic
