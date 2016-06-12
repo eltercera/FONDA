@@ -79,7 +79,6 @@
     <Compile Include="BOCashPaymentTest.cs" />
     <Compile Include="BOChangeCategoryTest.cs" />
     <Compile Include="BOChangeDishTest.cs" />
-    <Compile Include="BOCommandOrdersTest.cs" />
     <Compile Include="BOCoordinateTest.cs" />
     <Compile Include="BOCreditCardPaymentTest.cs" />
     <Compile Include="BOCurrencyTest.cs" />
