@@ -11,7 +11,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         public ClosedAccountStatus getClosedAccountStatus()
         {
-            ClosedAccountStatus status = FindById(7);
+            ClosedAccountStatus status = FindById(12);
             if (status == null)
             {
                 status = ClosedAccountStatus.Instance;
