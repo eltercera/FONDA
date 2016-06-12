@@ -56,14 +56,5 @@ namespace BackOffice.Seccion.Caja {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table Pago;
-        
-        /// <summary>
-        /// LabelMontoTotal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelMontoTotal;
     }
 }

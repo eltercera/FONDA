@@ -674,6 +674,10 @@
       <Project>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</Project>
       <Name>FondaLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FondaResources\FondaResources.csproj">
+      <Project>{3184fe34-d7e3-44f6-95d9-25d1045bffc8}</Project>
+      <Name>FondaResources</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Seccion\Menu\ResourceMenu.resx">

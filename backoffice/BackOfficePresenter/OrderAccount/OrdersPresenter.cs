@@ -1,11 +1,13 @@
 ﻿using BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
+using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
 using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
+using System.Web.SessionState;
 using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.BackOffice.Presenter
@@ -15,7 +17,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter
         //Enlace entre el Modelo y la Vista
         private IOrdersModel _view;
 
-        
+
         /// <summary>
         /// Constructor de la clase
         /// </summary>
@@ -74,7 +76,10 @@ namespace com.ds201625.fonda.BackOffice.Presenter
                 //TODO: Escribir en el Log la excepcion
                 throw;
             }
-        }
+       
+    }
+     
+
 
         /// <summary>
         /// Construye la tabla de Ordenes
@@ -128,6 +133,13 @@ namespace com.ds201625.fonda.BackOffice.Presenter
                             action1.Text += OrderAccountResources.Cerrar;
                             action1.Text += OrderAccountResources.VerDetalleOrden2;
                             action1.Text += OrderAccountResources.Cerrar2;
+
+                            int idAccount = data[i].Id;
+
+                            //FactoryDAO factoryDAO = FactoryDAO.Intance;
+                            //IOrderAccountDao _accountDAO = factoryDAO.GetOrderAccountDAO();
+                            //Account _account = _accountDAO.FindById(idAccount);
+                            _view.Session= idAccount.ToString();
                             tCell.Controls.Add(action1);
 
 

@@ -9,13 +9,13 @@ using System.Collections.Generic;
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandGetClosedOrders : Command
+    public class CommandClosedOrders : Command
     {
 
         FactoryDAO _facDAO = FactoryDAO.Intance;
         Restaurant _restaurant = new Restaurant();
 
-        public CommandGetClosedOrders(Object receiver) : base(receiver)
+        public CommandClosedOrders(Object receiver) : base(receiver)
         {
             try
             {

@@ -26,7 +26,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             {
                 IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
                 //Buscar los platos de una orden
+                IList<DishOrder> dishOrder = GetAll();
                 IList<DishOrder> _dishOrder = new List<DishOrder>();
+                IList<Account> _listAccount = _accountDAO.GetAll();
                 Account _account = _accountDAO.FindById(_accountId);
 
                 return _account.ListDish;

@@ -161,6 +161,10 @@
   <data name="ModificarFactura2" xml:space="preserve">
     <value>&lt;i class="fa fa-pencil-square-o"&gt;&lt;/i&gt;</value>
   </data>
+  <data name="SessionIdAccount" xml:space="preserve">
+    <value>AccountID</value>
+    <comment>ID de la Orden</comment>
+  </data>
   <data name="VerDetalleFactura" xml:space="preserve">
     <value>&lt;a runat="server" href="/Seccion/Caja/VerFactura.aspx?id=</value>
   </data>
