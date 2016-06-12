@@ -144,10 +144,6 @@
       <Project>{A1BE7D6C-7750-4795-AABF-B397E079C918}</Project>
       <Name>FondaBackEndLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
-      <Project>{947FFFE1-55FB-410B-8EA0-ECC534F1D552}</Project>
-      <Name>FondaLogic</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="GeneralRes.resx">

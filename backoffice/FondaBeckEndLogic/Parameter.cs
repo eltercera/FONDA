@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace com.ds201625.fonda.Logic
+namespace com.ds201625.fonda.BackEndLogic
 {
 	/// <summary>
 	/// Representa un parametro para un comando

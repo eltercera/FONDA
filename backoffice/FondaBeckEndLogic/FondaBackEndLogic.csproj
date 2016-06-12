@@ -45,13 +45,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BackendFactoryCommand.cs" />
     <Compile Include="ProfileManagement\CreateProfileCommand.cs" />
+    <Compile Include="BaseCommand.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="Parameter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
-      <Project>{947FFFE1-55FB-410B-8EA0-ECC534F1D552}</Project>
-      <Name>FondaLogic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
       <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
