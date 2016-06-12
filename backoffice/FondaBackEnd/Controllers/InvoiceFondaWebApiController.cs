@@ -44,7 +44,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             
 
             RestaurantCategory category2 = new RestaurantCategory();
-            category2.NameCategory = "Casual";            
+            category2.Name = "Casual";            
 
             Restaurant restaurant1 = new Restaurant();
 

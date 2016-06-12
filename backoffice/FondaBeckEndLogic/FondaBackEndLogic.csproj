@@ -51,6 +51,9 @@
     <Compile Include="Exceptions\InvalidTypeOfParameter.cs" />
     <Compile Include="Exceptions\ParameterIndexOutOfRangeException.cs" />
     <Compile Include="Exceptions\RequieredParameterNotFoundException.cs" />
+    <Compile Include="RestaurantsSearch\GetZonesCommand.cs" />
+    <Compile Include="RestaurantsSearch\GetRestaurantsCategoriesCommand.cs" />
+    <Compile Include="RestaurantsSearch\GetRestaurantsCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -64,4 +67,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="RestaurantsSearch\" />
+  </ItemGroup>
 </Project>

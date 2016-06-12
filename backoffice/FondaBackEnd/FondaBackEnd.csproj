@@ -116,6 +116,11 @@
     <Compile Include="Controllers\TokenFondaWebApiController.cs" />
     <Compile Include="Controllers\ProfileFondaWebApiController.cs" />
     <Compile Include="Controllers\CommensalWebApiController.cs" />
+    <Compile Include="Controllers\RestaurantsFondaWebApiController.cs" />
+    <Compile Include="Controllers\UrlFilters\UrlFilters.cs" />
+    <Compile Include="Controllers\UrlFilters\RestaurantsUrlFilters.cs" />
+    <Compile Include="Controllers\RestaurantCategoriesWebApiController.cs" />
+    <Compile Include="Controllers\ZonesFondaWebApiController.cs" />
     <Compile Include="Log.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\UrlFilters\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">

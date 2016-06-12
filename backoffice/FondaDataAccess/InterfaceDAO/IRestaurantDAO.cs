@@ -22,5 +22,12 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
         bool Geoposition(double _latitudUser, double _longitudUser, int _idRestaurant);
         bool ValidateHour(int _idRestaurant, DateTime _hour);
         bool ValidateDay(int _idRestaurant, DateTime _hour);
+
+		#region 3era entrega
+
+		IList<Restaurant> FindByFilters (
+			string query = null, int idZone = 0, int  idCategory = 0, int max = -1, int page = 1);
+
+		#endregion
     }
 }

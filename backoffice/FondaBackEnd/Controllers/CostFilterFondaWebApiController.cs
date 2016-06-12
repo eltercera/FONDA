@@ -23,13 +23,13 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
             
             RestaurantCategory category1 = new RestaurantCategory();
-            category1.NameCategory = "Romantico";
+            category1.Name = "Romantico";
             RestaurantCategory category2 = new RestaurantCategory();
-            category2.NameCategory = "Casual";
+            category2.Name = "Casual";
             RestaurantCategory category3 = new RestaurantCategory();
-            category3.NameCategory = "Italiano";
+            category3.Name = "Italiano";
             RestaurantCategory category4 = new RestaurantCategory();
-            category4.NameCategory = "Americano";
+            category4.Name = "Americano";
             //Agregando zonas//
             Zone zone1 = new Zone();
             zone1.Name = "Altamira";
