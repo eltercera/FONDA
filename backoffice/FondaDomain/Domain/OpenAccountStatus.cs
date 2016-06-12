@@ -17,7 +17,7 @@ namespace com.ds201625.fonda.Domain
 		/// </summary>
 		protected OpenAccountStatus() : base ()
 		{
-			StatusId = 7;
+			StatusId =11;
 			Description = "Cuenta de Ordenes Abierta";
 		}
 
