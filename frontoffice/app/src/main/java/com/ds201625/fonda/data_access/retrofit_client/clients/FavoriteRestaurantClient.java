@@ -14,12 +14,32 @@ import retrofit2.http.Path;
  */
 public interface FavoriteRestaurantClient {
 
+    /**
+     * Add /api/addfavorite/{idcommensal}/{idrestaurant}
+     * Agrega un restaurante de la lista de favoritos
+     * @param idCommensal identificador del comensal.
+     * @param idRestaurant identificador del restaurante.
+     * @return
+     */
     @GET("addfavorite/{idcommensal}/{idrestaurant}")
-    Call<Commensal> addfavoriterestaurant(@Path("idcommensal") int fk1 ,@Path("idrestaurant") int fk2);
+    Call<Commensal> addfavoriterestaurant(@Path("idcommensal") int idCommensal ,@Path("idrestaurant") int idRestaurant);
 
+    /**
+     * Find /api/findRestaurantFavorites/{id}
+     * Obtiene la lista de los restaurantes favoritos.
+     * @param idCommensal identificador del comensal.
+     * @return
+     */
     @GET("findRestaurantFavorites/{id}")
-    Call<List<Restaurant>> getAllFavoriteRestaurant(@Path("id") int fk1);
+    Call<List<Restaurant>> getAllFavoriteRestaurant(@Path("id") int idCommensal);
 
+    /**
+     * Delete /api/deletefavorite/{idcommensal}/{idrestaurant}
+     * Elimina un restaurante de la lista de favoritos
+     * @param idCommensal identificador del comensal.
+     * @param idRestaurant identificador del restaurante.
+     * @return
+     */
     @GET("deletefavorite/{idcommensal}/{idrestaurant}")
-    Call<Commensal> removefavoriterestaurant(@Path("idcommensal") int fk1, @Path("idrestaurant") int fk2);
+    Call<Commensal> removefavoriterestaurant(@Path("idcommensal") int idCommensal, @Path("idrestaurant") int idRestaurant);
 }

@@ -22,10 +22,10 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
             RetrofitService.getInstance().createService(FavoriteRestaurantClient.class);
 
     @Override
-    public Commensal AddFavoriteRestaurant(int fk1, int f2k) {
+    public Commensal AddFavoriteRestaurant(int idCommensal, int idRestaurant)  throws RestClientException {
         // aqui se supone que debo traerme el comensal Logeado
 
-        Call<Commensal> call = favoriteRestaurantClient.addfavoriterestaurant(fk1,f2k);
+        Call<Commensal> call = favoriteRestaurantClient.addfavoriterestaurant(idCommensal,idRestaurant);
         Commensal rsvCommensal = null;
 
         try{
@@ -38,8 +38,8 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
     }
 
     @Override
-    public Commensal deleteFavoriteRestaurant(int fk1, int fk2) {
-        Call<Commensal> call = favoriteRestaurantClient.removefavoriterestaurant(fk1, fk2);
+    public Commensal deleteFavoriteRestaurant(int idCommensal, int idRestaurant)  throws RestClientException{
+        Call<Commensal> call = favoriteRestaurantClient.removefavoriterestaurant(idCommensal, idRestaurant);
         Commensal rsvCommensal = null;
 
         try{
@@ -52,8 +52,8 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
     }
 
     @Override
-    public List<Restaurant> getAllFavoriteRestaurant(int fk1) {
-        Call<List<Restaurant>> call = favoriteRestaurantClient.getAllFavoriteRestaurant(fk1);
+    public List<Restaurant> getAllFavoriteRestaurant(int idCommensal)  throws RestClientException{
+        Call<List<Restaurant>> call = favoriteRestaurantClient.getAllFavoriteRestaurant(idCommensal);
         List<Restaurant> test = null;
         try {
             test =call.execute().body();

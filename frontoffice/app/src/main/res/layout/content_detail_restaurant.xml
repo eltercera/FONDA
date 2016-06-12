@@ -153,6 +153,6 @@
             android:text="Large Text"
             android:id="@+id/textView18"
             android:layout_gravity="center_horizontal" />
-        
+
     </LinearLayout>
 </ScrollView>
