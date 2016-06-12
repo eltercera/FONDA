@@ -1,7 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+<<<<<<< HEAD
 # Visual Studio 2012
 VisualStudioVersion = 12.0.40629.0
+=======
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+>>>>>>> 0d9e3c949ef038851a980641ad476dceca8ef9c4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOffice", "BackOffice\BackOffice.csproj", "{F1CEAC46-0E2B-45F1-8EDC-D99F77B9DD26}"
 EndProject
@@ -23,7 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FondaBackEnd", "FondaBackEn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FondaDataAccess", "FondaDataAccess\FondaDataAccess.csproj", "{4A769797-45C6-4AD9-95FD-7B950D937D1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FondaBeckEndLogic", "FondaBeckEndLogic\FondaBeckEndLogic.csproj", "{A1BE7D6C-7750-4795-AABF-B397E079C918}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FondaBackEndLogic", "FondaBeckEndLogic\FondaBackEndLogic.csproj", "{A1BE7D6C-7750-4795-AABF-B397E079C918}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

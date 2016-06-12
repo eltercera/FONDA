@@ -88,6 +88,12 @@
     <Compile Include="Controllers\RestaurantZoneFilterFondaWebApiController - Copia.cs" />
     <Compile Include="Controllers\RestaurantFondaWebApiController.cs" />
     <Compile Include="Controllers\ZoneFilterFondaWebApiController.cs" />
+    <Compile Include="Exceptions\AddFavoriteRestaurantFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\FindFavoriteRestaurantFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\FindByEmailUserAccountFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\DeleteFavoriteRestaurantFondaWebApiControllerException .cs" />
+    <Compile Include="Exceptions\FondaBackendException.cs" />
+    <Compile Include="Exceptions\GetAllRestaurantsFondaWebApiControllerException.cs" />
     <Compile Include="GeneralRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,9 +140,9 @@
       <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FondaBeckEndLogic\FondaBeckEndLogic.csproj">
+    <ProjectReference Include="..\FondaBeckEndLogic\FondaBackEndLogic.csproj">
       <Project>{A1BE7D6C-7750-4795-AABF-B397E079C918}</Project>
-      <Name>FondaBeckEndLogic</Name>
+      <Name>FondaBackEndLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
