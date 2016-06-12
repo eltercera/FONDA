@@ -62,21 +62,21 @@ namespace FondaBeckEndLogic.ProfileManagement
                 commensal.RemoveFavoriteRestaurant(restaurant);
                 commensalDAO.Save(commensal);
             }
-            catch (SaveEntityFondaDAOException e) 
+            catch (DeleteFondaDAOException e) 
             {
                 throw new DeleteFavoriteRestaurantCommandException(
-                    "Error al eliminar un restaurant favorito de un comensal",e);
+                    "Excepción al eliminar restaurant favorito de un comensal", e);
             }
             catch (NullReferenceException e)
             {
                 throw new DeleteFavoriteRestaurantCommandException(
-                   "Excepción, apuntador nulo al eliminar un restaurant favorito del comensal",
+                   "Excepción, apuntador nulo al intetar eliminar un restaurant favorito del comensal",
                    e);
             }
             catch (Exception e)
             {
                 throw new DeleteFavoriteRestaurantCommandException(
-                   "Error al eliminar un restaurant favorito de un comensal", e);
+                   "Error al intentar eliminar un restaurant favorito de un comensal", e);
             }
             //FALTA LOGGER
             // Guardar el resultado.

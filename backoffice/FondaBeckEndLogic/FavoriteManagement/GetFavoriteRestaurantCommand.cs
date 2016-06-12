@@ -8,6 +8,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
+using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 
 
 namespace FondaBeckEndLogic.ProfileManagement
@@ -65,16 +66,24 @@ namespace FondaBeckEndLogic.ProfileManagement
                     };
                 }
 			}
-			catch (SaveEntityFondaDAOException e)  ////CAMBIAR EXEPCIONES
-			{
-				// TODO: Crear Excepcion personalizada
-				throw new Exception("Error al gualrdar los datos",e);
-			}
-			catch (Exception e)
-			{
-				// TODO: Crear Excepcion personalizada
-				throw new Exception("Error Desconocido",e);
-			}
+            catch (FindByIdFondaDAOException e)
+            {
+                throw new GetFavoriteRestaurantFondaCommandException(
+                   "Excepción al buscar los restaurantes favoritos del comensal",
+                   e);
+            }
+            catch (NullReferenceException e)
+            {
+                throw new GetFavoriteRestaurantFondaCommandException(
+                 "Excepción, referencia de objeto nula al buscar la lista de restaurantes favoritos del comensal",
+                 e);
+            }
+            catch (Exception e)
+            {
+                throw new GetFavoriteRestaurantFondaCommandException(
+                 "Error al listar los restaurantes Favoritos",
+                 e);
+            }
             //FALTA LOGGER
 			// Guardar el resultado.
             Result = favorites;

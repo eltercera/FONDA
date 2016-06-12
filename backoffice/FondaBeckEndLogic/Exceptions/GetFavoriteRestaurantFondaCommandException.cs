@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.FondaBackEndLogic.Exceptions
 {
-    public class FindByFavoriteRestaurantFondaWebApiControllerException : FondaBackendLogicException
+    public class GetFavoriteRestaurantFondaCommandException : FondaBackendLogicException
     {
-        public FindByFavoriteRestaurantFondaWebApiControllerException () : base() {	}
+        public GetFavoriteRestaurantFondaCommandException () : base() {	}
 
-		public FindByFavoriteRestaurantFondaWebApiControllerException (string message) : base(message) {	}
+		public GetFavoriteRestaurantFondaCommandException (string message) : base(message) {	}
 
-        public FindByFavoriteRestaurantFondaWebApiControllerException(string message, Exception InnerException)
+        public GetFavoriteRestaurantFondaCommandException(string message, Exception InnerException)
 			: base(message, InnerException) {	}
     }
 }
