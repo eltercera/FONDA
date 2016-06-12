@@ -1,7 +1,6 @@
 package com.ds201625.fonda.views.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -16,23 +15,20 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
-import com.ds201625.fonda.views.activities.LoginActivity;
 import com.ds201625.fonda.views.adapters.FavoriteRestViewItemList;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Hp on 06/06/2016.
+ * Fragment que contiene la lista de restaurantes favoritos
  */
 public class FavoritesListFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
    
@@ -66,14 +62,11 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
         swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
         swipeRefreshLayout.setOnRefreshListener(this);
 
-        try {
+
         restaurantList = getListSW();
         favoritesList.addAll(restaurantList);
         restaurants.setAdapter(favoritesList);
-    }
-    catch(NullPointerException n){
-        n.getMessage();
-    }
+
 
 
         if(multi) {
@@ -105,16 +98,25 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
                         case R.id.deleteFavorites:
                             String sal = "Fueron eliminados los Favoritos.";
                             for (Restaurant r : favoritesList.getAllSeletedItems()) {
-                                FavoriteRestaurantService favservice = FondaServiceFactory.getInstance().
-                                        getFavoriteRestaurantService();
+
+                                FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
+
                                 try{
 
-                                    favservice.deleteFavoriteRestaurant(logedComensal.getId(),r.getId());
+                                    //Llamo al comando de deleteFavoriteRestaurant
+                                    Command cmdDelete = facCmd.deleteFavoriteRestaurantCommand();
+                                    cmdDelete.setParameter(0,logedComensal.getId());
+                                    cmdDelete.setParameter(1,r.getId());
+                                    cmdDelete.run();
+
                                     Toast.makeText(FavoritesListFragment.super.getContext(),
                                             "Se han eliminado "+favoritesList.countSelected()+" Restaurantes de Favoritos",
                                             Toast.LENGTH_LONG).show();
                                 } catch (RestClientException e) {
                                     e.printStackTrace();
+                                }
+                                catch (Exception e) {
+                                    System.out.println("Error en la Conexión");
                                 }
                             }
                             Log.v("Favoritos eliminados: ", sal);
@@ -219,11 +221,22 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
                 try {
 
                     emailToWebService=log.getEmail()+"/";
-                    RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().getLogedCommensalService();
-                    logedComensal =getComensal.getLogedCommensal(emailToWebService);
-                    FavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                            getFavoriteRestaurantService();
-                    listRestWS = allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
+
+                    FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
+
+                    //Llamo al comando de requireLogedCommensalCommand
+                    Command cmdRequireLoged = facCmd.requireLogedCommensalCommand();
+                    cmdRequireLoged.setParameter(0,emailToWebService);
+                    cmdRequireLoged.run();
+                    logedComensal = (Commensal) cmdRequireLoged.getResult();
+
+                    //Llamo al comando de allFavoriteRestaurantCommand
+                    Command cmdAllFavorite = facCmd.allFavoriteRestaurantCommand();
+                    cmdAllFavorite.setParameter(0,logedComensal.getId());
+                    cmdAllFavorite.run();
+
+                    listRestWS = (List<Restaurant>) cmdAllFavorite.getResult();
+
                     return listRestWS;
                 } catch (RestClientException e) {
                     e.printStackTrace();

@@ -4,30 +4,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
 import com.ds201625.fonda.views.fragments.FavoritesListFragment;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity de los Resturantes Favoritos
+ */
 public class FavoritesActivity extends BaseNavigationActivity implements
         FavoritesListFragment.favoritesListFragmentListener {
 
@@ -193,15 +192,25 @@ public class FavoritesActivity extends BaseNavigationActivity implements
             Commensal log = SessionData.getInstance().getCommensal();
             try {
                 favoriteBotton.setIcon(R.drawable.ic_star_yellow);
-                emailToWebService=log.getEmail()+"/";
-                RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
-                        getLogedCommensalService();
-                logedComensal =getComensal.getLogedCommensal(emailToWebService);
-                Restaurant restaurant = detailRestaurantFrag.getRestaurant();
-                FavoriteRestaurantService favservice = FondaServiceFactory.getInstance().
-                        getFavoriteRestaurantService();
 
-                favservice.deleteFavoriteRestaurant(logedComensal.getId(),restaurant.getId());
+                emailToWebService=log.getEmail()+"/";
+
+                FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
+
+                //Llamo al comando de requireLogedCommensalCommand
+                Command cmdRequireLoged = facCmd.requireLogedCommensalCommand();
+                cmdRequireLoged.setParameter(0,emailToWebService);
+                cmdRequireLoged.run();
+                logedComensal = (Commensal) cmdRequireLoged.getResult();
+
+                selectedRestaurant = detailRestaurantFrag.getRestaurant();
+
+                //Llamo al comando de deleteFavoriteRestaurant
+                Command cmdDelete = facCmd.deleteFavoriteRestaurantCommand();
+                cmdDelete.setParameter(0,logedComensal.getId());
+                cmdDelete.setParameter(1,selectedRestaurant.getId());
+                cmdDelete.run();
+
                 Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
                         Toast.LENGTH_LONG).show();
                 showFragment(fv);

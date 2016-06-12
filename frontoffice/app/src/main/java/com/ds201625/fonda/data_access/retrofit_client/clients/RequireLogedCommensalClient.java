@@ -7,11 +7,19 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 /**
- * Created by jesus on 21/05/16.
+ * Interfaz para ser implementada por retrofit
+ * Define los recursos de /api/findCommensalEmail del
+ * servicio web REST
  */
 public interface RequireLogedCommensalClient {
 
+    /**
+     * Get /api/findCommensalEmail/{email}
+     * Obtiene el comensal logueado.
+     *  @param email del usuario
+     * @return
+     */
     @GET("findCommensalEmail/{email}")
-    Call<Commensal> getAllFavoriteRestaurant(@Path("email") String fk1);
+    Call<Commensal> getAllFavoriteRestaurant(@Path("email") String email);
 
 }
