@@ -2,12 +2,11 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace FondaLogic.Commands.OrderAccount
 {
@@ -23,11 +22,12 @@ namespace FondaLogic.Commands.OrderAccount
             {
                 restaurantId = (int) receiver;
             }
-            catch (Exception)
+            catch (NullReferenceException ex)
             {
                 //TODO: Enviar excepcion personalizada
                 throw;
             }
+
         }
 
 
@@ -51,9 +51,21 @@ namespace FondaLogic.Commands.OrderAccount
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                //TODO: Escribir en el Log la excepcion
-                throw;
+                CommandExceptionGetOrders exceptionGetOrders = new CommandExceptionGetOrders(
+                    //Arrojar
+                    FondaResources.General.Errors.NullReferenceExceptionMessage,
+                    FondaResources.OrderAccount.Errors.ClassNameGetOrders,
+                    FondaResources.OrderAccount.Errors.CommandMethod,
+                    FondaResources.OrderAccount.Errors.ErrorMessageGetOrders,
+                    ex);
+
+                Logger.WriteErrorLog(exceptionGetOrders);
+
+                throw exceptionGetOrders;
             }
+
+
+
         }
 
     }
