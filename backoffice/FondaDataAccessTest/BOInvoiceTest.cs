@@ -30,7 +30,6 @@ namespace FondaDataAccessTest
             _restaurant.Id = 1;
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             _restaurant = _restaurantDAO.FindById(_restaurant.Id);
-            _restaurantId = 1;
             IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
             _account = new Account();
             _invoice = new Invoice();
