@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -52,9 +52,9 @@
       <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FondaBeckEndLogic\FondaBeckEndLogic.csproj">
+    <ProjectReference Include="..\FondaBeckEndLogic\FondaBackEndLogic.csproj">
       <Project>{A1BE7D6C-7750-4795-AABF-B397E079C918}</Project>
-      <Name>FondaBeckEndLogic</Name>
+      <Name>FondaBackEndLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
       <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>

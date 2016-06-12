@@ -606,9 +606,15 @@ namespace BackOffice.Seccion.Configuracion
                     "Excepción al validar Email del Empleado",
                     e);
             }
+            catch (NullReferenceException e)
+            {
+                throw new ValidationEmailEmployeeFondaBackOfficeException(
+                    "Excepción apuntador nulo ",
+                    e);
+            }
             catch (Exception e)
             {
-                throw new GetAllEmployeFondaDAOException(
+                throw new ValidationEmailEmployeeFondaBackOfficeException(
                     "Excepción al validar Email del Empleado",
                     e);
             }

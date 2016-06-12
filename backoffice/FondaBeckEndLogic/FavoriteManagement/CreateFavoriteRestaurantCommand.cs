@@ -8,6 +8,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
+using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 
 namespace FondaBeckEndLogic.ProfileManagement
 {
@@ -63,15 +64,23 @@ namespace FondaBeckEndLogic.ProfileManagement
                 commensal.AddFavoriteRestaurant(restaurant);
                 commensalDAO.Save(commensal);
             }
-			catch (SaveEntityFondaDAOException e)  ////CAMBIAR EXEPCIONES
+			catch (SaveEntityFondaDAOException e)  
 			{
-				// TODO: Crear Excepcion personalizada
-				throw new Exception("",e);
+                throw new CreateFavoriteRestaurantCommandException(
+                   "Excepción al agregar un restaurant favorito del comensal",
+                   e);
 			}
+            catch (NullReferenceException e)  
+            {
+                throw new CreateFavoriteRestaurantCommandException(
+                 "Excepción, apuntador nulo al agregrar un restaurant favorito del comensal",
+                 e);
+            }
 			catch (Exception e)
 			{
-				// TODO: Crear Excepcion personalizada
-				throw new Exception("Error Desconocido",e);
+                throw new CreateFavoriteRestaurantCommandException(
+                 "Error al crear restaurant Favorito",
+                 e);
 			}
             //FALTA LOGGER
 			// Guarda el resultado.
