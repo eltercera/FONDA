@@ -27,6 +27,7 @@ namespace FondaDataAccessTest
         [SetUp]
         public void Init()
         {
+            _facDAO = FactoryDAO.Intance;
             _number = 0;
             _table = new Table();
             _commensal = new Commensal();

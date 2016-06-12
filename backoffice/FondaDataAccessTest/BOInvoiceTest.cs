@@ -20,14 +20,22 @@ namespace FondaDataAccessTest
         private Account _account;
         private IInvoiceDao _invoiceDAO;
         private int _number, _accountId, _restaurantId;
+        private Table _table;
+        private Commensal _commensal;
+        private IList<DishOrder> _listOrder;
+        private int _orderAccountId;
 
         [SetUp]
         public void Init()
         {
-            if (_facDAO == null)
-                _facDAO = FactoryDAO.Intance;
-
-
+            _facDAO = FactoryDAO.Intance;
+            _number = 0;
+            _table = new Table();
+            _commensal = new Commensal();
+            _listOrder = new List<DishOrder>();
+            _restaurantId = 1;
+            _account = (Account)EntityFactory.GetAccount(_table, _commensal, _listOrder, _number);
+            _account.Id = 2;
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
 
@@ -35,7 +43,7 @@ namespace FondaDataAccessTest
             _account = _accountDAO.FindById(_accountId);
 
 
-            _invoice = (Invoice)EntityFactory.GetAccount();
+            _invoice = (Invoice)EntityFactory.GetInvoice();
 
             _invoiceDAO = _facDAO.GetInvoiceDao();
             _listInvoices = new List<Invoice>();
