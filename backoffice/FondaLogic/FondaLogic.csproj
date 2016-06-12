@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Command.cs" />
     <Compile Include="Commands\OrderAccount\CommandClosedOrders.cs" />
-    <Compile Include="Commands\OrderAccount\CommandCreateOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrder.cs" />
@@ -55,6 +54,7 @@
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
+    <Compile Include="FondaCommandException\CommandExceptionGetOrders.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +72,10 @@
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
       <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaResources\FondaResources.csproj">
+      <Project>{3184fe34-d7e3-44f6-95d9-25d1045bffc8}</Project>
+      <Name>FondaResources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
