@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace com.ds201625.fonda.FondaBackEndLogic.Exceptions
+namespace com.ds201625.fonda.BackEndLogic.Exceptions
 {
     public class DeleteFavoriteRestaurantCommandException : FondaBackendLogicException
     {

@@ -1,4 +1,5 @@
 ﻿using System;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.BackEndLogic
 {
@@ -44,11 +45,7 @@ namespace com.ds201625.fonda.BackEndLogic
 			set
 			{
 				if (!_dataType.IsAssignableFrom(value.GetType()))
-					// TODO: Crear excepción personalizada
-					throw new Exception(
-						"Se espera un tipo (" + _dataType.ToString() + ") y se recivio ("
-						+ value.GetType().ToString() + ")"
-					);
+					throw InvalidTypeOfParameterException.Generate(_dataType,value.GetType());
 				_data = value;
 			}
 			get { return _data; }
