@@ -484,6 +484,7 @@
     </Compile>
     <Compile Include="Seccion\Caja\OrdenesCerradas.aspx.cs">
       <DependentUpon>OrdenesCerradas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seccion\Caja\OrdenesCerradas.aspx.designer.cs">
       <DependentUpon>OrdenesCerradas.aspx</DependentUpon>

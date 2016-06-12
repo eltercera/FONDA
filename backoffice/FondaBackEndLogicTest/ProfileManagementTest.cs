@@ -3,7 +3,6 @@ using System;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Logic;
 using com.ds201625.fonda.BackEndLogic;
 
 namespace FondaBackEndLogicTest
