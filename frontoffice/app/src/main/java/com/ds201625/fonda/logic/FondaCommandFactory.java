@@ -5,6 +5,7 @@ import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantC
 import com.ds201625.fonda.logic.Commands.CreateProfileCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.DeleteFavoriteRestaurantCommand;
+import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalCommand;
 
 /**
  * Fabrica de comandos
@@ -67,5 +68,13 @@ public class FondaCommandFactory {
      */
     public Command allRestaurantCommand() {
         return  new AllRestaurantCommand();
+    }
+
+    /**
+     * Crea un RequireLogedCommensalCommand
+     * @return comando RequireLogedCommensalCommand
+     */
+    public Command requireLogedCommensalCommand() {
+        return  new RequireLogedCommensalCommand();
     }
 }

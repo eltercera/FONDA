@@ -13,7 +13,7 @@ import java.util.List;
 import retrofit2.Call;
 
 /**
- * Created by jesus on 19/05/16.
+ * Implementacion de la interfaz AllRestaurantService
  */
 public class RetrofitAllRestaurantService implements AllRestaurantService {
 

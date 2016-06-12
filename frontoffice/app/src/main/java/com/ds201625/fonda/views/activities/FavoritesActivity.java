@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
@@ -91,17 +92,30 @@ public class FavoritesActivity extends BaseNavigationActivity {
 
                 String emailToWebService;
                 try{
-                    emailToWebService=log.getEmail()+"/";
+                /*    emailToWebService=log.getEmail()+"/";
                     Log.v(TAG,"Email->"+emailToWebService);
                     RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
                             getLogedCommensalService();
                     logedComensal =getComensal.getLogedCommensal(emailToWebService);
                     Log.v(TAG,logedComensal.getId()+"");
+*/
+                    emailToWebService=log.getEmail()+"/";
+                    Log.v(TAG,"Email->"+emailToWebService);
+                    FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
 
+                    Command cmd = facCmd.requireLogedCommensalCommand();
 
+                        cmd.setParameter(0,emailToWebService);
+                        cmd.run();
 
+                        logedComensal = (Commensal) cmd.getResult();
 
-                }catch(NullPointerException nu){
+                    Log.v(TAG,logedComensal.getId()+"");
+
+                }catch(RestClientException nu){
+                    nu.printStackTrace();
+                }
+                catch(NullPointerException nu){
                     nu.printStackTrace();
                 }
 

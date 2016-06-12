@@ -266,20 +266,41 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
         String emailToWebService;
         Commensal toReturn = null;
         try{
-            emailToWebService=log.getEmail()+"/";
+         /*   emailToWebService=log.getEmail()+"/";
             RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
                     getLogedCommensalService();
 
             toReturn =getComensal.getLogedCommensal(emailToWebService);
+            Log.v(TAG,toReturn.getId()+"");*/
+
+            emailToWebService=log.getEmail()+"/";
+            FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
+
+            Command cmd = facCmd.requireLogedCommensalCommand();
+
+            cmd.setParameter(0,emailToWebService);
+            cmd.run();
+
+            toReturn = (Commensal) cmd.getResult();
+
+
             Log.v(TAG,toReturn.getId()+"");
 
 
-        }catch(NullPointerException nu){
+        }
+        catch(RestClientException nu){
+            nu.printStackTrace();
+        }
+        catch(NullPointerException nu){
             nu.printStackTrace();
             Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
                     Toast.LENGTH_LONG).show();
 
         }
+        catch(Exception nu){
+            nu.printStackTrace();
+        }
+
         return toReturn;
     }
 
