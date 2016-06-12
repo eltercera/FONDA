@@ -38,8 +38,6 @@ namespace FondaDataAccessTest
             _account = _accountDAO.FindById(_account.Id);
             _invoiceDAO = _facDAO.GetInvoiceDao();
             _listInvoices = new List<Invoice>();
-
-
         }
 
         [Test]
