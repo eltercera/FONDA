@@ -13,35 +13,37 @@ namespace FondaDataAccessTest
     {
         private Restaurant _restaurant;
         private FactoryDAO _facDAO;
-        private IOrderAccountDao _orderAccountDAO;
+        private IOrderAccountDao _acccountDAO;
         private Account _account;
         private IList<Account> _listInvoices;
-        private IOrderAccountDao _acccountDAO;
         private int number;
         private IDishOrderDAO _dishOrderDAO;
         private ICommensalDAO _commensalDAO;
         private Table _table;
         private Commensal _commensal;
         private IList<DishOrder> _listOrder;
-        private int _orderAccountId, _number;
+        private int _orderAccountId, _number, _restaurantId;
 
         [SetUp]
         public void Init()
         {
-            _account = (Account)EntityFactory.GetAccount(_table, _commensal, _listOrder, _number);
-            _account.Id = 2;
+            _number = 0;
             _table = new Table();
-            _orderAccountDAO = _facDAO.GetOrderAccountDAO();
-            _restaurant = new Restaurant();
-            _restaurant.Id = 1;
-            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
-            _restaurant = _restaurantDAO.FindById(_restaurant.Id);
-            IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
-            _account = _accountDAO.FindById(_account.Id);
-            _listInvoices = new List<Account>();
             _commensal = new Commensal();
             _listOrder = new List<DishOrder>();
-            _number = 0;
+
+            _listInvoices = new List<Account>();
+
+            _restaurantId = 1;
+            _account = (Account)EntityFactory.GetAccount(_table, _commensal, _listOrder, _number);
+            _account.Id = 2;
+            _acccountDAO = _facDAO.GetOrderAccountDAO();
+
+
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            _restaurant = _restaurantDAO.FindById(_restaurantId);
+            IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
+            _account = _accountDAO.FindById(_account.Id);
 
             
         }
@@ -77,7 +79,7 @@ namespace FondaDataAccessTest
             //    // _orderDAO.Delete(account);
 
             //}
-            _orderAccountDAO.ResetSession();
+            _acccountDAO.ResetSession();
         }
 
 
