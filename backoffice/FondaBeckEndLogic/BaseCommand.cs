@@ -1,7 +1,7 @@
 ﻿using System;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 
-namespace com.ds201625.fonda.Logic
+namespace com.ds201625.fonda.BackEndLogic
 {
 	/// <summary>
 	/// Clase Abstracta base para comandos

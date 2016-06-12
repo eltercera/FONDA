@@ -44,10 +44,6 @@
     <Compile Include="ProfileManagementTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
-      <Project>{947FFFE1-55FB-410B-8EA0-ECC534F1D552}</Project>
-      <Name>FondaLogic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
       <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
