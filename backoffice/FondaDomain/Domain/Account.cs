@@ -35,7 +35,7 @@ namespace com.ds201625.fonda.Domain
         private IList<DishOrder> _listDish;
 
         /// <summary>
-		/// El numero unico de la cuenta
+		/// El numero unico de la orden
 		/// </summary>
         private int _number;
 
