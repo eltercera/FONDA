@@ -156,7 +156,7 @@
     <comment>Estado Inactivo</comment>
   </data>
   <data name="ModificarFactura" xml:space="preserve">
-    <value>&lt;td class="text-center"&gt;&lt;a runat="server" href="/Seccion/Caja/ModificarOrden.aspx?id=</value>
+    <value>&lt;a runat="server" href="/Seccion/Caja/ModificarOrden.aspx?id=</value>
   </data>
   <data name="ModificarFactura2" xml:space="preserve">
     <value>&lt;i class="fa fa-pencil-square-o"&gt;&lt;/i&gt;</value>
@@ -174,7 +174,7 @@
     <value>&lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;</value>
   </data>
   <data name="VerFactura" xml:space="preserve">
-    <value>&lt;td class="text-center"&gt;&lt;a runat="server" href="/Seccion/Caja/CrearFactura.aspx?id=</value>
+    <value>&lt;a runat="server" href="/Seccion/Caja/CrearFactura.aspx?id=</value>
     <comment>Cerrar</comment>
   </data>
   <data name="VerFactura2" xml:space="preserve">

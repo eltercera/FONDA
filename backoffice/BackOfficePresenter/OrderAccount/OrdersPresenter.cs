@@ -97,7 +97,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter
             for (int i = 0; i <= totalRows - 1; i++)
             {
                 //con un if aqui, o con la funcion en el accountDAO..
-                if (data[i].Status.StatusId == 7)
+                if (data[i].Status.StatusId == 11)
                 {
                     //Crea una nueva fila de la tabla
                     TableRow tRow = new TableRow();
@@ -111,47 +111,40 @@ namespace com.ds201625.fonda.BackOffice.Presenter
                         TableCell tCell = new TableCell();
                         //Agrega el nombre de la categoria
                         if (j.Equals(0))
-                            tCell.Text = data[i].Id.ToString();
+                            tCell.Text = data[i].Number.ToString();
                         //Agrega las acciones de la tabla
                         else if (j.Equals(1))
                         {
-                            tCell.Text = ((data[i].Commensal).Profiles[0]).Person.Name;
+                            tCell.Text = data[i].Commensal.Email.ToString();
                         }
                         else if (j.Equals(2))
                         {
                             LinkButton action1 = new LinkButton();
+                            LinkButton action2 = new LinkButton();
+                            LinkButton action3 = new LinkButton();
 
                             action1.Text += OrderAccountResources.VerDetalleOrden;
                             action1.Text += data[i].Id;
                             action1.Text += OrderAccountResources.Cerrar;
                             action1.Text += OrderAccountResources.VerDetalleOrden2;
                             action1.Text += OrderAccountResources.Cerrar2;
-
                             tCell.Controls.Add(action1);
 
-                            LinkButton action2 = new LinkButton();
 
                             action2.Text += OrderAccountResources.VerFactura;
                             action2.Text += data[i].Id;
                             action2.Text += OrderAccountResources.Cerrar;
                             action2.Text += OrderAccountResources.VerFactura2;
                             action2.Text += OrderAccountResources.Cerrar2;
-
-
                             tCell.Controls.Add(action2);
 
-                            LinkButton action3 = new LinkButton();
 
                             action2.Text += OrderAccountResources.ModificarFactura;
                             action2.Text += data[i].Id;
                             action2.Text += OrderAccountResources.Cerrar;
                             action2.Text += OrderAccountResources.ModificarFactura2;
                             action2.Text += OrderAccountResources.Cerrar2;
-
                             tCell.Controls.Add(action3);
-
-
-
                         }
                         //Agrega la celda a la fila
                         tRow.Cells.Add(tCell);

@@ -30,8 +30,6 @@ namespace FondaLogic.Commands.OrderAccount
 
         }
 
-
-
         /// <summary>
         /// Metodo que ejecuta el comando que consulta las ordenes segun un Restaurante
         /// </summary>
