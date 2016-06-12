@@ -124,11 +124,11 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
 
                     restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
     */
-                AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
+         /*       AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
                         getAllRestaurantsService();
                 restaurantList = allRestaurant.getAllRestaurant();
 
-
+*/
                 FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
 
                 Command cmd = facCmd.allRestaurantCommand();
