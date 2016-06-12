@@ -86,7 +86,7 @@ namespace BackOfficePresenter.OrderAccount
 
 
             int totalRows = data.Count; //tamano de la lista 
-            int totalColumns = 3; //numero de columnas de la tabla
+            int totalColumns = 2; //numero de columnas de la tabla
 
             //Recorremos la lista
             for (int i = 0; i <= totalRows - 1; i++)
