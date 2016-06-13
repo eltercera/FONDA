@@ -120,38 +120,20 @@
   <data name="AddFavRestException" xml:space="preserve">
     <value>Error al agregar un restaurante favorito del comensal</value>
   </data>
-  <data name="BasicAuthSheme" xml:space="preserve">
-    <value>Basic</value>
-    <comment>Sheme de la autorizacion Basica del RestAuth</comment>
-  </data>
   <data name="BeginLogger" xml:space="preserve">
-    <value>Ha iniciado el Logger</value>
+    <value>Ha iniciado el logger</value>
   </data>
   <data name="CommensalEmail" xml:space="preserve">
     <value>Email del comensal</value>
   </data>
-  <data name="CommensalIDHeader" xml:space="preserve">
-    <value>id</value>
-    <comment>indice en el header en donde se guarda de identificador del comensal.</comment>
-  </data>
   <data name="DeleteFavRestException" xml:space="preserve">
-    <value>Error al eliminar restaurant favorito de un comensal</value>
+    <value>Error al eliminar un restaurante favorito del comensal</value>
   </data>
   <data name="EndLogger" xml:space="preserve">
     <value>Ha finalizado el logger</value>
   </data>
-  <data name="FavoriteRestaurant" xml:space="preserve">
-    <value>Restaurante favorito del comensal </value>
-  </data>
-  <data name="FondaAuthSheme" xml:space="preserve">
-    <value>Fonda</value>
-    <comment>Sheme de la autorizacion Fonda del RestAuth</comment>
-  </data>
   <data name="GetCommensalEmailException" xml:space="preserve">
     <value>Error al buscar el comensal por email</value>
-  </data>
-  <data name="GetFavoriteRestaurant" xml:space="preserve">
-    <value>Error al obtener la lista de los restaurantes favoritos del comensal</value>
   </data>
   <data name="GetRestFavException" xml:space="preserve">
     <value>Error al obtener la lista de restaurant para elegir los favoritos del comensal</value>
@@ -165,14 +147,16 @@
   <data name="Restaurant" xml:space="preserve">
     <value>Categoria de Restaurante</value>
   </data>
-  <data name="RestaurantIDHeader" xml:space="preserve">
-    <value>id</value>
-    <comment>indice en el header en donde se guarda el identificador del restaurant</comment>
-  </data>
   <data name="RestDeletedFromFav" xml:space="preserve">
     <value>Restaurante Eliminado de Favoritos: </value>
   </data>
   <data name="Slash" xml:space="preserve">
     <value>/</value>
+  </data>
+  <data name="FavoriteRestaurant" xml:space="preserve">
+    <value>Restaurante favorito del comensal </value>
+  </data>
+  <data name="GetFavoriteRestaurant" xml:space="preserve">
+    <value>Error al buscar los restaurantes favoritos del comensal</value>
   </data>
 </root>

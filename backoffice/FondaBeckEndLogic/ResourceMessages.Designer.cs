@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace com.ds201625.fonda.BackEnd {
+namespace FondaBeckEndLogic {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace com.ds201625.fonda.BackEnd {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class GeneralRes {
+    internal class ResourceMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal GeneralRes() {
+        internal ResourceMessages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace com.ds201625.fonda.BackEnd {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("com.ds201625.fonda.BackEnd.GeneralRes", typeof(GeneralRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaBeckEndLogic.ResourceMessages", typeof(ResourceMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,16 +70,7 @@ namespace com.ds201625.fonda.BackEnd {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Basic.
-        /// </summary>
-        internal static string BasicAuthSheme {
-            get {
-                return ResourceManager.GetString("BasicAuthSheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ha iniciado el Logger.
+        ///   Looks up a localized string similar to Ha iniciado el logger.
         /// </summary>
         internal static string BeginLogger {
             get {
@@ -97,16 +88,7 @@ namespace com.ds201625.fonda.BackEnd {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to id.
-        /// </summary>
-        internal static string CommensalIDHeader {
-            get {
-                return ResourceManager.GetString("CommensalIDHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Error al eliminar restaurant favorito de un comensal.
+        ///   Looks up a localized string similar to Error al eliminar un restaurante favorito del comensal.
         /// </summary>
         internal static string DeleteFavRestException {
             get {
@@ -133,15 +115,6 @@ namespace com.ds201625.fonda.BackEnd {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fonda.
-        /// </summary>
-        internal static string FondaAuthSheme {
-            get {
-                return ResourceManager.GetString("FondaAuthSheme", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Error al buscar el comensal por email.
         /// </summary>
         internal static string GetCommensalEmailException {
@@ -151,7 +124,7 @@ namespace com.ds201625.fonda.BackEnd {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error al obtener la lista de los restaurantes favoritos del comensal.
+        ///   Looks up a localized string similar to Error al buscar los restaurantes favoritos del comensal.
         /// </summary>
         internal static string GetFavoriteRestaurant {
             get {
@@ -192,15 +165,6 @@ namespace com.ds201625.fonda.BackEnd {
         internal static string Restaurant {
             get {
                 return ResourceManager.GetString("Restaurant", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to id.
-        /// </summary>
-        internal static string RestaurantIDHeader {
-            get {
-                return ResourceManager.GetString("RestaurantIDHeader", resourceCulture);
             }
         }
         

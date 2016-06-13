@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.Log
+namespace com.ds201625.fonda.BackEnd.Log
 {
-    public class Logger
+    public class Loggers
     {
 
-        public Logger()
+        public Loggers()
         {
             log4net.Config.XmlConfigurator.Configure();
         }
