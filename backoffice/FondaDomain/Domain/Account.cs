@@ -38,7 +38,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Lista de facturas de la cuenta.
         /// </summary>
-        //private IList<Invoice> _listInvoice;
+        private IList<Invoice> _listInvoice;
 
         /// <summary>
 		/// El numero unico de la orden
@@ -52,7 +52,8 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         public Account() : base()
         {
-            _listDish = new List<DishOrder>();
+            this._listDish = new List<DishOrder>();
+            this._listInvoice = new List<Invoice>();
         }
 
         /// <summary>
@@ -70,6 +71,7 @@ namespace com.ds201625.fonda.Domain
             this._commensal = commensal;
             this._listDish = listOrder;
             this._number = number;
+            this._listInvoice = new List<Invoice>();
         }
 
         public Account(Table table, IList<DishOrder> listOrder) : base()
@@ -78,6 +80,7 @@ namespace com.ds201625.fonda.Domain
             this._status = new OpenAccountStatus();
             this._table = table;
             this._listDish = listOrder;
+            this._listInvoice = new List<Invoice>();
         }
         #endregion
 
@@ -117,10 +120,10 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna el numero de la orden
         /// </summary>
-        //public virtual IList<Invoice> Invoice
-        //{
-        //    get { return _listInvoice; }
-        //}
+        public virtual IList<Invoice> ListInvoice
+        {
+            get { return _listInvoice; }
+        }
         /// <summary>
         /// Obtiene o asigna un estado a la cuenta
         /// </summary>
@@ -157,6 +160,24 @@ namespace com.ds201625.fonda.Domain
         public virtual void RemoveDish(DishOrder dish)
         {
             _listDish.Remove(dish);
+        }
+
+        /// <summary>
+        /// Agrega una invoice a la cuenta
+        /// </summary>
+        /// <param name="invoice"> orden pedida </param>
+        public virtual void AddInvoice(Invoice invoice)
+        {
+            _listInvoice.Add(invoice);
+        }
+
+        /// <summary>
+        /// Elimina una invoice de la cuenta
+        /// </summary>
+        /// <param name="invoice">orden pedida </param>
+        public virtual void RemoveInvoice(Invoice invoice)
+        {
+            _listInvoice.Remove(invoice);
         }
 
         /// <summary>

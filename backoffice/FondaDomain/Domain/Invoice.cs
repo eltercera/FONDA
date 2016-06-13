@@ -9,20 +9,16 @@ namespace com.ds201625.fonda.Domain
     public class Invoice : BaseEntity
     {
         #region Fields
-        /// <summary>
-        /// Restaurante al que la factura pertenece
-        /// </summary>
-        private Restaurant _restaurant;
 
         /// <summary>
         /// Pago al que la factura pertenece
         /// </summary>
         private Payment _payment;
 
-        /// <summary>
-        /// Cuenta a la que la factura pertenece
-        /// </summary>
-        private Account _account;
+        ///// <summary>
+        ///// Cuenta a la que la factura pertenece
+        ///// </summary>
+        //private Account _account;
 
         /// <summary>
         /// Profile a la que la factura pertenece
@@ -74,21 +70,17 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Constructor de Factura
         /// </summary>
-        /// <param name="restaurant">Restaurante al que pertenece la factura</param>
         /// <param name="payment">Pago de la factura</param>
-        /// <param name="account">Orden de la factura</param>
         /// <param name="profile">Perfil de la factura</param>
         /// <param name="tip">Propina de la factura</param>
         /// <param name="total">Total de la factura</param>
         /// <param name="tax">Impuesto de la factura</param>
         /// <param name="currency">Tipo de Moneda</param>
-        public Invoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
+        public Invoice(Payment payment, Profile profile,
             float tip, float total, float tax, Currency currency, int number) 
             : base()
         {
-            this._restaurant = restaurant;
             this._payment = payment;
-            this._account = account;
             this._profile = profile;
             this._tip = tip;
             this._date = DateTime.Now;
@@ -100,22 +92,40 @@ namespace com.ds201625.fonda.Domain
         }
 
         /// <summary>
+        /// Constructor de Factura
+        /// </summary>
+        /// <param name="payment">Pago de la factura</param>
+        /// <param name="profile">Perfil de la factura</param>
+        /// <param name="tip">Propina de la factura</param>
+        /// <param name="total">Total de la factura</param>
+        /// <param name="tax">Impuesto de la factura</param>
+        public Invoice(Payment payment, Profile profile,float tip, 
+            float total, float tax, int number)
+            : base()
+        {
+            this._payment = payment;
+            this._profile = profile;
+            this._tip = tip;
+            this._date = DateTime.Now;
+            this._total = total;
+            this._tax = tax;
+            this._status = new GeneratedInvoiceStatus();
+            this._number = number;
+        }
+
+        /// <summary>
         /// Constructor de Factura sin propina
         /// </summary>
-        /// <param name="restaurant">Restaurante al que pertenece la factura</param>
         /// <param name="payment">Pago de la factura</param>
-        /// <param name="account">Orden de la factura</param>
         /// <param name="profile">Perfil de la factura</param>
         /// <param name="total">Total de la factura</param>
         /// <param name="tax">Impuesto de la factura</param>
         /// <param name="currency">Tipo de Moneda</param>
-        public Invoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
+        public Invoice(Payment payment, Profile profile,
             float total, float tax, Currency currency, int number)
             : base()
         {
-            this._restaurant = restaurant;
             this._payment = payment;
-            this._account = account;
             this._profile = profile;
             this._tip = 0;
             this._date = DateTime.Now;
@@ -140,23 +150,23 @@ namespace com.ds201625.fonda.Domain
         }
 
 
-        /// <summary>
-        /// Obtiene o asigna una cuenta a la factura
-        /// </summary>
-        [DataMember]
-        public virtual Account Account
-        {
-            get { return _account; }
-        }
+        ///// <summary>
+        ///// Obtiene o asigna una cuenta a la factura
+        ///// </summary>
+        //[DataMember]
+        //public virtual Account Account
+        //{
+        //    get { return _account; }
+        //}
 
         /// <summary>
         /// Obtiene o asigna un restaurant a la cuenta
         /// </summary>
-        [DataMember]
-        public virtual Restaurant  Restaurant
-        {
-            get { return _restaurant; }
-        }
+        //[DataMember]
+        //public virtual Restaurant Restaurant
+        //{
+        //    get { return _restaurant; }
+        //}
 
         /// <summary>
         /// Obtiene o asigna un perfil a la cuenta

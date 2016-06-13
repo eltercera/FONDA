@@ -46,6 +46,7 @@ namespace FondaDataAccessTest
         }
 
         [Test]
+        //[Ignore("Cambio en el Mapping de Invoice")]
         public void FindInvoiceByRestaurantTest()
         {
 
@@ -54,6 +55,7 @@ namespace FondaDataAccessTest
         }
 
         [Test]
+        //[Ignore("Cambio en el Mapping de Invoice")]
         public void GenerateNumberInvoice()
         {
 
@@ -63,13 +65,14 @@ namespace FondaDataAccessTest
 
         [Test]
         public void FindGenerateInvoiceByAccountTest()
-        {
+        { 
 
-            _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
+            _listInvoices = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
             Assert.IsNotNull(_invoice);
         }
 
         [Test]
+        [Ignore("Falta implementar")]
         public void SaveInvoiceTest()
         {
 
