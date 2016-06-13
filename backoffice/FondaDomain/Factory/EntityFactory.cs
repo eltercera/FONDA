@@ -46,6 +46,12 @@ namespace com.ds201625.fonda.Factory
             total, tax, currency, number);
         }
 
+        public static Entity GetInvoice(Payment payment, Profile profile, float tip,
+            float total, float tax, int number)
+        {
+            return new Invoice(/*restaurant,*/ payment, profile,
+            tip, total, tax, number);
+        }
         #endregion
 
         #region Restaurant

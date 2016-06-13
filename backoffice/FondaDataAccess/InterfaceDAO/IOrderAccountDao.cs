@@ -12,5 +12,6 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
         IList<Account> ClosedOrdersByRestaurant(Restaurant restaurant);
         int GenerateNumberAccount(Restaurant _restaurant);
         IList<Account> FindAccountByRestaurant(int _idRestaurant);
+        IList<Account> FindAllAccountByRestaurant(Restaurant _restaurant);
     }
 }

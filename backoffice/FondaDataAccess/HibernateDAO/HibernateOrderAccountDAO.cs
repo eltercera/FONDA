@@ -58,6 +58,25 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         }
 
         /// <summary>
+        /// Obtiene Todas las ordenes de un Restaurante
+        /// </summary>
+        /// <param name="restaurant">Un objeto de tipo Restaurant</param>
+        /// <returns>Una lista de Account</returns>
+        public IList<Account> FindAllAccountByRestaurant(Restaurant _restaurant)
+        {
+            try
+            {
+                IList<Account> list = new List<Account>();
+                list=_restaurant.Accounts;
+                return list;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("No se encontraron ordenes", e);
+            }
+        }
+
+        /// <summary>
         /// Obtiene todas las ordenes del Sistema
         /// </summary>
         /// <returns>Una lista de Account</returns>
