@@ -13,6 +13,7 @@ using System.Web.Script.Serialization;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using BackOffice.Content;
 using BackOffice.Seccion.Restaurant;
+using FondaResources.Login;
 
 namespace BackOffice.Seccion.Caja
 {

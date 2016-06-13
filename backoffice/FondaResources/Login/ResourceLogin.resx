@@ -123,12 +123,6 @@
   <data name="sessionName" xml:space="preserve">
     <value>name</value>
   </data>
-  <data name="SessionNameRest" xml:space="preserve">
-    <value>restaurantName</value>
-  </data>
-  <data name="SessionRestaurant" xml:space="preserve">
-    <value>idRestaurante</value>
-  </data>
   <data name="sessionRestaurantID" xml:space="preserve">
     <value>RestaurantID</value>
   </data>

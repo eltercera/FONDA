@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BackOfficePresenter.Login {
+namespace FondaResources.Login {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace BackOfficePresenter.Login {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BackOfficePresenter.Login.ResourceLogin", typeof(ResourceLogin).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Login.ResourceLogin", typeof(ResourceLogin).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -75,24 +75,6 @@ namespace BackOfficePresenter.Login {
         public static string sessionName {
             get {
                 return ResourceManager.GetString("sessionName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a restaurantName.
-        /// </summary>
-        public static string SessionNameRest {
-            get {
-                return ResourceManager.GetString("SessionNameRest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a idRestaurante.
-        /// </summary>
-        public static string SessionRestaurant {
-            get {
-                return ResourceManager.GetString("SessionRestaurant", resourceCulture);
             }
         }
         

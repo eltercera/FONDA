@@ -13,7 +13,7 @@ using BackOffice.Seccion.Restaurant;
 using com.ds201625.fonda.BackOffice.Presenter;
 using BackOfficeModel.Login;
 using BackOfficePresenter.Login;
-
+using FondaResources.Login;
 
 namespace BackOffice.Seccion.Configuracion
 {
