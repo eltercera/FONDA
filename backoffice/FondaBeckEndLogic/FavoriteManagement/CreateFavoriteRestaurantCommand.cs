@@ -60,7 +60,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             // Ejecucion del agregar.		
 			try
 			{
-               commensal = (Commensal)commensalDAO.FindById(idCommensal.Id);
+                commensal = (Commensal)commensalDAO.FindById(idCommensal.Id);
                 restaurant = (Restaurant)restaurantDAO.FindById(idRestaurant.Id);
                 commensal.RemoveFavoriteRestaurant(restaurant);
                 commensal.AddFavoriteRestaurant(restaurant);
@@ -86,9 +86,9 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CreateFavoriteRestaurantCommandException(ResourceMessages.AddFavRestException, e);
 			}
-            
-			// Guarda el resultado.
+            // Guarda el resultado.
             Result = commensal;
+            //logger
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.FondaBackEndLogic.Exceptions
 {
+    /// <summary>
+    /// Clase DeleteFavoriteRestaurantCommandException
+    /// </summary>
     public class DeleteFavoriteRestaurantCommandException : FondaBackendLogicException
     {
         public DeleteFavoriteRestaurantCommandException  () : base() {	}

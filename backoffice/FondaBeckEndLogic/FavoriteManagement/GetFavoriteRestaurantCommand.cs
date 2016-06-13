@@ -58,8 +58,8 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
           // Ejecucion del Buscar.		
 			try
 			{
-                favorites = (Commensal)commensalDAO.FindById(commensal.Id);  //PREGUNTAR POR EL NEW RESTAURANT
-                foreach (var restaurant in favorites.FavoritesRestaurants)
+                favorites = (Commensal)commensalDAO.FindById(commensal.Id);//PREGUNTAR POR SI PUEDO HACER COMENSAL.ID
+                foreach (var restaurant in favorites.FavoritesRestaurants) //PREGUNTAR POR EL NEW RESTAURANT
                 {
                     restaurant.RestaurantCategory = new RestaurantCategory
                     {
@@ -86,9 +86,9 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurant, e);
             }
-            
-			// Guardar el resultado.
+            // Guardar el resultado.
             Result = favorites;
+            //logger
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
               System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,
