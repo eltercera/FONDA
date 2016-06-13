@@ -1,13 +1,10 @@
 ﻿using BackOfficeModel.OrderAccount;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaLogic;
 using FondaLogic.Factory;
 using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
-using System.Web.SessionState;
 using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.BackOffice.Presenter
@@ -135,10 +132,6 @@ namespace com.ds201625.fonda.BackOffice.Presenter
                             action1.Text += OrderAccountResources.Cerrar2;
 
                             int idAccount = data[i].Id;
-
-                            //FactoryDAO factoryDAO = FactoryDAO.Intance;
-                            //IOrderAccountDao _accountDAO = factoryDAO.GetOrderAccountDAO();
-                            //Account _account = _accountDAO.FindById(idAccount);
                             _view.Session= idAccount.ToString();
                             tCell.Controls.Add(action1);
 

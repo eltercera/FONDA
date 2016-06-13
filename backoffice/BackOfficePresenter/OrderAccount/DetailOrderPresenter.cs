@@ -100,36 +100,28 @@ namespace BackOfficePresenter.OrderAccount
                 {
                     //Crea una nueva celda de la tabla
                     TableCell tCell = new TableCell();
-                    //Agrega el numero de la cuenta 
+                    //Agrega la cantidad del pedido del plato
                     if (j.Equals(0))
-                        tCell.Text = data[i].Id.ToString();
-                    //Agrega la fecha de la orden
+                        tCell.Text = data[i].Count.ToString();
+                    //Agrega el plato
                     else if (j.Equals(1))
                     {
-                        tCell.Text = data[i].Count.ToString();
+                        tCell.Text = data[i].Dish.Name.ToString();
                     }
-                    //Agrega las acciones
+                    //Agrega el costo del plato
                     else if (j.Equals(2))
                     {
-                        LinkButton action1 = new LinkButton();
-
-                        action1.Text += OrderAccountResources.VerDetalleOrden;
-                        action1.Text += data[i].Id;
-                        action1.Text += OrderAccountResources.Cerrar;
-                        action1.Text += OrderAccountResources.VerDetalleOrden2;
-                        action1.Text += OrderAccountResources.Cerrar2;
-                        tCell.Controls.Add(action1);
-
+                        tCell.Text = data[i].Dishcost.ToString();
                     }
                     //Agrega la celda a la fila
                     tRow.Cells.Add(tCell);
-
                 }
             }
 
-            //Agrega el encabezado a la Tabla
-            TableHeaderRow header = GenerateTableHeader();
-            _view.DetailOrderTable.Rows.AddAt(0, header);
+                //Agrega el encabezado a la Tabla
+                TableHeaderRow header = GenerateTableHeader();
+                _view.DetailOrderTable.Rows.AddAt(0, header);
+            
         }
 
         /// <summary>
@@ -148,12 +140,11 @@ namespace BackOfficePresenter.OrderAccount
 
             //Se indica que se trabajara en el header y se asignan los valores a las columnas
             header.TableSection = TableRowSection.TableHeader;
-            h1.Text = "# Orden";
+            h1.Text = "Cantidad";
             h1.Scope = TableHeaderScope.Column;
-            h2.Text = "Fecha";
+            h2.Text = "Plato";
             h2.Scope = TableHeaderScope.Column;
-            h3.Text = "Accion";
-
+            h3.Text = "Precio por plato";
             h3.Scope = TableHeaderScope.Column;
 
             //Se asignan las columnas a la fila

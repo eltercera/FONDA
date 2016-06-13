@@ -165,6 +165,10 @@
     <value>AccountID</value>
     <comment>ID de la Orden</comment>
   </data>
+  <data name="SessionNumberAccount" xml:space="preserve">
+    <value>AccountNumber</value>
+    <comment>Numero de la Orden</comment>
+  </data>
   <data name="VerDetalleFactura" xml:space="preserve">
     <value>&lt;a runat="server" href="/Seccion/Caja/VerFactura.aspx?id=</value>
   </data>
