@@ -56,7 +56,6 @@ namespace FondaLogic.Commands.OrderAccount
                     FondaResources.General.Errors.NullExceptionReferenceMessage,
                     ex);
 
-                Logger.WriteErrorLog(exceptionGetOrders);
 
                 throw exceptionGetOrders;
             }

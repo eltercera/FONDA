@@ -7,6 +7,8 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
+using FondaLogic.Log;
+using FondaBeckEndLogic;
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
 {
@@ -40,6 +42,8 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
         /// </summary>
         protected override void Invoke()
         {
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                ResourceMessages.BeginLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
             UserAccount answer;
             // Obtencion de parametros
             UserAccount commensal = (UserAccount)GetParameter(0);
@@ -50,28 +54,32 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             try
             {
                  answer = (UserAccount)commensalDAO.FindByEmail(commensal.Email);
+                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                  ResourceMessages.CommensalEmail + answer.Id + ResourceMessages.Slash + answer.Email,
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
             catch (FindByEmailUserAccountFondaDAOException e)
             {
-                throw new GetCommensalEmailCommandException(
-                   "Excepción al buscar el comensal por email",
-                   e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetCommensalEmailCommandException(ResourceMessages.GetCommensalEmailException, e);
             }
             catch (NullReferenceException e)
             {
-                throw new GetCommensalEmailCommandException(
-                 "Excepción, apuntador nulo al buscar un comensal por email",
-                 e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetCommensalEmailCommandException(ResourceMessages.GetCommensalEmailException, e);
             }
             catch (Exception e)
             {
-                throw new GetCommensalEmailCommandException(
-                 "Error al buscar el comensal",
-                 e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetCommensalEmailCommandException(ResourceMessages.GetCommensalEmailException, e);
             }
-            //FALTA LOGGER
+            
             // Guardar el resultado.
             Result = answer;
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
+              System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,
+                   System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
     }
 }

@@ -7,6 +7,8 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
+using FondaBeckEndLogic;
+using FondaLogic.Log;
 
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
@@ -44,6 +46,8 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
         /// </summary>
         protected override void Invoke()
         {
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             Commensal commensal;
             Restaurant restaurant;
             // Obtencion de parametros
@@ -59,26 +63,32 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 restaurant = (Restaurant)restaurantDAO.FindById(idRestaurant.Id);
                 commensal.RemoveFavoriteRestaurant(restaurant);
                 commensalDAO.Save(commensal);
+                Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    ResourceMessages.RestDeletedFromFav + commensal.Id + ResourceMessages.Slash + restaurant.Name,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
             catch (DeleteFondaDAOException e) 
             {
-                throw new DeleteFavoriteRestaurantCommandException(
-                    "Excepción al eliminar restaurant favorito de un comensal", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantCommandException(ResourceMessages.DeleteFavRestException, e);
             }
             catch (NullReferenceException e)
             {
-                throw new DeleteFavoriteRestaurantCommandException(
-                   "Excepción, apuntador nulo al intentar eliminar un restaurant favorito del comensal",
-                   e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantCommandException(ResourceMessages.DeleteFavRestException, e);
             }
             catch (Exception e)
             {
-                throw new DeleteFavoriteRestaurantCommandException(
-                   "Error al intentar eliminar un restaurant favorito de un comensal", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantCommandException(ResourceMessages.DeleteFavRestException, e);
             }
-            //FALTA LOGGER
+           
             // Guardar el resultado.
             Result = commensal;
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
+                System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,
+                   System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
     }
 }

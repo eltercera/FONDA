@@ -7,6 +7,8 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
+using FondaLogic.Log;
+using FondaBeckEndLogic;
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
 {
@@ -42,6 +44,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
         /// </summary>
 		protected override void Invoke()
 		{
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,ResourceMessages.BeginLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
             Commensal commensal;
             Restaurant restaurant;
             // Obtencion de parametros
@@ -52,37 +55,44 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             IRestaurantDAO restaurantDAO = FacDao.GetRestaurantDAO();
            //VALIDACIONES DE CAMPOS
             if ((idCommensal == null) || (idRestaurant == null)) 
-                throw new Exception("Datos Invalidos");
+                throw new Exception(ResourceMessages.InvalidInformation);
+           
             // Ejecucion del agregar.		
 			try
 			{
-                commensal = (Commensal)commensalDAO.FindById(idCommensal.Id);
+               commensal = (Commensal)commensalDAO.FindById(idCommensal.Id);
                 restaurant = (Restaurant)restaurantDAO.FindById(idRestaurant.Id);
                 commensal.RemoveFavoriteRestaurant(restaurant);
                 commensal.AddFavoriteRestaurant(restaurant);
                 commensalDAO.Save(commensal);
+                Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                    ResourceMessages.RestAddedToFav + commensal.Id + ResourceMessages.Slash + restaurant.Name,
+                   System.Reflection.MethodBase.GetCurrentMethod().Name);
+               
             }
-			catch (SaveEntityFondaDAOException e)  
-			{
-                throw new CreateFavoriteRestaurantCommandException(
-                   "Excepción al agregar un restaurant favorito del comensal",
-                   e);
+			catch (SaveEntityFondaDAOException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateFavoriteRestaurantCommandException(ResourceMessages.AddFavRestException, e);
+               
 			}
             catch (NullReferenceException e)  
             {
-                throw new CreateFavoriteRestaurantCommandException(
-                 "Excepción, apuntador nulo al agregrar un restaurant favorito del comensal",
-                 e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateFavoriteRestaurantCommandException(ResourceMessages.AddFavRestException, e);
             }
 			catch (Exception e)
 			{
-                throw new CreateFavoriteRestaurantCommandException(
-                 "Error al crear restaurant Favorito",
-                 e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateFavoriteRestaurantCommandException(ResourceMessages.AddFavRestException, e);
 			}
-            //FALTA LOGGER
+            
 			// Guarda el resultado.
             Result = commensal;
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,
+                   System.Reflection.MethodBase.GetCurrentMethod().Name);
 		}
 	}
 }

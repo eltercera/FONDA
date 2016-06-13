@@ -1,4 +1,5 @@
 ﻿using FondaLogic.FondaCommandException;
+using com.ds201625.fonda.DataAccess.Exceptions;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -16,30 +17,36 @@ namespace FondaLogic.Log
             log4net.Config.XmlConfigurator.Configure();
         }
 
-        /// <summary>
-        /// Escribir en Log en caso de Error
-        /// </summary>
-        /// <param name="ex">Excepcion arrojada</param>
-        public static void WriteErrorLog(CommandException e)
+       /// <summary>
+       /// Escribir log de error 
+       /// </summary>
+       /// <param name="classe"></param>
+       /// <param name="e"></param>
+        public static void WriteErrorLog(string classe, Exception e)
         {
-            ILog Log = LogManager.GetLogger(e.ClassName);
+                ILog Log = LogManager.GetLogger(classe);
 
-            Log.Error(string.Format("======= Codigo de Error: {0} =======", e.Id));
-            Log.Error(string.Format("Clase que arroja el error: {0}", e.ClassName));
-            Log.Error(string.Format("Metodo que arroja el error: {0}", e.Method));
-            Log.Error(string.Format("Informacion del error: {0}", e.Message));
-            Log.Error(string.Format("Detalles del error: {0}, {1}", e.Ex.StackTrace, e.Ex.InnerException));
+                Log.Error(string.Format("======= Mensaje de Error: {0} =======", e.Message));
+                Log.Error(string.Format("Clase que arroja el error: {0}", classe));
+                Log.Error(string.Format("Metodo que arroja el error: {0}", e.TargetSite));
+                Log.Error(string.Format("Informacion del error: {0}", e.Message));
+                Log.Error(string.Format("Detalles del error: {0}, {1}", e.StackTrace, e.InnerException));
+            
+           
         }
 
         /// <summary>
-        /// Escribir en Log en caso de Exito
+        /// Escribir log en ejecución 
         /// </summary>
-        /// <param name="ex">Mensaje de exito</param>
-        public static void WriteSuccessLog(string message)
+        /// <param name="classe"></param>
+        /// <param name="message"></param>
+        /// <param name="method"></param>
+        public static void WriteSuccessLog(string classe, string message, string method)
         {
-            ILog Log = LogManager.GetLogger(message);
-
-            Log.Error(string.Format("[ Operacion exitosa: {0} ]", message));
+            ILog log = LogManager.GetLogger(classe);
+            log.Debug("Clase: " + classe);
+            log.Debug("Mensaje: " + message);
+            log.Debug("Metodo: " + method);
 
         }
 
