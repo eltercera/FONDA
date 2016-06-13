@@ -67,7 +67,15 @@ namespace com.ds201625.fonda.Factory
         #region Login
 
         //Instancia los objetos del dominio invocando al constructor(es) de la entidad
+        public static Entity GetEmployee()
+        {
+            return new Employee();
+        }
 
+        public static Entity GetRole()
+        {
+            return new Role();
+        }
         #endregion
     }
 }

@@ -42,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Login\LoginPresenter.cs" />
+    <Compile Include="Login\mensajes.cs" />
+    <Compile Include="Login\ResourceLogin.Designer.cs">
+      <DependentUpon>ResourceLogin.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="OrderAccount\ClosedOrdersPresenter.cs" />
     <Compile Include="OrderAccount\DetailOrderPresenter.cs" />
     <Compile Include="OrderAccount\OrdersPresenter.cs" />
@@ -49,7 +56,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Login\" />
     <Folder Include="Menu\" />
     <Folder Include="Restaurant\" />
   </ItemGroup>
@@ -74,6 +80,13 @@
       <Project>{3184FE34-D7E3-44F6-95D9-25D1045BFFC8}</Project>
       <Name>FondaResources</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Login\ResourceLogin.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceLogin.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>BackOfficePresenter.Login</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

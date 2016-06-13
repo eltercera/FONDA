@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="Commands\Login\CommandGetEmployeeByUser .cs" />
+    <Compile Include="Commands\Login\CommandGetRestaurantById.cs" />
+    <Compile Include="Commands\Login\CommandSaveEmployee.cs" />
     <Compile Include="Commands\OrderAccount\CommandDetailOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetClosedOrders.cs" />
@@ -61,7 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\Login\" />
     <Folder Include="Commands\Menu\" />
     <Folder Include="Commands\Restaurant\" />
   </ItemGroup>
