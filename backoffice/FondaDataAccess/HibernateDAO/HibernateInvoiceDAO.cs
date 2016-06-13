@@ -30,7 +30,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
            try
             {
                 IList<Invoice> _invoices = new List<Invoice>();
-                _invoices = _account.Invoices;
+                _invoices = _account.ListInvoice;
                 return _invoices;
             }
             catch (ArgumentOutOfRangeException e)

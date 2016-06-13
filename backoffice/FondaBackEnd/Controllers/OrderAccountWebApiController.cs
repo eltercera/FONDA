@@ -77,9 +77,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 total += dish.Dishcost * dish.Count;
             }
             
-            Invoice invoice = (Invoice)EntityFactory.GetInvoice(null, payment,
+   //         Invoice invoice = (Invoice)EntityFactory.GetInvoice(null, payment,
 
-             profile, tip, total, 10, null, 2);
+       //      profile, tip, total, 10, null, 2);
 
       //      invoice.Restaurant = account.Table.Restaurant;// restaurantDAO.findByTable(account.Table);
 
@@ -87,15 +87,17 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
             try
             {
-                invoiceDAO.Save(invoice);
+      //          invoiceDAO.Save(invoice);
             }
             catch (SaveEntityFondaDAOException e)
             {
                 Console.WriteLine(e.ToString());
                 return InternalServerError(e);
             }
-            
-            return Ok(invoice);
+
+            //      return Ok(invoice);
+
+            return BadRequest();
         }
 
         private Account GetAccount(Commensal commensal)

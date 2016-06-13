@@ -95,7 +95,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             currency.Name = "Bolivar";
             currency.Symbol = "Bs.";
 
-            Invoice invoice1 = (Invoice)EntityFactory.GetInvoice(restaurant1, null,
+            Invoice invoice1 = (Invoice)EntityFactory.GetInvoice(null,
 
             profile, 179, 1971, 192, currency, 2);
 

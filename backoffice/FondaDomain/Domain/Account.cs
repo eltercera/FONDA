@@ -120,7 +120,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna el numero de la orden
         /// </summary>
-        public virtual IList<Invoice> Invoices
+        public virtual IList<Invoice> ListInvoice
         {
             get { return _listInvoice; }
         }

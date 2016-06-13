@@ -90,29 +90,29 @@ namespace com.ds201625.fonda.BackEnd.Controllers
               restaurant5.Logo = "ic_restaurant005";
 
 
-              Invoice invoice1 = (Invoice)EntityFactory.GetInvoice(restaurant1, null,
+              Invoice invoice1 = (Invoice)EntityFactory.GetInvoice(null,
                 profile, 350, 50, null, 1);
 
 
-              Invoice invoice2 = (Invoice)EntityFactory.GetInvoice(restaurant2, null,
+              Invoice invoice2 = (Invoice)EntityFactory.GetInvoice(null,
 
                profile, 300, 350, 50, null, 2);
 
-              Invoice invoice3 = (Invoice)EntityFactory.GetInvoice(restaurant3, null,
+              Invoice invoice3 = (Invoice)EntityFactory.GetInvoice(null,
 
                profile, 300, 350, 50, null, 3);
 
-              Invoice invoice4 = (Invoice)EntityFactory.GetInvoice(restaurant4, null,
+              Invoice invoice4 = (Invoice)EntityFactory.GetInvoice(null,
 
                 profile, 300, 350, 50, null, 4);
 
 
-              Invoice invoice5 = (Invoice)EntityFactory.GetInvoice(restaurant5, null,
+              Invoice invoice5 = (Invoice)EntityFactory.GetInvoice(null,
 
                 profile, 300, 350, 50, null, 5);
 
 
-              Invoice invoice6 = (Invoice)EntityFactory.GetInvoice(restaurant1, null,
+              Invoice invoice6 = (Invoice)EntityFactory.GetInvoice(null,
 
                profile, 300, 350, 50, null, 6);
 

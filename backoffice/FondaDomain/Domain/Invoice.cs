@@ -9,10 +9,6 @@ namespace com.ds201625.fonda.Domain
     public class Invoice : BaseEntity
     {
         #region Fields
-        /// <summary>
-        /// Restaurante al que la factura pertenece
-        /// </summary>
-        private Restaurant _restaurant;
 
         /// <summary>
         /// Pago al que la factura pertenece
@@ -81,11 +77,10 @@ namespace com.ds201625.fonda.Domain
         /// <param name="total">Total de la factura</param>
         /// <param name="tax">Impuesto de la factura</param>
         /// <param name="currency">Tipo de Moneda</param>
-        public Invoice(Restaurant restaurant, Payment payment, Profile profile,
+        public Invoice(Payment payment, Profile profile,
             float tip, float total, float tax, Currency currency, int number) 
             : base()
         {
-            this._restaurant = restaurant;
             this._payment = payment;
             this._profile = profile;
             this._tip = tip;
@@ -106,11 +101,10 @@ namespace com.ds201625.fonda.Domain
         /// <param name="total">Total de la factura</param>
         /// <param name="tax">Impuesto de la factura</param>
         /// <param name="currency">Tipo de Moneda</param>
-        public Invoice(Restaurant restaurant, Payment payment, Profile profile,
+        public Invoice(Payment payment, Profile profile,
             float total, float tax, Currency currency, int number)
             : base()
         {
-            this._restaurant = restaurant;
             this._payment = payment;
             this._profile = profile;
             this._tip = 0;
@@ -148,11 +142,11 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Obtiene o asigna un restaurant a la cuenta
         /// </summary>
-        [DataMember]
-        public virtual Restaurant Restaurant
-        {
-            get { return _restaurant; }
-        }
+        //[DataMember]
+        //public virtual Restaurant Restaurant
+        //{
+        //    get { return _restaurant; }
+        //}
 
         /// <summary>
         /// Obtiene o asigna un perfil a la cuenta
