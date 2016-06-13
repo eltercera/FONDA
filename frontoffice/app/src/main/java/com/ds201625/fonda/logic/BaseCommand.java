@@ -57,6 +57,11 @@ public abstract class BaseCommand implements Command {
      */
     @Override
     public void setParameter(int index, Object data) throws Exception {
+
+        if (this.parameters == null) {
+            return;
+        }
+
         if ( index < 0 || index >= this.parameters.length)
             // TODO: Exeption personalizada
             throw new Exception("Index (" + index + ") fuera de rango."
@@ -100,6 +105,9 @@ public abstract class BaseCommand implements Command {
      * @throws Exception
      */
     private void validateParameters() throws Exception {
+        if (this.parameters == null) {
+            return;
+        }
         for (int i = 0; i < parameters.length; i++) {
             if (parameters[i].isRequiered() && parameters[i].getData() == null)
                 // TODO: Exeption personalizada
