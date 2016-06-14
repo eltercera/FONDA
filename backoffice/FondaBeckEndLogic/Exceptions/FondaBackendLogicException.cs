@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.BackEndLogic
 {
+    /// <summary>
+    /// Clase FondaBackendLogicException
+    /// </summary>
     public class FondaBackendLogicException: Exception
 	{
 		public FondaBackendLogicException () : base() {	}

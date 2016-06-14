@@ -6,6 +6,7 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
+using FondaResources.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -144,8 +145,8 @@ namespace BackOfficePresenter.Login
                                     CommandGetRestaurantById.Execute();
                                     _restaurantResult = (Restaurant)CommandGetRestaurantById.Receiver;
                                     HttpContext.Current.Session[ResourceLogin.sessionRestaurantID] = _employeeResult.Restaurant.Id.ToString();
-                                    HttpContext.Current.Session[ResourceLogin.SessionRestaurant] = _restaurantResult.Id.ToString();
-                                    HttpContext.Current.Session[ResourceLogin.SessionNameRest] = _restaurantResult.Name;
+                                    HttpContext.Current.Session[RestaurantResource.SessionRestaurant] = _restaurantResult.Id.ToString();
+                                    HttpContext.Current.Session[RestaurantResource.SessionNameRest] = _restaurantResult.Name;
 
                                     System.Diagnostics.Debug.WriteLine(_restaurantResult.Id.ToString(), "ID del restaurant");
                                     System.Diagnostics.Debug.WriteLine(_restaurantResult.Name.ToString(), "nombre del restaurant");

@@ -13,7 +13,7 @@ using BackOffice.Seccion.Restaurant;
 using com.ds201625.fonda.BackOffice.Presenter;
 using BackOfficeModel.Login;
 using BackOfficePresenter.Login;
-
+using FondaResources.Login;
 
 namespace BackOffice.Seccion.Configuracion
 {
@@ -193,7 +193,7 @@ namespace BackOffice.Seccion.Configuracion
              _presenter.ValidateUser();
             try
             {
-                if (Session[RecursoMaster.sessionRol].ToString() == "Sistema")
+                if (Session[ResourceLogin.sessionRol].ToString() == "Sistema")
                 {
                     Response.Redirect("~/Seccion/Restaurant/Restaurante.aspx");
 
