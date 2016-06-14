@@ -16,7 +16,7 @@ import retrofit2.Call;
  * Implementacion de la interfaz AllRestaurantService
  */
 public class RetrofitAllRestaurantService implements AllRestaurantService {
-
+    private String TAG = "RetrofitAllRestaurantService";
     private AllRestaurantClient currentAllRestaurantClient =
             RetrofitService.getInstance().createService(AllRestaurantClient.class);
 
@@ -26,13 +26,13 @@ public class RetrofitAllRestaurantService implements AllRestaurantService {
 
     @Override
     public List<Restaurant> getAllRestaurant() throws RestClientException {
-
+        Log.d(TAG, "Se obtienen todos los restaurantes");
         Call<List<Restaurant>> call = currentAllRestaurantClient.getAllRestaurant();
         List<Restaurant> test = null;
         try{
             test =call.execute().body();
         } catch (IOException e) {
-            Log.v("Fonda: ", e.toString());
+            Log.e(TAG, "Se ha generado error en getAllRestaurant", e);
         }
         return test;
 

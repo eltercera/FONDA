@@ -17,21 +17,21 @@ import retrofit2.Call;
  * Implementacion de la interfaz FavoriteRestaurantService
  */
 public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantService {
-
+    private String TAG = "RetrofitFavoriteRestaurantService";
     private FavoriteRestaurantClient favoriteRestaurantClient =
             RetrofitService.getInstance().createService(FavoriteRestaurantClient.class);
 
     @Override
     public Commensal AddFavoriteRestaurant(int idCommensal, int idRestaurant)  throws RestClientException {
         // aqui se supone que debo traerme el comensal Logeado
-
+        Log.d(TAG, "Se agrega el restaurante "+idRestaurant+"a favoritos del comensal "+idCommensal);
         Call<Commensal> call = favoriteRestaurantClient.addfavoriterestaurant(idCommensal,idRestaurant);
         Commensal rsvCommensal = null;
 
         try{
             rsvCommensal = call.execute().body();
         } catch (IOException e) {
-            Log.v("Fonda: ", e.toString());
+            Log.e(TAG, "Se ha generado error en AddFavoriteRestaurant", e);
         }
 
         return rsvCommensal;
@@ -39,13 +39,14 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
 
     @Override
     public Commensal deleteFavoriteRestaurant(int idCommensal, int idRestaurant)  throws RestClientException{
+        Log.d(TAG, "Se elimina el restaurante "+idRestaurant+" de favoritos del comensal "+idCommensal);
         Call<Commensal> call = favoriteRestaurantClient.removefavoriterestaurant(idCommensal, idRestaurant);
         Commensal rsvCommensal = null;
 
         try{
             rsvCommensal = call.execute().body();
         } catch (IOException e) {
-            Log.v("ERRORWEBSERV", e.toString());
+            Log.e(TAG, "Se ha generado error en deleteFavoriteRestaurant", e);
         }
 
         return rsvCommensal;
@@ -53,12 +54,13 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
 
     @Override
     public List<Restaurant> getAllFavoriteRestaurant(int idCommensal)  throws RestClientException{
+        Log.d(TAG, "Se obtienen todos los restaurantes favoritos del comensal: "+idCommensal);
         Call<List<Restaurant>> call = favoriteRestaurantClient.getAllFavoriteRestaurant(idCommensal);
         List<Restaurant> test = null;
         try {
             test =call.execute().body();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant", e);
         }
         return test;
     }
