@@ -31,7 +31,9 @@ import java.util.List;
  * Fragment que contiene la lista de restaurantes favoritos
  */
 public class FavoritesListFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
-   
+
+    private String TAG = "FavoriteListFragment";
+
     //Interface de comunicacion contra la activity
     favoritesListFragmentListener mCallBack;
 
@@ -49,6 +51,7 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreate");
         super.onCreate(savedInstanceState);
         multi = getArguments().getBoolean("multiSelect");
         favoritesList = new FavoriteRestViewItemList(getContext());
@@ -57,6 +60,7 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreateView");
         View layout = inflater.inflate(R.layout.fragment_favorites_list,container,false);
         restaurants = (ListView)layout.findViewById(R.id.lvFavoriteList);
         swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
@@ -96,7 +100,7 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
                 public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.deleteFavorites:
-                            String sal = "Fueron eliminados los Favoritos.";
+
                             for (Restaurant r : favoritesList.getAllSeletedItems()) {
 
                                 FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
@@ -112,14 +116,15 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
                                     Toast.makeText(FavoritesListFragment.super.getContext(),
                                             "Se han eliminado "+favoritesList.countSelected()+" Restaurantes de Favoritos",
                                             Toast.LENGTH_LONG).show();
+                                    Log.d("Favoritos eliminados: ",r.getName().toString());
                                 } catch (RestClientException e) {
-                                    e.printStackTrace();
+                                    Log.e(TAG,"Error en onActionItemClicked al eliminar restaurant", e);
                                 }
                                 catch (Exception e) {
-                                    System.out.println("Error en la Conexión");
+                                    Log.e(TAG,"Error en onActionItemClicked al eliminar restaurant", e);
                                 }
                             }
-                            Log.v("Favoritos eliminados: ", sal);
+
                             favoritesList.cleanSelected();
                             mCallBack.OnFavoriteSelectionModeExit();
                             mode.finish();
@@ -149,24 +154,28 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
             }
         });
 
-
+        Log.d(TAG,"Ha finalizado onCreateView");
         return layout ;
     }
 
     @Override
     public void onRefresh() {
+        Log.d(TAG,"Ha ingresado a onRefresh");
         updateList();
+        Log.d(TAG,"Ha finalizado onRefresh");
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Log.d(TAG,"Ha ingresado a onAttach");
         try {
             mCallBack = (favoritesListFragmentListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + " must implement OnHeadlineSelectedListener");
+            Log.e(TAG,"Error en onAttach", e);
+            throw new ClassCastException(context.toString());
         }
+        Log.d(TAG,"Ha finalizado onAttach");
     }
 
     @Override
@@ -176,10 +185,12 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
 
 
     public void updateList() {
+        Log.d(TAG,"Ha ingresado a updateList");
         swipeRefreshLayout.setRefreshing(true);
         favoritesList.update(logedComensal.getId());
         restaurants.refreshDrawableState();
         swipeRefreshLayout.setRefreshing(false);
+        Log.d(TAG,"Ha finalizado updateList");
     }
 
     /**
@@ -215,7 +226,7 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
      */
     public List<Restaurant> getListSW(){
         List<Restaurant> listRestWS;
-
+        Log.d(TAG,"Ha ingresado a getListSW");
             try {
                 Commensal log = SessionData.getInstance().getCommensal();
                 try {
@@ -239,15 +250,15 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
 
                     return listRestWS;
                 } catch (RestClientException e) {
-                    e.printStackTrace();
+                    Log.e(TAG,"Error en getListSW al obtener favoritos", e);
                 }
                 catch (NullPointerException nu) {
-                    nu.printStackTrace();
+                    Log.e(TAG,"Error en getListSW al obtener favoritos", nu);
                 }
             } catch (Exception e) {
-                System.out.println("Error en la Conexión");
+                Log.e(TAG,"Error en getListSW al obtener favoritos", e);
             }
-
+        Log.d(TAG,"Ha finalizado getListSW");
         return null;
     }
 
