@@ -46,6 +46,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Errors.resx</DependentUpon>
     </Compile>
+    <Compile Include="Login\G1RecursosInterfaz.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>G1RecursosInterfaz.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\G1RecursosInterfaz2.Designer.cs">
+      <DependentUpon>G1RecursosInterfaz2.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Login\ResourceLogin.Designer.cs">
       <DependentUpon>ResourceLogin.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -72,6 +82,14 @@
     <EmbeddedResource Include="General\Errors.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\G1RecursosInterfaz.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>G1RecursosInterfaz.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\G1RecursosInterfaz2.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>G1RecursosInterfaz2.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\ResourceLogin.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

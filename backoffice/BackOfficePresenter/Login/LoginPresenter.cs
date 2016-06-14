@@ -125,7 +125,7 @@ namespace BackOfficePresenter.Login
                             {
                                 System.Diagnostics.Debug.WriteLine("Aprobe el login");
 
-                                HttpContext.Current.Session[ResourceLogin.sessionRol] = _employeeResult.Role.Name;
+                                HttpContext.Current.Session[ResourceLogin.sessionRol] = (string)_employeeResult.Role.Name;
                                 HttpContext.Current.Session[ResourceLogin.sessionName] = _employeeResult.Name;
                                 HttpContext.Current.Session[ResourceLogin.sessionLastname] = _employeeResult.LastName;
                                 HttpContext.Current.Session[ResourceLogin.sessionUserID] = _employeeResult.Id;
