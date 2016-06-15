@@ -13,6 +13,15 @@ namespace BackOffice.Seccion.Caja {
     public partial class Default {
         
         /// <summary>
+        /// AlertSuccess_AddRestaurant control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertSuccess_AddRestaurant;
+        
+        /// <summary>
         /// AccountPopOrder control.
         /// </summary>
         /// <remarks>

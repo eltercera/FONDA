@@ -22,7 +22,7 @@ namespace BackOffice.Seccion.Caja
     {
         #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.DefaultPresenter _presenter;
+        private com.ds201625.fonda.BackOffice.Presenter.OrdersPresenter _presenter;
 
         #endregion
 
@@ -83,7 +83,7 @@ namespace BackOffice.Seccion.Caja
 
         public Default()
         {
-                  _presenter = new com.ds201625.fonda.BackOffice.Presenter.DefaultPresenter(this);
+                  _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrdersPresenter(this);
         }
         #endregion
 

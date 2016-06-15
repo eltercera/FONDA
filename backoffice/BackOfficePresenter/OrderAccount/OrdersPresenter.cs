@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.BackOffice.Presenter
 {
-    public class DefaultPresenter : BackOfficePresenter.Presenter
+    public class OrdersPresenter : BackOfficePresenter.Presenter
     {
         //Enlace entre el Modelo y la Vista
         private IOrdersModel _view;
@@ -21,7 +21,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter
         /// Constructor de la clase
         /// </summary>
         /// <param name="viewDefault">Interfaz</param>
-        public DefaultPresenter(IOrdersModel viewDefault)
+        public OrdersPresenter(IOrdersModel viewDefault)
             : base(viewDefault) 
         {
             //Se genera el enlace entre el modelo y la vista

@@ -24,7 +24,18 @@
     
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
-   
+
+    <asp:l   
+        <div id="AlertSuccess_AddRestaurant" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i> El restaurante fue agregado <strong>exitosamente!</strong>
+            </div>
+        </div>
+    </div>
+
+
     <div class="row">
            <div class="col-lg-12">
                         <div class="panel panel-default">
