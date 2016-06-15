@@ -503,11 +503,6 @@
     <Compile Include="Seccion\Caja\VerFactura.aspx.designer.cs">
       <DependentUpon>VerFactura.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Configuracion\G1RecursosInterfaz.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>G1RecursosInterfaz.resx</DependentUpon>
-    </Compile>
     <Compile Include="Seccion\Configuracion\ListarUsuario.aspx.cs">
       <DependentUpon>ListarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -577,11 +572,6 @@
     <Compile Include="Seccion\Restaurant\AgregarZona.aspx.designer.cs">
       <DependentUpon>AgregarZona.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Restaurant\RestaurantResource.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RestaurantResource.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -643,14 +633,6 @@
     <EmbeddedResource Include="Content\RecursoMaster.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RecursoMaster.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Seccion\Configuracion\G1RecursosInterfaz.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>G1RecursosInterfaz.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Seccion\Restaurant\RestaurantResource.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>RestaurantResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

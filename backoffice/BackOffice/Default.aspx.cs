@@ -6,6 +6,8 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using BackOfficePresenter.Login;
+using FondaResources.Login;
 
 namespace BackOffice
 {
@@ -30,7 +32,7 @@ namespace BackOffice
             //Cargar Table de Mesas
             //ID del restaurante donde nos encontramos
             int _idRestaurant = 0;
-            if (Session["RestaurantID"] != null)
+            if (Session[ResourceLogin.sessionRestaurantID] != null)
             {
                 try {
                     string idRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();

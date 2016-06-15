@@ -59,7 +59,9 @@ namespace BackOffice.Seccion.Caja
                 throw new NotImplementedException();
             }
         }
-
+        /// <summary>
+        /// Recurso de Session para el ID de la orden
+        /// </summary>
         string IOrdersModel.Session
         {
             get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }

@@ -227,7 +227,10 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
             Log.v(TAG,toReturn.getId()+"");
 
 
-        }catch(NullPointerException nu){
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
+        catch(NullPointerException nu){
             nu.printStackTrace();
             Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
                     Toast.LENGTH_LONG).show();

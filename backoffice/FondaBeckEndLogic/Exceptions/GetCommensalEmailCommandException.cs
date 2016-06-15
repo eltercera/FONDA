@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using com.ds201625.fonda.BackEndLogic;
 
 namespace com.ds201625.fonda.FondaBackEndLogic.Exceptions
 {
+    /// <summary>
+    /// Clase GetCommensalEmailCommandException 
+    /// </summary>
     public class GetCommensalEmailCommandException : FondaBackendLogicException
     {
         public GetCommensalEmailCommandException () : base() {	}
