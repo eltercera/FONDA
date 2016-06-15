@@ -3,6 +3,7 @@ using System.Web.UI.WebControls;
 using BackOfficeModel.OrderAccount;
 using BackOffice.Seccion.Restaurant;
 using BackOfficePresenter.OrderAccount;
+using FondaResources.Login;
 
 namespace BackOffice.Seccion.Caja
 {

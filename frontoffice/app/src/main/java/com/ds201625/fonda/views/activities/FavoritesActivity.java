@@ -8,26 +8,26 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
 import com.ds201625.fonda.views.fragments.FavoritesListFragment;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Activity de los Resturantes Favoritos
+ */
 public class FavoritesActivity extends BaseNavigationActivity implements
         FavoritesListFragment.favoritesListFragmentListener {
 
@@ -67,6 +67,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreate");
         setContentView(R.layout.activity_favorites);
         /**
          * Esta es la validacion de si el usuario ya esta loggeado o no.
@@ -112,13 +113,16 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                     fm.executePendingTransactions();
 
     }
+        Log.d(TAG,"Ha salido de onCreate");
     }
 
     /**
      * Acción de saltar esta actividad.
      */
     private void skip() {
+        Log.d(TAG,"Ha entrado en skip");
         startActivity(new Intent(this,LoginActivity.class));
+        Log.d(TAG,"Ha salido de skip");
     }
 
     /**
@@ -126,6 +130,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      * @param fragment el fragment que se quiere mostrar
      */
     private void showFragment(BaseFragment fragment) {
+        Log.d(TAG,"Ha entrado en showFragment");
         fm.beginTransaction()
                 .replace(R.id.fragment_container_fav,fragment)
                 .commit();
@@ -133,6 +138,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
         //Muestra y oculta compnentes.
         if(fragment.equals(fv)){
+            Log.d(TAG,"Fragment FavoritesListFragment");
             if(favoriteBotton != null)
                 favoriteBotton.setVisible(false);
             if(reserveBotton != null)
@@ -140,12 +146,14 @@ public class FavoritesActivity extends BaseNavigationActivity implements
             onForm = false;
         } else {
             if(favoriteBotton != null)
+                Log.d(TAG,"Fragment DetailRestaurantFragment");
                 favoriteBotton.setVisible(true);
             if(reserveBotton != null)
                 reserveBotton.setVisible(true);
             onForm = true;
 
         }
+        Log.d(TAG,"Ha salido de showFragment");
     }
 
     /**
@@ -155,11 +163,12 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG,"Ha entrado en onCreateOptionsMenu");
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.detail_restaurant, menu);
-
         favoriteBotton = menu.findItem(R.id.action_set_favorite);
         reserveBotton = menu.findItem(R.id.action_make_order);
+        Log.d(TAG,"Ha salido de onCreateOptionsMenu");
         return true;
     }
 
@@ -170,6 +179,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG,"Ha entrado en onOptionsItemSelected");
         switch (item.getItemId()) {
             case R.id.action_set_favorite:
                 removeFavorite();
@@ -178,6 +188,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                 goReserve();
                 break;
         }
+        Log.d(TAG,"Ha salido de onOptionsItemSelected");
         return true;
     }
 
@@ -188,35 +199,46 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
     private void removeFavorite() {
         //Valida que es un favorito o lo quita
-
+        Log.d(TAG,"Ha entrado en removeFavorite");
         try {
             Commensal log = SessionData.getInstance().getCommensal();
             try {
                 favoriteBotton.setIcon(R.drawable.ic_star_yellow);
-                emailToWebService=log.getEmail()+"/";
-                RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().
-                        getLogedCommensalService();
-                logedComensal =getComensal.getLogedCommensal(emailToWebService);
-                Restaurant restaurant = detailRestaurantFrag.getRestaurant();
-                FavoriteRestaurantService favservice = FondaServiceFactory.getInstance().
-                        getFavoriteRestaurantService();
 
-                favservice.deleteFavoriteRestaurant(logedComensal.getId(),restaurant.getId());
+                emailToWebService=log.getEmail()+"/";
+
+                FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
+
+                //Llamo al comando de requireLogedCommensalCommand
+                Command cmdRequireLoged = facCmd.requireLogedCommensalCommand();
+                cmdRequireLoged.setParameter(0,emailToWebService);
+                cmdRequireLoged.run();
+                logedComensal = (Commensal) cmdRequireLoged.getResult();
+
+                selectedRestaurant = detailRestaurantFrag.getRestaurant();
+
+                //Llamo al comando de deleteFavoriteRestaurant
+                Command cmdDelete = facCmd.deleteFavoriteRestaurantCommand();
+                cmdDelete.setParameter(0,logedComensal.getId());
+                cmdDelete.setParameter(1,selectedRestaurant.getId());
+                cmdDelete.run();
+
                 Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
                         Toast.LENGTH_LONG).show();
+
                 showFragment(fv);
             } catch (RestClientException e) {
-                e.printStackTrace();
+                Log.e(TAG,"Error en removeFavorite al eliminar un favorito",e);
             }
             catch (NullPointerException nu) {
-                nu.printStackTrace();
+                Log.e(TAG,"Error en removeFavorite al eliminar un favorito",nu);
             }
         } catch (Exception e) {
-            System.out.println("Error en la Conexión");
+            Log.e(TAG,"Error en removeFavorite al eliminar un favorito",e);
         }
          hideKyboard();
 
-
+        Log.d(TAG,"Se ha eliminado un favorito");
 
     }
 
@@ -244,11 +266,13 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
     @Override
     public void onBackPressed() {
+        Log.d(TAG,"Ha entrado en onBackPressed");
         if (!onForm) {
             super.onBackPressed();
         } else {
             showFragment(fv);
         }
+        Log.d(TAG,"Ha salido de onBackPressed");
     }
 
 }

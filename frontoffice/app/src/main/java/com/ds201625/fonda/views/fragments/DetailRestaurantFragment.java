@@ -7,15 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.Person;
-import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.Restaurant;
 
 
 /**
- * Fragment que contiene el formulario de para un perfil
+ * Fragment que contiene los detalles de un restaurante
  */
 public class DetailRestaurantFragment extends BaseFragment {
 

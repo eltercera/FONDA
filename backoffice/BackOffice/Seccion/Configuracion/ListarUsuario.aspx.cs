@@ -10,30 +10,37 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using com.ds201625.fonda.DataAccess.Exceptions;
+using BackOfficeModel.Login;
+using BackOfficePresenter.Login;
+using FondaResources.Login;
 
 namespace BackOffice.Seccion.Configuracion
 {
-    public partial class ListarUsuario : System.Web.UI.Page
+    public partial class ListarUsuario : System.Web.UI.Page, IUserListModel
     {
-        private FactoryDAO _facDAO;
+        /*private FactoryDAO _facDAO;
         private IEmployeeDAO _employeeDAO;
         private IList<Employee> _employeeList;
         private IRoleDAO _roleDAO;
         private IUserAccountDAO _userAccountDAO;
         private IList<Role> _roleList;
-        private Employee _employee;   
+        private Employee _employee;   */
         protected void Page_Load(object sender, EventArgs e)
         {
-            ClearAlert();
-                LoadTable();
+            userListPresenter.ClearAlert();
+            userListPresenter.LoadTable(Session[ResourceLogin.sessionRol].ToString());
+            //LoadTable();
         }
 
+
+
+        
         protected void ClearAlert ()
         {
             this.alert.Attributes.Clear();
             this.alert.InnerHtml = "";
         }
-
+        /*
         protected void LoadDataTable (string _role)
         {
             #region Attributes DAO
@@ -208,17 +215,18 @@ namespace BackOffice.Seccion.Configuracion
         {
             Response.Redirect("../Configuracion/AgregarModificarUsuario.aspx?success=agregar");
         }
-
+        */
         protected void Add_Click(object sender, EventArgs e)
-        {
+        {/*
             ClearModalAddModify();
             string _role = (string)(Session[RecursoMaster.sessionRol]);
             ChangeRole(_role);
             if (_role == "Sistema")
                 ChangeRestaurant();
             ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
-        }
-
+        */
+         }
+        /*
         protected void Modify_Click(object sender, EventArgs e)
         {
             ClearModalAddModify();
@@ -253,12 +261,12 @@ namespace BackOffice.Seccion.Configuracion
             ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
 
         }
-
+        */
         protected void Cancel_Click(object sender, EventArgs e)
         {
-            Alerts("Cancel");
+           // Alerts("Cancel");
         }
-
+        /*
         protected void ClearModalAddModify()
         {
             this.nameUser.Text = "";
@@ -396,9 +404,10 @@ namespace BackOffice.Seccion.Configuracion
 
             return _employee;
         }
-
+        */
         protected void ModalAddModify_Click(object sender, EventArgs e)
         {
+            /*
             if (ValidarCampo(ButtonAddModify.Text))
             {
                 _facDAO = FactoryDAO.Intance;
@@ -494,8 +503,9 @@ namespace BackOffice.Seccion.Configuracion
             {
                 ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
             }
+            */
         } 
-
+        /*
         protected void Alerts(string _success)
         {
             switch (_success)
@@ -891,5 +901,139 @@ namespace BackOffice.Seccion.Configuracion
                 return false;
             }
         }
+        */
+        #region Presenter
+        private UserListPresenter userListPresenter;
+        #endregion
+
+        #region model
+        public Label ErrorLabelMessage
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public Label SuccessLabelMessage
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public System.Web.UI.HtmlControls.HtmlGenericControl userListAlert
+        {
+            get { return alert; }
+            set { alert = value; }
+        }
+
+        public System.Web.UI.WebControls.Table tableUserList
+        {
+            get { return TablaEmployee; }
+            set { TablaEmployee = value; }
+        }
+
+       public TextBox textBoxNameUser
+        {
+            get { return nameUser; }
+            set { nameUser = value; }
+        }
+
+        public TextBox textBoxlastNameUser
+        {
+            get { return lastNameUser; }
+            set { lastNameUser = value; }
+        }
+        public DropDownList dropDownListNss1
+        {
+            get { return nss1; }
+            set { nss1 = value; }
+        }
+        public TextBox textBoxNss2
+        {
+            get { return nss2; }
+            set { nss2 = value; }
+        }
+        public TextBox textBoxAddress
+        {
+            get { return address; }
+            set { address = value; }
+        }
+        public TextBox textBoxEmail
+        {
+            get { return email; }
+            set { email = value; }
+        }
+        public TextBox textBoxPhoneNumber
+        {
+            get { return phoneNumber; }
+            set { phoneNumber = value; }
+        }
+
+        public TextBox textBoxBirtDate
+        {
+            get { return birtDate; }
+            set { birtDate = value; }
+        }
+        public DropDownList DropDownListRole
+        {
+            get { return role; }
+            set { role = value; }
+        }
+
+        public DropDownList DropDownListGender
+        {
+            get { return gender; }
+            set { gender = value; }
+        }
+
+        public TextBox textBoxPaswword
+        {
+            get { return password; }
+            set { password = value; }
+        }
+        public TextBox textBoxRepitPaswword
+        {
+            get { return repitPassword; }
+            set { repitPassword = value; }
+        }
+
+        public TextBox textBoxUserNameU
+        {
+            get { return userNameU; }
+            set { userNameU = value; }
+        }
+        public Button buttonButtonAddModify
+        {
+            get { return ButtonAddModify; }
+            set { ButtonAddModify = value; }
+        }
+        public DropDownList dropDownListRestaurant
+        {
+            get { return restaurant; }
+            set { restaurant = value; }
+        }
+        #endregion
+
+        #region constructor
+        public ListarUsuario()
+        {
+            userListPresenter = new UserListPresenter(this);
+        }
+#endregion
+
+
     }
 }

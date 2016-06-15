@@ -42,13 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IModel.cs" />
+    <Compile Include="Login\ILoginModel.cs" />
+    <Compile Include="Login\IUserListModel.cs" />
     <Compile Include="OrderAccount\IClosedOrdersModel.cs" />
     <Compile Include="OrderAccount\IDetailOrderModel.cs" />
     <Compile Include="OrderAccount\IOrdersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Login\" />
     <Folder Include="Menu\" />
     <Folder Include="Restaurant\" />
   </ItemGroup>

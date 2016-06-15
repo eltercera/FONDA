@@ -98,7 +98,7 @@ public class FondaServiceFactory {
 
 
     /**
-     * Obtiene los servicios de Comensal
+     * Obtiene los servicios de restaurantes
      * @param
      * @return
      */
@@ -169,6 +169,11 @@ public class FondaServiceFactory {
         return serviceFactory.getAllReservesService();
     }
 
+	/**
+     * Obtiene los servicios de commensal logueado
+     * @param
+     * @return
+     */
     public RequireLogedCommensalService getLogedCommensalService(){
       return  serviceFactory.getLogedCommensalService();
     };

@@ -51,6 +51,11 @@
     <Compile Include="Exceptions\InvalidTypeOfParameter.cs" />
     <Compile Include="Exceptions\ParameterIndexOutOfRangeException.cs" />
     <Compile Include="Exceptions\RequieredParameterNotFoundException.cs" />
+    <Compile Include="ResourceMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceMessages.resx</DependentUpon>
+    </Compile>
     <Compile Include="RestaurantsSearch\GetZonesCommand.cs" />
     <Compile Include="RestaurantsSearch\GetRestaurantsCategoriesCommand.cs" />
     <Compile Include="RestaurantsSearch\GetRestaurantsCommand.cs" />
@@ -65,9 +70,16 @@
       <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
       <Name>FondaDataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
+      <Project>{64636df8-e693-4abb-8964-5c7fa5a6a50e}</Project>
+      <Name>FondaLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ResourceMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="RestaurantsSearch\" />
-  </ItemGroup>
 </Project>
