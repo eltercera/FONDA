@@ -12,6 +12,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
     public class HibernateOrderAccountDAO : HibernateBaseEntityDAO<Account>, IOrderAccountDao
     {
         private FactoryDAO.FactoryDAO _facDAO;
+        private IRestaurantDAO _restaurantDAO;
 
         public HibernateOrderAccountDAO()
         {
@@ -42,20 +43,22 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="restaurant">Un objeto de tipo Restaurant</param>
         /// <returns>Una lista de Account</returns>
-        public IList<Account> FindByRestaurant(Restaurant restaurant)
-        {
-            ICriterion criterion = Expression.Eq("Status", OpenAccountStatus.Instance);
-            try
-            {
-                IList<Account> list = new List<Account>();
-                list = (FindAll(criterion));
-                return list;
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-                throw new FondaIndexException("No se encontraron ordenes", e);
-            }
-        }
+        //public IList<Account> FindByRestaurant(Restaurant restaurant)
+        //{
+        //    ICriterion criterion = Expression.Eq("Status", OpenAccountStatus.Instance);
+        //    try
+        //    {
+        //        IList<Account> list = new List<Account>();
+        //        list = (FindAll(criterion));
+        //        return list;
+        //    }
+        //    catch (ArgumentOutOfRangeException e)
+        //    {
+        //        throw new FondaIndexException("No se encontraron ordenes", e);
+        //    }
+        //}
+
+
 
         /// <summary>
         /// Obtiene Todas las ordenes de un Restaurante
@@ -67,7 +70,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             try
             {
                 IList<Account> list = new List<Account>();
-                list=_restaurant.Accounts;
+                list = _restaurant.Accounts;
                 return list;
             }
             catch (ArgumentOutOfRangeException e)
@@ -86,29 +89,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         }
 
         /// <summary>
-        /// Obtiene las ordenes cerradas de un Restaurante
-        /// </summary>
-        /// <param name="restaurant">Un objeto de tipo Restaurant</param>
-        /// <returns>Una lista de Close Account</returns>
-
-        public IList<Account> ClosedOrdersByRestaurant(Restaurant restaurant)
-        {
-            ICriterion criterion = Expression.Eq("Status", ClosedAccountStatus.Instance);
-            try
-            {
-                IList<Account> list = new List<Account>();
-                list = (FindAll(criterion));
-                return list;
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-                throw new FondaIndexException("No se encontraron ordenes cerradas", e);
-            }
-
-        }
-
-        /// <summary>
-        /// Obtiene las cuentas de un Restaurante
+        /// Obtiene las cuentas abiertas de un Restaurante
         /// </summary>
         /// <param name="idRestaurant">Un ID de Restaurant tipo int</param>
         /// <returns>Una List de Accounts</returns>
@@ -116,7 +97,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             Restaurant _restaurant;
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
-            
+
             try
             {
                 _restaurant = _restaurantDAO.FindById(_idRestaurant);

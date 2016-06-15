@@ -12,14 +12,14 @@ namespace FondaLogic.Commands.OrderAccount
     public class CommandClosedOrders : Command
     {
 
-        FactoryDAO _facDAO = FactoryDAO.Intance;
-        Restaurant _restaurant = new Restaurant();
+        private FactoryDAO _facDAO = FactoryDAO.Intance;
+        private int _restaurantId;
 
         public CommandClosedOrders(Object receiver) : base(receiver)
         {
             try
             {
-                _restaurant = (Restaurant)receiver;
+                _restaurantId = (int)receiver;
             }
             catch (Exception)
             {
@@ -39,11 +39,11 @@ namespace FondaLogic.Commands.OrderAccount
             try
             {
                 //Defino el DAO
-                IOrderAccountDao _orderDAO;
+                IRestaurantDAO _restaurantDAO;
                 //Obtengo la instancia del DAO a utilizar
-                _orderDAO = _facDAO.GetOrderAccountDAO();
+                _restaurantDAO = _facDAO.GetRestaurantDAO();
                 //Obtengo el objeto con la informacion enviada
-                IList<Account> listClosedOrders = _orderDAO.ClosedOrdersByRestaurant(_restaurant);
+                IList<Account> listClosedOrders = _restaurantDAO.ClosedOrdersByRestaurantId(_restaurantId);
                 Receiver = listClosedOrders;
 
         }

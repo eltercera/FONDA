@@ -13,9 +13,10 @@ namespace FondaDataAccessTest
     {
         private Restaurant _restaurant;
         private FactoryDAO _facDAO;
-        private IOrderAccountDao _acccountDAO;
+        private IOrderAccountDao _accountDAO;
+        private IRestaurantDAO _restaurantDAO;
         private Account _account;
-        private IList<Account> _listInvoices;
+        private IList<Account> _listAccounts;
         private int _number;
         private Table _table;
         private Commensal _commensal;
@@ -31,15 +32,17 @@ namespace FondaDataAccessTest
             _commensal = new Commensal();
             _listOrder = new List<DishOrder>();
 
-            _listInvoices = new List<Account>();
+            _listAccounts = new List<Account>();
 
             _restaurantId = 1;
             _account = (Account)EntityFactory.GetAccount();
             _account.Id = 2;
-            _acccountDAO = _facDAO.GetOrderAccountDAO();
-            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+
+            _accountDAO = _facDAO.GetOrderAccountDAO();
+            _restaurantDAO = _facDAO.GetRestaurantDAO();
+
             _restaurant = _restaurantDAO.FindById(_restaurantId);
-            IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
+            _accountDAO = _facDAO.GetOrderAccountDAO();
             _account = _accountDAO.FindById(_account.Id);
 
             
@@ -49,14 +52,32 @@ namespace FondaDataAccessTest
         public void FindAccountsByRestaurantTest()
         {
 
-            _listInvoices = _acccountDAO.FindAccountByRestaurant(_restaurant.Id);
-            Assert.IsNotNull(_listInvoices);
+            _listAccounts = _accountDAO.FindAccountByRestaurant(_restaurant.Id);
+            Assert.IsNotNull(_listAccounts);
         }
+
+        [Test(Description ="Obtiene el numero de ordenes cerradas de un Restaurante por su id")]
+        public void ClosedOrdersByRestaurantIdTest()
+        {
+            _listAccounts = _restaurantDAO.ClosedOrdersByRestaurantId(_restaurantId);
+            Assert.IsNotNull(_listAccounts);
+            Assert.AreEqual(_listAccounts.Count, 8);
+        }
+
+        [Test(Description = "Obtiene el numero de ordenes abiertas de un Restaurante por su id")]
+        public void OpenOrdersByRestaurantIdTest()
+        {
+            _listAccounts = _restaurantDAO.OpenOrdersByRestaurantId(_restaurantId);
+            Assert.IsNotNull(_listAccounts);
+            Assert.AreEqual(_listAccounts.Count, 2);
+        }
+
+
         [Test]
         public void GenerateNumberInvoice()
         {
 
-            _number = _acccountDAO.GenerateNumberAccount(_restaurant);
+            _number = _accountDAO.GenerateNumberAccount(_restaurant);
             Assert.IsNotNull(_number);
         }
 
@@ -76,7 +97,7 @@ namespace FondaDataAccessTest
             //    // _orderDAO.Delete(account);
 
             //}
-            _acccountDAO.ResetSession();
+            //_accountDAO.ResetSession();
         }
 
 

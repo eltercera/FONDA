@@ -28,6 +28,10 @@ namespace FondaLogic.Commands.OrderAccount
 
                 throw ex;
             }
+            finally
+            {
+                Console.WriteLine("Operacion no permitida");
+            }
 
 
         }
