@@ -1,4 +1,5 @@
-﻿using com.ds201625.fonda.Domain;
+﻿using com.ds201625.fonda;
+using com.ds201625.fonda.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,14 @@ namespace FondaLogic.Commands.OrderAccount
 
         public override void Execute()
         {
-            Restaurant res = null;
+            string i = "word";
+            int number;
 
             try
             {
-                string nameRes = res.Name;
+                number = int.Parse(i);
             }
-            catch (DivideByZeroException ex)
+            catch (FormatException ex)
             {
 
                 throw ex;

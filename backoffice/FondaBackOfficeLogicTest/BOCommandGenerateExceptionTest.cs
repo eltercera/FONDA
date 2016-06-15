@@ -21,7 +21,7 @@ namespace FondaBackOfficeLogicTest
         }
 
         [Test]
-        [ExpectedException(typeof(NullReferenceException))]
+        [ExpectedException(typeof(FormatException))]
         public void DivisionByZeroExceptionTest()
         {
             _commandGenerateException.Execute();
