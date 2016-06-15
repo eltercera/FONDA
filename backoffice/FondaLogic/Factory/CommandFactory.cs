@@ -38,15 +38,6 @@ namespace FondaLogic.Factory
             return new CommandGetOrders(receiver);
         }
 
-        /// <summary>
-        /// Metodo de la fabrica para el Comando FindInvoices
-        /// </summary>
-        /// <param name="entity">Id Account</param>
-        /// <returns>comando CommandFindInvoices</returns>
-        public static Command GetCommandFindInvoices(object receiver)
-        {
-            return new CommandFindInvoices(receiver);
-        }
 
         /// <summary>
         /// Metodo de la fabrica para el ComandoGetOrder
@@ -91,9 +82,19 @@ namespace FondaLogic.Factory
         /// </summary>
         /// <param name="entity">Id del Restaurante</param>
         /// <returns>comando CommandGetOrders</returns>
-        public static Command GetCommandInvoice(object receiver)
+        public static Command GetCommandGenerateInvoice(object receiver)
         {
-            return new CommandGetInvoice(receiver);
+            return new CommandGetGenerateInvoice(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando FindInvoices
+        /// </summary>
+        /// <param name="entity">Id Account</param>
+        /// <returns>comando CommandFindInvoices</returns>
+        public static Command GetCommandFindInvoicesByAccount(object receiver)
+        {
+            return new CommandFindInvoicesByAccount(receiver);
         }
 
         #endregion

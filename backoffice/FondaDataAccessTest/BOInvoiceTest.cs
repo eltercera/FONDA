@@ -51,7 +51,7 @@ namespace FondaDataAccessTest
         public void FindInvoiceByRestaurantTest()
         {
 
-            _listInvoices = _invoiceDAO.FindInvoiceByRestaurant(_restaurant);
+            _listInvoices = _invoiceDAO.FindInvoicesByRestaurant(_restaurant);
             Assert.IsNotNull(_listInvoices);
             Assert.AreEqual(_listInvoices[0].Id, 1);
             Assert.AreEqual(_listInvoices[1].Id, 2);
@@ -72,8 +72,7 @@ namespace FondaDataAccessTest
         [Test]
         public void FindGenerateInvoiceByAccountTest()
         {
-            //_invoiceCompare = (Invoice)EntityFactory.GetInvoice(Payment payment, 
-            //    Profile profile, float tip, float total, float tax, 2);
+
             _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
             Assert.IsNotNull(_invoice);
             Assert.AreEqual(_invoice.Id,2);

@@ -79,7 +79,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="account">Un objeto de tipo Account</param>
         /// <returns>Un objeto Invoice</returns>
-        public IList<Invoice> FindInvoiceByRestaurant(Restaurant _restaurant)
+        public IList<Invoice> FindInvoicesByRestaurant(Restaurant _restaurant)
         {
             IOrderAccountDao _accountDAO;
             _facDAO = FactoryDAO.FactoryDAO.Intance;
@@ -123,7 +123,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
              try
             {
                 IList<Invoice> _list = new List<Invoice>();
-                _list = FindInvoiceByRestaurant(_restaurant);
+                _list = FindInvoicesByRestaurant(_restaurant);
                 int _length = 0;
 
                 if (!(_list==null))

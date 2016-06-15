@@ -8,7 +8,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
     {
         IList<Invoice> findAllInvoice(Profile profile);
         IList<Invoice> FindInvoicesByAccount(Account _account);
-        IList<Invoice> FindInvoiceByRestaurant(Restaurant _restaurant);
+        IList<Invoice> FindInvoicesByRestaurant(Restaurant _restaurant);
         int GenerateNumberInvoice(Restaurant _restaurant);
         Invoice FindGenerateInvoiceByAccount(Account _account);
     }

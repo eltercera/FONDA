@@ -85,18 +85,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
         }
 
-        [Test]
-        public void CommandGeInvoiceTest()
-        {
-            _command = CommandFactory.GetCommandInvoice(_account);
-
-            _command.Execute();
-
-            _invoice = (Invoice)_command.Receiver;
-
-            Assert.IsNotNull(_invoice);
-
-        }
-
+       
     }
 }
