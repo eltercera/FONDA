@@ -24,6 +24,28 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
    
+    <div id="SuccessLabel" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-success fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-check"></i>
+                <asp:Label id="SuccessLabelMessage" runat="server"> 
+                </asp:Label>
+            </div>
+        </div>
+    </div>
+
+    <div id="ErrorLabel" class="row" runat="server">
+        <div class="col-lg-12">
+            <div class="alert alert-danger fade in alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <i class="fa fa-ban"></i> 
+                <asp:Label id="ErrorLabelMessage" runat="server">
+                </asp:Label>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
            <div class="col-lg-12">
                         <div class="panel panel-default">

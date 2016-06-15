@@ -4,6 +4,8 @@ using BackOfficeModel.OrderAccount;
 using BackOffice.Seccion.Restaurant;
 using BackOfficePresenter.OrderAccount;
 using FondaResources.Login;
+using System.Web.UI.HtmlControls;
+using BackOfficeModel;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -17,19 +19,6 @@ namespace BackOffice.Seccion.Caja
 
         #region Model
 
-        public Label ErrorLabelMessage
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         public System.Web.UI.WebControls.Table ClosedOrdersTable
         {
             get { return _closedOrders; }
@@ -37,17 +26,19 @@ namespace BackOffice.Seccion.Caja
             set { _closedOrders = value; }
         }
 
-        public Label SuccessLabelMessage
+        Label IModel.ErrorLabelMessage
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return this.ErrorLabelMessage; }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
+            set { this.ErrorLabelMessage = value; }
+
+        }
+
+        Label IModel.SuccessLabelMessage
+        {
+            get { return this.SuccessLabelMessage; }
+
+            set { this.SuccessLabelMessage = value; }
         }
 
         public string SessionRestaurant
@@ -56,6 +47,19 @@ namespace BackOffice.Seccion.Caja
 
             set { Session[ResourceLogin.sessionRestaurantID] = value; }
         }
+
+        HtmlGenericControl IModel.SuccessLabel
+        {
+            get { return this.SuccessLabel; }
+
+        }
+
+        HtmlGenericControl IModel.ErrorLabel
+        {
+            get { return this.ErrorLabel; }
+
+        }
+
 
 
         #endregion

@@ -13,6 +13,7 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using BackOfficeModel.Login;
 using BackOfficePresenter.Login;
 using FondaResources.Login;
+using System.Web.UI.HtmlControls;
 
 namespace BackOffice.Seccion.Configuracion
 {
@@ -1031,6 +1032,22 @@ namespace BackOffice.Seccion.Configuracion
             get { return Session[ResourceLogin.sessionRestaurantID].ToString(); }
 
             set { Session[ResourceLogin.sessionRestaurantID] = value; }
+        }
+
+        public HtmlGenericControl SuccessLabel
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public HtmlGenericControl ErrorLabel
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
         }
 
         #endregion
