@@ -27,7 +27,7 @@ namespace FondaMVPTest
         [Test]
         public void OrdersPresenterTest()
         {
-            _presenter.GetOrders(sessionId);
+            _presenter.GetOrders();
         }
     }
 }

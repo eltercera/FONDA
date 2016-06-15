@@ -33,7 +33,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter
         /// <summary>
         /// Metodo encargado de llenar la tabla de Ordenes
         /// </summary>
-        public void GetOrders(string restaurantId)
+        public void GetOrders()
         {
             int result = 0;
             //Define objeto a recibir
@@ -45,7 +45,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter
             {
 
                 //Obtener el parametro
-                result = int.Parse(restaurantId);
+                result = int.Parse(_view.SessionRestaurant);
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
                 commandGetOrders = CommandFactory.GetCommandGetOrders(result);

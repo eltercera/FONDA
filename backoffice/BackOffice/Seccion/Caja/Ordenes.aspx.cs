@@ -92,7 +92,7 @@ namespace BackOffice.Seccion.Caja
         protected void Page_Load(object sender, EventArgs e)
         {
             //Llama al presentador para llenar la tabla de ordenes
-            _presenter.GetOrders(Session[ResourceLogin.sessionRestaurantID].ToString());
+            _presenter.GetOrders();
         }
 
         
