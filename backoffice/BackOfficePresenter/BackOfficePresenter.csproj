@@ -44,6 +44,9 @@
   <ItemGroup>
     <Compile Include="FondaMVPException\MVPException.cs" />
     <Compile Include="FondaMVPException\MVPExceptionOrdersTable.cs" />
+    <Compile Include="Login\LoginPresenter.cs" />
+    <Compile Include="Login\mensajes.cs" />
+    <Compile Include="Login\UserListPresenter.cs" />
     <Compile Include="OrderAccount\ClosedOrdersPresenter.cs" />
     <Compile Include="OrderAccount\DetailOrderPresenter.cs" />
     <Compile Include="OrderAccount\OrdersPresenter.cs" />
@@ -51,7 +54,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Login\" />
     <Folder Include="Menu\" />
     <Folder Include="Restaurant\" />
   </ItemGroup>
