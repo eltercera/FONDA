@@ -23,17 +23,50 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         }
 
         /// <summary>
-        /// Obtiene la factura de una orden
+        /// Obtiene las facturas de una orden
         /// </summary>
         /// <param name="account">Un objeto de tipo Account</param>
         /// <returns>Un objeto Invoice</returns>
-        public IList<Invoice> FindGenerateInvoiceByAccount(Account _account)
+        public IList<Invoice> FindInvoicesByAccount(Account _account)
         {
            try
             {
                 IList<Invoice> _invoices = new List<Invoice>();
                 _invoices = _account.ListInvoice;
                 return _invoices;
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("Not Found invoice", e);
+            }
+        }
+
+        /// <summary>
+        /// Obtiene la factura genarda de una orden
+        /// </summary>
+        /// <param name="account">Un objeto de tipo Account</param>
+        /// <returns>Un objeto Invoice</returns>
+        public Invoice FindGenerateInvoiceByAccount(Account _account)
+        {
+            try
+            {
+                Invoice _invoice = new Invoice();
+
+                if (_account.Status.Equals(ClosedAccountStatus.Instance))
+                {
+                    IList<Invoice> _invoices = new List<Invoice>();
+                    _invoices = _account.ListInvoice;
+
+                    foreach (var i in _invoices)
+                    {
+                        if (i.Status.Equals(GeneratedInvoiceStatus.Instance))
+                        {
+                            _invoice = i;
+                        }
+                    }
+                }
+                
+                return _invoice;
             }
             catch (ArgumentOutOfRangeException e)
             {
@@ -64,9 +97,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     _list = account.ListInvoice;
                     foreach (Invoice invoice in _list)
                     {
-                        _invoice = (Invoice)EntityFactory.GetInvoice(invoice.Payment, invoice.Profile,
-            invoice.Tip, invoice.Total, invoice.Tax, invoice.Number);
-
+                        _invoice = (Invoice)EntityFactory.GetInvoice(invoice.Id,invoice.Payment, 
+                            invoice.Profile,invoice.Tip, invoice.Total, invoice.Tax, invoice.Number);
                         _listInvoiceByRestaurnat.Add(_invoice);
                     }
                 }
