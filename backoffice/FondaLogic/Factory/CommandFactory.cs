@@ -108,6 +108,25 @@ namespace FondaLogic.Factory
             return new CommandSaveEmployee(receiver);
         }
 
+        public static Command GetCommandGetAllRoles(object receiver)
+        {
+            return new CommandGetAllRoles(receiver);
+        }
+
+        public static Command GetCommandGetAllRestaurants(object receiver)
+        {
+            return new CommandGetAllRestaurants(receiver);
+        }
+        public static Command GetCommandGetEmployeeById(object receiver)
+        {
+            return new CommandGetEmployeeById(receiver);
+        }
+
+        public static Command GetCommandGetAllEmployee(object receiver)
+        {
+            return new CommanGetAllEmployee(receiver);
+        }
+
         #endregion
     }
 }

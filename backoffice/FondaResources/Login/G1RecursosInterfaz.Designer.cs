@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BackOffice.Seccion.Configuracion {
+namespace FondaResources.Login {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace BackOffice.Seccion.Configuracion {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class G1RecursosInterfaz {
+    public class G1RecursosInterfaz {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace BackOffice.Seccion.Configuracion {
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BackOffice.Seccion.Configuracion.G1RecursosInterfaz", typeof(G1RecursosInterfaz).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Login.G1RecursosInterfaz", typeof(G1RecursosInterfaz).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace BackOffice.Seccion.Configuracion {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;asp:LinkButton runat=&quot;server&quot; onclick=&quot;Modificar_Click&quot; data-id=&quot;12345&quot;&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat=&quot;server&quot; onclick=&quot;Modificar_Click&quot; data-id=&quot;12345&quot;&gt;&lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;&lt;asp:LinkButton runat=&quot;server&quot; onclick=&quot;Modificar_Click&quot; data-id=&quot;12345&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/asp:LinkButton&gt;.
         /// </summary>
-        internal static string action {
+        public static string action {
             get {
                 return ResourceManager.GetString("action", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a alert alert-success alert-dismissible.
         /// </summary>
-        internal static string alertaSuccess {
+        public static string alertaSuccess {
             get {
                 return ResourceManager.GetString("alertaSuccess", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a class.
         /// </summary>
-        internal static string alertClase {
+        public static string alertClase {
             get {
                 return ResourceManager.GetString("alertClase", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a role.
         /// </summary>
-        internal static string alertRole {
+        public static string alertRole {
             get {
                 return ResourceManager.GetString("alertRole", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot; onclick=&quot;ClearAlert&quot;&gt;&amp;times;&lt;/button&gt;.
         /// </summary>
-        internal static string buttonAlert {
+        public static string buttonAlert {
             get {
                 return ResourceManager.GetString("buttonAlert", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;button type=&quot;button&quot; data-dismiss=&quot;alert&quot; aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/button&gt;.
         /// </summary>
-        internal static string buttonAlert2 {
+        public static string buttonAlert2 {
             get {
                 return ResourceManager.GetString("buttonAlert2", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a alert alert-danger alert-dismissable col-lg-12.
         /// </summary>
-        internal static string danger {
+        public static string danger {
             get {
                 return ResourceManager.GetString("danger", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string edit {
+        public static string edit {
             get {
                 return ResourceManager.GetString("edit", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string editstatusA {
+        public static string editstatusA {
             get {
                 return ResourceManager.GetString("editstatusA", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string editstatusI {
+        public static string editstatusI {
             get {
                 return ResourceManager.GetString("editstatusI", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-ban&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string iconDanger {
+        public static string iconDanger {
             get {
                 return ResourceManager.GetString("iconDanger", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-exclamation-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string iconExclamation {
+        public static string iconExclamation {
             get {
                 return ResourceManager.GetString("iconExclamation", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        internal static string iconSuccess {
+        public static string iconSuccess {
             get {
                 return ResourceManager.GetString("iconSuccess", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;span class=&quot;label label-success&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;/i&gt;&lt;/span&gt;.
         /// </summary>
-        internal static string statusA {
+        public static string statusA {
             get {
                 return ResourceManager.GetString("statusA", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;&lt;/span&gt;.
         /// </summary>
-        internal static string statusI {
+        public static string statusI {
             get {
                 return ResourceManager.GetString("statusI", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;strong&gt; Cancelada!&lt;/strong&gt;.
         /// </summary>
-        internal static string strogCancel {
+        public static string strogCancel {
             get {
                 return ResourceManager.GetString("strogCancel", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;strong&gt; Agregado!&lt;/strong&gt;&quot;.
         /// </summary>
-        internal static string strongAdd {
+        public static string strongAdd {
             get {
                 return ResourceManager.GetString("strongAdd", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;strong&gt; Error&lt;/strong&gt;.
         /// </summary>
-        internal static string strongError {
+        public static string strongError {
             get {
                 return ResourceManager.GetString("strongError", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;strong&gt; Modificado!&lt;/strong&gt;&quot;.
         /// </summary>
-        internal static string strongModify {
+        public static string strongModify {
             get {
                 return ResourceManager.GetString("strongModify", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a &lt;strong&gt; No &lt;/strong&gt;.
         /// </summary>
-        internal static string strongNot {
+        public static string strongNot {
             get {
                 return ResourceManager.GetString("strongNot", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace BackOffice.Seccion.Configuracion {
         /// <summary>
         ///   Busca una cadena traducida similar a alert alert-success fade in alert-dismissable.
         /// </summary>
-        internal static string success {
+        public static string success {
             get {
                 return ResourceManager.GetString("success", resourceCulture);
             }

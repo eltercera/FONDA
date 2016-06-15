@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Login\LoginPresenter.cs" />
     <Compile Include="Login\mensajes.cs" />
+    <Compile Include="Login\UserListPresenter.cs" />
     <Compile Include="OrderAccount\ClosedOrdersPresenter.cs" />
     <Compile Include="OrderAccount\DetailOrderPresenter.cs" />
     <Compile Include="OrderAccount\OrdersPresenter.cs" />
@@ -68,7 +69,7 @@
       <Name>FondaDomain</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
-      <Project>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</Project>
+      <Project>{64636df8-e693-4abb-8964-5c7fa5a6a50e}</Project>
       <Name>FondaLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaResources\FondaResources.csproj">
