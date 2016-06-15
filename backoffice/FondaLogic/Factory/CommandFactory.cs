@@ -12,6 +12,11 @@ namespace FondaLogic.Factory
     /// </summary>
     public class CommandFactory
     {
+        public static Command GetCommandGenerateException()
+        {
+            return new CommandGenerateException(1);
+        }
+
         #region Logger
 
         /// <summary>
@@ -38,6 +43,7 @@ namespace FondaLogic.Factory
             return new CommandGetOrders(receiver);
         }
 
+
         /// <summary>
         /// Metodo de la fabrica para el ComandoGetOrder
         /// </summary>
@@ -55,7 +61,18 @@ namespace FondaLogic.Factory
         /// <returns>comando CommandClosedOrders</returns>
         public static Command GetCommandClosedOrders(object receiver)
         {
-            return new CommandGetClosedOrders(receiver);
+            return new CommandClosedOrders(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el ComandoDetailOrder
+        /// </summary>
+        /// <param name="receiver">Id de la orden</param>
+        /// <returns>comando CommandDetailOrder</returns>
+        /// 
+        public static Command GetDetailOrder(object receiver)
+        {
+            return new CommandDetailOrder(receiver);
         }
 
 
@@ -70,9 +87,19 @@ namespace FondaLogic.Factory
         /// </summary>
         /// <param name="entity">Id del Restaurante</param>
         /// <returns>comando CommandGetOrders</returns>
-        public static Command GetCommandInvoice(object receiver)
+        public static Command GetCommandGenerateInvoice(object receiver)
         {
-            return new CommandGetInvoice(receiver);
+            return new CommandGetGenerateInvoice(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando FindInvoices
+        /// </summary>
+        /// <param name="entity">Id Account</param>
+        /// <returns>comando CommandFindInvoices</returns>
+        public static Command GetCommandFindInvoicesByAccount(object receiver)
+        {
+            return new CommandFindInvoicesByAccount(receiver);
         }
 
         #endregion

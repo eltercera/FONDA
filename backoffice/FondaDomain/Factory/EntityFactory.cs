@@ -32,20 +32,26 @@ namespace com.ds201625.fonda.Factory
             return new Invoice();
         }
 
-        public static Entity GetInvoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
+        public static Entity GetInvoice(/*Restaurant restaurant, */Payment payment, Profile profile,
             float tip, float total, float tax, Currency currency, int number)
         {
-            return new Invoice(restaurant, payment, account, profile,
+            return new Invoice(/*restaurant,*/ payment, profile,
             tip, total, tax, currency, number);
         }
 
-        public static Entity GetInvoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
+        public static Entity GetInvoice(/*Restaurant restaurant, */Payment payment, Profile profile,
             float total, float tax, Currency currency, int number)
         {
-            return new Invoice(restaurant, payment, account, profile,
+            return new Invoice(/*restaurant,*/ payment, profile,
             total, tax, currency, number);
         }
 
+        public static Entity GetInvoice(int id, Payment payment, Profile profile, float tip,
+            float total, float tax, int number)
+        {
+            return new Invoice(id, payment, profile,
+            tip, total, tax, number);
+        }
         #endregion
 
         #region Restaurant

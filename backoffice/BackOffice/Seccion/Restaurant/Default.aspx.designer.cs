@@ -7,54 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BackOffice.Seccion.Caja {
+namespace BackOffice {
     
     
-    public partial class VerDetalleOrden {
+    public partial class Prueba {
         
         /// <summary>
-        /// Label1 control.
+        /// commensalLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label commensalLabel;
         
         /// <summary>
-        /// Label2 control.
+        /// TableModifyId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.HiddenField TableModifyId;
         
         /// <summary>
-        /// Label3 control.
+        /// tableDefault control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Table tableDefault;
         
         /// <summary>
-        /// Label4 control.
+        /// A2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A2;
         
         /// <summary>
-        /// Pago control.
+        /// HiddenFieldSuggestionDishId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Pago;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldSuggestionDishId;
+        
+        /// <summary>
+        /// TableDayMenuDashboard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table TableDayMenuDashboard;
     }
 }

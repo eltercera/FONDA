@@ -46,7 +46,7 @@
 
     <div class="text-right">
                             
-                            <a href="DefaultOrdenesCerradas.aspx"><i class="fa fa-plus"></i> Ver ordenes cerradas</a>
+                            <a href="OrdenesCerradas.aspx"><i class="fa fa-plus"></i> Ver ordenes cerradas</a>
     </div>
     <!-- /.row -->
 

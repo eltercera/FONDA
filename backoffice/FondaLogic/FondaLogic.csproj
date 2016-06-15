@@ -53,9 +53,11 @@
     <Compile Include="Commands\Login\CommandSaveEmployee.cs" />
     <Compile Include="Commands\Login\CommanGetAllEmployee.cs" />
     <Compile Include="Commands\OrderAccount\CommandDetailOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGenerateException.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetClosedOrders.cs" />
-    <Compile Include="Commands\OrderAccount\CommandGetInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrders.cs" />
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />

@@ -28,6 +28,14 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 		IList<Restaurant> FindByFilters (
 			string query = null, int idZone = 0, int  idCategory = 0, int max = -1, int page = 1);
 
-		#endregion
+        #endregion
+
+        #region OrderAccount
+
+        IList<Account> ClosedOrdersByRestaurantId(int restaurantId);
+
+        IList<Account> OpenOrdersByRestaurantId(int restaurantId);
+
+        #endregion
     }
 }

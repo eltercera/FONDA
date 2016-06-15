@@ -178,6 +178,24 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AccountID.
+        /// </summary>
+        public static string SessionIdAccount {
+            get {
+                return ResourceManager.GetString("SessionIdAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AccountNumber.
+        /// </summary>
+        public static string SessionNumberAccount {
+            get {
+                return ResourceManager.GetString("SessionNumberAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/VerFactura.aspx?id=.
         /// </summary>
         public static string VerDetalleFactura {

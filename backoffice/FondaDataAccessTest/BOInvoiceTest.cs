@@ -17,44 +17,56 @@ namespace FondaDataAccessTest
         private FactoryDAO _facDAO;
         private Restaurant _restaurant;
         private Invoice _invoice;
+        private Invoice _invoiceCompare;
         private Account _account;
         private IInvoiceDao _invoiceDAO;
+        private IOrderAccountDao _accountDAO;
+        IRestaurantDAO _restaurantDAO;
         private int _number, _accountId, _restaurantId;
 
         [SetUp]
         public void Init()
         {
-            if (_facDAO == null)
-                _facDAO = FactoryDAO.Intance;
-
-
-            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
-            IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
+            _facDAO = FactoryDAO.Intance;
+            //_number = 0;
+            //_table = new Table();
+            //_commensal = new Commensal();
+            //_listOrder = new List<DishOrder>();
+            _restaurantId = 1;
+            _account = (Account)EntityFactory.GetAccount();
+            _accountId = 2;
+            _restaurantDAO = _facDAO.GetRestaurantDAO();
+            _accountDAO = _facDAO.GetOrderAccountDAO();
+            _invoiceDAO = _facDAO.GetInvoiceDao();
 
             _restaurant = _restaurantDAO.FindById(_restaurantId);
             _account = _accountDAO.FindById(_accountId);
-
-
-            _invoice = (Invoice)EntityFactory.GetAccount();
-
+            _invoice = (Invoice)EntityFactory.GetInvoice();
             _invoiceDAO = _facDAO.GetInvoiceDao();
             _listInvoices = new List<Invoice>();
         }
 
         [Test]
+        //[Ignore("Cambio en el Mapping de Invoice")]
         public void FindInvoiceByRestaurantTest()
         {
 
-            _listInvoices = _invoiceDAO.FindInvoiceByRestaurant(_restaurant);
+            _listInvoices = _invoiceDAO.FindInvoicesByRestaurant(_restaurant);
             Assert.IsNotNull(_listInvoices);
+            Assert.AreEqual(_listInvoices[0].Id, 1);
+            Assert.AreEqual(_listInvoices[1].Id, 2);
+            Assert.AreEqual(_listInvoices[2].Number, 3);
         }
 
         [Test]
+        //[Ignore("Cambio en el Mapping de Invoice")]
         public void GenerateNumberInvoice()
         {
 
             _number = _invoiceDAO.GenerateNumberInvoice(_restaurant);
+            //Hay 6 facturas insertadas 
             Assert.IsNotNull(_number);
+            Assert.AreEqual(_number,7);
         }
 
         [Test]
@@ -63,9 +75,21 @@ namespace FondaDataAccessTest
 
             _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
             Assert.IsNotNull(_invoice);
+            Assert.AreEqual(_invoice.Id,2);
+            Assert.AreEqual(_invoice.Number, 2);
         }
 
         [Test]
+        public void FindInvoicesByAccountTest()
+        {
+
+            _listInvoices = _invoiceDAO.FindInvoicesByAccount(_account);
+            Assert.IsNotNull(_listInvoices);
+            Assert.AreEqual(_listInvoices[0].Id,2);
+        }
+
+        [Test]
+        [Ignore("Falta implementar")]
         public void SaveInvoiceTest()
         {
 

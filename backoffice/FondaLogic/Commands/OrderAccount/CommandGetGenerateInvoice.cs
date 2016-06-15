@@ -1,23 +1,27 @@
-﻿using com.ds201625.fonda;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.Log;
+using com.ds201625.fonda.Factory;
+using FondaLogic.Factory;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandDetailOrder : Command
+    public class CommandGetGenerateInvoice : Command
     {
-        FactoryDAO _facDAO = FactoryDAO.Intance;
-        int _orderAccount = 0;
 
-        public CommandDetailOrder(Object receiver) : base(receiver)
+        FactoryDAO _facDAO = FactoryDAO.Intance;
+        Account _account = (Account)EntityFactory.GetAccount();
+
+        public CommandGetGenerateInvoice(Object receiver) : base(receiver)
         {
             try
             {
-                _orderAccount = (int)receiver;
+                _account = (Account)receiver;
             }
             catch (Exception)
             {
@@ -25,17 +29,22 @@ namespace FondaLogic.Commands.OrderAccount
                 throw;
             }
         }
+
+        /// <summary>
+        /// Metodo que ejecuta el comando que consulta las ordenes segun un Restaurante
+        /// </summary>
         public override void Execute()
         {
             try
             {
                 //Defino el DAO
-                IDishOrderDAO _dishOrderDAO;
+                IInvoiceDao _invoiceDAO;
                 //Obtengo la instancia del DAO a utilizar
-                _dishOrderDAO = _facDAO.GetDishOrderDAO();
+                _invoiceDAO = _facDAO.GetInvoiceDao();
                 //Obtengo el objeto con la informacion enviada
-                IList<DishOrder> listDetailOrder = _dishOrderDAO.GetDishesByAccount(_orderAccount);
-                Receiver = listDetailOrder;
+                Invoice _invoice = new Invoice();
+                _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
+                Receiver = _invoice;
 
             }
             catch (NullReferenceException ex)
@@ -45,6 +54,6 @@ namespace FondaLogic.Commands.OrderAccount
                 throw;
             }
         }
-    }
 
+    }
 }

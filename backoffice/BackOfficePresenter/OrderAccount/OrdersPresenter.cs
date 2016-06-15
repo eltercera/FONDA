@@ -1,4 +1,5 @@
 ﻿using BackOfficeModel.OrderAccount;
+using BackOfficePresenter.FondaMVPException;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using FondaLogic;
@@ -15,7 +16,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter
         //Enlace entre el Modelo y la Vista
         private IOrdersModel _view;
 
-        
+
         /// <summary>
         /// Constructor de la clase
         /// </summary>
@@ -29,30 +30,24 @@ namespace com.ds201625.fonda.BackOffice.Presenter
         }
 
         /// <summary>
-        /// Metodo encargad de llenar la tabla de Ordenes
+        /// Metodo encargado de llenar la tabla de Ordenes
         /// </summary>
         public void GetOrders(string restaurantId)
         {
-            int result;
+            int result = 0;
             //Define objeto a recibir
             IList<Account> listAccount;
             //Invoca a comando del tipo deseado
-            Command commandGetOrders;
-            Restaurant _restaurant = null;
-            
+            Command commandGetOrders;            
 
             try
             {
 
                 //Obtener el parametro
-                if (!int.TryParse(restaurantId, out result))
-                {
-                    _restaurant = new Restaurant();
-                    _restaurant.Id = result;
-                }
+                result = int.Parse(restaurantId);
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetOrders = CommandFactory.GetCommandGetOrders(_restaurant);
+                commandGetOrders = CommandFactory.GetCommandGetOrders(result);
 
                 //Ejecuta el comando deseado
                 commandGetOrders.Execute();
@@ -68,13 +63,14 @@ namespace com.ds201625.fonda.BackOffice.Presenter
                     FillTable(listAccount);
                 }
             }
-            catch (Exception)
+            catch (MVPExceptionOrdersTable ex)
             {
-                //TODO: Arrojar excepciones personalizadas
-                //TODO: Escribir en el Log la excepcion
-                throw;
+                Console.WriteLine("No falla");
             }
-        }
+       
+    }
+     
+
 
         /// <summary>
         /// Construye la tabla de Ordenes
@@ -128,6 +124,9 @@ namespace com.ds201625.fonda.BackOffice.Presenter
                             action1.Text += OrderAccountResources.Cerrar;
                             action1.Text += OrderAccountResources.VerDetalleOrden2;
                             action1.Text += OrderAccountResources.Cerrar2;
+                            //Guardamos el recurso de Session del ID de la orden
+                            int idAccount = data[i].Id;
+                            _view.Session= idAccount.ToString();
                             tCell.Controls.Add(action1);
 
 
