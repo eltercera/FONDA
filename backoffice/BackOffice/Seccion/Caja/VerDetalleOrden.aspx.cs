@@ -48,7 +48,9 @@ namespace BackOffice.Seccion.Caja
                 throw new NotImplementedException();
             }
         }
-
+        /// <summary>
+        /// Recurso de Session con el que inicia el Page_Load
+        /// </summary>
         string IDetailOrderModel.Session
         {
             get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
