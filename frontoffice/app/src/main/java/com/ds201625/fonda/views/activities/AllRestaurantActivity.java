@@ -180,7 +180,7 @@ public class AllRestaurantActivity extends BaseNavigationActivity
         Log.d(TAG,"Ha entrado en onOptionsItemSelected");
         switch (item.getItemId()) {
             case R.id.action_set_favorite:
-                //save();
+                save();
                 break;
             case R.id.action_make_order:
                 goReserve();
