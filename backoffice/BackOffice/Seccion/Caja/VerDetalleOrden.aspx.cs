@@ -3,6 +3,7 @@ using System.Web.UI.WebControls;
 using BackOfficeModel.OrderAccount;
 using FondaResources.OrderAccount;
 using BackOfficePresenter.OrderAccount;
+using FondaResources.Login;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -57,6 +58,14 @@ namespace BackOffice.Seccion.Caja
 
             set { Session[OrderAccountResources.SessionIdAccount] = value; }
         }
+
+        public string SessionRestaurant
+        {
+            get { return Session[ResourceLogin.sessionRestaurantID].ToString(); }
+
+            set { Session[ResourceLogin.sessionRestaurantID] = value; }
+        }
+
 
         #endregion
 

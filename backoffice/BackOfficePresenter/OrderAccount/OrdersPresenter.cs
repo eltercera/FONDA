@@ -26,9 +26,10 @@ namespace com.ds201625.fonda.BackOffice.Presenter
         {
             //Se genera el enlace entre el modelo y la vista
             _view = viewDefault;
-
+            
         }
 
+        
         /// <summary>
         /// Metodo encargado de llenar la tabla de Ordenes
         /// </summary>

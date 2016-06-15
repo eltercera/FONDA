@@ -174,6 +174,13 @@ namespace BackOffice.Seccion.Configuracion
             }
         }
 
+        public string SessionRestaurant
+        {
+            get { return Session[ResourceLogin.sessionRestaurantID].ToString(); }
+
+            set { Session[ResourceLogin.sessionRestaurantID] = value; }
+        }
+
 
 
         #endregion

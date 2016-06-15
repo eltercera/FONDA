@@ -50,6 +50,14 @@ namespace BackOffice.Seccion.Caja
             }
         }
 
+        public string SessionRestaurant
+        {
+            get { return Session[ResourceLogin.sessionRestaurantID].ToString(); }
+
+            set { Session[ResourceLogin.sessionRestaurantID] = value; }
+        }
+
+
         #endregion
 
         #region Constructor

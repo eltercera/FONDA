@@ -70,6 +70,13 @@ namespace BackOffice.Seccion.Caja
             set { Session[OrderAccountResources.SessionIdAccount] = value; }
         }
 
+        public string SessionRestaurant
+        {
+            get { return Session[ResourceLogin.sessionRestaurantID].ToString(); }
+
+            set { Session[ResourceLogin.sessionRestaurantID] = value; }
+        }
+
         #endregion
 
         #region Constructor

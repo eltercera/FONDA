@@ -9,6 +9,8 @@ namespace BackOfficeModel
 {
     public interface IModel
     {
+        string SessionRestaurant { get; set; }
+
         Label SuccessLabelMessage { get; set; }
 
         Label ErrorLabelMessage { get; set; }
