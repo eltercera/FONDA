@@ -94,15 +94,17 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Constructor de Factura
         /// </summary>
+        ///<param name="id">Id de la factura</param>
         /// <param name="payment">Pago de la factura</param>
         /// <param name="profile">Perfil de la factura</param>
         /// <param name="tip">Propina de la factura</param>
         /// <param name="total">Total de la factura</param>
         /// <param name="tax">Impuesto de la factura</param>
-        public Invoice(Payment payment, Profile profile,float tip, 
+        public Invoice( int id,Payment payment, Profile profile,float tip, 
             float total, float tax, int number)
             : base()
         {
+            this.Id = id;
             this._payment = payment;
             this._profile = profile;
             this._tip = tip;

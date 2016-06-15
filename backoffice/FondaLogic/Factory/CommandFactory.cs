@@ -38,6 +38,16 @@ namespace FondaLogic.Factory
         }
 
         /// <summary>
+        /// Metodo de la fabrica para el Comando FindInvoices
+        /// </summary>
+        /// <param name="entity">Id Account</param>
+        /// <returns>comando CommandFindInvoices</returns>
+        public static Command GetCommandFindInvoices(object receiver)
+        {
+            return new CommandFindInvoices(receiver);
+        }
+
+        /// <summary>
         /// Metodo de la fabrica para el ComandoGetOrder
         /// </summary>
         /// <param name="receiver">Id de la orden</param>
