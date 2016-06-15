@@ -1,23 +1,20 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Factory;
-using FondaLogic.Factory;
+using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandGetInvoice : Command
+    public class CommandFindInvoicesByAccount : Command
     {
-
         FactoryDAO _facDAO = FactoryDAO.Intance;
-        Account _account = (Account)EntityFactory.GetInvoice();
+        Account _account = new Account();
 
-        public CommandGetInvoice(Object receiver) : base(receiver)
+        public CommandFindInvoicesByAccount(Object receiver) : base(receiver)
         {
             try
             {
@@ -30,21 +27,17 @@ namespace FondaLogic.Commands.OrderAccount
             }
         }
 
-        /// <summary>
-        /// Metodo que ejecuta el comando que consulta las ordenes segun un Restaurante
-        /// </summary>
         public override void Execute()
         {
             try
             {
                 //Defino el DAO
-                IInvoiceDao _invoiceDAO;
+                IInvoiceDao _invoicerDAO;
                 //Obtengo la instancia del DAO a utilizar
-                _invoiceDAO = _facDAO.GetInvoiceDao();
+                _invoicerDAO = _facDAO.GetInvoiceDao();
                 //Obtengo el objeto con la informacion enviada
-                IList<Invoice> _invoices = new List<Invoice>();
-                _invoices = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
-                Receiver = _invoices;
+                IList<Invoice> listInvoices = _invoicerDAO.FindInvoicesByAccount(_account);
+                Receiver = listInvoices;
 
             }
             catch (NullReferenceException ex)
@@ -54,6 +47,5 @@ namespace FondaLogic.Commands.OrderAccount
                 throw;
             }
         }
-
     }
 }

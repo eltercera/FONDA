@@ -7,6 +7,8 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
+using FondaLogic.Log;
+using FondaBeckEndLogic;
 
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
@@ -41,6 +43,8 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
         /// </summary>
 		protected override void Invoke()
 		{
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             Commensal favorites;
             // Obtencion de parametros
             Commensal commensal = (Commensal)GetParameter(0);
@@ -50,41 +54,45 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
            
             //VALIDACIONES DE CAMPOS--ESTO ES NECESARIO?
             if (commensal.Id == null) 
-                throw new Exception("Datos de Perfil Invalidos");
+                throw new Exception(ResourceMessages.InvalidInformation);
           // Ejecucion del Buscar.		
 			try
 			{
-                favorites = (Commensal)commensalDAO.FindById(commensal.Id);  //PREGUNTAR POR EL NEW RESTAURANT
-                foreach (var restaurant in favorites.FavoritesRestaurants)
+                favorites = (Commensal)commensalDAO.FindById(commensal.Id);//PREGUNTAR POR SI PUEDO HACER COMENSAL.ID
+                foreach (var restaurant in favorites.FavoritesRestaurants) //PREGUNTAR POR EL NEW RESTAURANT
                 {
                     restaurant.RestaurantCategory = new RestaurantCategory
                     {
                         Name = restaurant.RestaurantCategory.Name,
                         Id = restaurant.RestaurantCategory.Id
                     };
+                    Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                  ResourceMessages.FavoriteRestaurant + restaurant.Name + ResourceMessages.Slash + favorites.Email,
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
 			}
             catch (FindByIdFondaDAOException e)
             {
-                throw new GetFavoriteRestaurantFondaCommandException(
-                   "Excepción al buscar los restaurantes favoritos del comensal",
-                   e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurant, e);
             }
             catch (NullReferenceException e)
             {
-                throw new GetFavoriteRestaurantFondaCommandException(
-                 "Excepción, referencia de objeto nula al buscar la lista de restaurantes favoritos del comensal",
-                 e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurant, e);
             }
             catch (Exception e)
             {
-                throw new GetFavoriteRestaurantFondaCommandException(
-                 "Error al listar los restaurantes Favoritos",
-                 e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurant, e);
             }
-            //FALTA LOGGER
-			// Guardar el resultado.
+            // Guardar el resultado.
             Result = favorites;
+            //logger
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
+              System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,
+                   System.Reflection.MethodBase.GetCurrentMethod().Name);
 		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using com.ds201625.fonda;
 using com.ds201625.fonda.Domain;
 using FondaLogic.Commands.OrderAccount;
+using FondaLogic.Commands.Login;
 using FondaLogic.Log;
 using System.Collections.Generic;
 
@@ -41,6 +42,7 @@ namespace FondaLogic.Factory
         {
             return new CommandGetOrders(receiver);
         }
+
 
         /// <summary>
         /// Metodo de la fabrica para el ComandoGetOrder
@@ -85,9 +87,19 @@ namespace FondaLogic.Factory
         /// </summary>
         /// <param name="entity">Id del Restaurante</param>
         /// <returns>comando CommandGetOrders</returns>
-        public static Command GetCommandInvoice(object receiver)
+        public static Command GetCommandGenerateInvoice(object receiver)
         {
-            return new CommandGetInvoice(receiver);
+            return new CommandGetGenerateInvoice(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando FindInvoices
+        /// </summary>
+        /// <param name="entity">Id Account</param>
+        /// <returns>comando CommandFindInvoices</returns>
+        public static Command GetCommandFindInvoicesByAccount(object receiver)
+        {
+            return new CommandFindInvoicesByAccount(receiver);
         }
 
         #endregion
@@ -107,6 +119,40 @@ namespace FondaLogic.Factory
         #region Login
 
         //Defincion de los comandos a implementar del modulo Login
+
+        public static Command GetCommandGetEmployeeByUser(object receiver)
+        {
+            return new CommandGetEmployeeByUser(receiver);
+        }
+
+        public static Command GetCommandGetRestaurantById(object receiver)
+        {
+            return new CommandGetRestaurantById(receiver);
+        }
+
+        public static Command GetCommandSaveEmployee(object receiver)
+        {
+            return new CommandSaveEmployee(receiver);
+        }
+
+        public static Command GetCommandGetAllRoles(object receiver)
+        {
+            return new CommandGetAllRoles(receiver);
+        }
+
+        public static Command GetCommandGetAllRestaurants(object receiver)
+        {
+            return new CommandGetAllRestaurants(receiver);
+        }
+        public static Command GetCommandGetEmployeeById(object receiver)
+        {
+            return new CommandGetEmployeeById(receiver);
+        }
+
+        public static Command GetCommandGetAllEmployee(object receiver)
+        {
+            return new CommanGetAllEmployee(receiver);
+        }
 
         #endregion
     }

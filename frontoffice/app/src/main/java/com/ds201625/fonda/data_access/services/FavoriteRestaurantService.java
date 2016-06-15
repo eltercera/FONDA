@@ -6,8 +6,9 @@ import com.ds201625.fonda.domains.Restaurant;
 
 import java.util.List;
 
+
 /**
- * Created by jesus on 21/05/16.
+ * Interfaz para el servicio de Favoritos
  */
 public interface FavoriteRestaurantService {
 

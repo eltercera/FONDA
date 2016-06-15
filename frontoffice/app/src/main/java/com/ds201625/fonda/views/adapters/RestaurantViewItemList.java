@@ -2,23 +2,16 @@ package com.ds201625.fonda.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.domains.Restaurant;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Adapter para la vista de la lista de Profiles
+ * Adapter para la vista de la lista de restaurantes
  */
 public class RestaurantViewItemList extends BaseArrayAdapter<Restaurant> {
 

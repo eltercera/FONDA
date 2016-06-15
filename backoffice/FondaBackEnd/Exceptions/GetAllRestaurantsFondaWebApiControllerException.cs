@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.FondaBackEnd.Exceptions
 {
+    /// <summary>
+    /// Clase GetAllRestaurantsFondaWebApiControllerException 
+    /// </summary>
     public class GetAllRestaurantsFondaWebApiControllerException : FondaBackendException
     {
         public GetAllRestaurantsFondaWebApiControllerException () : base() {	}

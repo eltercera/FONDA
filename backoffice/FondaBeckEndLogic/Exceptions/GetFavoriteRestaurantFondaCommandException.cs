@@ -7,6 +7,9 @@ using com.ds201625.fonda.BackEndLogic;
 
 namespace com.ds201625.fonda.FondaBackEndLogic.Exceptions
 {
+    /// <summary>
+    /// Clase GetFavoriteRestaurantFondaCommandException
+    /// </summary>
     public class GetFavoriteRestaurantFondaCommandException : FondaBackendLogicException
     {
         public GetFavoriteRestaurantFondaCommandException () : base() {	}

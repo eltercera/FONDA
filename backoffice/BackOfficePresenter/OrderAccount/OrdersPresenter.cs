@@ -124,7 +124,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter
                             action1.Text += OrderAccountResources.Cerrar;
                             action1.Text += OrderAccountResources.VerDetalleOrden2;
                             action1.Text += OrderAccountResources.Cerrar2;
-
+                            //Guardamos el recurso de Session del ID de la orden
                             int idAccount = data[i].Id;
                             _view.Session= idAccount.ToString();
                             tCell.Controls.Add(action1);

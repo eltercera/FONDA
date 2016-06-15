@@ -7,6 +7,8 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
+using FondaLogic.Log;
+using FondaBeckEndLogic;
 
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
@@ -37,6 +39,8 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
         /// </summary>
 		protected override void Invoke()
 		{
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.BeginLogger,
+                    System.Reflection.MethodBase.GetCurrentMethod().Name);
             IList<Restaurant> listRestaurant;
 			try
 			{
@@ -50,31 +54,37 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                     {
                         Name = restaurant.RestaurantCategory.Name,
                         Id = restaurant.RestaurantCategory.Id
-                    };
 
+                    };
+                Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                  ResourceMessages.Restaurant + restaurant.Name + ResourceMessages.Slash + restaurant.RestaurantCategory,
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
+                
+               
 			}
             catch (FindAllFondaDAOException e)
             {
-                throw new GetAllRestaurantsCommandException(
-                   "Excepción al obtener la lista de restaurant para elegir los favoritos del comensal",
-                   e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.GetRestFavException, e);
             }
             catch (NullReferenceException e)
             {
-                throw new GetAllRestaurantsCommandException(
-                 "Excepción,referencia nula del objeto al obtener la lista de restaurantes",
-                 e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.GetRestFavException, e);
             }
             catch (Exception e)
             {
-                throw new GetAllRestaurantsCommandException(
-                 "Error al obtener la lista de restaurantes",
-                 e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.GetRestFavException, e);
             }
-            //FALTA LOGGER
+            
 			// Guardar el resultado.
             Result = listRestaurant;
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
+               System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,
+                   System.Reflection.MethodBase.GetCurrentMethod().Name);
 		}
 	}
 }

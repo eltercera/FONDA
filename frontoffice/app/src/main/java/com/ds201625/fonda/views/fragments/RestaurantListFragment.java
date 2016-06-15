@@ -15,27 +15,24 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.AllRestaurantService;
-import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
-import com.ds201625.fonda.views.adapters.FavoriteRestViewItemList;
 import com.ds201625.fonda.views.adapters.RestaurantViewItemList;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Hp on 06/06/2016.
+ * Fragment que contiene la lista de restaurantes
  */
 public class RestaurantListFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
-   
+
+    private String TAG = "RestaurantListFragment";
+
     //Interface de comunicacion contra la activity
     restaurantListFragmentListener mCallBack;
 
@@ -53,6 +50,7 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreate");
         super.onCreate(savedInstanceState);
         multi = getArguments().getBoolean("multiSelect");
         restList = new RestaurantViewItemList(getContext());
@@ -61,10 +59,9 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreateView");
         View layout = inflater.inflate(R.layout.fragment_restaurants_list,container,false);
         restaurants = (ListView)layout.findViewById(R.id.lvRestaurantList);
-        //swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
-        //swipeRefreshLayout.setOnRefreshListener(this);
 
         restaurantList = getListSW();
 
@@ -98,21 +95,31 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
                 public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.action_set_favorite:
-                            String sal = "Fueron seleccionados los Favoritos.";
+
                             for (Restaurant r : restList.getAllSeletedItems()) {
-                                FavoriteRestaurantService favservice = FondaServiceFactory.getInstance().
-                                        getFavoriteRestaurantService();
+
+                                FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
+
                                 try{
 
-                                favservice.AddFavoriteRestaurant(logedComensal.getId(),r.getId());
+                                    //Llamo al comando de addFavoriteRestaurant
+                                    Command cmdAddFavorite = facCmd.addFavoriteRestaurantCommand();
+                                    cmdAddFavorite.setParameter(0,logedComensal.getId());
+                                    cmdAddFavorite.setParameter(1,r.getId());
+                                    cmdAddFavorite.run();
+
                                     Toast.makeText(RestaurantListFragment.super.getContext(),
                                             "Se han agregado "+restList.countSelected()+" Restaurantes a Favoritos",
                                             Toast.LENGTH_LONG).show();
+                                    Log.d("Favoritos eliminados: ",r.getName().toString());
                                 } catch (RestClientException e) {
-                                    e.printStackTrace();
+                                    Log.e(TAG,"Error en onActionItemClicked al agregar restaurant", e);
+                                 }
+                                catch (Exception e) {
+                                    Log.e(TAG,"Error en onActionItemClicked al agregar restaurant", e);
                                 }
                             }
-                            Log.v("Favoritos seleccionados: ", sal);
+
                             restList.cleanSelected();
                             mCallBack.OnRestaurantSelectionModeExit();
                             mode.finish();
@@ -141,7 +148,7 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
             }
         });
 
-
+        Log.d(TAG,"Ha salido de onCreateView");
         return layout ;
     }
 
@@ -153,12 +160,14 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Log.d(TAG,"Ha ingresado a onAttach");
         try {
             mCallBack = (restaurantListFragmentListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + " must implement OnHeadlineSelectedListener");
+            Log.e(TAG,"Error en onAttach", e);
+            throw new ClassCastException(context.toString());
         }
+        Log.d(TAG,"Ha salido de onAttach");
     }
 
     @Override
@@ -200,28 +209,38 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
      */
     public List<Restaurant> getListSW(){
         List<Restaurant> listRestWS;
-
+        Log.d(TAG,"Ha ingresado a getListSW");
             try {
                 Commensal log = SessionData.getInstance().getCommensal();
                 try {
 
                     emailToWebService=log.getEmail()+"/";
-                    RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().getLogedCommensalService();
-                    logedComensal =getComensal.getLogedCommensal(emailToWebService);
-                    AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
-                            getAllRestaurantsService();
-                    listRestWS = allRestaurant.getAllRestaurant();
+
+                    FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
+
+                    //Llamo al comando de requireLogedCommensalCommand
+                    Command cmdRequireLoged = facCmd.requireLogedCommensalCommand();
+                    cmdRequireLoged.setParameter(0,emailToWebService);
+                    cmdRequireLoged.run();
+                    logedComensal = (Commensal) cmdRequireLoged.getResult();
+
+
+                    //Llamo al comando allRestaurantCommand
+                    Command cmdAllRest = facCmd.allRestaurantCommand();
+                    cmdAllRest.run();
+                    listRestWS = (List<Restaurant>) cmdAllRest.getResult();
+
                     return listRestWS;
                 } catch (RestClientException e) {
-                    e.printStackTrace();
+                    Log.e(TAG,"Error en getListSW al obtener restaurantes", e);
                 }
                 catch (NullPointerException nu) {
-                    nu.printStackTrace();
+                    Log.e(TAG,"Error en getListSW al obtener restaurantes", nu);
                 }
             } catch (Exception e) {
-                System.out.println("Error en la Conexión");
+                Log.e(TAG,"Error en getListSW al obtener restaurantes", e);
             }
-
+        Log.d(TAG,"Ha finalizado getListSW");
         return null;
     }
 

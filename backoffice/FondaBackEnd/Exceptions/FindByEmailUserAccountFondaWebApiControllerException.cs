@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.FondaBackEnd.Exceptions
 {
+    /// <summary>
+    /// Clase FindByEmailUserAccountFondaWebApiControllerException
+    /// </summary>
     public class FindByEmailUserAccountFondaWebApiControllerException : FondaBackendException
     {
         public FindByEmailUserAccountFondaWebApiControllerException () : base() {	}

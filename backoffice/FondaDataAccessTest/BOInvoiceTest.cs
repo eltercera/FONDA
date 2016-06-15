@@ -17,6 +17,7 @@ namespace FondaDataAccessTest
         private FactoryDAO _facDAO;
         private Restaurant _restaurant;
         private Invoice _invoice;
+        private Invoice _invoiceCompare;
         private Account _account;
         private IInvoiceDao _invoiceDAO;
         private IOrderAccountDao _accountDAO;
@@ -50,8 +51,11 @@ namespace FondaDataAccessTest
         public void FindInvoiceByRestaurantTest()
         {
 
-            _listInvoices = _invoiceDAO.FindInvoiceByRestaurant(_restaurant);
+            _listInvoices = _invoiceDAO.FindInvoicesByRestaurant(_restaurant);
             Assert.IsNotNull(_listInvoices);
+            Assert.AreEqual(_listInvoices[0].Id, 1);
+            Assert.AreEqual(_listInvoices[1].Id, 2);
+            Assert.AreEqual(_listInvoices[2].Number, 3);
         }
 
         [Test]
@@ -60,15 +64,28 @@ namespace FondaDataAccessTest
         {
 
             _number = _invoiceDAO.GenerateNumberInvoice(_restaurant);
+            //Hay 6 facturas insertadas 
             Assert.IsNotNull(_number);
+            Assert.AreEqual(_number,7);
         }
 
         [Test]
         public void FindGenerateInvoiceByAccountTest()
-        { 
+        {
 
-            _listInvoices = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
+            _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
             Assert.IsNotNull(_invoice);
+            Assert.AreEqual(_invoice.Id,2);
+            Assert.AreEqual(_invoice.Number, 2);
+        }
+
+        [Test]
+        public void FindInvoicesByAccountTest()
+        {
+
+            _listInvoices = _invoiceDAO.FindInvoicesByAccount(_account);
+            Assert.IsNotNull(_listInvoices);
+            Assert.AreEqual(_listInvoices[0].Id,2);
         }
 
         [Test]
