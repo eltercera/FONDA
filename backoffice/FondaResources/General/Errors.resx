@@ -125,4 +125,12 @@
     <value>Valor inexistente o nulo</value>
     <comment>Mensaje de error para referencia a valor Nulo</comment>
   </data>
+  <data name="SaveExceptionReferenceCode" xml:space="preserve">
+    <value>BO-01-002</value>
+    <comment>Codigo de error para referencia a valor no almacenado</comment>
+  </data>
+  <data name="SaveExceptionReferenceMessage" xml:space="preserve">
+    <value>Valor no almacenado con exito</value>
+    <comment>Mensaje de error para referencia a valor no almacenado</comment>
+  </data>
 </root>

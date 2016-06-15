@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FondaResources.General {
+namespace FondaResources.Login {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace FondaResources.General {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.General.Errors", typeof(Errors).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Login.Errors", typeof(Errors).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,38 @@ namespace FondaResources.General {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a BO-00-001.
+        ///   Busca una cadena traducida similar a CommandGetEmployeeById.
         /// </summary>
-        public static string NullExceptionReferenceCode {
+        public static string ClassNameGetEmployee {
             get {
-                return ResourceManager.GetString("NullExceptionReferenceCode", resourceCulture);
+                return ResourceManager.GetString("ClassNameGetEmployee", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Valor inexistente o nulo.
+        ///   Busca una cadena traducida similar a CommandGetRestaurantById.
         /// </summary>
-        public static string NullExceptionReferenceMessage {
+        public static string ClassNameGetRestaurant {
             get {
-                return ResourceManager.GetString("NullExceptionReferenceMessage", resourceCulture);
+                return ResourceManager.GetString("ClassNameGetRestaurant", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a BO-01-002.
+        ///   Busca una cadena traducida similar a CommandSaveEmployee.
         /// </summary>
-        public static string SaveExceptionReferenceCode {
+        public static string ClassNameSaveEmployee {
             get {
-                return ResourceManager.GetString("SaveExceptionReferenceCode", resourceCulture);
+                return ResourceManager.GetString("ClassNameSaveEmployee", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Valor no almacenado con exito.
+        ///   Busca una cadena traducida similar a Execute.
         /// </summary>
-        public static string SaveExceptionReferenceMessage {
+        public static string CommandMethod {
             get {
-                return ResourceManager.GetString("SaveExceptionReferenceMessage", resourceCulture);
+                return ResourceManager.GetString("CommandMethod", resourceCulture);
             }
         }
     }

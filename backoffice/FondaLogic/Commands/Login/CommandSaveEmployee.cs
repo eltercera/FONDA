@@ -7,6 +7,9 @@ using com.ds201625.fonda;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using com.ds201625.fonda.DataAccess.Exceptions;
+using FondaLogic.Log;
+using FondaLogic.FondaCommandException;
 
 
 namespace FondaLogic.Commands.Login
@@ -43,11 +46,43 @@ namespace FondaLogic.Commands.Login
                  _employeeDAO.Save(_employee);
                 
             }
-            catch (NullReferenceException ex)
+            catch (SaveEntityFondaDAOException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                //TODO: Escribir en el Log la excepcion
-                throw;
+                CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
+                //Arrojar
+                FondaResources.General.Errors.SaveExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameSaveEmployee,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.SaveExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
+
+                throw exceptionCreateEmployee;
+
+            }
+            catch (NullReferenceException ex)
+            {
+
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameSaveEmployee,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
+
+                throw exceptionCreateEmployee;
+
+            }
+            catch (Exception ex)
+            {
+                throw new System.InvalidOperationException(ex.Message);
+
             }
 
         }

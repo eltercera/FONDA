@@ -117,50 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddFavRestException" xml:space="preserve">
-    <value>Error al agregar un restaurante favorito del comensal</value>
+  <data name="ClassNameGetEmployee" xml:space="preserve">
+    <value>CommandGetEmployeeById</value>
+    <comment>Comando para obtener un empleado.</comment>
   </data>
-  <data name="BeginLogger" xml:space="preserve">
-    <value>Ha iniciado el logger</value>
-  </data>
-  <data name="CommensalEmail" xml:space="preserve">
-    <value>Email del comensal</value>
-  </data>
-  <data name="DeleteFavRestException" xml:space="preserve">
-    <value>Error al eliminar un restaurante favorito del comensal</value>
-  </data>
-  <data name="EndLogger" xml:space="preserve">
-    <value>Ha finalizado el logger</value>
-  </data>
-  <data name="GetCommensalEmailException" xml:space="preserve">
-    <value>Error al buscar el comensal por email</value>
-  </data>
-  <data name="GetRestFavException" xml:space="preserve">
-    <value>Error al obtener la lista de restaurant para elegir los favoritos del comensal</value>
-  </data>
-  <data name="InvalidInformation" xml:space="preserve">
-    <value>Datos Invalidos</value>
-  </data>
-  <data name="RestAddedToFav" xml:space="preserve">
-    <value>Restaurante Agregado a Favoritos: </value>
-  </data>
-  <data name="Restaurant" xml:space="preserve">
-    <value>Categoria de Restaurante</value>
-  </data>
-  <data name="RestDeletedFromFav" xml:space="preserve">
-    <value>Restaurante Eliminado de Favoritos: </value>
-  </data>
-  <data name="Slash" xml:space="preserve">
-    <value>/</value>
-  </data>
-  <data name="FavoriteRestaurant" xml:space="preserve">
-    <value>Restaurante favorito del comensal </value>
-  </data>
-  <data name="GetFavoriteRestaurant" xml:space="preserve">
-    <value>Error al buscar los restaurantes favoritos del comensal</value>
+  <data name="ClassNameGetRestaurant" xml:space="preserve">
+    <value>CommandGetRestaurantById</value>
+    <comment>Comando para obtener un restaurante.</comment>
   </data>
   <data name="ClassNameSaveEmployee" xml:space="preserve">
     <value>CommandSaveEmployee</value>
     <comment>Comando para guardar un empleado.</comment>
+  </data>
+  <data name="CommandMethod" xml:space="preserve">
+    <value>Execute</value>
+    <comment>Metodo disparador del Error para Comando</comment>
   </data>
 </root>
