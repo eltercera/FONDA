@@ -44,11 +44,7 @@
   <ItemGroup>
     <Compile Include="Login\LoginPresenter.cs" />
     <Compile Include="Login\mensajes.cs" />
-    <Compile Include="Login\ResourceLogin.Designer.cs">
-      <DependentUpon>ResourceLogin.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <Compile Include="Login\UserListPresenter.cs" />
     <Compile Include="OrderAccount\ClosedOrdersPresenter.cs" />
     <Compile Include="OrderAccount\DetailOrderPresenter.cs" />
     <Compile Include="OrderAccount\OrdersPresenter.cs" />
@@ -73,20 +69,13 @@
       <Name>FondaDomain</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
-      <Project>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</Project>
+      <Project>{64636df8-e693-4abb-8964-5c7fa5a6a50e}</Project>
       <Name>FondaLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaResources\FondaResources.csproj">
-      <Project>{3184FE34-D7E3-44F6-95D9-25D1045BFFC8}</Project>
+      <Project>{3184fe34-d7e3-44f6-95d9-25d1045bffc8}</Project>
       <Name>FondaResources</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Login\ResourceLogin.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourceLogin.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>BackOfficePresenter.Login</CustomToolNamespace>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

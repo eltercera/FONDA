@@ -7,7 +7,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using BackOfficePresenter.Login;
-
+using FondaResources.Login;
 
 namespace BackOffice
 {
@@ -35,7 +35,7 @@ namespace BackOffice
             if (Session[ResourceLogin.sessionRestaurantID] != null)
             {
                 try {
-                    string idRestaurant = Session[ResourceLogin.SessionRestaurant].ToString();
+                    string idRestaurant = Session[RestaurantResource.SessionRestaurant].ToString();
                     _idRestaurant = int.Parse(idRestaurant);
                     }
                 catch (Exception e) {

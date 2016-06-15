@@ -47,7 +47,6 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             UserAccount answer;
             // Obtencion de parametros
             UserAccount commensal = (UserAccount)GetParameter(0);
-
             // Obtiene el dao que se requiere
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
             // Ejecucion del Buscar.		
@@ -73,9 +72,9 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetCommensalEmailCommandException(ResourceMessages.GetCommensalEmailException, e);
             }
-            
             // Guardar el resultado.
             Result = answer;
+            //logger
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
               System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,

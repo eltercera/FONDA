@@ -30,7 +30,9 @@ import java.util.List;
  * Fragment que contiene la lista de restaurantes
  */
 public class RestaurantListFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
-   
+
+    private String TAG = "RestaurantListFragment";
+
     //Interface de comunicacion contra la activity
     restaurantListFragmentListener mCallBack;
 
@@ -48,6 +50,7 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreate");
         super.onCreate(savedInstanceState);
         multi = getArguments().getBoolean("multiSelect");
         restList = new RestaurantViewItemList(getContext());
@@ -56,6 +59,7 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreateView");
         View layout = inflater.inflate(R.layout.fragment_restaurants_list,container,false);
         restaurants = (ListView)layout.findViewById(R.id.lvRestaurantList);
 
@@ -91,7 +95,7 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
                 public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.action_set_favorite:
-                            String sal = "Fueron seleccionados los Favoritos.";
+
                             for (Restaurant r : restList.getAllSeletedItems()) {
 
                                 FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
@@ -107,14 +111,15 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
                                     Toast.makeText(RestaurantListFragment.super.getContext(),
                                             "Se han agregado "+restList.countSelected()+" Restaurantes a Favoritos",
                                             Toast.LENGTH_LONG).show();
+                                    Log.d("Favoritos eliminados: ",r.getName().toString());
                                 } catch (RestClientException e) {
-                                    e.printStackTrace();
-                                }
+                                    Log.e(TAG,"Error en onActionItemClicked al agregar restaurant", e);
+                                 }
                                 catch (Exception e) {
-                                    System.out.println("Error en la Conexión");
+                                    Log.e(TAG,"Error en onActionItemClicked al agregar restaurant", e);
                                 }
                             }
-                            Log.v("Favoritos seleccionados: ", sal);
+
                             restList.cleanSelected();
                             mCallBack.OnRestaurantSelectionModeExit();
                             mode.finish();
@@ -143,7 +148,7 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
             }
         });
 
-
+        Log.d(TAG,"Ha salido de onCreateView");
         return layout ;
     }
 
@@ -155,12 +160,14 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        Log.d(TAG,"Ha ingresado a onAttach");
         try {
             mCallBack = (restaurantListFragmentListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + " must implement OnHeadlineSelectedListener");
+            Log.e(TAG,"Error en onAttach", e);
+            throw new ClassCastException(context.toString());
         }
+        Log.d(TAG,"Ha salido de onAttach");
     }
 
     @Override
@@ -202,7 +209,7 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
      */
     public List<Restaurant> getListSW(){
         List<Restaurant> listRestWS;
-
+        Log.d(TAG,"Ha ingresado a getListSW");
             try {
                 Commensal log = SessionData.getInstance().getCommensal();
                 try {
@@ -225,15 +232,15 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
 
                     return listRestWS;
                 } catch (RestClientException e) {
-                    e.printStackTrace();
+                    Log.e(TAG,"Error en getListSW al obtener restaurantes", e);
                 }
                 catch (NullPointerException nu) {
-                    nu.printStackTrace();
+                    Log.e(TAG,"Error en getListSW al obtener restaurantes", nu);
                 }
             } catch (Exception e) {
-                System.out.println("Error en la Conexión");
+                Log.e(TAG,"Error en getListSW al obtener restaurantes", e);
             }
-
+        Log.d(TAG,"Ha finalizado getListSW");
         return null;
     }
 

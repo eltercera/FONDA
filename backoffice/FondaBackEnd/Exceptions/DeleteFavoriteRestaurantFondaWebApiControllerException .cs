@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.FondaBackEnd.Exceptions
 {
+    /// <summary>
+    /// Clase DeleteFavoriteRestaurantFondaWebApiControllerException
+    /// </summary>
     public class DeleteFavoriteRestaurantFondaWebApiControllerException : FondaBackendException
     {
         public DeleteFavoriteRestaurantFondaWebApiControllerException () : base() {	}

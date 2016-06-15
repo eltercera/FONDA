@@ -12,6 +12,7 @@ using System.Web.Services;
 using System.Web.Script.Serialization;
 using BackOfficeModel.OrderAccount;
 using BackOffice.Seccion.Restaurant;
+using FondaResources.Login;
 
 namespace BackOffice.Seccion.Caja
 {

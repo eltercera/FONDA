@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,6 +67,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreate");
         setContentView(R.layout.activity_favorites);
         /**
          * Esta es la validacion de si el usuario ya esta loggeado o no.
@@ -111,13 +113,16 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                     fm.executePendingTransactions();
 
     }
+        Log.d(TAG,"Ha salido de onCreate");
     }
 
     /**
      * Acción de saltar esta actividad.
      */
     private void skip() {
+        Log.d(TAG,"Ha entrado en skip");
         startActivity(new Intent(this,LoginActivity.class));
+        Log.d(TAG,"Ha salido de skip");
     }
 
     /**
@@ -125,6 +130,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      * @param fragment el fragment que se quiere mostrar
      */
     private void showFragment(BaseFragment fragment) {
+        Log.d(TAG,"Ha entrado en showFragment");
         fm.beginTransaction()
                 .replace(R.id.fragment_container_fav,fragment)
                 .commit();
@@ -132,6 +138,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
         //Muestra y oculta compnentes.
         if(fragment.equals(fv)){
+            Log.d(TAG,"Fragment FavoritesListFragment");
             if(favoriteBotton != null)
                 favoriteBotton.setVisible(false);
             if(reserveBotton != null)
@@ -139,12 +146,14 @@ public class FavoritesActivity extends BaseNavigationActivity implements
             onForm = false;
         } else {
             if(favoriteBotton != null)
+                Log.d(TAG,"Fragment DetailRestaurantFragment");
                 favoriteBotton.setVisible(true);
             if(reserveBotton != null)
                 reserveBotton.setVisible(true);
             onForm = true;
 
         }
+        Log.d(TAG,"Ha salido de showFragment");
     }
 
     /**
@@ -154,11 +163,12 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG,"Ha entrado en onCreateOptionsMenu");
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.detail_restaurant, menu);
-
         favoriteBotton = menu.findItem(R.id.action_set_favorite);
         reserveBotton = menu.findItem(R.id.action_make_order);
+        Log.d(TAG,"Ha salido de onCreateOptionsMenu");
         return true;
     }
 
@@ -169,6 +179,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG,"Ha entrado en onOptionsItemSelected");
         switch (item.getItemId()) {
             case R.id.action_set_favorite:
                 removeFavorite();
@@ -177,6 +188,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                 goReserve();
                 break;
         }
+        Log.d(TAG,"Ha salido de onOptionsItemSelected");
         return true;
     }
 
@@ -187,7 +199,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
     private void removeFavorite() {
         //Valida que es un favorito o lo quita
-
+        Log.d(TAG,"Ha entrado en removeFavorite");
         try {
             Commensal log = SessionData.getInstance().getCommensal();
             try {
@@ -213,19 +225,20 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
                 Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
                         Toast.LENGTH_LONG).show();
+
                 showFragment(fv);
             } catch (RestClientException e) {
-                e.printStackTrace();
+                Log.e(TAG,"Error en removeFavorite al eliminar un favorito",e);
             }
             catch (NullPointerException nu) {
-                nu.printStackTrace();
+                Log.e(TAG,"Error en removeFavorite al eliminar un favorito",nu);
             }
         } catch (Exception e) {
-            System.out.println("Error en la Conexión");
+            Log.e(TAG,"Error en removeFavorite al eliminar un favorito",e);
         }
          hideKyboard();
 
-
+        Log.d(TAG,"Se ha eliminado un favorito");
 
     }
 
@@ -253,11 +266,13 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
     @Override
     public void onBackPressed() {
+        Log.d(TAG,"Ha entrado en onBackPressed");
         if (!onForm) {
             super.onBackPressed();
         } else {
             showFragment(fv);
         }
+        Log.d(TAG,"Ha salido de onBackPressed");
     }
 
 }

@@ -1,5 +1,7 @@
 package com.ds201625.fonda.logic.Commands.FavoriteCommands;
 
+import android.util.Log;
+
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
@@ -12,6 +14,8 @@ import com.ds201625.fonda.logic.Parameter;
  */
 public class DeleteFavoriteRestaurantCommand extends BaseCommand {
 
+    private String TAG = "DeleteFavoriteRestaurantCommand";
+
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[2];
@@ -23,7 +27,7 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
 
     @Override
     protected void invoke() {
-
+        Log.d(TAG, "Comando para eliminar un restaurante de favoritos");
         Commensal commensal = null;
 
         int idCommensal = 0;
@@ -32,7 +36,7 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
             idCommensal = (Integer) getParameter(0);
             idRestaurant = (Integer) getParameter(1);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
         }
 
         FavoriteRestaurantService ps = FondaServiceFactory.getInstance()
@@ -41,7 +45,7 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
         try {
              commensal =  ps.deleteFavoriteRestaurant(idCommensal,idRestaurant);
         } catch (RestClientException e) {
-           e.printStackTrace();
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
         }
 
         setResult(commensal);

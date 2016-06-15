@@ -82,9 +82,9 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new DeleteFavoriteRestaurantCommandException(ResourceMessages.DeleteFavRestException, e);
             }
-           
             // Guardar el resultado.
             Result = commensal;
+            //logger
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,

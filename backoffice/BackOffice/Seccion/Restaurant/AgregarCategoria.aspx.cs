@@ -11,6 +11,7 @@ using com.ds201625.fonda.Domain;
 using System.Web.Services;
 using System.Web.Script.Serialization;
 using System.Text.RegularExpressions;
+using FondaResources.Login;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -73,7 +74,7 @@ namespace BackOffice.Seccion.Restaurant
                         //Agregar atributos de la celda
                         actionModify.Attributes["data-toggle"] = "modal";
                         actionModify.Attributes["data-target"] = "#modificar";
-                        actionModify.Text = RestaurantResource.ActionModify;
+                        //actionModify.Text = RestaurantResource.ActionModify;
                         tCell.Controls.Add(actionModify);
                     }
                     //Agrega la 
