@@ -11,6 +11,11 @@ namespace FondaLogic.Factory
     /// </summary>
     public class CommandFactory
     {
+        public static Command GetCommandGenerateException()
+        {
+            return new CommandGenerateException(1);
+        }
+
         #region Logger
 
         /// <summary>
