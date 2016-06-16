@@ -53,6 +53,7 @@
     <Compile Include="Commands\Login\CommandSaveEmployee.cs" />
     <Compile Include="Commands\Login\CommanGetAllEmployee.cs" />
     <Compile Include="Commands\OrderAccount\CommandDetailOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandFindInvoicesByRestaurant.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateException.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
