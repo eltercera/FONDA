@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOCommandGenerateExceptionTest.cs" />
+    <Compile Include="BOCommandInvoiceTest.cs" />
     <Compile Include="BOCommandOrdersTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
