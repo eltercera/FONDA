@@ -51,7 +51,7 @@ namespace BackOfficePresenter.OrderAccount
                 }
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandClosedOrders = CommandFactory.GetCommandClosedOrders(_restaurant);
+                commandClosedOrders = CommandFactory.GetCommandClosedOrders(result);
                 
                 //Ejecuta el comando deseado
                 commandClosedOrders.Execute();
@@ -107,7 +107,7 @@ namespace BackOfficePresenter.OrderAccount
                         //Agrega la fecha de la orden
                         else if (j.Equals(1))
                         {
-                        tCell.Text = data[i].Date.ToString();
+                        tCell.Text = data[i].Date.ToString("dd/MM/yyyy");
                         }
                         //Agrega las acciones
                         else if (j.Equals(2))
