@@ -61,119 +61,38 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
+        /// </summary>
+        public static string ActionInfo {
+            get {
+                return ResourceManager.GetString("ActionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-money fa-fw&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        public static string Action2Account {
+        public static string ActionInvoices {
             get {
-                return ResourceManager.GetString("Action2Account", resourceCulture);
+                return ResourceManager.GetString("ActionInvoices", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil-square-o&quot;&gt;&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;p class=&quot;stat&quot;&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;.
         /// </summary>
-        public static string Action3Account {
+        public static string CanceledStatus {
             get {
-                return ResourceManager.GetString("Action3Account", resourceCulture);
+                return ResourceManager.GetString("CanceledStatus", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot;&gt;&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;span class=&quot;label label-success&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;p class=&quot;stat&quot;&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;.
         /// </summary>
-        public static string ActionAccount {
+        public static string GeneratedStatus {
             get {
-                return ResourceManager.GetString("ActionAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-check&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        public static string ActionCheckStatus {
-            get {
-                return ResourceManager.GetString("ActionCheckStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        public static string ActionUnCheckStatus {
-            get {
-                return ResourceManager.GetString("ActionUnCheckStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;span class=&quot;label label-success&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;p class=&quot;stat&quot;&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;.
-        /// </summary>
-        public static string Active {
-            get {
-                return ResourceManager.GetString("Active", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;input runat=&quot;server&quot; type=&quot;number&quot; name=&quot;quantity&quot; min=&quot;1&quot; max=&quot;10&quot; value=1 /&gt;.
-        /// </summary>
-        public static string AgregarCantidadOrden {
-            get {
-                return ResourceManager.GetString("AgregarCantidadOrden", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &quot;&gt;.
-        /// </summary>
-        public static string Cerrar {
-            get {
-                return ResourceManager.GetString("Cerrar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;/a&gt;.
-        /// </summary>
-        public static string Cerrar2 {
-            get {
-                return ResourceManager.GetString("Cerrar2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;input runat=&quot;server&quot; type=&quot;checkbox&quot; /&gt;.
-        /// </summary>
-        public static string CheckBoxAgregar {
-            get {
-                return ResourceManager.GetString("CheckBoxAgregar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;td class=&quot;text-center&quot;&gt;&lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;p class=&quot;stat&quot;&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;.
-        /// </summary>
-        public static string Inactive {
-            get {
-                return ResourceManager.GetString("Inactive", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/ModificarOrden.aspx?id=.
-        /// </summary>
-        public static string ModificarFactura {
-            get {
-                return ResourceManager.GetString("ModificarFactura", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-pencil-square-o&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        public static string ModificarFactura2 {
-            get {
-                return ResourceManager.GetString("ModificarFactura2", resourceCulture);
+                return ResourceManager.GetString("GeneratedStatus", resourceCulture);
             }
         }
         
@@ -192,60 +111,6 @@ namespace FondaResources.OrderAccount {
         public static string SessionNumberAccount {
             get {
                 return ResourceManager.GetString("SessionNumberAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/VerFactura.aspx?id=.
-        /// </summary>
-        public static string VerDetalleFactura {
-            get {
-                return ResourceManager.GetString("VerDetalleFactura", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        public static string VerDetalleFactura2 {
-            get {
-                return ResourceManager.GetString("VerDetalleFactura2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/VerDetalleOrden.aspx?id=.
-        /// </summary>
-        public static string VerDetalleOrden {
-            get {
-                return ResourceManager.GetString("VerDetalleOrden", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        public static string VerDetalleOrden2 {
-            get {
-                return ResourceManager.GetString("VerDetalleOrden2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;a runat=&quot;server&quot; href=&quot;/Seccion/Caja/CrearFactura.aspx?id=.
-        /// </summary>
-        public static string VerFactura {
-            get {
-                return ResourceManager.GetString("VerFactura", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-money fa-fw&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        public static string VerFactura2 {
-            get {
-                return ResourceManager.GetString("VerFactura2", resourceCulture);
             }
         }
     }

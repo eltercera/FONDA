@@ -50,6 +50,7 @@
     <Compile Include="OrderAccount\ClosedOrdersPresenter.cs" />
     <Compile Include="OrderAccount\DetailOrderPresenter.cs" />
     <Compile Include="OrderAccount\ExceptionPresenter.cs" />
+    <Compile Include="OrderAccount\OrderInvoicesPresenter.cs" />
     <Compile Include="OrderAccount\OrdersPresenter.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

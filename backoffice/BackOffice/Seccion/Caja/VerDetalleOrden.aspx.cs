@@ -13,7 +13,7 @@ namespace BackOffice.Seccion.Caja
     {
         #region Presenter
 
-        private DetailOrderPresenter _presenter;
+        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.DetailOrderPresenter _presenter;
 
         #endregion
 
@@ -21,9 +21,9 @@ namespace BackOffice.Seccion.Caja
 
         public System.Web.UI.WebControls.Table DetailOrderTable
         {
-            get { return Pago; }
+            get { return orderDetail; }
 
-            set { Pago = value; }
+            set { orderDetail = value; }
         }
 
         Label IModel.ErrorLabelMessage
@@ -77,7 +77,7 @@ namespace BackOffice.Seccion.Caja
 
         public VerDetalleOrden()
         {
-            _presenter = new DetailOrderPresenter(this);
+            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.DetailOrderPresenter(this);
         }
         #endregion
 

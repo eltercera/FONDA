@@ -13,7 +13,7 @@ namespace BackOffice.Seccion.Caja
     {
         #region Presenter
 
-        private ClosedOrdersPresenter _presenter;
+        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.ClosedOrdersPresenter _presenter;
 
         #endregion
 
@@ -21,9 +21,9 @@ namespace BackOffice.Seccion.Caja
 
         public System.Web.UI.WebControls.Table ClosedOrdersTable
         {
-            get { return _closedOrders; }
+            get { return closedOrders; }
 
-            set { _closedOrders = value; }
+            set { closedOrders = value; }
         }
 
         Label IModel.ErrorLabelMessage
@@ -68,7 +68,7 @@ namespace BackOffice.Seccion.Caja
 
         public OrdenesCerradas()
         {
-            _presenter = new ClosedOrdersPresenter(this);
+            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.ClosedOrdersPresenter(this);
         }
         #endregion
 

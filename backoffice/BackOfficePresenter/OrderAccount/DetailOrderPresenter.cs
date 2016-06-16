@@ -10,9 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
-namespace BackOfficePresenter.OrderAccount
+namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 {
-    public class DetailOrderPresenter : Presenter
+    public class DetailOrderPresenter : BackOfficePresenter.Presenter
     {
         //Enlace Modelo - Vista
         private IDetailOrderModel _view;

@@ -58,21 +58,12 @@ namespace BackOffice.Seccion.Caja {
         protected global::System.Web.UI.WebControls.HiddenField AccountPopOrder;
         
         /// <summary>
-        /// _orderList control.
+        /// orderList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table _orderList;
-        
-        /// <summary>
-        /// Detalle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Detalle;
+        protected global::System.Web.UI.WebControls.Table orderList;
     }
 }

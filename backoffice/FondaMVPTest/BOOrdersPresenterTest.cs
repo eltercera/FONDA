@@ -12,14 +12,14 @@ namespace FondaMVPTest
     [TestFixture()]
     public class BOOrdersPresenterTest
     {
-        private com.ds201625.fonda.BackOffice.Presenter.OrdersPresenter _presenter;
+        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter _presenter;
         private IOrdersModel orders;
         private string sessionId;
 
         [SetUp]
         public void Init()
         {
-            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrdersPresenter(orders);
+            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter(orders);
             sessionId = "1";
             
         }
