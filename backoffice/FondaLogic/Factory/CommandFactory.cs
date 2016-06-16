@@ -43,7 +43,6 @@ namespace FondaLogic.Factory
             return new CommandFindInvoicesByRestaurant(receiver);
         }
 
-
         /// <summary>
         /// Metodo de la fabrica para el Comando CommandGetOrders
         /// </summary>

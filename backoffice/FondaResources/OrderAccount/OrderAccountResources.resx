@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActionColumn" xml:space="preserve">
+    <value>Acciones</value>
+    <comment>Nombre de columna de acciones</comment>
+  </data>
   <data name="ActionInfo" xml:space="preserve">
     <value>&lt;i class="fa fa-info-circle" aria-hidden="true"&gt;&lt;/i&gt;</value>
     <comment>Muestra informacion en detalle</comment>
@@ -127,9 +131,47 @@
   </data>
   <data name="CanceledStatus" xml:space="preserve">
     <value>&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;p class="stat"&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;</value>
+    <comment>Factura anulada</comment>
+  </data>
+  <data name="dataId" xml:space="preserve">
+    <value>data-id</value>
+    <comment>Atributo para id de fila</comment>
+  </data>
+  <data name="DateColumn" xml:space="preserve">
+    <value>Fecha</value>
+    <comment>Nombre de la columna de fecha</comment>
+  </data>
+  <data name="detailURL" xml:space="preserve">
+    <value>../Caja/VerDetalleOrden.aspx</value>
+    <comment>URL de detalle de orden</comment>
   </data>
   <data name="GeneratedStatus" xml:space="preserve">
     <value>&lt;span class="label label-success"&gt;&lt;i class="fa fa-check"&gt;&lt;p class="stat"&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;</value>
+    <comment>Factura pagada</comment>
+  </data>
+  <data name="href" xml:space="preserve">
+    <value>href</value>
+    <comment>Atributo para generar enlace</comment>
+  </data>
+  <data name="InvoiceNumberColumn" xml:space="preserve">
+    <value># Factura</value>
+    <comment>Nombre de columna de numero de factura</comment>
+  </data>
+  <data name="invoicesURL" xml:space="preserve">
+    <value>../Caja/ListarFacturas.aspx</value>
+    <comment>URL de listar Facturas</comment>
+  </data>
+  <data name="OrderNumberColumn" xml:space="preserve">
+    <value># Orden</value>
+    <comment>Nombre de columna de numero de orden</comment>
+  </data>
+  <data name="OrderTableColumn" xml:space="preserve">
+    <value># Mesa</value>
+    <comment>Nombre de columna de numero de mesa de orden</comment>
+  </data>
+  <data name="OrderUserColumn" xml:space="preserve">
+    <value>Nombre</value>
+    <comment>Nombre de columna de nombre de orden</comment>
   </data>
   <data name="SessionIdAccount" xml:space="preserve">
     <value>AccountID</value>
@@ -138,5 +180,25 @@
   <data name="SessionNumberAccount" xml:space="preserve">
     <value>AccountNumber</value>
     <comment>Numero de la Orden</comment>
+  </data>
+  <data name="StatusColumn" xml:space="preserve">
+    <value>Estado</value>
+    <comment>Nombre de columna de estado</comment>
+  </data>
+  <data name="TotalColumn" xml:space="preserve">
+    <value>Total</value>
+    <comment>Nombre de columna de total de factura</comment>
+  </data>
+  <data name="DishNameColum" xml:space="preserve">
+    <value>Nombre del Platillo</value>
+    <comment>Nombre de la columna de nombre de platillo</comment>
+  </data>
+  <data name="PriceColumn" xml:space="preserve">
+    <value>Precio por plato</value>
+    <comment>Nombre de la columna de Precio de platillo por cantidad</comment>
+  </data>
+  <data name="QuantityColumn" xml:space="preserve">
+    <value>Cantidad</value>
+    <comment>Nombre de la columna de cantidad</comment>
   </data>
 </root>

@@ -15,6 +15,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
     {
         //Enlace entre el Modelo y la Vista
         private IOrdersModel _view;
+        private int totalColumns = 3;
 
 
         /// <summary>
@@ -89,7 +90,6 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             //Genero la lista de la consulta
 
             int totalRows = data.Count; //tamano de la lista 
-            int totalColumns = 3; //numero de columnas de la tabla
 
             //Recorremos la lista
             for (int i = 0; i <= totalRows - 1; i++)
@@ -98,7 +98,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 //Crea una nueva fila de la tabla
                 TableRow tRow = new TableRow();
                 //Le asigna el Id a cada fila de la tabla
-                tRow.Attributes["data-id"] = data[i].Id.ToString();
+                tRow.Attributes[OrderAccountResources.dataId] = 
+                    data[i].Id.ToString();
                 //Agrega la fila a la tabla existente
                 _view.OrdersTable.Rows.Add(tRow);
                 for (int j = 0; j <= totalColumns; j++)
@@ -125,13 +126,13 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                         LinkButton actionInvoices = new LinkButton();
 
                         actionInfo.Text += OrderAccountResources.ActionInfo;
-                        //Esto tengo que mejorarlo
-                        actionInfo.Attributes["href"] = "#";
+                        actionInfo.Attributes[OrderAccountResources.href] = 
+                            OrderAccountResources.detailURL;
                         tCell.Controls.Add(actionInfo);
 
                         actionInvoices.Text += OrderAccountResources.ActionInvoices;
-                        //Esto tengo que mejorarlo
-                        actionInvoices.Attributes["href"] = "#";
+                        actionInvoices.Attributes[OrderAccountResources.href] =
+                            OrderAccountResources.invoicesURL;
                         tCell.Controls.Add(actionInvoices);
 
 
@@ -172,13 +173,13 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             //Se indica que se trabajara en el header y se asignan los valores a las columnas
             header.TableSection = TableRowSection.TableHeader;
             //Esto tambien debo mejorarlo
-            h1.Text = "# Orden";
+            h1.Text = OrderAccountResources.OrderNumberColumn;
             h1.Scope = TableHeaderScope.Column;
-            h2.Text = "Nombre";
+            h2.Text = OrderAccountResources.OrderNameColumn;
             h2.Scope = TableHeaderScope.Column;
-            h3.Text = "# Mesa";
+            h3.Text = OrderAccountResources.OrderTableColumn;
             h3.Scope = TableHeaderScope.Column;
-            h4.Text = "Acciones";
+            h4.Text = OrderAccountResources.ActionColumn;
             h4.Scope = TableHeaderScope.Column;
 
             //Se asignan las columnas a la fila

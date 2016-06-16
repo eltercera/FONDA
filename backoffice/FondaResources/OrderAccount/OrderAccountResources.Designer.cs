@@ -61,6 +61,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acciones.
+        /// </summary>
+        public static string ActionColumn {
+            get {
+                return ResourceManager.GetString("ActionColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
         /// </summary>
         public static string ActionInfo {
@@ -88,11 +97,119 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to data-id.
+        /// </summary>
+        public static string dataId {
+            get {
+                return ResourceManager.GetString("dataId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fecha.
+        /// </summary>
+        public static string DateColumn {
+            get {
+                return ResourceManager.GetString("DateColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ../Caja/VerDetalleOrden.aspx.
+        /// </summary>
+        public static string detailURL {
+            get {
+                return ResourceManager.GetString("detailURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre del Platillo.
+        /// </summary>
+        public static string DishNameColum {
+            get {
+                return ResourceManager.GetString("DishNameColum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;span class=&quot;label label-success&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;p class=&quot;stat&quot;&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;.
         /// </summary>
         public static string GeneratedStatus {
             get {
                 return ResourceManager.GetString("GeneratedStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to href.
+        /// </summary>
+        public static string href {
+            get {
+                return ResourceManager.GetString("href", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # Factura.
+        /// </summary>
+        public static string InvoiceNumberColumn {
+            get {
+                return ResourceManager.GetString("InvoiceNumberColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ../Caja/ListarFacturas.aspx.
+        /// </summary>
+        public static string invoicesURL {
+            get {
+                return ResourceManager.GetString("invoicesURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # Orden.
+        /// </summary>
+        public static string OrderNumberColumn {
+            get {
+                return ResourceManager.GetString("OrderNumberColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # Mesa.
+        /// </summary>
+        public static string OrderTableColumn {
+            get {
+                return ResourceManager.GetString("OrderTableColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nombre.
+        /// </summary>
+        public static string OrderUserColumn {
+            get {
+                return ResourceManager.GetString("OrderUserColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precio por plato.
+        /// </summary>
+        public static string PriceColumn {
+            get {
+                return ResourceManager.GetString("PriceColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad.
+        /// </summary>
+        public static string QuantityColumn {
+            get {
+                return ResourceManager.GetString("QuantityColumn", resourceCulture);
             }
         }
         
@@ -111,6 +228,24 @@ namespace FondaResources.OrderAccount {
         public static string SessionNumberAccount {
             get {
                 return ResourceManager.GetString("SessionNumberAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Estado.
+        /// </summary>
+        public static string StatusColumn {
+            get {
+                return ResourceManager.GetString("StatusColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string TotalColumn {
+            get {
+                return ResourceManager.GetString("TotalColumn", resourceCulture);
             }
         }
     }
