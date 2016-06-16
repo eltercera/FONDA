@@ -175,7 +175,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             //Esto tambien debo mejorarlo
             h1.Text = OrderAccountResources.OrderNumberColumn;
             h1.Scope = TableHeaderScope.Column;
-            h2.Text = OrderAccountResources.OrderNameColumn;
+            h2.Text = OrderAccountResources.OrderUserColumn;
             h2.Scope = TableHeaderScope.Column;
             h3.Text = OrderAccountResources.OrderTableColumn;
             h3.Scope = TableHeaderScope.Column;
