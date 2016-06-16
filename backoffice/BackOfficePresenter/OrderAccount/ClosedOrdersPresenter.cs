@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.UI.WebControls;
 
-namespace BackOfficePresenter.OrderAccount
+namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 {
     public class ClosedOrdersPresenter : BackOfficePresenter.Presenter
     {
@@ -20,7 +20,6 @@ namespace BackOfficePresenter.OrderAccount
         ///Constructor
         /// </summary>
         /// <param name="viewClosedOrders">Interfaz</param>
-
         public ClosedOrdersPresenter(IClosedOrdersModel viewClosedOrders)
             : base(viewClosedOrders)
         {
@@ -33,25 +32,19 @@ namespace BackOfficePresenter.OrderAccount
         /// </summary>
         public void GetClosedOrders(string restaurantId)
         {
-            int result;
+            int result = 0;
             //Define objeto a recibir
             IList<Account> listAccount;
             //Invoca al comando
             Command commandClosedOrders;
-            Command commandGetInvoice;
-            Restaurant _restaurant = null;
 
             try
             {
                 //Obtener el parametro
-                if (!int.TryParse(restaurantId, out result))
-                {
-                    _restaurant = new Restaurant();
-                    _restaurant.Id = result;
-                }
+                result = int.Parse(_view.SessionRestaurant);
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandClosedOrders = CommandFactory.GetCommandClosedOrders(_restaurant);
+                commandClosedOrders = CommandFactory.GetCommandClosedOrders(result);
                 
                 //Ejecuta el comando deseado
                 commandClosedOrders.Execute();
@@ -78,6 +71,9 @@ namespace BackOfficePresenter.OrderAccount
         private void FillTable(IList<Account> data)
         {
 
+            //Esto puede mejorarse
+            _view.ErrorLabel.Visible = false;
+            _view.SuccessLabel.Visible = false;
 
             CleanTable();
             //Genero los objetos para la consulta
@@ -101,27 +97,40 @@ namespace BackOfficePresenter.OrderAccount
                     {
                         //Crea una nueva celda de la tabla
                         TableCell tCell = new TableCell();
-                        //Agrega el numero de la cuenta 
-                        if (j.Equals(0))
-                            tCell.Text = data[i].Number.ToString();
-                        //Agrega la fecha de la orden
-                        else if (j.Equals(1))
-                        {
-                        tCell.Text = data[i].Date.ToString();
-                        }
-                        //Agrega las acciones
-                        else if (j.Equals(2))
-                        {
-                            LinkButton action1 = new LinkButton();
 
-                            action1.Text += OrderAccountResources.VerDetalleOrden;
-                            action1.Text += data[i].Id;
-                            action1.Text += OrderAccountResources.Cerrar;
-                            action1.Text += OrderAccountResources.VerDetalleOrden2;
-                            action1.Text += OrderAccountResources.Cerrar2;
-                            tCell.Controls.Add(action1);
-                        
-                        }
+                    //Agrega el numero de la cuenta 
+                    if (j.Equals(0))
+                        tCell.Text = data[i].Number.ToString();
+
+                    //Agrega la fecha de la orden
+                    else if (j.Equals(1))
+                        tCell.Text = data[i].Date.ToShortDateString();
+
+                    //Agrega las acciones
+                    else if (j.Equals(2))
+                    {
+
+                        LinkButton actionInfo = new LinkButton();
+                        LinkButton actionInvoices = new LinkButton();
+                        LinkButton actionDetailInvoice = new LinkButton();
+
+                        actionInfo.Text += OrderAccountResources.ActionInfo;
+                        //Esto tengo que mejorarlo
+                        actionInfo.Attributes["href"] = "#";
+                        tCell.Controls.Add(actionInfo);
+
+                        actionDetailInvoice.Text += OrderAccountResources.ActionInfo;
+                        //Esto tengo que mejorarlo
+                        actionDetailInvoice.Attributes["href"] = "#";
+                        tCell.Controls.Add(actionDetailInvoice);
+
+                        actionInvoices.Text += OrderAccountResources.ActionInvoices;
+                        //Esto tengo que mejorarlo
+                        actionInvoices.Attributes["href"] = "#";
+                        tCell.Controls.Add(actionInvoices);
+
+
+                    }
                         //Agrega la celda a la fila
                         tRow.Cells.Add(tCell);
 

@@ -24,7 +24,7 @@ namespace BackOffice.Seccion.Caja
     {
         #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrdersPresenter _presenter;
+        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter _presenter;
 
         #endregion
 
@@ -47,9 +47,9 @@ namespace BackOffice.Seccion.Caja
 
         public System.Web.UI.WebControls.Table OrdersTable
         {
-            get { return _orderList; }
+            get { return orderList; }
 
-            set { _orderList = value; }
+            set { orderList = value; }
         }
 
         /// <summary>
@@ -64,7 +64,13 @@ namespace BackOffice.Seccion.Caja
 
         public string SessionRestaurant
         {
-            get { return Session[ResourceLogin.sessionRestaurantID].ToString(); }
+            get
+            {
+                if (Session[ResourceLogin.sessionRestaurantID] != null)
+                    return Session[ResourceLogin.sessionRestaurantID].ToString();
+                else
+                    return "0";
+            }
 
             set { Session[ResourceLogin.sessionRestaurantID] = value; }
         }
@@ -85,7 +91,7 @@ namespace BackOffice.Seccion.Caja
 
         public Default()
         {
-                  _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrdersPresenter(this);
+                  _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter(this);
         }
         #endregion
 

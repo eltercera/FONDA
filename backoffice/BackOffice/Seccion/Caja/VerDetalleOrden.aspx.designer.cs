@@ -85,12 +85,12 @@ namespace BackOffice.Seccion.Caja {
         protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
-        /// Pago control.
+        /// orderDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Pago;
+        protected global::System.Web.UI.WebControls.Table orderDetail;
     }
 }

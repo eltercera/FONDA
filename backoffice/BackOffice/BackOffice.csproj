@@ -415,11 +415,10 @@
     <Content Include="Default.aspx" />
     <Content Include="inicio.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="Seccion\Caja\CrearFactura.aspx" />
+    <Content Include="Seccion\Caja\ListarFacturas.aspx" />
     <Content Include="Seccion\Caja\Ordenes.aspx" />
     <Content Include="Seccion\Caja\OrdenesCerradas.aspx" />
     <Content Include="Seccion\Caja\VerDetalleOrden.aspx" />
-    <Content Include="Seccion\Caja\VerFactura.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
@@ -468,12 +467,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Caja\CrearFactura.aspx.cs">
-      <DependentUpon>CrearFactura.aspx</DependentUpon>
+    <Compile Include="Seccion\Caja\ListarFacturas.aspx.cs">
+      <DependentUpon>ListarFacturas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Seccion\Caja\CrearFactura.aspx.designer.cs">
-      <DependentUpon>CrearFactura.aspx</DependentUpon>
+    <Compile Include="Seccion\Caja\ListarFacturas.aspx.designer.cs">
+      <DependentUpon>ListarFacturas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Caja\Ordenes.aspx.cs">
       <DependentUpon>Ordenes.aspx</DependentUpon>
@@ -495,13 +494,6 @@
     </Compile>
     <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.designer.cs">
       <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Seccion\Caja\VerFactura.aspx.cs">
-      <DependentUpon>VerFactura.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Seccion\Caja\VerFactura.aspx.designer.cs">
-      <DependentUpon>VerFactura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\ListarUsuario.aspx.cs">
       <DependentUpon>ListarUsuario.aspx</DependentUpon>
