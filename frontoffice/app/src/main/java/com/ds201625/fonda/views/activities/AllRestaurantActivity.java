@@ -8,26 +8,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-
-import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.domains.entities.Commensal;
-import com.ds201625.fonda.domains.entities.Restaurant;
-
-import com.ds201625.fonda.domains.entities.Commensal;
-import com.ds201625.fonda.domains.entities.Restaurant;
+import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
 import com.ds201625.fonda.views.fragments.RestaurantListFragment;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,13 +3,12 @@ package com.ds201625.fonda.views.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.entities.Restaurant;
+import com.ds201625.fonda.domains.Restaurant;
 
 
 
@@ -68,7 +67,10 @@ public class DetailRestaurantFragment extends BaseFragment {
     }
 
 
-
+    /**
+     * Obtiene el restaurante seleccionado
+     * @return restuarant
+     */
     public Restaurant getRestaurant() {
         return restaurant;
     }
