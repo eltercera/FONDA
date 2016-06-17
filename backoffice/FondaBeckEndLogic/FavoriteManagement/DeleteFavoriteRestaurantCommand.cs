@@ -57,7 +57,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
             IRestaurantDAO restaurantDAO = FacDao.GetRestaurantDAO();
 
-            if ((idCommensal.Id < 0) || (idCommensal.Id == 0) || (idRestaurant.Id < 0) || (idRestaurant.Id == 0))
+            if ((idCommensal.Id <= 0) || (idRestaurant.Id <= 0))
                 throw new Exception(ResourceMessages.InvalidInformation);
 
             // Ejecucion del Buscar.		

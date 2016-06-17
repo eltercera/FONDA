@@ -51,7 +51,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
             // Ejecucion del Buscar.	
 
-            if ((userAccount.Id < 0) || (userAccount.Id == 0))
+            if (userAccount.Id <= 0)
                 throw new Exception(ResourceMessages.InvalidInformation);
 
             try

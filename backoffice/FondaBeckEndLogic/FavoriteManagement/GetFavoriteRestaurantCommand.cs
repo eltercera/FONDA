@@ -51,14 +51,14 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             // Obtiene el dao que se requiere
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
 
-            if ((commensal.Id < 0) || (commensal.Id == 0))
+            if (commensal.Id <= 0)
                 throw new Exception(ResourceMessages.InvalidInformation);
 
           // Ejecucion del Buscar.		
 			try
 			{
                 favorites = (Commensal)commensalDAO.FindById(commensal.Id);//PREGUNTAR POR SI PUEDO HACER COMENSAL.ID
-                foreach (var restaurant in favorites.FavoritesRestaurants) //PREGUNTAR POR EL NEW RESTAURANT
+                foreach (var restaurant in favorites.FavoritesRestaurants) 
                 {
                     restaurant.RestaurantCategory = new RestaurantCategory
                     {

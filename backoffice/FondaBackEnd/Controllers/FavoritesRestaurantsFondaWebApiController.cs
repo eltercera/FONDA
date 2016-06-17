@@ -5,6 +5,7 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.FondaBackEnd.Exceptions;
 using System;
 using System.Collections;
@@ -40,12 +41,13 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         //[FondaAuthToken]
         public IHttpActionResult deletefavorite(int idcommensal, int idrestaurant)
         {
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             
             Commensal result;   //PREGUNTAR SI ES PRIVADA O CUANDO SON STATIC
             try
             {
-                Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+                Commensal commensal = (Commensal) EntityFactory.GetCommensal();
                 commensal.Id = idcommensal;                     
 
                 //Creación del restaurant con id
@@ -110,11 +112,11 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             try
             {
                 //Creación del commensal con id
-                Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+                Commensal commensal = (Commensal)EntityFactory.GetCommensal();
                 commensal.Id = idcommensal;                      
 
                 //Creación del restaurant con id
-                Restaurant restaurant = new Restaurant();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+                Restaurant restaurant = (Restaurant)EntityFactory.GetRestaurant();
                 restaurant.Id = idrestaurant;                      
 
                 // Obtención del commando
@@ -230,7 +232,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             try
             {
                 //Creación del commensal con id
-                Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+                Commensal commensal = (Commensal)EntityFactory.GetCommensal();  
                 commensal.Id = idCommensal;                      
 
                 // Obtención del commando
@@ -288,7 +290,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             UserAccount result;
             try
             {
-                UserAccount commensal = new UserAccount();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+                UserAccount commensal = (UserAccount)EntityFactory.GetUserAccount();
                 commensal.Email = email;
                 // Obtención del commando
                 ICommand command = FacCommand.GetCommensalEmailCommand();

@@ -9,6 +9,7 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 using FondaLogic.Log;
 using FondaBeckEndLogic;
+using com.ds201625.fonda.Factory;
 
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
@@ -51,6 +52,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 foreach (var restaurant in listRestaurant)
                 {
                     restaurant.RestaurantCategory = new RestaurantCategory
+                    
                     {
                         Name = restaurant.RestaurantCategory.Name,
                         Id = restaurant.RestaurantCategory.Id
