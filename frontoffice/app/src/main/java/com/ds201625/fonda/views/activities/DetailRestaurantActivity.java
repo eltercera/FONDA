@@ -30,6 +30,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
     //Declaracion de varialbes globales de la clase
 
     private MenuItem setAsFavorite;
+    private MenuItem makeReserve;
     private Toolbar tb;
     private Restaurant selectedRestaurant;
     private TextView tvRestaurantName;
@@ -70,15 +71,16 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG,"ESTAAAAAAAASSSS EEENNN onCreateOptionsMenu");
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.detail_restaurant, menu);
+        makeReserve = menu.findItem(R.id.action_make_order);
 
-        setAsFavorite = menu.findItem(R.id.action_favorite_save);
+        setAsFavorite = menu.findItem(R.id.action_set_favorite);
         tb = (Toolbar)findViewById(R.id.toolbar);
         tb.setVisibility(View.VISIBLE);
-        MenuItem makeReserve = menu.findItem(R.id.action_make_order);
 
-        makeReserve.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+       makeReserve.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Intent cambio = new Intent(DetailRestaurantActivity.this, DetailRestaurantActivity.class);
@@ -90,16 +92,11 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
         });
 
 
-        setAsFavorite = menu.findItem(R.id.action_set_favorite);
-
-
         if (isFavorite()){
             setAsFavorite.setIcon(R.drawable.ic_star_yellow);
         }else {
             setAsFavorite.setIcon(R.drawable.ic_star_border_creme_24dp);
         }
-        tb = (Toolbar)findViewById(R.id.toolbar);
-        tb.setVisibility(View.VISIBLE);
 
         setAsFavorite.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -154,7 +151,6 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
             }
 
         });
-
         return true;
     }
 

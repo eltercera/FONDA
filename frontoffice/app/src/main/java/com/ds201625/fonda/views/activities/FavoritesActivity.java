@@ -203,7 +203,6 @@ public class FavoritesActivity extends BaseNavigationActivity implements
         try {
             Commensal log = SessionData.getInstance().getCommensal();
             try {
-                favoriteBotton.setIcon(R.drawable.ic_star_yellow);
 
                 emailToWebService=log.getEmail()+"/";
 
@@ -247,6 +246,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
     public void OnFavoriteSelect(Restaurant r) {
         showFragment(detailRestaurantFrag);
         detailRestaurantFrag.setRestaurant(r);
+        favoriteBotton.setIcon(R.drawable.ic_star_yellow);
     }
 
     @Override

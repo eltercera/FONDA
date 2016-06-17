@@ -66,11 +66,14 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
         swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
         swipeRefreshLayout.setOnRefreshListener(this);
 
-
-        restaurantList = getListSW();
-        favoritesList.addAll(restaurantList);
-        restaurants.setAdapter(favoritesList);
-
+        try {
+            restaurantList = getListSW();
+            favoritesList.addAll(restaurantList);
+            restaurants.setAdapter(favoritesList);
+        }
+        catch(NullPointerException e){
+                Log.e(TAG,"Error al iniciar favoritos",e);
+            }
 
 
         if(multi) {

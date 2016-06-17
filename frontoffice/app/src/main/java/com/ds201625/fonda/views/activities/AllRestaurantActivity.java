@@ -8,10 +8,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.Command;
@@ -20,6 +23,8 @@ import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
 import com.ds201625.fonda.views.fragments.RestaurantListFragment;
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,18 +36,15 @@ public class AllRestaurantActivity extends BaseNavigationActivity
         implements RestaurantListFragment.restaurantListFragmentListener {
 
     // UI references.
-    private ListView list;
-
-    private RestaurantList adapter;
-    private List<Restaurant> restaurantList;
     private String emailToWebService;
     private Commensal logedComensal;
     private String TAG ="AllRestaurantActivity";
-
+    private FondaCommandFactory facCmd;
+    private Restaurant restaurant;
     /**
-     * Iten del Menu para favorito
+     * Item del Menu para favorito
      */
-    private MenuItem favoriteBotton;
+    private MenuItem setAsFavorite;
     private MenuItem reserveBotton;
 
     /**
@@ -63,6 +65,10 @@ public class AllRestaurantActivity extends BaseNavigationActivity
 
     private boolean onForm;
 
+    /**
+     * Metodo que inicializa el activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG,"Ha entrado en onCreate");
@@ -138,14 +144,17 @@ public class AllRestaurantActivity extends BaseNavigationActivity
         //Muestra y oculta compnentes.
         if(fragment.equals(allRestaurantFrag)){
             Log.d(TAG,"Fragment allRestaurantFrag");
-            if(favoriteBotton != null)
-                favoriteBotton.setVisible(false);
+            if(setAsFavorite != null)
+                setAsFavorite.setVisible(false);
             if(reserveBotton != null)
                 reserveBotton.setVisible(false);
             onForm = false;
         } else {
-            if(favoriteBotton != null)
-                favoriteBotton.setVisible(true);
+            if(setAsFavorite != null)
+                setAsFavorite.setVisible(true);
+            if(reserveBotton != null)
+                reserveBotton.setVisible(true);
+
             Log.d(TAG,"Fragment detailRestaurantFrag");
             onForm = true;
 
@@ -164,8 +173,9 @@ public class AllRestaurantActivity extends BaseNavigationActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         Log.d(TAG,"Ha entrado en onCreateOptionsMenu");
         getMenuInflater().inflate(R.menu.detail_restaurant, menu);
-        favoriteBotton = menu.findItem(R.id.action_set_favorite);
+        setAsFavorite = menu.findItem(R.id.action_set_favorite);
         reserveBotton = menu.findItem(R.id.action_make_order);
+
         Log.d(TAG,"Ha salido de onCreateOptionsMenu");
         return true;
     }
@@ -180,7 +190,7 @@ public class AllRestaurantActivity extends BaseNavigationActivity
         Log.d(TAG,"Ha entrado en onOptionsItemSelected");
         switch (item.getItemId()) {
             case R.id.action_set_favorite:
-                save();
+                manageFavorite();
                 break;
             case R.id.action_make_order:
                 goReserve();
@@ -190,63 +200,145 @@ public class AllRestaurantActivity extends BaseNavigationActivity
         return true;
     }
 
+    /**
+     * Permite ir a reserva
+     */
     private void goReserve() {
         Intent r = new Intent(this,ReserveActivity.class);
         startActivity(r);
     }
 
-    private void save() {
+    /**
+     * Permite el manejo del Favorito, si no es favorito lo agrega y si lo es, lo elimina
+     */
+
+    private void manageFavorite() {
         Log.d(TAG,"Ha entrado en save");
         //Guardar un favorito
         try {
-            Commensal log = SessionData.getInstance().getCommensal();
             try {
 
-                emailToWebService=log.getEmail()+"/";
+                        if (isFavorite()) {
+                            try{
+                                Command cmdDelete = facCmd.deleteFavoriteRestaurantCommand();
+                                cmdDelete.setParameter(0,logedComensal.getId());
+                                cmdDelete.setParameter(1,restaurant.getId());
+                                cmdDelete.run();
 
-                FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
+                                try {
 
-                //Llamo al comando de requireLogedCommensalCommand
-                Command cmdRequireLoged = facCmd.requireLogedCommensalCommand();
-                cmdRequireLoged.setParameter(0,emailToWebService);
-                cmdRequireLoged.run();
-                logedComensal = (Commensal) cmdRequireLoged.getResult();
+                                } catch (Exception e) {
+                                    Log.e(TAG,"Error en el manejo de un favorito",e);
+                                    Toast.makeText(getApplicationContext(), R.string.favorite_remove_fail_meessage,
+                                            Toast.LENGTH_LONG).show();
+
+                                }
+                                Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
+                                        Toast.LENGTH_LONG).show();
+                                setAsFavorite.setIcon(R.drawable.ic_grade_creme_24dp);
+                                Log.d(TAG,"Se ha eliminado el favorito");
+                            } catch (RestClientException e) {
+                                Log.e(TAG,"Error en el manejo de un favorito",e);
+                            } catch (Exception e) {
+                                Log.e(TAG,"Error en el manejo de un favorito",e);
+                            }
+                        } else {
+                            try{
+                                //Llamo al comando de addFavoriteRestaurant
+                                Command cmdAddFavorite = facCmd.addFavoriteRestaurantCommand();
+                                cmdAddFavorite.setParameter(0,logedComensal.getId());
+                                cmdAddFavorite.setParameter(1,restaurant.getId());
+                                cmdAddFavorite.run();
 
 
-                Restaurant restaurant = detailRestaurantFrag.getRestaurant();
+                                try {
 
+                                } catch (Exception e) {
+                                    Log.e(TAG,"Error en el manejo de un favorito",e);
+                                    Toast.makeText(getApplicationContext(), R.string.favorite_add_fail_meessage,
+                                            Toast.LENGTH_LONG).show();
 
-                //Llamo al comando de addFavoriteRestaurant
-                Command cmdAddFavorite = facCmd.addFavoriteRestaurantCommand();
-                cmdAddFavorite.setParameter(0,logedComensal.getId());
-                cmdAddFavorite.setParameter(1,restaurant.getId());
-                cmdAddFavorite.run();
-
-                Toast.makeText(getApplicationContext(), R.string.favorite_add_success_meessage,
-                        Toast.LENGTH_LONG).show();
-            } catch (RestClientException e) {
-               Log.e(TAG,"Error en save al guardar un favorito",e);
-            }
+                                }
+                                Toast.makeText(getApplicationContext(), R.string.favorite_add_success_meessage,
+                                        Toast.LENGTH_LONG).show();
+                                setAsFavorite.setIcon(R.drawable.ic_star_yellow);
+                                Log.d(TAG,"Se ha guardado el favorito");
+                            } catch (RestClientException e) {
+                                Log.e(TAG,"Error en el manejo de un favorito",e);
+                            } catch (Exception e) {
+                                Log.e(TAG,"Error en el manejo de un favorito",e);
+                            }
+                        }
+ }
             catch (NullPointerException nu) {
-                Log.e(TAG,"Error en save al guardar un favorito",nu);
+                Log.e(TAG,"Error en el manejo de un favorito",nu);
             }
         } catch (Exception e) {
-            Log.e(TAG,"Error en save al guardar un favorito",e);
+            Log.e(TAG,"Error en el manejo de un favorito",e);
         }
         hideKyboard();
-        Log.d(TAG,"Se ha guardado el favorito");
+
     }
 
+    /**
+     * Devuelve el estado del restaurante seleccionado (si es favorito) con respecto al usuario.
+     * @param
+     * @return Boolean.
+     */
+    public boolean isFavorite() {
+        Commensal log = SessionData.getInstance().getCommensal();
+        try {
+
+            emailToWebService = log.getEmail() + "/";
+
+            facCmd = FondaCommandFactory.getInstance();
+
+            //Llamo al comando de requireLogedCommensalCommand
+            Command cmdRequireLoged = facCmd.requireLogedCommensalCommand();
+            cmdRequireLoged.setParameter(0, emailToWebService);
+            cmdRequireLoged.run();
+            logedComensal = (Commensal) cmdRequireLoged.getResult();
+            restaurant = detailRestaurantFrag.getRestaurant();
+
+            Command cmdAllFavRest = facCmd.allFavoriteRestaurantCommand();
+            cmdAllFavRest.setParameter(0,logedComensal.getId());
+            cmdAllFavRest.run();
+            List<Restaurant> restaurantList = (List<Restaurant>) cmdAllFavRest.getResult();
+
+            for (Restaurant rest : restaurantList) {
+                if (rest.getId() == restaurant.getId()) {
+                    return true;
+                }
+            }
+        }
+        catch (RestClientException e) {
+            Log.e(TAG,"Error al determinar si es favorito",e);
+        }
+        catch (Exception e) {
+            Log.e(TAG,"Error al determinar si es favorito",e);
+        }
+        return false;
+    }
+
+    /**
+     * Cuando se seleccionad un restaurant
+     * @param r
+     */
     @Override
     public void OnRestaurantSelect(Restaurant r) {
         Log.d(TAG,"Ha entrado en OnRestaurantSelect");
         showFragment(detailRestaurantFrag);
         detailRestaurantFrag.setRestaurant(r);
-        Log.d(TAG,"Ha seleccionado el restaurante "+r.getName().toString());
+        if (isFavorite()){
+            setAsFavorite.setIcon(R.drawable.ic_star_yellow);
+        }else {
+            setAsFavorite.setIcon(R.drawable.ic_grade_creme_24dp);
+        }
+        Log.d(TAG,"Ha seleccionado el restaurante "+r.getName().toString()+r.getId());
         Log.d(TAG,"Han salido de OnRestaurantSelect");
     }
 
-    @Override
+        @Override
     public void OnRestaurantSelected(ArrayList<Restaurant> r) {
 
     }

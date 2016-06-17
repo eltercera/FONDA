@@ -3,12 +3,14 @@ package com.ds201625.fonda.views.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.views.activities.AllRestaurantActivity;
 
 
 /**
@@ -29,6 +31,7 @@ public class DetailRestaurantFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
