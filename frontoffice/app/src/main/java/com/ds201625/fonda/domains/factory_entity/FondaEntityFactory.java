@@ -36,27 +36,27 @@ public class FondaEntityFactory {
     //Instancia los objetos del dominio invocando al constructor(es) de la entidad
 
 
-    public BaseEntity GetCommensal()
+    public Commensal GetCommensal()
     {
         return new Commensal();
     }
 
-    public BaseEntity GetCommensal(int id)
+    public Commensal GetCommensal(int id)
     {
         return new Commensal(id);
     }
 
-    public BaseEntity GetRestaurant()
+    public Restaurant GetRestaurant()
     {
         return new Restaurant();
     }
 
-    public BaseEntity GetRestaurant(int id)
+    public Restaurant GetRestaurant(int id)
     {
         return new Restaurant(id);
     }
 
-    public BaseEntity GetRestaurant(String name,String address, RestaurantCategory restaurantCategory)
+    public Restaurant GetRestaurant(String name,String address, RestaurantCategory restaurantCategory)
     {
         return new Restaurant(name,address,restaurantCategory);
     }

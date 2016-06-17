@@ -53,7 +53,7 @@ namespace FondaBackOfficeLogicTest
         public void CommandFindInvoicesByRestaurantTest()
         {
 
-            _command = CommandFactory.GetCommandFindInvoicesByRestaurant(_restaurant);
+            //_command = CommandFactory.GetCommandFindInvoicesByRestaurant(_restaurant);
 
             _command.Execute();
 

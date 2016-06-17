@@ -47,7 +47,7 @@ public class RequireLogedCommensalCommandTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         facCmd = FondaCommandFactory.getInstance();
-        commensal = (Commensal) FondaEntityFactory.getInstance().GetCommensal();
+        commensal = FondaEntityFactory.getInstance().GetCommensal();
         email = "adri@hotmail.com";
     }
 

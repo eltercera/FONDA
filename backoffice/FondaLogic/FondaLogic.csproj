@@ -45,36 +45,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="Commands\Login\ComandGetEmployeeBySsn.cs" />
+    <Compile Include="Commands\Login\ComandoGetUserAcountByEmail.cs" />
     <Compile Include="Commands\Login\CommandGetAllRestaurants.cs" />
     <Compile Include="Commands\Login\CommandGetAllRoles.cs" />
     <Compile Include="Commands\Login\CommandGetEmployeeById.cs" />
     <Compile Include="Commands\Login\CommandGetEmployeeByUser .cs" />
     <Compile Include="Commands\Login\CommandGetRestaurantById.cs" />
     <Compile Include="Commands\Login\CommandSaveEmployee.cs" />
+    <Compile Include="Commands\Login\CommandSaveEntity.cs" />
     <Compile Include="Commands\Login\CommanGetAllEmployee.cs" />
     <Compile Include="Commands\OrderAccount\CommandDetailOrder.cs" />
-    <Compile Include="Commands\OrderAccount\CommandFindInvoicesByRestaurant.cs" />
-    <Compile Include="Commands\OrderAccount\CommandGenerateException.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
-    <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetClosedOrders.cs" />
-    <Compile Include="Commands\OrderAccount\CommandGetGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrders.cs" />
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionCreateEmployee.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionGetEmployee.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetOrder.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetOrders.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionGetRestaurant.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\Menu\" />
+    <Folder Include="Commands\OrderAccount\Menu\" />
     <Folder Include="Commands\Restaurant\" />
   </ItemGroup>
   <ItemGroup>
