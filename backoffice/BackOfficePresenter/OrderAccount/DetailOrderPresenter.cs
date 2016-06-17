@@ -10,12 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
-namespace BackOfficePresenter.OrderAccount
+namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 {
-    public class DetailOrderPresenter : Presenter
+    public class DetailOrderPresenter : BackOfficePresenter.Presenter
     {
         //Enlace Modelo - Vista
         private IDetailOrderModel _view;
+        int totalColumns = 3;
 
 
         ///<summary>
@@ -77,15 +78,10 @@ namespace BackOfficePresenter.OrderAccount
         private void FillTable(IList<DishOrder> data)
         {
 
-
             CleanTable();
-            //Genero los objetos para la consulta
-            //Genero la lista de la consulta
-
-
 
             int totalRows = data.Count; //tamano de la lista 
-            int totalColumns = 2; //numero de columnas de la tabla
+            float total = 0;
 
             //Recorremos la lista
             for (int i = 0; i <= totalRows - 1; i++)
@@ -100,19 +96,27 @@ namespace BackOfficePresenter.OrderAccount
                 {
                     //Crea una nueva celda de la tabla
                     TableCell tCell = new TableCell();
-                    //Agrega la cantidad del pedido del plato
-                    if (j.Equals(0))
-                        tCell.Text = data[i].Count.ToString();
+
                     //Agrega el plato
-                    else if (j.Equals(1))
-                    {
+                    if (j.Equals(0))
                         tCell.Text = data[i].Dish.Name.ToString();
-                    }
+
+                    //Agrega la cantidad del pedido del plato
+                    else if (j.Equals(1))
+                        tCell.Text = data[i].Count.ToString();
+
                     //Agrega el costo del plato
                     else if (j.Equals(2))
-                    {
                         tCell.Text = data[i].Dishcost.ToString();
+
+                    //Agrega el total (precio*cantidad)
+                    else if (j.Equals(3))
+                    {
+                        total = data[i].Count * data[i].Dishcost;
+                        tCell.Text = total.ToString();
+                        total = 0;
                     }
+
                     //Agrega la celda a la fila
                     tRow.Cells.Add(tCell);
                 }
@@ -125,7 +129,8 @@ namespace BackOfficePresenter.OrderAccount
         }
 
         /// <summary>
-        /// Genera el encabezado de la tabla Ordenes Cerradas
+        /// Genera el encabezado de la tabla que contiene el detalle
+        /// de una orden
         /// </summary>
         /// <returns>Returna un objeto de tipo TableHeaderRow</returns>
         private TableHeaderRow GenerateTableHeader()
@@ -137,20 +142,24 @@ namespace BackOfficePresenter.OrderAccount
             TableHeaderCell h1 = new TableHeaderCell();
             TableHeaderCell h2 = new TableHeaderCell();
             TableHeaderCell h3 = new TableHeaderCell();
+            TableHeaderCell h4 = new TableHeaderCell();
 
             //Se indica que se trabajara en el header y se asignan los valores a las columnas
             header.TableSection = TableRowSection.TableHeader;
-            h1.Text = "Cantidad";
+            h1.Text = OrderAccountResources.DishNameColum;
             h1.Scope = TableHeaderScope.Column;
-            h2.Text = "Plato";
+            h2.Text = OrderAccountResources.QuantityColumn;
             h2.Scope = TableHeaderScope.Column;
-            h3.Text = "Precio por plato";
+            h3.Text = OrderAccountResources.PriceColumn;
             h3.Scope = TableHeaderScope.Column;
+            h4.Text = OrderAccountResources.TotalColumn;
+            h4.Scope = TableHeaderScope.Column;
 
             //Se asignan las columnas a la fila
             header.Cells.Add(h1);
             header.Cells.Add(h2);
             header.Cells.Add(h3);
+            header.Cells.Add(h4);
 
             return header;
         }

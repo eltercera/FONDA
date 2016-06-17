@@ -3,6 +3,9 @@ using System.Web.UI.WebControls;
 using BackOfficeModel.OrderAccount;
 using FondaResources.OrderAccount;
 using BackOfficePresenter.OrderAccount;
+using FondaResources.Login;
+using System.Web.UI.HtmlControls;
+using BackOfficeModel;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -10,44 +13,34 @@ namespace BackOffice.Seccion.Caja
     {
         #region Presenter
 
-        private DetailOrderPresenter _presenter;
+        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.DetailOrderPresenter _presenter;
 
         #endregion
 
         #region Model
 
-        public Label ErrorLabelMessage
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         public System.Web.UI.WebControls.Table DetailOrderTable
         {
-            get { return Pago; }
+            get { return orderDetail; }
 
-            set { Pago = value; }
+            set { orderDetail = value; }
         }
 
-        public Label SuccessLabelMessage
+        Label IModel.ErrorLabelMessage
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return this.ErrorLabelMessage; }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
+            set { this.ErrorLabelMessage = value; }
+
         }
+
+        Label IModel.SuccessLabelMessage
+        {
+            get { return this.SuccessLabelMessage; }
+
+            set { this.SuccessLabelMessage = value; }
+        }
+
         /// <summary>
         /// Recurso de Session con el que inicia el Page_Load
         /// </summary>
@@ -58,13 +51,33 @@ namespace BackOffice.Seccion.Caja
             set { Session[OrderAccountResources.SessionIdAccount] = value; }
         }
 
+        public string SessionRestaurant
+        {
+            get { return Session[ResourceLogin.sessionRestaurantID].ToString(); }
+
+            set { Session[ResourceLogin.sessionRestaurantID] = value; }
+        }
+
+        HtmlGenericControl IModel.ErrorLabel
+        {
+            get { return this.ErrorLabel; }
+        }
+
+        HtmlGenericControl IModel.SuccessLabel
+        {
+            get { return this.SuccessLabel; }
+
+        }
+
+
+
         #endregion
 
         #region Constructor
 
         public VerDetalleOrden()
         {
-            _presenter = new DetailOrderPresenter(this);
+            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.DetailOrderPresenter(this);
         }
         #endregion
 

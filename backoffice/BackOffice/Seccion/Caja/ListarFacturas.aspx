@@ -1,30 +1,30 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="Ordenes.aspx.cs" Inherits="BackOffice.Seccion.Caja.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListarFacturas.aspx.cs" Inherits="BackOffice.Seccion.Caja.ListarFacturas" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    Ordenes
+    Facturas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    de <%=Session["NameRestaurant"]%>
+    de la Orden [# Orden]
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
     <%--Breadcrumbs--%>
     <div>
-      <ol class="breadcrumb" style="background-color:rgba(0,0,0,0);">
-          <li>
-              <a href="../Caja/Ordenes.aspx">Caja</a>
-          </li>
-          <li class="active">
-             Ver Ordenes abiertas
-          </li>
-      </ol>
-  </div>
-  <%--Fin_Breadcrumbs--%>
-    
+        <ol class="breadcrumb" style="background-color: rgba(0,0,0,0);">
+            <li>
+                <a href="../Caja/Ordenes.aspx">Caja</a>
+            </li>
+            <li class="active">
+                Facturas generadas
+            </li>
+        </ol>
+    </div>
+    <%--Fin_Breadcrumbs--%>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="contenido" runat="server">
 
-    <div id="SuccessLabel" class="row" runat="server">
+        <div id="SuccessLabel" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert alert-success fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -46,28 +46,23 @@
         </div>
     </div>
 
+
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i>Cuentas abiertas</h3>
+                    <h3 class="panel-title">Orden # <asp:Label ID="Label1" runat="server"></asp:Label> Cliente:</h3>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                            <asp:HiddenField ID="AccountPopOrder" runat="server" Value="" />
-                            <asp:Table ID="orderList" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
+
+                        <asp:Table ID="orderInvoices" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="text-right">                            
-        <a href="OrdenesCerradas.aspx"><i class="fa fa-plus"></i> Ver ordenes cerradas</a>
-    </div>
-
-
-
-    
 </asp:Content>
