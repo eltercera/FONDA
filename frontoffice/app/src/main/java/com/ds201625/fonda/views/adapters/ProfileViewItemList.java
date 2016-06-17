@@ -11,11 +11,10 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.ProfileService;
-import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.domains.entities.Profile;
 import com.ds201625.fonda.logic.SessionData;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**

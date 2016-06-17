@@ -1,6 +1,6 @@
 package com.ds201625.fonda.data_access.services;
 
-import com.ds201625.fonda.domains.Reservation;
+import com.ds201625.fonda.domains.entities.Reservation;
 
 import java.util.List;
 

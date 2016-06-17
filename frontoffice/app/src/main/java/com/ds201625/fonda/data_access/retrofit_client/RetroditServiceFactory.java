@@ -16,8 +16,8 @@ import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.data_access.services.ReservationService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.data_access.services.ZoneService;
-import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Token;
+import com.ds201625.fonda.domains.entities.Commensal;
+import com.ds201625.fonda.domains.entities.Token;
 
 /**
  * Implementacion de la fabrica de servicios con el uso de retrofit y localStorage.

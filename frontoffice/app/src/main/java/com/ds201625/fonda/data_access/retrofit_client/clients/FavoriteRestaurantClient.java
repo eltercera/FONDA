@@ -1,7 +1,7 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
-import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.entities.Commensal;
+import com.ds201625.fonda.domains.entities.Restaurant;
 
 import java.util.List;
 

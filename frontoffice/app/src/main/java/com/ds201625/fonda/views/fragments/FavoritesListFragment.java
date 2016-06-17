@@ -17,8 +17,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.entities.Commensal;
+import com.ds201625.fonda.domains.entities.Restaurant;
+import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
@@ -112,8 +113,8 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
 
                                     //Llamo al comando de deleteFavoriteRestaurant
                                     Command cmdDelete = facCmd.deleteFavoriteRestaurantCommand();
-                                    cmdDelete.setParameter(0,logedComensal.getId());
-                                    cmdDelete.setParameter(1,r.getId());
+                                    cmdDelete.setParameter(0,logedComensal);
+                                    cmdDelete.setParameter(1,r);
                                     cmdDelete.run();
 
                                     Toast.makeText(FavoritesListFragment.super.getContext(),
@@ -246,7 +247,7 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
 
                     //Llamo al comando de allFavoriteRestaurantCommand
                     Command cmdAllFavorite = facCmd.allFavoriteRestaurantCommand();
-                    cmdAllFavorite.setParameter(0,logedComensal.getId());
+                    cmdAllFavorite.setParameter(0,logedComensal);
                     cmdAllFavorite.run();
 
                     listRestWS = (List<Restaurant>) cmdAllFavorite.getResult();

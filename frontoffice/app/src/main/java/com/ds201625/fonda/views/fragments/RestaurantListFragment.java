@@ -17,8 +17,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.entities.Commensal;
+import com.ds201625.fonda.domains.entities.Restaurant;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
@@ -104,8 +104,8 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
 
                                     //Llamo al comando de addFavoriteRestaurant
                                     Command cmdAddFavorite = facCmd.addFavoriteRestaurantCommand();
-                                    cmdAddFavorite.setParameter(0,logedComensal.getId());
-                                    cmdAddFavorite.setParameter(1,r.getId());
+                                    cmdAddFavorite.setParameter(0,logedComensal);
+                                    cmdAddFavorite.setParameter(1,r);
                                     cmdAddFavorite.run();
 
                                     Toast.makeText(RestaurantListFragment.super.getContext(),

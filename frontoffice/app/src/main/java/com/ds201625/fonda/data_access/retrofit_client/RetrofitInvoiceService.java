@@ -1,11 +1,9 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
-import android.util.Log;
-
 import com.ds201625.fonda.data_access.retrofit_client.clients.InvoiceClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.InvoiceService;
-import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.domains.entities.Invoice;
 
 import java.io.IOException;
 

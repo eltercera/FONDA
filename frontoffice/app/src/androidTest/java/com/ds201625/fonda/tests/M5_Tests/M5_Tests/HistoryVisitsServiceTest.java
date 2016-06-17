@@ -4,10 +4,8 @@ import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
-import com.ds201625.fonda.domains.DishOrder;
-import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.domains.entities.Invoice;
 
 import junit.framework.TestCase;
 

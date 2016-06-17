@@ -8,10 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.Currency;
-import com.ds201625.fonda.domains.DishOrder;
-
-import java.util.ArrayList;
+import com.ds201625.fonda.domains.entities.DishOrder;
 
 
 /**

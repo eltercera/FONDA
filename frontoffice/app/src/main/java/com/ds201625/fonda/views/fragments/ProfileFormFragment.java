@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.Person;
-import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.domains.entities.Person;
+import com.ds201625.fonda.domains.entities.Profile;
 
 
 /**

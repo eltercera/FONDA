@@ -1,7 +1,6 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
-import com.ds201625.fonda.domains.RestaurantCategory;
-import com.ds201625.fonda.domains.Zone;
+import com.ds201625.fonda.domains.entities.RestaurantCategory;
 
 import java.util.List;
 

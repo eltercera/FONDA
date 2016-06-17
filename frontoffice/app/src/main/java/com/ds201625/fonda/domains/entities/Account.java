@@ -1,8 +1,7 @@
-package com.ds201625.fonda.domains;
+package com.ds201625.fonda.domains.entities;
 
-import java.security.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
+import com.ds201625.fonda.domains.BaseEntity;
+
 import java.util.List;
 
 /**

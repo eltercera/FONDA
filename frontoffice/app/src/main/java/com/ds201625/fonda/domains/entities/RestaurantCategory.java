@@ -1,4 +1,4 @@
-package com.ds201625.fonda.domains;
+package com.ds201625.fonda.domains.entities;
 
 /**
  * Created by Adri on 06/05/2016.

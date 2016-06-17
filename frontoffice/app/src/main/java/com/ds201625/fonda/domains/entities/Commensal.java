@@ -1,4 +1,4 @@
-package com.ds201625.fonda.domains;
+package com.ds201625.fonda.domains.entities;
 
 import java.util.List;
 
@@ -17,6 +17,11 @@ public class Commensal extends UserAccount {
     public Commensal() {
         super();
     }
+
+    public Commensal(int id) {
+        this.setId(id);
+    }
+
 
     public List<Reservation> getReservarions() {
         return reservarions;

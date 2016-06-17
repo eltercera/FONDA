@@ -5,7 +5,7 @@ import android.content.Context;
 import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.entities.Commensal;
 
 /**
  * Inserfaz de servicio de commensal

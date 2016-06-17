@@ -1,14 +1,9 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
-import android.content.Context;
-
-import com.ds201625.fonda.data_access.local_storage.JsonFile;
-import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.data_access.retrofit_client.clients.PaymentClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.PaymentService;
-import com.ds201625.fonda.domains.CreditCarPayment;
-import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.domains.entities.Invoice;
 
 import java.io.IOException;
 

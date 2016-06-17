@@ -5,7 +5,7 @@ import android.util.Log;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.retrofit_client.clients.ZoneClient;
 import com.ds201625.fonda.data_access.services.ZoneService;
-import com.ds201625.fonda.domains.Zone;
+import com.ds201625.fonda.domains.entities.Zone;
 
 import java.io.IOException;
 import java.util.List;

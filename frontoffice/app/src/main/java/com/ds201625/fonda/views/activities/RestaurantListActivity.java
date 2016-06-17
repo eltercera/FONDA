@@ -1,14 +1,12 @@
 package com.ds201625.fonda.views.activities;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.FilterByZoneService;
-import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.domains.Zone;
+import com.ds201625.fonda.domains.entities.Restaurant;
+import com.ds201625.fonda.domains.entities.Zone;
 import com.google.gson.Gson;
 
 import java.util.Iterator;

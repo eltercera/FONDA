@@ -14,9 +14,13 @@ import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.entities.Commensal;
+import com.ds201625.fonda.domains.entities.Restaurant;
+
+import com.ds201625.fonda.domains.entities.Commensal;
+import com.ds201625.fonda.domains.entities.Restaurant;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
@@ -299,6 +303,7 @@ public class AllRestaurantActivity extends BaseNavigationActivity
             cmdRequireLoged.run();
             logedComensal = (Commensal) cmdRequireLoged.getResult();
             restaurant = detailRestaurantFrag.getRestaurant();
+
 
             Command cmdAllFavRest = facCmd.allFavoriteRestaurantCommand();
             cmdAllFavRest.setParameter(0,logedComensal.getId());
