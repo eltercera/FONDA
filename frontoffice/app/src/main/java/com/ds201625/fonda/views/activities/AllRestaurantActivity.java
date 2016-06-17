@@ -241,8 +241,8 @@ public class AllRestaurantActivity extends BaseNavigationActivity
                             try{
                                 //Llamo al comando de addFavoriteRestaurant
                                 Command cmdAddFavorite = facCmd.addFavoriteRestaurantCommand();
-                                cmdAddFavorite.setParameter(0,logedComensal.getId());
-                                cmdAddFavorite.setParameter(1,restaurant.getId());
+                                cmdAddFavorite.setParameter(0,logedComensal);
+                                cmdAddFavorite.setParameter(1,restaurant);
                                 cmdAddFavorite.run();
 
 
@@ -297,7 +297,7 @@ public class AllRestaurantActivity extends BaseNavigationActivity
 
 
             Command cmdAllFavRest = facCmd.allFavoriteRestaurantCommand();
-            cmdAllFavRest.setParameter(0,logedComensal.getId());
+            cmdAllFavRest.setParameter(0,logedComensal);
             cmdAllFavRest.run();
             List<Restaurant> restaurantList = (List<Restaurant>) cmdAllFavRest.getResult();
 

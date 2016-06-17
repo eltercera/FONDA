@@ -37,7 +37,7 @@ public class RequireLogedCommensalCommand extends BaseCommand {
         try {
             email = (String) this.getParameter(1);
         } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al obtener el comensal logeado", e);
+          //  Log.e(TAG, "Se ha generado error en invoke al obtener el comensal logeado", e);
         }
 
         RequireLogedCommensalService ps = FondaServiceFactory.getInstance()

@@ -32,7 +32,7 @@ public class AllRestaurantCommand extends BaseCommand {
         try {
             restaurantList =  ps.getAllRestaurant();
         } catch (RestClientException e) {
-            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes", e);
         }
 
         setResult(restaurantList);

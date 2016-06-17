@@ -42,7 +42,7 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
         try {
             idCommensal = (Commensal) this.getParameter(1);
         } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+           // Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
         }
 
         FavoriteRestaurantService ps = FondaServiceFactory.getInstance()
