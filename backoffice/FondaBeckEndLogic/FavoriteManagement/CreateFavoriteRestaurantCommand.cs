@@ -9,6 +9,7 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 using FondaLogic.Log;
 using FondaBeckEndLogic;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
 {
@@ -77,6 +78,24 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 throw new CreateFavoriteRestaurantCommandException(ResourceMessages.AddFavRestException, e);
                
 			}
+            catch (InvalidTypeOfParameterException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateFavoriteRestaurantCommandException("Parametros ivalidos al intentar crear" +
+                    "un restarant favorito", e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateFavoriteRestaurantCommandException("Parametros fuera de rango al intentar crear" +
+                    "un restarant favorito", e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateFavoriteRestaurantCommandException("Se requieren parametros para crear" +
+                    "un restaurant favorito", e);
+            }
             catch (NullReferenceException e)  
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -84,8 +103,8 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             }
 			catch (Exception e)
 			{
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateFavoriteRestaurantCommandException(ResourceMessages.AddFavRestException, e);
+               Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+               throw new CreateFavoriteRestaurantCommandException(ResourceMessages.AddFavRestException, e);
 			}
             // Guarda el resultado.
             Result = commensal;

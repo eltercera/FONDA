@@ -9,6 +9,7 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 using FondaLogic.Log;
 using FondaBeckEndLogic;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
@@ -74,6 +75,24 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurant, e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetFavoriteRestaurantFondaCommandException("Parametros ivalidos al intentar obtener" +
+                    "un restaurant favorito", e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetFavoriteRestaurantFondaCommandException("Parametros fuera de rango al intentar obener" +
+                    "un restaurant favorito", e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetFavoriteRestaurantFondaCommandException("Se requieren parametros para obtener" +
+                    "un restaurant favorito", e);
             }
             catch (NullReferenceException e)
             {

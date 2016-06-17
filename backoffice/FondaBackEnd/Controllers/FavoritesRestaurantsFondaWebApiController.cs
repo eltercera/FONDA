@@ -1,6 +1,7 @@
 ﻿using com.ds201625.fonda.BackEnd.ActionFilters;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEndLogic;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
@@ -76,6 +77,24 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 throw new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.DeleteFavRestException, e);
              
             }
+            catch (InvalidTypeOfParameterException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantFondaWebApiControllerException("Parametros ivalidos al intentar eliminar" +
+                    "un restarant favorito", e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantFondaWebApiControllerException("Parametros fuera de rango al intentar eliminar" +
+                    "un restarant favorito", e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantFondaWebApiControllerException("Se requieren parametros para eliminar" +
+                    "un restaurant favorito", e);
+            }
             catch (NullReferenceException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -141,6 +160,24 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException, e);
             }
+            catch (InvalidTypeOfParameterException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new AddFavoriteRestaurantFondaWebApiControllerException("Parametros ivalidos al intentar crear" +
+                    "un restarant favorito", e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new AddFavoriteRestaurantFondaWebApiControllerException("Parametros fuera de rango al intentar crear" +
+                    "un restarant favorito", e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new AddFavoriteRestaurantFondaWebApiControllerException("Se requieren parametros para crear" +
+                    "un restaurant favorito", e);
+            }
             catch (NullReferenceException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -185,6 +222,24 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetRestFavException, e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsFondaWebApiControllerException("Parametros ivalidos al intentar obtener" +
+                    "los restaurantes disponibles", e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsFondaWebApiControllerException("Parametros fuera de rango al intentar crear" +
+                    "los restaurantes disponibles", e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsFondaWebApiControllerException("Se requieren parametros para crear" +
+                    "los restaurantes disponibles", e);
             }
             catch (NullReferenceException e)
             {
@@ -257,6 +312,24 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurant, e);
                 
             }
+            catch (InvalidTypeOfParameterException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindFavoriteRestaurantFondaWebApiControllerException("Parametros ivalidos al intentar obtener" +
+                    "los restaurantes favorito de un commensal", e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindFavoriteRestaurantFondaWebApiControllerException("Parametros fuera de rango al intentar obtener" +
+                    "los restaurantes favorito de un commensal", e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindFavoriteRestaurantFondaWebApiControllerException("Se requieren parametros para obtener" +
+                    "los restaurantes favorito de un commensal", e);
+            }
             catch (NullReferenceException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -311,6 +384,24 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new FindByEmailUserAccountFondaWebApiControllerException(GeneralRes.GetCommensalEmailException,
                     e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindByEmailUserAccountFondaWebApiControllerException("Parametros ivalidos al intentar obtener" +
+                    "el email de un commensal", e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindByEmailUserAccountFondaWebApiControllerException("Parametros fuera de rango al intentar obtener" +
+                    "el email de un commensal", e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindByEmailUserAccountFondaWebApiControllerException("Se requieren parametros para obtener" +
+                    "el email de un commensal", e);
             }
             catch (NullReferenceException e)
             {

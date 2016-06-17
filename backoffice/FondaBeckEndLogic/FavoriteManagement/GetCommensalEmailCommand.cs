@@ -9,6 +9,7 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 using FondaLogic.Log;
 using FondaBeckEndLogic;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
 {
@@ -65,6 +66,24 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetCommensalEmailCommandException(ResourceMessages.GetCommensalEmailException, e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetCommensalEmailCommandException("Parametros ivalidos al intentar consultar" +
+                    "el email de un commensal", e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetCommensalEmailCommandException("Parametros fuera de rango al intentar consultar" +
+                    "el email de un commensal", e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetCommensalEmailCommandException("Se requieren parametros para consultar" +
+                    "el email de un commensal", e);
             }
             catch (NullReferenceException e)
             {

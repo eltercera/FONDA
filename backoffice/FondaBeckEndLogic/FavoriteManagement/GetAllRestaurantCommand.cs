@@ -10,6 +10,7 @@ using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 using FondaLogic.Log;
 using FondaBeckEndLogic;
 using com.ds201625.fonda.Factory;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
@@ -69,6 +70,24 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetAllRestaurantsCommandException(ResourceMessages.GetRestFavException, e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsCommandException("Parametros ivalidos al intentar obtener" +
+                    "los restaurantes disponibles", e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsCommandException("Parametros fuera de rango al intentar obener" +
+                    "los restaurantes disponibles", e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsCommandException("Se requieren parametros para obtener" +
+                    "los restaurantes disponibles", e);
             }
             catch (NullReferenceException e)
             {
