@@ -1,5 +1,6 @@
 ﻿using System;
 using com.ds201625.fonda.BackEndLogic.FavoriteManagement;
+using FondaBeckEndLogic.ProfileManagement;
 
 namespace com.ds201625.fonda.BackEndLogic
 {
