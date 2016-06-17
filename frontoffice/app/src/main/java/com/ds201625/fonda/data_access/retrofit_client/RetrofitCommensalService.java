@@ -6,7 +6,7 @@ import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.data_access.retrofit_client.clients.CommensalClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.CommensalService;
-import com.ds201625.fonda.domains.entities.Commensal;
+import com.ds201625.fonda.domains.Commensal;
 
 
 import java.io.IOException;

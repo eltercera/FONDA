@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.entities.DishOrder;
+import com.ds201625.fonda.domains.DishOrder;
 
 
 /**

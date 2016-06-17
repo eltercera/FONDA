@@ -5,8 +5,8 @@ import android.util.Log;
 import com.ds201625.fonda.data_access.retrofit_client.clients.FavoriteRestaurantClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.domains.entities.Commensal;
-import com.ds201625.fonda.domains.entities.Restaurant;
+import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Restaurant;
 
 import java.io.IOException;
 import java.util.List;

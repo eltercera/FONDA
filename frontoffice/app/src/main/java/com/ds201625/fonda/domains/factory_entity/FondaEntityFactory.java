@@ -1,9 +1,9 @@
 package com.ds201625.fonda.domains.factory_entity;
 
 import com.ds201625.fonda.domains.BaseEntity;
-import com.ds201625.fonda.domains.entities.*;
-
-import java.util.List;
+import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.RestaurantCategory;
 
 /**
  * Created by Katherina Molina on 16/06/2016.

@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.entities.RestaurantCategory;
+import com.ds201625.fonda.domains.RestaurantCategory;
 
 import java.util.List;
 

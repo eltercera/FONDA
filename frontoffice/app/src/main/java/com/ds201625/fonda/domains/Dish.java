@@ -1,4 +1,4 @@
-package com.ds201625.fonda.domains.entities;
+package com.ds201625.fonda.domains;
 
 /**
  * Created by Katherina Molina on 10/05/2016.

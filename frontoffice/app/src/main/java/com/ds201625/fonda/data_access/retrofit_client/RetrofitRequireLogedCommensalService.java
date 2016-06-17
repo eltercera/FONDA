@@ -5,7 +5,7 @@ import android.util.Log;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RequireLogedCommensalClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
-import com.ds201625.fonda.domains.entities.Commensal;
+import com.ds201625.fonda.domains.Commensal;
 
 import java.io.IOException;
 

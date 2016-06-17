@@ -2,13 +2,13 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests;
 
 import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.entities.Account;
-import com.ds201625.fonda.domains.entities.DishOrder;
-import com.ds201625.fonda.domains.entities.Invoice;
-import com.ds201625.fonda.domains.entities.Payment;
-import com.ds201625.fonda.domains.entities.Profile;
-import com.ds201625.fonda.domains.entities.Restaurant;
-import com.ds201625.fonda.domains.entities.RestaurantCategory;
+import com.ds201625.fonda.domains.Account;
+import com.ds201625.fonda.domains.DishOrder;
+import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.domains.Payment;
+import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.RestaurantCategory;
 import com.ds201625.fonda.logic.LogicPayment;
 
 import junit.framework.TestCase;

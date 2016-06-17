@@ -1,7 +1,4 @@
-package com.ds201625.fonda.domains.entities;
-
-import com.ds201625.fonda.domains.BaseEntity;
-import com.ds201625.fonda.domains.entities.Person;
+package com.ds201625.fonda.domains;
 
 /**
  * Created by rrodriguez on 5/4/16.

@@ -1,4 +1,4 @@
-package com.ds201625.fonda.domains.entities;
+package com.ds201625.fonda.domains;
 
 import java.util.List;
 /**

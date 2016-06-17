@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.entities.Reservation;
+import com.ds201625.fonda.domains.Reservation;
 
 import java.util.List;
 

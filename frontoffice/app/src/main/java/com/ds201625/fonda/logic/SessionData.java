@@ -5,8 +5,8 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.TokenService;
-import com.ds201625.fonda.domains.entities.Commensal;
-import com.ds201625.fonda.domains.entities.Token;
+import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Token;
 import java.util.Date;
 
 /**

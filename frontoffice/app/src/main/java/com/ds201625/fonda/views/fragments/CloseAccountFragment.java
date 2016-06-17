@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.entities.DishOrder;
+import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.logic.LogicCurrentOrder;
 import com.ds201625.fonda.views.adapters.CloseViewItemList;
 

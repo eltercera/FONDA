@@ -1,6 +1,6 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
-import com.ds201625.fonda.domains.entities.Commensal;
+import com.ds201625.fonda.domains.Commensal;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

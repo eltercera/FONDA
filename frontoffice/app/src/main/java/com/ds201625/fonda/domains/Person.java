@@ -1,6 +1,4 @@
-package com.ds201625.fonda.domains.entities;
-
-import com.ds201625.fonda.domains.entities.GenericPerson;
+package com.ds201625.fonda.domains;
 
 import java.util.Date;
 

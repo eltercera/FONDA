@@ -3,7 +3,7 @@ package com.ds201625.fonda.data_access.retrofit_client;
 import com.ds201625.fonda.data_access.retrofit_client.clients.PaymentClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.PaymentService;
-import com.ds201625.fonda.domains.entities.Invoice;
+import com.ds201625.fonda.domains.Invoice;
 
 import java.io.IOException;
 

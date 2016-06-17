@@ -16,7 +16,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.entities.Profile;
+import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.HandlerSQLite;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;

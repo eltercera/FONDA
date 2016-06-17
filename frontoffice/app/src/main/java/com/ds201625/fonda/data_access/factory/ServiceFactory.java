@@ -1,7 +1,7 @@
 package com.ds201625.fonda.data_access.factory;
 import com.ds201625.fonda.data_access.services.*;
-import com.ds201625.fonda.domains.entities.Commensal;
-import com.ds201625.fonda.domains.entities.Token;
+import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Token;
 
 /**
  * Interfaz para una fabrica de servivios.

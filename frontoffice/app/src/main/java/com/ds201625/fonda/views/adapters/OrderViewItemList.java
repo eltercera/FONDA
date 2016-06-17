@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.entities.DishOrder;
+import com.ds201625.fonda.domains.DishOrder;
 
 /**
  *  Clase para llenar la lista de los platos ordenados

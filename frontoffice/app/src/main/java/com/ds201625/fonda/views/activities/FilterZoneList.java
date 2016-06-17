@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.entities.Zone;
+import com.ds201625.fonda.domains.Zone;
 
 import java.util.List;
 

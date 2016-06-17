@@ -1,6 +1,6 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
-import com.ds201625.fonda.domains.entities.Reservation;
+import com.ds201625.fonda.domains.Reservation;
 import java.util.List;
 
 import retrofit2.Call;

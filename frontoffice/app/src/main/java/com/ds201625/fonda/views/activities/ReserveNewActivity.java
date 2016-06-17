@@ -20,8 +20,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.entities.Commensal;
-import com.ds201625.fonda.domains.entities.Restaurant;
+import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Restaurant;
 
 public class ReserveNewActivity extends BaseNavigationActivity {
 

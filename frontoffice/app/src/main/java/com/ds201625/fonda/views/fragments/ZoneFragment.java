@@ -13,7 +13,7 @@ import android.widget.ListView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.ZoneService;
-import com.ds201625.fonda.domains.entities.Zone;
+import com.ds201625.fonda.domains.Zone;
 import com.ds201625.fonda.views.activities.FilterZoneList;
 import com.ds201625.fonda.views.activities.RestaurantListActivity;
 import com.google.gson.Gson;

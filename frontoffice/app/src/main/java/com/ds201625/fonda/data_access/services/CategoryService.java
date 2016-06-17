@@ -1,6 +1,6 @@
 package com.ds201625.fonda.data_access.services;
 
-import com.ds201625.fonda.domains.entities.RestaurantCategory;
+import com.ds201625.fonda.domains.RestaurantCategory;
 
 import java.util.List;
 
