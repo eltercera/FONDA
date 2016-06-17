@@ -48,13 +48,12 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             Commensal favorites;
             // Obtencion de parametros
             Commensal commensal = (Commensal)GetParameter(0);
-
             // Obtiene el dao que se requiere
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
-           
-            //VALIDACIONES DE CAMPOS--ESTO ES NECESARIO?
-            if (commensal.Id == null) 
+
+            if ((commensal.Id < 0) || (commensal.Id == 0))
                 throw new Exception(ResourceMessages.InvalidInformation);
+
           // Ejecucion del Buscar.		
 			try
 			{
@@ -89,10 +88,10 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             // Guardar el resultado.
             Result = favorites;
             //logger
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
-              System.Reflection.MethodBase.GetCurrentMethod().Name);
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,
-                   System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 		}
 	}
 }

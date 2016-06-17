@@ -39,8 +39,8 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
         /// </summary>
 		protected override void Invoke()
 		{
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.BeginLogger,
-                    System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                ResourceMessages.BeginLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
             IList<Restaurant> listRestaurant;
 			try
 			{
@@ -57,8 +57,8 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
 
                     };
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                  ResourceMessages.Restaurant + restaurant.Name + ResourceMessages.Slash + restaurant.RestaurantCategory,
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+                  ResourceMessages.Restaurant + restaurant.Name + ResourceMessages.Slash +
+                  restaurant.RestaurantCategory,System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
                 
                
@@ -81,10 +81,10 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             
 			// Guardar el resultado.
             Result = listRestaurant;
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
-               System.Reflection.MethodBase.GetCurrentMethod().Name);
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,
-                   System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                Result.ToString(),System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                ResourceMessages.EndLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
 		}
 	}
 }

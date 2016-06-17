@@ -48,14 +48,18 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
         {
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            Commensal commensal;
+            Commensal  commensal;
             Restaurant restaurant;
             // Obtencion de parametros
-            Commensal idCommensal = (Commensal)GetParameter(0);
+            Commensal  idCommensal = (Commensal)GetParameter(0);
             Restaurant idRestaurant = (Restaurant)GetParameter(1);
             // Obtiene el dao que se requiere
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
             IRestaurantDAO restaurantDAO = FacDao.GetRestaurantDAO();
+
+            if ((idCommensal.Id < 0) || (idCommensal.Id == 0) || (idRestaurant.Id < 0) || (idRestaurant.Id == 0))
+                throw new Exception(ResourceMessages.InvalidInformation);
+
             // Ejecucion del Buscar.		
             try
             {
@@ -85,10 +89,10 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             // Guardar el resultado.
             Result = commensal;
             //logger
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
-                System.Reflection.MethodBase.GetCurrentMethod().Name);
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,
-                   System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                ResourceMessages.EndLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
     }
 }
