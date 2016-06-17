@@ -4,12 +4,11 @@ import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
+import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.logic.Command;
-import com.ds201625.fonda.logic.FondaCommandFactory;
+import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 
 import junit.framework.TestCase;
 
@@ -29,14 +28,14 @@ public class FavoriteRestaurantServiceTest extends TestCase {
      */
     private FavoriteRestaurantService favoriteRestaurantService;
     /**
-     * id de comensal logueado
+     *  comensal logueado
      */
-    private int logedCommensal;
+    private BaseEntity logedCommensal;
 
     /**
-     * id de restaurante seleccionado
+     * restaurante seleccionado
      */
-    private int selectedRestaurant;
+    private BaseEntity selectedRestaurant;
 
     /**
      * email de commensal logueado
@@ -57,9 +56,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         favoriteRestaurantService = FondaServiceFactory.getInstance().getFavoriteRestaurantService();
-        commensal = new Commensal();
-        logedCommensal = 13;
-        selectedRestaurant = 3;
+        commensal = (Commensal) FondaEntityFactory.getInstance().GetCommensal();
+        logedCommensal = FondaEntityFactory.getInstance().GetCommensal(13);
+        selectedRestaurant = FondaEntityFactory.getInstance().GetRestaurant(3);
         email = "adri@hotmail.com";
     }
 
@@ -71,8 +70,8 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         try {
 
-            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal,
-                    selectedRestaurant);
+            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
+                    selectedRestaurant.getId());
             assertNotNull(commensal);
         } catch (RestClientException e) {
             e.printStackTrace();
@@ -89,8 +88,8 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         try {
 
-            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal,
-                    selectedRestaurant);
+            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
+                    selectedRestaurant.getId());
             assertEquals(email, commensal.getEmail());
         } catch (RestClientException e) {
             e.printStackTrace();
@@ -105,8 +104,8 @@ public class FavoriteRestaurantServiceTest extends TestCase {
     public void testAddFavoriteRestaurantServiceElements() {
 
         try {
-            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal,
-                    selectedRestaurant);
+            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
+                    selectedRestaurant.getId());
 
             assertEquals(email, commensal.getEmail());
             MoreAsserts.assertNotEmpty(commensal.getFavoritesRestaurants());
@@ -124,8 +123,8 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         try {
 
-            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal,
-                    selectedRestaurant);
+            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
+                    selectedRestaurant.getId());
             MoreAsserts.assertNotEmpty(commensal.getFavoritesRestaurants());
             assertEquals(3, commensal.getFavoritesRestaurants().size());
 
@@ -144,8 +143,8 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         try {
 
-            commensal = favoriteRestaurantService.deleteFavoriteRestaurant(logedCommensal,
-                    selectedRestaurant);
+            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
+                    selectedRestaurant.getId());
 
             assertNotNull(commensal);
         } catch (RestClientException e) {
@@ -163,9 +162,8 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         try {
 
-            commensal = favoriteRestaurantService.deleteFavoriteRestaurant(logedCommensal,
-                    selectedRestaurant);
-
+            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
+                    selectedRestaurant.getId());
             assertEquals(email, commensal.getEmail());
         } catch (RestClientException e) {
             e.printStackTrace();
@@ -181,8 +179,8 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         try {
 
-            commensal = favoriteRestaurantService.deleteFavoriteRestaurant(logedCommensal,
-                    selectedRestaurant);
+            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
+                    selectedRestaurant.getId());
             assertEquals(email, commensal.getEmail());
             MoreAsserts.assertNotEmpty(commensal.getFavoritesRestaurants());
         } catch (RestClientException e) {
@@ -198,8 +196,8 @@ public class FavoriteRestaurantServiceTest extends TestCase {
     public void testDeleteFavoriteRestauranServiceList() {
 
         try {
-            commensal = favoriteRestaurantService.deleteFavoriteRestaurant(logedCommensal,
-                    selectedRestaurant);
+            commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
+                    selectedRestaurant.getId());
             MoreAsserts.assertNotEmpty(commensal.getFavoritesRestaurants());
             assertEquals(2, commensal.getFavoritesRestaurants().size());
 
@@ -218,7 +216,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         try {
 
-            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(logedCommensal);
+            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(logedCommensal.getId());
 
             assertNotNull(restaurantList);
         } catch (RestClientException e) {
@@ -236,7 +234,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         try {
 
-            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(logedCommensal);
+            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(logedCommensal.getId());
 
             MoreAsserts.assertNotEmpty(restaurantList);
         } catch (RestClientException e) {
@@ -252,7 +250,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
     public void testAllFavoriteRestaurantServiceElements() {
 
         try {
-            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(logedCommensal);
+            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(logedCommensal.getId());
 
             assertEquals("Pizza Familia", restaurantList.get(2).getName());
         } catch (RestClientException e) {
@@ -271,8 +269,8 @@ public class FavoriteRestaurantServiceTest extends TestCase {
         super.tearDown();
         favoriteRestaurantService = null;
         commensal = null;
-        logedCommensal = 0;
-        selectedRestaurant = 0;
+        logedCommensal = null;
+        selectedRestaurant = null;
     }
 
 

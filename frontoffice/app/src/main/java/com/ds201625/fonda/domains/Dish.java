@@ -7,7 +7,7 @@ package com.ds201625.fonda.domains;
 /*
  Clase quee representa el plato del restaurant
  */
-public class Dish extends NounBaseEntity{
+public class Dish extends NounBaseEntity {
 
     /**
      * String que define la descripcion del plato

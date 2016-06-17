@@ -2,10 +2,7 @@ package com.ds201625.fonda.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.Invoice;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 

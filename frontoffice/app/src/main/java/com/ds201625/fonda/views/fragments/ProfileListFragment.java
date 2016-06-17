@@ -24,7 +24,6 @@ import com.ds201625.fonda.views.adapters.ProfileViewItemList;
 import com.ds201625.fonda.domains.Profile;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Fragment que contiene la lista de Perfiles.
