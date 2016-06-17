@@ -1,7 +1,6 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
 using NUnit.Framework;
@@ -15,28 +14,34 @@ namespace FondaBackOfficeLogicTest
 {
     public class BOCommandInvoiceTest
     {
+        private int _restaurantId, _orderId;
         private Command _command;
+        private IList<Account> _listAccount;
+        private IList<Account> _listClosedOrders;
         private IList<Invoice> _listInvoices;
         private FactoryDAO _facDAO;
+        private IOrderAccountDao _orderAccountDAO;
         private Restaurant _restaurant;
         private Invoice _invoice;
         private Account _account;
         private IInvoiceDao _invoiceDAO;
-        private int _restaurantId;
 
         [SetUp]
         public void Init()
         {
+            if (_facDAO == null)
                 _facDAO = FactoryDAO.Intance;
 
+            _orderAccountDAO = _facDAO.GetOrderAccountDAO();
             _restaurant = new Restaurant();
+            _listClosedOrders = new List<Account>();
             _restaurant.Id = 1;
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             _restaurant = _restaurantDAO.FindById(_restaurant.Id);
-            _restaurantId = 1;
+            _restaurantId = _orderId = 1;
 
-            _account = (Account)EntityFactory.GetAccount();
-            _invoice = (Invoice)EntityFactory.GetInvoice();
+            _account = new Account();
+            _invoice = new Invoice();
             _account.Id = 2;
             _invoiceDAO = _facDAO.GetInvoiceDao();
             IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
@@ -45,34 +50,18 @@ namespace FondaBackOfficeLogicTest
         }
 
         [Test]
-        public void CommandGetGenerateInvoiceTest()
+        public void CommandFindInvoicesByRestaurantTest()
         {
-            _command = CommandFactory.GetCommandGenerateInvoice(_account);
 
-            _command.Execute();
-
-            _invoice = (Invoice)_command.Receiver;
-
-            Assert.IsNotNull(_invoice);
-            Assert.AreEqual(_invoice.Id, 2);
-            Assert.AreEqual(_invoice.Number, 2);
-
-        }
-
-        [Test]
-        public void CommandFindInvoicesByAccountTest()
-        {
-            _command = CommandFactory.GetCommandFindInvoicesByAccount(_account);
+            _command = CommandFactory.GetCommandFindInvoicesByRestaurant(_restaurant);
 
             _command.Execute();
 
             _listInvoices = (IList<Invoice>)_command.Receiver;
 
-            Assert.IsNotNull(_invoice);
-
-            Assert.AreEqual(_listInvoices[0].Id, 2);
-
+            Assert.IsNotNull(_listInvoices);
+            Assert.AreEqual(_listInvoices[0].Id,1);
+            Assert.AreEqual(_listInvoices[1].Number, 2);
         }
-
     }
 }

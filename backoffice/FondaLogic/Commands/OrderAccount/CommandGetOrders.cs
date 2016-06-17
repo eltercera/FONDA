@@ -35,6 +35,8 @@ namespace FondaLogic.Commands.OrderAccount
         /// </summary>
         public override void Execute()
         {
+            IList<Account> listAccounts;
+
             try
             {
                 //Defino el DAO
@@ -42,7 +44,7 @@ namespace FondaLogic.Commands.OrderAccount
                 //Obtengo la instancia del DAO a utilizar
                 _restaurantDAO = _facDAO.GetRestaurantDAO();
 
-                IList<Account> listAccounts = _restaurantDAO.OpenOrdersByRestaurantId(_restaurantId);
+                listAccounts = _restaurantDAO.OpenOrdersByRestaurantId(_restaurantId);
 
                 Receiver = listAccounts;
             }
@@ -58,7 +60,9 @@ namespace FondaLogic.Commands.OrderAccount
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,exceptionGetOrders);
 
-                throw exceptionGetOrders;
+                listAccounts = new List<Account>();
+                Receiver = listAccounts;
+                //throw exceptionGetOrders;
             }
 
 

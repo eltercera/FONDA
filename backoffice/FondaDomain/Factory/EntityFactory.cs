@@ -83,5 +83,36 @@ namespace com.ds201625.fonda.Factory
             return new Role();
         }
         #endregion
+
+        #region LoginFO
+        //Instancia de Commensal
+        public static Entity GetCommensal()
+        {
+            return new Commensal();
+        }
+        //Instancia de Token
+        public static Entity GetToken()
+        {
+            return new Token();
+        }
+        //Instancia de Profile
+        public static Entity GetProfile()
+        {
+            return new Profile();
+        }
+        #endregion
+
+        #region Favorito
+        //Instancia de UserAccount
+        public static Entity GetUserAccount()
+        {
+            return new UserAccount();
+        }
+        //Instancia de RestaurantCategory
+        public static Entity GetCategoryRestaurent()
+        {
+            return new RestaurantCategory();
+        }
+        #endregion
     }
 }

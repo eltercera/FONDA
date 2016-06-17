@@ -1,34 +1,27 @@
-﻿using System;
+﻿using BackOfficeModel.OrderAccount;
+using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
-using com.ds201625.fonda.Domain;
-using System.Web.Services;
-using System.Web.Script.Serialization;
-using BackOfficeModel.OrderAccount;
-using BackOffice.Seccion.Restaurant;
-using System.Web.SessionState;
-using FondaResources.OrderAccount;
-using FondaResources.Login;
 using BackOfficeModel;
 using System.Web.UI.HtmlControls;
+using FondaResources.Login;
+using FondaResources.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class Default : System.Web.UI.Page, IOrdersModel
+    public partial class ListarFacturas : System.Web.UI.Page, IOrderInvoicesModel
     {
         #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter _presenter;
+        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrderInvoicesPresenter _presenter;
 
         #endregion
 
         #region Model
+
 
         Label IModel.ErrorLabelMessage
         {
@@ -47,15 +40,15 @@ namespace BackOffice.Seccion.Caja
 
         public System.Web.UI.WebControls.Table OrdersTable
         {
-            get { return orderList; }
+            get { return orderInvoices; }
 
-            set { orderList = value; }
+            set { orderInvoices = value; }
         }
 
         /// <summary>
         /// Recurso de Session para el ID de la orden
         /// </summary>
-        string IOrdersModel.Session
+        string IOrderInvoicesModel.Session
         {
             get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
@@ -85,24 +78,25 @@ namespace BackOffice.Seccion.Caja
             get { return this.ErrorLabel; }
         }
 
+        public Table OrderInvoicesTable
+        {
+            get { return orderInvoices; }
+
+            set { orderInvoices = value; }
+        }
+
         #endregion
 
         #region Constructor
-
-        public Default()
+        public ListarFacturas()
         {
-                  _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter(this);
+            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrderInvoicesPresenter(this);
         }
         #endregion
 
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Llama al presentador para llenar la tabla de ordenes
-            _presenter.GetOrders();
-        }
 
-        
+        }
     }
 }

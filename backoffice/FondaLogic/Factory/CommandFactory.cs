@@ -34,6 +34,16 @@ namespace FondaLogic.Factory
         //Se obtienen los comandos a a utilizar
 
         /// <summary>
+        /// Metodo de la fabrica para el Comando CommandFindInvoicesByRestaurant
+        /// </summary>
+        /// <param name="entity">Id del Restaurante</param>
+        /// <returns>comando CommandGetOrders</returns>
+        public static Command GetCommandFindInvoicesByRestaurant(object receiver)
+        {
+            return new CommandFindInvoicesByRestaurant(receiver);
+        }
+
+        /// <summary>
         /// Metodo de la fabrica para el Comando CommandGetOrders
         /// </summary>
         /// <param name="entity">Id del Restaurante</param>
