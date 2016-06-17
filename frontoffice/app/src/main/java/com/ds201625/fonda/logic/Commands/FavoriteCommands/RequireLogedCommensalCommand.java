@@ -6,6 +6,7 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
 
@@ -25,7 +26,7 @@ public class RequireLogedCommensalCommand extends BaseCommand {
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para obtener el comensal logeado");
-        Commensal commensal = null;
+        Commensal commensal = FondaEntityFactory.getInstance().GetCommensal();
 
         String email = "";
         try {

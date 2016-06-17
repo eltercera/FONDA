@@ -30,12 +30,12 @@ public class FavoriteRestaurantServiceTest extends TestCase {
     /**
      *  comensal logueado
      */
-    private BaseEntity logedCommensal;
+    private Commensal logedCommensal;
 
     /**
      * restaurante seleccionado
      */
-    private BaseEntity selectedRestaurant;
+    private Restaurant selectedRestaurant;
 
     /**
      * email de commensal logueado
@@ -56,7 +56,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         favoriteRestaurantService = FondaServiceFactory.getInstance().getFavoriteRestaurantService();
-        commensal = (Commensal) FondaEntityFactory.getInstance().GetCommensal();
+        commensal = FondaEntityFactory.getInstance().GetCommensal();
         logedCommensal = FondaEntityFactory.getInstance().GetCommensal(13);
         selectedRestaurant = FondaEntityFactory.getInstance().GetRestaurant(3);
         email = "adri@hotmail.com";

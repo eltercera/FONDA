@@ -32,7 +32,7 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
         Log.d(TAG, "Comando para obtener los restaurantes favoritos");
         List<Restaurant> restaurantList = null;
 
-        BaseEntity idCommensal = FondaEntityFactory.getInstance().GetCommensal();
+        Commensal idCommensal = FondaEntityFactory.getInstance().GetCommensal();
         try {
             idCommensal = (Commensal) getParameter(0);
         } catch (Exception e) {
