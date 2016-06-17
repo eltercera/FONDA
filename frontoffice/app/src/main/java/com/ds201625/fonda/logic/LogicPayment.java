@@ -3,7 +3,7 @@ package com.ds201625.fonda.logic;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.domains.entities.Invoice;
 
 /**
  * Logica del pago

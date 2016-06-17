@@ -5,18 +5,10 @@ import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.Currency;
-import com.ds201625.fonda.domains.Dish;
-import com.ds201625.fonda.domains.DishOrder;
-
-import java.util.ArrayList;
-
+import com.ds201625.fonda.domains.entities.DishOrder;
 
 
 /**

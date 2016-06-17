@@ -1,14 +1,9 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
-import android.util.Log;
-
 import com.ds201625.fonda.data_access.retrofit_client.clients.CurrentOrderClient;
-import com.ds201625.fonda.data_access.retrofit_client.clients.ProfileClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
-import com.ds201625.fonda.data_access.services.ProfileService;
-import com.ds201625.fonda.domains.DishOrder;
-import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.domains.entities.DishOrder;
 
 import java.io.IOException;
 import java.util.List;

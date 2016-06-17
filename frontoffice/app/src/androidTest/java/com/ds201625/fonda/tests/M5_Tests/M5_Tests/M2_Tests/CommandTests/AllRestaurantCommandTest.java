@@ -3,7 +3,7 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.CommandTests;
 import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.entities.Restaurant;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 

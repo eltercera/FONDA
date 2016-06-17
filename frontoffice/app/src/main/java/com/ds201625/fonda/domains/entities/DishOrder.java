@@ -1,4 +1,7 @@
-package com.ds201625.fonda.domains;
+package com.ds201625.fonda.domains.entities;
+
+import com.ds201625.fonda.domains.BaseEntity;
+import com.ds201625.fonda.domains.entities.Dish;
 
 /**
  * Created by Katherina Molina on 10/05/2016.

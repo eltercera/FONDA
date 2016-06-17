@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
-import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.entities.Commensal;
 import com.ds201625.fonda.logic.SessionData;
 
 

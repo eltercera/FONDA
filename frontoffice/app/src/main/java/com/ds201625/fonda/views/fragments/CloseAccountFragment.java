@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.DishOrder;
+import com.ds201625.fonda.domains.entities.DishOrder;
 import com.ds201625.fonda.logic.LogicCurrentOrder;
 import com.ds201625.fonda.views.adapters.CloseViewItemList;
 
@@ -19,7 +19,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Clase Fragment que muestra el cierre de cuenta

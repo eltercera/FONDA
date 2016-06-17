@@ -3,7 +3,9 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.CommandTests;
 import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.BaseEntity;
+import com.ds201625.fonda.domains.entities.Commensal;
+import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 
@@ -31,12 +33,12 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
     /**
      * id de comensal logueado
      */
-    private int logedCommensal;
+    private BaseEntity logedCommensal;
 
     /**
      * id de restaurante seleccionado
      */
-    private int selectedRestaurantDelete;
+    private BaseEntity selectedRestaurantDelete;
 
     /**
      * email de commensal logueado
@@ -55,9 +57,9 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         facCmd = FondaCommandFactory.getInstance();
-        commensal = new Commensal();
-        logedCommensal = 13;
-        selectedRestaurantDelete = 1;
+        commensal = (Commensal) FondaEntityFactory.getInstance().GetCommensal();
+        logedCommensal = FondaEntityFactory.getInstance().GetCommensal(13);
+        selectedRestaurantDelete =  FondaEntityFactory.getInstance().GetRestaurant(1);
         email = "adri@hotmail.com";
     }
 
@@ -160,8 +162,8 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
         facCmd = null;
         cmd = null;
         commensal = null;
-        logedCommensal = 0;
-        selectedRestaurantDelete = 0;
+        logedCommensal = null;
+        selectedRestaurantDelete = null;
     }
 
 

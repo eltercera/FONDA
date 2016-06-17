@@ -1,4 +1,4 @@
-package com.ds201625.fonda.domains;
+package com.ds201625.fonda.domains.entities;
 
 import java.util.List;
 /**
@@ -13,6 +13,10 @@ public class Restaurant extends Company {
 
     public Restaurant () {
         super();
+    }
+
+    public Restaurant (int id) {
+        this.setId(id);
     }
 
     public Restaurant (String name,String address, RestaurantCategory restaurantCategory) {

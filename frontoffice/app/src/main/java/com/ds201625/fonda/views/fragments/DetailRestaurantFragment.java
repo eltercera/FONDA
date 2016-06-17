@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.entities.Restaurant;
 
 
 /**

@@ -1,4 +1,6 @@
-package com.ds201625.fonda.domains;
+package com.ds201625.fonda.domains.entities;
+
+import com.ds201625.fonda.domains.BaseEntity;
 
 import java.util.Date;
 

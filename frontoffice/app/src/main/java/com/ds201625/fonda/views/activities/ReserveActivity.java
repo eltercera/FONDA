@@ -4,7 +4,7 @@ import android.os.Bundle;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.ReservationService;
-import com.ds201625.fonda.domains.Reservation;
+import com.ds201625.fonda.domains.entities.Reservation;
 import com.ds201625.fonda.logic.SessionData;
 import com.google.gson.Gson;
 

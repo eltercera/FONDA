@@ -3,8 +3,9 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.CommandTests;
 import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.BaseEntity;
+import com.ds201625.fonda.domains.entities.Restaurant;
+import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 
@@ -34,7 +35,7 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
     /**
      * id de comensal logueado
      */
-    private int logedCommensal;
+    private BaseEntity logedCommensal;
 
     /**
      * Variable lista de restaurantes favoritos
@@ -48,7 +49,7 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         facCmd = FondaCommandFactory.getInstance();
-        logedCommensal = 13;
+        logedCommensal = FondaEntityFactory.getInstance().GetCommensal(13);
     }
 
 
@@ -124,7 +125,7 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
         facCmd = null;
         cmd = null;
         restaurantList = null;
-        logedCommensal = 0;
+        logedCommensal = null;
     }
 
 

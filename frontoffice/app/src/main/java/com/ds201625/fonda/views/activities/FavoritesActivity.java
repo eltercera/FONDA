@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.entities.Commensal;
+import com.ds201625.fonda.domains.entities.Restaurant;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
@@ -219,8 +219,8 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
                 //Llamo al comando de deleteFavoriteRestaurant
                 Command cmdDelete = facCmd.deleteFavoriteRestaurantCommand();
-                cmdDelete.setParameter(0,logedComensal.getId());
-                cmdDelete.setParameter(1,selectedRestaurant.getId());
+                cmdDelete.setParameter(0,logedComensal);
+                cmdDelete.setParameter(1,selectedRestaurant);
                 cmdDelete.run();
 
                 Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,

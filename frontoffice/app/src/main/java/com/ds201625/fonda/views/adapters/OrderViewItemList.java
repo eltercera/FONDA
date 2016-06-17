@@ -6,12 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.ds201625.fonda.domains.Dish;
-import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.DishOrder;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.entities.DishOrder;
 
 /**
  *  Clase para llenar la lista de los platos ordenados
