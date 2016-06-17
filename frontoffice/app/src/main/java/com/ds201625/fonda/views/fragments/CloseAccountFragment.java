@@ -19,7 +19,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Clase Fragment que muestra el cierre de cuenta

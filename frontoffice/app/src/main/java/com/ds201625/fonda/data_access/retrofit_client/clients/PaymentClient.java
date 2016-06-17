@@ -1,6 +1,5 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
-import com.ds201625.fonda.domains.CreditCarPayment;
 import com.ds201625.fonda.domains.Invoice;
 
 import retrofit2.Call;

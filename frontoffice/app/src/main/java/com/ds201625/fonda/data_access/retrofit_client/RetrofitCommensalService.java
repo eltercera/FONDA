@@ -9,7 +9,6 @@ import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.domains.Commensal;
 
 
-import java.io.File;
 import java.io.IOException;
 
 import retrofit2.Call;

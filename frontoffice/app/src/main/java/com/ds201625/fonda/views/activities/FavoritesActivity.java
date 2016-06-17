@@ -203,7 +203,6 @@ public class FavoritesActivity extends BaseNavigationActivity implements
         try {
             Commensal log = SessionData.getInstance().getCommensal();
             try {
-                favoriteBotton.setIcon(R.drawable.ic_star_yellow);
 
                 emailToWebService=log.getEmail()+"/";
 
@@ -219,8 +218,8 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
                 //Llamo al comando de deleteFavoriteRestaurant
                 Command cmdDelete = facCmd.deleteFavoriteRestaurantCommand();
-                cmdDelete.setParameter(0,logedComensal.getId());
-                cmdDelete.setParameter(1,selectedRestaurant.getId());
+                cmdDelete.setParameter(0,logedComensal);
+                cmdDelete.setParameter(1,selectedRestaurant);
                 cmdDelete.run();
 
                 Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
@@ -247,6 +246,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
     public void OnFavoriteSelect(Restaurant r) {
         showFragment(detailRestaurantFrag);
         detailRestaurantFrag.setRestaurant(r);
+        favoriteBotton.setIcon(R.drawable.ic_star_yellow);
     }
 
     @Override

@@ -11,6 +11,7 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
 
 
+
 /**
  * Fragment que contiene los detalles de un restaurante
  */
@@ -29,6 +30,7 @@ public class DetailRestaurantFragment extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -65,7 +67,10 @@ public class DetailRestaurantFragment extends BaseFragment {
     }
 
 
-
+    /**
+     * Obtiene el restaurante seleccionado
+     * @return restuarant
+     */
     public Restaurant getRestaurant() {
         return restaurant;
     }

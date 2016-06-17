@@ -5,8 +5,10 @@ import android.util.Log;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
+import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
 
@@ -20,7 +22,7 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[1];
-        parameters[0] = new Parameter(Integer.class, true);
+        parameters[0] = new Parameter(Commensal.class, true);
 
         return parameters;
     }
@@ -30,24 +32,24 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
         Log.d(TAG, "Comando para obtener los restaurantes favoritos");
         List<Restaurant> restaurantList = null;
 
-        int idCommensal = 0;
+        BaseEntity idCommensal = FondaEntityFactory.getInstance().GetCommensal();
         try {
-            idCommensal = (Integer) getParameter(0);
+            idCommensal = (Commensal) getParameter(0);
         } catch (Exception e) {
             Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
         }
 
         try {
-            idCommensal = (Integer) this.getParameter(1);
+            idCommensal = (Commensal) this.getParameter(1);
         } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+           // Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
         }
 
         FavoriteRestaurantService ps = FondaServiceFactory.getInstance()
                 .getFavoriteRestaurantService();
 
         try {
-            restaurantList =  ps.getAllFavoriteRestaurant(idCommensal);
+            restaurantList =  ps.getAllFavoriteRestaurant(idCommensal.getId());
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
         }

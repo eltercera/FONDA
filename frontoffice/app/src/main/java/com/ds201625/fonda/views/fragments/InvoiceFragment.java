@@ -12,7 +12,8 @@ import android.widget.TextView;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.*;
+import com.ds201625.fonda.domains.DishOrder;
+import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.logic.LogicInvoice;
 import com.ds201625.fonda.views.adapters.InvoiceViewItemList;
 import java.util.List;
