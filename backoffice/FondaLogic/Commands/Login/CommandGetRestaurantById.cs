@@ -43,17 +43,17 @@ namespace FondaLogic.Commands.Login
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetRestaurant exceptionGetRestaurant = new CommandExceptionGetRestaurant(
+                //CommandExceptionGetRestaurant exceptionGetRestaurant = new CommandExceptionGetRestaurant(
                 //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetRestaurant,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
+                //FondaResources.General.Errors.NullExceptionReferenceCode,
+                //FondaResources.Login.Errors.ClassNameGetRestaurant,
+                //FondaResources.Login.Errors.CommandMethod,
+                //FondaResources.General.Errors.NullExceptionReferenceMessage,
+                //ex);
 
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRestaurant);
+                 //Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRestaurant);
 
-                throw exceptionGetRestaurant;
+                //throw exceptionGetRestaurant;
             }
             catch (Exception ex)
             {

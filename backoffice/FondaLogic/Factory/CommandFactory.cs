@@ -12,10 +12,6 @@ namespace FondaLogic.Factory
     /// </summary>
     public class CommandFactory
     {
-        public static Command GetCommandGenerateException()
-        {
-            return new CommandGenerateException(1);
-        }
 
         #region Logger
 
@@ -31,17 +27,7 @@ namespace FondaLogic.Factory
 
         #region OrderAccount
 
-        //Se obtienen los comandos a a utilizar
 
-        /// <summary>
-        /// Metodo de la fabrica para el Comando CommandFindInvoicesByRestaurant
-        /// </summary>
-        /// <param name="entity">Id del Restaurante</param>
-        /// <returns>comando CommandGetOrders</returns>
-        public static Command GetCommandFindInvoicesByRestaurant(object receiver)
-        {
-            return new CommandFindInvoicesByRestaurant(receiver);
-        }
 
         /// <summary>
         /// Metodo de la fabrica para el Comando CommandGetOrders
@@ -90,27 +76,9 @@ namespace FondaLogic.Factory
 
         #region Invoice
 
-        //Se obtienen los comandos a a utilizar
+ 
 
-        /// <summary>
-        /// Metodo de la fabrica para el Comando CommandGetInvoice
-        /// </summary>
-        /// <param name="entity">Id del Restaurante</param>
-        /// <returns>comando CommandGetOrders</returns>
-        public static Command GetCommandGenerateInvoice(object receiver)
-        {
-            return new CommandGetGenerateInvoice(receiver);
-        }
 
-        /// <summary>
-        /// Metodo de la fabrica para el Comando FindInvoices
-        /// </summary>
-        /// <param name="entity">Id Account</param>
-        /// <returns>comando CommandFindInvoices</returns>
-        public static Command GetCommandFindInvoicesByAccount(object receiver)
-        {
-            return new CommandFindInvoicesByAccount(receiver);
-        }
 
         #endregion
 
