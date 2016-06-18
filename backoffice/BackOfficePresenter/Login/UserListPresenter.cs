@@ -255,7 +255,7 @@ namespace BackOfficePresenter.Login
 
         public void Modify_Click(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Debug.WriteLine("entre modify presentador ");
             ClearModalAddModify();
             string _role = (string)(HttpContext.Current.Session[ResourceLogin.sessionRol]);
             ChangeRole(_role);
