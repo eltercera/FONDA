@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
 
@@ -27,17 +28,32 @@ public class DetailRestaurantFragment extends BaseFragment {
     private TextView tvAvPr;
     private View form;
 
+    /**
+     * Crea el fragment
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
 
+    /**
+     * Crea la actividad
+     * @param savedInstanceState
+     */
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
 
+    /**
+     * Crea la vista
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,12 +92,18 @@ public class DetailRestaurantFragment extends BaseFragment {
     }
 
 
-
+    /**
+     * Cuando se une
+     * @param context
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
     }
 
+    /**
+     * Cuando se desune
+     */
     @Override
     public void onDetach() {
         super.onDetach();

@@ -49,21 +49,21 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 result = int.Parse(_view.SessionRestaurant);
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByRestaurant(result);
+                //commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByRestaurant(result);
 
                 //Ejecuta el comando deseado
-                commandGetInvoicesByAccount.Execute();
+                //commandGetInvoicesByAccount.Execute();
 
                 //Se obtiene el resultado de la operacion
-                listInvoice = (IList<Invoice>)commandGetInvoicesByAccount.Receiver;
+                //listInvoice = (IList<Invoice>)commandGetInvoicesByAccount.Receiver;
 
 
                 //Revisa si la lista no esta vacia
-                if (listInvoice != null)
-                {
+                //if (listInvoice != null)
+                //{
                     //Llama al metodo para el llenado de la tabla
-                    FillTable(listInvoice);
-                }
+                   // FillTable(listInvoice);
+                //}
             }
             catch (MVPExceptionOrdersTable ex)
             {

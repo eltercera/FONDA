@@ -59,7 +59,7 @@ namespace FondaLogic.Commands.Login
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
 
-                throw exceptionCreateEmployee;
+                    throw exceptionCreateEmployee;
 
             }
             catch (NullReferenceException ex)
@@ -69,7 +69,7 @@ namespace FondaLogic.Commands.Login
                 CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
                 //Arrojar
                 FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameSaveEmployee,
+                FondaResources.Login.Errors.ClassNameGetEmployeeId,
                 FondaResources.Login.Errors.CommandMethod,
                 FondaResources.General.Errors.NullExceptionReferenceMessage,
                 ex);

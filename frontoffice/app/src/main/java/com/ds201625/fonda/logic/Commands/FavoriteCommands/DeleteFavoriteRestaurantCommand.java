@@ -19,6 +19,10 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
 
     private String TAG = "DeleteFavoriteRestaurantCommand";
 
+    /**
+     * Asigna valor a los parametros
+     * @return parametros comensal y restaurant
+     */
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[2];
@@ -27,14 +31,16 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
 
         return parameters;
     }
-
+    /**
+     * Comando para eliminar un restaurante favorito
+     */
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para eliminar un restaurante de favoritos");
-        Commensal commensal = (Commensal) FondaEntityFactory.getInstance().GetCommensal();
+        Commensal commensal = FondaEntityFactory.getInstance().GetCommensal();
 
-        BaseEntity idCommensal = FondaEntityFactory.getInstance().GetCommensal();
-        BaseEntity idRestaurant = FondaEntityFactory.getInstance().GetRestaurant();
+        Commensal idCommensal = FondaEntityFactory.getInstance().GetCommensal();
+        Restaurant idRestaurant = FondaEntityFactory.getInstance().GetRestaurant();
         try {
             idCommensal = (Commensal) getParameter(0);
             idRestaurant = (Restaurant) getParameter(1);

@@ -4,6 +4,7 @@ import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.BaseEntity;
+import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.logic.Command;
@@ -35,7 +36,7 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
     /**
      * id de comensal logueado
      */
-    private BaseEntity logedCommensal;
+    private Commensal logedCommensal;
 
     /**
      * Variable lista de restaurantes favoritos

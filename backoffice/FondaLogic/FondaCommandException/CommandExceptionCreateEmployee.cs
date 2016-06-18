@@ -9,7 +9,6 @@ namespace FondaLogic.FondaCommandException
     class CommandExceptionCreateEmployee : CommandException
     {
 
-
         #region Constructors
 
         public CommandExceptionCreateEmployee(string message, Exception ex) : base(message, ex)
@@ -22,7 +21,6 @@ namespace FondaLogic.FondaCommandException
         }
 
         #endregion
-
 
     }
 }

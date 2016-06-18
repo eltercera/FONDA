@@ -41,6 +41,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetEmailCommensalManagementTest .cs" />
+    <Compile Include="GetAllRestaurantManagementTest.cs" />
+    <Compile Include="GetFavoriteRestaurantManagementTest .cs" />
+    <Compile Include="DeleteRestaurantManagementTest.cs" />
+    <Compile Include="CreateFavoriteRestaurantManagementTest.cs" />
     <Compile Include="ProfileManagementTest.cs" />
   </ItemGroup>
   <ItemGroup>

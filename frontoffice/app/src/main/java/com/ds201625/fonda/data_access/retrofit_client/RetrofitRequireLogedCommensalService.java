@@ -24,16 +24,24 @@ public class RetrofitRequireLogedCommensalService implements RequireLogedCommens
         super();
     }
 
+    /**
+     * Obtiene el comensal logueado
+     *
+     * @param email
+     * @return
+     * @throws RestClientException
+     */
     @Override
-    public Commensal getLogedCommensal(String email) throws RestClientException{
+    public Commensal getLogedCommensal(String email) throws RestClientException {
         Log.d(TAG, "Se obtiene el comensal logeado: "+email);
         Call<Commensal> call = currentLogedCommensal.getAllFavoriteRestaurant(email);
         Commensal test = null;
         try {
             test =call.execute().body();
         } catch (IOException e) {
-            Log.e(TAG, "Se ha generado error en getLogedCommensal", e);
+            Log.e(TAG, "Se ha generado error en la clase getLogedCommensal", e);
         }
         return test;
     }
+
 }

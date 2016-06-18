@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.FondaCommandException
 {
-    class CommandExceptionGetRestaurant : CommandException
+    public class CommandExceptionGetRestaurant : CommandException
     {
 
     

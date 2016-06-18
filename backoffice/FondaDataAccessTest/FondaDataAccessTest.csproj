@@ -100,12 +100,13 @@
     <Compile Include="BOTableTest.cs" />
     <Compile Include="BOUserAcountTest.cs" />
     <Compile Include="BOValidationsTest.cs" />
-    <Compile Include="FOAddRestaurantFavorite.cs" />
+    <Compile Include="FORestaurantFavorite.cs" />
     <Compile Include="FOCommensalRegister.cs" />
     <Compile Include="FORegisterZone.cs" />
     <Compile Include="FORestaurantRegister.cs" />
     <Compile Include="FOUserRegisterTests.cs" />
     <Compile Include="BOGeopositionTableTest.cs" />
+    <Compile Include="InvalidTypeOfParameterException.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

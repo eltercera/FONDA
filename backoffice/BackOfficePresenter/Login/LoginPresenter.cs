@@ -1,11 +1,14 @@
 ﻿
 using BackOfficeModel.Login;
+using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
+using FondaLogic.FondaCommandException;
+using FondaLogic.Log;
 using FondaResources.Login;
 using System;
 using System.Collections.Generic;
@@ -36,13 +39,20 @@ namespace BackOfficePresenter.Login
         }
 
 
-
+        /// <summary>
+        /// Procedimiento que muestra mensaje dependiendo del error ocurrido
+        /// </summary>
+        /// <param name="visible">booleano indicando si se muestra mensaje o no</param>
+        /// <param name="message">String a mostrar en el mensaje</param>
+        /// <param name="type">Tipo de mensaje a mostrar</param>
         public void mensajeLogin(Boolean visible, string message, string type)
         {
 
             switch (type)
             {
+                
                 case "Error":
+
                     _view.alertloginError.Visible = visible;
                     _view.alertwarningLog.Visible = !visible;
                     _view.alertinfoLog.Visible = !visible;
@@ -56,7 +66,7 @@ namespace BackOfficePresenter.Login
                     _view.alertsuccessLog.Visible = !visible;
                     _view.alertwarningLog.InnerText = message; break;
                 case "Info":
-                    System.Diagnostics.Debug.WriteLine("llame a mensaje loggin2");
+                    
                     _view.alertinfoLog.Visible = visible;
                     _view.alertloginError.Visible = !visible;
                     _view.alertwarningLog.Visible = !visible;
@@ -68,6 +78,13 @@ namespace BackOfficePresenter.Login
                     _view.alertwarningLog.Visible = !visible;
                     _view.alertinfoLog.Visible = !visible;
                     _view.alertsuccessLog.InnerText = message; break;
+                case "State":
+
+                    _view.alertloginError.Visible = visible;
+                    _view.alertwarningLog.Visible = !visible;
+                    _view.alertinfoLog.Visible = !visible;
+                    _view.alertsuccessLog.Visible = !visible;
+                    _view.alertloginError.InnerText = message; break;
             }
         }
 
@@ -75,7 +92,7 @@ namespace BackOfficePresenter.Login
         /// <summary>
         /// metodo que valida el ingreso del usuario
         /// </summary>
-        /// <param name="user">usuario intentando entrar</param>
+        /// 
         public void ValidateUser()
         {
             // usuario intentando ingresar
@@ -113,77 +130,103 @@ namespace BackOfficePresenter.Login
                     //obtenemos resultado
                     _employeeResult = (Employee)CommandGetEmployeeByUser.Receiver;
                     System.Diagnostics.Debug.WriteLine(_employeeResult.Name);
+                    //Validacion de que no se encontro usuario
                     if (_employeeResult != null)
                     {
-                        System.Diagnostics.Debug.WriteLine("Consegui la cuenta!");
-                        System.Diagnostics.Debug.WriteLine(_employeeResult.Name);
-                        if (_employeeResult.UserAccount != null)
+                        if (_employeeResult.Status.StatusId.ToString() == "1")
                         {
-                            _userPassword = _employeeResult.UserAccount.Password;
-                            System.Diagnostics.Debug.WriteLine("Es el password de la cuenta", _userPassword);
-                            if ((_userPassword == _view.UserPassword.Value))
+                            System.Diagnostics.Debug.WriteLine("estado activo!");
+                            System.Diagnostics.Debug.WriteLine("Consegui la cuenta!");
+                            System.Diagnostics.Debug.WriteLine(_employeeResult.Name);
+                            if (_employeeResult.UserAccount != null)
                             {
-                                System.Diagnostics.Debug.WriteLine("Aprobe el login");
-
-                                HttpContext.Current.Session[ResourceLogin.sessionRol] = (string)_employeeResult.Role.Name;
-                                HttpContext.Current.Session[ResourceLogin.sessionName] = _employeeResult.Name;
-                                HttpContext.Current.Session[ResourceLogin.sessionLastname] = _employeeResult.LastName;
-                                HttpContext.Current.Session[ResourceLogin.sessionUserID] = _employeeResult.Id;
-                                /*_info[0] = _employeeResult.Role.Name;
-                                _info[1] = _employeeResult.Name;
-                                _info[2] = _employeeResult.LastName;
-                                _info[3] = _employeeResult.Id.ToString();*/
-                                System.Diagnostics.Debug.WriteLine(_employeeResult.Restaurant.Id, "ID del restaurant");
-                                if (_employeeResult.Restaurant != null)
+                                _userPassword = _employeeResult.UserAccount.Password;
+                                System.Diagnostics.Debug.WriteLine("Es el password de la cuenta", _userPassword);
+                                //Validacion de que la cuenta que intenta ingresar al sistema tiene
+                                //clave correcta
+                                if ((_userPassword == _view.UserPassword.Value))
                                 {
-                                    string RestaurantID = _employeeResult.Restaurant.Id.ToString();
-                                    int idRestaurant = int.Parse(RestaurantID);
-                                    _restaurant = (Restaurant)EntityFactory.GetRestaurant();
-                                    _restaurant.Id = idRestaurant;
-                                    
-                                    CommandGetRestaurantById = CommandFactory.GetCommandGetRestaurantById(_restaurant);
-                                    CommandGetRestaurantById.Execute();
-                                    _restaurantResult = (Restaurant)CommandGetRestaurantById.Receiver;
-                                    HttpContext.Current.Session[ResourceLogin.sessionRestaurantID] = _employeeResult.Restaurant.Id.ToString();
-                                    HttpContext.Current.Session[RestaurantResource.SessionRestaurant] = _restaurantResult.Id.ToString();
-                                    HttpContext.Current.Session[RestaurantResource.SessionNameRest] = _restaurantResult.Name;
-                                    /* Asignacion de variable de session */ _view.SessionRestaurant = _employeeResult.Restaurant.Id.ToString();
-                                    System.Diagnostics.Debug.WriteLine(_restaurantResult.Id.ToString(), "ID del restaurant");
-                                    System.Diagnostics.Debug.WriteLine(_restaurantResult.Name.ToString(), "nombre del restaurant");
+                                    System.Diagnostics.Debug.WriteLine("Aprobe el login");
+                                    //Se le da valores a las variables de session 
+                                    HttpContext.Current.Session[ResourceLogin.sessionRol] = (string)_employeeResult.Role.Name;
+                                    HttpContext.Current.Session[ResourceLogin.sessionName] = _employeeResult.Name;
+                                    HttpContext.Current.Session[ResourceLogin.sessionLastname] = _employeeResult.LastName;
+                                    HttpContext.Current.Session[ResourceLogin.sessionUserID] = _employeeResult.Id;
+                                    System.Diagnostics.Debug.WriteLine(_employeeResult.Restaurant.Id, "ID del restaurant");
+                                    if (_employeeResult.Restaurant != null)
+                                    {
+                                        string RestaurantID = _employeeResult.Restaurant.Id.ToString();
+                                        int idRestaurant = int.Parse(RestaurantID);
+                                        _restaurant = (Restaurant)EntityFactory.GetRestaurant();
+                                        _restaurant.Id = idRestaurant;
+                                        //se busca el restaurante del empleado para dar valores a las 
+                                        //variables de session
+                                        CommandGetRestaurantById = CommandFactory.GetCommandGetRestaurantById(_restaurant);
+                                        CommandGetRestaurantById.Execute();
+                                        _restaurantResult = (Restaurant)CommandGetRestaurantById.Receiver;
+                                        HttpContext.Current.Session[ResourceLogin.sessionRestaurantID] = _employeeResult.Restaurant.Id.ToString();
+                                        HttpContext.Current.Session[RestaurantResource.SessionRestaurant] = _restaurantResult.Id.ToString();
+                                        HttpContext.Current.Session[RestaurantResource.SessionNameRest] = _restaurantResult.Name;
+                                        /* Asignacion de variable de session */
+                                        _view.SessionRestaurant = _employeeResult.Restaurant.Id.ToString();
+                                        System.Diagnostics.Debug.WriteLine(_restaurantResult.Id.ToString(), "ID del restaurant");
+                                        System.Diagnostics.Debug.WriteLine(_restaurantResult.Name.ToString(), "nombre del restaurant");
+                                    }
+                                    else
+                                    {
+                                        _info[4] = "0";
+                                    }
+
+
                                 }
                                 else
                                 {
-                                    _info[4] = "0";
+                                    //error claves distintas, se llama a mostrar mensaje de error
+                                    System.Diagnostics.Debug.WriteLine("clave mala");
+                                    //_info[7] = "Error";
+                                    mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
                                 }
-
-
                             }
-                            else
-                            {
-                                //error claves distintas
-                                System.Diagnostics.Debug.WriteLine("clave mala");
-                                //_info[7] = "Error";
-                                mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
-                            }
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine("Estado inactivo");
+                            mensajeLogin(true, mensajes.logState, mensajes.tipoState);
                         }
                     }
                     else
                     {
-                        //error buscando empleado 
+                        //error buscando empleado ,  se llama a mostrar mensaje de error
                         System.Diagnostics.Debug.WriteLine("No se encontro usuario");
                         //_info[8] = "Error";
                         mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
                     }
 
                 }
-                catch (Exception)
+                catch (SaveEntityFondaDAOException ex)
                 {
-                }
+                    //TODO: Arrojar Excepcion personalizada
+                    CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
+                    //Arrojar
+                    FondaResources.General.Errors.NullExceptionReferenceCode,
+                    FondaResources.Login.Errors.ClassNameGetEmployee,
+                    FondaResources.Login.Errors.CommandMethod,
+                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    ex);
 
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
+
+                    //throw exceptionGetEmployee;
+                }
+                catch (Exception ex)
+                {
+                    
+
+                }
             }
             else
             {
-                //_info[9] = "Error";
+                //_info[9] = "Error";  se llama a mostrar mensaje de error
                 mensajeLogin(true, mensajes.logErrcamp, mensajes.tipoInfo);
             }
             
@@ -196,14 +239,18 @@ namespace BackOfficePresenter.Login
         /// <summary>
         /// metodo que recupera la clave del usuario
         /// </summary>
-        public void Recoverpassword()
+        public bool Recoverpassword()
         {
-            string[] _info = new string[10];
+            //Fabrica de Dao
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             //Valores de la vista
+            //email del usuario
             String email = _view.RecoverEmail.Value;
+            //password1 de la nueva clave
             String passwordnew1 = _view.Password1.Value;
+            //password de la nueva clave
             String passwordnew2 = _view.Password2.Value;
+            //username intentando entrar 
             String username = _view.UserRecover.Value;
             //Defino objeto a enviar como parametro al comando
             Employee _employee;
@@ -222,54 +269,83 @@ namespace BackOfficePresenter.Login
                 CommandGetEmployeeByUser = CommandFactory.GetCommandGetEmployeeByUser(_employee.Username);
                 //Se ejecuta comando deseado
                 CommandGetEmployeeByUser.Execute();
-
+                //se obtiene empleado buscado
                 _employeeResult = (Employee)CommandGetEmployeeByUser.Receiver;
+                //validacion de campos vacios
                 if ((email != null) && (passwordnew1 != null) && (passwordnew2 != null) && (username != null))
                 {
+                    //validacion de haber encontrado
                     if (_employeeResult != null)
                     {
                         if (_employeeResult.UserAccount != null)
                         {
+                            //validacion correo intentando entrar igual al de la bd
                             if (email.Equals(_employeeResult.UserAccount.Email))
                             {
+                                //validacion de claves de verifacion iguales
                                 if (passwordnew1.Equals(passwordnew2))
                                 {
                                     System.Diagnostics.Debug.WriteLine("Entre a modificar contrase;a");
+                                    mensajeLogin(true, mensajes.logSuccess, mensajes.tipoSucess);
                                     _employeeResult.UserAccount.Password = passwordnew1;
                                     CommandSaveEmployee = CommandFactory.GetCommandSaveEmployee(_employeeResult);
                                     CommandSaveEmployee.Execute();
+                                    return true;
+                                    //mensajeLogin(true, mensajes.logSuccess, mensajes.tipoSucess);
                                 }
                                 else
                                 {
+                                    // se muestra error 
                                     mensajeLogin(true, mensajes.logErrpasword, mensajes.tipoInfo);
                                 }
                             }
                             else
                             {
+                                // se muestra error
                                 mensajeLogin(true, mensajes.logWarningcamp, mensajes.tipoWarning);
                             }
                         }
                         else
                         {
+                            // se muestra error
                             mensajeLogin(true, mensajes.logWarningcamp, mensajes.tipoWarning);
                         }
                     }
                     else
                     {
+                        // se muestra error
                         mensajeLogin(true, mensajes.logWarningcamp, mensajes.tipoWarning);
                     }
                 }
                 else
                 {
+                    // se muestra error
                     mensajeLogin(true, mensajes.logErrcampvac, mensajes.tipoInfo);
                 }
                 System.Diagnostics.Debug.WriteLine(_employeeResult.Id);
             }
-            catch (Exception)
+            catch (NullReferenceException ex)
             {
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetEmployee,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
+
+                throw exceptionGetEmployee;
+            }
+            catch (Exception ex)
+            {
+                
+
             }
 
-
+            return false;
         }
 
 

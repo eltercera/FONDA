@@ -7,6 +7,9 @@ using com.ds201625.fonda;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using FondaLogic.FondaCommandException;
+using FondaLogic.Log;
+
 namespace FondaLogic.Commands.Login
 {
     public class CommanGetAllEmployee : Command
@@ -36,8 +39,22 @@ namespace FondaLogic.Commands.Login
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                //TODO: Escribir en el Log la excepcion
-                throw;
+                CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetEmployee,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
+
+                throw exceptionGetEmployee;
+            }
+            catch (Exception ex)
+            {
+                throw new System.InvalidOperationException(ex.Message);
+
             }
         }
     }

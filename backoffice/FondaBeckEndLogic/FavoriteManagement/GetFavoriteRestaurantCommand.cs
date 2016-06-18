@@ -9,6 +9,7 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 using FondaLogic.Log;
 using FondaBeckEndLogic;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
@@ -73,17 +74,32 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             catch (FindByIdFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurant, e);
+                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurantException, e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.ParametersGetFavRestException, e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.ParametersGetFavRestException, e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.ParametersGetFavRestException, e);
             }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurant, e);
+                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurantException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurant, e);
+                throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurantException, e);
             }
             // Guardar el resultado.
             Result = favorites;

@@ -14,9 +14,9 @@ namespace BackOfficePresenter.OrderAccount
         {
             Command cmd;
 
-            cmd = CommandFactory.GetCommandGenerateException();
+            //cmd = CommandFactory.GetCommandGenerateException();
 
-            cmd.Execute();
+            //cmd.Execute();
         }
     }
 }

@@ -1,11 +1,12 @@
 
 package com.ds201625.fonda.data_access.retrofit_client;
+
 import com.ds201625.fonda.data_access.factory.ServiceFactory;
-import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
+import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.FilterByCategoryService;
 import com.ds201625.fonda.data_access.services.FilterByZoneService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
@@ -49,21 +50,36 @@ public class RetroditServiceFactory implements ServiceFactory {
         return new RetrofitTokenService(commensal);
     }
 
+    /**
+     * Obtiene los servicios de todos los restaurantes
+     *
+     * @return
+     */
     @Override
     public AllRestaurantService getAllRestaurantService() {
         return new RetrofitAllRestaurantService();
     }
 
+    /**
+     * Agrega un restaurante favorito a un comensal logeado
+     *
+     * @return
+     */
     @Override
     public FavoriteRestaurantService getFavoriteRestaurantService() {
         return new RetrofitFavoriteRestaurantService();
     }
 
-
+    /**
+     * Devuelve a un comensal logeado
+     *
+     * @return
+     */
     @Override
     public RequireLogedCommensalService getLogedCommensalService() {
         return new RetrofitRequireLogedCommensalService();
     }
+
 
     @Override
     public InvoiceService getInvoiceService() {

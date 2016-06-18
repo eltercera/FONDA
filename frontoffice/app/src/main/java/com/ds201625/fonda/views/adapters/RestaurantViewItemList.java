@@ -11,17 +11,24 @@ import com.ds201625.fonda.domains.Restaurant;
 import java.util.ArrayList;
 
 /**
- * Adapter para la vista de la lista de restaurantes
+ * Adapter para la vista de detalle de restaurantes
  */
 public class RestaurantViewItemList extends BaseArrayAdapter<Restaurant> {
 
-
+    /**
+     * Constructor
+     * @param context
+     */
     public RestaurantViewItemList(Context context) {
         super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
 
     }
 
-
+    /**
+     * Crea la vista
+     * @param item elemento a construir la vista
+     * @return
+     */
     @Override
     public View createView(Restaurant item) {
         View convertView;
@@ -47,7 +54,12 @@ public class RestaurantViewItemList extends BaseArrayAdapter<Restaurant> {
     }
 
 
-
+    /**
+     * Obtiene la vista seleccionada
+     * @param item item seleccionado
+     * @param convertView vista ya creada
+     * @return
+     */
     @Override
     public View getSelectedView(Restaurant item, View convertView) {
 
@@ -56,6 +68,12 @@ public class RestaurantViewItemList extends BaseArrayAdapter<Restaurant> {
         return convertView;
     }
 
+    /**
+     * Obtiene la lista no seleccionada
+     * @param item item no seleccionado
+     * @param convertView vista ya creada
+     * @return
+     */
     @Override
     public View getNotSelectedView(Restaurant item, View convertView) {
 

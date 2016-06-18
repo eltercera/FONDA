@@ -17,7 +17,7 @@ namespace FondaBackOfficeLogicTest
         [SetUp]
         public void Init()
         {
-            _commandGenerateException = CommandFactory.GetCommandGenerateException();
+           // _commandGenerateException = CommandFactory.GetCommandGenerateException();
         }
 
         [Test]

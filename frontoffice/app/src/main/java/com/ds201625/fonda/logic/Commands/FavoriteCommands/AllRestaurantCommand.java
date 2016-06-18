@@ -16,12 +16,18 @@ import java.util.List;
  */
 public class AllRestaurantCommand extends BaseCommand {
     private String TAG = "AllRestaurantCommand";
+    /**
+     * Asigna valor a los parametros
+     * @return parametros comensal y restaurant
+     */
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[0];
         return parameters;
     }
-
+    /**
+     * Comando para mostrar todos los restaurantes
+     */
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para obtener los restaurantes");

@@ -24,6 +24,12 @@ public class RetrofitAllRestaurantService implements AllRestaurantService {
         super();
     }
 
+    /**
+     * Método que obtiene todos los restaurantes
+     *
+     * @return
+     * @throws RestClientException
+     */
     @Override
     public List<Restaurant> getAllRestaurant() throws RestClientException {
         Log.d(TAG, "Se obtienen todos los restaurantes");
@@ -35,6 +41,6 @@ public class RetrofitAllRestaurantService implements AllRestaurantService {
             Log.e(TAG, "Se ha generado error en getAllRestaurant", e);
         }
         return test;
-
     }
+
 }

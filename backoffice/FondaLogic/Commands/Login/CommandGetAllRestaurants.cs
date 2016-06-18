@@ -7,6 +7,8 @@ using com.ds201625.fonda;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using FondaLogic.FondaCommandException;
+using FondaLogic.Log;
 
 namespace FondaLogic.Commands.Login
 {
@@ -31,16 +33,30 @@ namespace FondaLogic.Commands.Login
             {
                 //Metodos para acceder a la BD
 
-                IEmployeeDAO _EmployeeDAO = _facDAO.GetEmployeeDAO();
+                IRestaurantDAO _RestaurantDAO = _facDAO.GetRestaurantDAO();
 
 
-                Receiver = _EmployeeDAO.GetAll();
+                Receiver = _RestaurantDAO.GetAll();
             }
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                //TODO: Escribir en el Log la excepcion
-                throw;
+                CommandExceptionGetRestaurant exceptionGetRestaurant = new CommandExceptionGetRestaurant(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetRestaurantAll,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRestaurant);
+
+                throw exceptionGetRestaurant;
+            }
+            catch (Exception ex)
+            {
+                throw new System.InvalidOperationException(ex.Message);
+
             }
         }
     }

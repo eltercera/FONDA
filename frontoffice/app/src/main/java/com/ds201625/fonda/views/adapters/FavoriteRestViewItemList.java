@@ -12,36 +12,35 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.interfaces.IFavoriteView;
+import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
+import com.ds201625.fonda.presenter.FavoritesPresenter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Adapter para la vista de la lista de restaurantes favoritos
  */
-public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> {
+public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> implements IFavoriteView{
+    private IFavoriteViewPresenter presenter;
+    private String TAG = "FavoriteViewItemList";
 
-
+    /**
+     * Constructor
+     * @param context
+     */
     public FavoriteRestViewItemList(Context context) {
         super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
+        presenter = new FavoritesPresenter(this);
+ }
 
-    }
 
-    public void update(int id) {
-        FavoriteRestaurantService ps = FondaServiceFactory.getInstance()
-                .getFavoriteRestaurantService();
-        List<Restaurant> list = null;
-        clear();
-        try {
-            list = ps.getAllFavoriteRestaurant(id);
-        } catch (RestClientException e) {
-            e.printStackTrace();
-            Log.v("Fonda",e.toString());
-        }
-        if (list != null)
-            addAll(list);
-        notifyDataSetChanged();
-    }
-
+    /**
+     * Crea la vista
+     * @param item elemento a construir la vista
+     * @return
+     */
     @Override
     public View createView(Restaurant item) {
         View convertView;
@@ -67,7 +66,12 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> {
     }
 
 
-
+    /**
+     * Obtiene la vista seleccionada
+     * @param item item seleccionado
+     * @param convertView vista ya creada
+     * @return
+     */
     @Override
     public View getSelectedView(Restaurant item, View convertView) {
 
@@ -76,6 +80,12 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> {
         return convertView;
     }
 
+    /**
+     * Obtiene la vista no seleccionada
+     * @param item item no seleccionado
+     * @param convertView vista ya creada
+     * @return
+     */
     @Override
     public View getNotSelectedView(Restaurant item, View convertView) {
 
@@ -84,4 +94,31 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> {
     }
 
 
+    /**
+     * Lista de todos los restaurantes favoritos
+     *
+     * @return restauraantes favoritos
+     */
+    @Override
+    public List<Restaurant> getListSW() {
+        return null;
+    }
+
+    /**
+     * Actualiza la lista luego de eliminar
+     */
+    @Override
+    public void updateList() {
+        List<Restaurant> list = null;
+        clear();
+        try {
+            presenter.findLoggedComensal();
+            list = presenter.findAllFavoriteRestaurant();
+        } catch (Exception e) {
+            Log.e(TAG,"Error al refrescar los favoritos",e);
+        }
+        if (list != null)
+            addAll(list);
+        notifyDataSetChanged();
+    }
 }

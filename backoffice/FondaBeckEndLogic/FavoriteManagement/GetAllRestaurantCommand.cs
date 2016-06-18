@@ -10,6 +10,7 @@ using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 using FondaLogic.Log;
 using FondaBeckEndLogic;
 using com.ds201625.fonda.Factory;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
@@ -68,17 +69,22 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             catch (FindAllFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsCommandException(ResourceMessages.GetRestFavException, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.GetAllRestaurantException, e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.ParametersGetAllRestException, e);
             }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsCommandException(ResourceMessages.GetRestFavException, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.GetAllRestaurantException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsCommandException(ResourceMessages.GetRestFavException, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.GetAllRestaurantException, e);
             }
             
 			// Guardar el resultado.

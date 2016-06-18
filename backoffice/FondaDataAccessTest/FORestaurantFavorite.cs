@@ -4,6 +4,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System.Collections.Generic;
+using com.ds201625.fonda.Factory;
 
 namespace FondaDataAccessTest
 {
@@ -26,9 +27,8 @@ namespace FondaDataAccessTest
         {
             _commensal = new Commensal()
             {
-                Password = "12345",
-                //SesionToken = "prueba",
-                Email = "Commensal@gmail.com",
+                Password = "123456",
+                Email = "Commensal100@gmail.com",
                 Status = ActiveSimpleStatus.Instance
 
             };
@@ -43,7 +43,7 @@ namespace FondaDataAccessTest
 
         private void createRestaurant()
         {
-            _restaurant1 = new Restaurant();
+            _restaurant1 = EntityFactory.GetRestaurant();
             _restaurant1.Name = "Tierra Mar";
             _restaurant1.Logo = "C:/";
             _restaurant1.Nationality = 'V';
@@ -52,8 +52,9 @@ namespace FondaDataAccessTest
             _restaurant1.Status = ActiveSimpleStatus.Instance;
 
             Currency _currency = new Currency();
-            _currency.Symbol = "C:/";
-            _currency.Name = "Dolar";
+            _currency.Symbol = "C:/s";
+            _currency.Name = "Dolares";
+
             _restaurant1.Currency = _currency;
 
             Coordinate _coordinate = new Coordinate();
@@ -61,9 +62,10 @@ namespace FondaDataAccessTest
             _coordinate.Longitude = 4;
             _restaurant1.Coordinate = _coordinate;
 
-            RestaurantCategory _restaurantCategory = new RestaurantCategory();
-            _restaurantCategory.Name = "China";
+            RestaurantCategory _restaurantCategory = EntityFactory.GetCategoryRestaurent();
+            _restaurantCategory.Name = "Chinas";
             _restaurant1.RestaurantCategory = _restaurantCategory;
+            
 
             Zone _zone = new Zone();
             _zone.Name = "Caracas";
@@ -91,7 +93,7 @@ namespace FondaDataAccessTest
                 Status = ActiveSimpleStatus.Instance,
                 UserAccount = new UserAccount()
                 {
-                    Email = "email@gmail.com",
+                    Email = "email100@gmail.com",
                     Password = "123",
                     Status = ActiveSimpleStatus.Instance
                 },
@@ -182,16 +184,17 @@ namespace FondaDataAccessTest
         [Test()]
         public void restaurantFavoriteSave()
         {
-
+            getCommensalDao();
+            getRestaurantDao();
             createCommensal();
             createRestaurant();
             Assert.NotNull(_commensal);
             Assert.NotNull(_restaurant1);
-            Assert.AreNotEqual(_commensal.Id, 0);
-            Assert.AreNotEqual(_commensal.Id, 0);
-
+            //Assert.AreNotEqual(_commensal.Id, 0);
+            //Assert.AreNotEqual(_commensal.Id, 0);
+            //Restaurant _restaurantId12 = _restaurantDAO.FindById(1);
             addRestaurantToCommensal(_commensal, _restaurant1);
-            getCommensalDao();
+           // getCommensalDao();
             _commensalDAO.Save(_commensal);
 
         }
@@ -220,10 +223,10 @@ namespace FondaDataAccessTest
             Assert.AreNotEqual(_restaurantId2.Id, 0);
 
             //findbyid para traerse objeto de commensal
-            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(6);
+            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(2);
 
             Assert.NotNull(_commensalId1);
-            Assert.AreEqual(_commensalId1.Id, 6);
+            Assert.AreEqual(_commensalId1.Id, 2);
             Assert.AreNotEqual(_commensalId1.Id, 0);
 
             addRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);

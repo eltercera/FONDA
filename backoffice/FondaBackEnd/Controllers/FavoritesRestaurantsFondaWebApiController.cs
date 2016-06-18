@@ -1,6 +1,7 @@
 ﻿using com.ds201625.fonda.BackEnd.ActionFilters;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEndLogic;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
@@ -76,6 +77,21 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 throw new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.DeleteFavRestException, e);
              
             }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.ParametersDeleteFavRestException, e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.ParametersDeleteFavRestException, e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.ParametersDeleteFavRestException, e);
+            }
             catch (NullReferenceException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -86,7 +102,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.DeleteFavRestException, e);
             }
-            
+
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
                 GeneralRes.EndLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
 
@@ -141,6 +159,21 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException, e);
             }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.ParametersAddFavRestException, e);       
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.ParametersAddFavRestException, e);  
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.ParametersAddFavRestException, e);  
+            }
             catch (NullReferenceException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -151,6 +184,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException, e);
             }
+
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
@@ -184,19 +220,26 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (GetAllRestaurantsCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetRestFavException, e);
+                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetAllRestaurantsException, e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.ParametersGetAllRestException, e);
             }
             catch (NullReferenceException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetRestFavException, e);
+                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetAllRestaurantsException, e);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetRestFavException, e);
+                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetAllRestaurantsException, e);
             }
-           
+
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
                 GeneralRes.EndLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
 
@@ -254,20 +297,43 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (GetFavoriteRestaurantFondaCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurant, e);
+                throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurantException, 
+                    e);
                 
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.ParametersGetFavRestException, 
+                    e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.ParametersGetFavRestException, 
+                    e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.ParametersGetFavRestException, 
+                    e);
             }
             catch (NullReferenceException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurant, e);
+                throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurantException,
+                    e);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurant, e);
-            }                 
+                throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurantException, 
+                    e);
+            }
 
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
           Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
               GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
@@ -312,6 +378,24 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 throw new FindByEmailUserAccountFondaWebApiControllerException(GeneralRes.GetCommensalEmailException,
                     e);
             }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindByEmailUserAccountFondaWebApiControllerException(
+                    GeneralRes.ParametersGetComensEmailException, e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindByEmailUserAccountFondaWebApiControllerException(
+                    GeneralRes.ParametersGetComensEmailException, e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FindByEmailUserAccountFondaWebApiControllerException(
+                    GeneralRes.ParametersGetComensEmailException, e);
+            }
             catch (NullReferenceException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -325,6 +409,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                     e);
             }
 
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
                 GeneralRes.EndLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
 
