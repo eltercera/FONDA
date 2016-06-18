@@ -1,15 +1,12 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
-import android.content.Context;
-import android.util.Log;
-
-import com.ds201625.fonda.data_access.local_storage.JsonFile;
-import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
+import com.ds201625.fonda.data_access.retrofit_client.clients.ProfileClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RestaurantClient;
 import com.ds201625.fonda.data_access.services.RestaurantService;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.RestaurantCategory;
+import com.ds201625.fonda.domains.Token;
 import com.ds201625.fonda.domains.Zone;
 
 import java.io.IOException;
@@ -20,6 +17,12 @@ import retrofit2.Call;
 public class RetrofitRestaurantService implements RestaurantService {
 
     private RestaurantClient resClient;
+
+    public RetrofitRestaurantService(Token token) {
+        super();
+        resClient = RetrofitService.getInstance()
+                .createService(RestaurantClient.class,token.getStrToken());
+    }
 
     @Override
     public List<RestaurantCategory> getCategories(String query, int max, int page){
