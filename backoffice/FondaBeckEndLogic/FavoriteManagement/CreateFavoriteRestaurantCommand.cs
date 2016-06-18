@@ -80,21 +80,18 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
 			}
             catch (InvalidTypeOfParameterException e)
             {
-                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateFavoriteRestaurantCommandException("Parametros ivalidos al intentar crear" +
-                    "un restarant favorito", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateFavoriteRestaurantCommandException(ResourceMessages.ParametersAddFavRestException, e);
             }
             catch (ParameterIndexOutOfRangeException e)
             {
-                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateFavoriteRestaurantCommandException("Parametros fuera de rango al intentar crear" +
-                    "un restarant favorito", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateFavoriteRestaurantCommandException(ResourceMessages.ParametersAddFavRestException, e);
             }
             catch (RequieredParameterNotFoundException e)
             {
-                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateFavoriteRestaurantCommandException("Se requieren parametros para crear" +
-                    "un restaurant favorito", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateFavoriteRestaurantCommandException(ResourceMessages.ParametersAddFavRestException, e);
             }
             catch (NullReferenceException e)  
             {

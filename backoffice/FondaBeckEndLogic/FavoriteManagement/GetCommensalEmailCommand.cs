@@ -69,21 +69,21 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             }
             catch (InvalidTypeOfParameterException e)
             {
-                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetCommensalEmailCommandException("Parametros ivalidos al intentar consultar" +
-                    "el email de un commensal", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetCommensalEmailCommandException(ResourceMessages.ParametersGetComensEmailException, 
+                           e);
             }
             catch (ParameterIndexOutOfRangeException e)
             {
-                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetCommensalEmailCommandException("Parametros fuera de rango al intentar consultar" +
-                    "el email de un commensal", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetCommensalEmailCommandException(ResourceMessages.ParametersGetComensEmailException,
+                           e);
             }
             catch (RequieredParameterNotFoundException e)
             {
-                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetCommensalEmailCommandException("Se requieren parametros para consultar" +
-                    "el email de un commensal", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetCommensalEmailCommandException(ResourceMessages.ParametersGetComensEmailException,
+                           e);
             }
             catch (NullReferenceException e)
             {
