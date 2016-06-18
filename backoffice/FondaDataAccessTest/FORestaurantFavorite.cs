@@ -5,11 +5,13 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System.Collections.Generic;
 using com.ds201625.fonda.Factory;
+using com.ds201625.fonda.Tests.DataAccess;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace FondaDataAccessTest
 {
     [TestFixture()]
-    class FOAddRestaurantFavorite : BaseEntity
+    class FORestaurantFavorite : BaseEntity
     {
 
         private FactoryDAO _facDAO;
@@ -28,12 +30,10 @@ namespace FondaDataAccessTest
             _commensal = new Commensal()
             {
                 Password = "123456",
-                Email = "Commensal100@gmail.com",
+                Email = "Commensal10@gmail.com",
                 Status = ActiveSimpleStatus.Instance
 
             };
-
-
 
         }
         /// <summary>
@@ -44,8 +44,8 @@ namespace FondaDataAccessTest
         private void createRestaurant()
         {
             _restaurant1 = EntityFactory.GetRestaurant();
-            _restaurant1.Name = "Tierra Mar";
-            _restaurant1.Logo = "C:/";
+            _restaurant1.Name = "Tinajero";
+            _restaurant1.Logo = "C:/s";
             _restaurant1.Nationality = 'V';
             _restaurant1.Ssn = "123456";
             _restaurant1.Address = "Av. El ejercito con puente de San Juan";
@@ -102,8 +102,6 @@ namespace FondaDataAccessTest
            
 
         }
-
-
 
         private void getCommensalDao()
         {
@@ -190,11 +188,7 @@ namespace FondaDataAccessTest
             createRestaurant();
             Assert.NotNull(_commensal);
             Assert.NotNull(_restaurant1);
-            //Assert.AreNotEqual(_commensal.Id, 0);
-            //Assert.AreNotEqual(_commensal.Id, 0);
-            //Restaurant _restaurantId12 = _restaurantDAO.FindById(1);
             addRestaurantToCommensal(_commensal, _restaurant1);
-           // getCommensalDao();
             _commensalDAO.Save(_commensal);
 
         }
@@ -222,8 +216,7 @@ namespace FondaDataAccessTest
             Assert.AreNotEqual(_restaurantId1.Id, 0);
             Assert.AreNotEqual(_restaurantId2.Id, 0);
 
-            //findbyid para traerse objeto de commensal
-            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(2);
+            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(8);
 
             Assert.NotNull(_commensalId1);
             Assert.AreEqual(_commensalId1.Id, 2);
@@ -246,7 +239,6 @@ namespace FondaDataAccessTest
             getRestaurantDao();
             getCommensalDao();
 
-            //findbyid para traerse objeto de Restaurant
 
             Restaurant _restaurantId1 = _restaurantDAO.FindById(4);
             Restaurant _restaurantId2 = _restaurantDAO.FindById(5);
@@ -259,8 +251,6 @@ namespace FondaDataAccessTest
             Assert.AreNotEqual(_restaurantId1.Id, 0);
             Assert.AreNotEqual(_restaurantId2.Id, 0);
 
-
-            //findbyid para traerse objeto de commensal
             Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(8);
 
             Assert.NotNull(_commensalId1);
@@ -273,7 +263,69 @@ namespace FondaDataAccessTest
 
         }
 
+        /// <summary>
+        /// prueba encontrar comensal por email
+        /// </summary>
+   /*   [Test]
+        public void FindCommensalByEmailTest()
+        {
+            UserAccount answer = new UserAccount();
+            _commensal.Id = 1;
+            answer = _commensalDAO.FindByEmail("prueba@gmail.com");
+            Assert.AreEqual(answer.Id, _commensal.Id);
+
+        }
+    * 
+     /// <summary>
+        /// prueba guardar restaurant favorito dao
+        /// </summary>
+      /*[Test]
+        [ExpectedException(typeof(SaveEntityFondaDAOException))]
+         public void CreateFavoriteRestaurantCommandNullReferenceTest()
+        {
+            addRestaurantToCommensal(_commensal, _restaurant1);
+            _commensalDAO.Save(_commensal);
+            Assert.Null(_commensal);
+            Assert.Null(_restaurant1);
+        }
+         /// <summary>
+        /// prueba borrar restaurant favorito dao
+        /// </summary>
+      [Test]
+        [ExpectedException(typeof(DeleteFondaDAOException))]
+        public void DeleteteRestaurantCommandNullReferenceTest()
+        {
+            getRestaurantDao();
+            getCommensalDao();
+
+            Restaurant _restaurantId1 = _restaurantDAO.FindById(20);
+            Restaurant _restaurantId2 = _restaurantDAO.FindById(25);
+            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(20);
+            removeRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);
+            _commensalDAO.Save(_commensal);
+            Assert.Null(_commensalId1);
+            Assert.Null(_restaurantId1);
+        }
+      */
+        /// <summary>
+        /// prueba excepcion, referencia nula al buscar un commensal por email
+        /// </summary>
+          [Test]
+          [ExpectedException(typeof(NullReferenceException))]
+        public void FindCommensalByEmailNullReferenceTest()
+        {
+            Assert.Null(_commensalDAO.FindByEmail("restaurantesFinos@hotmail.com"));
+        }
+          /// <summary>
+          /// prueba excepcion, referencia nula al buscar un commensal por id
+          /// </summary>
+          [Test]
+          [ExpectedException(typeof(NullReferenceException))]
+          public void CommensalDaoFindByNullReferenceTest()
+          {
+              Assert.Null(_commensalDAO.FindById(18));
+          }
+      
     }
 
-
-}
+    }
