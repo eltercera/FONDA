@@ -45,12 +45,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command.cs" />
+    <Compile Include="Commands\Login\ComandGetEmployeeBySsn.cs" />
+    <Compile Include="Commands\Login\ComandoGetUserAcountByEmail.cs" />
     <Compile Include="Commands\Login\CommandGetAllRestaurants.cs" />
     <Compile Include="Commands\Login\CommandGetAllRoles.cs" />
     <Compile Include="Commands\Login\CommandGetEmployeeById.cs" />
     <Compile Include="Commands\Login\CommandGetEmployeeByUser .cs" />
     <Compile Include="Commands\Login\CommandGetRestaurantById.cs" />
     <Compile Include="Commands\Login\CommandSaveEmployee.cs" />
+    <Compile Include="Commands\Login\CommandSaveEntity.cs" />
     <Compile Include="Commands\Login\CommanGetAllEmployee.cs" />
     <Compile Include="Commands\OrderAccount\CommandDetailOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />

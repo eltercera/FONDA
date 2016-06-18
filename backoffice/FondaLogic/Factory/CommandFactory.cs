@@ -127,6 +127,20 @@ namespace FondaLogic.Factory
             return new CommanGetAllEmployee(receiver);
         }
 
+        public static Command GetComandoGetUserAcountByEmail(object receiver)
+        {
+            return new ComandoGetUserAcountByEmail(receiver);
+        }
+        public static Command GetComandGetEmployeeBySsn(object receiver)
+        {
+            return new ComandGetEmployeeBySsn(receiver);
+        }
+
+        public static Command GetCommandSaveEntity(object receiver)
+        {
+            return new CommandSaveEntity(receiver);
+        }
+
         #endregion
     }
 }

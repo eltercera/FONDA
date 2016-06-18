@@ -10,18 +10,25 @@ using com.ds201625.fonda.Domain;
 
 namespace FondaLogic.Commands.Login
 {
-    public class CommandGetAllRestaurants : Command
+    class ComandGetEmployeeBySsn : Command 
     {
-
         FactoryDAO _facDAO = FactoryDAO.Intance;
-
-        public CommandGetAllRestaurants(Object receiver) : base(receiver)
+        string Ssn;
+        public ComandGetEmployeeBySsn(Object receiver) : base(receiver)
         {
-
+            try
+            {
+                Ssn = (string)receiver;
+            }
+            catch (Exception)
+            {
+                //TODO: Enviar excepcion personalizada
+                throw;
+            }
         }
-
         /// <summary>
-        /// Metodo que ejecuta el comando para buscar todos los restaurantes del sistema
+        /// Metodo que ejecuta el comando para buscar un empleado de la bd
+        /// por ssn
         /// </summary>
         /// <returns>Empleado</returns>
         public override void Execute()
@@ -31,10 +38,10 @@ namespace FondaLogic.Commands.Login
             {
                 //Metodos para acceder a la BD
 
-                IRestaurantDAO _RestaurantDAO = _facDAO.GetRestaurantDAO();
+                IEmployeeDAO _employeeDAO = _facDAO.GetEmployeeDAO();
 
 
-                Receiver = _RestaurantDAO.GetAll();
+                Receiver = _employeeDAO.FindBySsn(Ssn);
             }
             catch (NullReferenceException ex)
             {
@@ -43,5 +50,6 @@ namespace FondaLogic.Commands.Login
                 throw;
             }
         }
+
     }
 }

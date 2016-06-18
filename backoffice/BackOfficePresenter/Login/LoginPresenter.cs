@@ -36,13 +36,20 @@ namespace BackOfficePresenter.Login
         }
 
 
-
+        /// <summary>
+        /// Procedimiento que muestra mensaje dependiendo del error ocurrido
+        /// </summary>
+        /// <param name="visible">booleano indicando si se muestra mensaje o no</param>
+        /// <param name="message">String a mostrar en el mensaje</param>
+        /// <param name="type">Tipo de mensaje a mostrar</param>
         public void mensajeLogin(Boolean visible, string message, string type)
         {
 
             switch (type)
             {
+                
                 case "Error":
+
                     _view.alertloginError.Visible = visible;
                     _view.alertwarningLog.Visible = !visible;
                     _view.alertinfoLog.Visible = !visible;
@@ -56,7 +63,7 @@ namespace BackOfficePresenter.Login
                     _view.alertsuccessLog.Visible = !visible;
                     _view.alertwarningLog.InnerText = message; break;
                 case "Info":
-                    System.Diagnostics.Debug.WriteLine("llame a mensaje loggin2");
+                    
                     _view.alertinfoLog.Visible = visible;
                     _view.alertloginError.Visible = !visible;
                     _view.alertwarningLog.Visible = !visible;
@@ -75,7 +82,7 @@ namespace BackOfficePresenter.Login
         /// <summary>
         /// metodo que valida el ingreso del usuario
         /// </summary>
-        /// <param name="user">usuario intentando entrar</param>
+        /// 
         public void ValidateUser()
         {
             // usuario intentando ingresar
@@ -113,6 +120,7 @@ namespace BackOfficePresenter.Login
                     //obtenemos resultado
                     _employeeResult = (Employee)CommandGetEmployeeByUser.Receiver;
                     System.Diagnostics.Debug.WriteLine(_employeeResult.Name);
+                    //Validacion de que no se encontro usuario
                     if (_employeeResult != null)
                     {
                         System.Diagnostics.Debug.WriteLine("Consegui la cuenta!");
@@ -121,18 +129,16 @@ namespace BackOfficePresenter.Login
                         {
                             _userPassword = _employeeResult.UserAccount.Password;
                             System.Diagnostics.Debug.WriteLine("Es el password de la cuenta", _userPassword);
+                            //Validacion de que la cuenta que intenta ingresar al sistema tiene
+                            //clave correcta
                             if ((_userPassword == _view.UserPassword.Value))
                             {
                                 System.Diagnostics.Debug.WriteLine("Aprobe el login");
-
+                                //Se le da valores a las variables de session 
                                 HttpContext.Current.Session[ResourceLogin.sessionRol] = (string)_employeeResult.Role.Name;
                                 HttpContext.Current.Session[ResourceLogin.sessionName] = _employeeResult.Name;
                                 HttpContext.Current.Session[ResourceLogin.sessionLastname] = _employeeResult.LastName;
                                 HttpContext.Current.Session[ResourceLogin.sessionUserID] = _employeeResult.Id;
-                                /*_info[0] = _employeeResult.Role.Name;
-                                _info[1] = _employeeResult.Name;
-                                _info[2] = _employeeResult.LastName;
-                                _info[3] = _employeeResult.Id.ToString();*/
                                 System.Diagnostics.Debug.WriteLine(_employeeResult.Restaurant.Id, "ID del restaurant");
                                 if (_employeeResult.Restaurant != null)
                                 {
@@ -140,7 +146,8 @@ namespace BackOfficePresenter.Login
                                     int idRestaurant = int.Parse(RestaurantID);
                                     _restaurant = (Restaurant)EntityFactory.GetRestaurant();
                                     _restaurant.Id = idRestaurant;
-                                    
+                                    //se busca el restaurante del empleado para dar valores a las 
+                                    //variables de session
                                     CommandGetRestaurantById = CommandFactory.GetCommandGetRestaurantById(_restaurant);
                                     CommandGetRestaurantById.Execute();
                                     _restaurantResult = (Restaurant)CommandGetRestaurantById.Receiver;
@@ -160,7 +167,7 @@ namespace BackOfficePresenter.Login
                             }
                             else
                             {
-                                //error claves distintas
+                                //error claves distintas, se llama a mostrar mensaje de error
                                 System.Diagnostics.Debug.WriteLine("clave mala");
                                 //_info[7] = "Error";
                                 mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
@@ -169,7 +176,7 @@ namespace BackOfficePresenter.Login
                     }
                     else
                     {
-                        //error buscando empleado 
+                        //error buscando empleado ,  se llama a mostrar mensaje de error
                         System.Diagnostics.Debug.WriteLine("No se encontro usuario");
                         //_info[8] = "Error";
                         mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
@@ -177,13 +184,15 @@ namespace BackOfficePresenter.Login
 
                 }
                 catch (Exception)
+                // EXECEPTION CommandGetEmployeeByUser.Execute() REVISAR;
+                // EXEPTION CommandGetRestaurantById REVISAR
                 {
                 }
 
             }
             else
             {
-                //_info[9] = "Error";
+                //_info[9] = "Error";  se llama a mostrar mensaje de error
                 mensajeLogin(true, mensajes.logErrcamp, mensajes.tipoInfo);
             }
             
@@ -198,12 +207,16 @@ namespace BackOfficePresenter.Login
         /// </summary>
         public void Recoverpassword()
         {
-            string[] _info = new string[10];
+            //Fabrica de Dao
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             //Valores de la vista
+            //email del usuario
             String email = _view.RecoverEmail.Value;
+            //password1 de la nueva clave
             String passwordnew1 = _view.Password1.Value;
+            //password de la nueva clave
             String passwordnew2 = _view.Password2.Value;
+            //username intentando entrar 
             String username = _view.UserRecover.Value;
             //Defino objeto a enviar como parametro al comando
             Employee _employee;
@@ -222,16 +235,20 @@ namespace BackOfficePresenter.Login
                 CommandGetEmployeeByUser = CommandFactory.GetCommandGetEmployeeByUser(_employee.Username);
                 //Se ejecuta comando deseado
                 CommandGetEmployeeByUser.Execute();
-
+                //se obtiene empleado buscado
                 _employeeResult = (Employee)CommandGetEmployeeByUser.Receiver;
+                //validacion de campos vacios
                 if ((email != null) && (passwordnew1 != null) && (passwordnew2 != null) && (username != null))
                 {
+                    //validacion de haber encontrado
                     if (_employeeResult != null)
                     {
                         if (_employeeResult.UserAccount != null)
                         {
+                            //validacion correo intentando entrar igual al de la bd
                             if (email.Equals(_employeeResult.UserAccount.Email))
                             {
+                                //validacion de claves de verifacion iguales
                                 if (passwordnew1.Equals(passwordnew2))
                                 {
                                     System.Diagnostics.Debug.WriteLine("Entre a modificar contrase;a");
@@ -241,31 +258,38 @@ namespace BackOfficePresenter.Login
                                 }
                                 else
                                 {
+                                    // se muestra error 
                                     mensajeLogin(true, mensajes.logErrpasword, mensajes.tipoInfo);
                                 }
                             }
                             else
                             {
+                                // se muestra error
                                 mensajeLogin(true, mensajes.logWarningcamp, mensajes.tipoWarning);
                             }
                         }
                         else
                         {
+                            // se muestra error
                             mensajeLogin(true, mensajes.logWarningcamp, mensajes.tipoWarning);
                         }
                     }
                     else
                     {
+                        // se muestra error
                         mensajeLogin(true, mensajes.logWarningcamp, mensajes.tipoWarning);
                     }
                 }
                 else
                 {
+                    // se muestra error
                     mensajeLogin(true, mensajes.logErrcampvac, mensajes.tipoInfo);
                 }
                 System.Diagnostics.Debug.WriteLine(_employeeResult.Id);
             }
             catch (Exception)
+            //EXCEPTION CommandGetEmployeeByUser REVISAR
+            //REVISAR EXCEPTION DE SAVE EMPLOYEE
             {
             }
 

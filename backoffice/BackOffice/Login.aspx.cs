@@ -180,27 +180,33 @@ namespace BackOffice.Seccion.Configuracion
         #region constructor
         public WebForm1()
         {
+            //presentador que se encargar del MVP
             _presenter = new LoginPresenter(this);
         }
         #endregion
-
+        //llamada a metodo que valida el login del usuario a entrar al sistema
         public void Uservalidate(object sender, EventArgs e)
         {
             Uservalidate();
         }
+        //funcion que valida entrada al sistema
         public void Uservalidate()
-        {   //exception de variale de session vacia
+        {   
+             //llamada a la funcion contenida en el presentador para validar
+             //entrada al sistema
              _presenter.ValidateUser();
             try
             {
                 if (Session[ResourceLogin.sessionRol].ToString() == "Sistema")
                 {
+                    //redireccion al la pagina con rol de sistema
                     Response.Redirect("~/Seccion/Restaurant/Restaurante.aspx");
 
 
                 }
                 else
                 {
+                    // redireccion la pagina como empleado de un restaurante
                     Response.Redirect("Default.aspx");
                 }
             }
@@ -209,11 +215,18 @@ namespace BackOffice.Seccion.Configuracion
 
             }
         }
-
+        /// <summary>
+        /// metodo que llama al metdo del presentador a la funcion encargada de recuperar clave
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Recoverpassword(object sender, EventArgs e)
         {
             Recoverpassword();
         }
+        /// <summary>
+        /// llamado al presentador
+        /// </summary>
         public void Recoverpassword()
         {
             _presenter.Recoverpassword();

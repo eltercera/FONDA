@@ -10,8 +10,8 @@ namespace BackOfficeModel.Login
 {
     public interface IUserListModel : IModel
     {
-         HtmlGenericControl userListAlert { get; set; }
-         Table tableUserList { get; set; }
+        HtmlGenericControl userListAlert { get; set; }
+        Table tableUserList { get; set; }
         TextBox textBoxNameUser { get; set; }
         TextBox textBoxlastNameUser { get; set; }
         DropDownList dropDownListNss1 { get; set; }
@@ -26,7 +26,22 @@ namespace BackOfficeModel.Login
         TextBox textBoxRepitPaswword { get; set; }
         TextBox textBoxUserNameU { get; set; }
         Button buttonButtonAddModify { get; set; }
-
         DropDownList dropDownListRestaurant { get; set; }
+        HtmlGenericControl HtmlGenericControlAlert { get; set; }
+        HtmlGenericControl HtmlGenericControlemessageEmail { get; set; }
+        HtmlGenericControl HtmlGenericControlemenssageUsername { get; set; }
+        HtmlGenericControl HtmlGenericControlemenssageSsn { get; set; }
+        HtmlGenericControl HtmlGenericControlmessageNameUser { get; set; }
+        HtmlGenericControl HtmlGenericControlemessageLastName { get; set; }
+        HtmlGenericControl HtmlGenericControlemessageDni { get; set; }
+        HtmlGenericControl HtmlGenericControlemessagePhone { get; set; }
+        HtmlGenericControl HtmlGenericControlemessageAddress { get; set; }
+        HtmlGenericControl HtmlGenericControlemessageUser { get; set; }
+        HtmlGenericControl HtmlGenericControlemessagePassword1 { get; set; }
+        HtmlGenericControl HtmlGenericControlemessagePassword2 { get; set; }
+        HtmlGenericControl HtmlGenericControlemessagePasswordEqual { get; set; }
+        HtmlGenericControl HtmlGenericControlemessageBirthdate { get; set; }
+        HtmlGenericControl HtmlGenericControlemessageEmpty { get; set; }
+        HtmlGenericControl HtmlGenericControlemenssageEmail { get; set; }
     }
 }
