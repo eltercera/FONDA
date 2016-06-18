@@ -12,30 +12,33 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.interfaces.IFavoriteView;
+import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
+import com.ds201625.fonda.presenter.FavoritesPresenter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Adapter para la vista de la lista de restaurantes favoritos
  */
-public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> {
-
+public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> implements IFavoriteView{
+    private IFavoriteViewPresenter presenter;
+    private String TAG = "FavoriteViewItemList";
 
     public FavoriteRestViewItemList(Context context) {
         super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
+        presenter = new FavoritesPresenter(this);
+ }
 
-    }
-
-    public void update(int id) {
-        FavoriteRestaurantService ps = FondaServiceFactory.getInstance()
-                .getFavoriteRestaurantService();
+    public void update() {
         List<Restaurant> list = null;
         clear();
         try {
-            list = ps.getAllFavoriteRestaurant(id);
-        } catch (RestClientException e) {
-            e.printStackTrace();
-            Log.v("Fonda",e.toString());
+            presenter.findLoggedComensal();
+            list = presenter.findAllFavoriteRestaurant();
+        } catch (Exception e) {
+            Log.e(TAG,"Error al refrescar los favoritos",e);
         }
         if (list != null)
             addAll(list);
@@ -84,4 +87,13 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> {
     }
 
 
+    @Override
+    public List<Restaurant> getListSW() {
+        return null;
+    }
+
+    @Override
+    public void updateList() {
+
+    }
 }
