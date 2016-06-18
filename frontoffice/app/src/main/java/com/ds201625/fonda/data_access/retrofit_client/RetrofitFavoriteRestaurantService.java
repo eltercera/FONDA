@@ -85,6 +85,7 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant", e);
         }
+
         return test;
     }
 

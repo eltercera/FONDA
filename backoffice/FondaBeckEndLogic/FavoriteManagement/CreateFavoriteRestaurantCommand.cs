@@ -18,6 +18,12 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
     /// </summary>
     class CreateFavoriteRestaurantCommand : BaseCommand 
     {
+
+        private Commensal commensal;
+        private Restaurant restaurant;
+        private ICommensalDAO commensalDAO;
+        private IRestaurantDAO restaurantDAO;
+
         /// <summary>
         /// constructor create Favorite restaurant command
         /// </summary>
@@ -47,14 +53,13 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
 		{
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.BeginLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
-            Commensal  commensal;
-            Restaurant restaurant;
+           
             // Obtencion de parametros
             Commensal  idCommensal = (Commensal)GetParameter(0);
             Restaurant idRestaurant = (Restaurant)GetParameter(1);
             // Obtiene el DAO que se requiere
-            ICommensalDAO  commensalDAO = FacDao.GetCommensalDAO();
-            IRestaurantDAO restaurantDAO = FacDao.GetRestaurantDAO();
+            commensalDAO = FacDao.GetCommensalDAO();
+            restaurantDAO = FacDao.GetRestaurantDAO();
 
             if ((idCommensal.Id <= 0) || (idRestaurant.Id <= 0))
                 throw new Exception(ResourceMessages.InvalidInformation);

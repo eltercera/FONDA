@@ -17,15 +17,14 @@ namespace FondaBackEndLogicTest
 	[TestFixture]
 	public class GetEmailCommensalManagementTest
 	{
-        Commensal commensal;
-        ICommand getEmail;
-
-
+        private Commensal commensal;
+        private ICommand getEmail;
+        
         /// <summary>
         /// metodo que instancia e inicializa el objeto y variables respectivamente.
         /// </summary>
         [SetUp]
-        public void Init()
+        protected void Init()
         {
             commensal = EntityFactory.GetCommensal();
             commensal.Email = "prueba@gmail.com";
@@ -37,7 +36,7 @@ namespace FondaBackEndLogicTest
         /// metodo que se encarga de limpiar el objeto.
         /// </summary>
         [TearDown]
-        public void Clean()
+        protected void Clean()
         {
             commensal = null;  
         }

@@ -15,7 +15,7 @@ using System.Linq;
 using System.Web.Http;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
-{
+{   
     [RoutePrefix("api")]
 
     /// <summary>
@@ -23,6 +23,10 @@ namespace com.ds201625.fonda.BackEnd.Controllers
     /// </summary>
     public class FavoritesRestaurantsFondaWebApiController : FondaWebApi
     {
+        private Commensal commensal;
+        private Restaurant restaurant;
+        private ICommand command;
+
         /// <summary>
         /// constructor de restaurant favoritos fonda web API controller.
         /// </summary>
@@ -35,7 +39,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// </summary>
         /// <param name="idCommensal"></param>
         /// <param name="idRestaurant"></param>
-        /// <returns></returns>
+        /// <returns>result</returns>
         
         [Route("deletefavorite/{idCommensal}/{idRestaurant}")]
         [HttpGet]
@@ -48,15 +52,15 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Commensal result;   //PREGUNTAR SI ES PRIVADA O CUANDO SON STATIC
             try
             {
-                Commensal commensal = EntityFactory.GetCommensal();
+                commensal = EntityFactory.GetCommensal();
                 commensal.Id = idcommensal;                     
 
                 //Creación del restaurant con id
-                Restaurant restaurant = new Restaurant();  
+                restaurant = EntityFactory.GetRestaurant();
                 restaurant.Id = idrestaurant;                    
 
                 // Obtención del commando
-                ICommand command = FacCommand.DeleteFavoriteRestaurantCommand();
+                command = FacCommand.DeleteFavoriteRestaurantCommand();
 
                 // Agregacion de parametros
                 command.SetParameter(0, commensal);
@@ -116,7 +120,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// </summary>
         /// <param name="idCommensal"></param>
         /// <param name="idRestaurant"></param>
-        /// <returns></returns>
+        /// <returns>result</returns>
 
         [Route("addfavorite/{idCommensal}/{idRestaurant}")]
         [HttpGet]
@@ -130,15 +134,15 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             try
             {
                 //Creación del commensal con id
-                Commensal commensal = EntityFactory.GetCommensal();
+                commensal = EntityFactory.GetCommensal();
                 commensal.Id = idcommensal;                      
 
                 //Creación del restaurant con id
-                Restaurant restaurant = EntityFactory.GetRestaurant();
+                restaurant = EntityFactory.GetRestaurant();
                 restaurant.Id = idrestaurant;                      
 
                 // Obtención del commando
-                ICommand command = FacCommand.CreateFavoriteRestaurantCommand();
+                command = FacCommand.CreateFavoriteRestaurantCommand();
 
                 // Agregacion de parametros
                 command.SetParameter(0, commensal);
@@ -196,7 +200,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// <summary>
         /// metodo que lista todos los restaurant
         /// </summary>
-        /// <returns></returns>
+        /// <returns>result</returns>
        
         [Route("ListaRestaurant")]
         [HttpGet]
@@ -209,7 +213,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             try
             {
                 // Obtención del commando
-                ICommand command = FacCommand.GetAllRestaurantCommand();
+                command = FacCommand.GetAllRestaurantCommand();
                 // Ejecucion del commando
                 command.Run();
                 result = (IList<Restaurant>)command.Result;
@@ -247,22 +251,11 @@ namespace com.ds201625.fonda.BackEnd.Controllers
            
         }
 
-
-        private IRestaurantDAO GetRestaurantDao()   //ESTO NO SE DEBERIA QUITAR
-
-        {
-            return FactoryDAO.GetRestaurantDAO();
-        }
-        private ICommensalDAO GetCommensalDao()
-        {
-            return FactoryDAO.GetCommensalDAO();
-        }
-
         /// <summary>
         /// metodo que lista los restaurant favoritos de un commensal
         /// </summary>
         /// <param name="idCommensal"></param>
-        /// <returns></returns>
+        /// <returns>result.FavoritesRestaurants</returns>
         
         [Route("findRestaurantFavorites/{idCommensal}")]
         [HttpGet]
@@ -275,11 +268,11 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             try
             {
                 //Creación del commensal con id
-                Commensal commensal = EntityFactory.GetCommensal();  
+                commensal = EntityFactory.GetCommensal();  
                 commensal.Id = idCommensal;                      
 
                 // Obtención del commando
-                ICommand command = FacCommand.GetFavoriteRestaurantCommand();
+                 command = FacCommand.GetFavoriteRestaurantCommand();
 
                 // Agregacion de parametros
                 command.SetParameter(0, commensal);
@@ -344,7 +337,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// metodo que busca la existencia de un commensal
         /// </summary>
         /// <param name="email"></param>
-        /// <returns></returns>
+        /// <returns>result</returns>
 
         [Route("findCommensalEmail/{email}")]
         [HttpGet]
@@ -359,7 +352,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 UserAccount commensal = EntityFactory.GetUserAccount();
                 commensal.Email = email;
                 // Obtención del commando
-                ICommand command = FacCommand.GetCommensalEmailCommand();
+                command = FacCommand.GetCommensalEmailCommand();
                 // Agregacion de parametros
                 command.SetParameter(0, commensal);
 

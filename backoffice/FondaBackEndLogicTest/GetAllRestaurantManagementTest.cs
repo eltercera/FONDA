@@ -17,16 +17,15 @@ namespace FondaBackEndLogicTest
 	[TestFixture]
 	public class GetAllRestaurantManagementTest
 	{
-        Commensal commensal;
-        ICommand getRestaurant;
-        IList<Restaurant> listRestaurant;
-
+        private Commensal commensal;
+        private ICommand getRestaurant;
+        private IList<Restaurant> listRestaurant;
 
         /// <summary>
         /// metodo que instancia e inicializa el objeto y variables respectivamente.
         /// </summary>
         [SetUp]
-        public void Init()
+        protected void Init()
         {
             commensal = EntityFactory.GetCommensal();
             commensal.Id = 1;
@@ -37,7 +36,7 @@ namespace FondaBackEndLogicTest
         /// metodo que se encarga de limpiar el objeto.
         /// </summary>
         [TearDown]
-        public void Clean()
+        protected void Clean()
         {
             commensal = null;
         }
