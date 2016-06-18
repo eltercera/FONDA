@@ -9,14 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.interfaces.IAllRestaurantsView;
 import com.ds201625.fonda.interfaces.IFavoriteView;
 import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
-import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
@@ -60,11 +59,17 @@ public class AllRestaurantActivity extends BaseNavigationActivity
      * Fragmento AllRestaurant
      */
     private RestaurantListFragment allRestaurantFrag;
-
+    /**
+     * Fragmento DetailRestaurant
+     */
     private DetailRestaurantFragment detailRestaurantFrag;
-
+    /**
+     * Variable booleana para determinar el form
+     */
     private boolean onForm;
-
+    /**
+     * Presentador Favoritos
+     */
     private IFavoriteViewPresenter presenter;
 
     /**
@@ -294,7 +299,7 @@ public class AllRestaurantActivity extends BaseNavigationActivity
     }
 
     /**
-     * Cuando se seleccionad un restaurant
+     * Cuando se selecciona un restaurant
      * @param r
      */
     @Override
@@ -311,21 +316,33 @@ public class AllRestaurantActivity extends BaseNavigationActivity
         Log.d(TAG,"Han salido de OnRestaurantSelect");
     }
 
+    /**
+     * Al seleccionar varios restaurantes
+     * @param r
+     */
         @Override
     public void OnRestaurantSelected(ArrayList<Restaurant> r) {
 
     }
-
+    /**
+     * Inicia el seleccionar del restaurante
+     */
     @Override
     public void OnRestaurantSelectionMode() {
         tb.setVisibility(View.GONE);
     }
 
+    /**
+     * Finaliza el seleccionar del restaurante
+     */
     @Override
     public void OnRestaurantSelectionModeExit() {
         tb.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Al presionar el botón volver
+     */
     @Override
     public void onBackPressed() {
         Log.d(TAG,"Ha entrado en onBackPressed");

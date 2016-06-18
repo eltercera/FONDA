@@ -4,6 +4,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System.Collections.Generic;
+using com.ds201625.fonda.Factory;
 
 namespace FondaDataAccessTest
 {
@@ -27,7 +28,6 @@ namespace FondaDataAccessTest
             _commensal = new Commensal()
             {
                 Password = "123456",
-                //SesionToken = "prueba",
                 Email = "Commensal100@gmail.com",
                 Status = ActiveSimpleStatus.Instance
 
@@ -43,7 +43,7 @@ namespace FondaDataAccessTest
 
         private void createRestaurant()
         {
-            _restaurant1 = new Restaurant();
+            _restaurant1 = EntityFactory.GetRestaurant();
             _restaurant1.Name = "Tierra Mar";
             _restaurant1.Logo = "C:/";
             _restaurant1.Nationality = 'V';
@@ -62,7 +62,7 @@ namespace FondaDataAccessTest
             _coordinate.Longitude = 4;
             _restaurant1.Coordinate = _coordinate;
 
-            RestaurantCategory _restaurantCategory = new RestaurantCategory();
+            RestaurantCategory _restaurantCategory = EntityFactory.GetCategoryRestaurent();
             _restaurantCategory.Name = "Chinas";
             _restaurant1.RestaurantCategory = _restaurantCategory;
             

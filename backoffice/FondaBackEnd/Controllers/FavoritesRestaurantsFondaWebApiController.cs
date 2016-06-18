@@ -222,17 +222,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetAllRestaurantsException, e);
             }
-            catch (InvalidTypeOfParameterException e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.ParametersGetAllRestException, e);
-            }
             catch (ParameterIndexOutOfRangeException e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.ParametersGetAllRestException, e);
-            }
-            catch (RequieredParameterNotFoundException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.ParametersGetAllRestException, e);

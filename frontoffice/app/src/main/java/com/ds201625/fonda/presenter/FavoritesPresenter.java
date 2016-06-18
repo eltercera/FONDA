@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by Hp on 17/06/2016.
+ * Presentador para obtener todos los favoritos
  */
 public class FavoritesPresenter implements IFavoriteViewPresenter {
 
@@ -21,6 +22,10 @@ public class FavoritesPresenter implements IFavoriteViewPresenter {
     private FondaCommandFactory facCmd;
     private List<Restaurant> listRestWS;
 
+    /**
+     * Constructor
+     * @param view
+     */
     public FavoritesPresenter(IFavoriteView view){
         iFavoriteView = view;
     }
@@ -48,31 +53,6 @@ public class FavoritesPresenter implements IFavoriteViewPresenter {
         logedComensal = (Commensal) cmdRequireLoged.getResult();
     }
 
-    /**
-     * Encuentra el id del comensal logueado
-     */
-    @Override
-    public int findLoggedComensalById() {
-        Commensal log = SessionData.getInstance().getCommensal();
-
-        emailToWebService=log.getEmail()+"/";
-
-        facCmd = FondaCommandFactory.getInstance();
-
-        //Llamo al comando de requireLogedCommensalCommand
-        Command cmdRequireLoged = facCmd.requireLogedCommensalCommand();
-        try {
-            cmdRequireLoged.setParameter(0,emailToWebService);
-            cmdRequireLoged.run();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        logedComensal = (Commensal) cmdRequireLoged.getResult();
-        int id = logedComensal.getId();
-
-        return id;
-    }
 
     /**
      * Encuentra los restaurantes favoritos

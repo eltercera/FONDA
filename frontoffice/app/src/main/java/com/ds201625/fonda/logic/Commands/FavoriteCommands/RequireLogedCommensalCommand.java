@@ -15,6 +15,10 @@ import com.ds201625.fonda.logic.Parameter;
  */
 public class RequireLogedCommensalCommand extends BaseCommand {
     private String TAG = "RequireLogedCommensalCommand";
+    /**
+     * Asigna valor a los parametros
+     * @return parametros comensal y restaurant
+     */
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[1];
@@ -22,7 +26,9 @@ public class RequireLogedCommensalCommand extends BaseCommand {
 
         return parameters;
     }
-
+    /**
+     * Comando para obtener el comensal logueado
+     */
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para obtener el comensal logeado");
