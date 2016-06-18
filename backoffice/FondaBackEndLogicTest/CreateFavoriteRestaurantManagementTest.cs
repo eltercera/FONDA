@@ -5,83 +5,102 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEndLogic;
 using System.Collections.Generic;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace FondaBackEndLogicTest
 {
 	[TestFixture]
 	public class CreateFavoriteRestaurantManagementTest
 	{
-        Restaurant _restaurant1;
+        Restaurant restaurant;
+        Commensal commensal;
+		
+        [SetUp]
+         public void Init()
+        {
+
+			commensal = new Commensal();
+            commensal.Id = 1;
+            restaurant = new Restaurant();
+            restaurant.Id = 1;
+			
+		}
+
+        [TearDown]
+        public void Clean()
+        {
+        
+            commensal = null;
+            restaurant = null;
+
+        }
+
 		
 		[Test]
 		public void CreateFavoriteRestaurantCommandTest()
 		{
-
-			Commensal comm = generateCommensal();
-			Restaurant rest = generateRestaurant();
-
             ICommand cmd = BackendFactoryCommand.Instance.CreateFavoriteRestaurantCommand();
 
-			cmd.SetParameter(0, comm);
-			cmd.SetParameter(1, rest);
+			cmd.SetParameter(0,  commensal);
+			cmd.SetParameter(1, restaurant);
 
 			cmd.Run();
 
 			Commensal result = (Commensal)cmd.Result;
 
 			Assert.AreNotEqual(0, result.Id);
-            Assert.AreEqual(comm.Id, result.Id);
+            Assert.AreEqual(commensal.Id, result.Id);
 		}
 
 
 		[Test]
-		// TODO: Exception Personalizada
-		[ExpectedException(typeof(Exception))]
-		public void CreateProfileCommandBadParameter0Test()
+        [ExpectedException(typeof(InvalidTypeOfParameterException))]
+		public void CreateFavoriteRestaurantCommandBadParameter0Test()
 		{
-
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
-
-			cmd.SetParameter (0, "hola");
+            ICommand cmd = BackendFactoryCommand.Instance.CreateFavoriteRestaurantCommand();
+            cmd.SetParameter(0, 1);
 		}
 
 		[Test]
-		// TODO: Exception Personalizada
-		[ExpectedException(typeof(Exception))]
-		public void CreateProfileCommandBadParameter1Test()
+        [ExpectedException(typeof(InvalidTypeOfParameterException))]
+		public void CreateFavoriteRestaurantCommandBadParameter1Test()
 		{
-
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
-
-			cmd.SetParameter (1, "hola");
+            ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
+            cmd.SetParameter (1, "hola");
 		}
 
 		[Test]
-		// TODO: Exception Personalizada
-		[ExpectedException(typeof(Exception))]
-		public void CreateProfileCommandIncompletePaametersTest()
+        [ExpectedException(typeof(ParameterIndexOutOfRangeException))]
+		public void CreateFavoriteRestaurantCommandOfRangePaametersTest()
 		{
-
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
-
+            ICommand cmd = BackendFactoryCommand.Instance.CreateFavoriteRestaurantCommand();
+            cmd.SetParameter(3, "hola");
 			cmd.Run ();
 		}
 
+        [Test]
+        [ExpectedException(typeof(RequieredParameterNotFoundException))]
+        public void CreateFavoriteRestaurantCommandRequieredPaametersTest()
+        {
+           ICommand cmd = BackendFactoryCommand.Instance.CreateFavoriteRestaurantCommand();
+            cmd.Run();
+        }
 
-		private Commensal generateCommensal()
-		{
-			Commensal commensal = new Commensal();
-            commensal.Id = 1;
-			return commensal;
-		}
 
-		private Restaurant generateRestaurant()
-		{
-			_restaurant1 = new Restaurant();
-            _restaurant1.Id = 1;
-			
-			return _restaurant1;
-		}
+        [Test]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void CreateFavoriteRestaurantCommandNullReferenceTest()
+        {
+            ICommand cmd = BackendFactoryCommand.Instance.CreateFavoriteRestaurantCommand();
+            cmd.SetParameter(0, null);
+            cmd.SetParameter(1, restaurant);
+            cmd.Run();
+            Commensal result = (Commensal)cmd.Result;
+            
+            Assert.IsNull(result);
+        }
+
 	}
 }
 
