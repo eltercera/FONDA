@@ -11,9 +11,9 @@ using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using BackOfficeModel.Login;
-using BackOfficePresenter.Login;
 using FondaResources.Login;
 using System.Web.UI.HtmlControls;
+using BackOfficePresenter.Login;
 
 namespace BackOffice.Seccion.Configuracion
 {
@@ -1184,5 +1184,12 @@ namespace BackOffice.Seccion.Configuracion
         {
             userListPresenter.Alerts("Cancel");
         }
+        protected void ModifyStatus_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("entre en code behind");
+            userListPresenter.ModifyStatus_Click(sender,e);
+        }
+
+
     }
     }

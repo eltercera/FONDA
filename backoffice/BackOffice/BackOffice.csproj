@@ -633,7 +633,7 @@
       <Name>BackOfficeModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\BackOfficePresenter\BackOfficePresenter.csproj">
-      <Project>{FDE7B2A6-7496-4680-AB18-A336EEBBE62E}</Project>
+      <Project>{fde7b2a6-7496-4680-ab18-a336eebbe62e}</Project>
       <Name>BackOfficePresenter</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">

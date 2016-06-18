@@ -69,35 +69,32 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             catch (FindAllFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsCommandException(ResourceMessages.GetRestFavException, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.GetAllRestaurantException, e);
             }
             catch (InvalidTypeOfParameterException e)
             {
-                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsCommandException("Parametros ivalidos al intentar obtener" +
-                    "los restaurantes disponibles", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.ParametersGetAllRestException, e);
             }
             catch (ParameterIndexOutOfRangeException e)
             {
-                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsCommandException("Parametros fuera de rango al intentar obener" +
-                    "los restaurantes disponibles", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.ParametersGetAllRestException, e);
             }
             catch (RequieredParameterNotFoundException e)
             {
-                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsCommandException("Se requieren parametros para obtener" +
-                    "los restaurantes disponibles", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.ParametersGetAllRestException, e);
             }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsCommandException(ResourceMessages.GetRestFavException, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.GetAllRestaurantException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsCommandException(ResourceMessages.GetRestFavException, e);
+                throw new GetAllRestaurantsCommandException(ResourceMessages.GetAllRestaurantException, e);
             }
             
 			// Guardar el resultado.

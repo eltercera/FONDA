@@ -6,25 +6,26 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.FondaCommandException
 {
-    public class CommandExceptionGetRestaurant : CommandException
+    public class CommandExceptionGetUserAccount : CommandException
     {
+      
 
-    
             #region Constructors
 
-            public CommandExceptionGetRestaurant(string message, Exception ex) : base(message, ex)
+            public CommandExceptionGetUserAccount(string message, Exception ex) : base(message, ex)
             {
             }
 
-            public CommandExceptionGetRestaurant(string id, string classname, string method, string message, Exception ex)
+            public CommandExceptionGetUserAccount(string id, string classname, string method, string message, Exception ex)
                 : base(id, classname, method, message, ex)
             {
             }
 
             #endregion
-      
 
 
 
+
+        
     }
 }

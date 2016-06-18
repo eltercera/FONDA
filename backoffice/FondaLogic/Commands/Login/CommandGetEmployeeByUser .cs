@@ -48,17 +48,17 @@ namespace FondaLogic.Commands.Login
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                //CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
+                CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
                 //Arrojar
-                //FondaResources.General.Errors.NullExceptionReferenceCode,
-                //FondaResources.Login.Errors.ClassNameGetEmployee,
-                //FondaResources.Login.Errors.CommandMethod,
-                //FondaResources.General.Errors.NullExceptionReferenceMessage,
-                //ex);
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetEmployee,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
 
-                //Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
 
-                //throw exceptionGetEmployee;
+                throw exceptionGetEmployee;
             }
             catch (Exception ex)
             {

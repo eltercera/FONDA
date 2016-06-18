@@ -66,17 +66,17 @@ namespace FondaLogic.Commands.Login
             {
 
                 //TODO: Arrojar Excepcion personalizada
-               // CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
+                CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
                 //Arrojar
-               // FondaResources.General.Errors.NullExceptionReferenceCode,
-                //FondaResources.Login.Errors.ClassNameSaveEmployee,
-                //FondaResources.Login.Errors.CommandMethod,
-                //FondaResources.General.Errors.NullExceptionReferenceMessage,
-                //ex);
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetEmployeeId,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
 
-                //Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
 
-                //throw exceptionCreateEmployee;
+                throw exceptionCreateEmployee;
 
             }
             catch (Exception ex)

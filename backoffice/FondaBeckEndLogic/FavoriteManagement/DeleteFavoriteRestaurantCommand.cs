@@ -84,21 +84,21 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             }
             catch (InvalidTypeOfParameterException  e)
             {
-               // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteFavoriteRestaurantCommandException("Parametros ivalidos al intentar borrar"+
-                    "un restarant favorito", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantCommandException(
+                    ResourceMessages.ParametersDeleteFavRestException, e);
             }
             catch (ParameterIndexOutOfRangeException e)
             {
-                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteFavoriteRestaurantCommandException("Parametros fuera de rango al intentar borrar" +
-                    "un restarant favorito", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantCommandException(
+                    ResourceMessages.ParametersDeleteFavRestException, e);
             }
             catch (RequieredParameterNotFoundException e)
             {
-                // Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteFavoriteRestaurantCommandException("Se requieren parametros para borrar"+ 
-                    "un restaurant favorito", e);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantCommandException(
+                    ResourceMessages.ParametersDeleteFavRestException, e);
             }
             catch (Exception e)
             {

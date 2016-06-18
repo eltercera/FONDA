@@ -19,6 +19,10 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
 
     private String TAG = "AddFavoriteRestaurantCommand";
 
+    /**
+     * Asigna valor a los parametros
+     * @return parametros comensal y restaurant
+     */
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[2];
@@ -28,6 +32,9 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
         return parameters;
     }
 
+    /**
+     * Comando para agregar un restaurante favorito
+     */
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para agregar un restaurante a favoritos");

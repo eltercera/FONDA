@@ -11,6 +11,11 @@ import java.util.List;
  */
 public interface AllRestaurantService {
 
+    /**
+     * Método que obtiene todos los restaurantes
+     * @return
+     * @throws RestClientException
+     */
     List<Restaurant> getAllRestaurant() throws RestClientException;
 
 }
