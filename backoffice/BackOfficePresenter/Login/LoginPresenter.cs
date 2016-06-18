@@ -47,7 +47,7 @@ namespace BackOfficePresenter.Login
         /// <param name="type">Tipo de mensaje a mostrar</param>
         public void mensajeLogin(Boolean visible, string message, string type)
         {
-
+            System.Diagnostics.Debug.WriteLine("entre en mensaje");
             switch (type)
             {
                 
@@ -73,8 +73,9 @@ namespace BackOfficePresenter.Login
                     _view.alertsuccessLog.Visible = !visible;
                     _view.alertinfoLog.InnerText = message; break;
                 case "Success":
+                    System.Diagnostics.Debug.WriteLine("entre en mensaje");
                     _view.alertsuccessLog.Visible = visible;
-                    _view.alertsuccessLog.Visible = !visible;
+                    _view.alertloginError.Visible = !visible;
                     _view.alertwarningLog.Visible = !visible;
                     _view.alertinfoLog.Visible = !visible;
                     _view.alertsuccessLog.InnerText = message; break;
@@ -239,7 +240,7 @@ namespace BackOfficePresenter.Login
         /// <summary>
         /// metodo que recupera la clave del usuario
         /// </summary>
-        public bool Recoverpassword()
+        public void  Recoverpassword()
         {
             //Fabrica de Dao
             FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -290,7 +291,7 @@ namespace BackOfficePresenter.Login
                                     _employeeResult.UserAccount.Password = passwordnew1;
                                     CommandSaveEmployee = CommandFactory.GetCommandSaveEmployee(_employeeResult);
                                     CommandSaveEmployee.Execute();
-                                    return true;
+                                    
                                     //mensajeLogin(true, mensajes.logSuccess, mensajes.tipoSucess);
                                 }
                                 else
@@ -337,7 +338,7 @@ namespace BackOfficePresenter.Login
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
 
-                throw exceptionGetEmployee;
+                //throw exceptionGetEmployee;
             }
             catch (Exception ex)
             {
@@ -345,7 +346,7 @@ namespace BackOfficePresenter.Login
 
             }
 
-            return false;
+           
         }
 
 

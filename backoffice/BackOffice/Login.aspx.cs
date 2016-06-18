@@ -253,12 +253,11 @@ namespace BackOffice.Seccion.Configuracion
         /// </summary>
         public void Recoverpassword()
         {
-            bool result = false;
-            result =_presenter.Recoverpassword();
-            if (result)
-            {
-                mensajeLogin(true, mensajes.logSuccess, mensajes.tipoSucess);
-            }
+            
+            _presenter.Recoverpassword();
+
+              
+
         }
 
     }
