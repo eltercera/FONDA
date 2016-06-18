@@ -17,7 +17,9 @@ namespace FondaBeckEndLogic.ProfileManagement
     /// </summary>
     public class GetProfileCommand: BaseCommand
     {
-
+        /// <summary>
+        /// constructor GetProfileCommand
+        /// </summary>
         public GetProfileCommand() : base() { }
         /// <summary>
         /// Metodo para inicializar los parametros
@@ -53,18 +55,19 @@ namespace FondaBeckEndLogic.ProfileManagement
             {
                 //Se busca el profile por su id
                 profile = (Profile)profileDAO.FindById(profile.Id);
+                //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                 ResourceMessagesProfile.Profile + profile.ProfileName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                 ResourceMessages.Profile + profile.ProfileName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
             catch (FindByIdFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetProfileCommandException(ResourceMessagesProfile.GetProfileException, e);
+                throw new GetProfileCommandException(ResourceMessages.GetProfileException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetProfileCommandException(ResourceMessagesProfile.GetProfileException, e);
+                throw new GetProfileCommandException(ResourceMessages.GetProfileException, e);
             }
 
             // Guardar el resultado.

@@ -72,7 +72,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                     ResourceMessages.RestDeletedFromFav + commensal.Id + ResourceMessages.Slash + restaurant.Name,
                     System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (DeleteFondaDAOException e) 
+            catch (DeleteEntityFondaDAOException e) 
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new DeleteFavoriteRestaurantCommandException(ResourceMessages.DeleteFavRestException, e);

@@ -4,6 +4,10 @@ using System.Net.Http.Headers;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System.Text;
+using com.ds201625.fonda.BackEnd.Log;
+using com.ds201625.fonda.BackEndLogic;
+using com.ds201625.fonda.BackEnd.Exceptions;
+using FondaBeckEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.BackEnd.ActionFilters
 {
@@ -21,39 +25,56 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 		/// <param name="context">Context.</param>
 		protected override bool Authorize (HttpActionContext context)
 		{
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 			HttpRequestHeaders headres = context.Request.Headers;
 
-			// Verificacion de la existencia de 
-			// Authorization: Basic xxxxxxx:xxxxxx
-			if (headres.Authorization == null 
-				| headres.Authorization.Scheme == null
-				| headres.Authorization.Parameter == null
-			)
-				return false;
+            try
+            {
+                // Verificacion de la existencia de 
+                // Authorization: Basic xxxxxxx:xxxxxx
+                if (headres.Authorization == null
+                    | headres.Authorization.Scheme == null
+                    | headres.Authorization.Parameter == null
+                )
+                    return false;
 
-			if (headres.Authorization.Scheme != GeneralRes.BasicAuthSheme )
-				return false;
+                if (headres.Authorization.Scheme != GeneralRes.BasicAuthSheme)
+                    return false;
 
-			// Obtencion de los datos en xxxxxxx:xxxxxx
-			String base64 = headres.Authorization.Parameter;
-			String data = Encoding.Default.GetString(Convert.FromBase64String(base64));
-			String[] crede = data.Split (':');
+                // Obtencion de los datos en xxxxxxx:xxxxxx
+                String base64 = headres.Authorization.Parameter;
+                String data = Encoding.Default.GetString(Convert.FromBase64String(base64));
+                String[] crede = data.Split(':');
 
-			if (crede.Length != 2 )
-				return false;
+                if (crede.Length != 2)
+                    return false;
 
-			String email = crede[0];
-			String password = crede[1];
+                String email = crede[0];
+                String password = crede[1];
 
-			// Validadcion
-			int commID = ValidateAccount (email,password);
-			if (commID == 0 )
-				return false;
+                // Validadcion
+                int commID = ValidateAccount(email, password);
+                if (commID == 0)
+                    return false;
 
-			// Agregacion en el header el id del usuario
-			// para el uso interno de las acciones
-            context.Request.Headers.Add(GeneralRes.CommensalIDHeader, "" + commID);
-
+                // Agregacion en el header el id del usuario
+                // para el uso interno de las acciones
+                context.Request.Headers.Add(GeneralRes.CommensalIDHeader, "" + commID);
+            }
+            catch (FondaAuthLoginAttributeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FondaAuthLoginAttributeException(GeneralRes.Authorize, e);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FondaAuthLoginAttributeException(GeneralRes.Authorize, e);
+            }
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            
 			return true;
 		}
 
@@ -65,17 +86,50 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 		/// <param name="password">Password.</param>
 		private int ValidateAccount(String email, String password)
 		{
-			ICommensalDAO commDAO = FactoryDAO.GetCommensalDAO ();
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            UserAccount user;
+            int idCommensal;
+            try
+            {
+                 // Se obtiene el commando CreateCreateProfileCommand 
+                ICommand command = BackendFactoryCommand.Instance.GetAccountEmailCommands();
 
-			UserAccount comm = commDAO.FindByEmail (email);
+                // Se agrega el email como parametro
+                command.SetParameter(0, email);
+                // Se agrega el password como parametro
+                command.SetParameter(1, password);
+                
+                //se ejecuta el comando
+                command.Run();
 
-			if (comm == null)
-				return 0;
+                user = (UserAccount)command.Result;
 
-			if (comm.Password != password)
-				return 0;
+                if (user == null || user.Password != password)
+                    idCommensal = 0;
+                else
+                    idCommensal = user.Id;
+                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.Commensal + idCommensal, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            catch (GetAccountEmailCommandException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FondaAuthLoginAttributeException(GeneralRes.ValidateAccountEmailException, e);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FondaAuthLoginAttributeException(GeneralRes.ValidateAccountEmailException, e);
+            }
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, idCommensal.ToString(),
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-			return comm.Id;
+            // Se retorna el resultado
+			return idCommensal;
 		}
 	}
 }

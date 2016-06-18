@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FondaBeckEndLogic.ProfileManagement {
+namespace com.ds201625.fonda.DataAccess {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace FondaBeckEndLogic.ProfileManagement {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ResourceMessagesProfile {
+    internal class ResourceMessagesDAO {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ResourceMessagesProfile() {
+        internal ResourceMessagesDAO() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace FondaBeckEndLogic.ProfileManagement {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaBeckEndLogic.ProfileManagement.ResourceMessagesProfile", typeof(ResourceMessagesProfile).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("com.ds201625.fonda.DataAccess.ResourceMessagesDAO", typeof(ResourceMessagesDAO).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,83 +61,83 @@ namespace FondaBeckEndLogic.ProfileManagement {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Error al agregar un perfil de un comensal.
+        ///   Busca una cadena traducida similar a Error al eliminar un objeto de la entidad: .
         /// </summary>
-        internal static string AddProfileException {
+        internal static string DeleteEntityFondaDAOException {
             get {
-                return ResourceManager.GetString("AddProfileException", resourceCulture);
+                return ResourceManager.GetString("DeleteEntityFondaDAOException", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Error al eliminar un perfil de un comensal.
+        ///   Busca una cadena traducida similar a Error al consultar lista de entidades.
         /// </summary>
-        internal static string DeleteProfileException {
+        internal static string FindAllFondaDAOException {
             get {
-                return ResourceManager.GetString("DeleteProfileException", resourceCulture);
+                return ResourceManager.GetString("FindAllFondaDAOException", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Error al buscar el Perfil de un Commensal.
+        ///   Busca una cadena traducida similar a Error al consultar un useraccount por su email: .
         /// </summary>
-        internal static string GetProfileException {
+        internal static string FindByEmailUserAccountFondaDAOException {
             get {
-                return ResourceManager.GetString("GetProfileException", resourceCulture);
+                return ResourceManager.GetString("FindByEmailUserAccountFondaDAOException", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Datos del Perfil Invalidos.
+        ///   Busca una cadena traducida similar a Error al consultar una entidad por la propiedad: .
         /// </summary>
-        internal static string InvalidInformationProfile {
+        internal static string FindByFondaDAOExceptionProperty {
             get {
-                return ResourceManager.GetString("InvalidInformationProfile", resourceCulture);
+                return ResourceManager.GetString("FindByFondaDAOExceptionProperty", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Perfil del Commensal: .
+        ///   Busca una cadena traducida similar a y el valor.
         /// </summary>
-        internal static string Profile {
+        internal static string FindByFondaDAOExceptionValue {
             get {
-                return ResourceManager.GetString("Profile", resourceCulture);
+                return ResourceManager.GetString("FindByFondaDAOExceptionValue", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Profile Agregado al Commensal: .
+        ///   Busca una cadena traducida similar a Error al consultar por el Id: .
         /// </summary>
-        internal static string ProfileAdded {
+        internal static string FindByIdFondaDAOException {
             get {
-                return ResourceManager.GetString("ProfileAdded", resourceCulture);
+                return ResourceManager.GetString("FindByIdFondaDAOException", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Profile Eliminado de un Commensal: .
+        ///   Busca una cadena traducida similar a Error al buscar un token por su strToken: .
         /// </summary>
-        internal static string ProfileDeleted {
+        internal static string FindByStrTokenException {
             get {
-                return ResourceManager.GetString("ProfileDeleted", resourceCulture);
+                return ResourceManager.GetString("FindByStrTokenException", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Profile Modificado de un Commensal: .
+        ///   Busca una cadena traducida similar a Error al guardar un objeto de la entidad: .
         /// </summary>
-        internal static string ProfileUpdated {
+        internal static string SaveEntityFondaDAOException {
             get {
-                return ResourceManager.GetString("ProfileUpdated", resourceCulture);
+                return ResourceManager.GetString("SaveEntityFondaDAOException", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Error al modificar un perfil de un comensal.
+        ///   Busca una cadena traducida similar a Error al consultar una entidad por su Id: .
         /// </summary>
-        internal static string UpdateProfileException {
+        internal static string String1FindByIdFondaDAOException {
             get {
-                return ResourceManager.GetString("UpdateProfileException", resourceCulture);
+                return ResourceManager.GetString("String1FindByIdFondaDAOException", resourceCulture);
             }
         }
     }

@@ -7,10 +7,12 @@ using com.ds201625.fonda.BackEnd.ActionFilters;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
-
 using com.ds201625.fonda.BackEndLogic;
 using FondaBeckEndLogic.Exceptions;
 using com.ds201625.fonda.BackEnd.Log;
+using com.ds201625.fonda.Factory;
+using com.ds201625.fonda.BackEnd.Exceptions;
+using System.Collections.Generic;
 
 
 namespace com.ds201625.fonda.BackEnd.Controllers
@@ -21,6 +23,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 	/// </summary>
 	public class ProfileFondaWebApiController : FondaWebApi
 	{
+        private Profile result;
         /// <summary>
         /// Constructor de ProfileFondaWebApiController
         /// </summary>
@@ -35,11 +38,34 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		/// <returns>The profiles.</returns>
 		public IHttpActionResult getProfiles()
 		{
-			Commensal commensal = GetCommensal (Request.Headers);
-			if (commensal == null)
-				return BadRequest ();
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            IList<Profile> profiles;
+            try
+            {
 
-			return Ok(commensal.Profiles);
+                Commensal commensal = GetCommensal(Request.Headers);
+                profiles = commensal.Profiles;
+                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.Commensal + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            catch (GetCommensalFondaWebApiException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new PostProfileFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new PostProfileFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
+            }
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, profiles.ToString(),
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            //retorna los perfiles
+			return Ok(profiles);
 		}
 
         [Route("profile")]
@@ -52,38 +78,56 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		/// <param name="profile">Profile.</param>
         public IHttpActionResult postProfile(Profile profile)
         {
-            //Se obtiene el Commensal
-            Commensal commensal = GetCommensal(Request.Headers);
-            if (commensal == null)
-                return BadRequest();
-
-            // Se obtiene el commando CreateCreateProfileCommand 
-            ICommand command = FacCommand.CreateCreateProfileCommand();
-
-            // Se agrega el commensal como parametro
-            command.SetParameter(0, commensal);
-            // Se agrega el profile como parametro
-            command.SetParameter(1, profile);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
+                //Se obtiene el Commensal
+                Commensal commensal = GetCommensal(Request.Headers);
+                if (commensal == null)
+                    return BadRequest();
+
+                // Se obtiene el commando CreateCreateProfileCommand 
+                ICommand command = FacCommand.GetCreateProfileCommand();
+
+                // Se agrega el commensal como parametro
+                command.SetParameter(0, commensal);
+                // Se agrega el profile como parametro
+                command.SetParameter(1, profile);
+
                 //se ejecuta el comando
                 command.Run();
 
                 //Se obtiene la respuesta del Comando
-                Profile result = (Profile)command.Result;
-                // Se retorna el resultado
-                return Created("", result);
+                result = (Profile)command.Result;
+                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.ProfileAdded + commensal.Id + GeneralRes.Slash + profile.ProfileName,
+                   System.Reflection.MethodBase.GetCurrentMethod().Name);
+                
             }
             catch (CreateProfileCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateProfileCommandException(GeneralRes.AddProfileException, e);
+                throw new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
+            }
+            catch (GetCommensalFondaWebApiException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateProfileCommandException(GeneralRes.AddProfileException, e);
+                throw new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
             }
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, result.ToString(),
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            // Se retorna el resultado
+            return Created("", result);
         }
 
         [Route("profile/{id}")]
@@ -97,38 +141,57 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		/// <param name="id">Identifier.</param>
         public IHttpActionResult putProfile(Profile profile, int id)
         {
-            Commensal commensal = GetCommensal(Request.Headers);
-            if (commensal == null)
-                return BadRequest();
-
-            ICommensalDAO commensalDAO = FactoryDAO.GetCommensalDAO();
-
-            if (profile.ProfileName == null || profile.Person == null || profile.Person.Name == null
-                || profile.Person.LastName == null || profile.Person.Ssn == null)
-                return BadRequest();
-
-            Profile oldProfile = GetProfileDao().FindById(id);
-            if (!commensal.Profiles.Contains(oldProfile))
-                return BadRequest();
-
-            oldProfile.ProfileName = profile.ProfileName;
-            oldProfile.Person.Name = profile.Person.Name;
-            oldProfile.Person.LastName = profile.Person.LastName;
-            oldProfile.Person.PhoneNumber = profile.Person.PhoneNumber;
-            oldProfile.Person.Address = profile.Person.Address;
-            oldProfile.Person.Ssn = profile.Person.Ssn;
-
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
-                commensalDAO.Save(commensal);
+                //Se obtiene el Commensal
+                Commensal commensal = GetCommensal(Request.Headers);
+                if (commensal == null)
+                    return BadRequest();
+                //Se obtiene el Profile
+                Profile oldProfile = GetProfile(id);
+
+                if (!commensal.Profiles.Contains(oldProfile))
+                    return BadRequest();
+
+                // Se obtiene el commando CreateCreateProfileCommand 
+                ICommand command = FacCommand.UpdateProfileCommand();
+
+                // Se agrega el commensal como parametro
+                command.SetParameter(0, commensal);
+                // Se agrega el profile original como parametro
+                command.SetParameter(1, oldProfile);
+                // Se agrega el profile a modificar como parametro
+                command.SetParameter(2, profile);
+                //se ejecuta el comando
+                command.Run();
+
+                //Se obtiene la respuesta del Comando
+                result = (Profile)command.Result;
+
+                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.ProfileUpdated + commensal.Id + GeneralRes.Slash + profile.ProfileName,
+                   System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (SaveEntityFondaDAOException e)
+            catch (UpdateProfileCommandException e)
             {
-                Console.WriteLine(e.ToString());
-                return InternalServerError(e);
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new PutProfileFondaWebApiControllerException(GeneralRes.UpdateProfileException, e);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new PutProfileFondaWebApiControllerException(GeneralRes.UpdateProfileException, e);
             }
 
-            return Created("", oldProfile);
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, result.ToString(),
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            return Created("", result);
         }
 
         [Route("profile/{id}")]
@@ -141,29 +204,48 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		/// <param name="id">Identifier.</param>
         public IHttpActionResult deleteProfile(int id)
         {
-            Commensal commensal = GetCommensal(Request.Headers);
-            if (commensal == null)
-                return BadRequest();
-
-            ICommensalDAO commensalDAO = FactoryDAO.GetCommensalDAO();
-
-            Profile profile = GetProfileDao().FindById(id);
-            if (!commensal.Profiles.Contains(profile))
-                return BadRequest();
-
-            commensal.Profiles.Remove(profile);
-			profile.Status = FactoryDAO.GetDisabledSimpleStatus();
-
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
-                commensalDAO.Save(commensal);
+                Commensal commensal = GetCommensal(Request.Headers);
+                if (commensal == null)
+                    return BadRequest();
+
+                //Se obtiene el Profile
+                Profile profile = GetProfile(id);
+
+                if (!commensal.Profiles.Contains(profile))
+                    return BadRequest();
+
+                // Se obtiene el commando CreateCreateProfileCommand 
+                ICommand command = FacCommand.DeleteProfileCommand();
+
+                // Se agrega el commensal como parametro
+                command.SetParameter(0, commensal);
+                // Se agrega el profile a eliminar como parametro
+                command.SetParameter(1, profile);
+
+                //se ejecuta el comando
+                command.Run();
+                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                  GeneralRes.ProfileDeleted + commensal.Id + GeneralRes.Slash + profile.ProfileName,
+                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (SaveEntityFondaDAOException e)
+            catch (DeleteProfileCommandException e)
             {
-                Console.WriteLine(e.ToString());
-                return InternalServerError(e);
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteProfileFondaWebApiControllerException(GeneralRes.DeleteProfileException, e);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteProfileFondaWebApiControllerException(GeneralRes.DeleteProfileException, e);
             }
 
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             return Ok();
         }
 
@@ -197,15 +279,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
         //    return Ok();
         //}
-
-		/// <summary>
-		/// Gets the profile DAO.
-		/// </summary>
-		/// <returns>The profile DAO.</returns>
-        private IProfileDAO GetProfileDao()
-        {
-            return FactoryDAO.GetProfileDAO();
-        }
     }
 }
 

@@ -24,15 +24,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
             catch (FindByFondaDAOException e)
             {
-                throw new FindByEmailUserAccountFondaDAOException(
-                    "Excepción al consultar Email "+ email,
-                    e);
+                throw new FindByEmailUserAccountFondaDAOException(ResourceMessagesDAO.FindByEmailUserAccountFondaDAOException 
+                    + email,e);
             }
             catch (Exception e)
             {
-                throw new FindByEmailUserAccountFondaDAOException(
-                    "Excepción al consultar Email " + email,
-                    e);
+                throw new FindByEmailUserAccountFondaDAOException(ResourceMessagesDAO.FindByEmailUserAccountFondaDAOException
+                   + email, e);
             }
 		}
 

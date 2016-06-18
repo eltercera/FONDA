@@ -52,7 +52,10 @@ namespace FondaBeckEndLogic.ProfileManagement
 			    // Validacion basica de datos
                 if (profile.ProfileName == null || profile.Person == null || profile.Person.Name == null
                     || profile.Person.LastName == null || profile.Person.Ssn == null)
-                    throw new CreateProfileCommandException(ResourceMessagesProfile.InvalidInformationProfile);
+                    throw new CreateProfileCommandException(ResourceMessages.InvalidInformationProfile);
+                if (profile.ProfileName == "" || profile.Person.Name == ""
+                        || profile.Person.LastName == "" || profile.Person.Ssn == "")
+                    throw new CreateProfileCommandException(ResourceMessages.InvalidInformationProfile);
                
             try
             {    
@@ -69,18 +72,18 @@ namespace FondaBeckEndLogic.ProfileManagement
 			    //Se Guarda el commensal con el nuevo perfil
 				commensalDAO.Save(commensal);
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    ResourceMessagesProfile.ProfileAdded + commensal.Id + ResourceMessages.Slash + profile.ProfileName,
+                    ResourceMessages.ProfileAdded + commensal.Id + ResourceMessages.Slash + profile.ProfileName,
                     System.Reflection.MethodBase.GetCurrentMethod().Name);
 			}
 			catch (SaveEntityFondaDAOException e)
 			{
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateProfileCommandException(ResourceMessagesProfile.AddProfileException, e);
+                throw new CreateProfileCommandException(ResourceMessages.AddProfileException, e);
 			}
 			catch (Exception e)
 			{
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateProfileCommandException(ResourceMessagesProfile.AddProfileException, e);
+                throw new CreateProfileCommandException(ResourceMessages.AddProfileException, e);
 			}
 
 			// Guardar el resultado.

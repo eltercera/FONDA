@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace FondaBeckEndLogic.Exceptions
 {
     /// <summary>
-    /// Clase GetProfileCommandException para manejo 
-    /// de Excepciones en la clase GetProfileCommand
+    /// Representa los errores que se generan al buscar
+    /// un Perfil de un Commensal en GetProfileCommand
     /// </summary>
     public class GetProfileCommandException : FondaBackendLogicException
     {

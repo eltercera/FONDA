@@ -150,10 +150,10 @@
   <data name="GetCommensalEmailException" xml:space="preserve">
     <value>Error al buscar el comensal por email</value>
   </data>
-  <data name="GetFavoriteRestaurantException" xml:space="preserve">
+  <data name="GetFavoriteRestaurant" xml:space="preserve">
     <value>Error al obtener la lista de los restaurantes favoritos del comensal</value>
   </data>
-  <data name="GetAllRestaurantsException" xml:space="preserve">
+  <data name="GetRestFavException" xml:space="preserve">
     <value>Error al obtener la lista de restaurant para elegir los favoritos del comensal</value>
   </data>
   <data name="InvalidInformation" xml:space="preserve">
@@ -201,6 +201,45 @@
   </data>
   <data name="UpdateProfileException" xml:space="preserve">
     <value>Error al modificar un perfil de un comensal</value>
+  </data>
+  <data name="Commensal" xml:space="preserve">
+    <value>Commensal: </value>
+  </data>
+  <data name="GetCommensalException" xml:space="preserve">
+    <value>Error al Buscar el Commensal</value>
+  </data>
+  <data name="GetCommensalIdException" xml:space="preserve">
+    <value>Error al Buscar el Id del Commensal en el Header</value>
+  </data>
+  <data name="GetProfilesException" xml:space="preserve">
+    <value>Error al buscar Lista de Perfiles de un Commensal</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token del Commensal: </value>
+  </data>
+  <data name="DeleteTokenException" xml:space="preserve">
+    <value>Error al eliminar un Token de un commensal </value>
+  </data>
+  <data name="GetTokenException" xml:space="preserve">
+    <value>Error al buscar un Token de un commensal </value>
+  </data>
+  <data name="ValidateAccountEmailException" xml:space="preserve">
+    <value>Error al validar cuenta por email</value>
+  </data>
+  <data name="ValidateAccountTokenException" xml:space="preserve">
+    <value>Error al validar Token</value>
+  </data>
+  <data name="Authorize" xml:space="preserve">
+    <value>Error en Authorize</value>
+  </data>
+  <data name="AddCommensal" xml:space="preserve">
+    <value>Error al agregar un commensal</value>
+  </data>
+  <data name="GetAllRestaurantsException" xml:space="preserve">
+    <value>Error al obtener la lista de restaurant para elegir los favoritos del comensal</value>
+  </data>
+  <data name="GetFavoriteRestaurantException" xml:space="preserve">
+    <value>Error al obtener la lista de los restaurantes favoritos del comensal</value>
   </data>
   <data name="ParametersAddFavRestException" xml:space="preserve">
     <value>Parámetros iválidos al intentar agregar un restaurante a favoritos</value>

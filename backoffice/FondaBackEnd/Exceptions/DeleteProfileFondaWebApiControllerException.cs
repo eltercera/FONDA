@@ -7,8 +7,8 @@ using System.Web;
 namespace com.ds201625.fonda.BackEnd.Exceptions
 {
     /// <summary>
-    /// Clase DeleteProfileFondaWebApiControllerException para manejo 
-    /// de Excepciones en DeleteProfileFondaWebApiController
+    /// Representa los errores que se generan al eliminar
+    /// un Perfil de un Commensal en DeleteProfileFondaWebApiController
     /// </summary>
     public class DeleteProfileFondaWebApiControllerException : FondaBackendException
     {
