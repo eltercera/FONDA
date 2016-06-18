@@ -47,6 +47,7 @@
     <Compile Include="Login\LoginPresenter.cs" />
     <Compile Include="Login\mensajes.cs" />
     <Compile Include="Login\UserListPresenter.cs" />
+    <Compile Include="Menu\MenuCategoriaPresenter.cs" />
     <Compile Include="OrderAccount\ClosedOrdersPresenter.cs" />
     <Compile Include="OrderAccount\DetailOrderPresenter.cs" />
     <Compile Include="OrderAccount\ExceptionPresenter.cs" />
@@ -56,7 +57,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Menu\" />
     <Folder Include="Restaurant\" />
   </ItemGroup>
   <ItemGroup>
