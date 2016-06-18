@@ -23,6 +23,7 @@ namespace BackOffice.Seccion.Configuracion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("entre page load");
             errorLogin.Visible = false;
             warningLog.Visible = false;
 
