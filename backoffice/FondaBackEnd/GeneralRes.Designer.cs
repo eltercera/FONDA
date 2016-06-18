@@ -196,6 +196,15 @@ namespace com.ds201625.fonda.BackEnd {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al obtener la lista de restaurant para elegir los favoritos del comensal.
+        /// </summary>
+        internal static string GetAllRestaurantsException {
+            get {
+                return ResourceManager.GetString("GetAllRestaurantsException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al buscar el comensal por email.
         /// </summary>
         internal static string GetCommensalEmailException {
@@ -228,6 +237,15 @@ namespace com.ds201625.fonda.BackEnd {
         internal static string GetFavoriteRestaurant {
             get {
                 return ResourceManager.GetString("GetFavoriteRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al obtener la lista de los restaurantes favoritos del comensal.
+        /// </summary>
+        internal static string GetFavoriteRestaurantException {
+            get {
+                return ResourceManager.GetString("GetFavoriteRestaurantException", resourceCulture);
             }
         }
         
@@ -282,6 +300,51 @@ namespace com.ds201625.fonda.BackEnd {
         internal static string InvalidInformationProfile {
             get {
                 return ResourceManager.GetString("InvalidInformationProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Parámetros iválidos al intentar agregar un restaurante a favoritos.
+        /// </summary>
+        internal static string ParametersAddFavRestException {
+            get {
+                return ResourceManager.GetString("ParametersAddFavRestException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Parámetros iválidos al intentar eliminar un restaurant favorito.
+        /// </summary>
+        internal static string ParametersDeleteFavRestException {
+            get {
+                return ResourceManager.GetString("ParametersDeleteFavRestException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Parámetros iválidos al intentar obtener los restaurantes disponibles.
+        /// </summary>
+        internal static string ParametersGetAllRestException {
+            get {
+                return ResourceManager.GetString("ParametersGetAllRestException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Parámetros iválidos al intentar obtener el email de un comensal.
+        /// </summary>
+        internal static string ParametersGetComensEmailException {
+            get {
+                return ResourceManager.GetString("ParametersGetComensEmailException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Parámetros iválidos al intentar obtener los restaurantes favoritos del comensal.
+        /// </summary>
+        internal static string ParametersGetFavRestException {
+            get {
+                return ResourceManager.GetString("ParametersGetFavRestException", resourceCulture);
             }
         }
         

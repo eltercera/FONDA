@@ -235,4 +235,25 @@
   <data name="AddCommensal" xml:space="preserve">
     <value>Error al agregar un commensal</value>
   </data>
+  <data name="GetAllRestaurantsException" xml:space="preserve">
+    <value>Error al obtener la lista de restaurant para elegir los favoritos del comensal</value>
+  </data>
+  <data name="GetFavoriteRestaurantException" xml:space="preserve">
+    <value>Error al obtener la lista de los restaurantes favoritos del comensal</value>
+  </data>
+  <data name="ParametersAddFavRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar agregar un restaurante a favoritos</value>
+  </data>
+  <data name="ParametersDeleteFavRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar eliminar un restaurant favorito</value>
+  </data>
+  <data name="ParametersGetAllRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar obtener los restaurantes disponibles</value>
+  </data>
+  <data name="ParametersGetComensEmailException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar obtener el email de un comensal</value>
+  </data>
+  <data name="ParametersGetFavRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar obtener los restaurantes favoritos del comensal</value>
+  </data>
 </root>
