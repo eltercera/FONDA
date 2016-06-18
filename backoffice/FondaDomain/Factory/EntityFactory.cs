@@ -113,6 +113,44 @@ namespace com.ds201625.fonda.Factory
         {
             return new RestaurantCategory();
         }
+
+        //Instancia de MenuCategory
+        public static MenuCategory GetMenuCategory()
+        {
+            return new MenuCategory();
+        }
+
+        //Instancia de Dish
+        public static Dish GetDish()
+        {
+            return new Dish();
+        }
+       
+
+        //Instancia de Currency
+        public static Currency GetCurrency()
+        {
+            return new Currency();
+        }
+
+        //Instancia de Coordinate
+        public static  Coordinate GetCoordinate()
+        {
+            return new Coordinate();
+        }
+
+        //Instancia de Zone
+        public static Zone GetZone()
+        {
+            return new Zone();
+        }
+
+        //Instancia de Shedule
+        public static Schedule GetShedule()
+        {
+            return new Schedule();
+        }
+
         #endregion
     }
 }

@@ -16,17 +16,17 @@ namespace FondaBackEndLogicTest
     /// Clase que realiza las pruebas unitarias del comando Crear Restaurant favorito.
     /// </summary>
 	[TestFixture]
-	public class CreateFavoriteRestaurantManagementTest
-	{
-        Restaurant restaurant;
-        Commensal commensal;
-        ICommand createFavorite;
+	public class CreateFavoriteRestaurantManagementTest   
+    {
+        private  Restaurant restaurant;
+        private  Commensal commensal;
+        private  ICommand createFavorite;
 
         /// <summary>
         /// metodo que instancia e inicializa el objeto y variables respectivamente.
         /// </summary>
         [SetUp]
-         public void Init()
+        protected void Init()
         {
             commensal = EntityFactory.GetCommensal(); 
             commensal.Id = 1;
@@ -39,7 +39,7 @@ namespace FondaBackEndLogicTest
         /// metodo que se encarga de limpiar el objeto.
         /// </summary>
         [TearDown]
-        public void Clean()
+        protected void Clean()
         {
             commensal = null;
             restaurant = null;
