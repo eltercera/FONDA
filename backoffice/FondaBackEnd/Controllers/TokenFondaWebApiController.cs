@@ -6,6 +6,8 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.BackEndLogic;
 using com.ds201625.fonda.BackEnd.Log;
+using com.ds201625.fonda.BackEnd.Exceptions;
+using FondaBeckEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -37,6 +39,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Commensal commensal = GetCommensal(Request.Headers);
                 if (commensal == null)
                     return BadRequest();
+
                 // Se obtiene el commando CreateCreateProfileCommand 
                 ICommand command = FacCommand.GetTokenCommand();
 
@@ -51,14 +54,22 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    GeneralRes.Token + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (SaveEntityFondaDAOException e)
+            catch (GetTokenCommandException e)
             {
-                Console.WriteLine(e.ToString());
-                return InternalServerError(e);
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+            }
+            catch (GetCommensalFondaWebApiException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
             }
             //Logger al Culminar el metodo
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, result.ToString(),
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
@@ -83,10 +94,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 if (commensal == null)
                     return BadRequest();
 
-
-
                 // Se obtiene el commando CreateCreateProfileCommand 
-                ICommand command = FacCommand.GetTokenCommand();
+                ICommand command = FacCommand.DeleteTokenCommand();
 
                 // Se agrega el commensal como parametro
                 command.SetParameter(0, commensal);
@@ -96,16 +105,23 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
                 Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    GeneralRes.Token + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
-
             }
-            catch (SaveEntityFondaDAOException e)
+            catch (DeleteTokenCommandException e)
             {
-                Console.WriteLine(e.ToString());
-                return InternalServerError(e);
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+            }
+            catch (GetCommensalFondaWebApiException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
             }
             //Logger al Culminar el metodo
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, result.ToString(),
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 

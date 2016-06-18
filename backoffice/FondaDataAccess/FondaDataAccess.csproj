@@ -61,11 +61,12 @@
     <Compile Include="Exceptions\AddEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\CastException.cs" />
     <Compile Include="Exceptions\ClearTableEmployeeFondaBackOfficeException.cs" />
-    <Compile Include="Exceptions\DeleteFondaDAOException.cs" />
+    <Compile Include="Exceptions\DeleteEntityFondaDAOException.cs" />
     <Compile Include="Exceptions\FindAllFondaDAOException.cs" />
     <Compile Include="Exceptions\FindByEmailUserAccountFondaDAOException.cs" />
     <Compile Include="Exceptions\FindByFondaDAOException.cs" />
     <Compile Include="Exceptions\FindByIdFondaDAOException.cs" />
+    <Compile Include="Exceptions\FindByStrTokenFondaDAOException.cs" />
     <Compile Include="Exceptions\FindByusernameEmployeFondaDAOException.cs" />
     <Compile Include="Exceptions\FondaBackOfficeException.cs" />
     <Compile Include="Exceptions\GetAllEmployeFondaDAOException.cs" />
@@ -210,6 +211,11 @@
     <Compile Include="HibernateDAO\HibernateActiveSimpleStatus.cs" />
     <Compile Include="FactoryDAO\IFactoryDAO.cs" />
     <Compile Include="HibernateDAO\Session\SessionManager.cs" />
+    <Compile Include="ResourceMessagesDAO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceMessagesDAO.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -237,5 +243,11 @@
       <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ResourceMessagesDAO.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceMessagesDAO.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

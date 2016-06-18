@@ -1,8 +1,8 @@
 ﻿using com.ds201625.fonda.BackEndLogic;
 using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Factory;
 using FondaBeckEndLogic.Exceptions;
 using FondaLogic.Log;
 using System;
@@ -11,74 +11,75 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaBeckEndLogic.TokenManagement
+namespace FondaBeckEndLogic.ActionFiltersManagement
 {
     /// <summary>
-    /// Comando para la Buscar Token
+    /// Comando para la Buscar un UserAccount por su email
     /// </summary>
-    public class GetTokenCommand : BaseCommand
+    public class GetAccountEmailCommand : BaseCommand
     {
         /// <summary>
-        /// constructor GetTokenCommand
+        /// constructor GetAccountEmailCommand
         /// </summary>
-        public GetTokenCommand() : base() { }
+        public GetAccountEmailCommand() : base() { }
         /// <summary>
         /// Metodo para inicializar los parametros
         /// </summary>
-        /// <returns>Un arreglo con el parametro Commensal/returns>
+        /// <returns>Un arreglo con los parametros email y password/returns>
         protected override Parameter[] InitParameters()
         {
             // Requiere 1 Parametro
-            Parameter[] paramters = new Parameter[1];
+            Parameter[] paramters = new Parameter[2];
 
-            // [0] El Commensal
-            paramters[0] = new Parameter(typeof(Commensal), true);
+            // [0] El email
+            paramters[0] = new Parameter(typeof(String), true);
+            // [1] El password
+            paramters[1] = new Parameter(typeof(String), true);
 
             return paramters;
         }
+
         /// <summary>
         /// Metodo Invoke para la ejecucion del 
-        /// buscar un Token especifico
+        /// buscar un UserAccount especifico
         /// </summary>
         protected override void Invoke()
         {
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                // Obtencion de parametros
-                Commensal commensal = (Commensal)GetParameter(0);
+            // Obtencion de parametros
+            String email = (String)GetParameter(0);
+            String password = (String)GetParameter(1);
 
-                // Obtiene el dao CommensalDAO
-                ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
+            // Obtiene el dao CommensalDAO
+            ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
 
-                Token token = (Token)EntityFactory.GetToken();
+            UserAccount user; 
             try
             {
-                // Se agraga el Token al commensal
-                commensal.AddToken(token);
-
-                //Se guardan los cambios
-                commensalDAO.Save(commensal);
+                //Buscar el usuario
+                user = commensalDAO.FindByEmail(email);
 
                 //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                 ResourceMessages.Token + commensal.Id , System.Reflection.MethodBase.GetCurrentMethod().Name);
+                 ResourceMessages.Commensal + user.Email, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             }
-            catch (SaveEntityFondaDAOException e)
+            catch (FindByEmailUserAccountFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenCommandException(ResourceMessages.GetTokenException, e);
+                throw new GetAccountEmailCommandException(ResourceMessages.GetUserException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenCommandException(ResourceMessages.GetTokenException, e);
+                throw new GetAccountEmailCommandException(ResourceMessages.GetUserException, e);
             }
 
 
             //Se guardan los resultados
-            Result = token;
+            Result = user;
 
             //Logger al Culminar el metodo
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),

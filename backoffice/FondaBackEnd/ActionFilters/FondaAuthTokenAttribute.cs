@@ -3,6 +3,10 @@ using System.Web.Http.Controllers;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System.Net.Http.Headers;
+using com.ds201625.fonda.BackEnd.Log;
+using com.ds201625.fonda.BackEndLogic;
+using FondaBeckEndLogic.Exceptions;
+using com.ds201625.fonda.BackEnd.Exceptions;
 
 namespace com.ds201625.fonda.BackEnd.ActionFilters
 {
@@ -20,22 +24,38 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 		/// <param name="context">Context.</param>
 		protected override bool Authorize (HttpActionContext context)
 		{
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 			HttpRequestHeaders headres = context.Request.Headers;
+            try
+            {
+                // Valida si existe Authorization: Fonda xxxxxxxxxxxxxxxxxx
+                if (headres.Authorization == null)
+                    return false;
 
-			// Valida si existe Authorization: Fonda xxxxxxxxxxxxxxxxxx
-			if (headres.Authorization == null)
-				return false;
+                if (headres.Authorization.Scheme != GeneralRes.FondaAuthSheme)
+                    return false;
 
-            if (headres.Authorization.Scheme != GeneralRes.FondaAuthSheme)
-				return false;
+                // validacion del token
+                int commID = ValidateAccount(headres.Authorization.Parameter);
+                if (commID == 0)
+                    return false;
 
-			// validacion del token
-			int commID = ValidateAccount (headres.Authorization.Parameter);
-			if (commID == 0 )
-				return false;
-
-            context.Request.Headers.Add(GeneralRes.CommensalIDHeader, commID.ToString());
-
+                context.Request.Headers.Add(GeneralRes.CommensalIDHeader, commID.ToString());
+            }
+            catch (FondaAuthTokenAttributeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FondaAuthTokenAttributeException(GeneralRes.Authorize, e);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FondaAuthTokenAttributeException(GeneralRes.Authorize, e);
+            }
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            
 			return true;
 		}
 
@@ -46,14 +66,45 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 		/// <param name="token">Token.</param>
 		private int ValidateAccount(String token)
 		{
-			ITokenDAO tokDAo= FactoryDAO.GetTokenDAO ();
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Token tok;
+            int idCommensal;
+            try 
+            {
+                // Se obtiene el commando GetCommensalIdCommand
+                ICommand command = BackendFactoryCommand.Instance.GetTokenStrCommand();
+                // Se agrega el token como parametro
+                command.SetParameter(0, token);
+                //se ejecuta el comando
+                command.Run();
 
-			Token tok = tokDAo.FindByStrToken(token);
-
-			if (tok == null)
-				return 0;
-
-			return tok.Commensal.Id;
+                tok = (Token)command.Result;
+                if (tok == null)
+                    idCommensal = 0;
+                else
+                    idCommensal = tok.Commensal.Id;
+                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.Commensal + idCommensal, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            catch (GetTokenStrCommandException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FondaAuthTokenAttributeException(GeneralRes.ValidateAccountTokenException, e);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new FondaAuthTokenAttributeException(GeneralRes.ValidateAccountTokenException, e);
+            }
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, idCommensal.ToString(),
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            
+            //retorna id de commensal
+			return idCommensal;
 		}
 	}
 }

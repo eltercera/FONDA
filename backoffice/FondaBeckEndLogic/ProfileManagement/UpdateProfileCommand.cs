@@ -57,7 +57,7 @@ namespace FondaBeckEndLogic.ProfileManagement
 
                 if (profile.ProfileName == null || profile.Person == null || profile.Person.Name == null
                         || profile.Person.LastName == null || profile.Person.Ssn == null)
-                    throw new UpdateProfileCommandException(ResourceMessagesProfile.InvalidInformationProfile);
+                    throw new UpdateProfileCommandException(ResourceMessages.InvalidInformationProfile);
             try
             {
                 //Set nombre del perfil
@@ -77,18 +77,18 @@ namespace FondaBeckEndLogic.ProfileManagement
                 commensalDAO.Save(commensal);
 
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    ResourceMessagesProfile.ProfileUpdated + commensal.Id + ResourceMessages.Slash + profile.ProfileName,
+                    ResourceMessages.ProfileUpdated + commensal.Id + ResourceMessages.Slash + profile.ProfileName,
                     System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
             catch (SaveEntityFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new UpdateProfileCommandException(ResourceMessagesProfile.UpdateProfileException, e);
+                throw new UpdateProfileCommandException(ResourceMessages.UpdateProfileException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new UpdateProfileCommandException(ResourceMessagesProfile.UpdateProfileException, e);
+                throw new UpdateProfileCommandException(ResourceMessages.UpdateProfileException, e);
             }
             // Guardar el resultado.
             Result = profile;

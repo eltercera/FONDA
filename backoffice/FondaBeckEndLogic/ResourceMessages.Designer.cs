@@ -70,6 +70,15 @@ namespace FondaBeckEndLogic {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al agregar un perfil de un comensal.
+        /// </summary>
+        internal static string AddProfileException {
+            get {
+                return ResourceManager.GetString("AddProfileException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ha iniciado el logger.
         /// </summary>
         internal static string BeginLogger {
@@ -106,11 +115,29 @@ namespace FondaBeckEndLogic {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al crear un Commensal.
+        /// </summary>
+        internal static string CreateCommensalException {
+            get {
+                return ResourceManager.GetString("CreateCommensalException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al eliminar un restaurante favorito del comensal.
         /// </summary>
         internal static string DeleteFavRestException {
             get {
                 return ResourceManager.GetString("DeleteFavRestException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al eliminar un perfil de un comensal.
+        /// </summary>
+        internal static string DeleteProfileException {
+            get {
+                return ResourceManager.GetString("DeleteProfileException", resourceCulture);
             }
         }
         
@@ -169,6 +196,15 @@ namespace FondaBeckEndLogic {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al buscar el Perfil de un Commensal.
+        /// </summary>
+        internal static string GetProfileException {
+            get {
+                return ResourceManager.GetString("GetProfileException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al obtener la lista de restaurant para elegir los favoritos del comensal.
         /// </summary>
         internal static string GetRestFavException {
@@ -187,11 +223,65 @@ namespace FondaBeckEndLogic {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al buscar el userAccount.
+        /// </summary>
+        internal static string GetUserException {
+            get {
+                return ResourceManager.GetString("GetUserException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Datos Invalidos.
         /// </summary>
         internal static string InvalidInformation {
             get {
                 return ResourceManager.GetString("InvalidInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Datos del Perfil Invalidos.
+        /// </summary>
+        internal static string InvalidInformationProfile {
+            get {
+                return ResourceManager.GetString("InvalidInformationProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Perfil del Commensal: .
+        /// </summary>
+        internal static string Profile {
+            get {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Profile Agregado al Commensal: .
+        /// </summary>
+        internal static string ProfileAdded {
+            get {
+                return ResourceManager.GetString("ProfileAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Profile Eliminado de un Commensal: .
+        /// </summary>
+        internal static string ProfileDeleted {
+            get {
+                return ResourceManager.GetString("ProfileDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Profile Modificado de un Commensal: .
+        /// </summary>
+        internal static string ProfileUpdated {
+            get {
+                return ResourceManager.GetString("ProfileUpdated", resourceCulture);
             }
         }
         
@@ -237,6 +327,15 @@ namespace FondaBeckEndLogic {
         internal static string Token {
             get {
                 return ResourceManager.GetString("Token", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al modificar un perfil de un comensal.
+        /// </summary>
+        internal static string UpdateProfileException {
+            get {
+                return ResourceManager.GetString("UpdateProfileException", resourceCulture);
             }
         }
     }

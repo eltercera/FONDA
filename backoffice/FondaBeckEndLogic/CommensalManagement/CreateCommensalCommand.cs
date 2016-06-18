@@ -2,7 +2,6 @@
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Factory;
 using FondaBeckEndLogic.Exceptions;
 using FondaLogic.Log;
 using System;
@@ -11,17 +10,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaBeckEndLogic.TokenManagement
+namespace FondaBeckEndLogic.CommensalManagement
 {
     /// <summary>
-    /// Comando para la Buscar Token
+    /// Comando para la Crear un Commensal
     /// </summary>
-    public class GetTokenCommand : BaseCommand
+    public class CreateCommensalCommand : BaseCommand
     {
         /// <summary>
-        /// constructor GetTokenCommand
+        /// constructor CreateCommensalCommand
         /// </summary>
-        public GetTokenCommand() : base() { }
+        public CreateCommensalCommand() : base() { }
         /// <summary>
         /// Metodo para inicializar los parametros
         /// </summary>
@@ -34,51 +33,44 @@ namespace FondaBeckEndLogic.TokenManagement
             // [0] El Commensal
             paramters[0] = new Parameter(typeof(Commensal), true);
 
+
             return paramters;
         }
+
         /// <summary>
         /// Metodo Invoke para la ejecucion del 
-        /// buscar un Token especifico
+        /// crear un Commensal 
         /// </summary>
         protected override void Invoke()
         {
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-
+            Commensal commensal;
+            try
+            {
                 // Obtencion de parametros
-                Commensal commensal = (Commensal)GetParameter(0);
+                commensal = (Commensal)GetParameter(0);
 
                 // Obtiene el dao CommensalDAO
                 ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
-
-                Token token = (Token)EntityFactory.GetToken();
-            try
-            {
-                // Se agraga el Token al commensal
-                commensal.AddToken(token);
-
-                //Se guardan los cambios
+                // Guardar el resultado.
                 commensalDAO.Save(commensal);
-
                 //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                 ResourceMessages.Token + commensal.Id , System.Reflection.MethodBase.GetCurrentMethod().Name);
-
+                 ResourceMessages.Commensal + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
             catch (SaveEntityFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenCommandException(ResourceMessages.GetTokenException, e);
+                throw new CreateCommensalCommandException(ResourceMessages.CreateCommensalException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenCommandException(ResourceMessages.GetTokenException, e);
+                throw new CreateCommensalCommandException(ResourceMessages.CreateCommensalException, e);
             }
-
-
-            //Se guardan los resultados
-            Result = token;
+            // Guardar el resultado.
+            Result = commensal;
 
             //Logger al Culminar el metodo
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),

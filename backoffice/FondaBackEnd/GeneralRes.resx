@@ -217,4 +217,22 @@
   <data name="Token" xml:space="preserve">
     <value>Token del Commensal: </value>
   </data>
+  <data name="DeleteTokenException" xml:space="preserve">
+    <value>Error al eliminar un Token de un commensal </value>
+  </data>
+  <data name="GetTokenException" xml:space="preserve">
+    <value>Error al buscar un Token de un commensal </value>
+  </data>
+  <data name="ValidateAccountEmailException" xml:space="preserve">
+    <value>Error al validar cuenta por email</value>
+  </data>
+  <data name="ValidateAccountTokenException" xml:space="preserve">
+    <value>Error al validar Token</value>
+  </data>
+  <data name="Authorize" xml:space="preserve">
+    <value>Error en Authorize</value>
+  </data>
+  <data name="AddCommensal" xml:space="preserve">
+    <value>Error al agregar un commensal</value>
+  </data>
 </root>

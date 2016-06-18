@@ -31,9 +31,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 			}
 			catch(Exception e)
 			{
-				throw new SaveEntityFondaDAOException (
-					"Excepción al guardar un objeto de la entidad " + entity.GetType().ToString(),
-					e);
+				throw new SaveEntityFondaDAOException (ResourceMessagesDAO.SaveEntityFondaDAOException +
+                    entity.GetType().ToString(), e);
 			}
 				
 		}
@@ -44,12 +43,20 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		/// <param name="entity">La entidad</param>
 		public void Delete (T entity)
 		{
-			ISession session = Session;
-			ITransaction transaction = session.BeginTransaction ();
-			transaction.Begin();
-			session.Delete (entity);
-			session.Flush();
-			transaction.Commit ();
+            try
+            {
+                ISession session = Session;
+                ITransaction transaction = session.BeginTransaction();
+                transaction.Begin();
+                session.Delete(entity);
+                session.Flush();
+                transaction.Commit();
+            }
+            catch (Exception e)
+            {
+                throw new DeleteEntityFondaDAOException (ResourceMessagesDAO.DeleteEntityFondaDAOException +
+                    entity.GetType().ToString(), e);
+            }
 
 		}
 
@@ -71,9 +78,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
             catch (Exception e)
             {
-                throw new FindByIdFondaDAOException (
-                    "Excepción al consultar por el Id " + id.ToString(),
-                    e);
+                throw new FindByIdFondaDAOException(ResourceMessagesDAO.FindByIdFondaDAOException +
+                    id.ToString(), e);
             }
 		}
 
@@ -107,12 +113,16 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
             catch (Exception e)
             {
-                throw new FindAllFondaDAOException(
-                    "Excepción consultar lista de Entitys",
-                    e);
+                throw new FindAllFondaDAOException(ResourceMessagesDAO.FindAllFondaDAOException, e);
             }
 		}
 
+        /// <summary>
+        /// Obtiene un objeto a partir de una propiedad de busqueda
+        /// </summary>
+        /// <param name="property">propiedad para la busqueda</param>
+        /// <param name="value">valor a buscar</param>
+        /// <returns>El Objeto de la entidad</returns>
 		protected T FindBy (string property, object value)
 		{
             try
@@ -129,9 +139,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
             catch (Exception e)
             {
-                throw new FindByFondaDAOException(
-                    "Excepción consultar por restrictions property " + property +" y value "+ value,
-                    e);
+                throw new FindByFondaDAOException(ResourceMessagesDAO.FindByFondaDAOExceptionProperty + property +
+                    ResourceMessagesDAO.FindByFondaDAOExceptionValue + value, e);
             }
 		}
 

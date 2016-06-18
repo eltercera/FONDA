@@ -52,7 +52,7 @@ namespace FondaBeckEndLogic.TokenManagement
                 Commensal commensal = (Commensal)GetParameter(0);
                 Token token = (Token)GetParameter(1);
 
-                // Obtiene el dao que se requiere
+                // Obtiene el dao CommensalDAO
                 ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
 
                 //Remueve el token del comensal

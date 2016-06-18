@@ -2,7 +2,6 @@
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Factory;
 using FondaBeckEndLogic.Exceptions;
 using FondaLogic.Log;
 using System;
@@ -11,74 +10,73 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaBeckEndLogic.TokenManagement
+namespace FondaBeckEndLogic.ActionFiltersManagement
 {
     /// <summary>
-    /// Comando para la Buscar Token
+    /// Comando para la Buscar Token por StrToken
     /// </summary>
-    public class GetTokenCommand : BaseCommand
+    public class GetTokenStrCommand : BaseCommand
     {
         /// <summary>
-        /// constructor GetTokenCommand
+        /// constructor GetTokenStrCommand
         /// </summary>
-        public GetTokenCommand() : base() { }
+        public GetTokenStrCommand() : base() { }
         /// <summary>
         /// Metodo para inicializar los parametros
         /// </summary>
-        /// <returns>Un arreglo con el parametro Commensal/returns>
+        /// <returns>Un arreglo con el parametro string Token/returns>
         protected override Parameter[] InitParameters()
         {
             // Requiere 1 Parametro
             Parameter[] paramters = new Parameter[1];
 
-            // [0] El Commensal
-            paramters[0] = new Parameter(typeof(Commensal), true);
+            // [0] El Token
+            paramters[0] = new Parameter(typeof(String), true);
 
             return paramters;
         }
         /// <summary>
         /// Metodo Invoke para la ejecucion del 
-        /// buscar un Token especifico
+        /// buscar un Token por Str especifico
         /// </summary>
         protected override void Invoke()
         {
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            //propiedad
+            string property = "StrToken";
+            // Obtencion de parametros
+            String token = (String)GetParameter(0);
 
-                // Obtencion de parametros
-                Commensal commensal = (Commensal)GetParameter(0);
+            // Obtiene el dao TokenDAO
+            ITokenDAO tokenDAO = FacDao.GetTokenDAO();
 
-                // Obtiene el dao CommensalDAO
-                ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
+            Token tok;
 
-                Token token = (Token)EntityFactory.GetToken();
             try
             {
-                // Se agraga el Token al commensal
-                commensal.AddToken(token);
-
-                //Se guardan los cambios
-                commensalDAO.Save(commensal);
+                // Busca el Token
+                tok = tokenDAO.FindByStrToken(property, token);
 
                 //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                 ResourceMessages.Token + commensal.Id , System.Reflection.MethodBase.GetCurrentMethod().Name);
+                 ResourceMessages.Token + token, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             }
-            catch (SaveEntityFondaDAOException e)
+            catch (FindByStrTokenFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenCommandException(ResourceMessages.GetTokenException, e);
+                throw new GetTokenStrCommandException(ResourceMessages.GetTokenException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenCommandException(ResourceMessages.GetTokenException, e);
+                throw new GetTokenStrCommandException(ResourceMessages.GetTokenException, e);
             }
 
 
             //Se guardan los resultados
-            Result = token;
+            Result = tok;
 
             //Logger al Culminar el metodo
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),

@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace FondaBeckEndLogic.Exceptions
 {
     /// <summary>
-    /// Clase CreateProfileCommandException para manejo 
-    /// de Excepciones en la clase CreateProfileCommand
+    /// Representa los errores que se generan al crear
+    /// un Perfil de un Commensal en CreateProfileCommand
     /// </summary>
     public class CreateProfileCommandException : FondaBackendLogicException
     {

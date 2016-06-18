@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace FondaBeckEndLogic.Exceptions
 {
     /// <summary>
-    /// Clase DeleteProfileCommandException para manejo 
-    /// de Excepciones en la clase DeleteProfileCommand
+    /// Representa los errores que se generan al eliminar
+    /// un Perfil de un Commensal en DeleteProfileCommand
     /// </summary>
     public class DeleteProfileCommandException : FondaBackendLogicException
     {

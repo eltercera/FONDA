@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace FondaBeckEndLogic.Exceptions
 {
     /// <summary>
-    /// Clase GetTokenCommandException para manejo 
-    /// de Excepciones en la clase GetTokenCommandException
+    /// Representa los errores que se generan al buscar
+    /// un Token de un Commensal en GetTokenCommand
     /// </summary>
     public class GetTokenCommandException : FondaBackendLogicException
     {

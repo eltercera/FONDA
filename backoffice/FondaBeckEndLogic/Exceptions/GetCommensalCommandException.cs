@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 namespace FondaBeckEndLogic.Exceptions
 {
     /// <summary>
-    /// Clase GetCommensalCommandException.
+    /// Representa los errores que se generan al buscar
+    /// un Commensal en GetCommensalCommand
     /// </summary>
-    class GetCommensalCommandException : FondaBackendLogicException
+    public class GetCommensalCommandException : FondaBackendLogicException
     {
         public GetCommensalCommandException  () : base() {	}
 

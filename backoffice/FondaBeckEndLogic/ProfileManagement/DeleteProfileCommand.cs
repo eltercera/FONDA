@@ -45,7 +45,7 @@ namespace FondaBeckEndLogic.ProfileManagement
                 // Se obtienen los parametros Commensal y Profile
                 Commensal commensal = (Commensal)GetParameter(0);
                 Profile profile = (Profile)GetParameter(1);
-                // Obtiene el dao GetCommensalDAO
+                // Obtiene el dao CommensalDAO
                 ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
             try
             {
@@ -58,18 +58,18 @@ namespace FondaBeckEndLogic.ProfileManagement
                 commensalDAO.Save(commensal);
 
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    ResourceMessagesProfile.ProfileDeleted + commensal.Id + ResourceMessages.Slash + profile.ProfileName,
+                    ResourceMessages.ProfileDeleted + commensal.Id + ResourceMessages.Slash + profile.ProfileName,
                     System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
             catch (SaveEntityFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteProfileCommandException(ResourceMessagesProfile.DeleteProfileException, e);
+                throw new DeleteProfileCommandException(ResourceMessages.DeleteProfileException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteProfileCommandException(ResourceMessagesProfile.DeleteProfileException, e);
+                throw new DeleteProfileCommandException(ResourceMessages.DeleteProfileException, e);
             }
 
             // Guardar el resultado.

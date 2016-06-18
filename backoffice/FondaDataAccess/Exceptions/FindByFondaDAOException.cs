@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.DataAccess.Exceptions
 {
+    /// <summary>
+    /// Representa los errores que se generan al buscar
+    /// una entidad por una propiedad especifica en FindByFondaDAO
+    /// </summary>
      public class FindByFondaDAOException : FondaDAOException
     {
         public FindByFondaDAOException () : base() {	}

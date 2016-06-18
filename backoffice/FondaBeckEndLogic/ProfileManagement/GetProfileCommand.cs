@@ -57,17 +57,17 @@ namespace FondaBeckEndLogic.ProfileManagement
                 profile = (Profile)profileDAO.FindById(profile.Id);
                 //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                 ResourceMessagesProfile.Profile + profile.ProfileName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                 ResourceMessages.Profile + profile.ProfileName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
             catch (FindByIdFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetProfileCommandException(ResourceMessagesProfile.GetProfileException, e);
+                throw new GetProfileCommandException(ResourceMessages.GetProfileException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetProfileCommandException(ResourceMessagesProfile.GetProfileException, e);
+                throw new GetProfileCommandException(ResourceMessages.GetProfileException, e);
             }
 
             // Guardar el resultado.

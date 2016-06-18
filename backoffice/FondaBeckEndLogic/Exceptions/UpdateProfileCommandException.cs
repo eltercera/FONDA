@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace FondaBeckEndLogic.Exceptions
 {
     /// <summary>
-    /// Clase UpdateProfileCommandException para manejo 
-    /// de Excepciones en la clase UpdateProfileCommand
+    /// Representa los errores que se generan al modificar
+    /// un Commensal en UpdateProfileCommand
     /// </summary>
     public class UpdateProfileCommandException : FondaBackendLogicException
     {

@@ -51,7 +51,7 @@ namespace FondaBeckEndLogic.CommensalManagement
                 // Obtencion de parametros
                 commensal = (Commensal)GetParameter(0);
 
-                // Obtiene el dao que se requiere
+                // Obtiene el dao CommensalDAO
                 ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
                 // Guardar el resultado.
                 commensal = (Commensal)commensalDAO.FindById(commensal.Id);

@@ -117,31 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddProfileException" xml:space="preserve">
-    <value>Error al agregar un perfil de un comensal</value>
+  <data name="DeleteEntityFondaDAOException" xml:space="preserve">
+    <value>Error al eliminar un objeto de la entidad: </value>
   </data>
-  <data name="DeleteProfileException" xml:space="preserve">
-    <value>Error al eliminar un perfil de un comensal</value>
+  <data name="FindAllFondaDAOException" xml:space="preserve">
+    <value>Error al consultar lista de entidades</value>
   </data>
-  <data name="GetProfileException" xml:space="preserve">
-    <value>Error al buscar el Perfil de un Commensal</value>
+  <data name="FindByEmailUserAccountFondaDAOException" xml:space="preserve">
+    <value>Error al consultar un useraccount por su email: </value>
   </data>
-  <data name="InvalidInformationProfile" xml:space="preserve">
-    <value>Datos del Perfil Invalidos</value>
+  <data name="FindByFondaDAOExceptionProperty" xml:space="preserve">
+    <value>Error al consultar una entidad por la propiedad: </value>
   </data>
-  <data name="Profile" xml:space="preserve">
-    <value>Perfil del Commensal: </value>
+  <data name="FindByFondaDAOExceptionValue" xml:space="preserve">
+    <value>y el valor</value>
   </data>
-  <data name="ProfileAdded" xml:space="preserve">
-    <value>Profile Agregado al Commensal: </value>
+  <data name="FindByIdFondaDAOException" xml:space="preserve">
+    <value>Error al consultar por el Id: </value>
   </data>
-  <data name="ProfileDeleted" xml:space="preserve">
-    <value>Profile Eliminado de un Commensal: </value>
+  <data name="FindByStrTokenException" xml:space="preserve">
+    <value>Error al buscar un token por su strToken: </value>
   </data>
-  <data name="ProfileUpdated" xml:space="preserve">
-    <value>Profile Modificado de un Commensal: </value>
+  <data name="SaveEntityFondaDAOException" xml:space="preserve">
+    <value>Error al guardar un objeto de la entidad: </value>
   </data>
-  <data name="UpdateProfileException" xml:space="preserve">
-    <value>Error al modificar un perfil de un comensal</value>
+  <data name="String1FindByIdFondaDAOException" xml:space="preserve">
+    <value>Error al consultar una entidad por su Id: </value>
   </data>
 </root>

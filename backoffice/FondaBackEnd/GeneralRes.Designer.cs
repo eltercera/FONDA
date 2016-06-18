@@ -61,6 +61,15 @@ namespace com.ds201625.fonda.BackEnd {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al agregar un commensal.
+        /// </summary>
+        internal static string AddCommensal {
+            get {
+                return ResourceManager.GetString("AddCommensal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al agregar un restaurante favorito del comensal.
         /// </summary>
         internal static string AddFavRestException {
@@ -75,6 +84,15 @@ namespace com.ds201625.fonda.BackEnd {
         internal static string AddProfileException {
             get {
                 return ResourceManager.GetString("AddProfileException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error en Authorize.
+        /// </summary>
+        internal static string Authorize {
+            get {
+                return ResourceManager.GetString("Authorize", resourceCulture);
             }
         }
         
@@ -138,6 +156,15 @@ namespace com.ds201625.fonda.BackEnd {
         internal static string DeleteProfileException {
             get {
                 return ResourceManager.GetString("DeleteProfileException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al eliminar un Token de un commensal .
+        /// </summary>
+        internal static string DeleteTokenException {
+            get {
+                return ResourceManager.GetString("DeleteTokenException", resourceCulture);
             }
         }
         
@@ -228,6 +255,15 @@ namespace com.ds201625.fonda.BackEnd {
         internal static string GetRestFavException {
             get {
                 return ResourceManager.GetString("GetRestFavException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al buscar un Token de un commensal .
+        /// </summary>
+        internal static string GetTokenException {
+            get {
+                return ResourceManager.GetString("GetTokenException", resourceCulture);
             }
         }
         
@@ -345,6 +381,24 @@ namespace com.ds201625.fonda.BackEnd {
         internal static string UpdateProfileException {
             get {
                 return ResourceManager.GetString("UpdateProfileException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al validar cuenta por email.
+        /// </summary>
+        internal static string ValidateAccountEmailException {
+            get {
+                return ResourceManager.GetString("ValidateAccountEmailException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al validar Token.
+        /// </summary>
+        internal static string ValidateAccountTokenException {
+            get {
+                return ResourceManager.GetString("ValidateAccountTokenException", resourceCulture);
             }
         }
     }

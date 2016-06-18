@@ -7,8 +7,8 @@ using System.Web;
 namespace com.ds201625.fonda.BackEnd.Exceptions
 {
     /// <summary>
-    /// Clase GetProfileFondaWebApiException para manejo 
-    /// de Excepciones en GetProfileFondaWebApi
+    /// Representa los errores que se generan al buscar
+    /// un Perfil de un Commensal en GetProfileFondaWebApi
     /// </summary>
     public class GetProfileFondaWebApiException : FondaBackendException
     {

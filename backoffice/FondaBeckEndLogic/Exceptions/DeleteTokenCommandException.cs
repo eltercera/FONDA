@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace FondaBeckEndLogic.Exceptions
 {
     /// <summary>
-    /// Clase DeleteTokenCommandException para manejo 
-    /// de Excepciones en la clase DeleteTokenCommand
+    /// Representa los errores que se generan al eliminar
+    /// un Token de un Commensal en DeleteTokenCommand
     /// </summary>
     public class DeleteTokenCommandException : FondaBackendLogicException
     {

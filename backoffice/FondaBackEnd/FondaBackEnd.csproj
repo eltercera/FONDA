@@ -91,13 +91,17 @@
     <Compile Include="Exceptions\AddFavoriteRestaurantFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\DeleteFavoriteRestaurantFondaWebApiControllerException .cs" />
     <Compile Include="Exceptions\DeleteProfileFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\DeleteTokenFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FindByEmailUserAccountFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FindFavoriteRestaurantFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\FondaAuthLoginAttributeException.cs" />
+    <Compile Include="Exceptions\FondaAuthTokenAttributeException.cs" />
     <Compile Include="Exceptions\FondaBackendException.cs" />
     <Compile Include="Exceptions\GetAllRestaurantsFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\GetCommensalFondaWebApiException.cs" />
     <Compile Include="Exceptions\GetCommensalIdFondaWebApiException.cs" />
     <Compile Include="Exceptions\GetProfileFondaWebApiException.cs" />
+    <Compile Include="Exceptions\GetTokenFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\PostProfileFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\PutProfileFondaWebApiControllerException.cs" />
     <Compile Include="GeneralRes.Designer.cs">

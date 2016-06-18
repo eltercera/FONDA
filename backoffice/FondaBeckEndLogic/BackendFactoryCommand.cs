@@ -3,6 +3,7 @@ using com.ds201625.fonda.BackEndLogic.FavoriteManagement;
 using FondaBeckEndLogic.ProfileManagement;
 using FondaBeckEndLogic.TokenManagement;
 using FondaBeckEndLogic.CommensalManagement;
+using FondaBeckEndLogic.ActionFiltersManagement;
 
 namespace com.ds201625.fonda.BackEndLogic
 {
@@ -139,7 +140,42 @@ namespace com.ds201625.fonda.BackEndLogic
         {
             return new GetTokenCommand();
         }
-     
+
+        /// <summary>
+        /// Obtiene un DeleteTokenCommand
+        /// </summary>
+        /// <returns>Comando DeleteTokenCommand.</returns>
+        public ICommand DeleteTokenCommand()
+        {
+            return new DeleteTokenCommand();
+        }
+
+        /// <summary>
+        /// Obtiene un GetTokenStrCommand
+        /// </summary>
+        /// <returns>Comando GetTokenStrCommand.</returns>
+        public ICommand GetTokenStrCommand()
+        {
+            return new GetTokenStrCommand();
+        }
+
+        /// <summary>
+        /// Obtiene un GetAccountEmailCommand
+        /// </summary>
+        /// <returns>Comando GetAccountEmailCommand.</returns>
+        public ICommand GetAccountEmailCommand()
+        {
+            return new GetAccountEmailCommand();
+        }
+
+        /// <summary>
+        /// Obtiene un CreateCommensalCommand
+        /// </summary>
+        /// <returns>Comando CreateCommensalCommand.</returns>
+        public ICommand CreateCommensalCommand()
+        {
+            return new CreateCommensalCommand();
+        }
 	}
 	
 }

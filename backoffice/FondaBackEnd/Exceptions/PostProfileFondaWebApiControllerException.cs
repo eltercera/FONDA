@@ -7,8 +7,8 @@ using System.Web;
 namespace com.ds201625.fonda.BackEnd.Exceptions
 {
     /// <summary>
-    /// Clase PostProfileFondaWebApiControllerException para manejo 
-    /// de Excepciones en PostProfileFondaWebApiController
+    /// Representa los errores que se generan al crear
+    /// un Perfil de un Commensal en PostProfileFondaWebApiController
     /// </summary>
     public class PostProfileFondaWebApiControllerException : FondaBackendException
     {
