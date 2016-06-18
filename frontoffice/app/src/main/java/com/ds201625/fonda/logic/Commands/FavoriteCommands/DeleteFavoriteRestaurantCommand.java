@@ -19,6 +19,10 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
 
     private String TAG = "DeleteFavoriteRestaurantCommand";
 
+    /**
+     * Asigna valor a los parametros
+     * @return parametros comensal y restaurant
+     */
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[2];
@@ -27,7 +31,9 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
 
         return parameters;
     }
-
+    /**
+     * Comando para eliminar un restaurante favorito
+     */
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para eliminar un restaurante de favoritos");

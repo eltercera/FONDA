@@ -8,6 +8,12 @@ import com.ds201625.fonda.domains.Commensal;
  */
 public interface RequireLogedCommensalService {
 
+    /**
+     * Obtiene el comensal logueado
+     * @param email
+     * @return
+     * @throws RestClientException
+     */
     Commensal getLogedCommensal(String email) throws RestClientException;
 
 }

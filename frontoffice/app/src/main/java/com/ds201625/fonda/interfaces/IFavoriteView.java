@@ -9,6 +9,14 @@ import java.util.List;
  */
 public interface IFavoriteView {
 
-    public List<Restaurant> getListSW();
-    public void updateList();
+    /**
+     * Lista de todos los restaurantes favoritos
+     * @return restauraantes favoritos
+     */
+    List<Restaurant> getListSW();
+
+    /**
+     * Actualiza la lista luego de eliminar
+     */
+    void updateList();
 }

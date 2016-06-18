@@ -21,8 +21,16 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
     private FavoriteRestaurantClient favoriteRestaurantClient =
             RetrofitService.getInstance().createService(FavoriteRestaurantClient.class);
 
+    /**
+     * Agrega un restaurante a favoritos
+     *
+     * @param idCommensal
+     * @param idRestaurant
+     * @return
+     * @throws RestClientException
+     */
     @Override
-    public Commensal AddFavoriteRestaurant(int idCommensal, int idRestaurant)  throws RestClientException {
+    public Commensal AddFavoriteRestaurant(int idCommensal, int idRestaurant) throws RestClientException {
         // aqui se supone que debo traerme el comensal Logeado
         Log.d(TAG, "Se agrega el restaurante "+idRestaurant+"a favoritos del comensal "+idCommensal);
         Call<Commensal> call = favoriteRestaurantClient.addfavoriterestaurant(idCommensal,idRestaurant);
@@ -37,8 +45,16 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
         return rsvCommensal;
     }
 
+    /**
+     * Elimina un restaurante de favoritos
+     *
+     * @param idCommensal
+     * @param idRestaurant
+     * @return
+     * @throws RestClientException
+     */
     @Override
-    public Commensal deleteFavoriteRestaurant(int idCommensal, int idRestaurant)  throws RestClientException{
+    public Commensal deleteFavoriteRestaurant(int idCommensal, int idRestaurant) throws RestClientException {
         Log.d(TAG, "Se elimina el restaurante "+idRestaurant+" de favoritos del comensal "+idCommensal);
         Call<Commensal> call = favoriteRestaurantClient.removefavoriterestaurant(idCommensal, idRestaurant);
         Commensal rsvCommensal = null;
@@ -52,8 +68,15 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
         return rsvCommensal;
     }
 
+    /**
+     * Obtiene todos los restaurantes favoritos
+     *
+     * @param idCommensal
+     * @return
+     * @throws RestClientException
+     */
     @Override
-    public List<Restaurant> getAllFavoriteRestaurant(int idCommensal)  throws RestClientException{
+    public List<Restaurant> getAllFavoriteRestaurant(int idCommensal) throws RestClientException {
         Log.d(TAG, "Se obtienen todos los restaurantes favoritos del comensal: "+idCommensal);
         Call<List<Restaurant>> call = favoriteRestaurantClient.getAllFavoriteRestaurant(idCommensal);
         List<Restaurant> test = null;
@@ -64,7 +87,6 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
         }
         return test;
     }
-
 
 }
 

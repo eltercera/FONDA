@@ -9,14 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.interfaces.IFavoriteView;
 import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
-import com.ds201625.fonda.logic.Command;
-import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
@@ -36,7 +33,6 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      * Administrador de Fragments
      */
     private FragmentManager fm;
-
     /**
      * ToolBar
      */
@@ -45,24 +41,34 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      * Fragmento favoritos
      */
     private FavoritesListFragment fv;
-
+    /**
+     * Fragmento de Detalle de restaurant
+     */
     private DetailRestaurantFragment detailRestaurantFrag;
     // UI references.
-
-    private String TAG ="FavoritesActivity";
     private Restaurant selectedRestaurant;
-
+    /**
+     * String para indicar en que clase se esta en el logger
+     */
+    private String TAG ="FavoritesActivity";
     /**
      * Iten del Menu para favorito
      */
     private MenuItem favoriteBotton;
     private MenuItem reserveBotton;
-
+    /**
+     * Variable booleana para determinar el form
+     */
     private boolean onForm;
-
+    /**
+     * Presentador de Favoritos
+     */
     private IFavoriteViewPresenter presenter;
 
-
+    /**
+     * Inicializa la actividad
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG,"Ha entrado en onCreate");
@@ -200,21 +206,18 @@ public class FavoritesActivity extends BaseNavigationActivity implements
     /**
      * Elimina un restaurante de favoritos
      */
-    //@Override
     public void removeFavorite() {
             //Valida que es un favorito o lo quita
         Log.d(TAG,"Ha entrado en removeFavorite");
          try {
-
-                //Llamo al presentador de requireLogedCommensalCommand
+             //Llamo al presentador de requireLogedCommensalCommand
                 presenter.findLoggedComensal();
                 selectedRestaurant = detailRestaurantFrag.getRestaurant();
                 //Llamo al presentador de deleteFavoriteRestaurant
                 presenter.deleteFavoriteRestaurant(selectedRestaurant);
                 Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
                         Toast.LENGTH_LONG).show();
-
-                showFragment(fv);
+                 showFragment(fv);
             }
             catch (NullPointerException nu) {
                 Log.e(TAG,"Error en removeFavorite al eliminar un favorito",nu);
@@ -223,11 +226,13 @@ public class FavoritesActivity extends BaseNavigationActivity implements
             Log.e(TAG,"Error en removeFavorite al eliminar un favorito",e);
         }
         hideKyboard();
-
-        Log.d(TAG,"Se ha eliminado un favorito");
+         Log.d(TAG,"Se ha eliminado un favorito");
     }
 
-
+    /**
+     * Al seleccionar el restaurante
+     * @param r
+     */
     @Override
     public void OnFavoriteSelect(Restaurant r) {
         showFragment(detailRestaurantFrag);
@@ -235,21 +240,32 @@ public class FavoritesActivity extends BaseNavigationActivity implements
         favoriteBotton.setIcon(R.drawable.ic_star_yellow);
     }
 
+    /**
+     * Al seleccionar el restaurante
+     * @param r
+     */
     @Override
     public void OnFavoriteSelected(ArrayList<Restaurant> r) {
 
     }
-
+    /**
+     * Al seleccionar el restaurante
+     */
     @Override
     public void OnFavoriteSelectionMode() {
         tb.setVisibility(View.GONE);
     }
-
+    /**
+     * Al seleccionar el restaurante
+     */
     @Override
     public void OnFavoriteSelectionModeExit() {
         tb.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Al presionar el botón volver
+     */
     @Override
     public void onBackPressed() {
         Log.d(TAG,"Ha entrado en onBackPressed");
@@ -261,11 +277,20 @@ public class FavoritesActivity extends BaseNavigationActivity implements
         Log.d(TAG,"Ha salido de onBackPressed");
     }
 
+
+    /**
+     * Lista de todos los restaurantes favoritos
+     *
+     * @return restauraantes favoritos
+     */
     @Override
     public List<Restaurant> getListSW() {
         return null;
     }
 
+    /**
+     * Actualiza la lista luego de eliminar
+     */
     @Override
     public void updateList() {
 

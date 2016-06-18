@@ -15,10 +15,14 @@ import com.ds201625.fonda.logic.Parameter;
 import java.util.List;
 
 /**
- * Comando para consultar todos los restaurantes favoritos
+ * Comando para mostrar todos los restaurantes favoritos
  */
 public class AllFavoriteRestaurantCommand extends BaseCommand {
     private String TAG = "AllFavoriteRestaurantCommand";
+    /**
+     * Asigna valor a los parametros
+     * @return parametros comensal y restaurant
+     */
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[1];
@@ -27,6 +31,9 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
         return parameters;
     }
 
+    /**
+     * Comando para mostrar todos los restaurantes favoritos
+     */
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para obtener los restaurantes favoritos");

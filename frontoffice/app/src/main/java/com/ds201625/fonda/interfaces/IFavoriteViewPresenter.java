@@ -12,28 +12,23 @@ public interface IFavoriteViewPresenter {
     /**
      * Encuentra el comensal logueado
      */
-    public void findLoggedComensal();
-
-    /**
-     * Encuentra el id del comensal logueado
-     */
-    public int findLoggedComensalById();
+    void findLoggedComensal();
 
     /**
      * Encuentra los restaurantes favoritos
      * @return
      */
-    public List<Restaurant> findAllFavoriteRestaurant();
+    List<Restaurant> findAllFavoriteRestaurant();
 
     /**
      * Elimina el restaurante seleccionado
      * @param restaurant
      */
-    public void deleteFavoriteRestaurant(Restaurant restaurant);
+    void deleteFavoriteRestaurant(Restaurant restaurant);
 
     /**
      * Agrega un restaurante a favoritos
      * @param restaurant
      */
-    public void addFavoriteRestaurant(Restaurant restaurant);
+    void addFavoriteRestaurant(Restaurant restaurant);
 }

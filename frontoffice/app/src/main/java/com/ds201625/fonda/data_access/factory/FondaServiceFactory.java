@@ -1,23 +1,23 @@
 package com.ds201625.fonda.data_access.factory;
 
 import com.ds201625.fonda.data_access.retrofit_client.RetroditServiceFactory;
-import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
-import com.ds201625.fonda.data_access.services.ReservationService;
 import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
+import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.FilterByCategoryService;
 import com.ds201625.fonda.data_access.services.FilterByZoneService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.data_access.services.InvoiceService;
 import com.ds201625.fonda.data_access.services.PaymentService;
 import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
+import com.ds201625.fonda.data_access.services.ReservationService;
 import com.ds201625.fonda.data_access.services.TokenService;
+import com.ds201625.fonda.data_access.services.ZoneService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Token;
-import com.ds201625.fonda.data_access.services.ZoneService;
 
 /**
  * Singelton de fabrica de servicios
@@ -100,7 +100,6 @@ public class FondaServiceFactory {
     /**
      * Obtiene los servicios de restaurantes
      * @param
-     * @return
      */
     public AllRestaurantService getAllRestaurantsService(){
         return serviceFactory.getAllRestaurantService();
@@ -110,7 +109,6 @@ public class FondaServiceFactory {
     /**
      * Obtiene los servicios de restaurantes favoritos
      * @param
-     * @return
      */
     public FavoriteRestaurantService getFavoriteRestaurantService(){
         return serviceFactory.getFavoriteRestaurantService();
@@ -169,9 +167,8 @@ public class FondaServiceFactory {
         return serviceFactory.getAllReservesService();
     }
 
-	/**
+    /**
      * Obtiene los servicios de commensal logueado
-     * @param
      * @return
      */
     public RequireLogedCommensalService getLogedCommensalService(){
