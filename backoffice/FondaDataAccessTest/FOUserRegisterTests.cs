@@ -4,12 +4,16 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.HibernateDAO.Session;
 using com.ds201625.fonda.Domain;
+using com.ds201625.fonda.Factory;
 
 namespace FondaDataAccessTest
 {
+    /// <summary>
+    /// Clase de pruebas de dominio y Dao 
+    /// </summary>
 	public class FOUserRegisterTests
     {
-
+        //Atributos para las Pruebas
 		private com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO _facDAO;
 		private IPersonDAO _personDAO;
 		private IProfileDAO _profileDAO;
@@ -43,15 +47,17 @@ namespace FondaDataAccessTest
 		private string _dataTokenStrToken;
 
 
-		// Ayudantes Person.
-
+		/// <summary>
+        /// Genera los datos de una persona
+		/// </summary>
+		/// <param name="edit">true en caso de edicion, false en cualquier otro caso</param>
 		private void generatePerson(bool edit = false)
 		{
 			if (_person != null & !edit)
 				return;
 
 			if((edit & _person==null) | _person==null)
-				_person = new Person ();
+				_person = EntityFactory.GetPerson();
 
 			string editadd = "";
 
@@ -60,17 +66,17 @@ namespace FondaDataAccessTest
 
 			Random rand = new Random ();
 
-			_dataPersonName = "Rómulo José" + editadd;
-			_dataPersonLastName = "Rodríguez Rojas" + editadd;
+			_dataPersonName = "Jessika Beatriz" + editadd;
+			_dataPersonLastName = "Daboin Lira" + editadd;
 			if (!edit)
 				_dataPersonSsn = "" + rand.Next(19000000,30000000);
 
 			Console.WriteLine ("SSn Creado: " + _dataPersonSsn);
 			
-			_dataPersonPhoneNumber = "0414-"+rand.Next(100,999)+"-44-45";
+			_dataPersonPhoneNumber = "0414-"+rand.Next(100,999)+"-96-54";
 			_dataPersonAddress = "Direccion de Prueba " + editadd;
-			_dataPersonGender = 'M';
-			_dataPersonBirthDate = Convert.ToDateTime ("10/05/2016");
+			_dataPersonGender = 'F';
+			_dataPersonBirthDate = Convert.ToDateTime ("13/12/1991");
 
 
 			_person.Name = _dataPersonName;
@@ -84,6 +90,9 @@ namespace FondaDataAccessTest
 
 		}
 
+        /// <summary>
+        /// Assertions de verificacion de persona
+        /// </summary>
 		private void PersonAssertions()
 		{
 			Assert.IsNotNull (_person);
@@ -97,14 +106,15 @@ namespace FondaDataAccessTest
 			Assert.AreEqual (_person.Status, _facDAO.GetActiveSimpleStatus ());
 		}
 
-		// Ayudantes Profile
-
+		/// <summary>
+		/// Genera un Perfil
+		/// </summary>
 		private void generateProfile()
 		{
 			if (_profile != null)
 				return;
 
-			_profile = new Profile ();
+            _profile = EntityFactory.GetProfile();
 
 			_dataProfileName = "Nombre de Perfil";
 			_dataProfileStatus = _facDAO.GetActiveSimpleStatus ();
@@ -115,6 +125,9 @@ namespace FondaDataAccessTest
 			_profile.Person = _person;
 		}
 
+        /// <summary>
+        /// Assertions de verificacion de perfil
+        /// </summary>
 		private void ProfileAssertions()
 		{
 			Assert.IsNotNull (_profile);
@@ -125,19 +138,20 @@ namespace FondaDataAccessTest
 			PersonAssertions ();
 		}
 
-		// Ayudante commensal
-
+		/// <summary>
+		/// Genera un comensal
+		/// </summary>
 		private void generateCommensal()
 		{
 			if (_commensal != null)
 				return;
 
-			_commensal = new Commensal ();
+            _commensal = EntityFactory.GetCommensal();
 
-			Random r = new Random ();
+			Random random = new Random ();
 
-			_dataCommensalEmail = r.Next(100,600)+"rodriguezrjrr@gmail.com";
-			_dataCommensalPassword = "1234567890";
+			_dataCommensalEmail = random.Next(100,600)+"jessikadaboin@gmail.com";
+			_dataCommensalPassword = "jessi12345";
 			_dataCommensalStatus = _facDAO.GetActiveSimpleStatus ();
 
 			_commensal.Email = _dataCommensalEmail;
@@ -146,7 +160,7 @@ namespace FondaDataAccessTest
 			generateProfile ();
 			_commensal.AddProfile (_profile);
 
-			_token = new Token ();
+            _token = EntityFactory.GetToken();
 
 			_commensal.AddToken (_token);
 
@@ -154,6 +168,9 @@ namespace FondaDataAccessTest
 
 		}
 
+        /// <summary>
+        /// Assertions de verificacion de un commensal
+        /// </summary>
 		private void CommensalAssertions()
 		{
 			Assert.IsNotNull (_commensal);
@@ -175,14 +192,18 @@ namespace FondaDataAccessTest
 			Assert.AreEqual (_token.Commensal, _commensal);
 		}
 
-		// Ayudantes DAO
-
+		/// <summary>
+		/// Instancia la Fabrica de DAO
+		/// </summary>
 		private void getDao()
 		{
 			if (_facDAO == null)
                 _facDAO = com.ds201625.fonda.DataAccess.FactoryDAO.FactoryDAO.Intance;
 		}
 
+        /// <summary>
+        /// Obtiene el PersonDAO
+        /// </summary>
 		private void getPersonDao()
 		{
 			getDao ();
@@ -191,6 +212,9 @@ namespace FondaDataAccessTest
 
 		}
 
+        /// <summary>
+        /// Obtiene el ProfileDAO
+        /// </summary>
 		private void getProfileDao()
 		{
 			getDao ();
@@ -199,6 +223,9 @@ namespace FondaDataAccessTest
 
 		}
 
+        /// <summary>
+        /// Obtiene el CommensalDAO
+        /// </summary>
 		private void getCommensalDao()
 		{
 			getDao ();
@@ -207,17 +234,22 @@ namespace FondaDataAccessTest
 
 		}
 			
-		// Pruebas de persona.
-
+		/// <summary>
+		/// Pruebas unitarias de Persona
+		/// </summary>
 		[Test ()]
 		/// <summary>
 		/// Purebas de creación y edicion a nivel de dominio.
 		/// </summary>
 		public void PersonDomainTerst ()
 		{
+            //Se genera una persoma
 			generatePerson ();
+            //Se verifica si se creo la persona de forma correcta en el dominio
 			PersonAssertions ();
+            //Se genera la Persona Editada
 			generatePerson (true);
+            //Se verifica si se edito la persona de forma correcta en el dominio
 			PersonAssertions ();
 		}
 
@@ -227,19 +259,22 @@ namespace FondaDataAccessTest
 		/// </summary>
 		public void PersonDaoSaveTest()
 		{
+            //Se genera una persoma
 			generatePerson ();
+            //Se obtiene el PersonDAO
 			getPersonDao ();
-
+            //Se guarda la persona
 			_personDAO.Save (_person);
-
+            //verifica si se guardo la persona en la base de datos
 			Assert.AreNotEqual (_person.Id, _personId);
 			_personId = _person.Id;
 
 			_personDAO.ResetSession ();
-
+            //Se obtiene el PersonDAO
 			getPersonDao ();
 			_person = null;
 			_person = _personDAO.FindById (_personId);
+
 			PersonAssertions ();
 
 			generatePerson (true);
@@ -342,17 +377,17 @@ namespace FondaDataAccessTest
 		{
 			int cant = 2500;
 
-			Token [] t = new Token [cant];
+            Token[] tokenA = EntityFactory.GetTokenA(cant);
 			for (int i = 0; i < cant; i++)
 			{
-				t [i] = new  Token ();
+				tokenA [i] = EntityFactory.GetToken();
 			}
 
 			for (int i = 0; i < cant; i++)
 			{
 				for (int j = i+1; j < cant; j++)
 				{
-					Assert.AreNotEqual (t[j].StrToken,t[i].StrToken);
+                    Assert.AreNotEqual(tokenA[j].StrToken, tokenA[i].StrToken);
 				}
 			}
 		}
