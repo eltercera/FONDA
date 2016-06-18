@@ -18,6 +18,9 @@ import com.ds201625.fonda.logic.Parameter;
 public class AddFavoriteRestaurantCommand extends BaseCommand {
 
     private String TAG = "AddFavoriteRestaurantCommand";
+    private Commensal commensal;
+    private Restaurant idRestaurant;
+    private Commensal idCommensal;
 
     /**
      * Asigna valor a los parametros
@@ -25,6 +28,7 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
      */
     @Override
     protected Parameter[] setParameters() {
+
         Parameter [] parameters = new Parameter[2];
         parameters[0] = new Parameter(Commensal.class, true);
         parameters[1] = new Parameter(Restaurant.class, true);
@@ -38,10 +42,11 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para agregar un restaurante a favoritos");
-        Commensal commensal = FondaEntityFactory.getInstance().GetCommensal();
 
-        Commensal idCommensal = FondaEntityFactory.getInstance().GetCommensal();
-        Restaurant idRestaurant = FondaEntityFactory.getInstance().GetRestaurant();
+        commensal = FondaEntityFactory.getInstance().GetCommensal();
+        idCommensal = FondaEntityFactory.getInstance().GetCommensal();
+        idRestaurant = FondaEntityFactory.getInstance().GetRestaurant();
+
         try {
             idCommensal = (Commensal) getParameter(0);
             idRestaurant = (Restaurant) getParameter(1);
@@ -49,11 +54,11 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
         }
 
-        FavoriteRestaurantService ps = FondaServiceFactory.getInstance()
+        FavoriteRestaurantService serviceFavorites = FondaServiceFactory.getInstance()
                 .getFavoriteRestaurantService();
 
         try {
-             commensal =  ps.AddFavoriteRestaurant(idCommensal.getId(),idRestaurant.getId());
+             commensal =  serviceFavorites.AddFavoriteRestaurant(idCommensal.getId(),idRestaurant.getId());
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
         }
