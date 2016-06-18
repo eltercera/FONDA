@@ -1,19 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
-using com.ds201625.fonda.Domain;
-using System.Web.Services;
-using System.Web.Script.Serialization;
 using BackOfficeModel.OrderAccount;
 using BackOffice.Seccion.Restaurant;
 using BackOfficePresenter.OrderAccount;
 using FondaResources.Login;
+using System.Web.UI.HtmlControls;
+using BackOfficeModel;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -21,44 +13,54 @@ namespace BackOffice.Seccion.Caja
     {
         #region Presenter
 
-        private ClosedOrdersPresenter _presenter;
+        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.ClosedOrdersPresenter _presenter;
 
         #endregion
 
         #region Model
 
-        public Label ErrorLabelMessage
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         public System.Web.UI.WebControls.Table ClosedOrdersTable
         {
-            get { return _closedOrders; }
+            get { return closedOrders; }
 
-            set { _closedOrders = value; }
+            set { closedOrders = value; }
         }
 
-        public Label SuccessLabelMessage
+        Label IModel.ErrorLabelMessage
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return this.ErrorLabelMessage; }
 
-            set
-            {
-                throw new NotImplementedException();
-            }
+            set { this.ErrorLabelMessage = value; }
+
         }
+
+        Label IModel.SuccessLabelMessage
+        {
+            get { return this.SuccessLabelMessage; }
+
+            set { this.SuccessLabelMessage = value; }
+        }
+
+        public string SessionRestaurant
+        {
+            get { return Session[ResourceLogin.sessionRestaurantID].ToString(); }
+
+            set { Session[ResourceLogin.sessionRestaurantID] = value; }
+        }
+
+        HtmlGenericControl IModel.SuccessLabel
+        {
+            get { return this.SuccessLabel; }
+
+        }
+
+        HtmlGenericControl IModel.ErrorLabel
+        {
+            get { return this.ErrorLabel; }
+
+        }
+
+
 
         #endregion
 
@@ -66,7 +68,7 @@ namespace BackOffice.Seccion.Caja
 
         public OrdenesCerradas()
         {
-            _presenter = new ClosedOrdersPresenter(this);
+            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.ClosedOrdersPresenter(this);
         }
         #endregion
 

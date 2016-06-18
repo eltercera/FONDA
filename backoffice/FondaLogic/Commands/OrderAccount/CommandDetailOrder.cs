@@ -11,13 +11,13 @@ namespace FondaLogic.Commands.OrderAccount
     public class CommandDetailOrder : Command
     {
         FactoryDAO _facDAO = FactoryDAO.Intance;
-        Account _orderAccount = new Account();
+        int _orderAccount = 0;
 
         public CommandDetailOrder(Object receiver) : base(receiver)
         {
             try
             {
-                _orderAccount = (Account)receiver;
+                _orderAccount = (int)receiver;
             }
             catch (Exception)
             {
@@ -29,13 +29,13 @@ namespace FondaLogic.Commands.OrderAccount
         {
             try
             {
-                ////Defino el DAO
-                //IOrderAccountDao _orderDAO;
-                ////Obtengo la instancia del DAO a utilizar
-                //_orderDAO = _facDAO.GetOrderAccountDAO();
-                ////Obtengo el objeto con la informacion enviada
-                //IList<Dish> listDetailOrder = _orderDAO.GetDishesByAccount(_orderAccount);
-                //Receiver = listDetailOrder;
+                //Defino el DAO
+                IDishOrderDAO _dishOrderDAO;
+                //Obtengo la instancia del DAO a utilizar
+                _dishOrderDAO = _facDAO.GetDishOrderDAO();
+                //Obtengo el objeto con la informacion enviada
+                IList<DishOrder> listDetailOrder = _dishOrderDAO.GetDishesByAccount(_orderAccount);
+                Receiver = listDetailOrder;
 
             }
             catch (NullReferenceException ex)

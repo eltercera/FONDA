@@ -1,11 +1,12 @@
 ﻿using com.ds201625.fonda.BackEnd.ActionFilters;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEndLogic;
-using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.FondaBackEnd.Exceptions;
+using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -40,13 +41,14 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         //[FondaAuthToken]
         public IHttpActionResult deletefavorite(int idcommensal, int idrestaurant)
         {
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             
             Commensal result;   //PREGUNTAR SI ES PRIVADA O CUANDO SON STATIC
             try
             {
-                Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
-                commensal.Id = idcommensal;                       //PREGUNTAR ID
+                Commensal commensal = EntityFactory.GetCommensal();
+                commensal.Id = idcommensal;                     
 
                 //Creación del restaurant con id
                 Restaurant restaurant = new Restaurant();  
@@ -68,7 +70,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                     GeneralRes.RestDeletedFromFav + commensal.Id + GeneralRes.Slash + restaurant.Name,
                    System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (DeleteFondaDAOException e)
+            catch (DeleteFavoriteRestaurantCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.DeleteFavRestException, e);
@@ -85,8 +87,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 throw new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.DeleteFavRestException, e);
             }
             
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, GeneralRes.EndLogger,
-                   System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                GeneralRes.EndLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             return Ok(result);
         }
@@ -103,18 +105,19 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         ///[FondaAuthToken]
         public IHttpActionResult addfavorite(int idcommensal, int idrestaurant)
         {
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             
             Commensal result;
             try
             {
                 //Creación del commensal con id
-                Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
-                commensal.Id = idcommensal;                       //PREGUNTAR ID
+                Commensal commensal = EntityFactory.GetCommensal();
+                commensal.Id = idcommensal;                      
 
                 //Creación del restaurant con id
-                Restaurant restaurant = new Restaurant();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
-                restaurant.Id = idrestaurant;                       //PREGUNTAR ID
+                Restaurant restaurant = EntityFactory.GetRestaurant();
+                restaurant.Id = idrestaurant;                      
 
                 // Obtención del commando
                 ICommand command = FacCommand.CreateFavoriteRestaurantCommand();
@@ -133,7 +136,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                    GeneralRes.RestAddedToFav + commensal.Id + GeneralRes.Slash + restaurant.Name,
                   System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (SaveEntityFondaDAOException e)
+            catch (CreateFavoriteRestaurantCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException, e);
@@ -148,9 +151,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException, e);
             }
-            
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, GeneralRes.EndLogger,
-                  System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             return Ok(result);
         }
@@ -164,7 +166,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [HttpGet]
         public IHttpActionResult getRestaurant()
         {
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             
             IList<Restaurant> result;
             try
@@ -178,7 +181,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                  GeneralRes.Restaurant,System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (FindAllFondaDAOException e)
+            catch (GetAllRestaurantsCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetRestFavException, e);
@@ -194,8 +197,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetRestFavException, e);
             }
            
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, GeneralRes.EndLogger,
-                  System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                GeneralRes.EndLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             return Ok(result);
            
@@ -222,14 +225,15 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [HttpGet]
         public IHttpActionResult findRestaurantFavorites(int idCommensal)
         {
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             
             Commensal result;
             try
             {
                 //Creación del commensal con id
-                Commensal commensal = new Commensal();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
-                commensal.Id = idCommensal;                       //PREGUNTAR ID
+                Commensal commensal = EntityFactory.GetCommensal();  
+                commensal.Id = idCommensal;                      
 
                 // Obtención del commando
                 ICommand command = FacCommand.GetFavoriteRestaurantCommand();
@@ -247,7 +251,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                  GeneralRes.FavoriteRestaurant + commensal.Email,
                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (FindByIdFondaDAOException e)
+            catch (GetFavoriteRestaurantFondaCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurant, e);
@@ -264,8 +268,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurant, e);
             }                 
 
-          Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, GeneralRes.EndLogger,
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+          Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+              GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
           return Ok(result.FavoritesRestaurants);
         }
@@ -280,12 +284,13 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [HttpGet]
         public IHttpActionResult findCommensalEmail(string email)
         {
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+             
             UserAccount result;
             try
             {
-                UserAccount commensal = new UserAccount();   //PREGUNTAR SI SE NECESITA FAB ENTIDAD 
+                UserAccount commensal = EntityFactory.GetUserAccount();
                 commensal.Email = email;
                 // Obtención del commando
                 ICommand command = FacCommand.GetCommensalEmailCommand();
@@ -301,24 +306,27 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.CommensalEmail + commensal.Email, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (FindByEmailUserAccountFondaDAOException e)
+            catch (GetCommensalEmailCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new FindByEmailUserAccountFondaWebApiControllerException(GeneralRes.GetCommensalEmailException, e);
+                throw new FindByEmailUserAccountFondaWebApiControllerException(GeneralRes.GetCommensalEmailException,
+                    e);
             }
             catch (NullReferenceException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new FindByEmailUserAccountFondaWebApiControllerException(GeneralRes.GetCommensalEmailException, e);
+                throw new FindByEmailUserAccountFondaWebApiControllerException(GeneralRes.GetCommensalEmailException, 
+                    e);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new FindByEmailUserAccountFondaWebApiControllerException(GeneralRes.GetCommensalEmailException, e);
+                throw new FindByEmailUserAccountFondaWebApiControllerException(GeneralRes.GetCommensalEmailException,
+                    e);
             }
 
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, GeneralRes.EndLogger,
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                GeneralRes.EndLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             return Ok(result);
         }

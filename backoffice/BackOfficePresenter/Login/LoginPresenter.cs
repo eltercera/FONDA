@@ -154,7 +154,7 @@ namespace BackOfficePresenter.Login
                                     HttpContext.Current.Session[ResourceLogin.sessionRestaurantID] = _employeeResult.Restaurant.Id.ToString();
                                     HttpContext.Current.Session[RestaurantResource.SessionRestaurant] = _restaurantResult.Id.ToString();
                                     HttpContext.Current.Session[RestaurantResource.SessionNameRest] = _restaurantResult.Name;
-
+                                    /* Asignacion de variable de session */ _view.SessionRestaurant = _employeeResult.Restaurant.Id.ToString();
                                     System.Diagnostics.Debug.WriteLine(_restaurantResult.Id.ToString(), "ID del restaurant");
                                     System.Diagnostics.Debug.WriteLine(_restaurantResult.Name.ToString(), "nombre del restaurant");
                                 }

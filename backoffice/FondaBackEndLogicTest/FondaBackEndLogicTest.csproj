@@ -56,6 +56,10 @@
       <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
       <Name>FondaDataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
+      <Project>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</Project>
+      <Name>FondaLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

@@ -48,18 +48,17 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             Commensal favorites;
             // Obtencion de parametros
             Commensal commensal = (Commensal)GetParameter(0);
-
             // Obtiene el dao que se requiere
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
-           
-            //VALIDACIONES DE CAMPOS--ESTO ES NECESARIO?
-            if (commensal.Id == null) 
+
+            if (commensal.Id <= 0)
                 throw new Exception(ResourceMessages.InvalidInformation);
+
           // Ejecucion del Buscar.		
 			try
 			{
                 favorites = (Commensal)commensalDAO.FindById(commensal.Id);//PREGUNTAR POR SI PUEDO HACER COMENSAL.ID
-                foreach (var restaurant in favorites.FavoritesRestaurants) //PREGUNTAR POR EL NEW RESTAURANT
+                foreach (var restaurant in favorites.FavoritesRestaurants) 
                 {
                     restaurant.RestaurantCategory = new RestaurantCategory
                     {
@@ -89,10 +88,10 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             // Guardar el resultado.
             Result = favorites;
             //logger
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
-              System.Reflection.MethodBase.GetCurrentMethod().Name);
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,
-                   System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
+                Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 		}
 	}
 }

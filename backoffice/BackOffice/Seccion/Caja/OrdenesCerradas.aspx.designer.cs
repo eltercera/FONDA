@@ -13,30 +13,48 @@ namespace BackOffice.Seccion.Caja {
     public partial class OrdenesCerradas {
         
         /// <summary>
-        /// _closedOrders control.
+        /// SuccessLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table _closedOrders;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SuccessLabel;
         
         /// <summary>
-        /// Button5 control.
+        /// SuccessLabelMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button5;
+        protected global::System.Web.UI.WebControls.Label SuccessLabelMessage;
         
         /// <summary>
-        /// Button6 control.
+        /// ErrorLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button6;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrorLabel;
+        
+        /// <summary>
+        /// ErrorLabelMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLabelMessage;
+        
+        /// <summary>
+        /// closedOrders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table closedOrders;
     }
 }

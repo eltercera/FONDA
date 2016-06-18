@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using NHibernate.Criterion;
 using NHibernate;
+using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -243,8 +244,82 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 			return FindAllSortedByName (true,generalCriterial, max, (page - 1) * max);
 		}
 
-		#endregion
+        #endregion
 
+        #region OrderAccount
+
+        /// <summary>
+        /// Obtiene las ordenes cerradas de un Restaurante
+        /// </summary>
+        /// <param name="restaurant">El id de un Restaurant</param>
+        /// <returns>Una lista de Close Account</returns>
+        public IList<Account> ClosedOrdersByRestaurantId(int restaurantId)
+        {
+            try
+            {
+
+                //TODO: Excepcion en caso de no encontrar restaurante
+                Restaurant restaurant = Session.QueryOver<Restaurant>()
+                    .Where(r => r.Id == restaurantId)
+                    .Where(r => r.Status == ActiveSimpleStatus.Instance)
+                    .SingleOrDefault();
+
+                IList<Account> list = new List<Account>();
+
+                //TODO: Excepcion en caso de no encontrar lista llena
+                foreach (Account closedAccount in restaurant.Accounts)
+                {
+                    if (closedAccount.Status.Equals(ClosedAccountStatus.Instance))
+                        list.Add(closedAccount);
+                }
+
+                return list;
+
+            }
+            //TODO: Arrojar excepciones personalizadas
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("No se encontraron ordenes cerradas", e);
+            }
+
+        }
+
+        /// <summary>
+        /// Obtiene las ordenes abiertas de un Restaurante
+        /// </summary>
+        /// <param name="idRestaurant">Un ID de Restaurant tipo int</param>
+        /// <returns>Una List de Accounts</returns>
+        public IList<Account> OpenOrdersByRestaurantId(int restaurantId)
+        {
+
+            try
+            {
+                //TODO: Excepcion en caso de no encontrar restaurante
+                Restaurant restaurant = Session.QueryOver<Restaurant>()
+                    .Where(r => r.Id == restaurantId)
+                    .Where(r => r.Status == ActiveSimpleStatus.Instance)
+                    .SingleOrDefault();
+
+                IList<Account> list = new List<Account>();
+
+                //TODO: Excepcion en caso de no encontrar lista llena
+                foreach (Account closedAccount in restaurant.Accounts)
+                {
+                    if (closedAccount.Status.Equals(OpenAccountStatus.Instance))
+                        list.Add(closedAccount);
+                }
+
+                return list;
+
+            }
+            //TODO: Arrojar excepciones personalizadas
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("Not Found invoice", e);
+            }
+        }
+
+        #endregion
     }
 }
 

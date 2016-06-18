@@ -159,4 +159,8 @@
   <data name="GetFavoriteRestaurant" xml:space="preserve">
     <value>Error al buscar los restaurantes favoritos del comensal</value>
   </data>
+  <data name="ClassNameSaveEmployee" xml:space="preserve">
+    <value>CommandSaveEmployee</value>
+    <comment>Comando para guardar un empleado.</comment>
+  </data>
 </root>

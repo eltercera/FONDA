@@ -15,7 +15,6 @@ import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.SessionData;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**

@@ -175,4 +175,31 @@
   <data name="Slash" xml:space="preserve">
     <value>/</value>
   </data>
+  <data name="AddProfileException" xml:space="preserve">
+    <value>Error al agregar un perfil de un comensal</value>
+  </data>
+  <data name="DeleteProfileException" xml:space="preserve">
+    <value>Error al eliminar un perfil de un comensal</value>
+  </data>
+  <data name="GetProfileException" xml:space="preserve">
+    <value>Error al buscar el Perfil de un Commensal</value>
+  </data>
+  <data name="InvalidInformationProfile" xml:space="preserve">
+    <value>Datos del Perfil Invalidos</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Perfil del Commensal: </value>
+  </data>
+  <data name="ProfileAdded" xml:space="preserve">
+    <value>Profile Agregado al Commensal: </value>
+  </data>
+  <data name="ProfileDeleted" xml:space="preserve">
+    <value>Profile Eliminado de un Commensal: </value>
+  </data>
+  <data name="ProfileUpdated" xml:space="preserve">
+    <value>Profile Modificado de un Commensal: </value>
+  </data>
+  <data name="UpdateProfileException" xml:space="preserve">
+    <value>Error al modificar un perfil de un comensal</value>
+  </data>
 </root>

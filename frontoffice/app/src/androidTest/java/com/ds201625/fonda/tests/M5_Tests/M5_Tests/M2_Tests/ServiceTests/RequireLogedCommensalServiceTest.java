@@ -4,11 +4,9 @@ import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.logic.Command;
-import com.ds201625.fonda.logic.FondaCommandFactory;
+import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 
 import junit.framework.TestCase;
 
@@ -43,7 +41,7 @@ public class RequireLogedCommensalServiceTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         requireLogedCommensal = FondaServiceFactory.getInstance().getLogedCommensalService();
-        commensal = new Commensal();
+        commensal = FondaEntityFactory.getInstance().GetCommensal();
         email = "adri@hotmail.com";
     }
 

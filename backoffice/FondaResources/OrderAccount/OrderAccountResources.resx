@@ -117,67 +117,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Action2Account" xml:space="preserve">
+  <data name="ActionColumn" xml:space="preserve">
+    <value>Acciones</value>
+    <comment>Nombre de columna de acciones</comment>
+  </data>
+  <data name="ActionInfo" xml:space="preserve">
+    <value>&lt;i class="fa fa-info-circle" aria-hidden="true"&gt;&lt;/i&gt;</value>
+    <comment>Muestra informacion en detalle</comment>
+  </data>
+  <data name="ActionInvoices" xml:space="preserve">
     <value>&lt;i class="fa fa-money fa-fw"&gt;&lt;/i&gt;</value>
-    <comment>Acciones disponibles en DataTable de Restaurant</comment>
+    <comment>Muestra las facturas de una orden</comment>
   </data>
-  <data name="Action3Account" xml:space="preserve">
-    <value>&lt;i class="fa fa-pencil-square-o"&gt;&lt;/i&gt;</value>
-    <comment>Acciones disponibles en DataTable de Mesa</comment>
+  <data name="CanceledStatus" xml:space="preserve">
+    <value>&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;p class="stat"&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;</value>
+    <comment>Factura anulada</comment>
   </data>
-  <data name="ActionAccount" xml:space="preserve">
-    <value>&lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;</value>
-    <comment>Acciones disponibles en DataTable de Categoria de Restaurant</comment>
+  <data name="dataId" xml:space="preserve">
+    <value>data-id</value>
+    <comment>Atributo para id de fila</comment>
   </data>
-  <data name="ActionCheckStatus" xml:space="preserve">
-    <value>&lt;i class="fa fa-check" aria-hidden="true"&gt;&lt;/i&gt;</value>
+  <data name="DateColumn" xml:space="preserve">
+    <value>Fecha</value>
+    <comment>Nombre de la columna de fecha</comment>
   </data>
-  <data name="ActionUnCheckStatus" xml:space="preserve">
-    <value>&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
+  <data name="detailURL" xml:space="preserve">
+    <value>../Caja/VerDetalleOrden.aspx</value>
+    <comment>URL de detalle de orden</comment>
   </data>
-  <data name="Active" xml:space="preserve">
-    <value>&lt;td class="text-center"&gt;&lt;span class="label label-success"&gt;&lt;i class="fa fa-check"&gt;&lt;p class="stat"&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;</value>
-    <comment>Estado Activo</comment>
+  <data name="GeneratedStatus" xml:space="preserve">
+    <value>&lt;span class="label label-success"&gt;&lt;i class="fa fa-check"&gt;&lt;p class="stat"&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;</value>
+    <comment>Factura pagada</comment>
   </data>
-  <data name="AgregarCantidadOrden" xml:space="preserve">
-    <value>&lt;input runat="server" type="number" name="quantity" min="1" max="10" value=1 /&gt;</value>
+  <data name="href" xml:space="preserve">
+    <value>href</value>
+    <comment>Atributo para generar enlace</comment>
   </data>
-  <data name="Cerrar" xml:space="preserve">
-    <value>"&gt;</value>
+  <data name="InvoiceNumberColumn" xml:space="preserve">
+    <value># Factura</value>
+    <comment>Nombre de columna de numero de factura</comment>
   </data>
-  <data name="Cerrar2" xml:space="preserve">
-    <value>&lt;/a&gt;</value>
+  <data name="invoicesURL" xml:space="preserve">
+    <value>../Caja/ListarFacturas.aspx</value>
+    <comment>URL de listar Facturas</comment>
   </data>
-  <data name="CheckBoxAgregar" xml:space="preserve">
-    <value>&lt;input runat="server" type="checkbox" /&gt;</value>
+  <data name="OrderNumberColumn" xml:space="preserve">
+    <value># Orden</value>
+    <comment>Nombre de columna de numero de orden</comment>
   </data>
-  <data name="Inactive" xml:space="preserve">
-    <value>&lt;td class="text-center"&gt;&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;p class="stat"&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;</value>
-    <comment>Estado Inactivo</comment>
+  <data name="OrderTableColumn" xml:space="preserve">
+    <value># Mesa</value>
+    <comment>Nombre de columna de numero de mesa de orden</comment>
   </data>
-  <data name="ModificarFactura" xml:space="preserve">
-    <value>&lt;a runat="server" href="/Seccion/Caja/ModificarOrden.aspx?id=</value>
+  <data name="OrderUserColumn" xml:space="preserve">
+    <value>Nombre</value>
+    <comment>Nombre de columna de nombre de orden</comment>
   </data>
-  <data name="ModificarFactura2" xml:space="preserve">
-    <value>&lt;i class="fa fa-pencil-square-o"&gt;&lt;/i&gt;</value>
+  <data name="SessionIdAccount" xml:space="preserve">
+    <value>AccountID</value>
+    <comment>ID de la Orden</comment>
   </data>
-  <data name="VerDetalleFactura" xml:space="preserve">
-    <value>&lt;a runat="server" href="/Seccion/Caja/VerFactura.aspx?id=</value>
+  <data name="SessionNumberAccount" xml:space="preserve">
+    <value>AccountNumber</value>
+    <comment>Numero de la Orden</comment>
   </data>
-  <data name="VerDetalleFactura2" xml:space="preserve">
-    <value>&lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;</value>
+  <data name="StatusColumn" xml:space="preserve">
+    <value>Estado</value>
+    <comment>Nombre de columna de estado</comment>
   </data>
-  <data name="VerDetalleOrden" xml:space="preserve">
-    <value>&lt;a runat="server" href="/Seccion/Caja/VerDetalleOrden.aspx?id=</value>
+  <data name="TotalColumn" xml:space="preserve">
+    <value>Total</value>
+    <comment>Nombre de columna de total de factura</comment>
   </data>
-  <data name="VerDetalleOrden2" xml:space="preserve">
-    <value>&lt;i class="fa fa-info-circle"&gt;&lt;/i&gt;</value>
+  <data name="DishNameColum" xml:space="preserve">
+    <value>Nombre del Platillo</value>
+    <comment>Nombre de la columna de nombre de platillo</comment>
   </data>
-  <data name="VerFactura" xml:space="preserve">
-    <value>&lt;a runat="server" href="/Seccion/Caja/CrearFactura.aspx?id=</value>
-    <comment>Cerrar</comment>
+  <data name="PriceColumn" xml:space="preserve">
+    <value>Precio por plato</value>
+    <comment>Nombre de la columna de Precio de platillo por cantidad</comment>
   </data>
-  <data name="VerFactura2" xml:space="preserve">
-    <value>&lt;i class="fa fa-money fa-fw"&gt;&lt;/i&gt;</value>
+  <data name="QuantityColumn" xml:space="preserve">
+    <value>Cantidad</value>
+    <comment>Nombre de la columna de cantidad</comment>
   </data>
 </root>

@@ -66,11 +66,14 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
         swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
         swipeRefreshLayout.setOnRefreshListener(this);
 
-
-        restaurantList = getListSW();
-        favoritesList.addAll(restaurantList);
-        restaurants.setAdapter(favoritesList);
-
+        try {
+            restaurantList = getListSW();
+            favoritesList.addAll(restaurantList);
+            restaurants.setAdapter(favoritesList);
+        }
+        catch(NullPointerException e){
+                Log.e(TAG,"Error al iniciar favoritos",e);
+            }
 
 
         if(multi) {
@@ -109,8 +112,8 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
 
                                     //Llamo al comando de deleteFavoriteRestaurant
                                     Command cmdDelete = facCmd.deleteFavoriteRestaurantCommand();
-                                    cmdDelete.setParameter(0,logedComensal.getId());
-                                    cmdDelete.setParameter(1,r.getId());
+                                    cmdDelete.setParameter(0,logedComensal);
+                                    cmdDelete.setParameter(1,r);
                                     cmdDelete.run();
 
                                     Toast.makeText(FavoritesListFragment.super.getContext(),
@@ -243,7 +246,7 @@ public class FavoritesListFragment extends BaseFragment implements SwipeRefreshL
 
                     //Llamo al comando de allFavoriteRestaurantCommand
                     Command cmdAllFavorite = facCmd.allFavoriteRestaurantCommand();
-                    cmdAllFavorite.setParameter(0,logedComensal.getId());
+                    cmdAllFavorite.setParameter(0,logedComensal);
                     cmdAllFavorite.run();
 
                     listRestWS = (List<Restaurant>) cmdAllFavorite.getResult();

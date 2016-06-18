@@ -46,13 +46,17 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 ResourceMessages.BeginLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
             UserAccount answer;
             // Obtencion de parametros
-            UserAccount commensal = (UserAccount)GetParameter(0);
+            UserAccount userAccount = (UserAccount)GetParameter(0);
             // Obtiene el dao que se requiere
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
-            // Ejecucion del Buscar.		
+            // Ejecucion del Buscar.	
+
+            if (userAccount.Email == null)
+                throw new Exception(ResourceMessages.InvalidInformation);
+
             try
             {
-                 answer = (UserAccount)commensalDAO.FindByEmail(commensal.Email);
+                answer = (UserAccount)commensalDAO.FindByEmail(userAccount.Email);
                  Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                   ResourceMessages.CommensalEmail + answer.Id + ResourceMessages.Slash + answer.Email,
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -75,10 +79,10 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             // Guardar el resultado.
             Result = answer;
             //logger
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
-              System.Reflection.MethodBase.GetCurrentMethod().Name);
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ResourceMessages.EndLogger,
-                   System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                Result.ToString(),System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                ResourceMessages.EndLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
     }
 }

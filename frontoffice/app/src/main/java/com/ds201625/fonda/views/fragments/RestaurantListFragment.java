@@ -104,8 +104,8 @@ public class RestaurantListFragment extends BaseFragment implements SwipeRefresh
 
                                     //Llamo al comando de addFavoriteRestaurant
                                     Command cmdAddFavorite = facCmd.addFavoriteRestaurantCommand();
-                                    cmdAddFavorite.setParameter(0,logedComensal.getId());
-                                    cmdAddFavorite.setParameter(1,r.getId());
+                                    cmdAddFavorite.setParameter(0,logedComensal);
+                                    cmdAddFavorite.setParameter(1,r);
                                     cmdAddFavorite.run();
 
                                     Toast.makeText(RestaurantListFragment.super.getContext(),

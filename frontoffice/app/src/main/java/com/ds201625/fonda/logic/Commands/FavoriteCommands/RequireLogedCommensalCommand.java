@@ -4,14 +4,11 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
-
-import java.util.List;
 
 /**
  * Comando para obtener el comensal logueado
@@ -29,7 +26,7 @@ public class RequireLogedCommensalCommand extends BaseCommand {
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para obtener el comensal logeado");
-        Commensal commensal = null;
+        Commensal commensal = FondaEntityFactory.getInstance().GetCommensal();
 
         String email = "";
         try {
@@ -41,7 +38,7 @@ public class RequireLogedCommensalCommand extends BaseCommand {
         try {
             email = (String) this.getParameter(1);
         } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al obtener el comensal logeado", e);
+          //  Log.e(TAG, "Se ha generado error en invoke al obtener el comensal logeado", e);
         }
 
         RequireLogedCommensalService ps = FondaServiceFactory.getInstance()

@@ -1,12 +1,9 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
-import android.util.Log;
-
 import com.ds201625.fonda.data_access.retrofit_client.clients.HistoryVisitsClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.domains.Invoice;
-import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 
 import java.io.IOException;
 import java.util.List;

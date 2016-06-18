@@ -51,14 +51,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
 
         [Test]
-        public void ClosedOrdersTest()
-        {
-
-            _listClosedOrders = _orderAccountDAO.ClosedOrdersByRestaurant(_restaurant);
-            Assert.IsNotNull(_listClosedOrders);
-        }
-
-        [Test]
         public void CommandGetOrdersTest()
         {
 
@@ -73,6 +65,22 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
 
         [Test]
+        [Ignore("Esta prueba es engañosa, no existe ningun restaurant con Id 100")]
+        public void CommandGetOrdersNullTest()
+        {
+            _command = CommandFactory.GetCommandGetOrders(100);
+
+            _command.Execute();
+
+            IList<Account> list = (IList<Account>)_command.Receiver;
+
+            Assert.IsNotNull(list);
+            Assert.Greater(list.Count, 0);
+        }
+
+
+
+        [Test]
         public void CommandGetOrderTest()
         {
             _command = CommandFactory.GetCommandGetOrder(_orderId);
@@ -85,18 +93,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
         }
 
-        [Test]
-        public void CommandGeInvoiceTest()
-        {
-            _command = CommandFactory.GetCommandInvoice(_account);
-
-            _command.Execute();
-
-            _invoice = (Invoice)_command.Receiver;
-
-            Assert.IsNotNull(_invoice);
-
-        }
-
+       
     }
 }

@@ -10,5 +10,7 @@ namespace BackOfficeModel.OrderAccount
     public interface IDetailOrderModel : IModel
     {
         Table DetailOrderTable { get; set; }
+
+        string Session { get; set; }
     }
 }

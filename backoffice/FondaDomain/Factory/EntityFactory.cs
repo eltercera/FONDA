@@ -12,17 +12,17 @@ namespace com.ds201625.fonda.Factory
 
         //Instancia los objetos del dominio invocando al constructor(es) de la entidad
 
-        public static Entity GetAccount()
+        public static Account GetAccount()
         {
             return new Account();
         }
 
-        public static Entity GetAccount(Table table, Commensal commensal, IList<DishOrder> listOrder, int number)
+        public static Account GetAccount(Table table, Commensal commensal, IList<DishOrder> listOrder, int number)
         {
             return new Account(table, commensal, listOrder, number);
         }
 
-        public static Entity GetAccount(Table table, IList<DishOrder> listOrder)
+        public static Account GetAccount(Table table, IList<DishOrder> listOrder)
         {
             return new Account(table, listOrder);
         }
@@ -32,26 +32,32 @@ namespace com.ds201625.fonda.Factory
             return new Invoice();
         }
 
-        public static Entity GetInvoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
+        public static Invoice GetInvoice(/*Restaurant restaurant, */Payment payment, Profile profile,
             float tip, float total, float tax, Currency currency, int number)
         {
-            return new Invoice(restaurant, payment, account, profile,
+            return new Invoice(/*restaurant,*/ payment, profile,
             tip, total, tax, currency, number);
         }
 
-        public static Entity GetInvoice(Restaurant restaurant, Payment payment, Account account, Profile profile,
+        public static Invoice GetInvoice(/*Restaurant restaurant, */Payment payment, Profile profile,
             float total, float tax, Currency currency, int number)
         {
-            return new Invoice(restaurant, payment, account, profile,
+            return new Invoice(/*restaurant,*/ payment, profile,
             total, tax, currency, number);
         }
 
+        public static Invoice GetInvoice(int id, Payment payment, Profile profile, float tip,
+            float total, float tax, int number)
+        {
+            return new Invoice(id, payment, profile,
+            tip, total, tax, number);
+        }
         #endregion
 
         #region Restaurant
 
         //Instancia los objetos del dominio invocando al constructor(es) de la entidad
-        public static Entity GetRestaurant()
+        public static Restaurant GetRestaurant()
         {
             return new Restaurant();
         }
@@ -67,14 +73,45 @@ namespace com.ds201625.fonda.Factory
         #region Login
 
         //Instancia los objetos del dominio invocando al constructor(es) de la entidad
-        public static Entity GetEmployee()
+        public static Employee GetEmployee()
         {
             return new Employee();
         }
 
-        public static Entity GetRole()
+        public static Role GetRole()
         {
             return new Role();
+        }
+        #endregion
+
+        #region LoginFO
+        //Instancia de Commensal
+        public static Commensal GetCommensal()
+        {
+            return new Commensal();
+        }
+        //Instancia de Token
+        public static Token GetToken()
+        {
+            return new Token();
+        }
+        //Instancia de Profile
+        public static Profile GetProfile()
+        {
+            return new Profile();
+        }
+        #endregion
+
+        #region Favorito
+        //Instancia de UserAccount
+        public static UserAccount GetUserAccount()
+        {
+            return new UserAccount();
+        }
+        //Instancia de RestaurantCategory
+        public static RestaurantCategory GetCategoryRestaurent()
+        {
+            return new RestaurantCategory();
         }
         #endregion
     }

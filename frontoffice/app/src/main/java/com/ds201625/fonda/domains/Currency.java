@@ -7,7 +7,7 @@ package com.ds201625.fonda.domains;
 /*
  Clase quee representa la moneda de la factura
  */
-public class Currency extends NounBaseEntity{
+public class Currency extends NounBaseEntity {
 
     /**
      * String que define el simbolo de la moneda

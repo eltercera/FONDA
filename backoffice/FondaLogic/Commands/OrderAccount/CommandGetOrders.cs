@@ -13,14 +13,14 @@ namespace FondaLogic.Commands.OrderAccount
     public class CommandGetOrders : Command
     {
 
-        FactoryDAO _facDAO = FactoryDAO.Intance;
-        Restaurant _restaurant = new Restaurant();
+        private FactoryDAO _facDAO = FactoryDAO.Intance;
+        private int _restaurantId;
 
         public CommandGetOrders(Object receiver) : base(receiver)
         {
             try
             {
-                _restaurant = (Restaurant)receiver;
+                _restaurantId = (int)receiver;
             }
             catch (NullReferenceException ex)
             {
@@ -35,14 +35,16 @@ namespace FondaLogic.Commands.OrderAccount
         /// </summary>
         public override void Execute()
         {
+            IList<Account> listAccounts;
+
             try
             {
                 //Defino el DAO
-                IOrderAccountDao _orderDAO;
+                IRestaurantDAO _restaurantDAO;
                 //Obtengo la instancia del DAO a utilizar
-                _orderDAO = _facDAO.GetOrderAccountDAO();
+                _restaurantDAO = _facDAO.GetRestaurantDAO();
 
-                IList<Account> listAccounts = _orderDAO.FindByRestaurant(_restaurant);
+                listAccounts = _restaurantDAO.OpenOrdersByRestaurantId(_restaurantId);
 
                 Receiver = listAccounts;
             }
@@ -58,7 +60,9 @@ namespace FondaLogic.Commands.OrderAccount
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,exceptionGetOrders);
 
-                throw exceptionGetOrders;
+                listAccounts = new List<Account>();
+                Receiver = listAccounts;
+                //throw exceptionGetOrders;
             }
 
 

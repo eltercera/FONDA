@@ -2,17 +2,15 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.CommandTests;
 
 import android.test.MoreAsserts;
 
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.CurrentOrderService;
+import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.DishOrder;
+import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 
 import junit.framework.TestCase;
-
-import java.util.List;
 
 /**
  * Created by Katherina Molina on 11/06/2016.
@@ -36,12 +34,12 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
     /**
      * id de comensal logueado
      */
-    private int logedCommensal;
+    private Commensal logedCommensal;
 
     /**
      * id de restaurante seleccionado
      */
-    private int selectedRestaurantAdd;
+    private Restaurant selectedRestaurantAdd;
 
     /**
      * email de commensal logueado
@@ -60,9 +58,9 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
         facCmd = FondaCommandFactory.getInstance();
-        commensal = new Commensal();
-        logedCommensal = 13;
-        selectedRestaurantAdd = 4;
+        commensal = FondaEntityFactory.getInstance().GetCommensal();
+        logedCommensal = FondaEntityFactory.getInstance().GetCommensal(13);
+        selectedRestaurantAdd = FondaEntityFactory.getInstance().GetRestaurant(4);
         email = "adri@hotmail.com";
     }
 
@@ -165,8 +163,8 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
         facCmd = null;
         cmd = null;
         commensal = null;
-        logedCommensal = 0;
-        selectedRestaurantAdd = 0;
+        logedCommensal = null;
+        selectedRestaurantAdd = null;
     }
 
 
