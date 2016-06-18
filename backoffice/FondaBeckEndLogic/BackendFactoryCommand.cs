@@ -145,7 +145,7 @@ namespace com.ds201625.fonda.BackEndLogic
         /// Obtiene un DeleteTokenCommand
         /// </summary>
         /// <returns>Comando DeleteTokenCommand.</returns>
-        public ICommand DeleteTokenCommand()
+        public ICommand DeleteTokenCommensalCommand()
         {
             return new DeleteTokenCommand();
         }
@@ -154,7 +154,7 @@ namespace com.ds201625.fonda.BackEndLogic
         /// Obtiene un GetTokenStrCommand
         /// </summary>
         /// <returns>Comando GetTokenStrCommand.</returns>
-        public ICommand GetTokenStrCommand()
+        public ICommand GetTokenStrCommands()
         {
             return new GetTokenStrCommand();
         }
@@ -163,7 +163,7 @@ namespace com.ds201625.fonda.BackEndLogic
         /// Obtiene un GetAccountEmailCommand
         /// </summary>
         /// <returns>Comando GetAccountEmailCommand.</returns>
-        public ICommand GetAccountEmailCommand()
+        public ICommand GetAccountEmailCommands()
         {
             return new GetAccountEmailCommand();
         }
@@ -172,7 +172,7 @@ namespace com.ds201625.fonda.BackEndLogic
         /// Obtiene un CreateCommensalCommand
         /// </summary>
         /// <returns>Comando CreateCommensalCommand.</returns>
-        public ICommand CreateCommensalCommand()
+        public ICommand GetCreateCommensalCommand()
         {
             return new CreateCommensalCommand();
         }

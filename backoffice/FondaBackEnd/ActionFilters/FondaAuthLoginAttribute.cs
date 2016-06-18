@@ -6,8 +6,8 @@ using com.ds201625.fonda.Domain;
 using System.Text;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEndLogic;
-using FondaBeckEndLogic.Exceptions;
 using com.ds201625.fonda.BackEnd.Exceptions;
+using FondaBeckEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.BackEnd.ActionFilters
 {
@@ -93,7 +93,7 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
             try
             {
                  // Se obtiene el commando CreateCreateProfileCommand 
-                ICommand command = BackendFactoryCommand.Instance.GetAccountEmailCommand();
+                ICommand command = BackendFactoryCommand.Instance.GetAccountEmailCommands();
 
                 // Se agrega el email como parametro
                 command.SetParameter(0, email);

@@ -95,7 +95,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                     return BadRequest();
 
                 // Se obtiene el commando CreateCreateProfileCommand 
-                ICommand command = FacCommand.DeleteTokenCommand();
+                ICommand command = FacCommand.DeleteTokenCommensalCommand();
 
                 // Se agrega el commensal como parametro
                 command.SetParameter(0, commensal);

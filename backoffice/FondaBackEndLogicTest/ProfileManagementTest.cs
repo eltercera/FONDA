@@ -18,7 +18,7 @@ namespace FondaBackEndLogicTest
 			Commensal comm = generateCommensal ();
 			Profile prof = generateProfile ();
 
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
+			ICommand cmd = BackendFactoryCommand.Instance.GetCreateProfileCommand();
 
 			cmd.SetParameter (0, comm);
 			cmd.SetParameter (1, prof);
@@ -38,7 +38,7 @@ namespace FondaBackEndLogicTest
 		public void CreateProfileCommandBadParameter0Test()
 		{
 
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
+            ICommand cmd = BackendFactoryCommand.Instance.GetCreateProfileCommand();
 
 			cmd.SetParameter (0, "hola");
 		}
@@ -49,7 +49,7 @@ namespace FondaBackEndLogicTest
 		public void CreateProfileCommandBadParameter1Test()
 		{
 
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
+            ICommand cmd = BackendFactoryCommand.Instance.GetCreateProfileCommand();
 
 			cmd.SetParameter (1, "hola");
 		}
@@ -60,7 +60,7 @@ namespace FondaBackEndLogicTest
 		public void CreateProfileCommandIncompletePaametersTest()
 		{
 
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
+            ICommand cmd = BackendFactoryCommand.Instance.GetCreateProfileCommand();
 
 			cmd.Run ();
 		}

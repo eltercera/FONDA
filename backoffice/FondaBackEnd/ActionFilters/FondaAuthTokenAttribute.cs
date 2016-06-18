@@ -1,12 +1,11 @@
-﻿using System;
-using System.Web.Http.Controllers;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.Domain;
-using System.Net.Http.Headers;
+﻿using com.ds201625.fonda.BackEnd.Exceptions;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEndLogic;
+using com.ds201625.fonda.Domain;
 using FondaBeckEndLogic.Exceptions;
-using com.ds201625.fonda.BackEnd.Exceptions;
+using System;
+using System.Net.Http.Headers;
+using System.Web.Http.Controllers;
 
 namespace com.ds201625.fonda.BackEnd.ActionFilters
 {
@@ -73,7 +72,7 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
             try 
             {
                 // Se obtiene el commando GetCommensalIdCommand
-                ICommand command = BackendFactoryCommand.Instance.GetTokenStrCommand();
+                ICommand command = BackendFactoryCommand.Instance.GetTokenStrCommands();
                 // Se agrega el token como parametro
                 command.SetParameter(0, token);
                 //se ejecuta el comando

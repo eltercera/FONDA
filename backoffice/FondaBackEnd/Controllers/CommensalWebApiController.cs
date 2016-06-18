@@ -2,12 +2,10 @@
 using com.ds201625.fonda.Domain;
 using System.Net;
 using System.Web.Http;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEndLogic;
-using FondaBeckEndLogic.Exceptions;
 using com.ds201625.fonda.BackEnd.Exceptions;
+using FondaBeckEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -40,7 +38,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 			try
 			{
                 // Se obtiene el commando CreateCreateProfileCommand 
-                ICommand command = FacCommand.CreateCommensalCommand();
+                ICommand command = FacCommand.GetCreateCommensalCommand();
 
                 // Se agrega el commensal como parametro
                 command.SetParameter(0, commensal);
