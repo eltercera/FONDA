@@ -49,17 +49,17 @@ namespace FondaLogic.Commands.Login
             catch (SaveEntityFondaDAOException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                //CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
+                CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
                 //Arrojar
-                //FondaResources.General.Errors.SaveExceptionReferenceCode,
-                //FondaResources.Login.Errors.ClassNameSaveEmployee,
-                //FondaResources.Login.Errors.CommandMethod,
-                //FondaResources.General.Errors.SaveExceptionReferenceMessage,
-                //ex);
+                FondaResources.General.Errors.SaveExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameSaveEmployee,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.SaveExceptionReferenceMessage,
+                ex);
 
-                //Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
 
-                    //throw exceptionCreateEmployee;
+                    throw exceptionCreateEmployee;
 
             }
             catch (NullReferenceException ex)

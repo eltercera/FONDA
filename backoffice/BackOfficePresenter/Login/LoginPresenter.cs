@@ -1,11 +1,14 @@
 ﻿
 using BackOfficeModel.Login;
+using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
+using FondaLogic.FondaCommandException;
+using FondaLogic.Log;
 using FondaResources.Login;
 using System;
 using System.Collections.Generic;
@@ -188,7 +191,7 @@ namespace BackOfficePresenter.Login
                         else
                         {
                             System.Diagnostics.Debug.WriteLine("Estado inactivo");
-                            mensajeLogin(true,mensajes.logState,mensajes.tipoState);
+                            mensajeLogin(true, mensajes.logState, mensajes.tipoState);
                         }
                     }
                     else
@@ -200,12 +203,26 @@ namespace BackOfficePresenter.Login
                     }
 
                 }
-                catch (Exception)
-                // EXECEPTION CommandGetEmployeeByUser.Execute() REVISAR;
-                // EXEPTION CommandGetRestaurantById REVISAR
+                catch (SaveEntityFondaDAOException ex)
                 {
-                }
+                    //TODO: Arrojar Excepcion personalizada
+                    CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
+                    //Arrojar
+                    FondaResources.General.Errors.NullExceptionReferenceCode,
+                    FondaResources.Login.Errors.ClassNameGetEmployee,
+                    FondaResources.Login.Errors.CommandMethod,
+                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    ex);
 
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
+
+                    //throw exceptionGetEmployee;
+                }
+                catch (Exception ex)
+                {
+                    
+
+                }
             }
             else
             {
@@ -222,7 +239,7 @@ namespace BackOfficePresenter.Login
         /// <summary>
         /// metodo que recupera la clave del usuario
         /// </summary>
-        public void Recoverpassword()
+        public bool Recoverpassword()
         {
             //Fabrica de Dao
             FactoryDAO factoryDAO = FactoryDAO.Intance;
@@ -269,9 +286,12 @@ namespace BackOfficePresenter.Login
                                 if (passwordnew1.Equals(passwordnew2))
                                 {
                                     System.Diagnostics.Debug.WriteLine("Entre a modificar contrase;a");
+                                    mensajeLogin(true, mensajes.logSuccess, mensajes.tipoSucess);
                                     _employeeResult.UserAccount.Password = passwordnew1;
                                     CommandSaveEmployee = CommandFactory.GetCommandSaveEmployee(_employeeResult);
                                     CommandSaveEmployee.Execute();
+                                    return true;
+                                    //mensajeLogin(true, mensajes.logSuccess, mensajes.tipoSucess);
                                 }
                                 else
                                 {
@@ -304,13 +324,28 @@ namespace BackOfficePresenter.Login
                 }
                 System.Diagnostics.Debug.WriteLine(_employeeResult.Id);
             }
-            catch (Exception)
-            //EXCEPTION CommandGetEmployeeByUser REVISAR
-            //REVISAR EXCEPTION DE SAVE EMPLOYEE
+            catch (NullReferenceException ex)
             {
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetEmployee,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
+
+                throw exceptionGetEmployee;
+            }
+            catch (Exception ex)
+            {
+                
+
             }
 
-
+            return false;
         }
 
 

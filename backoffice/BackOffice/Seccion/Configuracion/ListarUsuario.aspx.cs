@@ -1157,7 +1157,7 @@ namespace BackOffice.Seccion.Configuracion
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
             userListPresenter.ClearAlert();
             userListPresenter.LoadTable(Session[ResourceLogin.sessionRol].ToString());
             
@@ -1173,7 +1173,9 @@ namespace BackOffice.Seccion.Configuracion
         }
         protected void Modify_Click(object sender, EventArgs e)
         {
-            //userListPresenter.Modify_Click();
+            System.Diagnostics.Debug.WriteLine("entre modify code behind");
+           // userListPresenter.Modify_Click(sender,e);
+            ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
         }
         /// <summary>
         /// metodo de cancelar

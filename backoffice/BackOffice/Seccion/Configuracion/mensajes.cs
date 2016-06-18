@@ -16,11 +16,11 @@ namespace BackOffice.Seccion.Configuracion
         public static string logErrcamp = "Debe llenar los campos Contraseña y/o usuario ";//mensae para alertar sobre llenado de campo
         public static string logErrcampvac= "Debe llenar Todos los campos";//mensae para alertar sobre llenado de campo
         public static string logErrpasword = "No coinciden las contraseñas";//mensae para alertar sobre las contraseñas no coinciden
-
       //Tipo de mensajes que pueden ser desplegado
         public static string tipoErr = "Error";
         public static string tipoWarning = "Warning";
         public static string tipoInfo = "Info";
         public static string tipoSucess = "Success";
+        public static string tipoChangePass = "Password";
     }
 }
