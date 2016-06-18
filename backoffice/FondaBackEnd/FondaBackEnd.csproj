@@ -95,6 +95,9 @@
     <Compile Include="Exceptions\FindFavoriteRestaurantFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FondaBackendException.cs" />
     <Compile Include="Exceptions\GetAllRestaurantsFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\GetCommensalFondaWebApiException.cs" />
+    <Compile Include="Exceptions\GetCommensalIdFondaWebApiException.cs" />
+    <Compile Include="Exceptions\GetProfileFondaWebApiException.cs" />
     <Compile Include="Exceptions\PostProfileFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\PutProfileFondaWebApiControllerException.cs" />
     <Compile Include="GeneralRes.Designer.cs">

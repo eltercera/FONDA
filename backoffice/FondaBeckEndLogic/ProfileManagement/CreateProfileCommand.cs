@@ -53,6 +53,9 @@ namespace FondaBeckEndLogic.ProfileManagement
                 if (profile.ProfileName == null || profile.Person == null || profile.Person.Name == null
                     || profile.Person.LastName == null || profile.Person.Ssn == null)
                     throw new CreateProfileCommandException(ResourceMessagesProfile.InvalidInformationProfile);
+                if (profile.ProfileName == "" || profile.Person.Name == ""
+                        || profile.Person.LastName == "" || profile.Person.Ssn == "")
+                    throw new CreateProfileCommandException(ResourceMessagesProfile.InvalidInformationProfile);
                
             try
             {    

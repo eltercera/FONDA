@@ -97,6 +97,15 @@ namespace com.ds201625.fonda.BackEnd {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Commensal: .
+        /// </summary>
+        internal static string Commensal {
+            get {
+                return ResourceManager.GetString("Commensal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Email del comensal.
         /// </summary>
         internal static string CommensalEmail {
@@ -169,6 +178,24 @@ namespace com.ds201625.fonda.BackEnd {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al Buscar el Commensal.
+        /// </summary>
+        internal static string GetCommensalException {
+            get {
+                return ResourceManager.GetString("GetCommensalException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al Buscar el Id del Commensal en el Header.
+        /// </summary>
+        internal static string GetCommensalIdException {
+            get {
+                return ResourceManager.GetString("GetCommensalIdException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al obtener la lista de los restaurantes favoritos del comensal.
         /// </summary>
         internal static string GetFavoriteRestaurant {
@@ -183,6 +210,15 @@ namespace com.ds201625.fonda.BackEnd {
         internal static string GetProfileException {
             get {
                 return ResourceManager.GetString("GetProfileException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al buscar Lista de Perfiles de un Commensal.
+        /// </summary>
+        internal static string GetProfilesException {
+            get {
+                return ResourceManager.GetString("GetProfilesException", resourceCulture);
             }
         }
         
@@ -291,6 +327,15 @@ namespace com.ds201625.fonda.BackEnd {
         internal static string Slash {
             get {
                 return ResourceManager.GetString("Slash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Token del Commensal: .
+        /// </summary>
+        internal static string Token {
+            get {
+                return ResourceManager.GetString("Token", resourceCulture);
             }
         }
         

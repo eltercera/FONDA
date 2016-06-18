@@ -22,7 +22,7 @@ namespace FondaBeckEndLogic.ProfileManagement
         protected override Parameter[] InitParameters()
         {
             // Requiere 2 Parametros
-            Parameter[] paramters = new Parameter[3];
+            Parameter[] paramters = new Parameter[2];
 
             // [0] El Commensal
             paramters[0] = new Parameter(typeof(Commensal), true);

@@ -1,6 +1,8 @@
 ﻿using System;
 using com.ds201625.fonda.BackEndLogic.FavoriteManagement;
 using FondaBeckEndLogic.ProfileManagement;
+using FondaBeckEndLogic.TokenManagement;
+using FondaBeckEndLogic.CommensalManagement;
 
 namespace com.ds201625.fonda.BackEndLogic
 {
@@ -35,7 +37,7 @@ namespace com.ds201625.fonda.BackEndLogic
 		/// Obtiene un CreateProfileCommand.
 		/// </summary>
 		/// <returns>Comando CreateProfileCommand.</returns>
-		public ICommand CreateCreateProfileCommand()
+		public ICommand GetCreateProfileCommand()
 		{
 			return new CreateProfileCommand ();
 		}
@@ -92,6 +94,51 @@ namespace com.ds201625.fonda.BackEndLogic
 		{
 			return new GetRestaurantsCommand ();
 		}
+
+        /// <summary>
+        /// Obtiene un GetCommensalIdCommand
+        /// </summary>
+        /// <returns>Comando GetCommensalIdCommand.</returns>
+        public ICommand GetCommensalCommand()
+        {
+            return new GetCommensalCommand();
+        }
+
+        /// <summary>
+        /// Obtiene un GetProfileIdCommand
+        /// </summary>
+        /// <returns>Comando GetProfileIdCommand.</returns>
+        public ICommand GetProfileIdCommand()
+        {
+            return new GetProfileCommand();
+        }
+
+        /// <summary>
+        /// Obtiene un UpdateProfileCommand
+        /// </summary>
+        /// <returns>Comando UpdateProfileCommand.</returns>
+        public ICommand UpdateProfileCommand()
+        {
+            return new UpdateProfileCommand();
+        }
+
+        /// <summary>
+        /// Obtiene un DeleteProfileCommand
+        /// </summary>
+        /// <returns>Comando DeleteProfileCommand.</returns>
+        public ICommand DeleteProfileCommand()
+        {
+            return new DeleteProfileCommand();
+        }
+
+        /// <summary>
+        /// Obtiene un GetTokenCommand
+        /// </summary>
+        /// <returns>Comando GetTokenCommand.</returns>
+        public ICommand GetTokenCommand()
+        {
+            return new GetTokenCommand();
+        }
      
 	}
 	

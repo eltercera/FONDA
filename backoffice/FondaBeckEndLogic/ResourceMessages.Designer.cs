@@ -88,6 +88,15 @@ namespace FondaBeckEndLogic {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Commensal: .
+        /// </summary>
+        internal static string Commensal {
+            get {
+                return ResourceManager.GetString("Commensal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Email del comensal.
         /// </summary>
         internal static string CommensalEmail {
@@ -102,6 +111,15 @@ namespace FondaBeckEndLogic {
         internal static string DeleteFavRestException {
             get {
                 return ResourceManager.GetString("DeleteFavRestException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error eliminar el Token de un Commensal.
+        /// </summary>
+        internal static string DeleteTokenException {
+            get {
+                return ResourceManager.GetString("DeleteTokenException", resourceCulture);
             }
         }
         
@@ -133,6 +151,15 @@ namespace FondaBeckEndLogic {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al buscar un commensal.
+        /// </summary>
+        internal static string GetCommensalException {
+            get {
+                return ResourceManager.GetString("GetCommensalException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al buscar los restaurantes favoritos del comensal.
         /// </summary>
         internal static string GetFavoriteRestaurant {
@@ -147,6 +174,15 @@ namespace FondaBeckEndLogic {
         internal static string GetRestFavException {
             get {
                 return ResourceManager.GetString("GetRestFavException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al buscar el Token de un Commensal.
+        /// </summary>
+        internal static string GetTokenException {
+            get {
+                return ResourceManager.GetString("GetTokenException", resourceCulture);
             }
         }
         
@@ -192,6 +228,15 @@ namespace FondaBeckEndLogic {
         internal static string Slash {
             get {
                 return ResourceManager.GetString("Slash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Token del Commensal: .
+        /// </summary>
+        internal static string Token {
+            get {
+                return ResourceManager.GetString("Token", resourceCulture);
             }
         }
     }

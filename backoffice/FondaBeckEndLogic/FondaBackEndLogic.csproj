@@ -31,15 +31,18 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommensalManagement\GetCommensalCommand.cs" />
     <Compile Include="Exceptions\CreateFavoriteRestaurantCommandException.cs" />
     <Compile Include="Exceptions\CreateProfileCommandException.cs" />
     <Compile Include="Exceptions\DeleteFavoriteRestaurantCommandException .cs" />
     <Compile Include="Exceptions\DeleteProfileCommandException.cs" />
     <Compile Include="Exceptions\FondaBackendLogicException.cs" />
     <Compile Include="Exceptions\GetAllRestaurantsCommandException.cs" />
+    <Compile Include="Exceptions\GetCommensalCommandException.cs" />
     <Compile Include="Exceptions\GetCommensalEmailCommandException.cs" />
     <Compile Include="Exceptions\GetFavoriteRestaurantFondaCommandException.cs" />
     <Compile Include="Exceptions\GetProfileCommandException.cs" />
+    <Compile Include="Exceptions\GetTokenCommandException.cs" />
     <Compile Include="Exceptions\UpdateProfileCommandException.cs" />
     <Compile Include="FavoriteManagement\CreateFavoriteRestaurantCommand.cs" />
     <Compile Include="FavoriteManagement\DeleteFavoriteRestaurantCommand.cs" />
@@ -71,6 +74,8 @@
     <Compile Include="RestaurantsSearch\GetZonesCommand.cs" />
     <Compile Include="RestaurantsSearch\GetRestaurantsCategoriesCommand.cs" />
     <Compile Include="RestaurantsSearch\GetRestaurantsCommand.cs" />
+    <Compile Include="TokenManagement\DeleteTokenCommand.cs" />
+    <Compile Include="TokenManagement\GetTokenCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

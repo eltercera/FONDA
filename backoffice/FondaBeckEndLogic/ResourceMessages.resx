@@ -163,4 +163,19 @@
     <value>CommandSaveEmployee</value>
     <comment>Comando para guardar un empleado.</comment>
   </data>
+  <data name="GetTokenException" xml:space="preserve">
+    <value>Error al buscar el Token de un Commensal</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token del Commensal: </value>
+  </data>
+  <data name="Commensal" xml:space="preserve">
+    <value>Commensal: </value>
+  </data>
+  <data name="GetCommensalException" xml:space="preserve">
+    <value>Error al buscar un commensal</value>
+  </data>
+  <data name="DeleteTokenException" xml:space="preserve">
+    <value>Error eliminar el Token de un Commensal</value>
+  </data>
 </root>

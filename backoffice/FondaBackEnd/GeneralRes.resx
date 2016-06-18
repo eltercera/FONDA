@@ -202,4 +202,19 @@
   <data name="UpdateProfileException" xml:space="preserve">
     <value>Error al modificar un perfil de un comensal</value>
   </data>
+  <data name="Commensal" xml:space="preserve">
+    <value>Commensal: </value>
+  </data>
+  <data name="GetCommensalException" xml:space="preserve">
+    <value>Error al Buscar el Commensal</value>
+  </data>
+  <data name="GetCommensalIdException" xml:space="preserve">
+    <value>Error al Buscar el Id del Commensal en el Header</value>
+  </data>
+  <data name="GetProfilesException" xml:space="preserve">
+    <value>Error al buscar Lista de Perfiles de un Commensal</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token del Commensal: </value>
+  </data>
 </root>

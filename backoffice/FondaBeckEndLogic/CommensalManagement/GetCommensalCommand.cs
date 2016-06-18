@@ -10,74 +10,74 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaBeckEndLogic.ProfileManagement
+namespace FondaBeckEndLogic.CommensalManagement
 {
     /// <summary>
-    /// Comando para la Buscar un Profile
+    /// Comando para la Buscar un Commensal
     /// </summary>
-    public class GetProfileCommand: BaseCommand
+    public class GetCommensalCommand : BaseCommand
     {
         /// <summary>
-        /// constructor GetProfileCommand
+        /// constructor GetCommensalCommand
         /// </summary>
-        public GetProfileCommand() : base() { }
+        public GetCommensalCommand() : base() { }
         /// <summary>
         /// Metodo para inicializar los parametros
         /// </summary>
-        /// <returns>Un arreglo con el parametro Profile</returns>
+        /// <returns>Un arreglo con el parametro Commensal/returns>
         protected override Parameter[] InitParameters()
         {
             // Requiere 1 Parametro
             Parameter[] paramters = new Parameter[1];
 
-            // [0] El Profile
-            paramters[0] = new Parameter(typeof(Profile), true);
+            // [0] El Commensal
+            paramters[0] = new Parameter(typeof(Commensal), true);
 
 
             return paramters;
         }
+
         /// <summary>
         /// Metodo Invoke para la ejecucion del 
-        /// buscar un perfil especifico
+        /// buscar un Commensal especifico
         /// </summary>
         protected override void Invoke()
         {
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-
-                // Se obtiene el parametro Profile
-                Profile profile = (Profile)GetParameter(0);
-
-                // Obtiene el dao ProfileDAO
-                IProfileDAO profileDAO = FacDao.GetProfileDAO();
-               
+            Commensal commensal;
             try
             {
-                //Se busca el profile por su id
-                profile = (Profile)profileDAO.FindById(profile.Id);
+                // Obtencion de parametros
+                commensal = (Commensal)GetParameter(0);
+
+                // Obtiene el dao que se requiere
+                ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
+                // Guardar el resultado.
+                commensal = (Commensal)commensalDAO.FindById(commensal.Id);
                 //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                 ResourceMessagesProfile.Profile + profile.ProfileName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                 ResourceMessages.Commensal + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
             catch (FindByIdFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetProfileCommandException(ResourceMessagesProfile.GetProfileException, e);
+                throw new GetCommensalCommandException(ResourceMessages.GetCommensalException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetProfileCommandException(ResourceMessagesProfile.GetProfileException, e);
+                throw new GetCommensalCommandException(ResourceMessages.GetCommensalException, e);
             }
-
             // Guardar el resultado.
-            Result = profile;
+            Result = commensal;
 
             //Logger al Culminar el metodo
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+
         }
     }
 }

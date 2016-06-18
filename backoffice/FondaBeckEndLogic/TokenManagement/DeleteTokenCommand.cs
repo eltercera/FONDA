@@ -10,74 +10,77 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaBeckEndLogic.ProfileManagement
+namespace FondaBeckEndLogic.TokenManagement
 {
     /// <summary>
-    /// Comando para la Buscar un Profile
+    /// Comando para Eliminar Token
     /// </summary>
-    public class GetProfileCommand: BaseCommand
+    public class DeleteTokenCommand : BaseCommand
     {
         /// <summary>
-        /// constructor GetProfileCommand
+        /// constructor DeleteTokenCommand
         /// </summary>
-        public GetProfileCommand() : base() { }
+        public DeleteTokenCommand() : base() { }
         /// <summary>
         /// Metodo para inicializar los parametros
         /// </summary>
-        /// <returns>Un arreglo con el parametro Profile</returns>
+        /// <returns>Un arreglo con los parametros Commensal y Token </returns>
         protected override Parameter[] InitParameters()
         {
-            // Requiere 1 Parametro
-            Parameter[] paramters = new Parameter[1];
+            // Requiere 2 Parametro
+            Parameter[] paramters = new Parameter[2];
 
-            // [0] El Profile
-            paramters[0] = new Parameter(typeof(Profile), true);
-
+            // [0] El Commensal
+            paramters[0] = new Parameter(typeof(Commensal), true);
+            // [1] El Token
+            paramters[1] = new Parameter(typeof(Token), true);
 
             return paramters;
         }
+
         /// <summary>
         /// Metodo Invoke para la ejecucion del 
-        /// buscar un perfil especifico
+        /// eliminar un Token
         /// </summary>
         protected override void Invoke()
         {
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-
-                // Se obtiene el parametro Profile
-                Profile profile = (Profile)GetParameter(0);
-
-                // Obtiene el dao ProfileDAO
-                IProfileDAO profileDAO = FacDao.GetProfileDAO();
-               
             try
             {
-                //Se busca el profile por su id
-                profile = (Profile)profileDAO.FindById(profile.Id);
+                // Obtencion de parametros
+                Commensal commensal = (Commensal)GetParameter(0);
+                Token token = (Token)GetParameter(1);
+
+                // Obtiene el dao que se requiere
+                ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
+
+                //Remueve el token del comensal
+                commensal.RemoveToken(token);
+                //Actualizacion de los cambios
+                commensalDAO.Save(commensal);
                 //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                 ResourceMessagesProfile.Profile + profile.ProfileName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                 ResourceMessages.Token + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
+
             }
-            catch (FindByIdFondaDAOException e)
+            catch (SaveEntityFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetProfileCommandException(ResourceMessagesProfile.GetProfileException, e);
+                throw new DeleteTokenCommandException(ResourceMessages.DeleteTokenException, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetProfileCommandException(ResourceMessagesProfile.GetProfileException, e);
+                throw new DeleteTokenCommandException(ResourceMessages.DeleteTokenException, e);
             }
-
-            // Guardar el resultado.
-            Result = profile;
 
             //Logger al Culminar el metodo
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+
         }
     }
 }

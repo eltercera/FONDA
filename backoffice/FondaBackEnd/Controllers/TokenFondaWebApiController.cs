@@ -4,6 +4,8 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEnd.ActionFilters;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.BackEndLogic;
+using com.ds201625.fonda.BackEnd.Log;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -13,6 +15,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 	/// </summary>
 	public class TokenFondaWebApiController : FondaWebApi
 	{
+        /// <summary>
+        /// Constructor de TokenFondaWebApiController
+        /// </summary>
 		public TokenFondaWebApiController () : base () {}
 
 		[FondaAuthLogin]
@@ -24,25 +29,40 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		/// <returns>The token.</returns>
 		public IHttpActionResult getToken()
 		{
-			Commensal commensal = GetCommensal (Request.Headers);
-			if (commensal == null)
-				return BadRequest ();
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Token token;
+            try
+            {
+                Commensal commensal = GetCommensal(Request.Headers);
+                if (commensal == null)
+                    return BadRequest();
+                // Se obtiene el commando CreateCreateProfileCommand 
+                ICommand command = FacCommand.GetTokenCommand();
 
-			ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO ();
-			Token token = new Token ();
-			commensal.AddToken (token);
+                // Se agrega el commensal como parametro
+                command.SetParameter(0, commensal);
 
-			try
-			{
-				commensalDao.Save (commensal);
-			}
-			catch (SaveEntityFondaDAOException e)
-			{
-				Console.WriteLine (e.ToString ());
-				return InternalServerError (e);
-			}
+                //se ejecuta el comando
+                command.Run();
 
-			return Ok (token);
+                token = (Token)command.Result;
+
+                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.Token + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            catch (SaveEntityFondaDAOException e)
+            {
+                Console.WriteLine(e.ToString());
+                return InternalServerError(e);
+            }
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, result.ToString(),
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            return Ok();
 		}
 
         [FondaAuthLogin]
@@ -55,32 +75,42 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		/// <param name="id">Identifier.</param>
         public IHttpActionResult deleteToken(int id)
         {
-            Commensal commensal = GetCommensal(Request.Headers);
-            if (commensal == null)
-                return BadRequest();
-
-            ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO();
-            ITokenDAO tokenDAO = FactoryDAO.GetTokenDAO();
-            Token token = tokenDAO.FindById(id);
-
-            commensal.RemoveToken(token);
-
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
-                commensalDao.Save(commensal);
-                tokenDAO.Delete(token);
+                Commensal commensal = GetCommensal(Request.Headers);
+                if (commensal == null)
+                    return BadRequest();
+
+
+
+                // Se obtiene el commando CreateCreateProfileCommand 
+                ICommand command = FacCommand.GetTokenCommand();
+
+                // Se agrega el commensal como parametro
+                command.SetParameter(0, commensal);
+
+                //se ejecuta el comando
+                command.Run();
+
+                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.Token + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
+
             }
             catch (SaveEntityFondaDAOException e)
             {
                 Console.WriteLine(e.ToString());
                 return InternalServerError(e);
             }
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, result.ToString(),
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             return Ok();
         }
-
-
-
     }
 }
 
