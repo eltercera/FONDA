@@ -13,12 +13,12 @@ public interface IAllRestaurantsViewPresenter {
      * Encuentra todos los restaurantes
      * @return
      */
-    public List<Restaurant> findAllRestaurants();
+    List<Restaurant> findAllRestaurants();
 
     /**
      * Encuentra el comensal logueado
      */
-    public void findLoggedComensal();
+    void findLoggedComensal();
 
 
 }

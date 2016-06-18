@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Created by Hp on 17/06/2016.
+ * Presentador para obtener todos los restaurantes
  */
 public class AllRestaurantsPresenter implements IAllRestaurantsViewPresenter {
     private FondaCommandFactory facCmd;
@@ -20,6 +21,10 @@ public class AllRestaurantsPresenter implements IAllRestaurantsViewPresenter {
     private Commensal logedComensal;
     private String emailToWebService;
 
+    /**
+     * Constructor
+     * @param view
+     */
     public AllRestaurantsPresenter(IAllRestaurantsView view){
         iAllRestaurantsView = view;
     }
@@ -60,8 +65,5 @@ public class AllRestaurantsPresenter implements IAllRestaurantsViewPresenter {
 
         return listRestWS;
     }
-
-
-
 
 }

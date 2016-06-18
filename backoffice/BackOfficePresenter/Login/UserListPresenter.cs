@@ -136,12 +136,12 @@ namespace BackOfficePresenter.Login
                     edit.Text = G1RecursosInterfaz.edit;
 
                     //boton Modificar status Activo
-                    //editStatusA.Click += new EventHandler(ModifyStatus_Click);
+                    editStatusA.Click += new EventHandler(ModifyStatus_Click);
                     editStatusA.Attributes.Add("data-id", _employee.Id.ToString());
                     editStatusA.Text = G1RecursosInterfaz.editstatusA;
 
                     //boton Modificar status Inactivo
-                    //editStatusI.Click += new EventHandler(ModifyStatus_Click);
+                    editStatusI.Click += new EventHandler(ModifyStatus_Click);
                     editStatusI.Attributes.Add("data-id", _employee.Id.ToString());
                     editStatusI.Text = G1RecursosInterfaz.editstatusI;
 
@@ -1083,6 +1083,53 @@ namespace BackOfficePresenter.Login
             }
 
             return _employee;
+        }
+        /// <summary>
+        /// metodo que se encarga de modificar el estado del usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void ModifyStatus_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine("entre en presentador");
+            _facDAO = FactoryDAO.Intance;
+            //_employeeDAO = _facDAO.GetEmployeeDAO();
+            _employee = new Employee();
+
+            LinkButton clickedLink = (LinkButton)sender;
+            int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
+            //_employee = _employeeDAO.FindById(_idEmployee);
+            //comando que busca el usuario
+            Command CommandGetEmployeeById = CommandFactory.GetCommandGetEmployeeById(_idEmployee);
+            try
+            {
+                CommandGetEmployeeById.Execute();
+                _employee = (Employee)CommandGetEmployeeById.Receiver;
+
+            }
+            catch(Exception)
+            //REVISAR
+            {
+
+            }
+            //validacion de en que estado se encuentra y se cambia
+            if (clickedLink.Text == G1RecursosInterfaz.editstatusA)
+                _employee.Status = _facDAO.GetActiveSimpleStatus();
+            if (clickedLink.Text == G1RecursosInterfaz.editstatusI)
+                _employee.Status = _facDAO.GetDisabledSimpleStatus();
+            //_employeeDAO.Save(_employee);
+            //comando que guarda el empleado
+            Command CommandSaveEmployee = CommandFactory.GetCommandSaveEmployee(_employee);
+            try
+            {
+                CommandSaveEmployee.Execute();
+            }
+            catch(Exception)
+            {
+
+            }
+            Alerts("Status");
+            System.Diagnostics.Debug.WriteLine("lo hice perro");
         }
 
     }

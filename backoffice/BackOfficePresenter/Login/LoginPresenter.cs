@@ -75,6 +75,13 @@ namespace BackOfficePresenter.Login
                     _view.alertwarningLog.Visible = !visible;
                     _view.alertinfoLog.Visible = !visible;
                     _view.alertsuccessLog.InnerText = message; break;
+                case "State":
+
+                    _view.alertloginError.Visible = visible;
+                    _view.alertwarningLog.Visible = !visible;
+                    _view.alertinfoLog.Visible = !visible;
+                    _view.alertsuccessLog.Visible = !visible;
+                    _view.alertloginError.InnerText = message; break;
             }
         }
 
@@ -123,55 +130,65 @@ namespace BackOfficePresenter.Login
                     //Validacion de que no se encontro usuario
                     if (_employeeResult != null)
                     {
-                        System.Diagnostics.Debug.WriteLine("Consegui la cuenta!");
-                        System.Diagnostics.Debug.WriteLine(_employeeResult.Name);
-                        if (_employeeResult.UserAccount != null)
+                        if (_employeeResult.Status.StatusId.ToString() == "1")
                         {
-                            _userPassword = _employeeResult.UserAccount.Password;
-                            System.Diagnostics.Debug.WriteLine("Es el password de la cuenta", _userPassword);
-                            //Validacion de que la cuenta que intenta ingresar al sistema tiene
-                            //clave correcta
-                            if ((_userPassword == _view.UserPassword.Value))
+                            System.Diagnostics.Debug.WriteLine("estado activo!");
+                            System.Diagnostics.Debug.WriteLine("Consegui la cuenta!");
+                            System.Diagnostics.Debug.WriteLine(_employeeResult.Name);
+                            if (_employeeResult.UserAccount != null)
                             {
-                                System.Diagnostics.Debug.WriteLine("Aprobe el login");
-                                //Se le da valores a las variables de session 
-                                HttpContext.Current.Session[ResourceLogin.sessionRol] = (string)_employeeResult.Role.Name;
-                                HttpContext.Current.Session[ResourceLogin.sessionName] = _employeeResult.Name;
-                                HttpContext.Current.Session[ResourceLogin.sessionLastname] = _employeeResult.LastName;
-                                HttpContext.Current.Session[ResourceLogin.sessionUserID] = _employeeResult.Id;
-                                System.Diagnostics.Debug.WriteLine(_employeeResult.Restaurant.Id, "ID del restaurant");
-                                if (_employeeResult.Restaurant != null)
+                                _userPassword = _employeeResult.UserAccount.Password;
+                                System.Diagnostics.Debug.WriteLine("Es el password de la cuenta", _userPassword);
+                                //Validacion de que la cuenta que intenta ingresar al sistema tiene
+                                //clave correcta
+                                if ((_userPassword == _view.UserPassword.Value))
                                 {
-                                    string RestaurantID = _employeeResult.Restaurant.Id.ToString();
-                                    int idRestaurant = int.Parse(RestaurantID);
-                                    _restaurant = (Restaurant)EntityFactory.GetRestaurant();
-                                    _restaurant.Id = idRestaurant;
-                                    //se busca el restaurante del empleado para dar valores a las 
-                                    //variables de session
-                                    CommandGetRestaurantById = CommandFactory.GetCommandGetRestaurantById(_restaurant);
-                                    CommandGetRestaurantById.Execute();
-                                    _restaurantResult = (Restaurant)CommandGetRestaurantById.Receiver;
-                                    HttpContext.Current.Session[ResourceLogin.sessionRestaurantID] = _employeeResult.Restaurant.Id.ToString();
-                                    HttpContext.Current.Session[RestaurantResource.SessionRestaurant] = _restaurantResult.Id.ToString();
-                                    HttpContext.Current.Session[RestaurantResource.SessionNameRest] = _restaurantResult.Name;
-                                    /* Asignacion de variable de session */ _view.SessionRestaurant = _employeeResult.Restaurant.Id.ToString();
-                                    System.Diagnostics.Debug.WriteLine(_restaurantResult.Id.ToString(), "ID del restaurant");
-                                    System.Diagnostics.Debug.WriteLine(_restaurantResult.Name.ToString(), "nombre del restaurant");
+                                    System.Diagnostics.Debug.WriteLine("Aprobe el login");
+                                    //Se le da valores a las variables de session 
+                                    HttpContext.Current.Session[ResourceLogin.sessionRol] = (string)_employeeResult.Role.Name;
+                                    HttpContext.Current.Session[ResourceLogin.sessionName] = _employeeResult.Name;
+                                    HttpContext.Current.Session[ResourceLogin.sessionLastname] = _employeeResult.LastName;
+                                    HttpContext.Current.Session[ResourceLogin.sessionUserID] = _employeeResult.Id;
+                                    System.Diagnostics.Debug.WriteLine(_employeeResult.Restaurant.Id, "ID del restaurant");
+                                    if (_employeeResult.Restaurant != null)
+                                    {
+                                        string RestaurantID = _employeeResult.Restaurant.Id.ToString();
+                                        int idRestaurant = int.Parse(RestaurantID);
+                                        _restaurant = (Restaurant)EntityFactory.GetRestaurant();
+                                        _restaurant.Id = idRestaurant;
+                                        //se busca el restaurante del empleado para dar valores a las 
+                                        //variables de session
+                                        CommandGetRestaurantById = CommandFactory.GetCommandGetRestaurantById(_restaurant);
+                                        CommandGetRestaurantById.Execute();
+                                        _restaurantResult = (Restaurant)CommandGetRestaurantById.Receiver;
+                                        HttpContext.Current.Session[ResourceLogin.sessionRestaurantID] = _employeeResult.Restaurant.Id.ToString();
+                                        HttpContext.Current.Session[RestaurantResource.SessionRestaurant] = _restaurantResult.Id.ToString();
+                                        HttpContext.Current.Session[RestaurantResource.SessionNameRest] = _restaurantResult.Name;
+                                        /* Asignacion de variable de session */
+                                        _view.SessionRestaurant = _employeeResult.Restaurant.Id.ToString();
+                                        System.Diagnostics.Debug.WriteLine(_restaurantResult.Id.ToString(), "ID del restaurant");
+                                        System.Diagnostics.Debug.WriteLine(_restaurantResult.Name.ToString(), "nombre del restaurant");
+                                    }
+                                    else
+                                    {
+                                        _info[4] = "0";
+                                    }
+
+
                                 }
                                 else
                                 {
-                                    _info[4] = "0";
+                                    //error claves distintas, se llama a mostrar mensaje de error
+                                    System.Diagnostics.Debug.WriteLine("clave mala");
+                                    //_info[7] = "Error";
+                                    mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
                                 }
-
-
                             }
-                            else
-                            {
-                                //error claves distintas, se llama a mostrar mensaje de error
-                                System.Diagnostics.Debug.WriteLine("clave mala");
-                                //_info[7] = "Error";
-                                mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
-                            }
+                        }
+                        else
+                        {
+                            System.Diagnostics.Debug.WriteLine("Estado inactivo");
+                            mensajeLogin(true,mensajes.logState,mensajes.tipoState);
                         }
                     }
                     else

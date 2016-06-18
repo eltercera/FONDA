@@ -15,15 +15,12 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.interfaces.IFavoriteView;
 import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
-import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
-import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
 import com.ds201625.fonda.views.adapters.FavoriteRestViewItemList;
 
@@ -35,7 +32,9 @@ import java.util.List;
  */
 public class FavoritesListFragment extends BaseFragment implements
         IFavoriteView, SwipeRefreshLayout.OnRefreshListener{
-
+    /**
+     * String que indica la clase al logger
+     */
     private String TAG = "FavoriteListFragment";
 
     //Interface de comunicacion contra la activity
@@ -51,6 +50,10 @@ public class FavoritesListFragment extends BaseFragment implements
     private List<Restaurant> restaurantList;
     private IFavoriteViewPresenter presenter;
 
+    /**
+     * Crea el fragment
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Log.d(TAG,"Ha entrado en onCreate");
@@ -60,6 +63,13 @@ public class FavoritesListFragment extends BaseFragment implements
         presenter = new FavoritesPresenter(this);
     }
 
+    /**
+     * Crea la vista del fragment
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
@@ -162,6 +172,9 @@ public class FavoritesListFragment extends BaseFragment implements
         return layout ;
     }
 
+    /**
+     * Cuando se refresca la lista
+     */
     @Override
     public void onRefresh() {
         Log.d(TAG,"Ha ingresado a onRefresh");
@@ -169,6 +182,10 @@ public class FavoritesListFragment extends BaseFragment implements
         Log.d(TAG,"Ha finalizado onRefresh");
     }
 
+    /**
+     * Cuando se une
+     * @param context
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -182,16 +199,21 @@ public class FavoritesListFragment extends BaseFragment implements
         Log.d(TAG,"Ha finalizado onAttach");
     }
 
+    /**
+     * Cuando se desune
+     */
     @Override
     public void onDetach() {
         super.onDetach();
     }
 
-
+    /**
+     * Actualiza la lista al eliminar favoritos
+     */
     public void updateList() {
         Log.d(TAG,"Ha ingresado a updateList");
         swipeRefreshLayout.setRefreshing(true);
-       favoritesList.update();
+       favoritesList.updateList();
         restaurants.refreshDrawableState();
         swipeRefreshLayout.setRefreshing(false);
         Log.d(TAG,"Ha finalizado updateList");

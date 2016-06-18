@@ -26,25 +26,21 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> imple
     private IFavoriteViewPresenter presenter;
     private String TAG = "FavoriteViewItemList";
 
+    /**
+     * Constructor
+     * @param context
+     */
     public FavoriteRestViewItemList(Context context) {
         super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
         presenter = new FavoritesPresenter(this);
  }
 
-    public void update() {
-        List<Restaurant> list = null;
-        clear();
-        try {
-            presenter.findLoggedComensal();
-            list = presenter.findAllFavoriteRestaurant();
-        } catch (Exception e) {
-            Log.e(TAG,"Error al refrescar los favoritos",e);
-        }
-        if (list != null)
-            addAll(list);
-        notifyDataSetChanged();
-    }
 
+    /**
+     * Crea la vista
+     * @param item elemento a construir la vista
+     * @return
+     */
     @Override
     public View createView(Restaurant item) {
         View convertView;
@@ -70,7 +66,12 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> imple
     }
 
 
-
+    /**
+     * Obtiene la vista seleccionada
+     * @param item item seleccionado
+     * @param convertView vista ya creada
+     * @return
+     */
     @Override
     public View getSelectedView(Restaurant item, View convertView) {
 
@@ -79,6 +80,12 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> imple
         return convertView;
     }
 
+    /**
+     * Obtiene la vista no seleccionada
+     * @param item item no seleccionado
+     * @param convertView vista ya creada
+     * @return
+     */
     @Override
     public View getNotSelectedView(Restaurant item, View convertView) {
 
@@ -87,13 +94,31 @@ public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> imple
     }
 
 
+    /**
+     * Lista de todos los restaurantes favoritos
+     *
+     * @return restauraantes favoritos
+     */
     @Override
     public List<Restaurant> getListSW() {
         return null;
     }
 
+    /**
+     * Actualiza la lista luego de eliminar
+     */
     @Override
     public void updateList() {
-
+        List<Restaurant> list = null;
+        clear();
+        try {
+            presenter.findLoggedComensal();
+            list = presenter.findAllFavoriteRestaurant();
+        } catch (Exception e) {
+            Log.e(TAG,"Error al refrescar los favoritos",e);
+        }
+        if (list != null)
+            addAll(list);
+        notifyDataSetChanged();
     }
 }
