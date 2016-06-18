@@ -1,6 +1,5 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
-import com.ds201625.fonda.data_access.retrofit_client.clients.ProfileClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RestaurantClient;
 import com.ds201625.fonda.data_access.services.RestaurantService;
