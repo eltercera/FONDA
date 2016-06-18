@@ -18,6 +18,10 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
     /// </summary>
     class GetCommensalEmailCommand : BaseCommand
     {
+        private  UserAccount answer;
+        private ICommensalDAO commensalDAO;
+        private UserAccount userAccount;
+
         /// <summary>
         /// constructor obtener comensal
         /// </summary>
@@ -45,11 +49,11 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
         {
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.BeginLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
-            UserAccount answer;
+         
             // Obtencion de parametros
-            UserAccount userAccount = (UserAccount)GetParameter(0);
+            userAccount = (UserAccount)GetParameter(0);
             // Obtiene el dao que se requiere
-            ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
+            commensalDAO = FacDao.GetCommensalDAO();
             // Ejecucion del Buscar.	
 
             if (userAccount.Email == null)
