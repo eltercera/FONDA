@@ -6,6 +6,7 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEndLogic;
 using System.Collections.Generic;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
+using com.ds201625.fonda.Factory;
 
 namespace FondaBackEndLogicTest
 {
@@ -18,7 +19,7 @@ namespace FondaBackEndLogicTest
         [SetUp]
         public void Init()
         {
-            commensal = new Commensal();
+            commensal = EntityFactory.GetCommensal();
             commensal.Id = 1;
             getFavoriteRestaurant = BackendFactoryCommand.Instance.GetFavoriteRestaurantCommand();
         }

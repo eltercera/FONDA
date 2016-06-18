@@ -7,6 +7,7 @@ using com.ds201625.fonda.BackEndLogic;
 using System.Collections.Generic;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.Factory;
 
 namespace FondaBackEndLogicTest
 {
@@ -27,9 +28,9 @@ namespace FondaBackEndLogicTest
         [SetUp]
          public void Init()
         {
-            commensal = new Commensal();
+            commensal = EntityFactory.GetCommensal(); 
             commensal.Id = 1;
-            restaurant = new Restaurant();
+            restaurant = EntityFactory.GetRestaurant();
             restaurant.Id = 1;
             createFavorite = BackendFactoryCommand.Instance.CreateFavoriteRestaurantCommand();
         }
