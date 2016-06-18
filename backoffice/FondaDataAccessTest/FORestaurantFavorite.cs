@@ -27,7 +27,6 @@ namespace FondaDataAccessTest
             _commensal = new Commensal()
             {
                 Password = "123456",
-                //SesionToken = "prueba",
                 Email = "Commensal100@gmail.com",
                 Status = ActiveSimpleStatus.Instance
 

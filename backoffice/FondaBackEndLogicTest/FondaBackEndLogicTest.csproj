@@ -47,7 +47,6 @@
     <Compile Include="DeleteRestaurantManagementTest.cs" />
     <Compile Include="CreateFavoriteRestaurantManagementTest.cs" />
     <Compile Include="ProfileManagementTest.cs" />
-    <Compile Include="RequieredParameterNotFoundExceptio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">

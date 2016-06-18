@@ -5,74 +5,76 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEndLogic;
 using System.Collections.Generic;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 namespace FondaBackEndLogicTest
 {
 	[TestFixture]
 	public class GetEmailCommensalManagementTest
 	{
+        Commensal commensal;
+        ICommand getEmail;
+
+        [SetUp]
+        public void Init()
+        {
+            commensal = new Commensal();
+            commensal.Email = "prueba@gmail.com";
+            commensal.Password = "fondam12345";
+            getEmail = BackendFactoryCommand.Instance.GetCommensalEmailCommand();
+        }
+
+        [TearDown]
+        public void Clean()
+        {
+            commensal = null;  
+        }
 		
 		[Test]
 		public void GetEmailCommensalCommandTest()
 		{
+            getEmail.SetParameter(0, commensal);
+            getEmail.Run();
 
-			UserAccount comm = generateCommensal();
-
-            ICommand cmd = BackendFactoryCommand.Instance.GetCommensalEmailCommand();
-
-			cmd.SetParameter(0, comm);
-
-			cmd.Run();
-
-			UserAccount result = (UserAccount)cmd.Result;
+			UserAccount result = (UserAccount)getEmail.Result;
 
 			Assert.AreNotEqual(0, result.Id);
-            Assert.AreEqual(comm.Email, result.Email);
+            Assert.AreEqual(commensal.Email, result.Email);
 		}
 
+        [Test]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void GetEmailCommensalCommandNullReferenceTest()
+        {
+            getEmail.SetParameter(0, commensal);
+            UserAccount result = (UserAccount)getEmail.Result;
+        
+            Assert.AreNotEqual(commensal.Email, result.Email);
+            Assert.IsNull(result.Email);
+        }
 
-		[Test]
-		// TODO: Exception Personalizada
-		[ExpectedException(typeof(Exception))]
-		public void CreateProfileCommandBadParameter0Test()
-		{
-
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
-
-			cmd.SetParameter (0, "hola");
-		}
-
-		[Test]
-		// TODO: Exception Personalizada
-		[ExpectedException(typeof(Exception))]
-		public void CreateProfileCommandBadParameter1Test()
-		{
-
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
-
-			cmd.SetParameter (1, "hola");
-		}
-
-		[Test]
-		// TODO: Exception Personalizada
-		[ExpectedException(typeof(Exception))]
-		public void CreateProfileCommandIncompletePaametersTest()
-		{
-
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
-
-			cmd.Run ();
-		}
+        [Test]
+        [ExpectedException(typeof(InvalidTypeOfParameterException))]
+        public void GetEmailCommensalCommandBadParameter0Test()
+        {
+            getEmail.SetParameter(0, "2");
+        }
 
 
-		private Commensal generateCommensal()
-		{
-			Commensal commensal = new Commensal();
-            commensal.Email = "prueba@gmail.com";
-            commensal.Password = "fondam12345";
-			return commensal;
-		}
+        [Test]
+        [ExpectedException(typeof(ParameterIndexOutOfRangeException))]
+        public void GetEmailCommensalCommandOfRangePaametersTest()
+        {
+            getEmail.SetParameter(1, commensal);
+            getEmail.Run();
+        }
 
+        [Test]
+        [ExpectedException(typeof(RequieredParameterNotFoundException))]
+        public void GetEmailCommensalCommandRequieredPaametersTest()
+        {
+            getEmail.Run();
+        }
 	}
 }
 

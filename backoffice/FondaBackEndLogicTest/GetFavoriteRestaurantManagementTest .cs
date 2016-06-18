@@ -5,72 +5,73 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEndLogic;
 using System.Collections.Generic;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 namespace FondaBackEndLogicTest
 {
 	[TestFixture]
 	public class GetFavoriteRestaurantManagementTest
 	{
-		
+        
+        Commensal commensal;
+        ICommand getFavoriteRestaurant;
+        [SetUp]
+        public void Init()
+        {
+            commensal = new Commensal();
+            commensal.Id = 1;
+            getFavoriteRestaurant = BackendFactoryCommand.Instance.GetFavoriteRestaurantCommand();
+        }
+
+        [TearDown]
+        public void Clean()
+        {
+          commensal = null;
+        }
+
 		[Test]
 		public void GetFavoriteRestaurantCommandTest()
 		{
+            getFavoriteRestaurant.SetParameter(0, commensal);
 
-			Commensal comm = generateCommensal();
+            getFavoriteRestaurant.Run();
 
-            ICommand cmd = BackendFactoryCommand.Instance.GetFavoriteRestaurantCommand();
-
-			cmd.SetParameter(0, comm);
-
-			cmd.Run();
-
-			Commensal result = (Commensal)cmd.Result;
+            Commensal result = (Commensal)getFavoriteRestaurant.Result;
 
 			Assert.AreNotEqual(0, result.Id);
-            Assert.AreEqual(comm.Id, result.Id);
+            Assert.AreEqual(commensal.Id, result.Id);
 		}
 
+        [Test]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void GetFavoriteeRestaurantCommandNullReferenceTest()
+        {
+            getFavoriteRestaurant.SetParameter(0, commensal);
+            Commensal result = (Commensal)getFavoriteRestaurant.Result;
+            Assert.AreNotEqual(commensal.Id, result.Id);
+            Assert.IsNull(result.Id);
+        }
+        [Test]
+        [ExpectedException(typeof(InvalidTypeOfParameterException))]
+        public void GetFavoriteRestaurantCommandBadParameter0Test()
+        {
+            getFavoriteRestaurant.SetParameter(0, "2");
+        }
 
-		[Test]
-		// TODO: Exception Personalizada
-		[ExpectedException(typeof(Exception))]
-		public void CreateProfileCommandBadParameter0Test()
-		{
+        [Test]
+        [ExpectedException(typeof(ParameterIndexOutOfRangeException))]
+        public void DeleteFavoriteRestaurantCommandOfRangePaametersTest()
+        {
+            getFavoriteRestaurant.SetParameter(3, commensal);
+            getFavoriteRestaurant.Run();
+        }
 
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
-
-			cmd.SetParameter (0, "hola");
-		}
-
-		[Test]
-		// TODO: Exception Personalizada
-		[ExpectedException(typeof(Exception))]
-		public void CreateProfileCommandBadParameter1Test()
-		{
-
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
-
-			cmd.SetParameter (1, "hola");
-		}
-
-		[Test]
-		// TODO: Exception Personalizada
-		[ExpectedException(typeof(Exception))]
-		public void CreateProfileCommandIncompletePaametersTest()
-		{
-
-			ICommand cmd = BackendFactoryCommand.Instance.CreateCreateProfileCommand ();
-
-			cmd.Run ();
-		}
-
-
-		private Commensal generateCommensal()
-		{
-			Commensal commensal = new Commensal();
-            commensal.Id = 1;
-			return commensal;
-		}
+        [Test]
+        [ExpectedException(typeof(RequieredParameterNotFoundException))]
+        public void DeleteFavoriteRestaurantCommandRequieredPaametersTest()
+        {
+           getFavoriteRestaurant.Run();
+        }
 
 	}
 }
