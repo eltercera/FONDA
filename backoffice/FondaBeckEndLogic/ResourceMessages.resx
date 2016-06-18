@@ -135,7 +135,7 @@
   <data name="GetCommensalEmailException" xml:space="preserve">
     <value>Error al buscar el comensal por email</value>
   </data>
-  <data name="GetRestFavException" xml:space="preserve">
+  <data name="GetAllRestaurantException" xml:space="preserve">
     <value>Error al obtener la lista de restaurant para elegir los favoritos del comensal</value>
   </data>
   <data name="InvalidInformation" xml:space="preserve">
@@ -156,11 +156,26 @@
   <data name="FavoriteRestaurant" xml:space="preserve">
     <value>Restaurante favorito del comensal </value>
   </data>
-  <data name="GetFavoriteRestaurant" xml:space="preserve">
+  <data name="GetFavoriteRestaurantException" xml:space="preserve">
     <value>Error al buscar los restaurantes favoritos del comensal</value>
   </data>
   <data name="ClassNameSaveEmployee" xml:space="preserve">
     <value>CommandSaveEmployee</value>
     <comment>Comando para guardar un empleado.</comment>
+  </data>
+  <data name="ParametersAddFavRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar agregar un restaurante a favoritos</value>
+  </data>
+  <data name="ParametersDeleteFavRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar eliminar un restaurant favorito</value>
+  </data>
+  <data name="ParametersGetAllRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar obtener los restaurantes disponibles</value>
+  </data>
+  <data name="ParametersGetComensEmailException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar obtener el email de un comensal</value>
+  </data>
+  <data name="ParametersGetFavRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar obtener los restaurantes favoritos del comensal</value>
   </data>
 </root>

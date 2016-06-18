@@ -32,7 +32,7 @@ public class RetrofitRequireLogedCommensalService implements RequireLogedCommens
         try {
             test =call.execute().body();
         } catch (IOException e) {
-            Log.e(TAG, "Se ha generado error en getLogedCommensal", e);
+            Log.e(TAG, "Se ha generado error en la clase getLogedCommensal", e);
         }
         return test;
     }

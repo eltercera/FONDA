@@ -28,7 +28,7 @@ namespace FondaDataAccessTest
             {
                 Password = "123456",
                 //SesionToken = "prueba",
-                Email = "Commensal@gmail.com",
+                Email = "Commensal100@gmail.com",
                 Status = ActiveSimpleStatus.Instance
 
             };
@@ -52,8 +52,9 @@ namespace FondaDataAccessTest
             _restaurant1.Status = ActiveSimpleStatus.Instance;
 
             Currency _currency = new Currency();
-            _currency.Symbol = "C:/";
-            _currency.Name = "Dolar";
+            _currency.Symbol = "C:/s";
+            _currency.Name = "Dolares";
+
             _restaurant1.Currency = _currency;
 
             Coordinate _coordinate = new Coordinate();
@@ -62,8 +63,9 @@ namespace FondaDataAccessTest
             _restaurant1.Coordinate = _coordinate;
 
             RestaurantCategory _restaurantCategory = new RestaurantCategory();
-            _restaurantCategory.Name = "China";
+            _restaurantCategory.Name = "Chinas";
             _restaurant1.RestaurantCategory = _restaurantCategory;
+            
 
             Zone _zone = new Zone();
             _zone.Name = "Caracas";
@@ -91,7 +93,7 @@ namespace FondaDataAccessTest
                 Status = ActiveSimpleStatus.Instance,
                 UserAccount = new UserAccount()
                 {
-                    Email = "email@gmail.com",
+                    Email = "email100@gmail.com",
                     Password = "123",
                     Status = ActiveSimpleStatus.Instance
                 },
@@ -182,16 +184,17 @@ namespace FondaDataAccessTest
         [Test()]
         public void restaurantFavoriteSave()
         {
-
+            getCommensalDao();
+            getRestaurantDao();
             createCommensal();
             createRestaurant();
             Assert.NotNull(_commensal);
             Assert.NotNull(_restaurant1);
-            Assert.AreNotEqual(_commensal.Id, 0);
-            Assert.AreNotEqual(_commensal.Id, 0);
-
+            //Assert.AreNotEqual(_commensal.Id, 0);
+            //Assert.AreNotEqual(_commensal.Id, 0);
+            //Restaurant _restaurantId12 = _restaurantDAO.FindById(1);
             addRestaurantToCommensal(_commensal, _restaurant1);
-            getCommensalDao();
+           // getCommensalDao();
             _commensalDAO.Save(_commensal);
 
         }
@@ -220,10 +223,10 @@ namespace FondaDataAccessTest
             Assert.AreNotEqual(_restaurantId2.Id, 0);
 
             //findbyid para traerse objeto de commensal
-            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(6);
+            Commensal _commensalId1 = (Commensal)_commensalDAO.FindById(2);
 
             Assert.NotNull(_commensalId1);
-            Assert.AreEqual(_commensalId1.Id, 6);
+            Assert.AreEqual(_commensalId1.Id, 2);
             Assert.AreNotEqual(_commensalId1.Id, 0);
 
             addRestaurantToCommensal(_commensalId1, _restaurantId1, _restaurantId2);

@@ -47,6 +47,9 @@
       <DependentUpon>Errors.resx</DependentUpon>
     </Compile>
     <Compile Include="Login\Errors.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Errors.resx</DependentUpon>
     </Compile>
     <Compile Include="Login\G1RecursosInterfaz.Designer.cs">
       <AutoGen>True</AutoGen>

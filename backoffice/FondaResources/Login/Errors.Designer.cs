@@ -36,7 +36,7 @@ namespace FondaResources.Login {
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Login.Errors", typeof(Errors).Assembly);
@@ -51,7 +51,7 @@ namespace FondaResources.Login {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,11 +61,29 @@ namespace FondaResources.Login {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CommandGetEmployeeById.
+        ///   Busca una cadena traducida similar a CommandGetAllEmployee.
         /// </summary>
         public static string ClassNameGetEmployee {
             get {
                 return ResourceManager.GetString("ClassNameGetEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a CommandGetEmployeeById.
+        /// </summary>
+        public static string ClassNameGetEmployeeId {
+            get {
+                return ResourceManager.GetString("ClassNameGetEmployeeId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a CommandGetEmployeeBySsn.
+        /// </summary>
+        public static string ClassNameGetExployeeSsn {
+            get {
+                return ResourceManager.GetString("ClassNameGetExployeeSsn", resourceCulture);
             }
         }
         
@@ -75,6 +93,33 @@ namespace FondaResources.Login {
         public static string ClassNameGetRestaurant {
             get {
                 return ResourceManager.GetString("ClassNameGetRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a CommandGetRestaurantAll.
+        /// </summary>
+        public static string ClassNameGetRestaurantAll {
+            get {
+                return ResourceManager.GetString("ClassNameGetRestaurantAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a CommandGetAllRoles.
+        /// </summary>
+        public static string ClassNameGetRoles {
+            get {
+                return ResourceManager.GetString("ClassNameGetRoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a CommandGetUserAccoundByEmail.
+        /// </summary>
+        public static string ClassNameGetUserAccountEmail {
+            get {
+                return ResourceManager.GetString("ClassNameGetUserAccountEmail", resourceCulture);
             }
         }
         

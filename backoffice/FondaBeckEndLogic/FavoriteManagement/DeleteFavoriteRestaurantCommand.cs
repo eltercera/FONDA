@@ -9,6 +9,7 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 using FondaBeckEndLogic;
 using FondaLogic.Log;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
@@ -80,6 +81,24 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new DeleteFavoriteRestaurantCommandException(ResourceMessages.DeleteFavRestException, e);
+            }
+            catch (InvalidTypeOfParameterException  e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantCommandException(
+                    ResourceMessages.ParametersDeleteFavRestException, e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantCommandException(
+                    ResourceMessages.ParametersDeleteFavRestException, e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantCommandException(
+                    ResourceMessages.ParametersDeleteFavRestException, e);
             }
             catch (Exception e)
             {

@@ -118,12 +118,32 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ClassNameGetEmployee" xml:space="preserve">
+    <value>CommandGetAllEmployee</value>
+    <comment>Comando para obtener todos los empleados.</comment>
+  </data>
+  <data name="ClassNameGetEmployeeId" xml:space="preserve">
     <value>CommandGetEmployeeById</value>
-    <comment>Comando para obtener un empleado.</comment>
+    <comment>Comando para obtener un empleado por su id.</comment>
+  </data>
+  <data name="ClassNameGetExployeeSsn" xml:space="preserve">
+    <value>CommandGetEmployeeBySsn</value>
+    <comment>Comando para obtener un empleado por su ssn.</comment>
   </data>
   <data name="ClassNameGetRestaurant" xml:space="preserve">
     <value>CommandGetRestaurantById</value>
-    <comment>Comando para obtener un restaurante.</comment>
+    <comment>Comando para obtener un restaurante por su id.</comment>
+  </data>
+  <data name="ClassNameGetRestaurantAll" xml:space="preserve">
+    <value>CommandGetRestaurantAll</value>
+    <comment>Comando para obtener todos los restaurantes.</comment>
+  </data>
+  <data name="ClassNameGetRoles" xml:space="preserve">
+    <value>CommandGetAllRoles</value>
+    <comment>Comando para obtener todos los roles.</comment>
+  </data>
+  <data name="ClassNameGetUserAccountEmail" xml:space="preserve">
+    <value>CommandGetUserAccoundByEmail</value>
+    <comment>Comando para obtener una cuenta de usuario por su correo electronico</comment>
   </data>
   <data name="ClassNameSaveEmployee" xml:space="preserve">
     <value>CommandSaveEmployee</value>
@@ -131,6 +151,6 @@
   </data>
   <data name="CommandMethod" xml:space="preserve">
     <value>Execute</value>
-    <comment>Metodo disparador del Error para Comando</comment>
+    <comment>Metodo disparador del Error para Comando.</comment>
   </data>
 </root>
