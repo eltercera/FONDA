@@ -106,6 +106,7 @@
     <Compile Include="FORestaurantRegister.cs" />
     <Compile Include="FOUserRegisterTests.cs" />
     <Compile Include="BOGeopositionTableTest.cs" />
+    <Compile Include="InvalidTypeOfParameterException.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

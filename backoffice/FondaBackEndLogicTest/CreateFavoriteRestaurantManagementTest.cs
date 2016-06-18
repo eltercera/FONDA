@@ -45,7 +45,9 @@ namespace FondaBackEndLogicTest
             restaurant = null;
          }
 
-		
+        /// <summary>
+        /// prueba unitaria de crear un restaurant favorito 
+        /// </summary>
 		[Test]
 		public void CreateFavoriteRestaurantCommandTest()
 		{
@@ -60,6 +62,9 @@ namespace FondaBackEndLogicTest
             Assert.AreEqual(commensal.Id, result.Id);
 		}
 
+        /// <summary>
+        /// prueba unitaria de comando con referencia nula
+        /// </summary>
         [Test]
         [ExpectedException(typeof(NullReferenceException))]
         public void CreateFavoriteRestaurantCommandNullReferenceTest()
@@ -71,6 +76,9 @@ namespace FondaBackEndLogicTest
             Assert.IsNull(result.Id);
         }
 
+        /// <summary>
+        /// prueba unitaria de excepcion de parametros invalidos
+        /// </summary>
 		[Test]
         [ExpectedException(typeof(InvalidTypeOfParameterException))]
 		public void CreateFavoriteRestaurantCommandBadParameter0Test()
@@ -78,6 +86,9 @@ namespace FondaBackEndLogicTest
              createFavorite.SetParameter(0, "2");
 		}
 
+        /// <summary>
+        /// prueba unitaria de excepcion de parametros invalidos
+        /// </summary>
 		[Test]
         [ExpectedException(typeof(InvalidTypeOfParameterException))]
 		public void CreateFavoriteRestaurantCommandBadParameter1Test()
@@ -85,6 +96,9 @@ namespace FondaBackEndLogicTest
              createFavorite.SetParameter(1, "hola");
 		}
 
+        /// <summary>
+        /// prueba unitaria de excepcion de parametros invalidos
+        /// </summary>
 		[Test]
         [ExpectedException(typeof(ParameterIndexOutOfRangeException))]
 		public void CreateFavoriteRestaurantCommandOfRangeParametersTest()
@@ -93,6 +107,9 @@ namespace FondaBackEndLogicTest
             createFavorite.Run();
 		}
 
+        /// <summary>
+        /// prueba unitaria de excepcion de parametros invalidos
+        /// </summary>
         [Test]
         [ExpectedException(typeof(RequieredParameterNotFoundException))]
         public void CreateFavoriteRestaurantCommandRequieredParametersTest()

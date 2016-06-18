@@ -10,6 +10,10 @@ using com.ds201625.fonda.Factory;
 
 namespace FondaBackEndLogicTest
 {
+    /// <summary>
+    /// class  DeleteFavoriteRestaurantManagementTest
+    /// Clase que realiza las pruebas unitarias del comando borrar Restaurant favorito.
+    /// </summary>
 	[TestFixture]
 	public class DeleteFavoriteRestaurantManagementTest
 	{
@@ -17,6 +21,9 @@ namespace FondaBackEndLogicTest
         Commensal commensal;
         ICommand deleteFavorite;
 
+        /// <summary>
+        /// metodo que instancia e inicializa el objeto y variables respectivamente.
+        /// </summary>
         [SetUp]
         public void Init()
         {
@@ -27,6 +34,9 @@ namespace FondaBackEndLogicTest
             deleteFavorite = BackendFactoryCommand.Instance.DeleteFavoriteRestaurantCommand();
         }
 
+        /// <summary>
+        /// metodo que se encarga de limpiar el objeto.
+        /// </summary>
         [TearDown]
         public void Clean()
         {
@@ -34,6 +44,9 @@ namespace FondaBackEndLogicTest
             restaurant = null;
         }
 
+        /// <summary>
+        /// prueba unitaria de borrar un restaurant favorito.
+        /// </summary>
     	[Test]
 		public void DeleteFavoriteRestaurantCommandTest()
 		{
@@ -48,6 +61,9 @@ namespace FondaBackEndLogicTest
             Assert.AreEqual(commensal.Id, result.Id);
 		}
 
+        /// <summary>
+        /// prueba unitaria de comando con referencia nula
+        /// </summary>
         [Test]
         [ExpectedException(typeof(NullReferenceException))]
         public void DeleteteRestaurantCommandNullReferenceTest()
@@ -59,6 +75,9 @@ namespace FondaBackEndLogicTest
             Assert.IsNull(result.Id);
         }
 
+        /// <summary>
+        /// prueba unitaria de excepcion de parametros invalidos
+        /// </summary>
         [Test]
         [ExpectedException(typeof(InvalidTypeOfParameterException))]
         public void DeleteFavoriteRestaurantCommandBadParameter0Test()
@@ -66,6 +85,9 @@ namespace FondaBackEndLogicTest
             deleteFavorite.SetParameter(0, "2");
         }
 
+        /// <summary>
+        /// prueba unitaria de excepcion de parametros invalidos
+        /// </summary>
         [Test]
         [ExpectedException(typeof(InvalidTypeOfParameterException))]
         public void DeleteFavoriteRestaurantCommandBadParameter1Test()
@@ -73,6 +95,9 @@ namespace FondaBackEndLogicTest
             deleteFavorite.SetParameter(1, "hola");
         }
 
+        /// <summary>
+        /// prueba unitaria de excepcion de parametros invalidos
+        /// </summary>
         [Test]
         [ExpectedException(typeof(ParameterIndexOutOfRangeException))]
         public void DeleteFavoriteRestaurantCommandOfRangePaametersTest()
@@ -81,6 +106,9 @@ namespace FondaBackEndLogicTest
             deleteFavorite.Run();
         }
 
+        /// <summary>
+        /// prueba unitaria de excepcion de parametros invalidos
+        /// </summary>
         [Test]
         [ExpectedException(typeof(RequieredParameterNotFoundException))]
         public void DeleteFavoriteRestaurantCommandRequieredPaametersTest()
