@@ -18,7 +18,12 @@
 
         <include layout="@layout/toolbar_tabs_default" />
 
-        <include layout="@layout/content_restaurants" />
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lvFilterList"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
 
 
         <android.support.v4.view.ViewPager
