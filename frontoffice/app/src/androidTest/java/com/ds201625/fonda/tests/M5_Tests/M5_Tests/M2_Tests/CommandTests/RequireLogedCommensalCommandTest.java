@@ -136,7 +136,23 @@ public class RequireLogedCommensalCommandTest extends TestCase {
         }
     }
 
+    public void testtLogedCommensalNullPointerException() {
+        try {
 
+            cmd = facCmd.requireLogedCommensalCommand();
+            cmd.setParameter(0,"yuneth@gmail.com");
+            cmd.run();
+            commensal = (Commensal) cmd.getResult();
+            assertNull(commensal);
+
+        } catch(NullPointerException e) {
+            //fail("Se esperaba excepcion NullPointerException");
+        }
+        catch(Exception e) {
+
+        }
+
+    }
 
     /**
      * Metodo para limpiar los objetos de las pruebas unitarias

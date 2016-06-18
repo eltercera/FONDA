@@ -1,5 +1,6 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.ServiceTests;
 
+import android.content.Entity;
 import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
@@ -9,9 +10,9 @@ import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
-
 import junit.framework.TestCase;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -48,6 +49,8 @@ public class FavoriteRestaurantServiceTest extends TestCase {
     private Commensal commensal;
 
     private List<Restaurant> restaurantList;
+
+    private Class expected;
 
     /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
@@ -260,6 +263,49 @@ public class FavoriteRestaurantServiceTest extends TestCase {
         }
     }
 
+
+    public void testAllFavoriteRestaurantNullPointerException() {
+        try {
+            Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
+            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(prueba.getId());
+            assertNull(restaurantList);
+
+        } catch(RestClientException e) {}
+          catch(NullPointerException e) {
+              //fail("Se esperaba excepcion NullPointerException");
+          }
+
+    }
+
+    public void testAddFavoriteRestauranNullPointerException() {
+        try {
+            Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
+            commensal = favoriteRestaurantService.AddFavoriteRestaurant(prueba.getId(),
+                    selectedRestaurant.getId());
+            assertNull(commensal);
+
+        } catch(RestClientException e) {}
+        catch(NullPointerException e) {
+            //fail("Se esperaba excepcion NullPointerException");
+        }
+
+    }
+
+    public void testDeleteFavoriteRestauranNullPointerException() {
+        try {
+            Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
+            commensal = favoriteRestaurantService.deleteFavoriteRestaurant(prueba.getId(),
+                    selectedRestaurant.getId());
+            assertNull(commensal);
+
+        } catch(RestClientException e) {
+
+        }
+        catch(NullPointerException e) {
+            //fail("Se esperaba excepcion NullPointerException");
+        }
+
+    }
 
     /**
      * Metodo para limpiar los objetos de las pruebas unitarias
