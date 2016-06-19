@@ -78,7 +78,7 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
             cmd.run();
             commensal = (Commensal) cmd.getResult();
 
-            assertNotNull(commensal);
+            assertNotNull(commensal.getId());
         } catch (RestClientException e) {
             e.printStackTrace();
         } catch (Exception e) {

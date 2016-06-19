@@ -1,12 +1,9 @@
 ﻿using NUnit.Framework;
 using System;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
-
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEndLogic;
 using System.Collections.Generic;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
-using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.Factory;
 
 namespace FondaBackEndLogicTest

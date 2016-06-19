@@ -61,7 +61,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
         favoriteRestaurantService = FondaServiceFactory.getInstance().getFavoriteRestaurantService();
         commensal = FondaEntityFactory.getInstance().GetCommensal();
         logedCommensal = FondaEntityFactory.getInstance().GetCommensal(13);
-        selectedRestaurant = FondaEntityFactory.getInstance().GetRestaurant(3);
+        selectedRestaurant = FondaEntityFactory.getInstance().GetRestaurant(2);
         email = "adri@hotmail.com";
     }
 
@@ -75,7 +75,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
             commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
                     selectedRestaurant.getId());
-            assertNotNull(commensal);
+            assertNotNull(commensal.getId());
         } catch (RestClientException e) {
             e.printStackTrace();
         } catch (Exception e) {
