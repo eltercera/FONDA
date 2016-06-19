@@ -1,7 +1,9 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.CommandTests;
 
 import android.test.MoreAsserts;
+import android.util.Log;
 
+import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
@@ -173,6 +175,24 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
     }
 
 
+    public void testAddFavoriteRestaurantRetrofitException() {
+        try {
+            Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(897920);
+
+            cmd = facCmd.addFavoriteRestaurantCommand();
+            cmd.setParameter(0,prueba);
+            cmd.setParameter(1,null);
+            cmd.run();
+            commensal = (Commensal) cmd.getResult();
+
+            //assertNull(commensal);
+
+        }catch (InvalidDataRetrofitException e){
+            Log.d("Test", "Se ha generado error DEL WEB SERVICE", e);
+        }
+        catch(Exception e) {}
+
+    }
     /**
      * Metodo para limpiar los objetos de las pruebas unitarias
      * @throws Exception
