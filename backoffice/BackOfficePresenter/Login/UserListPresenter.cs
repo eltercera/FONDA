@@ -723,6 +723,20 @@ namespace BackOfficePresenter.Login
                     _view.HtmlGenericControlemessageEmpty.Attributes.Clear();
                     _view.HtmlGenericControlemessageEmpty.InnerHtml = "";
                 }
+                if ((_role == "Sistema") && (Role != "Sistema") && (Restaurant == ""))
+                {
+                    System.Diagnostics.Debug.WriteLine("entre accion agregar validando2");
+                    Alerts("Empty");
+                    bad = ++bad;
+                    return false;
+                }
+                else
+                {
+                    //se muestran mensajes
+                    System.Diagnostics.Debug.WriteLine("entre accion agregar else");
+                    _view.HtmlGenericControlemessageEmpty.Attributes.Clear();
+                    _view.HtmlGenericControlemessageEmpty.InnerHtml = "";
+                }
             }
             //validacion de campos vacios
             if (accion == "Modificar")
