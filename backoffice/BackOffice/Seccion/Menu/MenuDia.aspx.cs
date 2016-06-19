@@ -9,6 +9,8 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using System.Data;
 using System.Web.Services;
+using FondaResources.Login;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Menu
 {
@@ -19,7 +21,12 @@ namespace BackOffice.Seccion.Menu
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadDayMenuTable();
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                LoadDayMenuTable();
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
 
         protected void LoadDayMenuTable()

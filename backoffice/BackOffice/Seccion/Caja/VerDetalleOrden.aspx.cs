@@ -6,6 +6,7 @@ using BackOfficePresenter.OrderAccount;
 using FondaResources.Login;
 using System.Web.UI.HtmlControls;
 using BackOfficeModel;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -85,10 +86,15 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["AccountID"] != null)
-            {   //Llama al presentador para llenar la tabla de ordenes
-                _presenter.GetDetailOrder();
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                if (Session["AccountID"] != null)
+                {   //Llama al presentador para llenar la tabla de ordenes
+                    _presenter.GetDetailOrder();
+                }
             }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
 
 

@@ -17,6 +17,7 @@ using FondaResources.OrderAccount;
 using FondaResources.Login;
 using BackOfficeModel;
 using System.Web.UI.HtmlControls;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -100,7 +101,13 @@ namespace BackOffice.Seccion.Caja
         protected void Page_Load(object sender, EventArgs e)
         {
             //Llama al presentador para llenar la tabla de ordenes
-            _presenter.GetOrders();
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+
+                _presenter.GetOrders();
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
 
         

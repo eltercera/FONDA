@@ -10,6 +10,8 @@ using com.ds201625.fonda.Domain;
 using System.Data;
 using System.Web.Services;
 using System.Text.RegularExpressions;
+using FondaResources.Login;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Menu
 {
@@ -17,19 +19,22 @@ namespace BackOffice.Seccion.Menu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            AlertSuccess_AddDish.Visible = false;
-            AlertSuccess_SuggestionDish.Visible = false;
-            AlertSuccess_ModifyDish.Visible = false;
-            AlertSuccess_ActivateDish.Visible = false;
-            AlertSuccess_DeactivateDish.Visible = false;
-            AlertDanger_AddDish.Visible = false;
-            AlertDanger_ModifyDish.Visible = false;
-            AlertDanger_ActivateDish.Visible = false;
-            AlertDanger_DeactivateDish.Visible = false;
-            AlertWarning_ActivateDish.Visible = false;
-            AlertWarning_DeactivateDish.Visible = false;
-
-           
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                AlertSuccess_AddDish.Visible = false;
+                AlertSuccess_SuggestionDish.Visible = false;
+                AlertSuccess_ModifyDish.Visible = false;
+                AlertSuccess_ActivateDish.Visible = false;
+                AlertSuccess_DeactivateDish.Visible = false;
+                AlertDanger_AddDish.Visible = false;
+                AlertDanger_ModifyDish.Visible = false;
+                AlertDanger_ActivateDish.Visible = false;
+                AlertDanger_DeactivateDish.Visible = false;
+                AlertWarning_ActivateDish.Visible = false;
+                AlertWarning_DeactivateDish.Visible = false;
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
             LoadDishTable();
         }
 
