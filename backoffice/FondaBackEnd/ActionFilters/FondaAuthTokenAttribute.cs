@@ -1,8 +1,8 @@
 ﻿using com.ds201625.fonda.BackEnd.Exceptions;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEndLogic;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.Domain;
-using FondaBeckEndLogic.Exceptions;
 using System;
 using System.Net.Http.Headers;
 using System.Web.Http.Controllers;

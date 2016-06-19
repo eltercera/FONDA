@@ -100,6 +100,16 @@ namespace com.ds201625.fonda.Factory
         {
             return new Profile();
         }
+        //Instancia de Person
+        public static Person GetPerson()
+        {
+            return new Person();
+        }
+        //Instancia Arreglo de Tokens
+        public static Token[] GetTokenA(int cant)
+        {
+            return new Token[cant];
+        }
         #endregion
 
         #region Favorito
