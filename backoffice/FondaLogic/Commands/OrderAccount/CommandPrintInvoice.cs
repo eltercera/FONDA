@@ -61,9 +61,9 @@ namespace FondaLogic.Commands.OrderAccount
 
                 _person = _personDao.FindById(_invoice.Profile.Person.Id);
                 _userAccount = _userAccountDao.FindById(_person.Id);
-               String bla=  _invoice.Payment.GetType().Name;
+                String bla = _invoice.Payment.GetType().FullName;
 
-                 if (_invoice.Payment.GetType().Name.Equals("CreditCardPayment"))
+                 if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.Cash))
                 {
                     _creditCardPayment = (CreditCardPayment)_invoice.Payment;
                     tip = _creditCardPayment.Tip;

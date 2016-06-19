@@ -18,7 +18,6 @@ namespace FondaBackOfficeLogicTest
     {
         private int _restaurantId, _profileId,_accountId, _invoiceId;
         private Command _command;
-        private IList<Account> _listAccount;
         private IList<Account> _listClosedOrders;
         private IList<Invoice> _listInvoices;
         private FactoryDAO _facDAO;
@@ -84,10 +83,10 @@ namespace FondaBackOfficeLogicTest
         public void CommandGenerateInvoiceTest()
         {
             InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
-            _invoice = EntityFactory.GetInvoice(_cashPayment, _profile, 4850, 0.12f, null, 100, i);
+            _invoice = EntityFactory.GetInvoice(_cashPayment, _profile, _cashPayment.Amount, ((_cashPayment.Amount)*0.12f), null, 100, i);
            _listObject.Add(_invoice);
             _listObject.Add(_restaurant.Id);
-            _listObject.Add(_account.Id);
+            _listObject.Add(_accountId);
             _command = CommandFactory.GetCommandGenerateInvoice(_listObject);
 
             _command.Execute();

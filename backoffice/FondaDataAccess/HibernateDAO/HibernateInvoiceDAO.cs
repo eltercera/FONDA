@@ -57,6 +57,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Un objeto Invoice</returns>
         public Invoice FindGenerateInvoiceByAccount(Account _account)
         {
+            IOrderAccountDao _accountDao = _facDAO.GetOrderAccountDAO();
+  
             try
             {
                 Invoice _invoice = new Invoice();
