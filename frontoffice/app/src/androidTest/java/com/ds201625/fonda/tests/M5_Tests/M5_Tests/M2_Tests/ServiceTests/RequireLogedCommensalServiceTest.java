@@ -117,6 +117,20 @@ public class RequireLogedCommensalServiceTest extends TestCase {
         }
     }
 
+    public void testtLogedCommensalNullPointerException() {
+        try {
+
+            commensal = requireLogedCommensal.getLogedCommensal("yuneth@gmail.com");
+            assertNull(commensal);
+
+        } catch(RestClientException e) {
+
+        }
+        catch(NullPointerException e) {
+            //fail("Se esperaba excepcion NullPointerException");
+        }
+
+    }
 
 
     /**

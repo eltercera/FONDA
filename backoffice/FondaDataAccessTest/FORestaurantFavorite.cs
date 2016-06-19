@@ -10,6 +10,10 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace FondaDataAccessTest
 {
+
+    /// <summary>
+    /// Clase de pruebas unitarias DAO
+    /// </summary>
     [TestFixture()]
     class FORestaurantFavorite : BaseEntity
     {
@@ -27,13 +31,11 @@ namespace FondaDataAccessTest
 
         private void createCommensal()
         {
-            _commensal = new Commensal()
-            {
-                Password = "123456",
-                Email = "Commensal10@gmail.com",
-                Status = ActiveSimpleStatus.Instance
-
-            };
+            _commensal= EntityFactory.GetCommensal();
+          
+                _commensal. Password = "123456";
+                _commensal. Email = "Commensal10@gmail.com";
+                _commensal. Status = ActiveSimpleStatus.Instance;
 
         }
         /// <summary>
@@ -51,13 +53,13 @@ namespace FondaDataAccessTest
             _restaurant1.Address = "Av. El ejercito con puente de San Juan";
             _restaurant1.Status = ActiveSimpleStatus.Instance;
 
-            Currency _currency = new Currency();
+            Currency _currency = EntityFactory.GetCurrency();
             _currency.Symbol = "C:/s";
             _currency.Name = "Dolares";
 
             _restaurant1.Currency = _currency;
 
-            Coordinate _coordinate = new Coordinate();
+            Coordinate _coordinate = EntityFactory.GetCoordinate();
             _coordinate.Latitude = 1;
             _coordinate.Longitude = 4;
             _restaurant1.Coordinate = _coordinate;
@@ -65,9 +67,9 @@ namespace FondaDataAccessTest
             RestaurantCategory _restaurantCategory = EntityFactory.GetCategoryRestaurent();
             _restaurantCategory.Name = "Chinas";
             _restaurant1.RestaurantCategory = _restaurantCategory;
-            
 
-            Zone _zone = new Zone();
+
+            Zone _zone = EntityFactory.GetZone();
             _zone.Name = "Caracas";
             _restaurant1.Zone = _zone;
 
@@ -75,7 +77,7 @@ namespace FondaDataAccessTest
             _restaurant1.MenuCategories = new List<MenuCategory>();
             _restaurant1.MenuCategories.Add(_menuCategories);
 
-            Schedule _schedule = new Schedule();
+            Schedule _schedule = EntityFactory.GetShedule();
             _schedule.OpeningTime = new TimeSpan(7, 0, 0);
             _schedule.ClosingTime = new TimeSpan(15, 0, 0);
             _restaurant1.Schedule = _schedule;

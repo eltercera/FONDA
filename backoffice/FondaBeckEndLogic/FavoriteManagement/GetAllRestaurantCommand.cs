@@ -19,7 +19,9 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
     /// Get All Restaurant Command.
     /// </summary>
     class GetAllRestaurantCommand : BaseCommand
-    {  
+    {
+        private IList<Restaurant> listRestaurant;
+        private IRestaurantDAO RestaurantDAO;
         /// <summary>
         /// constructor obtener todos los restaurant command
         /// </summary>
@@ -43,11 +45,11 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
 		{
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.BeginLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
-            IList<Restaurant> listRestaurant;
+          
 			try
 			{
                 // Obtiene el dao que se requiere
-                IRestaurantDAO RestaurantDAO = FacDao.GetRestaurantDAO();
+                RestaurantDAO = FacDao.GetRestaurantDAO();
                 // Ejecucion del obtener.	
                 listRestaurant = (IList<Restaurant>)RestaurantDAO.GetAll();
                 foreach (var restaurant in listRestaurant)
