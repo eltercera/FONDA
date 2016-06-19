@@ -44,7 +44,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
             validDay = _restaurantDAO.ValidateDay(3, _reservation.ReserveDate);
                
-                    reservations = _reservationDAO.FindByRestaurant(_restaurant.Id);
+                    reservations = _restaurantDAO.ReservationsByRestaurantId(_restaurant.Id);
                     tables = _tableDAO.TablesAvailableByDate(3, reservations, _reservation.ReserveDate);
                     tablesAvalibles = _tableDAO.TablesAvailableByCapacity(tables, _reservation.CommensalNumber);
             

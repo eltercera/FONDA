@@ -61,11 +61,13 @@
     <Compile Include="Commands\OrderAccount\CommandGetOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrders.cs" />
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
+    <Compile Include="Commands\Reservations\CommandGetReservations.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
     <Compile Include="FondaCommandException\CommandExceptionCreateEmployee.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetEmployee.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetOrder.cs" />
+    <Compile Include="FondaCommandException\CommandExceptionGetReservations.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetOrders.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetRestaurant.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetRol.cs" />

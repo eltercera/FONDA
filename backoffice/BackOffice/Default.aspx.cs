@@ -46,8 +46,8 @@ namespace BackOffice
             //Genero la lista de la consulta
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
-            IReservationDAO _reservationDAO = factoryDAO.GetReservationDAO();
-            IList<Reservation> listReservation = _reservationDAO.FindByRestaurant(_idRestaurant);
+            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+            IList<Reservation> listReservation = _restaurantDAO.ReservationsByRestaurantId(_idRestaurant);
             DateTime today = DateTime.Now;
             DateTime now = new DateTime(today.Year, today.Month, today.Day, today.Hour, today.Minute, 0);
 

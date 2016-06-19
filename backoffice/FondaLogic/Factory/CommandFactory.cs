@@ -4,6 +4,7 @@ using FondaLogic.Commands.OrderAccount;
 using FondaLogic.Commands.Login;
 using FondaLogic.Log;
 using System.Collections.Generic;
+using FondaLogic.Commands.Reservations;
 
 namespace FondaLogic.Factory
 {
@@ -147,5 +148,20 @@ namespace FondaLogic.Factory
         }
 
         #endregion
+
+        #region Reservation
+        
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandGetReservations
+        /// </summary>
+        /// <param name="entity">Id del Restaurante</param>
+        /// <returns>comando CommandGetReservations</returns>
+        public static Command GetCommandGetReservations(object receiver)
+        {
+            return new CommandGetReservations(receiver);
+        }
+               
+        #endregion
+
     }
 }

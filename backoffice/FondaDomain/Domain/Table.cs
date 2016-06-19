@@ -27,6 +27,8 @@ namespace com.ds201625.fonda.Domain
         /// Estado simple de la mesa (Activo, No Activo)
         /// </summary>
         private TableStatus _status;
+        
+   
 
         [DataMember]
         public virtual int Number
@@ -47,7 +49,31 @@ namespace com.ds201625.fonda.Domain
             set { _status = value; }
         }
 
-        
+
+        #region Reservation
+
+     
+        /// <summary>
+        /// Lista de categorias del menu de un restaurante
+        /// </summary>
+        private IList<Reservation> _reservations;
+
+
+
+        public virtual IList<Reservation> Reservations
+        {
+            /// <summary>
+            /// Obtiene una lista de categorias del menu de un Restaurante
+            /// </summary>
+            get { return _reservations; }
+            /// <summary>
+            /// Asigna una lista de categorias del menu de un Restaurante
+            /// </summary>
+            /// <value>Recibe la lista de categorias de un Restaurante</value>
+            set { _reservations = value; }
+        }
+        #endregion
+
     }
 
 }

@@ -6,6 +6,5 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
     public interface IReservationDAO : IBaseEntityDAO<Reservation>
     {
          IList<Reservation> GetAll();
-         IList<Reservation> FindByRestaurant(int restaurant);
     }
 }

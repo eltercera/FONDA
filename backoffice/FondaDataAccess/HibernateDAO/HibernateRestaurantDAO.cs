@@ -320,6 +320,49 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         }
 
         #endregion
+
+        #region Reservation
+
+        /// <summary>
+        /// Obtiene las reservaciones de un Restaurante
+        /// </summary>
+        /// <param name="idRestaurant">Un ID de Restaurant</param>
+        /// <returns>Una List de Reservations</returns>
+        public IList<Reservation> ReservationsByRestaurantId(int restaurantId)
+        {
+
+
+            try
+            {
+                //TODO: Excepcion en caso de no encontrar restaurante
+                Restaurant restaurant = Session.QueryOver<Restaurant>()
+                    .Where(r => r.Id == restaurantId)
+                    .Where(r => r.Status == ActiveSimpleStatus.Instance)
+                    .SingleOrDefault();
+
+                IList<Reservation> listReservations = new List<Reservation>();
+            
+
+
+                //TODO: Excepcion en caso de no encontrar lista llena
+                foreach (Table reservedTable in restaurant.Tables)
+                {
+                    foreach (Reservation reservation in reservedTable.Reservations)
+                    {
+                        listReservations.Add(reservation);
+                    }
+                }
+                return listReservations;
+
+            }
+            //TODO: Arrojar excepciones personalizadas
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("Not Found invoice", e);
+            }
+        }
+
+        #endregion
     }
 }
 

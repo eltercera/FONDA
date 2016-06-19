@@ -5,19 +5,20 @@
     <subopcion rol="Sistema" nombre="Restaurantes" link="~/Seccion/Restaurant/Restaurante.aspx"/>
     <subopcion rol="Sistema" nombre="Categorias" link="~/Seccion/Restaurant/AgregarCategoria.aspx"/>
     <subopcion rol="Sistema" nombre="Zonas" link="~/Seccion/Restaurant/AgregarZona.aspx"/>
+    <subopcion rol ="Sistema" nombre ="Reservas" link="~/Seccion/Reservas/ListarReservas.aspx"/>
   </opcion>
 
 
   <opcion rol="Sistema-Restaurante" nombre="Menú" img="fa fa-fw fa-shopping-basket">
     <subopcion rol="Sistema-Restaurante" nombre="Menú del día" link="~/Seccion/Menu/MenuDia.aspx"/>
     <subopcion rol="Sistema-Restaurante" nombre="Menú principal" link="~/Seccion/Menu/default.aspx"/>
-  <subopcion rol="Sistema-Restaurante" nombre="Categorías" link="~/Seccion/Menu/ListarCategoria.aspx"/>
+    <subopcion rol="Sistema-Restaurante" nombre="Categorías" link="~/Seccion/Menu/ListarCategoria.aspx"/>
   </opcion>
-  
+
   <opcion rol="Sistema-Restaurante-Caja" nombre="Caja" img="fa fa-fw fa-money">
-       <subopcion rol="Sistema-Restaurante-Caja" nombre="Caja" link="~/Seccion/Caja/Ordenes.aspx"/>
-   </opcion>
-  
+    <subopcion rol="Sistema-Restaurante-Caja" nombre="Caja" link="~/Seccion/Caja/Ordenes.aspx"/>
+  </opcion>
+
   <opcion rol="Sistema-Restaurante" nombre="Confirguración" img="fa fa-fw fa-wrench">
     <subopcion rol="Sistema-Restaurante" nombre="Usuarios" link="~/Seccion/Configuracion/ListarUsuario.aspx#"/>
   </opcion>

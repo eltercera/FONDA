@@ -55,6 +55,7 @@
     <Compile Include="OrderAccount\OrdersPresenter.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservation\ReservationsPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Restaurant\" />

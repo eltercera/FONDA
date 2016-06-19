@@ -15,7 +15,6 @@
         tools:context=".views.activities.ReserveNewActivity">
 
         <include layout="@layout/toolbar_default" />
-
         <include layout="@layout/content_new_reserve" />
 
     </android.support.design.widget.CoordinatorLayout>

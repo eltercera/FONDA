@@ -25,5 +25,7 @@ namespace BackOfficePresenter
         {
             _view.ErrorLabelMessage.Text = message;
         }
+
+  
     }
 }

@@ -73,7 +73,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-            return Ok();
+            return Ok(token);
 		}
 
         [FondaAuthLogin]
