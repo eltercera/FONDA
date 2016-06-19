@@ -117,9 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ClassNameClosedOrdersPresenter" xml:space="preserve">
+    <value>ClosedOrdersPresenter</value>
+    <comment>Clase presentadora de las Ordenes cerradas</comment>
+  </data>
   <data name="ClassNameCloseOrder" xml:space="preserve">
     <value>CommandCloseOrder</value>
     <comment>Comando para cerrar una orden abierta</comment>
+  </data>
+  <data name="ClassNameDetailOrderPresenter" xml:space="preserve">
+    <value>DetailOrderPresenter</value>
+    <comment>Clase presentadora del detalle de la Orden</comment>
   </data>
   <data name="ClassNameGenerateInvoice" xml:space="preserve">
     <value>CommandGenerateInvoice</value>
@@ -141,13 +149,17 @@
     <value>CommandGetOrders</value>
     <comment>Comando para obtener las ordenes de un Restaurante</comment>
   </data>
+  <data name="ClassNameOrderInvoicesPresenter" xml:space="preserve">
+    <value>OrderInvoicesPresenter</value>
+    <comment>Clase presentadora de las facturas</comment>
+  </data>
+  <data name="ClassNameOrdersPresenter" xml:space="preserve">
+    <value>OrdersPresenter</value>
+    <comment>Clase presentadora de las Ordenes abiertas</comment>
+  </data>
   <data name="ClassNamePayOrder" xml:space="preserve">
     <value>CommandPayOrder</value>
     <comment>Comando para pagar una orden abierta</comment>
-  </data>
-  <data name="CommandMethod" xml:space="preserve">
-    <value>Execute</value>
-    <comment>Metodo disparador del Error para Comando</comment>
   </data>
   <data name="ErrorMessageGenerateInvoice" xml:space="preserve">
     <value>Error al crear la factura para una orden cerrada</value>
@@ -172,5 +184,49 @@
   <data name="ErrorMessagePayOrder" xml:space="preserve">
     <value>Error al pagar una orden abierta en un Restaurante</value>
     <comment>Mensaje de error para CommandPayOrder</comment>
+  </data>
+  <data name="MessageMVPExceptionClosedOrdersTable" xml:space="preserve">
+    <value>Se ha producido un error al llenar la tabla de Ordenes cerradas</value>
+    <comment>Mensaje de error para MVPExceptionClosedOrdersTable</comment>
+  </data>
+  <data name="MessageMVPExceptionDetailOrderTable" xml:space="preserve">
+    <value>Se ha producido un error al llenar la tabla del detale de la Orden #</value>
+    <comment>Mensaje de error para MVPExceptionDetailOrderTable</comment>
+  </data>
+  <data name="MessageMVPExceptionOrderInvoicesTable" xml:space="preserve">
+    <value>Se ha producido un error al llenar la tabla de Facturas</value>
+    <comment>Mensaje de error para MVPExceptionOrderInvoicesTable</comment>
+  </data>
+  <data name="MessageMVPExceptionOrdersTable" xml:space="preserve">
+    <value>Se ha producido un error al llenar la tabla de Ordenes abiertas</value>
+    <comment>Mensaje de error para MVPExceptionOrdersTable</comment>
+  </data>
+  <data name="MVPExceptionClosedOrdersTableCode" xml:space="preserve">
+    <value>BO-04-001</value>
+    <comment>Mensaje de error al llenar tabla de Ordenes cerradas</comment>
+  </data>
+  <data name="MVPExceptionDetailOrderTableCode" xml:space="preserve">
+    <value>BO-04-004</value>
+    <comment>Mensaje de error al llenar tabla de detalle de Orden</comment>
+  </data>
+  <data name="MVPExceptionOrderInvoicesTableCode" xml:space="preserve">
+    <value>BO-04-003</value>
+    <comment>Mensaje de error al llenar tabla de facturas</comment>
+  </data>
+  <data name="MVPExceptionOrdersTableCode" xml:space="preserve">
+    <value>BO-04-002</value>
+    <comment>Mensaje de error al llenar tabla de Ordenes abiertas</comment>
+  </data>
+  <data name="ErrorMessageCloseCashRegister" xml:space="preserve">
+    <value>Error al realizar el cierre de caja</value>
+    <comment>Mensaje de error para CommandCloseCashRegister</comment>
+  </data>
+  <data name="MessageMVPExceptionCloseButton" xml:space="preserve">
+    <value>No se puede realizar el cierre de caja cuando existen ordenes abiertas</value>
+    <comment>Mensaje de error para MVPExceptionCloseButton</comment>
+  </data>
+  <data name="MVPExceptionCloseButtonCode" xml:space="preserve">
+    <value>BO-04-005</value>
+    <comment>Mensaje de error al cerrar la cuenta </comment>
   </data>
 </root>

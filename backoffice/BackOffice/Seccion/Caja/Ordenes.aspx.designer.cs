@@ -10,7 +10,7 @@
 namespace BackOffice.Seccion.Caja {
     
     
-    public partial class Default {
+    public partial class Ordenes {
         
         /// <summary>
         /// SuccessLabel control.
@@ -49,13 +49,13 @@ namespace BackOffice.Seccion.Caja {
         protected global::System.Web.UI.WebControls.Label ErrorLabelMessage;
         
         /// <summary>
-        /// AccountPopOrder control.
+        /// closeCR control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField AccountPopOrder;
+        protected global::System.Web.UI.WebControls.Button closeCR;
         
         /// <summary>
         /// orderList control.

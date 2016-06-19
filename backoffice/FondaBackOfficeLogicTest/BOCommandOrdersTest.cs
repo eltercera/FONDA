@@ -26,6 +26,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         private Invoice _invoice;
         private Account _account;
         private IInvoiceDao _invoiceDAO;
+        private string _totalOrders;
 
         [SetUp]
         public void Init()
@@ -47,7 +48,8 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _invoiceDAO = _facDAO.GetInvoiceDao();
             IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
             _account = _accountDAO.FindById(_account.Id);
-            _listInvoices = new List<Invoice>();            
+            _listInvoices = new List<Invoice>();
+            _totalOrders = null;       
         }
 
         [Test]
@@ -91,6 +93,19 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
             Assert.IsNotNull(_account);
 
+        }
+
+        [Test]
+        public void CommandCloseCashRegisterTest()
+        {
+            _command = CommandFactory.GetCommandCloseCashRegister(_restaurantId);
+
+            _command.Execute();
+
+            _totalOrders = (string)_command.Receiver;
+
+            Assert.IsNotNull(_totalOrders);
+            Assert.AreEqual(_totalOrders, "€ 13900");
         }
 
        

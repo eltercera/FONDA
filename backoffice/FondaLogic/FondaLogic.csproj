@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.9\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,14 +59,22 @@
     <Compile Include="Commands\Login\CommandSaveEmployee.cs" />
     <Compile Include="Commands\Login\CommandSaveEntity.cs" />
     <Compile Include="Commands\Login\CommanGetAllEmployee.cs" />
+    <Compile Include="Commands\OrderAccount\CommandCloseCashRegister.cs" />
     <Compile Include="Commands\OrderAccount\CommandDetailOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
+    <Compile Include="Commands\OrderAccount\CommandFindInvoicesByRestaurant.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGenerateException.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetClosedOrders.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetCurrency.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrders.cs" />
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandPrintInvoice.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
+    <Compile Include="FondaCommandException\CommandExceptionCloseCashRegister.cs" />
     <Compile Include="FondaCommandException\CommandExceptionCreateEmployee.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetEmployee.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetOrder.cs" />

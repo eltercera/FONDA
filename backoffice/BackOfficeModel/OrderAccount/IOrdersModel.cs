@@ -13,5 +13,8 @@ namespace BackOfficeModel.OrderAccount
         Table OrdersTable { get; set; }
 
         string Session { get; set; }
+
+        Button CloseButton { get; set; }
+
     }
 }

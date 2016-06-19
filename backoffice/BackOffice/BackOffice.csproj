@@ -418,6 +418,7 @@
     <Content Include="Seccion\Caja\ListarFacturas.aspx" />
     <Content Include="Seccion\Caja\Ordenes.aspx" />
     <Content Include="Seccion\Caja\OrdenesCerradas.aspx" />
+    <Content Include="Seccion\Caja\VerDetalleFactura.aspx" />
     <Content Include="Seccion\Caja\VerDetalleOrden.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
@@ -487,6 +488,13 @@
     </Compile>
     <Compile Include="Seccion\Caja\OrdenesCerradas.aspx.designer.cs">
       <DependentUpon>OrdenesCerradas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Caja\VerDetalleFactura.aspx.cs">
+      <DependentUpon>VerDetalleFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Caja\VerDetalleFactura.aspx.designer.cs">
+      <DependentUpon>VerDetalleFactura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.cs">
       <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
