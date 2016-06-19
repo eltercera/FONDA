@@ -18,13 +18,16 @@ import com.ds201625.fonda.logic.Parameter;
 public class DeleteFavoriteRestaurantCommand extends BaseCommand {
 
     private String TAG = "DeleteFavoriteRestaurantCommand";
-
+    private Commensal commensal;
+    private Commensal idCommensal;
+    private Restaurant idRestaurant;
     /**
      * Asigna valor a los parametros
      * @return parametros comensal y restaurant
      */
     @Override
     protected Parameter[] setParameters() {
+
         Parameter [] parameters = new Parameter[2];
         parameters[0] = new Parameter(Commensal.class, true);
         parameters[1] = new Parameter(Restaurant.class, true);
@@ -37,26 +40,32 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para eliminar un restaurante de favoritos");
-        Commensal commensal = FondaEntityFactory.getInstance().GetCommensal();
 
-        Commensal idCommensal = FondaEntityFactory.getInstance().GetCommensal();
-        Restaurant idRestaurant = FondaEntityFactory.getInstance().GetRestaurant();
+        commensal = FondaEntityFactory.getInstance().GetCommensal();
+        idCommensal = FondaEntityFactory.getInstance().GetCommensal();
+        idRestaurant = FondaEntityFactory.getInstance().GetRestaurant();
+
         try {
             idCommensal = (Commensal) getParameter(0);
             idRestaurant = (Restaurant) getParameter(1);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
+            //AKI IRA LAS D PARAMTROS RECIBIDAS D BO
+        } catch (Exception eee) {
+            //Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
         }
 
-        FavoriteRestaurantService ps = FondaServiceFactory.getInstance()
+        FavoriteRestaurantService serviceFavorits = FondaServiceFactory.getInstance()
                 .getFavoriteRestaurantService();
 
         try {
-             commensal =  ps.deleteFavoriteRestaurant(idCommensal.getId(),idRestaurant.getId());
+             commensal =  serviceFavorits.deleteFavoriteRestaurant(idCommensal.getId(),idRestaurant.getId());
+            //AKI FALTAN LAS RECIBIDAS DE BO
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
-        }
-
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+        } catch (Exception e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+    }
         setResult(commensal);
     }
 }

@@ -19,12 +19,15 @@ import java.util.List;
  */
 public class AllFavoriteRestaurantCommand extends BaseCommand {
     private String TAG = "AllFavoriteRestaurantCommand";
+    private List<Restaurant> restaurantList = null;
+    private Commensal idCommensal;
     /**
      * Asigna valor a los parametros
      * @return parametros comensal y restaurant
      */
     @Override
     protected Parameter[] setParameters() {
+
         Parameter [] parameters = new Parameter[1];
         parameters[0] = new Parameter(Commensal.class, true);
 
@@ -37,30 +40,35 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para obtener los restaurantes favoritos");
-        List<Restaurant> restaurantList = null;
 
-        Commensal idCommensal = FondaEntityFactory.getInstance().GetCommensal();
+        idCommensal = FondaEntityFactory.getInstance().GetCommensal();
+
         try {
             idCommensal = (Commensal) getParameter(0);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+            //AKI IRAN D BO DE PARAMETROS
+        } catch (Exception eee) {
+       //     Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", eee);
         }
 
         try {
             idCommensal = (Commensal) this.getParameter(1);
-        } catch (Exception e) {
+            //LO MISMO AQUI
+        } catch (Exception ee) {
            // Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
         }
 
-        FavoriteRestaurantService ps = FondaServiceFactory.getInstance()
+        FavoriteRestaurantService serviceFavorits = FondaServiceFactory.getInstance()
                 .getFavoriteRestaurantService();
 
         try {
-            restaurantList =  ps.getAllFavoriteRestaurant(idCommensal.getId());
+            restaurantList =  serviceFavorits.getAllFavoriteRestaurant(idCommensal.getId());
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+        } catch (Exception e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
         }
-
         setResult(restaurantList);
     }
 }

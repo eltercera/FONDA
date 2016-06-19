@@ -45,8 +45,9 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
         try {
             idCommensal = (Commensal) getParameter(0);
             idRestaurant = (Restaurant) getParameter(1);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+       //esta sera cambiada por las d BO de parametros
+        } catch (Exception eee) {
+           // Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
         }
 
         FavoriteRestaurantService ps = FondaServiceFactory.getInstance()
@@ -54,9 +55,14 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
 
         try {
              commensal =  ps.AddFavoriteRestaurant(idCommensal.getId(),idRestaurant.getId());
+            //AKI IRAN MAS EXCEPCIONES RECIBIDAS D BO
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
-        }
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+        } catch (Exception e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+    }
 
         setResult(commensal);
     }

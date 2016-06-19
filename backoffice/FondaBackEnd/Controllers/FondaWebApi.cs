@@ -11,7 +11,7 @@ using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEndLogic;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.BackEnd.Exceptions;
-using FondaBeckEndLogic.Exceptions;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {

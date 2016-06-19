@@ -8,7 +8,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.BackEndLogic;
-using FondaBeckEndLogic.Exceptions;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.BackEnd.Exceptions;

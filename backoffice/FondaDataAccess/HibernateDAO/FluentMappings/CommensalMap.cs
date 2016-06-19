@@ -13,7 +13,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 			HasMany (x => x.Profiles)
 				.KeyColumn("fk_commensal_id")
 				.ExtraLazyLoad()
-				.Cascade.All();
+				.Cascade.AllDeleteOrphan();
 
 			HasMany (x => x.SesionTokens)
 				.LazyLoad ()
@@ -21,7 +21,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 				.Cascade.AllDeleteOrphan();
             
             HasManyToMany(x => x.FavoritesRestaurants)
-                .Cascade.All()
+                .Cascade.AllDeleteOrphan()
                 .ExtraLazyLoad()
                 .Table("RESTAURANT_COMMENSAL")
                 ;

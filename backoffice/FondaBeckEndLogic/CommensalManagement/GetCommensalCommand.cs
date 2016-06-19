@@ -2,15 +2,16 @@
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaBeckEndLogic.Exceptions;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FondaBeckEndLogic;
 
-namespace FondaBeckEndLogic.CommensalManagement
+namespace com.ds201625.fonda.BackEndLogic.CommensalManagement
 {
     /// <summary>
     /// Comando para la Buscar un Commensal
