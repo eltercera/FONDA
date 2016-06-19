@@ -110,6 +110,16 @@ namespace FondaLogic.Factory
             return new CommandGetCurrency(receiver);
         }
 
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandGetInvoice
+        /// </summary>
+        /// <param name="entity">Invoice</param>
+        /// <returns>comando CommandGetOrders</returns>
+        public static Command GetCommandGenerateInvoice(object receiver)
+        {
+            return new CommandGenerateInvoice(receiver);
+        }
+
         #endregion
 
         #region Restaurant

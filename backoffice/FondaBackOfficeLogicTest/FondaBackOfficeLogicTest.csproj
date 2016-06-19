@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOCommandGenerateExceptionTest.cs" />
     <Compile Include="BOCommandInvoiceTest.cs" />
     <Compile Include="BOCommandLoginTest.cs" />
     <Compile Include="BOCommandOrdersTest.cs" />
