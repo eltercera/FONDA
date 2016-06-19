@@ -45,13 +45,15 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
 
         try {
             idCommensal = (Commensal) getParameter(0);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+            //AKI IRAN D BO DE PARAMETROS
+        } catch (Exception eee) {
+       //     Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", eee);
         }
 
         try {
             idCommensal = (Commensal) this.getParameter(1);
-        } catch (Exception e) {
+            //LO MISMO AQUI
+        } catch (Exception ee) {
            // Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
         }
 
@@ -62,8 +64,11 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
             restaurantList =  serviceFavorits.getAllFavoriteRestaurant(idCommensal.getId());
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+        } catch (Exception e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
         }
-
         setResult(restaurantList);
     }
 }

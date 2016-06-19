@@ -42,6 +42,10 @@ public class AllRestaurantCommand extends BaseCommand {
             restaurantList =  serviceAllRestaurants.getAllRestaurant();
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes", e);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+        } catch (Exception e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
         }
 
         setResult(restaurantList);
