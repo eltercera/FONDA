@@ -8,6 +8,7 @@ using com.ds201625.fonda.BackEndLogic;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEnd.Exceptions;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -96,9 +97,12 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
                 // Se obtiene el commando CreateCreateProfileCommand 
                 ICommand command = FacCommand.DeleteTokenCommensalCommand();
-
+                Token token = EntityFactory.GetToken();
+                token.Id = id;
                 // Se agrega el commensal como parametro
                 command.SetParameter(0, commensal);
+                // Se agrega el Token como parametro
+                command.SetParameter(0, token);
 
                 //se ejecuta el comando
                 command.Run();

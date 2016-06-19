@@ -5,6 +5,7 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.BackEndLogic;
 using FondaLogic.Log;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
+using FondaBeckEndLogic;
 
 
 namespace com.ds201625.fonda.BackEndLogic.ProfileManagement

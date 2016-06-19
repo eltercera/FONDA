@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FondaBeckEndLogic;
 
 namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
 {
@@ -56,7 +57,7 @@ namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
             try
             {
                 // Busca el Token
-                tok = tokenDAO.FindByStrToken(token);
+                tok = tokenDAO.FindByStrToken(property,token);
 
                 //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
