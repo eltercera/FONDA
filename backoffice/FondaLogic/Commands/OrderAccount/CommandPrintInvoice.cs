@@ -61,7 +61,7 @@ namespace FondaLogic.Commands.OrderAccount
 
                 _person = _personDao.FindById(_invoice.Profile.Person.Id);
                 _userAccount = _userAccountDao.FindById(_person.Id);
-                String bla = _invoice.Payment.GetType().FullName;
+                String bla = _invoice.Payment.GetType().Name;
 
                  if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.Cash))
                 {
@@ -146,11 +146,11 @@ namespace FondaLogic.Commands.OrderAccount
                 clPropina.BorderWidth = 0;
                 clPropina.BorderWidthBottom = 0.75f;
 
-                PdfPCell clIVA = new PdfPCell(new Phrase("IVA", _standardFont));
+                PdfPCell clIVA = new PdfPCell(new Phrase("IVA (12%)", _standardFont));
                 clIVA.BorderWidth = 0;
                 clIVA.BorderWidthBottom = 0.75f;
 
-                PdfPCell clTotal = new PdfPCell(new Phrase("Total + Propina", _standardFont));
+                PdfPCell clTotal = new PdfPCell(new Phrase("Total", _standardFont));
                 clTotal.BorderWidth = 0;
                 clTotal.BorderWidthBottom = 0.75f;
 
@@ -169,8 +169,8 @@ namespace FondaLogic.Commands.OrderAccount
                 tblPrueba2.AddCell(clApellido);
                 tblPrueba2.AddCell(clCedula);
                 tblPrueba4.AddCell(clPropina);
+                tblPrueba4.AddCell(clTotal); 
                 tblPrueba4.AddCell(clIVA);
-                tblPrueba4.AddCell(clTotal);
                 tblPrueba4.AddCell(clTotalIva);
 
                 // Llenamos la tabla con información
@@ -241,7 +241,7 @@ namespace FondaLogic.Commands.OrderAccount
                 clIVA = new PdfPCell(new Phrase(tax.ToString(), _standardFont));
                 clIVA.BorderWidth = 0;
 
-                clTotal = new PdfPCell(new Phrase((totaDishOrder+tip).ToString(), _standardFont));
+                clTotal = new PdfPCell(new Phrase((totaDishOrder).ToString(), _standardFont));
                 clTotal.BorderWidth = 0;
 
                 totalFactura = totaDishOrder + tip + tax;
@@ -261,8 +261,8 @@ namespace FondaLogic.Commands.OrderAccount
                 tblPrueba2.AddCell(clApellido);
                 tblPrueba2.AddCell(clCedula);
                 tblPrueba4.AddCell(clPropina);
+                tblPrueba4.AddCell(clTotal); 
                 tblPrueba4.AddCell(clIVA);
-                tblPrueba4.AddCell(clTotal);
                 tblPrueba4.AddCell(clTotalIva);
 
 
