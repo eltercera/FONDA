@@ -6,6 +6,7 @@ using BackOfficePresenter.OrderAccount;
 using FondaResources.Login;
 using System.Web.UI.HtmlControls;
 using BackOfficeModel;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -76,10 +77,15 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["RestaurantID"] != null)
-            {   //Llama al presentador para llenar la tabla de ordenes
-                _presenter.GetClosedOrders(Session[RestaurantResource.SessionRestaurant].ToString());
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                if (Session["RestaurantID"] != null)
+                {   //Llama al presentador para llenar la tabla de ordenes
+                    _presenter.GetClosedOrders(Session[RestaurantResource.SessionRestaurant].ToString());
+                }
             }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
 
 

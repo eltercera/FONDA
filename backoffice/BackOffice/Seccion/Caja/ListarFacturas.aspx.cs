@@ -9,6 +9,7 @@ using BackOfficeModel;
 using System.Web.UI.HtmlControls;
 using FondaResources.Login;
 using FondaResources.OrderAccount;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -96,7 +97,12 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
     }
 }

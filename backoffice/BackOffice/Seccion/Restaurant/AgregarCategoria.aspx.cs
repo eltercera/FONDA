@@ -12,6 +12,7 @@ using System.Web.Services;
 using System.Web.Script.Serialization;
 using System.Text.RegularExpressions;
 using FondaResources.Login;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -23,12 +24,17 @@ namespace BackOffice.Seccion.Restaurant
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            AlertSuccess_AgregarCategoria.Visible = false;
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                AlertSuccess_AgregarCategoria.Visible = false;
             AlertSuccess_ModificarCategoria.Visible = false;
             AlertError_AgregarCategoria.Visible = false;
             AlertError_ModificarCategoria.Visible = false;
             //NombreCatA.Attributes.Add("required", "required");
             LoadTable();
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
 
         /// <summary>
