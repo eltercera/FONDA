@@ -59,7 +59,7 @@ namespace FondaLogic.Commands.Login
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
 
-                    throw exceptionCreateEmployee;
+                    //throw exceptionCreateEmployee;
 
             }
             catch (NullReferenceException ex)
@@ -76,12 +76,12 @@ namespace FondaLogic.Commands.Login
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
 
-                throw exceptionCreateEmployee;
+                //throw exceptionCreateEmployee;
 
             }
             catch (Exception ex)
             {
-                throw new System.InvalidOperationException(ex.Message);
+                //throw new System.InvalidOperationException(ex.Message);
 
             }
 
