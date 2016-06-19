@@ -2,8 +2,10 @@ package com.ds201625.fonda.domains.factory_entity;
 
 import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.RestaurantCategory;
+import com.ds201625.fonda.domains.Token;
 
 /**
  * Created by Katherina Molina on 16/06/2016.
@@ -61,5 +63,7 @@ public class FondaEntityFactory {
         return new Restaurant(name,address,restaurantCategory);
     }
 
+    public Profile GetProfile() { return new Profile();}
 
+    public Token GetToken() {return  new Token();}
 }

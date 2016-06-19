@@ -2,7 +2,7 @@ package com.ds201625.fonda.logic;
 
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
-import com.ds201625.fonda.logic.Commands.CreateProfileCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommand.CreateProfileCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.DeleteFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalCommand;
