@@ -142,7 +142,6 @@ namespace com.ds201625.fonda.Domain
         }
         #endregion
 
-
         #region Methods
         /// <summary>
         /// Agrega una orden a la cuenta
@@ -187,7 +186,6 @@ namespace com.ds201625.fonda.Domain
         {
             _status = _status.Change();
         }
-
 
         /// <summary>
         /// Obtiene el precio total de todas las ordenes

@@ -105,5 +105,11 @@ namespace FondaBackOfficeLogicTest
 
             _command.Execute();
         }
+
+        //[TearDown]
+        //public void EndTests()
+        //{
+        //    _invoiceDAO.Delete(_invoice);
+        //}
     }
 }
