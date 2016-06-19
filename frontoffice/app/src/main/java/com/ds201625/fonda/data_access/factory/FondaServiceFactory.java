@@ -32,7 +32,7 @@ public class FondaServiceFactory {
     /**
      * La fabrica implementada
      */
-    private ServiceFactory serviceFactory;
+    private static ServiceFactory serviceFactory;
 
     /**
      * Constructor
@@ -101,7 +101,7 @@ public class FondaServiceFactory {
      * Obtiene los servicios de restaurantes
      * @param
      */
-    public AllRestaurantService getAllRestaurantsService(){
+    public static AllRestaurantService getAllRestaurantsService(){
         return serviceFactory.getAllRestaurantService();
     }
 
@@ -110,7 +110,7 @@ public class FondaServiceFactory {
      * Obtiene los servicios de restaurantes favoritos
      * @param
      */
-    public FavoriteRestaurantService getFavoriteRestaurantService(){
+    public static FavoriteRestaurantService getFavoriteRestaurantService(){
         return serviceFactory.getFavoriteRestaurantService();
     }
 
@@ -171,7 +171,7 @@ public class FondaServiceFactory {
      * Obtiene los servicios de commensal logueado
      * @return
      */
-    public RequireLogedCommensalService getLogedCommensalService(){
+    public static RequireLogedCommensalService getLogedCommensalService(){
       return  serviceFactory.getLogedCommensalService();
     };
 }

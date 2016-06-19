@@ -52,12 +52,14 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (GetCommensalFondaWebApiException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new PostProfileFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
+                PostProfileFondaWebApiControllerException ex = new PostProfileFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
+                return InternalServerError(ex);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new PostProfileFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
+                PostProfileFondaWebApiControllerException ex = new PostProfileFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
+                return InternalServerError(ex);
             }
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, profiles.ToString(),
@@ -108,17 +110,20 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (CreateProfileCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
+                PostProfileFondaWebApiControllerException ex = new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
+                return InternalServerError(ex);
             }
             catch (GetCommensalFondaWebApiException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
+                PostProfileFondaWebApiControllerException ex = new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
+                return InternalServerError(ex);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
+                PostProfileFondaWebApiControllerException ex = new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
+                return InternalServerError(ex);
             }
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, result.ToString(),
@@ -177,12 +182,14 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (UpdateProfileCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new PutProfileFondaWebApiControllerException(GeneralRes.UpdateProfileException, e);
+                PutProfileFondaWebApiControllerException ex = new PutProfileFondaWebApiControllerException(GeneralRes.UpdateProfileException, e);
+                return InternalServerError(ex);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new PutProfileFondaWebApiControllerException(GeneralRes.UpdateProfileException, e);
+                PutProfileFondaWebApiControllerException ex = new PutProfileFondaWebApiControllerException(GeneralRes.UpdateProfileException, e);
+                return InternalServerError(ex);
             }
 
             //Logger al Culminar el metodo
@@ -235,12 +242,14 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (DeleteProfileCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteProfileFondaWebApiControllerException(GeneralRes.DeleteProfileException, e);
+                DeleteProfileFondaWebApiControllerException ex = new DeleteProfileFondaWebApiControllerException(GeneralRes.DeleteProfileException, e);
+                return InternalServerError(ex);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteProfileFondaWebApiControllerException(GeneralRes.DeleteProfileException, e);
+                DeleteProfileFondaWebApiControllerException ex = new DeleteProfileFondaWebApiControllerException(GeneralRes.DeleteProfileException, e);
+                return InternalServerError(ex);
             }
 
             //Logger al Culminar el metodo
@@ -249,36 +258,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             return Ok();
         }
 
-        //[Route("profiles")]
-        //[HttpDelete]
-        //[FondaAuthToken]
-        //public IHttpActionResult deleteProfiles(Profile[] profiles)
-        //{
-        //    Commensal commensal = GetCommensal(Request.Headers);
-        //    if (commensal == null)
-        //        return BadRequest();
-
-        //    ICommensalDAO commensalDAO = FactoryDAO.GetCommensalDAO();
-
-        //    Profile profile = GetProfileDao().FindById(id);
-        //    if (!commensal.Profiles.Contains(profile))
-        //        return BadRequest();
-
-        //    commensal.Profiles.Remove(profile);
-        //    profile.Status = FactoryDAO.GetDisabledSimpleStatus();
-
-        //    try
-        //    {
-        //        commensalDAO.Save(commensal);
-        //    }
-        //    catch (SaveEntityFondaDAOException e)
-        //    {
-        //        Console.WriteLine(e.ToString());
-        //        return InternalServerError(e);
-        //    }
-
-        //    return Ok();
-        //}
     }
 }
 
