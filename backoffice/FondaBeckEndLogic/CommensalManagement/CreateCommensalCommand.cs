@@ -2,7 +2,7 @@
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaBeckEndLogic.Exceptions;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaBeckEndLogic.CommensalManagement
+namespace com.ds201625.fonda.BackEndLogic.CommensalManagement
 {
     /// <summary>
     /// Comando para la Crear un Commensal
@@ -60,6 +60,21 @@ namespace FondaBeckEndLogic.CommensalManagement
                  ResourceMessages.Commensal + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
             catch (SaveEntityFondaDAOException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateCommensalCommandException(ResourceMessages.CreateCommensalException, e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateCommensalCommandException(ResourceMessages.CreateCommensalException, e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CreateCommensalCommandException(ResourceMessages.CreateCommensalException, e);
+            }
+            catch (RequieredParameterNotFoundException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CreateCommensalCommandException(ResourceMessages.CreateCommensalException, e);

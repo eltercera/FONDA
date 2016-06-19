@@ -3,7 +3,7 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
-using FondaBeckEndLogic.Exceptions;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaBeckEndLogic.TokenManagement
+namespace com.ds201625.fonda.BackEndLogic.TokenManagement
 {
     /// <summary>
     /// Comando para la Buscar Token

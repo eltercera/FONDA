@@ -7,7 +7,7 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.BackEndLogic;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEnd.Exceptions;
-using FondaBeckEndLogic.Exceptions;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -73,7 +73,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-            return Ok();
+            return Ok(token);
 		}
 
         [FondaAuthLogin]

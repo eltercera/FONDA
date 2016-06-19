@@ -5,6 +5,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.HibernateDAO.Session;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace FondaDataAccessTest
 {
@@ -255,7 +256,7 @@ namespace FondaDataAccessTest
 
 		[Test ()]
 		/// <summary>
-		/// Purebas de creación y edicion a nivel de DAO.
+		/// Pruebas de creación y edicion a nivel de DAO.
 		/// </summary>
 		public void PersonDaoSaveTest()
 		{
@@ -274,14 +275,15 @@ namespace FondaDataAccessTest
 			getPersonDao ();
 			_person = null;
 			_person = _personDAO.FindById (_personId);
-
+            //Se verifica si se agrego bien en la base de datos
 			PersonAssertions ();
-
+            //se genera una persona modificada
 			generatePerson (true);
+            //se guardan los cambios
 			_personDAO.Save (_person);
-
+            
 			_personDAO.ResetSession ();
-
+            //se verifica si se guardaron bien los cambios
 			getPersonDao ();
 			_person = null;
 			_person = _personDAO.FindById (_personId);
@@ -290,11 +292,12 @@ namespace FondaDataAccessTest
 
 		}
 
-		// Pruebas de Perfil
-
+		/// <summary>
+		/// Pruebas de Profile
+		/// </summary>
 		[Test ()]
 		/// <summary>
-		/// Purebas de creación y edicion a nivel de dominio.
+		/// Pruebas de creación y edicion a nivel de dominio.
 		/// </summary>
 		public void ProfileDomainTerst ()
 		{
@@ -308,9 +311,10 @@ namespace FondaDataAccessTest
 		/// </summary>
 		public void ProfileDaoSaveTest()
 		{
+            //se genera un perfil
 			generateProfile ();
 			getProfileDao ();
-
+            //se guarda el perfil
 			_profileDAO.Save (_profile);
 
 			Assert.AreNotEqual (_profile.Id, _profileId);
@@ -322,16 +326,17 @@ namespace FondaDataAccessTest
 			_profile = null;
 			_person = null;
 
+            //se verifica si se guardo  en la base de datos 
 			_profile = _profileDAO.FindById (_profileId);
 			_person = _profile.Person;
-
 			ProfileAssertions ();
 
 		}
 
 
-		// Pruebas de Commensal
-
+		/// <summary>
+		/// Pruebas de Commensal
+		/// </summary>
 		[Test ()]
 		/// <summary>
 		/// Purebas de creación y edicion a nivel de dominio.
@@ -348,11 +353,12 @@ namespace FondaDataAccessTest
 		/// </summary>
 		public void CommensalDaoSaveTest()
 		{
+            //se genera el commensal
 			generateCommensal ();
 			getCommensalDao ();
-
+            //se guarda el commensal
 			_commensalDAO.Save (_commensal);
-
+            //se verifica si se guardo el commensal y el token
 			Assert.AreNotEqual (_commensal.Id, _comensalId);
 			_comensalId = _commensal.Id;
 			Assert.AreNotEqual (_token.Id, _tokenId);
@@ -363,7 +369,7 @@ namespace FondaDataAccessTest
 			_token = null;
 			_profile = null;
 			_person = null;
-
+            //se verifica si se guardaron bien los datos
 			_commensal = (Commensal)_commensalDAO.FindById (_comensalId);
 			CommensalAssertions ();
 
@@ -392,6 +398,27 @@ namespace FondaDataAccessTest
 			}
 		}
 
+
+        /// <summary>
+        /// prueba excepcion al buscar por id
+        /// </summary>
+        [Test]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void FindCommensalByIdNullReferenceTest()
+        {
+            _commensalDAO.FindById(0);
+        }
+        /// <summary>
+        /// prueba excepcion guardar
+        /// </summary>
+        [Test]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void SaveCommensalNullReferenceTest()
+        {
+            _commensalDAO.Save(null);
+        }
+
+        //Al inicio de cada prueba
 		[SetUp]
 		public void BeginTest()
 		{
@@ -399,6 +426,7 @@ namespace FondaDataAccessTest
 			NHibernateSessionManager.CloseSession();
 		}
 
+        // al final de cada prueba
 		[TearDown]
 		public void EndTests()
 		{
