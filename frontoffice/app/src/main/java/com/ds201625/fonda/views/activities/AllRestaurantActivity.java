@@ -232,11 +232,13 @@ public class AllRestaurantActivity extends BaseNavigationActivity
                                     presenter.deleteFavoriteRestaurant(restaurant);
                                 } catch (Exception e) {
                                     Log.e(TAG,"Error en el manejo de un favorito",e);
-                                    Toast.makeText(getApplicationContext(), R.string.favorite_remove_fail_meessage,
+                                    Toast.makeText(getApplicationContext(),
+                                            R.string.favorite_remove_fail_meessage,
                                             Toast.LENGTH_LONG).show();
 
                                 }
-                                Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
+                                Toast.makeText(getApplicationContext(),
+                                        R.string.favorite_remove_success_meessage,
                                         Toast.LENGTH_LONG).show();
                                 setAsFavorite.setIcon(R.drawable.ic_grade_creme_24dp);
                                 Log.d(TAG,"Se ha eliminado el favorito");
@@ -251,11 +253,13 @@ public class AllRestaurantActivity extends BaseNavigationActivity
 
                                 } catch (Exception e) {
                                     Log.e(TAG,"Error en el manejo de un favorito",e);
-                                    Toast.makeText(getApplicationContext(), R.string.favorite_add_fail_meessage,
+                                    Toast.makeText(getApplicationContext(),
+                                            R.string.favorite_add_fail_meessage,
                                             Toast.LENGTH_LONG).show();
 
                                 }
-                                Toast.makeText(getApplicationContext(), R.string.favorite_add_success_meessage,
+                                Toast.makeText(getApplicationContext(),
+                                        R.string.favorite_add_success_meessage,
                                         Toast.LENGTH_LONG).show();
                                 setAsFavorite.setIcon(R.drawable.ic_star_yellow);
                                 Log.d(TAG,"Se ha guardado el favorito");

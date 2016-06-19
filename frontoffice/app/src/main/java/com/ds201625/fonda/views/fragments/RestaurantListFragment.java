@@ -123,12 +123,14 @@ public class RestaurantListFragment extends BaseFragment implements
                                     presenterfav.addFavoriteRestaurant(r);
 
                                     Toast.makeText(RestaurantListFragment.super.getContext(),
-                                            "Se han agregado "+restList.countSelected()+" Restaurantes a Favoritos",
+                                            "Se han agregado "+restList.countSelected()+
+                                                    " Restaurantes a Favoritos",
                                             Toast.LENGTH_LONG).show();
                                     Log.d("Favoritos eliminados: ",r.getName().toString());
                                 }
                                 catch (Exception e) {
-                                    Log.e(TAG,"Error en onActionItemClicked al agregar restaurant", e);
+                                    Log.e(TAG,"Error en onActionItemClicked al agregar restaurant",
+                                            e);
                                 }
                             }
 
