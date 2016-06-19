@@ -58,17 +58,20 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (GetTokenCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                return InternalServerError(ex);
             }
             catch (GetCommensalFondaWebApiException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                return InternalServerError(ex);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                return InternalServerError(ex);
             }
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
@@ -113,17 +116,20 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (DeleteTokenCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                return InternalServerError(ex);
             }
             catch (GetCommensalFondaWebApiException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                return InternalServerError(ex);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                return InternalServerError(ex);
             }
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
