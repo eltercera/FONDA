@@ -152,7 +152,7 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
         }
     }
 
-    public void testDeleteFavoriteRestauranNullPointerException() {
+    public void testDeleteFavoriteRestauranIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
             cmd = facCmd.deleteFavoriteRestaurantCommand();

@@ -115,7 +115,7 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
         }
     }
 
-    public void testAllFavoriteRestaurantNullPointerException() {
+    public void testAllFavoriteRestaurantIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
             cmd = facCmd.allFavoriteRestaurantCommand();
@@ -126,7 +126,7 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
 
         } catch(RestClientException e) {}
         catch(NullPointerException e) {
-            //fail("Se esperaba excepcion NullPointerException");
+
         }catch (Exception e) {
             e.printStackTrace();
         }
