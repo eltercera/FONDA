@@ -115,7 +115,23 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
         }
     }
 
+    public void testAllFavoriteRestaurantNullPointerException() {
+        try {
+            Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
+            cmd = facCmd.allFavoriteRestaurantCommand();
+            cmd.setParameter(0,prueba);
+            cmd.run();
+            restaurantList = (List<Restaurant>) cmd.getResult();
+            assertNull(restaurantList);
 
+        } catch(RestClientException e) {}
+        catch(NullPointerException e) {
+            //fail("Se esperaba excepcion NullPointerException");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
     /**
      * Metodo para limpiar los objetos de las pruebas unitarias
