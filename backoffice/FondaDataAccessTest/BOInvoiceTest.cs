@@ -83,7 +83,7 @@ namespace FondaDataAccessTest
         public void FindInvoicesByAccountTest()
         {
 
-            _listInvoices = _invoiceDAO.FindInvoicesByAccount(_account);
+            //_listInvoices = _invoiceDAO.FindInvoicesByAccount(_account);
             Assert.IsNotNull(_listInvoices);
             Assert.AreEqual(_listInvoices[0].Id,2);
         }

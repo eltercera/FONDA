@@ -12,8 +12,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
             Map(x => x.LastCardDigits)
                 .Column("ccp_last_digits")
                 .Nullable();
-                
-                
+
+            Map(x => x.Tip)
+            .Column("ccp_tip");
+
         }
     }
 }

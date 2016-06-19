@@ -86,14 +86,14 @@ namespace FondaDataAccessTest
                 return;
 
             if ((edit & _creditCardPayment == null) | _creditCardPayment == null)
-                _creditCardPayment = new CreditCarPayment();
+                _creditCardPayment = new CreditCardPayment();
 
             int editadd = 1548;
 
             if (edit)
                 editadd = 1234;
 
-            _creditCardPayment.LastCardDigits = editadd;
+            //_creditCardPayment.LastCardDigits = editadd;
             _creditCardPayment.Amount = 25000;
           
 
