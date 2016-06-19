@@ -5,27 +5,27 @@ import android.util.Log;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
-import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.SessionData;
 
 /**
- * Comando para crear un perfil
+ * Comando para eliminar un perfil
  */
-public class CreateProfileCommand extends BaseCommand {
+public class DeleteProfileCommand extends BaseCommand {
 
-    private String TAG = "CreateProfileCommand";
+    private String TAG = "DeleteProfileCommand";
 
     /**
      * Se asignan los parametros del commando
-     * @return el parametro Profile
+     * @return el parametro id Profile
      */
 
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[1];
-        parameters[0] = new Parameter(Profile.class, true);
+        parameters[0] = new Parameter(int.class, true);
 
         return parameters;
     }
@@ -33,15 +33,15 @@ public class CreateProfileCommand extends BaseCommand {
     @Override
     protected void invoke() {
 
-        Log.d(TAG, "Comando para agregar un perfil a un commensal");
-        Profile profile;
+        Log.d(TAG, "Comando para eliminar un perfil a un commensal");
+        int idProfile;
 
         ProfileService profileService = FondaServiceFactory.getInstance()
                 .getProfileService(SessionData.getInstance().getToken());
         try
         {
-            profile = (Profile) getParameter(0);
-            profileService.addProfile(profile);
+            idProfile = (int) getParameter(0);
+            profileService.deleteProfile(idProfile);
         }
         catch (RestClientException e)
         {

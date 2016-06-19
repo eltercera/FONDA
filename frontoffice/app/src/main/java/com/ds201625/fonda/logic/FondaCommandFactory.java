@@ -6,6 +6,9 @@ import com.ds201625.fonda.logic.Commands.ProfileCommand.CreateProfileCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.DeleteFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommand.DeleteProfileCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommand.GetProfilesCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommand.UpdateProfileCommand;
 
 /**
  * Fabrica de comandos
@@ -34,7 +37,7 @@ public class FondaCommandFactory {
      * Crea un CreateProfileCommand
      * @return comando CreateProfileCommand
      */
-    public Command createCreateProfileCommand() {
+    public static Command createCreateProfileCommand() {
         return  new CreateProfileCommand();
     }
 
@@ -77,4 +80,27 @@ public class FondaCommandFactory {
     public static Command requireLogedCommensalCommand() {
         return  new RequireLogedCommensalCommand();
     }
+
+    /**
+     * Crea un updateProfileCommand
+     * @return comando updateProfileCommand
+     */
+    public static Command updateProfileCommand() {
+        return  new UpdateProfileCommand();
+    }
+
+    /**
+     * Crea un deleteProfileCommand
+     * @return comando deleteProfileCommand
+     */
+    public static Command deleteProfileCommand() {
+        return  new DeleteProfileCommand();
+    }
+
+    /**
+     * Crea un getProfilesCommand
+     * @return comando getProfilesCommand
+     */
+    public static Command getProfilesCommand() { return  new GetProfilesCommand(); }
 }
+

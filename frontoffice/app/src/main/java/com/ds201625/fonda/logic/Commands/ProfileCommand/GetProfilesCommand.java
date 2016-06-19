@@ -5,43 +5,42 @@ import android.util.Log;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
-import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.SessionData;
 
-/**
- * Comando para crear un perfil
- */
-public class CreateProfileCommand extends BaseCommand {
+import java.util.List;
 
-    private String TAG = "CreateProfileCommand";
+/**
+ * Comando para buscar los perfiles de un commensal
+ */
+public class GetProfilesCommand extends BaseCommand {
+
+    private String TAG = "GetProfilesCommand";
 
     /**
-     * Se asignan los parametros del commando
-     * @return el parametro Profile
+     * No tiene Parametros
+     * @return
      */
 
     @Override
     protected Parameter[] setParameters() {
-        Parameter [] parameters = new Parameter[1];
-        parameters[0] = new Parameter(Profile.class, true);
-
+        Parameter [] parameters = new Parameter[0];
         return parameters;
     }
 
     @Override
     protected void invoke() {
 
-        Log.d(TAG, "Comando para agregar un perfil a un commensal");
-        Profile profile;
+        Log.d(TAG, "Comando para buscar los perfiles de un commensal");
+        List<Profile> profiles = null;
 
         ProfileService profileService = FondaServiceFactory.getInstance()
                 .getProfileService(SessionData.getInstance().getToken());
         try
         {
-            profile = (Profile) getParameter(0);
-            profileService.addProfile(profile);
+            profiles = profileService.getProfiles();
         }
         catch (RestClientException e)
         {
@@ -58,6 +57,6 @@ public class CreateProfileCommand extends BaseCommand {
             e.printStackTrace();
         }
 
-        setResult(true);
+        setResult(profiles);
     }
 }
