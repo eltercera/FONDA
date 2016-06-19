@@ -40,28 +40,14 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para obtener los restaurantes favoritos");
-
+        FavoriteRestaurantService serviceFavorits = FondaServiceFactory.getInstance()
+                .getFavoriteRestaurantService();
         idCommensal = FondaEntityFactory.getInstance().GetCommensal();
 
         try {
-            idCommensal = (Commensal) getParameter(0);
-            //AKI IRAN D BO DE PARAMETROS
-        } catch (Exception eee) {
-       //     Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", eee);
-        }
-
-        try {
-            idCommensal = (Commensal) this.getParameter(1);
-            //LO MISMO AQUI
-        } catch (Exception ee) {
-           // Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
-        }
-
-        FavoriteRestaurantService serviceFavorits = FondaServiceFactory.getInstance()
-                .getFavoriteRestaurantService();
-
-        try {
+            idCommensal = (Commensal) this.getParameter(0);
             restaurantList =  serviceFavorits.getAllFavoriteRestaurant(idCommensal.getId());
+            //AKI IRAN D BO DE PARAMETROS
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
         } catch (NullPointerException e) {
