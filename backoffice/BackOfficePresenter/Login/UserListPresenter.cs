@@ -321,7 +321,7 @@ namespace BackOfficePresenter.Login
             int _length = (_employee.Ssn.Length) - 2;
             _view.textBoxNss2.Text = _employee.Ssn.Substring(2, _length);
             _view.DropDownListGender.Text = _employee.Gender.ToString();
-            _view.textBoxBirtDate.Text = _employee.BirthDate.ToString("dd/MM/yyyy");
+            _view.textBoxBirtDate.Value = _employee.BirthDate.ToString("dd/MM/yyyy");
             _view.textBoxUserNameU.Text = _employee.Username;
             _view.DropDownListRole.Text = _employee.Role.Id.ToString();
             _view.textBoxEmail.Text = _employee.UserAccount.Email;
@@ -348,7 +348,7 @@ namespace BackOfficePresenter.Login
             _view.textBoxEmail.Attributes["placeholder"] = "nickname@ejemplo.com";
             _view.textBoxPhoneNumber.Text = "";
             _view.textBoxPhoneNumber.Attributes["placeholder"] = "Ej. 04127890544";
-            _view.textBoxBirtDate.Text = "";
+            _view.textBoxBirtDate.Value = "";
             _view.textBoxBirtDate.Attributes["placeholder"] = "DD/MM/YYYY";
             _view.DropDownListRole.Items.Clear();
             _view.DropDownListRole.Items.Add("");
@@ -471,7 +471,7 @@ namespace BackOfficePresenter.Login
         /// <param name="sender"></param>
         public bool ModalAddModify_Click(object sender)
         {
-            
+            System.Diagnostics.Debug.WriteLine(_view.textBoxBirtDate.Value);
             if (ValidarCampo(_view.buttonButtonAddModify.Text))
             {
                 System.Diagnostics.Debug.WriteLine("entre validarcampos");
@@ -691,7 +691,9 @@ namespace BackOfficePresenter.Login
             string Nacionalidad= Convert.ToString(_view.dropDownListNss1.Text);
             string Identity = _view.dropDownListNss1.Text;
             string Dni = _view.textBoxNss2.Text;
-            string Birthdate = _view.textBoxBirtDate.Text;
+            string Birthdate = _view.textBoxBirtDate.Value;
+            String[] substrings = Birthdate.Split('-');
+            Birthdate = substrings[2] + '/' + substrings[1] + '/' + substrings[0];
             string Phone = _view.textBoxPhoneNumber.Text;
             string Gender = Convert.ToString(_view.DropDownListGender.Text);
             string Address = _view.textBoxAddress.Text;
@@ -1126,8 +1128,14 @@ namespace BackOfficePresenter.Login
             }
             if (_view.DropDownListGender.Text != "")
                 _employee.Gender = char.Parse(_view.DropDownListGender.SelectedValue);
-            if (_view.textBoxBirtDate.Text != "")
-                _employee.BirthDate = DateTime.Parse(_view.textBoxBirtDate.Text);
+            if (_view.textBoxBirtDate.Value != "")
+            {
+                string Birthdate = _view.textBoxBirtDate.Value;
+                String[] substrings = Birthdate.Split('-');
+                Birthdate = substrings[2] + '/' + substrings[1] + '/' + substrings[0];
+                _employee.BirthDate = DateTime.Parse(Birthdate);
+            }
+                
             if (_view.textBoxUserNameU.Text != "")
                 _employee.Username = _view.textBoxUserNameU.Text;
             if (_view.DropDownListRole.Text != "")

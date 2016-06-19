@@ -862,10 +862,10 @@ namespace BackOffice.Seccion.Configuracion
             set { phoneNumber = value; }
         }
         //fecha nacimiento del empleado a agregar
-        public TextBox textBoxBirtDate
+        public HtmlInputGenericControl textBoxBirtDate
         {
-            get { return birtDate; }
-            set { birtDate = value; }
+            get { return birtDate2; }
+            set { birtDate2 = value; }
         }
         //Rol del empelado agregar
         public DropDownList DropDownListRole

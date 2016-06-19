@@ -39,8 +39,8 @@
                        <div class="alert alert-success" id="successLog" runat="server">
                        </div>
 
-                     <input type="text" id="userIni" placeholder="Usuario" runat="server" class="form-control input-lg"  />         
-                     <input type="password" class="form-control input-lg" id="passwordIni" runat="server"  placeholder="Contraseña" required="" />                    
+                     <input type="text" id="userIni" placeholder="Usuario" runat="server" class="form-control input-lg"  maxlength ="15"/>         
+                     <input type="password" class="form-control input-lg" id="passwordIni" runat="server"  placeholder="Contraseña" required="" maxlength ="15"/>                    
                      <div class="pwstrength_viewport_progress"></div>
                      <button type="button"  runat="server" id="buttonLogin" name="go" onserverclick="Uservalidate" class="btn btn-lg btn-success btn-block" style="background-color: #643C25;border-color: #000;">Entrar</button>
                      <div>
@@ -56,13 +56,13 @@
                                   <div class="modal-body">
                                      <p>Introduzca el correo asociado a su cuenta, de no conocerlo contacte a su administrador</p>
                                         <input type="text" name="correo" id="user" runat="server" placeholder="Usuario" 
-                                      class="form-control input-lg" value="" />  
+                                      class="form-control input-lg" value="" maxlength ="15"/>  
                                      <input type="email" name="correo" id="RestablecerCorreo" runat="server" placeholder="Correo" 
-                                      class="form-control input-lg" value="" />   
+                                      class="form-control input-lg" value="" maxlength ="30"/>   
                                             <input type="password" name="correo" id="password1" runat="server" placeholder="Contraseña nueva" 
-                                      class="form-control input-lg" value="" />  
+                                      class="form-control input-lg" value="" maxlength ="15"/>  
                                             <input type="password" name="correo" id="password2" runat="server" placeholder="Repita la contraseña" 
-                                      class="form-control input-lg" value="" />        
+                                      class="form-control input-lg" value="" maxlength ="15"/>        
                                   </div>
                                   <div class="modal-footer">
                                    <button type="button"   runat="server"    data-dismiss="modal" onserverclick="Recoverpassword" class="btn btn-lg btn-success btn-block" style="background-color: #643C25;border-color: #000;"  >Restablecer</button>

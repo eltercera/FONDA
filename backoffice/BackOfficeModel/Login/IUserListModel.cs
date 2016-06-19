@@ -19,7 +19,7 @@ namespace BackOfficeModel.Login
         TextBox textBoxAddress { get; set; }
         TextBox textBoxEmail { get; set; }
         TextBox textBoxPhoneNumber { get; set; }
-        TextBox textBoxBirtDate { get; set; }
+        HtmlInputGenericControl textBoxBirtDate { get; set; }
         DropDownList DropDownListRole { get; set; }
         DropDownList DropDownListGender { get; set; }
         TextBox textBoxPaswword { get; set; }

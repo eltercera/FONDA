@@ -40,7 +40,8 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para eliminar un restaurante de favoritos");
-
+        FavoriteRestaurantService serviceFavorits = FondaServiceFactory.getInstance()
+                .getFavoriteRestaurantService();
         commensal = FondaEntityFactory.getInstance().GetCommensal();
         idCommensal = FondaEntityFactory.getInstance().GetCommensal();
         idRestaurant = FondaEntityFactory.getInstance().GetRestaurant();
@@ -48,16 +49,7 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
         try {
             idCommensal = (Commensal) getParameter(0);
             idRestaurant = (Restaurant) getParameter(1);
-            //AKI IRA LAS D PARAMTROS RECIBIDAS D BO
-        } catch (Exception eee) {
-            //Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
-        }
-
-        FavoriteRestaurantService serviceFavorits = FondaServiceFactory.getInstance()
-                .getFavoriteRestaurantService();
-
-        try {
-             commensal =  serviceFavorits.deleteFavoriteRestaurant(idCommensal.getId(),idRestaurant.getId());
+            commensal =  serviceFavorits.deleteFavoriteRestaurant(idCommensal.getId(),idRestaurant.getId());
             //AKI FALTAN LAS RECIBIDAS DE BO
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
