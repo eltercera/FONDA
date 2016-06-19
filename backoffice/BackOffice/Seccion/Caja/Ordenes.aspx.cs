@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
-using com.ds201625.fonda.Domain;
-using System.Web.Services;
-using System.Web.Script.Serialization;
 using BackOfficeModel.OrderAccount;
-using BackOffice.Seccion.Restaurant;
-using System.Web.SessionState;
 using FondaResources.OrderAccount;
 using FondaResources.Login;
 using BackOfficeModel;
@@ -21,7 +9,7 @@ using BackOffice.Content;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class Default : System.Web.UI.Page, IOrdersModel
+    public partial class Ordenes : System.Web.UI.Page, IOrdersModel
     {
         #region Presenter
 
@@ -53,14 +41,27 @@ namespace BackOffice.Seccion.Caja
             set { orderList = value; }
         }
 
+        public Button CloseButton
+        {
+            get { return closeCR; }
+            
+            set { closeCR = value; }
+        }
+
         /// <summary>
         /// Recurso de Session para el ID de la orden
         /// </summary>
         string IOrdersModel.Session
         {
-            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
+            get
+            {
+                return Session[OrderAccountResources.SessionIdAccount].ToString();
+            }
 
-            set { Session[OrderAccountResources.SessionIdAccount] = value; }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public string SessionRestaurant
@@ -90,7 +91,7 @@ namespace BackOffice.Seccion.Caja
 
         #region Constructor
 
-        public Default()
+        public Ordenes()
         {
                   _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter(this);
         }
@@ -110,6 +111,9 @@ namespace BackOffice.Seccion.Caja
                 Response.Redirect(RecursoMaster.addressLogin);
         }
 
-        
+        protected void CloseCashRegister_Click(object sender, EventArgs e)
+        {
+            _presenter.Close();
+        }
     }
 }

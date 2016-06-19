@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace BackOfficeModel.OrderAccount
 {
-    public interface IDetailOrderModel : IModel
+    public interface IInvoiceDetailContract : IModel
     {
-        Table DetailOrderTable { get; set; }
+        Table DetailInvoiceTable { get; set; }
 
         string Session { get; set; }
 
