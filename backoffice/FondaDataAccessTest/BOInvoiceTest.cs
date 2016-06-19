@@ -13,41 +13,58 @@ namespace FondaDataAccessTest
     [TestFixture()]
     public class BOInvoiceTests
     {
-        private IList<Invoice> _listInvoices;
+        #region Fields
+
         private FactoryDAO _facDAO;
-        private Restaurant _restaurant;
-        private Invoice _invoice;
-        private Invoice _invoiceCompare;
-        private Account _account;
         private IInvoiceDao _invoiceDAO;
         private IOrderAccountDao _accountDAO;
-        IRestaurantDAO _restaurantDAO;
-        private int _number, _accountId, _restaurantId;
+        private IProfileDAO _profileDao;
+        private IRestaurantDAO _restaurantDAO;
+        private Restaurant _restaurant;
+        private Invoice _invoice;
+        private Account _account;
+        private CashPayment _cashPayment;
+        private CreditCardPayment _creditPayment;
+        private Profile _profile;
+        private IList<Invoice> _listInvoices;
+        private int _number, _accountId, _restaurantId, _profileId;
+        private float _amount, _tax;
+
+        #endregion
 
         [SetUp]
         public void Init()
         {
             _facDAO = FactoryDAO.Intance;
-            //_number = 0;
-            //_table = new Table();
-            //_commensal = new Commensal();
-            //_listOrder = new List<DishOrder>();
-            _restaurantId = 1;
-            _account = (Account)EntityFactory.GetAccount();
-            _accountId = 2;
+
+            //Llama a interfaces DAO
             _restaurantDAO = _facDAO.GetRestaurantDAO();
             _accountDAO = _facDAO.GetOrderAccountDAO();
             _invoiceDAO = _facDAO.GetInvoiceDao();
 
+            //Inicializa variables
+            _accountId = 2;
+            _restaurantId = 1;
+            _profileId = 1;
+            _tax = _amount * 0.12F;
+
+            //Consigue eventos de la Base de Datos
             _restaurant = _restaurantDAO.FindById(_restaurantId);
             _account = _accountDAO.FindById(_accountId);
-            _invoice = (Invoice)EntityFactory.GetInvoice();
-            _invoiceDAO = _facDAO.GetInvoiceDao();
+            _profile = _profileDao.FindById(_profileId);
+
+            _number = _invoiceDAO.GenerateNumberInvoice(_restaurant);
+
+            //Instancia objetos a utilizar
+            _cashPayment = EntityFactory.GetCashPayment(_amount);
+            _invoice = EntityFactory.GetInvoice(
+                _cashPayment, _profile, _amount, _tax, _restaurant.Currency, _number);
+
+            
             _listInvoices = new List<Invoice>();
         }
 
         [Test]
-        //[Ignore("Cambio en el Mapping de Invoice")]
         public void FindInvoiceByRestaurantTest()
         {
 
@@ -59,7 +76,6 @@ namespace FondaDataAccessTest
         }
 
         [Test]
-        //[Ignore("Cambio en el Mapping de Invoice")]
         public void GenerateNumberInvoice()
         {
 
@@ -70,6 +86,7 @@ namespace FondaDataAccessTest
         }
 
         [Test]
+        [Ignore("Probar los cambios realizados")]
         public void FindGenerateInvoiceByAccountTest()
         {
 
@@ -80,33 +97,27 @@ namespace FondaDataAccessTest
         }
 
         [Test]
+        [Ignore("Probar los cambios realizados")]
         public void FindInvoicesByAccountTest()
         {
 
-            //_listInvoices = _invoiceDAO.FindInvoicesByAccount(_account);
+            _listInvoices = _invoiceDAO.FindInvoicesByAccount(_accountId);
             Assert.IsNotNull(_listInvoices);
             Assert.AreEqual(_listInvoices[0].Id,2);
         }
 
         [Test]
-        [Ignore("Falta implementar")]
         public void SaveInvoiceTest()
         {
-
+            _invoiceDAO.Save(_invoice);
 
         }
 
 
-        [TestFixtureTearDown]
+        [TearDown]
         public void EndTests()
         {
-            //if (_invoiceId != 0)
-            //{
-            //    //getInvoiceDao();
-            //    // Eliminacion de la Persona al finalidar todo.
-            //    //_personDAO.Delete(_person);
-            //}
-            _invoiceDAO.ResetSession();
+
         }
     }
 }
