@@ -38,7 +38,7 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para agregar un restaurante a favoritos");
-        FavoriteRestaurantService ps = FondaServiceFactory.getInstance()
+        FavoriteRestaurantService favRestService = FondaServiceFactory.getInstance()
                 .getFavoriteRestaurantService();
         Commensal commensal = FondaEntityFactory.getInstance().GetCommensal();
         Commensal idCommensal;
@@ -46,7 +46,8 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
         try {
             idCommensal = (Commensal) getParameter(0);
             idRestaurant = (Restaurant) getParameter(1);
-            commensal =  ps.AddFavoriteRestaurant(idCommensal.getId(),idRestaurant.getId());
+            commensal =  favRestService.AddFavoriteRestaurant(idCommensal.getId(),
+                    idRestaurant.getId());
             //AKI IRAN MAS EXCEPCIONES RECIBIDAS D BO
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
