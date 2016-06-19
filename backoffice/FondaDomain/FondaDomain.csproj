@@ -65,10 +65,10 @@
     <Compile Include="Domain\CanceledInvoiceStatus.cs" />
     <Compile Include="Domain\CanceledReservationStatus.cs" />
     <Compile Include="Domain\CashPayment.cs" />
+    <Compile Include="Domain\CreditCardPayment.cs" />
     <Compile Include="Domain\ReservationStatus.cs" />
     <Compile Include="Domain\ClosedAccountStatus.cs" />
     <Compile Include="Domain\Coordinate.cs" />
-    <Compile Include="Domain\CreditCarPayment.cs" />
     <Compile Include="Domain\Currency.cs" />
     <Compile Include="Domain\Day.cs" />
     <Compile Include="Domain\Dish.cs" />

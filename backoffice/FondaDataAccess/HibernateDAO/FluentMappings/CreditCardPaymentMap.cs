@@ -3,7 +3,7 @@ using FluentNHibernate.Mapping;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 {
-    public class CreditCardPaymentMap : SubclassMap<com.ds201625.fonda.Domain.CreditCarPayment>
+    public class CreditCardPaymentMap : SubclassMap<com.ds201625.fonda.Domain.CreditCardPayment>
     {
         public CreditCardPaymentMap()
         {

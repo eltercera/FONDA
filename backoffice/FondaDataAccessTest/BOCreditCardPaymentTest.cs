@@ -13,7 +13,7 @@ namespace FondaDataAccessTest
         private FactoryDAO _facDAO;
 
         private ICreditCardPaymentDAO _creditCardPaymentDAO;
-        private CreditCarPayment _creditCardPayment;  
+        private CreditCardPayment _creditCardPayment;  
         private int _creditCardPaymentId;
 
         /// <summary>
