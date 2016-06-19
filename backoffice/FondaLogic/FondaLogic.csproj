@@ -70,6 +70,7 @@
     <Compile Include="FondaCommandException\CommandExceptionGetRestaurant.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetRol.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetUserAccount.cs" />
+    <Compile Include="FondaCommandException\CommandExceptionSaveUserAccount.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

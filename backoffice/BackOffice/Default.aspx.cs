@@ -8,6 +8,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using BackOfficePresenter.Login;
 using FondaResources.Login;
+using BackOffice.Content;
 
 namespace BackOffice
 {
@@ -19,7 +20,12 @@ namespace BackOffice
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadDataTable();
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                LoadDataTable();
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
 
         /// <summary>

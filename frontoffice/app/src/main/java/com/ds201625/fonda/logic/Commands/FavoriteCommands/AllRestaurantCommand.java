@@ -15,13 +15,16 @@ import java.util.List;
  * Comando para consultar todos los restaurantes favoritos
  */
 public class AllRestaurantCommand extends BaseCommand {
+
     private String TAG = "AllRestaurantCommand";
+    private List<Restaurant> restaurantList = null;
     /**
      * Asigna valor a los parametros
      * @return parametros comensal y restaurant
      */
     @Override
     protected Parameter[] setParameters() {
+
         Parameter [] parameters = new Parameter[0];
         return parameters;
     }
@@ -30,13 +33,13 @@ public class AllRestaurantCommand extends BaseCommand {
      */
     @Override
     protected void invoke() {
-        Log.d(TAG, "Comando para obtener los restaurantes");
-        List<Restaurant> restaurantList = null;
 
-        AllRestaurantService ps = FondaServiceFactory.getInstance().getAllRestaurantsService();
+        Log.d(TAG, "Comando para obtener los restaurantes");
+
+        AllRestaurantService serviceAllRestaurants = FondaServiceFactory.getInstance().getAllRestaurantsService();
 
         try {
-            restaurantList =  ps.getAllRestaurant();
+            restaurantList =  serviceAllRestaurants.getAllRestaurant();
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes", e);
         }

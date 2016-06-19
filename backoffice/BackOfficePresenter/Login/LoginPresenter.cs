@@ -206,6 +206,7 @@ namespace BackOfficePresenter.Login
                 }
                 catch (SaveEntityFondaDAOException ex)
                 {
+                    mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
                     //TODO: Arrojar Excepcion personalizada
                     CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
                     //Arrojar
