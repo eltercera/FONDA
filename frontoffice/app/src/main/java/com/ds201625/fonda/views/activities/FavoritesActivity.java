@@ -18,6 +18,7 @@ import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
+import com.ds201625.fonda.views.fragments.FavoritesEmptyFragment;
 import com.ds201625.fonda.views.fragments.FavoritesListFragment;
 
 import java.util.ArrayList;
@@ -41,6 +42,11 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      * Fragmento favoritos
      */
     private FavoritesListFragment fv;
+
+    /**
+     * Fragmento favoritos vacio
+     */
+    private FavoritesEmptyFragment favoritesEmptyFragment;
     /**
      * Fragmento de Detalle de restaurant
      */
@@ -100,16 +106,25 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                     // Creacion de fragmen y pase argumento
                     fv = new FavoritesListFragment();
                     detailRestaurantFrag = new DetailRestaurantFragment();
-                    Bundle args = new Bundle();
-                    args.putBoolean("multiSelect", true);
-                    fv.setArguments(args);
+                    favoritesEmptyFragment = new FavoritesEmptyFragment();
 
-                    //Lanzamiento de profileListFrag como el principal
-                    fm.beginTransaction()
-                            .replace(R.id.fragment_container_fav, fv)
-                            .commit();
+            if(!isEmptyFavorite()) {
+                Bundle args = new Bundle();
+                args.putBoolean("multiSelect", true);
+                fv.setArguments(args);
 
+                //Lanzamiento de favoriteListFrag como el principal
+                fm.beginTransaction()
+                        .replace(R.id.fragment_container_fav, fv)
+                        .commit();
 
+            }else
+            {
+                //Lanzamiento de favoriteListFrag como el principal
+                fm.beginTransaction()
+                        .replace(R.id.fragment_container_fav, favoritesEmptyFragment)
+                        .commit();
+            }
                     // Asegura que almenos onCreate se ejecuto en el fragment
                     fm.executePendingTransactions();
 
@@ -215,9 +230,16 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                 selectedRestaurant = detailRestaurantFrag.getRestaurant();
                 //Llamo al presentador de deleteFavoriteRestaurant
                 presenter.deleteFavoriteRestaurant(selectedRestaurant);
-                Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
+                Toast.makeText(getApplicationContext(),
+                        R.string.favorite_remove_success_meessage,
                         Toast.LENGTH_LONG).show();
-                 showFragment(fv);
+
+
+                if (isEmptyFavorite())
+                    showFragment(favoritesEmptyFragment);
+                else
+                    showFragment(fv);
+
             }
             catch (NullPointerException nu) {
                 Log.e(TAG,"Error en removeFavorite al eliminar un favorito",nu);
@@ -227,6 +249,30 @@ public class FavoritesActivity extends BaseNavigationActivity implements
         }
         hideKyboard();
          Log.d(TAG,"Se ha eliminado un favorito");
+    }
+
+
+
+    /**
+     * Devuelve el estado de los restaurantes favoritos con respecto al usuario.
+     * @param
+     * @return Boolean.
+     */
+    public boolean isEmptyFavorite() {
+        try {
+            //Llamo al comando de requireLogedCommensalCommand
+            presenter.findLoggedComensal();
+            List<Restaurant> restaurantList = presenter.findAllFavoriteRestaurant();
+
+               if (restaurantList.size() == 0) {
+                    return true;
+                }
+
+        }
+        catch (Exception e) {
+            Log.e(TAG,"Error al determinar si el commensal tiene favoritos",e);
+        }
+        return false;
     }
 
     /**
