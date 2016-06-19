@@ -50,7 +50,7 @@ namespace FondaLogic.Commands.OrderAccount
                 //Arrojar
                 FondaResources.General.Errors.NullExceptionReferenceCode,
                 FondaResources.OrderAccount.Errors.ClassNameGetOrder,
-                FondaResources.OrderAccount.Errors.CommandMethod,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 FondaResources.General.Errors.NullExceptionReferenceMessage,
                 ex);
 

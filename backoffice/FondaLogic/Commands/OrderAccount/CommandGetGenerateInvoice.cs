@@ -15,7 +15,7 @@ namespace FondaLogic.Commands.OrderAccount
     {
 
         FactoryDAO _facDAO = FactoryDAO.Intance;
-        Account _account = (Account)EntityFactory.GetAccount();
+        Account _account = EntityFactory.GetAccount();
 
         public CommandGetGenerateInvoice(Object receiver) : base(receiver)
         {

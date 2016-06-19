@@ -28,6 +28,27 @@ namespace FondaLogic.Factory
         #region OrderAccount
 
 
+        //Se obtienen los comandos a a utilizar
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandFindInvoicesByRestaurant
+        /// </summary>
+        /// <param name="entity">Id del Restaurante</param>
+        /// <returns>comando CommandGetOrders</returns>
+        public static Command GetCommandFindInvoicesByRestaurant(object receiver)
+        {
+            return new CommandFindInvoicesByRestaurant(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandPrintInvoice
+        /// </summary>
+        /// <param name="entity">Id del Restaurante</param>
+        /// <returns>comando CommandGetOrders</returns>
+        public static Command GetCommandPrintInvoice(object receiver)
+        {
+            return new CommandPrintInvoice(receiver);
+        }
 
         /// <summary>
         /// Metodo de la fabrica para el Comando CommandGetOrders
@@ -61,7 +82,7 @@ namespace FondaLogic.Factory
         }
 
         /// <summary>
-        /// Metodo de la fabrica para el ComandoDetailOrder
+        /// Metodo de la fabrica para el CommmandDetailOrder
         /// </summary>
         /// <param name="receiver">Id de la orden</param>
         /// <returns>comando CommandDetailOrder</returns>
@@ -71,14 +92,23 @@ namespace FondaLogic.Factory
             return new CommandDetailOrder(receiver);
         }
 
+        /// <summary>
+        /// Metodo de la fabrica para el CommandCloseCashRegister
+        /// </summary>
+        /// <param name="receiver">Id del Restaurante</param>
+        public static Command GetCommandCloseCashRegister(object receiver)
+        {
+            return new CommandCloseCashRegister(receiver);
+        }
 
-        #endregion
-
-        #region Invoice
-
- 
-
-
+        /// <summary>
+        /// Metodo de la fabrica para el CommandGetCurrency
+        /// </summary>
+        /// <param name="receiver">Id del Restaurante</param>
+        public static Command GetCommandGetCurrency(object receiver)
+        {
+            return new CommandGetCurrency(receiver);
+        }
 
         #endregion
 

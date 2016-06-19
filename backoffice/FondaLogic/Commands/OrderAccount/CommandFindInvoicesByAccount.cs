@@ -11,14 +11,14 @@ namespace FondaLogic.Commands.OrderAccount
 {
     public class CommandFindInvoicesByAccount : Command
     {
-        FactoryDAO _facDAO = FactoryDAO.Intance;
-        Account _account = new Account();
+        private FactoryDAO _facDAO = FactoryDAO.Intance;
+        private int _accountId = 0;
 
         public CommandFindInvoicesByAccount(Object receiver) : base(receiver)
         {
             try
             {
-                _account = (Account)receiver;
+                _accountId = (int)receiver;
             }
             catch (Exception)
             {
@@ -36,7 +36,7 @@ namespace FondaLogic.Commands.OrderAccount
                 //Obtengo la instancia del DAO a utilizar
                 _invoicerDAO = _facDAO.GetInvoiceDao();
                 //Obtengo el objeto con la informacion enviada
-                IList<Invoice> listInvoices = _invoicerDAO.FindInvoicesByAccount(_account);
+                IList<Invoice> listInvoices = _invoicerDAO.FindInvoicesByAccount(_accountId);
                 Receiver = listInvoices;
 
             }
