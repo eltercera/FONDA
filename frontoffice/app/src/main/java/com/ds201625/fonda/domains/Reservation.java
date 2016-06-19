@@ -9,15 +9,14 @@ public class Reservation extends BaseEntity {
     private Date reserveDate;
     private Date createDate;
     private int commensalNumber;
-    private Restaurant restaurant;
-    private Commensal user;
+    private boolean status;
 
-    public Reservation(Date reserveDate, Date createDate, int commensalNumber, Restaurant restaurant, Commensal user) {
+
+    public Reservation(Date reserveDate, Date createDate, int commensalNumber, boolean status) {
         this.reserveDate = reserveDate;
         this.createDate = createDate;
         this.commensalNumber = commensalNumber;
-        this.restaurant = restaurant;
-        this.user = user;
+        this.status = status;
     }
 
     public Date getReserveDate() {
@@ -44,19 +43,7 @@ public class Reservation extends BaseEntity {
         this.commensalNumber = commensalNumber;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
+    public void setStatus(boolean status) {this.status= status; }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
-
-    public Commensal getUser() {
-        return user;
-    }
-
-    public void setUser(Commensal user) {
-        this.user = user;
-    }
+    public boolean getStatus(){ return status;}
 }
