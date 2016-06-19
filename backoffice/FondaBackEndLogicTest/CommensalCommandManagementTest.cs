@@ -68,19 +68,14 @@ namespace FondaBackEndLogicTest
         public void GetCommensalCommandTest()
         {
 
-            _createCommensal.SetParameter(0, _commensal);
-            _createCommensal.Run();
-            Commensal _commensalR = (Commensal)_createCommensal.Result;
-
-            _idCommensal = _commensalR.Id;
-            _getCommensal.SetParameter(0, _commensalR);
+            _commensal.Id = 1;
+            _getCommensal.SetParameter(0, _commensal);
             _getCommensal.Run();
             Commensal _result = (Commensal)_getCommensal.Result;
 
             Assert.NotNull(_result);
             Assert.AreNotEqual(0, _result.Id);
-            Assert.AreEqual(_commensalR.Id, _result.Id);
-            Assert.AreEqual(_result.Email, _commensalR.Email);
+            Assert.AreEqual(1, _result.Id);
         }
 
         /// <summary>
