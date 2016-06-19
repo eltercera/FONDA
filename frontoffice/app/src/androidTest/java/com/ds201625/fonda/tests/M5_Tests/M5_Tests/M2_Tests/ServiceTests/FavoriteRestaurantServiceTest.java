@@ -264,7 +264,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
     }
 
 
-    public void testAllFavoriteRestaurantNullPointerException() {
+    public void testAllFavoriteRestaurantIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
             restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(prueba.getId());
@@ -277,7 +277,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
     }
 
-    public void testAddFavoriteRestauranNullPointerException() {
+    public void testAddFavoriteRestauranIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
             commensal = favoriteRestaurantService.AddFavoriteRestaurant(prueba.getId(),
@@ -291,7 +291,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
     }
 
-    public void testDeleteFavoriteRestauranNullPointerException() {
+    public void testDeleteFavoriteRestauranIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
             commensal = favoriteRestaurantService.deleteFavoriteRestaurant(prueba.getId(),

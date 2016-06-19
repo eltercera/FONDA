@@ -136,7 +136,7 @@ public class RequireLogedCommensalCommandTest extends TestCase {
         }
     }
 
-    public void testtLogedCommensalNullPointerException() {
+    public void testtLogedCommensalIsNull() {
         try {
 
             cmd = facCmd.requireLogedCommensalCommand();

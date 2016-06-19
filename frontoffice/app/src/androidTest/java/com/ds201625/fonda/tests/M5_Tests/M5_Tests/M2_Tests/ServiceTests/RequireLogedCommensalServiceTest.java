@@ -117,7 +117,7 @@ public class RequireLogedCommensalServiceTest extends TestCase {
         }
     }
 
-    public void testtLogedCommensalNullPointerException() {
+    public void testtLogedCommensalIsNull() {
         try {
 
             commensal = requireLogedCommensal.getLogedCommensal("yuneth@gmail.com");
