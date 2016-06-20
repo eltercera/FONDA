@@ -11,8 +11,7 @@ namespace FondaLogic.Commands.OrderAccount
 {
     public class CommandGetDetailOrder : Command
     {
-        private int orderId, restaurantId;
-        List<int> parameter;
+        private List<int> parameter;
 
         public CommandGetDetailOrder(Object receiver) : base (receiver) { }
 
@@ -44,8 +43,6 @@ namespace FondaLogic.Commands.OrderAccount
                         commandGetOrder.Receiver,
                         commandGetCurrency.Receiver
                     };
-                  
-
 
             }
             catch (Exception ex)

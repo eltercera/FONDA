@@ -58,8 +58,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             }
             
             Account account = GetAccount(commensal);
-            //MALENA REVISA ESTO, PORQUE EN LA SIGUIENTE LINEA SE LE CAMBIA EL STATUS CUANDO SE CIERRA
-            //LA ORDEN
+
             //account.Status = FactoryDAO.GetClosedAccountStatus();
             try
             {
