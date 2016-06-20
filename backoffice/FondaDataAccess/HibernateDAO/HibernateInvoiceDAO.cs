@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using NHibernate.Criterion;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.Factory;
+using NHibernate;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -62,6 +63,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             try
             {
                 Invoice _invoice = new Invoice();
+                Invoice result;
 
                 if (_account.Status.Equals(ClosedAccountStatus.Instance))
                 {
@@ -76,8 +78,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                         }
                     }
                 }
-                
-                return _invoice;
+
+                Payment payment = (Payment) Session.GetSessionImplementation().PersistenceContext.Unproxy(_invoice.Payment);
+                result = EntityFactory.GetInvoice(payment, _invoice.Profile, _invoice.Total, _invoice.Tax, _invoice.Currency,
+                    _invoice.Number);
+
+                return result;
             }
             catch (ArgumentOutOfRangeException e)
             {

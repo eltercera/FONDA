@@ -65,7 +65,7 @@ namespace FondaLogic.Commands.OrderAccount
                 String bla = _invoice.Payment.GetType().Name;
 
 
-                 if (_invoice.Payment.GetTypeUnproxied().Name.Equals(OrderAccountResources.CreditCard))
+                 if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
                 {
                     _creditCardPayment = (CreditCardPayment)_invoice.Payment;
                     tip = _creditCardPayment.Tip;
