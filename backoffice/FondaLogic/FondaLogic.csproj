@@ -101,6 +101,7 @@
     <Compile Include="FondaCommandException\CommandExceptionSaveUserAccount.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionPayOrder.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionPrintInvoice.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionReleaseTableByRestaurant.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionTotalOrder.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Log\Logger.cs" />
