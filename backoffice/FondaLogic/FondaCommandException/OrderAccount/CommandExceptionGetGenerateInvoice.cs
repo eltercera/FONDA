@@ -8,7 +8,7 @@ namespace FondaLogic.FondaCommandException
 {
     /// <summary>
     /// Excepcion arrojada en caso de que no se pueda generar la factura
-    class CommandExceptionGetGenerateInvoice : CommandException
+    public class CommandExceptionGetGenerateInvoice : CommandException
     {
         #region Constructors
 

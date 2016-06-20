@@ -16,6 +16,7 @@ namespace FondaBackOfficeLogicTest
 {
     public class BOCommandInvoiceTest
     {
+        #region fields
         private int _restaurantId, _profileId,_accountId, _invoiceId;
         private Command _command;
         private IList<Account> _listClosedOrders;
@@ -32,8 +33,11 @@ namespace FondaBackOfficeLogicTest
         private CashPayment _cashPayment;
         private CreditCardPayment _creditPayment;
 
+        #endregion
 
+        #region Setup
         [SetUp]
+        
         public void Init()
         {
             _facDAO = FactoryDAO.Intance;
@@ -63,6 +67,8 @@ namespace FondaBackOfficeLogicTest
             _invoice = _invoiceDAO.FindById(_invoiceId);
             //IBaseEntityDAO<Payment> bla = _facDAO
         }
+
+        #endregion
 
         [Test]
         public void CommandFindInvoicesByRestaurantTest()
