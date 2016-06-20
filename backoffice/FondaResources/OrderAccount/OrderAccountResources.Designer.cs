@@ -196,6 +196,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Iva.
+        /// </summary>
+        public static string IVAColumn {
+            get {
+                return ResourceManager.GetString("IVAColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to # Orden.
         /// </summary>
         public static string OrderNumberColumn {

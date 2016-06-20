@@ -103,6 +103,20 @@ namespace FondaLogic.Factory
         }
 
         /// <summary>
+        /// Metodo de la fabrica para el CommmandGetInvoice
+        /// </summary>
+        /// <param name="receiver">Id de la factura</param>
+        /// <returns>comando CommandGetInvoice</returns>
+        /// 
+        public static Command GetCommandGetInvoice(object receiver)
+        {
+            return new CommandGetInvoice(receiver);
+        }
+        public static Command GetCommandGenerateException(object receiver)
+        {
+            return new CommandGenerateException(receiver);
+        }
+        /// <summary>
         /// Metodo de la fabrica para el CommandCloseCashRegister
         /// </summary>
         /// <param name="receiver">Id del Restaurante</param>

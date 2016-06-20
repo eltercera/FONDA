@@ -221,4 +221,8 @@
     <value>InvoiceNumber</value>
     <comment>Numero de la Factura</comment>
   </data>
+  <data name="IVAColumn" xml:space="preserve">
+    <value>Iva</value>
+    <comment>Nombre de lcolumna de IVA de factura</comment>
+  </data>
 </root>

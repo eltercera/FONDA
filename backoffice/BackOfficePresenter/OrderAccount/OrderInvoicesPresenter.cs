@@ -147,7 +147,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
                         actionInfo.Text += OrderAccountResources.ActionInfo;
                         actionInfo.Attributes[OrderAccountResources.href] =
-                            OrderAccountResources.detailURL;
+                            OrderAccountResources.invoiceURL;
                         tCell.Controls.Add(actionInfo);
 
                         //Guardamos el recurso de Session del ID de la orden

@@ -6,7 +6,7 @@
     Facturas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    de la Orden [# Orden]
+    Orden # <%=Session["AccountNumber"]%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
     <%--Breadcrumbs--%>
