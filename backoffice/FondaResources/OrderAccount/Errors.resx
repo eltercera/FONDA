@@ -229,4 +229,24 @@
     <value>BO-04-005</value>
     <comment>Mensaje de error al cerrar la cuenta </comment>
   </data>
+  <data name="ClassNameCloseCashRegister" xml:space="preserve">
+    <value>CommandCloseCashRegister</value>
+    <comment>Clase presentadora del Cierre de Caja</comment>
+  </data>
+  <data name="ClassNameFindInvoicesByAccount" xml:space="preserve">
+    <value>CommandFindInvoicesByAccount</value>
+    <comment>Clase presentadora de las Facturas de una Cuenta </comment>
+  </data>
+  <data name="ClassNameFindInvoicesByRestaurant" xml:space="preserve">
+    <value>CommandFindInvoicesByRestaurant</value>
+    <comment>Clase presentadora de las Facturas de un Restaurante</comment>
+  </data>
+  <data name="ClassNameGetCurrencyByRestaurant" xml:space="preserve">
+    <value>CommandGetCurrencyByRestaurant</value>
+    <comment>Comando para una moneda del restaurant</comment>
+  </data>
+  <data name="ClassNameGetDetailOrder" xml:space="preserve">
+    <value>CommandGetDetailOrder</value>
+    <comment>Comando para obtener el detalle de una Orden</comment>
+  </data>
 </root>

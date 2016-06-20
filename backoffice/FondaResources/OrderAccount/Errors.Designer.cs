@@ -61,6 +61,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandCloseCashRegister.
+        /// </summary>
+        public static string ClassNameCloseCashRegister {
+            get {
+                return ResourceManager.GetString("ClassNameCloseCashRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ClosedOrdersPresenter.
         /// </summary>
         public static string ClassNameClosedOrdersPresenter {
@@ -88,6 +97,24 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandFindInvoicesByAccount.
+        /// </summary>
+        public static string ClassNameFindInvoicesByAccount {
+            get {
+                return ResourceManager.GetString("ClassNameFindInvoicesByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandFindInvoicesByRestaurant.
+        /// </summary>
+        public static string ClassNameFindInvoicesByRestaurant {
+            get {
+                return ResourceManager.GetString("ClassNameFindInvoicesByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGenerateInvoice.
         /// </summary>
         public static string ClassNameGenerateInvoice {
@@ -102,6 +129,24 @@ namespace FondaResources.OrderAccount {
         public static string ClassNameGetCloseOrders {
             get {
                 return ResourceManager.GetString("ClassNameGetCloseOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetCurrencyByRestaurant.
+        /// </summary>
+        public static string ClassNameGetCurrencyByRestaurant {
+            get {
+                return ResourceManager.GetString("ClassNameGetCurrencyByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetDetailOrder.
+        /// </summary>
+        public static string ClassNameGetDetailOrder {
+            get {
+                return ResourceManager.GetString("ClassNameGetDetailOrder", resourceCulture);
             }
         }
         
