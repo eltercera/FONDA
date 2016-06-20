@@ -98,11 +98,6 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 throw new CreateFavoriteRestaurantCommandException(ResourceMessages.AddFavRestException, e);
                
 			}
-            catch (NullReferenceException e)  
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateFavoriteRestaurantCommandException(ResourceMessages.AddFavRestException, e);
-            }
 			catch (Exception e)
 			{
                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
