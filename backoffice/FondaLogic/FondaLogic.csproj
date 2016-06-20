@@ -73,6 +73,7 @@
     <Compile Include="Commands\OrderAccount\CommandGetOrders.cs" />
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandPrintInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\GetCurrencyInvoicecs.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
     <Compile Include="FondaCommandException\CommandExceptionCloseCashRegister.cs" />

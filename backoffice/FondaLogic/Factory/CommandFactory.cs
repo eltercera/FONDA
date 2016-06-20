@@ -133,7 +133,14 @@ namespace FondaLogic.Factory
         {
             return new CommandGetCurrency(receiver);
         }
-
+        /// <summary>
+        /// Metodo de la fabrica para el CommandGetCurrencyInvoice
+        /// </summary>
+        /// <param name="receiver">Id del Invoice</param>
+        public static Command GetCommandGetCurrencyInvoice(object receiver)
+        {
+            return new CommandGetCurrencyInvoice(receiver);
+        }
         /// <summary>
         /// Metodo de la fabrica para el Comando CommandGetInvoice
         /// </summary>

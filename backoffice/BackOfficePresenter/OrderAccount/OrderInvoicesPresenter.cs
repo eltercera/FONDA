@@ -99,6 +99,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
             int totalRows = data.Count; //tamano de la lista 
             StringBuilder status = new StringBuilder();
+            StringBuilder dataId = new StringBuilder();
 
             //Recorremos la lista
             for (int i = 0; i <= totalRows - 1; i++)
@@ -106,9 +107,11 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
                 //Crea una nueva fila de la tabla
                 TableRow tRow = new TableRow();
+                dataId.Append(data[i].Id.ToString());
                 //Le asigna el Id a cada fila de la tabla
                 tRow.Attributes[OrderAccountResources.dataId] =
                     data[i].Id.ToString();
+                _view.Session = dataId.ToString();
                 //Agrega la fila a la tabla existente
                 _view.OrderInvoicesTable.Rows.Add(tRow);
                 for (int j = 0; j <= totalColumns; j++)
@@ -147,19 +150,15 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
                         actionInfo.Text += OrderAccountResources.ActionInfo;
                         actionInfo.Attributes[OrderAccountResources.href] =
-                            OrderAccountResources.invoiceURL;
+                            OrderAccountResources.invoiceURL + dataId.ToString();
                         tCell.Controls.Add(actionInfo);
-
-                        //Guardamos el recurso de Session del ID de la orden
-                        //int idAccount = data[i].Id;
-                        //_view.Session = idAccount.ToString();
 
                     }
                     //Agrega la celda a la fila
                     tRow.Cells.Add(tCell);
 
                 }
-
+                dataId.Clear();
             }
 
             //Agrega el encabezado a la Tabla
@@ -186,7 +185,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             //Se indica que se trabajara en el header y se asignan los valores a las columnas
             header.TableSection = TableRowSection.TableHeader;
             //Esto tambien debo mejorarlo
-            h1.Text = OrderAccountResources.OrderNumberColumn;
+            h1.Text = OrderAccountResources.InvoiceNumberColumn;
             h1.Scope = TableHeaderScope.Column;
             h2.Text = OrderAccountResources.DateColumn;
             h2.Scope = TableHeaderScope.Column;

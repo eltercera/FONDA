@@ -20,7 +20,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private IInvoiceDetailContract _view;
         int totalColumns = 3;
         int accountId = 0;
-        int accountNumber = 0;
+        string _currency = null;
         Invoice _invoice;
 
         public InvoiceDetailPresenter(IInvoiceDetailContract viewInvoiceDetail) : 
@@ -41,6 +41,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             //Invoca al comando
             Command commandGetInvoice;
             Command commandGetDishOrder;
+            Command commandGetCurrencyInvoice;
 
             try
             {
@@ -51,15 +52,19 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 //Obtiene la instancia del comando enviado el restaurante como parametro
                 commandGetInvoice = CommandFactory.GetCommandGetInvoice(result);
                 commandGetDishOrder = CommandFactory.GetDetailOrder(accountId);
+                commandGetCurrencyInvoice = CommandFactory.GetCommandGetCurrencyInvoice(result);
 
                 //Ejecuta el comando deseado
                 commandGetInvoice.Execute();
                 commandGetDishOrder.Execute();
+                commandGetCurrencyInvoice.Execute();
 
                 //Se obtiene el resultado de la operacion
                 _invoice = (Invoice)commandGetInvoice.Receiver;
-                _listDish = (List<DishOrder>)commandGetDishOrder.Receiver;
+                _listDish = (IList<DishOrder>)commandGetDishOrder.Receiver;
+                _currency = (string)commandGetCurrencyInvoice.Receiver;
                 _view.SessionNumberInvoice = _invoice.Number.ToString();
+
 
                 //Revisa si la lista no esta vacia
                 if (_invoice != null)
@@ -93,7 +98,6 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
             int totalRows = data.Count; //tamano de la lista 
             float total = 0;
-            string _currency = _invoice.Currency.ToString();
 
             //Recorremos la lista
             for (int i = 0; i <= totalRows - 1; i++)
@@ -137,10 +141,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
             //Agrega el encabezado a la Tabla
             TableHeaderRow header = GenerateTableHeader();
-            _view.DetailInvoiceTable.Rows.AddAt(0, header);
-            TableFooterRow footer = GenerateTableFooter();
-            _view.DetailInvoiceTable.Rows.AddAt(totalRows + 1, footer);
-                   
+            _view.DetailInvoiceTable.Rows.AddAt(0, header);                 
 
         }
 
@@ -179,29 +180,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
             return header;
         }
-
-        private TableFooterRow GenerateTableFooter()
-        {
-            //Se crea la fila en donde se insertara el header
-            TableFooterRow footer = new TableFooterRow();
-
-            //Se crean las columnas del header
-            var h1 = new TableCell();
-            var h2 = new TableCell();
-
-            footer.TableSection = TableRowSection.TableFooter;
-            h1.Text = OrderAccountResources.IVAColumn;
-            h2.Text = OrderAccountResources.TotalColumn;
-
-
-            //Se asignan las columnas a la fila
-            footer.Cells.Add(h1);
-            footer.Cells.Add(h2);
-
-            return footer;
-        }
-
-        private int GetQueryParameter()
+           private int GetQueryParameter()
         {
             int result = 0;
             string queryParameter =

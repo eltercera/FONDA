@@ -210,7 +210,7 @@
     <comment>Pago con tarjeta de credito</comment>
   </data>
   <data name="invoiceURL" xml:space="preserve">
-    <value>../Caja/DetalleFactura.aspx?Id=</value>
+    <value>../Caja/VerDetalleFactura.aspx?Id=</value>
     <comment>URL de detalle de factura</comment>
   </data>
   <data name="SessionIdInvoice" xml:space="preserve">

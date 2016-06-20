@@ -186,23 +186,11 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                     else if (j.Equals(3))
                     {
                         LinkButton actionInfo = new LinkButton();
-                        LinkButton actionInvoices = new LinkButton();
 
                         actionInfo.Text += OrderAccountResources.ActionInfo;
                         actionInfo.Attributes[OrderAccountResources.href] = 
                             OrderAccountResources.detailURL + dataId.ToString();
                         tCell.Controls.Add(actionInfo);
-
-                        actionInvoices.Text += OrderAccountResources.ActionInvoices;
-                        actionInvoices.Attributes[OrderAccountResources.href] =
-                            OrderAccountResources.invoicesURL + dataId.ToString();
-                        tCell.Controls.Add(actionInvoices);
-
-
-
-                        //Guardamos el recurso de Session del ID de la orden
-                        //int idAccount = data[i].Id;
-                        //_view.Session= idAccount.ToString();
 
                     }
                     //Agrega la celda a la fila

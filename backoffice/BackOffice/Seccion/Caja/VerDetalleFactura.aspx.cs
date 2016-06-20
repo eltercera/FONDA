@@ -49,6 +49,12 @@ namespace BackOffice.Seccion.Caja
 
             set { Session[OrderAccountResources.SessionIdAccount] = value; }
         }
+        string IInvoiceDetailContract.SessionIdInvoice
+        {
+            get { return Session[OrderAccountResources.SessionIdInvoice].ToString(); }
+
+            set { Session[OrderAccountResources.SessionIdInvoice] = value; }
+        }
 
         public string SessionRestaurant
         {
@@ -62,12 +68,6 @@ namespace BackOffice.Seccion.Caja
             get { return Session[OrderAccountResources.SessionNumberAccount].ToString(); }
 
             set { Session[OrderAccountResources.SessionNumberAccount] = value; }
-        }
-        public string SessionIdInvoice
-        {
-            get { return Session[OrderAccountResources.SessionIdInvoice].ToString(); }
-
-            set { Session[OrderAccountResources.SessionIdInvoice] = value; }
         }
 
         public string SessionNumberInvoice
