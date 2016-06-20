@@ -195,7 +195,7 @@ namespace com.ds201625.fonda.Domain
             float total = 0;
             for (int i = 0; i < _listDish.Count; i++)
             {
-                total = _listDish[i].Dish.Cost + total;
+                total += (_listDish[i].Dish.Cost*_listDish[i].Count);
             }
             return total;
         }

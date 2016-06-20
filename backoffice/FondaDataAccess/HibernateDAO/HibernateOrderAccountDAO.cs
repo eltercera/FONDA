@@ -133,7 +133,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="Invoice, AccountId">Un objeto Invoice y un id de Account</param>
         /// <returns>Void</returns>
-        public void SaveInvoice(Invoice _invoice, int _accountId, int _restaurantId)
+        public Invoice SaveInvoice(Invoice _invoice, int _accountId, int _restaurantId)
         {
             Account _account;
             IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
@@ -169,6 +169,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 //se salva la cuenta para registrar la nueva factura
                 _accountDAO.Save(_account);
                 //_restaurantDAO.Save(_restaurant);
+
+                return _invoice;
 
             }
             catch (ArgumentOutOfRangeException e)

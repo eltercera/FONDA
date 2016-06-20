@@ -48,6 +48,7 @@
     <Compile Include="OrderAccount\BOCommandInvoiceTest.cs" />
     <Compile Include="BOCommandLoginTest.cs" />
     <Compile Include="OrderAccount\BOCommandOrdersTest.cs" />
+    <Compile Include="OrderAccount\BOLoggerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
