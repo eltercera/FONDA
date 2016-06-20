@@ -95,11 +95,11 @@ namespace FondaLogic.Factory
         /// Metodo de la fabrica para el CommmandDetailOrder
         /// </summary>
         /// <param name="receiver">Id de la orden</param>
-        /// <returns>comando CommandDetailOrder</returns>
+        /// <returns>comando CommandGetDishOrdersByAccountId</returns>
         /// 
         public static Command GetDetailOrder(object receiver)
         {
-            return new CommandDetailOrder(receiver);
+            return new CommandGetDishOrdersByAccountId(receiver);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace FondaLogic.Factory
         /// <param name="receiver">Id del Restaurante</param>
         public static Command GetCommandGetCurrency(object receiver)
         {
-            return new CommandGetCurrency(receiver);
+            return new CommandGetCurrencyByRestaurantId(receiver);
         }
 
         /// <summary>

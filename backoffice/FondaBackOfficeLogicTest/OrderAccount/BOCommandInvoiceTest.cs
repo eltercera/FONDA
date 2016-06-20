@@ -96,20 +96,18 @@ namespace FondaBackOfficeLogicTest
         [Test]
         public void CommandPrintInvoice()
         {
-            InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
-            //_invoice = (Invoice)EntityFactory.GetInvoice(_cashPayment, _profile, 100, 4850, 0.12f, null, 100, i);
             _list.Add(_accountId);
             _list.Add(_restaurantId);
-            //_listEntity.Add(_account);
             _command = CommandFactory.GetCommandPrintInvoice(_list);
 
             _command.Execute();
         }
 
-        //[TearDown]
-        //public void EndTests()
-        //{
-        //    _invoiceDAO.Delete(_invoice);
-        //}
+        [TearDown]
+        public void EndTests()
+        {
+            //_invoiceDAO.Delete(_invoice);
+            _invoiceDAO.ResetSession();
+        }
     }
 }

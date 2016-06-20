@@ -1,22 +1,23 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using FondaLogic.Log;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandGetCurrency : Command
+    /// <summary>
+    /// Comando que devuelve un objeto Currency dado el id
+    /// de un restaurante
+    /// </summary>
+    public class CommandGetCurrencyByRestaurantId : Command
     {
 
-        FactoryDAO _facDAO = FactoryDAO.Intance;
-        int _restaurantId = 0;
-        string _symbol = null;
+        private FactoryDAO _facDAO = FactoryDAO.Intance;
+        private int _restaurantId = 0;
+        private string _symbol = null;
 
-        public CommandGetCurrency(Object receiver) : base(receiver)
+        public CommandGetCurrencyByRestaurantId(Object receiver) : base(receiver)
         {
             try
             {
@@ -38,14 +39,14 @@ namespace FondaLogic.Commands.OrderAccount
                 _restaurantDAO = _facDAO.GetRestaurantDAO();
                 //Obtengo el objeto con la informacion enviada
                 Restaurant _restaurant = _restaurantDAO.FindById(_restaurantId);
-                Currency curr = new Currency();
-                curr = _restaurant.Currency;
-                _symbol = curr.Symbol;
+                _symbol = _restaurant.Currency.Symbol;
 
                 Receiver = _symbol;
             }
             catch (Exception ex)
             {
+                //Por personalizar
+                Logger.WriteErrorLog("", ex);
             }
         }
     }
