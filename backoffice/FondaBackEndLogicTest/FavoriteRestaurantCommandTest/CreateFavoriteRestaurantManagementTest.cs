@@ -59,19 +59,6 @@ namespace FondaBackEndLogicTest
             Assert.AreEqual(commensal.Id, result.Id);
 		}
 
-        /// <summary>
-        /// prueba unitaria de comando con referencia nula
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(NullReferenceException))]
-        public void CreateFavoriteRestaurantCommandNullReferenceTest()
-        {
-            createFavorite.SetParameter(0, commensal);
-            createFavorite.SetParameter(1, restaurant);
-            Commensal result = (Commensal)createFavorite.Result;
-            Assert.AreNotEqual(commensal.Id, result.Id);
-            Assert.IsNull(result.Id);
-        }
 
         /// <summary>
         /// prueba unitaria de excepcion de parametros invalidos
