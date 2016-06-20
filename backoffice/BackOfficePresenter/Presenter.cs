@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BackOfficePresenter
@@ -24,6 +25,14 @@ namespace BackOfficePresenter
         public void ErrorLabel(string message)
         {
             _view.ErrorLabelMessage.Text = message;
+        }
+        public bool validaString(string expresionRegular,string evalua)
+        {
+            if ((!Regex.IsMatch(evalua, expresionRegular)))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

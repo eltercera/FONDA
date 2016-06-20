@@ -329,8 +329,9 @@ namespace BackOfficePresenter.Login
             _view.textBoxRepitPaswword.Enabled = false;
             _view.buttonButtonAddModify.Text = "Modificar";
             _view.buttonButtonAddModify.Attributes.Add("data-id", _idEmployee.ToString());
+            System.Diagnostics.Debug.WriteLine(_employee.LastName);
             //ScriptManager.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
-            
+
         }
 
         protected void ClearModalAddModify()
