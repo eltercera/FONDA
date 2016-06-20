@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="FondaMVPException\MVPException.cs" />
     <Compile Include="FondaMVPException\MVPExceptionOrdersTable.cs" />
+    <Compile Include="Login\DetailModifyPresenter.cs" />
     <Compile Include="Login\LoginPresenter.cs" />
     <Compile Include="Login\mensajes.cs" />
     <Compile Include="Login\UserListPresenter.cs" />
