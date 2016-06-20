@@ -57,7 +57,26 @@ public class AllRestaurantCommandTest extends TestCase {
             cmd.run();
             restaurantList = (List<Restaurant>) cmd.getResult();
 
-            assertNotNull(restaurantList);
+            assertNotNull(restaurantList.get(0).getName());
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     *  Metodo para probar que estaurant categoria no es nulo
+     */
+    public void testAllCategoryRestaurantCommandIsNotNull() {
+
+        try {
+
+            cmd = facCmd.allRestaurantCommand();
+            cmd.run();
+            restaurantList = (List<Restaurant>) cmd.getResult();
+
+            assertNotNull(restaurantList.get(1).getRestaurantCategory().getNameCategory());
         } catch (RestClientException e) {
             e.printStackTrace();
         } catch (Exception e) {

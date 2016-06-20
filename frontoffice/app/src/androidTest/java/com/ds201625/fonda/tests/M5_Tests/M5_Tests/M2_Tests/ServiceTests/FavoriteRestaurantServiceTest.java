@@ -16,10 +16,6 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Katherina Molina on 11/06/2016.
- */
-
-/**
  * Clase De pruebas unitarias del FavoriteRestaurantService
  */
 public class FavoriteRestaurantServiceTest extends TestCase {
@@ -149,7 +145,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
             commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
                     selectedRestaurant.getId());
 
-            assertNotNull(commensal);
+            assertNotNull(commensal.getId());
         } catch (RestClientException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -221,7 +217,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
             restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(logedCommensal.getId());
 
-            assertNotNull(restaurantList);
+            assertNotNull(restaurantList.get(0).getName());
         } catch (RestClientException e) {
             e.printStackTrace();
         } catch (Exception e) {

@@ -49,7 +49,7 @@ public class AllRestaurantServiceTest extends TestCase {
 
             restaurantList = allRestaurantService.getAllRestaurant();
 
-            assertNotNull(restaurantList);
+            assertNotNull(restaurantList.get(0).getName());
         } catch (RestClientException e) {
             e.printStackTrace();
         } catch (Exception e) {
