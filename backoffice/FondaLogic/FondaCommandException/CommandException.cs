@@ -26,7 +26,10 @@ namespace FondaLogic.FondaCommandException
             this._messageException = message;
             this._ex = ex;
         }
-
+        public CommandException(string message)
+        {
+            this._messageException = message;
+        }
         public CommandException(string id, string classname, string method, string message, Exception ex)
         {
             this._id = id;

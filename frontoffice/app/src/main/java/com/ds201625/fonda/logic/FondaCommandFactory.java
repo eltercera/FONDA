@@ -1,11 +1,16 @@
 package com.ds201625.fonda.logic;
 
+import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
+import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteCommensalCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
-import com.ds201625.fonda.logic.Commands.ProfileCommand.CreateProfileCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommands.CreateProfileCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.DeleteFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommands.DeleteProfileCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommands.GetProfilesCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommands.UpdateProfileCommand;
 
 /**
  * Fabrica de comandos
@@ -34,7 +39,7 @@ public class FondaCommandFactory {
      * Crea un CreateProfileCommand
      * @return comando CreateProfileCommand
      */
-    public Command createCreateProfileCommand() {
+    public static Command createCreateProfileCommand() {
         return  new CreateProfileCommand();
     }
 
@@ -77,4 +82,39 @@ public class FondaCommandFactory {
     public static Command requireLogedCommensalCommand() {
         return  new RequireLogedCommensalCommand();
     }
+
+    /**
+     * Crea un updateProfileCommand
+     * @return comando updateProfileCommand
+     */
+    public static Command updateProfileCommand() {
+        return  new UpdateProfileCommand();
+    }
+
+    /**
+     * Crea un deleteProfileCommand
+     * @return comando deleteProfileCommand
+     */
+    public static Command deleteProfileCommand() {
+        return  new DeleteProfileCommand();
+    }
+
+    /**
+     * Crea un getProfilesCommand
+     * @return comando getProfilesCommand
+     */
+    public static Command getProfilesCommand() { return  new GetProfilesCommand(); }
+
+    /**
+     * Crea un createCommensalCommand
+     * @return comando createCommensalCommand
+     */
+    public static Command createCommensalCommand() { return  new CreateCommensalCommand(); }
+
+    /**
+     * Crea un deleteCommensalCommand
+     * @return comando deleteCommensalCommand
+     */
+    public static Command deleteCommensalCommand() { return  new DeleteCommensalCommand(); }
 }
+

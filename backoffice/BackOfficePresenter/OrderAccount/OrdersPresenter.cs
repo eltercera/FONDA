@@ -4,9 +4,11 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
+using FondaLogic.Log;
 using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
@@ -30,7 +32,58 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             
         }
 
-        
+        ///<summary>
+        ///Metodo para cerrar la caja
+        /// </summary>
+        public void Close()
+        {
+            int result = 0;
+            string totalOrder;
+            IList<Account> _openOrders = new List<Account>();
+            Command commandCloseCashRegister;
+            Command commandGetOrders;
+            try
+            {
+                
+                //Obtener el parametro
+                result = int.Parse(_view.SessionRestaurant);
+
+                //Obtiene la instancia del comando enviado el restaurante como parametro
+                commandGetOrders = CommandFactory.GetCommandGetOrders(result);
+                commandCloseCashRegister = CommandFactory.GetCommandCloseCashRegister(result);
+
+                //Ejecuta el comando deseado
+                commandGetOrders.Execute();
+
+                _openOrders = (List<Account>)commandGetOrders.Receiver;
+
+                if (_openOrders.Count == 0)
+                {
+                    commandCloseCashRegister.Execute();
+                    totalOrder = (string)commandCloseCashRegister.Receiver;
+                    SuccessLabel("Ha cerrado la caja exitosamente, el balance del dia fue: " + totalOrder);
+
+                }
+                else if (_openOrders.Count != 0)
+                    throw new MVPExceptionCloseButton("No se puede realizar el cierre de caja");
+
+            }
+            catch (MVPExceptionCloseButton ex)
+            {
+                MVPExceptionCloseButton e = new MVPExceptionCloseButton
+                    (
+                        Errors.MVPExceptionCloseButtonCode,
+                        Errors.ClassNameOrdersPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        Errors.MessageMVPExceptionCloseButton,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                ErrorLabel(e.MessageException);
+            }
+        }
+     
+
         /// <summary>
         /// Metodo encargado de llenar la tabla de Ordenes
         /// </summary>
@@ -64,10 +117,22 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                     //Llama al metodo para el llenado de la tabla
                     FillTable(listAccount);
                 }
+
             }
             catch (MVPExceptionOrdersTable ex)
             {
-                Console.WriteLine("No falla");
+                //Revisar
+                MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
+                    (
+                        Errors.MVPExceptionOrdersTableCode,
+                        Errors.ClassNameOrdersPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        Errors.MessageMVPExceptionOrdersTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                throw e;
+                ErrorLabel(e.MessageException);
             }
        
     }
@@ -81,15 +146,13 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private void FillTable(IList<Account> data)
         {
 
-            //Esto puede mejorarse
-            _view.ErrorLabel.Visible = false;
-            _view.SuccessLabel.Visible = false;
-
-            CleanTable();
+            HideMessageLabel();
+            CleanTable(_view.OrdersTable);
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
 
             int totalRows = data.Count; //tamano de la lista 
+            StringBuilder dataId = new StringBuilder();
 
             //Recorremos la lista
             for (int i = 0; i <= totalRows - 1; i++)
@@ -97,9 +160,9 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
                 //Crea una nueva fila de la tabla
                 TableRow tRow = new TableRow();
+                dataId.Append(data[i].Id.ToString());
                 //Le asigna el Id a cada fila de la tabla
-                tRow.Attributes[OrderAccountResources.dataId] = 
-                    data[i].Id.ToString();
+                tRow.Attributes[OrderAccountResources.dataId] = dataId.ToString();
                 //Agrega la fila a la tabla existente
                 _view.OrdersTable.Rows.Add(tRow);
                 for (int j = 0; j <= totalColumns; j++)
@@ -123,30 +186,21 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                     else if (j.Equals(3))
                     {
                         LinkButton actionInfo = new LinkButton();
-                        LinkButton actionInvoices = new LinkButton();
 
                         actionInfo.Text += OrderAccountResources.ActionInfo;
                         actionInfo.Attributes[OrderAccountResources.href] = 
-                            OrderAccountResources.detailURL;
+                            OrderAccountResources.detailURL + dataId.ToString();
                         tCell.Controls.Add(actionInfo);
-
-                        actionInvoices.Text += OrderAccountResources.ActionInvoices;
-                        actionInvoices.Attributes[OrderAccountResources.href] =
-                            OrderAccountResources.invoicesURL;
-                        tCell.Controls.Add(actionInvoices);
-
-
-
-                        //Guardamos el recurso de Session del ID de la orden
-                        int idAccount = data[i].Id;
-                        _view.Session= idAccount.ToString();
 
                     }
                     //Agrega la celda a la fila
                     tRow.Cells.Add(tCell);
 
                 }
-                
+
+                //Limpia el objeto StringBuilder
+                dataId.Clear();
+
             }
 
             //Agrega el encabezado a la Tabla
@@ -191,14 +245,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             return header;
         }
 
-        /// <summary>
-        /// Limpia las filas de la tabla
-        /// </summary>
-        private void CleanTable()
-        {
-            _view.OrdersTable.Rows.Clear();
 
-        }
 
     }
 }

@@ -11,6 +11,8 @@ using com.ds201625.fonda.Domain;
 using BackOfficePresenter.FondaMVPException;
 using System.Web.UI.WebControls;
 using FondaResources.OrderAccount;
+using System.Web;
+using FondaLogic.Log;
 
 namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 {
@@ -36,7 +38,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         /// </summary>
         public void GetInvoices()
         {
-            int result = 0;
+            int result;
             //Define objeto a recibir
             IList<Invoice> listInvoice;
             //Invoca a comando del tipo deseado
@@ -44,30 +46,39 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
             try
             {
-
-                //Obtener el parametro
-                result = int.Parse(_view.SessionRestaurant);
+                result = GetQueryParameter();
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                //commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByRestaurant(result);
+                commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByAccount(result);
 
                 //Ejecuta el comando deseado
-                //commandGetInvoicesByAccount.Execute();
+                commandGetInvoicesByAccount.Execute();
 
                 //Se obtiene el resultado de la operacion
-                //listInvoice = (IList<Invoice>)commandGetInvoicesByAccount.Receiver;
+                listInvoice = (IList<Invoice>)commandGetInvoicesByAccount.Receiver;
 
 
                 //Revisa si la lista no esta vacia
-                //if (listInvoice != null)
-                //{
+                if (listInvoice != null)
+                {
                     //Llama al metodo para el llenado de la tabla
-                   // FillTable(listInvoice);
-                //}
+                    FillTable(listInvoice);
+                }
             }
-            catch (MVPExceptionOrdersTable ex)
+            catch (MVPExceptionOrderInvoicesTable ex)
             {
-                Console.WriteLine("No falla");
+                //Revisar
+                MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
+                    (
+                        Errors.MVPExceptionOrderInvoicesTableCode,
+                        Errors.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        Errors.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                throw e;
+                ErrorLabel(e.MessageException);
             }
 
         }
@@ -81,16 +92,14 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private void FillTable(IList<Invoice> data)
         {
 
-            //Esto puede mejorarse
-            _view.ErrorLabel.Visible = false;
-            _view.SuccessLabel.Visible = false;
-
-            CleanTable();
+            HideMessageLabel();
+            CleanTable(_view.OrderInvoicesTable);
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
 
             int totalRows = data.Count; //tamano de la lista 
             StringBuilder status = new StringBuilder();
+            StringBuilder dataId = new StringBuilder();
 
             //Recorremos la lista
             for (int i = 0; i <= totalRows - 1; i++)
@@ -98,9 +107,11 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
                 //Crea una nueva fila de la tabla
                 TableRow tRow = new TableRow();
+                dataId.Append(data[i].Id.ToString());
                 //Le asigna el Id a cada fila de la tabla
                 tRow.Attributes[OrderAccountResources.dataId] =
                     data[i].Id.ToString();
+                _view.Session = dataId.ToString();
                 //Agrega la fila a la tabla existente
                 _view.OrderInvoicesTable.Rows.Add(tRow);
                 for (int j = 0; j <= totalColumns; j++)
@@ -118,7 +129,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
                     //Agrega el total de la factura
                     else if (j.Equals(2))
-                        tCell.Text = data[i].Total.ToString();
+                        tCell.Text = String.Format("{0} {1}",data[i].Currency.Symbol,data[i].Total.ToString());
 
                     //Agrega el status de la factura
                     else if (j.Equals(3))
@@ -139,19 +150,15 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
                         actionInfo.Text += OrderAccountResources.ActionInfo;
                         actionInfo.Attributes[OrderAccountResources.href] =
-                            OrderAccountResources.detailURL;
+                            OrderAccountResources.invoiceURL + dataId.ToString();
                         tCell.Controls.Add(actionInfo);
-
-                        //Guardamos el recurso de Session del ID de la orden
-                        int idAccount = data[i].Id;
-                        _view.Session = idAccount.ToString();
 
                     }
                     //Agrega la celda a la fila
                     tRow.Cells.Add(tCell);
 
                 }
-
+                dataId.Clear();
             }
 
             //Agrega el encabezado a la Tabla
@@ -178,7 +185,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             //Se indica que se trabajara en el header y se asignan los valores a las columnas
             header.TableSection = TableRowSection.TableHeader;
             //Esto tambien debo mejorarlo
-            h1.Text = OrderAccountResources.OrderNumberColumn;
+            h1.Text = OrderAccountResources.InvoiceNumberColumn;
             h1.Scope = TableHeaderScope.Column;
             h2.Text = OrderAccountResources.DateColumn;
             h2.Scope = TableHeaderScope.Column;
@@ -199,13 +206,19 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             return header;
         }
 
-        /// <summary>
-        /// Limpia las filas de la tabla
-        /// </summary>
-        private void CleanTable()
+        private int GetQueryParameter()
         {
-            _view.OrderInvoicesTable.Rows.Clear();
+            int result = 0;
+            string queryParameter =
+                HttpContext.Current.Request.QueryString["Id"];
 
+            if (queryParameter != null && queryParameter != string.Empty)
+            {
+                return int.Parse(queryParameter);
+            }
+
+            return result;
         }
+
     }
 }

@@ -28,6 +28,37 @@ namespace FondaLogic.Factory
         #region OrderAccount
 
 
+        //Se obtienen los comandos a a utilizar
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandFindInvoicesByRestaurant
+        /// </summary>
+        /// <param name="entity">Id del Restaurante</param>
+        /// <returns>comando CommandGetOrders</returns>
+        public static Command GetCommandFindInvoicesByRestaurant(object receiver)
+        {
+            return new CommandFindInvoicesByRestaurant(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando FindInvoices
+        /// </summary>
+        /// <param name="entity">Id Account</param>
+        /// <returns>comando CommandFindInvoices</returns>
+        public static Command GetCommandFindInvoicesByAccount(object receiver)
+        {
+            return new CommandFindInvoicesByAccount(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandPrintInvoice
+        /// </summary>
+        /// <param name="entity">Id del Restaurante</param>
+        /// <returns>comando CommandGetOrders</returns>
+        public static Command GetCommandPrintInvoice(object receiver)
+        {
+            return new CommandPrintInvoice(receiver);
+        }
 
         /// <summary>
         /// Metodo de la fabrica para el Comando CommandGetOrders
@@ -61,24 +92,64 @@ namespace FondaLogic.Factory
         }
 
         /// <summary>
-        /// Metodo de la fabrica para el ComandoDetailOrder
+        /// Metodo de la fabrica para el CommmandDetailOrder
         /// </summary>
         /// <param name="receiver">Id de la orden</param>
-        /// <returns>comando CommandDetailOrder</returns>
+        /// <returns>comando CommandGetDishOrdersByAccountId</returns>
         /// 
         public static Command GetDetailOrder(object receiver)
         {
-            return new CommandDetailOrder(receiver);
+            return new CommandGetDishOrdersByAccountId(receiver);
         }
 
+        /// <summary>
+        /// Metodo de la fabrica para el CommmandGetInvoice
+        /// </summary>
+        /// <param name="receiver">Id de la factura</param>
+        /// <returns>comando CommandGetInvoice</returns>
+        /// 
+        public static Command GetCommandGetInvoice(object receiver)
+        {
+            return new CommandGetInvoice(receiver);
+        }
+        public static Command GetCommandGenerateException(object receiver)
+        {
+            return new CommandGenerateException(receiver);
+        }
+        /// <summary>
+        /// Metodo de la fabrica para el CommandCloseCashRegister
+        /// </summary>
+        /// <param name="receiver">Id del Restaurante</param>
+        public static Command GetCommandCloseCashRegister(object receiver)
+        {
+            return new CommandCloseCashRegister(receiver);
+        }
 
-        #endregion
-
-        #region Invoice
-
- 
-
-
+        /// <summary>
+        /// Metodo de la fabrica para el CommandGetCurrency
+        /// </summary>
+        /// <param name="receiver">Id del Restaurante</param>
+        public static Command GetCommandGetCurrency(object receiver)
+        {
+            return new CommandGetCurrencyByRestaurantId(receiver);
+        }
+        /// <summary>
+        /// Metodo de la fabrica para el CommandGetCurrencyInvoice
+        /// </summary>
+        /// <param name="receiver">Id del Invoice</param>
+        public static Command GetCommandGetCurrencyInvoice(object receiver)
+        {
+            return new CommandGetCurrencyInvoice(receiver);
+        }
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandGetInvoice
+        /// </summary>
+        /// <param name="entity">Invoice</param>
+        /// <returns>comando CommandGetOrders</returns>
+        public static Command GetCommandGenerateInvoice(object receiver)
+        {
+            return new CommandGenerateInvoice(receiver);
+        }
 
         #endregion
 

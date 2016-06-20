@@ -48,6 +48,7 @@
     <Compile Include="Menu\IMenuCategory.cs" />
     <Compile Include="OrderAccount\IClosedOrdersModel.cs" />
     <Compile Include="OrderAccount\IDetailOrderModel.cs" />
+    <Compile Include="OrderAccount\IInvoiceDetailContract.cs" />
     <Compile Include="OrderAccount\IOrderInvoicesModel.cs" />
     <Compile Include="OrderAccount\IOrdersModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

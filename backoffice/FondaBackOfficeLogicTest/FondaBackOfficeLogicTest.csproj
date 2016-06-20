@@ -45,10 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOCommandGenerateExceptionTest.cs" />
-    <Compile Include="BOCommandInvoiceTest.cs" />
+    <Compile Include="OrderAccount\BOCommandInvoiceTest.cs" />
     <Compile Include="BOCommandLoginTest.cs" />
-    <Compile Include="BOCommandOrdersTest.cs" />
+    <Compile Include="OrderAccount\BOCommandOrdersTest.cs" />
+    <Compile Include="OrderAccount\BOLoggerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

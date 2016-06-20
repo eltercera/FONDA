@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="Ordenes.aspx.cs" Inherits="BackOffice.Seccion.Caja.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="Ordenes.aspx.cs" Inherits="BackOffice.Seccion.Caja.Ordenes" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    Ordenes
+    Ordenes Abiertas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
     de <%=Session["NameRestaurant"]%>
@@ -51,11 +51,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i>Cuentas abiertas</h3>
+                    <asp:Button onClick="CloseCashRegister_Click" ID="closeCR" class="btn btn-default pull-right" text="Cerrar Caja" runat="server"></asp:Button>                               
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                            <asp:HiddenField ID="AccountPopOrder" runat="server" Value="" />
+
                             <asp:Table ID="orderList" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                     </div>
                 </div>
@@ -66,8 +67,5 @@
     <div class="text-right">                            
         <a href="OrdenesCerradas.aspx"><i class="fa fa-plus"></i> Ver ordenes cerradas</a>
     </div>
-
-
-
-    
+        
 </asp:Content>

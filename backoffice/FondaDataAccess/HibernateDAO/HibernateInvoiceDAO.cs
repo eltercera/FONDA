@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using NHibernate.Criterion;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.Factory;
+using NHibernate;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-    class HibernateInvoiceDAO : HibernateBaseEntityDAO<Invoice>, IInvoiceDao
+    public class HibernateInvoiceDAO : HibernateBaseEntityDAO<Invoice>, IInvoiceDao
     {
-        private FactoryDAO.FactoryDAO _facDAO;
+        private FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
+
         /// <summary>
         /// Obtiene todas las facturas
         /// </summary>
@@ -27,10 +29,18 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="account">Un objeto de tipo Account</param>
         /// <returns>Un objeto Invoice</returns>
-        public IList<Invoice> FindInvoicesByAccount(Account _account)
+        public IList<Invoice> FindInvoicesByAccount(int _accountId)
         {
+            //Esto no deberia estar aqui
+            IOrderAccountDao _accountDAO;
+            Account _account;
+            _accountDAO = _facDAO.GetOrderAccountDAO();
+
            try
             {
+                //Esto tampoco deberia estar aqui
+                _account = _accountDAO.FindById(_accountId);
+
                 IList<Invoice> _invoices = new List<Invoice>();
                 _invoices = _account.ListInvoice;
                 return _invoices;
@@ -48,9 +58,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Un objeto Invoice</returns>
         public Invoice FindGenerateInvoiceByAccount(Account _account)
         {
+            IOrderAccountDao _accountDao = _facDAO.GetOrderAccountDAO();
+  
             try
             {
                 Invoice _invoice = new Invoice();
+                Invoice result;
 
                 if (_account.Status.Equals(ClosedAccountStatus.Instance))
                 {
@@ -65,12 +78,20 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                         }
                     }
                 }
-                
-                return _invoice;
+
+                Payment payment = (Payment) Session.GetSessionImplementation().PersistenceContext.Unproxy(_invoice.Payment);
+                result = EntityFactory.GetInvoice(payment, _invoice.Profile, _invoice.Total, _invoice.Tax, _invoice.Currency,
+                    _invoice.Number);
+
+                return result;
             }
             catch (ArgumentOutOfRangeException e)
             {
                 throw new FondaIndexException("Not Found invoice", e);
+            }
+            catch(PersistentObjectException e)
+            {
+                throw new PersistentObjectException("Error por no iniciar al proxy");
             }
         }
 
@@ -97,8 +118,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     _list = account.ListInvoice;
                     foreach (Invoice invoice in _list)
                     {
-                        _invoice = (Invoice)EntityFactory.GetInvoice(invoice.Id,invoice.Payment, 
-                            invoice.Profile,invoice.Tip, invoice.Total, invoice.Tax, invoice.Number);
+                        _invoice = EntityFactory.GetInvoice(invoice.Id,invoice.Payment, 
+                            invoice.Profile, invoice.Total, invoice.Tax, invoice.Number);
                         _listInvoiceByRestaurnat.Add(_invoice);
                     }
                 }

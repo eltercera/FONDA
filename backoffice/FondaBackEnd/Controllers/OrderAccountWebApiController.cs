@@ -33,7 +33,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [Route("profile/{id}/{tip}/CreditCarPayment/")]
         [HttpPost]
         [FondaAuthToken]
-        public IHttpActionResult requestClosedOrder(int id, float tip,[FromBody] CreditCarPayment payment)
+        public IHttpActionResult requestClosedOrder(int id, float tip,[FromBody] CreditCardPayment payment)
         {
             Commensal commensal = GetCommensal(Request.Headers);
             if (commensal == null)
@@ -58,8 +58,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             }
             
             Account account = GetAccount(commensal);
-            //MALENA REVISA ESTO, PORQUE EN LA SIGUIENTE LINEA SE LE CAMBIA EL STATUS CUANDO SE CIERRA
-            //LA ORDEN
+
             //account.Status = FactoryDAO.GetClosedAccountStatus();
             try
             {

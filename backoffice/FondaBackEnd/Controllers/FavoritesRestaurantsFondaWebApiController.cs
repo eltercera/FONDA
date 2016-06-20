@@ -78,8 +78,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (DeleteFavoriteRestaurantCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.DeleteFavRestException, e);
-             
+                DeleteFavoriteRestaurantFondaWebApiControllerException ex = new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.DeleteFavRestException, e);
+                return InternalServerError(ex);
             }
             catch (InvalidTypeOfParameterException e)
             {

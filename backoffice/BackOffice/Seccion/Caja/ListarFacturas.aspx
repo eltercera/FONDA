@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListarFacturas.aspx.cs" Inherits="BackOffice.Seccion.Caja.ListarFacturas" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="ListarFacturas.aspx.cs" Inherits="BackOffice.Seccion.Caja.ListarFacturas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 </asp:Content>
@@ -6,7 +6,7 @@
     Facturas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    de la Orden [# Orden]
+    Orden # <%=Session["AccountNumber"]%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
     <%--Breadcrumbs--%>
@@ -51,7 +51,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Orden # <asp:Label ID="Label1" runat="server"></asp:Label> Cliente:</h3>
+                    <h3 class="panel-title"><i class="fa fa-money" aria-hidden="true"></i> Facturas Asociadas</h3>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">

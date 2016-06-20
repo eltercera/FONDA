@@ -54,7 +54,7 @@ namespace FondaLogic.Commands.OrderAccount
                 CommandExceptionGetOrders exceptionGetOrders = new CommandExceptionGetOrders(
                     FondaResources.General.Errors.NullExceptionReferenceCode,
                     FondaResources.OrderAccount.Errors.ClassNameGetOrders,
-                    FondaResources.OrderAccount.Errors.CommandMethod,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                     FondaResources.General.Errors.NullExceptionReferenceMessage,
                     ex);
 
