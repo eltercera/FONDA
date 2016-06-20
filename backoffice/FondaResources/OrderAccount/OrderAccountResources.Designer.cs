@@ -187,11 +187,20 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ../Caja/DetalleFactura.aspx?Id=.
+        ///   Looks up a localized string similar to ../Caja/VerDetalleFactura.aspx?Id=.
         /// </summary>
         public static string invoiceURL {
             get {
                 return ResourceManager.GetString("invoiceURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iva.
+        /// </summary>
+        public static string IVAColumn {
+            get {
+                return ResourceManager.GetString("IVAColumn", resourceCulture);
             }
         }
         

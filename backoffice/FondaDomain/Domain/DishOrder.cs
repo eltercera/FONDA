@@ -8,6 +8,9 @@ namespace com.ds201625.fonda.Domain
     /// </summary>
     public class DishOrder : BaseEntity
     {
+
+        #region Fields
+
         /// <summary>
         /// Plato ordenado
         /// </summary>
@@ -17,11 +20,19 @@ namespace com.ds201625.fonda.Domain
         /// Cantidad de veces que se ordeno el plato
         /// </summary>
         private int _count;
-        
+
+        #endregion
+
+        #region Constructors
+
         /// <summary>
         /// Constructor vacio
         /// </summary>
         public DishOrder() : base () { }
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// Obtiene o asigna la cantidad de un plato
@@ -50,5 +61,7 @@ namespace com.ds201625.fonda.Domain
         {
             get { return _dish.Cost; }
         }
+
+        #endregion 
     }
 }

@@ -13,7 +13,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
         IList<Account> FindAccountByRestaurant(int _idRestaurant);
         IList<Account> FindAllAccountByRestaurant(Restaurant _restaurant);
         float CloseCashRegister(int restaurantId);
-        void SaveInvoice(Invoice _invoice, int _accountId, int _restaurantId);
+        Invoice SaveInvoice(Invoice _invoice, int _accountId, int _restaurantId);
         void ChangeStatusAccount(Account _account);
     }
 }

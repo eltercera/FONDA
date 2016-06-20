@@ -32,6 +32,11 @@ namespace FondaLogic
         {
             this.receiver = receiver;
         }
+
+        /// <summary>
+        /// Constructor vacio de la clase comando
+        /// </summary>
+        public Command() {}
         #endregion
 
         /// <summary>

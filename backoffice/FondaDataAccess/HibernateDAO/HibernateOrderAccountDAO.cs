@@ -133,7 +133,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="Invoice, AccountId">Un objeto Invoice y un id de Account</param>
         /// <returns>Void</returns>
-        public void SaveInvoice(Invoice _invoice, int _accountId, int _restaurantId)
+        public Invoice SaveInvoice(Invoice _invoice, int _accountId, int _restaurantId)
         {
             Account _account;
             IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
@@ -150,7 +150,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 _account = _accountDAO.FindById(_accountId);
 
                 InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
-
+                String bla = _invoice.Payment.GetType().Name;
                 if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.Cash))
                 {
                     _cashPaymentDAO.Save((CashPayment)_invoice.Payment);
@@ -162,10 +162,15 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
                 _invoice = (Invoice)EntityFactory.GetInvoice(_invoice.Payment, _invoice.Profile,
                     _invoice.Total, _invoice.Tax, _restaurant.Currency, _number, i);
+                //Se le cambia el estatus de la orden a cerrada
+                _account.ChangeStatus();
+                // se le agrega la invoice a la cuenta
                 _account.ListInvoice.Add(_invoice);
-                //_restaurant.Accounts.Add(_account);
+                //se salva la cuenta para registrar la nueva factura
                 _accountDAO.Save(_account);
                 //_restaurantDAO.Save(_restaurant);
+
+                return _invoice;
 
             }
             catch (ArgumentOutOfRangeException e)

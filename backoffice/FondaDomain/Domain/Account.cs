@@ -142,7 +142,6 @@ namespace com.ds201625.fonda.Domain
         }
         #endregion
 
-
         #region Methods
         /// <summary>
         /// Agrega una orden a la cuenta
@@ -188,7 +187,6 @@ namespace com.ds201625.fonda.Domain
             _status = _status.Change();
         }
 
-
         /// <summary>
         /// Obtiene el precio total de todas las ordenes
         /// </summary>
@@ -197,7 +195,7 @@ namespace com.ds201625.fonda.Domain
             float total = 0;
             for (int i = 0; i < _listDish.Count; i++)
             {
-                total = _listDish[i].Dish.Cost + total;
+                total += (_listDish[i].Dish.Cost*_listDish[i].Count);
             }
             return total;
         }

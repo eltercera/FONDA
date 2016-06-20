@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandGetCurrency : Command
+    public class CommandGetCurrencyInvoice : Command
     {
 
         FactoryDAO _facDAO = FactoryDAO.Intance;
-        int _restaurantId = 0;
+        int _invoiceId = 0;
         string _symbol = null;
 
-        public CommandGetCurrency(Object receiver) : base(receiver)
+        public CommandGetCurrencyInvoice(Object receiver) : base(receiver)
         {
             try
             {
-                _restaurantId = (int)receiver;
+                _invoiceId = (int)receiver;
             }
             catch (Exception)
             {
@@ -33,13 +33,13 @@ namespace FondaLogic.Commands.OrderAccount
             try
             {
                 //Defino el DAO
-                IRestaurantDAO _restaurantDAO;
+                IInvoiceDao _invoiceDAO;
                 //Obtengo la instancia del DAO a utilizar
-                _restaurantDAO = _facDAO.GetRestaurantDAO();
+                _invoiceDAO = _facDAO.GetInvoiceDao();
                 //Obtengo el objeto con la informacion enviada
-                Restaurant _restaurant = _restaurantDAO.FindById(_restaurantId);
+                Invoice _invoice = _invoiceDAO.FindById(_invoiceId);
                 Currency curr = new Currency();
-                curr = _restaurant.Currency;
+                curr = _invoice.Currency;
                 _symbol = curr.Symbol;
 
                 Receiver = _symbol;
