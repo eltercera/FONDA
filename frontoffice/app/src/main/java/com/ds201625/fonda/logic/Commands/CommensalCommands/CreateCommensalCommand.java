@@ -1,31 +1,36 @@
-package com.ds201625.fonda.logic.Commands.ProfileCommand;
+package com.ds201625.fonda.logic.Commands.CommensalCommands;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
 import com.ds201625.fonda.logic.SessionData;
 
 /**
- * Comando para eliminar un perfil
+ * Comando para crear un perfil
  */
-public class DeleteProfileCommand extends BaseCommand {
+public class CreateCommensalCommand extends BaseCommand {
 
-    private String TAG = "DeleteProfileCommand";
+    private String TAG = "CreateProfileCommand";
 
     /**
      * Se asignan los parametros del commando
-     * @return el parametro id Profile
+     * @return el parametro email y password
      */
 
     @Override
     protected Parameter[] setParameters() {
-        Parameter [] parameters = new Parameter[1];
-        parameters[0] = new Parameter(int.class, true);
+        Parameter [] parameters = new Parameter[3];
+        parameters[0] = new Parameter(String.class, true);
+        parameters[1] = new Parameter(String.class, true);
+        parameters[2] = new Parameter(Context.class, true);
 
         return parameters;
     }
@@ -33,15 +38,19 @@ public class DeleteProfileCommand extends BaseCommand {
     @Override
     protected void invoke() {
 
-        Log.d(TAG, "Comando para eliminar un perfil a un commensal");
-        int idProfile;
+        Log.d(TAG, "Comando para agregar un perfil a un commensal");
+        String email;
+        String password;
+        Context context;
+        Commensal commensal = null;
 
-        ProfileService profileService = FondaServiceFactory.getInstance()
-                .getProfileService(SessionData.getInstance().getToken());
+        CommensalService commensalService = FondaServiceFactory.getInstance().getCommensalService();
         try
         {
-            idProfile = (int) getParameter(0);
-            profileService.deleteProfile(idProfile);
+            email = (String) getParameter(0);
+            password = (String) getParameter(1);
+            context = (Context) getParameter(2);
+            commensal = commensalService.RegisterCommensal(email,password,context);
         }
         catch (RestClientException e)
         {
@@ -58,6 +67,6 @@ public class DeleteProfileCommand extends BaseCommand {
             e.printStackTrace();
         }
 
-        setResult(true);
+        setResult(commensal);
     }
 }
