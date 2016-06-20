@@ -47,17 +47,5 @@ namespace com.ds201625.fonda.Domain
 
         #endregion
 
-        #region Methods
-
-        /// <summary>
-        /// Obtener el tipo de dato del objeto
-        /// </summary>
-        /// <returns>Retorna un tipo de dato</returns>
-        public virtual Type GetTypeUnproxied()
-        {
-            return GetType();
-        }
-
-        #endregion
     }
 }

@@ -76,11 +76,11 @@
     <Compile Include="Commands\OrderAccount\GetCurrencyInvoicecs.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionCloseCashRegister.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionCloseCashRegister.cs" />
     <Compile Include="FondaCommandException\CommandExceptionCreateEmployee.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetEmployee.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionGetOrder.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionGetOrders.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrder.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrders.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetRestaurant.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetRol.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetUserAccount.cs" />
