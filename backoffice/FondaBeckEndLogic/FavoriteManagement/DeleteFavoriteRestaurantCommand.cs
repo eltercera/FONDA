@@ -75,17 +75,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                     ResourceMessages.RestDeletedFromFav + commensal.Id + ResourceMessages.Slash + restaurant.Name,
                     System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (DeleteEntityFondaDAOException e) 
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteFavoriteRestaurantCommandException(ResourceMessages.DeleteFavRestException, e);
-            }
-            catch (NullReferenceException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteFavoriteRestaurantCommandException(ResourceMessages.DeleteFavRestException, e);
-            }
-            catch (InvalidTypeOfParameterException  e)
+            catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new DeleteFavoriteRestaurantCommandException(
@@ -102,6 +92,16 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new DeleteFavoriteRestaurantCommandException(
                     ResourceMessages.ParametersDeleteFavRestException, e);
+            }
+            catch (DeleteEntityFondaDAOException e) 
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantCommandException(ResourceMessages.DeleteFavRestException, e);
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new DeleteFavoriteRestaurantCommandException(ResourceMessages.DeleteFavRestException, e);
             }
             catch (Exception e)
             {
