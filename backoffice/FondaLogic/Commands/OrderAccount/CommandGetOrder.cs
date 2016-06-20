@@ -56,7 +56,7 @@ namespace FondaLogic.Commands.OrderAccount
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrder);
 
-                throw exceptionGetOrders;
+                throw exceptionGetOrder;
             }
         }
 
