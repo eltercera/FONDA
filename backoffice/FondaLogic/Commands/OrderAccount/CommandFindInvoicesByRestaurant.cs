@@ -1,6 +1,7 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using FondaLogic.FondaCommandException;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace FondaLogic.Commands.OrderAccount
             {
                 //TODO: Arrojar Excepcion personalizada
                 //TODO: Escribir en el Log la excepcion
-                throw;
+                throw new CommandExceptionFindInvoicesByRestaurant("No se pudieron encontrar las facturas del restaurante");
             }
 
         }

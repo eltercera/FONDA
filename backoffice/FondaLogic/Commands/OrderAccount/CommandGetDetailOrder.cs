@@ -47,8 +47,7 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (Exception ex)
             {
-                //Por personalizar
-                Logger.WriteErrorLog("", ex);
+
             }
         }
     }
