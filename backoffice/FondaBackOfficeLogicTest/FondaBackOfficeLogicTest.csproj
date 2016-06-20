@@ -45,9 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOCommandInvoiceTest.cs" />
+    <Compile Include="OrderAccount\BOCommandInvoiceTest.cs" />
     <Compile Include="BOCommandLoginTest.cs" />
-    <Compile Include="BOCommandOrdersTest.cs" />
+    <Compile Include="OrderAccount\BOCommandOrdersTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
