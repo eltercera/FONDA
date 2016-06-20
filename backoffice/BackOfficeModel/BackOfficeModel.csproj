@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IModel.cs" />
+    <Compile Include="Login\IDetailModifyModel.cs" />
     <Compile Include="Login\ILoginModel.cs" />
     <Compile Include="Login\IUserListModel.cs" />
     <Compile Include="Menu\IMenuCategory.cs" />

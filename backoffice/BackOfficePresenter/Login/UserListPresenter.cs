@@ -148,7 +148,8 @@ namespace BackOfficePresenter.Login
                     LinkButton editStatusI = new LinkButton();
 
                     //boton modificar
-                    edit.Click += new EventHandler(Modify_Click);
+                    //edit.Click += new EventHandler(Modify_Click);
+                    edit.Attributes["href"] = "DetalleModificar.aspx?user=" + _employee.Id.ToString();
                     edit.Attributes.Add("data-id", _employee.Id.ToString());
                     edit.Text = G1RecursosInterfaz.edit;
 
@@ -281,7 +282,7 @@ namespace BackOfficePresenter.Login
 
             LinkButton clickedLink = (LinkButton)sender;
             int _idEmployee = int.Parse(clickedLink.Attributes["data-id"]);
-
+            System.Diagnostics.Debug.WriteLine(clickedLink.Attributes["data-id"],"clave");
             /*_facDAO = FactoryDAO.Intance;
             _employeeDAO = _facDAO.GetEmployeeDAO();
             _employee = _employeeDAO.FindById(_idEmployee);*/
@@ -1122,6 +1123,7 @@ namespace BackOfficePresenter.Login
         /// <returns></returns>
         protected Employee SetEmployee(Employee _employee)
         {
+
             string _roleUser = (string)HttpContext.Current.Session[ResourceLogin.sessionRol];
             Role _role;
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();

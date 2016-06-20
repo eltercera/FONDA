@@ -1,46 +1,47 @@
-package com.ds201625.fonda.logic.Commands.ProfileCommand;
+package com.ds201625.fonda.logic.Commands.CommensalCommands;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.ProfileService;
-import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
 import com.ds201625.fonda.logic.SessionData;
 
-import java.util.List;
-
 /**
- * Comando para buscar los perfiles de un commensal
+ * Comando para eliminar un commensal
  */
-public class GetProfilesCommand extends BaseCommand {
+public class DeleteCommensalCommand extends BaseCommand {
 
-    private String TAG = "GetProfilesCommand";
+    private String TAG = "DeleteCommensalCommand";
 
     /**
-     * No tiene Parametros
-     * @return
+     * Se asignan los parametros del commando
+     * @return el parametro context
      */
 
     @Override
     protected Parameter[] setParameters() {
-        Parameter [] parameters = new Parameter[0];
+        Parameter [] parameters = new Parameter[1];
+        parameters[0] = new Parameter(Context.class, true);
+
         return parameters;
     }
 
     @Override
     protected void invoke() {
 
-        Log.d(TAG, "Comando para buscar los perfiles de un commensal");
-        List<Profile> profiles = null;
+        Log.d(TAG, "Comando para eliminar un commensal");
+        Context context;
 
-        ProfileService profileService = FondaServiceFactory.getInstance()
-                .getProfileService(SessionData.getInstance().getToken());
+        CommensalService commensalService = FondaServiceFactory.getInstance().getCommensalService();
         try
         {
-            profiles = profileService.getProfiles();
+            context = (Context) getParameter(0);
+            commensalService.deleteCommensal(context);
         }
         catch (RestClientException e)
         {
@@ -57,6 +58,6 @@ public class GetProfilesCommand extends BaseCommand {
             e.printStackTrace();
         }
 
-        setResult(profiles);
+        setResult(true);
     }
 }

@@ -33,7 +33,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             HasMany(x => x.ListInvoice)
                 .KeyColumn("fk_account_id")
-                .LazyLoad()
+                .ExtraLazyLoad()
                 .Cascade.All();
 
             References(x => x.Commensal)
