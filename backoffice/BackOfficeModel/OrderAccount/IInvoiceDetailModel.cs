@@ -30,5 +30,7 @@ namespace BackOfficeModel.OrderAccount
         Label TotalInvoice { get; set; }
 
         Label DateInvoice { get; set; }
+        
+        LinkButton PrintInvoice { get; set; }
     }
 }

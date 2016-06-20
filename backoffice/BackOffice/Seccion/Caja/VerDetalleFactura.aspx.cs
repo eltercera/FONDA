@@ -66,6 +66,13 @@ namespace BackOffice.Seccion.Caja
 
             set { date = value; }
         }
+
+        public System.Web.UI.WebControls.LinkButton PrintInvoice
+        {
+            get { return print; }
+
+            set { print = value; }
+        }
         Label IModel.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }

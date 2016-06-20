@@ -75,7 +75,7 @@
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandPrintInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandTotalOrder.cs" />
-    <Compile Include="Commands\OrderAccount\GetCurrencyInvoicecs.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetCurrencyInvoice.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionCloseCashRegister.cs" />

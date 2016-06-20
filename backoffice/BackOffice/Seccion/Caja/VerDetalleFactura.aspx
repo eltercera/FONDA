@@ -16,7 +16,7 @@
                 <a href="../Caja/Ordenes.aspx">Caja</a>
             </li>
             <li>
-                Orden <%=Session["AccountNumber"]%>
+               Orden
             </li>
             <li class="active">
                 Factura 
@@ -87,7 +87,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;<b>Total: </b>
                             <asp:Label ID="total" runat="server"></asp:Label>
                         </h5>
-                            <a href="#" class="btn btn-default center-block" ><i class="fa fa-print" aria-hidden="true"></i></a>
+                            <div style="text-indent: 250px;"><asp:LinkButton Visible="false" ID="print" runat="server"><i class="fa fa-print fa-lg" aria-hidden="true"></i></asp:LinkButton></div>
                     </div>
                 </div>
             </div>

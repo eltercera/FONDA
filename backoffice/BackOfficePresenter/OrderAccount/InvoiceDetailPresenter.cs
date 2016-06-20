@@ -69,6 +69,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 {
                     //Llama al metodo para el llenado de la tabla
                     FillTable(_listDish);
+                    //Llama al metodo para el llenado de los Label
+                    FillLabel();
                 }
 
             }
@@ -89,10 +91,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             }
         }
 
-        private void FillTable(IList<DishOrder> data)
+        private void FillLabel()
         {
-            HideMessageLabel();
-            CleanTable(_view.DetailInvoiceTable);
             //Label de la factura
             _view.SessionNumberInvoice = _invoice.Number.ToString();
             _view.DateInvoice.Text = _invoice.Date.ToShortDateString();
@@ -101,10 +101,19 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             _view.UserId.Text = _invoice.Profile.Person.Ssn.ToString();
             _view.IvaInvoice.Text = _currency + " " + _invoice.Tax.ToString();
             _view.TotalInvoice.Text = _currency + " " + _invoice.Total.ToString();
+            if (_invoice.Status.Equals(GeneratedInvoiceStatus.Instance))
+                _view.PrintInvoice.Visible = true;
+            else if (_invoice.Status.Equals(CanceledInvoiceStatus.Instance))
+                _view.PrintInvoice.Visible = false;
+        }
+        private void FillTable(IList<DishOrder> data)
+        {
+            HideMessageLabel();
+            CleanTable(_view.DetailInvoiceTable);
 
             int totalRows = data.Count; //tamano de la lista 
             float total = 0;
-
+            
             //Recorremos la lista
             for (int i = 0; i <= totalRows - 1; i++)
             {
