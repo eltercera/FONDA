@@ -39,8 +39,7 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                Logger.WriteErrorLog("",ex);
-                throw;
+
             }
         }
     }

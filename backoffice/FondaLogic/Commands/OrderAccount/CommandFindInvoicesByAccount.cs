@@ -2,6 +2,8 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using FondaLogic.FondaCommandException;
+using FondaLogic.FondaCommandException.OrderAccount;
 using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
@@ -44,7 +46,6 @@ namespace FondaLogic.Commands.OrderAccount
             {
                 //TODO: Arrojar Excepcion personalizada
                 //TODO: Escribir en el Log la excepcion
-                throw;
             }
         }
     }
