@@ -20,14 +20,14 @@ namespace FondaDataAccessTest
         private IOrderAccountDao _accountDAO;
         private IProfileDAO _profileDao;
         private IRestaurantDAO _restaurantDAO;
-        private Restaurant _restaurant;
+        private Restaurant _restaurant, _resultRestaurant;
         private Invoice _invoice;
         private Account _account;
         private CashPayment _cashPayment;
         private CreditCardPayment _creditPayment;
         private Profile _profile;
         private IList<Invoice> _listInvoices;
-        private int _number, _accountId, _restaurantId, _profileId;
+        private int _number, _accountId, _restaurantId, _profileId, _tableId;
         private float _amount, _tax;
 
         #endregion
@@ -41,10 +41,12 @@ namespace FondaDataAccessTest
             _restaurantDAO = _facDAO.GetRestaurantDAO();
             _accountDAO = _facDAO.GetOrderAccountDAO();
             _invoiceDAO = _facDAO.GetInvoiceDao();
+            _profileDao = _facDAO.GetProfileDAO();
 
             //Inicializa variables
             _accountId = 2;
             _restaurantId = 1;
+            _tableId = 3;
             _profileId = 1;
             _tax = _amount * 0.12F;
 
@@ -104,6 +106,18 @@ namespace FondaDataAccessTest
             _listInvoices = _invoiceDAO.FindInvoicesByAccount(_accountId);
             Assert.IsNotNull(_listInvoices);
             Assert.AreEqual(_listInvoices[0].Id,2);
+        }
+
+        [Test(Description ="Prueba que el estado de un Restaurante cambie de ocupado a libre")]
+        public void ReleaseTableTest()
+        {
+            _restaurantDAO.ReleaseTable(_restaurant, _tableId);
+            _resultRestaurant = _restaurantDAO.FindById(_restaurantId);
+
+            Assert.AreEqual(_restaurant.Tables[_tableId - 1].Id, _resultRestaurant.Tables[_tableId-1].Id);
+            Assert.AreEqual(_restaurant.Tables[_tableId - 1].Capacity, _resultRestaurant.Tables[_tableId - 1].Capacity);
+            Assert.AreEqual(_restaurant.Tables[_tableId - 1].Number, _resultRestaurant.Tables[_tableId - 1].Number);
+            Assert.AreNotEqual(_restaurant.Tables[_tableId - 1].Status.Change(), _resultRestaurant.Tables[_tableId - 1].Status);
         }
 
         [Test]
