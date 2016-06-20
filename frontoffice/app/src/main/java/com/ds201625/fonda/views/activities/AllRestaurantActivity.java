@@ -13,9 +13,9 @@ import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.IAllRestaurantsView;
-import com.ds201625.fonda.interfaces.IFavoriteView;
-import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
+import com.ds201625.fonda.interfaces.AllRestaurantsView;
+import com.ds201625.fonda.interfaces.FavoriteView;
+import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
@@ -31,7 +31,7 @@ import java.util.List;
  * Activity de Todos los Resturantes
  */
 public class AllRestaurantActivity extends BaseNavigationActivity
-        implements IFavoriteView, IAllRestaurantsView,
+        implements FavoriteView, AllRestaurantsView,
         RestaurantListFragment.restaurantListFragmentListener {
 
     // UI references.
@@ -70,7 +70,7 @@ public class AllRestaurantActivity extends BaseNavigationActivity
     /**
      * Presentador Favoritos
      */
-    private IFavoriteViewPresenter presenter;
+    private FavoriteViewPresenter presenter;
 
     /**
      * Metodo que inicializa el activity

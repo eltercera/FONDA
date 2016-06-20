@@ -1,15 +1,8 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.MVPTest;
 
-import android.test.MoreAsserts;
-
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
-import com.ds201625.fonda.interfaces.IFavoriteView;
-import com.ds201625.fonda.logic.Command;
-import com.ds201625.fonda.logic.FondaCommandFactory;
+import com.ds201625.fonda.interfaces.FavoriteView;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
 
 import junit.framework.TestCase;
@@ -19,7 +12,7 @@ import java.util.List;
 /**
  * Created by Adri on 6/18/2016.
  */
-public class AddFavoriteRestaurantMVPTest extends TestCase implements IFavoriteView {
+public class AddFavoriteRestaurantMVPTest extends TestCase implements FavoriteView {
 
 
     /**

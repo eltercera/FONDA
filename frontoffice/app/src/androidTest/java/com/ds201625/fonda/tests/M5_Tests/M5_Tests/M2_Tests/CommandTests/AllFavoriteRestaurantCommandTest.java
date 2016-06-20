@@ -107,7 +107,7 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
             cmd.run();
             restaurantList = (List<Restaurant>) cmd.getResult();
 
-            assertEquals("Burger Shack", restaurantList.get(2).getName());
+            assertEquals("Pizza Familia", restaurantList.get(2).getName());
         } catch (RestClientException e) {
             e.printStackTrace();
         } catch (Exception e) {
