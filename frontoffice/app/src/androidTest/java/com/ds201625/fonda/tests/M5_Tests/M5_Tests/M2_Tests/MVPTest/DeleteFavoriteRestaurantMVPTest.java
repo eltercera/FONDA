@@ -2,7 +2,7 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.MVPTest;
 
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
-import com.ds201625.fonda.interfaces.IFavoriteView;
+import com.ds201625.fonda.interfaces.FavoriteView;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
 
 import junit.framework.TestCase;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Adri on 6/19/2016.
  */
-public class DeleteFavoriteRestaurantMVPTest extends TestCase implements IFavoriteView {
+public class DeleteFavoriteRestaurantMVPTest extends TestCase implements FavoriteView {
 
 
 

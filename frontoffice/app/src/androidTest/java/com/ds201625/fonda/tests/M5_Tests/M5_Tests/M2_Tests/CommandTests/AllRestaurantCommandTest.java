@@ -76,7 +76,7 @@ public class AllRestaurantCommandTest extends TestCase {
             cmd.run();
             restaurantList = (List<Restaurant>) cmd.getResult();
 
-            assertNotNull(restaurantList.get(1).getRestaurantCategory().getNameCategory());
+            assertNotNull(restaurantList.get(1).getRestaurantCategory().getName());
         } catch (RestClientException e) {
             e.printStackTrace();
         } catch (Exception e) {

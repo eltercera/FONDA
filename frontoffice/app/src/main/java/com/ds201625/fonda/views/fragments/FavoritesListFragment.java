@@ -18,9 +18,8 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.IFavoriteView;
-import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
-import com.ds201625.fonda.logic.FondaCommandFactory;
+import com.ds201625.fonda.interfaces.FavoriteView;
+import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
 import com.ds201625.fonda.views.activities.FavoritesActivity;
 import com.ds201625.fonda.views.adapters.FavoriteRestViewItemList;
@@ -32,7 +31,7 @@ import java.util.List;
  * Fragment que contiene la lista de restaurantes favoritos
  */
 public class FavoritesListFragment extends BaseFragment implements
-        IFavoriteView, SwipeRefreshLayout.OnRefreshListener{
+        FavoriteView, SwipeRefreshLayout.OnRefreshListener{
     /**
      * String que indica la clase al logger
      */
@@ -49,7 +48,7 @@ public class FavoritesListFragment extends BaseFragment implements
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean multi;
     private List<Restaurant> restaurantList;
-    private IFavoriteViewPresenter presenter;
+    private FavoriteViewPresenter presenter;
     private FavoritesActivity favoritesAct;
     private boolean empty;
     /**

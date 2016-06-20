@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Hp on 17/06/2016.
  */
-public interface IAllRestaurantsViewPresenter {
+public interface AllRestaurantsViewPresenter {
 
     /**
      * Encuentra todos los restaurantes

@@ -12,12 +12,11 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.IFavoriteView;
-import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
+import com.ds201625.fonda.interfaces.FavoriteView;
+import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
-import com.ds201625.fonda.views.fragments.CreditCardFragment;
 import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
 import com.ds201625.fonda.views.fragments.FavoritesEmptyFragment;
 import com.ds201625.fonda.views.fragments.FavoritesListFragment;
@@ -29,7 +28,7 @@ import java.util.List;
  * Activity de los Resturantes Favoritos
  */
 public class FavoritesActivity extends BaseNavigationActivity implements
-        IFavoriteView, FavoritesListFragment.favoritesListFragmentListener {
+        FavoriteView, FavoritesListFragment.favoritesListFragmentListener {
 
     /**
      * Administrador de Fragments
@@ -74,7 +73,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
     /**
      * Presentador de Favoritos
      */
-    private IFavoriteViewPresenter presenter;
+    private FavoriteViewPresenter presenter;
 
     /**
      * Inicializa la actividad
