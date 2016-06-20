@@ -69,6 +69,26 @@ namespace FondaBackOfficeLogicTest
         #endregion
 
         [Test]
+        public void CommandTotalOrderTest()
+        {
+            IList<int> _list = new List<int>();
+            _list.Add(_restaurantId); //1
+            _list.Add(_accountId); //3
+            float total;
+
+            _command = CommandFactory.GetCommandTotalOrder(_list);
+
+            _command.Execute();
+
+            total = (float)_command.Receiver;
+
+            Assert.IsNotNull(total);
+            Assert.AreEqual(total, 9100);
+            //Assert.AreEqual(_listInvoices[1].Number, 2);
+        }
+
+
+        [Test]
         public void CommandFindInvoicesByRestaurantTest()
         {
 
