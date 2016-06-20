@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BackOfficeModel.OrderAccount
 {
-    public interface IInvoiceDetailContract : IModel
+    public interface IInvoiceDetailModel : IModel
     {
         Table DetailInvoiceTable { get; set; }
 
@@ -18,5 +18,19 @@ namespace BackOfficeModel.OrderAccount
         string SessionIdInvoice { get; set; }
 
         string SessionNumberInvoice { get; set; }
+
+        Label UserName { get; set; }
+
+        Label UserLastName { get; set; }
+
+        Label UserId { get; set; }
+
+        Label IvaInvoice { get; set; }
+
+        Label TotalInvoice { get; set; }
+
+        Label DateInvoice { get; set; }
+        
+        LinkButton PrintInvoice { get; set; }
     }
 }

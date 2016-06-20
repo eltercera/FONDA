@@ -53,7 +53,7 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (CommandExceptionCloseCashRegister ex)
             {
-                throw new CommandExceptionCloseCashRegister("No se puede hacer cierre de caja con ordenes abiertas");
+
 
             }
         }
