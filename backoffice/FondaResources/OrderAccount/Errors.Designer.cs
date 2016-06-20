@@ -151,6 +151,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandGetDishOrdersByAccount.
+        /// </summary>
+        public static string ClassNameGetDishOrdersByAccount {
+            get {
+                return ResourceManager.GetString("ClassNameGetDishOrdersByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGetInvoice.
         /// </summary>
         public static string ClassNameGetInvoice {

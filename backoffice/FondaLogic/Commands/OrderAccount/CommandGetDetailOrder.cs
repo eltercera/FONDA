@@ -58,8 +58,8 @@ namespace FondaLogic.Commands.OrderAccount
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrders);
 
-                IList<Object> list = new IList<Object>();
-                Receiver = list;
+                IList<Object> _list = new List<Object>();
+                Receiver = _list;
 
             }
         }

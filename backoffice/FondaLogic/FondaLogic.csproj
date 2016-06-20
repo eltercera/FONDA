@@ -87,7 +87,7 @@
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetClosedOrders.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetCurrencyByRestaurant.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetDetailOrder.cs" />
-    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetDishOrdersByAccountId.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetDishOrdersByAccount.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetGenerateInvoice.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetInvoice.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrder.cs" />

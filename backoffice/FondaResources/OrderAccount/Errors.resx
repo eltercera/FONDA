@@ -249,4 +249,8 @@
     <value>CommandGetDetailOrder</value>
     <comment>Comando para obtener el detalle de una Orden</comment>
   </data>
+  <data name="ClassNameGetDishOrdersByAccount" xml:space="preserve">
+    <value>CommandGetDishOrdersByAccount</value>
+    <comment>Comando para obtener la lista de platos de una cuenta</comment>
+  </data>
 </root>
