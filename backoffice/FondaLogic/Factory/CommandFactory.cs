@@ -151,6 +151,17 @@ namespace FondaLogic.Factory
             return new CommandGenerateInvoice(receiver);
         }
 
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandGetInvoicesByProfile
+        /// </summary>
+        /// <param name="receiver">Profile</param>
+        /// <returns>comando CommandGetInvoicesByProfile</returns>
+        public static Command CommandGetInvoicesByProfile(object receiver)
+        {
+            return new CommandGetInvoicesByProfile(receiver);
+        }
+
+
         #endregion
 
         #region Restaurant

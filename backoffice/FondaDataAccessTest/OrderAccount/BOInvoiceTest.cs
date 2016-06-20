@@ -77,6 +77,24 @@ namespace FondaDataAccessTest
             Assert.AreEqual(_listInvoices[2].Number, 3);
         }
 
+        [Test(Description  ="Trae una lista de facturas pagadas a un usuario")]
+        public void FindAllInvoiceByProfileTest()
+        {
+            _listInvoices =  _invoiceDAO.findAllInvoice(_profile);
+
+            Assert.IsNotNull(_listInvoices);
+            Assert.AreEqual(3, _listInvoices.Count);
+        }
+
+        [Test]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void NullReferenceExceptionFindAllInvoiceByProfileTest()
+        {
+            _listInvoices = _invoiceDAO.findAllInvoice(null);
+
+            Assert.IsNull(_listInvoices);
+        }
+
         [Test]
         public void GenerateNumberInvoice()
         {

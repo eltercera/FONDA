@@ -5,12 +5,10 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
+using FondaLogic.FondaCommandException.OrderAccount;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FondaBackOfficeLogicTest
 {
@@ -101,6 +99,28 @@ namespace FondaBackOfficeLogicTest
             _command = CommandFactory.GetCommandPrintInvoice(_list);
 
             _command.Execute();
+        }
+
+        [Test(Description ="Verifica que devuelva una lista de Invoice dado un perfil")]
+        public void CommandGetInvoicesByProfile()
+        {
+            _command = CommandFactory.CommandGetInvoicesByProfile(_profileId);
+            _command.Execute();
+            _listInvoices = (List<Invoice>) _command.Receiver;
+
+            Assert.IsNotNull(_listInvoices);
+            Assert.AreEqual(3, _listInvoices.Count);
+        }
+
+        [Test]
+        [ExpectedException(typeof(CommandExceptionGetInvoicesByProfile))]
+        public void ErrorCommandGetInvoicesByProfile()
+        {
+            _command = CommandFactory.CommandGetInvoicesByProfile(null);
+            _command.Execute();
+            _listInvoices = (List<Invoice>)_command.Receiver;
+
+            Assert.IsNull(_listInvoices);
         }
 
         [TearDown]

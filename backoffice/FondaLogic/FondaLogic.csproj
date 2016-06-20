@@ -70,6 +70,7 @@
     <Compile Include="Commands\OrderAccount\CommandGetCurrencyByRestaurantId.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetInvoicesByProfile.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrders.cs" />
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
@@ -91,6 +92,7 @@
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetDishOrdersByAccount.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetGenerateInvoice.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetInvoice.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetInvoicesByProfile.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrder.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrders.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetRestaurant.cs" />
