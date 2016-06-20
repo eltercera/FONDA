@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using NHibernate.Criterion;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.Factory;
+using NHibernate;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -57,9 +58,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Un objeto Invoice</returns>
         public Invoice FindGenerateInvoiceByAccount(Account _account)
         {
+            IOrderAccountDao _accountDao = _facDAO.GetOrderAccountDAO();
+  
             try
             {
                 Invoice _invoice = new Invoice();
+                Invoice result;
 
                 if (_account.Status.Equals(ClosedAccountStatus.Instance))
                 {
@@ -74,12 +78,20 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                         }
                     }
                 }
-                
-                return _invoice;
+
+                Payment payment = (Payment) Session.GetSessionImplementation().PersistenceContext.Unproxy(_invoice.Payment);
+                result = EntityFactory.GetInvoice(payment, _invoice.Profile, _invoice.Total, _invoice.Tax, _invoice.Currency,
+                    _invoice.Number);
+
+                return result;
             }
             catch (ArgumentOutOfRangeException e)
             {
                 throw new FondaIndexException("Not Found invoice", e);
+            }
+            catch(PersistentObjectException e)
+            {
+                throw new PersistentObjectException("Error por no iniciar al proxy");
             }
         }
 

@@ -44,10 +44,10 @@
   <ItemGroup>
     <Compile Include="FondaMVPException\MVPException.cs" />
     <Compile Include="FondaMVPException\MVPExceptionCloseButton.cs" />
-    <Compile Include="FondaMVPException\MVPExceptionClosedOrdersTable.cs" />
-    <Compile Include="FondaMVPException\MVPExceptionDetailOrderTable.cs" />
-    <Compile Include="FondaMVPException\MVPExceptionOrderInvoicesTable.cs" />
-    <Compile Include="FondaMVPException\MVPExceptionOrdersTable.cs" />
+    <Compile Include="FondaMVPException\OrderAccount\MVPExceptionClosedOrdersTable.cs" />
+    <Compile Include="FondaMVPException\OrderAccount\MVPExceptionDetailOrderTable.cs" />
+    <Compile Include="FondaMVPException\OrderAccount\MVPExceptionOrderInvoicesTable.cs" />
+    <Compile Include="FondaMVPException\OrderAccount\MVPExceptionOrdersTable.cs" />
     <Compile Include="Login\LoginPresenter.cs" />
     <Compile Include="Login\mensajes.cs" />
     <Compile Include="Login\UserListPresenter.cs" />

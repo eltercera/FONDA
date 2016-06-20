@@ -59,7 +59,9 @@ namespace FondaLogic.Commands.OrderAccount
                 _listDishOrder = _dishOrderDao.GetDishesByAccount(_account.Id);
 
                 InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
-                _accountDAO.SaveInvoice(_invoice, _account.Id, _restaurant.Id);
+                _invoice =_accountDAO.SaveInvoice(_invoice, _account.Id, _restaurant.Id);
+
+                Receiver = _invoice;
 
             }
             catch (NullReferenceException ex)

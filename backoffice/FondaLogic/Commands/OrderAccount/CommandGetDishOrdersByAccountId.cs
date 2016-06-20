@@ -1,5 +1,4 @@
-﻿using com.ds201625.fonda;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaLogic.Log;
@@ -8,12 +7,12 @@ using System.Collections.Generic;
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    public class CommandDetailOrder : Command
+    public class CommandGetDishOrdersByAccountId : Command
     {
-        FactoryDAO _facDAO = FactoryDAO.Intance;
-        int _orderAccount = 0;
+        private FactoryDAO _facDAO = FactoryDAO.Intance;
+        private int _orderAccount = 0;
 
-        public CommandDetailOrder(Object receiver) : base(receiver)
+        public CommandGetDishOrdersByAccountId(Object receiver) : base(receiver)
         {
             try
             {
@@ -40,8 +39,7 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
-                //TODO: Escribir en el Log la excepcion
+                Logger.WriteErrorLog("",ex);
                 throw;
             }
         }
