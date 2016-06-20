@@ -1,4 +1,6 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+using FondaLogic.FondaCommandException;
+using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 
@@ -18,7 +20,16 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (Exception ex)
             {
-                throw new Exception("No se puede hacer cierre de caja con ordenes abiertas");
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionReleaseTableByRestaurant exception = new CommandExceptionReleaseTableByRestaurant(
+                    FondaResources.General.Errors.NullExceptionReferenceCode,
+                    FondaResources.OrderAccount.Errors.ClassNameReleaseTableByRestaurant,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
 
             }
         }

@@ -160,6 +160,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandGetGenerateInvoice.
+        /// </summary>
+        public static string ClassNameGetGenerateInvoice {
+            get {
+                return ResourceManager.GetString("ClassNameGetGenerateInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGetInvoice.
         /// </summary>
         public static string ClassNameGetInvoice {
@@ -210,6 +219,24 @@ namespace FondaResources.OrderAccount {
         public static string ClassNamePayOrder {
             get {
                 return ResourceManager.GetString("ClassNamePayOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandReleaseTableByRestaurant.
+        /// </summary>
+        public static string ClassNameReleaseTableByRestaurant {
+            get {
+                return ResourceManager.GetString("ClassNameReleaseTableByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandTotalOrder.
+        /// </summary>
+        public static string ClassNameTotalOrder {
+            get {
+                return ResourceManager.GetString("ClassNameTotalOrder", resourceCulture);
             }
         }
         
