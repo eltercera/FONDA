@@ -103,7 +103,7 @@ namespace FondaBackOfficeLogicTest
             Assert.AreEqual(_listInvoices[1].Number, 2);
         }
 
-        [Test]
+        [Test(Description = "Genera una factura nueva")]
         public void CommandGenerateInvoiceTest()
         {
             InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
@@ -114,10 +114,14 @@ namespace FondaBackOfficeLogicTest
             _command = CommandFactory.GetCommandGenerateInvoice(_listObject);
 
             _command.Execute();
-           // _invoice = _invoiceDAO.FindById();
+            _invoice = (Invoice)_command.Receiver;
+            Assert.IsNotNull(_invoice);
+            Assert.AreEqual(_invoice.Tax, 12);
+            Assert.AreEqual(_invoice.Total, 100);
+            // _invoice = _invoiceDAO.FindById();
         }
 
-        [Test]
+        [Test(Description = "Imprime una factura")]
         public void CommandPrintInvoice()
         {
             _list.Add(_accountId);
