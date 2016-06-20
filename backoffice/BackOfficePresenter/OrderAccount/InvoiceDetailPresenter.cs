@@ -17,13 +17,13 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 {
     public class InvoiceDetailPresenter : BackOfficePresenter.Presenter
     {
-        private IInvoiceDetailContract _view;
+        private IInvoiceDetailModel _view;
         int totalColumns = 3;
         int accountId = 0;
         string _currency = null;
         Invoice _invoice;
 
-        public InvoiceDetailPresenter(IInvoiceDetailContract viewInvoiceDetail) : 
+        public InvoiceDetailPresenter(IInvoiceDetailModel viewInvoiceDetail) : 
             base(viewInvoiceDetail)
         {
             _view = viewInvoiceDetail;
@@ -63,8 +63,6 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 _invoice = (Invoice)commandGetInvoice.Receiver;
                 _listDish = (IList<DishOrder>)commandGetDishOrder.Receiver;
                 _currency = (string)commandGetCurrencyInvoice.Receiver;
-                _view.SessionNumberInvoice = _invoice.Number.ToString();
-
 
                 //Revisa si la lista no esta vacia
                 if (_invoice != null)
@@ -95,6 +93,14 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         {
             HideMessageLabel();
             CleanTable(_view.DetailInvoiceTable);
+            //Label de la factura
+            _view.SessionNumberInvoice = _invoice.Number.ToString();
+            _view.DateInvoice.Text = _invoice.Date.ToShortDateString();
+            _view.UserName.Text = _invoice.Profile.Person.Name.ToString();
+            _view.UserLastName.Text = _invoice.Profile.Person.LastName.ToString();
+            _view.UserId.Text = _invoice.Profile.Person.Ssn.ToString();
+            _view.IvaInvoice.Text = _currency + " " + _invoice.Tax.ToString();
+            _view.TotalInvoice.Text = _currency + " " + _invoice.Total.ToString();
 
             int totalRows = data.Count; //tamano de la lista 
             float total = 0;
