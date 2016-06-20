@@ -1,14 +1,16 @@
 package com.ds201625.fonda.logic;
 
+import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
+import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteCommensalCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
-import com.ds201625.fonda.logic.Commands.ProfileCommand.CreateProfileCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommands.CreateProfileCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.DeleteFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalCommand;
-import com.ds201625.fonda.logic.Commands.ProfileCommand.DeleteProfileCommand;
-import com.ds201625.fonda.logic.Commands.ProfileCommand.GetProfilesCommand;
-import com.ds201625.fonda.logic.Commands.ProfileCommand.UpdateProfileCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommands.DeleteProfileCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommands.GetProfilesCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommands.UpdateProfileCommand;
 
 /**
  * Fabrica de comandos
@@ -102,5 +104,17 @@ public class FondaCommandFactory {
      * @return comando getProfilesCommand
      */
     public static Command getProfilesCommand() { return  new GetProfilesCommand(); }
+
+    /**
+     * Crea un createCommensalCommand
+     * @return comando createCommensalCommand
+     */
+    public static Command createCommensalCommand() { return  new CreateCommensalCommand(); }
+
+    /**
+     * Crea un deleteCommensalCommand
+     * @return comando deleteCommensalCommand
+     */
+    public static Command deleteCommensalCommand() { return  new DeleteCommensalCommand(); }
 }
 

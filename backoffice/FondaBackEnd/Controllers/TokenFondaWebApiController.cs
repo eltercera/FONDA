@@ -66,6 +66,12 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
                 return InternalServerError(ex);
+            }//HttpResponseException
+            catch (HttpResponseException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                return InternalServerError(ex);
             }
             catch (Exception e)
             {
