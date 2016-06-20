@@ -60,24 +60,28 @@
     <Compile Include="Commands\Login\CommandSaveEntity.cs" />
     <Compile Include="Commands\Login\CommanGetAllEmployee.cs" />
     <Compile Include="Commands\OrderAccount\CommandCloseCashRegister.cs" />
-    <Compile Include="Commands\OrderAccount\CommandDetailOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetDetailOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetDishOrdersByAccountId.cs" />
     <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
     <Compile Include="Commands\OrderAccount\CommandFindInvoicesByRestaurant.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateException.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetClosedOrders.cs" />
-    <Compile Include="Commands\OrderAccount\CommandGetCurrency.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetCurrencyByRestaurantId.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetGenerateInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrders.cs" />
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandPrintInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandTotalOrder.cs" />
+    <Compile Include="Commands\OrderAccount\GetCurrencyInvoicecs.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionCloseCashRegister.cs" />
     <Compile Include="FondaCommandException\CommandExceptionCreateEmployee.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetEmployee.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetDishOrdersByAccountId.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrder.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrders.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetRestaurant.cs" />
@@ -89,6 +93,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Commands\Menu\" />
     <Folder Include="Commands\Restaurant\" />
   </ItemGroup>
   <ItemGroup>

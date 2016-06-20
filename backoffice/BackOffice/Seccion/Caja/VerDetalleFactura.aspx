@@ -6,7 +6,7 @@
     Detalle 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    de Factura [# Factura]
+    Factura # <%=Session["InvoiceNumber"]%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
     <%--Breadcrumbs--%>
@@ -54,7 +54,8 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-cutlery" aria-hidden="true"></i> Detalle la factura [#Factura]</h3>
+                    <h3 class="panel-title"><i class="fa fa-cutlery" aria-hidden="true"></i> Detalle la factura</h3>
+                                <a href="#" class="btn btn-default pull-right" ><i class="fa fa-print" aria-hidden="true"></i></a>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">

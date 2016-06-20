@@ -89,6 +89,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             {
                 throw new FondaIndexException("Not Found invoice", e);
             }
+            catch(PersistentObjectException e)
+            {
+                throw new PersistentObjectException("Error por no iniciar al proxy");
+            }
         }
 
         /// <summary>

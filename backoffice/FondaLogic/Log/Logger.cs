@@ -1,11 +1,5 @@
-﻿using FondaLogic.FondaCommandException;
-using com.ds201625.fonda.DataAccess.Exceptions;
-using log4net;
+﻿using log4net;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FondaLogic.Log
 {
