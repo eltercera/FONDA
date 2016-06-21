@@ -1,6 +1,9 @@
 ﻿using com.ds201625.fonda.BackEnd.ActionFilters;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
+using FondaLogic;
+using FondaLogic.Factory;
+using FondaLogic.FondaCommandException.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,24 +76,33 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// Servicio web que devuelve una lista de facturas de un perfil
         /// </summary>
         /// <returns>Lista de Invoice</returns>
-        [HttpGet]
-        [Route("profile/invoices")]
+        [HttpPost]
+        [Route("profile/{profileId}/invoices")]
         [FondaAuthToken]
-        public IHttpActionResult GetPaymentHistory()
+        public IHttpActionResult GetPaymentHistory(int profileId)
         {
-            List<Invoice> paymentHistory = new List<Invoice>();
+            IList<Invoice> paymentHistory = new List<Invoice>();
+            List<Object> parameters = new List<object>();
+            Command command;
 
             try
             {
-                //TODO
-                //Invocar a metodos para devolver historial de pagos
+                Commensal commensal = GetCommensal(Request.Headers);
+                parameters.Add(profileId);
+                parameters.Add(commensal);
+
+                command = CommandFactory.GetCommandGetPaymentHistoryByProfile(parameters);
+
+                paymentHistory = (IList<Invoice>) command.Receiver;
             }
-            catch (Exception)
+            catch (CommandExceptionGetPaymentHistoryByProfile ex)
             {
-
-                return BadRequest();
+                CommandExceptionGetPaymentHistoryByProfile e = new CommandExceptionGetPaymentHistoryByProfile("FALTA PERSONALIZAR");
+                FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
+                return InternalServerError(ex);
             }
 
+            FondaLogic.Log.Logger.WriteSuccessLog("Falta modificar", "", "");
             return Ok(paymentHistory);
         }
 

@@ -50,6 +50,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
                 commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByAccount(result);
+                _view.Session = result.ToString();
 
                 //Ejecuta el comando deseado
                 commandGetInvoicesByAccount.Execute();

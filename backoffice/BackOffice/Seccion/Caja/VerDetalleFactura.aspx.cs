@@ -8,7 +8,7 @@ using BackOfficeModel;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class VerDetalleFactura : System.Web.UI.Page, IInvoiceDetailContract
+    public partial class VerDetalleFactura : System.Web.UI.Page, IInvoiceDetailModel
     { 
        #region Presenter
 
@@ -25,6 +25,54 @@ namespace BackOffice.Seccion.Caja
             set { invoiceDetail = value; }
         }
 
+        public System.Web.UI.WebControls.Label UserName
+        {
+            get { return name; }
+
+            set { name = value; }
+        }
+
+        public System.Web.UI.WebControls.Label UserLastName
+        {
+            get { return lastname; }
+
+            set { lastname = value; }
+        }
+
+        public System.Web.UI.WebControls.Label UserId
+        {
+            get { return ssn; }
+
+            set { ssn = value; }
+        }
+
+        public System.Web.UI.WebControls.Label IvaInvoice
+        {
+            get { return iva; }
+
+            set { iva = value; }
+        }
+
+        public System.Web.UI.WebControls.Label TotalInvoice
+        {
+            get { return total; }
+
+            set { total = value; }
+        }
+
+        public System.Web.UI.WebControls.Label DateInvoice
+        {
+            get { return date; }
+
+            set { date = value; }
+        }
+
+        public System.Web.UI.WebControls.LinkButton PrintInvoice
+        {
+            get { return print; }
+
+            set { print = value; }
+        }
         Label IModel.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
@@ -43,17 +91,17 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Recurso de Session con el que inicia el Page_Load
         /// </summary>
-        string IInvoiceDetailContract.Session
-        {
-            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
-
-            set { Session[OrderAccountResources.SessionIdAccount] = value; }
-        }
-        string IInvoiceDetailContract.SessionIdInvoice
+        string IInvoiceDetailModel.Session
         {
             get { return Session[OrderAccountResources.SessionIdInvoice].ToString(); }
 
             set { Session[OrderAccountResources.SessionIdInvoice] = value; }
+        }
+        string IInvoiceDetailModel.SessionIdAccount
+        {
+            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
+
+            set { Session[OrderAccountResources.SessionIdAccount] = value; }
         }
 
         public string SessionRestaurant
