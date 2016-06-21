@@ -56,6 +56,7 @@
     <Compile Include="Commands\Login\CommandGetEmployeeById.cs" />
     <Compile Include="Commands\Login\CommandGetEmployeeByUser .cs" />
     <Compile Include="Commands\Login\CommandGetRestaurantById.cs" />
+    <Compile Include="Commands\Login\CommandGetRolById.cs" />
     <Compile Include="Commands\Login\CommandSaveEmployee.cs" />
     <Compile Include="Commands\Login\CommandSaveEntity.cs" />
     <Compile Include="Commands\Login\CommanGetAllEmployee.cs" />

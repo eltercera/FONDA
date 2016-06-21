@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FondaMVPException\MVPException.cs" />
-    <Compile Include="FondaMVPException\MVPExceptionOrdersTable.cs" />
     <Compile Include="Login\DetailModifyPresenter.cs" />
     <Compile Include="FondaMVPException\MVPExceptionCloseButton.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionClosedOrdersTable.cs" />
