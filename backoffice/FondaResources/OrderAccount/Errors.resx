@@ -273,4 +273,8 @@
     <value>BO-04-006</value>
     <comment>Mensaje de error al hacer el casteo del URL</comment>
   </data>
+  <data name="ClassNameCancelInvoice" xml:space="preserve">
+    <value>Command CancelInvoice</value>
+    <comment>Comando para cancelar una factura</comment>
+  </data>
 </root>

@@ -31,6 +31,18 @@ namespace FondaLogic.Factory
         //Se obtienen los comandos a a utilizar
 
         /// <summary>
+        /// Metodo de la fabrica para el Comando CancelInvoice
+        /// </summary>
+        /// <param name="entity">Lista de ints (invoiceId, accountId)</param>
+        /// <returns>comando CancelInvoice</returns>
+        public static Command GetCommandCancelInvoiced(object receiver)
+        {
+            return new CommandCancelInvoice(receiver);
+        }
+
+        //Se obtienen los comandos a a utilizar
+
+        /// <summary>
         /// Metodo de la fabrica para el Comando ReleaseTableByRestaurant
         /// </summary>
         /// <param name="entity">Lista de objetos (Restaurante, tableId)</param>

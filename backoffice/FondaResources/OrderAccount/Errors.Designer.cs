@@ -61,6 +61,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Command CancelInvoice.
+        /// </summary>
+        public static string ClassNameCancelInvoice {
+            get {
+                return ResourceManager.GetString("ClassNameCancelInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandCloseCashRegister.
         /// </summary>
         public static string ClassNameCloseCashRegister {

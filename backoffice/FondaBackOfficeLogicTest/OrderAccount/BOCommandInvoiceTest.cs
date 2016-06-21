@@ -75,7 +75,19 @@ namespace FondaBackOfficeLogicTest
 
         #endregion
 
+        [Test(Description = "Obtiene las facturas de un restaurante")]
+        public void CommandCancelInvoiceTest()
+        {
+            _list[0]=_invoiceId;
+            _list[1] = _accountId;
+            _command = CommandFactory.GetCommandCancelInvoiced(_list);
+            _command.Execute();
+            _invoice = (Invoice)_command.Receiver;
 
+            //Assert.IsNotNull(_listInvoices);
+            //Assert.AreEqual(_listInvoices[0].Id, 1);
+            //Assert.AreEqual(_listInvoices[1].Number, 2);
+        }
 
 
         [Test(Description = "Obtiene las facturas de un restaurante")]

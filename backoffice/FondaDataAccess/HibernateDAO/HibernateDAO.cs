@@ -85,6 +85,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return new HibernateCashPaymentDAO();
         }
 
+        public CanceledInvoiceStatus GetCanceledInvoiceStatusDAO()
+        {
+            ICanceledInvoiceStatusDAO s = new HibernateCanceledInvoiceStatus();
+            return s.getCanceledInvoiceStatus();
+        }
+
         public ICoordinateDAO GetCoordinateDAO()
         {
             return new HibernateCoordinateDAO();
