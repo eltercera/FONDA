@@ -244,6 +244,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                     return int.Parse(queryParameter);
                 }
             }
+            //Esto deberia ir mas arriba
             catch (System.FormatException ex) {
                 MVPExceptionQuery e = new MVPExceptionQuery
                     (
