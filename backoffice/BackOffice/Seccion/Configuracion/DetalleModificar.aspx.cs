@@ -8,6 +8,7 @@ using BackOfficeModel.Login;
 using System.Web.UI.HtmlControls;
 using FondaResources.Login;
 using BackOfficePresenter.Login;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Configuracion
 {
@@ -15,10 +16,82 @@ namespace BackOffice.Seccion.Configuracion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            //Llama al presentador para llenar la tabla de ordenes
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
 
+                detailModifyPresenter.cargarUserDetail();
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
         #region model
+        //labelusuario
+        public System.Web.UI.WebControls.Label labelrestauranteemp
+        {
+            get { return labelrestauante; }
+            set { labelrestauante = value; }
+        }
+        //labelusuario
+        public System.Web.UI.WebControls.Label labelemailemp
+        {
+            get { return labelemail; }
+            set { labelemail = value; }
+        }
+        //labelusuario
+        public System.Web.UI.WebControls.Label labelusuarioemp
+        {
+            get { return labelusuario; }
+            set { labelusuario = value; }
+        }
+        //labelrol
+        public System.Web.UI.WebControls.Label labelrolemp
+        {
+            get { return labelrol; }
+            set { labelrol = value; }
+        }
+        //labeldireccion
+        public System.Web.UI.WebControls.Label labeldireccionemp
+        {
+            get { return labeldireccion; }
+            set { labeldireccion = value; }
+        }
+        //labelgenero
+        public System.Web.UI.WebControls.Label labelgeneroemp
+        {
+            get { return labelgenero; }
+            set { labelgenero = value; }
+        }
+        //labeltelefono
+        public System.Web.UI.WebControls.Label labeltelefonoemp
+        {
+            get { return labeltelefono; }
+            set { labeltelefono = value; }
+        }
+        //labelfechanac
+        public System.Web.UI.WebControls.Label labelfechanacemp
+        {
+            get { return labelfechanac; }
+            set { labelfechanac = value; }
+        }
+        //labelcedula
+        public System.Web.UI.WebControls.Label labelcedulaemp
+        {
+            get { return labelcedula; }
+            set { labelcedula = value; }
+        }
+        //labelapellido
+        public System.Web.UI.WebControls.Label labelapellido
+        {
+            get { return labelapellido2; }
+            set { labelapellido2 = value; }
+        }
+        //labelnombre
+        public System.Web.UI.WebControls.Label labelNombre
+        {
+            get { return labelnombre; }
+            set { labelnombre = value; }
+        }
         //alert
         public System.Web.UI.HtmlControls.HtmlGenericControl HtmlGenericControlAlert
         {
@@ -272,11 +345,12 @@ namespace BackOffice.Seccion.Configuracion
 
         }
         public void Modify_Click2(object sender, EventArgs e)
-        {
+        { 
+            
             bool result = detailModifyPresenter.Modify_Click();
             if (result)
             {
-
+                detailModifyPresenter.cargarUserDetail();
             }
             else
             {

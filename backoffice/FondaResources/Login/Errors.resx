@@ -118,39 +118,59 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ClassNameGetEmployee" xml:space="preserve">
-    <value>CommandGetAllEmployee</value>
+    <value>Comando para obtener todos los empleados.</value>
     <comment>Comando para obtener todos los empleados.</comment>
   </data>
   <data name="ClassNameGetEmployeeId" xml:space="preserve">
-    <value>CommandGetEmployeeById</value>
+    <value>Comando para obtener un empleado por su id.</value>
     <comment>Comando para obtener un empleado por su id.</comment>
   </data>
+  <data name="ClassNameGetEmployeeUser" xml:space="preserve">
+    <value>Comando para obtener un empleado por su cuenta de usuario.</value>
+    <comment>Comando para obtener un empleado por su cuenta de usuario.</comment>
+  </data>
   <data name="ClassNameGetExployeeSsn" xml:space="preserve">
-    <value>CommandGetEmployeeBySsn</value>
+    <value>Comando para obtener un empleado por su ssn.</value>
     <comment>Comando para obtener un empleado por su ssn.</comment>
   </data>
-  <data name="ClassNameGetRestaurant" xml:space="preserve">
-    <value>CommandGetRestaurantById</value>
-    <comment>Comando para obtener un restaurante por su id.</comment>
-  </data>
   <data name="ClassNameGetRestaurantAll" xml:space="preserve">
-    <value>CommandGetRestaurantAll</value>
+    <value>Comando para obtener todos los restaurantes.</value>
     <comment>Comando para obtener todos los restaurantes.</comment>
   </data>
+  <data name="ClassNameGetRestaurantId" xml:space="preserve">
+    <value>Comando para obtener un restaurante por su id.</value>
+    <comment>Comando para obtener un restaurante por su id.</comment>
+  </data>
   <data name="ClassNameGetRoles" xml:space="preserve">
-    <value>CommandGetAllRoles</value>
+    <value>Comando para obtener todos los roles.</value>
     <comment>Comando para obtener todos los roles.</comment>
   </data>
   <data name="ClassNameGetUserAccountEmail" xml:space="preserve">
-    <value>CommandGetUserAccoundByEmail</value>
+    <value>Comando para obtener una cuenta de usuario por su correo electronico</value>
     <comment>Comando para obtener una cuenta de usuario por su correo electronico</comment>
   </data>
+  <data name="ClassNameIndexParameter" xml:space="preserve">
+    <value>Excepcion fuera del rango del parametro.</value>
+    <comment>Excepcion fuera del rango del parametro.</comment>
+  </data>
+  <data name="ClassNameInvalidParameter" xml:space="preserve">
+    <value>Excepcion para parametro invalido.</value>
+    <comment>Excepcion para parametro invalido.</comment>
+  </data>
+  <data name="ClassNameParameterNotFound" xml:space="preserve">
+    <value>Excepcion para pametro no encontrado.</value>
+    <comment>Excepcion para pametro no encontrado.</comment>
+  </data>
   <data name="ClassNameSaveEmployee" xml:space="preserve">
-    <value>CommandSaveEmployee</value>
+    <value>Comando para guardar un empleado.</value>
     <comment>Comando para guardar un empleado.</comment>
   </data>
   <data name="CommandMethod" xml:space="preserve">
-    <value>Execute</value>
+    <value>Metodo disparador del Error para Comando.</value>
     <comment>Metodo disparador del Error para Comando.</comment>
+  </data>
+  <data name="EndLogger" xml:space="preserve">
+    <value>Ha finalizado el logger</value>
+    <comment>vHa finalizado el logger</comment>
   </data>
 </root>

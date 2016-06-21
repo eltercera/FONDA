@@ -291,6 +291,10 @@ namespace FondaLogic.Factory
         {
             return new CommandSaveEntity(receiver);
         }
+        public static Command CommandGetRolById(object receiver)
+        {
+            return new CommandGetRolById(receiver);
+        }
 
         #endregion
     }

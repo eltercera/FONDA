@@ -1,8 +1,11 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.BackEndLogic.Exceptions;
+using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaLogic;
 using FondaLogic.Factory;
+using FondaLogic.FondaCommandException.Login;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -29,36 +32,55 @@ namespace FondaBackOfficeLogicTest
         private Command _commandFindEmployeebyUser;
         private Command _commandFindAllRoles;
 
+
+        /// <summary>
+        /// Void: aInitUserAccount()
+        /// Explicación: Se llama al metodo generateUserAccount() para asi instanciar un objeto de tipo
+        /// UserAccount con todos los datos de prueba.
+        /// </summary>
+
         [Test]
-        public void InitUserAccount()
+        public void aInitUserAccount()
         {
             generateUserAccount();
-            Assert.AreEqual(_userAcount.Email, "fondauser2@gmail.com");
-            Assert.AreEqual(_userAcount.Password, "abc123ghj54");
-            Assert.AreEqual(_userAcount.Status.StatusId.ToString(), "1");
+            Assert.AreNotEqual( _userAcount , null );
+            Assert.AreEqual( _userAcount.Email , "fondauser2@gmail.com" );
+            Assert.AreEqual( _userAcount.Password , "abc123ghj54" );
+            Assert.AreEqual( _userAcount.Status.StatusId.ToString() , "1" );
             
         }
 
+        /// <summary>
+        /// Void: bInitEmployee()
+        /// Explicación: Se llama al metodo generateEmployee() para asi instanciar un objeto de tipo
+        /// Employee con todos los datos de prueba.
+        /// </summary>
+
         [Test]
-        public void InitEmployee()
+        public void bInitEmployee()
         {
             
             generateEmployee();
+            Assert.AreNotEqual( _employee,null );
             Assert.AreEqual( _employee.Name ,"Rafael" );
             Assert.AreEqual( _employee.LastName ,"Jimenez" );
             Assert.AreEqual( _employee.Ssn , "242871509" );
             Assert.AreEqual( _employee.PhoneNumber , "0424-248-63-95" );
             Assert.AreEqual( _employee.Address , "Los Samanes" );
             Assert.AreEqual( _employee.Gender , 'M');
-            //Assert.AreEqual( _employee.BirthDate , "1992-09-03 00:00:00.000");
             Assert.AreEqual( _employee.Username , "rejimenez.12" );
-            //Assert.AreEqual( _employee.Role , "Caja" );
-            Assert.AreEqual(_employee.Status.StatusId.ToString() , "1");
+            Assert.AreEqual( _employee.Status.StatusId.ToString() , "1" );
             
             
 
 
         }
+
+        /// <summary>
+        /// Void: generateUserAccount()
+        /// Explicación: Metodo que instancia un objeto de tipo UserAccount y lo inicializa con
+        /// valores de prueba.
+        /// </summary>
 
         public void generateUserAccount()
         {
@@ -69,6 +91,11 @@ namespace FondaBackOfficeLogicTest
 
         }
 
+        /// <summary>
+        /// Void: generateEmployee()
+        /// Explicación: Metodo que instancia un objeto de tipo Employee y lo inicializa con
+        /// valores de prueba.
+        /// </summary>
 
         public void generateEmployee()
         {
@@ -88,11 +115,22 @@ namespace FondaBackOfficeLogicTest
             
         }
 
+        /// <summary>
+        /// Void: getDao()
+        /// Explicación: Se llama a la fabrica de dao para instanciarla.
+        /// </summary>
+
+
         private void getDao()
         {
             if (_facDAO == null)
                 _facDAO = FactoryDAO.Intance;
         }
+
+        /// <summary>
+        /// Void: getRoleDao()
+        /// Explicación: Se llama a la fabrica dao de roles para instanciarla.
+        /// </summary>
 
         private void getRoleDao()
         {
@@ -101,39 +139,51 @@ namespace FondaBackOfficeLogicTest
                 _roleDAO = _facDAO.GetRoleDAO();
 
         }
-        
+
+        /// <summary>
+        /// Void: commandaUserAccountTest()
+        /// Explicación: Se llama a la fabrica de comandos para instanciar el comando 
+        /// GetCommandSaveEntity y guardar un objeto de tipo UserAccount luego se instancia el
+        /// comando GetCommandGetUserEmail para verificar si ese dato se guardo correctamente
+        /// y probarlo.
+        /// </summary>
+
         [Test]
-        //[ExpectedException(typeof(NullReferenceException))]
-        public void CommandUserAccountTest()
+        public void commandaUserAccountTest()
         {
 
             _commandSaveUserAccount = CommandFactory.GetCommandSaveEntity(_userAcount);
             _commandSaveUserAccount.Execute();
-            
+            Assert.AreNotEqual(_userAcount, null);
+            Assert.AreNotEqual(_userAcount.Id, 0);
             _commandFindUserbyEmail = CommandFactory.GetComandoGetUserAcountByEmail(_userAcount.Email);
             _commandFindUserbyEmail.Execute();
             UserAccount _userTest = (UserAccount)_commandFindUserbyEmail.Receiver;
+            
             Assert.AreEqual( _userTest.Email , "fondauser2@gmail.com" );
             Assert.AreEqual( _userTest.Password , "abc123ghj54" );
-            //Assert.AreEqual( _userTest.Status.StatusId.ToString() , "1" );
+            Assert.AreEqual( _userTest.Status.StatusId.ToString() , "1" );
 
         }
 
+        /// <summary>
+        /// Void: commandbEmployeeTest()
+        /// Explicación: Se llama a la fabrica de comandos para instanciar el comando 
+        /// GetCommandSaveEmployee y guardar un objeto de tipo Employee luego se instancia el
+        /// comando GetCommandGetEmployeeById para verificar si ese dato se guardo correctamente
+        /// y probarlo.
+        /// /// NOTA: Para poder traer los datos obtenidos por el comando debes guardalo
+        /// en una variable de tipo Employee y que sea igual al atributo Receiver casteado.
+        /// </summary>
+
         [Test]
-        public void CommandEmployeeTest()
+        public void commandbEmployeeTest()
         {
             _commandSaveEmployee = CommandFactory.GetCommandSaveEmployee(_employee);
             _commandSaveEmployee.Execute();
             Assert.AreNotEqual(_employee,null);
             Assert.AreNotEqual(_employee.Id , 0);
- 
-        }
-
-        [Test]
-        public void CommandEmployeeByIdTest()
-        {
-            Assert.AreNotEqual(_employee,null);
-            /*_commandFindEmployeebyId = CommandFactory.GetCommandGetEmployeeById(_employee.Id);
+            _commandFindEmployeebyId = CommandFactory.GetCommandGetEmployeeById(_employee.Id);
             _commandFindEmployeebyId.Execute();
             Employee employeeTest = (Employee)_commandFindEmployeebyId.Receiver;
             Assert.AreEqual(employeeTest.Name, "Rafael");
@@ -142,17 +192,26 @@ namespace FondaBackOfficeLogicTest
             Assert.AreEqual(employeeTest.PhoneNumber, "0424-248-63-95");
             Assert.AreEqual(employeeTest.Address, "Los Samanes");
             Assert.AreEqual(employeeTest.Gender, 'M');
-            //Assert.AreEqual(employeeTest.BirthDate, "03-09-1992");
             Assert.AreEqual(employeeTest.Username, "rejimenez.12");
-            //Assert.AreEqual(employeeTest.Role, "Caja");
             Assert.AreEqual(employeeTest.Status.StatusId.ToString(), "1");
-            */
+     
+
 
         }
 
+        /// <summary>
+        /// Void: commandEmployeeByUserTest()
+        /// Explicación: Se llama a la fabrica de comandos para instanciar el comando 
+        /// GetCommandGetEmployeeByUser y buscar un empleado por username para luego 
+        /// verificar correctamente con las respectivas pruebas.
+        /// y probarlo.
+        /// NOTA: Para poder traer los datos obtenidos por el comando debes guardalo
+        /// en una variable de tipo Employee y que sea igual al atributo Receiver casteado.
+        /// </summary>
+
         [Test]
-        //[ExpectedException(typeof(NullReferenceException))]
-        public void CommandEmployeeByUserTest()
+
+        public void commandEmployeeByUserTest()
         {
 
             _commandFindEmployeebyUser = CommandFactory.GetCommandGetEmployeeByUser(_employee.Username);
@@ -171,8 +230,19 @@ namespace FondaBackOfficeLogicTest
 
         }
 
+        /// <summary>
+        /// Void: commandRolTest()
+        /// Explicación: Se llama a la fabrica de comandos para instanciar el comando 
+        /// GetCommandGetAllRoles y buscar todos los roles disponibles para  
+        /// verificar correctamente con las respectivas pruebas.
+        /// y probarlo.
+        /// NOTA: Para poder traer los datos obtenidos por el comando debes guardalo
+        /// en una variable de tipo List<Role> y que sea igual al atributo Receiver casteado.
+        /// </summary>
+
         [Test]
-        public void CommandRolTest()
+
+        public void commandRolTest()
         {
             _commandFindAllRoles = CommandFactory.GetCommandGetAllRoles("null");
             _commandFindAllRoles.Execute();
@@ -213,25 +283,7 @@ namespace FondaBackOfficeLogicTest
         }
 
 
-        /*  /// <summary>
-          /// prueba unitaria de excepcion de parametros invalidos
-          /// </summary>
-          [Test]
-          //[ExpectedException(typeof(InvalidTypeOfParameterException))]
-          public void CreateFavoriteRestaurantCommandBadParameter0Test()
-          {
 
-          }
-
-          /// <summary>
-          /// prueba unitaria de excepcion de parametros invalidos
-          /// </summary>
-          [Test]
-          //[ExpectedException(typeof(RequieredParameterNotFoundException))]
-          public void CreateFavoriteRestaurantCommandRequieredParametersTest()
-          {
-
-          }*/
         private void getUserAcountDao()
         {
             getDao();
@@ -239,6 +291,12 @@ namespace FondaBackOfficeLogicTest
                 _userAcountDAO = _facDAO.GetUserAccountDAO();
 
         }
+
+        /// <summary>
+        /// Void: getEmployeeDao()
+        /// Explicación: Se llama a la fabrica dao de Employee para instanciarla.
+        /// </summary>
+        /// 
         private void getEmployeeDao()
         {
             getDao();
@@ -247,8 +305,14 @@ namespace FondaBackOfficeLogicTest
 
         }
 
+        /// <summary>
+        /// Void: FinishTest()
+        /// Explicación: Se llama a las funciones getEmployeeDao y getAccountDao y luego se eliminan
+        /// todas las pruebas realizadas durante el proceso y se verifica que se eliminaron
+        /// </summary>
+
         [Test]
-        public void finishTest()
+        public void FinishTest()
         {
             getEmployeeDao();
             getUserAcountDao();
