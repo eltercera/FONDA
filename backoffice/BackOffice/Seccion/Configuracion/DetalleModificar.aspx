@@ -27,13 +27,105 @@
         <div id="alert" runat="server">
     </div>
 
+        
 
 
 
-
-<asp:Button id="Button1" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="Modify_Click1"/>
-
-
+                <div class="row">
+                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Nombre</label>
+                            <asp:label ID="labelnombre" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
+                            <div id="Div1" style="color:#FF9999" runat="server"></div>
+                        </div>
+                      </div>
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Apellido</label>
+                            <asp:label ID="labelapellido2" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
+                            <div id="Div2" style="color:#FF9999" runat="server"></div>
+                        </div>
+                </div>
+            </div>
+             <div class="row">
+                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Cedulo</label>
+                            <asp:label ID="labelcedula" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
+                            <div id="Div3" style="color:#FF9999" runat="server"></div>
+                        </div>
+                      </div>
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Fecha de nacimiento</label>
+                            <asp:label ID="labelfechanac" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
+                            <div id="Div4" style="color:#FF9999" runat="server"></div>
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Telefono</label>
+                            <asp:label ID="labeltelefono" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
+                            <div id="Div5" style="color:#FF9999" runat="server"></div>
+                        </div>
+                      </div>
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Genero</label>
+                            <asp:label ID="labelgenero" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
+                            <div id="Div6" style="color:#FF9999" runat="server"></div>
+                        </div>
+                </div>
+            </div>
+             <div class="row">
+                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Direccion</label>
+                            <asp:label ID="labeldireccion" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
+                            <div id="Div7" style="color:#FF9999" runat="server"></div>
+                        </div>
+                      </div>
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Rol</label>
+                            <asp:label ID="labelrol" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
+                            <div id="Div8" style="color:#FF9999" runat="server"></div>
+                        </div>
+                </div>
+            </div>
+                          <div class="row">
+                     <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Usuario</label>
+                            <asp:label ID="labelusuario" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
+                            <div id="Div9" style="color:#FF9999" runat="server"></div>
+                        </div>
+                      </div>
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                        <div class="form-group">
+                            <label class="control-label">Email</label>
+                            <asp:label ID="labelemail" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
+                            <div id="Div10" style="color:#FF9999" runat="server"></div>
+                        </div>
+                </div>
+            </div>
+             <div class="row">
+                      
+                <div class="col-lg-3 col-md-10 col-sm-10 col-xs-10">
+                    </div>
+                <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
+                    <div class="form-group">
+                        
+                        <label class="control-label">Restaurant</label>
+                             <asp:label ID="labelrestauante" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
+                            
+                    </div>
+                     <asp:Button id="Button1" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="Modify_Click1"/> 
+                </div>
+            </div>
+             
 
 
 

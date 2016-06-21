@@ -272,8 +272,8 @@ namespace BackOfficePresenter.Login
                     {
                         Alerts("Modify");
                     }
-                    
 
+                    return true;
                 }
             }
             else
@@ -713,6 +713,58 @@ namespace BackOfficePresenter.Login
             return _employee;
         }
 
+        /// <summary>
+        /// metodo que cargar los labels
+        /// </summary>
+        public void cargarUserDetail()
+        {
+            try
+            {
+                // id del empleado
+                int userId = GetQueryParameter();
+                //objeto del empleado
+                Employee _employee = getEmployee(userId);
+                System.Diagnostics.Debug.WriteLine(_employee.Name, "nombre");
+                //nombre del empleado
+                _view.labelNombre.Text = _employee.Name;
+                //apellido del empleado
+                _view.labelapellido.Text = _employee.LastName;
+                //nacionalidad del empleado
+                _view.labelcedulaemp.Text = _employee.Ssn;
+                //genero del empleado
+                _view.labelgeneroemp.Text = _employee.Gender.ToString();
+                //fecha del empleado
+                _view.labelfechanacemp.Text = _employee.BirthDate.ToString("yyyy-MM-dd");
+                //nombre de usuario del empleado
+                _view.labelusuarioemp.Text = _employee.Username;
+                //rol del empleado
+                //_view.labelrolemp.Text = _employee.Role.Id.ToString();
+                //email del empleado
+                _view.labelemailemp.Text = _employee.UserAccount.Email;
+                //direccion del empleado
+                _view.labeldireccionemp.Text = _employee.Address;
+                //numero del telefono del empleado
+                _view.labeltelefonoemp.Text = _employee.PhoneNumber;
+                Role _roleResult = EntityFactory.GetRole();
+                //comando para obtener informacion del rol
+                Command CommangGetRolById = CommandFactory.CommandGetRolById(Int32.Parse((_employee.Role.Id.ToString())));
+                try
+                {
+                    CommangGetRolById.Execute();
+                    _roleResult = (Role)CommangGetRolById.Receiver;
+
+                }
+                catch (Exception)
+                {
+
+                }
+                _view.labelrolemp.Text = _roleResult.Name;
+                _view.labelrestauranteemp.Text = _employee.Restaurant.Name;
+            }
+            catch (Exception)
+            { }
+
+        }
 
     }
 }
