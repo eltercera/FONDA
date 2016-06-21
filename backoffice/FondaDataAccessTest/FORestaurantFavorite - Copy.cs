@@ -15,7 +15,7 @@ namespace FondaDataAccessTest
     /// Clase de pruebas unitarias DAO
     /// </summary>
     [TestFixture()]
-    class FORestaurdantFavkkkoritek : BaseEntity
+    class FORestaurantFavorite : BaseEntity
     {
 
         private FactoryDAO _facDAO;
