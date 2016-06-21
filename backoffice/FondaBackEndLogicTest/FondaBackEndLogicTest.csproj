@@ -28,6 +28,13 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FondaDataAccess, Version=1.0.6013.23539, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BackOffice\bin\FondaDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="FondaDataAccessTest">
+      <HintPath>..\FondaDataAccessTest\bin\Debug\FondaDataAccessTest.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
@@ -41,11 +48,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommensalCommandManagementTest.cs" />
     <Compile Include="GetEmailCommensalManagementTest .cs" />
     <Compile Include="GetAllRestaurantManagementTest.cs" />
     <Compile Include="GetFavoriteRestaurantManagementTest .cs" />
     <Compile Include="DeleteRestaurantManagementTest.cs" />
     <Compile Include="CreateFavoriteRestaurantManagementTest.cs" />
+    <Compile Include="HelpTestCommand.cs" />
     <Compile Include="ProfileManagementTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,10 +65,6 @@
     <ProjectReference Include="..\FondaBeckEndLogic\FondaBackEndLogic.csproj">
       <Project>{A1BE7D6C-7750-4795-AABF-B397E079C918}</Project>
       <Name>FondaBackEndLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
-      <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
-      <Name>FondaDataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
       <Project>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</Project>

@@ -1,9 +1,5 @@
 ﻿using BackOfficeModel.OrderAccount;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using BackOfficeModel;
 using System.Web.UI.HtmlControls;
@@ -96,7 +92,7 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            _presenter.GetInvoices();
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Web.Services;
 using System.Web.UI.WebControls;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using FondaResources.Login;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -18,9 +19,14 @@ namespace BackOffice.Seccion.Restaurant
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            AlertSuccess_AddTable.Visible = false;
-            AlertSuccess_ModifyTable.Visible = false;
-            LoadDataTable();
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                AlertSuccess_AddTable.Visible = false;
+                AlertSuccess_ModifyTable.Visible = false;
+                LoadDataTable();
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
 
         /// <summary>

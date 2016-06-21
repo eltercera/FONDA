@@ -10,6 +10,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaResources.Login;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -17,14 +18,19 @@ namespace BackOffice.Seccion.Restaurant
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            AlertSuccess_AddRestaurant.Visible = false;
-            AlertSuccess_ModifyRestaurant.Visible = false;
-            OpeningTimeA.Attributes.Add("type","time");
-            ClosingTimeA.Attributes.Add("type", "time");
-            OpeningTimeM.Attributes.Add("type", "time");
-            ClosingTimeM.Attributes.Add("type", "time");
-            LoadDataTable();
-            FillDropdown();
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                AlertSuccess_AddRestaurant.Visible = false;
+                AlertSuccess_ModifyRestaurant.Visible = false;
+                OpeningTimeA.Attributes.Add("type", "time");
+                ClosingTimeA.Attributes.Add("type", "time");
+                OpeningTimeM.Attributes.Add("type", "time");
+                ClosingTimeM.Attributes.Add("type", "time");
+                LoadDataTable();
+                FillDropdown();
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
 
 
             AlertError_AddRestaurant.Visible = false;

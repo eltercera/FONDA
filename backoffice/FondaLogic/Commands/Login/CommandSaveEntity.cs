@@ -45,42 +45,9 @@ namespace FondaLogic.Commands.Login
                 _UserAccountDAO.Save(_userAccount);
 
             }
-            catch (SaveEntityFondaDAOException ex)
-            {
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
-                //Arrojar
-                FondaResources.General.Errors.SaveExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameSaveEmployee,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.SaveExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
-
-                throw exceptionCreateEmployee;
-
-            }
-            catch (NullReferenceException ex)
-            {
-
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetUserAccount exceptionUserAccount = new CommandExceptionGetUserAccount(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetUserAccountEmail,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionUserAccount);
-
-                throw exceptionUserAccount;
-
-            }
             catch (Exception ex)
             {
-                throw new System.InvalidOperationException(ex.Message);
+                //throw new System.InvalidOperationException(ex.Message);
 
             }
 

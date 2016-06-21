@@ -23,6 +23,7 @@ namespace BackOffice.Seccion.Configuracion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            System.Diagnostics.Debug.WriteLine("entre page load");
             errorLogin.Visible = false;
             warningLog.Visible = false;
 
@@ -231,7 +232,7 @@ namespace BackOffice.Seccion.Configuracion
                 else
                 {
                     // redireccion la pagina como empleado de un restaurante
-                    Response.Redirect("Default.aspx");
+                    Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
                 }
             }
             catch (Exception)

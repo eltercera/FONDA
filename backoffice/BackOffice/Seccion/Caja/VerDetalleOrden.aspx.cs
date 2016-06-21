@@ -2,7 +2,6 @@
 using System.Web.UI.WebControls;
 using BackOfficeModel.OrderAccount;
 using FondaResources.OrderAccount;
-using BackOfficePresenter.OrderAccount;
 using FondaResources.Login;
 using System.Web.UI.HtmlControls;
 using BackOfficeModel;
@@ -58,6 +57,12 @@ namespace BackOffice.Seccion.Caja
             set { Session[ResourceLogin.sessionRestaurantID] = value; }
         }
 
+        public string SessionNumberAccount
+        {
+            get { return Session[OrderAccountResources.SessionNumberAccount].ToString(); }
+
+            set { Session[OrderAccountResources.SessionNumberAccount] = value; }
+        }
         HtmlGenericControl IModel.ErrorLabel
         {
             get { return this.ErrorLabel; }
@@ -85,10 +90,10 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["AccountID"] != null)
-            {   //Llama al presentador para llenar la tabla de ordenes
+            //if (Session["AccountID"] != null)
+            //{   //Llama al presentador para llenar la tabla de ordenes
                 _presenter.GetDetailOrder();
-            }
+            //}
         }
 
 

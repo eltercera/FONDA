@@ -862,10 +862,10 @@ namespace BackOffice.Seccion.Configuracion
             set { phoneNumber = value; }
         }
         //fecha nacimiento del empleado a agregar
-        public TextBox textBoxBirtDate
+        public HtmlInputGenericControl textBoxBirtDate
         {
-            get { return birtDate; }
-            set { birtDate = value; }
+            get { return birtDate2; }
+            set { birtDate2 = value; }
         }
         //Rol del empelado agregar
         public DropDownList DropDownListRole
@@ -1157,10 +1157,14 @@ namespace BackOffice.Seccion.Configuracion
         /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            System.Diagnostics.Debug.WriteLine("entre modify code behind");
             userListPresenter.ClearAlert();
-            userListPresenter.LoadTable(Session[ResourceLogin.sessionRol].ToString());
-            
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                userListPresenter.LoadTable(Session[ResourceLogin.sessionRol].ToString());
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
         /// <summary>
         /// metodo que redirige a info del usuario

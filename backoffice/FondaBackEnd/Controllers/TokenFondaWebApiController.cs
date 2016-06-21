@@ -7,7 +7,8 @@ using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.BackEndLogic;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEnd.Exceptions;
-using FondaBeckEndLogic.Exceptions;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -57,17 +58,20 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (GetTokenCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                return InternalServerError(ex);
             }
             catch (GetCommensalFondaWebApiException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                return InternalServerError(ex);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                return InternalServerError(ex);
             }
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
@@ -96,9 +100,12 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
                 // Se obtiene el commando CreateCreateProfileCommand 
                 ICommand command = FacCommand.DeleteTokenCommensalCommand();
-
+                Token token = EntityFactory.GetToken();
+                token.Id = id;
                 // Se agrega el commensal como parametro
                 command.SetParameter(0, commensal);
+                // Se agrega el Token como parametro
+                command.SetParameter(0, token);
 
                 //se ejecuta el comando
                 command.Run();
@@ -109,17 +116,20 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (DeleteTokenCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                return InternalServerError(ex);
             }
             catch (GetCommensalFondaWebApiException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                return InternalServerError(ex);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                return InternalServerError(ex);
             }
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,

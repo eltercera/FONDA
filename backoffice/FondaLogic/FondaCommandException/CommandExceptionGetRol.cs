@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.FondaCommandException
 {
-    class CommandExceptionGetRol : CommandException
+    public class CommandExceptionGetRol : CommandException
     {
         #region Constructors
 

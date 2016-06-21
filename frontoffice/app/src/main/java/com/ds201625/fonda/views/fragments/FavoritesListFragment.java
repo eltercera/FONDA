@@ -35,7 +35,7 @@ public class FavoritesListFragment extends BaseFragment implements
     /**
      * String que indica la clase al logger
      */
-    private String TAG = "FavoriteListFragment";
+    private String TAG = "FavoritesListFragment";
 
     //Interface de comunicacion contra la activity
     favoritesListFragmentListener mCallBack;
@@ -117,19 +117,13 @@ public class FavoritesListFragment extends BaseFragment implements
                 public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.deleteFavorites:
-
-                            for (Restaurant r : favoritesList.getAllSeletedItems()) {
-
-                                FondaCommandFactory facCmd = FondaCommandFactory.getInstance();
-
+                             for (Restaurant r : favoritesList.getAllSeletedItems()) {
                                 try{
-
                                     //Llamo al comando de deleteFavoriteRestaurant
                                     presenter.deleteFavoriteRestaurant(r);
-
-                                    Toast.makeText(FavoritesListFragment.super.getContext(),
+                                        Toast.makeText(FavoritesListFragment.super.getContext(),
                                             "Se han eliminado "+favoritesList.countSelected()+
-                                                    " Restaurantes de Favoritos",
+                                            " Restaurantes de Favoritos",
                                             Toast.LENGTH_LONG).show();
                                     Log.d("Favoritos eliminados: ",r.getName().toString());
                                 }
@@ -138,14 +132,12 @@ public class FavoritesListFragment extends BaseFragment implements
                                             e);
                                 }
                             }
-
                             favoritesList.cleanSelected();
                             mCallBack.OnFavoriteSelectionModeExit();
                             mode.finish();
                             updateList();
                             break;
-
-                        default:
+                            default:
                             return false;
                     }
                     return true;
@@ -159,8 +151,7 @@ public class FavoritesListFragment extends BaseFragment implements
             });
 
         }
-
-        restaurants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                 restaurants.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Restaurant item = favoritesList.getItem(position);
@@ -260,7 +251,6 @@ public class FavoritesListFragment extends BaseFragment implements
                     presenter.findLoggedComensal();
                     //Llamo al comando de allFavoriteRestaurantCommand
                     listRestWS = presenter.findAllFavoriteRestaurant();
-
                     return listRestWS;
                 }
                 catch (NullPointerException nu) {

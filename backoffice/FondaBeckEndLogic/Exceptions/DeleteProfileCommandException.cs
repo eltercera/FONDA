@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaBeckEndLogic.Exceptions
+namespace com.ds201625.fonda.BackEndLogic.Exceptions
 {
     /// <summary>
     /// Representa los errores que se generan al eliminar

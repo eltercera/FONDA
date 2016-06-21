@@ -4,10 +4,11 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.BackEndLogic;
 using FondaLogic.Log;
-using FondaBeckEndLogic.Exceptions;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
+using FondaBeckEndLogic;
 
 
-namespace FondaBeckEndLogic.ProfileManagement
+namespace com.ds201625.fonda.BackEndLogic.ProfileManagement
 {
 	/// <summary>
     /// Comando para agregar un perfil a un Commensal

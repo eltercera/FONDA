@@ -9,6 +9,8 @@ using BackOfficeModel.Menu;
 using System.Text.RegularExpressions;
 using BackOfficeModel;
 using System.Web.UI.HtmlControls;
+using FondaResources.Login;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Menu
 {
@@ -52,12 +54,18 @@ namespace BackOffice.Seccion.Menu
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            AlertSuccess_AddCategory.Visible = false;
-            AlertSuccess_ModifyCategory.Visible = false;
-            AlertDanger_AddCategory.Visible = false;
-            AlertDanger_ModifyCategory.Visible = false;
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                AlertSuccess_AddCategory.Visible = false;
+                AlertSuccess_ModifyCategory.Visible = false;
+                AlertDanger_AddCategory.Visible = false;
+                AlertDanger_ModifyCategory.Visible = false;
 
-            LoadMenuCategoryTable();
+
+                LoadMenuCategoryTable();
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
         protected void LoadMenuCategoryTable()
         {

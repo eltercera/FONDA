@@ -8,9 +8,10 @@ using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-    class HibernateInvoiceDAO : HibernateBaseEntityDAO<Invoice>, IInvoiceDao
+    public class HibernateInvoiceDAO : HibernateBaseEntityDAO<Invoice>, IInvoiceDao
     {
-        private FactoryDAO.FactoryDAO _facDAO;
+        private FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
+
         /// <summary>
         /// Obtiene todas las facturas
         /// </summary>
@@ -27,10 +28,18 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="account">Un objeto de tipo Account</param>
         /// <returns>Un objeto Invoice</returns>
-        public IList<Invoice> FindInvoicesByAccount(Account _account)
+        public IList<Invoice> FindInvoicesByAccount(int _accountId)
         {
+            //Esto no deberia estar aqui
+            IOrderAccountDao _accountDAO;
+            Account _account;
+            _accountDAO = _facDAO.GetOrderAccountDAO();
+
            try
             {
+                //Esto tampoco deberia estar aqui
+                _account = _accountDAO.FindById(_accountId);
+
                 IList<Invoice> _invoices = new List<Invoice>();
                 _invoices = _account.ListInvoice;
                 return _invoices;
@@ -97,8 +106,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     _list = account.ListInvoice;
                     foreach (Invoice invoice in _list)
                     {
-                        _invoice = (Invoice)EntityFactory.GetInvoice(invoice.Id,invoice.Payment, 
-                            invoice.Profile,invoice.Tip, invoice.Total, invoice.Tax, invoice.Number);
+                        _invoice = EntityFactory.GetInvoice(invoice.Id,invoice.Payment, 
+                            invoice.Profile, invoice.Total, invoice.Tax, invoice.Number);
                         _listInvoiceByRestaurnat.Add(_invoice);
                     }
                 }
