@@ -93,15 +93,15 @@ namespace BackOffice.Seccion.Caja
         /// </summary>
         string IInvoiceDetailModel.Session
         {
-            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
-
-            set { Session[OrderAccountResources.SessionIdAccount] = value; }
-        }
-        string IInvoiceDetailModel.SessionIdInvoice
-        {
             get { return Session[OrderAccountResources.SessionIdInvoice].ToString(); }
 
             set { Session[OrderAccountResources.SessionIdInvoice] = value; }
+        }
+        string IInvoiceDetailModel.SessionIdAccount
+        {
+            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
+
+            set { Session[OrderAccountResources.SessionIdAccount] = value; }
         }
 
         public string SessionRestaurant

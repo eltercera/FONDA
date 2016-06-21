@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.FondaCommandException
 {
-    class CommandExceptionGetCurrencyByRestaurant: CommandException
+    public class CommandExceptionGetCurrencyByRestaurant: CommandException
     {
         #region Constructors
 

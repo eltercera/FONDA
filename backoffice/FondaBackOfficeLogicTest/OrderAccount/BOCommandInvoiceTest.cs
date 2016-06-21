@@ -14,6 +14,7 @@ namespace FondaBackOfficeLogicTest
 {
     public class BOCommandInvoiceTest
     {
+        #region fields
         private int _restaurantId, _profileId,_accountId, _invoiceId;
         private Command _command;
         private IList<Account> _listClosedOrders;
@@ -33,8 +34,11 @@ namespace FondaBackOfficeLogicTest
         private CreditCardPayment _creditPayment;
         private int _commensalId;
 
+        #endregion
 
+        #region Setup
         [SetUp]
+        
         public void Init()
         {
             _facDAO = FactoryDAO.Intance;
@@ -68,6 +72,28 @@ namespace FondaBackOfficeLogicTest
             //IBaseEntityDAO<Payment> bla = _facDAO
         }
 
+        #endregion
+
+        [Test]
+        public void CommandTotalOrderTest()
+        {
+            IList<int> _list = new List<int>();
+            _list.Add(_restaurantId); //1
+            _list.Add(_accountId); //3
+            float total;
+
+            _command = CommandFactory.GetCommandTotalOrder(_list);
+
+            _command.Execute();
+
+            total = (float)_command.Receiver;
+
+            Assert.IsNotNull(total);
+            Assert.AreEqual(total, 9100);
+            //Assert.AreEqual(_listInvoices[1].Number, 2);
+        }
+
+
         [Test]
         public void CommandFindInvoicesByRestaurantTest()
         {
@@ -83,7 +109,7 @@ namespace FondaBackOfficeLogicTest
             Assert.AreEqual(_listInvoices[1].Number, 2);
         }
 
-        [Test]
+        [Test(Description = "Genera una factura nueva")]
         public void CommandGenerateInvoiceTest()
         {
             InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
@@ -94,10 +120,14 @@ namespace FondaBackOfficeLogicTest
             _command = CommandFactory.GetCommandGenerateInvoice(_listObject);
 
             _command.Execute();
-           // _invoice = _invoiceDAO.FindById();
+            _invoice = (Invoice)_command.Receiver;
+            Assert.IsNotNull(_invoice);
+            Assert.AreEqual(_invoice.Tax, 12);
+            Assert.AreEqual(_invoice.Total, 100);
+            // _invoice = _invoiceDAO.FindById();
         }
 
-        [Test]
+        [Test(Description = "Imprime una factura")]
         public void CommandPrintInvoice()
         {
             _list.Add(_accountId);

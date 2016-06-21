@@ -6,7 +6,7 @@ namespace FondaLogic.FondaCommandException.OrderAccount
     /// Excepcion arrojada en caso de que falle la consulta  de una lista DishOrders 
     /// pertenenciente a una orden mediante su Id
     /// </summary>
-    class CommandExceptionGetDishOrdersByAccount : CommandException
+    public class CommandExceptionGetDishOrdersByAccount : CommandException
     {
         #region Constructors
 

@@ -20,6 +20,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private IInvoiceDetailModel _view;
         int totalColumns = 3;
         int accountId = 0;
+        int invoiceId = 0;
         string _currency = null;
         Invoice _invoice;
 
@@ -33,42 +34,40 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         /// </summary>
         public void GetDetailOrder()
         {
-
-
-            int result;
+            
             //Define objeto a recibir
-            IList <DishOrder> _listDish;
-            //Invoca al comando
-            Command commandGetInvoice;
-            Command commandGetDishOrder;
-            Command commandGetCurrencyInvoice;
+            IList<DishOrder> listDishOrder;
+
+            List<int> parameters;
+            List<Object> result;
+            Command commandGetDetailInvoice;
 
             try
             {
-                result = GetQueryParameter();
-                accountId = int.Parse(_view.Session);
-                
+                invoiceId = GetQueryParameter();
+                accountId = int.Parse(_view.SessionIdAccount);
 
+                //Recibe 2 enteros
+                // 1  id de la factura
+                // 2  id de la orden                
+                parameters = new List<int> { invoiceId, accountId };
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetInvoice = CommandFactory.GetCommandGetInvoice(result);
-                commandGetDishOrder = CommandFactory.GetDetailOrder(accountId);
-                commandGetCurrencyInvoice = CommandFactory.GetCommandGetCurrencyInvoice(result);
+                commandGetDetailInvoice = CommandFactory.GetCommandGetDetailInvoice(parameters);
 
                 //Ejecuta el comando deseado
-                commandGetInvoice.Execute();
-                commandGetDishOrder.Execute();
-                commandGetCurrencyInvoice.Execute();
+                commandGetDetailInvoice.Execute();
 
                 //Se obtiene el resultado de la operacion
-                _invoice = (Invoice)commandGetInvoice.Receiver;
-                _listDish = (IList<DishOrder>)commandGetDishOrder.Receiver;
-                _currency = (string)commandGetCurrencyInvoice.Receiver;
+                result = (List<Object>)commandGetDetailInvoice.Receiver;
+                _invoice = (Invoice)result[0];
+                _currency = (string)result[1];
+                listDishOrder = (IList<DishOrder>)result[2];
 
                 //Revisa si la lista no esta vacia
                 if (_invoice != null)
                 {
                     //Llama al metodo para el llenado de la tabla
-                    FillTable(_listDish);
+                    FillTable(listDishOrder);
                     //Llama al metodo para el llenado de los Label
                     FillLabel();
                 }

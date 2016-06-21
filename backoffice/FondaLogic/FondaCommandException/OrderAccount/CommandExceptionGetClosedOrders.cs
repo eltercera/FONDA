@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.FondaCommandException
 {
-    class CommandExceptionGetClosedOrders : CommandException
+    public class CommandExceptionGetClosedOrders : CommandException
     {
 
         #region Constructors
