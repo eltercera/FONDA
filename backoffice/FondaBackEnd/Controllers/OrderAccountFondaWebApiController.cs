@@ -1,6 +1,9 @@
 ﻿using com.ds201625.fonda.BackEnd.ActionFilters;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
+using FondaLogic;
+using FondaLogic.Factory;
+using FondaLogic.FondaCommandException.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,24 +76,29 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// Servicio web que devuelve una lista de facturas de un perfil
         /// </summary>
         /// <returns>Lista de Invoice</returns>
-        [HttpGet]
-        [Route("profile/invoices")]
+        [HttpPost]
+        [Route("profile/{profileId}/invoices")]
         [FondaAuthToken]
-        public IHttpActionResult GetPaymentHistory()
+        public IHttpActionResult GetPaymentHistory(int profileId)
         {
-            List<Invoice> paymentHistory = new List<Invoice>();
+            IList<Invoice> paymentHistory = new List<Invoice>();
 
             try
             {
-                //TODO
-                //Invocar a metodos para devolver historial de pagos
+                Commensal commensal = GetCommensal(Request.Headers);                
+                //Comando para validar que el perfil pertenezca al comensal
+                Command command = CommandFactory.CommandGetInvoicesByProfile(profileId);
+                command.Execute();
+                paymentHistory = (IList<Invoice>) command.Receiver;
             }
-            catch (Exception)
+            catch (CommandExceptionGetInvoicesByProfile ex)
             {
-
-                return BadRequest();
+                CommandExceptionGetInvoicesByProfile e = new CommandExceptionGetInvoicesByProfile("FALTA PERSONALIZAR");
+                FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
+                return InternalServerError(ex);
             }
 
+            FondaLogic.Log.Logger.WriteSuccessLog("Falta modificar", "", "");
             return Ok(paymentHistory);
         }
 

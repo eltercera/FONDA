@@ -151,6 +151,7 @@ namespace FondaLogic.Factory
             return new CommandGenerateInvoice(receiver);
         }
 
+
         /// <summary>
         /// Metodo de la fabrica para el Comando CommandGetInvoicesByProfile
         /// </summary>
@@ -159,6 +160,17 @@ namespace FondaLogic.Factory
         public static Command CommandGetInvoicesByProfile(object receiver)
         {
             return new CommandGetInvoicesByProfile(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandValidateProfileByCommensal
+        /// </summary>
+        /// <param name="receiver">Id del Profile</param>
+        /// <param name="receiver">Commensal</param>
+        /// <returns>comando CommandValidateProfileByCommensal</returns>
+        public static Command CommandValidateProfileByCommensal(object receiver)
+        {
+            return new CommandValidateProfileByCommensal(receiver);
         }
 
 
