@@ -5,9 +5,6 @@ using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FondaLogic.Commands.OrderAccount
 {
@@ -51,6 +48,8 @@ namespace FondaLogic.Commands.OrderAccount
                     }
                 }
                 total =_account.GetAmount();
+                if (total == 0)
+                    throw new NullReferenceException();
                 Receiver = total;
             }
             catch (NullReferenceException ex)
