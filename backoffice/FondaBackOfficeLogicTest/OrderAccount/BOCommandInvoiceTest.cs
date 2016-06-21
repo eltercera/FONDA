@@ -75,24 +75,7 @@ namespace FondaBackOfficeLogicTest
 
         #endregion
 
-        [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
-        public void CommandTotalOrderTest()
-        {
-            ITableDAO _tableDAO = _facDAO.GetTableDAO();
-            IList<object> _list = new List<object>();
-            Table _table = new Table();
-            _list.Add(_restaurant); //1
-            _list.Add(_tableId); //3
 
-            _command = CommandFactory.GetCommandReleaseTableByRestaurant(_list);
-
-            _command.Execute();
-
-            _table = _tableDAO.FindById(_tableId);
-            //Assert.IsNotNull(total);
-            //Assert.AreEqual(_table.Status, 9100);
-            //Assert.AreEqual(_listInvoices[1].Number, 2);
-        }
 
 
         [Test(Description = "Obtiene las facturas de un restaurante")]

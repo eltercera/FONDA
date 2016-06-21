@@ -3,12 +3,16 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
+using FondaLogic.FondaCommandException;
 using FondaLogic.FondaCommandException.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using FondaLogic.Log;
+using com.ds201625.fonda.BackEnd.Exceptions;
+using com.ds201625.fonda.BackEnd.Log;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -26,20 +30,43 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [HttpPost]
         [Route("restaurant/{restaurantId}/order/{orderId}")]
         [FondaAuthToken]
-        public IHttpActionResult GetOrderAccount(int restaurantId, int orderId)
+        public IHttpActionResult GetTotalAccount(int restaurantId, int orderId)
         {
             float totalAccount = 0.0F;
-
+            IList<int> _list = new List<int>();
             try
             {
-                //TODO
-                //Invocar a metodos para enviar detalle de orden
-            }
-            catch (Exception)
-            {
+                Command _command;
+                _list.Add(restaurantId); //1
+                _list.Add(orderId); //3
+                _command = CommandFactory.GetCommandTotalOrder(_list);
+                _command.Execute();
+                totalAccount = (float)_command.Receiver;
 
-                return BadRequest();
+
             }
+            catch (CommandExceptionTotalOrder e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                GetTotalAccountException ex = new GetTotalAccountException(GeneralRes.GetTotalAccountException, e);
+
+                FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", ex);
+                return InternalServerError(ex);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                GetTotalAccountException ex = new GetTotalAccountException(GeneralRes.GetTotalAccountException, e);
+
+                FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", ex);
+                return InternalServerError(ex);
+            }
+
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, totalAccount.ToString(),
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             return Ok(totalAccount);
         }
@@ -121,10 +148,14 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
             try
             {
-                //TODO
-                //Invocar a metodos para devolver el detalle de la orden
+                Command _command;
+                _command = CommandFactory.GetCommandGetDishOrdersByAccountId(orderId);
+                _command.Execute();
+                orderDetail = (List<DishOrder>)_command.Receiver;
+
+
             }
-            catch (Exception)
+            catch (CommandExceptionTotalOrder e)
             {
 
                 return BadRequest();

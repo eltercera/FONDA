@@ -63,18 +63,51 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
         #endregion
 
+        [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
+        public void CommandTotalOrderTest()
+        {
+            IList<int> _list = new List<int>();
+            int _accountId = 3;
+            float _total = 0;
+            _list.Add(_restaurantId); //1
+            _list.Add(_accountId); //3
+            _command = CommandFactory.GetCommandTotalOrder(_list);
+            _command.Execute();
+            _total = (float)_command.Receiver;
+            Assert.IsNotNull(_total);
+            Assert.AreEqual(_total, 9100);
+        }
+
+        [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
+        public void BadRequestCommandTotalOrderTest()
+        {
+            IList<int> _list = new List<int>();
+            int _accountId = 3;
+            float _total = 0;
+            _list.Add(0); //1
+            _list.Add(_accountId); //3
+            _command = CommandFactory.GetCommandTotalOrder(_list);
+            _command.Execute();
+            _total = (float)_command.Receiver;
+            //Assert.IsNotNull(_total);
+            //Assert.AreEqual(_total, 9100);
+        }
+
         [Test(Description = "Obtiene las ordenes de un restaurante")]
         public void CommandReleaseTableByRestaurantTest()
         {
+            int _tableId = 3;
+            ITableDAO _tableDAO = _facDAO.GetTableDAO();
+            IList<object> _list = new List<object>();
+            Table _table = new Table();
+            _list.Add(_restaurant); //1
+            _list.Add(_tableId); //3
 
-            _command = CommandFactory.GetCommandGetOrders(_restaurantId);
+            _command = CommandFactory.GetCommandReleaseTableByRestaurant(_list);
 
             _command.Execute();
 
-            _listAccount = (IList<Account>)_command.Receiver;
-
-            Assert.IsNotNull(_listAccount);
-
+            _table = _tableDAO.FindById(_tableId);
         }
 
         [Test(Description = "Obtiene las ordenes de un restaurante")]
