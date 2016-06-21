@@ -259,7 +259,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
         }
     }
 
-
+    /**
+     *  Metodo para probar que la lista de un commensal es nula
+     */
     public void testAllFavoriteRestaurantIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
@@ -275,6 +277,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
     }
 
+    /**
+     *  Metodo para probar que commensal que retorna al agregar un favorito es nula
+     */
     public void testAddFavoriteRestauranIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
@@ -289,6 +294,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
     }
 
+    /**
+     *  Metodo para probar que commensal que retorna al eliminar un favorito es nula
+     */
     public void testDeleteFavoriteRestauranIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);

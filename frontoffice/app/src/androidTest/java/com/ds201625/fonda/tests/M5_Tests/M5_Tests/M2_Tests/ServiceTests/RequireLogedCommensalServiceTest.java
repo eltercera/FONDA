@@ -130,6 +130,9 @@ public class RequireLogedCommensalServiceTest extends TestCase {
         }
     }
 
+    /**
+     *  Metodo para probar que el commensal que se loguea es nulo
+     */
     public void testtLogedCommensalIsNull() {
         try {
 
