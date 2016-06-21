@@ -45,7 +45,7 @@ namespace FondaLogic.Commands.OrderAccount
                 _invoiceDAO = _facDAO.GetInvoiceDao();
                 //Obtengo el objeto con la informacion enviada
                 Invoice _invoice = new Invoice();
-                _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
+                _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account.Id);
                 Receiver = _invoice;
 
             }

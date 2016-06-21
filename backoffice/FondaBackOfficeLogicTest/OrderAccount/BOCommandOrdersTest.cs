@@ -15,6 +15,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
     [TestFixture()]
     public class BOCommandOrdersTest
     {
+        #region fields
         private int _restaurantId, _orderId;
         private Command _command;
         private IList<Account> _listAccount;
@@ -31,7 +32,8 @@ namespace com.ds201625.fonda.Tests.DataAccess
         private List<int> parameters;
         List<Object> result;
         private string _currency;
-
+        #endregion
+        #region
         [SetUp]
         public void Init()
         {
@@ -59,8 +61,58 @@ namespace com.ds201625.fonda.Tests.DataAccess
             result = null;
             _currency = null;
         }
+        #endregion
 
-        [Test]
+        [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
+        public void CommandTotalOrderTest()
+        {
+            IList<int> _list = new List<int>();
+            int _accountId = 3;
+            float _total = 0;
+            _list.Add(_restaurantId); //1
+            _list.Add(_accountId); //3
+            _command = CommandFactory.GetCommandTotalOrder(_list);
+            _command.Execute();
+            _total = (float)_command.Receiver;
+            Assert.IsNotNull(_total);
+            Assert.AreEqual(_total, 9100);
+        }
+
+        [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
+        public void BadRequestCommandTotalOrderTest()
+        {
+            IList<int> _list = new List<int>();
+            int _accountId = 3;
+            float _total = 0;
+            _list.Add(0); //1
+            _list.Add(_accountId); //3
+            _command = CommandFactory.GetCommandTotalOrder(_list);
+            _command.Execute();
+            _total = (float)_command.Receiver;
+            //Assert.IsNotNull(_total);
+            //Assert.AreEqual(_total, 9100);
+        }
+
+        [Test(Description = "Cambia el estado a la mesa")]
+        public void CommandReleaseTableByRestaurantTest()
+        {
+            int _tableId = 3;
+            ITableDAO _tableDAO = _facDAO.GetTableDAO();
+            IList<object> _list = new List<object>();
+            Table _table = new Table();
+            _list.Add(_restaurant); //1
+            _list.Add(_tableId); //3
+
+            _command = CommandFactory.GetCommandReleaseTableByRestaurant(_list);
+
+            _command.Execute();
+
+            _table = _tableDAO.FindById(_tableId);
+            Assert.AreEqual(_table.Id, _tableId);
+            //Assert.AreEqual(_table.Status,);
+        }
+
+        [Test(Description = "Obtiene las ordenes de un restaurante")]
         public void CommandGetOrdersTest()
         {
 
@@ -75,7 +127,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
 
         [Test]
-        [Ignore("Esta prueba es engañosa, no existe ningun restaurant con Id 100")]
         public void CommandGetOrdersNullTest()
         {
             _command = CommandFactory.GetCommandGetOrders(100);
@@ -90,7 +141,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
 
 
-        [Test]
+        [Test(Description = "Obtiene la orden dado un id")]
         public void CommandGetOrderTest()
         {
             _command = CommandFactory.GetCommandGetOrder(_orderId);
@@ -103,7 +154,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
         }
 
-        [Test]
+        [Test(Description = "Se cierra la caja")]
         public void CommandCloseCashRegisterTest()
         {
             _command = CommandFactory.GetCommandCloseCashRegister(_restaurantId);
@@ -116,7 +167,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
             Assert.AreEqual(_totalOrders, "€ 13900");
         }
 
-        [Test]
+        [Test(Description = "Obtiene el detalle de una orden")]
         public void CommandGetDetailOrderTest()
         {
             _command = CommandFactory.GetCommandGetDetailOrder(parameters);

@@ -104,6 +104,7 @@
     <Compile Include="Exceptions\GetCommensalIdFondaWebApiException.cs" />
     <Compile Include="Exceptions\GetProfileFondaWebApiException.cs" />
     <Compile Include="Exceptions\GetTokenFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\GetTotalAccountException.cs" />
     <Compile Include="Exceptions\PostProfileFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\PutProfileFondaWebApiControllerException.cs" />
     <Compile Include="GeneralRes.Designer.cs">
@@ -165,6 +166,10 @@
     <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
       <Project>{64636df8-e693-4abb-8964-5c7fa5a6a50e}</Project>
       <Name>FondaLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaResources\FondaResources.csproj">
+      <Project>{3184fe34-d7e3-44f6-95d9-25d1045bffc8}</Project>
+      <Name>FondaResources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

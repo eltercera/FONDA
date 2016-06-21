@@ -9,6 +9,17 @@ namespace BackOfficeModel.Login
 {
     public interface IDetailModifyModel : IModel
     {
+        Label labelrestauranteemp { get; set; }
+        Label labeltelefonoemp { get; set; }
+        Label labeldireccionemp { get; set; }
+        Label labelemailemp { get; set; }
+        Label labelrolemp { get; set; }
+        Label labelusuarioemp { get; set; }
+        Label labelgeneroemp { get;set;}
+        Label labelfechanacemp { get; set; }
+        Label labelcedulaemp { get; set; }
+        Label labelapellido { get; set; }
+        Label labelNombre { get;set;}
         HtmlGenericControl HtmlGenericControlAlert { get; set; }
         TextBox textBoxNameUser { get; set; }
         TextBox textBoxlastNameUser { get; set; }

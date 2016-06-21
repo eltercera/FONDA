@@ -28,6 +28,27 @@ namespace FondaLogic.Factory
 
         #region OrderAccount
 
+        //Se obtienen los comandos a a utilizar
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando ReleaseTableByRestaurant
+        /// </summary>
+        /// <param name="entity">Lista de objetos (Restaurante, tableId)</param>
+        /// <returns>comando ReleaseTableByRestaurant</returns>
+        public static Command GetCommandGetDishOrdersByAccountId(object receiver)
+        {
+            return new CommandGetDishOrdersByAccountId(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando ReleaseTableByRestaurant
+        /// </summary>
+        /// <param name="entity">Lista de objetos (Restaurante, tableId)</param>
+        /// <returns>comando ReleaseTableByRestaurant</returns>
+        public static Command GetCommandReleaseTableByRestaurant(object receiver)
+        {
+            return new CommandReleaseTableByRestaurant(receiver);
+        }
 
         //Se obtienen los comandos a a utilizar
 
@@ -187,16 +208,37 @@ namespace FondaLogic.Factory
         }
        
 
+
         /// <summary>
         /// Metodo de la fabrica para el Comando CommandGetInvoicesByProfile
         /// </summary>
         /// <param name="receiver">Profile</param>
         /// <returns>comando CommandGetInvoicesByProfile</returns>
-        public static Command CommandGetInvoicesByProfile(object receiver)
+        public static Command GetCommandGetInvoicesByProfile(object receiver)
         {
             return new CommandGetInvoicesByProfile(receiver);
         }
 
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandValidateProfileByCommensal
+        /// </summary>
+        /// <param name="receiver">Id del Profile</param>
+        /// <param name="receiver">Commensal</param>
+        /// <returns>comando CommandValidateProfileByCommensal</returns>
+        public static Command GetCommandValidateProfileByCommensal(object receiver)
+        {
+            return new CommandValidateProfileByCommensal(receiver);
+        }
+
+        public static Command GetCommandGetPaymentHistoryByProfile(object receiver)
+        {
+            return new CommandGetPaymentHistoryByProfile(receiver);
+        }
+
+        public static Command GetCommandPayOrder(object receiver)
+        {
+            return new CommandPayOrder(receiver);
+        }
 
         #endregion
 
@@ -262,6 +304,10 @@ namespace FondaLogic.Factory
         public static Command GetCommandSaveEntity(object receiver)
         {
             return new CommandSaveEntity(receiver);
+        }
+        public static Command CommandGetRolById(object receiver)
+        {
+            return new CommandGetRolById(receiver);
         }
 
         #endregion

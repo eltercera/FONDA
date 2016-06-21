@@ -129,6 +129,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return new HibernateZoneDAO();
         }
 
+        public IPaymentDao<Payment> GetPaymentDAO()
+        {
+            return new HibernatePaymentDAO<Payment>();
+        }
+
 
         public ActiveSimpleStatus GetActiveSimpleStatus()
 		{

@@ -43,6 +43,7 @@ namespace FondaLogic.Commands.OrderAccount
 
         public override void Execute()
         {
+            int paymentId;
             try
             {
                 float totalFactura = 0;
@@ -59,19 +60,17 @@ namespace FondaLogic.Commands.OrderAccount
 
                 _account = _accountDAO.FindById(_list[0]);
                 _restaurant = _restaurantDao.FindById(_list[1]);
-                _invoice = _invoiceDao.FindGenerateInvoiceByAccount(_account);
+                _invoice = _invoiceDao.FindGenerateInvoiceByAccount(_account.Id);
                 _listDishOrder = _dishOrderDao.GetDishesByAccount(_account.Id);
 
                 _person = _personDao.FindById(_invoice.Profile.Person.Id);
                 _userAccount = _userAccountDao.FindById(_person.Id);
-                String bla = _invoice.Payment.GetType().Name;
 
-
-                 /*if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
+                if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
                 {
                     _creditCardPayment = (CreditCardPayment)_invoice.Payment;
                     tip = _creditCardPayment.Tip;
-                }*/
+                }
 
 
                 // Creamos el documento con el tamaño de página tradicional

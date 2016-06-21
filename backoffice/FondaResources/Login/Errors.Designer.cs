@@ -36,7 +36,7 @@ namespace FondaResources.Login {
         ///   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Login.Errors", typeof(Errors).Assembly);
@@ -51,7 +51,7 @@ namespace FondaResources.Login {
         ///   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,7 +61,7 @@ namespace FondaResources.Login {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CommandGetAllEmployee.
+        ///   Busca una cadena traducida similar a Comando para obtener todos los empleados..
         /// </summary>
         public static string ClassNameGetEmployee {
             get {
@@ -70,7 +70,7 @@ namespace FondaResources.Login {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CommandGetEmployeeById.
+        ///   Busca una cadena traducida similar a Comando para obtener un empleado por su id..
         /// </summary>
         public static string ClassNameGetEmployeeId {
             get {
@@ -79,7 +79,16 @@ namespace FondaResources.Login {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CommandGetEmployeeBySsn.
+        ///   Busca una cadena traducida similar a Comando para obtener un empleado por su cuenta de usuario..
+        /// </summary>
+        public static string ClassNameGetEmployeeUser {
+            get {
+                return ResourceManager.GetString("ClassNameGetEmployeeUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Comando para obtener un empleado por su ssn..
         /// </summary>
         public static string ClassNameGetExployeeSsn {
             get {
@@ -88,16 +97,7 @@ namespace FondaResources.Login {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CommandGetRestaurantById.
-        /// </summary>
-        public static string ClassNameGetRestaurant {
-            get {
-                return ResourceManager.GetString("ClassNameGetRestaurant", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a CommandGetRestaurantAll.
+        ///   Busca una cadena traducida similar a Comando para obtener todos los restaurantes..
         /// </summary>
         public static string ClassNameGetRestaurantAll {
             get {
@@ -106,7 +106,16 @@ namespace FondaResources.Login {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CommandGetAllRoles.
+        ///   Busca una cadena traducida similar a Comando para obtener un restaurante por su id..
+        /// </summary>
+        public static string ClassNameGetRestaurantId {
+            get {
+                return ResourceManager.GetString("ClassNameGetRestaurantId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Comando para obtener todos los roles..
         /// </summary>
         public static string ClassNameGetRoles {
             get {
@@ -115,7 +124,7 @@ namespace FondaResources.Login {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CommandGetUserAccoundByEmail.
+        ///   Busca una cadena traducida similar a Comando para obtener una cuenta de usuario por su correo electronico.
         /// </summary>
         public static string ClassNameGetUserAccountEmail {
             get {
@@ -124,7 +133,34 @@ namespace FondaResources.Login {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a CommandSaveEmployee.
+        ///   Busca una cadena traducida similar a Excepcion fuera del rango del parametro..
+        /// </summary>
+        public static string ClassNameIndexParameter {
+            get {
+                return ResourceManager.GetString("ClassNameIndexParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Excepcion para parametro invalido..
+        /// </summary>
+        public static string ClassNameInvalidParameter {
+            get {
+                return ResourceManager.GetString("ClassNameInvalidParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Excepcion para pametro no encontrado..
+        /// </summary>
+        public static string ClassNameParameterNotFound {
+            get {
+                return ResourceManager.GetString("ClassNameParameterNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Comando para guardar un empleado..
         /// </summary>
         public static string ClassNameSaveEmployee {
             get {
@@ -133,11 +169,20 @@ namespace FondaResources.Login {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Execute.
+        ///   Busca una cadena traducida similar a Metodo disparador del Error para Comando..
         /// </summary>
         public static string CommandMethod {
             get {
                 return ResourceManager.GetString("CommandMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ha finalizado el logger.
+        /// </summary>
+        public static string EndLogger {
+            get {
+                return ResourceManager.GetString("EndLogger", resourceCulture);
             }
         }
     }
