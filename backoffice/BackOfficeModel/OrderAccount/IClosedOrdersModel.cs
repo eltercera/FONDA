@@ -10,5 +10,11 @@ namespace BackOfficeModel.OrderAccount
     public interface IClosedOrdersModel: IModel
     {
         Table ClosedOrdersTable { get; set; }
+
+        string Session { get; set; }
+
+        string SessionNumberAccount { get; set; }
+
+
     }
 }

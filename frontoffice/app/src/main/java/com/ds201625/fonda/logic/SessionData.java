@@ -88,8 +88,13 @@ public class SessionData {
             throw new Exception("Datos de regsitro invalido");
         }
         Commensal newCommensal;
-        newCommensal = getCommensalsrv().RegisterCommensal(email,password,context);
 
+        Command commandoCreateCommensal = FondaCommandFactory.createCommensalCommand();
+        commandoCreateCommensal.setParameter(0,email);
+        commandoCreateCommensal.setParameter(1,password);
+        commandoCreateCommensal.setParameter(2,context);
+        commandoCreateCommensal.run();
+        newCommensal = (Commensal)commandoCreateCommensal.getResult();
         if (newCommensal == null) {
             // // TODO: 5/16/16 Exception.
             throw new Exception("No se logro crear el usuario");
@@ -169,14 +174,18 @@ public class SessionData {
 
         if (this.commensal == null)
             return;
+        try
+        {
+            Command commandoDeleteCommensal = FondaCommandFactory.deleteCommensalCommand();
+            commandoDeleteCommensal.setParameter(0, this.context);
+            commandoDeleteCommensal.run();
+            this.commensal = null;
+        }
+        catch (Exception e)
+        {
 
-        Commensal commensal = getCommensalsrv().getCommensal(this.context);
-        if (commensal != null) {
-            CommensalService service = getCommensalsrv();
-            service.deleteCommensal(context);
         }
 
-        this.commensal = null;
     }
 
     /**

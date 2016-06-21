@@ -17,10 +17,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Column("i_number")
               .Not.Nullable();
 
-            Map(x => x.Tip)
-                .Column("i_tip")
-                .Not.Nullable();
-
             Map(x => x.Date)
                .Column("i_date")
                .Not.Nullable();
@@ -38,17 +34,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                .Not.Nullable()
                .Cascade.Persist();
 
-            /* References(x => x.Currency)
+            References(x => x.Currency)
                  .Column("fk_currency_id")
-                 .Not.Nullable(); */
+                 .Not.Nullable();
 
-             //References(x => x.Account)
-             //   .Column("fk_account_id")
-             //   .Not.LazyLoad()
-             //   .Not.Nullable(); 
-
-             References(x => x.Payment)
-                .Column("fk_payment_id")
+            References(x => x.Payment)
+               .Column("fk_payment_id")
+               .Not.LazyLoad()
                 .Not.Nullable();
 
             References(x => x.Profile)

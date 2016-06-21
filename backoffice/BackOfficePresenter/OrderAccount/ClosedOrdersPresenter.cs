@@ -1,11 +1,13 @@
 ﻿using BackOfficeModel.OrderAccount;
+using BackOfficePresenter.FondaMVPException;
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
+using FondaLogic.Log;
 using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
@@ -15,6 +17,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         //Enlace Modelo - Vista
         private IClosedOrdersModel _view;
         int totalColumns = 2;
+        Account _account;
 
 
         ///<summary>
@@ -61,36 +64,45 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                     FillTable(listAccount);
                 }
             }
-            catch (Exception)
+            catch (MVPExceptionClosedOrdersTable ex)
             {
-                //TODO: Arrojar excepciones personalizadas
-                //TODO: Escribir en el Log la excepcion
-                throw;
+                //Revisar
+                MVPExceptionClosedOrdersTable e = new MVPExceptionClosedOrdersTable
+                    (
+                        Errors.MVPExceptionClosedOrdersTableCode,
+                        Errors.ClassNameClosedOrdersPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        Errors.MessageMVPExceptionClosedOrdersTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName,e);
+                throw e;
+                ErrorLabel(e.MessageException);
             }
         }
 
         private void FillTable(IList<Account> data)
         {
 
-            //Esto puede mejorarse
-            _view.ErrorLabel.Visible = false;
-            _view.SuccessLabel.Visible = false;
-
-            CleanTable();
+            HideMessageLabel();
+            CleanTable(_view.ClosedOrdersTable);
             //Genero los objetos para la consulta
             //Genero la lista de la consulta
 
 
 
             int totalRows = data.Count; //tamano de la lista 
+            StringBuilder dataId = new StringBuilder();
 
             //Recorremos la lista
             for (int i = 0; i <= totalRows - 1; i++)
             {
                     //Crea una nueva fila de la tabla
                     TableRow tRow = new TableRow();
+
+                    dataId.Append(data[i].Id.ToString());
                     //Le asigna el Id a cada fila de la tabla
-                    tRow.Attributes[OrderAccountResources.dataId] = data[i].Id.ToString();
+                    tRow.Attributes[OrderAccountResources.dataId] = dataId.ToString();
                     //Agrega la fila a la tabla existente
                     _view.ClosedOrdersTable.Rows.Add(tRow);
                     for (int j = 0; j <= totalColumns; j++)
@@ -114,22 +126,10 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                         LinkButton actionInvoices = new LinkButton();
                         LinkButton actionDetailInvoice = new LinkButton();
 
-                        //Detalle de la orden
-                        actionInfo.Text += OrderAccountResources.ActionInfo;
-                        actionInfo.Attributes[OrderAccountResources.href] = 
-                            OrderAccountResources.detailURL;
-                        tCell.Controls.Add(actionInfo);
-
-                        //Modal con factura cancelada
-                        actionDetailInvoice.Text += OrderAccountResources.ActionInfo;
-                        //Esto tengo que mejorarlo
-                        actionDetailInvoice.Attributes["href"] = "#";
-                        tCell.Controls.Add(actionDetailInvoice);
-
-
                         actionInvoices.Text += OrderAccountResources.ActionInvoices;
                         actionInvoices.Attributes[OrderAccountResources.href] = 
-                            OrderAccountResources.invoicesURL;
+                            OrderAccountResources.invoicesURL + dataId.ToString();
+
                         tCell.Controls.Add(actionInvoices);
 
 
@@ -138,6 +138,9 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                         tRow.Cells.Add(tCell);
 
                     }
+
+                    //Limpia el objeto StringBuilder
+                    dataId.Clear();
             }
 
             //Agrega el encabezado a la Tabla
@@ -177,14 +180,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             return header;
         }
 
-        /// <summary>
-        /// Limpia las filas de la tabla
-        /// </summary>
-        private void CleanTable()
-        {
-            _view.ClosedOrdersTable.Rows.Clear();
 
-        }
 
     }
 

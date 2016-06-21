@@ -97,6 +97,24 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CashPayment.
+        /// </summary>
+        public static string Cash {
+            get {
+                return ResourceManager.GetString("Cash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CreditCardPayment.
+        /// </summary>
+        public static string CreditCard {
+            get {
+                return ResourceManager.GetString("CreditCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to data-id.
         /// </summary>
         public static string dataId {
@@ -115,7 +133,7 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ../Caja/VerDetalleOrden.aspx.
+        ///   Looks up a localized string similar to ../Caja/VerDetalleOrden.aspx?Id=.
         /// </summary>
         public static string detailURL {
             get {
@@ -160,11 +178,29 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ../Caja/ListarFacturas.aspx.
+        ///   Looks up a localized string similar to ../Caja/ListarFacturas.aspx?Id=.
         /// </summary>
         public static string invoicesURL {
             get {
                 return ResourceManager.GetString("invoicesURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ../Caja/VerDetalleFactura.aspx?Id=.
+        /// </summary>
+        public static string invoiceURL {
+            get {
+                return ResourceManager.GetString("invoiceURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iva.
+        /// </summary>
+        public static string IVAColumn {
+            get {
+                return ResourceManager.GetString("IVAColumn", resourceCulture);
             }
         }
         
@@ -223,11 +259,29 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to InvoiceId.
+        /// </summary>
+        public static string SessionIdInvoice {
+            get {
+                return ResourceManager.GetString("SessionIdInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AccountNumber.
         /// </summary>
         public static string SessionNumberAccount {
             get {
                 return ResourceManager.GetString("SessionNumberAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InvoiceNumber.
+        /// </summary>
+        public static string SessionNumberInvoice {
+            get {
+                return ResourceManager.GetString("SessionNumberInvoice", resourceCulture);
             }
         }
         

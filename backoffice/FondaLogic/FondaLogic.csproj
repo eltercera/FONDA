@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.9\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,31 +56,69 @@
     <Compile Include="Commands\Login\CommandGetEmployeeById.cs" />
     <Compile Include="Commands\Login\CommandGetEmployeeByUser .cs" />
     <Compile Include="Commands\Login\CommandGetRestaurantById.cs" />
+    <Compile Include="Commands\Login\CommandGetRolById.cs" />
     <Compile Include="Commands\Login\CommandSaveEmployee.cs" />
     <Compile Include="Commands\Login\CommandSaveEntity.cs" />
     <Compile Include="Commands\Login\CommanGetAllEmployee.cs" />
-    <Compile Include="Commands\OrderAccount\CommandDetailOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandCloseCashRegister.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetDetailInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetDetailOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetDishOrdersByAccountId.cs" />
+    <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
+    <Compile Include="Commands\OrderAccount\CommandFindInvoicesByRestaurant.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGenerateException.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetClosedOrders.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetCurrencyByRestaurantId.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetGenerateInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetInvoicesByProfile.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrders.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetPaymentHistoryByProfile.cs" />
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandPrintInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\CommandReleaseTableByRestaurant.cs" />
+    <Compile Include="Commands\OrderAccount\CommandTotalOrder.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetCurrencyInvoice.cs" />
+    <Compile Include="Commands\OrderAccount\CommandValidateProfileByCommensal.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionCreateEmployee.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionGetEmployee.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionGetOrder.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionGetOrders.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionGetRestaurant.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionGetRol.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionGetUserAccount.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionSaveUserAccount.cs" />
+    <Compile Include="FondaCommandException\Login\CommandExceptionCreateEmployee.cs" />
+    <Compile Include="FondaCommandException\Login\CommandExceptionGetEmployee.cs" />
+    <Compile Include="FondaCommandException\Login\CommandExceptionGetRestaurant.cs" />
+    <Compile Include="FondaCommandException\Login\CommandExceptionGetRol.cs" />
+    <Compile Include="FondaCommandException\Login\CommandExceptionGetUserAccount.cs" />
+    <Compile Include="FondaCommandException\Login\CommandExceptionSaveUserAccount.cs" />
+    <Compile Include="FondaCommandException\Login\FondaLogicException.cs" />
+    <Compile Include="FondaCommandException\Login\InvalidTypeParameterException.cs" />
+    <Compile Include="FondaCommandException\Login\ParameterIndexOutRangeException.cs" />
+    <Compile Include="FondaCommandException\Login\RequieredParameterNotFoundException.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionCloseCashRegister.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionFindInvoicesByAccount.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionFindInvoicesByRestaurant.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGenerateInvoice.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetClosedOrders.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetCurrencyByRestaurant.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetDetailOrder.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetDishOrdersByAccount.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetGenerateInvoice.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetInvoice.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetInvoicesByProfile.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrder.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrders.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetPaymentHistoryByProfile.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionPayOrder.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionPrintInvoice.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionReleaseTableByRestaurant.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionTotalOrder.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionValidateProfileByCommensal.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\OrderAccount\Menu\" />
+    <Folder Include="Commands\Menu\" />
     <Folder Include="Commands\Restaurant\" />
   </ItemGroup>
   <ItemGroup>

@@ -12,5 +12,7 @@ namespace BackOfficeModel.OrderAccount
         Table DetailOrderTable { get; set; }
 
         string Session { get; set; }
+
+        string SessionNumberAccount { get; set; }
     }
 }

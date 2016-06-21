@@ -142,7 +142,7 @@
     <comment>Nombre de la columna de fecha</comment>
   </data>
   <data name="detailURL" xml:space="preserve">
-    <value>../Caja/VerDetalleOrden.aspx</value>
+    <value>../Caja/VerDetalleOrden.aspx?Id=</value>
     <comment>URL de detalle de orden</comment>
   </data>
   <data name="GeneratedStatus" xml:space="preserve">
@@ -158,7 +158,7 @@
     <comment>Nombre de columna de numero de factura</comment>
   </data>
   <data name="invoicesURL" xml:space="preserve">
-    <value>../Caja/ListarFacturas.aspx</value>
+    <value>../Caja/ListarFacturas.aspx?Id=</value>
     <comment>URL de listar Facturas</comment>
   </data>
   <data name="OrderNumberColumn" xml:space="preserve">
@@ -200,5 +200,29 @@
   <data name="QuantityColumn" xml:space="preserve">
     <value>Cantidad</value>
     <comment>Nombre de la columna de cantidad</comment>
+  </data>
+  <data name="Cash" xml:space="preserve">
+    <value>CashPayment</value>
+    <comment>Pago en efectivo</comment>
+  </data>
+  <data name="CreditCard" xml:space="preserve">
+    <value>CreditCardPayment</value>
+    <comment>Pago con tarjeta de credito</comment>
+  </data>
+  <data name="invoiceURL" xml:space="preserve">
+    <value>../Caja/VerDetalleFactura.aspx?Id=</value>
+    <comment>URL de detalle de factura</comment>
+  </data>
+  <data name="SessionIdInvoice" xml:space="preserve">
+    <value>InvoiceId</value>
+    <comment>ID de la Factura</comment>
+  </data>
+  <data name="SessionNumberInvoice" xml:space="preserve">
+    <value>InvoiceNumber</value>
+    <comment>Numero de la Factura</comment>
+  </data>
+  <data name="IVAColumn" xml:space="preserve">
+    <value>Iva</value>
+    <comment>Nombre de lcolumna de IVA de factura</comment>
   </data>
 </root>

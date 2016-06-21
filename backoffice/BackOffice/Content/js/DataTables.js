@@ -389,7 +389,8 @@ $(document).ready(function () {
         "aoColumns": [
             null,
             null,
-            { "bSearchable": false }
+            null,
+            null
         ]
     });
 });
@@ -399,6 +400,8 @@ $(document).ready(function () {
         "language": spanish,
         "bAutoWidth": false,
         "aoColumns": [
+            null,
+            null,
             null,
             null,
             { "bSearchable": false }

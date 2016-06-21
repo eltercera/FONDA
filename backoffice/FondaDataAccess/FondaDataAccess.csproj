@@ -243,20 +243,15 @@
       <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FondaResources\FondaResources.csproj">
+      <Project>{3184FE34-D7E3-44F6-95D9-25D1045BFFC8}</Project>
+      <Name>FondaResources</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ResourceMessagesDAO.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceMessagesDAO.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Database1.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database1_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Database1.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
 </Project>

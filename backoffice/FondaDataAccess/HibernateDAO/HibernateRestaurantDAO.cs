@@ -319,6 +319,49 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
         }
 
+        /// <summary>
+        /// Libera la mesa de estar ocupada pasa a estar disponible
+        /// </summary>
+        /// <param name="restaurant">Restaurante al que pertenece la mesa</param>
+        /// <param name="tableId">Id de la mesa a liberar</param>
+        public void ReleaseTable(Restaurant restaurant, int tableId)
+        {
+            ITableDAO _tableDAO;
+            FreeTableStatus freeStatus;
+            bool exists = false;
+            
+            try
+            {
+                _tableDAO = _facDAO.GetTableDAO();
+                freeStatus = _facDAO.GetFreeTableStatus();
+                foreach (Table t in restaurant.Tables)
+                {
+                    if (t.Id.Equals(tableId))
+                        exists = true;
+                }
+
+                if(exists)
+                {
+                    Table table = _tableDAO.FindById(tableId);
+                    restaurant.Tables.Remove(table);
+                    table.Status = freeStatus;
+                    restaurant.Tables.Add(table);
+                }
+
+                 Save(restaurant);
+
+            }
+            //TODO: Arrojar excepciones personalizadas
+            catch (ArgumentOutOfRangeException ex)
+            {
+                throw new FondaIndexException();
+            }
+            catch(InvalidCastException ex)
+            {
+                throw new InvalidCastException();
+            }
+        }
+
         #endregion
     }
 }

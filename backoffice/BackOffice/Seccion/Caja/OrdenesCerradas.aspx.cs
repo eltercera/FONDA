@@ -2,11 +2,10 @@
 using System.Web.UI.WebControls;
 using BackOfficeModel.OrderAccount;
 using BackOffice.Seccion.Restaurant;
-using BackOfficePresenter.OrderAccount;
 using FondaResources.Login;
 using System.Web.UI.HtmlControls;
 using BackOfficeModel;
-using BackOffice.Content;
+using FondaResources.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -49,6 +48,13 @@ namespace BackOffice.Seccion.Caja
             set { Session[ResourceLogin.sessionRestaurantID] = value; }
         }
 
+        public string SessionNumberAccount
+        {
+            get { return Session[OrderAccountResources.SessionNumberAccount].ToString(); }
+
+            set { Session[OrderAccountResources.SessionNumberAccount] = value; }
+        }
+
         HtmlGenericControl IModel.SuccessLabel
         {
             get { return this.SuccessLabel; }
@@ -61,7 +67,15 @@ namespace BackOffice.Seccion.Caja
 
         }
 
+        /// <summary>
+        /// Recurso de Session para el ID de la orden
+        /// </summary>
+        string IClosedOrdersModel.Session
+        {
+            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
+            set { Session[OrderAccountResources.SessionIdAccount] = value; }
+        }
 
         #endregion
 
@@ -77,16 +91,14 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session[ResourceLogin.sessionUserID] != null)
-            {
-                if (Session["RestaurantID"] != null)
-                {   //Llama al presentador para llenar la tabla de ordenes
-                    _presenter.GetClosedOrders(Session[RestaurantResource.SessionRestaurant].ToString());
-                }
+
+            
+            if (Session["RestaurantID"] != null)
+            {   //Llama al presentador para llenar la tabla de ordenes
+                _presenter.GetClosedOrders(Session[RestaurantResource.SessionRestaurant].ToString());
             }
-            else
-                Response.Redirect(RecursoMaster.addressLogin);
         }
+
 
 
     }

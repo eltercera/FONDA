@@ -3,6 +3,7 @@ package com.ds201625.fonda.logic.Commands.FavoriteCommands;
 import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.domains.BaseEntity;
@@ -33,20 +34,22 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
     }
 
     /**
-     * Comando para agregar un restaurante favorito
+     * Metodo de invoke implementado: Comando para agregar un restaurante favorito
      */
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para agregar un restaurante a favoritos");
-        FavoriteRestaurantService favRestService = FondaServiceFactory.getInstance()
-                .getFavoriteRestaurantService();
+
+        FavoriteRestaurantService serviceFavorites = FondaServiceFactory.getInstance()
+		.getFavoriteRestaurantService();
         Commensal commensal = FondaEntityFactory.getInstance().GetCommensal();
         Commensal idCommensal;
         Restaurant idRestaurant;
         try {
             idCommensal = (Commensal) getParameter(0);
             idRestaurant = (Restaurant) getParameter(1);
-            commensal =  favRestService.AddFavoriteRestaurant(idCommensal.getId(),
+
+            commensal = serviceFavorites.AddFavoriteRestaurant(idCommensal.getId(),
                     idRestaurant.getId());
             //AKI IRAN MAS EXCEPCIONES RECIBIDAS D BO
         } catch (RestClientException e) {

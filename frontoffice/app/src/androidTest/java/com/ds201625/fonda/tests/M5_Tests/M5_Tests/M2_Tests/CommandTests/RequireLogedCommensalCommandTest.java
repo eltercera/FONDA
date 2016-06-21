@@ -1,6 +1,7 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.CommandTests;
 
 import android.test.MoreAsserts;
+import android.util.Log;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Commensal;
@@ -41,6 +42,11 @@ public class RequireLogedCommensalCommandTest extends TestCase {
     private Commensal commensal;
 
     /**
+     * Variable String que indica la clase actual
+     */
+    private String TAG = "RequireLogedCommensalCommandTest";
+
+    /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
      * @throws Exception
      */
@@ -66,9 +72,11 @@ public class RequireLogedCommensalCommandTest extends TestCase {
 
             assertNotNull(commensal.getFavoritesRestaurants());
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error en testLogedCommensalCommandIsNotNull al" +
+                    " obtener el comensal logueado",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error en testLogedCommensalCommandIsNotNull al" +
+                    " obtener el comensal logueado",e);
         }
     }
 
@@ -87,9 +95,11 @@ public class RequireLogedCommensalCommandTest extends TestCase {
 
             assertEquals(13, commensal.getId());
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error en testLogedCommensalCommandIsNotEmpty al" +
+                    " obtener el comensal logueado",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error en testLogedCommensalCommandIsNotEmpty al" +
+                    " obtener el comensal logueado",e);
         }
     }
 
@@ -109,9 +119,11 @@ public class RequireLogedCommensalCommandTest extends TestCase {
             assertEquals(13, commensal.getId());
             MoreAsserts.assertNotEmpty(commensal.getFavoritesRestaurants());
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error en testLogedCommensalCommandElements al" +
+                    " obtener el comensal logueado",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error en testLogedCommensalCommandElements al" +
+                    " obtener el comensal logueado",e);
         }
     }
 
@@ -130,13 +142,18 @@ public class RequireLogedCommensalCommandTest extends TestCase {
             assertEquals(3, commensal.getFavoritesRestaurants().size());
 
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error en testLogedCommensalCommandList al" +
+                    " obtener el comensal logueado",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error en testLogedCommensalCommandList al" +
+                    " obtener el comensal logueado",e);
         }
     }
 
-    public void testtLogedCommensalNullPointerException() {
+    /**
+     *  Metodo para probar que el comensal logueado es nulo
+     */
+    public void testtLogedCommensalIsNull() {
         try {
 
             cmd = facCmd.requireLogedCommensalCommand();
@@ -146,11 +163,13 @@ public class RequireLogedCommensalCommandTest extends TestCase {
             assertNull(commensal);
 
         } catch(NullPointerException e) {
-            //fail("Se esperaba excepcion NullPointerException");
+            Log.e(TAG, "Error en testtLogedCommensalIsNull al" +
+                    " obtener el comensal logueado",e);
         }
         catch(Exception e) {
-
-        }
+            Log.e(TAG, "Error en testtLogedCommensalIsNull al" +
+                    " obtener el comensal logueado",e);
+     }
 
     }
 

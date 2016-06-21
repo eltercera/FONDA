@@ -418,7 +418,9 @@
     <Content Include="Seccion\Caja\ListarFacturas.aspx" />
     <Content Include="Seccion\Caja\Ordenes.aspx" />
     <Content Include="Seccion\Caja\OrdenesCerradas.aspx" />
+    <Content Include="Seccion\Caja\VerDetalleFactura.aspx" />
     <Content Include="Seccion\Caja\VerDetalleOrden.aspx" />
+    <Content Include="Seccion\Configuracion\DetalleModificar.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
@@ -488,12 +490,26 @@
     <Compile Include="Seccion\Caja\OrdenesCerradas.aspx.designer.cs">
       <DependentUpon>OrdenesCerradas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Seccion\Caja\VerDetalleFactura.aspx.cs">
+      <DependentUpon>VerDetalleFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Caja\VerDetalleFactura.aspx.designer.cs">
+      <DependentUpon>VerDetalleFactura.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.cs">
       <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Seccion\Caja\VerDetalleOrden.aspx.designer.cs">
       <DependentUpon>VerDetalleOrden.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\DetalleModificar.aspx.cs">
+      <DependentUpon>DetalleModificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\DetalleModificar.aspx.designer.cs">
+      <DependentUpon>DetalleModificar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\ListarUsuario.aspx.cs">
       <DependentUpon>ListarUsuario.aspx</DependentUpon>

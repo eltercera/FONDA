@@ -19,6 +19,8 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.adapters.ProfileViewItemList;
 import com.ds201625.fonda.domains.Profile;
@@ -88,13 +90,15 @@ public class ProfileListFragment extends BaseFragment
                     switch (item.getItemId()) {
                         case R.id.deleteProfile:
                             String sal = "Fueron eliminados los perfiles.";
-                            for (Profile p : profileList.getAllSeletedItems()) {
-                                ProfileService ps = FondaServiceFactory.getInstance()
-                                        .getProfileService(SessionData.getInstance().getToken());
+                            for (Profile idProfile : profileList.getAllSeletedItems()) {
                                 try {
-                                    ps.deleteProfile(p.getId());
+                                    Command commandoCreateProfile = FondaCommandFactory.createCreateProfileCommand();
+                                    commandoCreateProfile.setParameter(0,idProfile);
+                                    commandoCreateProfile.run();
                                 }
                                 catch (RestClientException e) {
+                                    e.printStackTrace();
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }

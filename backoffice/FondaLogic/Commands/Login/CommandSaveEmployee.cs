@@ -10,7 +10,7 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using FondaLogic.Log;
 using FondaLogic.FondaCommandException;
-
+using FondaLogic.FondaCommandException.Login;
 
 namespace FondaLogic.Commands.Login
 {
@@ -46,44 +46,44 @@ namespace FondaLogic.Commands.Login
                  _employeeDAO.Save(_employee);
                 
             }
-            catch (SaveEntityFondaDAOException ex)
+            catch (SaveEntityFondaDAOException e)
             {
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
-                //Arrojar
-                FondaResources.General.Errors.SaveExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameSaveEmployee,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.SaveExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
-
-                    //throw exceptionCreateEmployee;
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
 
             }
-            catch (NullReferenceException ex)
+            catch (InvalidTypeParameterException e)
             {
-
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetEmployeeId,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
-
-                //throw exceptionCreateEmployee;
-
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
             }
-            catch (Exception ex)
+            catch (ParameterIndexOutRangeException e)
             {
-                //throw new System.InvalidOperationException(ex.Message);
-
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameIndexParameter, e);
             }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
+            }
+            // Guarda el resultado.
+            Employee Result = _employee;
+            //logger
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
         }
 
