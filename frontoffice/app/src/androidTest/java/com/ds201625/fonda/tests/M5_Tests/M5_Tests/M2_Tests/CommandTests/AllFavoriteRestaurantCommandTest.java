@@ -35,7 +35,7 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
     private Command cmd;
 
     /**
-     * id de comensal logueado
+     * comensal logueado
      */
     private Commensal logedCommensal;
 
@@ -127,6 +127,9 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
         }
     }
 
+    /**
+     *  Metodo para probar que la lista de restaurantes favoritos es nula
+     */
     public void testAllFavoriteRestaurantIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);

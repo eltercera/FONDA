@@ -7,6 +7,9 @@ import java.util.List;
 /**
  * Created by Hp on 17/06/2016.
  */
+/**
+ * Interfaz para el presentador de Favorite.
+ */
 public interface FavoriteViewPresenter {
 
     /**

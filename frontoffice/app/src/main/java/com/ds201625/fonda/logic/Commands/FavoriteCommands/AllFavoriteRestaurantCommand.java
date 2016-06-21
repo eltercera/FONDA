@@ -35,7 +35,7 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
     }
 
     /**
-     * Comando para mostrar todos los restaurantes favoritos
+     * Metodo de invoke implementado: Comando para mostrar todos los restaurantes favoritos
      */
     @Override
     protected void invoke() {

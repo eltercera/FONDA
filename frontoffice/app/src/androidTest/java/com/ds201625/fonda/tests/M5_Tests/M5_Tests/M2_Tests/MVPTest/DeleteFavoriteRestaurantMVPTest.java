@@ -14,12 +14,16 @@ import java.util.List;
 /**
  * Created by Adri on 6/19/2016.
  */
+
+/**
+ * Clase De pruebas unitarias de DeleteFavoriteRestaurantMVPTest
+ */
 public class DeleteFavoriteRestaurantMVPTest extends TestCase implements FavoriteView {
 
 
 
     /**
-     * id de restaurante seleccionado
+     * restaurante seleccionado
      */
     private Restaurant selectedRestaurantAdd;
 
@@ -91,6 +95,8 @@ public class DeleteFavoriteRestaurantMVPTest extends TestCase implements Favorit
         }
     }
 
+
+     /*Metodos de la interfaz FavoriteView*/
 
     /**
      * Lista de todos los restaurantes favoritos

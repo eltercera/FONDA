@@ -36,7 +36,8 @@ public class FavoritesEmptyFragment extends BaseFragment {
      */
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         //Indicar el layout que va a usar el fragment
         View view= inflater.inflate(R.layout.fragment_favorites_empty,container,false);
 

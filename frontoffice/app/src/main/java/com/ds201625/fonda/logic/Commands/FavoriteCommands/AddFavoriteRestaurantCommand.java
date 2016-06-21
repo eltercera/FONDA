@@ -34,7 +34,7 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
     }
 
     /**
-     * Comando para agregar un restaurante favorito
+     * Metodo de invoke implementado: Comando para agregar un restaurante favorito
      */
     @Override
     protected void invoke() {
@@ -47,7 +47,8 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
         try {
             idCommensal = (Commensal) getParameter(0);
             idRestaurant = (Restaurant) getParameter(1);
-            commensal = serviceFavorites.AddFavoriteRestaurant(idCommensal.getId(), idRestaurant.getId());
+            commensal = serviceFavorites.AddFavoriteRestaurant(idCommensal.getId(),
+                    idRestaurant.getId());
             //AKI IRAN MAS EXCEPCIONES RECIBIDAS D BO
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
