@@ -17,10 +17,10 @@ public class RetrofitRestaurantService implements RestaurantService {
 
     private RestaurantClient resClient;
 
-    public RetrofitRestaurantService(Token token) {
+    public RetrofitRestaurantService() {
         super();
         resClient = RetrofitService.getInstance()
-                .createService(RestaurantClient.class,token.getStrToken());
+                .createService(RestaurantClient.class);
     }
 
     @Override
