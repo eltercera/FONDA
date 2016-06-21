@@ -16,10 +16,11 @@ namespace FondaLogic.Commands.OrderAccount
         public override void Execute()
         {
             int profileId;
+            bool result = false;
             Commensal commensal;
             Profile profile;
             List<Object> parameters;
-            List<Profile> profiles;
+            IList<Profile> profiles;
 
             try
             {
@@ -27,12 +28,15 @@ namespace FondaLogic.Commands.OrderAccount
                 profileId = (int)parameters[0];
                 commensal = (Commensal)parameters[1];
 
-                profiles = (List<Profile>)commensal.Profiles;
+                profiles = (IList<Profile>)commensal.Profiles;
 
-                profile = profiles.FirstOrDefault(p => p.Id == profileId);
+                foreach (Profile p in profiles)
+                {
+                    if (p.Id.Equals(profileId))
+                        result = true;
+                }
 
-                if (profile == null)
-                    throw new NullReferenceException();
+                Receiver = result;
 
             }
             catch (NullReferenceException ex)
@@ -51,7 +55,16 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch(Exception ex)
             {
+                CommandExceptionValidateProfileByCommensal exception = new CommandExceptionValidateProfileByCommensal(
+    FondaResources.General.Errors.NullExceptionReferenceCode,
+    FondaResources.OrderAccount.Errors.ClassNameCloseCashRegister,
+    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+    FondaResources.General.Errors.NullExceptionReferenceMessage,
+    ex);
 
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                throw exception;
             }
         }
     }

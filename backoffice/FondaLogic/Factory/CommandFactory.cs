@@ -220,6 +220,11 @@ namespace FondaLogic.Factory
             return new CommandValidateProfileByCommensal(receiver);
         }
 
+        public static Command GetCommandGetPaymentHistoryByProfile(object receiver)
+        {
+            return new CommandGetPaymentHistoryByProfile(receiver);
+        }
+
 
         #endregion
 

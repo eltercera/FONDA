@@ -160,7 +160,7 @@ namespace FondaBackOfficeLogicTest
             Assert.IsNull(_listInvoices);
         }
 
-        [Test(Description = "")]
+        [Test(Description = "Valida que un perfil pertenezca a un commensal")]
         public void CommandValidateProfileByCommensalTest()
         {
             List<Object> parameters = new List<object>();
@@ -170,7 +170,52 @@ namespace FondaBackOfficeLogicTest
             _command = CommandFactory.GetCommandValidateProfileByCommensal(parameters);
             _command.Execute();
 
-            Assert.IsNull(_command);
+            Assert.AreEqual(true, _command.Receiver);
+
+        }
+
+        [Test(Description = "Valida que un perfil no pertenezca a un comensal")]
+        [ExpectedException(typeof(CommandExceptionValidateProfileByCommensal))]
+        public void ErrorCommandValidateProfileByCommensalTest()
+        {
+            List<Object> parameters = new List<object>();
+
+            parameters.Add(null);
+            parameters.Add(null);
+            _command = CommandFactory.GetCommandValidateProfileByCommensal(parameters);
+            _command.Execute();
+
+            Assert.AreEqual(false, _command.Receiver);
+
+        }
+
+        [Test(Description = "Valida que el usuario reciba su historial de facturas")]
+        public void CommandGetPaymentHistoryTest()
+        {
+            List<Object> parameters = new List<object>();
+
+            parameters.Add(_profileId);
+            parameters.Add(_commensal);
+            _command = CommandFactory.GetCommandGetPaymentHistoryByProfile(parameters);
+            _command.Execute();
+            _listInvoices = (List<Invoice>)_command.Receiver;
+
+            Assert.IsNotNull(_listInvoices);
+
+        }
+
+        [Test(Description = "Fallo al ocurrir un error a solicitar el historial de facturas")]
+        public void ErrorCommandGetPaymentHistoryTest()
+        {
+            List<Object> parameters = new List<object>();
+
+            parameters.Add(null);
+            parameters.Add(_commensal);
+            _command = CommandFactory.GetCommandGetPaymentHistoryByProfile(parameters);
+            _command.Execute();
+            _listInvoices = (List<Invoice>)_command.Receiver;
+
+            Assert.AreEqual(0, _listInvoices.Count);
 
         }
 

@@ -83,7 +83,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         {
             IList<Invoice> paymentHistory = new List<Invoice>();
             List<Object> parameters = new List<object>();
-
+            Command command;
 
             try
             {
@@ -91,17 +91,13 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 parameters.Add(profileId);
                 parameters.Add(commensal);
 
-                Command validate = CommandFactory.GetCommandValidateProfileByCommensal(parameters);
-                validate.Execute();
-
-                Command command = CommandFactory.GetCommandGetInvoicesByProfile(profileId);
-                command.Execute();
+                command = CommandFactory.GetCommandGetPaymentHistoryByProfile(parameters);
 
                 paymentHistory = (IList<Invoice>) command.Receiver;
             }
-            catch (CommandExceptionGetInvoicesByProfile ex)
+            catch (CommandExceptionGetPaymentHistoryByProfile ex)
             {
-                CommandExceptionGetInvoicesByProfile e = new CommandExceptionGetInvoicesByProfile("FALTA PERSONALIZAR");
+                CommandExceptionGetPaymentHistoryByProfile e = new CommandExceptionGetPaymentHistoryByProfile("FALTA PERSONALIZAR");
                 FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
                 return InternalServerError(ex);
             }
