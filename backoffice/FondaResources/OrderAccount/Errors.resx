@@ -265,4 +265,12 @@
     <value>CommandTotalOrder</value>
     <comment>Comando para pagar conocer el pretotal de la orden</comment>
   </data>
+  <data name="MessageMVPExceptionQuery" xml:space="preserve">
+    <value>Se ha producido un error al realizar el casteo del URL</value>
+    <comment>Mensaje de errora al hacer el casteo de URL</comment>
+  </data>
+  <data name="MVPExceptionQueryCode" xml:space="preserve">
+    <value>BO-04-006</value>
+    <comment>Mensaje de error al hacer el casteo del URL</comment>
+  </data>
 </root>

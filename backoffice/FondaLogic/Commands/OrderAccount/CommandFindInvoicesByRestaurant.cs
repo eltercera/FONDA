@@ -15,13 +15,14 @@ namespace FondaLogic.Commands.OrderAccount
     {
         FactoryDAO _facDAO = FactoryDAO.Intance;
         Restaurant _restaurant = new Restaurant();
+        int _restaurantId = 0;
         IList<Invoice> listInvoices;
 
         public CommandFindInvoicesByRestaurant(Object receiver) : base(receiver)
         {
             try
             {
-                _restaurant = (Restaurant)receiver;
+                _restaurantId = (int)receiver;
             }
             catch (Exception)
             {
@@ -36,8 +37,11 @@ namespace FondaLogic.Commands.OrderAccount
             {
                 //Defino el DAO
                 IInvoiceDao _invoicerDAO;
+                IRestaurantDAO _restaurantDAO;
                 //Obtengo la instancia del DAO a utilizar
                 _invoicerDAO = _facDAO.GetInvoiceDao();
+                _restaurantDAO = _facDAO.GetRestaurantDAO();
+                _restaurant = _restaurantDAO.FindById(_restaurantId);
                 //Obtengo el objeto con la informacion enviada
                 IList<Invoice> listInvoices = _invoicerDAO.FindInvoicesByRestaurant(_restaurant);
                 Receiver = listInvoices;

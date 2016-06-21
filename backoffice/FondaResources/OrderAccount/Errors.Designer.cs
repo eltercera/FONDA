@@ -349,6 +349,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al realizar el casteo del URL.
+        /// </summary>
+        public static string MessageMVPExceptionQuery {
+            get {
+                return ResourceManager.GetString("MessageMVPExceptionQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BO-04-005.
         /// </summary>
         public static string MVPExceptionCloseButtonCode {
@@ -390,6 +399,15 @@ namespace FondaResources.OrderAccount {
         public static string MVPExceptionOrdersTableCode {
             get {
                 return ResourceManager.GetString("MVPExceptionOrdersTableCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-006.
+        /// </summary>
+        public static string MVPExceptionQueryCode {
+            get {
+                return ResourceManager.GetString("MVPExceptionQueryCode", resourceCulture);
             }
         }
     }
