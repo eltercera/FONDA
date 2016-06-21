@@ -15,7 +15,7 @@ namespace FondaBackOfficeLogicTest
     public class BOCommandInvoiceTest
     {
         #region fields
-        private int _restaurantId, _profileId,_accountId, _invoiceId;
+        private int _restaurantId, _profileId,_accountId, _invoiceId, _tableId;
         private Command _command;
         private IList<Account> _listClosedOrders;
         private IList<Invoice> _listInvoices;
@@ -51,7 +51,7 @@ namespace FondaBackOfficeLogicTest
             _restaurant.Id = 1;
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             _restaurant = _restaurantDAO.FindById(_restaurant.Id);
-            _restaurantId = _profileId= 1;
+            _restaurantId = _profileId=_tableId= 1;
             _accountId = 3;
             _invoiceId = 10;
             _commensalId = 20;
@@ -68,33 +68,34 @@ namespace FondaBackOfficeLogicTest
             UserAccount ua = _uaDAO.FindById(20);
             _profile =_profileDao.FindById(_profileId);
             _invoice = _invoiceDAO.FindById(_invoiceId);
-            _commensal = (Commensal) _commensalDAO.FindById(_commensalId);     
+            _commensal = (Commensal) _commensalDAO.FindById(_commensalId);
+            _restaurant = _restaurantDAO.FindById(_restaurantId);  
             //IBaseEntityDAO<Payment> bla = _facDAO
         }
 
         #endregion
 
-        [Test]
+        [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
         public void CommandTotalOrderTest()
         {
-            IList<int> _list = new List<int>();
-            _list.Add(_restaurantId); //1
-            _list.Add(_accountId); //3
-            float total;
+            ITableDAO _tableDAO = _facDAO.GetTableDAO();
+            IList<object> _list = new List<object>();
+            Table _table = new Table();
+            _list.Add(_restaurant); //1
+            _list.Add(_tableId); //3
 
-            _command = CommandFactory.GetCommandTotalOrder(_list);
+            _command = CommandFactory.GetCommandReleaseTableByRestaurant(_list);
 
             _command.Execute();
 
-            total = (float)_command.Receiver;
-
-            Assert.IsNotNull(total);
-            Assert.AreEqual(total, 9100);
+            _table = _tableDAO.FindById(_tableId);
+            //Assert.IsNotNull(total);
+            //Assert.AreEqual(_table.Status, 9100);
             //Assert.AreEqual(_listInvoices[1].Number, 2);
         }
 
 
-        [Test]
+        [Test(Description = "Obtiene las facturas de un restaurante")]
         public void CommandFindInvoicesByRestaurantTest()
         {
 

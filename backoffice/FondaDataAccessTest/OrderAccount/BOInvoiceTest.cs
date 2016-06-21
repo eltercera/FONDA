@@ -31,7 +31,7 @@ namespace FondaDataAccessTest
         private float _amount, _tax;
 
         #endregion
-
+        #region
         [SetUp]
         public void Init()
         {
@@ -65,7 +65,7 @@ namespace FondaDataAccessTest
             
             _listInvoices = new List<Invoice>();
         }
-
+        #endregion
         [Test]
         public void FindInvoiceByRestaurantTest()
         {
@@ -129,10 +129,11 @@ namespace FondaDataAccessTest
         [Test(Description ="Prueba que el estado de un Restaurante cambie de ocupado a libre")]
         public void ReleaseTableTest()
         {
-            _restaurantDAO.ReleaseTable(_restaurant, _tableId);
+
+            _restaurantDAO.ReleaseTable(_restaurant, 2);
             _resultRestaurant = _restaurantDAO.FindById(_restaurantId);
 
-            Assert.AreEqual(_restaurant.Tables[_tableId - 1].Id, _resultRestaurant.Tables[_tableId-1].Id);
+            Assert.AreEqual(_restaurant.Tables[_tableId - 1].Id, _resultRestaurant.Tables[_tableId - 1].Id);
             Assert.AreEqual(_restaurant.Tables[_tableId - 1].Capacity, _resultRestaurant.Tables[_tableId - 1].Capacity);
             Assert.AreEqual(_restaurant.Tables[_tableId - 1].Number, _resultRestaurant.Tables[_tableId - 1].Number);
             Assert.AreNotEqual(_restaurant.Tables[_tableId - 1].Status.Change(), _resultRestaurant.Tables[_tableId - 1].Status);
