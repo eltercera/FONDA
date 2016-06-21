@@ -122,7 +122,7 @@
                              <asp:label ID="labelrestauante" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server"/><span style="color:#FF6633" class="form-control-feedback"></span>
                             
                     </div>
-                     <asp:Button id="Button1" Text="Agregar" CssClass="btn btn-success" runat="server" OnClick="Modify_Click1"/> 
+                     <asp:Button id="Button1" Text="Modificar" CssClass="btn btn-success" runat="server" OnClick="Modify_Click1"/> 
                 </div>
             </div>
              
