@@ -235,6 +235,10 @@ namespace FondaLogic.Factory
             return new CommandGetPaymentHistoryByProfile(receiver);
         }
 
+        public static Command GetCommandPayOrder(object receiver)
+        {
+            return new CommandPayOrder(receiver);
+        }
 
         #endregion
 

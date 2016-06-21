@@ -79,24 +79,38 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// <param name="payment">Pago del usuario</param>
         /// <returns>Invoice emitida por el Restaurante</returns>
         [HttpPost]
-        [Route("restaurant/{restaurantId}/order/{orderId}")]
+        [Route("restaurant/{restaurantId}/order/{orderId}/profile/{profileId}")]
         [FondaAuthToken]
-        public IHttpActionResult PayAccount(int restaurantId, int orderId, Payment payment)
+        public IHttpActionResult PayAccount(int restaurantId, int orderId, int profileId, Payment payment)
         {
             Invoice invoice = EntityFactory.GetInvoice();
+            List<Object> parameters = new List<object>();
+            Command pay;
+
 
             try
             {
-                //TODO
-                //Invocar a metodos para pagar orden
+                Commensal commensal = GetCommensal(Request.Headers);
+                parameters.Add(restaurantId);
+                parameters.Add(orderId);
+                parameters.Add(profileId);
+                parameters.Add(payment);
+                parameters.Add(commensal);
+
+                pay = CommandFactory.GetCommandPayOrder(parameters);
+                pay.Execute();
+                invoice = (Invoice) pay.Receiver;
+
             }
             catch (Exception)
             {
-
-                return BadRequest();
+                //Excepcion de WebService
+                //Guarda en Logger
+                //Envia excepcion
+                return InternalServerError();
             }
 
-            return Ok(invoice);
+            return Created("",invoice);
         }
 
         /// <summary>
@@ -164,7 +178,34 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             return Ok(orderDetail);
         }
 
+        [HttpGet]
+        [Route("restaurant/{restaurantId}/order/{orderId}/invoice/{invoiceId}")]
+        [FondaAuthToken]
+        public IHttpActionResult CanceledInvoice(int restaurantId, int orderId, int invoiceId)
+        {
+            List<DishOrder> orderDetail = new List<DishOrder>();
 
+            try
+            {
+                //Comando para anular factura 
+                //
+                //Cambia status de factura a cancelada
+                //Elimina pago
+                //Abre orden cerrada
+                //Regresa mensaje
+                //
+                //Comando para anular factura
+            }
+            catch (Exception e)
+            {
+                //Creo excepcion
+                //Hago Logger
+                return InternalServerError();
+            }
+
+            //DEBERIA SER ELIMINADO
+            return Ok();
+        }
 
 
     }
