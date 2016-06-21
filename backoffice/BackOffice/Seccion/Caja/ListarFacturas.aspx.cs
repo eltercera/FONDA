@@ -46,7 +46,7 @@ namespace BackOffice.Seccion.Caja
         /// </summary>
         string IOrderInvoicesModel.Session
         {
-            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
+            get { return this.orderId.ToString(); }
 
             set { Session[OrderAccountResources.SessionIdAccount] = value; }
         }

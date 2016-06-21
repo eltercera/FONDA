@@ -37,6 +37,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         /// </summary>
         public void GetDetailOrder()
         {
+
             //Define objeto a recibir
             IList<DishOrder> listDishOrder;
             Account order;
@@ -68,7 +69,15 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 listDishOrder = (IList<DishOrder>)result[0];
                 order = (Account)result[1];
                 currency = (string)result[2];
-              
+
+                //Variables de sesion, no deberian estar vacias
+                //El metodo getqueryparam url tiene una falla, deberia ser transparente para el usuario el id de la orden
+                //Deberia mostrarse es el number de la account y junto con el restaurante devolver la orden correspondiente
+                //Igual pasa con factura
+                //Esto implica cambiar el metodo que te devuelve la factura
+                _view.SessionNumberAccount = order.Number.ToString();
+
+
                 //Revisa si la lista no esta vacia
                 if (listDishOrder != null)
                 {

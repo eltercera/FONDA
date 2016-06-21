@@ -136,7 +136,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 //Le asigna el Id a cada fila de la tabla
                 tRow.Attributes[OrderAccountResources.dataId] =
                     data[i].Id.ToString();
-                _view.Session = dataId.ToString();
+
                 //Agrega la fila a la tabla existente
                 _view.OrderInvoicesTable.Rows.Add(tRow);
                 for (int j = 0; j <= totalColumns; j++)
