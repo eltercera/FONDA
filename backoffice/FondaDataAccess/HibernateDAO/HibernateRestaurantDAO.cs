@@ -348,7 +348,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     restaurant.Tables.Add(table);
                 }
 
-                ; Save(restaurant);
+                 Save(restaurant);
 
             }
             //TODO: Arrojar excepciones personalizadas
