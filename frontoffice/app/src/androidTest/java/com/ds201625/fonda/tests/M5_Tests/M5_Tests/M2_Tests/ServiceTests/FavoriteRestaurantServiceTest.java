@@ -269,7 +269,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
         } catch(RestClientException e) {}
           catch(NullPointerException e) {
               //fail("Se esperaba excepcion NullPointerException");
-          }
+          } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

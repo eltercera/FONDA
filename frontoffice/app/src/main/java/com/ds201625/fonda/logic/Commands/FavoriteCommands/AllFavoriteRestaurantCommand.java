@@ -53,7 +53,7 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
         } catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
         } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito");
         }
         setResult(restaurantList);
     }
