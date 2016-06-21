@@ -18,7 +18,6 @@ namespace FondaLogic.Commands.OrderAccount
             int profileId;
             bool result = false;
             Commensal commensal;
-            Profile profile;
             List<Object> parameters;
             IList<Profile> profiles;
 

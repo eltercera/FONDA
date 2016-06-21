@@ -35,6 +35,16 @@ namespace FondaLogic.Factory
         /// </summary>
         /// <param name="entity">Lista de objetos (Restaurante, tableId)</param>
         /// <returns>comando ReleaseTableByRestaurant</returns>
+        public static Command GetCommandGetDishOrdersByAccountId(object receiver)
+        {
+            return new CommandGetDishOrdersByAccountId(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando ReleaseTableByRestaurant
+        /// </summary>
+        /// <param name="entity">Lista de objetos (Restaurante, tableId)</param>
+        /// <returns>comando ReleaseTableByRestaurant</returns>
         public static Command GetCommandReleaseTableByRestaurant(object receiver)
         {
             return new CommandReleaseTableByRestaurant(receiver);
@@ -225,6 +235,10 @@ namespace FondaLogic.Factory
             return new CommandGetPaymentHistoryByProfile(receiver);
         }
 
+        public static Command GetCommandPayOrder(object receiver)
+        {
+            return new CommandPayOrder(receiver);
+        }
 
         #endregion
 
