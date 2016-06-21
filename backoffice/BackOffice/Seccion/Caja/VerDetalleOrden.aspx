@@ -1,12 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="VerDetalleOrden.aspx.cs" Inherits="BackOffice.Seccion.Caja.VerDetalleOrden" %>
+﻿<%@ Page Title="Detalle de Orden" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="VerDetalleOrden.aspx.cs" Inherits="BackOffice.Seccion.Caja.VerDetalleOrden" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    Detalle
+    Detalle 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    de la Orden [# Orden]
+    Orden # <%=Session["AccountNumber"]%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
     <%--Breadcrumbs--%>
@@ -51,8 +51,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Orden # <asp:Label ID="Label1" runat="server"></asp:Label> Cliente: <asp:Label ID="Label2" runat="server"></asp:Label> </h3>
-                    <h3 class="panel-title">Restaurante: <asp:Label ID="Label3" runat="server"></asp:Label><%=Session["NameRestaurant"]%><asp:Label ID="Label4" runat="server"></asp:Label> </h3>
+                    <h3 class="panel-title"><i class="fa fa-cutlery" aria-hidden="true"></i> Detalle del Pedido</h3>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">

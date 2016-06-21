@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    Ordenes
+    Ordenes Cerradas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
     de <%=Session["NameRestaurant"]%>
@@ -55,13 +55,13 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-
                             <asp:Table ID="closedOrders" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 
 </asp:Content>

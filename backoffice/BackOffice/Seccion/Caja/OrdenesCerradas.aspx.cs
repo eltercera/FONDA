@@ -2,10 +2,10 @@
 using System.Web.UI.WebControls;
 using BackOfficeModel.OrderAccount;
 using BackOffice.Seccion.Restaurant;
-using BackOfficePresenter.OrderAccount;
 using FondaResources.Login;
 using System.Web.UI.HtmlControls;
 using BackOfficeModel;
+using FondaResources.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -60,7 +60,15 @@ namespace BackOffice.Seccion.Caja
 
         }
 
+        /// <summary>
+        /// Recurso de Session para el ID de la orden
+        /// </summary>
+        string IClosedOrdersModel.Session
+        {
+            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
+            set { Session[OrderAccountResources.SessionIdAccount] = value; }
+        }
 
         #endregion
 
@@ -76,11 +84,14 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            
             if (Session["RestaurantID"] != null)
             {   //Llama al presentador para llenar la tabla de ordenes
                 _presenter.GetClosedOrders(Session[RestaurantResource.SessionRestaurant].ToString());
             }
         }
+
 
 
     }

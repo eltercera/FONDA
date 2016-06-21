@@ -1,5 +1,7 @@
 package com.ds201625.fonda.presenter;
 
+import android.util.Log;
+
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.interfaces.IAllRestaurantsView;
@@ -20,6 +22,7 @@ public class AllRestaurantsPresenter implements IAllRestaurantsViewPresenter {
     private IAllRestaurantsView iAllRestaurantsView;
     private Commensal logedComensal;
     private String emailToWebService;
+    private String TAG = "AllRestaurantsPresenter";
 
     /**
      * Constructor
@@ -34,6 +37,7 @@ public class AllRestaurantsPresenter implements IAllRestaurantsViewPresenter {
      */
     @Override
     public void findLoggedComensal() {
+        Log.d(TAG,"Ha entrado en findLoggedComensal");
         Commensal log = SessionData.getInstance().getCommensal();
         emailToWebService=log.getEmail()+"/";
         facCmd = FondaCommandFactory.getInstance();
@@ -42,11 +46,16 @@ public class AllRestaurantsPresenter implements IAllRestaurantsViewPresenter {
         try {
             cmdRequireLoged.setParameter(0,emailToWebService);
             cmdRequireLoged.run();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (NullPointerException e){
+            Log.e(TAG,"Error en findLoggedComensal al buscar el comensal logueado",
+                    e);
+        }catch (Exception e) {
+            Log.e(TAG,"Error en findLoggedComensal al buscar el comensal logueado",
+                    e);
         }
-
-        logedComensal = (Commensal) cmdRequireLoged.getResult();
+         logedComensal = (Commensal) cmdRequireLoged.getResult();
+        Log.d(TAG,"Se obtiene el comensal logueado "+logedComensal.getId());
+        Log.d(TAG,"Ha finalizado findLoggedComensal");
     }
     /**
      * Encuentra todos los restaurantes
@@ -55,14 +64,20 @@ public class AllRestaurantsPresenter implements IAllRestaurantsViewPresenter {
      */
     @Override
     public List<Restaurant> findAllRestaurants() {
+        Log.d(TAG,"Ha entrado en findAllRestaurants");
         Command cmdAllRest = facCmd.allRestaurantCommand();
         try {
             cmdAllRest.run();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (NullPointerException e){
+            Log.e(TAG,"Error en findAllRestaurants al buscar todos los restaurantes",
+                    e);
+        }catch (Exception e) {
+            Log.e(TAG,"Error en findAllRestaurants al buscar todos los restaurantes",
+                    e);
         }
         listRestWS = (List<Restaurant>) cmdAllRest.getResult();
-
+        Log.d(TAG,"Se retorna la lista de Restaurantes");
+        Log.d(TAG,"Ha finalizado findAllRestaurants");
         return listRestWS;
     }
 

@@ -19,6 +19,10 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
     /// </summary>
     class GetFavoriteRestaurantCommand : BaseCommand
     {
+        private Commensal favorites;
+        private Commensal commensal;
+        private ICommensalDAO commensalDAO;
+
         /// <summary>
         /// constructor obtener Favorite restaurant command
         /// </summary>
@@ -46,11 +50,11 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
 		{
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            Commensal favorites;
+            
             // Obtencion de parametros
-            Commensal commensal = (Commensal)GetParameter(0);
+            commensal = (Commensal)GetParameter(0);
             // Obtiene el dao que se requiere
-            ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();
+            commensalDAO = FacDao.GetCommensalDAO();
 
             if (commensal.Id <= 0)
                 throw new Exception(ResourceMessages.InvalidInformation);

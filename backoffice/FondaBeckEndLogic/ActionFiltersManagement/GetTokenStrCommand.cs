@@ -2,15 +2,16 @@
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaBeckEndLogic.Exceptions;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FondaBeckEndLogic;
 
-namespace FondaBeckEndLogic.ActionFiltersManagement
+namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
 {
     /// <summary>
     /// Comando para la Buscar Token por StrToken
@@ -56,7 +57,7 @@ namespace FondaBeckEndLogic.ActionFiltersManagement
             try
             {
                 // Busca el Token
-                tok = tokenDAO.FindByStrToken(property, token);
+                tok = tokenDAO.FindByStrToken(property,token);
 
                 //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,

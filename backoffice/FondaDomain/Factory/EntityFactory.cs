@@ -27,31 +27,42 @@ namespace com.ds201625.fonda.Factory
             return new Account(table, listOrder);
         }
 
-        public static Entity GetInvoice()
+        public static Invoice GetInvoice()
         {
             return new Invoice();
         }
 
-        public static Invoice GetInvoice(/*Restaurant restaurant, */Payment payment, Profile profile,
-            float tip, float total, float tax, Currency currency, int number)
+        public static Invoice GetInvoice(Payment payment, Profile profile,
+         float total, float tax, Currency currency, int number, InvoiceStatus status)
         {
-            return new Invoice(/*restaurant,*/ payment, profile,
-            tip, total, tax, currency, number);
+            return new Invoice(payment, profile,
+             total, tax, currency, number, status);
         }
 
-        public static Invoice GetInvoice(/*Restaurant restaurant, */Payment payment, Profile profile,
+        public static Invoice GetInvoice(Payment payment, Profile profile,
             float total, float tax, Currency currency, int number)
         {
-            return new Invoice(/*restaurant,*/ payment, profile,
+            return new Invoice(payment, profile,
             total, tax, currency, number);
         }
 
-        public static Invoice GetInvoice(int id, Payment payment, Profile profile, float tip,
+        public static Invoice GetInvoice(int id, Payment payment, Profile profile,
             float total, float tax, int number)
         {
             return new Invoice(id, payment, profile,
-            tip, total, tax, number);
+             total, tax, number);
         }
+
+        public static CashPayment GetCashPayment(float amount)
+        {
+            return new CashPayment(amount);
+        }
+
+        public static CreditCardPayment GetCreditCardPayment(float amount, int lastDigits, float tip)
+        {
+            return new CreditCardPayment(amount, lastDigits, tip);
+        }
+
         #endregion
 
         #region Restaurant
@@ -99,6 +110,16 @@ namespace com.ds201625.fonda.Factory
         public static Profile GetProfile()
         {
             return new Profile();
+        }
+        //Instancia de Person
+        public static Person GetPerson()
+        {
+            return new Person();
+        }
+        //Instancia Arreglo de Tokens
+        public static Token[] GetTokenA(int cant)
+        {
+            return new Token[cant];
         }
         #endregion
 

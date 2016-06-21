@@ -2,10 +2,13 @@ package com.ds201625.fonda.logic;
 
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
-import com.ds201625.fonda.logic.Commands.CreateProfileCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommand.CreateProfileCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.DeleteFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommand.DeleteProfileCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommand.GetProfilesCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommand.UpdateProfileCommand;
 
 /**
  * Fabrica de comandos
@@ -34,7 +37,7 @@ public class FondaCommandFactory {
      * Crea un CreateProfileCommand
      * @return comando CreateProfileCommand
      */
-    public Command createCreateProfileCommand() {
+    public static Command createCreateProfileCommand() {
         return  new CreateProfileCommand();
     }
 
@@ -42,7 +45,7 @@ public class FondaCommandFactory {
      * Crea un AddFavoriteRestaurantCommand
      * @return comando AddFavoriteRestaurantCommand
      */
-    public Command addFavoriteRestaurantCommand() {
+    public static Command addFavoriteRestaurantCommand() {
         return  new AddFavoriteRestaurantCommand();
     }
 
@@ -50,7 +53,7 @@ public class FondaCommandFactory {
      * Crea un DeleteFavoriteRestaurantCommand
      * @return comando DeleteFavoriteRestaurantCommand
      */
-    public Command deleteFavoriteRestaurantCommand() {
+    public static Command deleteFavoriteRestaurantCommand() {
         return  new DeleteFavoriteRestaurantCommand();
     }
 
@@ -58,7 +61,7 @@ public class FondaCommandFactory {
      * Crea un AllFavoriteRestaurantCommand
      * @return comando AllFavoriteRestaurantCommand
      */
-    public Command allFavoriteRestaurantCommand() {
+    public static Command allFavoriteRestaurantCommand() {
         return  new AllFavoriteRestaurantCommand();
     }
 
@@ -66,7 +69,7 @@ public class FondaCommandFactory {
      * Crea un AllRestaurantCommand
      * @return comando AllRestaurantCommand
      */
-    public Command allRestaurantCommand() {
+    public static Command allRestaurantCommand() {
         return  new AllRestaurantCommand();
     }
 
@@ -74,7 +77,30 @@ public class FondaCommandFactory {
      * Crea un RequireLogedCommensalCommand
      * @return comando RequireLogedCommensalCommand
      */
-    public Command requireLogedCommensalCommand() {
+    public static Command requireLogedCommensalCommand() {
         return  new RequireLogedCommensalCommand();
     }
+
+    /**
+     * Crea un updateProfileCommand
+     * @return comando updateProfileCommand
+     */
+    public static Command updateProfileCommand() {
+        return  new UpdateProfileCommand();
+    }
+
+    /**
+     * Crea un deleteProfileCommand
+     * @return comando deleteProfileCommand
+     */
+    public static Command deleteProfileCommand() {
+        return  new DeleteProfileCommand();
+    }
+
+    /**
+     * Crea un getProfilesCommand
+     * @return comando getProfilesCommand
+     */
+    public static Command getProfilesCommand() { return  new GetProfilesCommand(); }
 }
+

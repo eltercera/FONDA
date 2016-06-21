@@ -1,13 +1,13 @@
 ﻿using BackOfficeModel.OrderAccount;
+using BackOfficePresenter.FondaMVPException;
 using com.ds201625.fonda.Domain;
 using FondaLogic;
 using FondaLogic.Factory;
+using FondaLogic.Log;
 using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
@@ -17,6 +17,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         //Enlace Modelo - Vista
         private IDetailOrderModel _view;
         int totalColumns = 3;
+        string _currency = null;
 
 
         ///<summary>
@@ -36,29 +37,37 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         /// </summary>
         public void GetDetailOrder()
         {
+
+
             int result;
             //Define objeto a recibir
             IList<DishOrder> listDishOrder;
+            Account _order;
             //Invoca al comando
             Command commandDetailOrder;
+            Command commandGetOrder;
+            Command commandGetCurrency;
 
             try
             {
-                //Obtener el parametro
-                if (!int.TryParse(_view.Session, out result))
-                {
-                    _view.Session = result.ToString();
-                }
+                result = GetQueryParameter();
+                int restaurantId = int.Parse(_view.SessionRestaurant);
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
                 commandDetailOrder = CommandFactory.GetDetailOrder(result);
+                commandGetOrder = CommandFactory.GetCommandGetOrder(result);
+                commandGetCurrency = CommandFactory.GetCommandGetCurrency(restaurantId);
 
                 //Ejecuta el comando deseado
                 commandDetailOrder.Execute();
+                commandGetOrder.Execute();
+                commandGetCurrency.Execute();
 
                 //Se obtiene el resultado de la operacion
                 listDishOrder = (IList<DishOrder>)commandDetailOrder.Receiver;
-
+                _order = (Account)commandGetOrder.Receiver;
+                _currency = (string)commandGetCurrency.Receiver;
+                _view.SessionNumberAccount = _order.Number.ToString();
 
                 //Revisa si la lista no esta vacia
                 if (listDishOrder != null)
@@ -66,19 +75,29 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                     //Llama al metodo para el llenado de la tabla
                     FillTable(listDishOrder);
                 }
+
             }
-            catch (Exception)
+            catch (MVPExceptionDetailOrderTable ex)
             {
-                //TODO: Arrojar excepciones personalizadas
-                //TODO: Escribir en el Log la excepcion
-                throw;
+                //Revisar
+                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+                    (
+                        Errors.MVPExceptionDetailOrderTableCode,
+                        Errors.ClassNameDetailOrderPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        Errors.MessageMVPExceptionDetailOrderTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                throw e;
+                ErrorLabel(e.MessageException);
             }
         }
 
         private void FillTable(IList<DishOrder> data)
         {
-
-            CleanTable();
+            HideMessageLabel();
+            CleanTable(_view.DetailOrderTable);
 
             int totalRows = data.Count; //tamano de la lista 
             float total = 0;
@@ -89,7 +108,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 //Crea una nueva fila de la tabla
                 TableRow tRow = new TableRow();
                 //Le asigna el Id a cada fila de la tabla
-                tRow.Attributes["data-id"] = data[i].Id.ToString();
+                tRow.Attributes[OrderAccountResources.dataId] = 
+                    data[i].Id.ToString();
                 //Agrega la fila a la tabla existente
                 _view.DetailOrderTable.Rows.Add(tRow);
                 for (int j = 0; j <= totalColumns; j++)
@@ -107,13 +127,13 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
                     //Agrega el costo del plato
                     else if (j.Equals(2))
-                        tCell.Text = data[i].Dishcost.ToString();
+                        tCell.Text = (_currency + " " + data[i].Dishcost.ToString());
 
                     //Agrega el total (precio*cantidad)
                     else if (j.Equals(3))
                     {
                         total = data[i].Count * data[i].Dishcost;
-                        tCell.Text = total.ToString();
+                        tCell.Text = (_currency + " " + total.ToString());
                         total = 0;
                     }
 
@@ -164,13 +184,19 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             return header;
         }
 
-        /// <summary>
-        /// Limpia las filas de la tabla
-        /// </summary>
-        private void CleanTable()
+        private int GetQueryParameter()
         {
-            _view.DetailOrderTable.Rows.Clear();
+            int result = 0;
+            string queryParameter = 
+                HttpContext.Current.Request.QueryString["Id"];
 
+
+            if(queryParameter != null && queryParameter != string.Empty)
+            {
+                return int.Parse(queryParameter);
+            }
+
+            return result;
         }
 
 

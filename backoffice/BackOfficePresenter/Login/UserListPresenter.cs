@@ -17,7 +17,8 @@ using System.Web.UI.WebControls;
 using System.Web;
 using System.Text.RegularExpressions;
 using com.ds201625.fonda.DataAccess.Exceptions;
-
+using FondaLogic.Log;
+using FondaLogic.FondaCommandException;
 
 namespace BackOfficePresenter.Login
 {
@@ -100,9 +101,25 @@ namespace BackOfficePresenter.Login
             {
                 CommanGetAllEmployee.Execute();
             }
-            catch (Exception)
-            // CommanGetAllEmployee REVISAR
+            catch (NullReferenceException ex)
             {
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetEmployee,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
+
+                throw exceptionGetEmployee;
+            }
+            catch (Exception ex)
+            {
+                throw new System.InvalidOperationException(ex.Message);
+
             }
             _employeeList = (IList<Employee>)CommanGetAllEmployee.Receiver;
             System.Diagnostics.Debug.WriteLine("ejecute comando");
@@ -271,7 +288,30 @@ namespace BackOfficePresenter.Login
 
             Command CommandGetEmployeeById;
             CommandGetEmployeeById = CommandFactory.GetCommandGetEmployeeById(_idEmployee);
-            CommandGetEmployeeById.Execute();
+            try
+            {
+                CommandGetEmployeeById.Execute();
+            }
+            catch (NullReferenceException ex)
+            {
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetEmployee,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
+
+                throw exceptionGetEmployee;
+            }
+            catch (Exception ex)
+            {
+                throw new System.InvalidOperationException(ex.Message);
+
+            }
             _employee = (Employee)CommandGetEmployeeById.Receiver;
             _view.textBoxNameUser.Text = _employee.Name;
             _view.textBoxlastNameUser.Text = _employee.LastName;
@@ -281,7 +321,7 @@ namespace BackOfficePresenter.Login
             int _length = (_employee.Ssn.Length) - 2;
             _view.textBoxNss2.Text = _employee.Ssn.Substring(2, _length);
             _view.DropDownListGender.Text = _employee.Gender.ToString();
-            _view.textBoxBirtDate.Text = _employee.BirthDate.ToString("dd/MM/yyyy");
+            _view.textBoxBirtDate.Value = _employee.BirthDate.ToString("dd/MM/yyyy");
             _view.textBoxUserNameU.Text = _employee.Username;
             _view.DropDownListRole.Text = _employee.Role.Id.ToString();
             _view.textBoxEmail.Text = _employee.UserAccount.Email;
@@ -289,8 +329,9 @@ namespace BackOfficePresenter.Login
             _view.textBoxRepitPaswword.Enabled = false;
             _view.buttonButtonAddModify.Text = "Modificar";
             _view.buttonButtonAddModify.Attributes.Add("data-id", _idEmployee.ToString());
+            System.Diagnostics.Debug.WriteLine(_employee.LastName);
             //ScriptManager.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
-            
+
         }
 
         protected void ClearModalAddModify()
@@ -308,7 +349,7 @@ namespace BackOfficePresenter.Login
             _view.textBoxEmail.Attributes["placeholder"] = "nickname@ejemplo.com";
             _view.textBoxPhoneNumber.Text = "";
             _view.textBoxPhoneNumber.Attributes["placeholder"] = "Ej. 04127890544";
-            _view.textBoxBirtDate.Text = "";
+            _view.textBoxBirtDate.Value = "";
             _view.textBoxBirtDate.Attributes["placeholder"] = "DD/MM/YYYY";
             _view.DropDownListRole.Items.Clear();
             _view.DropDownListRole.Items.Add("");
@@ -336,11 +377,27 @@ namespace BackOfficePresenter.Login
             {
                 CommandGetAllRoles.Execute();
             }
-            catch (Exception)
-            // falta CommandGetAllRoles
+            catch (NullReferenceException ex)
             {
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionGetRol exceptionGetRol = new CommandExceptionGetRol(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetRoles,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRol);
+
+                throw exceptionGetRol;
             }
-                _roleList = (IList<Role>)CommandGetAllRoles.Receiver;
+            catch (Exception ex)
+            {
+                throw new System.InvalidOperationException(ex.Message);
+
+            }
+            _roleList = (IList<Role>)CommandGetAllRoles.Receiver;
             
             if (_roleList != null)
             {
@@ -364,8 +421,24 @@ namespace BackOfficePresenter.Login
             {
                 CommandGetAllRestaurants.Execute();
             }
-            catch(Exception)
+            catch (NullReferenceException ex)
             {
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionGetRestaurant exceptionGetRestaurant = new CommandExceptionGetRestaurant(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetRestaurantAll,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRestaurant);
+
+                throw exceptionGetRestaurant;
+            }
+            catch (Exception ex)
+            {
+                throw new System.InvalidOperationException(ex.Message);
 
             }
             IList<Restaurant> _restList = (IList<Restaurant>)CommandGetAllRestaurants.Receiver;
@@ -399,7 +472,7 @@ namespace BackOfficePresenter.Login
         /// <param name="sender"></param>
         public bool ModalAddModify_Click(object sender)
         {
-            
+            System.Diagnostics.Debug.WriteLine(_view.textBoxBirtDate.Value);
             if (ValidarCampo(_view.buttonButtonAddModify.Text))
             {
                 System.Diagnostics.Debug.WriteLine("entre validarcampos");
@@ -448,11 +521,26 @@ namespace BackOfficePresenter.Login
                     {
                         CommandGetEmployeeById.Execute();
                     }
-                    catch(Exception)
+                    catch (NullReferenceException ex)
                     {
+                        //TODO: Arrojar Excepcion personalizada
+                        CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
+                        //Arrojar
+                        FondaResources.General.Errors.NullExceptionReferenceCode,
+                        FondaResources.Login.Errors.ClassNameGetEmployeeId,
+                        FondaResources.Login.Errors.CommandMethod,
+                        FondaResources.General.Errors.NullExceptionReferenceMessage,
+                        ex);
+
+                        Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
+
+                        //throw exceptionGetEmployee;
+                    }
+                    catch (Exception ex)
+                    {
+                       
 
                     }
-                    //REVISAR FALTA EXCEPTION
                     _employee = (Employee)CommandGetEmployeeById.Receiver;
                     //carga campo email con valor del usario a modificar
                     if (_view.textBoxEmail.Text == _employee.UserAccount.Email)
@@ -494,15 +582,33 @@ namespace BackOfficePresenter.Login
                     if (_employee.UserAccount.Id.ToString() == "0")
                     {
                         // Comando para guardar userAccount
-                        Command CommandSaveUserAccount = CommandFactory.GetCommandSaveEntity(_employee.UserAccount);
+
+                            Command CommandSaveUserAccount = CommandFactory.GetCommandSaveEntity(_employee.UserAccount);
                         try
                         {
                             CommandSaveUserAccount.Execute();
                         }
-                        catch (Exception)
+                        catch (SaveEntityFondaDAOException ex)
                         {
-                        }    
-                            
+                            //TODO: Arrojar Excepcion personalizada
+                            CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
+                            //Arrojar
+                            FondaResources.General.Errors.NullExceptionReferenceCode,
+                            FondaResources.Login.Errors.ClassNameGetEmployee,
+                            FondaResources.Login.Errors.CommandMethod,
+                            FondaResources.General.Errors.NullExceptionReferenceMessage,
+                            ex);
+
+                            Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
+
+                            //throw exceptionGetEmployee;
+                        }
+                        catch (Exception ex)
+                        {
+
+
+                        }
+
                         //_userAccountDAO.Save(_employee.UserAccount);
                     }
                     System.Diagnostics.Debug.WriteLine("Guarde en la bd");
@@ -511,10 +617,26 @@ namespace BackOfficePresenter.Login
                     {
                         CommandSaveEmployee.Execute();
                     }
-                    catch (Exception)
+                    catch (SaveEntityFondaDAOException ex)
                     {
-                    }
+                        //TODO: Arrojar Excepcion personalizada
+                        CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
+                        //Arrojar
+                        FondaResources.General.Errors.NullExceptionReferenceCode,
+                        FondaResources.Login.Errors.ClassNameGetEmployee,
+                        FondaResources.Login.Errors.CommandMethod,
+                        FondaResources.General.Errors.NullExceptionReferenceMessage,
+                        ex);
 
+                        Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
+
+                        //throw exceptionGetEmployee;
+                    }
+                    catch (Exception ex)
+                    {
+
+
+                    }
                     //_employeeDAO.Save(_employee);
                     //alerta de exito de guardado
                     if (_view.buttonButtonAddModify.Text == "Agregar")
@@ -570,7 +692,9 @@ namespace BackOfficePresenter.Login
             string Nacionalidad= Convert.ToString(_view.dropDownListNss1.Text);
             string Identity = _view.dropDownListNss1.Text;
             string Dni = _view.textBoxNss2.Text;
-            string Birthdate = _view.textBoxBirtDate.Text;
+            string Birthdate = _view.textBoxBirtDate.Value;
+            String[] substrings = Birthdate.Split('-');
+            Birthdate = substrings[2] + '/' + substrings[1] + '/' + substrings[0];
             string Phone = _view.textBoxPhoneNumber.Text;
             string Gender = Convert.ToString(_view.DropDownListGender.Text);
             string Address = _view.textBoxAddress.Text;
@@ -587,6 +711,20 @@ namespace BackOfficePresenter.Login
                 if (Name == "" | LastName == "" | Identity == "" | Phone == "" | Role == ""
                     | UserName == "" | Email == "" | Password1 == "" | Password2 == "" | Gender == "" | Nacionalidad=="" 
                     | Dni == "" | Birthdate =="" | Address == "")
+                {
+                    System.Diagnostics.Debug.WriteLine("entre accion agregar validando2");
+                    Alerts("Empty");
+                    bad = ++bad;
+                    return false;
+                }
+                else
+                {
+                    //se muestran mensajes
+                    System.Diagnostics.Debug.WriteLine("entre accion agregar else");
+                    _view.HtmlGenericControlemessageEmpty.Attributes.Clear();
+                    _view.HtmlGenericControlemessageEmpty.InnerHtml = "";
+                }
+                if ((_role == "Sistema") && (Role != "Sistema") && (Restaurant == ""))
                 {
                     System.Diagnostics.Debug.WriteLine("entre accion agregar validando2");
                     Alerts("Empty");
@@ -1005,8 +1143,14 @@ namespace BackOfficePresenter.Login
             }
             if (_view.DropDownListGender.Text != "")
                 _employee.Gender = char.Parse(_view.DropDownListGender.SelectedValue);
-            if (_view.textBoxBirtDate.Text != "")
-                _employee.BirthDate = DateTime.Parse(_view.textBoxBirtDate.Text);
+            if (_view.textBoxBirtDate.Value != "")
+            {
+                string Birthdate = _view.textBoxBirtDate.Value;
+                String[] substrings = Birthdate.Split('-');
+                Birthdate = substrings[2] + '/' + substrings[1] + '/' + substrings[0];
+                _employee.BirthDate = DateTime.Parse(Birthdate);
+            }
+                
             if (_view.textBoxUserNameU.Text != "")
                 _employee.Username = _view.textBoxUserNameU.Text;
             if (_view.DropDownListRole.Text != "")
@@ -1051,8 +1195,25 @@ namespace BackOfficePresenter.Login
                         {
                             CommandGetRestaurantById.Execute();
                         }
-                        catch (Exception)
+                        catch (NullReferenceException ex)
                         {
+                            //TODO: Arrojar Excepcion personalizada
+                            CommandExceptionGetRestaurant exceptionGetRestaurant = new CommandExceptionGetRestaurant(
+                            //Arrojar
+                            FondaResources.General.Errors.NullExceptionReferenceCode,
+                            FondaResources.Login.Errors.ClassNameGetRestaurant,
+                            FondaResources.Login.Errors.CommandMethod,
+                            FondaResources.General.Errors.NullExceptionReferenceMessage,
+                            ex);
+
+                            Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRestaurant);
+
+                            throw exceptionGetRestaurant;
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new System.InvalidOperationException(ex.Message);
+
                         }
                         //REVISAR
                         _restaurant = (Restaurant)CommandGetRestaurantById.Receiver;
@@ -1077,8 +1238,25 @@ namespace BackOfficePresenter.Login
                     _restaurant = (Restaurant)CommandGetRestaurantById.Receiver;
                     _employee.Restaurant = _restaurant;
                 }
-                catch(Exception)
+                catch (NullReferenceException ex)
                 {
+                    //TODO: Arrojar Excepcion personalizada
+                    CommandExceptionGetRestaurant exceptionGetRestaurant = new CommandExceptionGetRestaurant(
+                    //Arrojar
+                    FondaResources.General.Errors.NullExceptionReferenceCode,
+                    FondaResources.Login.Errors.ClassNameGetRestaurant,
+                    FondaResources.Login.Errors.CommandMethod,
+                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    ex);
+
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRestaurant);
+
+                    throw exceptionGetRestaurant;
+                }
+                catch (Exception ex)
+                {
+                    throw new System.InvalidOperationException(ex.Message);
+
                 }
             }
 
@@ -1107,9 +1285,26 @@ namespace BackOfficePresenter.Login
                 _employee = (Employee)CommandGetEmployeeById.Receiver;
 
             }
-            catch(Exception)
-            //REVISAR
+            catch (NullReferenceException ex)
             {
+
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetEmployeeId,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
+
+                throw exceptionCreateEmployee;
+
+            }
+            catch (Exception ex)
+            {
+                throw new System.InvalidOperationException(ex.Message);
 
             }
             //validacion de en que estado se encuentra y se cambia
@@ -1124,8 +1319,26 @@ namespace BackOfficePresenter.Login
             {
                 CommandSaveEmployee.Execute();
             }
-            catch(Exception)
+            catch (NullReferenceException ex)
             {
+
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
+                //Arrojar
+                FondaResources.General.Errors.NullExceptionReferenceCode,
+                FondaResources.Login.Errors.ClassNameGetEmployeeId,
+                FondaResources.Login.Errors.CommandMethod,
+                FondaResources.General.Errors.NullExceptionReferenceMessage,
+                ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
+
+                throw exceptionCreateEmployee;
+
+            }
+            catch (Exception ex)
+            {
+                throw new System.InvalidOperationException(ex.Message);
 
             }
             Alerts("Status");

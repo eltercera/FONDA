@@ -24,108 +24,108 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// </summary>
         public HistoryVisitsFondaWebApiController() : base() { }
 
-        [Route("historyVisits")]
-        [HttpGet]
+        //[Route("historyVisits")]
+        //[HttpGet]
         /// <summary>
         ///Metodo que obtiene la lista del historial de pagos del restaurant
         /// </summary>
         /// <returns> lista de pagos</returns>
-          public IHttpActionResult getHistoryVisits()
-          {
+          //public IHttpActionResult getHistoryVisits()
+          //{
 
              
-              DateTime date1 = new DateTime(2016, 06, 10);
+          //    DateTime date1 = new DateTime(2016, 06, 10);
 
-              /*   Person person = new Person();
-                 person.Name = "Adriana";
-                 person.LastName = "Da Rocha";
-               */
+          //    /*   Person person = new Person();
+          //       person.Name = "Adriana";
+          //       person.LastName = "Da Rocha";
+          //     */
 
-              Profile profile = new Profile();
-              //   profile.Person = person;
-              profile.ProfileName = "Adriana Da Rocha";
+          //    Profile profile = new Profile();
+          //    //   profile.Person = person;
+          //    profile.ProfileName = "Adriana Da Rocha";
            
-              RestaurantCategory category1 = new RestaurantCategory();
-              category1.Name = "Romantico";
+          //    RestaurantCategory category1 = new RestaurantCategory();
+          //    category1.Name = "Romantico";
 
-              RestaurantCategory category2 = new RestaurantCategory();
-              category2.Name = "Casual";
+          //    RestaurantCategory category2 = new RestaurantCategory();
+          //    category2.Name = "Casual";
 
-              RestaurantCategory category3 = new RestaurantCategory();
-              category3.Name = "Italiano";
+          //    RestaurantCategory category3 = new RestaurantCategory();
+          //    category3.Name = "Italiano";
 
-              RestaurantCategory category4 = new RestaurantCategory();
-              category4.Name = "Americano";
+          //    RestaurantCategory category4 = new RestaurantCategory();
+          //    category4.Name = "Americano";
 
 
-              Restaurant restaurant1 = new Restaurant();
+          //    Restaurant restaurant1 = new Restaurant();
            
-              restaurant1.Name = "The dining room";
-              restaurant1.Address = "La Castellana";
-              restaurant1.RestaurantCategory = category2;
-              restaurant1.Logo = "ic_restaurant001";
+          //    restaurant1.Name = "The dining room";
+          //    restaurant1.Address = "La Castellana";
+          //    restaurant1.RestaurantCategory = category2;
+          //    restaurant1.Logo = "ic_restaurant001";
 
-              Restaurant restaurant2 = new Restaurant();
-              restaurant2.Name = "Mogi Mirin";
-              restaurant2.Address = "Los Dos Caminos";
-              restaurant2.RestaurantCategory = category1;
-              restaurant2.Logo = "ic_restaurant002";
+          //    Restaurant restaurant2 = new Restaurant();
+          //    restaurant2.Name = "Mogi Mirin";
+          //    restaurant2.Address = "Los Dos Caminos";
+          //    restaurant2.RestaurantCategory = category1;
+          //    restaurant2.Logo = "ic_restaurant002";
 
-              Restaurant restaurant3 = new Restaurant();
-              restaurant3.Name = "Gordo & Magro";
-              restaurant3.Address = "La California";
-              restaurant3.RestaurantCategory = category3;
-              restaurant3.Logo = "ic_restaurant003";
+          //    Restaurant restaurant3 = new Restaurant();
+          //    restaurant3.Name = "Gordo & Magro";
+          //    restaurant3.Address = "La California";
+          //    restaurant3.RestaurantCategory = category3;
+          //    restaurant3.Logo = "ic_restaurant003";
 
-              Restaurant restaurant4 = new Restaurant();
-              restaurant4.Name = "La Casona";
-              restaurant4.Address = "Parque Central";
-              restaurant4.RestaurantCategory = category3;
-              restaurant4.Logo = "ic_restaurant004";
+          //    Restaurant restaurant4 = new Restaurant();
+          //    restaurant4.Name = "La Casona";
+          //    restaurant4.Address = "Parque Central";
+          //    restaurant4.RestaurantCategory = category3;
+          //    restaurant4.Logo = "ic_restaurant004";
 
-              Restaurant restaurant5 = new Restaurant();
-              restaurant5.Name = "Tony's";
-              restaurant5.Address = "El Rosal";
-              restaurant5.RestaurantCategory = category4;
-              restaurant5.Logo = "ic_restaurant005";
-
-
-              Invoice invoice1 = (Invoice)EntityFactory.GetInvoice(null,
-                profile, 350, 50, null, 1);
+          //    Restaurant restaurant5 = new Restaurant();
+          //    restaurant5.Name = "Tony's";
+          //    restaurant5.Address = "El Rosal";
+          //    restaurant5.RestaurantCategory = category4;
+          //    restaurant5.Logo = "ic_restaurant005";
 
 
-              Invoice invoice2 = (Invoice)EntityFactory.GetInvoice(null,
-
-               profile, 300, 350, 50, null, 2);
-
-              Invoice invoice3 = (Invoice)EntityFactory.GetInvoice(null,
-
-               profile, 300, 350, 50, null, 3);
-
-              Invoice invoice4 = (Invoice)EntityFactory.GetInvoice(null,
-
-                profile, 300, 350, 50, null, 4);
+          //    Invoice invoice1 = (Invoice)EntityFactory.GetInvoice(null,
+          //      profile, 350, 50, null, 1);
 
 
-              Invoice invoice5 = (Invoice)EntityFactory.GetInvoice(null,
+          //    Invoice invoice2 = (Invoice)EntityFactory.GetInvoice(null,
 
-                profile, 300, 350, 50, null, 5);
+          //     profile, 300, 350, 50, null, 2);
+
+          //    Invoice invoice3 = (Invoice)EntityFactory.GetInvoice(
+
+          //     profile, 300, 350, 50, null, 3);
+
+          //    Invoice invoice4 = (Invoice)EntityFactory.GetInvoice(null,
+
+          //      profile, 300, 350, 50, null, 4);
 
 
-              Invoice invoice6 = (Invoice)EntityFactory.GetInvoice(null,
+          //    Invoice invoice5 = (Invoice)EntityFactory.GetInvoice(null,
 
-               profile, 300, 350, 50, null, 6);
+          //      profile, 300, 350, 50, null, 5);
 
-              List<Invoice> lista = new List<Invoice>();
-              lista.Add(invoice1);
-              lista.Add(invoice2);
-              lista.Add(invoice3);
-              lista.Add(invoice4);
-              lista.Add(invoice5);
-              lista.Add(invoice6);
+
+          //    Invoice invoice6 = (Invoice)EntityFactory.GetInvoice(null,
+
+          //     profile, 300, 350, 50, null, 6);
+
+          //    List<Invoice> lista = new List<Invoice>();
+          //    lista.Add(invoice1);
+          //    lista.Add(invoice2);
+          //    lista.Add(invoice3);
+          //    lista.Add(invoice4);
+          //    lista.Add(invoice5);
+          //    lista.Add(invoice6);
               
-              return Ok(lista);
-          }
+          //    return Ok(lista);
+          //}
     }
     
 }

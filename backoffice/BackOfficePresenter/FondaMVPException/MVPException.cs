@@ -22,7 +22,10 @@ namespace BackOfficePresenter.FondaMVPException
             this._messageException = message;
             this._ex = ex;
         }
-
+        public MVPException(string message)
+        {
+            this._messageException = message;
+        }
         public MVPException(string id, string classname, string method, string message, Exception ex)
         {
             this._id = id;

@@ -14,6 +14,21 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private float _amount;
 
+        #region Constructor
+
+        public Payment()
+        {
+
+        }
+
+        public Payment(float amount)
+        {
+            this._amount = amount;
+        }
+
+        #endregion
+
+
         /// <summary>
         /// obtiene o asigna el monto a pagar
         /// </summary>

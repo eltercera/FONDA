@@ -1,9 +1,9 @@
 ﻿using System;
 using com.ds201625.fonda.BackEndLogic.FavoriteManagement;
-using FondaBeckEndLogic.ProfileManagement;
-using FondaBeckEndLogic.TokenManagement;
-using FondaBeckEndLogic.CommensalManagement;
-using FondaBeckEndLogic.ActionFiltersManagement;
+using com.ds201625.fonda.BackEndLogic.ProfileManagement;
+using com.ds201625.fonda.BackEndLogic.TokenManagement;
+using com.ds201625.fonda.BackEndLogic.CommensalManagement;
+using com.ds201625.fonda.BackEndLogic.ActionFiltersManagement;
 
 namespace com.ds201625.fonda.BackEndLogic
 {

@@ -6,6 +6,8 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System.Collections.Generic;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
+using com.ds201625.fonda.Factory;
+using FondaResources.OrderAccount;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -111,6 +113,67 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
         }
 
+        public void ChangeStatusAccount(Account _account)
+        {
+            IOrderAccountDao _accountDao = _facDAO.GetOrderAccountDAO();
+
+            try
+            {
+                _account.ChangeStatus();
+                _accountDao.Save(_account);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("No se pudo cambiar el estatus", e);
+            }
+        }
+
+        /// <summary>
+        /// Agrega un invoice a la lista de invoices de Account
+        /// </summary>
+        /// <param name="Invoice, AccountId">Un objeto Invoice y un id de Account</param>
+        /// <returns>Void</returns>
+        public void SaveInvoice(Invoice _invoice, int _accountId, int _restaurantId)
+        {
+            Account _account;
+            IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
+            IInvoiceDao _invoiceDAO = _facDAO.GetInvoiceDao();
+            int _number = 0;
+            Restaurant _restaurant = new Restaurant();
+            _restaurantDAO = _facDAO.GetRestaurantDAO();
+            ICashPaymentDAO _cashPaymentDAO = _facDAO.GetCashPaymentDAO();
+            ICreditCardPaymentDAO _creditPaymentDAO = _facDAO.GetCreditCardPaymentDAO();
+            try
+            {
+                _restaurant = _restaurantDAO.FindById(_restaurantId);
+                _number = _invoiceDAO.GenerateNumberInvoice(_restaurant);
+                _account = _accountDAO.FindById(_accountId);
+
+                InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
+
+                if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.Cash))
+                {
+                    _cashPaymentDAO.Save((CashPayment)_invoice.Payment);
+                }
+                else if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
+                {
+                    _creditPaymentDAO.Save((CreditCardPayment)_invoice.Payment);
+                }
+
+                _invoice = (Invoice)EntityFactory.GetInvoice(_invoice.Payment, _invoice.Profile,
+                    _invoice.Total, _invoice.Tax, _restaurant.Currency, _number, i);
+                _account.ListInvoice.Add(_invoice);
+                //_restaurant.Accounts.Add(_account);
+                _accountDAO.Save(_account);
+                //_restaurantDAO.Save(_restaurant);
+
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("No se pudo insertar", e);
+            }
+        }
+
         /// <summary>
         /// Obtiene el numero unico de la orden
         /// </summary>
@@ -136,6 +199,41 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             catch (ArgumentOutOfRangeException e)
             {
                 throw new FondaIndexException("Not Found invoice", e);
+            }
+        }
+
+        public float CloseCashRegister(int restaurantId)
+        {
+
+            IInvoiceDao _invoiceDAO = _facDAO.GetInvoiceDao();
+            DateTime _day = DateTime.Now.Date;
+            float totalInvoice = 0;
+            try
+            {
+                //TODO: Excepcion en caso de no encontrar restaurante
+                Restaurant restaurant = Session.QueryOver<Restaurant>()
+                    .Where(r => r.Id == restaurantId)
+                    .Where(r => r.Status == ActiveSimpleStatus.Instance)
+                    .SingleOrDefault();
+
+                IList<Account> _dayOrders = new List<Account>();
+
+                //TODO: Excepcion en caso de no encontrar lista llena
+                foreach (Account _order in restaurant.Accounts)
+                {
+                    if (_order.Date.Equals(_day) && _order.Status.Equals(ClosedAccountStatus.Instance))
+                    {
+                        Invoice _invoice = _invoiceDAO.FindById(_order.Id);
+                        totalInvoice = _invoice.Total + totalInvoice;
+                    }
+                }
+
+                return totalInvoice;
+
+            }
+            catch (FondaIndexException e)
+            {
+                throw new FondaIndexException("No se puede cerrar caja con cuentas por pagar");
             }
         }
     }
