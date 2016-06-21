@@ -34,6 +34,7 @@ namespace FondaLogic.Commands.OrderAccount
         {
             List<Object> parameters;
             Payment payment;
+            Account account;
             try
             {
                 IPaymentDao<Payment> _paymentDAO = _facDAO.GetPaymentDAO();
@@ -47,14 +48,26 @@ namespace FondaLogic.Commands.OrderAccount
                 int restaurantId = (int)parameters[2];
                 int profileId = (int)parameters[3];
 
-                //ESTO TIENE QUE CAMBIARSE POR UN RECURSO
-                float totalInvoice = payment.Amount * 0.12F;
+                account = _accountDAO.FindById(orderId);
                 profile = _profileDAO.FindById(profileId);
 
-                //ESTE CONSTRUCTOR DEBO REVISARLO
-                Invoice invoice = EntityFactory.GetInvoice(payment, profile, payment.Amount, totalInvoice , null, 100, null);
+                float totalInvoice = account.GetAmount();
+                //ESTO TIENE QUE CAMBIARSE POR UN RECURSO
+                totalInvoice += totalInvoice * 0.12F;
 
-                _invoice =_accountDAO.SaveInvoice(invoice, orderId, restaurantId);
+                //VERIFICA QUE EL PAGO SEA MAYOR O IGUAL QUE EL TOTAL DE LA FACTURA
+                //ES OTRO COMANDO?
+                if (payment.Amount >= totalInvoice)
+                {
+                    //ESTE CONSTRUCTOR DEBO REVISARLO
+                    Invoice invoice = EntityFactory.GetInvoice(payment, profile, payment.Amount, totalInvoice, null, 100, null);
+
+                    _invoice = _accountDAO.SaveInvoice(invoice, orderId, restaurantId);
+                }
+                else
+                    throw new NullReferenceException();
+
+
 
                 Receiver = _invoice;
 
