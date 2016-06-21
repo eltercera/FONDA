@@ -52,6 +52,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FondaBeckEndLogic\FondaBackEndLogic.csproj">
+      <Project>{a1be7d6c-7750-4795-aabf-b397e079c918}</Project>
+      <Name>FondaBackEndLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
       <Project>{4a769797-45c6-4ad9-95fd-7b950d937d1c}</Project>
       <Name>FondaDataAccess</Name>
