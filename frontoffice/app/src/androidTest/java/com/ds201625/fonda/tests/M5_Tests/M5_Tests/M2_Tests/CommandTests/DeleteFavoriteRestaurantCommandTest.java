@@ -33,12 +33,12 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
     private Command cmd;
 
     /**
-     * id de comensal logueado
+     * comensal logueado
      */
     private Commensal logedCommensal;
 
     /**
-     * id de restaurante seleccionado
+     * restaurante seleccionado
      */
     private Restaurant selectedRestaurantDelete;
 
@@ -166,6 +166,9 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
         }
     }
 
+    /**
+     *  Metodo para probar que al eliminar el commensal que retorna es nulo
+     */
     public void testDeleteFavoriteRestauranIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);

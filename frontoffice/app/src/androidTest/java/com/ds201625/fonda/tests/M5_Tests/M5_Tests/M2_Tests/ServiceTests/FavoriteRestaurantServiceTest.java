@@ -2,7 +2,6 @@ package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.ServiceTests;
 
 import android.content.Entity;
 import android.test.MoreAsserts;
-import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
@@ -47,10 +46,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
     private List<Restaurant> restaurantList;
 
-    /**
-     * Variable String que indica la clase actual
-     */
-    private String TAG = "FavoriteRestaurantServiceTest";
+    private Class expected;
 
     /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
@@ -58,8 +54,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
      */
     protected void setUp() throws Exception {
         super.setUp();
-        favoriteRestaurantService =
-                FondaServiceFactory.getInstance().getFavoriteRestaurantService();
+        favoriteRestaurantService = FondaServiceFactory.getInstance().getFavoriteRestaurantService();
         commensal = FondaEntityFactory.getInstance().GetCommensal();
         logedCommensal = FondaEntityFactory.getInstance().GetCommensal(13);
         selectedRestaurant = FondaEntityFactory.getInstance().GetRestaurant(2);
@@ -78,9 +73,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
                     selectedRestaurant.getId());
             assertNotNull(commensal.getId());
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantServiceIsNotNull al agregar favorito",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantServiceIsNotNull al agregar favorito",e);
+            e.printStackTrace();
         }
     }
 
@@ -96,9 +91,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
                     selectedRestaurant.getId());
             assertEquals(email, commensal.getEmail());
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantServiceIsNotEmpty al agregar favorito",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantServiceIsNotEmpty al agregar favorito",e);
+            e.printStackTrace();
         }
     }
 
@@ -114,9 +109,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
             assertEquals(email, commensal.getEmail());
             MoreAsserts.assertNotEmpty(commensal.getFavoritesRestaurants());
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantServiceElements al agregar favorito",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantServiceElements al agregar favorito",e);
+            e.printStackTrace();
         }
     }
 
@@ -133,9 +128,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
             assertEquals(3, commensal.getFavoritesRestaurants().size());
 
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantServiceList al agregar favorito",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantServiceList al agregar favorito",e);
+            e.printStackTrace();
         }
     }
 
@@ -152,11 +147,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
             assertNotNull(commensal.getId());
         } catch (RestClientException e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantServiceIsNotNull al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantServiceIsNotNull al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         }
     }
 
@@ -172,11 +165,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
                     selectedRestaurant.getId());
             assertEquals(email, commensal.getEmail());
         } catch (RestClientException e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantServiceIsNotEmpty al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantServiceIsNotEmpty al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         }
     }
 
@@ -192,11 +183,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
             assertEquals(email, commensal.getEmail());
             MoreAsserts.assertNotEmpty(commensal.getFavoritesRestaurants());
         } catch (RestClientException e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantServiceElements al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantServiceElements al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         }
     }
 
@@ -212,11 +201,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
             assertEquals(2, commensal.getFavoritesRestaurants().size());
 
         } catch (RestClientException e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestauranServiceList al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestauranServiceList al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         }
     }
 
@@ -228,16 +215,13 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         try {
 
-            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant
-                    (logedCommensal.getId());
+            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(logedCommensal.getId());
 
             assertNotNull(restaurantList.get(0).getName());
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAllFavoriteRestaurantServiceIsNotNull al listar los favoritos",
-                    e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAllFavoriteRestaurantServiceIsNotNull al listar los favoritos",
-                    e);
+            e.printStackTrace();
         }
     }
 
@@ -249,16 +233,13 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         try {
 
-            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant
-                    (logedCommensal.getId());
+            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(logedCommensal.getId());
 
             MoreAsserts.assertNotEmpty(restaurantList);
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAllFavoriteRestaurantServiceIsNotEmpty al listar los favoritos",
-                    e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAllFavoriteRestaurantServiceIsNotEmpty al listar los favoritos",
-                    e);
+            e.printStackTrace();
         }
     }
 
@@ -268,21 +249,18 @@ public class FavoriteRestaurantServiceTest extends TestCase {
     public void testAllFavoriteRestaurantServiceElements() {
 
         try {
-            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant
-                    (logedCommensal.getId());
+            restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(logedCommensal.getId());
 
             assertEquals("Pizza Familia", restaurantList.get(2).getName());
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAllFavoriteRestaurantServiceElements al listar los favoritos",
-                    e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAllFavoriteRestaurantServiceElements al listar los favoritos",
-                    e);
+            e.printStackTrace();
         }
     }
 
     /**
-     * Metodo para probar que los elementos de la lista no son nulos
+     *  Metodo para probar que la lista de un commensal es nula
      */
     public void testAllFavoriteRestaurantIsNull() {
         try {
@@ -290,19 +268,17 @@ public class FavoriteRestaurantServiceTest extends TestCase {
             restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(prueba.getId());
             assertNull(restaurantList);
 
-        } catch(RestClientException e) {
-            Log.e(TAG,"Error en testAllFavoriteRestaurantIsNull al listar los favoritos",
-                    e);
-        }
+        } catch(RestClientException e) {}
           catch(NullPointerException e) {
-              Log.e(TAG,"Error en testAllFavoriteRestaurantIsNull al listar los favoritos",
-                      e);
-          }
+              //fail("Se esperaba excepcion NullPointerException");
+          } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
     /**
-     * Metodo para probar que los elementos favoritos no son nulos
+     *  Metodo para probar que commensal que retorna al agregar un favorito es nula
      */
     public void testAddFavoriteRestauranIsNull() {
         try {
@@ -311,18 +287,15 @@ public class FavoriteRestaurantServiceTest extends TestCase {
                     selectedRestaurant.getId());
             assertNull(commensal);
 
-        } catch(RestClientException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favoritos",
-                    e);
-        }
+        } catch(RestClientException e) {}
         catch(NullPointerException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favoritos",
-                    e);
+            //fail("Se esperaba excepcion NullPointerException");
         }
 
     }
+
     /**
-     * Metodo para probar que los elementos eliminados no son nulos
+     *  Metodo para probar que commensal que retorna al eliminar un favorito es nula
      */
     public void testDeleteFavoriteRestauranIsNull() {
         try {
@@ -332,12 +305,10 @@ public class FavoriteRestaurantServiceTest extends TestCase {
             assertNull(commensal);
 
         } catch(RestClientException e) {
-            Log.e(TAG,"Error en testDeleteFavoriteRestauranIsNull al eliminar favoritos",
-                    e);
+
         }
         catch(NullPointerException e) {
-            Log.e(TAG,"Error en testDeleteFavoriteRestauranIsNull al eliminar favoritos",
-                    e);
+            //fail("Se esperaba excepcion NullPointerException");
         }
 
     }

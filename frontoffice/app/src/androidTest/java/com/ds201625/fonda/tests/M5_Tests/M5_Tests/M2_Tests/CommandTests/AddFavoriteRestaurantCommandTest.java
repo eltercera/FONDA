@@ -34,12 +34,12 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
     private Command cmd;
 
     /**
-     * id de comensal logueado
+     * comensal logueado
      */
     private Commensal logedCommensal;
 
     /**
-     * id de restaurante seleccionado
+     * restaurante seleccionado
      */
     private Restaurant selectedRestaurantAdd;
 
@@ -158,6 +158,9 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
         }
     }
 
+    /**
+     *  Metodo para probar que el commensal que retorna es nulo
+     */
     public void testAddFavoriteRestauranIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
@@ -182,7 +185,9 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
 
     }
 
-
+    /**
+     *  Metodo para probar datos incorrectos al agregar un restaurante favorito
+     */
     public void testAddFavoriteRestaurantRetrofitException() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(897920);
