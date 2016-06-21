@@ -126,6 +126,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             {
                 throw new FondaIndexException("No se encontraron ordenes cerradas", e);
             }
+            catch(Exception e)
+            {
+                throw new Exception();
+            }
 
         }
 

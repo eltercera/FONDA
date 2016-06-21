@@ -1,6 +1,9 @@
-﻿using FondaLogic.FondaCommandException;
+﻿using com.ds201625.fonda.Domain;
+using FondaLogic.Factory;
+using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
 using System;
+using System.Collections.Generic;
 
 namespace FondaLogic.Commands.OrderAccount
 {
@@ -13,8 +16,30 @@ namespace FondaLogic.Commands.OrderAccount
 
         public override void Execute()
         {
+            List<Object> parameters = new List<object>();
+            List<Invoice> paymentHistory;
+            Command generateInvoice, releaseTable;
+
             try
             {
+                parameters = (List<Object>)Receiver;
+                int restaurantId = (int)parameters[0];
+                int orderId = (int)parameters[1];
+                Payment payment = (Payment)parameters[2];
+
+                generateInvoice = CommandFactory.GetCommandValidateProfileByCommensal(parameters);
+                //releaseTable = CommandFactory.get(profileId);
+                //validate.Execute();
+
+                //if ((bool)validate.Receiver)
+                //    command.Execute();
+                //else
+                //    throw new NullReferenceException();
+
+                //Receiver = command.Receiver;
+
+
+
 
             }
             catch (NullReferenceException ex)
