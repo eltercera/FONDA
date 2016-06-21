@@ -28,6 +28,17 @@ namespace FondaLogic.Factory
 
         #region OrderAccount
 
+        //Se obtienen los comandos a a utilizar
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando ReleaseTableByRestaurant
+        /// </summary>
+        /// <param name="entity">Lista de objetos (Restaurante, tableId)</param>
+        /// <returns>comando ReleaseTableByRestaurant</returns>
+        public static Command GetCommandReleaseTableByRestaurant(object receiver)
+        {
+            return new CommandReleaseTableByRestaurant(receiver);
+        }
 
         //Se obtienen los comandos a a utilizar
 

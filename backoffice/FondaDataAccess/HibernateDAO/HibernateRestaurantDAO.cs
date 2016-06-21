@@ -328,19 +328,27 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             ITableDAO _tableDAO;
             FreeTableStatus freeStatus;
+            bool exists = false;
             
             try
             {
                 _tableDAO = _facDAO.GetTableDAO();
                 freeStatus = _facDAO.GetFreeTableStatus();
+                foreach (Table t in restaurant.Tables)
+                {
+                    if (t.Id.Equals(tableId))
+                        exists = true;
+                }
 
-                Table table = _tableDAO.FindById(tableId);
+                if(exists)
+                {
+                    Table table = _tableDAO.FindById(tableId);
+                    restaurant.Tables.Remove(table);
+                    table.Status = freeStatus;
+                    restaurant.Tables.Add(table);
+                }
 
-                restaurant.Tables.Remove(table);
-                table.Status = freeStatus;
-                restaurant.Tables.Add(table);
-
-                Save(restaurant);
+                 Save(restaurant);
 
             }
             //TODO: Arrojar excepciones personalizadas

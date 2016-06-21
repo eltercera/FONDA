@@ -15,6 +15,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
     [TestFixture()]
     public class BOCommandOrdersTest
     {
+        #region fields
         private int _restaurantId, _orderId;
         private Command _command;
         private IList<Account> _listAccount;
@@ -31,7 +32,8 @@ namespace com.ds201625.fonda.Tests.DataAccess
         private List<int> parameters;
         List<Object> result;
         private string _currency;
-
+        #endregion
+        #region
         [SetUp]
         public void Init()
         {
@@ -59,8 +61,23 @@ namespace com.ds201625.fonda.Tests.DataAccess
             result = null;
             _currency = null;
         }
+        #endregion
 
-        [Test]
+        [Test(Description = "Obtiene las ordenes de un restaurante")]
+        public void CommandReleaseTableByRestaurantTest()
+        {
+
+            _command = CommandFactory.GetCommandGetOrders(_restaurantId);
+
+            _command.Execute();
+
+            _listAccount = (IList<Account>)_command.Receiver;
+
+            Assert.IsNotNull(_listAccount);
+
+        }
+
+        [Test(Description = "Obtiene las ordenes de un restaurante")]
         public void CommandGetOrdersTest()
         {
 
@@ -75,7 +92,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
 
         [Test]
-        [Ignore("Esta prueba es engañosa, no existe ningun restaurant con Id 100")]
         public void CommandGetOrdersNullTest()
         {
             _command = CommandFactory.GetCommandGetOrders(100);
@@ -90,7 +106,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
 
 
-        [Test]
+        [Test(Description = "Obtiene la orden dado un id")]
         public void CommandGetOrderTest()
         {
             _command = CommandFactory.GetCommandGetOrder(_orderId);
@@ -103,7 +119,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
         }
 
-        [Test]
+        [Test(Description = "Se cierra la caja")]
         public void CommandCloseCashRegisterTest()
         {
             _command = CommandFactory.GetCommandCloseCashRegister(_restaurantId);
@@ -116,7 +132,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
             Assert.AreEqual(_totalOrders, "€ 13900");
         }
 
-        [Test]
+        [Test(Description = "Obtiene el detalle de una orden")]
         public void CommandGetDetailOrderTest()
         {
             _command = CommandFactory.GetCommandGetDetailOrder(parameters);
