@@ -127,7 +127,7 @@
   </data>
   <data name="ClassNameDetailOrderPresenter" xml:space="preserve">
     <value>DetailOrderPresenter</value>
-    <comment>Clase presentadora del detalle de la Orden</comment>
+    <comment>Comando para obtener para la detalle de la Orden</comment>
   </data>
   <data name="ClassNameGenerateInvoice" xml:space="preserve">
     <value>CommandGenerateInvoice</value>
@@ -228,5 +228,41 @@
   <data name="MVPExceptionCloseButtonCode" xml:space="preserve">
     <value>BO-04-005</value>
     <comment>Mensaje de error al cerrar la cuenta </comment>
+  </data>
+  <data name="ClassNameCloseCashRegister" xml:space="preserve">
+    <value>CommandCloseCashRegister</value>
+    <comment>Comando para obtener el Cierre de Caja</comment>
+  </data>
+  <data name="ClassNameFindInvoicesByAccount" xml:space="preserve">
+    <value>CommandFindInvoicesByAccount</value>
+    <comment>Comando para obtener las Facturas de una Cuenta </comment>
+  </data>
+  <data name="ClassNameFindInvoicesByRestaurant" xml:space="preserve">
+    <value>CommandFindInvoicesByRestaurant</value>
+    <comment>Comando para obtener las Facturas de un Restaurante</comment>
+  </data>
+  <data name="ClassNameGetCurrencyByRestaurant" xml:space="preserve">
+    <value>CommandGetCurrencyByRestaurant</value>
+    <comment>Comando para una moneda del restaurant</comment>
+  </data>
+  <data name="ClassNameGetDetailOrder" xml:space="preserve">
+    <value>CommandGetDetailOrder</value>
+    <comment>Comando para obtener el detalle de una Orden</comment>
+  </data>
+  <data name="ClassNameGetDishOrdersByAccount" xml:space="preserve">
+    <value>CommandGetDishOrdersByAccount</value>
+    <comment>Comando para obtener la lista de platos de una cuenta</comment>
+  </data>
+  <data name="ClassNameGetGenerateInvoice" xml:space="preserve">
+    <value>CommandGetGenerateInvoice</value>
+    <comment>Comando para devolver una factura generada de una cuenta</comment>
+  </data>
+  <data name="ClassNameReleaseTableByRestaurant" xml:space="preserve">
+    <value>CommandReleaseTableByRestaurant</value>
+    <comment>Comando para pagar cambiar una mesa a "Disponible"</comment>
+  </data>
+  <data name="ClassNameTotalOrder" xml:space="preserve">
+    <value>CommandTotalOrder</value>
+    <comment>Comando para pagar conocer el pretotal de la orden</comment>
   </data>
 </root>

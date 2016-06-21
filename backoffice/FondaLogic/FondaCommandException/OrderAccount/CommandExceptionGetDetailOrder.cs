@@ -9,7 +9,7 @@ namespace FondaLogic.FondaCommandException
     /// <summary>
     /// Excepcion arrojada en caso de que no se pueda obtener el detalle de la orden
     /// </summary>
-    class CommandExceptionGetDetailOrder : CommandException
+    public class CommandExceptionGetDetailOrder : CommandException
     {
         #region Constructors
 

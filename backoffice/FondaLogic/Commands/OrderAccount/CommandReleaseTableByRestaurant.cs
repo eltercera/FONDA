@@ -1,15 +1,16 @@
-﻿using FondaLogic.FondaCommandException;
+﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
 using System;
+using System.Collections.Generic;
 
 namespace FondaLogic.Commands.OrderAccount
 {
-    /// <summary>
-    /// Comando para pagar una orden abierta
-    /// </summary>
-    public class CommandPayOrder : Command
+    public class CommandReleaseTableByRestaurant : Command
     {
-        public CommandPayOrder(Object receiver) : base() { }
+        private FactoryDAO _facDAO = FactoryDAO.Intance;
+
+        public CommandReleaseTableByRestaurant(Object receiver) : base(receiver) { }
 
         public override void Execute()
         {
@@ -17,18 +18,18 @@ namespace FondaLogic.Commands.OrderAccount
             {
 
             }
-            catch (NullReferenceException ex)
+            catch (Exception ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                CommandExceptionPayOrder exception = new CommandExceptionPayOrder(
+                CommandExceptionReleaseTableByRestaurant exception = new CommandExceptionReleaseTableByRestaurant(
                     FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNamePayOrder,
+                    FondaResources.OrderAccount.Errors.ClassNameReleaseTableByRestaurant,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                     FondaResources.General.Errors.NullExceptionReferenceMessage,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                //Receiver Pago
+
 
             }
         }

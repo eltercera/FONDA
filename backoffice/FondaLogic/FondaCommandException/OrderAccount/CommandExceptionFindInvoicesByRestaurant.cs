@@ -9,7 +9,7 @@ namespace FondaLogic.FondaCommandException
     /// <summary>
     /// Excepcion arrojada en caso de que falle la busqueda de las facturas de un Restaurante
     /// </summary>
-    class CommandExceptionFindInvoicesByRestaurant : CommandException
+    public class CommandExceptionFindInvoicesByRestaurant : CommandException
     {
         #region Constructors
 

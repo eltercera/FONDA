@@ -9,7 +9,7 @@ namespace FondaLogic.FondaCommandException
     /// <summary>
     /// Excepcion arrojada en caso de que falle la busqueda de las facturas de una cuenta
     /// </summary>
-    class CommandExceptionFindInvoicesByAccount : CommandException
+    public class CommandExceptionFindInvoicesByAccount : CommandException
     {
 
 

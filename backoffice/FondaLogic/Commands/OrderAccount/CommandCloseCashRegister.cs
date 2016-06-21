@@ -3,6 +3,7 @@ using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaLogic.FondaCommandException;
+using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,23 @@ namespace FondaLogic.Commands.OrderAccount
             {
 
 
+            }
+
+            catch (NullReferenceException ex)
+            {
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionCloseCashRegister exception = new CommandExceptionCloseCashRegister(
+                    FondaResources.General.Errors.NullExceptionReferenceCode,
+                    FondaResources.OrderAccount.Errors.ClassNameCloseCashRegister,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                
+                Receiver = "";
+                //throw exceptionGetOrders;
             }
         }
     }

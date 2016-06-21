@@ -1,5 +1,6 @@
 ﻿using com.ds201625.fonda.Domain;
 using FondaLogic.Factory;
+using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,18 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (Exception ex)
             {
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionGetDetailOrder exceptionGetOrders = new CommandExceptionGetDetailOrder(
+                    FondaResources.General.Errors.NullExceptionReferenceCode,
+                    FondaResources.OrderAccount.Errors.ClassNameGetDetailOrder,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrders);
+
+                IList<Object> _list = new List<Object>();
+                Receiver = _list;
 
             }
         }

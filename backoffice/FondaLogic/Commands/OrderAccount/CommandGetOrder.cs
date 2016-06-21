@@ -46,7 +46,7 @@ namespace FondaLogic.Commands.OrderAccount
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetOrder exceptionGetOrders = new CommandExceptionGetOrder(
+                CommandExceptionGetOrder exceptionGetOrder = new CommandExceptionGetOrder(
                 //Arrojar
                 FondaResources.General.Errors.NullExceptionReferenceCode,
                 FondaResources.OrderAccount.Errors.ClassNameGetOrder,
@@ -54,9 +54,9 @@ namespace FondaLogic.Commands.OrderAccount
                 FondaResources.General.Errors.NullExceptionReferenceMessage,
                 ex);
 
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrders);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrder);
 
-                throw exceptionGetOrders;
+                throw exceptionGetOrder;
             }
         }
 

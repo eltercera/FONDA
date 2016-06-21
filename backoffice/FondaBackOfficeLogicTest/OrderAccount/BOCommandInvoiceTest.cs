@@ -5,17 +5,16 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
+using FondaLogic.FondaCommandException.OrderAccount;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FondaBackOfficeLogicTest
 {
     public class BOCommandInvoiceTest
     {
+        #region fields
         private int _restaurantId, _profileId,_accountId, _invoiceId;
         private Command _command;
         private IList<Account> _listClosedOrders;
@@ -32,8 +31,11 @@ namespace FondaBackOfficeLogicTest
         private CashPayment _cashPayment;
         private CreditCardPayment _creditPayment;
 
+        #endregion
 
+        #region Setup
         [SetUp]
+        
         public void Init()
         {
             _facDAO = FactoryDAO.Intance;
@@ -64,6 +66,28 @@ namespace FondaBackOfficeLogicTest
             //IBaseEntityDAO<Payment> bla = _facDAO
         }
 
+        #endregion
+
+        [Test]
+        public void CommandTotalOrderTest()
+        {
+            IList<int> _list = new List<int>();
+            _list.Add(_restaurantId); //1
+            _list.Add(_accountId); //3
+            float total;
+
+            _command = CommandFactory.GetCommandTotalOrder(_list);
+
+            _command.Execute();
+
+            total = (float)_command.Receiver;
+
+            Assert.IsNotNull(total);
+            Assert.AreEqual(total, 9100);
+            //Assert.AreEqual(_listInvoices[1].Number, 2);
+        }
+
+
         [Test]
         public void CommandFindInvoicesByRestaurantTest()
         {
@@ -79,7 +103,7 @@ namespace FondaBackOfficeLogicTest
             Assert.AreEqual(_listInvoices[1].Number, 2);
         }
 
-        [Test]
+        [Test(Description = "Genera una factura nueva")]
         public void CommandGenerateInvoiceTest()
         {
             InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
@@ -90,10 +114,14 @@ namespace FondaBackOfficeLogicTest
             _command = CommandFactory.GetCommandGenerateInvoice(_listObject);
 
             _command.Execute();
-           // _invoice = _invoiceDAO.FindById();
+            _invoice = (Invoice)_command.Receiver;
+            Assert.IsNotNull(_invoice);
+            Assert.AreEqual(_invoice.Tax, 12);
+            Assert.AreEqual(_invoice.Total, 100);
+            // _invoice = _invoiceDAO.FindById();
         }
 
-        [Test]
+        [Test(Description = "Imprime una factura")]
         public void CommandPrintInvoice()
         {
             _list.Add(_accountId);
@@ -101,6 +129,28 @@ namespace FondaBackOfficeLogicTest
             _command = CommandFactory.GetCommandPrintInvoice(_list);
 
             _command.Execute();
+        }
+
+        [Test(Description ="Verifica que devuelva una lista de Invoice dado un perfil")]
+        public void CommandGetInvoicesByProfile()
+        {
+            _command = CommandFactory.CommandGetInvoicesByProfile(_profileId);
+            _command.Execute();
+            _listInvoices = (List<Invoice>) _command.Receiver;
+
+            Assert.IsNotNull(_listInvoices);
+            Assert.AreEqual(3, _listInvoices.Count);
+        }
+
+        [Test]
+        [ExpectedException(typeof(CommandExceptionGetInvoicesByProfile))]
+        public void ErrorCommandGetInvoicesByProfile()
+        {
+            _command = CommandFactory.CommandGetInvoicesByProfile(null);
+            _command.Execute();
+            _listInvoices = (List<Invoice>)_command.Receiver;
+
+            Assert.IsNull(_listInvoices);
         }
 
         [TearDown]
