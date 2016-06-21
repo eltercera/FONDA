@@ -159,7 +159,7 @@ namespace FondaBackOfficeLogicTest
             Assert.IsNull(_listInvoices);
         }
 
-        [Test(Description = "")]
+        [Test(Description = "Valida que un perfil pertenezca a un commensal")]
         public void CommandValidateProfileByCommensalTest()
         {
             List<Object> parameters = new List<object>();
@@ -169,10 +169,24 @@ namespace FondaBackOfficeLogicTest
             _command = CommandFactory.GetCommandValidateProfileByCommensal(parameters);
             _command.Execute();
 
-            Assert.IsNull(_command);
+            Assert.AreEqual(true, _command.Receiver);
 
         }
 
+        [Test(Description = "Valida que un perfil no pertenezca a un comensal")]
+        [ExpectedException(typeof(CommandExceptionValidateProfileByCommensal))]
+        public void ErrorCommandValidateProfileByCommensalTest()
+        {
+            List<Object> parameters = new List<object>();
+
+            parameters.Add(null);
+            parameters.Add(null);
+            _command = CommandFactory.GetCommandValidateProfileByCommensal(parameters);
+            _command.Execute();
+
+            Assert.AreEqual(false, _command.Receiver);
+
+        }
 
 
         [TearDown]

@@ -83,19 +83,25 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         {
             IList<Invoice> paymentHistory = new List<Invoice>();
             List<Object> parameters = new List<object>();
-
+            Command validate, command;
 
             try
             {
+                
+
                 Commensal commensal = GetCommensal(Request.Headers);
                 parameters.Add(profileId);
                 parameters.Add(commensal);
 
-                Command validate = CommandFactory.GetCommandValidateProfileByCommensal(parameters);
+                validate = CommandFactory.GetCommandValidateProfileByCommensal(parameters);
+                command = CommandFactory.GetCommandGetInvoicesByProfile(profileId);
                 validate.Execute();
 
-                Command command = CommandFactory.GetCommandGetInvoicesByProfile(profileId);
-                command.Execute();
+                if((bool)validate.Receiver)
+                {
+                    
+                    command.Execute();
+                }
 
                 paymentHistory = (IList<Invoice>) command.Receiver;
             }
