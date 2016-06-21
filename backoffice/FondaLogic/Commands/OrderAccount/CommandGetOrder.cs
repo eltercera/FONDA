@@ -37,6 +37,8 @@ namespace FondaLogic.Commands.OrderAccount
             try
             {
                 //Metodos para acceder a la BD
+                //ESTO HAY QUE CAMBIARLO
+                //DEBERIA BUSCAR UNA ORDEN POR SU NUMERO Y SU RESTAURANTE
                 IOrderAccountDao _orderDAO = _facDAO.GetOrderAccountDAO();
 
 

@@ -92,7 +92,8 @@ namespace BackOffice.Seccion.Caja
         {
             //if (Session["AccountID"] != null)
             //{   //Llama al presentador para llenar la tabla de ordenes
-                _presenter.GetDetailOrder();
+            //Session[OrderAccountResources.SessionIdAccount] = System.Web.HttpContext.Current.Request.QueryString["Id"];
+            _presenter.GetDetailOrder();
             //}
         }
 
