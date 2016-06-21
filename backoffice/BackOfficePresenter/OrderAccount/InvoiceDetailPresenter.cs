@@ -18,11 +18,12 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
     public class InvoiceDetailPresenter : BackOfficePresenter.Presenter
     {
         private IInvoiceDetailModel _view;
-        int totalColumns = 3;
-        int accountId = 0;
-        int invoiceId = 0;
-        string _currency = null;
-        Invoice _invoice;
+        private int totalColumns = 3;
+        private int accountId = 0;
+        private int invoiceId = 0;
+        private string _currency = null;
+        private float subtotal = 0.0F;
+        private Invoice _invoice;
 
         public InvoiceDetailPresenter(IInvoiceDetailModel viewInvoiceDetail) : 
             base(viewInvoiceDetail)
@@ -62,6 +63,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 _invoice = (Invoice)result[0];
                 _currency = (string)result[1];
                 listDishOrder = (IList<DishOrder>)result[2];
+                subtotal = (float) result[3];
+                
 
                 //Revisa si la lista no esta vacia
                 if (_invoice != null)
@@ -76,6 +79,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             catch (MVPExceptionDetailOrderTable ex)
             {
                 //Revisar
+                //EN CASO DE ERROR, LA PAGINA EXPLOTA Y NO HACE LO QUE DEBERIA
                 MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
                     (
                         Errors.MVPExceptionDetailOrderTableCode,
@@ -88,6 +92,11 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 throw e;
                 ErrorLabel(e.MessageException);
             }
+            catch(Exception e)
+            {
+                //Revisar
+                //EN CASO DE ERROR, LA PAGINA EXPLOTA Y NO HACE LO QUE DEBERIA
+            }
         }
 
         private void FillLabels()
@@ -99,6 +108,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             _view.UserName.Text = _invoice.Profile.Person.Name.ToString();
             _view.UserLastName.Text = _invoice.Profile.Person.LastName.ToString();
             _view.UserId.Text = _invoice.Profile.Person.Ssn.ToString();
+            _view.SubTotalInvoice.Text = _currency + " " + subtotal.ToString();
             _view.IvaInvoice.Text = _currency + " " + _invoice.Tax.ToString();
             _view.TotalInvoice.Text = _currency + " " + _invoice.Total.ToString();
             if (_invoice.Status.Equals(GeneratedInvoiceStatus.Instance))

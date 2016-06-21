@@ -135,6 +135,13 @@ namespace BackOffice.Seccion.Caja
 
         }
 
+        public Label SubTotalInvoice
+        {
+            get { return this.subtotal; }
+
+            set { this.subtotal = value; }
+        }
+
 
 
         #endregion

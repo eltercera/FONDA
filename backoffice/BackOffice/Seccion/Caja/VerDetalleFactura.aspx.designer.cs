@@ -94,6 +94,15 @@ namespace BackOffice.Seccion.Caja {
         protected global::System.Web.UI.WebControls.Table invoiceDetail;
         
         /// <summary>
+        /// subtotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label subtotal;
+        
+        /// <summary>
         /// iva control.
         /// </summary>
         /// <remarks>
