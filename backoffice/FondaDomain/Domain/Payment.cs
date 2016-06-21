@@ -9,10 +9,31 @@ namespace com.ds201625.fonda.Domain
     /// </summary>
     public class Payment : BaseEntity
     {
+
+        #region Fields
+
         /// <summary>
         /// Monto pagado
         /// </summary>
         private float _amount;
+
+        #endregion
+
+        #region Constructors
+
+        public Payment()
+        {
+
+        }
+
+        public Payment(float amount)
+        {
+            this._amount = amount;
+        }
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// obtiene o asigna el monto a pagar
@@ -23,5 +44,8 @@ namespace com.ds201625.fonda.Domain
             get { return _amount; }
             set { _amount = value; }
         }
+
+        #endregion
+
     }
 }

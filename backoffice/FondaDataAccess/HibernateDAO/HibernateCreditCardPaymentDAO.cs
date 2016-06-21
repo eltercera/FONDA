@@ -4,7 +4,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-    public class HibernateCreditCardPaymentDAO: HibernatePaymentDAO<CreditCarPayment>, ICreditCardPaymentDAO
+    public class HibernateCreditCardPaymentDAO: HibernatePaymentDAO<CreditCardPayment>, ICreditCardPaymentDAO
     {
     }
 }

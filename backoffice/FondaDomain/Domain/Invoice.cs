@@ -8,30 +8,22 @@ namespace com.ds201625.fonda.Domain
     /// </summary>
     public class Invoice : BaseEntity
     {
-        /// <summary>
-        /// Restaurante al que la factura pertenece
-        /// </summary>
-        private Restaurant _restaurant;
+        #region Fields
 
         /// <summary>
         /// Pago al que la factura pertenece
         /// </summary>
         private Payment _payment;
 
-        /// <summary>
-        /// Cuenta a la que la factura pertenece
-        /// </summary>
-        private Account _account;
+        ///// <summary>
+        ///// Cuenta a la que la factura pertenece
+        ///// </summary>
+        //private Account _account;
 
         /// <summary>
         /// Profile a la que la factura pertenece
         /// </summary>
         private Profile _profile;
-
-        /// <summary>
-        /// Propina de la cuenta
-        /// </summary>
-        private float _tip;
 
         /// <summary>
         /// Fecha de pago de la cuenta
@@ -59,10 +51,91 @@ namespace com.ds201625.fonda.Domain
         private Currency _currency;
 
         /// <summary>
+		/// El numero unico de la factura
+		/// </summary>
+        private int _number;
+        #endregion
+
+        #region Constructors
+        /// <summary>
         /// Constructor
         /// </summary>
         public Invoice() : base() { }
 
+        /// <summary>
+        /// Constructor de Factura
+        /// </summary>
+        /// <param name="payment">Pago de la factura</param>
+        /// <param name="profile">Perfil de la factura</param>
+        /// <param name="total">Total de la factura</param>
+        /// <param name="tax">Impuesto de la factura</param>
+        /// <param name="currency">Tipo de Moneda</param>
+        public Invoice(Payment payment, Profile profile,
+         float total, float tax, Currency currency, int number, InvoiceStatus status) 
+            : base()
+        {
+            
+
+            this._payment = payment;
+            this._profile = profile;
+            this._date = DateTime.Now;
+            this._total = total;
+            this._tax = tax;
+
+            this._status = status;
+
+            this._currency = currency;
+            this._number = number;
+        }
+
+        /// <summary>
+        /// Constructor de Factura
+        /// </summary>
+        ///<param name="id">Id de la factura</param>
+        /// <param name="payment">Pago de la factura</param>
+        /// <param name="profile">Perfil de la factura</param>
+        /// <param name="total">Total de la factura</param>
+        /// <param name="tax">Impuesto de la factura</param>
+        public Invoice( int id,Payment payment, Profile profile, 
+            float total, float tax, int number)
+            : base()
+        {
+            this.Id = id;
+            this._payment = payment;
+            this._profile = profile;
+            this._date = DateTime.Now;
+            this._total = total;
+            this._tax = tax;
+            this._status = new GeneratedInvoiceStatus();
+            this._number = number;
+        }
+
+        /// <summary>
+        /// Constructor de Factura sin propina
+        /// </summary>
+        /// <param name="payment">Pago de la factura</param>
+        /// <param name="profile">Perfil de la factura</param>
+        /// <param name="total">Total de la factura</param>
+        /// <param name="tax">Impuesto de la factura</param>
+        /// <param name="currency">Tipo de Moneda</param>
+        public Invoice(Payment payment, Profile profile,
+            float total, float tax, Currency currency, int number)
+            : base()
+        {
+            this._payment = payment;
+            this._profile = profile;
+            this._date = DateTime.Now;
+            this._total = total;
+            this._tax = tax;
+            this._status = new GeneratedInvoiceStatus();
+            this._currency = currency;
+            this._number = number;
+
+        }
+
+        #endregion
+
+        #region Properties
         /// <summary>
         /// Obtiene o asigna una moneda a la factura
         /// </summary>
@@ -70,28 +143,6 @@ namespace com.ds201625.fonda.Domain
         public virtual Currency Currency
         {
             get { return _currency; }
-            set { _currency = value; }
-        }
-
-
-        /// <summary>
-        /// Obtiene o asigna una cuenta a la factura
-        /// </summary>
-        [DataMember]
-        public virtual Account Account
-        {
-            get { return _account; }
-            set { _account = value; }
-        }
-
-        /// <summary>
-        /// Obtiene o asigna un restaurant a la cuenta
-        /// </summary>
-        [DataMember]
-        public virtual Restaurant  Restaurant
-        {
-            get { return _restaurant; }
-            set { _restaurant = value; }
         }
 
         /// <summary>
@@ -101,17 +152,6 @@ namespace com.ds201625.fonda.Domain
         public virtual Profile Profile
         {
             get { return _profile; }
-            set { _profile = value; }
-        }
-
-        /// <summary>
-        /// Obtiene o asigna la propina de la cuenta
-        /// </summary>
-        [DataMember]
-        public virtual float Tip
-        {
-            get { return _tip; }
-            set { _tip = value; }
         }
 
         /// <summary>
@@ -121,7 +161,6 @@ namespace com.ds201625.fonda.Domain
         public virtual DateTime Date
         {
             get { return _date; }
-            set { _date = value; }
         }
 
         /// <summary>
@@ -131,7 +170,6 @@ namespace com.ds201625.fonda.Domain
         public virtual float Total
         {
             get { return _total; }
-            set { _total = value; }
         }
 
         /// <summary>
@@ -141,7 +179,14 @@ namespace com.ds201625.fonda.Domain
         public virtual float Tax
         {
             get { return _tax; }
-            set { _tax = value; }
+        }
+
+        /// <summary>
+        /// Obtiene o asigna el numero de la factura
+        /// </summary>
+        public virtual int Number
+        {
+            get { return _number; }
         }
 
         /// <summary>
@@ -159,12 +204,11 @@ namespace com.ds201625.fonda.Domain
         public virtual Payment Payment
         {
             get { return _payment; }
-            set { _payment = value; }
         }
-        
+        #endregion
 
         /// <summary>
-        /// Cambia el eltado actual de la factura.
+        /// Cambia el estado actual de la factura.
         /// </summary>
         public virtual void changeStatus()
         {

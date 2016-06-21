@@ -16,10 +16,8 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.HandlerSQLite;
-import com.ds201625.fonda.logic.LogicPayment;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.CloseAccountFragment;
@@ -30,7 +28,6 @@ import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
 import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
 import com.ds201625.fonda.views.fragments.ProfileListFragment;
 import java.util.ArrayList;
-import java.util.List;
 
 public class OrdersActivity extends BaseNavigationActivity implements
         ProfileListFragment.profileListFragmentListener {

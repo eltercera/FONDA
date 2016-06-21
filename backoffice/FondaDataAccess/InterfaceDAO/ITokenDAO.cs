@@ -5,7 +5,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 {
 	public interface ITokenDAO : IBaseEntityDAO<Token>
 	{
-		Token FindByStrToken (string strToken);
+		Token FindByStrToken (string property, string strToken);
 	}
 }
 

@@ -4,6 +4,11 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEnd.ActionFilters;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.BackEndLogic;
+using com.ds201625.fonda.BackEnd.Log;
+using com.ds201625.fonda.BackEnd.Exceptions;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -13,6 +18,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 	/// </summary>
 	public class TokenFondaWebApiController : FondaWebApi
 	{
+        /// <summary>
+        /// Constructor de TokenFondaWebApiController
+        /// </summary>
 		public TokenFondaWebApiController () : base () {}
 
 		[FondaAuthLogin]
@@ -24,25 +32,58 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		/// <returns>The token.</returns>
 		public IHttpActionResult getToken()
 		{
-			Commensal commensal = GetCommensal (Request.Headers);
-			if (commensal == null)
-				return BadRequest ();
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Token token;
+            try
+            {
+                Commensal commensal = GetCommensal(Request.Headers);
+                if (commensal == null)
+                    return BadRequest();
 
-			ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO ();
-			Token token = new Token ();
-			commensal.AddToken (token);
+                // Se obtiene el commando CreateCreateProfileCommand 
+                ICommand command = FacCommand.GetTokenCommand();
 
-			try
-			{
-				commensalDao.Save (commensal);
-			}
-			catch (SaveEntityFondaDAOException e)
-			{
-				Console.WriteLine (e.ToString ());
-				return InternalServerError (e);
-			}
+                // Se agrega el commensal como parametro
+                command.SetParameter(0, commensal);
 
-			return Ok (token);
+                //se ejecuta el comando
+                command.Run();
+
+                token = (Token)command.Result;
+
+                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.Token + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            catch (GetTokenCommandException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                return InternalServerError(ex);
+            }
+            catch (GetCommensalFondaWebApiException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                return InternalServerError(ex);
+            }//HttpResponseException
+            catch (HttpResponseException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                return InternalServerError(ex);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
+                return InternalServerError(ex);
+            }
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            return Ok(token);
 		}
 
         [FondaAuthLogin]
@@ -55,32 +96,53 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		/// <param name="id">Identifier.</param>
         public IHttpActionResult deleteToken(int id)
         {
-            Commensal commensal = GetCommensal(Request.Headers);
-            if (commensal == null)
-                return BadRequest();
-
-            ICommensalDAO commensalDao = FactoryDAO.GetCommensalDAO();
-            ITokenDAO tokenDAO = FactoryDAO.GetTokenDAO();
-            Token token = tokenDAO.FindById(id);
-
-            commensal.RemoveToken(token);
-
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             try
             {
-                commensalDao.Save(commensal);
-                tokenDAO.Delete(token);
+                Commensal commensal = GetCommensal(Request.Headers);
+                if (commensal == null)
+                    return BadRequest();
+
+                // Se obtiene el commando CreateCreateProfileCommand 
+                ICommand command = FacCommand.DeleteTokenCommensalCommand();
+                Token token = EntityFactory.GetToken();
+                token.Id = id;
+                // Se agrega el commensal como parametro
+                command.SetParameter(0, commensal);
+                // Se agrega el Token como parametro
+                command.SetParameter(0, token);
+
+                //se ejecuta el comando
+                command.Run();
+
+                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                   GeneralRes.Token + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (SaveEntityFondaDAOException e)
+            catch (DeleteTokenCommandException e)
             {
-                Console.WriteLine(e.ToString());
-                return InternalServerError(e);
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                return InternalServerError(ex);
             }
+            catch (GetCommensalFondaWebApiException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                return InternalServerError(ex);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
+                return InternalServerError(ex);
+            }
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             return Ok();
         }
-
-
-
     }
 }
 

@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Web.Services;
 using System.Web.UI.WebControls;
 using com.ds201625.fonda.DataAccess.Exceptions;
+using FondaResources.Login;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -17,9 +19,14 @@ namespace BackOffice.Seccion.Restaurant
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            AlertSuccess_AddTable.Visible = false;
-            AlertSuccess_ModifyTable.Visible = false;
-            LoadDataTable();
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                AlertSuccess_AddTable.Visible = false;
+                AlertSuccess_ModifyTable.Visible = false;
+                LoadDataTable();
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
 
         /// <summary>
@@ -235,7 +242,7 @@ namespace BackOffice.Seccion.Restaurant
             //le asigna un numero unico a la mesa para ese restaurante
             _table.Number = listTable.Count+1;
             _restaurant = _restaurantDAO.FindById(_idRestaurant);
-            _table.Restaurant = _restaurant;
+          //  _table.Restaurant = _restaurant;
             _tableDAO.Save(_table);
             LoadDataTable();
         }

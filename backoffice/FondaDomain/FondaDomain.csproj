@@ -65,15 +65,15 @@
     <Compile Include="Domain\CanceledInvoiceStatus.cs" />
     <Compile Include="Domain\CanceledReservationStatus.cs" />
     <Compile Include="Domain\CashPayment.cs" />
+    <Compile Include="Domain\CreditCardPayment.cs" />
     <Compile Include="Domain\ReservationStatus.cs" />
     <Compile Include="Domain\ClosedAccountStatus.cs" />
     <Compile Include="Domain\Coordinate.cs" />
-    <Compile Include="Domain\CreditCarPayment.cs" />
     <Compile Include="Domain\Currency.cs" />
     <Compile Include="Domain\Day.cs" />
     <Compile Include="Domain\Dish.cs" />
     <Compile Include="Domain\DishOrder.cs" />
-    <Compile Include="Domain\Entity.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="Domain\FreeTableStatus.cs" />
     <Compile Include="Domain\GeneratedInvoiceStatus.cs" />
     <Compile Include="Domain\Invoice.cs" />
@@ -89,6 +89,7 @@
     <Compile Include="Domain\Table.cs" />
     <Compile Include="Domain\TableStatus.cs" />
     <Compile Include="Domain\UsedReservationStatus.cs" />
+    <Compile Include="Factory\EntityFactory.cs" />
     <Compile Include="GeneralRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

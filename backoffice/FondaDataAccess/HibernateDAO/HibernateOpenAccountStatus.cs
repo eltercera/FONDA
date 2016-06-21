@@ -11,7 +11,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         public OpenAccountStatus getOpenAccountStatus()
         {
-            OpenAccountStatus status = FindById(8);
+            OpenAccountStatus status = FindById(11);
             if (status == null)
             {
                 status = OpenAccountStatus.Instance;

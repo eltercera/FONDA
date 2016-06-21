@@ -13,10 +13,10 @@ import java.util.List;
 import retrofit2.Call;
 
 /**
- * Created by jesus on 19/05/16.
+ * Implementacion de la interfaz AllRestaurantService
  */
 public class RetrofitAllRestaurantService implements AllRestaurantService {
-
+    private String TAG = "RetrofitAllRestaurantService";
     private AllRestaurantClient currentAllRestaurantClient =
             RetrofitService.getInstance().createService(AllRestaurantClient.class);
 
@@ -24,17 +24,23 @@ public class RetrofitAllRestaurantService implements AllRestaurantService {
         super();
     }
 
+    /**
+     * Método que obtiene todos los restaurantes
+     *
+     * @return
+     * @throws RestClientException
+     */
     @Override
-    public List<Restaurant> getAllRestaurant() {
-
+    public List<Restaurant> getAllRestaurant() throws RestClientException {
+        Log.d(TAG, "Se obtienen todos los restaurantes");
         Call<List<Restaurant>> call = currentAllRestaurantClient.getAllRestaurant();
         List<Restaurant> test = null;
         try{
             test =call.execute().body();
         } catch (IOException e) {
-            Log.v("Fonda: ", e.toString());
+            Log.e(TAG, "Se ha generado error en getAllRestaurant", e);
         }
         return test;
-
     }
+
 }

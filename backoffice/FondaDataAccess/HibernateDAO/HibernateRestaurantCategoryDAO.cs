@@ -3,6 +3,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System;
 using System.Collections.Generic;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
+using NHibernate.Criterion;
 
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
@@ -36,6 +37,18 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return category;
         }
 
+		#region 3era entrga
 
+		public IList<RestaurantCategory> FindAllWithRestaurants (
+			string query = null, int max = -1, int page = 1)
+		{
+			DetachedCriteria critRest = DetachedCriteria.For<Restaurant> ("rest")
+				.Add (Property.ForName ("rest.RestaurantCategory.Id").EqProperty ("therescat.Id"))
+				.SetProjection (Projections.Count ("rest.RestaurantCategory.Id"));
+
+			return FindAllLikeName(query,max,page,Subqueries.Lt (0, critRest),"therescat");
+		}
+
+		#endregion
     }
 }

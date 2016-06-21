@@ -1,5 +1,7 @@
 package com.ds201625.fonda.domains;
 
+import com.ds201625.fonda.domains.BaseEntity;
+
 /**
  * Clase base Nombrada.
  */

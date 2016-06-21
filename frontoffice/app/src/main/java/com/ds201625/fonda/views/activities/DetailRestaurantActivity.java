@@ -12,9 +12,8 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.AddFavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
@@ -31,6 +30,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
     //Declaracion de varialbes globales de la clase
 
     private MenuItem setAsFavorite;
+    private MenuItem makeReserve;
     private Toolbar tb;
     private Restaurant selectedRestaurant;
     private TextView tvRestaurantName;
@@ -71,15 +71,16 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG,"ESTAAAAAAAASSSS EEENNN onCreateOptionsMenu");
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.detail_restaurant, menu);
+        makeReserve = menu.findItem(R.id.action_make_order);
 
-        setAsFavorite = menu.findItem(R.id.action_favorite_save);
+        setAsFavorite = menu.findItem(R.id.action_set_favorite);
         tb = (Toolbar)findViewById(R.id.toolbar);
         tb.setVisibility(View.VISIBLE);
-        MenuItem makeReserve = menu.findItem(R.id.action_make_order);
 
-        makeReserve.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+       makeReserve.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Intent cambio = new Intent(DetailRestaurantActivity.this, DetailRestaurantActivity.class);
@@ -91,16 +92,11 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
         });
 
 
-        setAsFavorite = menu.findItem(R.id.action_set_favorite);
-
-
         if (isFavorite()){
             setAsFavorite.setIcon(R.drawable.ic_star_yellow);
         }else {
-            setAsFavorite.setIcon(R.drawable.ic_full_star_24dp);
+            setAsFavorite.setIcon(R.drawable.ic_star_border_creme_24dp);
         }
-        tb = (Toolbar)findViewById(R.id.toolbar);
-        tb.setVisibility(View.VISIBLE);
 
         setAsFavorite.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -108,10 +104,9 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
 
                 if (isFavorite()) {
-
-                    DeleteFavoriteRestaurantService deleteFavoriteRestaurantServ = FondaServiceFactory.getInstance().
-                            getDeleteFavoriteRestaurantService();
-                    Commensal comensal = deleteFavoriteRestaurantServ.deleteFavoriteRestaurant(logedCommensal.getId()
+                    try{
+                        FavoriteRestaurantService deleteFavorite = FondaServiceFactory.getInstance().getFavoriteRestaurantService();
+                    Commensal comensal = deleteFavorite.deleteFavoriteRestaurant(logedCommensal.getId()
                             , selectedRestaurant.getId());
 
                     try {
@@ -124,11 +119,14 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
                     }
                     Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
                             Toast.LENGTH_LONG).show();
-                    setAsFavorite.setIcon(R.drawable.ic_full_star_24dp);
+                    setAsFavorite.setIcon(R.drawable.ic_star_border_creme_24dp);
+                    } catch (RestClientException e) {
+                        e.printStackTrace();
+                    }
                 } else {
-
-                    AddFavoriteRestaurantService addFavoriteRestaurant = FondaServiceFactory.getInstance().
-                            getAddFavortieRestaurantService();
+                    try{
+                    FavoriteRestaurantService addFavoriteRestaurant = FondaServiceFactory.getInstance().
+                            getFavoriteRestaurantService();
 
                     Commensal comensal = addFavoriteRestaurant.AddFavoriteRestaurant(logedCommensal.getId(), selectedRestaurant.getId());
 
@@ -144,13 +142,15 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
                     Toast.makeText(getApplicationContext(), R.string.favorite_add_success_meessage,
                             Toast.LENGTH_LONG).show();
                     setAsFavorite.setIcon(R.drawable.ic_star_yellow);
+                    } catch (RestClientException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 return false;
             }
 
         });
-
         return true;
     }
 
@@ -187,10 +187,10 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
      * @param
      * @return Boolean.
      */
-    private boolean isFavorite(){
-
-        AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                getAllFavoriteRestaurantsService();
+    public boolean isFavorite(){
+    try{
+        FavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
+                getFavoriteRestaurantService();
         List<Restaurant> restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(logedCommensal.getId());
 
         for(Restaurant restaurant : restaurantList){
@@ -198,7 +198,9 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
                 return true;
             }
         }
-
+    } catch (RestClientException e) {
+        e.printStackTrace();
+    }
         return false;
     }
 
@@ -221,7 +223,10 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
             Log.v(TAG,toReturn.getId()+"");
 
 
-        }catch(NullPointerException nu){
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
+        catch(NullPointerException nu){
             nu.printStackTrace();
             Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
                     Toast.LENGTH_LONG).show();

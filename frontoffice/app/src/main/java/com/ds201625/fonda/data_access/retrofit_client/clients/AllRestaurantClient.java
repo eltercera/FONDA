@@ -8,10 +8,17 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 /**
- * Created by jesus on 21/05/16.
+ * Interfaz para ser implementada por retrofit
+ * Define los recursos de /api/restaurantes(s) del
+ * servicio web REST
  */
 public interface AllRestaurantClient {
 
+    /**
+     * Get /api/ListaRestaurant
+     * Obtiene la lista de los restaurantes.
+     * @return
+     */
     @GET("ListaRestaurant")
     Call<List<Restaurant>> getAllRestaurant();
 }

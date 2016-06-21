@@ -18,11 +18,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 			HasMany (x => x.SesionTokens)
 				.LazyLoad ()
 				.Inverse()
-				.Cascade.All();
-
-            // TODO: Mapedo Many-To-Many a Restaurant
-            // TODO: Mapedo a Reservation
-
+				.Cascade.AllDeleteOrphan();
+            
             HasManyToMany(x => x.FavoritesRestaurants)
                 .Cascade.All()
                 .ExtraLazyLoad()

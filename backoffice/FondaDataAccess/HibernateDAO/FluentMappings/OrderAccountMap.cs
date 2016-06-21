@@ -14,12 +14,25 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable()
                 .GeneratedBy.Increment();
 
+            Map(x => x.Number)
+              .Column("oa_number")
+              .Not.Nullable();
+
+            Map(x => x.Date)
+               .Column("oa_date")
+               .Not.Nullable();
+
             References(x => x.Table)
                 .Column("fk_table_id")
                 .Not.Nullable();
 
             HasMany(x => x.ListDish)
                 .KeyColumn("fk_order_account")
+                .ExtraLazyLoad()
+                .Cascade.All();
+
+            HasMany(x => x.ListInvoice)
+                .KeyColumn("fk_account_id")
                 .ExtraLazyLoad()
                 .Cascade.All();
 
@@ -32,10 +45,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable()
                 .Cascade.Persist();
 
-           /* References(x => x.RecordStatus)
-                .Column("fk_record_status_id")
-                .Not.Nullable()
-                .Cascade.Persist();*/
+
             
         }
     }

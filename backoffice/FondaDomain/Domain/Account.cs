@@ -9,6 +9,7 @@ namespace com.ds201625.fonda.Domain
     /// </summary>
     public class Account : BaseEntity
     {
+        #region Fields
         /// <summary>
         /// Fecha de la cuenta
         /// </summary>
@@ -34,13 +35,63 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private IList<DishOrder> _listDish;
 
+        /// <summary>
+        /// Lista de facturas de la cuenta.
+        /// </summary>
+        private IList<Invoice> _listInvoice;
 
+        /// <summary>
+		/// El numero unico de la orden
+		/// </summary>
+        private int _number;
+        #endregion
+
+        #region Constructors
         /// <summary>
         /// Constructor
         /// </summary>
         public Account() : base()
         {
-            _listDish = new List<DishOrder>();
+            this._listDish = new List<DishOrder>();
+            this._listInvoice = new List<Invoice>();
+        }
+
+        /// <summary>
+        /// Constructor para crear una orden nueva
+        /// </summary>
+        /// <param name="table">Mesa del Restaurante asignada</param>
+        /// <param name="commensal">Datos del comensal</param>
+        /// <param name="listOrder">Ordenes hechas por el comensal</param>
+        /// <param name="number">Numero de la cuenta</param>
+        public Account(Table table, Commensal commensal, IList<DishOrder> listOrder, int number) : base()
+        {
+            this._date = DateTime.Now;
+            this._status = new OpenAccountStatus();
+            this._table = table;
+            this._commensal = commensal;
+            this._listDish = listOrder;
+            this._number = number;
+            this._listInvoice = new List<Invoice>();
+        }
+
+        public Account(Table table, IList<DishOrder> listOrder) : base()
+        {
+            this._date = DateTime.Now;
+            this._status = new OpenAccountStatus();
+            this._table = table;
+            this._listDish = listOrder;
+            this._listInvoice = new List<Invoice>();
+        }
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Retorna o asigna una fecha
+        /// </summary>
+        public virtual DateTime Date
+        {
+            get { return _date; }
         }
 
         /// <summary>
@@ -50,23 +101,35 @@ namespace com.ds201625.fonda.Domain
         public virtual Table Table
         {
             get { return _table; }
-            set { _table = value; }
+        }
+
+        /// <summary>
+        /// Obtiene o asigna el numero de la orden
+        /// </summary>
+        public virtual int Number
+        {
+            get { return _number; }
         }
 
         [DataMember]
         public virtual IList<DishOrder> ListDish
         {
             get { return _listDish; }
-            set { _listDish = value; }
         }
 
+        /// <summary>
+        /// Obtiene o asigna el numero de la orden
+        /// </summary>
+        public virtual IList<Invoice> ListInvoice
+        {
+            get { return _listInvoice; }
+        }
         /// <summary>
         /// Obtiene o asigna un estado a la cuenta
         /// </summary>
         public virtual AccountStatus Status
         {
             get { return _status; }
-            set { _status = value; }
         }
 
         /// <summary>
@@ -77,46 +140,67 @@ namespace com.ds201625.fonda.Domain
             get{ return _commensal; }
             set{ _commensal = value; }
         }
+        #endregion
 
+        #region Methods
         /// <summary>
         /// Agrega una orden a la cuenta
         /// </summary>
         /// <param name="dish"> orden pedida </param>
-        public virtual void addDish(DishOrder dish)
+        public virtual void AddDish(DishOrder dish)
         {
             _listDish.Add(dish);
         }
 
         /// <summary>
+        /// Elimina una orden a la cuenta
+        /// </summary>
+        /// <param name="dish">orden pedida </param>
+        public virtual void RemoveDish(DishOrder dish)
+        {
+            _listDish.Remove(dish);
+        }
+
+        /// <summary>
+        /// Agrega una invoice a la cuenta
+        /// </summary>
+        /// <param name="invoice"> orden pedida </param>
+        public virtual void AddInvoice(Invoice invoice)
+        {
+            _listInvoice.Add(invoice);
+        }
+
+        /// <summary>
+        /// Elimina una invoice de la cuenta
+        /// </summary>
+        /// <param name="invoice">orden pedida </param>
+        public virtual void RemoveInvoice(Invoice invoice)
+        {
+            _listInvoice.Remove(invoice);
+        }
+
+        /// <summary>
         /// Cambia el eltado actual del cuenta.
         /// </summary>
-        public virtual void changeStatus()
+        public virtual void ChangeStatus()
         {
             _status = _status.Change();
         }
 
-
         /// <summary>
         /// Obtiene el precio total de todas las ordenes
         /// </summary>
-        public virtual float getMonto()
+        public virtual float GetAmount()
         {
             float total = 0;
             for (int i = 0; i < _listDish.Count; i++)
             {
-                total = _listDish[i].Dish.Cost + total;
+                total += (_listDish[i].Dish.Cost*_listDish[i].Count);
             }
             return total;
         }
+        #endregion
 
-        /// <summary>
-        /// Retorna o asigna una fecha
-        /// </summary>
-        public virtual DateTime Date
-        {
-            get { return _date; }
-            set { _date = value; }
-        }
 
     }
 }

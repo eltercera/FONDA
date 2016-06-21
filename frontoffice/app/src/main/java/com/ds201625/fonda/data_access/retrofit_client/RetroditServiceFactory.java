@@ -1,13 +1,12 @@
 
 package com.ds201625.fonda.data_access.retrofit_client;
+
 import com.ds201625.fonda.data_access.factory.ServiceFactory;
-import com.ds201625.fonda.data_access.services.AddFavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.AllFavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
-import com.ds201625.fonda.data_access.services.DeleteFavoriteRestaurantService;
+import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.FilterByCategoryService;
 import com.ds201625.fonda.data_access.services.FilterByZoneService;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
@@ -51,30 +50,36 @@ public class RetroditServiceFactory implements ServiceFactory {
         return new RetrofitTokenService(commensal);
     }
 
+    /**
+     * Obtiene los servicios de todos los restaurantes
+     *
+     * @return
+     */
     @Override
     public AllRestaurantService getAllRestaurantService() {
         return new RetrofitAllRestaurantService();
     }
 
+    /**
+     * Agrega un restaurante favorito a un comensal logeado
+     *
+     * @return
+     */
     @Override
-    public AllFavoriteRestaurantService getAllFavoriteRestaurantsService() {
-        return new RetrofitAllFavoriteRestaurantService();
+    public FavoriteRestaurantService getFavoriteRestaurantService() {
+        return new RetrofitFavoriteRestaurantService();
     }
 
-    @Override
-    public AddFavoriteRestaurantService getAddFavoriteRestaurantService() {
-        return new RetrofitAddFavoriteRestaurantService();
-    }
-
-    @Override
-    public DeleteFavoriteRestaurantService getDeleteFavoriteRestaurantService() {
-        return new RetrofitDeleteFavoriteRestaurant();
-    }
-
+    /**
+     * Devuelve a un comensal logeado
+     *
+     * @return
+     */
     @Override
     public RequireLogedCommensalService getLogedCommensalService() {
         return new RetrofitRequireLogedCommensalService();
     }
+
 
     @Override
     public InvoiceService getInvoiceService() {

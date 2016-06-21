@@ -12,10 +12,11 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -29,18 +30,22 @@ public class ProfileViewItemList extends BaseArrayAdapter<Profile> {
     }
 
     public void update() {
-        ProfileService ps = FondaServiceFactory.getInstance()
-                .getProfileService(SessionData.getInstance().getToken());
-        List<Profile> list = null;
+        List<Profile> profiles = null;
         clear();
         try {
-            list = ps.getProfiles();
-        } catch (RestClientException e) {
+            Command commandoGetProfiles = FondaCommandFactory.getProfilesCommand();
+            commandoGetProfiles.run();
+            profiles = (List<Profile>)commandoGetProfiles.getResult();
+        }
+        catch (RestClientException e) {
             e.printStackTrace();
             Log.v("Fonda",e.toString());
         }
-        if (list != null)
-            addAll(list);
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (profiles != null)
+            addAll(profiles);
         notifyDataSetChanged();
     }
 

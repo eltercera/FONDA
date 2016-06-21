@@ -18,6 +18,11 @@ public class Commensal extends UserAccount {
         super();
     }
 
+    public Commensal(int id) {
+        this.setId(id);
+    }
+
+
     public List<Reservation> getReservarions() {
         return reservarions;
     }

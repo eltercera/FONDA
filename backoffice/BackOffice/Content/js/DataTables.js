@@ -354,3 +354,59 @@ $(document).ready(function () {
             });
 });
 
+/* Order Account */
+
+$(document).ready(function () {
+    $('#contenido_orderList').DataTable({
+        "language": spanish,
+        "bAutoWidth": false,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            { "bSearchable": false }
+        ]
+    });
+});
+
+
+$(document).ready(function () {
+    $('#contenido_closedOrders').DataTable({
+        "language": spanish,
+        "bAutoWidth": false,
+        "aoColumns": [
+            null,
+            null,
+            { "bSearchable": false }
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#contenido_orderDetail').DataTable({
+        "language": spanish,
+        "bAutoWidth": false,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null
+        ]
+    });
+});
+
+$(document).ready(function () {
+    $('#contenido_orderInvoices').DataTable({
+        "language": spanish,
+        "bAutoWidth": false,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable": false }
+        ]
+    });
+});
+
+/* Order Account */

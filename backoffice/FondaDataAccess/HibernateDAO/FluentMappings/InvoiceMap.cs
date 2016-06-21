@@ -13,9 +13,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable()
                 .GeneratedBy.Increment();
 
-            Map(x => x.Tip)
-                .Column("i_tip")
-                .Not.Nullable();
+            Map(x => x.Number)
+              .Column("i_number")
+              .Not.Nullable();
 
             Map(x => x.Date)
                .Column("i_date")
@@ -34,32 +34,18 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                .Not.Nullable()
                .Cascade.Persist();
 
-           /* References(x => x.RecordStatus)
-                .Column("fk_inv_status_id")
-                .Not.Nullable()
-                .Cascade.Persist();*/
-
-            /* References(x => x.Currency)
+            References(x => x.Currency)
                  .Column("fk_currency_id")
-                 .Not.Nullable(); */
+                 .Not.Nullable();
 
-             References(x => x.Account)
-                .Column("fk_account_id")
-                .Not.LazyLoad()
-                .Not.Nullable(); 
-
-             References(x => x.Payment)
-                .Column("fk_payment_id")
+            References(x => x.Payment)
+               .Column("fk_payment_id")
+               .Not.LazyLoad()
                 .Not.Nullable();
 
             References(x => x.Profile)
                 .Column("fk_profile_id")
                 .Not.Nullable();
-
-            References(x => x.Restaurant)
-                .Column("fk_restaurant_id")
-                .Not.LazyLoad()
-                .Not.Nullable(); 
                 
 
             

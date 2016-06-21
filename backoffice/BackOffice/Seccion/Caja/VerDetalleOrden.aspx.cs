@@ -1,152 +1,102 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
-using com.ds201625.fonda.Domain;
-using System.Web.Services;
-using System.Web.Script.Serialization;
+using BackOfficeModel.OrderAccount;
+using FondaResources.OrderAccount;
+using FondaResources.Login;
+using System.Web.UI.HtmlControls;
+using BackOfficeModel;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class VerDetalleOrden : System.Web.UI.Page
+    public partial class VerDetalleOrden : System.Web.UI.Page, IDetailOrderModel
     {
-        protected void Page_Load(object sender, EventArgs e)
+        #region Presenter
+
+        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.DetailOrderPresenter _presenter;
+
+        #endregion
+
+        #region Model
+
+        public System.Web.UI.WebControls.Table DetailOrderTable
         {
-            LoadTable();
+            get { return orderDetail; }
+
+            set { orderDetail = value; }
         }
 
-        protected void LoadTable()
+        Label IModel.ErrorLabelMessage
         {
-            int id = int.Parse(Request.QueryString["id"]);
-            CleanTable();
+            get { return this.ErrorLabelMessage; }
 
-
-            //Genero los objetos para la consulta
-            //Genero la lista de la consulta
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IOrderAccountDao _OrderAccountDAO = factoryDAO.GetOrderAccountDAO();
-            IList<DishOrder> listDishOrder = (_OrderAccountDAO.FindById(id)).ListDish;
-
-            int totalRows = listDishOrder.Count;
-            int totalColumns = 4; //numero de columnas de la tabla
-
-
-
-
-
-            //Seteo los label de la cabecera , falta restaurante y su direccion con la fecha.
-            Label1.Text = id.ToString();
-            Label2.Text = _OrderAccountDAO.FindById(id).Commensal.Email;
-
-
-            //Recorremos la lista
-            for (int i = 0; i <= totalRows - 1; i++)
-            {
-
-
-                //Crea una nueva fila de la tabla
-                TableRow tRow = new TableRow();
-                //Le asigna el Id a cada fila de la tabla
-                tRow.Attributes["data-id"] = listDishOrder[i].Id.ToString();
-                //Agrega la fila a la tabla existente
-                Pago.Rows.Add(tRow);
-
-
-                for (int j = 0; j <= totalColumns; j++)
-                {
-                    //Crea una nueva celda de la tabla
-                    TableCell tCell = new TableCell();
-                    //Agrega el nombre de la categoria
-
-                    if (j.Equals(0))
-                        tCell.Text = listDishOrder[i].Dish.Name;
-                    //Agrega las acciones de la tabla
-                    else if (j.Equals(1))
-                    {
-                        tCell.Text = listDishOrder[i].Count.ToString();
-                    }
-                    else if (j.Equals(2))
-                    {
-                        tCell.Text = listDishOrder[i].Dish.Cost.ToString();
-                    }
-                    else if (j.Equals(3))
-                    {
-                        tCell.Text = "10%";
-                    }
-                    else if (j.Equals(4))
-                    {
-                        tCell.Text = ((listDishOrder[i].Dish.Cost * 0.1)+ listDishOrder[i].Dish.Cost).ToString();
-                    }
-                    //Agrega la 
-                    tRow.Cells.Add(tCell);
-
-                }
-
-            }
-            // Si la orden no esta vacia entonces a;ado un label para ense;ar el monto total. El if eliminarlo luego 
-            // de comprobar que nunca este vacia la orden para existir.
-            if (_OrderAccountDAO.FindById(id).ListDish.Any())
-            {
-                LabelMontoTotal.Text = "MONTO TOTAL: " + _OrderAccountDAO.FindById(id).getMonto().ToString();
-            }
-
-
-            //Agrega el encabezado a la Tabla
-            TableHeaderRow header = GenerateTableHeader();
-            Pago.Rows.AddAt(0, header);
+            set { this.ErrorLabelMessage = value; }
 
         }
 
+        Label IModel.SuccessLabelMessage
+        {
+            get { return this.SuccessLabelMessage; }
+
+            set { this.SuccessLabelMessage = value; }
+        }
 
         /// <summary>
-        /// Genera el encabezado de la tabla Categoria
+        /// Recurso de Session con el que inicia el Page_Load
         /// </summary>
-        /// <returns>Returna un objeto de tipo TableHeaderRow</returns>
-        private TableHeaderRow GenerateTableHeader()
+        string IDetailOrderModel.Session
         {
-            //Se crea la fila en donde se insertara el header
-            TableHeaderRow header = new TableHeaderRow();
+            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
-            //Se crean las columnas del header
-            TableHeaderCell h1 = new TableHeaderCell();
-            TableHeaderCell h2 = new TableHeaderCell();
-            TableHeaderCell h3 = new TableHeaderCell();
-            TableHeaderCell h4 = new TableHeaderCell();
-            TableHeaderCell h5 = new TableHeaderCell();
-
-            //Se indica que se trabajara en el header y se asignan los valores a las columnas
-            header.TableSection = TableRowSection.TableHeader;
-            h1.Text = "Plato";
-            h1.Scope = TableHeaderScope.Column;
-            h2.Text = "Cantidad";
-            h2.Scope = TableHeaderScope.Column;
-            h3.Text = "Precio";
-            h3.Scope = TableHeaderScope.Column;
-            h4.Text = "IVA";
-            h4.Scope = TableHeaderScope.Column;
-            h5.Text = "Total";
-            h5.Scope = TableHeaderScope.Column;
-
-            //Se asignan las columnas a la fila
-            header.Cells.Add(h1);
-            header.Cells.Add(h2);
-            header.Cells.Add(h3);
-            header.Cells.Add(h4);
-            header.Cells.Add(h5);
-
-            return header;
+            set { Session[OrderAccountResources.SessionIdAccount] = value; }
         }
 
-        public void CleanTable()
+        public string SessionRestaurant
         {
-            Pago.Rows.Clear();
+            get { return Session[ResourceLogin.sessionRestaurantID].ToString(); }
+
+            set { Session[ResourceLogin.sessionRestaurantID] = value; }
+        }
+
+        public string SessionNumberAccount
+        {
+            get { return Session[OrderAccountResources.SessionNumberAccount].ToString(); }
+
+            set { Session[OrderAccountResources.SessionNumberAccount] = value; }
+        }
+        HtmlGenericControl IModel.ErrorLabel
+        {
+            get { return this.ErrorLabel; }
+        }
+
+        HtmlGenericControl IModel.SuccessLabel
+        {
+            get { return this.SuccessLabel; }
 
         }
+
+
+
+        #endregion
+
+        #region Constructor
+
+        public VerDetalleOrden()
+        {
+            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.DetailOrderPresenter(this);
+        }
+        #endregion
+
+
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //if (Session["AccountID"] != null)
+            //{   //Llama al presentador para llenar la tabla de ordenes
+                _presenter.GetDetailOrder();
+            //}
+        }
+
+
 
     }
 

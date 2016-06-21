@@ -146,6 +146,11 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
             return _factory.GetReservationDAO();
         }
 
+        public IPaymentDao<Payment> GetPaymentDAO()
+        {
+            return _factory.GetPaymentDAO();
+        }
+
         public ActiveSimpleStatus GetActiveSimpleStatus()
         {
             return _factory.GetActiveSimpleStatus();

@@ -121,7 +121,7 @@
     <string name="favorite_remove_success_meessage">Se ha eliminado el restaurante de su lista de favoritos.</string>
     <string name="favorite_remove_fail_meessage">No se ha eliminado el restaurante de su lista de favoritos.</string>
     <string name="favorite_add_success_meessage">Se ha agregado el restaurante de su lista de favoritos.</string>
-    <string name="favorite_add_fail_meessage">No e ha agregado el restaurante de su lista de favoritos.</string>
+    <string name="favorite_add_fail_meessage">No se ha agregado el restaurante de su lista de favoritos.</string>
     <string name="cliente">Cliente:</string>
 
 </resources>

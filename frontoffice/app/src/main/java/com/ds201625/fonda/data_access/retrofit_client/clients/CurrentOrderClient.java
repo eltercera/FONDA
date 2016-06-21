@@ -1,7 +1,6 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
 import com.ds201625.fonda.domains.DishOrder;
-import com.ds201625.fonda.domains.Profile;
 
 import java.util.List;
 

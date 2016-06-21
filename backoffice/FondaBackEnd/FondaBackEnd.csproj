@@ -56,6 +56,9 @@
     <Reference Include="Npgsql">
       <HintPath>..\packages\Npgsql.3.0.5\lib\net45\Npgsql.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -80,11 +83,30 @@
     <Compile Include="Controllers\CostFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\FavoritesRestaurantsFondaWebApiController.cs" />
     <Compile Include="Controllers\MenuCategoryWebApiController.cs" />
+    <Compile Include="Controllers\OrderAccountFondaWebApiController.cs" />
     <Compile Include="Controllers\PaymentFondaWebApiController.cs" />
     <Compile Include="Controllers\RestaurantCategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\RestaurantZoneFilterFondaWebApiController - Copia.cs" />
     <Compile Include="Controllers\RestaurantFondaWebApiController.cs" />
     <Compile Include="Controllers\ZoneFilterFondaWebApiController.cs" />
+    <Compile Include="Exceptions\AddCommensalWebApiControllerException.cs" />
+    <Compile Include="Exceptions\AddFavoriteRestaurantFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\DeleteFavoriteRestaurantFondaWebApiControllerException .cs" />
+    <Compile Include="Exceptions\DeleteProfileFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\DeleteTokenFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\FindByEmailUserAccountFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\FindFavoriteRestaurantFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\FondaAuthLoginAttributeException.cs" />
+    <Compile Include="Exceptions\FondaAuthTokenAttributeException.cs" />
+    <Compile Include="Exceptions\FondaBackendException.cs" />
+    <Compile Include="Exceptions\GetAllRestaurantsFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\GetCommensalFondaWebApiException.cs" />
+    <Compile Include="Exceptions\GetCommensalIdFondaWebApiException.cs" />
+    <Compile Include="Exceptions\GetProfileFondaWebApiException.cs" />
+    <Compile Include="Exceptions\GetTokenFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\GetTotalAccountException.cs" />
+    <Compile Include="Exceptions\PostProfileFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\PutProfileFondaWebApiControllerException.cs" />
     <Compile Include="GeneralRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -99,6 +121,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Log\Loggers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ActionFilters\FondaAuth.cs" />
     <Compile Include="ActionFilters\FondaAuthLoginAttribute.cs" />
@@ -107,16 +130,22 @@
     <Compile Include="Controllers\TokenFondaWebApiController.cs" />
     <Compile Include="Controllers\ProfileFondaWebApiController.cs" />
     <Compile Include="Controllers\CommensalWebApiController.cs" />
+    <Compile Include="Controllers\RestaurantsFondaWebApiController.cs" />
+    <Compile Include="Controllers\UrlFilters\UrlFilters.cs" />
+    <Compile Include="Controllers\UrlFilters\RestaurantsUrlFilters.cs" />
+    <Compile Include="Controllers\RestaurantCategoriesWebApiController.cs" />
+    <Compile Include="Controllers\ZonesFondaWebApiController.cs" />
+    <Compile Include="Log.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\backend.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <None Include="Properties\PublishProfiles\Backend.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -129,6 +158,18 @@
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
       <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
       <Name>FondaDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaBeckEndLogic\FondaBackEndLogic.csproj">
+      <Project>{A1BE7D6C-7750-4795-AABF-B397E079C918}</Project>
+      <Name>FondaBackEndLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
+      <Project>{64636df8-e693-4abb-8964-5c7fa5a6a50e}</Project>
+      <Name>FondaLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaResources\FondaResources.csproj">
+      <Project>{3184fe34-d7e3-44f6-95d9-25d1045bffc8}</Project>
+      <Name>FondaResources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

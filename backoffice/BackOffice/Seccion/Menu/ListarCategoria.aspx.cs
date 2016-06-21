@@ -5,21 +5,67 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using System.Web.Services;
+using BackOfficeModel.Menu;
 using System.Text.RegularExpressions;
+using BackOfficeModel;
+using System.Web.UI.HtmlControls;
+using FondaResources.Login;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Menu
 {
-    public partial class ListarCategoria : System.Web.UI.Page
+    public partial class ListarCategoria : System.Web.UI.Page, IMenuCategory
     {
+        private com.ds201625.fonda.BackOffice.Presenter.Menu.MenuCategoriaPresenter _presenter;
+
+        /* BEGIN Interface Code*/
+        string IModel.SessionRestaurant
+        {
+            get{ throw new NotImplementedException();}
+            set{ throw new NotImplementedException(); }
+        }
+
+        /// <summary>
+        /// Retorna label exito al agregar una categoria
+        /// </summary>
+        HtmlGenericControl IModel.SuccessLabel
+        {
+            get{ return this.AlertSuccess_AddCategory; }
+        }
+
+        Label IModel.SuccessLabelMessage
+        {
+            get{ throw new NotImplementedException();}
+            set{ throw new NotImplementedException();}
+        }
+
+        HtmlGenericControl IModel.ErrorLabel
+        {
+            get { throw new NotImplementedException();}
+        }
+
+        Label IModel.ErrorLabelMessage
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
+        /* END Interface Code*/
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            AlertSuccess_AddCategory.Visible = false;
-            AlertSuccess_ModifyCategory.Visible = false;
-            AlertDanger_AddCategory.Visible = false;
-            AlertDanger_ModifyCategory.Visible = false;
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
+                AlertSuccess_AddCategory.Visible = false;
+                AlertSuccess_ModifyCategory.Visible = false;
+                AlertDanger_AddCategory.Visible = false;
+                AlertDanger_ModifyCategory.Visible = false;
 
-            LoadMenuCategoryTable();
+
+                LoadMenuCategoryTable();
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
         protected void LoadMenuCategoryTable()
         {

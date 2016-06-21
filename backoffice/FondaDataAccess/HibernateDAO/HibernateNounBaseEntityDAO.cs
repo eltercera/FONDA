@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using NHibernate.Criterion;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -10,21 +11,26 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         where T : NounBaseEntity
 	{
 
-		/// <summary>
-		/// Obtiene una lista de 
-		/// </summary>
-		/// <returns>The by name.</returns>
-		/// <param name="name">Name.</param>
-		/// <param name="max">Max.</param>
-		/// <param name="offset">Offset.</param>
-		public IList<T> FindByName(string name, int max, int offset)
+		protected IList<T> FindAllLikeName (
+			string query = null, int max = -1, int page = 1,ICriterion restric = null,
+			string baseAlias = null)
 		{
-			return null;
+			ICriterion newRestric;
+			if (restric != null)
+				newRestric = Restrictions.And (
+					restric, Restrictions.InsensitiveLike ("Name", "%" + query + "%"));
+			else
+				newRestric = Restrictions.InsensitiveLike ("Name", "%" + query + "%");
+
+			return FindAllSortedByName (true, newRestric,max, (page - 1) * max,baseAlias);
 		}
 
-		public IList<T> FindByLikeName(string name, int max, int offset)
+		protected IList<T> FindAllSortedByName(
+			bool asc, ICriterion restrictions = null, int max = -1, int offset = -1,
+			string baseAlias = null)
 		{
-			return null;
+			Order order = asc ? Order.Asc ("Name") : Order.Desc("Name");
+			return FindAll(restrictions, max, offset, order,baseAlias);
 		}
 	}
 }

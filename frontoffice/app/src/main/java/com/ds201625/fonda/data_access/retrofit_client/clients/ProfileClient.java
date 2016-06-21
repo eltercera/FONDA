@@ -1,11 +1,8 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
 import com.ds201625.fonda.domains.Profile;
-import com.google.android.gms.appdatasearch.GetRecentContextCall;
 
-import java.net.ResponseCache;
 import java.util.List;
-import java.util.concurrent.ThreadPoolExecutor;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

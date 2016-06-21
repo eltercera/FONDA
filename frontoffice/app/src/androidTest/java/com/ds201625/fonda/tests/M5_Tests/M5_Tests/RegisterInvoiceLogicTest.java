@@ -1,12 +1,8 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests;
 
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.PaymentService;
 import com.ds201625.fonda.domains.Account;
-import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Dish;
 import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.domains.Payment;
@@ -16,9 +12,6 @@ import com.ds201625.fonda.domains.RestaurantCategory;
 import com.ds201625.fonda.logic.LogicPayment;
 
 import junit.framework.TestCase;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Adri 5/22/2016.

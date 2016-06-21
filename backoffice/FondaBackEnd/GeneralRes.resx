@@ -117,20 +117,143 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddFavRestException" xml:space="preserve">
+    <value>Error al agregar un restaurante favorito del comensal</value>
+  </data>
   <data name="BasicAuthSheme" xml:space="preserve">
     <value>Basic</value>
     <comment>Sheme de la autorizacion Basica del RestAuth</comment>
+  </data>
+  <data name="BeginLogger" xml:space="preserve">
+    <value>Ha iniciado el Logger</value>
+  </data>
+  <data name="CommensalEmail" xml:space="preserve">
+    <value>Email del comensal</value>
   </data>
   <data name="CommensalIDHeader" xml:space="preserve">
     <value>id</value>
     <comment>indice en el header en donde se guarda de identificador del comensal.</comment>
   </data>
+  <data name="DeleteFavRestException" xml:space="preserve">
+    <value>Error al eliminar restaurant favorito de un comensal</value>
+  </data>
+  <data name="EndLogger" xml:space="preserve">
+    <value>Ha finalizado el logger</value>
+  </data>
+  <data name="FavoriteRestaurant" xml:space="preserve">
+    <value>Restaurante favorito del comensal </value>
+  </data>
   <data name="FondaAuthSheme" xml:space="preserve">
     <value>Fonda</value>
     <comment>Sheme de la autorizacion Fonda del RestAuth</comment>
   </data>
+  <data name="GetCommensalEmailException" xml:space="preserve">
+    <value>Error al buscar el comensal por email</value>
+  </data>
+  <data name="GetFavoriteRestaurant" xml:space="preserve">
+    <value>Error al obtener la lista de los restaurantes favoritos del comensal</value>
+  </data>
+  <data name="GetRestFavException" xml:space="preserve">
+    <value>Error al obtener la lista de restaurant para elegir los favoritos del comensal</value>
+  </data>
+  <data name="InvalidInformation" xml:space="preserve">
+    <value>Datos Invalidos</value>
+  </data>
+  <data name="RestAddedToFav" xml:space="preserve">
+    <value>Restaurante Agregado a Favoritos: </value>
+  </data>
+  <data name="Restaurant" xml:space="preserve">
+    <value>Categoria de Restaurante</value>
+  </data>
   <data name="RestaurantIDHeader" xml:space="preserve">
     <value>id</value>
     <comment>indice en el header en donde se guarda el identificador del restaurant</comment>
+  </data>
+  <data name="RestDeletedFromFav" xml:space="preserve">
+    <value>Restaurante Eliminado de Favoritos: </value>
+  </data>
+  <data name="Slash" xml:space="preserve">
+    <value>/</value>
+  </data>
+  <data name="AddProfileException" xml:space="preserve">
+    <value>Error al agregar un perfil de un comensal</value>
+  </data>
+  <data name="DeleteProfileException" xml:space="preserve">
+    <value>Error al eliminar un perfil de un comensal</value>
+  </data>
+  <data name="GetProfileException" xml:space="preserve">
+    <value>Error al buscar el Perfil de un Commensal</value>
+  </data>
+  <data name="InvalidInformationProfile" xml:space="preserve">
+    <value>Datos del Perfil Invalidos</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Perfil del Commensal: </value>
+  </data>
+  <data name="ProfileAdded" xml:space="preserve">
+    <value>Profile Agregado al Commensal: </value>
+  </data>
+  <data name="ProfileDeleted" xml:space="preserve">
+    <value>Profile Eliminado de un Commensal: </value>
+  </data>
+  <data name="ProfileUpdated" xml:space="preserve">
+    <value>Profile Modificado de un Commensal: </value>
+  </data>
+  <data name="UpdateProfileException" xml:space="preserve">
+    <value>Error al modificar un perfil de un comensal</value>
+  </data>
+  <data name="Commensal" xml:space="preserve">
+    <value>Commensal: </value>
+  </data>
+  <data name="GetCommensalException" xml:space="preserve">
+    <value>Error al Buscar el Commensal</value>
+  </data>
+  <data name="GetCommensalIdException" xml:space="preserve">
+    <value>Error al Buscar el Id del Commensal en el Header</value>
+  </data>
+  <data name="GetProfilesException" xml:space="preserve">
+    <value>Error al buscar Lista de Perfiles de un Commensal</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token del Commensal: </value>
+  </data>
+  <data name="DeleteTokenException" xml:space="preserve">
+    <value>Error al eliminar un Token de un commensal </value>
+  </data>
+  <data name="GetTokenException" xml:space="preserve">
+    <value>Error al buscar un Token de un commensal </value>
+  </data>
+  <data name="ValidateAccountEmailException" xml:space="preserve">
+    <value>Error al validar cuenta por email</value>
+  </data>
+  <data name="ValidateAccountTokenException" xml:space="preserve">
+    <value>Error al validar Token</value>
+  </data>
+  <data name="Authorize" xml:space="preserve">
+    <value>Error en Authorize</value>
+  </data>
+  <data name="AddCommensal" xml:space="preserve">
+    <value>Error al agregar un commensal</value>
+  </data>
+  <data name="GetAllRestaurantsException" xml:space="preserve">
+    <value>Error al obtener la lista de restaurant para elegir los favoritos del comensal</value>
+  </data>
+  <data name="GetFavoriteRestaurantException" xml:space="preserve">
+    <value>Error al obtener la lista de los restaurantes favoritos del comensal</value>
+  </data>
+  <data name="ParametersAddFavRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar agregar un restaurante a favoritos</value>
+  </data>
+  <data name="ParametersDeleteFavRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar eliminar un restaurant favorito</value>
+  </data>
+  <data name="ParametersGetAllRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar obtener los restaurantes disponibles</value>
+  </data>
+  <data name="ParametersGetComensEmailException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar obtener el email de un comensal</value>
+  </data>
+  <data name="ParametersGetFavRestException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar obtener los restaurantes favoritos del comensal</value>
   </data>
 </root>

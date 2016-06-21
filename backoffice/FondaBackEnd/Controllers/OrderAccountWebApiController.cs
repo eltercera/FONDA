@@ -5,6 +5,7 @@ using System.Web.Http;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.BackEnd.ActionFilters;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -32,7 +33,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [Route("profile/{id}/{tip}/CreditCarPayment/")]
         [HttpPost]
         [FondaAuthToken]
-        public IHttpActionResult requestClosedOrder(int id, float tip,[FromBody] CreditCarPayment payment)
+        public IHttpActionResult requestClosedOrder(int id, float tip,[FromBody] CreditCardPayment payment)
         {
             Commensal commensal = GetCommensal(Request.Headers);
             if (commensal == null)
@@ -57,7 +58,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             }
             
             Account account = GetAccount(commensal);
-            account.Status = FactoryDAO.GetClosedAccountStatus();
+
+            //account.Status = FactoryDAO.GetClosedAccountStatus();
             try
             {
                 orderAccountDao.Save(account);
@@ -74,28 +76,27 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 total += dish.Dishcost * dish.Count;
             }
             
-            Invoice invoice = new Invoice();
-            invoice.Account = account;
-            invoice.Payment = payment;
-            invoice.Status = FactoryDAO.GetGeneratedInvoiceStatus();
-            invoice.Restaurant = account.Table.Restaurant;// restaurantDAO.findByTable(account.Table);
-            invoice.Tip = tip;
-            invoice.Tax = 10;
-            invoice.Total = total;
-            invoice.Profile = profile;
-            invoice.Date = DateTime.Now;
+   //         Invoice invoice = (Invoice)EntityFactory.GetInvoice(null, payment,
+
+       //      profile, tip, total, 10, null, 2);
+
+      //      invoice.Restaurant = account.Table.Restaurant;// restaurantDAO.findByTable(account.Table);
+
+
 
             try
             {
-                invoiceDAO.Save(invoice);
+      //          invoiceDAO.Save(invoice);
             }
             catch (SaveEntityFondaDAOException e)
             {
                 Console.WriteLine(e.ToString());
                 return InternalServerError(e);
             }
-            
-            return Ok(invoice);
+
+            //      return Ok(invoice);
+
+            return BadRequest();
         }
 
         private Account GetAccount(Commensal commensal)

@@ -2,65 +2,85 @@ package com.ds201625.fonda.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.AllRestaurantService;
-import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.interfaces.IAllRestaurantsView;
+import com.ds201625.fonda.interfaces.IFavoriteView;
+import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
-import com.google.gson.Gson;
+import com.ds201625.fonda.presenter.FavoritesPresenter;
+import com.ds201625.fonda.views.fragments.BaseFragment;
+import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
+import com.ds201625.fonda.views.fragments.RestaurantListFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AllRestaurantActivity extends BaseNavigationActivity {
+
+/**
+ * Activity de Todos los Resturantes
+ */
+public class AllRestaurantActivity extends BaseNavigationActivity
+        implements IFavoriteView, IAllRestaurantsView,
+        RestaurantListFragment.restaurantListFragmentListener {
 
     // UI references.
-    private ListView list;
-
-    private RestaurantList adapter;
-    private List<Restaurant> restaurantList;
+    private String emailToWebService;
     private Commensal logedComensal;
-    private String TAG ="FavoritesActivity";
+    private String TAG ="AllRestaurantActivity";
+    private FondaCommandFactory facCmd;
+    private Restaurant restaurant;
+    /**
+     * Item del Menu para favorito
+     */
+    private MenuItem setAsFavorite;
+    private MenuItem reserveBotton;
 
-    //Declaracion de
-    String[] names = {
-            "The dining room",
-            "Mogi Mirin",
-            "Gordo & Magro",
-            "La Casona",
-            "Tony's"} ;
-    String[] location = {
-            "La castellana",
-            "Los dos caminos",
-            "La California",
-            "Parque central",
-            "El Rosal"} ;
-    String[] shortDescription = {
-            "Casual",
-            "Romantico",
-            "Italiano",
-            "Italiano",
-            "Americano"} ;
-    Integer[] imageId = {
-            R.mipmap.ic_restaurant001,
-            R.mipmap.ic_restaurant002,
-            R.mipmap.ic_restaurant003,
-            R.mipmap.ic_restaurant004,
-            R.mipmap.ic_restaurant005,
+    /**
+     * Administrador de Fragments
+     */
+    private FragmentManager fm;
 
-    };
+    /**
+     * ToolBar
+     */
+    private Toolbar tb;
+    /**
+     * Fragmento AllRestaurant
+     */
+    private RestaurantListFragment allRestaurantFrag;
+    /**
+     * Fragmento DetailRestaurant
+     */
+    private DetailRestaurantFragment detailRestaurantFrag;
+    /**
+     * Variable booleana para determinar el form
+     */
+    private boolean onForm;
+    /**
+     * Presentador Favoritos
+     */
+    private IFavoriteViewPresenter presenter;
 
-
+    /**
+     * Metodo que inicializa el activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_favorites);
+        Log.d(TAG,"Ha entrado en onCreate");
+        setContentView(R.layout.activity_all_restaurant);
+        presenter = new FavoritesPresenter(this);
         /**
          * Esta es la validacion de si el usuario ya esta loggeado o no.
          */
@@ -83,134 +103,265 @@ public class AllRestaurantActivity extends BaseNavigationActivity {
             return;
         }
         else {
-            try {
-                Commensal log = SessionData.getInstance().getCommensal();
 
-                String emailToWebService;
-                try{
-                    emailToWebService=log.getEmail()+"/";
-                    Log.v(TAG,"Email->"+emailToWebService);
-                    RequireLogedCommensalService getComensal = FondaServiceFactory.getInstance().getLogedCommensalService();
-                    logedComensal =getComensal.getLogedCommensal(emailToWebService);
-                    Log.v(TAG,logedComensal.getId()+"");
+            // Obtencion de los componentes necesaios de la vista
+            tb = (Toolbar) findViewById(R.id.toolbar);
+            fm = getSupportFragmentManager();
 
+            // Creacion de fragmen y pase argumento
+            allRestaurantFrag = new RestaurantListFragment();
+            detailRestaurantFrag = new DetailRestaurantFragment();
 
+            Bundle args = new Bundle();
+            args.putBoolean("multiSelect", true);
+            allRestaurantFrag.setArguments(args);
 
-
-                }catch(NullPointerException nu){
-                    nu.printStackTrace();
-                }
-
-
-                list=(ListView)findViewById(R.id.listViewFavorites);
-    /*
-                    AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                            getAllFavoriteRestaurantsService();
-
-                    restaurantList =allFavoriteRestaurant.getAllFavoriteRestaurant(logedComensal.getId());
-    */
-                AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
-                        getAllRestaurantsService();
-                restaurantList = allRestaurant.getAllRestaurant();
+            //Lanzamiento de profileListFrag como el principal
+            fm.beginTransaction()
+                    .replace(R.id.fragment_container_rest, allRestaurantFrag)
+                    .commit();
 
 
-
-                try {
-                    for (Restaurant rest : restaurantList) {
-                        Log.v("WEBSERVICE", rest.getId() + "");
-                        Log.v("WEBSERVICE", rest.getName());
-                        Log.v("WEBSERVICE", rest.getAddress());
-                    }
-                    setupListView();
-                }catch (NullPointerException ex){
-                    // Log.v(TAG,R.string.favorite_conexion_fail_message );
-
-                    Toast.makeText(getApplicationContext(), R.string.favorite_conexion_fail_message,
-                            Toast.LENGTH_LONG).show();
-                }
-
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-
-
-
-
-
-
-
-            /**
-             * Esto es lo que tenia el Modulo de Favoritos en principio.
-             */
-
-         /*
-            list = (ListView) findViewById(R.id.listViewFavorites);
-
-            AllFavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
-                    getAllFavoriteRestaurantsService();
-            restaurantList = allFavoriteRestaurant.getAllFavoriteRestaurant(2);
-        */
-        /*
-        AllRestaurantService allRestaurant = FondaServiceFactory.getInstance().
-                getAllRestaurantsService();
-        restaurantList = allRestaurant.getAllRestaurant();
-        */
-/*        for (Restaurant rest : restaurantList){
-            Log.v("WEBSERVICE", rest.getId() + "");
-            Log.v("WEBSERVICE",rest.getName());
-            Log.v("WEBSERVICE",rest.getAddress());
-        }*/
+            // Asegura que almenos onCreate se ejecuto en el fragment
+            fm.executePendingTransactions();
         }
+        Log.d(TAG,"Ha salido de onCreate");
     }
 
     /**
      * Acción de saltar esta actividad.
      */
     private void skip() {
+        Log.d(TAG,"Ha entrado en skip");
         startActivity(new Intent(this,LoginActivity.class));
+        Log.d(TAG,"Ha salido de skip");
     }
 
+
     /**
-     * Inicializa el ListView y le asigna valores.
-     * @param
+     * Realiza el intercambio de vistas de fragments
+     * @param fragment el fragment que se quiere mostrar
+     */
+    private void showFragment(BaseFragment fragment) {
+        Log.d(TAG,"Ha entrado en showFragment");
+        fm.beginTransaction()
+                .replace(R.id.fragment_container_rest,fragment)
+                .commit();
+        fm.executePendingTransactions();
+
+        //Muestra y oculta compnentes.
+        if(fragment.equals(allRestaurantFrag)){
+            Log.d(TAG,"Fragment allRestaurantFrag");
+            if(setAsFavorite != null)
+                setAsFavorite.setVisible(false);
+            if(reserveBotton != null)
+                reserveBotton.setVisible(false);
+            onForm = false;
+        } else {
+            if(setAsFavorite != null)
+                setAsFavorite.setVisible(true);
+            if(reserveBotton != null)
+                reserveBotton.setVisible(true);
+
+            Log.d(TAG,"Fragment detailRestaurantFrag");
+            onForm = true;
+
+        }
+        Log.d(TAG,"Ha salido de showFragment");
+    }
+
+
+    /**
+     * Sobre escritura para la iniciacion del menu en el toolbars
+     * @param menu
      * @return
      */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        Log.d(TAG,"Ha entrado en onCreateOptionsMenu");
+        getMenuInflater().inflate(R.menu.detail_restaurant, menu);
+        setAsFavorite = menu.findItem(R.id.action_set_favorite);
+        reserveBotton = menu.findItem(R.id.action_make_order);
 
-    private void setupListView(){
-        adapter = new
-                RestaurantList(AllRestaurantActivity.this, names,location ,shortDescription,imageId,restaurantList);
-        list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Intent detailActivity = new Intent(AllRestaurantActivity.this, DetailRestaurantActivity.class);
-                Restaurant test = getSelectedRestaurant(position);
-                detailActivity.putExtra("restaurant", new Gson().toJson(test));
-                detailActivity.putExtra("commensal", new Gson().toJson(logedComensal));
-                startActivity(detailActivity);
-            }
-        });
+        Log.d(TAG,"Ha salido de onCreateOptionsMenu");
+        return true;
     }
 
+    /**
+     * Opciones y acciones del menu en el toolbars
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG,"Ha entrado en onOptionsItemSelected");
+        switch (item.getItemId()) {
+            case R.id.action_set_favorite:
+                manageFavorite();
+                break;
+            case R.id.action_make_order:
+                goReserve();
+                break;
+        }
+        Log.d(TAG,"Ha salido de onOptionsItemSelected");
+        return true;
+    }
 
     /**
-     * Devuelve el restaurante Seleccionado por el usuario.
-     * @param position
-     * @return Restaurant.
+     * Permite ir a reserva
      */
-    private Restaurant getSelectedRestaurant(int position){
-        int contador =0;
-        for (Restaurant restaurant: this.restaurantList){
-            if (contador == position){
-                Log.v(TAG, restaurant.getName());
-                return restaurant;
+    private void goReserve() {
+        Intent r = new Intent(this,ReserveActivity.class);
+        startActivity(r);
+    }
+
+    /**
+     * Permite el manejo del Favorito, si no es favorito lo agrega y si lo es, lo elimina
+     */
+
+    private void manageFavorite() {
+        Log.d(TAG,"Ha entrado en save");
+        //Guardar un favorito
+        try {
+            try {
+
+                        if (isFavorite()) {
+                            try{
+                                try {
+                                    presenter.deleteFavoriteRestaurant(restaurant);
+                                } catch (Exception e) {
+                                    Log.e(TAG,"Error en el manejo de un favorito",e);
+                                    Toast.makeText(getApplicationContext(), R.string.favorite_remove_fail_meessage,
+                                            Toast.LENGTH_LONG).show();
+
+                                }
+                                Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
+                                        Toast.LENGTH_LONG).show();
+                                setAsFavorite.setIcon(R.drawable.ic_grade_creme_24dp);
+                                Log.d(TAG,"Se ha eliminado el favorito");
+                            } catch (Exception e) {
+                                Log.e(TAG,"Error en el manejo de un favorito",e);
+                            }
+                        } else {
+                            try{
+                                //Llamo al comando de addFavoriteRestaurant
+                                presenter.addFavoriteRestaurant(restaurant);
+                            try {
+
+                                } catch (Exception e) {
+                                    Log.e(TAG,"Error en el manejo de un favorito",e);
+                                    Toast.makeText(getApplicationContext(), R.string.favorite_add_fail_meessage,
+                                            Toast.LENGTH_LONG).show();
+
+                                }
+                                Toast.makeText(getApplicationContext(), R.string.favorite_add_success_meessage,
+                                        Toast.LENGTH_LONG).show();
+                                setAsFavorite.setIcon(R.drawable.ic_star_yellow);
+                                Log.d(TAG,"Se ha guardado el favorito");
+                            }  catch (Exception e) {
+                                Log.e(TAG,"Error en el manejo de un favorito",e);
+                            }
+                        }
+ }
+            catch (NullPointerException nu) {
+                Log.e(TAG,"Error en el manejo de un favorito",nu);
             }
-            contador++;
+        } catch (Exception e) {
+            Log.e(TAG,"Error en el manejo de un favorito",e);
         }
+        hideKyboard();
+
+    }
+
+    /**
+     * Devuelve el estado del restaurante seleccionado (si es favorito) con respecto al usuario.
+     * @param
+     * @return Boolean.
+     */
+    public boolean isFavorite() {
+      try {
+         //Llamo al comando de requireLogedCommensalCommand
+            presenter.findLoggedComensal();
+            restaurant = detailRestaurantFrag.getRestaurant();
+            List<Restaurant> restaurantList = presenter.findAllFavoriteRestaurant();
+
+            for (Restaurant rest : restaurantList) {
+                if (rest.getId() == restaurant.getId()) {
+                    return true;
+                }
+            }
+        }
+        catch (Exception e) {
+            Log.e(TAG,"Error al determinar si es favorito",e);
+        }
+        return false;
+    }
+
+    /**
+     * Cuando se selecciona un restaurant
+     * @param r
+     */
+    @Override
+    public void OnRestaurantSelect(Restaurant r) {
+        Log.d(TAG,"Ha entrado en OnRestaurantSelect");
+        showFragment(detailRestaurantFrag);
+        detailRestaurantFrag.setRestaurant(r);
+        if (isFavorite()){
+            setAsFavorite.setIcon(R.drawable.ic_star_yellow);
+        }else {
+            setAsFavorite.setIcon(R.drawable.ic_grade_creme_24dp);
+        }
+        Log.d(TAG,"Ha seleccionado el restaurante "+r.getName().toString()+r.getId());
+        Log.d(TAG,"Han salido de OnRestaurantSelect");
+    }
+
+    /**
+     * Al seleccionar varios restaurantes
+     * @param r
+     */
+        @Override
+    public void OnRestaurantSelected(ArrayList<Restaurant> r) {
+
+    }
+    /**
+     * Inicia el seleccionar del restaurante
+     */
+    @Override
+    public void OnRestaurantSelectionMode() {
+        tb.setVisibility(View.GONE);
+    }
+
+    /**
+     * Finaliza el seleccionar del restaurante
+     */
+    @Override
+    public void OnRestaurantSelectionModeExit() {
+        tb.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * Al presionar el botón volver
+     */
+    @Override
+    public void onBackPressed() {
+        Log.d(TAG,"Ha entrado en onBackPressed");
+        if (!onForm) {
+            super.onBackPressed();
+        } else {
+            showFragment(allRestaurantFrag);
+        }
+        Log.d(TAG,"Ha salido de onBackPressed");
+
+    }
+
+    @Override
+    public List<Restaurant> getListSW() {
         return null;
     }
 
+    @Override
+    public void updateList() {
 
+    }
 }

@@ -9,7 +9,7 @@ import java.util.Date;
 /*
  Clase quee representa la factura del restaurant
  */
-public class Invoice extends BaseEntity{
+public class Invoice extends BaseEntity {
 
     /**
      * Float que define la propina de la cuenta

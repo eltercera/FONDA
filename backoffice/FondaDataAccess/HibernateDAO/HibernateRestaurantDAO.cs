@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using NHibernate.Criterion;
 using NHibernate;
+using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -213,8 +214,155 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             ICriterion criterion = Expression.Eq("RestaurantCategory", category);
             return (FindAll(criterion));
         }
+
+		#region 3era entrega
+
+		public IList<Restaurant> FindByFilters (
+			string query, int idZone, int  idCategory, int max , int page)
+		{
+			Conjunction generalCriterial = Restrictions.Conjunction();
+
+			if (query != null && query != String.Empty)
+			{
+				query = "%" + query + "%";
+				generalCriterial.Add(Restrictions.Disjunction ()
+					.Add (Restrictions.InsensitiveLike ("Name", query))
+					.Add (Restrictions.InsensitiveLike ("Address", query))
+				);
+			}
+
+			if (idZone > 0)
+			{
+				generalCriterial.Add (Restrictions.Eq ("Zone.Id", idZone));
+			}
+
+			if (idCategory > 0)
+			{
+				generalCriterial.Add (Restrictions.Eq ("RestaurantCategory.Id", idCategory));
+			}
+
+			return FindAllSortedByName (true,generalCriterial, max, (page - 1) * max);
+		}
+
+        #endregion
+
+        #region OrderAccount
+
+        /// <summary>
+        /// Obtiene las ordenes cerradas de un Restaurante
+        /// </summary>
+        /// <param name="restaurant">El id de un Restaurant</param>
+        /// <returns>Una lista de Close Account</returns>
+        public IList<Account> ClosedOrdersByRestaurantId(int restaurantId)
+        {
+            try
+            {
+
+                //TODO: Excepcion en caso de no encontrar restaurante
+                Restaurant restaurant = Session.QueryOver<Restaurant>()
+                    .Where(r => r.Id == restaurantId)
+                    .Where(r => r.Status == ActiveSimpleStatus.Instance)
+                    .SingleOrDefault();
+
+                IList<Account> list = new List<Account>();
+
+                //TODO: Excepcion en caso de no encontrar lista llena
+                foreach (Account closedAccount in restaurant.Accounts)
+                {
+                    if (closedAccount.Status.Equals(ClosedAccountStatus.Instance))
+                        list.Add(closedAccount);
+                }
+
+                return list;
+
+            }
+            //TODO: Arrojar excepciones personalizadas
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("No se encontraron ordenes cerradas", e);
+            }
+
+        }
+
+        /// <summary>
+        /// Obtiene las ordenes abiertas de un Restaurante
+        /// </summary>
+        /// <param name="idRestaurant">Un ID de Restaurant tipo int</param>
+        /// <returns>Una List de Accounts</returns>
+        public IList<Account> OpenOrdersByRestaurantId(int restaurantId)
+        {
+
+            try
+            {
+                //TODO: Excepcion en caso de no encontrar restaurante
+                Restaurant restaurant = Session.QueryOver<Restaurant>()
+                    .Where(r => r.Id == restaurantId)
+                    .Where(r => r.Status == ActiveSimpleStatus.Instance)
+                    .SingleOrDefault();
+
+                IList<Account> list = new List<Account>();
+
+                //TODO: Excepcion en caso de no encontrar lista llena
+                foreach (Account closedAccount in restaurant.Accounts)
+                {
+                    if (closedAccount.Status.Equals(OpenAccountStatus.Instance))
+                        list.Add(closedAccount);
+                }
+
+                return list;
+
+            }
+            //TODO: Arrojar excepciones personalizadas
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("Not Found invoice", e);
+            }
+        }
+
+        /// <summary>
+        /// Libera la mesa de estar ocupada pasa a estar disponible
+        /// </summary>
+        /// <param name="restaurant">Restaurante al que pertenece la mesa</param>
+        /// <param name="tableId">Id de la mesa a liberar</param>
+        public void ReleaseTable(Restaurant restaurant, int tableId)
+        {
+            ITableDAO _tableDAO;
+            FreeTableStatus freeStatus;
+            bool exists = false;
+            
+            try
+            {
+                _tableDAO = _facDAO.GetTableDAO();
+                freeStatus = _facDAO.GetFreeTableStatus();
+                foreach (Table t in restaurant.Tables)
+                {
+                    if (t.Id.Equals(tableId))
+                        exists = true;
+                }
+
+                if(exists)
+                {
+                    Table table = _tableDAO.FindById(tableId);
+                    restaurant.Tables.Remove(table);
+                    table.Status = freeStatus;
+                    restaurant.Tables.Add(table);
+                }
+
+                 Save(restaurant);
+
+            }
+            //TODO: Arrojar excepciones personalizadas
+            catch (ArgumentOutOfRangeException ex)
+            {
+                throw new FondaIndexException();
+            }
+            catch(InvalidCastException ex)
+            {
+                throw new InvalidCastException();
+            }
+        }
+
+        #endregion
     }
-
-
 }
 

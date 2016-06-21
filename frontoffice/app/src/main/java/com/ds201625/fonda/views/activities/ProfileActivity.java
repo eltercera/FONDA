@@ -7,13 +7,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.ProfileFormFragment;
@@ -157,15 +158,24 @@ public class ProfileActivity extends BaseNavigationActivity
         profileFormFrag.changeProfile();
 
         Profile profile = profileFormFrag.getProfile();
-        ProfileService ps = FondaServiceFactory.getInstance()
-                .getProfileService(SessionData.getInstance().getToken());
-        try {
+        try
+        {
+            //ProfileService ps = FondaServiceFactory.getInstance()
+            //      .getProfileService(SessionData.getInstance().getToken());
+
             if (profile.getId() == 0) {
-                ps.addProfile(profile);
+                Command commandoCreateProfile = FondaCommandFactory.createCreateProfileCommand();
+                commandoCreateProfile.setParameter(0,profile);
+                commandoCreateProfile.run();
             } else {
-                ps.editProfile(profile);
+                Command commandoUpdateProfile = FondaCommandFactory.updateProfileCommand();
+                commandoUpdateProfile.setParameter(0,profile);
+                commandoUpdateProfile.run();
             }
+
         } catch (RestClientException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         profileListFrag.updateList();

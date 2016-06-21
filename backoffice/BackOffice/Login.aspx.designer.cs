@@ -85,6 +85,15 @@ namespace BackOffice.Seccion.Configuracion {
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword passwordIni;
         
         /// <summary>
+        /// Control buttonLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton buttonLogin;
+        
+        /// <summary>
         /// Control user.
         /// </summary>
         /// <remarks>

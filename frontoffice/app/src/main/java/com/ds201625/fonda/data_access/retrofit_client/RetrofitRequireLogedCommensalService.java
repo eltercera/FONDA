@@ -1,5 +1,7 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
+import android.util.Log;
+
 import com.ds201625.fonda.data_access.retrofit_client.clients.RequireLogedCommensalClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
@@ -9,10 +11,12 @@ import java.io.IOException;
 
 import retrofit2.Call;
 
+
 /**
- * Created by jesus on 21/05/16.
+ * Implementacion de la interfaz RequireLogedCommensalService
  */
 public class RetrofitRequireLogedCommensalService implements RequireLogedCommensalService {
+    private String TAG = "RetrofitRequireLogedCommensalService";
     private RequireLogedCommensalClient currentLogedCommensal = RetrofitService.getInstance().
             createService(RequireLogedCommensalClient.class);
 
@@ -20,39 +24,24 @@ public class RetrofitRequireLogedCommensalService implements RequireLogedCommens
         super();
     }
 
+    /**
+     * Obtiene el comensal logueado
+     *
+     * @param email
+     * @return
+     * @throws RestClientException
+     */
     @Override
-    public Commensal getLogedCommensal(String fk1) {
-        Call<Commensal> call = currentLogedCommensal.getAllFavoriteRestaurant(fk1);
+    public Commensal getLogedCommensal(String email) throws RestClientException {
+        Log.d(TAG, "Se obtiene el comensal logeado: "+email);
+        Call<Commensal> call = currentLogedCommensal.getAllFavoriteRestaurant(email);
         Commensal test = null;
         try {
             test =call.execute().body();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Se ha generado error en la clase getLogedCommensal", e);
         }
         return test;
     }
+
 }
-
-/*
-*
-*     private AllFavoriteRestaurantClient currentAllFavoriteRestaurantClient =
-            RetrofitService.getInstance().createService(AllFavoriteRestaurantClient.class);
-
-    public RetrofitAllFavoriteRestaurantService() {
-        super();
-    }
-
-    @Override
-    public List<Restaurant> getAllFavoriteRestaurant(int fk1) {
-
-        Call<List<Restaurant>> call = currentAllFavoriteRestaurantClient.getAllFavoriteRestaurant(fk1);
-        List<Restaurant> test = null;
-        try {
-            test =call.execute().body();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return test;
-    }
-*
-* */

@@ -8,7 +8,7 @@ using System.Xml;
 using System.Text;
 using System.Web.SessionState;
 using BackOffice.Content;
-
+using FondaResources.Login;
 
 public partial class MasterUI : System.Web.UI.MasterPage
 {
@@ -35,11 +35,11 @@ public partial class MasterUI : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
 
-
+        System.Diagnostics.Debug.WriteLine("entre modify code behind");
         try
         {
             ///verifica si un usuario esta en el sistema
-            if (Session[RecursoMaster.sessionUserID] != null)
+            if (Session[ResourceLogin.sessionUserID] != null)
             {
                 DropDownMenu();
             }
@@ -111,11 +111,11 @@ public partial class MasterUI : System.Web.UI.MasterPage
     protected void closesecion(object sender, EventArgs e)
     {
 
-        Session[RecursoMaster.sessionRol] = null;
-        Session[RecursoMaster.sessionName] = null;
-        Session[RecursoMaster.sessionLastname] = null;
-        Session[RecursoMaster.sessionUserID] = null;
-        Session[RecursoMaster.sessionRestaurantID] = null;
+        Session[ResourceLogin.sessionRol] = null;
+        Session[ResourceLogin.sessionName] = null;
+        Session[ResourceLogin.sessionLastname] = null;
+        Session[ResourceLogin.sessionUserID] = null;
+        Session[ResourceLogin.sessionRestaurantID] = null;
         Response.Redirect("~/Login.aspx");
 
     }
