@@ -24,11 +24,14 @@ namespace FondaBackOfficeLogicTest
         private Invoice _invoice;
         private Account _account;
         private IInvoiceDao _invoiceDAO;
+        private ICommensalDAO _commensalDAO;
         private IList<object> _listObject;
         private IList<int> _list;
+        private Commensal _commensal;
         private Profile _profile;
         private CashPayment _cashPayment;
         private CreditCardPayment _creditPayment;
+        private int _commensalId;
 
 
         [SetUp]
@@ -38,6 +41,7 @@ namespace FondaBackOfficeLogicTest
             _listObject = new List<object>();
             _list = new List<int>();
             _orderAccountDAO = _facDAO.GetOrderAccountDAO();
+            _commensalDAO = _facDAO.GetCommensalDAO();
             _restaurant = new Restaurant();
             _listClosedOrders = new List<Account>();
             _restaurant.Id = 1;
@@ -46,6 +50,7 @@ namespace FondaBackOfficeLogicTest
             _restaurantId = _profileId= 1;
             _accountId = 3;
             _invoiceId = 10;
+            _commensalId = 20;
             _account = new Account();
             _invoice = EntityFactory.GetInvoice();
             _account.Id = 2;
@@ -59,6 +64,7 @@ namespace FondaBackOfficeLogicTest
             UserAccount ua = _uaDAO.FindById(20);
             _profile =_profileDao.FindById(_profileId);
             _invoice = _invoiceDAO.FindById(_invoiceId);
+            _commensal = (Commensal) _commensalDAO.FindById(_commensalId);     
             //IBaseEntityDAO<Payment> bla = _facDAO
         }
 
@@ -102,9 +108,9 @@ namespace FondaBackOfficeLogicTest
         }
 
         [Test(Description ="Verifica que devuelva una lista de Invoice dado un perfil")]
-        public void CommandGetInvoicesByProfile()
+        public void CommandGetInvoicesByProfileTest()
         {
-            _command = CommandFactory.CommandGetInvoicesByProfile(_profileId);
+            _command = CommandFactory.GetCommandGetInvoicesByProfile(_profileId);
             _command.Execute();
             _listInvoices = (List<Invoice>) _command.Receiver;
 
@@ -114,14 +120,30 @@ namespace FondaBackOfficeLogicTest
 
         [Test]
         [ExpectedException(typeof(CommandExceptionGetInvoicesByProfile))]
-        public void ErrorCommandGetInvoicesByProfile()
+        public void ErrorCommandGetInvoicesByProfileTest()
         {
-            _command = CommandFactory.CommandGetInvoicesByProfile(null);
+            _command = CommandFactory.GetCommandGetInvoicesByProfile(null);
             _command.Execute();
             _listInvoices = (List<Invoice>)_command.Receiver;
 
             Assert.IsNull(_listInvoices);
         }
+
+        [Test(Description = "")]
+        public void CommandValidateProfileByCommensalTest()
+        {
+            List<Object> parameters = new List<object>();
+
+            parameters.Add(_profileId);
+            parameters.Add(_commensal);
+            _command = CommandFactory.GetCommandValidateProfileByCommensal(parameters);
+            _command.Execute();
+
+            Assert.IsNull(_command);
+
+        }
+
+
 
         [TearDown]
         public void EndTests()

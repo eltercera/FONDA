@@ -11,10 +11,6 @@ namespace FondaLogic.Commands.OrderAccount
 {
     public class CommandValidateProfileByCommensal : Command
     {
-        int _restaurantId = 0;
-        string _symbol = null;
-        float _totalOrders = 0;
-
         public CommandValidateProfileByCommensal(Object receiver) : base(receiver) { }
 
         public override void Execute()
@@ -24,6 +20,7 @@ namespace FondaLogic.Commands.OrderAccount
             Profile profile;
             List<Object> parameters;
             List<Profile> profiles;
+
             try
             {
                 parameters = (List<Object>)Receiver;
@@ -32,7 +29,7 @@ namespace FondaLogic.Commands.OrderAccount
 
                 profiles = (List<Profile>)commensal.Profiles;
 
-                profile = profiles.FirstOrDefault(p => p.Id.Equals(profileId));
+                profile = profiles.FirstOrDefault(p => p.Id == profileId);
 
                 if (profile == null)
                     throw new NullReferenceException();
@@ -50,9 +47,7 @@ namespace FondaLogic.Commands.OrderAccount
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
 
-
-                Receiver = "";
-                //throw exceptionGetOrders;
+                throw exception;
             }
             catch(Exception ex)
             {

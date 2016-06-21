@@ -82,13 +82,21 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         public IHttpActionResult GetPaymentHistory(int profileId)
         {
             IList<Invoice> paymentHistory = new List<Invoice>();
+            List<Object> parameters = new List<object>();
+
 
             try
             {
-                Commensal commensal = GetCommensal(Request.Headers);                
-                //Comando para validar que el perfil pertenezca al comensal
-                Command command = CommandFactory.CommandGetInvoicesByProfile(profileId);
+                Commensal commensal = GetCommensal(Request.Headers);
+                parameters.Add(profileId);
+                parameters.Add(commensal);
+
+                Command validate = CommandFactory.GetCommandValidateProfileByCommensal(parameters);
+                validate.Execute();
+
+                Command command = CommandFactory.GetCommandGetInvoicesByProfile(profileId);
                 command.Execute();
+
                 paymentHistory = (IList<Invoice>) command.Receiver;
             }
             catch (CommandExceptionGetInvoicesByProfile ex)
