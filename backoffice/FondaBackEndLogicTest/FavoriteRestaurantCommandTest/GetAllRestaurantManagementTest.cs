@@ -58,19 +58,6 @@ namespace FondaBackEndLogicTest
 
 
         /// <summary>
-        /// prueba unitaria de comando con referencia nula
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(NullReferenceException))]
-        public void GetRestaurantCommandNullReferenceTest()
-        {
-            listRestaurant = (IList<Restaurant>)getRestaurant.Result;
-
-            Assert.AreNotEqual("Burger Shack", listRestaurant[3].Name);
-            Assert.IsNull(listRestaurant[1]);
-        }
-
-        /// <summary>
         /// prueba unitaria de excepcion de parametros invalidos
         /// </summary>
         [Test]

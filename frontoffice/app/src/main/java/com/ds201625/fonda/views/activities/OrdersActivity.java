@@ -645,14 +645,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
      * @param opc
      */
     public static void changeFrag (int opc){
-        if(opc == 1){
-
-                Bundle args = new Bundle();
-                args.putString("profile","Adriana");
-
-
-        }
-        if(opc == 2) {
+         if(opc == 2) {
             ccFrag = new CreditCardFragment();
             showFragment(ccFrag);
         }
