@@ -9,6 +9,9 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
+using com.ds201625.fonda.DataAccess.Exceptions;
+using FondaLogic.FondaCommandException.Login;
+using FondaLogic.FondaCommandException.login;
 
 namespace FondaLogic.Commands.Login
 {
@@ -37,26 +40,38 @@ namespace FondaLogic.Commands.Login
 
                 Receiver = _RoleDAO.GetAll();
             }
-            catch (NullReferenceException ex)
+            catch (InvalidTypeParameterException e)
             {
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetRol exceptionGetRol = new CommandExceptionGetRol(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetRoles,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRol);
-
-                throw exceptionGetRol;
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRol(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
             }
-            catch (Exception ex)
+            catch (ParameterIndexOutRangeException e)
             {
-                throw new System.InvalidOperationException(ex.Message);
-
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRol(FondaResources.Login.Errors.ClassNameIndexParameter, e);
             }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRol(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRol(FondaResources.Login.Errors.ClassNameGetRoles, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRol(FondaResources.Login.Errors.ClassNameGetRoles, e);
+            }
+            // Guarda el resultado.
+            Object Result = Receiver;
+            //logger
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
     }
 }

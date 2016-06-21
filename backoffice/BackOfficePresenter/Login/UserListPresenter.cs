@@ -103,18 +103,7 @@ namespace BackOfficePresenter.Login
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetEmployee,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
-
-                throw exceptionGetEmployee;
+               
             }
             catch (Exception ex)
             {
@@ -295,18 +284,7 @@ namespace BackOfficePresenter.Login
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetEmployee,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
-
-                throw exceptionGetEmployee;
+                
             }
             catch (Exception ex)
             {
@@ -380,18 +358,7 @@ namespace BackOfficePresenter.Login
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetRol exceptionGetRol = new CommandExceptionGetRol(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetRoles,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRol);
-
-                throw exceptionGetRol;
+               
             }
             catch (Exception ex)
             {
@@ -424,18 +391,7 @@ namespace BackOfficePresenter.Login
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetRestaurant exceptionGetRestaurant = new CommandExceptionGetRestaurant(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetRestaurantAll,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRestaurant);
-
-                throw exceptionGetRestaurant;
+                
             }
             catch (Exception ex)
             {
@@ -524,18 +480,7 @@ namespace BackOfficePresenter.Login
                     }
                     catch (NullReferenceException ex)
                     {
-                        //TODO: Arrojar Excepcion personalizada
-                        CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
-                        //Arrojar
-                        FondaResources.General.Errors.NullExceptionReferenceCode,
-                        FondaResources.Login.Errors.ClassNameGetEmployeeId,
-                        FondaResources.Login.Errors.CommandMethod,
-                        FondaResources.General.Errors.NullExceptionReferenceMessage,
-                        ex);
-
-                        Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
-
-                        //throw exceptionGetEmployee;
+                       
                     }
                     catch (Exception ex)
                     {
@@ -591,18 +536,7 @@ namespace BackOfficePresenter.Login
                         }
                         catch (SaveEntityFondaDAOException ex)
                         {
-                            //TODO: Arrojar Excepcion personalizada
-                            CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
-                            //Arrojar
-                            FondaResources.General.Errors.NullExceptionReferenceCode,
-                            FondaResources.Login.Errors.ClassNameGetEmployee,
-                            FondaResources.Login.Errors.CommandMethod,
-                            FondaResources.General.Errors.NullExceptionReferenceMessage,
-                            ex);
-
-                            Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
-
-                            //throw exceptionGetEmployee;
+                           
                         }
                         catch (Exception ex)
                         {
@@ -620,18 +554,7 @@ namespace BackOfficePresenter.Login
                     }
                     catch (SaveEntityFondaDAOException ex)
                     {
-                        //TODO: Arrojar Excepcion personalizada
-                        CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
-                        //Arrojar
-                        FondaResources.General.Errors.NullExceptionReferenceCode,
-                        FondaResources.Login.Errors.ClassNameGetEmployee,
-                        FondaResources.Login.Errors.CommandMethod,
-                        FondaResources.General.Errors.NullExceptionReferenceMessage,
-                        ex);
-
-                        Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
-
-                        //throw exceptionGetEmployee;
+                       
                     }
                     catch (Exception ex)
                     {
@@ -1199,18 +1122,7 @@ namespace BackOfficePresenter.Login
                         }
                         catch (NullReferenceException ex)
                         {
-                            //TODO: Arrojar Excepcion personalizada
-                            CommandExceptionGetRestaurant exceptionGetRestaurant = new CommandExceptionGetRestaurant(
-                            //Arrojar
-                            FondaResources.General.Errors.NullExceptionReferenceCode,
-                            FondaResources.Login.Errors.ClassNameGetRestaurant,
-                            FondaResources.Login.Errors.CommandMethod,
-                            FondaResources.General.Errors.NullExceptionReferenceMessage,
-                            ex);
-
-                            Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRestaurant);
-
-                            throw exceptionGetRestaurant;
+                           
                         }
                         catch (Exception ex)
                         {
@@ -1242,18 +1154,7 @@ namespace BackOfficePresenter.Login
                 }
                 catch (NullReferenceException ex)
                 {
-                    //TODO: Arrojar Excepcion personalizada
-                    CommandExceptionGetRestaurant exceptionGetRestaurant = new CommandExceptionGetRestaurant(
-                    //Arrojar
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.Login.Errors.ClassNameGetRestaurant,
-                    FondaResources.Login.Errors.CommandMethod,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
-                    ex);
-
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRestaurant);
-
-                    throw exceptionGetRestaurant;
+                   
                 }
                 catch (Exception ex)
                 {
@@ -1290,18 +1191,7 @@ namespace BackOfficePresenter.Login
             catch (NullReferenceException ex)
             {
 
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetEmployeeId,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
-
-                throw exceptionCreateEmployee;
+             
 
             }
             catch (Exception ex)
@@ -1324,18 +1214,7 @@ namespace BackOfficePresenter.Login
             catch (NullReferenceException ex)
             {
 
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionCreateEmployee exceptionCreateEmployee = new CommandExceptionCreateEmployee(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetEmployeeId,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionCreateEmployee);
-
-                throw exceptionCreateEmployee;
+                
 
             }
             catch (Exception ex)

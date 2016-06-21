@@ -267,19 +267,7 @@ namespace BackOfficePresenter.Login
                     }
                     catch (SaveEntityFondaDAOException ex)
                     {
-                        mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
-                        //TODO: Arrojar Excepcion personalizada
-                        CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
-                        //Arrojar
-                        FondaResources.General.Errors.NullExceptionReferenceCode,
-                        FondaResources.Login.Errors.ClassNameGetEmployee,
-                        FondaResources.Login.Errors.CommandMethod,
-                        FondaResources.General.Errors.NullExceptionReferenceMessage,
-                        ex);
-
-                        Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
-
-                        //throw exceptionGetEmployee;
+                        
                     }
                     catch (Exception ex)
                     {
@@ -393,18 +381,7 @@ namespace BackOfficePresenter.Login
                 }
                 catch (NullReferenceException ex)
                 {
-                    //TODO: Arrojar Excepcion personalizada
-                    CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
-                    //Arrojar
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.Login.Errors.ClassNameGetEmployee,
-                    FondaResources.Login.Errors.CommandMethod,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
-                    ex);
-
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
-
-                    //throw exceptionGetEmployee;
+                    
                 }
                 catch (Exception ex)
                 {
