@@ -19,6 +19,7 @@
         <include layout="@layout/toolbar_default" />
 
         <include layout="@layout/content_reserve" />
+        <include layout="@layout/floating_action_button_default"/>
 
     </android.support.design.widget.CoordinatorLayout>
 

@@ -6,6 +6,7 @@ import java.util.Date;
  * Created by rrodriguez on 5/4/16.
  */
 public class Reservation extends BaseEntity {
+
     private Date reserveDate;
     private Date createDate;
     private int commensalNumber;
@@ -17,6 +18,7 @@ public class Reservation extends BaseEntity {
         this.createDate = createDate;
         this.commensalNumber = commensalNumber;
         this.status = status;
+
     }
 
     public Date getReserveDate() {
