@@ -1,7 +1,6 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.CommandTests;
 
 import android.test.MoreAsserts;
-import android.util.Log;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.BaseEntity;
@@ -53,11 +52,6 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
     private Commensal commensal;
 
     /**
-     * Variable String que indica la clase actual
-     */
-    private String TAG = "DeleteFavoriteRestaurantCommandTest";
-
-    /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
      * @throws Exception
      */
@@ -86,11 +80,9 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
 
             assertNotNull(commensal.getId());
         } catch (RestClientException e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantCommandIsNotNull al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantCommandIsNotNull al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         }
     }
 
@@ -110,11 +102,9 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
 
             assertEquals(email, commensal.getEmail());
         } catch (RestClientException e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantCommandIsNotEmpty al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantCommandIsNotEmpty al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         }
     }
 
@@ -134,11 +124,9 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
             assertEquals(email, commensal.getEmail());
             MoreAsserts.assertNotEmpty(commensal.getFavoritesRestaurants());
         } catch (RestClientException e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantCommandElements al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestaurantCommandElements al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         }
     }
 
@@ -158,11 +146,9 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
             assertEquals(2, commensal.getFavoritesRestaurants().size());
 
         } catch (RestClientException e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestauranCommandtList al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestauranCommandtList al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         }
     }
 
@@ -180,11 +166,9 @@ public class DeleteFavoriteRestaurantCommandTest extends TestCase {
 
         }
         catch(NullPointerException e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestauranIsNull al" +
-                    " eliminar los restaurantes faoritos",e);
+            //fail("Se esperaba excepcion NullPointerException");
         }catch (Exception e) {
-            Log.e(TAG, "Error en testDeleteFavoriteRestauranIsNull al" +
-                    " eliminar los restaurantes faoritos",e);
+            e.printStackTrace();
         }
 
     }

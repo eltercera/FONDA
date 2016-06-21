@@ -1,7 +1,6 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.ServiceTests;
 
 import android.test.MoreAsserts;
-import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
@@ -32,11 +31,6 @@ public class AllRestaurantServiceTest extends TestCase {
     private List<Restaurant> restaurantList;
 
     /**
-     * Variable String que indica la clase actual
-     */
-    private String TAG = "AllRestaurantServiceTest";
-
-    /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
      * @throws Exception
      */
@@ -57,9 +51,9 @@ public class AllRestaurantServiceTest extends TestCase {
 
             assertNotNull(restaurantList.get(0).getName());
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAllRestaurantServiceIsNotNull al listar los restaurantes",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAllRestaurantServiceIsNotNull al listar los restaurantes",e);
+            e.printStackTrace();
         }
     }
 
@@ -75,9 +69,9 @@ public class AllRestaurantServiceTest extends TestCase {
 
            MoreAsserts.assertNotEmpty(restaurantList);
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAllRestaurantServiceIsNotEmpty al listar los restaurantes",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAllRestaurantServiceIsNotEmpty al listar los restaurantes",e);
+            e.printStackTrace();
         }
     }
 
@@ -92,9 +86,9 @@ public class AllRestaurantServiceTest extends TestCase {
 
             assertEquals("Pizza Familia", restaurantList.get(2).getName());
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAllRestaurantServiceElements al listar los restaurantes",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAllRestaurantServiceElements al listar los restaurantes",e);
+            e.printStackTrace();
         }
     }
 

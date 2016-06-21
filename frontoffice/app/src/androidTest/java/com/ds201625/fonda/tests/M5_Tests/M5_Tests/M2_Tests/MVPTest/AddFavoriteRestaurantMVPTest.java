@@ -1,7 +1,5 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.MVPTest;
 
-import android.util.Log;
-
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.interfaces.FavoriteView;
@@ -32,10 +30,6 @@ public class AddFavoriteRestaurantMVPTest extends TestCase implements FavoriteVi
      * lista de tipo Restaurant
      */
     private List<Restaurant> listRestaurant;
-    /**
-     * Variable String que indica la clase actual
-     */
-    private String TAG = "AddFavoriteRestaurantMVPTest";
 
     /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
@@ -69,7 +63,7 @@ public class AddFavoriteRestaurantMVPTest extends TestCase implements FavoriteVi
             listRestaurant = favoritesPresenter.findAllFavoriteRestaurant();
             assertEquals(selectedRestaurantAdd.getName(), listRestaurant.get(0).getName());
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurant al agregar favorito",e);
+            e.printStackTrace();
         }
     }
 
@@ -90,7 +84,7 @@ public class AddFavoriteRestaurantMVPTest extends TestCase implements FavoriteVi
             assertNull(listRestaurant.get(4).getName());
 
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurant al agregar favorito",e);
+            e.printStackTrace();
         }
     }
 
@@ -105,24 +99,15 @@ public class AddFavoriteRestaurantMVPTest extends TestCase implements FavoriteVi
             listRestaurant = favoritesPresenter.findAllFavoriteRestaurant();
             assertNotNull(listRestaurant.get(0));
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurant al agregar favorito",e);
+            e.printStackTrace();
         }
     }
 
-
-    /**
-     * Lista de todos los restaurantes favoritos
-     *
-     * @return restauraantes favoritos
-     */
     @Override
     public List<Restaurant> getListSW() {
         return null;
     }
 
-    /**
-     * Actualiza la lista luego de eliminar
-     */
     @Override
     public void updateList() {
 

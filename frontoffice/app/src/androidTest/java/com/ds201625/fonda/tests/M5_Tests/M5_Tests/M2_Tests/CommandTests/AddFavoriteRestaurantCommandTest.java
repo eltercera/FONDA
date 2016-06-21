@@ -54,10 +54,6 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
     private Commensal commensal;
 
     /**
-     * Variable String que indica la clase actual
-     */
-    private String TAG = "AddFavoriteRestaurantCommandTest";
-    /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
      * @throws Exception
      */
@@ -81,14 +77,15 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
             cmd = facCmd.addFavoriteRestaurantCommand();
             cmd.setParameter(0,logedCommensal);
             cmd.setParameter(1,selectedRestaurantAdd);
+         //   cmd = facCmd.addFavoriteRestaurantCommand();
             cmd.run();
             commensal = (Commensal) cmd.getResult();
 
             assertNotNull(commensal.getId());
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandIsNotNull al agregar favorito",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandIsNotNull al agregar favorito",e);
+            e.printStackTrace();
         }
     }
 
@@ -108,9 +105,9 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
 
             assertEquals(email, commensal.getEmail());
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandIsNotEmpty al agregar favorito",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandIsNotEmpty al agregar favorito",e);
+            e.printStackTrace();
         }
     }
 
@@ -130,9 +127,9 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
             assertEquals(email, commensal.getEmail());
             MoreAsserts.assertNotEmpty(commensal.getFavoritesRestaurants());
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandElements al agregar favorito",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandElements al agregar favorito",e);
+            e.printStackTrace();
         }
     }
 
@@ -152,9 +149,9 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
             assertEquals(3, commensal.getFavoritesRestaurants().size());
 
         } catch (RestClientException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandList al agregar favorito",e);
+            e.printStackTrace();
         } catch (Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandList al agregar favorito",e);
+            e.printStackTrace();
         }
     }
 
@@ -170,15 +167,11 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
 
             assertNull(commensal);
 
-        } catch(RestClientException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favorito",e);
-        }
+        } catch(RestClientException e) {}
         catch(NullPointerException e) {
-            Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favorito",e);
+
         }
-        catch(Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favorito",e);
-        }
+        catch(Exception e) {}
 
     }
 
@@ -193,12 +186,12 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
             cmd.run();
             commensal = (Commensal) cmd.getResult();
 
+            //assertNull(commensal);
+
         }catch (InvalidDataRetrofitException e){
-            Log.d("Test", "Error en testAddFavoriteRestaurantRetrofitException al agregar favorito", e);
+            Log.d("Test", "Se ha generado error DEL WEB SERVICE", e);
         }
-        catch(Exception e) {
-            Log.e(TAG,"Error en testAddFavoriteRestaurantRetrofitException al agregar favorito",e);
-        }
+        catch(Exception e) {}
 
     }
     /**
