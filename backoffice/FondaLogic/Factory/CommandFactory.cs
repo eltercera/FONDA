@@ -4,6 +4,7 @@ using FondaLogic.Commands.OrderAccount;
 using FondaLogic.Commands.Login;
 using FondaLogic.Log;
 using System.Collections.Generic;
+using System;
 
 namespace FondaLogic.Factory
 {
@@ -92,14 +93,35 @@ namespace FondaLogic.Factory
         }
 
         /// <summary>
-        /// Metodo de la fabrica para el CommmandDetailOrder
+        /// Metodo de la fabrica para el CommandGetDishOrdersByAccountId
         /// </summary>
-        /// <param name="receiver">Id de la orden</param>
-        /// <returns>comando CommandGetDishOrdersByAccountId</returns>
+        /// <param name="receiver">Id Orden</param>
+        /// <returns>List DishOrder</returns>
         /// 
         public static Command GetDetailOrder(object receiver)
         {
             return new CommandGetDishOrdersByAccountId(receiver);
+        }
+        /// <summary>
+        /// Metodo de la fabrica para el CommmandGetDetailOrder
+        /// </summary>
+        /// <param name="receiver">Parametros, Id Orden, Id Restaurante</param>
+        /// <returns>List DishOrder, Account, Currency</returns>
+        /// 
+        public static Command GetCommandGetDetailOrder(object receiver)
+        {
+            return new CommandGetDetailOrder(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el CommmandGetDetailInvoice
+        /// </summary>
+        /// <param name="receiver">Parametros, Id Orden, Id Invoice</param>
+        /// <returns>List DishOrder, Account, Currency</returns>
+        /// 
+        public static Command GetCommandGetDetailInvoice(object receiver)
+        {
+            return new CommandGetDetailInvoice(receiver);
         }
 
         /// <summary>
@@ -112,6 +134,9 @@ namespace FondaLogic.Factory
         {
             return new CommandGetInvoice(receiver);
         }
+        /// <summary>
+        /// Metodo de la fabrica para el CCommandGenerateException
+        /// </summary>
         public static Command GetCommandGenerateException(object receiver)
         {
             return new CommandGenerateException(receiver);
@@ -150,6 +175,7 @@ namespace FondaLogic.Factory
         {
             return new CommandGenerateInvoice(receiver);
         }
+       
 
         #endregion
 

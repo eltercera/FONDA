@@ -60,6 +60,7 @@
     <Compile Include="Commands\Login\CommandSaveEntity.cs" />
     <Compile Include="Commands\Login\CommanGetAllEmployee.cs" />
     <Compile Include="Commands\OrderAccount\CommandCloseCashRegister.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetDetailInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetDetailOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetDishOrdersByAccountId.cs" />
     <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
