@@ -149,11 +149,11 @@ public class SessionData {
 
         if (this.commensal == null)
             return;
-
-        Token tokenTest = getTokenServ().getToken(this.context);
-        if (tokenTest == null || tokenTest.getExpiration().compareTo(new Date()) < 0) {
-            tokenTest = getTokenServ().createToken(this.context);
-        }
+        Command commandoCreateToken = FondaCommandFactory.deleteTokenCommand();
+        commandoCreateToken.setParameter(0,this.context);
+        commandoCreateToken.setParameter(1,this.commensal);
+        commandoCreateToken.run();
+        Token tokenTest = (Token)commandoCreateToken.getResult();
         this.token = tokenTest;
     }
 
@@ -161,31 +161,32 @@ public class SessionData {
 
         if (this.commensal == null)
             return;
-
-        Token tokenTest = getTokenServ().getToken(this.context);
-        if (tokenTest != null) {
-            TokenService service = getTokenServ();
-            service.removeToken(context);
+        try
+        {
+            Command commandoDeleteToken = FondaCommandFactory.deleteTokenCommand();
+            commandoDeleteToken.setParameter(0,this.context);
+            commandoDeleteToken.setParameter(1,this.commensal);
+            commandoDeleteToken.run();
+            boolean resp =  (boolean)commandoDeleteToken.getResult();
+            if (resp)
+            { this.token = null;}
         }
-        this.token = null;
+        catch (Exception e)
+        {}
     }
 
     private void removeCommensal() throws Exception {
 
         if (this.commensal == null)
             return;
-        try
-        {
-            Command commandoDeleteCommensal = FondaCommandFactory.deleteCommensalCommand();
-            commandoDeleteCommensal.setParameter(0, this.context);
-            commandoDeleteCommensal.run();
-            this.commensal = null;
-        }
-        catch (Exception e)
-        {
 
+        Commensal commensal = getCommensalsrv().getCommensal(this.context);
+        if (commensal != null) {
+            CommensalService service = getCommensalsrv();
+            service.deleteCommensal(context);
         }
 
+        this.commensal = null;
     }
 
     /**

@@ -166,10 +166,12 @@ public class ProfileActivity extends BaseNavigationActivity
             if (profile.getId() == 0) {
                 Command commandoCreateProfile = FondaCommandFactory.createCreateProfileCommand();
                 commandoCreateProfile.setParameter(0,profile);
+                //commandoCreateProfile.setParameter(1,this.commensal);
                 commandoCreateProfile.run();
             } else {
                 Command commandoUpdateProfile = FondaCommandFactory.updateProfileCommand();
                 commandoUpdateProfile.setParameter(0,profile);
+                //commandoUpdateProfile.setParameter(1,this.commensal);
                 commandoUpdateProfile.run();
             }
 
