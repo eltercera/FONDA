@@ -1,6 +1,7 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.CommandTests;
 
 import android.test.MoreAsserts;
+import android.util.Log;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Restaurant;
@@ -37,6 +38,11 @@ public class AllRestaurantCommandTest extends TestCase {
     private List<Restaurant> restaurantList;
 
     /**
+     * Variable String que indica la clase actual
+     */
+    private String TAG = "AllRestaurantCommandTest";
+
+    /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
      * @throws Exception
      */
@@ -59,9 +65,9 @@ public class AllRestaurantCommandTest extends TestCase {
 
             assertNotNull(restaurantList.get(0).getName());
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllRestaurantCommandIsNotNull al listar los restaurantes",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllRestaurantCommandIsNotNull al listar los restaurantes",e);
         }
     }
 
@@ -78,9 +84,9 @@ public class AllRestaurantCommandTest extends TestCase {
 
             assertNotNull(restaurantList.get(1).getRestaurantCategory().getName());
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllCategoryRestaurantCommandIsNotNull al listar los restaurantes",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllCategoryRestaurantCommandIsNotNull al listar los restaurantes",e);
         }
     }
 
@@ -98,9 +104,9 @@ public class AllRestaurantCommandTest extends TestCase {
 
            MoreAsserts.assertNotEmpty(restaurantList);
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllRestaurantCommandIsNotEmpty al listar los restaurantes",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllRestaurantCommandIsNotEmpty al listar los restaurantes",e);
         }
     }
 
@@ -117,9 +123,9 @@ public class AllRestaurantCommandTest extends TestCase {
 
             assertEquals("Pizza Familia", restaurantList.get(2).getName());
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllRestaurantCommandElements al listar los restaurantes",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllRestaurantCommandElements al listar los restaurantes",e);
         }
     }
 

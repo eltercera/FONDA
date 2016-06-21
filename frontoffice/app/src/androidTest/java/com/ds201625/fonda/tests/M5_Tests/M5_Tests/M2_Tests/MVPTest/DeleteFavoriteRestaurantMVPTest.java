@@ -1,5 +1,7 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.MVPTest;
 
+import android.util.Log;
+
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.interfaces.FavoriteView;
@@ -33,6 +35,11 @@ public class DeleteFavoriteRestaurantMVPTest extends TestCase implements Favorit
     private List<Restaurant> listRestaurant;
 
     /**
+     * Variable String que indica la clase actual
+     */
+    private String TAG = "DeleteFavoriteRestaurantMVPTest";
+
+    /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
      * @throws Exception
      */
@@ -64,7 +71,7 @@ public class DeleteFavoriteRestaurantMVPTest extends TestCase implements Favorit
             listRestaurant = favoritesPresenter.findAllFavoriteRestaurant();
             assertNotSame(selectedRestaurantAdd.getName(), listRestaurant.get(1).getName());
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testDeleteFavoriteRestaurant al eliminar favorito",e);
         }
     }
 
@@ -80,15 +87,24 @@ public class DeleteFavoriteRestaurantMVPTest extends TestCase implements Favorit
             favoritesPresenter.deleteFavoriteRestaurant(selectedRestaurantAdd);
             assertNull(selectedRestaurantAdd);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testDeleteFavoriteRestaurant al eliminar favorito",e);
         }
     }
 
+
+    /**
+     * Lista de todos los restaurantes favoritos
+     *
+     * @return restauraantes favoritos
+     */
     @Override
     public List<Restaurant> getListSW() {
         return null;
     }
 
+    /**
+     * Actualiza la lista luego de eliminar
+     */
     @Override
     public void updateList() {
 

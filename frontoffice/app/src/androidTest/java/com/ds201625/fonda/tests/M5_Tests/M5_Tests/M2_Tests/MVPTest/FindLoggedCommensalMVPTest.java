@@ -1,5 +1,7 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.MVPTest;
 
+import android.util.Log;
+
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
@@ -24,6 +26,11 @@ public class FindLoggedCommensalMVPTest extends TestCase implements FavoriteView
      * id de comensal logueado
      */
     private Commensal logedCommensal;
+
+    /**
+     * Variable String que indica la clase actual
+     */
+    private String TAG = "FindLoggedCommensalMVPTest";
 
     /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
@@ -55,7 +62,7 @@ public class FindLoggedCommensalMVPTest extends TestCase implements FavoriteView
             favoritesPresenter.findLoggedComensal();
             assertEquals(logedCommensal, favoritesPresenter);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testFindLoggedCommensal al buscar el comensal logueado",e);
         }
     }
 
@@ -71,7 +78,7 @@ public class FindLoggedCommensalMVPTest extends TestCase implements FavoriteView
             favoritesPresenter.findLoggedComensal();
             assertNotSame(logedCommensal, favoritesPresenter);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testFindLoggedCommensal al buscar el comensal logueado",e);
         }
     }
 
@@ -84,18 +91,24 @@ public class FindLoggedCommensalMVPTest extends TestCase implements FavoriteView
             favoritesPresenter.findLoggedComensal();
             assertNotNull(favoritesPresenter);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testFindLoggedCommensal al buscar el comensal logueado",e);
         }
     }
 
 
-
-
+    /**
+     * Lista de todos los restaurantes favoritos
+     *
+     * @return restauraantes favoritos
+     */
     @Override
     public List<Restaurant> getListSW() {
         return null;
     }
 
+    /**
+     * Actualiza la lista luego de eliminar
+     */
     @Override
     public void updateList() {
 
