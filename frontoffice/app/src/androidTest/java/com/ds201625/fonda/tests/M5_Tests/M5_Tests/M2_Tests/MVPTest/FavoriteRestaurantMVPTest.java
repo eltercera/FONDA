@@ -1,5 +1,7 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.MVPTest;
 
+import android.util.Log;
+
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.interfaces.FavoriteView;
@@ -25,6 +27,11 @@ public class FavoriteRestaurantMVPTest extends TestCase implements FavoriteView 
     private FavoritesPresenter favoritesPresenter;
 
     private Restaurant restaurant;
+
+    /**
+     * Variable String que indica la clase actual
+     */
+    private String TAG = "FavoriteRestaurantMVPTest";
 
     /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
@@ -58,7 +65,7 @@ public class FavoriteRestaurantMVPTest extends TestCase implements FavoriteView 
             restaurantList = favoritesPresenter.findAllFavoriteRestaurant();
             assertEquals(restaurant.getName(), restaurantList.get(1).getName());
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testFindFavoriteRestaurants al listar favorito",e);
         }
     }
 
@@ -74,7 +81,7 @@ public class FavoriteRestaurantMVPTest extends TestCase implements FavoriteView 
             assertEquals(restaurant.getRestaurantCategory().getNameCategory(),
                     restaurantList.get(1).getRestaurantCategory().getNameCategory());
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testFindFavoriteRestaurant al listar favorito",e);
         }
     }
 
@@ -89,7 +96,7 @@ public class FavoriteRestaurantMVPTest extends TestCase implements FavoriteView 
             restaurantList = favoritesPresenter.findAllFavoriteRestaurant();
             assertNull(restaurantList.get(6));
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAddFavoriteRestaurantIsNull al listar favorito",e);
         }
     }
 
@@ -103,18 +110,24 @@ public class FavoriteRestaurantMVPTest extends TestCase implements FavoriteView 
             restaurantList = favoritesPresenter.findAllFavoriteRestaurant();
             assertNotNull(restaurantList.get(3));
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAdddFavoriteRestaurantIsNotNull al listar favorito",e);
         }
     }
 
 
-
-
+    /**
+     * Lista de todos los restaurantes favoritos
+     *
+     * @return restauraantes favoritos
+     */
     @Override
     public List<Restaurant> getListSW() {
         return null;
     }
 
+    /**
+     * Actualiza la lista luego de eliminar
+     */
     @Override
     public void updateList() {
 
