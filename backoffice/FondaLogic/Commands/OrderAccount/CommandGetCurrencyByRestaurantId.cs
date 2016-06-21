@@ -1,6 +1,7 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
 using System;
 
@@ -45,8 +46,17 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (Exception ex)
             {
-                //Por personalizar
-                Logger.WriteErrorLog("", ex);
+                //TODO: Arrojar Excepcion personalizada
+                CommandExceptionGetCurrencyByRestaurant exceptionGetOrders = new CommandExceptionGetCurrencyByRestaurant(
+                    FondaResources.General.Errors.NullExceptionReferenceCode,
+                    FondaResources.OrderAccount.Errors.ClassNameGetCurrencyByRestaurant,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrders);
+
+                Receiver = "";
             }
         }
     }

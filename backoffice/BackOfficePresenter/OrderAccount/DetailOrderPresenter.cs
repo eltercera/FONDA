@@ -17,7 +17,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         //Enlace Modelo - Vista
         private IDetailOrderModel _view;
         int totalColumns = 3;
-        string _currency = null;
+        string currency;
 
 
         ///<summary>
@@ -40,7 +40,6 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             //Define objeto a recibir
             IList<DishOrder> listDishOrder;
             Account order;
-            string currency;
 
             int orderId, restaurantId;
             List<int> parameters;
@@ -58,7 +57,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 // 1  son el numero de la orden
                 // 2 es el id del restaurant                
                 parameters = new List<int> { orderId, restaurantId };
-                commandGetDetailOrder = CommandFactory.GetDetailOrder(parameters);
+                commandGetDetailOrder = CommandFactory.GetCommandGetDetailOrder(parameters);
 
                 //Ejecuta el comando
                 commandGetDetailOrder.Execute();
@@ -67,9 +66,15 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 result = (List<Object>)commandGetDetailOrder.Receiver;
 
                 listDishOrder = (IList<DishOrder>)result[0];
-                order = (Account) result[1];
-                currency = (string) result[2];
-
+                order = (Account)result[1];
+                currency = (string)result[2];
+              
+                //Revisa si la lista no esta vacia
+                if (listDishOrder != null)
+                {
+                    //Llama al metodo para el llenado de la tabla
+                    FillTable(listDishOrder);
+                }
             }
             catch (MVPExceptionDetailOrderTable ex)
             {
@@ -121,13 +126,13 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
                     //Agrega el costo del plato
                     else if (j.Equals(2))
-                        tCell.Text = (_currency + " " + data[i].Dishcost.ToString());
+                        tCell.Text = (currency + " " + data[i].Dishcost.ToString());
 
                     //Agrega el total (precio*cantidad)
                     else if (j.Equals(3))
                     {
                         total = data[i].Count * data[i].Dishcost;
-                        tCell.Text = (_currency + " " + total.ToString());
+                        tCell.Text = (currency + " " + total.ToString());
                         total = 0;
                     }
 

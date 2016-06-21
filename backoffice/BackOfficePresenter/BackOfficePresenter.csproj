@@ -43,7 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FondaMVPException\MVPException.cs" />
-    <Compile Include="FondaMVPException\MVPExceptionCloseButton.cs" />
+    <Compile Include="FondaMVPException\OrderAccount\MVPExceptionCloseButton.cs" />
+    <Compile Include="Login\DetailModifyPresenter.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionClosedOrdersTable.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionDetailOrderTable.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionOrderInvoicesTable.cs" />
@@ -66,6 +67,10 @@
     <ProjectReference Include="..\BackOfficeModel\BackOfficeModel.csproj">
       <Project>{0C4A3E0C-4E85-46B0-A6B0-A6DC2BCE3D8B}</Project>
       <Name>BackOfficeModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaBeckEndLogic\FondaBackEndLogic.csproj">
+      <Project>{A1BE7D6C-7750-4795-AABF-B397E079C918}</Project>
+      <Name>FondaBackEndLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
       <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>

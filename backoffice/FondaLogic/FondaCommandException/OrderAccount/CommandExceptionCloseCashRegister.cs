@@ -5,7 +5,7 @@ namespace FondaLogic.FondaCommandException
     /// <summary>
     /// Excepcion arrojada en caso de que falle el cierre de caja
     /// </summary>
-    class CommandExceptionCloseCashRegister : CommandException
+    public class CommandExceptionCloseCashRegister : CommandException
     {
 
 

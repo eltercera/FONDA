@@ -1,11 +1,18 @@
 ﻿using com.ds201625.fonda.BackEnd.ActionFilters;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
+using FondaLogic;
+using FondaLogic.Factory;
+using FondaLogic.FondaCommandException;
+using FondaLogic.FondaCommandException.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using FondaLogic.Log;
+using com.ds201625.fonda.BackEnd.Exceptions;
+using com.ds201625.fonda.BackEnd.Log;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -23,20 +30,43 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [HttpPost]
         [Route("restaurant/{restaurantId}/order/{orderId}")]
         [FondaAuthToken]
-        public IHttpActionResult GetOrderAccount(int restaurantId, int orderId)
+        public IHttpActionResult GetTotalAccount(int restaurantId, int orderId)
         {
             float totalAccount = 0.0F;
-
+            IList<int> _list = new List<int>();
             try
             {
-                //TODO
-                //Invocar a metodos para enviar detalle de orden
-            }
-            catch (Exception)
-            {
+                Command _command;
+                _list.Add(restaurantId); //1
+                _list.Add(orderId); //3
+                _command = CommandFactory.GetCommandTotalOrder(_list);
+                _command.Execute();
+                totalAccount = (float)_command.Receiver;
 
-                return BadRequest();
+
             }
+            catch (CommandExceptionTotalOrder e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                GetTotalAccountException ex = new GetTotalAccountException(GeneralRes.GetTotalAccountException, e);
+
+                FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", ex);
+                return InternalServerError(ex);
+            }
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                GetTotalAccountException ex = new GetTotalAccountException(GeneralRes.GetTotalAccountException, e);
+
+                FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", ex);
+                return InternalServerError(ex);
+            }
+
+            //Logger al Culminar el metodo
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, totalAccount.ToString(),
+                 System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             return Ok(totalAccount);
         }
@@ -49,48 +79,71 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// <param name="payment">Pago del usuario</param>
         /// <returns>Invoice emitida por el Restaurante</returns>
         [HttpPost]
-        [Route("restaurant/{restaurantId}/order/{orderId}")]
+        [Route("restaurant/{restaurantId}/order/{orderId}/profile/{profileId}")]
         [FondaAuthToken]
-        public IHttpActionResult PayAccount(int restaurantId, int orderId, Payment payment)
+        public IHttpActionResult PayAccount(int restaurantId, int orderId, int profileId, Payment payment)
         {
             Invoice invoice = EntityFactory.GetInvoice();
+            List<Object> parameters = new List<object>();
+            Command pay;
+
 
             try
             {
-                //TODO
-                //Invocar a metodos para pagar orden
+                Commensal commensal = GetCommensal(Request.Headers);
+                parameters.Add(restaurantId);
+                parameters.Add(orderId);
+                parameters.Add(profileId);
+                parameters.Add(payment);
+                parameters.Add(commensal);
+
+                pay = CommandFactory.GetCommandPayOrder(parameters);
+                pay.Execute();
+                invoice = (Invoice) pay.Receiver;
+
             }
             catch (Exception)
             {
-
-                return BadRequest();
+                //Excepcion de WebService
+                //Guarda en Logger
+                //Envia excepcion
+                return InternalServerError();
             }
 
-            return Ok(invoice);
+            return Created("",invoice);
         }
 
         /// <summary>
         /// Servicio web que devuelve una lista de facturas de un perfil
         /// </summary>
         /// <returns>Lista de Invoice</returns>
-        [HttpGet]
-        [Route("profile/invoices")]
+        [HttpPost]
+        [Route("profile/{profileId}/invoices")]
         [FondaAuthToken]
-        public IHttpActionResult GetPaymentHistory()
+        public IHttpActionResult GetPaymentHistory(int profileId)
         {
-            List<Invoice> paymentHistory = new List<Invoice>();
+            IList<Invoice> paymentHistory = new List<Invoice>();
+            List<Object> parameters = new List<object>();
+            Command command;
 
             try
             {
-                //TODO
-                //Invocar a metodos para devolver historial de pagos
+                Commensal commensal = GetCommensal(Request.Headers);
+                parameters.Add(profileId);
+                parameters.Add(commensal);
+
+                command = CommandFactory.GetCommandGetPaymentHistoryByProfile(parameters);
+
+                paymentHistory = (IList<Invoice>) command.Receiver;
             }
-            catch (Exception)
+            catch (CommandExceptionGetPaymentHistoryByProfile ex)
             {
-
-                return BadRequest();
+                CommandExceptionGetPaymentHistoryByProfile e = new CommandExceptionGetPaymentHistoryByProfile("FALTA PERSONALIZAR");
+                FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
+                return InternalServerError(ex);
             }
 
+            FondaLogic.Log.Logger.WriteSuccessLog("Falta modificar", "", "");
             return Ok(paymentHistory);
         }
 
@@ -109,10 +162,14 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
             try
             {
-                //TODO
-                //Invocar a metodos para devolver el detalle de la orden
+                Command _command;
+                _command = CommandFactory.GetCommandGetDishOrdersByAccountId(orderId);
+                _command.Execute();
+                orderDetail = (List<DishOrder>)_command.Receiver;
+
+
             }
-            catch (Exception)
+            catch (CommandExceptionTotalOrder e)
             {
 
                 return BadRequest();
@@ -121,7 +178,34 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             return Ok(orderDetail);
         }
 
+        [HttpGet]
+        [Route("restaurant/{restaurantId}/order/{orderId}/invoice/{invoiceId}")]
+        [FondaAuthToken]
+        public IHttpActionResult CanceledInvoice(int restaurantId, int orderId, int invoiceId)
+        {
+            List<DishOrder> orderDetail = new List<DishOrder>();
 
+            try
+            {
+                //Comando para anular factura 
+                //
+                //Cambia status de factura a cancelada
+                //Elimina pago
+                //Abre orden cerrada
+                //Regresa mensaje
+                //
+                //Comando para anular factura
+            }
+            catch (Exception e)
+            {
+                //Creo excepcion
+                //Hago Logger
+                return InternalServerError();
+            }
+
+            //DEBERIA SER ELIMINADO
+            return Ok();
+        }
 
 
     }
