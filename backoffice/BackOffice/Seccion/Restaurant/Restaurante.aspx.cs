@@ -11,9 +11,9 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaResources.Login;
 using BackOffice.Content;
-using BackOfficePresenter.Restaurant;
 using BackOfficeModel.Restaurant;
 using System.Web.UI.HtmlControls;
+using BackOfficePresenter.Restaurante;
 
 namespace BackOffice.Seccion.Restaurant
 {
