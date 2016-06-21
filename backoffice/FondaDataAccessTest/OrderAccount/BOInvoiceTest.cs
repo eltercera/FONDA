@@ -110,7 +110,7 @@ namespace FondaDataAccessTest
         public void FindGenerateInvoiceByAccountTest()
         {
 
-            _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
+            _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account.Id);
             Assert.IsNotNull(_invoice);
             Assert.AreEqual(_invoice.Id,2);
             Assert.AreEqual(_invoice.Number, 2);

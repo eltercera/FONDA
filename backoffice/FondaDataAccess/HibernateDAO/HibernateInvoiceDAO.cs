@@ -56,43 +56,77 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="account">Un objeto de tipo Account</param>
         /// <returns>Un objeto Invoice</returns>
-        public Invoice FindGenerateInvoiceByAccount(Account _account)
-        {
-            IOrderAccountDao _accountDao = _facDAO.GetOrderAccountDAO();
+        //public Invoice FindGenerateInvoiceByAccount(Account _account)
+        //{
+        //    IOrderAccountDao _accountDao = _facDAO.GetOrderAccountDAO();
+        //    IPaymentDao<Payment> _paymentDAO = _facDAO.GetPaymentDAO();
   
+        //    try
+        //    {
+        //        Invoice _invoice = new Invoice();
+        //        Invoice result;
+
+        //        if (_account.Status.Equals(ClosedAccountStatus.Instance))
+        //        {
+        //            IList<Invoice> _invoices = new List<Invoice>();
+        //            _invoices = _account.ListInvoice;
+
+        //            foreach (var i in _invoices)
+        //            {
+        //                if (i.Status.Equals(GeneratedInvoiceStatus.Instance))
+        //                {
+        //                    _invoice = i;
+        //                }
+        //            }
+        //        }
+
+        //        result = EntityFactory.GetInvoice(_invoice.Payment, _invoice.Profile, _invoice.Total, _invoice.Tax, _invoice.Currency,
+        //            _invoice.Number);
+
+        //        return result;
+        //    }
+        //    catch (ArgumentOutOfRangeException e)
+        //    {
+        //        throw new FondaIndexException("Not Found invoice", e);
+        //    }
+        //    catch(PersistentObjectException e)
+        //    {
+        //        throw new PersistentObjectException("Error por no iniciar al proxy");
+        //    }
+        //}
+
+
+        public Invoice FindGenerateInvoiceByAccount(int accountId)
+        {
+            Invoice payInvoice = new Invoice();
+            Payment payment;
             try
             {
-                Invoice _invoice = new Invoice();
-                Invoice result;
+                Account account = Session.QueryOver<Account>()
+                    .Where(a => a.Id == accountId)
+                    .Where(a => a.Status == ClosedAccountStatus.Instance)
+                    .SingleOrDefault();
 
-                if (_account.Status.Equals(ClosedAccountStatus.Instance))
+                //TODO: Excepcion en caso de no encontrar lista llena
+                foreach (Invoice invoice in account.ListInvoice)
                 {
-                    IList<Invoice> _invoices = new List<Invoice>();
-                    _invoices = _account.ListInvoice;
-
-                    foreach (var i in _invoices)
+                    if (invoice.Status.Equals(GeneratedInvoiceStatus.Instance))
                     {
-                        if (i.Status.Equals(GeneratedInvoiceStatus.Instance))
-                        {
-                            _invoice = i;
-                        }
+                        payment = (Payment) Session.GetSessionImplementation().PersistenceContext.Unproxy(invoice.Payment);
+                        payInvoice = EntityFactory.GetInvoice(payment, invoice.Profile, invoice.Total, invoice.Tax, invoice.Currency,
+                        invoice.Number);
                     }
                 }
 
-                Payment payment = (Payment) Session.GetSessionImplementation().PersistenceContext.Unproxy(_invoice.Payment);
-                result = EntityFactory.GetInvoice(payment, _invoice.Profile, _invoice.Total, _invoice.Tax, _invoice.Currency,
-                    _invoice.Number);
+                return payInvoice;
 
-                return result;
             }
+            //TODO: Arrojar excepciones personalizadas
             catch (ArgumentOutOfRangeException e)
             {
-                throw new FondaIndexException("Not Found invoice", e);
+                throw new FondaIndexException("No se encontraron ordenes cerradas", e);
             }
-            catch(PersistentObjectException e)
-            {
-                throw new PersistentObjectException("Error por no iniciar al proxy");
-            }
+
         }
 
         /// <summary>

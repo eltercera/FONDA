@@ -125,7 +125,6 @@ namespace FondaBackOfficeLogicTest
             Assert.IsNotNull(_invoice);
             Assert.AreEqual(_invoice.Tax, 12);
             Assert.AreEqual(_invoice.Total, 100);
-            // _invoice = _invoiceDAO.FindById();
         }
 
         [Test(Description = "Imprime una factura")]
@@ -138,6 +137,7 @@ namespace FondaBackOfficeLogicTest
             _command.Execute();
         }
 
+        
         [Test(Description ="Verifica que devuelva una lista de Invoice dado un perfil")]
         public void CommandGetInvoicesByProfileTest()
         {
@@ -218,7 +218,6 @@ namespace FondaBackOfficeLogicTest
             Assert.AreEqual(0, _listInvoices.Count);
 
         }
-
 
 
         [TearDown]
