@@ -335,6 +335,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 freeStatus = _facDAO.GetFreeTableStatus();
 
                 Table table = _tableDAO.FindById(tableId);
+
                 restaurant.Tables.Remove(table);
                 table.Status = freeStatus;
                 restaurant.Tables.Add(table);

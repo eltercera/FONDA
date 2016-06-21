@@ -129,7 +129,7 @@ namespace FondaDataAccessTest
         [Test(Description ="Prueba que el estado de un Restaurante cambie de ocupado a libre")]
         public void ReleaseTableTest()
         {
-            _restaurantDAO.ReleaseTable(_restaurant, _tableId);
+            _restaurantDAO.ReleaseTable(_restaurant, 1);
             _resultRestaurant = _restaurantDAO.FindById(_restaurantId);
 
             Assert.AreEqual(_restaurant.Tables[_tableId - 1].Id, _resultRestaurant.Tables[_tableId-1].Id);
