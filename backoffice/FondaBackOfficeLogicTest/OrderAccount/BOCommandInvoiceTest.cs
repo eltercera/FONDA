@@ -188,6 +188,37 @@ namespace FondaBackOfficeLogicTest
 
         }
 
+        [Test(Description = "Valida que el usuario reciba su historial de facturas")]
+        public void CommandGetPaymentHistoryTest()
+        {
+            List<Object> parameters = new List<object>();
+
+            parameters.Add(_profileId);
+            parameters.Add(_commensal);
+            _command = CommandFactory.GetCommandGetPaymentHistoryByProfile(parameters);
+            _command.Execute();
+            _listInvoices = (List<Invoice>)_command.Receiver;
+
+            Assert.IsNotNull(_listInvoices);
+
+        }
+
+        [Test(Description = "Fallo al ocurrir un error a solicitar el historial de facturas")]
+        public void ErrorCommandGetPaymentHistoryTest()
+        {
+            List<Object> parameters = new List<object>();
+
+            parameters.Add(null);
+            parameters.Add(_commensal);
+            _command = CommandFactory.GetCommandGetPaymentHistoryByProfile(parameters);
+            _command.Execute();
+            _listInvoices = (List<Invoice>)_command.Receiver;
+
+            Assert.AreEqual(0, _listInvoices.Count);
+
+        }
+
+
 
         [TearDown]
         public void EndTests()

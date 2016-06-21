@@ -74,6 +74,7 @@
     <Compile Include="Commands\OrderAccount\CommandGetInvoicesByProfile.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetOrders.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetPaymentHistoryByProfile.cs" />
     <Compile Include="Commands\OrderAccount\CommandPayOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandPrintInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandReleaseTableByRestaurant.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="FondaCommandException\CommandExceptionGetRol.cs" />
     <Compile Include="FondaCommandException\CommandExceptionGetUserAccount.cs" />
     <Compile Include="FondaCommandException\CommandExceptionSaveUserAccount.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetPaymentHistoryByProfile.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionPayOrder.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionPrintInvoice.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionReleaseTableByRestaurant.cs" />
