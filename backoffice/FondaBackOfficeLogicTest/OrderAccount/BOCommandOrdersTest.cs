@@ -93,7 +93,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
             //Assert.AreEqual(_total, 9100);
         }
 
-        [Test(Description = "Obtiene las ordenes de un restaurante")]
+        [Test(Description = "Cambia el estado a la mesa")]
         public void CommandReleaseTableByRestaurantTest()
         {
             int _tableId = 3;
@@ -108,6 +108,8 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _command.Execute();
 
             _table = _tableDAO.FindById(_tableId);
+            Assert.AreEqual(_table.Id, _tableId);
+            //Assert.AreEqual(_table.Status,);
         }
 
         [Test(Description = "Obtiene las ordenes de un restaurante")]

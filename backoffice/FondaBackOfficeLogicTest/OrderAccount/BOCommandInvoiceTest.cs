@@ -113,7 +113,7 @@ namespace FondaBackOfficeLogicTest
         [Test(Description = "Imprime una factura")]
         public void CommandPrintInvoice()
         {
-            _list.Add(_accountId);
+            _list.Add(7);
             _list.Add(_restaurantId);
             _command = CommandFactory.GetCommandPrintInvoice(_list);
 
