@@ -736,6 +736,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al cerrar las ordenden de un restaurante.
+        /// </summary>
+        public static string MessageClosedOrdersByRestaurantFondaDAOException {
+            get {
+                return ResourceManager.GetString("MessageClosedOrdersByRestaurantFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al realizar el cierre de caja, no se puede cerrar caja con cuentas abiertas.
         /// </summary>
         public static string MessageCommandCloseCashRegister {
@@ -943,20 +952,20 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error en la base de datos al generar el numero unico por restaurante de la cuenta.
-        /// </summary>
-        public static string MessageGenerateNumberAccountException {
-            get {
-                return ResourceManager.GetString("MessageGenerateNumberAccountException", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Ha ocurrido un error al obtener las facturas dado un restaurante.
         /// </summary>
         public static string MessageFindInvoicesByRestaurantFondaDAOException {
             get {
                 return ResourceManager.GetString("MessageFindInvoicesByRestaurantFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al generar el numero unico por restaurante de la cuenta.
+        /// </summary>
+        public static string MessageGenerateNumberAccountException {
+            get {
+                return ResourceManager.GetString("MessageGenerateNumberAccountException", resourceCulture);
             }
         }
         

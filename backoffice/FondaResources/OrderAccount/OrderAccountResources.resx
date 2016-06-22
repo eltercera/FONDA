@@ -733,4 +733,8 @@
     <value>Ha ocurrido un error al obtener las facturas dado un restaurante</value>
     <comment>Mensaje para FindInvoicesByRestaurant</comment>
   </data>
+  <data name="MessageClosedOrdersByRestaurantFondaDAOException" xml:space="preserve">
+    <value>Error en la base de datos al cerrar las ordenden de un restaurante</value>
+    <comment>Mensaje de error para ClosedOrdersByRestaurant</comment>
+  </data>
 </root>
