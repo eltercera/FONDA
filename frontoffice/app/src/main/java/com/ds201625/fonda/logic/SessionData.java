@@ -84,7 +84,6 @@ public class SessionData {
      */
     public void registerCommensal(String email, String password) throws Exception {
         if (email.isEmpty() || password.isEmpty()) {
-            // // TODO: 5/16/16 InvalidRegisterDataException.
             throw new Exception("Datos de regsitro invalido");
         }
         Commensal newCommensal;
@@ -96,7 +95,6 @@ public class SessionData {
         commandoCreateCommensal.run();
         newCommensal = (Commensal)commandoCreateCommensal.getResult();
         if (newCommensal == null) {
-            // // TODO: 5/16/16 Exception.
             throw new Exception("No se logro crear el usuario");
         }
         this.commensal = newCommensal;
@@ -108,13 +106,11 @@ public class SessionData {
      */
     public void loginCommensal() throws Exception {
         if (this.commensal == null) {
-            // // TODO: 5/16/16 No existe commensal Exception
             throw new Exception("No existe commensal");
         }
         Token tokenTest = getTokenServ().createToken(this.context);
         if (tokenTest == null) {
-            // // TODO: 5/16/16 No se pudo obtener toke
-            throw new Exception("No se pud obtener token");
+            throw new Exception("No se pudo obtener token");
         }
         this.token = tokenTest;
     }
@@ -149,11 +145,11 @@ public class SessionData {
 
         if (this.commensal == null)
             return;
-
-        Token tokenTest = getTokenServ().getToken(this.context);
-        if (tokenTest == null || tokenTest.getExpiration().compareTo(new Date()) < 0) {
-            tokenTest = getTokenServ().createToken(this.context);
-        }
+        Command commandoCreateToken = FondaCommandFactory.deleteTokenCommand();
+        commandoCreateToken.setParameter(0,this.context);
+        commandoCreateToken.setParameter(1,this.commensal);
+        commandoCreateToken.run();
+        Token tokenTest = (Token)commandoCreateToken.getResult();
         this.token = tokenTest;
     }
 
@@ -161,31 +157,32 @@ public class SessionData {
 
         if (this.commensal == null)
             return;
-
-        Token tokenTest = getTokenServ().getToken(this.context);
-        if (tokenTest != null) {
-            TokenService service = getTokenServ();
-            service.removeToken(context);
+        try
+        {
+            Command commandoDeleteToken = FondaCommandFactory.deleteTokenCommand();
+            commandoDeleteToken.setParameter(0,this.context);
+            commandoDeleteToken.setParameter(1,this.commensal);
+            commandoDeleteToken.run();
+            boolean resp =  (boolean)commandoDeleteToken.getResult();
+            if (resp)
+            { this.token = null;}
         }
-        this.token = null;
+        catch (Exception e)
+        {}
     }
 
     private void removeCommensal() throws Exception {
 
         if (this.commensal == null)
             return;
-        try
-        {
-            Command commandoDeleteCommensal = FondaCommandFactory.deleteCommensalCommand();
-            commandoDeleteCommensal.setParameter(0, this.context);
-            commandoDeleteCommensal.run();
-            this.commensal = null;
-        }
-        catch (Exception e)
-        {
 
+        Commensal commensal = getCommensalsrv().getCommensal(this.context);
+        if (commensal != null) {
+            CommensalService service = getCommensalsrv();
+            service.deleteCommensal(context);
         }
 
+        this.commensal = null;
     }
 
     /**
