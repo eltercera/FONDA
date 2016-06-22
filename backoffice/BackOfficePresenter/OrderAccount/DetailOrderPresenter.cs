@@ -2,9 +2,9 @@
 using BackOfficePresenter.FondaMVPException;
 using BackOfficePresenter.FondaMVPException.OrderAccount;
 using com.ds201625.fonda.Domain;
-using FondaLogic;
-using FondaLogic.Factory;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;

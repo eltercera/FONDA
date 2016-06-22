@@ -4,7 +4,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;

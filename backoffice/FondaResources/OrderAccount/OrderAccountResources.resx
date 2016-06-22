@@ -725,4 +725,12 @@
     <value>Error en la base de datos al cerrar la caja</value>
     <comment>Mensaje de error para CloseCashRegister</comment>
   </data>
+  <data name="MessageFindGenerateInvoiceByAccountFondaDAOException" xml:space="preserve">
+    <value>Ha ocurrido un error al generar la factura</value>
+    <comment>Mensaje de error para FindGenerateInvoiceByAccountFondaDAOException</comment>
+  </data>
+  <data name="MessageFindInvoicesByRestaurantFondaDAOException" xml:space="preserve">
+    <value>Ha ocurrido un error al obtener las facturas dado un restaurante</value>
+    <comment>Mensaje para FindInvoicesByRestaurant</comment>
+  </data>
 </root>

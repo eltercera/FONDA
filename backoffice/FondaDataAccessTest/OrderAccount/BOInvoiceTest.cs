@@ -6,6 +6,7 @@ using com.ds201625.fonda.Domain;
 using System.Collections.Generic;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.DataAccess.Exceptions.OrderAccount;
 
 namespace FondaDataAccessTest
 {
@@ -112,26 +113,50 @@ namespace FondaDataAccessTest
             Assert.AreEqual(_number,7);
         }
 
-        [Test]
-        [Ignore("Probar los cambios realizados")]
+        #region Pruebas de DataAccess/HibernateDAO/FindGenerateInvoiceByAccount
+
+        [Test(Description ="Prueba que trae una factura pagada de la Base de datos")]
         public void FindGenerateInvoiceByAccountTest()
         {
-
             _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account.Id);
             Assert.IsNotNull(_invoice);
-            Assert.AreEqual(_invoice.Id,2);
-            Assert.AreEqual(_invoice.Number, 2);
+            Assert.AreEqual(1,_invoice.Id);
+            Assert.AreEqual(1,_invoice.Number);
+            Assert.AreEqual(5950,_invoice.Total);
+            Assert.AreEqual(GeneratedInvoiceStatus.Instance, _invoice.Status);
+            Assert.IsInstanceOf<CreditCardPayment>(_invoice.Payment);
         }
 
-        [Test]
-        [Ignore("Probar los cambios realizados")]
+        [Test(Description = "Caso de error que trae una factura pagada de la Base de datos")]
+        [ExpectedException(typeof(FindGenerateInvoiceByAccountFondaDAOException))]
+        public void ErrorFindGenerateInvoiceByAccountTest()
+        {
+            _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(-1);
+            Assert.IsNull(_invoice);
+        }
+
+        #endregion
+
+        #region Pruebas de DataAccess/HibernateDAO/FindInvoicesByAccount
+
+        [Test(Description ="Prueba que traiga la lista de facturas de una orden")]
         public void FindInvoicesByAccountTest()
         {
-
             _listInvoices = _invoiceDAO.FindInvoicesByAccount(_accountId);
             Assert.IsNotNull(_listInvoices);
-            Assert.AreEqual(_listInvoices[0].Id,2);
+            Assert.AreEqual(1,_listInvoices[0].Id);
         }
+
+        [Test(Description = "Caso de error al traer la lista de facturas de una orden")]
+        [ExpectedException(typeof(FindInvoicesByAccountFondaDAOException))]
+        public void ErrorFindInvoicesByAccountTest()
+        {
+            _listInvoices = _invoiceDAO.FindInvoicesByAccount(-1);
+            Assert.IsNotNull(_listInvoices);
+            Assert.AreEqual(0, _listInvoices.Count);
+        }
+
+        #endregion
 
         [Test(Description ="Prueba que el estado de un Restaurante cambie de ocupado a libre")]
         public void ReleaseTableTest()

@@ -925,6 +925,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error al generar la factura.
+        /// </summary>
+        public static string MessageFindGenerateInvoiceByAccountFondaDAOException {
+            get {
+                return ResourceManager.GetString("MessageFindGenerateInvoiceByAccountFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error en la base de datos al obtener las facturas de una orden.
         /// </summary>
         public static string MessageFindInvoicesByAccountFondaDAOException {
@@ -939,6 +948,15 @@ namespace FondaResources.OrderAccount {
         public static string MessageGenerateNumberAccountException {
             get {
                 return ResourceManager.GetString("MessageGenerateNumberAccountException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error al obtener las facturas dado un restaurante.
+        /// </summary>
+        public static string MessageFindInvoicesByRestaurantFondaDAOException {
+            get {
+                return ResourceManager.GetString("MessageFindInvoicesByRestaurantFondaDAOException", resourceCulture);
             }
         }
         
