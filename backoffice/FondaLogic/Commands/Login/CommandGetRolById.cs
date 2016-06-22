@@ -7,10 +7,10 @@ using com.ds201625.fonda;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 
-namespace FondaLogic.Commands.Login
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Login
 {
     // comando que busca rol dado un id 
     class CommandGetRolById : Command

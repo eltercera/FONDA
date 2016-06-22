@@ -9,10 +9,10 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
-using FondaLogic.Factory;
-using FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using System.Web;
-using FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 

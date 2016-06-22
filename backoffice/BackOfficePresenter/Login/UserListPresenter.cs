@@ -3,8 +3,8 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
-using FondaLogic;
-using FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using FondaResources.Login;
 using System;
 using System.Collections.Generic;
@@ -17,11 +17,11 @@ using System.Web.UI.WebControls;
 using System.Web;
 using System.Text.RegularExpressions;
 using com.ds201625.fonda.DataAccess.Exceptions;
-using FondaLogic.Log;
-using FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
-using FondaLogic.FondaCommandException.login;
-using FondaLogic.FondaCommandException.Login;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.login;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
 
 namespace BackOfficePresenter.Login
 {

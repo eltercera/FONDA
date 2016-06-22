@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.FondaCommandException.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.OrderAccount
 {
     public class CommandExceptionGetInvoicesByProfile : CommandException
     {

@@ -8,11 +8,11 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
-using FondaLogic.Log;
-using FondaLogic.FondaCommandException;
-using FondaLogic.FondaCommandException.Login;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
 
-namespace FondaLogic.Commands.Login
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Login
 {
     // metodo que almacena un empleado en la bd
     class CommandSaveEmployee : Command

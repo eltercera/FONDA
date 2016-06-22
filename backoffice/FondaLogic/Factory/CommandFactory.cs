@@ -1,13 +1,13 @@
 ﻿using com.ds201625.fonda;
 using com.ds201625.fonda.Domain;
-using FondaLogic.Commands.OrderAccount;
-using FondaLogic.Commands.Login;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.Login;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using System.Collections.Generic;
-using FondaLogic.Commands.Reservations;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations;
 using System;
 
-namespace FondaLogic.Factory
+namespace com.ds201625.fonda.Logic.FondaLogic.Factory
 {
     /// <summary>
     /// Fabrica que genera los comandos del sistema

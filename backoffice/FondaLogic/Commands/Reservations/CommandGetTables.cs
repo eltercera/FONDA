@@ -2,13 +2,13 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 
 
-namespace FondaLogic.Commands.Reservations
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations
 {
     public class CommandGetTables : Command
     {

@@ -1,13 +1,13 @@
 ﻿using System;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using com.ds201625.fonda.DataAccess.Exceptions;
-using FondaLogic.FondaCommandException.Login;
-using FondaLogic.FondaCommandException.login;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.login;
 
-namespace FondaLogic.Commands.Login
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Login
 {
     public class CommandGetEmployeeById : Command
     {
