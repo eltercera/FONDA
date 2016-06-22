@@ -3,7 +3,6 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System.Collections.Generic;
 using NHibernate.Criterion;
-using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.Factory;
 using FondaResources.OrderAccount;
 using com.ds201625.fonda.DataAccess.Exceptions;

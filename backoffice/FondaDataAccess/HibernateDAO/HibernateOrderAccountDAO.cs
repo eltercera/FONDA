@@ -1,11 +1,8 @@
 ﻿using System;
-using NHibernate;
-using NHibernate.Criterion;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System.Collections.Generic;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Factory;
 using FondaResources.OrderAccount;
 using com.ds201625.fonda.DataAccess.Exceptions;
@@ -19,7 +16,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         private FactoryDAO.FactoryDAO _facDAO;
         private IRestaurantDAO _restaurantDAO;
-        private Restaurant _restaurant;
 
         public HibernateOrderAccountDAO()
         {
@@ -43,10 +39,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         public IList<Account> FindAccountByRestaurant(int _idRestaurant)
         {
             Restaurant _restaurant;
-            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
 
             try
             {
+                IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
                 _restaurant = _restaurantDAO.FindById(_idRestaurant);
                 IList<Account> _list = new List<Account>();
                 _list = _restaurant.Accounts;
