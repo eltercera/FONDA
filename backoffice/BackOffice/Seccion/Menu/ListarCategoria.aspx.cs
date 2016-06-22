@@ -9,7 +9,7 @@ using BackOfficeModel.Menu;
 using System.Text.RegularExpressions;
 using BackOfficeModel;
 using System.Web.UI.HtmlControls;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using BackOffice.Content;
 
 namespace BackOffice.Seccion.Menu

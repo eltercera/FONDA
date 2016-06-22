@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using BackOfficeModel.Login;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using System.Web.UI.HtmlControls;
 using BackOfficePresenter.Login;
 

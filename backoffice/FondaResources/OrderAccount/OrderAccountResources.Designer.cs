@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FondaResources.OrderAccount {
+namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace FondaResources.OrderAccount {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.OrderAccount.OrderAccountResources", typeof(OrderAccountResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("com.ds201625.fonda.Resources.FondaResources.OrderAccount.OrderAccountResources", typeof(OrderAccountResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

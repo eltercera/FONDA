@@ -5,7 +5,7 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.OrderAccount;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 

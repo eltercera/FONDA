@@ -3,8 +3,8 @@ using System;
 using System.Web.UI.WebControls;
 using BackOfficeModel;
 using System.Web.UI.HtmlControls;
-using FondaResources.Login;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using BackOffice.Content;
 
 namespace BackOffice.Seccion.Caja

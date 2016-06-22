@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BackOfficeModel.Login;
 using System.Web.UI.HtmlControls;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using BackOfficePresenter.Login;
 using BackOffice.Content;
 

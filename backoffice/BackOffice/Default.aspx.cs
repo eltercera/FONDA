@@ -7,7 +7,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using BackOfficePresenter.Login;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using BackOffice.Content;
 
 namespace BackOffice

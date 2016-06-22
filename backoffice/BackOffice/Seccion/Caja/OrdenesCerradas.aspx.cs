@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Web.UI.WebControls;
 using BackOfficeModel.OrderAccount;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using System.Web.UI.HtmlControls;
 using BackOfficeModel;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using BackOffice.Content;
 
 namespace BackOffice.Seccion.Caja

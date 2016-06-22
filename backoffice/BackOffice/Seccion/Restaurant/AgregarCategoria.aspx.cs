@@ -11,7 +11,7 @@ using com.ds201625.fonda.Domain;
 using System.Web.Services;
 using System.Web.Script.Serialization;
 using System.Text.RegularExpressions;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using BackOfficeModel.Restaurant;
 using System.Web.UI.HtmlControls;
 using BackOfficePresenter.Restaurante;

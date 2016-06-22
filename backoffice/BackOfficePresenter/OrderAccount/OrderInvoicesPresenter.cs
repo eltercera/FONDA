@@ -7,7 +7,7 @@ using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Domain;
 using BackOfficePresenter.FondaMVPException;
 using System.Web.UI.WebControls;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System.Web;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
 using BackOfficePresenter.FondaMVPException.OrderAccount;

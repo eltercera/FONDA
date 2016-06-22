@@ -80,7 +80,7 @@ namespace BackOfficePresenter.Restaurante
                         //Agregar atributos de la celda
                         actionModify.Attributes["data-toggle"] = "modal";
                         actionModify.Attributes["data-target"] = "#modificar";
-                        actionModify.Text = FondaResources.Login.RestaurantResource.ActionModify;
+                        actionModify.Text = com.ds201625.fonda.Resources.FondaResources.Login.RestaurantResource.ActionModify;
                         tCell.Controls.Add(actionModify);
                     }
                     //Agrega la 

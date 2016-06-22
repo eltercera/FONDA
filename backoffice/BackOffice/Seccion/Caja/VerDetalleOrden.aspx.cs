@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web.UI.WebControls;
 using BackOfficeModel.OrderAccount;
-using FondaResources.OrderAccount;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using System.Web.UI.HtmlControls;
 using BackOfficeModel;
 using BackOffice.Content;

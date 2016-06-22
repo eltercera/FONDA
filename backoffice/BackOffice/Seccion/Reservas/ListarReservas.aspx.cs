@@ -8,8 +8,8 @@ using System.Web.UI.HtmlControls;
 using BackOfficeModel;
 using BackOfficeModel.Reservations;
 using com.ds201625.fonda.BackOffice.Presenter.Reservations;
-using FondaResources.Reservation;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Reservation;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using BackOffice.Content;
 
 namespace BackOffice.Seccion.Reservas

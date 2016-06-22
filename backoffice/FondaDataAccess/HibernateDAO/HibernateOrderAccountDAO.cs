@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Factory;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
