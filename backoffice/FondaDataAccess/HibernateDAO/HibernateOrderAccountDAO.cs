@@ -8,11 +8,15 @@ using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Factory;
 using FondaResources.OrderAccount;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
     public class HibernateOrderAccountDAO : HibernateBaseEntityDAO<Account>, IOrderAccountDao
     {
+        /// <summary>
+        /// Clase que tiene el manejo de los metodos de la base de datos de Order Account
+        /// </summary>
         private FactoryDAO.FactoryDAO _facDAO;
         private IRestaurantDAO _restaurantDAO;
 
@@ -20,48 +24,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             this._facDAO = FactoryDAO.FactoryDAO.Intance;
         }
-
-        
-        /// <summary>
-        /// Obtiene la orden de un comensal
-        /// </summary>
-        /// <param name="commensal">Un objeto de tipo Commensal</param>
-        /// <returns>Un objeto Account</returns>
-        public Account FindByCommensal(Commensal commensal)
-        {
-            ICriterion criterion = Expression.And(Expression.Eq("Commensal", commensal), Expression.Eq("Status", OpenAccountStatus.Instance));
-            try
-            {
-                return (Account)(FindAll(criterion)[0]);
-            }
-            catch (ArgumentOutOfRangeException e)
-            {
-                throw new FondaIndexException("Not Found order account", e);
-            }
-        }
-
-        /// <summary>
-        /// Obtiene las ordenes de un Restaurante
-        /// </summary>
-        /// <param name="restaurant">Un objeto de tipo Restaurant</param>
-        /// <returns>Una lista de Account</returns>
-        //public IList<Account> FindByRestaurant(Restaurant restaurant)
-        //{
-        //    ICriterion criterion = Expression.Eq("Status", OpenAccountStatus.Instance);
-        //    try
-        //    {
-        //        IList<Account> list = new List<Account>();
-        //        list = (FindAll(criterion));
-        //        return list;
-        //    }
-        //    catch (ArgumentOutOfRangeException e)
-        //    {
-        //        throw new FondaIndexException("No se encontraron ordenes", e);
-        //    }
-        //}
-
-
-
+   
         /// <summary>
         /// Obtiene Todas las ordenes de un Restaurante
         /// </summary>
@@ -75,9 +38,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 list = _restaurant.Accounts;
                 return list;
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (Exception ex)
             {
-                throw new FondaIndexException("No se encontraron ordenes", e);
+                FindAllAccountByRestaurantFondaDAOException exception = 
+                    new FindAllAccountByRestaurantFondaDAOException(OrderAccountResources.MessageFindAllAccountByRestaurantException, ex);
+                //Llamar al logger
+                throw exception;
             }
         }
 

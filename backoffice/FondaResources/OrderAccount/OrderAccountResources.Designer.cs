@@ -880,6 +880,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al obtener todas las cuentas de un restaurante.
+        /// </summary>
+        public static string MessageFindAllAccountByRestaurantException {
+            get {
+                return ResourceManager.GetString("MessageFindAllAccountByRestaurantException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error en la base de datos al obtener las facturas de un perfil.
         /// </summary>
         public static string MessagefindAllInvoiceException {
