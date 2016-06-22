@@ -49,11 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommensalCommandManagementTest.cs" />
-    <Compile Include="GetEmailCommensalManagementTest .cs" />
-    <Compile Include="GetAllRestaurantManagementTest.cs" />
-    <Compile Include="GetFavoriteRestaurantManagementTest .cs" />
-    <Compile Include="DeleteRestaurantManagementTest.cs" />
-    <Compile Include="CreateFavoriteRestaurantManagementTest.cs" />
+    <Compile Include="FavoriteRestaurantCommandTest\GetEmailCommensalManagementTest .cs" />
+    <Compile Include="FavoriteRestaurantCommandTest\GetAllRestaurantManagementTest.cs" />
+    <Compile Include="FavoriteRestaurantCommandTest\GetFavoriteRestaurantManagementTest .cs" />
+    <Compile Include="FavoriteRestaurantCommandTest\DeleteRestaurantManagementTest.cs" />
+    <Compile Include="FavoriteRestaurantCommandTest\CreateFavoriteRestaurantManagementTest.cs" />
     <Compile Include="HelpTestCommand.cs" />
     <Compile Include="ProfileManagementTest.cs" />
   </ItemGroup>

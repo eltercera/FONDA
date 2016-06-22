@@ -1,12 +1,9 @@
 ﻿using NUnit.Framework;
 using System;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
-
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEndLogic;
 using System.Collections.Generic;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
-using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.Factory;
 
 namespace FondaBackEndLogicTest
@@ -62,19 +59,6 @@ namespace FondaBackEndLogicTest
             Assert.AreEqual(commensal.Id, result.Id);
 		}
 
-        /// <summary>
-        /// prueba unitaria de comando con referencia nula
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(NullReferenceException))]
-        public void CreateFavoriteRestaurantCommandNullReferenceTest()
-        {
-            createFavorite.SetParameter(0, commensal);
-            createFavorite.SetParameter(1, restaurant);
-            Commensal result = (Commensal)createFavorite.Result;
-            Assert.AreNotEqual(commensal.Id, result.Id);
-            Assert.IsNull(result.Id);
-        }
 
         /// <summary>
         /// prueba unitaria de excepcion de parametros invalidos

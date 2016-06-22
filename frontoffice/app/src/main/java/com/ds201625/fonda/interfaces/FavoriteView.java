@@ -7,7 +7,10 @@ import java.util.List;
 /**
  * Created by Hp on 17/06/2016.
  */
-public interface IFavoriteView {
+/**
+ * Interfaz para la vista de FavoriteList.
+ */
+public interface FavoriteView {
 
     /**
      * Lista de todos los restaurantes favoritos

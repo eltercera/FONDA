@@ -11,15 +11,16 @@ using com.ds201625.fonda.Factory;
 namespace FondaBackEndLogicTest
 {
     /// <summary>
-    /// class GetEmailCommensalManagementTest
-    /// Clase que realiza las pruebas unitarias del comando obtener email de un commensal.
+    /// class  GetFavoriteRestaurantManagementTest
+    /// Clase que realiza las pruebas unitarias del comando obtener restaurant favorito de un comensal.
     /// </summary>
 	[TestFixture]
-	public class GetEmailCommensalManagementTest
+	public class GetFavoriteRestaurantManagementTest
 	{
+
         private Commensal commensal;
-        private ICommand getEmail;
-        
+        private ICommand getFavoriteRestaurant;
+
         /// <summary>
         /// metodo que instancia e inicializa el objeto y variables respectivamente.
         /// </summary>
@@ -27,9 +28,8 @@ namespace FondaBackEndLogicTest
         protected void Init()
         {
             commensal = EntityFactory.GetCommensal();
-            commensal.Email = "prueba@gmail.com";
-            commensal.Password = "fondam12345";
-            getEmail = BackendFactoryCommand.Instance.GetCommensalEmailCommand();
+            commensal.Id = 1;
+            getFavoriteRestaurant = BackendFactoryCommand.Instance.GetFavoriteRestaurantCommand();
         }
 
         /// <summary>
@@ -38,46 +38,34 @@ namespace FondaBackEndLogicTest
         [TearDown]
         protected void Clean()
         {
-            commensal = null;  
+          commensal = null;
         }
 
         /// <summary>
-        /// prueba unitaria de obtnerer el email de un comensal.
+        /// prueba unitaria de obtener un restaurant favorito.
         /// </summary>
 		[Test]
-		public void GetEmailCommensalCommandTest()
+		public void GetFavoriteRestaurantCommandTest()
 		{
-            getEmail.SetParameter(0, commensal);
-            getEmail.Run();
+            getFavoriteRestaurant.SetParameter(0, commensal);
 
-			UserAccount result = (UserAccount)getEmail.Result;
+            getFavoriteRestaurant.Run();
+
+            Commensal result = (Commensal)getFavoriteRestaurant.Result;
 
 			Assert.AreNotEqual(0, result.Id);
-            Assert.AreEqual(commensal.Email, result.Email);
+            Assert.AreEqual(commensal.Id, result.Id);
 		}
 
-        /// <summary>
-        /// prueba unitaria de comando con referencia nula
-        /// </summary>
-        [Test]
-        [ExpectedException(typeof(NullReferenceException))]
-        public void GetEmailCommensalCommandNullReferenceTest()
-        {
-            getEmail.SetParameter(0, commensal);
-            UserAccount result = (UserAccount)getEmail.Result;
-        
-            Assert.AreNotEqual(commensal.Email, result.Email);
-            Assert.IsNull(result.Email);
-        }
-
+     
         /// <summary>
         /// prueba unitaria de excepcion de parametros invalidos
         /// </summary>
         [Test]
         [ExpectedException(typeof(InvalidTypeOfParameterException))]
-        public void GetEmailCommensalCommandBadParameter0Test()
+        public void GetFavoriteRestaurantCommandBadParameter0Test()
         {
-            getEmail.SetParameter(0, "2");
+            getFavoriteRestaurant.SetParameter(0, "2");
         }
 
         /// <summary>
@@ -85,10 +73,10 @@ namespace FondaBackEndLogicTest
         /// </summary>
         [Test]
         [ExpectedException(typeof(ParameterIndexOutOfRangeException))]
-        public void GetEmailCommensalCommandOfRangePaametersTest()
+        public void DeleteFavoriteRestaurantCommandOfRangePaametersTest()
         {
-            getEmail.SetParameter(1, commensal);
-            getEmail.Run();
+            getFavoriteRestaurant.SetParameter(3, commensal);
+            getFavoriteRestaurant.Run();
         }
 
         /// <summary>
@@ -96,10 +84,11 @@ namespace FondaBackEndLogicTest
         /// </summary>
         [Test]
         [ExpectedException(typeof(RequieredParameterNotFoundException))]
-        public void GetEmailCommensalCommandRequieredPaametersTest()
+        public void DeleteFavoriteRestaurantCommandRequieredPaametersTest()
         {
-            getEmail.Run();
+           getFavoriteRestaurant.Run();
         }
+
 	}
 }
 

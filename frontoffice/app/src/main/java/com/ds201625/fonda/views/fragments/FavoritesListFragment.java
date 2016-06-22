@@ -18,10 +18,10 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.IFavoriteView;
-import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
-import com.ds201625.fonda.logic.FondaCommandFactory;
+import com.ds201625.fonda.interfaces.FavoriteView;
+import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
+import com.ds201625.fonda.views.activities.FavoritesActivity;
 import com.ds201625.fonda.views.adapters.FavoriteRestViewItemList;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ import java.util.List;
  * Fragment que contiene la lista de restaurantes favoritos
  */
 public class FavoritesListFragment extends BaseFragment implements
-        IFavoriteView, SwipeRefreshLayout.OnRefreshListener{
+        FavoriteView, SwipeRefreshLayout.OnRefreshListener{
     /**
      * String que indica la clase al logger
      */
@@ -48,8 +48,9 @@ public class FavoritesListFragment extends BaseFragment implements
     private SwipeRefreshLayout swipeRefreshLayout;
     private boolean multi;
     private List<Restaurant> restaurantList;
-    private IFavoriteViewPresenter presenter;
-
+    private FavoriteViewPresenter presenter;
+    private FavoritesActivity favoritesAct;
+    private boolean empty;
     /**
      * Crea el fragment
      * @param savedInstanceState
@@ -132,10 +133,13 @@ public class FavoritesListFragment extends BaseFragment implements
                                             e);
                                 }
                             }
+                            if(isEmptyFavorite()){
+                                FavoritesActivity.changeFrag(1);
+                            }
+                            updateList();
                             favoritesList.cleanSelected();
                             mCallBack.OnFavoriteSelectionModeExit();
                             mode.finish();
-                            updateList();
                             break;
                             default:
                             return false;
@@ -204,12 +208,32 @@ public class FavoritesListFragment extends BaseFragment implements
     public void updateList() {
         Log.d(TAG,"Ha ingresado a updateList");
         swipeRefreshLayout.setRefreshing(true);
-       favoritesList.updateList();
+        favoritesList.updateList();
         restaurants.refreshDrawableState();
         swipeRefreshLayout.setRefreshing(false);
         Log.d(TAG,"Ha finalizado updateList");
     }
+    /**
+     * Devuelve el estado de los restaurantes favoritos con respecto al usuario.
+     * @param
+     * @return Boolean.
+     */
+    public boolean isEmptyFavorite() {
+        try {
+            //Llamo al comando de requireLogedCommensalCommand
+            presenter.findLoggedComensal();
+            List<Restaurant> restaurantList = presenter.findAllFavoriteRestaurant();
 
+            if (restaurantList.size() == 0) {
+                return true;
+            }
+
+        }
+        catch (Exception e) {
+            Log.e(TAG,"Error al determinar si el commensal tiene favoritos",e);
+        }
+        return false;
+    }
 
 
     /**

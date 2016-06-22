@@ -35,7 +35,7 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
         return parameters;
     }
     /**
-     * Comando para eliminar un restaurante favorito
+     * Metodo de invoke implementado: Comando para eliminar un restaurante favorito
      */
     @Override
     protected void invoke() {
@@ -49,7 +49,8 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
         try {
             idCommensal = (Commensal) getParameter(0);
             idRestaurant = (Restaurant) getParameter(1);
-            commensal =  serviceFavorits.deleteFavoriteRestaurant(idCommensal.getId(),idRestaurant.getId());
+            commensal =  serviceFavorits.deleteFavoriteRestaurant(idCommensal.getId(),
+                    idRestaurant.getId());
             //AKI FALTAN LAS RECIBIDAS DE BO
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
