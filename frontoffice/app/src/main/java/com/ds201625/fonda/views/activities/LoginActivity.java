@@ -16,13 +16,16 @@ import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.interfaces.ILoginView;
+import com.ds201625.fonda.interfaces.ILoginViewPresenter;
 import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.presenter.LoginPresenter;
 
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements ILoginView {
 
     /**
      * Estados de para el formulario y acciones.
@@ -45,11 +48,12 @@ public class LoginActivity extends BaseActivity {
     private Button mRegisterButton;
     private LinearLayout mLoginLayout;
     private LinearLayout mInitLayout;
+    private ILoginViewPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        presenter = new LoginPresenter(this);
         // para saltar o no
         boolean skp = false;
 
@@ -220,7 +224,7 @@ public class LoginActivity extends BaseActivity {
                     regiter(email,password,repassword);
                     break;
                 case ON_PASSWORD_FORGET:
-                    // // TODO: 5/16/16 Funcionalidad de recuperación de contraseña
+                    regiter(email,password,repassword);
                     break;
             }
         }
@@ -251,7 +255,6 @@ public class LoginActivity extends BaseActivity {
     }
 
     private boolean isPasswordValid(String password) {
-        // // TODO: 5/16/16 Validar un patron de contraseña valida
         return password.length() >= 6;
     }
 
@@ -279,7 +282,8 @@ public class LoginActivity extends BaseActivity {
      * @param password contraseña
      * @param repassword recontraseñan :)
      */
-    private void regiter(String email, String password, String repassword) {
+    @Override
+    public void regiter(String email, String password, String repassword) {
         Toast msj = null;
         boolean succ = false;
         if (!password.equals(repassword)){
@@ -288,7 +292,7 @@ public class LoginActivity extends BaseActivity {
                     Toast.LENGTH_SHORT);
         } else {
             try {
-                SessionData.getInstance().registerCommensal(email, password);
+                presenter.regiter(email, password);
                 succ = true;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -313,20 +317,15 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
-    private void login(String email, String password) {
+    @Override
+    public void login(String email, String password) {
         boolean succ = false;
         Commensal commensal;
         commensal = new Commensal();
         commensal.setPassword(password);
         commensal.setEmail(email);
         try {
-            SessionData.getInstance().addCommensal(commensal);
-        } catch (LocalStorageException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            SessionData.getInstance().loginCommensal();
+           presenter.login(commensal);
             succ = true;
         } catch (Exception e) {
             e.printStackTrace();

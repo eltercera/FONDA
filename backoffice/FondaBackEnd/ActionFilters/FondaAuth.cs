@@ -31,8 +31,7 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 		public override void OnAuthorization(HttpActionContext context)
 		{
             if (!Authorize(context))
-                context = null;
-                //throw new HttpResponseException(HttpStatusCode.Unauthorized);
+               throw new HttpResponseException(HttpStatusCode.Unauthorized);
 			
 			base.OnAuthorization(context);
 		}

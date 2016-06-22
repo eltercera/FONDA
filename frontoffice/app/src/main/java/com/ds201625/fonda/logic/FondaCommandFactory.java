@@ -1,7 +1,7 @@
 package com.ds201625.fonda.logic;
 
 import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
-import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteCommensalCommand;
+import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteTokenCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.CreateProfileCommand;
@@ -39,7 +39,7 @@ public class FondaCommandFactory {
      * Crea un CreateProfileCommand
      * @return comando CreateProfileCommand
      */
-    public static Command createCreateProfileCommand() {
+    public static Command createProfileCommand() {
         return  new CreateProfileCommand();
     }
 
@@ -112,9 +112,11 @@ public class FondaCommandFactory {
     public static Command createCommensalCommand() { return  new CreateCommensalCommand(); }
 
     /**
-     * Crea un deleteCommensalCommand
-     * @return comando deleteCommensalCommand
+     * Crea un deleteTokenCommand
+     * @return comando deleteTokenCommand
      */
-    public static Command deleteCommensalCommand() { return  new DeleteCommensalCommand(); }
+    public static Command deleteTokenCommand() { return  new DeleteTokenCommand();
+    }
+
 }
 
