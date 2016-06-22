@@ -162,7 +162,7 @@ namespace BackOffice.Seccion.Caja
         {
             if (Session[ResourceLogin.sessionUserID] != null &&
                 Session[ResourceLogin.sessionRestaurantID] != null)
-                _presenter.GetDetailOrder();
+                _presenter.GetDetailInvoice();
             else
                 Response.Redirect(RecursoMaster.addressLogin);
 

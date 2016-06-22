@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using BackOfficeModel;
 using BackOfficeModel.OrderAccount;
 using FondaLogic;
 using FondaLogic.Factory;
@@ -81,19 +78,19 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 }
 
 
-                    //Revisa si la lista no esta vacia
-                    if (listInvoice != null)
-                {
-                    //Llama al metodo para el llenado de la tabla
+                //Revisa si la lista no esta vacia
+                //Llama al metodo para el llenado de la tabla
+                if (listInvoice != null) 
                     FillTable(listInvoice);
-                }
+                else
+                    throw new Exception();
+
             }
             catch (MVPExceptionOrderInvoicesTable ex)
             {
-                //Revisar
                 MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
                     (
-                        Errors.MVPExceptionOrderInvoicesTableCode,
+                        OrderAccountResources.MVPExceptionOrderInvoicesTableCode,
                         OrderAccountResources.ClassNameOrderInvoicesPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                         OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
@@ -113,6 +110,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
+                FillTable(new List<Invoice>());
                 ErrorLabel(e.MessageException);
             }
             catch (Exception ex)
@@ -126,9 +124,14 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
+                FillTable(new List<Invoice>());
                 ErrorLabel(e.MessageException);
             }
 
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameClosedOrdersPresenter
+                                    , OrderAccountResources.MessageGetClosedOrders
+                                    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                                    );
         }
 
 

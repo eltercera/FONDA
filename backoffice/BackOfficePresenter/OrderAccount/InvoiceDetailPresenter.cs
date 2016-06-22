@@ -1,5 +1,6 @@
 ﻿using BackOfficeModel.OrderAccount;
 using BackOfficePresenter.FondaMVPException;
+using BackOfficePresenter.FondaMVPException.OrderAccount;
 using com.ds201625.fonda.Domain;
 using FondaLogic;
 using FondaLogic.Factory;
@@ -57,27 +58,43 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 commandPrintInvoice.Execute();
 
             }
-            /// EXCEPCION DE PRINT INVOICE
-            catch (MVPExceptionDetailOrderTable ex)
+            catch (MVPExceptionPrintInvoice ex)
             {
-                //Revisar
-                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+                MVPExceptionPrintInvoice e = new MVPExceptionPrintInvoice
                     (
-                        Errors.MVPExceptionDetailOrderTableCode,
-                        Errors.ClassNameDetailOrderPresenter,
+                        OrderAccountResources.MVPExceptionPrintInvoiceCode,
+                        OrderAccountResources.ClassNameInvoiceDetailPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionDetailOrderTable,
+                        OrderAccountResources.MessageMVPExceptionPrintInvoice,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                throw e;
                 ErrorLabel(e.MessageException);
             }
+            catch (Exception ex)
+            {
+                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+                    (
+                        OrderAccountResources.MVPExceptionPrintInvoiceCode,
+                        OrderAccountResources.ClassNameInvoiceDetailPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionPrintInvoice,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                ErrorLabel(e.MessageException);
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDetailPresenter
+                , OrderAccountResources.SuccessPrintInvoice
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
+            SuccessLabel(OrderAccountResources.SuccessPrintInvoice);
         }
 
         ///<summary>
         ///Metodo para llenar la tabla de Detalle de la factura
-        public void GetDetailOrder()
+        public void GetDetailInvoice()
         {
             
             //Define objeto a recibir
@@ -122,27 +139,36 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             }
             catch (MVPExceptionDetailOrderTable ex)
             {
-                //Revisar
-                //EN CASO DE ERROR, LA PAGINA EXPLOTA Y NO HACE LO QUE DEBERIA
                 MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
                     (
-                        Errors.MVPExceptionDetailOrderTableCode,
-                        Errors.ClassNameDetailOrderPresenter,
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameDetailOrderPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionDetailOrderTable,
+                        OrderAccountResources.MessageMVPExceptionDetailOrderTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                throw e;
                 ErrorLabel(e.MessageException);
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
-                //Revisar
-                //EN CASO DE ERROR, LA PAGINA EXPLOTA Y NO HACE LO QUE DEBERIA
+                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+                    (
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameDetailOrderPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionDetailOrderTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                ErrorLabel(e.MessageException);
             }
         }
 
+        /// <summary>
+        /// Llena los campos donde se muestra la
+        /// informacion de la factura
+        /// </summary>
         private void FillLabels()
         {
             ResetLabels();
@@ -152,15 +178,19 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             _view.UserName.Text = _invoice.Profile.Person.Name.ToString();
             _view.UserLastName.Text = _invoice.Profile.Person.LastName.ToString();
             _view.UserId.Text = _invoice.Profile.Person.Ssn.ToString();
-            _view.SubTotalInvoice.Text = _currency + " " + subtotal.ToString();
-            _view.IvaInvoice.Text = _currency + " " + _invoice.Tax.ToString();
-            _view.TotalInvoice.Text = _currency + " " + _invoice.Total.ToString();
+            _view.SubTotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, subtotal.ToString());
+            _view.IvaInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Tax.ToString());
+            _view.TotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Total.ToString());
             if (_invoice.Status.Equals(GeneratedInvoiceStatus.Instance))
                 _view.PrintInvoice.Visible = true;
             else if (_invoice.Status.Equals(CanceledInvoiceStatus.Instance))
                 _view.PrintInvoice.Visible = false;
         }
 
+        /// <summary>
+        /// Limpia los labels donde se muestra el detalle
+        /// de la factura
+        /// </summary>
         private void ResetLabels()
         {
             string reset = string.Empty;
@@ -263,11 +293,16 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
             return header;
         }
-           private int GetQueryParameter()
+
+        /// <summary>
+        /// Obtiene el parametro pasado en el URL
+        /// </summary>
+        /// <returns>Id</returns>
+        private int GetQueryParameter()
         {
             int result = 0;
             string queryParameter =
-                HttpContext.Current.Request.QueryString["Id"];
+                HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
 
 
             if (queryParameter != null && queryParameter != string.Empty)

@@ -289,6 +289,10 @@
     <value>CommandGetOrders</value>
     <comment>Comando para obtener las ordenes de un Restaurante</comment>
   </data>
+  <data name="ClassNameInvoiceDetailPresenter" xml:space="preserve">
+    <value>InvoiceDetailPresenter</value>
+    <comment>Clase presentadora del detalle de la factura</comment>
+  </data>
   <data name="ClassNameOrderInvoicesPresenter" xml:space="preserve">
     <value>OrderInvoicesPresenter</value>
     <comment>Clase presentadora de las facturas</comment>
@@ -309,29 +313,169 @@
     <value>CommandTotalOrder</value>
     <comment>Comando para pagar conocer el pretotal de la orden</comment>
   </data>
+  <data name="ClassNameValidateProfileByCommensal" xml:space="preserve">
+    <value>CommandValidateProfileByCommensal</value>
+    <comment>Comando para validar si un comensal posee un perfil</comment>
+  </data>
+  <data name="CommandExceptionCancelInvoiceCode" xml:space="preserve">
+    <value>BO-04-007</value>
+    <comment>Codigo de error al cancelar factura</comment>
+  </data>
+  <data name="CommandExceptionCloseCashRegisterCode" xml:space="preserve">
+    <value>BO-04-008</value>
+    <comment>Codigo de error al cerrar caja</comment>
+  </data>
+  <data name="CommandExceptionFindInvoicesByAccountCode" xml:space="preserve">
+    <value>BO-04-009</value>
+    <comment>Codigo de error al obtener facturas por orden</comment>
+  </data>
+  <data name="CommandExceptionFindInvoicesByRestaurantCode" xml:space="preserve">
+    <value>BO-04-012</value>
+    <comment>Codigo de error al encontrar la lista de ordenes de un Restaurante</comment>
+  </data>
+  <data name="CommandExceptionGenerateInvoiceCode" xml:space="preserve">
+    <value>BO-04-013</value>
+    <comment>Codigo de error al generar una factura</comment>
+  </data>
+  <data name="CommandExceptionGetClosedOrdersCode" xml:space="preserve">
+    <value>BO-04-014</value>
+    <comment>Codigo de error al obtener ordenes cerradas</comment>
+  </data>
+  <data name="CommandExceptionValidateProfileByCommensalCode" xml:space="preserve">
+    <value>BO-04-011</value>
+    <comment>Codigo de error al validar que un perfil pertenezca a un comensal</comment>
+  </data>
+  <data name="CurrencyTotal" xml:space="preserve">
+    <value>{0} {1}</value>
+    <comment>Formato para mostrar moneda y total</comment>
+  </data>
   <data name="Empty" xml:space="preserve">
     <value>0</value>
     <comment>Valor vacio</comment>
-  </data>
-  <data name="ErrorMessageCloseCashRegister" xml:space="preserve">
-    <value>Error al realizar el cierre de caja</value>
-    <comment>Mensaje de error para CommandCloseCashRegister</comment>
   </data>
   <data name="ErrorMessageGenerateInvoice" xml:space="preserve">
     <value>Error al crear la factura para una orden cerrada</value>
     <comment>Mensaje de error para CommandGenerateInvoice</comment>
   </data>
+  <data name="ErrorMessageGetCloseOrders" xml:space="preserve">
+    <value>Error obteniendo las ordenes cerradas de un Restaurante</value>
+    <comment>Mensaje de error para CommandGetCloseOrders</comment>
+  </data>
+  <data name="ErrorMessageGetInvoice" xml:space="preserve">
+    <value>Error al obtener la factura de una orden cerrada</value>
+    <comment>Mensaje de error para CommandGetInvoice</comment>
+  </data>
+  <data name="ErrorMessageGetOrder" xml:space="preserve">
+    <value>Error al obtener una orden</value>
+    <comment>Mensaje de error para CommandGetOrder</comment>
+  </data>
+  <data name="ErrorMessageGetOrders" xml:space="preserve">
+    <value>Error obteniendo las ordenes de un Restaurante</value>
+    <comment>Mensaje de error para CommandGetOrders</comment>
+  </data>
+  <data name="ErrorMessagePayOrder" xml:space="preserve">
+    <value>Error al pagar una orden abierta en un Restaurante</value>
+    <comment>Mensaje de error para CommandPayOrder</comment>
+  </data>
+  <data name="MessageClose" xml:space="preserve">
+    <value>Ha cerrado la caja exitosamente, el balance del dia fue:</value>
+    <comment>Mensaje de exito para Close Cash Register</comment>
+  </data>
+  <data name="MessageCommandCloseCashRegister" xml:space="preserve">
+    <value>Error al realizar el cierre de caja, no se puede cerrar caja con cuentas abiertas</value>
+    <comment>Mensaje de error para CommandCloseCashRegister</comment>
+  </data>
+  <data name="MessageCommandExceptionCancelInvoice" xml:space="preserve">
+    <value>No ha sido posible anular la factura</value>
+    <comment>Mensaje de error para CommandExceptionCancelInvoice</comment>
+  </data>
+  <data name="MessageCommandExceptionFindInvoicesByAccount" xml:space="preserve">
+    <value>Error al obtener las facturas de una orden</value>
+    <comment>Mensaje de error para CommandExceptionFindInvoicesByAccount</comment>
+  </data>
+  <data name="MessageCommandExceptionFindInvoicesByRestaurant" xml:space="preserve">
+    <value>Error al obtener la lista de ordenes de un Restaurante</value>
+    <comment>Mensaje de error para CommandFindInvoicesByRestaurant</comment>
+  </data>
+  <data name="MessageCommandExceptionGenerateInvoice" xml:space="preserve">
+    <value>Error al generar la factura</value>
+    <comment>Mensaje de error para CommandExceptionGenerateInvoice</comment>
+  </data>
+  <data name="MessageCommandExceptionGetClosedOrders" xml:space="preserve">
+    <value>No se ha podido obtener la lista de ordenes cerradas</value>
+    <comment>Mensaje de error para CommandGetClosedOrders</comment>
+  </data>
+  <data name="MessageCommandExceptionValidateProfileByCommensal" xml:space="preserve">
+    <value>No se puede acceder, el perfil no pertenece al comensal</value>
+    <comment>Mensaje de error para CommandExceptionValidateProfileByCommensal</comment>
+  </data>
   <data name="MessageGetClosedOrders" xml:space="preserve">
     <value>Se ha cargado la tabla de ordenes cerradas satisfactoriamente</value>
     <comment>Mensaje de exito para GetClosedOrders</comment>
+  </data>
+  <data name="MessageGetDetailOrder" xml:space="preserve">
+    <value>Se ha cargado la tabla de detalle de orden satisfactoriamente</value>
+    <comment>Mensaje de exito para GetDetailOrder</comment>
+  </data>
+  <data name="MessageGetOrders" xml:space="preserve">
+    <value>Se ha cargado la tabla de ordenes abiertas satisfactoriamente</value>
+    <comment>Mensaje de exito para GetOrders</comment>
+  </data>
+  <data name="MessageMVPExceptionCloseButton" xml:space="preserve">
+    <value>No se puede realizar el cierre de caja cuando existen ordenes abiertas</value>
+    <comment>Mensaje de error para MVPExceptionCloseButton</comment>
   </data>
   <data name="MessageMVPExceptionClosedOrdersTable" xml:space="preserve">
     <value>Se ha producido un error al llenar la tabla de Ordenes cerradas</value>
     <comment>Mensaje de error para MVPExceptionClosedOrdersTable</comment>
   </data>
+  <data name="MessageMVPExceptionDetailOrderTable" xml:space="preserve">
+    <value>Se ha producido un error al llenar la tabla del detale de la Orden #</value>
+    <comment>Mensaje de error para MVPExceptionDetailOrderTable</comment>
+  </data>
+  <data name="MessageMVPExceptionOrderInvoicesTable" xml:space="preserve">
+    <value>Se ha producido un error al llenar la tabla de Facturas</value>
+    <comment>Mensaje de error para MVPExceptionOrderInvoicesTable</comment>
+  </data>
+  <data name="MessageMVPExceptionOrdersTable" xml:space="preserve">
+    <value>Se ha producido un error al llenar la tabla de Ordenes abiertas</value>
+    <comment>Mensaje de error para MVPExceptionOrdersTable</comment>
+  </data>
+  <data name="MessageMVPExceptionPrintInvoice" xml:space="preserve">
+    <value>Se ha producido un error al imprimir una factura pagada</value>
+    <comment>Mensaje de error al Imprimir una factura</comment>
+  </data>
+  <data name="MessageMVPExceptionQuery" xml:space="preserve">
+    <value>Se ha producido un error al realizar el casteo del URL</value>
+    <comment>Mensaje de errora al hacer el casteo de URL</comment>
+  </data>
+  <data name="MVPExceptionCloseButtonCode" xml:space="preserve">
+    <value>BO-04-005</value>
+    <comment>Codigo de error al cerrar la cuenta </comment>
+  </data>
   <data name="MVPExceptionClosedOrdersTableCode" xml:space="preserve">
     <value>BO-04-001</value>
-    <comment>Mensaje de error al llenar tabla de Ordenes cerradas</comment>
+    <comment>Codigo de error al llenar tabla de Ordenes cerradas</comment>
+  </data>
+  <data name="MVPExceptionDetailOrderTableCode" xml:space="preserve">
+    <value>BO-04-004</value>
+    <comment>Codigo de error al llenar tabla de detalle de Orden</comment>
+  </data>
+  <data name="MVPExceptionOrderInvoicesTableCode" xml:space="preserve">
+    <value>BO-04-003</value>
+    <comment>Codigo de error al llenar tabla de facturas</comment>
+  </data>
+  <data name="MVPExceptionOrdersTableCode" xml:space="preserve">
+    <value>BO-04-002</value>
+    <comment>Codigo de error al llenar tabla de Ordenes abiertas</comment>
+  </data>
+  <data name="MVPExceptionPrintInvoiceCode" xml:space="preserve">
+    <value>BO-04-010</value>
+    <comment>Codigo de error al imprimir una factura pagada</comment>
+  </data>
+  <data name="MVPExceptionQueryCode" xml:space="preserve">
+    <value>BO-04-006</value>
+    <comment>Codigo de error al hacer el casteo del URL</comment>
   </data>
   <data name="QueryParam" xml:space="preserve">
     <value>Id</value>
@@ -344,5 +488,37 @@
   <data name="SessionRestaurantId" xml:space="preserve">
     <value>RestaurantID</value>
     <comment>Variable de sesion que contiene el Id del Restaurante</comment>
+  </data>
+  <data name="SuccessMessageCommandCancelInvoice" xml:space="preserve">
+    <value>Se ha anulado la factura satisfactoriamente</value>
+    <comment>Mensaje de exito para CommandCancelInvoice</comment>
+  </data>
+  <data name="SuccessMessageCommandCloseCashRegister" xml:space="preserve">
+    <value>Se ha cerrado la caja exitosamente</value>
+    <comment>Mensaje de exito para cierre de caja</comment>
+  </data>
+  <data name="SuccessMessageCommandExceptionFindInvoicesByAccount" xml:space="preserve">
+    <value>Facturas por orden obtenidas satisfactoriamente</value>
+    <comment>Mensaje de exito para obtener facturas de una orden</comment>
+  </data>
+  <data name="SuccessMessageCommandExceptionValidateProfileByCommensal" xml:space="preserve">
+    <value>Autorizado, el perfil pertenece al Comensal</value>
+    <comment>Mensaje de exito para CommandValidateProfileByCommensal</comment>
+  </data>
+  <data name="SuccessMessageCommandFindInvoicesByRestaurant" xml:space="preserve">
+    <value>Lista de ordenes de un Restaurante obtenida satisfactoriamente</value>
+    <comment>Mensaje de exito para CommandFindInvoicesByRestaurant</comment>
+  </data>
+  <data name="SuccessMessageCommandGenerateInvoice" xml:space="preserve">
+    <value>Factura generada exitosamente</value>
+    <comment>Mensaje de exito para CommandExceptionGenerateInvoice</comment>
+  </data>
+  <data name="SuccessMessageCommandGetClosedOrders" xml:space="preserve">
+    <value>Se ha obtenido la lista de ordenes cerradas satisfactoriamente</value>
+    <comment>Mensaje de exito para CommandGetClosedOrders</comment>
+  </data>
+  <data name="SuccessPrintInvoice" xml:space="preserve">
+    <value>La factura se ha imprimido satisfactoriamente</value>
+    <comment>Mensaje de exito para PrintInvoice</comment>
   </data>
 </root>

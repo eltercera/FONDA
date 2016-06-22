@@ -1,6 +1,7 @@
 ﻿using com.ds201625.fonda.Domain;
 using FondaLogic.FondaCommandException.OrderAccount;
 using FondaLogic.Log;
+using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,16 @@ namespace FondaLogic.Commands.OrderAccount
 {
     public class CommandValidateProfileByCommensal : Command
     {
+        private int profileId;
+        private bool result = false;
+        private Commensal commensal;
+        private List<Object> parameters;
+        private IList<Profile> profiles;
+
         public CommandValidateProfileByCommensal(Object receiver) : base(receiver) { }
 
         public override void Execute()
         {
-            int profileId;
-            bool result = false;
-            Commensal commensal;
-            List<Object> parameters;
-            IList<Profile> profiles;
 
             try
             {
@@ -40,12 +42,11 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionValidateProfileByCommensal exception = new CommandExceptionValidateProfileByCommensal(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameCloseCashRegister,
+                    OrderAccountResources.CommandExceptionValidateProfileByCommensalCode,
+                    OrderAccountResources.ClassNameValidateProfileByCommensal,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionValidateProfileByCommensal,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
@@ -55,16 +56,21 @@ namespace FondaLogic.Commands.OrderAccount
             catch(Exception ex)
             {
                 CommandExceptionValidateProfileByCommensal exception = new CommandExceptionValidateProfileByCommensal(
-    FondaResources.General.Errors.NullExceptionReferenceCode,
-    FondaResources.OrderAccount.Errors.ClassNameCloseCashRegister,
-    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-    FondaResources.General.Errors.NullExceptionReferenceMessage,
-    ex);
+                    OrderAccountResources.CommandExceptionValidateProfileByCommensalCode,
+                    OrderAccountResources.ClassNameValidateProfileByCommensal,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionValidateProfileByCommensal,
+                    ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
 
                 throw exception;
             }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameValidateProfileByCommensal
+                , OrderAccountResources.SuccessMessageCommandExceptionValidateProfileByCommensal
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
         }
     }
 }
