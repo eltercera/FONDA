@@ -12,6 +12,7 @@ namespace FondaDataAccessTest
     [TestFixture()]
     public class BODishOrderTest
     {
+        #region field
         private int accountId, _number;
         private IList<DishOrder> _listDishOrder;
         private Account _account;
@@ -20,7 +21,9 @@ namespace FondaDataAccessTest
         private DishOrder _dishOrder;
         private FactoryDAO _facDAO;
         private IDishOrderDAO _dishOrderDAO;
+        #endregion
 
+        #region Setup
         [SetUp]
         public void Init()
         {
@@ -39,7 +42,7 @@ namespace FondaDataAccessTest
 
 
         }
-
+        #endregion
         [Test]
         public void DishOrderTest()
         {
