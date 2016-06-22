@@ -700,11 +700,38 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al cancelar la factura.
+        /// </summary>
+        public static string MessageCancelInvoiceException {
+            get {
+                return ResourceManager.GetString("MessageCancelInvoiceException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al obtener todas las cuentas .
+        /// </summary>
+        public static string MessageChangeStatusAccountException {
+            get {
+                return ResourceManager.GetString("MessageChangeStatusAccountException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ha cerrado la caja exitosamente, el balance del dia fue:.
         /// </summary>
         public static string MessageClose {
             get {
                 return ResourceManager.GetString("MessageClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al cerrar la caja.
+        /// </summary>
+        public static string MessageCloseCashRegisterException {
+            get {
+                return ResourceManager.GetString("MessageCloseCashRegisterException", resourceCulture);
             }
         }
         
@@ -916,6 +943,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al generar el numero unico por restaurante de la cuenta.
+        /// </summary>
+        public static string MessageGenerateNumberAccountException {
+            get {
+                return ResourceManager.GetString("MessageGenerateNumberAccountException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ha ocurrido un error al obtener las facturas dado un restaurante.
         /// </summary>
         public static string MessageFindInvoicesByRestaurantFondaDAOException {
@@ -1029,6 +1065,15 @@ namespace FondaResources.OrderAccount {
         public static string MessageReleaseTableFondaDAOException {
             get {
                 return ResourceManager.GetString("MessageReleaseTableFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al guardar la factura.
+        /// </summary>
+        public static string MessageSaveInvoiceException {
+            get {
+                return ResourceManager.GetString("MessageSaveInvoiceException", resourceCulture);
             }
         }
         

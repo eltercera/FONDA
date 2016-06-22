@@ -6,7 +6,6 @@ using com.ds201625.fonda.Domain;
 using System.Collections.Generic;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.DataAccess.Exceptions;
-using com.ds201625.fonda.DataAccess.Exceptions.OrderAccount;
 
 namespace FondaDataAccessTest
 {
@@ -70,13 +69,6 @@ namespace FondaDataAccessTest
         }
         #endregion
 
-        [Test(Description = "Cambia el estatus de una factura a cancelado")]
-        public void CancelInvoiceTest()
-        {
-            _invoice = _invoiceDAO.FindById(_invoiceId);
-            _invoice=_accountDAO.CancelInvoice(_invoice, 2);
-            Assert.AreEqual(_invoice.Status,CanceledInvoiceStatus.Instance);
-        }
 
         //Debo agregar en el catch la otra excepcion
         #region Pruebas de DataAccess/HibernateDAO/FindInvoiceByRestaurant

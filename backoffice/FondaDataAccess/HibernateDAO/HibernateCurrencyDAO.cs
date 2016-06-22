@@ -1,6 +1,8 @@
 ﻿using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System.Collections.Generic;
+using com.ds201625.fonda.Factory;
+
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
     public class HibernateCurrencyDAO : HibernateNounBaseEntityDAO<Currency> , ICurrencyDAO
@@ -24,9 +26,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             Currency currency = FindBy("Name", name);
             if (currency == null)
             {
-                Currency newCurrency = new Currency();
-                newCurrency.Name = name;
-                return newCurrency;
+                Currency _currency = EntityFactory.GetRestCurrency(name);
+                return _currency;
             }
 
             return currency;

@@ -10,6 +10,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
 
 namespace BackOfficePresenter.Restaurante
 {
@@ -469,6 +471,8 @@ string zone, string longitud, string latitud, string otime, string ctime)
         /// </summary>
         public void ButtonModify_Click()
         {
+            Command commandModifyRestaurant;
+
             #region Campos del Restaurante
             //Datos basicos del Restaurante
             string Name = _view.nameModify.Text;
@@ -502,10 +506,13 @@ string zone, string longitud, string latitud, string otime, string ctime)
             bool Day7 = _view.day7Modify.Checked;
             bool[] days = new bool[] { Day1, Day2, Day3, Day4, Day5, Day6 };
             #endregion
+            System.Diagnostics.Debug.WriteLine(Name + Category + Nationality.ToString() + Rif + Currency +
+                Address + Zone + Long + Lat + _view.openingTimeModify.Text + _view.closingTimeModify.Text);
 
             if (ValidateRestaurantM(Name, Category, Nationality.ToString(), Rif, Currency,
                 Address, Zone, Long, Lat, _view.openingTimeModify.Text, _view.closingTimeModify.Text))
             {
+                System.Diagnostics.Debug.WriteLine("entreee va");
                 FactoryDAO factoryDAO = FactoryDAO.Intance;
                 IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
 
@@ -522,9 +529,22 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     _restaurantDAO.GenerateRestaurant(Name, Logo, Nationality, Rif, Address,
                     Category, Currency, Zone, LongD, LatD, OT, CT, days);
 
+               // com.ds201625.fonda.Domain.Restaurant _restaurantO = _restaurantDAO.FindById(idRestaurant);
+
+                Object[] _modifylist = new Object[2];
+                _modifylist[0] = _restaurantM;
+                _modifylist[1] = idRestaurant;
+
+                //Comando para modificar el restaurante
+                commandModifyRestaurant = CommandFactory.GetCommandModifyRestaurant(_modifylist);
+                commandModifyRestaurant.Execute();
+
+                //Resultado del receiver
+                Restaurant _restaurant = (Restaurant)commandModifyRestaurant.Receiver;
+
                 // Modifica un objeto restaurante
-                com.ds201625.fonda.Domain.Restaurant _restaurant =
-                    _restaurantDAO.ModifyRestaurant(idRestaurant, _restaurantM);
+                // com.ds201625.fonda.Domain.Restaurant _restaurant =
+                //    _restaurantDAO.ModifyRestaurant(idRestaurant, _restaurantM);
 
                 //Salva Restaurante modificado en la Base de Datos
                 _restaurantDAO.Save(_restaurant);

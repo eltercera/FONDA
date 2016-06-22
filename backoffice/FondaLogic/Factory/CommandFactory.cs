@@ -1,13 +1,14 @@
 ﻿using com.ds201625.fonda;
 using com.ds201625.fonda.Domain;
-using FondaLogic.Commands.OrderAccount;
-using FondaLogic.Commands.Login;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.Login;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using System.Collections.Generic;
-using FondaLogic.Commands.Reservations;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations;
 using System;
+using FondaLogic.Commands.Restaurante;
 
-namespace FondaLogic.Factory
+namespace com.ds201625.fonda.Logic.FondaLogic.Factory
 {
     /// <summary>
     /// Fabrica que genera los comandos del sistema
@@ -258,6 +259,10 @@ namespace FondaLogic.Factory
         #region Restaurant
 
         //Defincion de los comandos a implementar del modulo Restaurante
+        public static Command GetCommandModifyRestaurant(object receiver)
+        {
+            return new CommandModifyRestaurant(receiver);
+        }
 
         #endregion
 
@@ -415,6 +420,7 @@ namespace FondaLogic.Factory
         {
             return new CommandFindReservationsByTable(receiver);
         }
+
 
         #endregion
 

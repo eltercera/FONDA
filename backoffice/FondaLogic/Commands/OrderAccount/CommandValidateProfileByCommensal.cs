@@ -1,6 +1,6 @@
 ﻿using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException.OrderAccount;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandValidateProfileByCommensal : Command
     {

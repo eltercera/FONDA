@@ -2,14 +2,14 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandGetOrders : Command
     {

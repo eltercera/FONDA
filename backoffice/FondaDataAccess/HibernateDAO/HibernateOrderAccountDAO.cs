@@ -19,32 +19,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         private FactoryDAO.FactoryDAO _facDAO;
         private IRestaurantDAO _restaurantDAO;
+        private Restaurant _restaurant;
 
         public HibernateOrderAccountDAO()
         {
             this._facDAO = FactoryDAO.FactoryDAO.Intance;
-        }
-   
-        /// <summary>
-        /// Obtiene Todas las ordenes de un Restaurante
-        /// </summary>
-        /// <param name="restaurant">Un objeto de tipo Restaurant</param>
-        /// <returns>Una lista de Account</returns>
-        public IList<Account> FindAllAccountByRestaurant(Restaurant _restaurant)
-        {
-            try
-            {
-                IList<Account> list = new List<Account>();
-                list = _restaurant.Accounts;
-                return list;
-            }
-            catch (Exception ex)
-            {
-                FindAllAccountByRestaurantFondaDAOException exception = 
-                    new FindAllAccountByRestaurantFondaDAOException(OrderAccountResources.MessageFindAllAccountByRestaurantException, ex);
-                //Llamar al logger
-                throw exception;
-            }
         }
 
         /// <summary>
@@ -72,10 +51,29 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 IList<Account> _list = new List<Account>();
                 _list = _restaurant.Accounts;
                 return _list;
+
+
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (NullReferenceException ex)
             {
-                throw new FondaIndexException("Not Found invoice", e);
+                FindAccountByRestaurantFondaDAOException exception =
+                    new FindAccountByRestaurantFondaDAOException(OrderAccountResources.MessageFindAllAccountByRestaurantException, ex);
+                //Llamar al logger
+                throw exception;
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                FindAccountByRestaurantFondaDAOException exception =
+                    new FindAccountByRestaurantFondaDAOException(OrderAccountResources.MessageFindAllAccountByRestaurantException, ex);
+                //Llamar al logger
+                throw exception;
+            }
+            catch (Exception ex)
+            {
+                FindAccountByRestaurantFondaDAOException exception =
+                    new FindAccountByRestaurantFondaDAOException(OrderAccountResources.MessageFindAllAccountByRestaurantException, ex);
+                //Llamar al logger
+                throw exception;
             }
         }
 
@@ -88,9 +86,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 _account.ChangeStatus();
                 _accountDao.Save(_account);
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (ArgumentOutOfRangeException ex)
             {
-                throw new FondaIndexException("No se pudo cambiar el estatus", e);
+                ChangeStatusAccountFondaDAOException exception =
+                    new ChangeStatusAccountFondaDAOException(OrderAccountResources.MessageChangeStatusAccountException, ex);
+                //Llamar al logger
+                throw exception;
+            }
+            catch (Exception ex)
+            {
+                ChangeStatusAccountFondaDAOException exception =
+                    new ChangeStatusAccountFondaDAOException(OrderAccountResources.MessageChangeStatusAccountException, ex);
+                //Llamar al logger
+                throw exception;
             }
         }
 
@@ -125,16 +133,24 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     //se salva la cuenta para registrar la nueva factura
                     _accountDAO.Save(_account);
                     //_restaurantDAO.Save(_restaurant);
-
-
                 }
 
                 return _invoice;
 
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (ArgumentOutOfRangeException ex)
             {
-                throw new FondaIndexException("No se pudo insertar", e);
+                CancelInvoiceFondaDAOException exception =
+                    new CancelInvoiceFondaDAOException(OrderAccountResources.MessageCancelInvoiceException, ex);
+                //Llamar al logger
+                throw exception;
+            }
+            catch (Exception ex)
+            {
+                CancelInvoiceFondaDAOException exception =
+                    new CancelInvoiceFondaDAOException(OrderAccountResources.MessageCancelInvoiceException, ex);
+                //Llamar al logger
+                throw exception;
             }
         }
 
@@ -183,9 +199,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 return _invoice;
 
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (ArgumentOutOfRangeException ex)
             {
-                throw new FondaIndexException("No se pudo insertar", e);
+                SaveInvoiceFondaDAOException exception =
+       new SaveInvoiceFondaDAOException(OrderAccountResources.MessageSaveInvoiceException, ex);
+                //Llamar al logger
+                throw exception;
+            }
+            catch (Exception ex)
+            {
+                SaveInvoiceFondaDAOException exception =
+       new SaveInvoiceFondaDAOException(OrderAccountResources.MessageSaveInvoiceException, ex);
+                //Llamar al logger
+                throw exception;
             }
         }
 
@@ -211,9 +237,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
                 return _length;
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (ArgumentOutOfRangeException ex)
             {
-                throw new FondaIndexException("Not Found invoice", e);
+                GenerateNumberAccountFondaDAOException exception =
+       new GenerateNumberAccountFondaDAOException(OrderAccountResources.MessageGenerateNumberAccountException, ex);
+                //Llamar al logger
+                throw exception;
+            }
+            catch (Exception ex)
+            {
+                GenerateNumberAccountFondaDAOException exception =
+       new GenerateNumberAccountFondaDAOException(OrderAccountResources.MessageGenerateNumberAccountException, ex);
+                //Llamar al logger
+                throw exception;
             }
         }
 
@@ -246,9 +282,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 return totalInvoice;
 
             }
-            catch (FondaIndexException e)
+            catch (FondaIndexException ex)
             {
-                throw new FondaIndexException("No se puede cerrar caja con cuentas por pagar");
+                CloseCashRegisterFondaDAOException exception =
+       new CloseCashRegisterFondaDAOException(OrderAccountResources.MessageCloseCashRegisterException, ex);
+                //Llamar al logger
+                throw exception;
+            }
+            catch (Exception ex)
+            {
+                CloseCashRegisterFondaDAOException exception =
+       new CloseCashRegisterFondaDAOException(OrderAccountResources.MessageCloseCashRegisterException, ex);
+                //Llamar al logger
+                throw exception;
             }
         }
     }

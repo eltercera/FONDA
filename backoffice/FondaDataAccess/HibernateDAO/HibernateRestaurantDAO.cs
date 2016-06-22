@@ -7,6 +7,7 @@ using NHibernate;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.DataAccess.Exceptions.OrderAccount;
 using FondaResources.OrderAccount;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -53,7 +54,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <param name="Days">Dias laborables</param>
         /// <returns></returns>
         public Restaurant GenerateRestaurant(string Name, string Logo, char Nationality, string Rif, string Address,
-                string Category, string Currency, string Zone, double Long, double Lat,
+                string category, string currency, string zone, double Long, double Lat,
                 TimeSpan OpeningTime, TimeSpan ClosingTime, bool[] Days)
         {
 
@@ -61,24 +62,20 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             ICurrencyDAO _currencyDAO = _facDAO.GetCurrencyDAO();
             IZoneDAO _zoneDAO = _facDAO.GetZoneDAO();
             IScheduleDAO _scheduleDAO = _facDAO.GetScheduleDAO();
+            SimpleStatus _status= _facDAO.GetActiveSimpleStatus();
 
-            //se genera objeto de coordinate
-            Coordinate coordinate = new Coordinate();
-            coordinate.Latitude = Lat;
-            coordinate.Longitude = Long;
-            // se crea objetos de restaurante 
-            Restaurant restaurant = new Restaurant();
-            restaurant.Name = Name;
-            restaurant.Logo = Logo;
-            restaurant.Nationality = Nationality;
-            restaurant.Ssn = Rif;
-            restaurant.Address = Address;
-            restaurant.RestaurantCategory = _restcatDAO.GetRestaurantCategory(Category);
-            restaurant.Currency = _currencyDAO.GetCurrency(Currency);
-            restaurant.Zone = _zoneDAO.GetZone(Zone);
-            restaurant.Coordinate = coordinate;
-            restaurant.Schedule = _scheduleDAO.GetSchedule(OpeningTime, ClosingTime, Days);
-            restaurant.Status = _facDAO.GetActiveSimpleStatus();
+
+            Coordinate _coordinate = EntityFactory.GetCoordinate(Long, Lat);
+
+            RestaurantCategory _category = _restcatDAO.GetRestaurantCategory(category);
+
+            Zone _zone = _zoneDAO.GetZone(zone);
+
+            Currency _currency = _currencyDAO.GetCurrency(currency);
+
+            Schedule _schedule = _scheduleDAO.GetSchedule(OpeningTime, ClosingTime, Days);
+
+            Restaurant restaurant = EntityFactory.GetGenerateRestaurant(Name, Logo, Nationality, Rif, Address, _category, _currency, _zone, _coordinate, _schedule, _status );
 
             return restaurant;
 

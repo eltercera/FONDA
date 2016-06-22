@@ -2,12 +2,12 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.Log;
-using FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.DataAccess.Exceptions;
-using FondaLogic.FondaCommandException.Login;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
 
-namespace FondaLogic.Commands.Login
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Login
 {
     // comando que busca restaurante dado un id
     public class CommandGetRestaurantById : Command
