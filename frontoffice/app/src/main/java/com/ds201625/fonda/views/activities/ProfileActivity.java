@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,8 +12,11 @@ import android.view.View;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.interfaces.IProfileView;
+import com.ds201625.fonda.interfaces.IProfileViewPresenter;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
+import com.ds201625.fonda.presenter.ProfilePresenter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.ProfileFormFragment;
 import com.ds201625.fonda.views.fragments.ProfileListFragment;
@@ -24,8 +28,9 @@ import java.util.List;
  * Activity de Perfil de usuario
  */
 public class ProfileActivity extends BaseNavigationActivity
-    implements ProfileListFragment.profileListFragmentListener{
+    implements ProfileListFragment.profileListFragmentListener, IProfileView{
 
+    private String TAG = "ProfileActivity";
     /**
      * Iten del Menu para guardar
      */
@@ -57,6 +62,11 @@ public class ProfileActivity extends BaseNavigationActivity
     private Toolbar tb;
 
     /**
+     * Presentador
+     */
+    private IProfileViewPresenter presenter;
+
+    /**
      * Solo para prueba de la interface
      */
     private List<Profile> p;
@@ -65,8 +75,12 @@ public class ProfileActivity extends BaseNavigationActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG,"Metodo onCreate");
         setContentView(R.layout.activity_profile);
         super.onCreate(savedInstanceState);
+
+        //inicializar el presentador
+        presenter = new ProfilePresenter(this);
 
         // Obtencion de los componentes necesaios de la vista
         fab = (FloatingActionButton)findViewById(R.id.fab);
@@ -95,6 +109,7 @@ public class ProfileActivity extends BaseNavigationActivity
                 profileFormFrag.setProfile();
             }
         });
+        Log.d(TAG,"Cierre del Metodo onCreate");
     }
 
     /**
@@ -102,6 +117,7 @@ public class ProfileActivity extends BaseNavigationActivity
      * @param fragment el fragment que se quiere mostrar
      */
     private void showFragment(BaseFragment fragment) {
+        Log.d(TAG,"Metodo showFragment");
         fm.beginTransaction()
                 .replace(R.id.fragment_container,fragment)
                 .commit();
@@ -120,6 +136,7 @@ public class ProfileActivity extends BaseNavigationActivity
             fab.setVisibility(View.GONE);
         }
 
+        Log.d(TAG,"Cierre del Metodo showFragment");
     }
 
     /**
@@ -129,11 +146,14 @@ public class ProfileActivity extends BaseNavigationActivity
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG,"Metodo onCreateOptionsMenu");
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.profile, menu);
 
         saveBotton = menu.findItem(R.id.action_favorite_save);
+        Log.d(TAG,"Cierre del Metodo onCreateOptionsMenu");
         return true;
+
     }
 
     /**
@@ -143,33 +163,32 @@ public class ProfileActivity extends BaseNavigationActivity
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG,"Metodo onOptionsItemSelected");
         switch (item.getItemId()) {
             case R.id.action_favorite_save:
                 save();
                 break;
         }
+        Log.d(TAG,"Cierre del Metodo onOptionsItemSelected");
         return true;
     }
 
     private void save() {
+        Log.d(TAG,"Metodo save");
         profileFormFrag.changeProfile();
 
         Profile profile = profileFormFrag.getProfile();
         try
         {
             if (profile.getId() == 0) {
-                Command commandoCreateProfile = FondaCommandFactory.createProfileCommand();
-                commandoCreateProfile.setParameter(0,profile);
-                commandoCreateProfile.run();
+                createProfile(profile);
+                Log.d(TAG,"Se agrego el perfil"+profile.getProfileName());
             } else {
-                Command commandoUpdateProfile = FondaCommandFactory.updateProfileCommand();
-                commandoUpdateProfile.setParameter(0,profile);
-                commandoUpdateProfile.run();
+                updateProfile(profile);
+                Log.d(TAG,"Se modifico el perfil"+profile.getId());
             }
-
-        } catch (RestClientException e) {
-            e.printStackTrace();
         } catch (Exception e) {
+            Log.e(TAG,"Error al salvar el perfil",e);
             e.printStackTrace();
         }
         profileListFrag.updateList();
@@ -212,5 +231,33 @@ public class ProfileActivity extends BaseNavigationActivity
         } else {
             showFragment(profileListFrag);
         }
+    }
+
+    @Override
+    public Boolean createProfile(Profile profile) {
+        Log.d(TAG,"Metodo createProfile");
+        Boolean resp = false;
+        try {
+            resp = presenter.createProfile(profile);
+            Log.d(TAG,"Se agrego el perfil "+ profile.getProfileName());
+        }catch (Exception e)
+        {
+            Log.e(TAG,"Error al crear Perfil",e);
+        }
+        return resp;
+    }
+
+    @Override
+    public Boolean updateProfile(Profile profile) {
+        Log.d(TAG,"Metodo updateProfile");
+        Boolean resp = false;
+        try {
+            resp = presenter.updateProfile(profile);
+            Log.d(TAG,"Se modifico el perfil "+ profile.getId());
+        }catch (Exception e)
+        {
+            Log.e(TAG,"Error al modificar Perfil",e);
+        }
+        return resp;
     }
 }

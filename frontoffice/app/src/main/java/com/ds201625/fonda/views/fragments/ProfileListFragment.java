@@ -18,8 +18,11 @@ import android.widget.ListView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.interfaces.IProfileListView;
+import com.ds201625.fonda.interfaces.IProfileViewPresenter;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
+import com.ds201625.fonda.presenter.ProfilePresenter;
 import com.ds201625.fonda.views.adapters.ProfileViewItemList;
 
 import java.util.ArrayList;
@@ -28,8 +31,14 @@ import java.util.ArrayList;
  * Fragment que contiene la lista de Perfiles.
  */
 public class ProfileListFragment extends BaseFragment
-        implements SwipeRefreshLayout.OnRefreshListener{
+        implements SwipeRefreshLayout.OnRefreshListener, IProfileListView{
 
+    /**
+     * Presentador
+     */
+    private IProfileViewPresenter presenter;
+
+    private String TAG = "ProfileListFragment";
     //Interface de comunicaciond contra la activity
     profileListFragmentListener mCallBack;
 
@@ -46,7 +55,9 @@ public class ProfileListFragment extends BaseFragment
         super.onCreate(savedInstanceState);
         //TODO: agregar try/catch en caso de que no se pase el argumento.
         multi = getArguments().getBoolean("multiSelect");
-        profileList = new ProfileViewItemList(getContext());
+        presenter = new ProfilePresenter(this);
+        profileList = new ProfileViewItemList(getContext(), presenter);
+
     }
 
     @Nullable
@@ -89,13 +100,7 @@ public class ProfileListFragment extends BaseFragment
                             String sal = "Fueron eliminados los perfiles.";
                             for (Profile profile : profileList.getAllSeletedItems()) {
                                     try {
-                                        Command commandoDeleteProfile = FondaCommandFactory.
-                                                deleteProfileCommand();
-                                        commandoDeleteProfile.setParameter(0,profile);
-                                        commandoDeleteProfile.run();
-                                    }
-                                    catch (RestClientException e) {
-                                        e.printStackTrace();
+                                       deleteProfile(profile);
                                     } catch (Exception e) {
                                         e.printStackTrace();
                                     }
@@ -141,7 +146,7 @@ public class ProfileListFragment extends BaseFragment
 
     public void updateList() {
         swipeRefreshLayout.setRefreshing(true);
-        profileList.update();
+        profileList.update(presenter);
         profiles.refreshDrawableState();
         swipeRefreshLayout.setRefreshing(false);
     }
@@ -160,6 +165,20 @@ public class ProfileListFragment extends BaseFragment
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    public Boolean deleteProfile(Profile profile) {
+        Log.d(TAG,"Metodo deleteProfile");
+        Boolean resp = false;
+        try {
+            resp = presenter.deleteProfile(profile);
+            Log.d(TAG,"Se elimino el perfil "+ profile.getId());
+        }catch (Exception e)
+        {
+            Log.e(TAG,"Error al eliminar el Perfil",e);
+        }
+        return resp;
     }
 
     /**
