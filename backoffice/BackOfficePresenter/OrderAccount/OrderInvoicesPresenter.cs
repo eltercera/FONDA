@@ -14,6 +14,7 @@ using FondaResources.OrderAccount;
 using System.Web;
 using FondaLogic.Log;
 using BackOfficePresenter.FondaMVPException.OrderAccount;
+using System.Web.Security.AntiXss;
 
 namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 {
@@ -234,15 +235,14 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private int GetQueryParameter()
         {
             int result = 0;
-            string queryParameter =
-                HttpContext.Current.Request.QueryString["Id"];
+            //string queryParameter =
+            //  HttpContext.Current.Request.QueryString["Id"];
+
 
             try
-            { 
-                if (queryParameter != null && queryParameter != string.Empty)
-                {
-                    return int.Parse(queryParameter);
-                }
+            {
+                if (AntiXssEncoder.HtmlEncode(HttpContext.Current.Request.QueryString["Id"], false) != null)
+                    return int.Parse(HttpContext.Current.Request.QueryString["Id"]);
             }
             //Esto deberia ir mas arriba
             catch (System.FormatException ex) {
@@ -256,6 +256,16 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
                 ErrorLabel(e.MessageException);
+                return 0;
+            }
+            catch (HttpRequestValidationException ex)
+            {
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
+               // return 0;
+            }
+            catch (Exception ex)
+            {
                 return 0;
             }
 
