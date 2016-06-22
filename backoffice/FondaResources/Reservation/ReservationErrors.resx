@@ -125,7 +125,7 @@
     <value>Execute</value>
     <comment>Metodo disparador del Error para Comando</comment>
   </data>
-  <data name="ErrorMessageGetOrders" xml:space="preserve">
+  <data name="ErrorMessageGetReservations" xml:space="preserve">
     <value>Error obteniendo las reservaciones de un Restaurante</value>
     <comment>Mensaje de error para CommandGetReservations</comment>
   </data>

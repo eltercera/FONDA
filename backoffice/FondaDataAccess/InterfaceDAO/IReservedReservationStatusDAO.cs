@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 {
-    public interface IActiveReservationStatusDAO : IStatusDAO<ActiveReservationStatus>
+    public interface IReservedReservationStatusDAO : IStatusDAO<ReservedReservationStatus>
     {
-        ActiveReservationStatus getActiveReservationStatus();
+        ReservedReservationStatus getReservedReservationStatus();
 
     }
 }

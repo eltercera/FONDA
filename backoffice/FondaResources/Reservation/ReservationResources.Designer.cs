@@ -70,29 +70,11 @@ namespace FondaResources.Reservation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot;  data-target=&quot;#cancel_reservation&quot; &gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
         /// </summary>
-        public static string ActionInfo {
+        public static string CancelReservation {
             get {
-                return ResourceManager.GetString("ActionInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-money fa-fw&quot;&gt;&lt;/i&gt;.
-        /// </summary>
-        public static string ActionInvoices {
-            get {
-                return ResourceManager.GetString("ActionInvoices", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;p class=&quot;stat&quot;&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;.
-        /// </summary>
-        public static string CanceledStatus {
-            get {
-                return ResourceManager.GetString("CanceledStatus", resourceCulture);
+                return ResourceManager.GetString("CancelReservation", resourceCulture);
             }
         }
         
@@ -106,42 +88,6 @@ namespace FondaResources.Reservation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fecha.
-        /// </summary>
-        public static string DateColumn {
-            get {
-                return ResourceManager.GetString("DateColumn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ../Caja/VerDetalleOrden.aspx.
-        /// </summary>
-        public static string detailURL {
-            get {
-                return ResourceManager.GetString("detailURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nombre del Platillo.
-        /// </summary>
-        public static string DishNameColum {
-            get {
-                return ResourceManager.GetString("DishNameColum", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;span class=&quot;label label-success&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;p class=&quot;stat&quot;&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;.
-        /// </summary>
-        public static string GeneratedStatus {
-            get {
-                return ResourceManager.GetString("GeneratedStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to href.
         /// </summary>
         public static string href {
@@ -151,83 +97,65 @@ namespace FondaResources.Reservation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to # Factura.
+        ///   Looks up a localized string similar to #.
         /// </summary>
-        public static string InvoiceNumberColumn {
+        public static string RefreshURL {
             get {
-                return ResourceManager.GetString("InvoiceNumberColumn", resourceCulture);
+                return ResourceManager.GetString("RefreshURL", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ../Caja/ListarFacturas.aspx.
+        ///   Looks up a localized string similar to Fecha de creacion.
         /// </summary>
-        public static string invoicesURL {
+        public static string ReservationCreationDateColumn {
             get {
-                return ResourceManager.GetString("invoicesURL", resourceCulture);
+                return ResourceManager.GetString("ReservationCreationDateColumn", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to # Orden.
+        ///   Looks up a localized string similar to Fecha de reservacion.
         /// </summary>
-        public static string OrderNumberColumn {
+        public static string ReservationDateColumn {
             get {
-                return ResourceManager.GetString("OrderNumberColumn", resourceCulture);
+                return ResourceManager.GetString("ReservationDateColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # Reservacion.
+        /// </summary>
+        public static string ReservationNumberColumn {
+            get {
+                return ResourceManager.GetString("ReservationNumberColumn", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to # Mesa.
         /// </summary>
-        public static string OrderTableColumn {
+        public static string ReservationTableColumn {
             get {
-                return ResourceManager.GetString("OrderTableColumn", resourceCulture);
+                return ResourceManager.GetString("ReservationTableColumn", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Nombre.
         /// </summary>
-        public static string OrderUserColumn {
+        public static string ReservationUserColumn {
             get {
-                return ResourceManager.GetString("OrderUserColumn", resourceCulture);
+                return ResourceManager.GetString("ReservationUserColumn", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Precio por plato.
+        ///   Looks up a localized string similar to ReservationID.
         /// </summary>
-        public static string PriceColumn {
+        public static string SessionIdReservation {
             get {
-                return ResourceManager.GetString("PriceColumn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cantidad.
-        /// </summary>
-        public static string QuantityColumn {
-            get {
-                return ResourceManager.GetString("QuantityColumn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AccountID.
-        /// </summary>
-        public static string SessionIdAccount {
-            get {
-                return ResourceManager.GetString("SessionIdAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AccountNumber.
-        /// </summary>
-        public static string SessionNumberAccount {
-            get {
-                return ResourceManager.GetString("SessionNumberAccount", resourceCulture);
+                return ResourceManager.GetString("SessionIdReservation", resourceCulture);
             }
         }
         
@@ -237,15 +165,6 @@ namespace FondaResources.Reservation {
         public static string StatusColumn {
             get {
                 return ResourceManager.GetString("StatusColumn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Total.
-        /// </summary>
-        public static string TotalColumn {
-            get {
-                return ResourceManager.GetString("TotalColumn", resourceCulture);
             }
         }
     }

@@ -13,76 +13,58 @@ namespace BackOffice.Seccion.Reservas {
     public partial class Default {
         
         /// <summary>
-        /// SuccessLabel_UsedStatus control.
+        /// SuccessLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SuccessLabel_UsedStatus;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SuccessLabel;
         
         /// <summary>
-        /// SuccessLabelMessage_UsedStatus control.
+        /// SuccessLabelMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SuccessLabelMessage_UsedStatus;
+        protected global::System.Web.UI.WebControls.Label SuccessLabelMessage;
         
         /// <summary>
-        /// ErrorLabel_UsedStatus control.
+        /// ErrorLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrorLabel_UsedStatus;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrorLabel;
         
         /// <summary>
-        /// ErrorLabelMessage_UsedStatus control.
+        /// ErrorLabelMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrorLabelMessage_UsedStatus;
+        protected global::System.Web.UI.WebControls.Label ErrorLabelMessage;
         
         /// <summary>
-        /// WarningLabel_UsedStatus control.
+        /// WarningLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl WarningLabel_UsedStatus;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl WarningLabel;
         
         /// <summary>
-        /// WarningLabelMessage_UsedStatus control.
+        /// WarningLabelMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label WarningLabelMessage_UsedStatus;
-        
-        /// <summary>
-        /// WarningLabel_CanceledStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl WarningLabel_CanceledStatus;
-        
-        /// <summary>
-        /// WarningLabelMessage_CanceledStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label WarningLabelMessage_CanceledStatus;
+        protected global::System.Web.UI.WebControls.Label WarningLabelMessage;
         
         /// <summary>
         /// HiddenFieldMenuCategoryModifyId control.
@@ -103,21 +85,21 @@ namespace BackOffice.Seccion.Reservas {
         protected global::System.Web.UI.WebControls.Table ReservationsList;
         
         /// <summary>
-        /// ButtonCancelDeactivateCategory control.
+        /// ButtonCancelReservation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCancelDeactivateCategory;
+        protected global::System.Web.UI.WebControls.Button ButtonCancelReservation;
         
         /// <summary>
-        /// ButtonCancelActivateCategory control.
+        /// ButtonCancelCancelReservation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCancelActivateCategory;
+        protected global::System.Web.UI.WebControls.Button ButtonCancelCancelReservation;
     }
 }

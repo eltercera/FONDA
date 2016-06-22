@@ -22,24 +22,24 @@ namespace BackOffice.Seccion.Reservas
         #region Model
         Label IModel.ErrorLabelMessage
         {
-            get { return this.ErrorLabelMessage_UsedStatus; }
+            get { return this.ErrorLabelMessage; }
 
-            set { this.ErrorLabelMessage_UsedStatus = value; }
+            set { this.ErrorLabelMessage = value; }
 
         }
 
         Label IModel.SuccessLabelMessage
         {
-            get { return this.SuccessLabelMessage_UsedStatus; }
+            get { return this.SuccessLabelMessage; }
 
-            set { this.SuccessLabelMessage_UsedStatus = value; }
+            set { this.SuccessLabelMessage = value; }
         }
 
         Label IReservationsModel.WarningLabelMessage
         {
-            get { return this.WarningLabelMessage_UsedStatus; }
+            get { return this.WarningLabelMessage; }
 
-            set { this.WarningLabelMessage_UsedStatus = value; }
+            set { this.WarningLabelMessage = value; }
         }
 
 
@@ -57,9 +57,9 @@ namespace BackOffice.Seccion.Reservas
         /// </summary>
         string IReservationsModel.Session
         {
-            get { return Session[ReservationResources.SessionIdAccount].ToString(); }
+            get { return Session[ReservationResources.SessionIdReservation].ToString(); }
 
-            set { Session[ReservationResources.SessionIdAccount] = value; }
+            set { Session[ReservationResources.SessionIdReservation] = value; }
         }
 
         public string SessionRestaurant
@@ -77,17 +77,17 @@ namespace BackOffice.Seccion.Reservas
 
         HtmlGenericControl IModel.SuccessLabel
         {
-            get { return this.SuccessLabel_UsedStatus; }
+            get { return this.SuccessLabel; }
         }
 
         HtmlGenericControl IModel.ErrorLabel
         {
-            get { return this.ErrorLabel_UsedStatus; }
+            get { return this.ErrorLabel; }
         }
 
         HtmlGenericControl IReservationsModel.WarningLabel
         {
-            get { return this.WarningLabel_UsedStatus; }
+            get { return this.WarningLabel; }
         }
 
 
@@ -107,6 +107,11 @@ namespace BackOffice.Seccion.Reservas
             //Llama al presentador para llenar la tabla reservas
             _presenter.GetReservations();
 
+        }
+
+        protected void ButtonCancelReservation_Click(object sender, EventArgs e)
+        {
+            _presenter.CancelReservation();
         }
     }
 }

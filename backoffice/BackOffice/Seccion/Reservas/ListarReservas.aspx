@@ -28,54 +28,43 @@
 
     
      <%--Alertas--%> 
-    <div id="SuccessLabel_UsedStatus" class="row" runat="server">
+    <div id="SuccessLabel" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert alert-success fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <i class="fa fa-check"></i>
                 <%--La categoría fue agregada <strong>exitosamente!</strong>--%>
-                 <asp:Label id="SuccessLabelMessage_UsedStatus" runat="server"> 
+                 <asp:Label id="SuccessLabelMessage" runat="server"> 
                 </asp:Label>
             </div>
         </div>
     </div>
 
-    <div id="ErrorLabel_UsedStatus" class="row" runat="server">
+    <div id="ErrorLabel" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert  alert-danger fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <i class="fa fa-times"></i>
                 <%--La categoría <strong>no</strong> pudo ser agregada exitosamente.--%>
-                 <asp:Label id="ErrorLabelMessage_UsedStatus" runat="server"> 
+                 <asp:Label id="ErrorLabelMessage" runat="server"> 
                 </asp:Label>
              </div>
         </div>
     </div>
 
-    <div id="WarningLabel_UsedStatus" class="row" runat="server">
+    <div id="WarningLabel" class="row" runat="server">
         <div class="col-lg-12">
             <div class="alert alert-warning fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <i class="fa fa-exclamation-triangle"></i>
-                       <asp:Label id="WarningLabelMessage_UsedStatus" runat="server"> 
+                       <asp:Label id="WarningLabelMessage" runat="server"> 
                 </asp:Label>
                 <%--El plato ya se encuentra <u>activado</u>.--%>
             </div>
         </div>
     </div>
 
-    <div id="WarningLabel_CanceledStatus" class="row" runat="server">
-        <div class="col-lg-12">
-            <div class="alert alert-warning fade in alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <i class="fa fa-exclamation-triangle"></i>
-                       <asp:Label id="WarningLabelMessage_CanceledStatus" runat="server"> 
-                </asp:Label>
-                <%--El plato ya se encuentra <u>desactivado</u>.--%>
-            </div>
-        </div>
-    </div>
-
+    
      <%--/Alertas--%>
   
     <%--Tabla Reservas--%> 
@@ -83,8 +72,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i>Categorias</h3>
-                    <a data-toggle="modal" data-target="#add_category" class="btn btn-default pull-right"><i class="fa fa-plus"></i></a>
+                    <h3 class="panel-title pull-left"><i class="fa fa-calendar fa-fw"></i>Reservaciones</h3>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
@@ -98,58 +86,28 @@
     </div>
     <%--/Tabla Reservas--%>
 
-   
-      <!-- Modal desactivar estado-->
-        <div class="modal fade" id="deactivate_category" role="dialog">
+        <!-- Modal cancelar estado-->
+        <div class="modal fade" id="cancel_reservation" role="dialog">
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
                     <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Desactivar Sugerencia</h4>
+                                <h4 class="modal-title">Cancelar Reservacion</h4>
                             </div>
                                 <div class="modal-body">
                                      <div class="row">
                                              <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
                                                     <div class="form-group">
-                                                        <label class="control-label">¿Desea confirmar el arrivo del comensal?</label>
+                                                        <label class="control-label">¿Desea cancelar la reservacion?</label>
                                                     </div>
                                             </div>    
                                      </div>
                                 </div>
                                 <div class="modal-footer">
-                                   <asp:Button ID="Button3" Text="Aceptar" CssClass="btn btn-success" />
-                                     <%--<asp:Button ID="ButtonDeactivateCategory" Text="Aceptar" CssClass="btn btn-success" OnClick="ButtonDeactivateCategory_Click" runat="server" />--%>
-                                    <asp:Button ID="ButtonCancelDeactivateCategory" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
-                                </div>
-                      </div>
-                </div>
-         </div>
-
-     <!-- Modal activar estado-->
-        <div class="modal fade" id="activate_category" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Activar Sugerencia</h4>
-                            </div>
-                                <div class="modal-body">
-                                     <div class="row">
-                                             <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
-                                                    <div class="form-group">
-                                                        <label class="control-label">¿Desea activar el estado de esta categoria?</label>
-                                                    </div>
-                                            </div>    
-                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <asp:Button ID="Button4" Text="Aceptar" CssClass="btn btn-success" />                                  
-                                      <%--<asp:Button ID="ButtonActivateCategory" Text="Aceptar" CssClass="btn btn-success" OnClick="ButtonActivateCategory_Click" runat="server" />--%>
-                                    <asp:Button ID="ButtonCancelActivateCategory" Text="Cancelar" CssClass="btn btn-danger" runat="server" />
+                                    <asp:Button ID="ButtonCancelReservation" Text="Aceptar" CssClass="btn btn-success" OnClick="ButtonCancelReservation_Click" runat= "server" />                                  
+                                    <asp:Button ID="ButtonCancelCancelReservation" Text="Cancelar" CssClass="btn btn-danger"  runat="server" />
                                 </div>
                       </div>
                 </div>

@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
-    public class HibernateActiveReservationStatus :
-           HibernateStatusDAO<ActiveReservationStatus>, IActiveReservationStatusDAO
+    public class HibernateReservedReservationStatus :
+           HibernateStatusDAO<ReservedReservationStatus>, IReservedReservationStatusDAO
 
     {
-        public HibernateActiveReservationStatus() { }
+        public HibernateReservedReservationStatus() { }
 
-        public ActiveReservationStatus getActiveReservationStatus()
+        public ReservedReservationStatus getReservedReservationStatus()
         {
-            ActiveReservationStatus status = FindById(7);
+            ReservedReservationStatus status = FindById(7);
             if (status == null)
             {
-                status = ActiveReservationStatus.Instance;
+                status = ReservedReservationStatus.Instance;
                 Save(status);
             }
 

@@ -154,23 +154,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return s.getBusyTableStatus();
         }
     
-        public ActiveReservationStatus GetActiveReservationStatus()
-        {
-            IActiveReservationStatusDAO s = new HibernateActiveReservationStatus();
-            return s.getActiveReservationStatus();
-        }
-
+    
         public CanceledReservationStatus GetCanceledReservationStatus()
         {
             ICanceledReservationStatusDAO s = new HibernateCanceledReservationStatus();
             return s.getCanceledReservationStatus();
         }
 
-        public UsedReservationStatus GetUsedReservationStatus()
-        {
-            IUsedReservationStatusDAO s = new HibernateUsedReservationStatus();
-            return s.getUsedReservationStatus();
-        }
 
 		public OpenAccountStatus GetOpenAccountStatus()
         {
@@ -194,6 +184,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 		{
 			NHibernateSessionManager.CloseSession ();
 		}
+
+        public ReservedReservationStatus GetReservedReservationStatus()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

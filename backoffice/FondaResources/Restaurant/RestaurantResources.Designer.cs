@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FondaResources.Reservation {
+namespace FondaResources.Restaurant {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace FondaResources.Reservation {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ReservationErrors {
+    public class RestaurantResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ReservationErrors() {
+        internal RestaurantResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace FondaResources.Reservation {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Reservation.ReservationErrors", typeof(ReservationErrors).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Restaurant.RestaurantResources", typeof(RestaurantResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,33 +57,6 @@ namespace FondaResources.Reservation {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CommandGetReservations.
-        /// </summary>
-        public static string ClassNameGetReservations {
-            get {
-                return ResourceManager.GetString("ClassNameGetReservations", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Execute.
-        /// </summary>
-        public static string CommandMethod {
-            get {
-                return ResourceManager.GetString("CommandMethod", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Error obteniendo las reservaciones de un Restaurante.
-        /// </summary>
-        public static string ErrorMessageGetReservations {
-            get {
-                return ResourceManager.GetString("ErrorMessageGetReservations", resourceCulture);
             }
         }
     }

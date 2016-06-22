@@ -46,7 +46,7 @@ namespace BackOfficePresenter
 
         }
 
-        public void HideMessageLabel()
+        public virtual void HideMessageLabel()
         {
             _view.ErrorLabel.Visible = false;
             _view.SuccessLabel.Visible = false;

@@ -21,8 +21,6 @@ namespace com.ds201625.fonda.Domain
 
         private IList<Profile> _profiles;
 
-        private IList<Reservation> _reservations;
-
         public Commensal() : base()
         {
             _favoritesRestaurants = new List<Restaurant>();
@@ -47,12 +45,6 @@ namespace com.ds201625.fonda.Domain
             get { return _profiles; }
             set { _profiles = value; }
         }
-        //2da Entrega
-        //public virtual IList<Reservation> Reservations
-        //{
-        //    get { return _reservations; }
-        //    set { _reservations = value; }
-        //}
 
         public virtual void AddFavoriteRestaurant(Restaurant restaurant)
         {
@@ -82,24 +74,11 @@ namespace com.ds201625.fonda.Domain
             _sesionTokens.Remove(token);
         }
 
-        //2da Entrega
-        public virtual void AddReservation(Reservation reservation)
-        {
-            reservation.ReserveUser = this;
-            _reservations.Add(reservation);
-        }
-        //2da Entrega
-        public virtual void RemoveReservation(Reservation reservation)
-        {
-            reservation.ReserveUser = this;
-            _reservations.Remove(reservation);
-        }
-
         #region Reservation
 
 
         /// <summary>
-        /// Lista de reservaciones un restaurante
+        /// Lista de reservaciones un commensal
         /// </summary>
         private IList<Reservation> _listReservations;
 
@@ -108,13 +87,13 @@ namespace com.ds201625.fonda.Domain
         public virtual IList<Reservation> Reservations
         {
             /// <summary>
-            /// Obtiene una lista de reservaciones de un Restaurante
+            /// Obtiene una lista de reservaciones de un commensal
             /// </summary>
             get { return _listReservations; }
             /// <summary>
-            /// Asigna una lista de reservaciones de un Restaurante
+            /// Asigna una lista de reservaciones de un commensal
             /// </summary>
-            /// <value>Recibe la lista de reservaciones de un Restaurante</value>
+            /// <value>Recibe la lista de reservaciones de un commensal</value>
             set { _listReservations = value; }
         }
         #endregion

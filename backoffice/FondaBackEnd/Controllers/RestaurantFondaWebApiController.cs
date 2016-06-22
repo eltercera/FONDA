@@ -16,14 +16,15 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
         [HttpPost]
         [Route("restaurante/{restaurantId}/reserva")]
-        public IHttpActionResult ReservationRequest(int restaurantId, Reservation reserve)
+        public IHttpActionResult ReservationRequest(int restaurantId, Reserve reserve)
         {
             ITableDAO _table = GetTableDAO();
             IRestaurantDAO _restaurantDAO = GetRestaurantDAO();
             IReservationDAO _reservation = GetReservationDAO();
             bool validHour = true, validDate = false;
 
-            IList<Reservation> listReservation = _restaurantDAO.ReservationsByRestaurantId(restaurantId);
+            //IList<Reserve> listReservation = _restaurantDAO.ReservationsByRestaurantId(restaurantId);
+            IList<Reserve> listReservation = null;
             IList<Table> listTable = _table.TablesAvailableByDate(restaurantId, listReservation, reserve.ReserveDate);
             listTable = _table.TablesAvailableByCapacity(listTable, reserve.CommensalNumber);
 

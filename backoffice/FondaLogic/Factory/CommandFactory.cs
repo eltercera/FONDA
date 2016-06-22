@@ -200,17 +200,49 @@ namespace FondaLogic.Factory
         #endregion
 
         #region Reservation
-        
+
         /// <summary>
-        /// Metodo de la fabrica para el Comando CommandGetReservations
+        /// Metodo de la fabrica para el Comando CommandFindRestaurantById
         /// </summary>
-        /// <param name="entity">Id del Restaurante</param>
-        /// <returns>comando CommandGetReservations</returns>
-        public static Command GetCommandGetReservations(object receiver)
+        /// <param name="receiver">Id del Restaurante</param>
+        /// <returns>comando CommandFindRestaurantById</returns>
+        public static Command GetCommandFindRestaurantById(object receiver)
         {
-            return new CommandGetReservations(receiver);
+            return new CommandFindRestaurantById(receiver);
         }
-               
+
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandFindReservationsByRestaurant
+        /// </summary>
+        /// <param name="receiver">Id del Restaurante</param>
+        /// <returns>comando CommandFindReservationsByRestaurant</returns>
+        public static Command GetCommandFindReservationsByRestaurant(object receiver)
+        {
+            return new CommandFindReservationsByRestaurant(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandGetTables
+        /// </summary>
+        /// <param name="receiver">Id del Restaurante</param>
+        /// <returns>comando CommandGetTables</returns>
+        public static Command GetCommandGetTables(object receiver)
+        {
+            return new CommandGetTables(receiver);
+        }
+
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandFindReservationsByTable
+        /// </summary>
+        /// <param name="receiver">Id de la tabla</param>
+        /// <returns>comando CommandFindReservationsByTable</returns>
+        public static Command GetCommandFindReservationsByTable(object receiver)
+        {
+            return new CommandFindReservationsByTable(receiver);
+        }
+
         #endregion
 
     }

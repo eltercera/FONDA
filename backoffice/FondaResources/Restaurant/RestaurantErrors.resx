@@ -117,52 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CancelReservation" xml:space="preserve">
-    <value>&lt;a data-toggle="modal"  data-target="#cancel_reservation" &gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
-    <comment>Accion para cancelar una reservacion</comment>
+  <data name="ClassNameGetReservations" xml:space="preserve">
+    <value>CommandGetTables</value>
+    <comment>Comando para obtener las mesasde un Restaurante</comment>
   </data>
-  <data name="dataId" xml:space="preserve">
-    <value>data-id</value>
-    <comment>Atributo para id de fila</comment>
+  <data name="CommandMethod" xml:space="preserve">
+    <value>Execute</value>
+    <comment>Metodo disparador del Error para Comando</comment>
   </data>
-  <data name="href" xml:space="preserve">
-    <value>href</value>
-    <comment>Atributo para generar enlace</comment>
-  </data>
-  <data name="ReservationCreationDateColumn" xml:space="preserve">
-    <value>Fecha de creacion</value>
-    <comment>Nombre de columna de fecha de creacion de la reserva</comment>
-  </data>
-  <data name="ReservationDateColumn" xml:space="preserve">
-    <value>Fecha de reservacion</value>
-    <comment>Nombre de columna de fecha de reservacion</comment>
-  </data>
-  <data name="ReservationNumberColumn" xml:space="preserve">
-    <value># Reservacion</value>
-    <comment>Nombre de columna de numero de reservacion</comment>
-  </data>
-  <data name="ReservationTableColumn" xml:space="preserve">
-    <value># Mesa</value>
-    <comment>Nombre de columna de numero de mesa reservada</comment>
-  </data>
-  <data name="ReservationUserColumn" xml:space="preserve">
-    <value>Nombre</value>
-    <comment>Nombre de columna de nombre de usuario</comment>
-  </data>
-  <data name="SessionIdReservation" xml:space="preserve">
-    <value>ReservationID</value>
-    <comment>ID de la Reservacion</comment>
-  </data>
-  <data name="ActionColumn" xml:space="preserve">
-    <value>Acciones</value>
-    <comment>Nombre de columna de acciones</comment>
-  </data>
-  <data name="RefreshURL" xml:space="preserve">
-    <value>#</value>
-    <comment>Refrescar la pagina</comment>
-  </data>
-  <data name="StatusColumn" xml:space="preserve">
-    <value>Estado</value>
-    <comment>Nombre de columna de estado</comment>
+  <data name="ErrorMessageGetTables" xml:space="preserve">
+    <value>Error obteniendo las mesas de un Restaurante</value>
+    <comment>Mensaje de error para CommandGetTables</comment>
   </data>
 </root>

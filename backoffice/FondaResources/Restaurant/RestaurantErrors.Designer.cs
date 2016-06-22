@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FondaResources.Reservation {
+namespace FondaResources.Restaurant {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace FondaResources.Reservation {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ReservationErrors {
+    public class RestaurantErrors {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ReservationErrors() {
+        internal RestaurantErrors() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace FondaResources.Reservation {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Reservation.ReservationErrors", typeof(ReservationErrors).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Restaurant.RestaurantErrors", typeof(RestaurantErrors).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace FondaResources.Reservation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CommandGetReservations.
+        ///   Looks up a localized string similar to CommandGetTables.
         /// </summary>
         public static string ClassNameGetReservations {
             get {
@@ -79,11 +79,11 @@ namespace FondaResources.Reservation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error obteniendo las reservaciones de un Restaurante.
+        ///   Looks up a localized string similar to Error obteniendo las mesas de un Restaurante.
         /// </summary>
-        public static string ErrorMessageGetReservations {
+        public static string ErrorMessageGetTables {
             get {
-                return ResourceManager.GetString("ErrorMessageGetReservations", resourceCulture);
+                return ResourceManager.GetString("ErrorMessageGetTables", resourceCulture);
             }
         }
     }

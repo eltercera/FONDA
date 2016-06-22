@@ -10,13 +10,13 @@ using System.Collections.Generic;
 
 namespace FondaLogic.Commands.Reservations
 {
-    public class CommandGetReservations : Command
+    public class CommandGetTables : Command
     {
 
         private FactoryDAO _facDAO = FactoryDAO.Intance;
         private int _restaurantId;
 
-        public CommandGetReservations(Object receiver) : base(receiver)
+        public CommandGetTables(Object receiver) : base(receiver)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace FondaLogic.Commands.Reservations
         /// </summary>
         public override void Execute()
         {
-            IList<Reservation> listReservations;
+            IList<Table> listTables;
 
             try
             {
@@ -44,24 +44,24 @@ namespace FondaLogic.Commands.Reservations
                 //Obtengo la instancia del DAO a utilizar
                 _restaurantDAO = _facDAO.GetRestaurantDAO();
 
-                listReservations = _restaurantDAO.ReservationsByRestaurantId(_restaurantId);
+                listTables = _restaurantDAO.TablesByRestaurantId(_restaurantId);
 
-                Receiver = listReservations;
+                Receiver = listTables;
             }
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetReservations exceptionGetReservations = new CommandExceptionGetReservations(
+                CommandExceptionGetTables exceptionGetTables = new CommandExceptionGetTables(
                     FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.Reservation.ReservationErrors.ClassNameGetReservations,
-                    FondaResources.Reservation.ReservationErrors.CommandMethod,
+                    FondaResources.Restaurant.RestaurantErrors.ClassNameGetReservations,
+                    FondaResources.Restaurant.RestaurantErrors.CommandMethod,
                     FondaResources.General.Errors.NullExceptionReferenceMessage,
                     ex);
 
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetReservations);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetTables);
 
-                listReservations = new List<Reservation>();
-                Receiver = listReservations;
+                listTables = new List<Table>();
+                Receiver = listTables;
                 //throw exceptionGetOrders;
             }
 
