@@ -31,7 +31,7 @@ namespace FondaLogic.Commands.Reservations
         }
 
         /// <summary>
-        /// Metodo que ejecuta el comando que consulta las reservaciones segun un Restaurante
+        /// Metodo que ejecuta el comando que consulta las mesas de un Restaurante
         /// </summary>
         public override void Execute()
         {

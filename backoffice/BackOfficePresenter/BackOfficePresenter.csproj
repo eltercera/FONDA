@@ -62,10 +62,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Restaurant\CategoryPresenter.cs" />
     <Compile Include="Reservation\ReservationsPresenter.cs" />
+    <Compile Include="Restaurant\RestaurantPresenter.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Restaurant\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BackOfficeModel\BackOfficeModel.csproj">
