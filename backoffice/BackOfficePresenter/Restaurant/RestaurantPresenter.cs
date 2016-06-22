@@ -2,7 +2,7 @@
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Resources.FondaResources.Login;
-using BackOfficeModel.Restaurant;
+using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +13,9 @@ using System.Web.UI.WebControls;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
 
-namespace BackOfficePresenter.Restaurante
+namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
 {
-    public class RestaurantPresenter : BackOfficePresenter.Presenter
+    public class RestaurantPresenter : Presenter
     {
         //enlace entre el modelo y la vista
         private IRestaurantModel _view;

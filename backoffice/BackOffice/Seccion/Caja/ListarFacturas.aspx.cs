@@ -1,11 +1,12 @@
-﻿using BackOfficeModel.OrderAccount;
+﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
 using System;
 using System.Web.UI.WebControls;
-using BackOfficeModel;
+using com.ds201625.fonda.View.BackOfficeModel;
 using System.Web.UI.HtmlControls;
 using com.ds201625.fonda.Resources.FondaResources.Login;
 using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using BackOffice.Content;
+using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -13,7 +14,7 @@ namespace BackOffice.Seccion.Caja
     {
         #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrderInvoicesPresenter _presenter;
+        private OrderInvoicesPresenter _presenter;
        
         #endregion
 
@@ -104,7 +105,7 @@ namespace BackOffice.Seccion.Caja
         #region Constructor
         public ListarFacturas()
         {
-            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrderInvoicesPresenter(this);
+            _presenter = new OrderInvoicesPresenter(this);
         }
         #endregion
 

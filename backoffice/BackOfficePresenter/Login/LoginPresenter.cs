@@ -1,5 +1,5 @@
 ﻿
-using BackOfficeModel.Login;
+using com.ds201625.fonda.View.BackOfficeModel.Login;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
@@ -23,9 +23,9 @@ using System.Web.UI;
 
 
 
-namespace BackOfficePresenter.Login
+namespace com.ds201625.fonda.View.BackOfficePresenter.Login
 {
-    public class LoginPresenter : BackOfficePresenter.Presenter
+    public class LoginPresenter : Presenter
     {
         //enlace entre el modelo y la vista
         private ILoginModel _view;

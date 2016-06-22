@@ -1,4 +1,4 @@
-﻿using BackOfficeModel.Login;
+﻿using com.ds201625.fonda.View.BackOfficeModel.Login;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI.WebControls;
 
-namespace BackOfficePresenter.Login
+namespace com.ds201625.fonda.View.BackOfficePresenter.Login
 {
     public class DetailModifyPresenter : Presenter
     {

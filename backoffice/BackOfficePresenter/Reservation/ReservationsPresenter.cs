@@ -1,5 +1,5 @@
-﻿using BackOfficeModel.Reservations;
-using BackOfficePresenter.FondaMVPException;
+﻿using com.ds201625.fonda.View.BackOfficeModel.Reservations;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.Logic.FondaLogic;
@@ -10,9 +10,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Web.UI.WebControls;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.Reservations
+namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
 {
-    public class ReservationsPresenter : BackOfficePresenter.Presenter
+    public class ReservationsPresenter : Presenter
     {
         //Enlace entre el Modelo y la Vista
         private IReservationsModel _view;

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BackOfficeModel.Login;
+using com.ds201625.fonda.View.BackOfficeModel.Login;
 using System.Web.UI.HtmlControls;
 using com.ds201625.fonda.Resources.FondaResources.Login;
-using BackOfficePresenter.Login;
+using com.ds201625.fonda.View.BackOfficePresenter.Login;
+using com.ds201625.fonda.View.BackOfficeModel;
 using BackOffice.Content;
 
 namespace BackOffice.Seccion.Configuracion

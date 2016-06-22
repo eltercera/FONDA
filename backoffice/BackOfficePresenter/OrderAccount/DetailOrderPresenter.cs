@@ -1,6 +1,6 @@
-﻿using BackOfficeModel.OrderAccount;
-using BackOfficePresenter.FondaMVPException;
-using BackOfficePresenter.FondaMVPException.OrderAccount;
+﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException.OrderAccount;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
@@ -12,9 +12,9 @@ using System.Web;
 using System.Web.Security.AntiXss;
 using System.Web.UI.WebControls;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
-    public class DetailOrderPresenter : BackOfficePresenter.Presenter
+    public class DetailOrderPresenter : Presenter
     {
         //Enlace Modelo - Vista
         private IDetailOrderModel _view;

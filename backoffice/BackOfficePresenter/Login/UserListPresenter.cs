@@ -1,4 +1,4 @@
-﻿using BackOfficeModel.Login;
+﻿using com.ds201625.fonda.View.BackOfficeModel.Login;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
@@ -23,9 +23,9 @@ using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.login;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
 
-namespace BackOfficePresenter.Login
+namespace com.ds201625.fonda.View.BackOfficePresenter.Login
 {
-    public class UserListPresenter : BackOfficePresenter.Presenter
+    public class UserListPresenter : Presenter
     {
 
         private FactoryDAO _facDAO;

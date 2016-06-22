@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BackOfficeModel.Restaurant;
+using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
@@ -17,9 +17,9 @@ using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 
 
-namespace BackOfficePresenter.Restaurante
+namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
 {
-    public class CategoryPresenter : BackOfficePresenter.Presenter
+    public class CategoryPresenter : Presenter
     {
         //enlace entre el modelo y la vista
         private ICategoryModel _view;

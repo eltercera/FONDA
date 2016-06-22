@@ -1,4 +1,4 @@
-﻿using BackOfficeModel;
+﻿using com.ds201625.fonda.View.BackOfficeModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace BackOfficePresenter
+namespace com.ds201625.fonda.View.BackOfficePresenter
 {
     public class Presenter
     {
