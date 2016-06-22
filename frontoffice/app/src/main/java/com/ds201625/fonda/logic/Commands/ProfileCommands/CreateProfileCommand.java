@@ -25,9 +25,8 @@ public class CreateProfileCommand extends BaseCommand {
 
     @Override
     protected Parameter[] setParameters() {
-        Parameter [] parameters = new Parameter[2];
+        Parameter [] parameters = new Parameter[1];
         parameters[0] = new Parameter(Profile.class, true);
-        parameters[1] = new Parameter(Token.class, true);
 
         return parameters;
     }
@@ -37,14 +36,12 @@ public class CreateProfileCommand extends BaseCommand {
 
         Log.d(TAG, "Comando para agregar un perfil a un commensal");
         Profile profile;
-        Token token;
 
+        ProfileService profileService = FondaServiceFactory.getInstance()
+                .getProfileService(SessionData.getInstance().getToken());
         try
         {
             profile = (Profile) getParameter(0);
-            token = (Token) getParameter(0);
-            ProfileService profileService = FondaServiceFactory.getInstance()
-                    .getProfileService(token);
             profileService.addProfile(profile);
         }
         catch (RestClientException e)

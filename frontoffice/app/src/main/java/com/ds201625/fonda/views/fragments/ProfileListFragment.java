@@ -92,9 +92,10 @@ public class ProfileListFragment extends BaseFragment
                             String sal = "Fueron eliminados los perfiles.";
                             for (Profile idProfile : profileList.getAllSeletedItems()) {
                                 try {
-                                    Command commandoCreateProfile = FondaCommandFactory.createCreateProfileCommand();
-                                    commandoCreateProfile.setParameter(0,idProfile);
-                                    commandoCreateProfile.run();
+                                    Command commandoDeleteProfile = FondaCommandFactory.deleteProfileCommand();
+                                    commandoDeleteProfile.setParameter(0,idProfile);
+                                    commandoDeleteProfile.run();
+                                    sal= "entro";
                                 }
                                 catch (RestClientException e) {
                                     e.printStackTrace();
