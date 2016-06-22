@@ -5,6 +5,7 @@ using BackOfficeModel;
 using System.Web.UI.HtmlControls;
 using FondaResources.Login;
 using FondaResources.OrderAccount;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -97,7 +98,11 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            _presenter.GetInvoices();
+            if (Session[ResourceLogin.sessionUserID] != null &&
+                Session[ResourceLogin.sessionRestaurantID] != null)
+                _presenter.GetInvoices();
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
     }
 }
