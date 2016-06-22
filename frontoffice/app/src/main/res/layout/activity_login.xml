@@ -65,13 +65,6 @@
         android:layout_weight="1"
         android:visibility="gone">
 
-            <!--<ImageView
-                android:layout_width="@android:dimen/app_icon_size"
-                android:layout_height="@android:dimen/app_icon_size"
-                android:id="@+id/imageView2"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/login_image"
-                android:layout_marginBottom="16dp" />-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
@@ -158,26 +151,6 @@
                     android:layout_marginTop="16dp"
                     android:textColor="@color/creme" />
 
-                <!--<TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/login_register"
-                    android:id="@+id/textViewRegiter"
-                    android:textAlignment="center"
-                    android:layout_marginTop="16dp"
-                    android:textColor="@color/creme"/>-->
-
-                <!--<TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/login_start_session"
-                    android:id="@+id/textViewStartSesion"
-                    android:textAlignment="center"
-                    android:layout_marginTop="16dp"
-                    android:textColor="@color/creme"
-                    android:visibility="gone" />-->
             </LinearLayout>
 
     </LinearLayout>
