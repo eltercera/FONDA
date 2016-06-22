@@ -76,7 +76,7 @@ namespace FondaDataAccessTest
             Assert.AreEqual(_invoice.Status,CanceledInvoiceStatus.Instance);
         }
 
-        [Test]
+        [Test(Description = "Busca las facturas de un restaurante")]
         public void FindInvoiceByRestaurantTest()
         {
 
@@ -105,7 +105,7 @@ namespace FondaDataAccessTest
             Assert.IsNull(_listInvoices);
         }
 
-        [Test]
+        [Test(Description = "Prueba el numero generado de la factura (Numero único de factura por restaurante)")]
         public void GenerateNumberInvoice()
         {
 
@@ -149,7 +149,7 @@ namespace FondaDataAccessTest
             Assert.AreNotEqual(_restaurant.Tables[_tableId - 1].Status.Change(), _resultRestaurant.Tables[_tableId - 1].Status);
         }
 
-        [Test]
+        [Test(Description = "Salva una factura")]
         public void SaveInvoiceTest()
         {
             _invoiceDAO.Save(_invoice);
