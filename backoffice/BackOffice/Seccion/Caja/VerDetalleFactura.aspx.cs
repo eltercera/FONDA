@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using BackOfficeModel.OrderAccount;
-using FondaResources.OrderAccount;
-using FondaResources.Login;
+using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using System.Web.UI.HtmlControls;
-using BackOfficeModel;
+using com.ds201625.fonda.View.BackOfficeModel;
 using BackOffice.Content;
+using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -13,7 +14,7 @@ namespace BackOffice.Seccion.Caja
     { 
        #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.InvoiceDetailPresenter _presenter;
+        private InvoiceDetailPresenter _presenter;
 
         #endregion
 
@@ -155,7 +156,7 @@ namespace BackOffice.Seccion.Caja
 
         public VerDetalleFactura()
         {
-            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.InvoiceDetailPresenter(this);
+            _presenter = new InvoiceDetailPresenter(this);
         }
         #endregion
         protected void print_Click(object sender, EventArgs e)

@@ -7,7 +7,7 @@
     <ProjectGuid>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FondaLogic</RootNamespace>
+    <RootNamespace>com.ds201625.fonda.Logic.FondaLogic</RootNamespace>
     <AssemblyName>FondaLogic</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

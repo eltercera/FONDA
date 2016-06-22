@@ -52,10 +52,10 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations
             {
                 //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetTables exceptionGetTables = new CommandExceptionGetTables(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.Restaurant.RestaurantErrors.ClassNameGetReservations,
-                    FondaResources.Restaurant.RestaurantErrors.CommandMethod,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    Resources.FondaResources.General.Errors.NullExceptionReferenceCode,
+                    Resources.FondaResources.Restaurant.RestaurantErrors.ClassNameGetReservations,
+                    Resources.FondaResources.Restaurant.RestaurantErrors.CommandMethod,
+                    Resources.FondaResources.General.Errors.NullExceptionReferenceMessage,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetTables);

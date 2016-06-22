@@ -6,7 +6,7 @@ using com.ds201625.fonda.Logic.FondaLogic.Log;
 using System.Collections.Generic;
 using com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations;
 using System;
-using FondaLogic.Commands.Restaurante;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Factory
 {

@@ -67,7 +67,7 @@ public class AddProfileCommandTest extends TestCase {
 
         try {
 
-            cmd = facCmd.createCreateProfileCommand();
+            cmd = facCmd.createProfileCommand();
             cmd.setParameter(0,profile);
             cmd.run();
             boolean resp = (boolean)cmd.getResult();

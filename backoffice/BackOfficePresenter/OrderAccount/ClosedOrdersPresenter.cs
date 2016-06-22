@@ -1,18 +1,18 @@
-﻿using BackOfficeModel.OrderAccount;
-using BackOfficePresenter.FondaMVPException;
+﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Web.UI.WebControls;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
-    public class ClosedOrdersPresenter : BackOfficePresenter.Presenter
+    public class ClosedOrdersPresenter : Presenter
     {
         //Enlace Modelo - Vista
         private IClosedOrdersModel _view;

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.Commands.Restaurante
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante
 {
     class CommandModifyRestaurant : Command
     {

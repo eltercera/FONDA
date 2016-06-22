@@ -7,7 +7,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 
-namespace BackOfficeModel.Login
+namespace com.ds201625.fonda.View.BackOfficeModel.Login
 {
     /// <summary>
     /// metodos get y set de los elementos de la vista Login.aspx
