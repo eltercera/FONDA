@@ -54,7 +54,8 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-cutlery" aria-hidden="true"></i> Detalle la factura</h3>
+                    <h3 class="panel-title"><i class="fa fa-cutlery" aria-hidden="true"></i> Detalle la factura
+                    </h3>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
@@ -92,12 +93,15 @@
                             <asp:Label ID="iva" runat="server"></asp:Label>
                             <br />
                             <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Propina: </b>
+                            <asp:Label ID="propina" runat="server"></asp:Label>
+                            <br />
+                            <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;<b>Total: </b>
                             <asp:Label ID="total" runat="server"></asp:Label>
                         </h5>
                         <strong>ABRE CON F12 Y VE LOS COMENTARIOS</strong>
-                       <!-- MALENA EILIN DICE QUE PONGAS EL TIP COMO POR AQUI, PENDIENTE -->
-                         <div style="text-indent: 250px;"><i class="fa fa-print fa-lg" aria-hidden="true"></i>
+                         <div style="text-indent: 250px;">
                          <asp:Button class="btn btn-default" text="Imprimir" Visible="false" ID="invoicePrint" OnClick="print_Click" runat="server" /></div>
                 </div>
             </div>

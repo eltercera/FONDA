@@ -60,6 +60,18 @@ namespace BackOffice.Seccion.Caja
 
             set { total = value; }
         }
+        public System.Web.UI.WebControls.Label SubTotalInvoice
+        {
+            get { return subtotal; }
+
+            set { subtotal = value; }
+        }
+        public System.Web.UI.WebControls.Label TipInvoice
+        {
+            get { return propina; }
+
+            set { propina = value; }
+        }
 
         public System.Web.UI.WebControls.Label DateInvoice
         {
@@ -135,14 +147,6 @@ namespace BackOffice.Seccion.Caja
             get { return this.SuccessLabel; }
 
         }
-
-        public Label SubTotalInvoice
-        {
-            get { return this.subtotal; }
-
-            set { this.subtotal = value; }
-        }
-
 
 
         #endregion
