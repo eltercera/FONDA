@@ -1,4 +1,5 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.Exceptions.OrderAccount;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaLogic.FondaCommandException;
@@ -29,6 +30,19 @@ namespace FondaLogic.Commands.OrderAccount
                 _restaurantDAO = _facDAO.GetRestaurantDAO();
                 _restaurantDAO.ReleaseTable(_restaurant, _tableId);
 
+
+            }
+            catch (ReleaseTableFondaDAOException ex)
+            {
+                CommandExceptionReleaseTableByRestaurant exception = new CommandExceptionReleaseTableByRestaurant(
+                    OrderAccountResources.CommandExceptionReleaseTableByRestaurantCode,
+                    OrderAccountResources.ClassNameReleaseTableByRestaurant,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionReleaseTableByRestaurant,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                throw exception;
 
             }
             catch (Exception ex)

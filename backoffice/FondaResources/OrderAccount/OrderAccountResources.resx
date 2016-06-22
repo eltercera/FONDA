@@ -713,4 +713,12 @@
     <value>Ha ocurrido un error al obtener las facturas dado un restaurante</value>
     <comment>Mensaje para FindInvoicesByRestaurant</comment>
   </data>
+  <data name="MessageGenerateNumberInvoiceFondaDAOException" xml:space="preserve">
+    <value>Ha ocurrido un error al generar el numero unico de la factura</value>
+    <comment>Mensaje de error para GenerateNumberInvoice</comment>
+  </data>
+  <data name="MessageReleaseTableFondaDAOException" xml:space="preserve">
+    <value>Ha ocurrido un error al liberar la mesa ocupada</value>
+    <comment>Mensaje de error para ReleaseTable</comment>
+  </data>
 </root>

@@ -925,6 +925,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error al generar el numero unico de la factura.
+        /// </summary>
+        public static string MessageGenerateNumberInvoiceFondaDAOException {
+            get {
+                return ResourceManager.GetString("MessageGenerateNumberInvoiceFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha cargado la tabla de ordenes cerradas satisfactoriamente.
         /// </summary>
         public static string MessageGetClosedOrders {
@@ -1011,6 +1020,15 @@ namespace FondaResources.OrderAccount {
         public static string MessageMVPExceptionQuery {
             get {
                 return ResourceManager.GetString("MessageMVPExceptionQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error al liberar la mesa ocupada.
+        /// </summary>
+        public static string MessageReleaseTableFondaDAOException {
+            get {
+                return ResourceManager.GetString("MessageReleaseTableFondaDAOException", resourceCulture);
             }
         }
         
