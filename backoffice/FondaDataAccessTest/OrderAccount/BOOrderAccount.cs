@@ -172,7 +172,7 @@ namespace FondaDataAccessTest
         }
         #endregion Pruebas de DataAccess/HibernateOrderAccount/CloseCashRegisterTest
 
-        #region
+        #region Pruebas de DataAccess/HibernateOrderAccount/CloseCashRegisterTest
         [Test(Description = "Prueba para el cierre de caja")]
         public void CloseCashRegisterTest()
         {
@@ -190,7 +190,7 @@ namespace FondaDataAccessTest
         }
         #endregion
 
-        #region
+        #region Pruebas de DataAccess/HibernateRestaurantDAO/ClosedOrdersByRestaurantIdTest
         [Test(Description = "Obtiene el numero de ordenes cerradas de un Restaurante por su id")]
         public void ClosedOrdersByRestaurantIdTest()
         {
@@ -198,8 +198,19 @@ namespace FondaDataAccessTest
             Assert.IsNotNull(_listAccounts);
             Assert.AreEqual(_listAccounts.Count, 8);
         }
+        [Test(Description = "Prueba la excepcion al Obtener el numero de ordenes cerradas de un Restaurante por su id")]
+        [ExpectedException(typeof(ClosedOrdersByRestaurantFondaDAOException))]
+        public void ClosedOrdersByRestauranExceptionTest()
+        {
+            _listAccounts = _restaurantDAO.ClosedOrdersByRestaurantId(0);
+            Assert.IsNotNull(_listAccounts);
+            Assert.AreEqual(_listAccounts.Count, 8);
+        }
         #endregion
 
+        #region
+
+        #endregion
         [Test(Description = "Obtiene el numero de ordenes abiertas de un Restaurante por su id")]
         public void OpenOrdersByRestaurantIdTest()
         {
