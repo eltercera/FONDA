@@ -13,9 +13,24 @@ public interface ReservationClient {
 
 
 
-    @GET("reserve")
-    Call<List<Reservation>> getReservation();
+    /**
+     * Add /api/addreservation/{idcommensal}/{idrestaurant}
+     * Agrega una reserva de la lista de comensales
+     * @param idCommensal identificador del comensal.
+     * @param idRestaurant identificador del restaurante.
+     * @return
+     */
+    @GET("addreservation/{idcommensal}/{idrestaurant}")
+    Call<Reservation> addReservation(@Path("idcommensal") int idCommensal , @Path("idrestaurant") int idRestaurant);
 
+    /**
+     * Find /api/findReservation/{id}
+     * Obtiene la lista de las reservas de los comensales.
+     * @param idCommensal identificador del comensal.
+     * @return
+     */
+    @GET("findReservation/{id}")
+    Call<List<Reservation>> getReservarions(@Path("id") int idCommensal);
 
 
 }

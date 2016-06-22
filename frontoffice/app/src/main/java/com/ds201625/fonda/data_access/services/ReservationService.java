@@ -9,9 +9,8 @@ import java.util.List;
 /**
  */
 public interface ReservationService {
-    List<Reservation> getReservation() throws RestClientException;
-    void addReservation(Reservation reserve) throws RestClientException;
-    void editReservatio(Reservation reserve) throws RestClientException;
+    Reservation AddReservation(int idCommensal, int idRestaurant)  throws RestClientException;;
 
+    List<Reservation> getReservarions(int idCommensal)  throws RestClientException;;
 
 }

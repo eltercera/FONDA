@@ -23,11 +23,11 @@ public class Commensal extends UserAccount {
     }
 
 
-    public List<Reservation> getReservarions() {
+    public List<Reservation> getReservations() {
         return reservarions;
     }
 
-    public void setReservarions(List<Reservation> reservarions) {
+    public void setReservations(List<Reservation> reservations) {
         this.reservarions = reservarions;
     }
 
