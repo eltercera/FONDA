@@ -341,6 +341,18 @@
     <value>BO-04-014</value>
     <comment>Codigo de error al obtener ordenes cerradas</comment>
   </data>
+  <data name="CommandExceptionGetCurrencyByRestaurantCode" xml:space="preserve">
+    <value>BO-04-017</value>
+    <comment>Codigo de error para CommandExceptionGetCurrencyByRestaurant</comment>
+  </data>
+  <data name="CommandExceptionGetDetailOrderCode" xml:space="preserve">
+    <value>BO-04-015</value>
+    <comment>Codigo de error para CommandExceptionGetDetailOrder</comment>
+  </data>
+  <data name="CommandExceptionGetGenerateInvoiceCode" xml:space="preserve">
+    <value>BO-04-016</value>
+    <comment>Codigo de error para CommandExceptionGetGenerateInvoiceCode</comment>
+  </data>
   <data name="CommandExceptionValidateProfileByCommensalCode" xml:space="preserve">
     <value>BO-04-011</value>
     <comment>Codigo de error al validar que un perfil pertenezca a un comensal</comment>
@@ -404,6 +416,18 @@
   <data name="MessageCommandExceptionGetClosedOrders" xml:space="preserve">
     <value>No se ha podido obtener la lista de ordenes cerradas</value>
     <comment>Mensaje de error para CommandGetClosedOrders</comment>
+  </data>
+  <data name="MessageCommandExceptionGetCurrencyByRestaurant" xml:space="preserve">
+    <value>Se ha producido un error al obtener la moneda de un Restaurante</value>
+    <comment>Mensaje de error para CommandExceptionGetCurrencyByRestaurant</comment>
+  </data>
+  <data name="MessageCommandExceptionGetDetailOrder" xml:space="preserve">
+    <value>Se ha producido un error al obtener el detalle de la orden</value>
+    <comment>Mensaje de error para CommandGetDetailOrder</comment>
+  </data>
+  <data name="MessageCommandExceptionGetGenerateInvoice" xml:space="preserve">
+    <value>Se ha producido un error al obtener la factura generada</value>
+    <comment>Mensaje de error para CommandExceptionGetGenerateInvoice</comment>
   </data>
   <data name="MessageCommandExceptionValidateProfileByCommensal" xml:space="preserve">
     <value>No se puede acceder, el perfil no pertenece al comensal</value>
@@ -516,6 +540,18 @@
   <data name="SuccessMessageCommandGetClosedOrders" xml:space="preserve">
     <value>Se ha obtenido la lista de ordenes cerradas satisfactoriamente</value>
     <comment>Mensaje de exito para CommandGetClosedOrders</comment>
+  </data>
+  <data name="SuccessMessageCommandGetCurrencyByRestaurant" xml:space="preserve">
+    <value>Se ha obtenido la moneda de un restaurante exitosamente</value>
+    <comment>Mensaje de exito para CommandExceptionGetCurrencyByRestaurant</comment>
+  </data>
+  <data name="SuccessMessageCommandGetDetailOrder" xml:space="preserve">
+    <value>Se ha obtenido el detalle de la orden satisfactoriamente</value>
+    <comment>Mensaje de exito para CommandGetDetailOrder</comment>
+  </data>
+  <data name="SuccessMessageCommandGetGenerateInvoice" xml:space="preserve">
+    <value>Se ha obtenido la factura pagada exitosamente</value>
+    <comment>Mensaje de exito para CommandGetGenerateInvoice</comment>
   </data>
   <data name="SuccessPrintInvoice" xml:space="preserve">
     <value>La factura se ha imprimido satisfactoriamente</value>
