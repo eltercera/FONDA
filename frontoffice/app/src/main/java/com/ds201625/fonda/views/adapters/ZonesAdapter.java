@@ -1,0 +1,45 @@
+package com.ds201625.fonda.views.adapters;
+
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+
+import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Zone;
+
+import java.util.ArrayList;
+
+/**
+ * Created by gbsoj on 6/22/2016.
+ */
+public class ZonesAdapter extends BaseArrayAdapter<Zone> {
+
+    public ZonesAdapter(Context context) {
+            super(context, R.layout.fragment_filter,R.id.tvFilter,new ArrayList<Zone>());
+            }
+
+    @Override
+    public View createView(Zone item) {
+        View convertView;
+        LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
+        convertView = inflater.inflate(R.layout.item_filter, null, true);
+        TextView tvFilter = (TextView) convertView.findViewById(R.id.tvFilter);
+        tvFilter.setText(item.getName());
+        return convertView;
+    }
+
+    @Override
+    public View getSelectedView(Zone item, View convertView) {
+        convertView.setBackgroundColor(getContext().getResources()
+        .getColor(R.color.creme));
+        return convertView;
+    }
+
+    @Override
+    public View getNotSelectedView(Zone item, View convertView) {
+        convertView.setBackgroundColor(0x00000000);
+        return convertView;
+    }
+}
