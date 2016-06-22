@@ -50,7 +50,12 @@ namespace BackOffice.Seccion.Caja
 
             set { Session[OrderAccountResources.SessionIdAccount] = value; }
         }
+        string IOrderInvoicesModel.SessionIdInvoice
+        {
+            get { return Session[OrderAccountResources.SessionIdInvoice].ToString(); }
 
+            set { Session[OrderAccountResources.SessionIdInvoice] = value; }
+        }
         public string SessionRestaurant
         {
             get

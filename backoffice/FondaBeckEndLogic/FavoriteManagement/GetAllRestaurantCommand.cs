@@ -68,17 +68,12 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 
                
 			}
-            catch (FindAllFondaDAOException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsCommandException(ResourceMessages.GetAllRestaurantException, e);
-            }
             catch (ParameterIndexOutOfRangeException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetAllRestaurantsCommandException(ResourceMessages.ParametersGetAllRestException, e);
             }
-            catch (NullReferenceException e)
+            catch (FindAllFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetAllRestaurantsCommandException(ResourceMessages.GetAllRestaurantException, e);

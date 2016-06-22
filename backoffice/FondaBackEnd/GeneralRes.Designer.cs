@@ -266,7 +266,17 @@ namespace com.ds201625.fonda.BackEnd {
                 return ResourceManager.GetString("GetProfilesException", resourceCulture);
             }
         }
-        
+
+        ///   Busca una cadena traducida similar a Error al buscar el total de la cuenta
+        /// </summary>
+        internal static string GetTotalAccountException
+        {
+            get
+            {
+                return ResourceManager.GetString("GetTotalAccountException", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Busca una cadena traducida similar a Error al obtener la lista de restaurant para elegir los favoritos del comensal.
         /// </summary>

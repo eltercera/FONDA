@@ -2,6 +2,8 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using FondaLogic.FondaCommandException;
+using FondaLogic.FondaCommandException.OrderAccount;
 using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,7 @@ namespace FondaLogic.Commands.OrderAccount
     {
         private FactoryDAO _facDAO = FactoryDAO.Intance;
         private int _accountId = 0;
+        private IList<Invoice> listInvoices;
 
         public CommandFindInvoicesByAccount(Object receiver) : base(receiver)
         {
@@ -43,8 +46,18 @@ namespace FondaLogic.Commands.OrderAccount
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                //TODO: Escribir en el Log la excepcion
-                throw;
+                CommandExceptionFindInvoicesByAccount exception = new CommandExceptionFindInvoicesByAccount(
+                    FondaResources.General.Errors.NullExceptionReferenceCode,
+                    FondaResources.OrderAccount.Errors.ClassNameFindInvoicesByAccount,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                listInvoices = new List<Invoice>();
+                Receiver = listInvoices;
+
             }
         }
     }

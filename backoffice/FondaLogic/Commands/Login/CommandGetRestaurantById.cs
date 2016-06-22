@@ -4,12 +4,17 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaLogic.Log;
 using FondaLogic.FondaCommandException;
+using com.ds201625.fonda.DataAccess.Exceptions;
+using FondaLogic.FondaCommandException.Login;
 
 namespace FondaLogic.Commands.Login
 {
+    // comando que busca restaurante dado un id
     public class CommandGetRestaurantById : Command
     {
+        // fabrica que me da el dao que contiene metodo a encapsular en este comando
         FactoryDAO _facDAO = FactoryDAO.Intance;
+        // restaurante q contiene id 
         Restaurant _restaurant;
         public CommandGetRestaurantById(Object receiver) : base(receiver)
         {
@@ -23,6 +28,9 @@ namespace FondaLogic.Commands.Login
                 throw;
             }
         }
+        /// <summary>
+        /// metodo que ejecuta el metodo del dao
+        /// </summary>
         public override void Execute()
         {
 
@@ -32,29 +40,42 @@ namespace FondaLogic.Commands.Login
                 FactoryDAO _facDAO = FactoryDAO.Intance;
                 IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
 
-
+                //se ejecuta metodo del dao
                 Receiver = _restaurantDAO.FindById(_restaurant.Id);
             }
-            catch (NullReferenceException ex)
+            // se capturan excepciones que pueden ser generadas en la capa de acceso a datos
+            catch (InvalidTypeParameterException e)
             {
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetRestaurant exceptionGetRestaurant = new CommandExceptionGetRestaurant(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetRestaurant,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetRestaurant);
-
-                throw exceptionGetRestaurant;
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
             }
-            catch (Exception ex)
+            catch (ParameterIndexOutRangeException e)
             {
-                throw new System.InvalidOperationException(ex.Message);
-
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameIndexParameter, e);
             }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantId, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantId, e);
+            }
+            // Guarda el resultado.
+            Object Result = Receiver;
+            //logger
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
         }
     }

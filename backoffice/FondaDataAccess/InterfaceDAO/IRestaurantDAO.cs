@@ -36,6 +36,8 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 
         IList<Account> OpenOrdersByRestaurantId(int restaurantId);
 
+        void ReleaseTable(Restaurant restaurant, int tableId);
+
         #endregion
 
         #region Reservation

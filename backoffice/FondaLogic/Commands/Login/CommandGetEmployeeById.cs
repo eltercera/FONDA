@@ -3,12 +3,17 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
+using com.ds201625.fonda.DataAccess.Exceptions;
+using FondaLogic.FondaCommandException.Login;
+using FondaLogic.FondaCommandException.login;
 
 namespace FondaLogic.Commands.Login
 {
     public class CommandGetEmployeeById : Command
     {
+        // fabrica que me dara el dao que contiene el metodo a encapsular en el comando
         FactoryDAO _facDAO = FactoryDAO.Intance;
+        // id del empleado a buscar
         int idEmployee;
         public CommandGetEmployeeById(Object receiver) : base(receiver)
         {
@@ -36,29 +41,42 @@ namespace FondaLogic.Commands.Login
 
                 IEmployeeDAO _employeeDAO = _facDAO.GetEmployeeDAO();
 
-
+                // se ejecuta metodo del dao para buscar empleado por id
                 Receiver = _employeeDAO.FindById(idEmployee);
             }
-            catch (NullReferenceException ex)
+            // se capturan excepciones que pueden ser generadas en la capa de acceso a datos
+            catch (InvalidTypeParameterException e)
             {
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetEmployee exceptionGetEmployee = new CommandExceptionGetEmployee(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.Login.Errors.ClassNameGetEmployeeId,
-                FondaResources.Login.Errors.CommandMethod,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
-
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetEmployee);
-
-                throw exceptionGetEmployee;
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
             }
-            catch (Exception ex)
+            catch (ParameterIndexOutRangeException e)
             {
-                throw new System.InvalidOperationException(ex.Message);
-
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameIndexParameter, e);
             }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameGetEmployeeId, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameGetEmployeeId, e);
+            }
+            // Guarda el resultado.
+            Object Result = Receiver;
+            //logger
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
     }
 }

@@ -54,6 +54,7 @@ namespace com.ds201625.fonda.Domain
             get { return lastCardDigits; }
         }
 
+        [DataMember]
         public virtual float Tip
         {
             get { return _tip; }

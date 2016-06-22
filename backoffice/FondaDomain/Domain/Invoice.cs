@@ -145,25 +145,6 @@ namespace com.ds201625.fonda.Domain
             get { return _currency; }
         }
 
-
-        ///// <summary>
-        ///// Obtiene o asigna una cuenta a la factura
-        ///// </summary>
-        //[DataMember]
-        //public virtual Account Account
-        //{
-        //    get { return _account; }
-        //}
-
-        /// <summary>
-        /// Obtiene o asigna un restaurant a la cuenta
-        /// </summary>
-        //[DataMember]
-        //public virtual Restaurant Restaurant
-        //{
-        //    get { return _restaurant; }
-        //}
-
         /// <summary>
         /// Obtiene o asigna un perfil a la cuenta
         /// </summary>

@@ -48,6 +48,13 @@ namespace BackOffice.Seccion.Caja
             set { Session[ResourceLogin.sessionRestaurantID] = value; }
         }
 
+        public string SessionNumberAccount
+        {
+            get { return Session[OrderAccountResources.SessionNumberAccount].ToString(); }
+
+            set { Session[OrderAccountResources.SessionNumberAccount] = value; }
+        }
+
         HtmlGenericControl IModel.SuccessLabel
         {
             get { return this.SuccessLabel; }

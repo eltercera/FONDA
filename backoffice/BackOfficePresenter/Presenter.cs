@@ -28,6 +28,12 @@ namespace BackOfficePresenter
             _view.ErrorLabel.Visible = true;
             _view.ErrorLabelMessage.Text = message;
         }
+        /// <summary>
+        /// metodo que valida un string con respecto a una expresion regular
+        /// </summary>
+        /// <param name="expresionRegular">expresion regular a comparar</param>
+        /// <param name="evalua">string a evaluar</param>
+        /// <returns></returns>
         public bool validaString(string expresionRegular,string evalua)
         {
             if ((!Regex.IsMatch(evalua, expresionRegular)))

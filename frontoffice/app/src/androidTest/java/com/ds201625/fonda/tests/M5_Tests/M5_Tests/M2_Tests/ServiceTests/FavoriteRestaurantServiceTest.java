@@ -16,10 +16,6 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Katherina Molina on 11/06/2016.
- */
-
-/**
  * Clase De pruebas unitarias del FavoriteRestaurantService
  */
 public class FavoriteRestaurantServiceTest extends TestCase {
@@ -61,7 +57,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
         favoriteRestaurantService = FondaServiceFactory.getInstance().getFavoriteRestaurantService();
         commensal = FondaEntityFactory.getInstance().GetCommensal();
         logedCommensal = FondaEntityFactory.getInstance().GetCommensal(13);
-        selectedRestaurant = FondaEntityFactory.getInstance().GetRestaurant(3);
+        selectedRestaurant = FondaEntityFactory.getInstance().GetRestaurant(2);
         email = "adri@hotmail.com";
     }
 
@@ -75,7 +71,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
             commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
                     selectedRestaurant.getId());
-            assertNotNull(commensal);
+            assertNotNull(commensal.getId());
         } catch (RestClientException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -149,7 +145,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
             commensal = favoriteRestaurantService.AddFavoriteRestaurant(logedCommensal.getId(),
                     selectedRestaurant.getId());
 
-            assertNotNull(commensal);
+            assertNotNull(commensal.getId());
         } catch (RestClientException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -221,7 +217,7 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
             restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(logedCommensal.getId());
 
-            assertNotNull(restaurantList);
+            assertNotNull(restaurantList.get(0).getName());
         } catch (RestClientException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -263,8 +259,10 @@ public class FavoriteRestaurantServiceTest extends TestCase {
         }
     }
 
-
-    public void testAllFavoriteRestaurantNullPointerException() {
+    /**
+     *  Metodo para probar que la lista de un commensal es nula
+     */
+    public void testAllFavoriteRestaurantIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
             restaurantList =favoriteRestaurantService.getAllFavoriteRestaurant(prueba.getId());
@@ -273,11 +271,16 @@ public class FavoriteRestaurantServiceTest extends TestCase {
         } catch(RestClientException e) {}
           catch(NullPointerException e) {
               //fail("Se esperaba excepcion NullPointerException");
-          }
+          } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
-    public void testAddFavoriteRestauranNullPointerException() {
+    /**
+     *  Metodo para probar que commensal que retorna al agregar un favorito es nula
+     */
+    public void testAddFavoriteRestauranIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
             commensal = favoriteRestaurantService.AddFavoriteRestaurant(prueba.getId(),
@@ -291,7 +294,10 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
     }
 
-    public void testDeleteFavoriteRestauranNullPointerException() {
+    /**
+     *  Metodo para probar que commensal que retorna al eliminar un favorito es nula
+     */
+    public void testDeleteFavoriteRestauranIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
             commensal = favoriteRestaurantService.deleteFavoriteRestaurant(prueba.getId(),
