@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.FondaCommandException.login
 {
+    /// <summary>
+    /// excepcion que es lanzada en caso de que falle una consulta de rol
+    /// </summary>
     public class CommandExceptionGetRol : FondaLogicException
     {
         public CommandExceptionGetRol() : base() { }

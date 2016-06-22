@@ -11,7 +11,9 @@ namespace FondaLogic.Commands.Login
 {
     public class CommandGetEmployeeById : Command
     {
+        // fabrica que me dara el dao que contiene el metodo a encapsular en el comando
         FactoryDAO _facDAO = FactoryDAO.Intance;
+        // id del empleado a buscar
         int idEmployee;
         public CommandGetEmployeeById(Object receiver) : base(receiver)
         {
@@ -39,9 +41,10 @@ namespace FondaLogic.Commands.Login
 
                 IEmployeeDAO _employeeDAO = _facDAO.GetEmployeeDAO();
 
-
+                // se ejecuta metodo del dao para buscar empleado por id
                 Receiver = _employeeDAO.FindById(idEmployee);
             }
+            // se capturan excepciones que pueden ser generadas en la capa de acceso a datos
             catch (InvalidTypeParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);

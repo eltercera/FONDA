@@ -17,8 +17,12 @@ namespace FondaLogic.Commands.Login
 {
     public class CommandGetAllRoles : Command
     {
+        // fabrica que me dara dao que contiene metodo que se ejecutara en el execute
         FactoryDAO _facDAO = FactoryDAO.Intance;
-
+        /// <summary>
+        /// constructor del comando, no recibe nada
+        /// </summary>
+        /// <param name="receiver"></param>
         public CommandGetAllRoles(Object receiver) : base(receiver)
         {
 
@@ -37,9 +41,10 @@ namespace FondaLogic.Commands.Login
 
                 IRoleDAO _RoleDAO = _facDAO.GetRoleDAO();
 
-
+                // se ejecuta metodo del dao para traer todos los roles
                 Receiver = _RoleDAO.GetAll();
             }
+            //se capturan excepciones que pueden ser generadas en la capa de acceso a datos
             catch (InvalidTypeParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);

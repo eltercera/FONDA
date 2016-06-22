@@ -11,8 +11,14 @@ namespace FondaLogic.Commands.Login
 {
     class ComandGetEmployeeBySsn : Command 
     {
+        // fabrica de dao para ejecutar el execute
         FactoryDAO _facDAO = FactoryDAO.Intance;
+        // ssn del empleado a buscar
         string Ssn;
+        /// <summary>
+        /// constructor del comando
+        /// </summary>
+        /// <param name="receiver">Ssn del empleado que se quiere buscar</param>
         public ComandGetEmployeeBySsn(Object receiver) : base(receiver)
         {
             try
@@ -39,9 +45,10 @@ namespace FondaLogic.Commands.Login
 
                 IEmployeeDAO _employeeDAO = _facDAO.GetEmployeeDAO();
 
-
+                //obtengo resultado del comando
                 Receiver = _employeeDAO.FindBySsn(Ssn);
             }
+            // obtengo excepciones que pueden ser generedas en la capa de acceso a datos
             catch (InvalidTypeParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
