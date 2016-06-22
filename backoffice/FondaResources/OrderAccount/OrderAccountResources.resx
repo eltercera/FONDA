@@ -685,4 +685,32 @@
     <value>Se han cargado las facturas correctamente</value>
     <comment>Mensaje de exito para obtener las facturas</comment>
   </data>
+  <data name="allOrdersURL" xml:space="preserve">
+    <value>../Caja/Ordenes.aspx</value>
+    <comment>URL de todas las ordenes</comment>
+  </data>
+  <data name="MessagefindAllInvoiceException" xml:space="preserve">
+    <value>Error en la base de datos al obtener las facturas de un perfil</value>
+    <comment>Mensaje de error para findAllInvoice</comment>
+  </data>
+  <data name="MessageFindInvoicesByAccountFondaDAOException" xml:space="preserve">
+    <value>Error en la base de datos al obtener las facturas de una orden</value>
+    <comment>Mensaje de error para FindInvoicesByAccount</comment>
+  </data>
+  <data name="SuccessMessageDetailOrderPresenter" xml:space="preserve">
+    <value>Se ha cargado correctamente el detalle de la orden</value>
+    <comment>Mensaje de exito para cargar el detalle de la orden</comment>
+  </data>
+  <data name="MessageFindAllAccountByRestaurantException" xml:space="preserve">
+    <value>Error en la base de datos al obtener todas las cuentas de un restaurante</value>
+    <comment>Mensaje de error para FindAllAccountByRestaurant</comment>
+  </data>
+  <data name="MessageFindGenerateInvoiceByAccountFondaDAOException" xml:space="preserve">
+    <value>Ha ocurrido un error al generar la factura</value>
+    <comment>Mensaje de error para FindGenerateInvoiceByAccountFondaDAOException</comment>
+  </data>
+  <data name="MessageFindInvoicesByRestaurantFondaDAOException" xml:space="preserve">
+    <value>Ha ocurrido un error al obtener las facturas dado un restaurante</value>
+    <comment>Mensaje para FindInvoicesByRestaurant</comment>
+  </data>
 </root>

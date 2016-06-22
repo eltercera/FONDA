@@ -18,6 +18,7 @@
   <opcion rol="Sistema-Restaurante-Caja" nombre="Caja" img="fa fa-fw fa-money">
     <subopcion rol="Sistema-Restaurante-Caja" nombre="Ordenes Abiertas" link="~/Seccion/Caja/Ordenes.aspx"/>
     <subopcion rol="Sistema-Restaurante-Caja" nombre="Ordenes Cerradas" link="~/Seccion/Caja/OrdenesCerradas.aspx"/>
+    <subopcion rol="Sistema-Restaurante-Caja" nombre="Listar Facturas" link="~/Seccion/Caja/ListarFacturas.aspx"/>
   </opcion>
   
   <opcion rol="Sistema-Restaurante" nombre="Confirguración" img="fa fa-fw fa-wrench">

@@ -13,5 +13,6 @@ namespace BackOfficeModel.OrderAccount
 
         string SessionAccountId { get; set; }
 
+        Label NumberAccount { get; set; }
     }
 }

@@ -2,8 +2,8 @@
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
-using FondaLogic;
-using FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

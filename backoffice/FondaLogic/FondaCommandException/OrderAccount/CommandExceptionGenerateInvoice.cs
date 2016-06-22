@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.FondaCommandException
+namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException
 {
     /// <summary>
     /// Excepcion arrojada en caso de que falle la generacion de la factura

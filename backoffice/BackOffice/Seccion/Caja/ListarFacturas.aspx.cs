@@ -14,7 +14,7 @@ namespace BackOffice.Seccion.Caja
         #region Presenter
 
         private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrderInvoicesPresenter _presenter;
-
+       
         #endregion
 
         #region Model
@@ -66,6 +66,13 @@ namespace BackOffice.Seccion.Caja
             set { orderInvoices = value; }
         }
 
+        public System.Web.UI.WebControls.Label NumberAccount
+        {
+            get { return ordernumber; }
+            
+            set { ordernumber = value; }
+        }
+
         /// <summary>
         /// Recurso de Session para el ID de la orden
         /// </summary>
@@ -87,7 +94,7 @@ namespace BackOffice.Seccion.Caja
                     return Session[OrderAccountResources.SessionRestaurantId].ToString();
                 else
                     return OrderAccountResources.Empty;
-            }
+        }
 
             set { Session[OrderAccountResources.SessionRestaurantId] = value; }
         }
@@ -105,7 +112,7 @@ namespace BackOffice.Seccion.Caja
         {
             if (Session[ResourceLogin.sessionUserID] != null &&
                 Session[ResourceLogin.sessionRestaurantID] != null)
-                _presenter.GetInvoices();
+            _presenter.GetInvoices();
             else
                 Response.Redirect(RecursoMaster.addressLogin);
         }
