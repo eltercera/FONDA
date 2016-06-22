@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FondaResources.Restaurant {
+namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace FondaResources.Restaurant {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Restaurant.RestaurantErrors", typeof(RestaurantErrors).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("com.ds201625.fonda.Resources.FondaResources.Restaurant.RestaurantErrors", typeof(RestaurantErrors).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

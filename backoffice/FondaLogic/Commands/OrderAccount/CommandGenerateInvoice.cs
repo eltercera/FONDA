@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
 using com.ds201625.fonda.Factory;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {

@@ -7,7 +7,7 @@
     <ProjectGuid>{FDE7B2A6-7496-4680-AB18-A336EEBBE62E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BackOfficePresenter</RootNamespace>
+    <RootNamespace>com.ds201625.fonda.View.BackOfficePresenter</RootNamespace>
     <AssemblyName>BackOfficePresenter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

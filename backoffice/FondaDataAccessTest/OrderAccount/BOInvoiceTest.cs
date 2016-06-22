@@ -6,7 +6,6 @@ using com.ds201625.fonda.Domain;
 using System.Collections.Generic;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.DataAccess.Exceptions;
-using com.ds201625.fonda.DataAccess.Exceptions.OrderAccount;
 
 namespace FondaDataAccessTest
 {
@@ -33,7 +32,9 @@ namespace FondaDataAccessTest
         private float _amount, _tax;
 
         #endregion
-        #region
+
+        #region Initialzation
+
         [SetUp]
         public void Init()
         {
@@ -70,13 +71,7 @@ namespace FondaDataAccessTest
         }
         #endregion
 
-        [Test(Description = "Cambia el estatus de una factura a cancelado")]
-        public void CancelInvoiceTest()
-        {
-            _invoice = _invoiceDAO.FindById(_invoiceId);
-            _invoice=_accountDAO.CancelInvoice(_invoice, 2);
-            Assert.AreEqual(_invoice.Status,CanceledInvoiceStatus.Instance);
-        }
+        #region Pruebas de DataAccess/HibernateDAO/FindInvoiceByRestaurant
 
         [Test(Description = "Busca las facturas de un restaurante")]
         public void FindInvoiceByRestaurantTest()
@@ -89,7 +84,21 @@ namespace FondaDataAccessTest
             Assert.AreEqual(_listInvoices[2].Number, 3);
         }
 
-        #region Pruebas de DataAccess/HibernateDAO/findAllInvoices
+        [Test(Description = "Busca las facturas de un restaurante")]
+        [ExpectedException(typeof(FindInvoicesByRestaurantFondaDAOException))]
+        public void ErrorFindInvoiceByRestaurantTest()
+        {
+
+            _listInvoices = _invoiceDAO.FindInvoicesByRestaurant(null);
+            Assert.IsNotNull(_listInvoices);
+            Assert.AreEqual(_listInvoices[0].Id, 1);
+            Assert.AreEqual(_listInvoices[1].Id, 2);
+            Assert.AreEqual(_listInvoices[2].Number, 3);
+        }
+
+        #endregion
+
+        #region Pruebas de DataAccess/HibernateDAO/FindAllInvoices
 
         [Test(Description  ="Trae una lista de facturas pagadas a un usuario")]
         public void FindAllInvoiceByProfileTest()
@@ -110,8 +119,10 @@ namespace FondaDataAccessTest
 
         #endregion
 
+        #region Pruebas de DataAccess/HibernateDAO/GenerateNumberInvoice
+
         [Test(Description = "Prueba el numero generado de la factura (Numero único de factura por restaurante)")]
-        public void GenerateNumberInvoice()
+        public void GenerateNumberInvoiceTest()
         {
 
             _number = _invoiceDAO.GenerateNumberInvoice(_restaurant);
@@ -119,6 +130,19 @@ namespace FondaDataAccessTest
             Assert.IsNotNull(_number);
             Assert.AreEqual(_number,7);
         }
+
+        [Test(Description = "Caso de error cuando genera el numero de la factura (Numero único de factura por restaurante)")]
+        [ExpectedException(typeof(GenerateNumberInvoiceFondaDAOException))]
+        public void ErrorGenerateNumberInvoiceTest()
+        {
+
+            _number = _invoiceDAO.GenerateNumberInvoice(null);
+            //Hay 6 facturas insertadas 
+            Assert.IsNotNull(_number);
+            Assert.AreEqual(_number, 7);
+        }
+
+        #endregion
 
         #region Pruebas de DataAccess/HibernateDAO/FindGenerateInvoiceByAccount
 
@@ -165,7 +189,9 @@ namespace FondaDataAccessTest
 
         #endregion
 
-        [Test(Description ="Prueba que el estado de un Restaurante cambie de ocupado a libre")]
+        #region Pruebas de DataAccess/HibernateDAO/ReleaseTable
+
+        [Test(Description = "Prueba que el estado de un Restaurante cambie de ocupado a libre")]
         public void ReleaseTableTest()
         {
 
@@ -178,18 +204,39 @@ namespace FondaDataAccessTest
             Assert.AreNotEqual(_restaurant.Tables[_tableId - 1].Status.Change(), _resultRestaurant.Tables[_tableId - 1].Status);
         }
 
-        [Test(Description = "Salva una factura")]
-        public void SaveInvoiceTest()
+        [Test(Description = "Caso de error cuando el estado de un Restaurante cambie de ocupado a libre")]
+        [ExpectedException(typeof(ReleaseTableFondaDAOException))]
+        public void ErrorReleaseTableTest()
         {
-            _invoiceDAO.Save(_invoice);
 
+            _restaurantDAO.ReleaseTable(null, 0);
+            _resultRestaurant = _restaurantDAO.FindById(_restaurantId);
+
+            Assert.AreNotEqual(_restaurant.Tables[_tableId - 1].Status.Change(), _resultRestaurant.Tables[_tableId - 1].Status);
         }
 
+        #endregion
 
         [TearDown]
         public void EndTests()
         {
+            _restaurantDAO = null;
+            _accountDAO = null;
+            _invoiceDAO = null;
+            _profileDao = null;
 
+            _invoiceId = _accountId = 
+                _restaurantId = _tableId = 
+                    _profileId = _number = 0;
+
+            _tax = 0;
+
+            _restaurant = null;
+            _account = null;
+            _profile = null;
+            _cashPayment = null;
+            _invoice = null;
+            _listInvoices = null;
         }
     }
 }

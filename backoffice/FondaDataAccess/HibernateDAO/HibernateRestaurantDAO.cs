@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using NHibernate.Criterion;
 using NHibernate;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
+using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
@@ -277,7 +279,20 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             //TODO: Arrojar excepciones personalizadas
             catch (ArgumentOutOfRangeException e)
             {
-                throw new FondaIndexException("No se encontraron ordenes cerradas", e);
+                ClosedOrdersByRestaurantFondaDAOException exception =
+                       new ClosedOrdersByRestaurantFondaDAOException(
+                           OrderAccountResources.MessageClosedOrdersByRestaurantFondaDAOException,
+                           e);
+                throw exception;
+            }
+            catch (Exception e)
+            {
+                ClosedOrdersByRestaurantFondaDAOException exception =
+                    new ClosedOrdersByRestaurantFondaDAOException(
+                        OrderAccountResources.MessageClosedOrdersByRestaurantFondaDAOException,
+                        e);
+                //Logger
+                throw exception;
             }
 
         }
@@ -310,10 +325,22 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 return list;
 
             }
-            //TODO: Arrojar excepciones personalizadas
             catch (ArgumentOutOfRangeException e)
             {
-                throw new FondaIndexException("Not Found invoice", e);
+                OpenOrdersByRestaurantIdFondaDAOException exception =
+                       new OpenOrdersByRestaurantIdFondaDAOException(
+                           OrderAccountResources.MessageOpenOrdersByRestaurantIdFondaDAOException,
+                           e);
+                throw exception;
+            }
+            catch (Exception e)
+            {
+                OpenOrdersByRestaurantIdFondaDAOException exception =
+                    new OpenOrdersByRestaurantIdFondaDAOException(
+                        OrderAccountResources.MessageOpenOrdersByRestaurantIdFondaDAOException,
+                        e);
+                //Logger
+                throw exception;
             }
         }
 
@@ -349,14 +376,22 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                  Save(restaurant);
 
             }
-            //TODO: Arrojar excepciones personalizadas
             catch (ArgumentOutOfRangeException ex)
             {
-                throw new FondaIndexException();
+                ReleaseTableFondaDAOException exception = new ReleaseTableFondaDAOException
+                    (OrderAccountResources.MessageReleaseTableFondaDAOException,
+                    ex);
+                //Logger
+                throw exception;
+
             }
-            catch(InvalidCastException ex)
+            catch(Exception ex)
             {
-                throw new InvalidCastException();
+                ReleaseTableFondaDAOException exception = new ReleaseTableFondaDAOException
+                    (OrderAccountResources.MessageReleaseTableFondaDAOException,
+                    ex);
+                //Logger
+                throw exception;
             }
         }
 

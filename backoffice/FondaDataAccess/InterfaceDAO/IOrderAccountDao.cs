@@ -11,7 +11,6 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
         IList<Account> GetAll();
         int GenerateNumberAccount(Restaurant _restaurant);
         IList<Account> FindAccountByRestaurant(int _idRestaurant);
-        IList<Account> FindAllAccountByRestaurant(Restaurant _restaurant);
         float CloseCashRegister(int restaurantId);
         Invoice SaveInvoice(Invoice _invoice, int _accountId, int _restaurantId);
         void ChangeStatusAccount(Account _account);

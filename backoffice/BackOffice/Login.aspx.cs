@@ -10,10 +10,10 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using BackOffice.Seccion.Restaurant;
-using com.ds201625.fonda.BackOffice.Presenter;
-using BackOfficeModel.Login;
-using BackOfficePresenter.Login;
-using FondaResources.Login;
+using com.ds201625.fonda.View.BackOfficePresenter;
+using com.ds201625.fonda.View.BackOfficeModel.Login;
+using com.ds201625.fonda.View.BackOfficePresenter.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using System.Web.UI.HtmlControls;
 
 namespace BackOffice.Seccion.Configuracion

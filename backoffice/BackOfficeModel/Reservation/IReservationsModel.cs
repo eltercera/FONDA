@@ -7,7 +7,7 @@ using System.Web.SessionState;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-namespace BackOfficeModel.Reservations
+namespace com.ds201625.fonda.View.BackOfficeModel.Reservations
 {
     public interface IReservationsModel : IModel
     {

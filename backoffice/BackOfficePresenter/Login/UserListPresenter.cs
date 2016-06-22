@@ -1,11 +1,11 @@
-﻿using BackOfficeModel.Login;
+﻿using com.ds201625.fonda.View.BackOfficeModel.Login;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +23,9 @@ using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.login;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
 
-namespace BackOfficePresenter.Login
+namespace com.ds201625.fonda.View.BackOfficePresenter.Login
 {
-    public class UserListPresenter : BackOfficePresenter.Presenter
+    public class UserListPresenter : Presenter
     {
 
         private FactoryDAO _facDAO;
@@ -112,22 +112,22 @@ namespace BackOfficePresenter.Login
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
+                throw new CommandExceptionGetRestaurant( Errors.ClassNameInvalidParameter, e);
             }
             catch (ParameterIndexOutOfRangeException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                throw new CommandExceptionGetRestaurant( Errors.ClassNameIndexParameter, e);
             }
             catch (RequieredParameterNotFoundException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                throw new CommandExceptionGetRestaurant( Errors.ClassNameParameterNotFound, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantAll, e);
+                throw new CommandExceptionGetRestaurant( Errors.ClassNameGetRestaurantAll, e);
             }
             _employeeList = (IList<Employee>)CommanGetAllEmployee.Receiver;
             System.Diagnostics.Debug.WriteLine("ejecute comando");
@@ -306,22 +306,22 @@ namespace BackOfficePresenter.Login
             catch (InvalidTypeOfParameterException ex)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameInvalidParameter, ex);
+                throw new CommandExceptionGetEmployee( Errors.ClassNameInvalidParameter, ex);
             }
             catch (ParameterIndexOutOfRangeException ex)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameIndexParameter, ex);
+                throw new CommandExceptionGetEmployee( Errors.ClassNameIndexParameter, ex);
             }
             catch (RequieredParameterNotFoundException ex)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameParameterNotFound, ex);
+                throw new CommandExceptionGetEmployee( Errors.ClassNameParameterNotFound, ex);
             }
             catch (Exception ex)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameGetEmployeeId, ex);
+                throw new CommandExceptionGetEmployee( Errors.ClassNameGetEmployeeId, ex);
             }
             // Guarda el resultado.
             Object Result = _employee;
@@ -329,7 +329,7 @@ namespace BackOfficePresenter.Login
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                 Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             _view.textBoxNameUser.Text = _employee.Name;
             _view.textBoxlastNameUser.Text = _employee.LastName;
@@ -437,27 +437,27 @@ namespace BackOfficePresenter.Login
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
+                throw new CommandExceptionGetRestaurant( Errors.ClassNameInvalidParameter, e);
             }
             catch (ParameterIndexOutOfRangeException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                throw new CommandExceptionGetRestaurant( Errors.ClassNameIndexParameter, e);
             }
             catch (RequieredParameterNotFoundException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                throw new CommandExceptionGetRestaurant( Errors.ClassNameParameterNotFound, e);
             }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantAll, e);
+                throw new CommandExceptionGetRestaurant( Errors.ClassNameGetRestaurantAll, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantAll, e);
+                throw new CommandExceptionGetRestaurant( Errors.ClassNameGetRestaurantAll, e);
             }
             // Guarda el resultado.
             Object Result = _restList;
@@ -465,7 +465,7 @@ namespace BackOfficePresenter.Login
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                 Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             if (_restList != null)
             {
@@ -546,27 +546,27 @@ namespace BackOfficePresenter.Login
                     catch (InvalidTypeOfParameterException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
+                        throw new CommandExceptionGetEmployee( Errors.ClassNameInvalidParameter, e);
                     }
                     catch (ParameterIndexOutOfRangeException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                        throw new CommandExceptionGetEmployee( Errors.ClassNameIndexParameter, e);
                     }
                     catch (RequieredParameterNotFoundException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                        throw new CommandExceptionGetEmployee( Errors.ClassNameParameterNotFound, e);
                     }
                     catch (NullReferenceException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameGetEmployeeId, e);
+                        throw new CommandExceptionGetEmployee( Errors.ClassNameGetEmployeeId, e);
                     }
                     catch (Exception e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameGetEmployeeId, e);
+                        throw new CommandExceptionGetEmployee( Errors.ClassNameGetEmployeeId, e);
                     }
                     // Guarda el resultado.
                     Object Result = _employee;
@@ -574,7 +574,7 @@ namespace BackOfficePresenter.Login
                     Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                         Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
                     Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                         Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
                     //carga campo email con valor del usario a modificar
                     if (_view.textBoxEmail.Text == _employee.UserAccount.Email)
@@ -625,22 +625,22 @@ namespace BackOfficePresenter.Login
                         catch (ParameterIndexOutOfRangeException e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                            throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                            throw new CommandExceptionSaveUserAccount( Errors.ClassNameIndexParameter, e);
                         }
                         catch (RequieredParameterNotFoundException e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                            throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                            throw new CommandExceptionSaveUserAccount( Errors.ClassNameParameterNotFound, e);
                         }
                         catch (NullReferenceException e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                            throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
+                            throw new CommandExceptionSaveUserAccount( Errors.ClassNameSaveEmployee, e);
                         }
                         catch (Exception e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                            throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
+                            throw new CommandExceptionSaveUserAccount( Errors.ClassNameSaveEmployee, e);
                         }
 
                         //_userAccountDAO.Save(_employee.UserAccount);
@@ -655,22 +655,22 @@ namespace BackOfficePresenter.Login
                     catch (ParameterIndexOutOfRangeException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                        throw new CommandExceptionSaveUserAccount( Errors.ClassNameIndexParameter, e);
                     }
                     catch (RequieredParameterNotFoundException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                        throw new CommandExceptionSaveUserAccount( Errors.ClassNameParameterNotFound, e);
                     }
                     catch (NullReferenceException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
+                        throw new CommandExceptionSaveUserAccount( Errors.ClassNameSaveEmployee, e);
                     }
                     catch (Exception e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
+                        throw new CommandExceptionSaveUserAccount( Errors.ClassNameSaveEmployee, e);
                     }
                     //_employeeDAO.Save(_employee);
                     //alerta de exito de guardado
@@ -1080,17 +1080,17 @@ namespace BackOfficePresenter.Login
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
+                throw new CommandExceptionGetEmployee( Errors.ClassNameInvalidParameter, e);
             }
             catch (ParameterIndexOutOfRangeException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                throw new CommandExceptionGetEmployee( Errors.ClassNameIndexParameter, e);
             }
             catch (RequieredParameterNotFoundException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                throw new CommandExceptionGetEmployee( Errors.ClassNameParameterNotFound, e);
             }
             catch (Exception e)
             {
@@ -1102,7 +1102,7 @@ namespace BackOfficePresenter.Login
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                 Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             return true;
         }
         /// <summary>
@@ -1135,17 +1135,17 @@ namespace BackOfficePresenter.Login
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetUserAccount(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
+                throw new CommandExceptionGetUserAccount( Errors.ClassNameInvalidParameter, e);
             }
             catch (ParameterIndexOutOfRangeException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetUserAccount(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                throw new CommandExceptionGetUserAccount( Errors.ClassNameIndexParameter, e);
             }
             catch (RequieredParameterNotFoundException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetUserAccount(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                throw new CommandExceptionGetUserAccount( Errors.ClassNameParameterNotFound, e);
             }
             catch (Exception e)
             {
@@ -1157,7 +1157,7 @@ namespace BackOfficePresenter.Login
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                 Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             return true;
         }
         /// <summary>
@@ -1279,27 +1279,27 @@ namespace BackOfficePresenter.Login
                         catch (InvalidTypeOfParameterException e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                            throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
+                            throw new CommandExceptionGetRestaurant(Errors.ClassNameInvalidParameter, e);
                         }
                         catch (ParameterIndexOutOfRangeException e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                            throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                            throw new CommandExceptionGetRestaurant(Errors.ClassNameIndexParameter, e);
                         }
                         catch (RequieredParameterNotFoundException e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                            throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                            throw new CommandExceptionGetRestaurant(Errors.ClassNameParameterNotFound, e);
                         }
                         catch (NullReferenceException e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                            throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantId, e);
+                            throw new CommandExceptionGetRestaurant(Errors.ClassNameGetRestaurantId, e);
                         }
                         catch (Exception e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                            throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantId, e);
+                            throw new CommandExceptionGetRestaurant(Errors.ClassNameGetRestaurantId, e);
                         }
                         // Guarda el resultado.
                         Object Result = _restaurant;
@@ -1307,7 +1307,7 @@ namespace BackOfficePresenter.Login
                         Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                             Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
                         Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                            FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                            Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
                         _employee.Restaurant = _restaurant;
                     }
@@ -1333,27 +1333,27 @@ namespace BackOfficePresenter.Login
                 catch (InvalidTypeOfParameterException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
+                    throw new CommandExceptionGetRestaurant(Errors.ClassNameInvalidParameter, e);
                 }
                 catch (ParameterIndexOutOfRangeException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                    throw new CommandExceptionGetRestaurant(Errors.ClassNameIndexParameter, e);
                 }
                 catch (RequieredParameterNotFoundException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                    throw new CommandExceptionGetRestaurant(Errors.ClassNameParameterNotFound, e);
                 }
                 catch (NullReferenceException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantId, e);
+                    throw new CommandExceptionGetRestaurant(Errors.ClassNameGetRestaurantId, e);
                 }
                 catch (Exception e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantId, e);
+                    throw new CommandExceptionGetRestaurant(Errors.ClassNameGetRestaurantId, e);
                 }
                 // Guarda el resultado.
                 Object Result = _restaurant;
@@ -1361,7 +1361,7 @@ namespace BackOfficePresenter.Login
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                     Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
 
             return _employee;
@@ -1417,27 +1417,27 @@ namespace BackOfficePresenter.Login
             catch (InvalidTypeOfParameterException ex)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
-                throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameInvalidParameter, ex);
+                throw new CommandExceptionSaveUserAccount(Errors.ClassNameInvalidParameter, ex);
             }
             catch (ParameterIndexOutOfRangeException ex)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
-                throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameIndexParameter, ex);
+                throw new CommandExceptionSaveUserAccount(Errors.ClassNameIndexParameter, ex);
             }
             catch (RequieredParameterNotFoundException ex)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
-                throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameParameterNotFound, ex);
+                throw new CommandExceptionSaveUserAccount(Errors.ClassNameParameterNotFound, ex);
             }
             catch (NullReferenceException ex)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
-                throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, ex);
+                throw new CommandExceptionSaveUserAccount(Errors.ClassNameSaveEmployee, ex);
             }
             catch (Exception ex)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
-                throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, ex);
+                throw new CommandExceptionSaveUserAccount(Errors.ClassNameSaveEmployee, ex);
             }
             Alerts("Status");
         }

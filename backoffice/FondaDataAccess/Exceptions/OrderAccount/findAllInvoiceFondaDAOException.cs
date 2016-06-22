@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.DataAccess.Exceptions
 {
-    public class findAllInvoiceFondaDAOException : FondaDAOException
+    public class FindAllInvoiceFondaDAOException : FondaDAOException
     {
         #region Constructors
 
-        public findAllInvoiceFondaDAOException() : base() { }
+        public FindAllInvoiceFondaDAOException() : base() { }
 
-        public findAllInvoiceFondaDAOException(string message) : base(message) { }
+        public FindAllInvoiceFondaDAOException(string message) : base(message) { }
 
-        public findAllInvoiceFondaDAOException(string message, Exception InnerException)
+        public FindAllInvoiceFondaDAOException(string message, Exception InnerException)
 			: base(message, InnerException) { }
 
         #endregion
