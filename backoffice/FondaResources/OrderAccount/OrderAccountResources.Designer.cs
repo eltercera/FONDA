@@ -232,6 +232,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandGetInvoicesByProfile.
+        /// </summary>
+        public static string ClassNameGetInvoicesByProfile {
+            get {
+                return ResourceManager.GetString("ClassNameGetInvoicesByProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGetOrder.
         /// </summary>
         public static string ClassNameGetOrder {
@@ -246,6 +255,15 @@ namespace FondaResources.OrderAccount {
         public static string ClassNameGetOrders {
             get {
                 return ResourceManager.GetString("ClassNameGetOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetPaymentHistoryByProfile.
+        /// </summary>
+        public static string ClassNameGetPaymentHistoryByProfile {
+            get {
+                return ResourceManager.GetString("ClassNameGetPaymentHistoryByProfile", resourceCulture);
             }
         }
         
@@ -282,6 +300,15 @@ namespace FondaResources.OrderAccount {
         public static string ClassNamePayOrder {
             get {
                 return ResourceManager.GetString("ClassNamePayOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandPrintInvoice.
+        /// </summary>
+        public static string ClassNamePrintInvoice {
+            get {
+                return ResourceManager.GetString("ClassNamePrintInvoice", resourceCulture);
             }
         }
         
@@ -385,11 +412,92 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BO-04-018.
+        /// </summary>
+        public static string CommandExceptionGetDishOrdersByAccountCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetDishOrdersByAccountCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BO-04-016.
         /// </summary>
         public static string CommandExceptionGetGenerateInvoiceCode {
             get {
                 return ResourceManager.GetString("CommandExceptionGetGenerateInvoiceCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-019.
+        /// </summary>
+        public static string CommandExceptionGetInvoiceCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetInvoiceCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-020.
+        /// </summary>
+        public static string CommandExceptionGetOrderCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetOrderCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-021.
+        /// </summary>
+        public static string CommandExceptionGetOrdersCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetOrdersCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-022.
+        /// </summary>
+        public static string CommandExceptionGetPaymentHistoryByProfileCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetPaymentHistoryByProfileCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-023.
+        /// </summary>
+        public static string CommandExceptionPayOrderCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionPayOrderCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-024.
+        /// </summary>
+        public static string CommandExceptionPrintInvoiceCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionPrintInvoiceCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-025.
+        /// </summary>
+        public static string CommandExceptionReleaseTableByRestaurantCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionReleaseTableByRestaurantCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-026.
+        /// </summary>
+        public static string CommandExceptionTotalOrderCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionTotalOrderCode", resourceCulture);
             }
         }
         
@@ -655,11 +763,92 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al obtener el detalle de platillos de una orden.
+        /// </summary>
+        public static string MessageCommandExceptionGetDishOrdersByAccount {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetDishOrdersByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha producido un error al obtener la factura generada.
         /// </summary>
         public static string MessageCommandExceptionGetGenerateInvoice {
             get {
                 return ResourceManager.GetString("MessageCommandExceptionGetGenerateInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al obtener la factura.
+        /// </summary>
+        public static string MessageCommandExceptionGetInvoice {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al obtener la orden.
+        /// </summary>
+        public static string MessageCommandExceptionGetOrder {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al obtener las ordenes de un restaurante.
+        /// </summary>
+        public static string MessageCommandExceptionGetOrders {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al obtener el historial de pagos de un perfil.
+        /// </summary>
+        public static string MessageCommandExceptionGetPaymentHistoryByProfile {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetPaymentHistoryByProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido un error al pagar la orden.
+        /// </summary>
+        public static string MessageCommandExceptionPayOrder {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionPayOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ha ocurrido un error al imprimir la factura.
+        /// </summary>
+        public static string MessageCommandExceptionPrintInvoice {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionPrintInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al liberar la mesa.
+        /// </summary>
+        public static string MessageCommandExceptionReleaseTableByRestaurant {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionReleaseTableByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al calcular el total de la orden.
+        /// </summary>
+        public static string MessageCommandExceptionTotalOrder {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionTotalOrder", resourceCulture);
             }
         }
         
@@ -1024,11 +1213,92 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El detalle de platillos de una orden se ha obtenido satisfactoriamente.
+        /// </summary>
+        public static string SuccessMessageCommandGetDishOrdersByAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetDishOrdersByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha obtenido la factura pagada exitosamente.
         /// </summary>
         public static string SuccessMessageCommandGetGenerateInvoice {
             get {
                 return ResourceManager.GetString("SuccessMessageCommandGetGenerateInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido la factura con exito.
+        /// </summary>
+        public static string SuccessMessageCommandGetInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido la orden con exito.
+        /// </summary>
+        public static string SuccessMessageCommandGetOrder {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se han obtenido las ordenes de un restaurante exitosamente.
+        /// </summary>
+        public static string SuccessMessageCommandGetOrders {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido el historial de pagos de un perfil exitosamente.
+        /// </summary>
+        public static string SuccessMessageCommandGetPaymentHistoryByProfile {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetPaymentHistoryByProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha pagado la orden con exito.
+        /// </summary>
+        public static string SuccessMessageCommandPayOrder {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandPayOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha imprimido la factura correctamente.
+        /// </summary>
+        public static string SuccessMessageCommandPrintInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandPrintInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha liberado la mesa correctamente.
+        /// </summary>
+        public static string SuccessMessageCommandReleaseTableByRestaurant {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandReleaseTableByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha calculado el total de la orden correctamente.
+        /// </summary>
+        public static string SuccessMessageCommandTotalOrder {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandTotalOrder", resourceCulture);
             }
         }
         

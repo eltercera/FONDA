@@ -535,7 +535,7 @@
   </data>
   <data name="SuccessMessageCommandGenerateInvoice" xml:space="preserve">
     <value>Factura generada exitosamente</value>
-    <comment>Mensaje de exito para CommandExceptionGenerateInvoice</comment>
+    <comment>Mensaje de exito para CommandGenerateInvoice</comment>
   </data>
   <data name="SuccessMessageCommandGetClosedOrders" xml:space="preserve">
     <value>Se ha obtenido la lista de ordenes cerradas satisfactoriamente</value>
@@ -543,7 +543,7 @@
   </data>
   <data name="SuccessMessageCommandGetCurrencyByRestaurant" xml:space="preserve">
     <value>Se ha obtenido la moneda de un restaurante exitosamente</value>
-    <comment>Mensaje de exito para CommandExceptionGetCurrencyByRestaurant</comment>
+    <comment>Mensaje de exito para CommandGetCurrencyByRestaurant</comment>
   </data>
   <data name="SuccessMessageCommandGetDetailOrder" xml:space="preserve">
     <value>Se ha obtenido el detalle de la orden satisfactoriamente</value>
@@ -556,5 +556,125 @@
   <data name="SuccessPrintInvoice" xml:space="preserve">
     <value>La factura se ha imprimido satisfactoriamente</value>
     <comment>Mensaje de exito para PrintInvoice</comment>
+  </data>
+  <data name="ClassNameGetInvoicesByProfile" xml:space="preserve">
+    <value>CommandGetInvoicesByProfile</value>
+    <comment>Comando para obtener facturas de un perfil</comment>
+  </data>
+  <data name="ClassNameGetPaymentHistoryByProfile" xml:space="preserve">
+    <value>CommandGetPaymentHistoryByProfile</value>
+    <comment>Comando para obtener el historial de pago de un perfil</comment>
+  </data>
+  <data name="ClassNamePrintInvoice" xml:space="preserve">
+    <value>CommandPrintInvoice</value>
+    <comment>Comando que imprime la factura en PDF</comment>
+  </data>
+  <data name="CommandExceptionGetDishOrdersByAccountCode" xml:space="preserve">
+    <value>BO-04-018</value>
+    <comment>Codigo de error para CommandExceptionGetDishOrdersByAccount</comment>
+  </data>
+  <data name="CommandExceptionGetInvoiceCode" xml:space="preserve">
+    <value>BO-04-019</value>
+    <comment>Codigo de error para CommandExceptionGetInvoice</comment>
+  </data>
+  <data name="CommandExceptionGetOrderCode" xml:space="preserve">
+    <value>BO-04-020</value>
+    <comment>Codigo de error para CommandExceptionGetOrder</comment>
+  </data>
+  <data name="CommandExceptionGetOrdersCode" xml:space="preserve">
+    <value>BO-04-021</value>
+    <comment>Codigo de error para CommandExceptionGetOrders</comment>
+  </data>
+  <data name="CommandExceptionGetPaymentHistoryByProfileCode" xml:space="preserve">
+    <value>BO-04-022</value>
+    <comment>Codigo de error para CommandExceptionGetPaymentHistoryByProfile</comment>
+  </data>
+  <data name="CommandExceptionPayOrderCode" xml:space="preserve">
+    <value>BO-04-023</value>
+    <comment>Codigo de error para CommandExceptionPayOrder</comment>
+  </data>
+  <data name="CommandExceptionPrintInvoiceCode" xml:space="preserve">
+    <value>BO-04-024</value>
+    <comment>Codigo de error para CommandExceptionPrintInvoice</comment>
+  </data>
+  <data name="CommandExceptionReleaseTableByRestaurantCode" xml:space="preserve">
+    <value>BO-04-025</value>
+    <comment>Codigo de error para CommandExceptionReleaseTableByRestaurant</comment>
+  </data>
+  <data name="CommandExceptionTotalOrderCode" xml:space="preserve">
+    <value>BO-04-026</value>
+    <comment>Codigo de error para CommandExceptionTotalOrder</comment>
+  </data>
+  <data name="MessageCommandExceptionGetDishOrdersByAccount" xml:space="preserve">
+    <value>Se ha producido un error al obtener el detalle de platillos de una orden</value>
+    <comment>Mensaje de error para CommandExceptionGetDishOrdersByAccount</comment>
+  </data>
+  <data name="MessageCommandExceptionGetInvoice" xml:space="preserve">
+    <value>Se ha producido un error al obtener la factura</value>
+    <comment>Mensaje de error para CommandExceptionGetInvoice</comment>
+  </data>
+  <data name="MessageCommandExceptionGetOrder" xml:space="preserve">
+    <value>Se ha producido un error al obtener la orden</value>
+    <comment>Mensaje de error para CommandExceptionGetOrder</comment>
+  </data>
+  <data name="MessageCommandExceptionGetOrders" xml:space="preserve">
+    <value>Se ha producido un error al obtener las ordenes de un restaurante</value>
+    <comment>Mensaje de error para CommandExceptionGetOrders</comment>
+  </data>
+  <data name="MessageCommandExceptionGetPaymentHistoryByProfile" xml:space="preserve">
+    <value>Se ha producido un error al obtener el historial de pagos de un perfil</value>
+    <comment>Mensaje de error para CommandExceptionGetPaymentHistoryByProfile</comment>
+  </data>
+  <data name="MessageCommandExceptionPayOrder" xml:space="preserve">
+    <value>Se ha obtenido un error al pagar la orden</value>
+    <comment>Mensaje de error para CommandExceptionPayOrder</comment>
+  </data>
+  <data name="MessageCommandExceptionPrintInvoice" xml:space="preserve">
+    <value>Ha ocurrido un error al imprimir la factura</value>
+    <comment>Mensaje de error para MessageCommandExceptionPrintInvoice</comment>
+  </data>
+  <data name="MessageCommandExceptionReleaseTableByRestaurant" xml:space="preserve">
+    <value>Se ha producido un error al liberar la mesa</value>
+    <comment>Mensaje de error para CommandExceptionReleaseTableByRestaurant</comment>
+  </data>
+  <data name="MessageCommandExceptionTotalOrder" xml:space="preserve">
+    <value>Se ha producido un error al calcular el total de la orden</value>
+    <comment>Mensaje de error para CommandExceptionTotalOrder</comment>
+  </data>
+  <data name="SuccessMessageCommandGetDishOrdersByAccount" xml:space="preserve">
+    <value>El detalle de platillos de una orden se ha obtenido satisfactoriamente</value>
+    <comment>Mensaje de exito para CommandGetDishOrdersByAccount</comment>
+  </data>
+  <data name="SuccessMessageCommandGetInvoice" xml:space="preserve">
+    <value>Se ha obtenido la factura con exito</value>
+    <comment>Mensaje de exito para CommandExceptionGetInvoice</comment>
+  </data>
+  <data name="SuccessMessageCommandGetOrder" xml:space="preserve">
+    <value>Se ha obtenido la orden con exito</value>
+    <comment>Mensaje de exito para CommandGetOrder</comment>
+  </data>
+  <data name="SuccessMessageCommandGetOrders" xml:space="preserve">
+    <value>Se han obtenido las ordenes de un restaurante exitosamente</value>
+    <comment>Mensaje de exito para CommandGetOrders</comment>
+  </data>
+  <data name="SuccessMessageCommandGetPaymentHistoryByProfile" xml:space="preserve">
+    <value>Se ha obtenido el historial de pagos de un perfil exitosamente</value>
+    <comment>Mensaje de exito para CommandGetPaymentHistoryByProfile</comment>
+  </data>
+  <data name="SuccessMessageCommandPayOrder" xml:space="preserve">
+    <value>Se ha pagado la orden con exito</value>
+    <comment>Mensaje de exito para CommandPayOrder</comment>
+  </data>
+  <data name="SuccessMessageCommandPrintInvoice" xml:space="preserve">
+    <value>Se ha imprimido la factura correctamente</value>
+    <comment>Mensaje de exito para MessageCommandPrintInvoice</comment>
+  </data>
+  <data name="SuccessMessageCommandReleaseTableByRestaurant" xml:space="preserve">
+    <value>Se ha liberado la mesa correctamente</value>
+    <comment>Mensaje de exito para CommandExceptionReleaseTableByRestaurant</comment>
+  </data>
+  <data name="SuccessMessageCommandTotalOrder" xml:space="preserve">
+    <value>Se ha calculado el total de la orden correctamente</value>
+    <comment>Mensaje de exito para CommandTotalOrder</comment>
   </data>
 </root>
