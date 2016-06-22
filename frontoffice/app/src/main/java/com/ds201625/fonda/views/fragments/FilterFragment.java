@@ -3,9 +3,12 @@ package com.ds201625.fonda.views.fragments;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
@@ -22,6 +25,9 @@ public class FilterFragment extends BaseFragment {
 
     private ListView lvItems;
     private int position;
+    private int scrollFirstItem;
+    private int scrollLastItem;
+    private int scrollTotalItem;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,6 +36,8 @@ public class FilterFragment extends BaseFragment {
         TabLayout tabLayout = (TabLayout) layout.findViewById(R.id.tabs);
         position = tabLayout.getSelectedTabPosition();
         lvItems = (ListView)layout.findViewById(R.id.lvFilterList);
+        lvItems.setOnScrollListener((AbsListView.OnScrollListener) this);
+
         switch (position){
             case 0:
                 lvItems.setAdapter(new RestaurantAdapter(getContext()));
@@ -44,5 +52,28 @@ public class FilterFragment extends BaseFragment {
 
 
         return layout;
+    }
+
+    public void onScroll(final int firstVisibleItem,
+                         final int visibleItemCount, final int totalItemCount) {
+        scrollFirstItem=lvItems.getFirstVisiblePosition();
+        scrollLastItem=lvItems.getLastVisiblePosition();
+        if (scrollLastItem == scrollTotalItem) {
+            switch (position) {
+                case 0:
+                    RestaurantAdapter actualAdapter = (RestaurantAdapter) lvItems.getAdapter();
+                    actualAdapter.update();
+                    break;
+                case 1:
+                    ZonesAdapter actualAdapter2 = (ZonesAdapter) lvItems.getAdapter();
+                    //actualAdapter2.update();
+                    break;
+                case 2:
+                    CategoriesAdapter actualAdapter3 = (CategoriesAdapter) lvItems.getAdapter();
+                    //actualAdapter3.update();
+                    break;
+            }
+            scrollTotalItem=lvItems.getCount();
+        }
     }
 }
