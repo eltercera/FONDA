@@ -88,6 +88,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ../Caja/ListarFacturas.aspx.
+        /// </summary>
+        public static string allInvoicesURL {
+            get {
+                return ResourceManager.GetString("allInvoicesURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;p class=&quot;stat&quot;&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;.
         /// </summary>
         public static string CanceledStatus {

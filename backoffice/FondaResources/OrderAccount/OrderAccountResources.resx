@@ -557,6 +557,10 @@
     <value>La factura se ha imprimido satisfactoriamente</value>
     <comment>Mensaje de exito para PrintInvoice</comment>
   </data>
+  <data name="allInvoicesURL" xml:space="preserve">
+    <value>../Caja/ListarFacturas.aspx</value>
+    <comment>URL para listar todas las facturas</comment>
+  </data>
   <data name="ClassNameGetInvoicesByProfile" xml:space="preserve">
     <value>CommandGetInvoicesByProfile</value>
     <comment>Comando para obtener facturas de un perfil</comment>

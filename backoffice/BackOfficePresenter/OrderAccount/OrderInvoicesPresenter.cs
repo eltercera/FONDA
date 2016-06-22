@@ -114,6 +114,20 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 FillTable(new List<Invoice>());
                 ErrorLabel(e.MessageException);
             }
+            catch (HttpRequestValidationException ex)
+            {
+                MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
+                    (
+                        OrderAccountResources.MVPExceptionOrderInvoicesTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allInvoicesURL);
+            }
             catch (Exception ex)
             {
                 MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
@@ -128,6 +142,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 FillTable(new List<Invoice>());
                 ErrorLabel(e.MessageException);
             }
+
 
             Logger.WriteSuccessLog(OrderAccountResources.ClassNameClosedOrdersPresenter
                                     , OrderAccountResources.MessageGetClosedOrders
@@ -264,35 +279,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             string queryParameter =
                 HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
 
-            try
-            {
-                if (AntiXssEncoder.HtmlEncode(HttpContext.Current.Request.QueryString["Id"], false) != null)
-                    return int.Parse(HttpContext.Current.Request.QueryString["Id"]);
-            }
-            //Esto deberia ir mas arriba
-            catch (System.FormatException ex) {
-                MVPExceptionQuery e = new MVPExceptionQuery
-                    (
-                        Errors.MVPExceptionQueryCode,
-                        Errors.ClassNameOrderInvoicesPresenter,
-                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionQuery,
-                        ex
-                    );
-                Logger.WriteErrorLog(e.ClassName, e);
-                ErrorLabel(e.MessageException);
-                return 0;
-            }
-            catch (HttpRequestValidationException ex)
-            {
-                HttpContext.Current.Server.ClearError();
-                HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
-               // return 0;
-            }
-            catch (Exception ex)
-            {
-                return 0;
-            }
+                if (AntiXssEncoder.HtmlEncode(queryParameter, false) != null)
+                    return int.Parse(queryParameter);
 
             return result;
         }
