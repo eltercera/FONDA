@@ -100,7 +100,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 pay = CommandFactory.GetCommandPayOrder(parameters);
                 pay.Execute();
                 invoice = (Invoice) pay.Receiver;
-
+               
             }
             catch (Exception)
             {
@@ -183,18 +183,18 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [FondaAuthToken]
         public IHttpActionResult CanceledInvoice(int restaurantId, int orderId, int invoiceId)
         {
-            List<DishOrder> orderDetail = new List<DishOrder>();
+            List<int> _list = new List<int>();
+            Command _command;
+            Invoice _invoice = EntityFactory.GetInvoice();
 
             try
             {
                 //Comando para anular factura 
-                //
-                //Cambia status de factura a cancelada
-                //Elimina pago
-                //Abre orden cerrada
-                //Regresa mensaje
-                //
-                //Comando para anular factura
+                _list.Add(invoiceId);//1
+                _list.Add(orderId);// 2
+                _command = CommandFactory.GetCommandCancelInvoiced(_list);
+                _command.Execute();
+                _invoice = (Invoice)_command.Receiver;
             }
             catch (Exception e)
             {
@@ -204,7 +204,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             }
 
             //DEBERIA SER ELIMINADO
-            return Ok();
+            return Ok(_invoice);
         }
 
 
