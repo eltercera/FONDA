@@ -504,7 +504,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
             #endregion
 
             if (ValidateRestaurantM(Name, Category, Nationality.ToString(), Rif, Currency,
-                Address, Zone, Long, Lat, _view.openingTimeModify.Text, _view.showClosingTimeModify.Text))
+                Address, Zone, Long, Lat, _view.openingTimeModify.Text, _view.closingTimeModify.Text))
             {
                 FactoryDAO factoryDAO = FactoryDAO.Intance;
                 IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
@@ -549,46 +549,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
         /// </summary>
         /// <param name="Id">Id de la categoria a mostrar</param>
         /// <returns>Informacion de objeto categoria</returns>
-        public static com.ds201625.fonda.Domain.Restaurant GetData(string Id)
-        {
-            int restaurantId = int.Parse(Id);
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
-            com.ds201625.fonda.Domain.Restaurant restaurant = _restaurantDAO.FindById(restaurantId);
-
-            return restaurant;
-        }
-
-        /// <summary>
-        /// Cambia el Status del Restaurante
-        /// </summary>
-        /// <param name="Id">Recibe el Id del Restaurante</param>
-        /// <param name="Status">Recibe el Status al que se va a cambiar</param>
-        /// <returns>El Status a mostrar en la tabla</returns>
-        public static string ChangeStatus(string Id, string Status)
-        {
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
-            string RestaurantID = Id;
-            string response = "";
-            int idRestaurant = int.Parse(RestaurantID);
-            com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(idRestaurant);
-
-            if (Status.Equals("Active"))
-            {
-                _restaurant.Status = factoryDAO.GetActiveSimpleStatus();
-                response = RestaurantResource.Active;
-            }
-            else if (Status.Equals("Disable"))
-            {
-                _restaurant.Status = factoryDAO.GetDisabledSimpleStatus();
-                response = RestaurantResource.Inactive;
-            }
-
-            _restaurantDAO.Save(_restaurant);
-            return response;
-
-        }
+        
 
     }
 }
