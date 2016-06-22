@@ -15,14 +15,24 @@ namespace FondaLogic.Commands.OrderAccount
     public class CommandPayOrder : Command
     {
         private FactoryDAO _facDAO = FactoryDAO.Intance;
+        private IList<object> parameters;
+        private Command generateInvoice, releaseTable, validate;
 
+        public CommandPayOrder(Object receiver) : base() {
 
-        public CommandPayOrder(Object receiver) : base() { }
+            try
+            {
+                parameters = (IList<object>)receiver;
+            }
+            catch (Exception)
+            {
+                //TODO: Enviar excepcion personalizada
+                throw;
+            }
+        }
 
         public override void Execute()
-        {
-            List<Object> parameters = new List<object>();
-            Command generateInvoice, releaseTable, validate;
+        { 
 
             try
             {
@@ -30,7 +40,7 @@ namespace FondaLogic.Commands.OrderAccount
                 IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
                 IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
 
-                parameters = (List<Object>)Receiver;
+                bool valid = false;
                 int restaurantId = (int)parameters[0];
                 int orderId = (int)parameters[1];
                 int profileId = (int)parameters[2];
@@ -46,22 +56,26 @@ namespace FondaLogic.Commands.OrderAccount
                 //Valida que el perfil suministrado pertenezca al comensal
                 validate = CommandFactory.GetCommandValidateProfileByCommensal(parameters);
                 validate.Execute();
+                valid = (bool)validate.Receiver;
+                if (valid)
+                {
+                    parameters.Clear();
+                    parameters.Add(payment);
+                    parameters.Add(orderId);
+                    parameters.Add(restaurantId);
+                    parameters.Add(profileId);
+                    //Genera la factura
+                    generateInvoice = CommandFactory.GetCommandGenerateInvoice(parameters);
+                    generateInvoice.Execute();
 
-                parameters.Clear();
-                parameters.Add(payment);
-                parameters.Add(orderId);
-                parameters.Add(restaurantId);
-                parameters.Add(profileId);
-                //Genera la factura
-                generateInvoice = CommandFactory.GetCommandGenerateInvoice(parameters);
-                generateInvoice.Execute();
+                    parameters.Clear();
+                    parameters.Add(restaurant);
+                    parameters.Add(order.Table.Id);
+                    //Libera la mesa
+                    releaseTable = CommandFactory.GetCommandReleaseTableByRestaurant(parameters);
+                    releaseTable.Execute();
 
-                parameters.Clear();
-                parameters.Add(restaurant);
-                parameters.Add(order.Table.Id);
-                //Libera la mesa
-                releaseTable = CommandFactory.GetCommandReleaseTableByRestaurant(profileId);
-                releaseTable.Execute();
+                }
 
                 Receiver = generateInvoice.Receiver;
 

@@ -22,7 +22,6 @@ namespace FondaLogic.Commands.OrderAccount
         IList<int> _list;
         IList<DishOrder> _listDishOrder;
         Restaurant _restaurant;
-        DishOrder _dishOrder;
         Invoice _invoice;
         Account _account;
         UserAccount _userAccount;
@@ -43,7 +42,7 @@ namespace FondaLogic.Commands.OrderAccount
 
         public override void Execute()
         {
-            int paymentId;
+            
             try
             {
                 float totalFactura = 0;
