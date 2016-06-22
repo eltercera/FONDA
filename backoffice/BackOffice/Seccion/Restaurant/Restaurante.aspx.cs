@@ -550,9 +550,9 @@ namespace BackOffice.Seccion.Restaurant
         /// </summary>
         protected void ButtonModify_Click(object sender, EventArgs e)
         {
-            ButtonModify_Click();
+            ButtonModify_Click2();
         }
-        public void ButtonModify_Click()
+        public void ButtonModify_Click2()
         {
             _presenter.ButtonModify_Click();
         }

@@ -210,11 +210,12 @@ namespace BackOffice.Seccion.Restaurant
 
         public static RestaurantCategory GetData(string Id)
         {
+            System.Diagnostics.Debug.WriteLine("aqui llegoiahsiahsi");
             int categoryId = int.Parse(Id);
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
             RestaurantCategory restCategory = _restcatDAO.FindById(categoryId);
-
+            System.Diagnostics.Debug.WriteLine("aqui llego"+ restCategory.ToString());
             return restCategory;
 
         }

@@ -82,6 +82,7 @@
     <Compile Include="Commands\OrderAccount\CommandTotalOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetCurrencyInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandValidateProfileByCommensal.cs" />
+    <Compile Include="Commands\Restaurant\CommandModifyRestaurant.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
     <Compile Include="FondaCommandException\Login\CommandExceptionCreateEmployee.cs" />
@@ -119,7 +120,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\Menu\" />
-    <Folder Include="Commands\Restaurant\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">

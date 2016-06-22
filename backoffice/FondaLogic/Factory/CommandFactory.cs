@@ -5,6 +5,7 @@ using FondaLogic.Commands.Login;
 using FondaLogic.Log;
 using System.Collections.Generic;
 using System;
+using FondaLogic.Commands.Restaurante;
 
 namespace FondaLogic.Factory
 {
@@ -245,6 +246,11 @@ namespace FondaLogic.Factory
         #region Restaurant
 
         //Defincion de los comandos a implementar del modulo Restaurante
+
+        public static Command GetCommandModifyRestaurant(object receiver)
+        {
+            return new CommandModifyRestaurant(receiver);
+        }
 
         #endregion
 
