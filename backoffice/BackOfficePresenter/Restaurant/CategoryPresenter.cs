@@ -212,16 +212,7 @@ namespace BackOfficePresenter.Restaurante
         /// <param name="Id">Id de la categoria a mostrar</param>
         /// <returns>Informacion de objeto categoria</returns>
 
-        public static RestaurantCategory GetData(string Id)
-        {
-            int categoryId = int.Parse(Id);
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            RestaurantCategory restCategory = _restcatDAO.FindById(categoryId);
-
-            return restCategory;
-
-        }
+        
 
 
     }
