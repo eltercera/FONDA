@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandCloseCashRegister : Command
     {

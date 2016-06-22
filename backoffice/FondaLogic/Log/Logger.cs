@@ -1,7 +1,7 @@
 ﻿using log4net;
 using System;
 
-namespace FondaLogic.Log
+namespace com.ds201625.fonda.Logic.FondaLogic.Log
 {
     public class Logger
     {

@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandFindInvoicesByAccount : Command
     {

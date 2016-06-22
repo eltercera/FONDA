@@ -4,7 +4,7 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using FondaLogic.Factory;
 using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandGetGenerateInvoice : Command
     {
