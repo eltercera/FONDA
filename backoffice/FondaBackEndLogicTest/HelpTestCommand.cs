@@ -47,7 +47,7 @@ namespace FondaBackEndLogicTest
             _commensal.Email = _dataCommensalEmail;
             _commensal.Password = _dataCommensalPassword;
             _commensal.Status = _dataCommensalStatus;
-            generateProfile();
+            _profile = generateProfile();
             _commensal.AddProfile(_profile);
 
             _token = EntityFactory.GetToken();
@@ -63,10 +63,10 @@ namespace FondaBackEndLogicTest
         /// <summary>
         /// Genera un Perfil
         /// </summary>
-        protected void generateProfile()
+        protected Profile generateProfile()
         {
             if (_profile != null)
-                return;
+                return _profile;
 
             _profile = EntityFactory.GetProfile();
 
@@ -77,6 +77,7 @@ namespace FondaBackEndLogicTest
             _profile.Status = _dataProfileStatus;
             generatePerson();
             _profile.Person = _person;
+            return _profile;
         }
 
 
