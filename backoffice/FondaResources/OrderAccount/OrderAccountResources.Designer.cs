@@ -880,6 +880,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al obtener las facturas de un perfil.
+        /// </summary>
+        public static string MessagefindAllInvoiceException {
+            get {
+                return ResourceManager.GetString("MessagefindAllInvoiceException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha cargado la tabla de ordenes cerradas satisfactoriamente.
         /// </summary>
         public static string MessageGetClosedOrders {

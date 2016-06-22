@@ -5,10 +5,14 @@ using System.Collections.Generic;
 using NHibernate.Criterion;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.Factory;
-using NHibernate;
+using FondaResources.OrderAccount;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
+    /// <summary>
+    /// Clase que maneja los metodos relacionados con Invoice en la base de datos
+    /// </summary>
     public class HibernateInvoiceDAO : HibernateBaseEntityDAO<Invoice>, IInvoiceDao
     {
         private FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
@@ -20,7 +24,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Un Lista de Invoice</returns>
         public IList<Invoice> findAllInvoice(Profile profile)
         {
-            ICriterion criterion = Expression.And(Expression.Eq("Profile", profile), Expression.Eq("Status", GeneratedInvoiceStatus.Instance));
+            ICriterion criterion;
+            try
+            {
+                criterion = Expression.And(Expression.Eq("Profile", profile), Expression.Eq("Status", GeneratedInvoiceStatus.Instance));
+            }
+            catch (Exception ex)
+            {
+                findAllInvoiceFondaDAOException exception =
+                    new findAllInvoiceFondaDAOException(OrderAccountResources.MessagefindAllInvoiceException,
+                    ex);
+                //Llamar al logger
+                throw exception;
+            }
             return FindAll(criterion);
         }
 

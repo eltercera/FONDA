@@ -1,4 +1,5 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaLogic.FondaCommandException.OrderAccount;
@@ -38,6 +39,12 @@ namespace FondaLogic.Commands.OrderAccount
 
             }
             catch(NullReferenceException ex)
+            {
+                CommandExceptionGetInvoicesByProfile e = new CommandExceptionGetInvoicesByProfile("Falta personalizar");
+                Logger.WriteErrorLog("Null", ex);
+                throw e;
+            }
+            catch (findAllInvoiceFondaDAOException ex)
             {
                 CommandExceptionGetInvoicesByProfile e = new CommandExceptionGetInvoicesByProfile("Falta personalizar");
                 Logger.WriteErrorLog("Null", ex);
