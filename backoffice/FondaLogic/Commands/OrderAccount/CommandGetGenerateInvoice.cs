@@ -3,6 +3,8 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using FondaLogic.Factory;
+using FondaLogic.FondaCommandException;
+using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,15 +45,24 @@ namespace FondaLogic.Commands.OrderAccount
                 _invoiceDAO = _facDAO.GetInvoiceDao();
                 //Obtengo el objeto con la informacion enviada
                 Invoice _invoice = new Invoice();
-                _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account);
+                _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_account.Id);
                 Receiver = _invoice;
 
             }
             catch (NullReferenceException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
-                //TODO: Escribir en el Log la excepcion
-                throw;
+                CommandExceptionGetGenerateInvoice exception = new CommandExceptionGetGenerateInvoice(
+                    FondaResources.General.Errors.NullExceptionReferenceCode,
+                    FondaResources.OrderAccount.Errors.ClassNameGetGenerateInvoice,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                Invoice _invoice = new Invoice();
+                Receiver = _invoice;
             }
         }
 

@@ -17,6 +17,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         //Enlace Modelo - Vista
         private IClosedOrdersModel _view;
         int totalColumns = 2;
+        Account _account;
 
 
         ///<summary>
@@ -124,21 +125,6 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                         LinkButton actionInfo = new LinkButton();
                         LinkButton actionInvoices = new LinkButton();
                         LinkButton actionDetailInvoice = new LinkButton();
-
-                        //Detalle de la orden
-                        actionInfo.Text += OrderAccountResources.ActionInfo;
-                        actionInfo.Attributes[OrderAccountResources.href] = 
-                            OrderAccountResources.detailURL + dataId.ToString();
-
-                        tCell.Controls.Add(actionInfo);
-
-                        //Modal con factura cancelada
-                        actionDetailInvoice.Text += OrderAccountResources.ActionInfo;
-                        actionDetailInvoice.Attributes[OrderAccountResources.href] =
-                            OrderAccountResources.invoiceURL + dataId.ToString();
-
-                        tCell.Controls.Add(actionDetailInvoice);
-
 
                         actionInvoices.Text += OrderAccountResources.ActionInvoices;
                         actionInvoices.Attributes[OrderAccountResources.href] = 

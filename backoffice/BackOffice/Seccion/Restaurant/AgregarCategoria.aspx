@@ -163,8 +163,7 @@ Agregar Categoria
                                     dataType: "json",
                                     success: function (response) {
                                         var local = response;
-                                        document.getElementById("<%=NombreCatM.ClientID%>").value = local.d.Name;
-                                         
+                                        document.getElementById("contenido_NombreCatM").value = local.d.Name;
                                         
 
                                     },

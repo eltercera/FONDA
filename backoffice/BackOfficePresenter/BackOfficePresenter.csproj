@@ -43,8 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FondaMVPException\MVPException.cs" />
+    <Compile Include="FondaMVPException\OrderAccount\MVPExceptionCloseButton.cs" />
     <Compile Include="Login\DetailModifyPresenter.cs" />
-    <Compile Include="FondaMVPException\MVPExceptionCloseButton.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionClosedOrdersTable.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionDetailOrderTable.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionOrderInvoicesTable.cs" />
@@ -61,6 +61,7 @@
     <Compile Include="Presenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Restaurant\CategoryPresenter.cs" />
+    <Compile Include="Restaurant\RestaurantPresenter.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
