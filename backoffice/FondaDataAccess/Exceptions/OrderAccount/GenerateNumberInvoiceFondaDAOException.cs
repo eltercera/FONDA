@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace com.ds201625.fonda.DataAccess.Exceptions.OrderAccount
+namespace com.ds201625.fonda.DataAccess.Exceptions
 {
     public class GenerateNumberInvoiceFondaDAOException : FondaDAOException
     {

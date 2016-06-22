@@ -84,7 +84,6 @@
     <Compile Include="Commands\OrderAccount\CommandPrintInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandReleaseTableByRestaurant.cs" />
     <Compile Include="Commands\OrderAccount\CommandTotalOrder.cs" />
-    <Compile Include="Commands\OrderAccount\CommandGetCurrencyInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandValidateProfileByCommensal.cs" />
     <Compile Include="Commands\Restaurant\CommandModifyRestaurant.cs" />
     <Compile Include="Commands\Reservations\CommandGetTables.cs" />

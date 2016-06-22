@@ -6,7 +6,7 @@ using NHibernate.Criterion;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.Factory;
 using FondaResources.OrderAccount;
-using com.ds201625.fonda.DataAccess.Exceptions.OrderAccount;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -143,7 +143,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             Invoice _invoice;
             try
             {
-                _listAccount = _accountDAO.FindAllAccountByRestaurant(_restaurant);
+                _listAccount = _accountDAO.FindAccountByRestaurant(_restaurant.Id);
                 ICriterion criterion =(Expression.Eq("Restaurant.Id", _restaurant.Id));
                 IList<Invoice> _listInvoiceByRestaurnat = new List<Invoice>();
                 foreach (Account account in _listAccount)

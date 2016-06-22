@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using NHibernate.Criterion;
 using NHibernate;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
-using com.ds201625.fonda.DataAccess.Exceptions.OrderAccount;
+using com.ds201625.fonda.DataAccess.Exceptions;
 using FondaResources.OrderAccount;
 using com.ds201625.fonda.Factory;
 
