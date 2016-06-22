@@ -59,12 +59,16 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <h5>&nbsp;&nbsp;&nbsp;&nbsp;<b>Fecha: </b>
+                        <h5>&nbsp;&nbsp;&nbsp;&nbsp;<b>Restaurante: </b>
+                            <%=Session["NameRestaurant"]%>
+                            <br />
+                            <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Fecha: </b>
                             <asp:Label ID="date" runat="server"></asp:Label>
                             <br />
                             <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Restaurante: </b>
-                            <%=Session["NameRestaurant"]%>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<b># Orden: </b>
+                            <%=Session["AccountNumber"]%>
                             <br />
                             <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;<b>Apellido, Nombre: </b>
@@ -93,8 +97,8 @@
                         </h5>
                         <strong>ABRE CON F12 Y VE LOS COMENTARIOS</strong>
                        <!-- MALENA EILIN DICE QUE PONGAS EL TIP COMO POR AQUI, PENDIENTE -->
-                            <div style="text-indent: 250px;"><asp:LinkButton Visible="false" ID="print" runat="server"><i class="fa fa-print fa-lg" aria-hidden="true"></i></asp:LinkButton></div>
-                    </div>
+                         <div style="text-indent: 250px;"><i class="fa fa-print fa-lg" aria-hidden="true"></i>
+                         <asp:Button class="btn btn-default" text="Imprimir" Visible="false" ID="invoicePrint" OnClick="print_Click" runat="server" /></div>
                 </div>
             </div>
         </div>
