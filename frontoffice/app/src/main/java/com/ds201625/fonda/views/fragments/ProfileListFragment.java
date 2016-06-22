@@ -16,14 +16,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
-import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.adapters.ProfileViewItemList;
-import com.ds201625.fonda.domains.Profile;
 
 import java.util.ArrayList;
 
@@ -90,18 +87,18 @@ public class ProfileListFragment extends BaseFragment
                     switch (item.getItemId()) {
                         case R.id.deleteProfile:
                             String sal = "Fueron eliminados los perfiles.";
-                            for (Profile idProfile : profileList.getAllSeletedItems()) {
-                                try {
-                                    Command commandoDeleteProfile = FondaCommandFactory.deleteProfileCommand();
-                                    commandoDeleteProfile.setParameter(0,idProfile);
-                                    commandoDeleteProfile.run();
-                                    sal= "entro";
-                                }
-                                catch (RestClientException e) {
-                                    e.printStackTrace();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+                            for (Profile profile : profileList.getAllSeletedItems()) {
+                                    try {
+                                        Command commandoDeleteProfile = FondaCommandFactory.
+                                                deleteProfileCommand();
+                                        commandoDeleteProfile.setParameter(0,profile);
+                                        commandoDeleteProfile.run();
+                                    }
+                                    catch (RestClientException e) {
+                                        e.printStackTrace();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
                             }
                             Log.v("Perfiles eliminados: ", sal);
                             profileList.cleanSelected();

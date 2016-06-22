@@ -39,7 +39,7 @@ public class FondaCommandFactory {
      * Crea un CreateProfileCommand
      * @return comando CreateProfileCommand
      */
-    public static Command createCreateProfileCommand() {
+    public static Command createProfileCommand() {
         return  new CreateProfileCommand();
     }
 

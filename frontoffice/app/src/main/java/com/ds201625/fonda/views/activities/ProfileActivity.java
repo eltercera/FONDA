@@ -9,13 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
-import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.ProfileFormFragment;
 import com.ds201625.fonda.views.fragments.ProfileListFragment;
@@ -161,7 +158,7 @@ public class ProfileActivity extends BaseNavigationActivity
         try
         {
             if (profile.getId() == 0) {
-                Command commandoCreateProfile = FondaCommandFactory.createCreateProfileCommand();
+                Command commandoCreateProfile = FondaCommandFactory.createProfileCommand();
                 commandoCreateProfile.setParameter(0,profile);
                 commandoCreateProfile.run();
             } else {
