@@ -97,6 +97,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ../Caja/Ordenes.aspx.
+        /// </summary>
+        public static string allOrdersURL {
+            get {
+                return ResourceManager.GetString("allOrdersURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;span class=&quot;label label-danger&quot;&gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;p class=&quot;stat&quot;&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;.
         /// </summary>
         public static string CanceledStatus {
@@ -1308,6 +1317,15 @@ namespace FondaResources.OrderAccount {
         public static string SuccessMessageCommandTotalOrder {
             get {
                 return ResourceManager.GetString("SuccessMessageCommandTotalOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha cargado correctamente el detalle de la orden.
+        /// </summary>
+        public static string SuccessMessageDetailOrderPresenter {
+            get {
+                return ResourceManager.GetString("SuccessMessageDetailOrderPresenter", resourceCulture);
             }
         }
         

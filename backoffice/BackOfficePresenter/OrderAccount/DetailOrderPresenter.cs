@@ -100,24 +100,55 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 Logger.WriteErrorLog(e.ClassName, e);
                 ErrorLabel(e.MessageException);
             }
+            catch (FormatException ex)
+            {
+                MVPExceptionQuery e = new MVPExceptionQuery
+                    (
+                        OrderAccountResources.MVPExceptionQueryCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionQuery,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allOrdersURL);
+            }
+            catch (HttpRequestValidationException ex)
+            {
+                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+                    (
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allOrdersURL);
+            }
             catch (Exception ex)
             {
                 MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
                     (
                         OrderAccountResources.MVPExceptionDetailOrderTableCode,
-                        OrderAccountResources.ClassNameDetailOrderPresenter,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        OrderAccountResources.MessageMVPExceptionDetailOrderTable,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
+                //Cambiar URL
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allOrdersURL);
                 ErrorLabel(e.MessageException);
             }
 
-            Logger.WriteSuccessLog(OrderAccountResources.ClassNameClosedOrdersPresenter
-                        , OrderAccountResources.MessageGetClosedOrders
-                        , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
-                        );
+
+            Logger.WriteSuccessLog(OrderAccountResources.MVPExceptionDetailOrderTableCode
+                                    , OrderAccountResources.SuccessMessageDetailOrderPresenter
+                                    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                                    );
         }
 
         private void FillTable(IList<DishOrder> data)
@@ -213,38 +244,17 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private int GetQueryParameter()
         {
             int result = 0;
-            try
-            {
-                if (AntiXssEncoder.HtmlEncode(HttpContext.Current.Request.QueryString["Id"], false) != null)
-                    return int.Parse(HttpContext.Current.Request.QueryString["Id"]);
-            }
-            catch (System.FormatException ex)
-            {
-                MVPExceptionQuery e = new MVPExceptionQuery
-                    (
-                        Errors.MVPExceptionQueryCode,
-                        Errors.ClassNameOrderInvoicesPresenter,
-                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionQuery,
-                        ex
-                    );
-                Logger.WriteErrorLog(e.ClassName, e);
-                ErrorLabel(e.MessageException);
-                HttpContext.Current.Response.Redirect("../Caja/Ordenes.aspx");
-            }
-            catch (HttpRequestValidationException ex)
-            {
-                HttpContext.Current.Server.ClearError();
-                HttpContext.Current.Response.Redirect("../Caja/Ordenes.aspx");
-            }
-            catch (Exception ex)
-            {
-                HttpContext.Current.Response.Redirect("../Caja/Ordenes.aspx");
-            }
+            string queryParameter =
+                HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
+
+            if (AntiXssEncoder.HtmlEncode(queryParameter, false) != null)
+                return int.Parse(queryParameter);
 
             return result;
         }
 
 
+
     }
 }
+

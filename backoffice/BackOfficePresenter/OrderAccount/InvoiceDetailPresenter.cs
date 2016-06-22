@@ -300,46 +300,16 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         /// Obtiene el parametro pasado en el URL
         /// </summary>
         /// <returns>Id</returns>
-        //private int GetQueryParameter()
-        //{
-        //    int result = 0;
+        private int GetQueryParameter()
+        {
+            int result = 0;
+            string queryParameter =
+                HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
 
-        //    try
-        //    {
-        //        if (AntiXssEncoder.HtmlEncode(HttpContext.Current.Request.QueryString["Id"], false) != null)
-        //            return int.Parse(HttpContext.Current.Request.QueryString["Id"]);
-        //    }
-        //    catch (System.FormatException ex)
-        //    {
-        //        MVPExceptionQuery e = new MVPExceptionQuery
-        //            (
-        //                Errors.MVPExceptionQueryCode,
-        //                Errors.ClassNameOrderInvoicesPresenter,
-        //                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-        //                Errors.MessageMVPExceptionQuery,
-        //                ex
-        //            );
-        //        Logger.WriteErrorLog(e.ClassName, e);
-        //        ErrorLabel(e.MessageException);
-        //        HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
-        //    }
-        //    catch (HttpRequestValidationException ex)
-        //    {
-        //        HttpContext.Current.Server.ClearError();
-        //        HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
-        //    }
-        //    catch (Exception ex)
+            if (AntiXssEncoder.HtmlEncode(queryParameter, false) != null)
+                return int.Parse(queryParameter);
 
-        //    string queryParameter =
-        //        HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
-
-
-        //    if (queryParameter != null && queryParameter != string.Empty)
-        //    {
-        //        HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
-        //    }
-
-        //    return result;
-        //}
+            return result;
+        }
     }
 }
