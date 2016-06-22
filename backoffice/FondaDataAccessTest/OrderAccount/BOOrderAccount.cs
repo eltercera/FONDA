@@ -208,9 +208,7 @@ namespace FondaDataAccessTest
         }
         #endregion
 
-        #region
-
-        #endregion
+        #region Pruebas de DataAccess/HibernateRestaurantDAO/OpenOrdersByRestaurantIdTest
         [Test(Description = "Obtiene el numero de ordenes abiertas de un Restaurante por su id")]
         public void OpenOrdersByRestaurantIdTest()
         {
@@ -218,16 +216,15 @@ namespace FondaDataAccessTest
             Assert.IsNotNull(_listAccounts);
             Assert.AreEqual(_listAccounts.Count, 2);
         }
-
-        [Test(Description ="Obtiene una lista de facturas generadas por una Orden")]
-        public void FindInvoicesByAccountTest()
+        [Test(Description = "Obtiene el numero de ordenes abiertas de un Restaurante por su id")]
+        [ExpectedException(typeof(OpenOrdersByRestaurantIdFondaDAOException))]
+        public void OpenOrdersByRestaurantExceptionTest()
         {
-            _listInvoice = _invoiceDAO.FindInvoicesByAccount(_accountId);
-
-            Assert.IsNotNull(_listInvoice);
-            Assert.AreEqual(1, _listInvoice.Count);
-
+            _listAccounts = _restaurantDAO.OpenOrdersByRestaurantId(0);
+            Assert.IsNotNull(_listAccounts);
+            Assert.AreEqual(_listAccounts.Count, 2);
         }
+        #endregion
 
         [TestFixtureTearDown]
         public void EndTests()
