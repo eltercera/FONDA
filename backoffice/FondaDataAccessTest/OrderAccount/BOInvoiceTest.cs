@@ -27,7 +27,7 @@ namespace FondaDataAccessTest
         private CreditCardPayment _creditPayment;
         private Profile _profile;
         private IList<Invoice> _listInvoices;
-        private int _number, _accountId, _restaurantId, _profileId, _tableId;
+        private int _number, _accountId, _restaurantId, _profileId, _tableId, _invoiceId ;
         private float _amount, _tax;
 
         #endregion
@@ -44,6 +44,7 @@ namespace FondaDataAccessTest
             _profileDao = _facDAO.GetProfileDAO();
 
             //Inicializa variables
+            _invoiceId = 1;
             _accountId = 2;
             _restaurantId = 1;
             _tableId = 3;
@@ -56,7 +57,7 @@ namespace FondaDataAccessTest
             _profile = _profileDao.FindById(_profileId);
 
             _number = _invoiceDAO.GenerateNumberInvoice(_restaurant);
-
+            
             //Instancia objetos a utilizar
             _cashPayment = EntityFactory.GetCashPayment(_amount);
             _invoice = EntityFactory.GetInvoice(
@@ -66,6 +67,15 @@ namespace FondaDataAccessTest
             _listInvoices = new List<Invoice>();
         }
         #endregion
+
+        [Test(Description = "Cambia el estatus de una factura a cancelado")]
+        public void CancelInvoiceTest()
+        {
+            _invoice = _invoiceDAO.FindById(_invoiceId);
+            _invoice=_accountDAO.CancelInvoice(_invoice, 2);
+            Assert.AreEqual(_invoice.Status,CanceledInvoiceStatus.Instance);
+        }
+
         [Test]
         public void FindInvoiceByRestaurantTest()
         {

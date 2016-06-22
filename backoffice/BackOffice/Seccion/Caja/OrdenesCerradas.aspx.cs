@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Web.UI.WebControls;
 using BackOfficeModel.OrderAccount;
-using BackOffice.Seccion.Restaurant;
 using FondaResources.Login;
 using System.Web.UI.HtmlControls;
 using BackOfficeModel;
@@ -44,9 +43,9 @@ namespace BackOffice.Seccion.Caja
 
         public string SessionRestaurant
         {
-            get { return Session[ResourceLogin.sessionRestaurantID].ToString(); }
+            get { return Session[OrderAccountResources.SessionRestaurantId].ToString(); }
 
-            set { Session[ResourceLogin.sessionRestaurantID] = value; }
+            set { Session[OrderAccountResources.SessionRestaurantId] = value; }
         }
 
         public string SessionNumberAccount
@@ -92,12 +91,10 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            
-            if (Session["RestaurantID"] != null)
-            {   //Llama al presentador para llenar la tabla de ordenes
-                _presenter.GetClosedOrders(Session[RestaurantResource.SessionRestaurant].ToString());
-            }
+            //Llama al presentador para llenar la tabla de ordenes
+            if (Session[ResourceLogin.sessionUserID] != null &&
+                Session[OrderAccountResources.SessionRestaurantId] != null)
+                _presenter.GetClosedOrders();
             else
                 Response.Redirect(RecursoMaster.addressLogin);
         }

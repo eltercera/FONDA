@@ -31,7 +31,7 @@ namespace FondaDataAccessTest
         private Invoice _invoice;
         private ICreditCardPaymentDAO creditDao;
         private ICashPaymentDAO _cashPaymentDAO;
-
+        #region
         [SetUp]
         public void Init()
         {
@@ -64,7 +64,7 @@ namespace FondaDataAccessTest
             _profile = _profileDao.FindById(_profileId);
             creditDao = _facDAO.GetCreditCardPaymentDAO();
         }
-
+        #endregion
         [Test]
         public void FindAccountsByRestaurantTest()
         {

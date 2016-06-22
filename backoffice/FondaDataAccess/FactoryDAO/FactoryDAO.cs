@@ -86,6 +86,11 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
             return _factory.GetCashPaymentDAO();
         }
 
+        public CanceledInvoiceStatus GetCancelInvoiceStatusDAO()
+        {
+            return _factory.GetCanceledInvoiceStatusDAO();
+        }
+
         public ICreditCardPaymentDAO GetCreditCardPaymentDAO()
         {
             return _factory.GetCreditCardPaymentDAO();

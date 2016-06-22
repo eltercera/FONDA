@@ -3,6 +3,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
+using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,21 +14,10 @@ namespace FondaLogic.Commands.OrderAccount
 {
     public class CommandGetOrder : Command
     {
-        FactoryDAO _facDAO = FactoryDAO.Intance;
-        int orderId;
+        private FactoryDAO _facDAO = FactoryDAO.Intance;
+        private int orderId;
 
-        public CommandGetOrder(Object receiver) : base(receiver)
-        {
-            try
-            {
-                orderId = (int)receiver;
-            }
-            catch (Exception)
-            {
-                //TODO: Enviar excepcion personalizada
-                throw;
-            }
-        }
+        public CommandGetOrder(Object receiver) : base(receiver) { }
 
         /// <summary>
         /// Metodo que ejecuta el comando para consultar una orden
@@ -36,7 +26,10 @@ namespace FondaLogic.Commands.OrderAccount
         {
             try
             {
+                orderId = (int)Receiver;
                 //Metodos para acceder a la BD
+                //ESTO HAY QUE CAMBIARLO
+                //DEBERIA BUSCAR UNA ORDEN POR SU NUMERO Y SU RESTAURANTE
                 IOrderAccountDao _orderDAO = _facDAO.GetOrderAccountDAO();
 
 
@@ -45,19 +38,35 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetOrder exceptionGetOrder = new CommandExceptionGetOrder(
-                //Arrojar
-                FondaResources.General.Errors.NullExceptionReferenceCode,
-                FondaResources.OrderAccount.Errors.ClassNameGetOrder,
-                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                FondaResources.General.Errors.NullExceptionReferenceMessage,
-                ex);
+                    OrderAccountResources.CommandExceptionGetOrderCode,
+                    OrderAccountResources.ClassNameGetOrder,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionGetOrder,
+                    ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrder);
 
                 throw exceptionGetOrder;
             }
+            catch (Exception ex)
+            {
+                CommandExceptionGetOrder exceptionGetOrder = new CommandExceptionGetOrder(
+                    OrderAccountResources.CommandExceptionGetOrderCode,
+                    OrderAccountResources.ClassNameGetOrder,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionGetOrder,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrder);
+
+                throw exceptionGetOrder;
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameGetOrder
+                , OrderAccountResources.SuccessMessageCommandGetOrder
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
         }
 
     }

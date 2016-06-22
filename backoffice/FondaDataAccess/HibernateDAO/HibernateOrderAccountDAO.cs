@@ -129,6 +129,50 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         }
 
         /// <summary>
+        /// cancela de invoices de Account
+        /// </summary>
+        /// <param name="Invoice, AccountId">Un objeto Invoice y un id de Account</param>
+        /// <returns>Void</returns>
+        public Invoice CancelInvoice(Invoice _invoice, int _accountId)
+        {
+            CanceledInvoiceStatus _cancelInvoice = _facDAO.GetCancelInvoiceStatusDAO();
+            Account _account;
+            IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
+            bool ok = false;
+            try
+            {
+                _account = _accountDAO.FindById(_accountId);
+                foreach (Invoice i in _account.ListInvoice)
+                {
+                    if (i.Id.Equals(_invoice.Id))
+                    {
+                        ok = true;
+                    }
+                }
+                if (ok)
+                {
+                    _account.ListInvoice.Remove(_invoice);
+                    _invoice.Status = _cancelInvoice;
+
+                    // se le agrega la invoice a la cuenta
+                    _account.ListInvoice.Add(_invoice);
+                    //se salva la cuenta para registrar la nueva factura
+                    _accountDAO.Save(_account);
+                    //_restaurantDAO.Save(_restaurant);
+
+
+                }
+
+                return _invoice;
+
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new FondaIndexException("No se pudo insertar", e);
+            }
+        }
+
+        /// <summary>
         /// Agrega un invoice a la lista de invoices de Account
         /// </summary>
         /// <param name="Invoice, AccountId">Un objeto Invoice y un id de Account</param>

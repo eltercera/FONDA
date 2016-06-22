@@ -6,7 +6,8 @@ namespace com.ds201625.fonda.DataAccess.FactoryDAO
 {
 	public interface IFactoryDAO
 	{
-		ICommensalDAO GetCommensalDAO ();
+        CanceledInvoiceStatus GetCanceledInvoiceStatusDAO();
+        ICommensalDAO GetCommensalDAO ();
 		IProfileDAO GetProfileDAO ();
 		IUserAccountDAO GetUserAccountDAO ();
 		IPersonDAO GetPersonDao ();
