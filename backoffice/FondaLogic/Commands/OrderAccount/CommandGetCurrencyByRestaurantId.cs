@@ -3,6 +3,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
+using FondaResources.OrderAccount;
 using System;
 
 namespace FondaLogic.Commands.OrderAccount
@@ -18,22 +19,14 @@ namespace FondaLogic.Commands.OrderAccount
         private int _restaurantId = 0;
         private string _symbol = null;
 
-        public CommandGetCurrencyByRestaurantId(Object receiver) : base(receiver)
-        {
-            try
-            {
-                _restaurantId = (int)receiver;
-            }
-            catch (Exception)
-            {
-                //TODO: Enviar excepcion personalizada
-                throw;
-            }
-        }
+        public CommandGetCurrencyByRestaurantId(Object receiver) : base(receiver) { }
+
         public override void Execute()
         {
             try
             {
+                _restaurantId = (int)Receiver;
+
                 //Defino el DAO
                 IRestaurantDAO _restaurantDAO;
                 //Obtengo la instancia del DAO a utilizar
@@ -46,18 +39,24 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (Exception ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetCurrencyByRestaurant exceptionGetOrders = new CommandExceptionGetCurrencyByRestaurant(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameGetCurrencyByRestaurant,
+                    OrderAccountResources.CommandExceptionGetCurrencyByRestaurantCode,
+                    OrderAccountResources.ClassNameGetCurrencyByRestaurant,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionGetCurrencyByRestaurant,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrders);
 
-                Receiver = "";
+                Receiver = string.Empty;
+
+                throw exceptionGetOrders;
             }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameGetCurrencyByRestaurant
+                , OrderAccountResources.SuccessMessageCommandGetCurrencyByRestaurant
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
         }
     }
 }

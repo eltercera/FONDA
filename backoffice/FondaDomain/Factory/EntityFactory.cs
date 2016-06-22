@@ -48,10 +48,10 @@ namespace com.ds201625.fonda.Factory
         }
 
         public static Invoice GetInvoice(int id, Payment payment, Profile profile,
-            float total, float tax, int number)
+            float total, float tax, Currency currency, int number)
         {
             return new Invoice(id, payment, profile,
-             total, tax, number);
+             total, tax, currency, number);
         }
 
         public static CashPayment GetCashPayment(float amount)

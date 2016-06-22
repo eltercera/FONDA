@@ -16,19 +16,20 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
         [HttpPost]
         [Route("restaurante/{restaurantId}/reserva")]
-        public IHttpActionResult ReservationRequest(int restaurantId, Reservation reserve)
+        public IHttpActionResult ReservationRequest(int restaurantId, Reserve reserve)
         {
             ITableDAO _table = GetTableDAO();
-            IRestaurantDAO _restaurant = GetRestaurantDAO();
+            IRestaurantDAO _restaurantDAO = GetRestaurantDAO();
             IReservationDAO _reservation = GetReservationDAO();
             bool validHour = true, validDate = false;
 
-            IList<Reservation> listReservation = _reservation.FindByRestaurant(restaurantId);
+            //IList<Reserve> listReservation = _restaurantDAO.ReservationsByRestaurantId(restaurantId);
+            IList<Reserve> listReservation = null;
             IList<Table> listTable = _table.TablesAvailableByDate(restaurantId, listReservation, reserve.ReserveDate);
             listTable = _table.TablesAvailableByCapacity(listTable, reserve.CommensalNumber);
 
-            validHour = _restaurant.ValidateHour(restaurantId, reserve.ReserveDate);
-            validDate = _restaurant.ValidateDay(restaurantId, reserve.ReserveDate);
+            validHour = _restaurantDAO.ValidateHour(restaurantId, reserve.ReserveDate);
+            validDate = _restaurantDAO.ValidateDay(restaurantId, reserve.ReserveDate);
 
             if (listTable.Count == 0 || !(validHour && validDate))
                 return BadRequest();

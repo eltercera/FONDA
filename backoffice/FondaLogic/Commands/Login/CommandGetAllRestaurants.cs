@@ -16,9 +16,12 @@ namespace FondaLogic.Commands.Login
 {
     public class CommandGetAllRestaurants : Command
     {
-
+        //fabrica de dao que me dara el metodo que se ejecuatara en el execute
         FactoryDAO _facDAO = FactoryDAO.Intance;
-
+        /// <summary>
+        /// constructor de comando, no recibe nada
+        /// </summary>
+        /// <param name="receiver"></param>
         public CommandGetAllRestaurants(Object receiver) : base(receiver)
         {
 
@@ -37,9 +40,10 @@ namespace FondaLogic.Commands.Login
 
                 IRestaurantDAO _RestaurantDAO = _facDAO.GetRestaurantDAO();
 
-
+                // se ejecuta metodo que me devuelve todos los restaurantes
                 Receiver = _RestaurantDAO.GetAll();
             }
+            // se capturan excepciones que pueden ser generadas en la capa de acceso a datos
             catch (InvalidTypeParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);

@@ -60,11 +60,15 @@
     <Compile Include="Commands\Login\CommandSaveEmployee.cs" />
     <Compile Include="Commands\Login\CommandSaveEntity.cs" />
     <Compile Include="Commands\Login\CommanGetAllEmployee.cs" />
+    <Compile Include="Commands\OrderAccount\CommandCancelInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandCloseCashRegister.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetDetailInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetDetailOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetDishOrdersByAccountId.cs" />
     <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
+    <Compile Include="Commands\Reservations\CommandFindRestaurantById.cs" />
+    <Compile Include="Commands\Reservations\CommandFindReservationsByRestaurant.cs" />
+    <Compile Include="Commands\Reservations\CommandFindReservationsByTable.cs" />
     <Compile Include="Commands\OrderAccount\CommandFindInvoicesByRestaurant.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateException.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
@@ -83,8 +87,12 @@
     <Compile Include="Commands\OrderAccount\CommandGetCurrencyInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandValidateProfileByCommensal.cs" />
     <Compile Include="Commands\Restaurant\CommandModifyRestaurant.cs" />
+    <Compile Include="Commands\Reservations\CommandGetTables.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
+    <Compile Include="FondaCommandException\CommandExceptionFindReservationsByRestaurant.cs" />
+    <Compile Include="FondaCommandException\CommandExceptionFindReservationsByTable.cs" />
+    <Compile Include="FondaCommandException\CommandExceptionFindRestaurantById.cs" />
     <Compile Include="FondaCommandException\Login\CommandExceptionCreateEmployee.cs" />
     <Compile Include="FondaCommandException\Login\CommandExceptionGetEmployee.cs" />
     <Compile Include="FondaCommandException\Login\CommandExceptionGetRestaurant.cs" />
@@ -95,6 +103,7 @@
     <Compile Include="FondaCommandException\Login\InvalidTypeParameterException.cs" />
     <Compile Include="FondaCommandException\Login\ParameterIndexOutRangeException.cs" />
     <Compile Include="FondaCommandException\Login\RequieredParameterNotFoundException.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionCancelInvoice.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionCloseCashRegister.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionFindInvoicesByAccount.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionFindInvoicesByRestaurant.cs" />
@@ -114,6 +123,7 @@
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionReleaseTableByRestaurant.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionTotalOrder.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionValidateProfileByCommensal.cs" />
+    <Compile Include="FondaCommandException\Reservation\CommandExceptionGetTables.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

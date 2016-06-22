@@ -39,14 +39,16 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
     @Override
     protected void invoke() {
         Log.d(TAG, "Comando para agregar un restaurante a favoritos");
+
         FavoriteRestaurantService serviceFavorites = FondaServiceFactory.getInstance()
-                .getFavoriteRestaurantService();
+		.getFavoriteRestaurantService();
         Commensal commensal = FondaEntityFactory.getInstance().GetCommensal();
         Commensal idCommensal;
         Restaurant idRestaurant;
         try {
             idCommensal = (Commensal) getParameter(0);
             idRestaurant = (Restaurant) getParameter(1);
+
             commensal = serviceFavorites.AddFavoriteRestaurant(idCommensal.getId(),
                     idRestaurant.getId());
             //AKI IRAN MAS EXCEPCIONES RECIBIDAS D BO

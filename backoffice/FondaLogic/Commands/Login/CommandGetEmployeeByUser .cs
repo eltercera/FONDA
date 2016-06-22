@@ -17,9 +17,14 @@ namespace FondaLogic.Commands.Login
 {
     public class CommandGetEmployeeByUser : Command
     {
+        // fabrica que me dara el dao que contiene el metodo a encapsular en este comando
         FactoryDAO _facDAO = FactoryDAO.Intance;
+        // nombre de usuario del a buscar 
         string _username;
-
+        /// <summary>
+        /// metodo constructor del comando
+        /// </summary>
+        /// <param name="receiver">recibe username del usuario a buscar</param>
         public CommandGetEmployeeByUser(Object receiver) : base(receiver)
         {
             try
@@ -44,10 +49,11 @@ namespace FondaLogic.Commands.Login
                 //Metodos para acceder a la BD
 
                 IEmployeeDAO _employeeDAO = _facDAO.GetEmployeeDAO();
-
+                // se ejecuta comando que busca empleado por username
 
                 Receiver = _employeeDAO.FindByusername(_username);
             }
+            //se capturan excepciones que pueden ser generadas en la capa de acceso de datos
             catch (InvalidTypeParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);

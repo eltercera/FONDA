@@ -41,11 +41,13 @@ public class FavoritesActivity extends BaseNavigationActivity implements
     /**
      * Fragmento favoritos
      */
+
     private static FavoritesListFragment fv;
 
     /**
      * Fragmento favoritos vacio
      */
+
     private static FavoritesEmptyFragment favoritesEmptyFragment;
     /**
      * Fragmento de Detalle de restaurant
@@ -243,6 +245,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                 Toast.makeText(getApplicationContext(),
                         R.string.favorite_remove_success_meessage,
                         Toast.LENGTH_LONG).show();
+
                  if (isEmptyFavorite()) {
                     updateList();
                     showFragment(favoritesEmptyFragment);
@@ -250,6 +253,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                 else {
                     showFragment(fv);
                 }
+
             }
             catch (NullPointerException nu) {
                 Log.e(TAG,"Error en removeFavorite al eliminar un favorito",nu);
@@ -262,6 +266,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
     }
 
 
+
     /**
      * Cambia de fragment dependiendo del parametro
      * @param opc
@@ -272,6 +277,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
             showFragment(favoritesEmptyFragment);
         }
     }
+
     /**
      * Devuelve el estado de los restaurantes favoritos con respecto al usuario.
      * @param

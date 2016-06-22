@@ -37,6 +37,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         /// </summary>
         public void GetDetailOrder()
         {
+
             //Define objeto a recibir
             IList<DishOrder> listDishOrder;
             Account order;
@@ -68,7 +69,15 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 listDishOrder = (IList<DishOrder>)result[0];
                 order = (Account)result[1];
                 currency = (string)result[2];
-              
+
+                //Variables de sesion, no deberian estar vacias
+                //El metodo getqueryparam url tiene una falla, deberia ser transparente para el usuario el id de la orden
+                //Deberia mostrarse es el number de la account y junto con el restaurante devolver la orden correspondiente
+                //Igual pasa con factura
+                //Esto implica cambiar el metodo que te devuelve la factura
+                _view.SessionNumberAccount = order.Number.ToString();
+
+
                 //Revisa si la lista no esta vacia
                 if (listDishOrder != null)
                 {
@@ -78,19 +87,35 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             }
             catch (MVPExceptionDetailOrderTable ex)
             {
-                //Revisar
                 MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
                     (
-                        Errors.MVPExceptionDetailOrderTableCode,
-                        Errors.ClassNameDetailOrderPresenter,
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameDetailOrderPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionDetailOrderTable,
+                        OrderAccountResources.MessageMVPExceptionDetailOrderTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                throw e;
                 ErrorLabel(e.MessageException);
             }
+            catch (Exception ex)
+            {
+                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+                    (
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameDetailOrderPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionDetailOrderTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                ErrorLabel(e.MessageException);
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameClosedOrdersPresenter
+                        , OrderAccountResources.MessageGetClosedOrders
+                        , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                        );
         }
 
         private void FillTable(IList<DishOrder> data)

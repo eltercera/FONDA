@@ -3,6 +3,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
+using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 
@@ -14,22 +15,13 @@ namespace FondaLogic.Commands.OrderAccount
 
         private IList<object> _list;
         private IRestaurantDAO _restaurantDAO;
-        public CommandReleaseTableByRestaurant(Object receiver) : base(receiver) {
-            try
-            {
-                _list = (IList<object>)receiver;
-            }
-            catch (Exception)
-            {
-                //TODO: Enviar excepcion personalizada
-                throw;
-            }
-        }
+        public CommandReleaseTableByRestaurant(Object receiver) : base(receiver) { }
 
         public override void Execute()
         {
             try
             {
+                _list = (IList<object>)Receiver;
                 Restaurant _restaurant = new Restaurant();
                 int _tableId =0;
                 _restaurant = (Restaurant) _list[0];
@@ -41,18 +33,22 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (Exception ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionReleaseTableByRestaurant exception = new CommandExceptionReleaseTableByRestaurant(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameReleaseTableByRestaurant,
+                    OrderAccountResources.CommandExceptionReleaseTableByRestaurantCode,
+                    OrderAccountResources.ClassNameReleaseTableByRestaurant,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionReleaseTableByRestaurant,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
 
             }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameReleaseTableByRestaurant
+                , OrderAccountResources.SuccessMessageCommandReleaseTableByRestaurant
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
         }
     }
 }

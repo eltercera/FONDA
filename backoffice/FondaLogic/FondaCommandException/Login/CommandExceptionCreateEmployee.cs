@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.FondaCommandException.Login
 {
+    /// <summary>
+    /// excepcion creada en caso de que falle un save de un empleado
+    /// </summary>
     public class CommandExceptionCreateEmployee : FondaLogicException
     {
 

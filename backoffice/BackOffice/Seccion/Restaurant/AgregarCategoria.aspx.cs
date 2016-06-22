@@ -208,6 +208,7 @@ namespace BackOffice.Seccion.Restaurant
             _presenter.ButtonModificar_Click();
         }
 
+        [WebMethod]
         public static RestaurantCategory GetData(string Id)
         {
             System.Diagnostics.Debug.WriteLine("aqui llegoiahsiahsi");
@@ -219,7 +220,6 @@ namespace BackOffice.Seccion.Restaurant
             return restCategory;
 
         }
-
 
     }
 }

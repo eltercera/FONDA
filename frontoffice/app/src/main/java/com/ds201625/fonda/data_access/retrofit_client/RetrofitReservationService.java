@@ -11,7 +11,7 @@ import java.util.List;
 import retrofit2.Call;
 
 /**
- * Created by Jessica on 22/05/16.
+ *
  */
 public class RetrofitReservationService implements ReservationService {
 
@@ -22,16 +22,20 @@ public class RetrofitReservationService implements ReservationService {
         super();
     }
 
-    @Override
-    public List<Reservation> getAllReserves(int id) {
 
-        Call<List<Reservation>> call = currentReservationClient.getReservation();
-        List<Reservation> test = null;
-        try {
-            test =call.execute().body();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return test;
+
+    @Override
+    public List<Reservation> getReservation() throws RestClientException {
+        return null;
+    }
+
+    @Override
+    public void addReservation(Reservation reserve) throws RestClientException {
+
+    }
+
+    @Override
+    public void editReservatio(Reservation reserve) throws RestClientException {
+
     }
 }

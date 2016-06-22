@@ -9,31 +9,31 @@ namespace com.ds201625.fonda.Domain
     /// <summary>
     /// Estado activa de una reservacion
     /// </summary>
-    public class ActiveReservationStatus : ReservationStatus
+    public class ReservedReservationStatus : ReservationStatus
     {
         /// <summary>
         /// La intancia unica
         /// </summary>
-        private static ActiveReservationStatus _instance;
+        private static ReservedReservationStatus _instance;
 
         /// <summary>
 		/// Constructor
 		/// </summary>
-		protected ActiveReservationStatus() : base()
+		protected ReservedReservationStatus() : base()
         {
             StatusId = 8;
-            Description = "Reservación Activa";
+            Description = "Reservación realizada";
         }
 
         /// <summary>
         /// Obtiene el Estado Activo de una entidad
         /// </summary>
-        public static ActiveReservationStatus Instance
+        public static ReservedReservationStatus Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new ActiveReservationStatus();
+                    _instance = new ReservedReservationStatus();
 
                 return _instance;
             }
@@ -45,7 +45,7 @@ namespace com.ds201625.fonda.Domain
         /// <returns>Activa en String</returns>
         public override string ToString()
         {
-            return "Activa";
+            return "Reservada";
         }
     }
 }

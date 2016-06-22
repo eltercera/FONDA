@@ -27,25 +27,26 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _tableDAO = factoryDAO.GetTableDAO();
             _restaurantDAO = factoryDAO.GetRestaurantDAO();
             _reservationDAO = factoryDAO.GetReservationDAO();
-            IList<Reservation> reservations = new List<Reservation>();
+            IList<Reserve> reservations = new List<Reserve>();
             IList<Table> tables = new List<Table>();
             IList<Table> tablesAvalibles = new List<Table>();
             Restaurant _restaurant = new Restaurant();
             _restaurant = _restaurantDAO.FindById(1);
             
-            Reservation _reservation = new Reservation();
+            Reserve _reservation = new Reserve();
             _reservation.ReserveRestaurant = _restaurant;
             _reservation.ReserveDate = new DateTime(2016, 09, 29, 13, 30, 00);
             _reservation.CreateDate = new DateTime(2016, 09, 15, 14, 30, 00);
             _reservation.CommensalNumber = 3;
-            _reservation.ReserveStatus = factoryDAO.GetActiveReservationStatus();
+            _reservation.ReserveStatus = factoryDAO.GetReservedReservationStatus();
 
             validHour =_restaurantDAO.ValidateHour(1, _reservation.ReserveDate);
 
             validDay = _restaurantDAO.ValidateDay(3, _reservation.ReserveDate);
-               
-                    reservations = _reservationDAO.FindByRestaurant(_restaurant.Id);
-                    tables = _tableDAO.TablesAvailableByDate(3, reservations, _reservation.ReserveDate);
+
+            // reservations = _restaurantDAO.ReservationsByRestaurantId(_restaurant.Id);
+            reservations = null;
+            tables = _tableDAO.TablesAvailableByDate(3, reservations, _reservation.ReserveDate);
                     tablesAvalibles = _tableDAO.TablesAvailableByCapacity(tables, _reservation.CommensalNumber);
             
         }
