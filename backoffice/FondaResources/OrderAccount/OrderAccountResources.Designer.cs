@@ -700,6 +700,24 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al cancelar la factura.
+        /// </summary>
+        public static string MessageCancelInvoiceException {
+            get {
+                return ResourceManager.GetString("MessageCancelInvoiceException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al obtener todas las cuentas .
+        /// </summary>
+        public static string MessageChangeStatusAccountException {
+            get {
+                return ResourceManager.GetString("MessageChangeStatusAccountException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ha cerrado la caja exitosamente, el balance del dia fue:.
         /// </summary>
         public static string MessageClose {
@@ -993,6 +1011,15 @@ namespace FondaResources.OrderAccount {
         public static string MessageMVPExceptionQuery {
             get {
                 return ResourceManager.GetString("MessageMVPExceptionQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al guardar la factura.
+        /// </summary>
+        public static string MessageSaveInvoiceException {
+            get {
+                return ResourceManager.GetString("MessageSaveInvoiceException", resourceCulture);
             }
         }
         

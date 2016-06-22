@@ -69,13 +69,6 @@ namespace FondaDataAccessTest
         }
         #endregion
 
-        [Test(Description = "Cambia el estatus de una factura a cancelado")]
-        public void CancelInvoiceTest()
-        {
-            _invoice = _invoiceDAO.FindById(_invoiceId);
-            _invoice=_accountDAO.CancelInvoice(_invoice, 2);
-            Assert.AreEqual(_invoice.Status,CanceledInvoiceStatus.Instance);
-        }
 
         [Test(Description = "Busca las facturas de un restaurante")]
         public void FindInvoiceByRestaurantTest()

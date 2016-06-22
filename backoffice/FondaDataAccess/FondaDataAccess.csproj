@@ -62,7 +62,9 @@
     <Compile Include="Exceptions\CastException.cs" />
     <Compile Include="Exceptions\ClearTableEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\DeleteEntityFondaDAOException.cs" />
-    <Compile Include="Exceptions\FindAllAccountByRestaurantFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\CancelInvoiceFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\ChangeStatusAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\FindAccountByRestaurantFondaDAOException.cs" />
     <Compile Include="Exceptions\FindAllFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\findAllInvoiceFondaDAOException.cs" />
     <Compile Include="Exceptions\FindByEmailUserAccountFondaDAOException.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Exceptions\LoadTabletEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\MofifyEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\OrderAccount\FindInvoicesByAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\SaveInvoiceFondaDAOException.cs" />
     <Compile Include="Exceptions\ValidationEmailEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\ValidationSsnEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\ValidationUsernameEmployeeFondaBackOfficeException.cs" />
