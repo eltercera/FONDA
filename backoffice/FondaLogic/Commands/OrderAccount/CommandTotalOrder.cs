@@ -48,6 +48,7 @@ namespace FondaLogic.Commands.OrderAccount
                     }
                 }
                 total =_account.GetAmount();
+                total = total + (total*0.12f);
                 if (total == 0)
                     throw new NullReferenceException();
                 Receiver = total;

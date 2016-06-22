@@ -11,19 +11,30 @@ namespace FondaLogic.Commands.OrderAccount
 {
     public class CommandValidateProfileByCommensal : Command
     {
-        public CommandValidateProfileByCommensal(Object receiver) : base(receiver) { }
+        private IList<object> parameters;
+        public CommandValidateProfileByCommensal(Object receiver) : base(receiver) {
+            try
+            {
+                parameters = (IList<object>)receiver;
+            }
+            catch (Exception)
+            {
+                //TODO: Enviar excepcion personalizada
+                throw;
+            }
+        }
 
         public override void Execute()
         {
             int profileId;
             bool result = false;
             Commensal commensal;
-            List<Object> parameters;
+            //List<Object> parameters;
             IList<Profile> profiles;
 
             try
             {
-                parameters = (List<Object>)Receiver;
+                //parameters = (List<Object>)Receiver;
                 profileId = (int)parameters[0];
                 commensal = (Commensal)parameters[1];
 

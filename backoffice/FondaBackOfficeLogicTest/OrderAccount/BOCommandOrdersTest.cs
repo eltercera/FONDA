@@ -1,6 +1,7 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using com.ds201625.fonda.Factory;
 using FondaLogic;
 using FondaLogic.Factory;
 using NUnit.Framework;
@@ -16,7 +17,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
     public class BOCommandOrdersTest
     {
         #region fields
-        private int _restaurantId, _orderId;
+        private int _restaurantId, _orderId, _profileId, _comensalId;
         private Command _command;
         private IList<Account> _listAccount;
         private IList<Account> _listClosedOrders;
@@ -32,6 +33,11 @@ namespace com.ds201625.fonda.Tests.DataAccess
         private List<int> parameters;
         List<Object> result;
         private string _currency;
+        private CashPayment _cashPayment;
+        private CreditCardPayment _creditPayment;
+        private Commensal _comensal;
+        private ICommensalDAO _comensalDAO;
+        private UserAccount _user;
         #endregion
         #region
         [SetUp]
@@ -40,6 +46,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
             if (_facDAO == null)
                 _facDAO = FactoryDAO.Intance;
 
+            
             _orderAccountDAO = _facDAO.GetOrderAccountDAO();
             _restaurant = new Restaurant();
             _listClosedOrders = new List<Account>();
@@ -47,7 +54,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
             IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             _restaurant = _restaurantDAO.FindById(_restaurant.Id);
             _restaurantId = _orderId = 1;
-
+            _comensalId = 20;
             _account = new Account();
             _invoice = new Invoice();
             _account.Id = 2;
@@ -60,8 +67,30 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _listDishOrder = new List<DishOrder>();
             result = null;
             _currency = null;
+            _cashPayment = EntityFactory.GetCashPayment(11000);
+            _creditPayment = EntityFactory.GetCreditCardPayment(11000,123,100);
+            _comensal = new Commensal();
+            _comensalDAO = _facDAO.GetCommensalDAO();
         }
         #endregion
+
+        [Test(Description = "Se paga la orden")]
+        public void CommandPayOrderTest()
+        {
+            _user = _comensalDAO.FindById(_comensalId);
+            _comensal = (Commensal)_comensalDAO.FindById(_comensalId);
+            IList<object> _result = new List<object>();
+            _result.Add(_restaurantId);//1
+            _result.Add(_orderId);//1
+            _result.Add(1);//1 profile
+            _result.Add(_cashPayment);
+            _result.Add(_comensal);
+            _command = CommandFactory.GetCommandPayOrder(_result);
+            _command.Execute();
+            _invoice = (Invoice)_command.Receiver;
+            Assert.IsNotNull(_invoice);
+            //Assert.AreEqual(_total, 10192f);
+        }
 
         [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
         public void CommandTotalOrderTest()
@@ -75,7 +104,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _command.Execute();
             _total = (float)_command.Receiver;
             Assert.IsNotNull(_total);
-            Assert.AreEqual(_total, 9100);
+            Assert.AreEqual(_total, 10192f);
         }
 
         [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
