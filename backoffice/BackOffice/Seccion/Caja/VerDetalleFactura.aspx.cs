@@ -68,11 +68,11 @@ namespace BackOffice.Seccion.Caja
             set { date = value; }
         }
 
-        public System.Web.UI.WebControls.LinkButton PrintInvoice
+        public System.Web.UI.WebControls.Button PrintInvoice
         {
-            get { return print; }
+            get { return invoicePrint; }
 
-            set { print = value; }
+            set { invoicePrint = value; }
         }
         Label IModel.ErrorLabelMessage
         {
@@ -154,7 +154,10 @@ namespace BackOffice.Seccion.Caja
             _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.InvoiceDetailPresenter(this);
         }
         #endregion
-
+        protected void print_Click(object sender, EventArgs e)
+        {
+            _presenter.PrintInvoice();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session[ResourceLogin.sessionUserID] != null &&
