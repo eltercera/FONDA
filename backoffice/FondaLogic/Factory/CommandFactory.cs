@@ -6,6 +6,7 @@ using com.ds201625.fonda.Logic.FondaLogic.Log;
 using System.Collections.Generic;
 using com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations;
 using System;
+using FondaLogic.Commands.Restaurante;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Factory
 {
@@ -258,6 +259,10 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         #region Restaurant
 
         //Defincion de los comandos a implementar del modulo Restaurante
+        public static Command GetCommandModifyRestaurant(object receiver)
+        {
+            return new CommandModifyRestaurant(receiver);
+        }
 
         #endregion
 
@@ -415,6 +420,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandFindReservationsByTable(receiver);
         }
+
 
         #endregion
 
