@@ -108,7 +108,20 @@ $(document).ready(function () {
     });
 });
 
-
+$(document).ready(function () {
+    $('#contenido_ReservationsList').DataTable({
+        "language": spanish,
+        "aoColumns": [
+            { "bSearchable": false },
+            null,
+            { "bSearchable": false },
+            { "bSearchable": false },
+             { "bSearchable": false },
+            null,
+            { "bSearchable": false }
+        ]
+    });
+});
 
 $(document).ready(function () {
     $('#contenido_TableDayMenuDashboard').DataTable({
