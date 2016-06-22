@@ -5,6 +5,7 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using System.Collections.Generic;
 using com.ds201625.fonda.Factory;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace FondaDataAccessTest
 {
@@ -87,6 +88,8 @@ namespace FondaDataAccessTest
             Assert.AreEqual(_listInvoices[2].Number, 3);
         }
 
+        #region Pruebas de DataAccess/HibernateDAO/findAllInvoices
+
         [Test(Description  ="Trae una lista de facturas pagadas a un usuario")]
         public void FindAllInvoiceByProfileTest()
         {
@@ -96,14 +99,15 @@ namespace FondaDataAccessTest
             Assert.AreEqual(3, _listInvoices.Count);
         }
 
-        [Test]
-        [ExpectedException(typeof(NullReferenceException))]
+        [Test(Description ="Caso de error en que se envie un perfil vacio")]
         public void NullReferenceExceptionFindAllInvoiceByProfileTest()
         {
             _listInvoices = _invoiceDAO.findAllInvoice(null);
 
-            Assert.IsNull(_listInvoices);
+            Assert.AreEqual(0, _listInvoices.Count);
         }
+
+        #endregion
 
         [Test(Description = "Prueba el numero generado de la factura (Numero único de factura por restaurante)")]
         public void GenerateNumberInvoice()

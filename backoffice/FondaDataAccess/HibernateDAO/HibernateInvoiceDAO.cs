@@ -6,6 +6,7 @@ using NHibernate.Criterion;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.Factory;
 using FondaResources.OrderAccount;
+using com.ds201625.fonda.DataAccess.Exceptions.OrderAccount;
 using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
@@ -25,9 +26,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         public IList<Invoice> findAllInvoice(Profile profile)
         {
             ICriterion criterion;
+            IList<Invoice> listInvoices;
             try
             {
                 criterion = Expression.And(Expression.Eq("Profile", profile), Expression.Eq("Status", GeneratedInvoiceStatus.Instance));
+                listInvoices = FindAll(criterion);
             }
             catch (Exception ex)
             {
@@ -37,7 +40,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 //Llamar al logger
                 throw exception;
             }
-            return FindAll(criterion);
+            return listInvoices;
         }
 
         /// <summary>
@@ -47,14 +50,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Un objeto Invoice</returns>
         public IList<Invoice> FindInvoicesByAccount(int _accountId)
         {
-            //Esto no deberia estar aqui
             IOrderAccountDao _accountDAO;
             Account _account;
             _accountDAO = _facDAO.GetOrderAccountDAO();
 
            try
             {
-                //Esto tampoco deberia estar aqui
                 _account = _accountDAO.FindById(_accountId);
 
                 IList<Invoice> _invoices = new List<Invoice>();
@@ -64,6 +65,15 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             catch (ArgumentOutOfRangeException e)
             {
                 throw new FondaIndexException("Not Found invoice", e);
+            }
+            catch(FindInvoicesByAccountFondaDAOException e)
+            {
+                FindInvoicesByAccountFondaDAOException exception = 
+                    new FindInvoicesByAccountFondaDAOException
+                    (OrderAccountResources.MessageFindInvoicesByAccountFondaDAOException, e);
+                //Logger
+                throw exception; 
+
             }
         }
 
