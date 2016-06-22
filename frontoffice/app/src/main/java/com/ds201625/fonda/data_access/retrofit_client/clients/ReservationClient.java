@@ -8,40 +8,14 @@ import retrofit2.http.GET;
 import retrofit2.http.DELETE;
 import retrofit2.http.Path;
 
-/**
- * Created by Jessica on 22/05/16.
- */
+
 public interface ReservationClient {
 
-    /**
-     * Get /api/profiles
-     * Obtiene la lista de las reservaciones.
-     *
-     * @return
-     */
 
-    @GET("reservation")
+
+    @GET("reserve")
     Call<List<Reservation>> getReservation();
 
-    /**
-     * Post /api/profile
-     * Genera y agrega una reservacion
-     * @param reservation Reservation a agregar
-     * @return
-     */
-/*    @POST("reservation")
-    Call<Reservation> postReservation(@Body Reservation reservation);
 
-    */
-
-    /**
-     * Delete /api/profile/{id}
-     * Elimina un profile
-     *
-     * @param id identificador del profile.
-     * @return
-     */
-    @DELETE("reservation/{id}")
-    Call<String> deleteReservation(@Path("id") int id);
 
 }
