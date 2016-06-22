@@ -733,9 +733,33 @@
     <value>Ha ocurrido un error al obtener las facturas dado un restaurante</value>
     <comment>Mensaje para FindInvoicesByRestaurant</comment>
   </data>
+  <data name="MessageGenerateNumberInvoiceFondaDAOException" xml:space="preserve">
+    <value>Ha ocurrido un error al generar el numero unico de la factura</value>
+    <comment>Mensaje de error para GenerateNumberInvoice</comment>
+  </data>
+  <data name="MessageReleaseTableFondaDAOException" xml:space="preserve">
+    <value>Ha ocurrido un error al liberar la mesa ocupada</value>
+    <comment>Mensaje de error para ReleaseTable</comment>
+  </data>
   <data name="MessageClosedOrdersByRestaurantFondaDAOException" xml:space="preserve">
     <value>Error en la base de datos al obtener las ordenes cerradas de un restaurante</value>
     <comment>Mensaje de error para ClosedOrdersByRestaurant</comment>
+  </data>
+  <data name="ClassNameGetCurrencyInvoice" xml:space="preserve">
+    <value>CommandGetCurrencyInvoice</value>
+    <comment>Comando para obtener el simbolo de la moneda de un Restaurante</comment>
+  </data>
+  <data name="CommandExceptionGetCurrencyInvoiceCode" xml:space="preserve">
+    <value>BO-04-027</value>
+    <comment>Codigo de error para CommandExceptionGetCurrencyInvoice</comment>
+  </data>
+  <data name="MessageCommandExceptionGetCurrencyInvoice" xml:space="preserve">
+    <value>Se ha producido un error al obtener el simbolo de la moneda</value>
+    <comment>Mensaje de error para CommandExceptionGetCurrencyInvoice</comment>
+  </data>
+  <data name="SuccessMessageCommandGetCurrencyInvoice" xml:space="preserve">
+    <value>Se ha obtenido el simbolo de la moneda correctamente</value>
+    <comment>Mensaje de exito para CommandGetCurrencyInvoice</comment>
   </data>
   <data name="MessageOpenOrdersByRestaurantIdFondaDAOException" xml:space="preserve">
     <value>Error en la base de datos al obtener las ordenes abiertas de un restaurante</value>

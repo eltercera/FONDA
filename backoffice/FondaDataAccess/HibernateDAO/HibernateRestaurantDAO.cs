@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using NHibernate.Criterion;
 using NHibernate;
 using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
+using com.ds201625.fonda.DataAccess.Exceptions;
+using FondaResources.OrderAccount;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using FondaResources.OrderAccount;
@@ -376,14 +378,22 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                  Save(restaurant);
 
             }
-            //TODO: Arrojar excepciones personalizadas
             catch (ArgumentOutOfRangeException ex)
             {
-                throw new FondaIndexException();
+                ReleaseTableFondaDAOException exception = new ReleaseTableFondaDAOException
+                    (OrderAccountResources.MessageReleaseTableFondaDAOException,
+                    ex);
+                //Logger
+                throw exception;
+
             }
-            catch(InvalidCastException ex)
+            catch(Exception ex)
             {
-                throw new InvalidCastException();
+                ReleaseTableFondaDAOException exception = new ReleaseTableFondaDAOException
+                    (OrderAccountResources.MessageReleaseTableFondaDAOException,
+                    ex);
+                //Logger
+                throw exception;
             }
         }
 

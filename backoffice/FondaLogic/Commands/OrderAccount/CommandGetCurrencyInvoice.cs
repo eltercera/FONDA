@@ -1,37 +1,27 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using com.ds201625.fonda.Logic.FondaCommandException.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using FondaResources.OrderAccount;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandGetCurrencyInvoice : Command
     {
 
-        FactoryDAO _facDAO = FactoryDAO.Intance;
-        int _invoiceId = 0;
-        string _symbol = null;
+        private FactoryDAO _facDAO = FactoryDAO.Intance;
+        private int _invoiceId = 0;
+        private string _symbol = null;
 
-        public CommandGetCurrencyInvoice(Object receiver) : base(receiver)
-        {
-            try
-            {
-                _invoiceId = (int)receiver;
-            }
-            catch (Exception)
-            {
-                //TODO: Enviar excepcion personalizada
-                throw;
-            }
-        }
+        public CommandGetCurrencyInvoice(Object receiver) : base(receiver) { }
         public override void Execute()
         {
             try
             {
+                _invoiceId = (int)Receiver;
                 //Defino el DAO
                 IInvoiceDao _invoiceDAO;
                 //Obtengo la instancia del DAO a utilizar
@@ -46,7 +36,24 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             }
             catch (Exception ex)
             {
+                CommandExceptionGetCurrencyInvoice exception = new CommandExceptionGetCurrencyInvoice(
+                    OrderAccountResources.CommandExceptionGetCurrencyInvoiceCode,
+                    OrderAccountResources.ClassNameGetCurrencyInvoice,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionGetCurrencyInvoice,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                Receiver = string.Empty;
+
+                throw exception;
             }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameGetCurrencyInvoice
+                , OrderAccountResources.SuccessMessageCommandGetCurrencyInvoice
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
         }
     }
 }
