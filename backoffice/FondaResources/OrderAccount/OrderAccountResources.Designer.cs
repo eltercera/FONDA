@@ -727,6 +727,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al cerrar la caja.
+        /// </summary>
+        public static string MessageCloseCashRegisterException {
+            get {
+                return ResourceManager.GetString("MessageCloseCashRegisterException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al realizar el cierre de caja, no se puede cerrar caja con cuentas abiertas.
         /// </summary>
         public static string MessageCommandCloseCashRegister {

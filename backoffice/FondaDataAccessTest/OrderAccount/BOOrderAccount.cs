@@ -154,7 +154,7 @@ namespace FondaDataAccessTest
         }
         #endregion
 
-        #region
+        #region Pruebas de DataAccess/HibernateOrderAccount/GenerateNumberAccount
         [Test(Description = "Prueba el numero generado de la cuenta (Numero único de cuenta por restaurante)")]
         public void GenerateNumberAccount()
         {
@@ -162,8 +162,33 @@ namespace FondaDataAccessTest
             _number = _accountDAO.GenerateNumberAccount(_restaurant);
             Assert.IsNotNull(_number);
         }
-        #endregion
+        [Test(Description = "Prueba el numero generado de la cuenta (Numero único de cuenta por restaurante)")]
+        [ExpectedException(typeof(GenerateNumberAccountFondaDAOException))]
+        public void GenerateNumberExceptionAccount()
+        {
 
+            _number = _accountDAO.GenerateNumberAccount(null);
+            Assert.IsNotNull(_number);
+        }
+        #endregion Pruebas de DataAccess/HibernateOrderAccount/CloseCashRegisterTest
+
+        #region
+        [Test(Description = "Prueba para el cierre de caja")]
+        public void CloseCashRegisterTest()
+        {
+            float _total = _accountDAO.CloseCashRegister(_restaurant.Id);
+            Assert.IsNotNull(_total);
+            Assert.AreEqual(_total, 13900);
+        }
+        [Test(Description = "Prueba para el cierre de caja")]
+        [ExpectedException(typeof(CloseCashRegisterFondaDAOException))]
+        public void CloseCashRegisterExceptionTest()
+        {
+            float _total = _accountDAO.CloseCashRegister(_restaurant.Id);
+            Assert.IsNotNull(_total);
+            Assert.AreEqual(_total, 13900);
+        }
+        #endregion
         [Test(Description ="Obtiene el numero de ordenes cerradas de un Restaurante por su id")]
         public void ClosedOrdersByRestaurantIdTest()
         {
@@ -189,15 +214,6 @@ namespace FondaDataAccessTest
             Assert.AreEqual(1, _listInvoice.Count);
 
         }
-
-        [Test(Description = "Prueba para el cierre de caja")]
-        public void CloseCashRegisterTest()
-        {
-            float _total = _accountDAO.CloseCashRegister(_restaurant.Id);
-            Assert.IsNotNull(_total);
-            Assert.AreEqual(_total, 13900);
-        }
-
 
         [TestFixtureTearDown]
         public void EndTests()

@@ -721,4 +721,8 @@
     <value>Error en la base de datos al guardar la factura</value>
     <comment>Mensaje de error para SaveInvoice</comment>
   </data>
+  <data name="MessageCloseCashRegisterException" xml:space="preserve">
+    <value>Error en la base de datos al cerrar la caja</value>
+    <comment>Mensaje de error para CloseCashRegister</comment>
+  </data>
 </root>

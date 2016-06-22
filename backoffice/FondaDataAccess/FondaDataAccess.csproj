@@ -64,6 +64,7 @@
     <Compile Include="Exceptions\DeleteEntityFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\CancelInvoiceFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\ChangeStatusAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\CloseCashRegisterFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\FindAccountByRestaurantFondaDAOException.cs" />
     <Compile Include="Exceptions\FindAllFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\findAllInvoiceFondaDAOException.cs" />

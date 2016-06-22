@@ -282,9 +282,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 return totalInvoice;
 
             }
-            catch (FondaIndexException e)
+            catch (FondaIndexException ex)
             {
-                throw new FondaIndexException("No se puede cerrar caja con cuentas por pagar");
+                CloseCashRegisterFondaDAOException exception =
+       new CloseCashRegisterFondaDAOException(OrderAccountResources.MessageCloseCashRegisterException, ex);
+                //Llamar al logger
+                throw exception;
+            }
+            catch (Exception ex)
+            {
+                CloseCashRegisterFondaDAOException exception =
+       new CloseCashRegisterFondaDAOException(OrderAccountResources.MessageCloseCashRegisterException, ex);
+                //Llamar al logger
+                throw exception;
             }
         }
     }
