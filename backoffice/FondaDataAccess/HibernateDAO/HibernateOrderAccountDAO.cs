@@ -237,9 +237,19 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
                 return _length;
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (ArgumentOutOfRangeException ex)
             {
-                throw new FondaIndexException("Not Found invoice", e);
+                GenerateNumberAccountFondaDAOException exception =
+       new GenerateNumberAccountFondaDAOException(OrderAccountResources.MessageGenerateNumberAccountException, ex);
+                //Llamar al logger
+                throw exception;
+            }
+            catch (Exception ex)
+            {
+                GenerateNumberAccountFondaDAOException exception =
+       new GenerateNumberAccountFondaDAOException(OrderAccountResources.MessageGenerateNumberAccountException, ex);
+                //Llamar al logger
+                throw exception;
             }
         }
 

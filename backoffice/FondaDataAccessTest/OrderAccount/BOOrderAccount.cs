@@ -138,9 +138,29 @@ namespace FondaDataAccessTest
         public void SaveInvoicesByAccountTest()
         {
             InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
-            _invoice = (Invoice)EntityFactory.GetInvoice(_creditPayment, _profile, 4850, 0.12f, _restaurant.Currency, 100, i);
-            //_invoiceDAO.Save(_invoice);
+            _invoice = (Invoice)EntityFactory.GetInvoice(_creditPayment, _profile, 5000, (5000)*0.12f, _restaurant.Currency, 500, i);
+            _invoice= _accountDAO.SaveInvoice(_invoice, _accountId, _restaurantId);
+            Assert.IsNotNull(_invoice);
+            Assert.AreEqual(_invoice.Currency,_restaurant.Currency);
+        }
+
+        [Test(Description = "Prueba que guarda la invoice de una cuenta")]
+        [ExpectedException(typeof(SaveInvoiceFondaDAOException))]
+        public void SaveInvoicesByAccountExceptionTest()
+        {
+            InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
+            _invoice = (Invoice)EntityFactory.GetInvoice(null, _profile, 4850, (4850) * 0.12f, _restaurant.Currency, 100, i);
             _accountDAO.SaveInvoice(_invoice, _accountId, _restaurantId);
+        }
+        #endregion
+
+        #region
+        [Test(Description = "Prueba el numero generado de la cuenta (Numero único de cuenta por restaurante)")]
+        public void GenerateNumberAccount()
+        {
+
+            _number = _accountDAO.GenerateNumberAccount(_restaurant);
+            Assert.IsNotNull(_number);
         }
         #endregion
 
@@ -168,14 +188,6 @@ namespace FondaDataAccessTest
             Assert.IsNotNull(_listInvoice);
             Assert.AreEqual(1, _listInvoice.Count);
 
-        }
-
-        [Test(Description = "Prueba el numero generado de la cuenta (Numero único de cuenta por restaurante)")]
-        public void GenerateNumberAccount()
-        {
-
-            _number = _accountDAO.GenerateNumberAccount(_restaurant);
-            Assert.IsNotNull(_number);
         }
 
         [Test(Description = "Prueba para el cierre de caja")]

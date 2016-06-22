@@ -713,6 +713,10 @@
     <value>Error en la base de datos al obtener todas las cuentas </value>
     <comment>Mensaje de error para ChangeStatusAccount</comment>
   </data>
+  <data name="MessageGenerateNumberAccountException" xml:space="preserve">
+    <value>Error en la base de datos al generar el numero unico por restaurante de la cuenta</value>
+    <comment>Mensaje de error para GenerateNumberAccount</comment>
+  </data>
   <data name="MessageSaveInvoiceException" xml:space="preserve">
     <value>Error en la base de datos al guardar la factura</value>
     <comment>Mensaje de error para SaveInvoice</comment>

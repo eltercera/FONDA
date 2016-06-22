@@ -925,6 +925,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al generar el numero unico por restaurante de la cuenta.
+        /// </summary>
+        public static string MessageGenerateNumberAccountException {
+            get {
+                return ResourceManager.GetString("MessageGenerateNumberAccountException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha cargado la tabla de ordenes cerradas satisfactoriamente.
         /// </summary>
         public static string MessageGetClosedOrders {

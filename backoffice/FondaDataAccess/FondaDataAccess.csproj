@@ -79,6 +79,7 @@
     <Compile Include="Exceptions\LoadTabletEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\MofifyEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\OrderAccount\FindInvoicesByAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\GenerateNumberAccountFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\SaveInvoiceFondaDAOException.cs" />
     <Compile Include="Exceptions\ValidationEmailEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\ValidationSsnEmployeeFondaBackOfficeException.cs" />
