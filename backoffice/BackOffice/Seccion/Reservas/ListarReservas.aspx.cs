@@ -10,6 +10,7 @@ using BackOfficeModel.Reservations;
 using com.ds201625.fonda.BackOffice.Presenter.Reservations;
 using FondaResources.Reservation;
 using FondaResources.Login;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Reservas
 {
@@ -103,9 +104,14 @@ namespace BackOffice.Seccion.Reservas
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session[ResourceLogin.sessionUserID] != null)
+            {
 
-            //Llama al presentador para llenar la tabla reservas
-            _presenter.GetReservations();
+                //Llama al presentador para llenar la tabla reservas
+                _presenter.GetReservations();
+            }
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
 
         }
 
