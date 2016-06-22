@@ -14,10 +14,12 @@ using FondaLogic.FondaCommandException.Login;
 
 namespace FondaLogic.Commands.Login
 {
+    // metodo que almacena un empleado en la bd
     class CommandSaveEmployee : Command
     {
-
+        // factory que me devolvera dao que contiene metodo a encapsular
         FactoryDAO _facDAO = FactoryDAO.Intance;
+        // empleado que se guardara en la bd
         Employee _employee;
 
         public CommandSaveEmployee(Object receiver) : base(receiver)
@@ -32,7 +34,9 @@ namespace FondaLogic.Commands.Login
                 throw;
             }
         }
-
+        /// <summary>
+        /// metodo a ejecutar que guarda un empleado en la bd
+        /// </summary>
         public override void Execute()
         {
 
@@ -42,10 +46,11 @@ namespace FondaLogic.Commands.Login
                 
                 IEmployeeDAO _employeeDAO = _facDAO.GetEmployeeDAO();
                 
-
+                // metodo del dao que guarda empleado en la bd 
                  _employeeDAO.Save(_employee);
                 
             }
+            // se capturan excepciones que pueden ser generadas en la capa de acceso a datos
             catch (SaveEntityFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
