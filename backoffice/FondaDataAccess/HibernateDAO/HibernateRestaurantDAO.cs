@@ -8,6 +8,8 @@ using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using FondaResources.OrderAccount;
 using com.ds201625.fonda.Factory;
+using com.ds201625.fonda.DataAccess.Exceptions;
+using FondaResources.OrderAccount;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -279,7 +281,20 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             //TODO: Arrojar excepciones personalizadas
             catch (ArgumentOutOfRangeException e)
             {
-                throw new FondaIndexException("No se encontraron ordenes cerradas", e);
+                ClosedOrdersByRestaurantFondaDAOException exception =
+                       new ClosedOrdersByRestaurantFondaDAOException(
+                           OrderAccountResources.MessageClosedOrdersByRestaurantFondaDAOException,
+                           e);
+                throw exception;
+            }
+            catch (Exception e)
+            {
+                ClosedOrdersByRestaurantFondaDAOException exception =
+                    new ClosedOrdersByRestaurantFondaDAOException(
+                        OrderAccountResources.MessageClosedOrdersByRestaurantFondaDAOException,
+                        e);
+                //Logger
+                throw exception;
             }
 
         }

@@ -184,18 +184,21 @@ namespace FondaDataAccessTest
         [ExpectedException(typeof(CloseCashRegisterFondaDAOException))]
         public void CloseCashRegisterExceptionTest()
         {
-            float _total = _accountDAO.CloseCashRegister(_restaurant.Id);
+            float _total = _accountDAO.CloseCashRegister(0);
             Assert.IsNotNull(_total);
             Assert.AreEqual(_total, 13900);
         }
         #endregion
-        [Test(Description ="Obtiene el numero de ordenes cerradas de un Restaurante por su id")]
+
+        #region
+        [Test(Description = "Obtiene el numero de ordenes cerradas de un Restaurante por su id")]
         public void ClosedOrdersByRestaurantIdTest()
         {
             _listAccounts = _restaurantDAO.ClosedOrdersByRestaurantId(_restaurantId);
             Assert.IsNotNull(_listAccounts);
             Assert.AreEqual(_listAccounts.Count, 8);
         }
+        #endregion
 
         [Test(Description = "Obtiene el numero de ordenes abiertas de un Restaurante por su id")]
         public void OpenOrdersByRestaurantIdTest()
