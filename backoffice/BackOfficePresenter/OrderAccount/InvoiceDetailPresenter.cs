@@ -21,6 +21,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private int totalColumns = 3;
         private int accountId = 0;
         private int invoiceId = 0;
+        private int restaurantId = 0;
         private string _currency = null;
         private float subtotal = 0.0F;
         private Invoice _invoice;
@@ -30,9 +31,52 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         {
             _view = viewInvoiceDetail;
         }
+
         ///<summary>
-        ///Metodo para llenar la tabla de Detalle de la Orden
+        ///Metodo para imprimir la factura
         /// </summary>
+        public void PrintInvoice()
+        {
+
+            List<int> parameters;
+            Command commandPrintInvoice;
+
+            try
+            {
+                accountId = int.Parse(_view.SessionIdAccount);
+                restaurantId = int.Parse(_view.SessionRestaurant);
+
+                //Recibe 2 enteros
+                // 1  id de la factura
+                // 2  id del restaurant               
+                parameters = new List<int> { accountId, restaurantId };
+                //Obtiene la instancia del comando enviado el restaurante como parametro
+                commandPrintInvoice = CommandFactory.GetCommandPrintInvoice(parameters);
+
+                //Ejecuta el comando deseado
+                commandPrintInvoice.Execute();
+
+            }
+            /// EXCEPCION DE PRINT INVOICE
+            catch (MVPExceptionDetailOrderTable ex)
+            {
+                //Revisar
+                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+                    (
+                        Errors.MVPExceptionDetailOrderTableCode,
+                        Errors.ClassNameDetailOrderPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        Errors.MessageMVPExceptionDetailOrderTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                throw e;
+                ErrorLabel(e.MessageException);
+            }
+        }
+
+        ///<summary>
+        ///Metodo para llenar la tabla de Detalle de la factura
         public void GetDetailOrder()
         {
             
