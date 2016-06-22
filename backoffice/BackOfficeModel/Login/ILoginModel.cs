@@ -9,6 +9,10 @@ using System.Web.UI.WebControls;
 
 namespace BackOfficeModel.Login
 {
+    /// <summary>
+    /// metodos get y set de los elementos de la vista Login.aspx
+    /// a utilizarse en el presentador
+    /// </summary>
     public interface ILoginModel : IModel
     {
         // login del sistema

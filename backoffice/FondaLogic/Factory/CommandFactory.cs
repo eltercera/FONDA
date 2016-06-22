@@ -168,54 +168,101 @@ namespace FondaLogic.Factory
         #region Login
 
         //Defincion de los comandos a implementar del modulo Login
-
+        /// <summary>
+        /// Metodo de la fabrica para el Comando GetCommandGetEmployeeByUser
+        /// </summary>
+        /// <param name="receiver">usuario del empleado a buscar</param>
+        /// <returns>comando CommandGetEmployeeByUser</returns>
         public static Command GetCommandGetEmployeeByUser(object receiver)
         {
             return new CommandGetEmployeeByUser(receiver);
         }
-
+        /// <summary>
+        /// Metodo de la fabrica para el Comand GetCommandGetRestaurantById
+        /// </summary>
+        /// <param name="receiver">id del restaurant a buscar</param>
+        /// <returns>comando GetCommandGetRestaurantById</returns>
         public static Command GetCommandGetRestaurantById(object receiver)
         {
             return new CommandGetRestaurantById(receiver);
         }
-
+        /// <summary>
+        /// Metodo de la fabrica para el Comando GetCommandSaveEmployee
+        /// </summary>
+        /// <param name="receiver">emplado que se quiere guardar en la bd</param>
+        /// <returns>Comando GetCommandSaveEmployee</returns>
         public static Command GetCommandSaveEmployee(object receiver)
         {
             return new CommandSaveEmployee(receiver);
         }
-
+        /// <summary>
+        /// Metodo de la fabrica para el Comando GetCommandGetAllRoles
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <returns>comando GetCommandGetAllRoles</returns>
         public static Command GetCommandGetAllRoles(object receiver)
         {
             return new CommandGetAllRoles(receiver);
         }
-
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandGetAllRestaurants
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <returns>comando CommandGetAllRestaurants</returns>
         public static Command GetCommandGetAllRestaurants(object receiver)
         {
             return new CommandGetAllRestaurants(receiver);
         }
+        /// <summary>
+        /// Metodo de la fabrica para el Comando GetCommandGetEmployeeById
+        /// </summary>
+        /// <param name="receiver">id del empleado a buscar</param>
+        /// <returns>comando GetCommandGetEmployeeById</returns>
         public static Command GetCommandGetEmployeeById(object receiver)
         {
             return new CommandGetEmployeeById(receiver);
         }
-
+        /// <summary>
+        /// Metodo de la fabrica para el Comando GetCommandGetAllEmployee
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <returns>comando GetCommandGetAllEmployee</returns>
         public static Command GetCommandGetAllEmployee(object receiver)
         {
             return new CommanGetAllEmployee(receiver);
         }
-
+        /// <summary>
+        /// Metodo de la fabrica para el Comando GetComandoGetUserAcountByEmail
+        /// </summary>
+        /// <param name="receiver">email del usuario a buscar</param>
+        /// <returns>comando GetComandoGetUserAcountByEmail</returns>
         public static Command GetComandoGetUserAcountByEmail(object receiver)
         {
             return new ComandoGetUserAcountByEmail(receiver);
         }
+        /// <summary>
+        /// Metodo de la fabrica para el comando GetComandGetEmployeeBySsn
+        /// </summary>
+        /// <param name="receiver">Ssn del empleado a buscar </param>
+        /// <returns>comando GetComandGetEmployeeBySsn</returns>
         public static Command GetComandGetEmployeeBySsn(object receiver)
         {
             return new ComandGetEmployeeBySsn(receiver);
         }
-
+        /// <summary>
+        /// Metodo de la fabrica para el comando GetCommandSaveEntity 
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <returns>comando GetCommandSaveEntity</returns>
         public static Command GetCommandSaveEntity(object receiver)
         {
             return new CommandSaveEntity(receiver);
         }
+        /// <summary>
+        /// Metodo de la fabrica para el comando CommandGetRolById
+        /// </summary>
+        /// <param name="receiver">id del rol a buscar</param>
+        /// <returns>comando CommandGetRolById</returns>
         public static Command CommandGetRolById(object receiver)
         {
             return new CommandGetRolById(receiver);

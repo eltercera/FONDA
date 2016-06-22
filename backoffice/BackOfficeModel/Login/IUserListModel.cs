@@ -10,6 +10,10 @@ namespace BackOfficeModel.Login
 {
     public interface IUserListModel : IModel
     {
+        /// <summary>
+        /// metodos get y set de los elementos de la vista ListarUsuario.aspx
+        /// a utilizarse en el presentador
+        /// </summary>
         HtmlGenericControl userListAlert { get; set; }
         Table tableUserList { get; set; }
         TextBox textBoxNameUser { get; set; }
