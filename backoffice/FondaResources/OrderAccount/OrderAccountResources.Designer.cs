@@ -1312,6 +1312,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se han cargado las facturas correctamente.
+        /// </summary>
+        public static string SuccessMessageOrderInvoicesPresenter {
+            get {
+                return ResourceManager.GetString("SuccessMessageOrderInvoicesPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to La factura se ha imprimido satisfactoriamente.
         /// </summary>
         public static string SuccessPrintInvoice {

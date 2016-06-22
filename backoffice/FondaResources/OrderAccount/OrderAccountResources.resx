@@ -681,4 +681,8 @@
     <value>Se ha calculado el total de la orden correctamente</value>
     <comment>Mensaje de exito para CommandTotalOrder</comment>
   </data>
+  <data name="SuccessMessageOrderInvoicesPresenter" xml:space="preserve">
+    <value>Se han cargado las facturas correctamente</value>
+    <comment>Mensaje de exito para obtener las facturas</comment>
+  </data>
 </root>

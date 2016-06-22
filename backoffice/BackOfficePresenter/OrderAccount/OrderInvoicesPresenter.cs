@@ -144,8 +144,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             }
 
 
-            Logger.WriteSuccessLog(OrderAccountResources.ClassNameClosedOrdersPresenter
-                                    , OrderAccountResources.MessageGetClosedOrders
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameOrderInvoicesPresenter
+                                    , OrderAccountResources.SuccessMessageOrderInvoicesPresenter
                                     , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
                                     );
         }
