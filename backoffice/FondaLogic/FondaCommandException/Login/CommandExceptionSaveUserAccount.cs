@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.FondaCommandException.Login
 {
+    /// <summary>
+    /// excepcion que es lanzada en caso de que falle una consulta de useraccount
+    /// </summary>
     public class CommandExceptionSaveUserAccount : FondaLogicException
     {
         public CommandExceptionSaveUserAccount() : base() { }

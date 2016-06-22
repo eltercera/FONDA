@@ -18,10 +18,10 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.IAllRestaurantsView;
-import com.ds201625.fonda.interfaces.IAllRestaurantsViewPresenter;
-import com.ds201625.fonda.interfaces.IFavoriteView;
-import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
+import com.ds201625.fonda.interfaces.AllRestaurantsView;
+import com.ds201625.fonda.interfaces.AllRestaurantsViewPresenter;
+import com.ds201625.fonda.interfaces.FavoriteView;
+import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
 import com.ds201625.fonda.presenter.AllRestaurantsPresenter;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
 import com.ds201625.fonda.views.adapters.RestaurantViewItemList;
@@ -33,7 +33,7 @@ import java.util.List;
  * Fragment que contiene la lista de restaurantes
  */
 public class RestaurantListFragment extends BaseFragment implements
-        IAllRestaurantsView,IFavoriteView, SwipeRefreshLayout.OnRefreshListener{
+        AllRestaurantsView,FavoriteView, SwipeRefreshLayout.OnRefreshListener{
     /**
      * String para indicar al logger la clase actual
      */
@@ -49,8 +49,8 @@ public class RestaurantListFragment extends BaseFragment implements
     private RestaurantViewItemList restList;
     private boolean multi;
     private List<Restaurant> restaurantList;
-    private IAllRestaurantsViewPresenter presenter;
-    private IFavoriteViewPresenter presenterfav;
+    private AllRestaurantsViewPresenter presenter;
+    private FavoriteViewPresenter presenterfav;
 
     /**
      * Crea el fragment
@@ -123,12 +123,14 @@ public class RestaurantListFragment extends BaseFragment implements
                                     presenterfav.addFavoriteRestaurant(r);
 
                                     Toast.makeText(RestaurantListFragment.super.getContext(),
-                                            "Se han agregado "+restList.countSelected()+" Restaurantes a Favoritos",
+                                            "Se han agregado "+restList.countSelected()+
+                                                    " Restaurantes a Favoritos",
                                             Toast.LENGTH_LONG).show();
                                     Log.d("Favoritos eliminados: ",r.getName().toString());
                                 }
                                 catch (Exception e) {
-                                    Log.e(TAG,"Error en onActionItemClicked al agregar restaurant", e);
+                                    Log.e(TAG,"Error en onActionItemClicked al agregar restaurant",
+                                            e);
                                 }
                             }
 

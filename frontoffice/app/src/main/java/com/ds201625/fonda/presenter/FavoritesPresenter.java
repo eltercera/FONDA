@@ -4,8 +4,8 @@ import android.util.Log;
 
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.IFavoriteView;
-import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
+import com.ds201625.fonda.interfaces.FavoriteView;
+import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
@@ -16,9 +16,9 @@ import java.util.List;
  * Created by Hp on 17/06/2016.
  * Presentador para obtener todos los favoritos
  */
-public class FavoritesPresenter implements IFavoriteViewPresenter {
+public class FavoritesPresenter implements FavoriteViewPresenter {
 
-    private IFavoriteView iFavoriteView;
+    private FavoriteView favoriteView;
     private Commensal logedComensal;
     private String emailToWebService;
     private FondaCommandFactory facCmd;
@@ -29,8 +29,8 @@ public class FavoritesPresenter implements IFavoriteViewPresenter {
      * Constructor
      * @param view
      */
-    public FavoritesPresenter(IFavoriteView view){
-        iFavoriteView = view;
+    public FavoritesPresenter(FavoriteView view){
+        favoriteView = view;
     }
 
     /**

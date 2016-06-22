@@ -26,6 +26,16 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
                 .Not.Nullable()
                 .Cascade.Persist();
 
+
+            #region Reservation
+
+            HasMany(x => x.Reservations)
+                .KeyColumn("fk_tab_reservations")
+                .ExtraLazyLoad()
+                .Cascade.All();
+
+            #endregion
+
         }
     }
 }

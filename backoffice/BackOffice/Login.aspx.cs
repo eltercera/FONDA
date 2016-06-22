@@ -20,7 +20,11 @@ namespace BackOffice.Seccion.Configuracion
 {
     public partial class WebForm1 : System.Web.UI.Page, ILoginModel
     {
-
+        /// <summary>
+        /// metodo que carga al iniciar pagina
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("entre page load");

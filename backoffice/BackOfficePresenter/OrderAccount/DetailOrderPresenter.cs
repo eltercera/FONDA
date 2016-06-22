@@ -89,19 +89,35 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             }
             catch (MVPExceptionDetailOrderTable ex)
             {
-                //Revisar
                 MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
                     (
-                        Errors.MVPExceptionDetailOrderTableCode,
-                        Errors.ClassNameDetailOrderPresenter,
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameDetailOrderPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionDetailOrderTable,
+                        OrderAccountResources.MessageMVPExceptionDetailOrderTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                throw e;
                 ErrorLabel(e.MessageException);
             }
+            catch (Exception ex)
+            {
+                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+                    (
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameDetailOrderPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionDetailOrderTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                ErrorLabel(e.MessageException);
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameClosedOrdersPresenter
+                        , OrderAccountResources.MessageGetClosedOrders
+                        , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                        );
         }
 
         private void FillTable(IList<DishOrder> data)

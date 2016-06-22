@@ -62,13 +62,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         //    return (FindAll(criterion));
         //}
 
-        public IList<Table> TablesAvailableByDate(int restaurantId, IList<Reservation> listReservation, DateTime date)
+        public IList<Table> TablesAvailableByDate(int restaurantId, IList<Reserve> listReservation, DateTime date)
         {
             IList<Table> tablesUnavailable = new List<Table>();
             IList<Table> tablesAvailable = GetTables(restaurantId);
 
             //busca las reservas que existan en la fecha de la nueva reserva
-            foreach ( Reservation t in listReservation)
+            foreach ( Reserve t in listReservation)
             {
                 if (t.ReserveDate == date && t.ReserveTable != null)
                     tablesUnavailable.Add(t.ReserveTable);  

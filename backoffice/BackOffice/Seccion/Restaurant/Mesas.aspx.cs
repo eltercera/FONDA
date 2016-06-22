@@ -56,8 +56,9 @@ namespace BackOffice.Seccion.Restaurant
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
             //Genero la lista de reservas por restaurant
-            IReservationDAO _reservationDAO = factoryDAO.GetReservationDAO();
-            IList<Reservation> listReservation = _reservationDAO.FindByRestaurant(_idRestaurant);
+            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+            //  IList<Reserve> listReservation = _restaurantDAO.ReservationsByRestaurantId(_idRestaurant);
+            IList<Reserve> listReservation = null;
             //Fecha del sistema
             DateTime today = DateTime.Now;
             DateTime now = new DateTime(today.Year, today.Month, today.Day, today.Hour, today.Minute, 0);

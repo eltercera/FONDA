@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.FondaCommandException.Login
 {
+    /// <summary>
+    /// excepcion de tipo RequieredParameterNotFoundException
+    /// </summary>
     class RequieredParameterNotFoundException : FondaLogicException
     {
         private RequieredParameterNotFoundException(string message) : base(message)

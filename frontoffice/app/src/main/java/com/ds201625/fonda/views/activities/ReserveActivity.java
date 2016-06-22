@@ -1,108 +1,204 @@
 package com.ds201625.fonda.views.activities;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.services.ReservationService;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Reservation;
 import com.ds201625.fonda.logic.SessionData;
-import com.google.gson.Gson;
+import com.ds201625.fonda.views.fragments.BaseFragment;
+import com.ds201625.fonda.views.fragments.ReserveListFragment;
 
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Jessica on 18/4/2016.
- */
 
-public class ReserveActivity extends BaseNavigationActivity {
-    private ListView list;
-    private List<Reservation> reserveList;
-    String[] restaurants = {
-            "The dining room",
-            "Mogi Mirin"};
-    String[] date = {
-            "15/09/2016",
-            "27/09/2016"};
-/*    String[] time = {
-            "8:00 p.m.",
-            "6:00 p.m."};*/
-    String[] dinners = {
-            "3 comensales",
-            "2 comensales" };
-    Integer[] picture = {
-            R.mipmap.ic_restaurant001,
-            R.mipmap.ic_restaurant002};
+public class ReserveActivity extends BaseNavigationActivity
+{
+
+    /**
+     * Item del Menu para guardar
+     */
+    private MenuItem saveBotton;
+
+    /**
+     * Fragment del formulario
+     */
+   // private ReserveFormFragment reserveFormFrag;
+
+    /**
+     * Fragment de la lista
+     */
+    private ReserveListFragment reserveListFrag;
+
+    /**
+     * Boton Flotante
+     */
+    private FloatingActionButton fab;
+
+    /**
+     * Administrador de Fragments
+     */
+    private FragmentManager fm;
+
+    /**
+     * ToolBar
+     */
+    private Toolbar tb;
+
+    /**
+     * Solo para prueba de la interface
+     */
+    private List<Reservation> p;
+
+    private boolean onForm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_reserve);
-
-        /**
-         * Esta es la validacion de si el usuario ya esta loggeado o no.
-         */
-        // para saltar o no
-        boolean skp = false;
-
-        // inicializa los datos de la sesion
-        if (SessionData.getInstance() == null)
-            try {
-                SessionData.initInstance(getApplicationContext());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         super.onCreate(savedInstanceState);
 
-        if (SessionData.getInstance().getToken() == null) {
-            skip();
-            return;
-        }
-        else {
-            /**
-             * Esto es lo que tenia el Modulo de Reservas en principio.
-             */
-            list = (ListView) findViewById(R.id.listOfReservations);
+        // Obtencion de los componentes necesaios de la vista
+        fab = (FloatingActionButton)findViewById(R.id.fab);
+        tb = (Toolbar)findViewById(R.id.toolbar);
+        fm = getSupportFragmentManager();
 
-            ReservationService allReserves = FondaServiceFactory.getInstance().
-                    getAllReservesService();
-            reserveList = allReserves.getAllReserves(2);
+        // Creacion de fragmen y pase argumento
+       // reserveFormFrag = new ReserveFormFragment();
+        reserveListFrag = new ReserveListFragment();
+        Bundle args = new Bundle();
+        args.putBoolean("multiSelect",true);
+        reserveListFrag.setArguments(args);
 
-            setupListView();
-        }
-    }
+        //Lanzamiento de reserveListFrag como el principal
+        fm.beginTransaction()
+                .replace(R.id.fragment_container,reserveListFrag)
+                .commit();
 
-    private void skip() { startActivity(new Intent(this,ReserveActivity.class));}
+        // Asegura que almenos onCreate se ejecuto en el fragment
+        fm.executePendingTransactions();
 
-    private void setupListView(){
-        ReserveList adapter = new
-                ReserveList (ReserveActivity.this,restaurants,date,dinners, picture,reserveList);
-        list = (ListView)findViewById(R.id.listOfReservations);
-        // list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Toast.makeText(ReserveActivity.this, "You Clicked at " + restaurants[+position], Toast.LENGTH_SHORT).show();
-                Intent change = new Intent (ReserveActivity.this,CancelReserveActivity.class);
-                Reservation test = getSelectedReservation(position);
-                change.putExtra("reservacion", new Gson().toJson(test));
-                startActivity(change);
+            public void onClick(View v) {
+     //           showFragment(reserveFormFrag);
+       //         reserveFormFrag.setReserve();
             }
         });
     }
+    /**
+     * Realiza el intercambio de vistas de fragments
+     * @param fragment el fragment que se quiere mostrar
+     */
+    private void showFragment(BaseFragment fragment) {
+        fm.beginTransaction()
+                .replace(R.id.fragment_container,fragment)
+                .commit();
+        fm.executePendingTransactions();
 
-    private Reservation getSelectedReservation(int position){
-        int contador = 0;
-        for (Reservation reservation: this.reserveList){
-            if (contador == position){
-                Log.v("WEBSERVICEcanguro", reservation.getRestaurant().getName());
-                return reservation;
-            }
-            contador ++;
+        //Muestra y oculta compnentes.
+        if(fragment.equals(reserveListFrag)){
+            if(saveBotton != null)
+                saveBotton.setVisible(false);
+            fab.setVisibility(View.VISIBLE);
+            onForm = false;
+        } else {
+            onForm = true;
+            if(saveBotton != null)
+                saveBotton.setVisible(true);
+            fab.setVisibility(View.GONE);
         }
-        return null;
+
     }
+    /**
+     * Sobre escritura para la iniciacion del menu en el toolbars
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.profile, menu);
+
+        saveBotton = menu.findItem(R.id.action_favorite_save);
+        return true;
+    }
+    /**
+     * Opciones y acciones del menu en el toolbars
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_favorite_save:
+                save();
+                break;
+        }
+        return true;
+    }
+
+    private void save() {
+     //   reserveFormFrag.changeProfile();
+
+   //     Reservation reserve = reserveFormFrag.getProfile();
+        ProfileService ps = FondaServiceFactory.getInstance()
+                .getProfileService(SessionData.getInstance().getToken());
+       /* try {
+            if (reserve.getId() == 0) {
+                ps.addProfile(reserve);
+            } else {
+                ps.editProfile(reserve);
+            }
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        }
+        reserveListFrag.updateList();
+        reserveListFrag.updateList();
+        showFragment(reserveListFrag);
+        hideKyboard();*/
+    }
+    /**
+     * Implementaciones de comunicacion con los fragments
+    // * @param reserve
+     */
+ /*   @Override
+    public void OnProfileSelect(Reservation reserve) {
+        showFragment(reserveFormFrag);
+        reserveFormFrag.setProfile(reserve);
+    }
+
+    @Override
+    public void OnProfilesSelected(ArrayList<Reservation> reserve) {
+
+    }*/
+/*
+    @Override
+    public void OnProfileSelectionMode() {
+        tb.setVisibility(View.GONE);
+        fab.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void OnProfileSelectionModeExit() {
+        tb.setVisibility(View.VISIBLE);
+        fab.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!onForm) {
+            super.onBackPressed();
+        } else {
+            showFragment(reserveListFrag);
+        }
+    }*/
 }
+

@@ -8,12 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.IFavoriteView;
-import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
+import com.ds201625.fonda.interfaces.FavoriteView;
+import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
 
 import java.util.ArrayList;
@@ -22,8 +19,8 @@ import java.util.List;
 /**
  * Adapter para la vista de la lista de restaurantes favoritos
  */
-public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> implements IFavoriteView{
-    private IFavoriteViewPresenter presenter;
+public class FavoriteRestViewItemList extends BaseArrayAdapter<Restaurant> implements FavoriteView {
+    private FavoriteViewPresenter presenter;
     private String TAG = "FavoriteViewItemList";
 
     /**

@@ -11,7 +11,7 @@ namespace BackOfficeModel.OrderAccount
     {
         Table OrderInvoicesTable { get; set; }
 
-        string Session { get; set; }
+        string SessionAccountId { get; set; }
 
         string SessionIdInvoice { get; set; }
       

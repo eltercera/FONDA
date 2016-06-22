@@ -4,6 +4,7 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
+using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,22 +18,13 @@ namespace FondaLogic.Commands.OrderAccount
         FactoryDAO _facDAO = FactoryDAO.Intance;
         int _invoiceId = 0;
 
-        public CommandGetInvoice(Object receiver) : base(receiver)
-        {
-            try
-            {
-                _invoiceId = (int)receiver;
-            }
-            catch (Exception)
-            {
-                //TODO: Enviar excepcion personalizada
-                throw;
-            }
-        }
+        public CommandGetInvoice(Object receiver) : base(receiver) { }
+
         public override void Execute()
         {
             try
             {
+                _invoiceId = (int)Receiver;
                 //Defino el DAO
                 IInvoiceDao _invoiceDAO;
                 //Obtengo la instancia del DAO a utilizar
@@ -44,19 +36,42 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetInvoice exception = new CommandExceptionGetInvoice(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameGetInvoice,
+                    OrderAccountResources.CommandExceptionGetInvoiceCode,
+                    OrderAccountResources.ClassNameGetInvoice,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionGetInvoice,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
 
                 Invoice _invoice = EntityFactory.GetInvoice();
                 Receiver = _invoice;
+
+                throw exception;
             }
+            catch (Exception ex)
+            {
+                CommandExceptionGetInvoice exception = new CommandExceptionGetInvoice(
+                    OrderAccountResources.CommandExceptionGetInvoiceCode,
+                    OrderAccountResources.ClassNameGetInvoice,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionGetInvoice,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                Invoice _invoice = EntityFactory.GetInvoice();
+                Receiver = _invoice;
+
+                throw exception;
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameGetInvoice
+                , OrderAccountResources.SuccessMessageCommandGetInvoice
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
+
         }
     }
 }

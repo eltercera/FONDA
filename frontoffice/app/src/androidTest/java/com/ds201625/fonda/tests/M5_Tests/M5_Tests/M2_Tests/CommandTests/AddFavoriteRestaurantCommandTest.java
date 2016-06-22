@@ -1,7 +1,9 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.CommandTests;
 
 import android.test.MoreAsserts;
+import android.util.Log;
 
+import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
@@ -32,12 +34,12 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
     private Command cmd;
 
     /**
-     * id de comensal logueado
+     * comensal logueado
      */
     private Commensal logedCommensal;
 
     /**
-     * id de restaurante seleccionado
+     * restaurante seleccionado
      */
     private Restaurant selectedRestaurantAdd;
 
@@ -52,6 +54,10 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
     private Commensal commensal;
 
     /**
+     * Variable String que indica la clase actual
+     */
+    private String TAG = "AddFavoriteRestaurantCommandTest";
+    /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
      * @throws Exception
      */
@@ -60,7 +66,7 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
         facCmd = FondaCommandFactory.getInstance();
         commensal = FondaEntityFactory.getInstance().GetCommensal();
         logedCommensal = FondaEntityFactory.getInstance().GetCommensal(13);
-        selectedRestaurantAdd = FondaEntityFactory.getInstance().GetRestaurant(4);
+        selectedRestaurantAdd = FondaEntityFactory.getInstance().GetRestaurant(3);
         email = "adri@hotmail.com";
     }
 
@@ -78,11 +84,11 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
             cmd.run();
             commensal = (Commensal) cmd.getResult();
 
-            assertNotNull(commensal);
+            assertNotNull(commensal.getId());
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandIsNotNull al agregar favorito",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandIsNotNull al agregar favorito",e);
         }
     }
 
@@ -102,9 +108,9 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
 
             assertEquals(email, commensal.getEmail());
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandIsNotEmpty al agregar favorito",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandIsNotEmpty al agregar favorito",e);
         }
     }
 
@@ -124,9 +130,9 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
             assertEquals(email, commensal.getEmail());
             MoreAsserts.assertNotEmpty(commensal.getFavoritesRestaurants());
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandElements al agregar favorito",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandElements al agregar favorito",e);
         }
     }
 
@@ -146,13 +152,16 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
             assertEquals(3, commensal.getFavoritesRestaurants().size());
 
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandList al agregar favorito",e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAddFavoriteRestaurantCommandList al agregar favorito",e);
         }
     }
 
-    public void testAddFavoriteRestauranNullPointerException() {
+    /**
+     *  Metodo para probar que el commensal que retorna es nulo
+     */
+    public void testAddFavoriteRestauranIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
 
@@ -164,15 +173,39 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
 
             assertNull(commensal);
 
-        } catch(RestClientException e) {}
-        catch(NullPointerException e) {
-            //fail("Se esperaba excepcion NullPointerException");
+        } catch(RestClientException e) {
+            Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favorito",e);
         }
-        catch(Exception e) {}
+        catch(NullPointerException e) {
+            Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favorito",e);
+        }
+        catch(Exception e) {
+            Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favorito",e);
+        }
 
     }
 
+    /**
+     *  Metodo para probar datos incorrectos al agregar un restaurante favorito
+     */
+    public void testAddFavoriteRestaurantRetrofitException() {
+        try {
+            Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(897920);
 
+            cmd = facCmd.addFavoriteRestaurantCommand();
+            cmd.setParameter(0,prueba);
+            cmd.setParameter(1,null);
+            cmd.run();
+            commensal = (Commensal) cmd.getResult();
+
+        }catch (InvalidDataRetrofitException e){
+            Log.d("Test", "Error en testAddFavoriteRestaurantRetrofitException al agregar favorito", e);
+        }
+        catch(Exception e) {
+            Log.e(TAG,"Error en testAddFavoriteRestaurantRetrofitException al agregar favorito",e);
+        }
+
+    }
     /**
      * Metodo para limpiar los objetos de las pruebas unitarias
      * @throws Exception

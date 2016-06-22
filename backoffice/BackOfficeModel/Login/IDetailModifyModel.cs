@@ -9,6 +9,10 @@ namespace BackOfficeModel.Login
 {
     public interface IDetailModifyModel : IModel
     {
+        /// <summary>
+        /// metodos get y set de los elementos de la vista DetalleModificar.aspx
+        /// a utilizarse en el presentador
+        /// </summary>
         Label labelrestauranteemp { get; set; }
         Label labeltelefonoemp { get; set; }
         Label labeldireccionemp { get; set; }

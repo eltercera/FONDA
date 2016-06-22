@@ -66,15 +66,10 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                   ResourceMessages.CommensalEmail + answer.Id + ResourceMessages.Slash + answer.Email,
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (FindByEmailUserAccountFondaDAOException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetCommensalEmailCommandException(ResourceMessages.GetCommensalEmailException, e);
-            }
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetCommensalEmailCommandException(ResourceMessages.ParametersGetComensEmailException, 
+                throw new GetCommensalEmailCommandException(ResourceMessages.ParametersGetComensEmailException,
                            e);
             }
             catch (ParameterIndexOutOfRangeException e)
@@ -89,7 +84,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 throw new GetCommensalEmailCommandException(ResourceMessages.ParametersGetComensEmailException,
                            e);
             }
-            catch (NullReferenceException e)
+            catch (FindByEmailUserAccountFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetCommensalEmailCommandException(ResourceMessages.GetCommensalEmailException, e);

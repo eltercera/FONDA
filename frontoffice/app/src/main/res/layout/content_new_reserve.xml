@@ -11,82 +11,75 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="testdate"
-        android:id="@+id/tvCalendar"
-        android:textSize="@dimen/abc_text_size_large_material"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/tvDateReservation"
-        android:layout_alignRight="@+id/tvClock"
-        android:layout_alignEnd="@+id/tvClock"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="testhour"
-        android:id="@+id/tvClock"
-        android:textSize="@dimen/abc_text_size_large_material"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/tvTimeReservation"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Fecha de Reservación"
-        android:id="@+id/tvDateReservation"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/restaurantName"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Hora de Reservación"
-        android:id="@+id/tvTimeReservation"
-        android:layout_marginTop="54dp"
-        android:layout_below="@+id/tvCalendar"
-        android:layout_alignLeft="@+id/tvDateReservation"
-        android:layout_alignStart="@+id/tvDateReservation"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Número de Comensales"
-        android:id="@+id/tvDinersNumber"
-        android:layout_marginTop="62dp"
-        android:layout_below="@+id/tvClock"
-        android:layout_alignLeft="@+id/tvTimeReservation"
-        android:layout_alignStart="@+id/tvTimeReservation"
-        android:layout_centerHorizontal="true"/>
-
-    <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/npPickDiners"
-        android:orientation="vertical"
-        android:layout_below="@+id/tvDinersNumber"
-        android:layout_toRightOf="@+id/restaurantName"
-        android:layout_toEndOf="@+id/restaurantName"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Restaurante"
-        android:id="@+id/restaurantName"
+        android:text="Fecha Reservación"
+        android:id="@+id/texto"
+        android:gravity="center"
+        android:layout_weight="0.08"
+        android:editable="false"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textStyle="bold|italic"
-        android:textSize="@dimen/abc_text_size_headline_material" />
+        android:textSize="30dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Elegir fecha"
+        android:id="@+id/button"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.03"
+        android:layout_below="@+id/texto"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView android:id="@+id/timeDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Elegir hora"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp" />
+
+    <Button
+        android:id="@+id/pickTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HORA"
+        android:layout_below="@+id/timeDisplay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Número de Comensales"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:layout_marginTop="55dp"
+        android:layout_below="@+id/pickTime"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView2" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ncomensal"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:layout_alignRight="@+id/button"
+        android:layout_alignEnd="@+id/button"
+
+        />
 
 
 </RelativeLayout>

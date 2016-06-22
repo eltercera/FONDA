@@ -77,19 +77,24 @@ namespace BackOfficePresenter.Login
             _view.textBoxlastNameUser.Text = _employee.LastName;
             //nacionalidad del empleado
             _view.dropDownListNss1.Text = _employee.Ssn.Substring(0, 1);
+            _view.dropDownListNss1.Enabled = false;
+            
             // ssn del empleado
             int _length = (_employee.Ssn.Length) - 2;
             _view.textBoxNss2.Text = _employee.Ssn.Substring(2, _length);
+            _view.textBoxNss2.Enabled = false;
             //genero del empleado
             _view.DropDownListGender.Text = _employee.Gender.ToString();
             //fecha del empleado
             _view.textBoxBirtDate.Value = _employee.BirthDate.ToString("yyyy-MM-dd");
             //nombre de usuario del empleado
             _view.textBoxUserNameU.Text = _employee.Username;
+            _view.textBoxUserNameU.Enabled = false;
             //rol del empleado
             _view.DropDownListRole.Text = _employee.Role.Id.ToString();
             //email del empleado
             _view.textBoxEmail.Text = _employee.UserAccount.Email;
+            _view.textBoxEmail.Enabled = false;
             //inahabilitacion de las claves
             _view.textBoxPaswword.Enabled = false;
             _view.textBoxRepitPaswword.Enabled = false;
@@ -117,6 +122,7 @@ namespace BackOfficePresenter.Login
                 //obtengo resultado
                 _employeeResult = (Employee)CommandGetEmployeeById.Receiver;
             }
+            //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -146,17 +152,27 @@ namespace BackOfficePresenter.Login
             return _employeeResult;
 
         }
+        /// <summary>
+        /// metodo que carga los roles en el DropDown
+        /// </summary>
         protected void ChangeRole()
         {
+            //lista donde estaran resultados
             IList<Role> _roleList;
+            //rol del usuario que ha iniciado session
             string _role1 = (string)(HttpContext.Current.Session[ResourceLogin.sessionRol]);
+            //comando de traer todos los roles
             Command CommandGetAllRoles;
+            //lo fabrico
             CommandGetAllRoles = CommandFactory.GetCommandGetAllRoles("null");
+            //execute del comando
             try
             {
+                //obtencion de resultado
                 CommandGetAllRoles.Execute();
                 _roleList = (IList<Role>)CommandGetAllRoles.Receiver;
             }
+            //captura excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -171,11 +187,6 @@ namespace BackOfficePresenter.Login
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetRol(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
-            }
-            catch (NullReferenceException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRol(FondaResources.Login.Errors.ClassNameGetRoles, e);
             }
             catch (Exception e)
             {
@@ -236,7 +247,10 @@ namespace BackOfficePresenter.Login
                 }
             }
         }
-
+        /// <summary>
+        /// metodo que se activa al dar click en el boton de modificar
+        /// </summary>
+        /// <returns></returns>
         public bool Modify_Click()
         {
              FactoryDAO _facDAO;
@@ -287,8 +301,10 @@ namespace BackOfficePresenter.Login
                         Command CommandSaveUserAccount = CommandFactory.GetCommandSaveEntity(_employee.UserAccount);
                         try
                         {
+                            //se ejecuta comando
                             CommandSaveUserAccount.Execute();
                         }
+                        //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
                         catch (SaveEntityFondaDAOException e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -310,11 +326,6 @@ namespace BackOfficePresenter.Login
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                             throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
                         }
-                        catch (NullReferenceException e)
-                        {
-                            Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                            throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
-                        }
                         catch (Exception e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -322,12 +333,14 @@ namespace BackOfficePresenter.Login
                         }
                         // Guarda el resultado.
                     }
+                    //comando para guardar empleado
                     System.Diagnostics.Debug.WriteLine("Guarde en la bd");
                     Command CommandSaveEmployee = CommandFactory.GetCommandSaveEmployee(_employee);
                     try
                     {
                         CommandSaveEmployee.Execute();
                     }
+                    //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
                     catch (SaveEntityFondaDAOException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -348,11 +361,6 @@ namespace BackOfficePresenter.Login
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                         throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
-                    }
-                    catch (NullReferenceException e)
-                    {
-                        Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
                     }
                     catch (Exception e)
                     {
@@ -375,7 +383,10 @@ namespace BackOfficePresenter.Login
             }
             return true;
         }
-
+        /// <summary>
+        /// metodo que valida los campos que estan en el modal
+        /// </summary>
+        /// <returns></returns>
         public bool ValidarCampo()
         {
             int good = 0;
@@ -400,8 +411,12 @@ namespace BackOfficePresenter.Login
             string Identity = _view.dropDownListNss1.Text;
             string Dni = _view.textBoxNss2.Text;
             string Birthdate = _view.textBoxBirtDate.Value;
-            String[] substrings = Birthdate.Split('-');
-            Birthdate = substrings[2] + '/' + substrings[1] + '/' + substrings[0];
+            if (Birthdate != "")
+            {
+                String[] substrings = Birthdate.Split('-');
+                Birthdate = substrings[2] + '/' + substrings[1] + '/' + substrings[0];
+            }
+           
             string Phone = _view.textBoxPhoneNumber.Text;
             string Gender = Convert.ToString(_view.DropDownListGender.Text);
             string Address = _view.textBoxAddress.Text;
@@ -412,14 +427,13 @@ namespace BackOfficePresenter.Login
             string Password2 = _view.textBoxRepitPaswword.Text;
             string Restaurant = _view.dropDownListRestaurant.Text;
             //validacion de accion si se quiere validar y campos vacios
-            System.Diagnostics.Debug.WriteLine("error de recarga");
             //validacion de campos vacios
             
             if (Name == "" | LastName == "" | Identity == "" | Phone == "" | Role == ""
                     | UserName == "" | Email == ""  | Gender == "" | Nacionalidad == ""
                     | Dni == "" | Birthdate == "" | Address == "")
             {
-                        System.Diagnostics.Debug.WriteLine("error de recarga");
+                        System.Diagnostics.Debug.WriteLine("error de recarga ssn");
                         Alerts("Empty");
                         bad = ++bad;
                         return false;
@@ -579,11 +593,15 @@ namespace BackOfficePresenter.Login
 
 
         }
-
+        /// <summary>
+        /// metodo encargado de dar alerts sobre resultados de operaciones en la vista
+        /// </summary>
+        /// <param name="_success">tipo de alerta</param>
         public void Alerts(string _success)
         {
             switch (_success)
             {
+                //case en caso del tipo de alert
                 case "Add":
                     _view.HtmlGenericControlAlert.Attributes[G1RecursosInterfaz.alertClase] = G1RecursosInterfaz.success;
                     _view.HtmlGenericControlAlert.Attributes[G1RecursosInterfaz.alertRole] = "alert";
@@ -692,19 +710,28 @@ namespace BackOfficePresenter.Login
 
             }
         }
+        /// <summary>
+        /// metodo que le da valor a los atributos del objeto de empleado a modificar
+        /// </summary>
+        /// <param name="_employee">objeto de empleado a darle valores</param>
+        /// <returns>empleado con valores</returns>
         protected Employee SetEmployee(Employee _employee)
         {
+            // fabrica de dao 
             FactoryDAO _facDAO;
             IRoleDAO _roleDAO;
             _facDAO = FactoryDAO.Intance;
             _roleDAO = _facDAO.GetRoleDAO();
             _facDAO = FactoryDAO.Intance;
+            //tipo de usuario logueado
             string _roleUser = (string)HttpContext.Current.Session[ResourceLogin.sessionRol];
             Role _role;
+            //Restaurante a utilizar
             com.ds201625.fonda.DataAccess.InterfaceDAO.IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
             Restaurant _restaurant;
             // se le da todos los valores de los atributos del tipo empleado
             //_employee = new Employee();
+            //validacion de campos vacios
             if (_view.textBoxNameUser.Text != "")
                 _employee.Name = _view.textBoxNameUser.Text;
             if (_view.textBoxlastNameUser.Text != "")
@@ -715,11 +742,13 @@ namespace BackOfficePresenter.Login
                 _employee.PhoneNumber = _view.textBoxPhoneNumber.Text;
             if (_view.dropDownListNss1.Text != "" && _view.textBoxNss2.Text != "")
             {
+               
                 string _ssn = _view.dropDownListNss1.Text + "-" + _view.textBoxNss2.Text;
                 _employee.Ssn = _ssn;
             }
             if (_view.DropDownListGender.Text != "")
                 _employee.Gender = char.Parse(_view.DropDownListGender.SelectedValue);
+            //se le da formato al string de fecha de nacimiento
             if (_view.textBoxBirtDate.Value != "")
             {
                 string Birthdate = _view.textBoxBirtDate.Value;
@@ -752,7 +781,7 @@ namespace BackOfficePresenter.Login
                     // se le agrega restaurante al empleado
                     if (_view.dropDownListRestaurant.Text != "")
                     {
-                        //_restaurant = _restaurantDAO.FindById(int.Parse(this.restaurant.SelectedValue));
+                        // se busca restaurante para ponerselo al empleado
                         Restaurant _restaurantParam = (Restaurant)EntityFactory.GetRestaurant();
                         _restaurantParam.Id = int.Parse(_view.dropDownListRestaurant.SelectedValue);
                         Command CommandGetRestaurantById = CommandFactory.GetCommandGetRestaurantById(_restaurantParam);
@@ -761,6 +790,7 @@ namespace BackOfficePresenter.Login
                             CommandGetRestaurantById.Execute();
                             _restaurant = (Restaurant)CommandGetRestaurantById.Receiver;
                         }
+                        //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
                         catch (InvalidTypeOfParameterException e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -775,11 +805,6 @@ namespace BackOfficePresenter.Login
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                             throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
-                        }
-                        catch (NullReferenceException e)
-                        {
-                            Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                            throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantId, e);
                         }
                         catch (Exception e)
                         {
@@ -796,7 +821,7 @@ namespace BackOfficePresenter.Login
                             FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
                         _employee.Restaurant = _restaurant;
-                        //REVISAR
+
 
                         _employee.Restaurant = _restaurant;
                     }
@@ -809,7 +834,6 @@ namespace BackOfficePresenter.Login
             {
                 //solo rol restaurante puede agregar empleado de restaurant
                 string _idrest = (string)(HttpContext.Current.Session[ResourceLogin.sessionRestaurantID]);
-                //_restaurant = _restaurantDAO.FindById(int.Parse(_idrest));
                 Restaurant _restaurantParam = (Restaurant)EntityFactory.GetRestaurant();
                 _restaurantParam.Id = int.Parse(_idrest);
                 Command CommandGetRestaurantById = CommandFactory.GetCommandGetRestaurantById(_restaurantParam);
@@ -819,6 +843,7 @@ namespace BackOfficePresenter.Login
                     _restaurant = (Restaurant)CommandGetRestaurantById.Receiver;
                     _employee.Restaurant = _restaurant;
                 }
+                //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
                 catch (InvalidTypeOfParameterException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -833,11 +858,6 @@ namespace BackOfficePresenter.Login
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
-                }
-                catch (NullReferenceException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantId, e);
                 }
                 catch (Exception e)
                 {

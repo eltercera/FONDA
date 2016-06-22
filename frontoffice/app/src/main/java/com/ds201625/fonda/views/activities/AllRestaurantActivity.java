@@ -13,9 +13,9 @@ import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.IAllRestaurantsView;
-import com.ds201625.fonda.interfaces.IFavoriteView;
-import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
+import com.ds201625.fonda.interfaces.AllRestaurantsView;
+import com.ds201625.fonda.interfaces.FavoriteView;
+import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
@@ -31,7 +31,7 @@ import java.util.List;
  * Activity de Todos los Resturantes
  */
 public class AllRestaurantActivity extends BaseNavigationActivity
-        implements IFavoriteView, IAllRestaurantsView,
+        implements FavoriteView, AllRestaurantsView,
         RestaurantListFragment.restaurantListFragmentListener {
 
     // UI references.
@@ -70,7 +70,7 @@ public class AllRestaurantActivity extends BaseNavigationActivity
     /**
      * Presentador Favoritos
      */
-    private IFavoriteViewPresenter presenter;
+    private FavoriteViewPresenter presenter;
 
     /**
      * Metodo que inicializa el activity
@@ -224,50 +224,45 @@ public class AllRestaurantActivity extends BaseNavigationActivity
         Log.d(TAG,"Ha entrado en save");
         //Guardar un favorito
         try {
-            try {
 
-                        if (isFavorite()) {
+            if (isFavorite()) {
                             try{
-                                try {
-                                    presenter.deleteFavoriteRestaurant(restaurant);
-                                } catch (Exception e) {
-                                    Log.e(TAG,"Error en el manejo de un favorito",e);
-                                    Toast.makeText(getApplicationContext(), R.string.favorite_remove_fail_meessage,
-                                            Toast.LENGTH_LONG).show();
 
-                                }
-                                Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
+                                presenter.deleteFavoriteRestaurant(restaurant);
+
+                                Toast.makeText(getApplicationContext(),
+                                        R.string.favorite_remove_success_meessage,
                                         Toast.LENGTH_LONG).show();
                                 setAsFavorite.setIcon(R.drawable.ic_grade_creme_24dp);
                                 Log.d(TAG,"Se ha eliminado el favorito");
                             } catch (Exception e) {
                                 Log.e(TAG,"Error en el manejo de un favorito",e);
+                                Toast.makeText(getApplicationContext(),
+                                        R.string.favorite_remove_fail_meessage,
+                                        Toast.LENGTH_LONG).show();
                             }
-                        } else {
+            } else {
                             try{
                                 //Llamo al comando de addFavoriteRestaurant
                                 presenter.addFavoriteRestaurant(restaurant);
-                            try {
 
-                                } catch (Exception e) {
-                                    Log.e(TAG,"Error en el manejo de un favorito",e);
-                                    Toast.makeText(getApplicationContext(), R.string.favorite_add_fail_meessage,
-                                            Toast.LENGTH_LONG).show();
-
-                                }
-                                Toast.makeText(getApplicationContext(), R.string.favorite_add_success_meessage,
+                                Toast.makeText(getApplicationContext(),
+                                        R.string.favorite_add_success_meessage,
                                         Toast.LENGTH_LONG).show();
                                 setAsFavorite.setIcon(R.drawable.ic_star_yellow);
                                 Log.d(TAG,"Se ha guardado el favorito");
                             }  catch (Exception e) {
                                 Log.e(TAG,"Error en el manejo de un favorito",e);
+                                Toast.makeText(getApplicationContext(),
+                                        R.string.favorite_add_fail_meessage,
+                                        Toast.LENGTH_LONG).show();
                             }
-                        }
- }
-            catch (NullPointerException nu) {
-                Log.e(TAG,"Error en el manejo de un favorito",nu);
             }
-        } catch (Exception e) {
+        }
+        catch (NullPointerException nu) {
+                Log.e(TAG,"Error en el manejo de un favorito",nu);
+        }
+         catch (Exception e) {
             Log.e(TAG,"Error en el manejo de un favorito",e);
         }
         hideKyboard();

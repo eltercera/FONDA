@@ -16,8 +16,14 @@ namespace FondaLogic.Commands.Login
 {
     class ComandoGetUserAcountByEmail : Command
     {
+        // fabarica que me dara el dao para ejecutar un metodo en el execute
         FactoryDAO _facDAO = FactoryDAO.Intance;
+        // email del empleado a buscar
         string Email;
+        /// <summary>
+        /// constructor del comando
+        /// </summary>
+        /// <param name="receiver">recibe email del empleado a buscar</param>
         public ComandoGetUserAcountByEmail(Object receiver) : base(receiver)
         {
             try
@@ -31,7 +37,7 @@ namespace FondaLogic.Commands.Login
             }
         }
         /// <summary>
-        /// Metodo que ejecuta el comando para buscar un empleado de la bd
+        /// Metodo que ejecuta el comando para buscar un empleado de la bd por el email
         /// </summary>
         /// <returns>Empleado</returns>
         public override void Execute()
@@ -40,12 +46,13 @@ namespace FondaLogic.Commands.Login
             try
             {
                 //Metodos para acceder a la BD
-
+                // dao que me dara metodo a ejecuta
                 IUserAccountDAO _userAccountDAO = _facDAO.GetUserAccountDAO();
 
-
+                // se ejecuta metodo del dao
                 Receiver = _userAccountDAO.FindByEmail(Email);
             }
+            // se capturan excepciones que pueden generarse en la capa de acceso a datos
             catch (InvalidTypeParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);

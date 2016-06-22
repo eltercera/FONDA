@@ -4,8 +4,8 @@ import android.util.Log;
 
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.IAllRestaurantsView;
-import com.ds201625.fonda.interfaces.IAllRestaurantsViewPresenter;
+import com.ds201625.fonda.interfaces.AllRestaurantsView;
+import com.ds201625.fonda.interfaces.AllRestaurantsViewPresenter;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
@@ -16,10 +16,10 @@ import java.util.List;
  * Created by Hp on 17/06/2016.
  * Presentador para obtener todos los restaurantes
  */
-public class AllRestaurantsPresenter implements IAllRestaurantsViewPresenter {
+public class AllRestaurantsPresenter implements AllRestaurantsViewPresenter {
     private FondaCommandFactory facCmd;
     private   List<Restaurant> listRestWS;
-    private IAllRestaurantsView iAllRestaurantsView;
+    private AllRestaurantsView iAllRestaurantsView;
     private Commensal logedComensal;
     private String emailToWebService;
     private String TAG = "AllRestaurantsPresenter";
@@ -28,7 +28,7 @@ public class AllRestaurantsPresenter implements IAllRestaurantsViewPresenter {
      * Constructor
      * @param view
      */
-    public AllRestaurantsPresenter(IAllRestaurantsView view){
+    public AllRestaurantsPresenter(AllRestaurantsView view){
         iAllRestaurantsView = view;
     }
 

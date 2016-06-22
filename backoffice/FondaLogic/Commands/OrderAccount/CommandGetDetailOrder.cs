@@ -2,6 +2,7 @@
 using FondaLogic.Factory;
 using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
+using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,14 +47,13 @@ namespace FondaLogic.Commands.OrderAccount
                     };
 
             }
-            catch (Exception ex)
+            catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetDetailOrder exceptionGetOrders = new CommandExceptionGetDetailOrder(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameGetDetailOrder,
+                    OrderAccountResources.CommandExceptionGetDetailOrderCode,
+                    OrderAccountResources.ClassNameGetDetailOrder,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionGetDetailOrder,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrders);
@@ -62,6 +62,26 @@ namespace FondaLogic.Commands.OrderAccount
                 Receiver = _list;
 
             }
+            catch (Exception ex)
+            {
+                CommandExceptionGetDetailOrder exceptionGetOrders = new CommandExceptionGetDetailOrder(
+                    OrderAccountResources.CommandExceptionGetDetailOrderCode,
+                    OrderAccountResources.ClassNameGetDetailOrder,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionGetDetailOrder,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrders);
+
+                IList<Object> _list = new List<Object>();
+                Receiver = _list;
+
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameValidateProfileByCommensal
+                , OrderAccountResources.SuccessMessageCommandExceptionValidateProfileByCommensal
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
         }
     }
 }

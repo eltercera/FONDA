@@ -12,12 +12,13 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.IFavoriteView;
-import com.ds201625.fonda.interfaces.IFavoriteViewPresenter;
+import com.ds201625.fonda.interfaces.FavoriteView;
+import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.presenter.FavoritesPresenter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
+import com.ds201625.fonda.views.fragments.FavoritesEmptyFragment;
 import com.ds201625.fonda.views.fragments.FavoritesListFragment;
 
 import java.util.ArrayList;
@@ -27,12 +28,12 @@ import java.util.List;
  * Activity de los Resturantes Favoritos
  */
 public class FavoritesActivity extends BaseNavigationActivity implements
-        IFavoriteView, FavoritesListFragment.favoritesListFragmentListener {
+        FavoriteView, FavoritesListFragment.favoritesListFragmentListener {
 
     /**
      * Administrador de Fragments
      */
-    private FragmentManager fm;
+    private static FragmentManager fm;
     /**
      * ToolBar
      */
@@ -40,11 +41,18 @@ public class FavoritesActivity extends BaseNavigationActivity implements
     /**
      * Fragmento favoritos
      */
-    private FavoritesListFragment fv;
+
+    private static FavoritesListFragment fv;
+
+    /**
+     * Fragmento favoritos vacio
+     */
+
+    private static FavoritesEmptyFragment favoritesEmptyFragment;
     /**
      * Fragmento de Detalle de restaurant
      */
-    private DetailRestaurantFragment detailRestaurantFrag;
+    private static DetailRestaurantFragment detailRestaurantFrag;
     // UI references.
     private Restaurant selectedRestaurant;
     /**
@@ -52,18 +60,22 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      */
     private String TAG ="FavoritesActivity";
     /**
+     * String static para indicar en que clase se esta en el logger
+     */
+    private static String TAGS ="FavoritesActivity";
+    /**
      * Iten del Menu para favorito
      */
-    private MenuItem favoriteBotton;
-    private MenuItem reserveBotton;
+    private static MenuItem favoriteBotton;
+    private static MenuItem reserveBotton;
     /**
      * Variable booleana para determinar el form
      */
-    private boolean onForm;
+    private static boolean onForm;
     /**
      * Presentador de Favoritos
      */
-    private IFavoriteViewPresenter presenter;
+    private FavoriteViewPresenter presenter;
 
     /**
      * Inicializa la actividad
@@ -100,16 +112,25 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                     // Creacion de fragmen y pase argumento
                     fv = new FavoritesListFragment();
                     detailRestaurantFrag = new DetailRestaurantFragment();
-                    Bundle args = new Bundle();
-                    args.putBoolean("multiSelect", true);
-                    fv.setArguments(args);
+                    favoritesEmptyFragment = new FavoritesEmptyFragment();
 
-                    //Lanzamiento de profileListFrag como el principal
-                    fm.beginTransaction()
-                            .replace(R.id.fragment_container_fav, fv)
-                            .commit();
+            if(!isEmptyFavorite()) {
+                Bundle args = new Bundle();
+                args.putBoolean("multiSelect", true);
+                fv.setArguments(args);
 
+                //Lanzamiento de favoriteListFrag como el principal
+                fm.beginTransaction()
+                        .replace(R.id.fragment_container_fav, fv)
+                        .commit();
 
+            }else
+            {
+                //Lanzamiento de favoriteListFrag como el principal
+                fm.beginTransaction()
+                        .replace(R.id.fragment_container_fav, favoritesEmptyFragment)
+                        .commit();
+            }
                     // Asegura que almenos onCreate se ejecuto en el fragment
                     fm.executePendingTransactions();
 
@@ -168,8 +189,8 @@ public class FavoritesActivity extends BaseNavigationActivity implements
      * Muestra el fragment actual
      * @param fragment
      */
-    public void showFragment(BaseFragment fragment) {
-        Log.d(TAG,"Ha entrado en showFragment");
+    public static void showFragment(BaseFragment fragment) {
+        Log.d(TAGS,"Ha entrado en showFragment");
         fm.beginTransaction()
                 .replace(R.id.fragment_container_fav,fragment)
                 .commit();
@@ -177,22 +198,28 @@ public class FavoritesActivity extends BaseNavigationActivity implements
 
         //Muestra y oculta compnentes.
         if(fragment.equals(fv)){
-            Log.d(TAG,"Fragment FavoritesListFragment");
+            Log.d(TAGS,"Fragment FavoritesListFragment");
             if(favoriteBotton != null)
                 favoriteBotton.setVisible(false);
             if(reserveBotton != null)
                 reserveBotton.setVisible(false);
             onForm = false;
-        } else {
+        } else if (fragment.equals(detailRestaurantFrag)){
             if(favoriteBotton != null)
-                Log.d(TAG,"Fragment DetailRestaurantFragment");
+                Log.d(TAGS,"Fragment DetailRestaurantFragment");
             favoriteBotton.setVisible(true);
             if(reserveBotton != null)
                 reserveBotton.setVisible(true);
             onForm = true;
 
+        }else {
+            if(favoriteBotton != null)
+                favoriteBotton.setVisible(false);
+            if(reserveBotton != null)
+                reserveBotton.setVisible(false);
+            onForm = false;
         }
-        Log.d(TAG,"Ha salido de showFragment");
+        Log.d(TAGS,"Ha salido de showFragment");
     }
 
     /**
@@ -215,18 +242,62 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                 selectedRestaurant = detailRestaurantFrag.getRestaurant();
                 //Llamo al presentador de deleteFavoriteRestaurant
                 presenter.deleteFavoriteRestaurant(selectedRestaurant);
-                Toast.makeText(getApplicationContext(), R.string.favorite_remove_success_meessage,
+                Toast.makeText(getApplicationContext(),
+                        R.string.favorite_remove_success_meessage,
                         Toast.LENGTH_LONG).show();
-                 showFragment(fv);
+
+                 if (isEmptyFavorite()) {
+                    updateList();
+                    showFragment(favoritesEmptyFragment);
+                }
+                else {
+                    showFragment(fv);
+                }
+
             }
             catch (NullPointerException nu) {
                 Log.e(TAG,"Error en removeFavorite al eliminar un favorito",nu);
             }
-         catch (Exception e) {
+            catch (Exception e) {
             Log.e(TAG,"Error en removeFavorite al eliminar un favorito",e);
-        }
+            }
         hideKyboard();
          Log.d(TAG,"Se ha eliminado un favorito");
+    }
+
+
+
+    /**
+     * Cambia de fragment dependiendo del parametro
+     * @param opc
+     */
+    public static void changeFrag (int opc){
+        if(opc == 1) {
+            favoritesEmptyFragment = new FavoritesEmptyFragment();
+            showFragment(favoritesEmptyFragment);
+        }
+    }
+
+    /**
+     * Devuelve el estado de los restaurantes favoritos con respecto al usuario.
+     * @param
+     * @return Boolean.
+     */
+    public boolean isEmptyFavorite() {
+        try {
+            //Llamo al comando de requireLogedCommensalCommand
+            presenter.findLoggedComensal();
+            List<Restaurant> restaurantList = presenter.findAllFavoriteRestaurant();
+
+               if (restaurantList.size() == 0) {
+                    return true;
+                }
+
+        }
+        catch (Exception e) {
+            Log.e(TAG,"Error al determinar si el commensal tiene favoritos",e);
+        }
+        return false;
     }
 
     /**

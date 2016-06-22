@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.FondaCommandException
 {
+    /// <summary>
+    /// excepcion que es lanzada en caso de que falle una consulta de useraccount
+    /// </summary>
     public class CommandExceptionGetUserAccount : FondaLogicException
     {
 

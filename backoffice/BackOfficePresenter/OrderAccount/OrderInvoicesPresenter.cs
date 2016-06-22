@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using BackOfficeModel;
 using BackOfficeModel.OrderAccount;
 using FondaLogic;
 using FondaLogic.Factory;
@@ -23,10 +20,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         //Enlace Modelo - Vista
         private IOrderInvoicesModel _view;
         private int totalColumns = 4;
-        int _restaurantId;
-        bool resultObj;
-        int param;
-        IList<Invoice> listInvoice;
+        private int _restaurantId;
+        private IList<Invoice> listInvoice;
 
         ///<summary>
         ///Constructor
@@ -65,13 +60,11 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 {
                     //Obtiene la instancia del comando enviado el restaurante como parametro
                     commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByAccount(result);
-                    _view.Session = result.ToString();
+                    _view.SessionAccountId = result.ToString();
                     //Ejecuta el comando deseado
                     commandGetInvoicesByAccount.Execute();
                     //Se obtiene el resultado de la operacion
                     listInvoice = (IList<Invoice>)commandGetInvoicesByAccount.Receiver;
-                    _view.NumberAccount.Visible = true;
-                    _view.NumberAccount.Text = "# Orden: " + "NumberAccount";
                 }
 
                 else if (result == 0)
@@ -86,29 +79,75 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 }
 
 
-                    //Revisa si la lista no esta vacia
-                    if (listInvoice != null)
-                {
-                    //Llama al metodo para el llenado de la tabla
+                //Revisa si la lista no esta vacia
+                //Llama al metodo para el llenado de la tabla
+                if (listInvoice != null) 
                     FillTable(listInvoice);
-                }
+                else
+                    throw new Exception();
+
             }
             catch (MVPExceptionOrderInvoicesTable ex)
             {
-                //Revisar
                 MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
                     (
-                        Errors.MVPExceptionOrderInvoicesTableCode,
-                        Errors.ClassNameOrderInvoicesPresenter,
+                        OrderAccountResources.MVPExceptionOrderInvoicesTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionOrderInvoicesTable,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                throw e;
+                ErrorLabel(e.MessageException);
+            }
+            catch (FormatException ex)
+            {
+                MVPExceptionQuery e = new MVPExceptionQuery
+                    (
+                        OrderAccountResources.MVPExceptionQueryCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionQuery,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                FillTable(new List<Invoice>());
+                ErrorLabel(e.MessageException);
+            }
+            catch (HttpRequestValidationException ex)
+            {
+                MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
+                    (
+                        OrderAccountResources.MVPExceptionOrderInvoicesTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allInvoicesURL);
+            }
+            catch (Exception ex)
+            {
+                MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
+                    (
+                        OrderAccountResources.MVPExceptionOrderInvoicesTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                FillTable(new List<Invoice>());
                 ErrorLabel(e.MessageException);
             }
 
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameOrderInvoicesPresenter
+                                    , OrderAccountResources.SuccessMessageOrderInvoicesPresenter
+                                    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                                    );
         }
 
 
@@ -237,33 +276,11 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private int GetQueryParameter()
         {
             int result = 0;
-            try
-            {
-                if (AntiXssEncoder.HtmlEncode(HttpContext.Current.Request.QueryString["Id"], false) != null)
-                    return int.Parse(HttpContext.Current.Request.QueryString["Id"]);
-            }
-            catch (System.FormatException ex) {
-                MVPExceptionQuery e = new MVPExceptionQuery
-                    (
-                        Errors.MVPExceptionQueryCode,
-                        Errors.ClassNameOrderInvoicesPresenter,
-                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionQuery,
-                        ex
-                    );
-                Logger.WriteErrorLog(e.ClassName, e);
-                ErrorLabel(e.MessageException);
-                return 0;
-            }
-            catch (HttpRequestValidationException ex)
-            {
-                HttpContext.Current.Server.ClearError();
-                HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
-            }
-            catch (Exception ex)
-            {
-                return 0;
-            }
+            string queryParameter =
+                HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
+
+                if (AntiXssEncoder.HtmlEncode(queryParameter, false) != null)
+                    return int.Parse(queryParameter);
 
             return result;
         }

@@ -29,14 +29,15 @@ public class AllRestaurantCommand extends BaseCommand {
         return parameters;
     }
     /**
-     * Comando para mostrar todos los restaurantes
+     * Metodo de invoke implementado: Comando para mostrar todos los restaurantes
      */
     @Override
     protected void invoke() {
 
         Log.d(TAG, "Comando para obtener los restaurantes");
 
-        AllRestaurantService serviceAllRestaurants = FondaServiceFactory.getInstance().getAllRestaurantsService();
+        AllRestaurantService serviceAllRestaurants = FondaServiceFactory.getInstance().
+                getAllRestaurantsService();
 
         try {
             restaurantList =  serviceAllRestaurants.getAllRestaurant();

@@ -35,6 +35,6 @@ public interface FavoriteRestaurantService {
      * @return
      * @throws RestClientException
      */
-    List<Restaurant> getAllFavoriteRestaurant(int idCommensal)  throws RestClientException;;
+    List<Restaurant> getAllFavoriteRestaurant(int idCommensal) throws Exception;;
 
 }

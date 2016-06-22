@@ -77,12 +77,6 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                    System.Reflection.MethodBase.GetCurrentMethod().Name);
                
             }
-			catch (SaveEntityFondaDAOException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateFavoriteRestaurantCommandException(ResourceMessages.AddFavRestException, e);
-               
-			}
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -98,11 +92,12 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CreateFavoriteRestaurantCommandException(ResourceMessages.ParametersAddFavRestException, e);
             }
-            catch (NullReferenceException e)  
+			catch (SaveEntityFondaDAOException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CreateFavoriteRestaurantCommandException(ResourceMessages.AddFavRestException, e);
-            }
+               
+			}
 			catch (Exception e)
 			{
                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);

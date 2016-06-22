@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FondaLogic.FondaCommandException.Login
 {
+    /// <summary>
+    /// excepcion de tipo ParameterIndexOutRangeException
+    /// </summary>
     class ParameterIndexOutRangeException : FondaLogicException
     {
 

@@ -208,6 +208,16 @@ namespace BackOffice.Seccion.Restaurant
             _presenter.ButtonModificar_Click();
         }
 
+        public static RestaurantCategory GetData(string Id)
+        {
+            int categoryId = int.Parse(Id);
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
+            RestaurantCategory restCategory = _restcatDAO.FindById(categoryId);
+
+            return restCategory;
+
+        }
 
 
     }

@@ -247,27 +247,23 @@ namespace BackOfficePresenter.Login
                                     else
                                     {
                                         //error claves distintas, se llama a mostrar mensaje de error
-                                        System.Diagnostics.Debug.WriteLine("clave mala");
-                                        //_info[7] = "Error";
                                         mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
                                     }
                                 }
                             }
                             else
                             {
-                                System.Diagnostics.Debug.WriteLine("Estado inactivo");
                                 mensajeLogin(true, mensajes.logState, mensajes.tipoState);
                             }
                         }
                         else
                         {
                             //error buscando empleado ,  se llama a mostrar mensaje de error
-                            System.Diagnostics.Debug.WriteLine("No se encontro usuario");
-                            //_info[8] = "Error";
                             mensajeLogin(true, mensajes.logErr, mensajes.tipoWarning);
                         }
 
                     }
+                    //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
                     catch (InvalidTypeOfParameterException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -291,13 +287,10 @@ namespace BackOfficePresenter.Login
                     Object Result = _employeeResult;
                     //logger
                     Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
-                    Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                         FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
                 else
                 {
-                    //_info[9] = "Error";  se llama a mostrar mensaje de error
                     mensajeLogin(true, mensajes.logErrcamp, mensajes.tipoInfo);
                 }
 
@@ -328,7 +321,7 @@ namespace BackOfficePresenter.Login
                 //username intentando entrar 
                 String username = _view.UserRecover.Value;
                 //Defino objeto a enviar como parametro al comando
-                Employee _employee;
+                Employee _employee = null;
                 //Objeto a recibir como resultado del comando 
                 Employee _employeeResult = null;
                 // comando del tipo deseado 
@@ -347,7 +340,7 @@ namespace BackOfficePresenter.Login
                     //se obtiene empleado buscado
                     _employeeResult = (Employee)CommandGetEmployeeByUser.Receiver;
                     //validacion de campos vacios
-                    if ((email != null) && (passwordnew1 != null) && (passwordnew2 != null) && (username != null))
+                    if ((_view.RecoverEmail.Value != "") && (_view.Password1.Value != "") && (_view.Password2.Value != "") && (_view.UserRecover.Value != ""))
                     {
                         //validacion de haber encontrado
                         if (_employeeResult != null)
@@ -397,8 +390,8 @@ namespace BackOfficePresenter.Login
                         // se muestra error
                         mensajeLogin(true, mensajes.logErrcampvac, mensajes.tipoInfo);
                     }
-                    System.Diagnostics.Debug.WriteLine(_employeeResult.Id);
                 }
+                //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
                 catch (SaveEntityFondaDAOException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -420,15 +413,10 @@ namespace BackOfficePresenter.Login
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
                 }
-                catch (NullReferenceException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
-                }
+
                 catch (Exception e)
                 {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
+
                 }
                 // Guarda el resultado.
                 Employee Result = _employee;

@@ -4,6 +4,7 @@ using com.ds201625.fonda.Domain;
 using FondaLogic.Factory;
 using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
+using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 
@@ -82,18 +83,22 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionPayOrder exception = new CommandExceptionPayOrder(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNamePayOrder,
+                    OrderAccountResources.CommandExceptionPayOrderCode,
+                    OrderAccountResources.ClassNamePayOrder,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionPayOrder,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                //Receiver Pago
 
+                throw exception;
             }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNamePayOrder
+                , OrderAccountResources.SuccessMessageCommandGetPaymentHistoryByProfile
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
         }
     }
 }

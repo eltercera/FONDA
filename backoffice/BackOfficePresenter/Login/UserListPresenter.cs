@@ -104,6 +104,7 @@ namespace BackOfficePresenter.Login
             {
                 CommanGetAllEmployee.Execute();
             }
+            //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
             catch (NullReferenceException ex)
             {
 
@@ -301,6 +302,7 @@ namespace BackOfficePresenter.Login
                 CommandGetEmployeeById.Execute();
                 _employee = (Employee)CommandGetEmployeeById.Receiver;
             }
+            //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
             catch (InvalidTypeOfParameterException ex)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
@@ -348,9 +350,12 @@ namespace BackOfficePresenter.Login
             System.Diagnostics.Debug.WriteLine(_employee.LastName);
 
         }
-
+        /// <summary>
+        /// metodo que limpia modal de agregar usuario
+        /// </summary>
         protected void ClearModalAddModify()
         {
+            //se limpian todos los elementos que estan en el modal
             _view.textBoxNameUser.Text = "";
             _view.textBoxNameUser.Attributes["placeholder"] = "Nombre";
             _view.textBoxlastNameUser.Text = "";
@@ -382,7 +387,7 @@ namespace BackOfficePresenter.Login
         /// <summary>
         /// metodo que carga los roles en el DropDown
         /// </summary>
-        /// <param name="_role1"></param>
+        /// <param name="_role1">rol del usuario que esta logueado</param>
         protected void ChangeRole(string _role1)
         {
             _facDAO = FactoryDAO.Intance;
@@ -392,6 +397,7 @@ namespace BackOfficePresenter.Login
             {
                 CommandGetAllRoles.Execute();
             }
+            //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
             catch (NullReferenceException ex)
             {
 
@@ -427,6 +433,7 @@ namespace BackOfficePresenter.Login
                 CommandGetAllRestaurants.Execute();
                 _restList = (IList<Restaurant>)CommandGetAllRestaurants.Receiver;
             }
+            //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -477,12 +484,8 @@ namespace BackOfficePresenter.Login
             ClearModalAddModify();
             string _role = (string)(HttpContext.Current.Session[ResourceLogin.sessionRol]);
             ChangeRole(_role);
-            System.Diagnostics.Debug.WriteLine("if del sistema");
             if (_role == "Sistema")
                 ChangeRestaurant();
-            System.Diagnostics.Debug.WriteLine("Entre en addclick del presentador");
-
-
         }
         /// <summary>
         /// metodo que cuando se le da boton de guardar valida y guarda el usuario
@@ -493,7 +496,6 @@ namespace BackOfficePresenter.Login
             System.Diagnostics.Debug.WriteLine(_view.textBoxBirtDate.Value);
             if (ValidarCampo(_view.buttonButtonAddModify.Text))
             {
-                System.Diagnostics.Debug.WriteLine("entre validarcampos");
                 // se trae nuevo usuario de fabrica
                 _facDAO = FactoryDAO.Intance;
                 _employeeDAO = _facDAO.GetEmployeeDAO();
@@ -540,6 +542,7 @@ namespace BackOfficePresenter.Login
                         CommandGetEmployeeById.Execute();
                         _employee = (Employee)CommandGetEmployeeById.Receiver;
                     }
+                    //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
                     catch (InvalidTypeOfParameterException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -648,6 +651,7 @@ namespace BackOfficePresenter.Login
                     {
                         CommandSaveEmployee.Execute();
                     }
+                    //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
                     catch (ParameterIndexOutOfRangeException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -722,6 +726,7 @@ namespace BackOfficePresenter.Login
             string Identity = _view.dropDownListNss1.Text;
             string Dni = _view.textBoxNss2.Text;
             string Birthdate = _view.textBoxBirtDate.Value;
+            //se le da formato al string de fecha de nacimiento
             if (Birthdate != "")
             {
                 String[] substrings = Birthdate.Split('-');
@@ -1054,6 +1059,7 @@ namespace BackOfficePresenter.Login
         /// <returns></returns>
         protected bool ValidationSsn()
         {
+            // se verifica si existe algun usuario con ssn igual
             try
             {
                 _employee = new Employee();
@@ -1070,6 +1076,7 @@ namespace BackOfficePresenter.Login
                 }
                 return true;
             }
+            //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -1111,6 +1118,7 @@ namespace BackOfficePresenter.Login
                 /*_userAccountDAO = _facDAO.GetUserAccountDAO();
                 UserAccount _userAccount = new UserAccount();
                 _userAccount = _userAccountDAO.FindByEmail(_view.textBoxEmail.Text);*/
+                //se verifica que exista un usuario con el mismo email
                  _userAccount = new UserAccount();
                 Command ComandoGetUserAccountByEmail;
                 ComandoGetUserAccountByEmail = CommandFactory.GetComandoGetUserAcountByEmail(_view.textBoxEmail.Text);
@@ -1123,6 +1131,7 @@ namespace BackOfficePresenter.Login
                 }
                 return true;
             }
+            //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -1171,6 +1180,7 @@ namespace BackOfficePresenter.Login
                 }
                 return true;
             }
+            //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
             catch (FindByusernameEmployeFondaDAOException e)
             {
                 throw new ValidationUsernameEmployeeFondaBackOfficeException(
@@ -1265,6 +1275,7 @@ namespace BackOfficePresenter.Login
                             CommandGetRestaurantById.Execute();
                             _restaurant = (Restaurant)CommandGetRestaurantById.Receiver;
                         }
+                        //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
                         catch (InvalidTypeOfParameterException e)
                         {
                             Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -1378,6 +1389,7 @@ namespace BackOfficePresenter.Login
                 _employee = (Employee)CommandGetEmployeeById.Receiver;
 
             }
+            //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
             catch (NullReferenceException ex)
             {
 
@@ -1401,6 +1413,7 @@ namespace BackOfficePresenter.Login
             {
                 CommandSaveEmployee.Execute();
             }
+            //capturo excepciones que se pudieron generar en la capa de acceso a datos y/o capa logica
             catch (InvalidTypeOfParameterException ex)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);

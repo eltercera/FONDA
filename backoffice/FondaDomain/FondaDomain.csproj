@@ -59,7 +59,8 @@
   <ItemGroup>
     <Compile Include="Domain\Account.cs" />
     <Compile Include="Domain\AccountStatus.cs" />
-    <Compile Include="Domain\ActiveReservationStatus.cs" />
+    <Compile Include="Domain\Reserve.cs" />
+    <Compile Include="Domain\ReservedReservationStatus.cs" />
     <Compile Include="Domain\BaseEntity.cs" />
     <Compile Include="Domain\BusyTableStatus.cs" />
     <Compile Include="Domain\CanceledInvoiceStatus.cs" />
@@ -88,7 +89,6 @@
     <Compile Include="Domain\Schedule.cs" />
     <Compile Include="Domain\Table.cs" />
     <Compile Include="Domain\TableStatus.cs" />
-    <Compile Include="Domain\UsedReservationStatus.cs" />
     <Compile Include="Factory\EntityFactory.cs" />
     <Compile Include="GeneralRes.Designer.cs">
       <AutoGen>True</AutoGen>

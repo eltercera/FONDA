@@ -1,6 +1,7 @@
 package com.ds201625.fonda.tests.M5_Tests.M5_Tests.M2_Tests.CommandTests;
 
 import android.test.MoreAsserts;
+import android.util.Log;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.BaseEntity;
@@ -34,7 +35,7 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
     private Command cmd;
 
     /**
-     * id de comensal logueado
+     * comensal logueado
      */
     private Commensal logedCommensal;
 
@@ -42,6 +43,11 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
      * Variable lista de restaurantes favoritos
      */
     private List<Restaurant> restaurantList;
+
+    /**
+     * Variable String que indica la clase actual
+     */
+    private String TAG = "AllFavoriteRestaurantCommandTest";
 
     /**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
@@ -66,11 +72,13 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
             cmd.run();
             restaurantList = (List<Restaurant>) cmd.getResult();
 
-            assertNotNull(restaurantList);
+            assertNotNull(restaurantList.get(0).getName());
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllFavoriteRestaurantCommandIsNotNull al listar los favorito",
+                    e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllFavoriteRestaurantCommandIsNotNull al listar los favorito",
+                    e);
         }
     }
 
@@ -89,9 +97,11 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
 
            MoreAsserts.assertNotEmpty(restaurantList);
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllFavoriteRestaurantCommandIsNotEmpty al listar los favorito",
+                    e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllFavoriteRestaurantCommandIsNotEmpty al listar los favorito",
+                    e);
         }
     }
 
@@ -107,15 +117,20 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
             cmd.run();
             restaurantList = (List<Restaurant>) cmd.getResult();
 
-            assertEquals("Burger Shack", restaurantList.get(2).getName());
+            assertEquals("Pizza Familia", restaurantList.get(2).getName());
         } catch (RestClientException e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllFavoriteRestaurantCommandElements al listar los favorito",
+                    e);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllFavoriteRestaurantCommandElements al listar los favorito",
+                    e);
         }
     }
 
-    public void testAllFavoriteRestaurantNullPointerException() {
+    /**
+     *  Metodo para probar que la lista de restaurantes favoritos es nula
+     */
+    public void testAllFavoriteRestaurantIsNull() {
         try {
             Commensal prueba = FondaEntityFactory.getInstance().GetCommensal(14);
             cmd = facCmd.allFavoriteRestaurantCommand();
@@ -124,11 +139,13 @@ public class AllFavoriteRestaurantCommandTest extends TestCase {
             restaurantList = (List<Restaurant>) cmd.getResult();
             assertNull(restaurantList);
 
-        } catch(RestClientException e) {}
+        } catch(RestClientException e) {
+            Log.e(TAG,"Error en testAllFavoriteRestaurantIsNull al listar los favorito",e);
+        }
         catch(NullPointerException e) {
-            //fail("Se esperaba excepcion NullPointerException");
+            Log.e(TAG,"Error en testAllFavoriteRestaurantIsNull al listar los favorito",e);
         }catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG,"Error en testAllFavoriteRestaurantIsNull al listar los favorito",e);
         }
 
     }

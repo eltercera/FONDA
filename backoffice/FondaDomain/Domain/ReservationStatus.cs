@@ -16,12 +16,12 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
 		protected ReservationStatus() : base() { }
 
-        public virtual ReservationStatus Change()
+        public virtual ReservationStatus ReserveStatus()
         {
-            if (Equals(ActiveReservationStatus.Instance))
+            if (Equals(ReservedReservationStatus.Instance))
                 return CanceledReservationStatus.Instance;
 
-            return ActiveReservationStatus.Instance;
+            return ReservedReservationStatus.Instance;
 
 
         }

@@ -20,6 +20,8 @@ namespace BackOfficeModel
 
         Label ErrorLabelMessage { get; set; }
 
+      
+
 
     }
 }

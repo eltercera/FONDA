@@ -39,5 +39,12 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
         void ReleaseTable(Restaurant restaurant, int tableId);
 
         #endregion
+
+        #region Reservation
+
+        IList<Reservation> ReservationsByRestaurantId(int restaurantId);
+        IList<Table> TablesByRestaurantId(int restaurantId);
+
+        #endregion
     }
 }

@@ -11,6 +11,7 @@ namespace FondaDataAccessTest
     [TestFixture()]
     public class BOOrderAccount
     {
+        #region fields
         private Restaurant _restaurant;
         private FactoryDAO _facDAO;
         private IOrderAccountDao _accountDAO;
@@ -31,7 +32,8 @@ namespace FondaDataAccessTest
         private Invoice _invoice;
         private ICreditCardPaymentDAO creditDao;
         private ICashPaymentDAO _cashPaymentDAO;
-        #region
+        #endregion
+        #region setup
         [SetUp]
         public void Init()
         {
@@ -65,7 +67,7 @@ namespace FondaDataAccessTest
             creditDao = _facDAO.GetCreditCardPaymentDAO();
         }
         #endregion
-        [Test]
+        [Test(Description = "Busca las cuentas por restaurante")]
         public void FindAccountsByRestaurantTest()
         {
 
@@ -99,15 +101,15 @@ namespace FondaDataAccessTest
 
         }
 
-        [Test]
-        public void GenerateNumberInvoice()
+        [Test(Description = "Prueba el numero generado de la cuenta (Numero único de cuenta por restaurante)")]
+        public void GenerateNumberAccount()
         {
 
             _number = _accountDAO.GenerateNumberAccount(_restaurant);
             Assert.IsNotNull(_number);
         }
 
-        [Test]
+        [Test(Description = "Prueba para el cierre de caja")]
         public void CloseCashRegisterTest()
         {
             float _total = _accountDAO.CloseCashRegister(_restaurant.Id);
@@ -115,7 +117,7 @@ namespace FondaDataAccessTest
             Assert.AreEqual(_total, 13900);
         }
 
-        [Test]
+        [Test(Description = "Prueba que guarda la invoice de una cuenta")]
         public void SaveInvoicesByAccountTest()
         {
             InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
@@ -123,7 +125,7 @@ namespace FondaDataAccessTest
             //_invoiceDAO.Save(_invoice);
             _accountDAO.SaveInvoice(_invoice,_accountId,_restaurantId);
         }
-        [Test]
+        [Test(Description = "Prueba que cambia el estatus de una cuenta")]
         public void ChangeStatusAccountTest()
         {
             _account = _accountDAO.FindById(_accountId);
