@@ -88,8 +88,6 @@
     <Compile Include="BOScheduleTest.cs" />
     <Compile Include="BOTableTest.cs" />
     <Compile Include="BOUserAcountTest.cs" />
-    <Compile Include="OrderAccount\BOValidationsTest.cs" />
-    <Compile Include="BOValidationsTest.cs" />
     <Compile Include="FORestaurantFavoriteNewTest.cs" />
     <Compile Include="FORestaurantFavorite.cs" />
     <Compile Include="FOCommensalRegister.cs" />
@@ -98,6 +96,7 @@
     <Compile Include="FOUserRegisterTests.cs" />
     <Compile Include="BOGeopositionTableTest.cs" />
     <Compile Include="InvalidTypeOfParameterException.cs" />
+    <Compile Include="OrderAccount\BOValidationsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
