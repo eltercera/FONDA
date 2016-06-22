@@ -8,8 +8,6 @@ using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using FondaResources.OrderAccount;
 using com.ds201625.fonda.Factory;
-using com.ds201625.fonda.DataAccess.Exceptions;
-using FondaResources.OrderAccount;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
