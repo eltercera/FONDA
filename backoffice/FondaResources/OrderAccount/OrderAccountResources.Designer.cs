@@ -754,7 +754,7 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error en la base de datos al cerrar las ordenden de un restaurante.
+        ///   Looks up a localized string similar to Error en la base de datos al obtener las ordenes cerradas de un restaurante.
         /// </summary>
         public static string MessageClosedOrdersByRestaurantFondaDAOException {
             get {
@@ -1101,6 +1101,15 @@ namespace FondaResources.OrderAccount {
         public static string MessageReleaseTableFondaDAOException {
             get {
                 return ResourceManager.GetString("MessageReleaseTableFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al obtener las ordenes abiertas de un restaurante.
+        /// </summary>
+        public static string MessageOpenOrdersByRestaurantIdFondaDAOException {
+            get {
+                return ResourceManager.GetString("MessageOpenOrdersByRestaurantIdFondaDAOException", resourceCulture);
             }
         }
         

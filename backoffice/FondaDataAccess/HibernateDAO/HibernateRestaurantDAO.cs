@@ -327,10 +327,22 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 return list;
 
             }
-            //TODO: Arrojar excepciones personalizadas
             catch (ArgumentOutOfRangeException e)
             {
-                throw new FondaIndexException("Not Found invoice", e);
+                OpenOrdersByRestaurantIdFondaDAOException exception =
+                       new OpenOrdersByRestaurantIdFondaDAOException(
+                           OrderAccountResources.MessageOpenOrdersByRestaurantIdFondaDAOException,
+                           e);
+                throw exception;
+            }
+            catch (Exception e)
+            {
+                OpenOrdersByRestaurantIdFondaDAOException exception =
+                    new OpenOrdersByRestaurantIdFondaDAOException(
+                        OrderAccountResources.MessageOpenOrdersByRestaurantIdFondaDAOException,
+                        e);
+                //Logger
+                throw exception;
             }
         }
 

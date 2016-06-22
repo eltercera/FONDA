@@ -742,7 +742,7 @@
     <comment>Mensaje de error para ReleaseTable</comment>
   </data>
   <data name="MessageClosedOrdersByRestaurantFondaDAOException" xml:space="preserve">
-    <value>Error en la base de datos al cerrar las ordenden de un restaurante</value>
+    <value>Error en la base de datos al obtener las ordenes cerradas de un restaurante</value>
     <comment>Mensaje de error para ClosedOrdersByRestaurant</comment>
   </data>
   <data name="ClassNameGetCurrencyInvoice" xml:space="preserve">
@@ -760,5 +760,9 @@
   <data name="SuccessMessageCommandGetCurrencyInvoice" xml:space="preserve">
     <value>Se ha obtenido el simbolo de la moneda correctamente</value>
     <comment>Mensaje de exito para CommandGetCurrencyInvoice</comment>
+  </data>
+  <data name="MessageOpenOrdersByRestaurantIdFondaDAOException" xml:space="preserve">
+    <value>Error en la base de datos al obtener las ordenes abiertas de un restaurante</value>
+    <comment>Mensaje de error para OpenOrdersByRestaurant</comment>
   </data>
 </root>
