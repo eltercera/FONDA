@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using FondaLogic.FondaCommandException;
 using FondaLogic.Log;
 using com.ds201625.fonda.Factory;
+using FondaResources.OrderAccount;
 
 namespace FondaLogic.Commands.OrderAccount
 {
@@ -17,18 +18,7 @@ namespace FondaLogic.Commands.OrderAccount
         private Invoice _invoice;
         private Profile profile;
 
-        public CommandGenerateInvoice(Object receiver) : base(receiver)
-        {
-            try
-            {
-                _list = (IList<object>)receiver;
-            }
-            catch (Exception)
-            {
-                //TODO: Enviar excepcion personalizada
-                throw;
-            }
-        }
+        public CommandGenerateInvoice(Object receiver) : base(receiver) { }
 
         public override void Execute()
         {
@@ -37,6 +27,8 @@ namespace FondaLogic.Commands.OrderAccount
             Account account;
             try
             {
+                _list = (IList<object>)Receiver;
+
                 IPaymentDao<Payment> _paymentDAO = _facDAO.GetPaymentDAO();
                 IProfileDAO _profileDAO = _facDAO.GetProfileDAO();
                 IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
@@ -74,12 +66,11 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGenerateInvoice exception = new CommandExceptionGenerateInvoice(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameGenerateInvoice,
+                    OrderAccountResources.CommandExceptionGenerateInvoiceCode,
+                    OrderAccountResources.ClassNameGenerateInvoice,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionGenerateInvoice,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
@@ -87,6 +78,25 @@ namespace FondaLogic.Commands.OrderAccount
                 _invoice = EntityFactory.GetInvoice(); ;
                 Receiver = _invoice;
             }
+            catch (Exception ex)
+            {
+                CommandExceptionGenerateInvoice exception = new CommandExceptionGenerateInvoice(
+                    OrderAccountResources.CommandExceptionGenerateInvoiceCode,
+                    OrderAccountResources.ClassNameGenerateInvoice,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionGenerateInvoice,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                _invoice = EntityFactory.GetInvoice(); ;
+                Receiver = _invoice;
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameGenerateInvoice
+                , OrderAccountResources.SuccessMessageCommandGenerateInvoice
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
 
         }
 

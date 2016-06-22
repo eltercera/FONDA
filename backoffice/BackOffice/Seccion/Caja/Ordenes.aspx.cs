@@ -102,11 +102,9 @@ namespace BackOffice.Seccion.Caja
         protected void Page_Load(object sender, EventArgs e)
         {
             //Llama al presentador para llenar la tabla de ordenes
-            if (Session[ResourceLogin.sessionUserID] != null)
-            {
-
+            if (Session[ResourceLogin.sessionUserID] != null &&
+                Session[ResourceLogin.sessionRestaurantID] != null)
                 _presenter.GetOrders();
-            }
             else
                 Response.Redirect(RecursoMaster.addressLogin);
         }

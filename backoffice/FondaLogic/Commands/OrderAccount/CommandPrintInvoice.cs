@@ -18,33 +18,23 @@ namespace FondaLogic.Commands.OrderAccount
 {
     public class CommandPrintInvoice : Command
     {
-        FactoryDAO _facDAO = FactoryDAO.Intance;
-        IList<int> _list;
-        IList<DishOrder> _listDishOrder;
-        Restaurant _restaurant;
-        Invoice _invoice;
-        Account _account;
-        UserAccount _userAccount;
-        Person _person;
+        private FactoryDAO _facDAO = FactoryDAO.Intance;
+        private IList<int> _list;
+        private IList<DishOrder> _listDishOrder;
+        private Restaurant _restaurant;
+        private Invoice _invoice;
+        private Account _account;
+        private UserAccount _userAccount;
+        private Person _person;
 
-        public CommandPrintInvoice(Object receiver) : base(receiver)
-        {
-            try
-            {
-                _list = (IList<int>)receiver;
-            }
-            catch (Exception)
-            {
-                //TODO: Enviar excepcion personalizada
-                throw;
-            }
-        }
+        public CommandPrintInvoice(Object receiver) : base(receiver) { }
 
         public override void Execute()
         {
             
             try
             {
+                _list = (IList<int>)Receiver;
                 float totalFactura = 0;
                 IUserAccountDAO _userAccountDao = _facDAO.GetUserAccountDAO();
                 ICommensalDAO _genericPersonDao = _facDAO.GetCommensalDAO();
@@ -284,19 +274,37 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionPrintInvoice exception = new CommandExceptionPrintInvoice(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameGetOrders,
+                    OrderAccountResources.CommandExceptionPrintInvoiceCode,
+                    OrderAccountResources.ClassNamePrintInvoice,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionPrintInvoice,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                throw exception;
 
             }
+            catch (Exception ex)
+            {
+                CommandExceptionPrintInvoice exception = new CommandExceptionPrintInvoice(
+                    OrderAccountResources.CommandExceptionPrintInvoiceCode,
+                    OrderAccountResources.ClassNamePrintInvoice,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionPrintInvoice,
+                    ex);
 
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                throw exception;
+            }
+
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNamePrintInvoice
+                    , OrderAccountResources.SuccessMessageCommandPrintInvoice
+                    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                    );
         }
+
 
 
     }

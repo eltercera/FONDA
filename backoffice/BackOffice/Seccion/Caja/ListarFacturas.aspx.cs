@@ -5,6 +5,7 @@ using BackOfficeModel;
 using System.Web.UI.HtmlControls;
 using FondaResources.Login;
 using FondaResources.OrderAccount;
+using BackOffice.Content;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -13,12 +14,40 @@ namespace BackOffice.Seccion.Caja
         #region Presenter
 
         private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrderInvoicesPresenter _presenter;
-       
+
         #endregion
 
         #region Model
 
+        /// <summary>
+        /// Label de exito
+        /// </summary>
+        HtmlGenericControl IModel.SuccessLabel
+        {
+            get { return this.SuccessLabel; }
+        }
 
+        /// <summary>
+        /// Label de error
+        /// </summary>
+        HtmlGenericControl IModel.ErrorLabel
+        {
+            get { return this.ErrorLabel; }
+        }
+
+        /// <summary>
+        /// Mensaje de exito
+        /// </summary>
+        Label IModel.SuccessLabelMessage
+        {
+            get { return this.SuccessLabelMessage; }
+
+            set { this.SuccessLabelMessage = value; }
+        }
+
+        /// <summary>
+        /// Mensaje de error
+        /// </summary>
         Label IModel.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
@@ -27,14 +56,10 @@ namespace BackOffice.Seccion.Caja
 
         }
 
-        Label IModel.SuccessLabelMessage
-        {
-            get { return this.SuccessLabelMessage; }
-
-            set { this.SuccessLabelMessage = value; }
-        }
-
-        public System.Web.UI.WebControls.Table OrdersTable
+        /// <summary>
+        /// Tabla de Facturas
+        /// </summary>
+        public Table OrderInvoicesTable
         {
             get { return orderInvoices; }
 
@@ -44,46 +69,27 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Recurso de Session para el ID de la orden
         /// </summary>
-        string IOrderInvoicesModel.Session
+        string IOrderInvoicesModel.SessionAccountId
         {
-            get { return this.orderId.ToString(); }
+            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
             set { Session[OrderAccountResources.SessionIdAccount] = value; }
         }
-        string IOrderInvoicesModel.SessionIdInvoice
-        {
-            get { return Session[OrderAccountResources.SessionIdInvoice].ToString(); }
 
-            set { Session[OrderAccountResources.SessionIdInvoice] = value; }
-        }
+        /// <summary>
+        /// Variable de sesion del Restaurante
+        /// </summary>
         public string SessionRestaurant
         {
             get
             {
-                if (Session[ResourceLogin.sessionRestaurantID] != null)
-                    return Session[ResourceLogin.sessionRestaurantID].ToString();
+                if (Session[OrderAccountResources.SessionRestaurantId] != null)
+                    return Session[OrderAccountResources.SessionRestaurantId].ToString();
                 else
-                    return "0";
+                    return OrderAccountResources.Empty;
             }
 
-            set { Session[ResourceLogin.sessionRestaurantID] = value; }
-        }
-
-        HtmlGenericControl IModel.SuccessLabel
-        {
-            get { return this.SuccessLabel; }
-        }
-
-        HtmlGenericControl IModel.ErrorLabel
-        {
-            get { return this.ErrorLabel; }
-        }
-
-        public Table OrderInvoicesTable
-        {
-            get { return orderInvoices; }
-
-            set { orderInvoices = value; }
+            set { Session[OrderAccountResources.SessionRestaurantId] = value; }
         }
 
         #endregion
@@ -97,7 +103,11 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            _presenter.GetInvoices();
+            if (Session[ResourceLogin.sessionUserID] != null &&
+                Session[ResourceLogin.sessionRestaurantID] != null)
+                _presenter.GetInvoices();
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
     }
 }
