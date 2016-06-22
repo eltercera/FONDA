@@ -1,5 +1,6 @@
 ﻿using BackOfficeModel.OrderAccount;
 using BackOfficePresenter.FondaMVPException;
+using BackOfficePresenter.FondaMVPException.OrderAccount;
 using com.ds201625.fonda.Domain;
 using FondaLogic;
 using FondaLogic.Factory;
@@ -8,6 +9,7 @@ using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Web;
+using System.Web.Security.AntiXss;
 using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
@@ -195,13 +197,33 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private int GetQueryParameter()
         {
             int result = 0;
-            string queryParameter = 
-                HttpContext.Current.Request.QueryString["Id"];
-
-
-            if(queryParameter != null && queryParameter != string.Empty)
+            try
             {
-                return int.Parse(queryParameter);
+                if (AntiXssEncoder.HtmlEncode(HttpContext.Current.Request.QueryString["Id"], false) != null)
+                    return int.Parse(HttpContext.Current.Request.QueryString["Id"]);
+            }
+            catch (System.FormatException ex)
+            {
+                MVPExceptionQuery e = new MVPExceptionQuery
+                    (
+                        Errors.MVPExceptionQueryCode,
+                        Errors.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        Errors.MessageMVPExceptionQuery,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                ErrorLabel(e.MessageException);
+                HttpContext.Current.Response.Redirect("../Caja/Ordenes.aspx");
+            }
+            catch (HttpRequestValidationException ex)
+            {
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect("../Caja/Ordenes.aspx");
+            }
+            catch (Exception ex)
+            {
+                HttpContext.Current.Response.Redirect("../Caja/Ordenes.aspx");
             }
 
             return result;

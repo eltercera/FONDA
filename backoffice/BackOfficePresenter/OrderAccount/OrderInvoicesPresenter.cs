@@ -235,16 +235,11 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private int GetQueryParameter()
         {
             int result = 0;
-            //string queryParameter =
-            //  HttpContext.Current.Request.QueryString["Id"];
-
-
             try
             {
                 if (AntiXssEncoder.HtmlEncode(HttpContext.Current.Request.QueryString["Id"], false) != null)
                     return int.Parse(HttpContext.Current.Request.QueryString["Id"]);
             }
-            //Esto deberia ir mas arriba
             catch (System.FormatException ex) {
                 MVPExceptionQuery e = new MVPExceptionQuery
                     (
@@ -262,7 +257,6 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             {
                 HttpContext.Current.Server.ClearError();
                 HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
-               // return 0;
             }
             catch (Exception ex)
             {
