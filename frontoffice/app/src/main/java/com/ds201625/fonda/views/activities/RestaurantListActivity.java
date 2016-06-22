@@ -45,7 +45,7 @@ public class RestaurantListActivity extends BaseActivity {
             jsonMyObject = extras.getString("zona");
         }
         selectedZone = new Gson().fromJson(jsonMyObject, Zone.class);
-        System.out.println("LA ZONAA: "+selectedZone.getName());
+        System.out.println("LA ZONA: "+selectedZone.getName());
        /* try{
 
             filterByZoneService = FondaServiceFactory.getInstance().getFilterByZoneService();

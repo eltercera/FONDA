@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.views.fragments.RestaurantFragment;
+import com.ds201625.fonda.views.fragments.RestaurantListFragment;
 
 import java.util.List;
 
@@ -18,7 +20,8 @@ import java.util.List;
  * Created by jesus on 13/04/16.
  */
 
-public class RestaurantList extends ArrayAdapter<Restaurant> {
+public class RestaurantList extends ArrayAdapter<Restaurant>
+    implements RestaurantListFragment.restaurantListFragmentListener{
 
     private final Activity context;
     private final String[] name;

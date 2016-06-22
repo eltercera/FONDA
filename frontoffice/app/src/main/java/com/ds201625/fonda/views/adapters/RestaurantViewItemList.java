@@ -8,7 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.RestaurantCategory;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Adapter para la vista de detalle de restaurantes
@@ -23,6 +26,31 @@ public class RestaurantViewItemList extends BaseArrayAdapter<Restaurant> {
         super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
 
     }
+
+    public void update() {
+        List<Restaurant> restaurantes = null;
+        clear();
+        RestaurantCategory a = new RestaurantCategory();
+        a.setNameCategory("Pudin");
+        restaurantes.add(new Restaurant("Prueba Restaurante 1","Por ahi", a));
+        restaurantes.add(new Restaurant("Prueba Restaurante 2","Por ahi", a));
+        /*try {
+            Command commandoGetProfiles = FondaCommandFactory.getProfilesCommand();
+            commandoGetProfiles.run();
+            profiles = (List<Profile>)commandoGetProfiles.getResult();
+        }
+        catch (RestClientException e) {
+            e.printStackTrace();
+            Log.v("Fonda",e.toString());
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }*/
+        if (restaurantes != null)
+            addAll(restaurantes);
+        notifyDataSetChanged();
+    }
+
 
     /**
      * Crea la vista
