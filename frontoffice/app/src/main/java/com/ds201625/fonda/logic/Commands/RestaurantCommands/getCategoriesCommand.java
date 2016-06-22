@@ -1,4 +1,4 @@
-package com.ds201625.fonda.logic.Commands.ResturantCommands;
+package com.ds201625.fonda.logic.Commands.RestaurantCommands;
 
 import android.util.Log;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Comando para obtener categorias de restaurante
  */
-public class getCategoriesCommand extends BaseCommand {
+public class GetCategoriesCommand extends BaseCommand {
 
     private String TAG = "GetCategoriesCommand";
 

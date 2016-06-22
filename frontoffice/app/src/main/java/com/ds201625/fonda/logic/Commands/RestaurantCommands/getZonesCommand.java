@@ -1,4 +1,4 @@
-package com.ds201625.fonda.logic.Commands.ResturantCommands;
+package com.ds201625.fonda.logic.Commands.RestaurantCommands;
 
 import android.util.Log;
 
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Comando para obtener zonas
  */
-public class getZonesCommand extends BaseCommand {
+public class GetZonesCommand extends BaseCommand {
 
     private String TAG = "GetZonesCommand";
 

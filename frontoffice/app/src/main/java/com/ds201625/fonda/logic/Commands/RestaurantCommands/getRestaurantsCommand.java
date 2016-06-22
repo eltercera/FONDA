@@ -1,4 +1,4 @@
-package com.ds201625.fonda.logic.Commands.ResturantCommands;
+package com.ds201625.fonda.logic.Commands.RestaurantCommands;
 
 import android.util.Log;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Comando para obtener restaurantes
  */
-public class getRestaurantsCommand extends BaseCommand {
+public class GetRestaurantsCommand extends BaseCommand {
 
     private String TAG = "GetRestaurantsCommand";
 

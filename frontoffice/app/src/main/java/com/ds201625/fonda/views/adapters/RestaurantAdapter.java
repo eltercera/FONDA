@@ -1,6 +1,7 @@
 package com.ds201625.fonda.views.adapters;
 
 import android.app.Activity;
+import android.app.ListFragment;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +10,17 @@ import android.widget.TextView;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by gbsoj on 6/22/2016.
  */
 public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
+    int currentPage;
 
     public RestaurantAdapter(Context context) {
             super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
@@ -23,6 +28,7 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
 
     @Override
     public View createView(Restaurant item) {
+        currentPage = 0;
         View convertView;
         LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
         convertView = inflater.inflate(R.layout.list_restaurant, null, true);
@@ -64,5 +70,24 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
 
         convertView.setBackgroundColor(0x00000000);
         return convertView;
+    }
+
+    public void update() {
+        List<Restaurant> restaurants = null;
+
+        try {
+            Command comando = FondaCommandFactory.getCategoriesCommand();
+            comando.setParameter(0, 10);
+            comando.setParameter(1, currentPage + 1);
+            comando.run();
+            restaurants = (List<Restaurant>)comando.getResult();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        currentPage++;
+        if (restaurants != null) addAll(restaurants);
+        notifyDataSetChanged();
     }
 }

@@ -1,5 +1,6 @@
 package com.ds201625.fonda.logic;
 
+import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
 import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteCommensalCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
@@ -11,6 +12,7 @@ import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalC
 import com.ds201625.fonda.logic.Commands.ProfileCommands.DeleteProfileCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.GetProfilesCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.UpdateProfileCommand;
+import com.ds201625.fonda.logic.Commands.RestaurantCommands.*;
 
 /**
  * Fabrica de comandos
@@ -116,5 +118,11 @@ public class FondaCommandFactory {
      * @return comando deleteCommensalCommand
      */
     public static Command deleteCommensalCommand() { return  new DeleteCommensalCommand(); }
+
+    public static Command getCategoriesCommand() { return new GetCategoriesCommand();}
+
+    public static Command getZonesCommand() { return new GetCategoriesCommand();}
+
+    public static Command getRestaurantsCommand() { return new GetCategoriesCommand();}
 }
 
