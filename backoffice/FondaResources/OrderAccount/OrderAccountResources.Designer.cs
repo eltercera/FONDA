@@ -106,11 +106,191 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Command CancelInvoice.
+        /// </summary>
+        public static string ClassNameCancelInvoice {
+            get {
+                return ResourceManager.GetString("ClassNameCancelInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandCloseCashRegister.
+        /// </summary>
+        public static string ClassNameCloseCashRegister {
+            get {
+                return ResourceManager.GetString("ClassNameCloseCashRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ClosedOrdersPresenter.
         /// </summary>
         public static string ClassNameClosedOrdersPresenter {
             get {
                 return ResourceManager.GetString("ClassNameClosedOrdersPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandCloseOrder.
+        /// </summary>
+        public static string ClassNameCloseOrder {
+            get {
+                return ResourceManager.GetString("ClassNameCloseOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DetailOrderPresenter.
+        /// </summary>
+        public static string ClassNameDetailOrderPresenter {
+            get {
+                return ResourceManager.GetString("ClassNameDetailOrderPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandFindInvoicesByAccount.
+        /// </summary>
+        public static string ClassNameFindInvoicesByAccount {
+            get {
+                return ResourceManager.GetString("ClassNameFindInvoicesByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandFindInvoicesByRestaurant.
+        /// </summary>
+        public static string ClassNameFindInvoicesByRestaurant {
+            get {
+                return ResourceManager.GetString("ClassNameFindInvoicesByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGenerateInvoice.
+        /// </summary>
+        public static string ClassNameGenerateInvoice {
+            get {
+                return ResourceManager.GetString("ClassNameGenerateInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetCloseOrders.
+        /// </summary>
+        public static string ClassNameGetCloseOrders {
+            get {
+                return ResourceManager.GetString("ClassNameGetCloseOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetCurrencyByRestaurant.
+        /// </summary>
+        public static string ClassNameGetCurrencyByRestaurant {
+            get {
+                return ResourceManager.GetString("ClassNameGetCurrencyByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetDetailOrder.
+        /// </summary>
+        public static string ClassNameGetDetailOrder {
+            get {
+                return ResourceManager.GetString("ClassNameGetDetailOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetDishOrdersByAccount.
+        /// </summary>
+        public static string ClassNameGetDishOrdersByAccount {
+            get {
+                return ResourceManager.GetString("ClassNameGetDishOrdersByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetGenerateInvoice.
+        /// </summary>
+        public static string ClassNameGetGenerateInvoice {
+            get {
+                return ResourceManager.GetString("ClassNameGetGenerateInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetInvoice.
+        /// </summary>
+        public static string ClassNameGetInvoice {
+            get {
+                return ResourceManager.GetString("ClassNameGetInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetOrder.
+        /// </summary>
+        public static string ClassNameGetOrder {
+            get {
+                return ResourceManager.GetString("ClassNameGetOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetOrders.
+        /// </summary>
+        public static string ClassNameGetOrders {
+            get {
+                return ResourceManager.GetString("ClassNameGetOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OrderInvoicesPresenter.
+        /// </summary>
+        public static string ClassNameOrderInvoicesPresenter {
+            get {
+                return ResourceManager.GetString("ClassNameOrderInvoicesPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OrdersPresenter.
+        /// </summary>
+        public static string ClassNameOrdersPresenter {
+            get {
+                return ResourceManager.GetString("ClassNameOrdersPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandPayOrder.
+        /// </summary>
+        public static string ClassNamePayOrder {
+            get {
+                return ResourceManager.GetString("ClassNamePayOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandReleaseTableByRestaurant.
+        /// </summary>
+        public static string ClassNameReleaseTableByRestaurant {
+            get {
+                return ResourceManager.GetString("ClassNameReleaseTableByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandTotalOrder.
+        /// </summary>
+        public static string ClassNameTotalOrder {
+            get {
+                return ResourceManager.GetString("ClassNameTotalOrder", resourceCulture);
             }
         }
         
@@ -156,6 +336,33 @@ namespace FondaResources.OrderAccount {
         public static string DishNameColum {
             get {
                 return ResourceManager.GetString("DishNameColum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0.
+        /// </summary>
+        public static string Empty {
+            get {
+                return ResourceManager.GetString("Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al realizar el cierre de caja.
+        /// </summary>
+        public static string ErrorMessageCloseCashRegister {
+            get {
+                return ResourceManager.GetString("ErrorMessageCloseCashRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al crear la factura para una orden cerrada.
+        /// </summary>
+        public static string ErrorMessageGenerateInvoice {
+            get {
+                return ResourceManager.GetString("ErrorMessageGenerateInvoice", resourceCulture);
             }
         }
         
@@ -282,6 +489,15 @@ namespace FondaResources.OrderAccount {
         public static string QuantityColumn {
             get {
                 return ResourceManager.GetString("QuantityColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string QueryParam {
+            get {
+                return ResourceManager.GetString("QueryParam", resourceCulture);
             }
         }
         

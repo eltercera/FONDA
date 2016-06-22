@@ -22,10 +22,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         //Enlace Modelo - Vista
         private IOrderInvoicesModel _view;
         private int totalColumns = 4;
-        int _restaurantId;
-        bool resultObj;
-        int param;
-        IList<Invoice> listInvoice;
+        private int _restaurantId;
+        private IList<Invoice> listInvoice;
 
         ///<summary>
         ///Constructor
@@ -64,7 +62,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 {
                     //Obtiene la instancia del comando enviado el restaurante como parametro
                     commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByAccount(result);
-                    _view.Session = result.ToString();
+                    _view.SessionAccountId = result.ToString();
                     //Ejecuta el comando deseado
                     commandGetInvoicesByAccount.Execute();
                     //Se obtiene el resultado de la operacion
@@ -96,13 +94,38 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
                     (
                         Errors.MVPExceptionOrderInvoicesTableCode,
-                        Errors.ClassNameOrderInvoicesPresenter,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionOrderInvoicesTable,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                throw e;
+                ErrorLabel(e.MessageException);
+            }
+            catch (FormatException ex)
+            {
+                MVPExceptionQuery e = new MVPExceptionQuery
+                    (
+                        OrderAccountResources.MVPExceptionQueryCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionQuery,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                ErrorLabel(e.MessageException);
+            }
+            catch (Exception ex)
+            {
+                MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
+                    (
+                        OrderAccountResources.MVPExceptionOrderInvoicesTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
                 ErrorLabel(e.MessageException);
             }
 
@@ -235,28 +258,11 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         {
             int result = 0;
             string queryParameter =
-                HttpContext.Current.Request.QueryString["Id"];
+                HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
 
-            try
-            { 
-                if (queryParameter != null && queryParameter != string.Empty)
-                {
-                    return int.Parse(queryParameter);
-                }
-            }
-            //Esto deberia ir mas arriba
-            catch (System.FormatException ex) {
-                MVPExceptionQuery e = new MVPExceptionQuery
-                    (
-                        Errors.MVPExceptionQueryCode,
-                        Errors.ClassNameOrderInvoicesPresenter,
-                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionQuery,
-                        ex
-                    );
-                Logger.WriteErrorLog(e.ClassName, e);
-                ErrorLabel(e.MessageException);
-                return 0;
+            if (queryParameter != null && queryParameter != string.Empty)
+            {
+                return int.Parse(queryParameter);
             }
 
             return result;

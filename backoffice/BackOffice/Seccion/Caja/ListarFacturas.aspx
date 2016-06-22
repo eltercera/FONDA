@@ -56,8 +56,6 @@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
-                         <asp:HiddenField ID="orderId" runat="server" Value="" />
-
                         <asp:Table ID="orderInvoices" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
 
                     </div>
@@ -67,19 +65,4 @@
     </div>
 
 
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            setValue();
-        });
-
-                            function setValue() {
-                        $('.table > tbody > tr > td:nth-child(5) > a')
-                        .click(function () {
-                            var rowId = $(this).parent().parent().attr("data-id");
-                            document.getElementById("<%=orderId.ClientID%>").value = rowId;
-
-                        });
-                    }
-    </script>
 </asp:Content>

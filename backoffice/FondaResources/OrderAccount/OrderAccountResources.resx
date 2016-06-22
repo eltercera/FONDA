@@ -225,9 +225,101 @@
     <value>Iva</value>
     <comment>Nombre de lcolumna de IVA de factura</comment>
   </data>
+  <data name="ClassNameCancelInvoice" xml:space="preserve">
+    <value>Command CancelInvoice</value>
+    <comment>Comando para cancelar una factura</comment>
+  </data>
+  <data name="ClassNameCloseCashRegister" xml:space="preserve">
+    <value>CommandCloseCashRegister</value>
+    <comment>Comando para obtener el Cierre de Caja</comment>
+  </data>
   <data name="ClassNameClosedOrdersPresenter" xml:space="preserve">
     <value>ClosedOrdersPresenter</value>
     <comment>Clase presentadora de las Ordenes cerradas</comment>
+  </data>
+  <data name="ClassNameCloseOrder" xml:space="preserve">
+    <value>CommandCloseOrder</value>
+    <comment>Comando para cerrar una orden abierta</comment>
+  </data>
+  <data name="ClassNameDetailOrderPresenter" xml:space="preserve">
+    <value>DetailOrderPresenter</value>
+    <comment>Comando para obtener para la detalle de la Orden</comment>
+  </data>
+  <data name="ClassNameFindInvoicesByAccount" xml:space="preserve">
+    <value>CommandFindInvoicesByAccount</value>
+    <comment>Comando para obtener las Facturas de una Cuenta </comment>
+  </data>
+  <data name="ClassNameFindInvoicesByRestaurant" xml:space="preserve">
+    <value>CommandFindInvoicesByRestaurant</value>
+    <comment>Comando para obtener las Facturas de un Restaurante</comment>
+  </data>
+  <data name="ClassNameGenerateInvoice" xml:space="preserve">
+    <value>CommandGenerateInvoice</value>
+    <comment>Comando para generar una factura</comment>
+  </data>
+  <data name="ClassNameGetCloseOrders" xml:space="preserve">
+    <value>CommandGetCloseOrders</value>
+    <comment>Comando para obtener las ordenes cerradas de un Restaurante</comment>
+  </data>
+  <data name="ClassNameGetCurrencyByRestaurant" xml:space="preserve">
+    <value>CommandGetCurrencyByRestaurant</value>
+    <comment>Comando para una moneda del restaurant</comment>
+  </data>
+  <data name="ClassNameGetDetailOrder" xml:space="preserve">
+    <value>CommandGetDetailOrder</value>
+    <comment>Comando para obtener el detalle de una Orden</comment>
+  </data>
+  <data name="ClassNameGetDishOrdersByAccount" xml:space="preserve">
+    <value>CommandGetDishOrdersByAccount</value>
+    <comment>Comando para obtener la lista de platos de una cuenta</comment>
+  </data>
+  <data name="ClassNameGetGenerateInvoice" xml:space="preserve">
+    <value>CommandGetGenerateInvoice</value>
+    <comment>Comando para devolver una factura generada de una cuenta</comment>
+  </data>
+  <data name="ClassNameGetInvoice" xml:space="preserve">
+    <value>CommandGetInvoice</value>
+    <comment>Comando para obtener una factura</comment>
+  </data>
+  <data name="ClassNameGetOrder" xml:space="preserve">
+    <value>CommandGetOrder</value>
+    <comment>Comando para obtener una orden</comment>
+  </data>
+  <data name="ClassNameGetOrders" xml:space="preserve">
+    <value>CommandGetOrders</value>
+    <comment>Comando para obtener las ordenes de un Restaurante</comment>
+  </data>
+  <data name="ClassNameOrderInvoicesPresenter" xml:space="preserve">
+    <value>OrderInvoicesPresenter</value>
+    <comment>Clase presentadora de las facturas</comment>
+  </data>
+  <data name="ClassNameOrdersPresenter" xml:space="preserve">
+    <value>OrdersPresenter</value>
+    <comment>Clase presentadora de las Ordenes abiertas</comment>
+  </data>
+  <data name="ClassNamePayOrder" xml:space="preserve">
+    <value>CommandPayOrder</value>
+    <comment>Comando para pagar una orden abierta</comment>
+  </data>
+  <data name="ClassNameReleaseTableByRestaurant" xml:space="preserve">
+    <value>CommandReleaseTableByRestaurant</value>
+    <comment>Comando para pagar cambiar una mesa a "Disponible"</comment>
+  </data>
+  <data name="ClassNameTotalOrder" xml:space="preserve">
+    <value>CommandTotalOrder</value>
+    <comment>Comando para pagar conocer el pretotal de la orden</comment>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>0</value>
+    <comment>Valor vacio</comment>
+  </data>
+  <data name="ErrorMessageCloseCashRegister" xml:space="preserve">
+    <value>Error al realizar el cierre de caja</value>
+    <comment>Mensaje de error para CommandCloseCashRegister</comment>
+  </data>
+  <data name="ErrorMessageGenerateInvoice" xml:space="preserve">
+    <value>Error al crear la factura para una orden cerrada</value>
+    <comment>Mensaje de error para CommandGenerateInvoice</comment>
   </data>
   <data name="MessageGetClosedOrders" xml:space="preserve">
     <value>Se ha cargado la tabla de ordenes cerradas satisfactoriamente</value>
@@ -240,6 +332,10 @@
   <data name="MVPExceptionClosedOrdersTableCode" xml:space="preserve">
     <value>BO-04-001</value>
     <comment>Mensaje de error al llenar tabla de Ordenes cerradas</comment>
+  </data>
+  <data name="QueryParam" xml:space="preserve">
+    <value>Id</value>
+    <comment>Parametro del Query para el URL</comment>
   </data>
   <data name="SessionNameRest" xml:space="preserve">
     <value>NameRestaurant</value>
