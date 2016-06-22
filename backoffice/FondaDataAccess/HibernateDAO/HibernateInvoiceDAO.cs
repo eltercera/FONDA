@@ -169,7 +169,16 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 //Logger
                 throw exception;
             }
-            catch(Exception ex)
+            catch (FindAccountByRestaurantFondaDAOException ex)
+            {
+                FindInvoicesByRestaurantFondaDAOException exception = new
+                    FindInvoicesByRestaurantFondaDAOException(
+                        OrderAccountResources.MessageFindInvoicesByRestaurantFondaDAOException,
+                        ex);
+                //Logger
+                throw exception;
+            }
+            catch (Exception ex)
             {
                 FindInvoicesByRestaurantFondaDAOException exception = new 
                     FindInvoicesByRestaurantFondaDAOException(
@@ -211,15 +220,15 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 //Logger
                 throw exception;
             }
-            //catch ( e)
-            //{
-            //    GenerateNumberInvoiceFondaDAOException exception =
-            //        new GenerateNumberInvoiceFondaDAOException
-            //        (OrderAccountResources.MessageGenerateNumberInvoiceFondaDAOException,
-            //        e);
-            //    //Logger
-            //    throw exception;
-            //}
+            catch (FindInvoicesByRestaurantFondaDAOException e)
+            {
+                GenerateNumberInvoiceFondaDAOException exception =
+                    new GenerateNumberInvoiceFondaDAOException
+                    (OrderAccountResources.MessageGenerateNumberInvoiceFondaDAOException,
+                    e);
+                //Logger
+                throw exception;
+            }
             catch (Exception e)
             {
                 GenerateNumberInvoiceFondaDAOException exception =
