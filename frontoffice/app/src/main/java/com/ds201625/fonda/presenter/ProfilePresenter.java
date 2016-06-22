@@ -35,6 +35,7 @@ public class ProfilePresenter implements IProfileViewPresenter {
 
         @Override
         public Boolean createProfile(Profile profile) {
+            Log.d(TAG,"Metodo createProfile");
             Boolean resp = false;
             try {
                 Command commandoCreateProfile = FondaCommandFactory.createProfileCommand();
@@ -45,11 +46,13 @@ public class ProfilePresenter implements IProfileViewPresenter {
             {
                 Log.e(TAG,"Error al crear Perfil",e);
             }
+            Log.d(TAG,"Cierre del Metodo createProfile");
             return resp;
         }
 
         @Override
         public Boolean updateProfile(Profile profile) {
+            Log.d(TAG,"Metodo updateProfile");
             Boolean resp = false;
             try {
                 Command commandoUpdateProfile = FondaCommandFactory.updateProfileCommand();
@@ -58,13 +61,15 @@ public class ProfilePresenter implements IProfileViewPresenter {
                 resp = (boolean) commandoUpdateProfile.getResult();
             } catch (Exception e)
             {
-                Log.e(TAG,"Error al crear Perfil",e);
+                Log.e(TAG,"Error al modificar Perfil",e);
             }
+            Log.d(TAG,"Cierre del Metodo updateProfile");
             return resp;
         }
 
         @Override
         public Boolean deleteProfile(Profile profile) {
+            Log.d(TAG,"Metodo deleteProfile");
             Boolean resp = false;
             try {
                 Command commandoDeleteProfile = FondaCommandFactory.
@@ -76,11 +81,13 @@ public class ProfilePresenter implements IProfileViewPresenter {
             {
                 Log.e(TAG,"Error al eliminar el Perfil",e);
             }
+            Log.d(TAG,"Cierre del Metodo deleteProfile");
             return resp;
         }
 
         @Override
         public List<Profile> getProfiles() {
+            Log.d(TAG,"Metodo getProfiles");
             List<Profile> resp = null;
             try {
                 Command commandoGetProfiles = FondaCommandFactory.getProfilesCommand();
@@ -88,8 +95,9 @@ public class ProfilePresenter implements IProfileViewPresenter {
                 resp = (List<Profile>) commandoGetProfiles.getResult();
             } catch (Exception e)
             {
-                Log.e(TAG,"Error al eliminar el Perfil",e);
+                Log.e(TAG,"Error al Listar los Perfiles",e);
             }
+            Log.d(TAG,"Cierre del Metodo getProfiles");
             return resp;
         }
 

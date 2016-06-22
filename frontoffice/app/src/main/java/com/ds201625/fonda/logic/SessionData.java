@@ -84,7 +84,6 @@ public class SessionData {
      */
     public void registerCommensal(String email, String password) throws Exception {
         if (email.isEmpty() || password.isEmpty()) {
-            // // TODO: 5/16/16 InvalidRegisterDataException.
             throw new Exception("Datos de regsitro invalido");
         }
         Commensal newCommensal;
@@ -96,7 +95,6 @@ public class SessionData {
         commandoCreateCommensal.run();
         newCommensal = (Commensal)commandoCreateCommensal.getResult();
         if (newCommensal == null) {
-            // // TODO: 5/16/16 Exception.
             throw new Exception("No se logro crear el usuario");
         }
         this.commensal = newCommensal;
@@ -108,13 +106,11 @@ public class SessionData {
      */
     public void loginCommensal() throws Exception {
         if (this.commensal == null) {
-            // // TODO: 5/16/16 No existe commensal Exception
             throw new Exception("No existe commensal");
         }
         Token tokenTest = getTokenServ().createToken(this.context);
         if (tokenTest == null) {
-            // // TODO: 5/16/16 No se pudo obtener toke
-            throw new Exception("No se pud obtener token");
+            throw new Exception("No se pudo obtener token");
         }
         this.token = tokenTest;
     }
