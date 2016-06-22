@@ -765,4 +765,8 @@
     <value>Error en la base de datos al obtener las ordenes abiertas de un restaurante</value>
     <comment>Mensaje de error para OpenOrdersByRestaurant</comment>
   </data>
+  <data name="MessageGetDishesByAccountFondaDAOException" xml:space="preserve">
+    <value>Error en la base de datos al obtener los platillos de una cuenta</value>
+    <comment>Mensaje de error para GetDishesByAccount</comment>
+  </data>
 </root>
