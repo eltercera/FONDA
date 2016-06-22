@@ -179,16 +179,10 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             _view.UserName.Text = _invoice.Profile.Person.Name.ToString();
             _view.UserLastName.Text = _invoice.Profile.Person.LastName.ToString();
             _view.UserId.Text = _invoice.Profile.Person.Ssn.ToString();
-<<<<<<< HEAD
-            _view.SubTotalInvoice.Text = _currency + " " + subtotal.ToString();
-            _view.IvaInvoice.Text = _currency + " " + _invoice.Tax.ToString();
-            //_view.TipInvoice.Text = _currency + " " + _invoice.Tip.ToString();
-            _view.TotalInvoice.Text = _currency + " " + _invoice.Total.ToString();
-=======
             _view.SubTotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, subtotal.ToString());
             _view.IvaInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Tax.ToString());
             _view.TotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Total.ToString());
->>>>>>> 38df7a32551a82aed33be7d6f0c0e71d4713e2d7
+            //_view.TipInvoice.Text = _currency + " " + _invoice.Tip.ToString();
             if (_invoice.Status.Equals(GeneratedInvoiceStatus.Instance))
                 _view.PrintInvoice.Visible = true;
             else if (_invoice.Status.Equals(CanceledInvoiceStatus.Instance))
@@ -306,47 +300,46 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         /// Obtiene el parametro pasado en el URL
         /// </summary>
         /// <returns>Id</returns>
-        private int GetQueryParameter()
-        {
-            int result = 0;
-<<<<<<< HEAD
-            try
-            {
-                if (AntiXssEncoder.HtmlEncode(HttpContext.Current.Request.QueryString["Id"], false) != null)
-                    return int.Parse(HttpContext.Current.Request.QueryString["Id"]);
-            }
-            catch (System.FormatException ex)
-            {
-                MVPExceptionQuery e = new MVPExceptionQuery
-                    (
-                        Errors.MVPExceptionQueryCode,
-                        Errors.ClassNameOrderInvoicesPresenter,
-                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionQuery,
-                        ex
-                    );
-                Logger.WriteErrorLog(e.ClassName, e);
-                ErrorLabel(e.MessageException);
-                HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
-            }
-            catch (HttpRequestValidationException ex)
-            {
-                HttpContext.Current.Server.ClearError();
-                HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
-            }
-            catch (Exception ex)
-=======
-            string queryParameter =
-                HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
+        //private int GetQueryParameter()
+        //{
+        //    int result = 0;
+
+        //    try
+        //    {
+        //        if (AntiXssEncoder.HtmlEncode(HttpContext.Current.Request.QueryString["Id"], false) != null)
+        //            return int.Parse(HttpContext.Current.Request.QueryString["Id"]);
+        //    }
+        //    catch (System.FormatException ex)
+        //    {
+        //        MVPExceptionQuery e = new MVPExceptionQuery
+        //            (
+        //                Errors.MVPExceptionQueryCode,
+        //                Errors.ClassNameOrderInvoicesPresenter,
+        //                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+        //                Errors.MessageMVPExceptionQuery,
+        //                ex
+        //            );
+        //        Logger.WriteErrorLog(e.ClassName, e);
+        //        ErrorLabel(e.MessageException);
+        //        HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
+        //    }
+        //    catch (HttpRequestValidationException ex)
+        //    {
+        //        HttpContext.Current.Server.ClearError();
+        //        HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
+        //    }
+        //    catch (Exception ex)
+
+        //    string queryParameter =
+        //        HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
 
 
-            if (queryParameter != null && queryParameter != string.Empty)
->>>>>>> 38df7a32551a82aed33be7d6f0c0e71d4713e2d7
-            {
-                HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
-            }
+        //    if (queryParameter != null && queryParameter != string.Empty)
+        //    {
+        //        HttpContext.Current.Response.Redirect("../Caja/ListarFacturas.aspx");
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
     }
 }
