@@ -18,10 +18,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
     {
         private FactoryDAO _facDAO = FactoryDAO.Intance;
         private List<int> _list;
-        private string _symbol = null;
-        private float _totalOrders = 0;
         private Invoice _invoice;
-        private Account _account;
 
         public CommandCancelInvoice(Object receiver) : base(receiver){ }
 
