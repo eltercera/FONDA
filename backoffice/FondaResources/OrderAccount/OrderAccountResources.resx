@@ -225,4 +225,28 @@
     <value>Iva</value>
     <comment>Nombre de lcolumna de IVA de factura</comment>
   </data>
+  <data name="ClassNameClosedOrdersPresenter" xml:space="preserve">
+    <value>ClosedOrdersPresenter</value>
+    <comment>Clase presentadora de las Ordenes cerradas</comment>
+  </data>
+  <data name="MessageGetClosedOrders" xml:space="preserve">
+    <value>Se ha cargado la tabla de ordenes cerradas satisfactoriamente</value>
+    <comment>Mensaje de exito para GetClosedOrders</comment>
+  </data>
+  <data name="MessageMVPExceptionClosedOrdersTable" xml:space="preserve">
+    <value>Se ha producido un error al llenar la tabla de Ordenes cerradas</value>
+    <comment>Mensaje de error para MVPExceptionClosedOrdersTable</comment>
+  </data>
+  <data name="MVPExceptionClosedOrdersTableCode" xml:space="preserve">
+    <value>BO-04-001</value>
+    <comment>Mensaje de error al llenar tabla de Ordenes cerradas</comment>
+  </data>
+  <data name="SessionNameRest" xml:space="preserve">
+    <value>NameRestaurant</value>
+    <comment>Variable de sesion que contiene el nombre del Restaurante</comment>
+  </data>
+  <data name="SessionRestaurantId" xml:space="preserve">
+    <value>RestaurantID</value>
+    <comment>Variable de sesion que contiene el Id del Restaurante</comment>
+  </data>
 </root>

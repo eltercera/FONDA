@@ -79,15 +79,6 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ClosedOrdersPresenter.
-        /// </summary>
-        public static string ClassNameClosedOrdersPresenter {
-            get {
-                return ResourceManager.GetString("ClassNameClosedOrdersPresenter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to CommandCloseOrder.
         /// </summary>
         public static string ClassNameCloseOrder {
@@ -322,15 +313,6 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla de Ordenes cerradas.
-        /// </summary>
-        public static string MessageMVPExceptionClosedOrdersTable {
-            get {
-                return ResourceManager.GetString("MessageMVPExceptionClosedOrdersTable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla del detale de la Orden #.
         /// </summary>
         public static string MessageMVPExceptionDetailOrderTable {
@@ -372,15 +354,6 @@ namespace FondaResources.OrderAccount {
         public static string MVPExceptionCloseButtonCode {
             get {
                 return ResourceManager.GetString("MVPExceptionCloseButtonCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to BO-04-001.
-        /// </summary>
-        public static string MVPExceptionClosedOrdersTableCode {
-            get {
-                return ResourceManager.GetString("MVPExceptionClosedOrdersTableCode", resourceCulture);
             }
         }
         

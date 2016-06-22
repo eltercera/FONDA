@@ -121,7 +121,6 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             }
             catch (MVPExceptionOrdersTable ex)
             {
-                //Revisar
                 MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
                     (
                         Errors.MVPExceptionOrdersTableCode,
@@ -131,7 +130,19 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                throw e;
+                ErrorLabel(e.MessageException);
+            }
+            catch(Exception ex)
+            {
+                MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
+                    (
+                        Errors.MVPExceptionOrdersTableCode,
+                        Errors.ClassNameOrdersPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        Errors.MessageMVPExceptionOrdersTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
                 ErrorLabel(e.MessageException);
             }
        

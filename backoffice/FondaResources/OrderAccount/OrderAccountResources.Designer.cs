@@ -106,6 +106,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ClosedOrdersPresenter.
+        /// </summary>
+        public static string ClassNameClosedOrdersPresenter {
+            get {
+                return ResourceManager.GetString("ClassNameClosedOrdersPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CreditCardPayment.
         /// </summary>
         public static string CreditCard {
@@ -205,6 +214,33 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha cargado la tabla de ordenes cerradas satisfactoriamente.
+        /// </summary>
+        public static string MessageGetClosedOrders {
+            get {
+                return ResourceManager.GetString("MessageGetClosedOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla de Ordenes cerradas.
+        /// </summary>
+        public static string MessageMVPExceptionClosedOrdersTable {
+            get {
+                return ResourceManager.GetString("MessageMVPExceptionClosedOrdersTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-001.
+        /// </summary>
+        public static string MVPExceptionClosedOrdersTableCode {
+            get {
+                return ResourceManager.GetString("MVPExceptionClosedOrdersTableCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to # Orden.
         /// </summary>
         public static string OrderNumberColumn {
@@ -268,6 +304,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NameRestaurant.
+        /// </summary>
+        public static string SessionNameRest {
+            get {
+                return ResourceManager.GetString("SessionNameRest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AccountNumber.
         /// </summary>
         public static string SessionNumberAccount {
@@ -282,6 +327,15 @@ namespace FondaResources.OrderAccount {
         public static string SessionNumberInvoice {
             get {
                 return ResourceManager.GetString("SessionNumberInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RestaurantID.
+        /// </summary>
+        public static string SessionRestaurantId {
+            get {
+                return ResourceManager.GetString("SessionRestaurantId", resourceCulture);
             }
         }
         

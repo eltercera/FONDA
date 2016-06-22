@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClassNameClosedOrdersPresenter" xml:space="preserve">
-    <value>ClosedOrdersPresenter</value>
-    <comment>Clase presentadora de las Ordenes cerradas</comment>
-  </data>
   <data name="ClassNameCloseOrder" xml:space="preserve">
     <value>CommandCloseOrder</value>
     <comment>Comando para cerrar una orden abierta</comment>
@@ -185,10 +181,6 @@
     <value>Error al pagar una orden abierta en un Restaurante</value>
     <comment>Mensaje de error para CommandPayOrder</comment>
   </data>
-  <data name="MessageMVPExceptionClosedOrdersTable" xml:space="preserve">
-    <value>Se ha producido un error al llenar la tabla de Ordenes cerradas</value>
-    <comment>Mensaje de error para MVPExceptionClosedOrdersTable</comment>
-  </data>
   <data name="MessageMVPExceptionDetailOrderTable" xml:space="preserve">
     <value>Se ha producido un error al llenar la tabla del detale de la Orden #</value>
     <comment>Mensaje de error para MVPExceptionDetailOrderTable</comment>
@@ -200,10 +192,6 @@
   <data name="MessageMVPExceptionOrdersTable" xml:space="preserve">
     <value>Se ha producido un error al llenar la tabla de Ordenes abiertas</value>
     <comment>Mensaje de error para MVPExceptionOrdersTable</comment>
-  </data>
-  <data name="MVPExceptionClosedOrdersTableCode" xml:space="preserve">
-    <value>BO-04-001</value>
-    <comment>Mensaje de error al llenar tabla de Ordenes cerradas</comment>
   </data>
   <data name="MVPExceptionDetailOrderTableCode" xml:space="preserve">
     <value>BO-04-004</value>
