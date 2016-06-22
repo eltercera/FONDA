@@ -156,6 +156,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             _view.UserId.Text = _invoice.Profile.Person.Ssn.ToString();
             _view.SubTotalInvoice.Text = _currency + " " + subtotal.ToString();
             _view.IvaInvoice.Text = _currency + " " + _invoice.Tax.ToString();
+            //_view.TipInvoice.Text = _currency + " " + _invoice.Tip.ToString();
             _view.TotalInvoice.Text = _currency + " " + _invoice.Total.ToString();
             if (_invoice.Status.Equals(GeneratedInvoiceStatus.Instance))
                 _view.PrintInvoice.Visible = true;

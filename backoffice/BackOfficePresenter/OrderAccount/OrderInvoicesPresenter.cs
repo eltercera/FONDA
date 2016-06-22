@@ -70,6 +70,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                     commandGetInvoicesByAccount.Execute();
                     //Se obtiene el resultado de la operacion
                     listInvoice = (IList<Invoice>)commandGetInvoicesByAccount.Receiver;
+                    _view.NumberAccount.Visible = true;
+                    _view.NumberAccount.Text = "# Orden: " + "NumberAccount";
                 }
 
                 else if (result == 0)

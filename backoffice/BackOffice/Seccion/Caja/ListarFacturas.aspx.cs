@@ -41,6 +41,13 @@ namespace BackOffice.Seccion.Caja
             set { orderInvoices = value; }
         }
 
+        public System.Web.UI.WebControls.Label NumberAccount
+        {
+            get { return ordernumber; }
+            
+            set { ordernumber = value; }
+        }
+
         /// <summary>
         /// Recurso de Session para el ID de la orden
         /// </summary>
@@ -56,6 +63,7 @@ namespace BackOffice.Seccion.Caja
 
             set { Session[OrderAccountResources.SessionIdInvoice] = value; }
         }
+
         public string SessionRestaurant
         {
             get
