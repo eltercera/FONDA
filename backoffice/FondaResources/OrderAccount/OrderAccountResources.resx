@@ -745,4 +745,20 @@
     <value>Error en la base de datos al cerrar las ordenden de un restaurante</value>
     <comment>Mensaje de error para ClosedOrdersByRestaurant</comment>
   </data>
+  <data name="ClassNameGetCurrencyInvoice" xml:space="preserve">
+    <value>CommandGetCurrencyInvoice</value>
+    <comment>Comando para obtener el simbolo de la moneda de un Restaurante</comment>
+  </data>
+  <data name="CommandExceptionGetCurrencyInvoiceCode" xml:space="preserve">
+    <value>BO-04-027</value>
+    <comment>Codigo de error para CommandExceptionGetCurrencyInvoice</comment>
+  </data>
+  <data name="MessageCommandExceptionGetCurrencyInvoice" xml:space="preserve">
+    <value>Se ha producido un error al obtener el simbolo de la moneda</value>
+    <comment>Mensaje de error para CommandExceptionGetCurrencyInvoice</comment>
+  </data>
+  <data name="SuccessMessageCommandGetCurrencyInvoice" xml:space="preserve">
+    <value>Se ha obtenido el simbolo de la moneda correctamente</value>
+    <comment>Mensaje de exito para CommandGetCurrencyInvoice</comment>
+  </data>
 </root>

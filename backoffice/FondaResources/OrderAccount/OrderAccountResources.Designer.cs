@@ -214,6 +214,15 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandGetCurrencyInvoice.
+        /// </summary>
+        public static string ClassNameGetCurrencyInvoice {
+            get {
+                return ResourceManager.GetString("ClassNameGetCurrencyInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGetDetailOrder.
         /// </summary>
         public static string ClassNameGetDetailOrder {
@@ -417,6 +426,15 @@ namespace FondaResources.OrderAccount {
         public static string CommandExceptionGetCurrencyByRestaurantCode {
             get {
                 return ResourceManager.GetString("CommandExceptionGetCurrencyByRestaurantCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-027.
+        /// </summary>
+        public static string CommandExceptionGetCurrencyInvoiceCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetCurrencyInvoiceCode", resourceCulture);
             }
         }
         
@@ -804,6 +822,15 @@ namespace FondaResources.OrderAccount {
         public static string MessageCommandExceptionGetCurrencyByRestaurant {
             get {
                 return ResourceManager.GetString("MessageCommandExceptionGetCurrencyByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al obtener el simbolo de la moneda.
+        /// </summary>
+        public static string MessageCommandExceptionGetCurrencyInvoice {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetCurrencyInvoice", resourceCulture);
             }
         }
         
@@ -1335,6 +1362,15 @@ namespace FondaResources.OrderAccount {
         public static string SuccessMessageCommandGetCurrencyByRestaurant {
             get {
                 return ResourceManager.GetString("SuccessMessageCommandGetCurrencyByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido el simbolo de la moneda correctamente.
+        /// </summary>
+        public static string SuccessMessageCommandGetCurrencyInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetCurrencyInvoice", resourceCulture);
             }
         }
         
