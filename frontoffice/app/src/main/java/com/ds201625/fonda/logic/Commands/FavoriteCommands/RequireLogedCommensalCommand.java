@@ -49,4 +49,7 @@ public class RequireLogedCommensalCommand extends BaseCommand {
         }
        setResult(commensal);
     }
+
+    @Override
+    protected void invokeF() {}
 }
