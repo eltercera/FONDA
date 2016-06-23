@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations;
 using System;
 using com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante;
+using FondaLogic.Commands.Restaurante;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Factory
 {
@@ -262,6 +263,27 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         public static Command GetCommandModifyRestaurant(object receiver)
         {
             return new CommandModifyRestaurant(receiver);
+        }
+        public static Command GetCommandGenerateRestaurant(object receiver)
+        {
+            return new CommandGenerateRestaurant(receiver);
+        }
+
+        public static Command GetCommandGetAllCategories(object receiver)
+        {
+            return new CommandGetAllCategories(receiver);
+        }
+        public static Command GetCommandGetAllCurrencies(object receiver)
+        {
+            return new CommandGetAllCurrency(receiver);
+        }
+        public static Command GetCommandGetAllZones(object receiver)
+        {
+            return new CommandGetAllZones(receiver);
+        }
+        public static Command GetCommandSaveRestaurant(object receiver)
+        {
+            return new CommandSaveRestaurant(receiver);
         }
 
         #endregion

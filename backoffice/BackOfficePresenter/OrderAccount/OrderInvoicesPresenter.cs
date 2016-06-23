@@ -18,7 +18,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
     public class OrderInvoicesPresenter : Presenter
     {
         //Enlace Modelo - Vista
-        private IOrderInvoicesModel _view;
+        private IOrderInvoicesContract _view;
         private int totalColumns = 4;
         private int _restaurantId;
         private IList<Invoice> listInvoice;
@@ -27,7 +27,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         ///Constructor
         /// </summary>
         /// <param name="viewOrderInvoices">Interfaz</param>
-        public OrderInvoicesPresenter(IOrderInvoicesModel viewOrderInvoices) 
+        public OrderInvoicesPresenter(IOrderInvoicesContract viewOrderInvoices) 
             : base(viewOrderInvoices)
         {
             //Enlace Modelo - Vista

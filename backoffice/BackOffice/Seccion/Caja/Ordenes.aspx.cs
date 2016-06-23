@@ -10,7 +10,7 @@ using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class Ordenes : System.Web.UI.Page, IOrdersModel
+    public partial class Ordenes : System.Web.UI.Page, IOrdersContract
     {
         #region Presenter
 
@@ -20,7 +20,7 @@ namespace BackOffice.Seccion.Caja
 
         #region Model
 
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
 
@@ -28,7 +28,7 @@ namespace BackOffice.Seccion.Caja
 
         }
 
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get { return this.SuccessLabelMessage; }
 
@@ -52,7 +52,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Recurso de Session para el ID de la orden
         /// </summary>
-        string IOrdersModel.Session
+        string IOrdersContract.Session
         {
             get
             {
@@ -78,12 +78,12 @@ namespace BackOffice.Seccion.Caja
             set { Session[ResourceLogin.sessionRestaurantID] = value; }
         }
 
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get { return this.SuccessLabel; }
         }
 
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { return this.ErrorLabel; }
         }
