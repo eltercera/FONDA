@@ -15,6 +15,9 @@ import com.ds201625.fonda.logic.Commands.ProfileCommands.GetProfilesCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.UpdateProfileCommand;
 import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
 import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteTokenCommand;
+import com.ds201625.fonda.logic.Commands.ReservationCommands.AddReservationCommand;
+import com.ds201625.fonda.logic.Commands.ReservationCommands.AllReservationCommand;
+
 /**
  * Fabrica de comandos
  */
@@ -129,5 +132,21 @@ public class FondaCommandFactory {
     public static Command createTokenCommand() { return  new CreateTokenCommand();
     }
 
+
+    /**
+     * Crea un AddReservationCommand
+     * @return comando AddReservationCommand
+     */
+    public static Command AddReservationCommand() {
+        return  new AddReservationCommand();
+    }
+
+    /**
+     * Crea un AllReservationCommand
+     * @return comando AllReservationCommand
+     */
+    public static Command AllReservationCommand() {
+        return  new AllReservationCommand();
+    }
 }
 
