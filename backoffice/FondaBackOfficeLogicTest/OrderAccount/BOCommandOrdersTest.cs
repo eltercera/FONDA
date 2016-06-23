@@ -155,6 +155,35 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
         }
 
+        [Test(Description = "Obtiene las ordenes cerradas de un restaurante")]
+        public void CommandGetClosedOrdersTest()
+        {
+
+            _command = CommandFactory.GetCommandClosedOrders(_restaurantId);
+
+            _command.Execute();
+
+            _listAccount = (IList<Account>)_command.Receiver;
+
+            Assert.IsNotNull(_listAccount);
+            Assert.AreEqual(_listAccount[0].Id, 2);
+
+        }
+
+        [Test(Description = "Obtiene la unidad monetaria de un restaurante")]
+        public void CommandGetCurrencyByRestaurantTest()
+        {
+
+            _command = CommandFactory.GetCommandGetCurrency(_restaurantId);
+
+            _command.Execute();
+
+            _currency = (string)_command.Receiver;
+
+            Assert.AreEqual(_currency, "€");
+
+        }
+
         [Test]
         public void CommandGetOrdersNullTest()
         {
@@ -211,6 +240,18 @@ namespace com.ds201625.fonda.Tests.DataAccess
             Assert.IsNotNull(result);
             Assert.AreEqual(_listDishOrder.Count, 2);
             Assert.AreEqual(_currency, "€");
+        }
+        [Test(Description = "Obtiene el detalle de una orden por id de la orden")]
+        public void CommandGetDishOrderByAccountTest()
+        {
+            _command = CommandFactory.GetCommandGetDishOrdersByAccountId(_account.Id);
+
+            _command.Execute();
+            
+            _listDishOrder = (IList<DishOrder>)_command.Receiver;
+
+            Assert.IsNotNull(_listDishOrder);
+            Assert.AreEqual(_listDishOrder.Count, 2);
         }
 
     }

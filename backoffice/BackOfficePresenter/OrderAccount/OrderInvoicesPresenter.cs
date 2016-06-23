@@ -22,6 +22,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         private int totalColumns = 4;
         private int _restaurantId;
         private IList<Invoice> listInvoice;
+        private Account _account;
 
         ///<summary>
         ///Constructor
@@ -46,6 +47,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
             Command commandGetInvoicesByAccount;
             Command commandGetInvoicesByRestaurant;
             Command commandGetClosedOrderAccount;
+            Command commandGetOrder;
 
             try
             {
@@ -58,15 +60,20 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 
                 if (result <= listClosedAccount.Count && result != 0)
                 {
-                    _view.NumberAccount.Visible = true;
-                    //_view.NumberAccount.Text = _view.;
                     //Obtiene la instancia del comando enviado el restaurante como parametro
                     commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByAccount(result);
+                    commandGetOrder = CommandFactory.GetCommandGetOrder(result);
                     _view.SessionAccountId = result.ToString();
                     //Ejecuta el comando deseado
                     commandGetInvoicesByAccount.Execute();
+                    commandGetOrder.Execute();
                     //Se obtiene el resultado de la operacion
                     listInvoice = (IList<Invoice>)commandGetInvoicesByAccount.Receiver;
+                    _account = (Account)commandGetOrder.Receiver;
+                    //Habilita el Label del Numero de la Orden
+                    _view.NumberAccount.Visible = true;
+                    _view.NumberAccount.Text = "# Orden: " + _account.Number.ToString();
+
                 }
 
                 else if (result == 0)

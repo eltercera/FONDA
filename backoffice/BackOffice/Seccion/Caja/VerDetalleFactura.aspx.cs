@@ -47,7 +47,12 @@ namespace BackOffice.Seccion.Caja
 
             set { ssn = value; }
         }
+        public System.Web.UI.WebControls.Label NumberAccount
+        {
+            get { return accountNumber; }
 
+            set { accountNumber = value; }
+        }
         public System.Web.UI.WebControls.Label IvaInvoice
         {
             get { return iva; }
@@ -162,6 +167,7 @@ namespace BackOffice.Seccion.Caja
         protected void print_Click(object sender, EventArgs e)
         {
             _presenter.PrintInvoice();
+            //_presenter.SendInvoice();
         }
         protected void Page_Load(object sender, EventArgs e)
         {

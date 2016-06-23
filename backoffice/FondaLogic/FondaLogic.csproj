@@ -68,7 +68,6 @@
     <Compile Include="Commands\OrderAccount\CommandGetDetailOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetDishOrdersByAccountId.cs" />
     <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
-    <Compile Include="Commands\OrderAccount\CommandSendPrintInvoice.cs" />
     <Compile Include="Commands\Reservations\CommandFindRestaurantById.cs" />
     <Compile Include="Commands\Reservations\CommandFindReservationsByRestaurant.cs" />
     <Compile Include="Commands\Reservations\CommandFindReservationsByTable.cs" />
@@ -88,8 +87,15 @@
     <Compile Include="Commands\OrderAccount\CommandReleaseTableByRestaurant.cs" />
     <Compile Include="Commands\OrderAccount\CommandTotalOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandValidateProfileByCommensal.cs" />
+    <Compile Include="Commands\Restaurant\CommandAddCategory.cs" />
+    <Compile Include="Commands\Restaurant\CommandGenerateRestaurant.cs" />
+    <Compile Include="Commands\Restaurant\CommandGetAllCategories.cs" />
+    <Compile Include="Commands\Restaurant\CommandGetAllCurrency.cs" />
+    <Compile Include="Commands\Restaurant\CommandGetAllZones.cs" />
     <Compile Include="Commands\Restaurant\CommandModifyRestaurant.cs" />
     <Compile Include="Commands\Reservations\CommandGetTables.cs" />
+    <Compile Include="Commands\Restaurant\CommandSaveMRestaurant.cs" />
+    <Compile Include="Commands\Restaurant\CommandSaveRestaurant.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
     <Compile Include="FondaCommandException\CommandExceptionFindReservationsByRestaurant.cs" />
