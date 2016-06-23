@@ -1,5 +1,6 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
+import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Reservation;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public interface ReservationClient {
      * @return
      */
     @GET("addreservation/{idcommensal}/{idrestaurant}")
-    Call<Reservation> addReservation(@Path("idcommensal") int idCommensal , @Path("idrestaurant") int idRestaurant);
+    Call<Commensal> addReservation(@Path("idcommensal") int idCommensal , @Path("idrestaurant") int idRestaurant);
 
     /**
      * Find /api/findReservation/{id}
@@ -29,8 +30,8 @@ public interface ReservationClient {
      * @param idCommensal identificador del comensal.
      * @return
      */
-    @GET("findReservation/{id}")
-    Call<List<Reservation>> getReservarions(@Path("id") int idCommensal);
+    @GET("allreservation/{id}")
+    Call<List<Reservation>> getReservations(@Path("id") int idCommensal);
 
 
 }

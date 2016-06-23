@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Commensal extends UserAccount {
 
-    private List<Reservation> reservarions;
+    private List<Reservation> reservations;
 
     private List<Restaurant> favoritesRestaurants;
 
@@ -24,19 +24,19 @@ public class Commensal extends UserAccount {
 
 
     public List<Reservation> getReservations() {
-        return reservarions;
+        return reservations;
     }
 
     public void setReservations(List<Reservation> reservations) {
-        this.reservarions = reservarions;
+        this.reservations = reservations;
     }
 
     public void addReservation(Reservation reservation) {
-        this.reservarions.add(reservation);
+        this.reservations.add(reservation);
     }
 
     public  void removeReservation(Reservation reservation){
-        this.reservarions.remove(reservation);
+        this.reservations.remove(reservation);
     }
 
     // Esto no es necesario

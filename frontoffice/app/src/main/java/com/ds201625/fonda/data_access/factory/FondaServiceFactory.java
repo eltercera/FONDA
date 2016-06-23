@@ -106,6 +106,7 @@ public class FondaServiceFactory {
     }
 
 
+
     /**
      * Obtiene los servicios de restaurantes favoritos
      * @param
@@ -114,7 +115,19 @@ public class FondaServiceFactory {
         return serviceFactory.getFavoriteRestaurantService();
     }
 
+
     /**
+     * Obtiene los servicios de la reserva
+     * @param
+     */
+    public static ReservationService getReservationService(){
+        return serviceFactory.getReservesService();
+    }
+
+
+
+    /**
+     *
      * Obtiene ser servicio de factura
      * @return
      */
@@ -158,14 +171,7 @@ public class FondaServiceFactory {
         return serviceFactory.getFilterByCategoryService();
     }
 
-    /**
-     * Obtiene los servicios de Comensal
-     * @param
-     * @return
-     */
-    public ReservationService getAllReservesService(){
-        return serviceFactory.getAllReservesService();
-    }
+
 
     /**
      * Obtiene los servicios de commensal logueado

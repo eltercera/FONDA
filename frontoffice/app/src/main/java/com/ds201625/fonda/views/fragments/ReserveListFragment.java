@@ -21,10 +21,15 @@ import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.Reservation;
+import com.ds201625.fonda.interfaces.ReservationView;
+import com.ds201625.fonda.interfaces.ReservationViewPresenter;
 import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.presenter.ReservationPresenter;
+import com.ds201625.fonda.views.activities.ReserveActivity;
 import com.ds201625.fonda.views.adapters.ReserveViewIntemList;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Andreina on 20-06-2016.
@@ -34,49 +39,77 @@ import java.util.ArrayList;
      * Fragment que contiene la lista de Reserva.
      */
     public class ReserveListFragment extends BaseFragment
-            implements SwipeRefreshLayout.OnRefreshListener{
+            implements ReservationView, SwipeRefreshLayout.OnRefreshListener{
+
+        /**
+         * String que indica la clase al logger
+         */
+        private String TAG = "ReserveListFragment";
 
         //Interface de comunicacion contra la activity
         reserveListFragmentListener mCallBack;
 
         //Elementos de la vista.
-        private ListView reserve;
-        private SwipeRefreshLayout swipeRefreshLayout;
-        private ReserveViewIntemList reserveList;
 
+        private ListView reserve;
+        private ReserveViewIntemList reserveList;
+        private SwipeRefreshLayout swipeRefreshLayout;
+        private List<Reservation> reservationList;
+        private ReservationViewPresenter presenter;
+        private ReserveActivity reserveActivity;
+        private boolean empty;
+
+        /**
+         * Crea el fragment
+         * @param savedInstanceState
+         */
         @Override
         public void onCreate(@Nullable Bundle savedInstanceState) {
+            Log.d(TAG,"Ha entrado en onCreate");
             super.onCreate(savedInstanceState);
             reserveList = new ReserveViewIntemList(getContext());
+            presenter = new ReservationPresenter(this);
         }
 
+
+        /**
+         * Crea la vista del fragment
+         * @param inflater
+         * @param container
+         * @param savedInstanceState
+         * @return
+         */
         @Nullable
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View layout = inflater.inflate(R.layout.fragment_reserve,container,false);
-
-            reserve = (ListView)layout.findViewById(R.id.lvReserveList);
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+            Log.d(TAG, "Ha entrado en onCreateView");
+            View layout = inflater.inflate(R.layout.fragment_reserve, container, false);
+            reserve = (ListView) layout.findViewById(R.id.lvReserveList);
             swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
             swipeRefreshLayout.setOnRefreshListener(this);
-            reserve.setAdapter(reserveList);
 
+            try {
+                reservationList = getListSW();
+                reserveList.addAll(reservationList);
+                reserve.setAdapter(reserveList);
+            } catch (NullPointerException e) {
+                Log.e(TAG, "Error al iniciar reserva", e);
 
-
-            return layout ;
+            }
+                return layout;
         }
 
+        /**
+         * Cuando se refresca la lista
+         */
         @Override
         public void onRefresh() {
-            updateList();
+            Log.d(TAG,"Ha ingresado a onRefresh");
+
+            Log.d(TAG,"Ha finalizado onRefresh");
         }
 
-        public void updateList() {
-            swipeRefreshLayout.setRefreshing(true);
-            reserveList.update();
-            reserve.refreshDrawableState();
-            swipeRefreshLayout.setRefreshing(false);
-        }
+
 
         @Override
         public void onAttach(Context context) {
@@ -92,6 +125,24 @@ import java.util.ArrayList;
         @Override
         public void onDetach() {
             super.onDetach();
+        }
+
+        @Override
+        public List<Reservation> getListSW() {
+            List<Reservation> listReserWS;
+            Log.d(TAG,"Ha ingresado a getListSW");
+            try {
+                //Llamo al comando de requireLogedCommensalCommand
+                presenter.findLoggedComensal();
+                //Llamo al comando de AllReservation
+                listReserWS = presenter.AllReservation();
+                return listReserWS;
+            }
+            catch (NullPointerException nu) {
+                Log.e(TAG, "Error en getListSW al obtener reservas", nu);
+            }
+            Log.d(TAG,"Ha finalizado getListSW");
+            return null;
         }
 
         /**
