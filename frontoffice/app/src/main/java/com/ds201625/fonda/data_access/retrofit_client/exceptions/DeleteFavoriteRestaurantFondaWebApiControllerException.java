@@ -3,7 +3,8 @@ package com.ds201625.fonda.data_access.retrofit_client.exceptions;
 import com.ds201625.fonda.domains.FondaBaseException;
 
 /**
- * Created by Hp on 22/06/2016.
+ * DeleteFavoriteRestaurantFondaWebApiControllerException
+ * clase de excepcion de tipo web api controller
  */
 public class DeleteFavoriteRestaurantFondaWebApiControllerException extends FondaBaseException {
 

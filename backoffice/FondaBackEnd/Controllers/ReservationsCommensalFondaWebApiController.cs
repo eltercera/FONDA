@@ -23,7 +23,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
     /// </summary>
     public class ReservationsCommensalFondaWebApiController : FondaWebApi
     {
-        private Commensal commensal;
+        /*private Commensal commensal;
         private Restaurant restaurant;
         private ICommand command;
 
@@ -124,7 +124,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                       throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException);
                   }*/
                 //Creación del commensal con id
-                commensal = EntityFactory.GetCommensal();
+               /* commensal = EntityFactory.GetCommensal();
                 commensal.Id = idcommensal;
 
                 //Creación del restaurant con id
@@ -285,7 +285,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
             //}
 
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+           /* Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -350,6 +350,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             return Ok(result);
-        }
+        }*/
     }
 }

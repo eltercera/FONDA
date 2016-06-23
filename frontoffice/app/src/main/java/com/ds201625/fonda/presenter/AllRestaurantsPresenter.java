@@ -2,6 +2,7 @@ package com.ds201625.fonda.presenter;
 
 import android.util.Log;
 
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.GetAllRestaurantsFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.interfaces.AllRestaurantsView;
@@ -63,17 +64,25 @@ public class AllRestaurantsPresenter implements AllRestaurantsViewPresenter {
      * @return
      */
     @Override
-    public List<Restaurant> findAllRestaurants() {
+    public List<Restaurant> findAllRestaurants()
+            throws GetAllRestaurantsFondaWebApiControllerException{
         Log.d(TAG,"Ha entrado en findAllRestaurants");
         Command cmdAllRest = facCmd.allRestaurantCommand();
         try {
             cmdAllRest.run();
-        } catch (NullPointerException e){
+        }catch (GetAllRestaurantsFondaWebApiControllerException e) {
+            Log.e(TAG,"Error en findAllRestaurants al buscar los restaurantes favoritos",
+                    e);
+            throw  new GetAllRestaurantsFondaWebApiControllerException(e);
+        }
+        catch (NullPointerException e){
             Log.e(TAG,"Error en findAllRestaurants al buscar todos los restaurantes",
                     e);
+            throw  new GetAllRestaurantsFondaWebApiControllerException(e);
         }catch (Exception e) {
             Log.e(TAG,"Error en findAllRestaurants al buscar todos los restaurantes",
                     e);
+            throw  new GetAllRestaurantsFondaWebApiControllerException(e);
         }
         listRestWS = (List<Restaurant>) cmdAllRest.getResult();
         Log.d(TAG,"Se retorna la lista de Restaurantes");

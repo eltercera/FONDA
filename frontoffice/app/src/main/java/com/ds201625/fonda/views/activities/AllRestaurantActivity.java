@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.AddFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.DeleteFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.interfaces.AllRestaurantsView;
@@ -235,6 +238,11 @@ public class AllRestaurantActivity extends BaseNavigationActivity
                                         Toast.LENGTH_LONG).show();
                                 setAsFavorite.setIcon(R.drawable.ic_grade_creme_24dp);
                                 Log.d(TAG,"Se ha eliminado el favorito");
+                            } catch (DeleteFavoriteRestaurantFondaWebApiControllerException e) {
+                                Toast.makeText(getApplicationContext(),
+                                        "Ha ocurrido un error al conectar con el ServicioWeb",
+                                        Toast.LENGTH_LONG).show();
+                                Log.e(TAG, "Error Proveniente del WEB SERVICE al eliminar favoritos", e);
                             } catch (Exception e) {
                                 Log.e(TAG,"Error en el manejo de un favorito",e);
                                 Toast.makeText(getApplicationContext(),
@@ -251,7 +259,12 @@ public class AllRestaurantActivity extends BaseNavigationActivity
                                         Toast.LENGTH_LONG).show();
                                 setAsFavorite.setIcon(R.drawable.ic_star_yellow);
                                 Log.d(TAG,"Se ha guardado el favorito");
-                            }  catch (Exception e) {
+                            } catch (AddFavoriteRestaurantFondaWebApiControllerException e) {
+                                Toast.makeText(getApplicationContext(),
+                                        "Ha ocurrido un error al conectar con el ServicioWeb",
+                                        Toast.LENGTH_LONG).show();
+                                Log.e(TAG, "Error Proveniente del WEB SERVICE al agregar favoritos", e);
+                            } catch (Exception e) {
                                 Log.e(TAG,"Error en el manejo de un favorito",e);
                                 Toast.makeText(getApplicationContext(),
                                         R.string.favorite_add_fail_meessage,
@@ -286,7 +299,12 @@ public class AllRestaurantActivity extends BaseNavigationActivity
                     return true;
                 }
             }
-        }
+        }catch (FindFavoriteRestaurantFondaWebApiControllerException e) {
+          Toast.makeText(getApplicationContext(),
+                  "Ha ocurrido un error al conectar con el ServicioWeb",
+                  Toast.LENGTH_LONG).show();
+          Log.e(TAG, "Error Proveniente del WEB SERVICE al agregar favoritos", e);
+      }
         catch (Exception e) {
             Log.e(TAG,"Error al determinar si es favorito",e);
         }
@@ -360,3 +378,4 @@ public class AllRestaurantActivity extends BaseNavigationActivity
 
     }
 }
+

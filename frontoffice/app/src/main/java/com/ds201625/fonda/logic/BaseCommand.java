@@ -1,12 +1,9 @@
 package com.ds201625.fonda.logic;
 
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.AddCommensalWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.DeleteProfileFondaWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.DeleteTokenFondaWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetProfilesFondaWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetTokenFondaWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.PostProfileFondaWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.PutProfileFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.AddFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.DeleteFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.GetAllRestaurantsFondaWebApiControllerException;
 
 /**
  * Base para los comandos
@@ -106,7 +103,8 @@ public abstract class BaseCommand implements Command {
     /**
      * Invocacion de la acción del comando
      */
-    protected abstract void invoke() throws AddCommensalWebApiControllerException, GetTokenFondaWebApiControllerException, DeleteTokenFondaWebApiControllerException, PostProfileFondaWebApiControllerException, DeleteProfileFondaWebApiControllerException, GetProfilesFondaWebApiControllerException, PutProfileFondaWebApiControllerException;
+    protected abstract void invoke() throws Exception;
+
 
     /**
      * Valida los parametros requeridos
@@ -123,3 +121,4 @@ public abstract class BaseCommand implements Command {
         }
     }
 }
+
