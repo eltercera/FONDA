@@ -95,7 +95,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                DeleteFavoriteRestaurantFondaWebApiControllerException error = (DeleteFavoriteRestaurantFondaWebApiControllerException)e;
+                DeleteFavoriteRestaurantFondaWebApiControllerException error = 
+                    new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.DeleteFavRestException, e);
                 return InternalServerError(error);
             }
 
@@ -174,7 +175,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                AddFavoriteRestaurantFondaWebApiControllerException error = (AddFavoriteRestaurantFondaWebApiControllerException)e;
+                AddFavoriteRestaurantFondaWebApiControllerException error = 
+                    new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException, e);
                 return InternalServerError(error);
             }
 
@@ -228,7 +230,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                GetAllRestaurantsFondaWebApiControllerException error = (GetAllRestaurantsFondaWebApiControllerException) e;
+                GetAllRestaurantsFondaWebApiControllerException error = 
+                    new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetAllRestaurantsException, e);
                 return InternalServerError(error);
             }
 
@@ -302,7 +305,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                FindFavoriteRestaurantFondaWebApiControllerException error = (FindFavoriteRestaurantFondaWebApiControllerException)e;
+                FindFavoriteRestaurantFondaWebApiControllerException error = 
+                    new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurantException, e);
                 return InternalServerError(error);    
             }
 
@@ -363,7 +367,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                FindByEmailUserAccountFondaWebApiControllerException error = (FindByEmailUserAccountFondaWebApiControllerException)e;
+                FindByEmailUserAccountFondaWebApiControllerException error = 
+                    new FindByEmailUserAccountFondaWebApiControllerException(GeneralRes.GetCommensalEmailException, e);
                 return InternalServerError(error);
             }
 
