@@ -92,6 +92,7 @@
     <Compile Include="Commands\Restaurant\CommandGetAllZones.cs" />
     <Compile Include="Commands\Restaurant\CommandModifyRestaurant.cs" />
     <Compile Include="Commands\Reservations\CommandGetTables.cs" />
+    <Compile Include="Commands\Restaurant\CommandSaveMRestaurant.cs" />
     <Compile Include="Commands\Restaurant\CommandSaveRestaurant.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
