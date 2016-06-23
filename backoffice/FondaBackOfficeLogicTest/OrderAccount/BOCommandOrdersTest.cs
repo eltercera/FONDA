@@ -4,6 +4,7 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         private ICommensalDAO _comensalDAO;
         private UserAccount _user;
         #endregion
+
         #region
         [SetUp]
         public void Init()
@@ -74,6 +76,117 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
         #endregion
 
+        #region Pruebas de Logic/Command/GetCommandCloseCashRegister
+        [Test(Description = "Se cierra la caja")]
+        public void CommandCloseCashRegisterTest()
+        {
+            _command = CommandFactory.GetCommandCloseCashRegister(_restaurantId);
+
+            _command.Execute();
+
+            _totalOrders = (string)_command.Receiver;
+
+            Assert.IsNotNull(_totalOrders);
+            Assert.AreEqual(_totalOrders, "€ 13900");
+        }
+
+        [Test(Description = "Prueba de excepcion CommandExceptionCloseCashRegister")]
+        [ExpectedException(typeof(CommandExceptionCloseCashRegister))]
+        public void CommandCloseCashRegisterExceptionTest()
+        {
+            _command = CommandFactory.GetCommandCloseCashRegister(0);
+
+            _command.Execute();
+
+            _totalOrders = (string)_command.Receiver;
+
+            Assert.IsNotNull(_totalOrders);
+            Assert.AreEqual(_totalOrders, "€ 13900");
+        }
+        #endregion
+
+        #region Pruebas de Logic/Command/CommandGetOrdersTest
+        [Test(Description = "Obtiene las ordenes de un restaurante")]
+        public void CommandGetOrdersTest()
+        {
+
+            _command = CommandFactory.GetCommandGetOrders(_restaurantId);
+
+            _command.Execute();
+
+            _listAccount = (IList<Account>)_command.Receiver;
+
+            Assert.IsNotNull(_listAccount);
+
+        }
+        [Test(Description = "Prueba de la exception de CommandGetOrdersExceptionTest")]
+        [ExpectedException(typeof(CommandExceptionGetOrders))]
+        public void CommandGetOrdersExceptionTest()
+        {
+            _command = CommandFactory.GetCommandGetOrders(0);
+
+            _command.Execute();
+
+            _listAccount = (IList<Account>)_command.Receiver;
+
+            Assert.IsNotNull(_listAccount);
+
+        }
+        #endregion
+
+        #region Pruebas de Logic/Command/CommandGetClosedOrdersTest
+        [Test(Description = "Obtiene las ordenes cerradas de un restaurante")]
+        public void CommandGetClosedOrdersTest()
+        {
+            _command = CommandFactory.GetCommandClosedOrders(_restaurantId);
+            _command.Execute();
+            _listAccount = (IList<Account>)_command.Receiver;
+            Assert.IsNotNull(_listAccount);
+            Assert.AreEqual(_listAccount[0].Id, 2);
+        }
+        [Test(Description = "Pueba de exception de CommandGetClosedOrdersExceptionTest")]
+        [ExpectedException(typeof(CommandExceptionGetClosedOrders))]
+        public void CommandGetClosedOrdersExceptionTest()
+        {
+            _command = CommandFactory.GetCommandClosedOrders(0);
+            _command.Execute();
+            _listAccount = (IList<Account>)_command.Receiver;
+            Assert.IsNotNull(_listAccount);
+            Assert.AreEqual(_listAccount[0].Id, 2);
+        }
+        #endregion
+
+        #region Pruebas de Logic/Command/CommandGetCurrencyByRestaurantTest
+        [Test(Description = "Obtiene la unidad monetaria de un restaurante")]
+        public void CommandGetCurrencyByRestaurantTest()
+        {
+
+            _command = CommandFactory.GetCommandGetCurrency(_restaurantId);
+
+            _command.Execute();
+
+            _currency = (string)_command.Receiver;
+
+            Assert.AreEqual(_currency, "€");
+
+        }
+        [Test(Description = "Prueba de exception de CommandGetCurrencyByRestaurant")]
+        [ExpectedException(typeof(CommandExceptionGetCurrencyByRestaurant))]
+        public void CommandGetCurrencyByRestaurantExceptionTest()
+        {
+
+            _command = CommandFactory.GetCommandGetCurrency(0);
+
+            _command.Execute();
+
+            _currency = (string)_command.Receiver;
+
+            Assert.AreEqual(_currency, "€");
+
+        }
+        #endregion
+
+        #region Pruebas de Logic/Command/CommandPayOrderTest
         [Test(Description = "Se paga la orden")]
         public void CommandPayOrderTest()
         {
@@ -91,6 +204,26 @@ namespace com.ds201625.fonda.Tests.DataAccess
             Assert.IsNotNull(_invoice);
             //Assert.AreEqual(_total, 10192f);
         }
+
+        [Test(Description = "Se paga la orden")]
+        [ExpectedException(typeof(CommandExceptionPayOrder))]
+        public void CommandPayOrderExceptionTest()
+        {
+            _user = _comensalDAO.FindById(0);
+            _comensal = (Commensal)_comensalDAO.FindById(0);
+            IList<object> _result = new List<object>();
+            _result.Add(_restaurantId);//1
+            _result.Add(_orderId);//1
+            _result.Add(1);//1 profile
+            _result.Add(_cashPayment);
+            _result.Add(_comensal);
+            _command = CommandFactory.GetCommandPayOrder(_result);
+            _command.Execute();
+            _invoice = (Invoice)_command.Receiver;
+            Assert.IsNotNull(_invoice);
+            //Assert.AreEqual(_total, 10192f);
+        }
+        #endregion
 
         [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
         public void CommandTotalOrderTest()
@@ -141,48 +274,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
             //Assert.AreEqual(_table.Status,);
         }
 
-        [Test(Description = "Obtiene las ordenes de un restaurante")]
-        public void CommandGetOrdersTest()
-        {
-
-            _command = CommandFactory.GetCommandGetOrders(_restaurantId);
-
-            _command.Execute();
-
-            _listAccount = (IList<Account>)_command.Receiver;
-
-            Assert.IsNotNull(_listAccount);
-
-        }
-
-        [Test(Description = "Obtiene las ordenes cerradas de un restaurante")]
-        public void CommandGetClosedOrdersTest()
-        {
-
-            _command = CommandFactory.GetCommandClosedOrders(_restaurantId);
-
-            _command.Execute();
-
-            _listAccount = (IList<Account>)_command.Receiver;
-
-            Assert.IsNotNull(_listAccount);
-            Assert.AreEqual(_listAccount[0].Id, 2);
-
-        }
-
-        [Test(Description = "Obtiene la unidad monetaria de un restaurante")]
-        public void CommandGetCurrencyByRestaurantTest()
-        {
-
-            _command = CommandFactory.GetCommandGetCurrency(_restaurantId);
-
-            _command.Execute();
-
-            _currency = (string)_command.Receiver;
-
-            Assert.AreEqual(_currency, "€");
-
-        }
 
         [Test]
         public void CommandGetOrdersNullTest()
@@ -210,19 +301,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
             Assert.IsNotNull(_account);
 
-        }
-
-        [Test(Description = "Se cierra la caja")]
-        public void CommandCloseCashRegisterTest()
-        {
-            _command = CommandFactory.GetCommandCloseCashRegister(_restaurantId);
-
-            _command.Execute();
-
-            _totalOrders = (string)_command.Receiver;
-
-            Assert.IsNotNull(_totalOrders);
-            Assert.AreEqual(_totalOrders, "€ 13900");
         }
 
         [Test(Description = "Obtiene el detalle de una orden")]

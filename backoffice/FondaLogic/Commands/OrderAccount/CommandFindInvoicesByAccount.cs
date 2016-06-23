@@ -34,6 +34,18 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 Receiver = listInvoices;
 
             }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                CommandExceptionFindInvoicesByAccount exception = new CommandExceptionFindInvoicesByAccount(
+                    OrderAccountResources.CommandExceptionFindInvoicesByAccountCode,
+                    OrderAccountResources.ClassNameFindInvoicesByAccount,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionFindInvoicesByAccount,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                throw exception;
+            }
             catch (NullReferenceException ex)
             {
                 CommandExceptionFindInvoicesByAccount exception = new CommandExceptionFindInvoicesByAccount(
@@ -44,7 +56,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 listInvoices = new List<Invoice>();
                 Receiver = listInvoices;
 
@@ -59,7 +71,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 listInvoices = new List<Invoice>();
                 Receiver = listInvoices;
             }
