@@ -55,7 +55,7 @@ namespace com.ds201625.fonda.BackEndLogic.TokenManagement
                 Token token = (Token)EntityFactory.GetToken();
             try
             {
-                // Se agraga el Token al commensal
+                // Se agrega el Token al commensal
                 commensal.AddToken(token);
 
                 //Se guardan los cambios

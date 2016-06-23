@@ -77,7 +77,7 @@ namespace com.ds201625.fonda.BackEndLogic.TokenManagement
             }
 
             //Logger al Culminar el metodo
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, "",
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);

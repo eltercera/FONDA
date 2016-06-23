@@ -29,7 +29,6 @@ namespace FondaBackEndLogicTest
         private ICommand _getAccountEmail;
         private Commensal _commensal;
         private Profile _profile;
-        private IProfileDAO _profileDAO;
         private ICommensalDAO _commensalDAO;
         private int _idProfile;
 
@@ -155,6 +154,9 @@ namespace FondaBackEndLogicTest
             Assert.AreEqual(_email, _result.Email);
             Assert.AreEqual(_password, _result.Password);
         }
+        /// <summary>
+        /// Limpiar las variables al final de cada prueba
+        /// </summary>
         [TearDown]
         protected void Clean()
         {
@@ -169,7 +171,6 @@ namespace FondaBackEndLogicTest
             _deleteProfile = null;
             _commensal = null;
             _profile = null;
-            _profileDAO = null;
             _commensalDAO = null;
             _getAccountEmail = null;
             _idProfile = 0;

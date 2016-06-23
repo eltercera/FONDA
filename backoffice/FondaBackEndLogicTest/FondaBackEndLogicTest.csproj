@@ -57,6 +57,7 @@
     <Compile Include="HelpTestCommand.cs" />
     <Compile Include="ProfileCommandManagementTest.cs" />
     <Compile Include="ProfileManagementTest.cs" />
+    <Compile Include="TokenCommandManagementTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
