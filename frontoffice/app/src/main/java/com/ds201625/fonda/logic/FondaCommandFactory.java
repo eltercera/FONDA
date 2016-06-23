@@ -3,11 +3,10 @@ package com.ds201625.fonda.logic;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
+import com.ds201625.fonda.logic.Commands.ProfileCommand.CreateProfileCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.DeleteFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalCommand;
-import com.ds201625.fonda.logic.Commands.ProfileCommands.CreateProfileCommand;
-
 
 /**
  * Fabrica de comandos
