@@ -118,8 +118,7 @@ public class FondaCommandFactory {
      * @return comando deleteTokenCommand
      */
 
-    public static Command deleteTokenCommand() { return  new DeleteTokenCommand();
-    }
+    public static Command deleteTokenCommand() { return  new DeleteTokenCommand();}
 
     public static Command getCategoriesCommand() { return new GetCategoriesCommand();}
 
