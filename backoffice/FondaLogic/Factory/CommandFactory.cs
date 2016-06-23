@@ -1,13 +1,15 @@
 ﻿using com.ds201625.fonda;
 using com.ds201625.fonda.Domain;
-using FondaLogic.Commands.OrderAccount;
-using FondaLogic.Commands.Login;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.Login;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using System.Collections.Generic;
-using FondaLogic.Commands.Reservations;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations;
 using System;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante;
+using FondaLogic.Commands.Restaurante;
 
-namespace FondaLogic.Factory
+namespace com.ds201625.fonda.Logic.FondaLogic.Factory
 {
     /// <summary>
     /// Fabrica que genera los comandos del sistema
@@ -258,6 +260,43 @@ namespace FondaLogic.Factory
         #region Restaurant
 
         //Defincion de los comandos a implementar del modulo Restaurante
+        public static Command GetCommandModifyRestaurant(object receiver)
+        {
+            return new CommandModifyRestaurant(receiver);
+        }
+        public static Command GetCommandGenerateRestaurant(object receiver)
+        {
+            return new CommandGenerateRestaurant(receiver);
+        }
+
+        public static Command GetCommandGetAllCategories(object receiver)
+        {
+            return new CommandGetAllCategories(receiver);
+        }
+        public static Command GetCommandGetAllCurrencies(object receiver)
+        {
+            return new CommandGetAllCurrency(receiver);
+        }
+        public static Command GetCommandGetAllZones(object receiver)
+        {
+            return new CommandGetAllZones(receiver);
+        }
+        public static Command GetCommandSaveRestaurant(object receiver)
+        {
+            return new CommandSaveRestaurant(receiver);
+        }
+        public static Command GetCommandAddCategory(object receiver)
+        {
+            return new CommandAddCategory(receiver);
+        }
+        public static Command GetCommandSaveCategory(object receiver)
+        {
+            return new CommandSaveCategory(receiver);
+        }
+        public static Command GetCommandModifyCategory(object receiver)
+        {
+            return new CommandModifyCategory(receiver);
+        }
 
         #endregion
 
@@ -415,6 +454,7 @@ namespace FondaLogic.Factory
         {
             return new CommandFindReservationsByTable(receiver);
         }
+
 
         #endregion
 

@@ -1,12 +1,12 @@
 ﻿using com.ds201625.fonda.Domain;
-using FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandGetDetailInvoice : Command
     {
@@ -22,6 +22,7 @@ namespace FondaLogic.Commands.OrderAccount
             Command commandGetInvoice;
             Command commandGetDishOrder;
             Command commandGetCurrencyInvoice;
+            Command commandGetOrder;
 
             try
             {
@@ -31,11 +32,13 @@ namespace FondaLogic.Commands.OrderAccount
                 commandGetInvoice = CommandFactory.GetCommandGetInvoice(parameter[0]);
                 commandGetCurrencyInvoice = CommandFactory.GetCommandGetCurrencyInvoice(parameter[0]);
                 commandGetDishOrder = CommandFactory.GetCommandGetDishOrdersByAccountId(parameter[1]);
+                commandGetOrder = CommandFactory.GetCommandGetOrder(parameter[1]);
 
                 //Ejecuta el comando deseado
                 commandGetInvoice.Execute();
                 commandGetCurrencyInvoice.Execute();
                 commandGetDishOrder.Execute();
+                commandGetOrder.Execute();
 
                 listDishOrder = (IList<DishOrder>) commandGetDishOrder.Receiver;
 
@@ -50,7 +53,8 @@ namespace FondaLogic.Commands.OrderAccount
                         commandGetInvoice.Receiver,
                         commandGetCurrencyInvoice.Receiver,
                         commandGetDishOrder.Receiver,
-                        subtotal
+                        subtotal,
+                        commandGetOrder.Receiver
                     };
 
             }

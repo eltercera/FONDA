@@ -1,19 +1,18 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaResources.Login;
-using BackOfficeModel.Restaurant;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Web.UI.WebControls;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Resources.FondaResources.Login;
+using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
 
-namespace BackOfficePresenter.Restaurante
+namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
 {
-    public class RestaurantPresenter : BackOfficePresenter.Presenter
+    public class RestaurantPresenter : Presenter
     {
         //enlace entre el modelo y la vista
         private IRestaurantModel _view;
@@ -34,13 +33,15 @@ namespace BackOfficePresenter.Restaurante
         /// </summary>
         public void LoadTable()
         {
+            Command commandGetAllRestaurants;
             CleanTable();
-            //Genero los objetos para la consulta
-            //Genero la lista de la consulta
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantDAO _RestaurantDAO = factoryDAO.GetRestaurantDAO();
-            IList<com.ds201625.fonda.Domain.Restaurant> listRestaurant = _RestaurantDAO.GetAll();
 
+            //Llamada al comando para generar la lista de todos los restaurantes
+            commandGetAllRestaurants = CommandFactory.GetCommandGetAllRestaurants("null");
+            commandGetAllRestaurants.Execute();
+
+            //Resultado del receiver
+            IList<Restaurant> listRestaurant = (IList<Restaurant>)commandGetAllRestaurants.Receiver;
 
             int totalRows = listRestaurant.Count; //tamano de la lista 
             int totalColumns = 4; //numero de columnas de la tabla
@@ -177,15 +178,27 @@ namespace BackOfficePresenter.Restaurante
         public void FillDropdown()
         {
             ClearDropdown();
-            //Genero los objetos para la consulta
-            //Genero la lista de la consulta
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantCategoryDAO _categoryDAO = factoryDAO.GetRestaurantCategoryDAO();
-            IList<com.ds201625.fonda.Domain.RestaurantCategory> listCategories = _categoryDAO.GetAll();
-            ICurrencyDAO _currencyDAO = factoryDAO.GetCurrencyDAO();
-            IList<com.ds201625.fonda.Domain.Currency> listCurrencies = _currencyDAO.GetAll();
-            IZoneDAO _zoneDAO = factoryDAO.GetZoneDAO();
-            IList<com.ds201625.fonda.Domain.Zone> listZones = _zoneDAO.allZone();
+            Command commandGetAllCategories;
+            Command commandGetAllCurrencies;
+            Command commandGetAllZone;
+
+            //Llamada al comando para generar la lista de todos las categorias
+            commandGetAllCategories = CommandFactory.GetCommandGetAllCategories("null");
+            commandGetAllCategories.Execute();
+            //Resultado del receiver
+            IList<RestaurantCategory> listCategories = (IList<RestaurantCategory>)commandGetAllCategories.Receiver;
+
+            //Llamada al comando para generar la lista de todos los currencies
+            commandGetAllCurrencies = CommandFactory.GetCommandGetAllCurrencies("null");
+            commandGetAllCurrencies.Execute();
+            //Resultado del receiver
+            IList<Currency> listCurrencies = (IList<Currency>)commandGetAllCurrencies.Receiver;
+
+            //Llamada al comando para generar la lista de todos las zonas
+            commandGetAllZone = CommandFactory.GetCommandGetAllZones("null");
+            commandGetAllZone.Execute();
+            //Resultado del receiver
+            IList<Zone> listZones = (IList<Zone>)commandGetAllZone.Receiver;
 
             //Se llenan los Dropdownlist con los registros existentes
             foreach (RestaurantCategory category in listCategories)
@@ -207,15 +220,27 @@ namespace BackOfficePresenter.Restaurante
 
         public void ClearDropdown()
         {
-            //Genero los objetos para la consulta
-            //Genero la lista de la consulta
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantCategoryDAO _categoryDAO = factoryDAO.GetRestaurantCategoryDAO();
-            IList<com.ds201625.fonda.Domain.RestaurantCategory> listCategories = _categoryDAO.GetAll();
-            ICurrencyDAO _currencyDAO = factoryDAO.GetCurrencyDAO();
-            IList<com.ds201625.fonda.Domain.Currency> listCurrencies = _currencyDAO.GetAll();
-            IZoneDAO _zoneDAO = factoryDAO.GetZoneDAO();
-            IList<com.ds201625.fonda.Domain.Zone> listZones = _zoneDAO.allZone();
+            Command commandGetAllCategories;
+            Command commandGetAllCurrencies;
+            Command commandGetAllZone;
+
+            //Llamada al comando para generar la lista de todos las categorias
+            commandGetAllCategories = CommandFactory.GetCommandGetAllCategories("null");
+            commandGetAllCategories.Execute();
+            //Resultado del receiver
+            IList<RestaurantCategory> listCategories = (IList<RestaurantCategory>)commandGetAllCategories.Receiver;
+
+            //Llamada al comando para generar la lista de todos los currencies
+            commandGetAllCurrencies = CommandFactory.GetCommandGetAllCurrencies("null");
+            commandGetAllCurrencies.Execute();
+            //Resultado del receiver
+            IList<Currency> listCurrencies = (IList<Currency>)commandGetAllCurrencies.Receiver;
+
+            //Llamada al comando para generar la lista de todos las zonas
+            commandGetAllZone = CommandFactory.GetCommandGetAllZones("null");
+            commandGetAllZone.Execute();
+            //Resultado del receiver
+            IList<Zone> listZones = (IList<Zone>)commandGetAllZone.Receiver;
 
             //Se limpia los Dropdownlist con los registros existentes
             foreach (RestaurantCategory category in listCategories)
@@ -255,8 +280,8 @@ namespace BackOfficePresenter.Restaurante
         {
             bool valid = true;
             int cont = 0;
-            //expresion regular para el rif, valida que sea numerico y de tamaño 9
-            string patronNumero = "^[0-9]{9}$";
+            //expresion regular para el rif, valida que sea numerico
+            string patronNumero = "^[0-9]*$";
             //valida que la coordenada siempre tenga un punto
             string patronPunto = @"[(.)]";
             //patron que valida la coordenada acepte floats 
@@ -330,16 +355,19 @@ string zone, string longitud, string latitud, string otime, string ctime)
             {
                 valid = false;
             }
+
             //valida campos float
             if ((!Regex.IsMatch(longitud, patronFloat)) | (!Regex.IsMatch(latitud, patronFloat)))
             {
                 valid = false;
             }
+
             //Valida
             if ((!Regex.IsMatch(longitud, patronPunto)) | (!Regex.IsMatch(latitud, patronPunto)))
             {
                 valid = false;
             }
+
             //Valida que al menos un check esté seleccionado
             if (_view.day1Modify.Checked)
                 cont = cont + 1;
@@ -369,6 +397,10 @@ string zone, string longitud, string latitud, string otime, string ctime)
         /// </summary>
         public void ButtonAdd_Click()
         {
+            //declaracion de los comandos
+            Command commandGenerateRestaurant;
+            Command commandSaveRestaurant;
+
             #region Campos del Restaurante
             //Datos basicos del Restaurante
             string Name = _view.nameAdd.Text;
@@ -389,12 +421,15 @@ string zone, string longitud, string latitud, string otime, string ctime)
             //Coordenadas
             string Long = _view.longAdd.Text;
             string Lat = _view.latAdd.Text;
+            //validar
             double LongD = Convert.ToDouble(Long);
             double LatD = Convert.ToDouble(Lat);
 
             System.Diagnostics.Debug.WriteLine(_view.openingTimeAdd.Text);
             System.Diagnostics.Debug.WriteLine(_view.closingTimeAdd.Text);
             //Horario de apertura y cierre
+
+            //validar
             TimeSpan OT = TimeSpan.Parse(_view.openingTimeAdd.Text);
             TimeSpan CT = TimeSpan.Parse(_view.closingTimeAdd.Text);
             System.Diagnostics.Debug.WriteLine(CT);
@@ -413,16 +448,33 @@ string zone, string longitud, string latitud, string otime, string ctime)
             if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
                 Address, Zone, Long, Lat, _view.openingTimeAdd.Text, _view.closingTimeAdd.Text))
             {
-                FactoryDAO factoryDAO = FactoryDAO.Intance;
-                IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+                //Genera la lista del objeto para el comando
+                Object[] _addlist = new Object[13];
+                _addlist[0] = Name;
+                _addlist[1] = Logo;
+                _addlist[2] = Nationality;
+                _addlist[3] = Rif;
+                _addlist[4] = Address;
+                _addlist[5] = Category;
+                _addlist[6] = Currency;
+                _addlist[7] = Zone;
+                _addlist[8] = LongD;
+                _addlist[9] = LatD;
+                _addlist[10] = OT;
+                _addlist[11] = CT;
+                _addlist[12] = days;
 
-                //Genera un nuevo Restaurante
-                com.ds201625.fonda.Domain.Restaurant _restaurant =
-                    _restaurantDAO.GenerateRestaurant(Name, Logo, Nationality, Rif, Address,
-                    Category, Currency, Zone, LongD, LatD, OT, CT, days);
+                //Llamada al comando para generar un restaurante
+                commandGenerateRestaurant = CommandFactory.GetCommandGenerateRestaurant(_addlist);
+                commandGenerateRestaurant.Execute();
 
-                //Salva nuevo Restaurante en la Base de Datos
-                _restaurantDAO.Save(_restaurant);
+                //Resultado del receiver
+                Restaurant _restaurant = (Restaurant)commandGenerateRestaurant.Receiver;
+
+                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
+                commandSaveRestaurant = CommandFactory.GetCommandSaveRestaurant(_restaurant);
+                //ejecuto el comando
+                commandSaveRestaurant.Execute();
 
                 //Refresca la tabla de Restaurantes
                 LoadTable();
@@ -469,6 +521,10 @@ string zone, string longitud, string latitud, string otime, string ctime)
         /// </summary>
         public void ButtonModify_Click()
         {
+            Command commandModifyRestaurant;
+            Command commandGenerateRestaurant;
+            Command commandSaveRestaurant;
+
             #region Campos del Restaurante
             //Datos basicos del Restaurante
             string Name = _view.nameModify.Text;
@@ -502,13 +558,12 @@ string zone, string longitud, string latitud, string otime, string ctime)
             bool Day7 = _view.day7Modify.Checked;
             bool[] days = new bool[] { Day1, Day2, Day3, Day4, Day5, Day6 };
             #endregion
+            System.Diagnostics.Debug.WriteLine(Name + Category + Nationality.ToString() + Rif + Currency +
+                Address + Zone + Long + Lat + _view.openingTimeModify.Text + _view.closingTimeModify.Text);
 
             if (ValidateRestaurantM(Name, Category, Nationality.ToString(), Rif, Currency,
                 Address, Zone, Long, Lat, _view.openingTimeModify.Text, _view.closingTimeModify.Text))
             {
-                FactoryDAO factoryDAO = FactoryDAO.Intance;
-                IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
-
                 //Horario de apertura y cierre
                 TimeSpan OT = TimeSpan.Parse(_view.openingTimeModify.Text);
                 TimeSpan CT = TimeSpan.Parse(_view.closingTimeModify.Text);
@@ -517,17 +572,45 @@ string zone, string longitud, string latitud, string otime, string ctime)
                 string RestaurantID = _view.RestaurantModifyById.Value;
                 int idRestaurant = int.Parse(RestaurantID);
 
-                // Genera un objeto Restaurante a partir de los campos suministrados
-                com.ds201625.fonda.Domain.Restaurant _restaurantM =
-                    _restaurantDAO.GenerateRestaurant(Name, Logo, Nationality, Rif, Address,
-                    Category, Currency, Zone, LongD, LatD, OT, CT, days);
+                //Genera la lista del objeto para el comando
+                Object[] _addlist = new Object[13];
+                _addlist[0] = Name;
+                _addlist[1] = Logo;
+                _addlist[2] = Nationality;
+                _addlist[3] = Rif;
+                _addlist[4] = Address;
+                _addlist[5] = Category;
+                _addlist[6] = Currency;
+                _addlist[7] = Zone;
+                _addlist[8] = LongD;
+                _addlist[9] = LatD;
+                _addlist[10] = OT;
+                _addlist[11] = CT;
+                _addlist[12] = days;
 
-                // Modifica un objeto restaurante
-                com.ds201625.fonda.Domain.Restaurant _restaurant =
-                    _restaurantDAO.ModifyRestaurant(idRestaurant, _restaurantM);
+                //Llamada al comando para generar un restaurante antes de modificar
+                commandGenerateRestaurant = CommandFactory.GetCommandGenerateRestaurant(_addlist);
+                commandGenerateRestaurant.Execute();
 
-                //Salva Restaurante modificado en la Base de Datos
-                _restaurantDAO.Save(_restaurant);
+                //Resultado del receiver
+                Restaurant _restaurantM = (Restaurant)commandGenerateRestaurant.Receiver;
+
+                //Lista de objetos para el comando
+                Object[] _modifylist = new Object[2];
+                _modifylist[0] = _restaurantM;
+                _modifylist[1] = idRestaurant;
+
+                //Llamada al comando para modificar el restaurante
+                commandModifyRestaurant = CommandFactory.GetCommandModifyRestaurant(_modifylist);
+                commandModifyRestaurant.Execute();
+
+                //Resultado del receiver
+                Restaurant _restaurant = (Restaurant)commandModifyRestaurant.Receiver;
+
+                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
+                commandSaveRestaurant = CommandFactory.GetCommandSaveRestaurant(_restaurant);
+                //ejecuto el comando
+                commandSaveRestaurant.Execute();
 
                 //Refresca la tabla de Restaurantes
                 LoadTable();
@@ -544,12 +627,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
 
         }
 
-        /// <summary>
-        /// Recibe el Id de la fila y obtiene un objeto de tipo categoria
-        /// </summary>
-        /// <param name="Id">Id de la categoria a mostrar</param>
-        /// <returns>Informacion de objeto categoria</returns>
-        
 
     }
 }
+

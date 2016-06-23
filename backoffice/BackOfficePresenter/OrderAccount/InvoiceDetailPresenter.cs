@@ -2,9 +2,9 @@
 using BackOfficePresenter.FondaMVPException;
 using BackOfficePresenter.FondaMVPException.OrderAccount;
 using com.ds201625.fonda.Domain;
-using FondaLogic;
-using FondaLogic.Factory;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Security.AntiXss;
 using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
@@ -23,78 +24,92 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private int accountId = 0;
         private int invoiceId = 0;
         private int restaurantId = 0;
+        private float tip = 0.0F;
         private string _currency = null;
         private float subtotal = 0.0F;
         private Invoice _invoice;
+        private CreditCardPayment _creditCardPayment;
 
         public InvoiceDetailPresenter(IInvoiceDetailModel viewInvoiceDetail) : 
             base(viewInvoiceDetail)
         {
             _view = viewInvoiceDetail;
         }
+        public void SendInvoice() {
 
-        ///<summary>
-        ///Metodo para imprimir la factura
-        /// </summary>
-        public void PrintInvoice()
-        {
+            CommandSendPrintInvoice cm = new CommandSendPrintInvoice();
+            cm.Get();
 
-            List<int> parameters;
-            Command commandPrintInvoice;
 
-            try
-            {
-                accountId = int.Parse(_view.SessionIdAccount);
-                restaurantId = int.Parse(_view.SessionRestaurant);
+    }
 
-                //Recibe 2 enteros
-                // 1  id de la factura
-                // 2  id del restaurant               
-                parameters = new List<int> { accountId, restaurantId };
-                //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandPrintInvoice = CommandFactory.GetCommandPrintInvoice(parameters);
+    ///<summary>
+    ///Metodo para imprimir la factura
+    /// </summary>
+    //public void PrintInvoice()
+    //{
 
-                //Ejecuta el comando deseado
-                commandPrintInvoice.Execute();
+    //    List<int> parameters;
+    //    //Command commandPrintInvoice;
 
-            }
-            catch (MVPExceptionPrintInvoice ex)
-            {
-                MVPExceptionPrintInvoice e = new MVPExceptionPrintInvoice
-                    (
-                        OrderAccountResources.MVPExceptionPrintInvoiceCode,
-                        OrderAccountResources.ClassNameInvoiceDetailPresenter,
-                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        OrderAccountResources.MessageMVPExceptionPrintInvoice,
-                        ex
-                    );
-                Logger.WriteErrorLog(e.ClassName, e);
-                ErrorLabel(e.MessageException);
-            }
-            catch (Exception ex)
-            {
-                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
-                    (
-                        OrderAccountResources.MVPExceptionPrintInvoiceCode,
-                        OrderAccountResources.ClassNameInvoiceDetailPresenter,
-                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        OrderAccountResources.MessageMVPExceptionPrintInvoice,
-                        ex
-                    );
-                Logger.WriteErrorLog(e.ClassName, e);
-                ErrorLabel(e.MessageException);
-            }
+    //    //try
+    //    //{
+    //        accountId = int.Parse(_view.SessionIdAccount);
+    //        restaurantId = int.Parse(_view.SessionRestaurant);
 
-            Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDetailPresenter
-                , OrderAccountResources.SuccessPrintInvoice
-                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
-                );
-            SuccessLabel(OrderAccountResources.SuccessPrintInvoice);
-        }
+    //        //Recibe 2 enteros
+    //        // 1  id de la factura
+    //        // 2  id del restaurant               
+    //        parameters = new List<int> { accountId, restaurantId };
+    //    //Obtiene la instancia del comando enviado el restaurante como parametro
 
-        ///<summary>
-        ///Metodo para llenar la tabla de Detalle de la factura
-        public void GetDetailInvoice()
+    //    CommandSendPrintInvoice cm = new CommandSendPrintInvoice();
+    //    cm.Get();
+
+
+    //      //commandPrintInvoice = CommandFactory.GetCommandPrintInvoice(parameters);
+
+    //    ////Ejecuta el comando deseado
+    //    //commandPrintInvoice.Execute();
+
+    //    //}
+    //    //catch (MVPExceptionPrintInvoice ex)
+    //    //{
+    //    //    MVPExceptionPrintInvoice e = new MVPExceptionPrintInvoice
+    //    //        (
+    //    //            OrderAccountResources.MVPExceptionPrintInvoiceCode,
+    //    //            OrderAccountResources.ClassNameInvoiceDetailPresenter,
+    //    //            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+    //    //            OrderAccountResources.MessageMVPExceptionPrintInvoice,
+    //    //            ex
+    //    //        );
+    //    //    Logger.WriteErrorLog(e.ClassName, e);
+    //    //    ErrorLabel(e.MessageException);
+    //    //}
+    //    //catch (Exception ex)
+    //    //{
+    //    //    MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+    //    //        (
+    //    //            OrderAccountResources.MVPExceptionPrintInvoiceCode,
+    //    //            OrderAccountResources.ClassNameInvoiceDetailPresenter,
+    //    //            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+    //    //            OrderAccountResources.MessageMVPExceptionPrintInvoice,
+    //    //            ex
+    //    //        );
+    //    //    Logger.WriteErrorLog(e.ClassName, e);
+    //    //    ErrorLabel(e.MessageException);
+    //    //}
+
+    //    //Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDetailPresenter
+    //    //    , OrderAccountResources.SuccessPrintInvoice
+    //    //    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+    //    //    );
+    //    SuccessLabel(OrderAccountResources.SuccessPrintInvoice);
+    //}
+
+    ///<summary>
+    ///Metodo para llenar la tabla de Detalle de la factura
+    public void GetDetailInvoice()
         {
             
             //Define objeto a recibir
@@ -181,6 +196,12 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             _view.SubTotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, subtotal.ToString());
             _view.IvaInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Tax.ToString());
             _view.TotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Total.ToString());
+            if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
+            {
+                _creditCardPayment = (CreditCardPayment)_invoice.Payment;
+                tip = _creditCardPayment.Tip;
+            }
+            _view.TipInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, tip.ToString());
             if (_invoice.Status.Equals(GeneratedInvoiceStatus.Instance))
                 _view.PrintInvoice.Visible = true;
             else if (_invoice.Status.Equals(CanceledInvoiceStatus.Instance))
@@ -304,11 +325,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             string queryParameter =
                 HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
 
-
-            if (queryParameter != null && queryParameter != string.Empty)
-            {
+            if (AntiXssEncoder.HtmlEncode(queryParameter, false) != null)
                 return int.Parse(queryParameter);
-            }
 
             return result;
         }

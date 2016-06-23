@@ -128,5 +128,4 @@ public class CurrentOrderFragment extends BaseFragment implements
         Log.d(TAG,"Ha finalizado getOrderSWgetOrderSW");
         return null;
     }
-
 }

@@ -5,6 +5,7 @@ import android.util.Log;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.ProfileService;
+import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
 import com.ds201625.fonda.logic.SessionData;
@@ -24,7 +25,7 @@ public class DeleteProfileCommand extends BaseCommand {
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[1];
-        parameters[0] = new Parameter(int.class, true);
+        parameters[0] = new Parameter(Profile.class, true);
 
         return parameters;
     }
@@ -34,12 +35,14 @@ public class DeleteProfileCommand extends BaseCommand {
 
         Log.d(TAG, "Comando para eliminar un perfil a un commensal");
         int idProfile;
+        Profile profile;
 
         ProfileService profileService = FondaServiceFactory.getInstance()
                 .getProfileService(SessionData.getInstance().getToken());
         try
         {
-            idProfile = (int) getParameter(0);
+            profile = (Profile) getParameter(0);
+            idProfile = profile.getId();
             profileService.deleteProfile(idProfile);
         }
         catch (RestClientException e)

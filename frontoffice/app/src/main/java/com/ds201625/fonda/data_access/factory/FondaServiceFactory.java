@@ -57,7 +57,7 @@ public class FondaServiceFactory {
      * Obtiene el servicio de Perfiles
      * @return
      */
-    public ProfileService getProfileService(Token token)
+    public static ProfileService getProfileService(Token token)
     {
         return serviceFactory.getProfileService(token);
     }
@@ -66,7 +66,7 @@ public class FondaServiceFactory {
      * Obtiene ser servicio de comensal
      * @return
      */
-    public CommensalService getCommensalService(){
+    public static CommensalService getCommensalService(){
         return serviceFactory.getCommensalService();
     }
 
@@ -92,7 +92,7 @@ public class FondaServiceFactory {
      * @param commensal
      * @return
      */
-    public TokenService getTokenService(Commensal commensal){
+    public static TokenService getTokenService(Commensal commensal){
         return serviceFactory.getTokenService(commensal);
     }
 
@@ -106,6 +106,7 @@ public class FondaServiceFactory {
     }
 
 
+
     /**
      * Obtiene los servicios de restaurantes favoritos
      * @param
@@ -114,7 +115,19 @@ public class FondaServiceFactory {
         return serviceFactory.getFavoriteRestaurantService();
     }
 
+
     /**
+     * Obtiene los servicios de la reserva
+     * @param
+     */
+    public static ReservationService getReservationService(){
+        return serviceFactory.getReservesService();
+    }
+
+
+
+    /**
+     *
      * Obtiene ser servicio de factura
      * @return
      */
@@ -158,14 +171,7 @@ public class FondaServiceFactory {
         return serviceFactory.getFilterByCategoryService();
     }
 
-    /**
-     * Obtiene los servicios de Comensal
-     * @param
-     * @return
-     */
-    public ReservationService getAllReservesService(){
-        return serviceFactory.getAllReservesService();
-    }
+
 
     /**
      * Obtiene los servicios de commensal logueado

@@ -1,4 +1,4 @@
-﻿using FondaLogic.Log;
+﻿using com.ds201625.fonda.Logic.FondaLogic.Log;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

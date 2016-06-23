@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-namespace BackOfficeModel
+namespace com.ds201625.fonda.View.BackOfficeModel
 {
-    public interface IModel
+    public interface IContract
     {
         string SessionRestaurant { get; set; }
 

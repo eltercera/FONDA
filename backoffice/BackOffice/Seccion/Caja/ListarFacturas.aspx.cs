@@ -1,20 +1,21 @@
-﻿using BackOfficeModel.OrderAccount;
+﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
 using System;
 using System.Web.UI.WebControls;
-using BackOfficeModel;
+using com.ds201625.fonda.View.BackOfficeModel;
 using System.Web.UI.HtmlControls;
-using FondaResources.Login;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using BackOffice.Content;
+using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class ListarFacturas : System.Web.UI.Page, IOrderInvoicesModel
+    public partial class ListarFacturas : System.Web.UI.Page, IOrderInvoicesContract
     {
         #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrderInvoicesPresenter _presenter;
-
+        private OrderInvoicesPresenter _presenter;
+       
         #endregion
 
         #region Model
@@ -22,7 +23,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Label de exito
         /// </summary>
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get { return this.SuccessLabel; }
         }
@@ -30,7 +31,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Label de error
         /// </summary>
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { return this.ErrorLabel; }
         }
@@ -38,7 +39,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Mensaje de exito
         /// </summary>
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get { return this.SuccessLabelMessage; }
 
@@ -48,7 +49,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Mensaje de error
         /// </summary>
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
 
@@ -66,10 +67,17 @@ namespace BackOffice.Seccion.Caja
             set { orderInvoices = value; }
         }
 
+        public System.Web.UI.WebControls.Label NumberAccount
+        {
+            get { return ordernumber; }
+            
+            set { ordernumber = value; }
+        }
+
         /// <summary>
         /// Recurso de Session para el ID de la orden
         /// </summary>
-        string IOrderInvoicesModel.SessionAccountId
+        string IOrderInvoicesContract.SessionAccountId
         {
             get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
@@ -87,7 +95,7 @@ namespace BackOffice.Seccion.Caja
                     return Session[OrderAccountResources.SessionRestaurantId].ToString();
                 else
                     return OrderAccountResources.Empty;
-            }
+        }
 
             set { Session[OrderAccountResources.SessionRestaurantId] = value; }
         }
@@ -97,7 +105,7 @@ namespace BackOffice.Seccion.Caja
         #region Constructor
         public ListarFacturas()
         {
-            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrderInvoicesPresenter(this);
+            _presenter = new OrderInvoicesPresenter(this);
         }
         #endregion
 
@@ -105,7 +113,7 @@ namespace BackOffice.Seccion.Caja
         {
             if (Session[ResourceLogin.sessionUserID] != null &&
                 Session[ResourceLogin.sessionRestaurantID] != null)
-                _presenter.GetInvoices();
+            _presenter.GetInvoices();
             else
                 Response.Redirect(RecursoMaster.addressLogin);
         }

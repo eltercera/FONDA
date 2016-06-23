@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BackOfficeModel.Restaurant;
+using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
-using FondaLogic.Factory;
-using FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using System.Web;
-using FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 
 
-namespace BackOfficePresenter.Restaurante
+namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
 {
-    public class CategoryPresenter : BackOfficePresenter.Presenter
+    public class CategoryPresenter : Presenter
     {
         //enlace entre el modelo y la vista
         private ICategoryModel _view;
@@ -42,14 +42,14 @@ namespace BackOfficePresenter.Restaurante
         /// </summary>
         public void LoadTable()
         {
-
+            Command commandGetAllCategories;
             CleanTable();
-            //Genero los objetos para la consulta
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            //Genero la lista de la consulta
-            IList<RestaurantCategory> listRest = _restcatDAO.GetAll();
 
+            //Llamada al comando para generar la lista de todos las categorias
+            commandGetAllCategories = CommandFactory.GetCommandGetAllCategories("null");
+            commandGetAllCategories.Execute();
+            //Resultado del receiver
+            IList<RestaurantCategory> listRest = (IList<RestaurantCategory>)commandGetAllCategories.Receiver;
 
             int totalRows = listRest.Count; //tamano de la lista 
             int totalColumns = 1; //numero de columnas de la tabla
@@ -80,7 +80,7 @@ namespace BackOfficePresenter.Restaurante
                         //Agregar atributos de la celda
                         actionModify.Attributes["data-toggle"] = "modal";
                         actionModify.Attributes["data-target"] = "#modificar";
-                        actionModify.Text = FondaResources.Login.RestaurantResource.ActionModify;
+                        actionModify.Text = com.ds201625.fonda.Resources.FondaResources.Login.RestaurantResource.ActionModify;
                         tCell.Controls.Add(actionModify);
                     }
                     //Agrega la 
@@ -160,16 +160,26 @@ namespace BackOfficePresenter.Restaurante
         /// </summary>
         public void ButtonAgregar_Click()
         {
+            Command commandAddCategory;
+            Command commandSaveCategory;
             String nombreA = _view.nameCategoryA.Text;
             //si el campo es valido se registra la la nueva categoria y activa el mensaje de éxito
             if (CategoryValidate(nombreA))
             {
                 _view.alertAddCategorySuccess.Visible = true;
-                FactoryDAO factoryDAO = FactoryDAO.Intance;
-                IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-                RestaurantCategory _restcat = new RestaurantCategory();
-                _restcat.Name = nombreA;
-                _restcatDAO.Save(_restcat);
+
+                //Llamada al comando para generar la lista de todos los restaurantes
+                commandAddCategory = CommandFactory.GetCommandAddCategory(nombreA);
+                commandAddCategory.Execute();
+                //Resultado del receiver
+                RestaurantCategory _restcat = (RestaurantCategory)commandAddCategory.Receiver;
+
+                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
+                commandSaveCategory = CommandFactory.GetCommandSaveCategory(_restcat);
+                //ejecuto el comando
+                commandSaveCategory.Execute();
+
+                //_restcatDAO.Save(_restcat);
                 LoadTable();
             }
             else
@@ -185,18 +195,34 @@ namespace BackOfficePresenter.Restaurante
         /// </summary>
         public void ButtonModificar_Click()
         {
+            Command commandSaveCategory;
+            Command commandModifyCategory;
             string nameM = _view.nameCategoryM.Text;
             if (CategoryValidate(nameM))
             {
                 _view.alertModifyCategorySuccess.Visible = true;
-                FactoryDAO factoryDAO = FactoryDAO.Intance;
-                IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
                 string CategoryID = _view.categoryModifyId.Value;
                 int idCat = int.Parse(CategoryID);
-                RestaurantCategory _restaurant = _restcatDAO.FindById(idCat);
-                _restaurant.Name = nameM;
-                _restcatDAO.Save(_restaurant);
-                LoadTable();
+
+                //Lista de objetos que se le pasara al comando
+                Object[] _modifylist = new Object[2];
+                _modifylist[0] = idCat;
+                _modifylist[1] = nameM;
+
+                //Llamada al comando para modificar el nombre de la categoria
+                commandModifyCategory = CommandFactory.GetCommandModifyCategory(_modifylist);
+                commandModifyCategory.Execute();
+
+                //Resultado del receiver
+                RestaurantCategory _restcat = (RestaurantCategory)commandModifyCategory.Receiver;
+
+                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
+                commandSaveCategory = CommandFactory.GetCommandSaveCategory(_restcat);
+               //ejecuto el comando
+                commandSaveCategory.Execute();
+
+               //_restcatDAO.Save(_restaurant);
+               LoadTable();
             }
             else
             {
@@ -204,16 +230,6 @@ namespace BackOfficePresenter.Restaurante
             }
             _view.nameCategoryM.Text = string.Empty;
         }
-
-
-        /// <summary>
-        /// Recibe el Id de la fila y obtiene un objeto de tipo categoria
-        /// </summary>
-        /// <param name="Id">Id de la categoria a mostrar</param>
-        /// <returns>Informacion de objeto categoria</returns>
-
-        
-
 
     }
 }

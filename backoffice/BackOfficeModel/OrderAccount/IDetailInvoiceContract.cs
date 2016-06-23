@@ -5,15 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
-namespace BackOfficeModel.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficeModel.OrderAccount
 {
-    public interface IInvoiceDetailModel : IModel
+    public interface IDetailInvoiceContract : IContract
     {
         Table DetailInvoiceTable { get; set; }
 
         string Session { get; set; }
-
-        string SessionNumberAccount { get; set; }
 
         string SessionIdAccount { get; set; }
 
@@ -24,6 +22,8 @@ namespace BackOfficeModel.OrderAccount
         Label UserLastName { get; set; }
 
         Label UserId { get; set; }
+
+        Label NumberAccount { get; set; }
 
         Label IvaInvoice { get; set; }
 

@@ -1,18 +1,18 @@
 ﻿
-using BackOfficeModel.Login;
+using com.ds201625.fonda.View.BackOfficeModel.Login;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
-using FondaLogic;
-using FondaLogic.Factory;
-using FondaLogic.FondaCommandException;
-using FondaLogic.FondaCommandException.login;
-using FondaLogic.FondaCommandException.Login;
-using FondaLogic.Log;
-using FondaResources.Login;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.login;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +23,9 @@ using System.Web.UI;
 
 
 
-namespace BackOfficePresenter.Login
+namespace com.ds201625.fonda.View.BackOfficePresenter.Login
 {
-    public class LoginPresenter : BackOfficePresenter.Presenter
+    public class LoginPresenter : Presenter
     {
         //enlace entre el modelo y la vista
         private ILoginModel _view;
@@ -267,17 +267,17 @@ namespace BackOfficePresenter.Login
                     catch (InvalidTypeOfParameterException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
+                        throw new CommandExceptionGetEmployee(Errors.ClassNameInvalidParameter, e);
                     }
                     catch (ParameterIndexOutOfRangeException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                        throw new CommandExceptionGetEmployee(Errors.ClassNameIndexParameter, e);
                     }
                     catch (RequieredParameterNotFoundException e)
                     {
                         Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                        throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                        throw new CommandExceptionGetEmployee(Errors.ClassNameParameterNotFound, e);
                     }
                     catch (Exception e)
                     {
@@ -287,7 +287,7 @@ namespace BackOfficePresenter.Login
                     Object Result = _employeeResult;
                     //logger
                     Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                        Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
                 else
                 {
@@ -395,23 +395,23 @@ namespace BackOfficePresenter.Login
                 catch (SaveEntityFondaDAOException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameSaveEmployee, e);
+                    throw new CommandExceptionSaveUserAccount(Errors.ClassNameSaveEmployee, e);
 
                 }
                 catch (InvalidTypeOfParameterException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
+                    throw new CommandExceptionSaveUserAccount(Errors.ClassNameInvalidParameter, e);
                 }
                 catch (ParameterIndexOutOfRangeException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                    throw new CommandExceptionSaveUserAccount(Errors.ClassNameIndexParameter, e);
                 }
                 catch (RequieredParameterNotFoundException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveUserAccount(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                    throw new CommandExceptionSaveUserAccount(Errors.ClassNameParameterNotFound, e);
                 }
 
                 catch (Exception e)
@@ -424,7 +424,7 @@ namespace BackOfficePresenter.Login
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                     Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
 
 

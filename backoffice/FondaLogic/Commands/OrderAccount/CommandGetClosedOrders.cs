@@ -2,14 +2,14 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandClosedOrders : Command
     {
@@ -39,7 +39,7 @@ namespace FondaLogic.Commands.OrderAccount
                 IList<Account> listClosedOrders = _restaurantDAO.ClosedOrdersByRestaurantId(_restaurantId);
                 Receiver = listClosedOrders;
 
-            }
+            }            
             catch (NullReferenceException ex)
             {
                 CommandExceptionGetClosedOrders exception = new CommandExceptionGetClosedOrders(
@@ -50,7 +50,7 @@ namespace FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 listClosedOrders = new List<Account>();
                 Receiver = listClosedOrders;
                 throw exception;
@@ -65,7 +65,7 @@ namespace FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 listClosedOrders = new List<Account>();
                 Receiver = listClosedOrders;
                 throw exception;

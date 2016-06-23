@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FondaResources.Reservation {
+namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace FondaResources.Reservation {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Reservation.ReservationResources", typeof(ReservationResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("com.ds201625.fonda.Resources.FondaResources.Reservation.ReservationResources", typeof(ReservationResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -66,6 +66,24 @@ namespace FondaResources.Reservation {
         public static string ActionColumn {
             get {
                 return ResourceManager.GetString("ActionColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancelada.
+        /// </summary>
+        public static string CanceledReservationStatus {
+            get {
+                return ResourceManager.GetString("CanceledReservationStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservacion Cancelada.
+        /// </summary>
+        public static string CanceledReservationStatusDes {
+            get {
+                return ResourceManager.GetString("CanceledReservationStatusDes", resourceCulture);
             }
         }
         
@@ -147,6 +165,24 @@ namespace FondaResources.Reservation {
         public static string ReservationUserColumn {
             get {
                 return ResourceManager.GetString("ReservationUserColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservada.
+        /// </summary>
+        public static string ReservedReservationStatus {
+            get {
+                return ResourceManager.GetString("ReservedReservationStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservacion Realizada.
+        /// </summary>
+        public static string ReservedReservationStatusDes {
+            get {
+                return ResourceManager.GetString("ReservedReservationStatusDes", resourceCulture);
             }
         }
         

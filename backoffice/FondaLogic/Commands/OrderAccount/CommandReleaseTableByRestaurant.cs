@@ -1,13 +1,14 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandReleaseTableByRestaurant : Command
     {
@@ -29,6 +30,19 @@ namespace FondaLogic.Commands.OrderAccount
                 _restaurantDAO = _facDAO.GetRestaurantDAO();
                 _restaurantDAO.ReleaseTable(_restaurant, _tableId);
 
+
+            }
+            catch (ReleaseTableFondaDAOException ex)
+            {
+                CommandExceptionReleaseTableByRestaurant exception = new CommandExceptionReleaseTableByRestaurant(
+                    OrderAccountResources.CommandExceptionReleaseTableByRestaurantCode,
+                    OrderAccountResources.ClassNameReleaseTableByRestaurant,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionReleaseTableByRestaurant,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                throw exception;
 
             }
             catch (Exception ex)

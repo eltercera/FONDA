@@ -8,7 +8,7 @@ import com.ds201625.fonda.domains.Restaurant;
 import java.util.List;
 
 /**
- * Created by Katherina Molina on 5/21/2016.
+ * Created by Jessica on 21/06/2016.
  */
 
 /**

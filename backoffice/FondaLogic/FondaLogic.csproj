@@ -7,7 +7,7 @@
     <ProjectGuid>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FondaLogic</RootNamespace>
+    <RootNamespace>com.ds201625.fonda.Logic.FondaLogic</RootNamespace>
     <AssemblyName>FondaLogic</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +63,7 @@
     <Compile Include="Commands\Login\CommanGetAllEmployee.cs" />
     <Compile Include="Commands\OrderAccount\CommandCancelInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandCloseCashRegister.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetCurrencyInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetDetailInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetDetailOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetDishOrdersByAccountId.cs" />
@@ -84,9 +86,17 @@
     <Compile Include="Commands\OrderAccount\CommandPrintInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandReleaseTableByRestaurant.cs" />
     <Compile Include="Commands\OrderAccount\CommandTotalOrder.cs" />
-    <Compile Include="Commands\OrderAccount\CommandGetCurrencyInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandValidateProfileByCommensal.cs" />
+    <Compile Include="Commands\Restaurant\CommandAddCategory.cs" />
+    <Compile Include="Commands\Restaurant\CommandGenerateRestaurant.cs" />
+    <Compile Include="Commands\Restaurant\CommandGetAllCategories.cs" />
+    <Compile Include="Commands\Restaurant\CommandGetAllCurrency.cs" />
+    <Compile Include="Commands\Restaurant\CommandGetAllZones.cs" />
+    <Compile Include="Commands\Restaurant\CommandModifyCategory.cs" />
+    <Compile Include="Commands\Restaurant\CommandModifyRestaurant.cs" />
     <Compile Include="Commands\Reservations\CommandGetTables.cs" />
+    <Compile Include="Commands\Restaurant\CommandSaveCategory.cs" />
+    <Compile Include="Commands\Restaurant\CommandSaveRestaurant.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
     <Compile Include="FondaCommandException\CommandExceptionFindReservationsByRestaurant.cs" />
@@ -109,6 +119,7 @@
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGenerateInvoice.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetClosedOrders.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetCurrencyByRestaurant.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetCurrencyInvoice.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetDetailOrder.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetDishOrdersByAccount.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetGenerateInvoice.cs" />
@@ -129,7 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\Menu\" />
-    <Folder Include="Commands\Restaurant\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">

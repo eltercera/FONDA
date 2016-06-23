@@ -2,15 +2,15 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.FondaCommandException.OrderAccount;
-using FondaLogic.Log;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandFindInvoicesByAccount : Command
     {
@@ -34,6 +34,18 @@ namespace FondaLogic.Commands.OrderAccount
                 Receiver = listInvoices;
 
             }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                CommandExceptionFindInvoicesByAccount exception = new CommandExceptionFindInvoicesByAccount(
+                    OrderAccountResources.CommandExceptionFindInvoicesByAccountCode,
+                    OrderAccountResources.ClassNameFindInvoicesByAccount,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionFindInvoicesByAccount,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                throw exception;
+            }
             catch (NullReferenceException ex)
             {
                 CommandExceptionFindInvoicesByAccount exception = new CommandExceptionFindInvoicesByAccount(
@@ -44,7 +56,7 @@ namespace FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 listInvoices = new List<Invoice>();
                 Receiver = listInvoices;
 
@@ -59,7 +71,7 @@ namespace FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 listInvoices = new List<Invoice>();
                 Receiver = listInvoices;
             }

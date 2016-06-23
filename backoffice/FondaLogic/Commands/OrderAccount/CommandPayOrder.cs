@@ -1,14 +1,14 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.Factory;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     /// <summary>
     /// Comando para pagar una orden abierta
@@ -82,6 +82,19 @@ namespace FondaLogic.Commands.OrderAccount
 
             }
             catch (NullReferenceException ex)
+            {
+                CommandExceptionPayOrder exception = new CommandExceptionPayOrder(
+                    OrderAccountResources.CommandExceptionPayOrderCode,
+                    OrderAccountResources.ClassNamePayOrder,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionPayOrder,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                throw exception;
+            }
+            catch (Exception ex)
             {
                 CommandExceptionPayOrder exception = new CommandExceptionPayOrder(
                     OrderAccountResources.CommandExceptionPayOrderCode,

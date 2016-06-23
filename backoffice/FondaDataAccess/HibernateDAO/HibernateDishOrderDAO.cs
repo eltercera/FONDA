@@ -2,7 +2,8 @@
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System.Collections.Generic;
-using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
+using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -35,7 +36,21 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
             catch (ArgumentOutOfRangeException e)
             {
-                throw new FondaIndexException("Not Found Dish Order", e);
+                GetDishesByAccountFondaDAOException exception =
+        new GetDishesByAccountFondaDAOException(
+            OrderAccountResources.MessageGetDishesByAccountFondaDAOException,
+            e);
+                //Logger
+                throw exception;
+            }
+            catch (Exception e)
+            {
+                GetDishesByAccountFondaDAOException exception =
+        new GetDishesByAccountFondaDAOException(
+            OrderAccountResources.MessageGetDishesByAccountFondaDAOException,
+            e);
+                //Logger
+                throw exception;
             }
 
 

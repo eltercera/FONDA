@@ -5,7 +5,6 @@
     Facturas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    Orden # <%=Session["AccountNumber"]%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
     <%--Breadcrumbs--%>
@@ -50,10 +49,12 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-money" aria-hidden="true"></i> Facturas Asociadas</h3>
+                    <h3 class="panel-title"><i class="fa fa-money" aria-hidden="true"></i> Facturas Generadas </h3>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
+                    <asp:Label Visible="false" id="ordernumber" runat="server"></asp:Label>
+                    <br />
                     <div class="table-responsive">
                         <asp:Table ID="orderInvoices" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
 

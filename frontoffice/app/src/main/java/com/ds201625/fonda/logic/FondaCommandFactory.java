@@ -142,4 +142,3 @@ public class FondaCommandFactory {
         return  new LogicInvoiceCommand();
     }
 }
-

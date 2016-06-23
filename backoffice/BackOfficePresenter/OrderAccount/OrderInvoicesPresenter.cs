@@ -1,33 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BackOfficeModel.OrderAccount;
-using FondaLogic;
-using FondaLogic.Factory;
+using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Domain;
-using BackOfficePresenter.FondaMVPException;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
 using System.Web.UI.WebControls;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System.Web;
-using FondaLogic.Log;
-using BackOfficePresenter.FondaMVPException.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException.OrderAccount;
 using System.Web.Security.AntiXss;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
-    public class OrderInvoicesPresenter : BackOfficePresenter.Presenter
+    public class OrderInvoicesPresenter : Presenter
     {
         //Enlace Modelo - Vista
-        private IOrderInvoicesModel _view;
+        private IOrderInvoicesContract _view;
         private int totalColumns = 4;
         private int _restaurantId;
         private IList<Invoice> listInvoice;
+        private Account _account;
 
         ///<summary>
         ///Constructor
         /// </summary>
         /// <param name="viewOrderInvoices">Interfaz</param>
-        public OrderInvoicesPresenter(IOrderInvoicesModel viewOrderInvoices) 
+        public OrderInvoicesPresenter(IOrderInvoicesContract viewOrderInvoices) 
             : base(viewOrderInvoices)
         {
             //Enlace Modelo - Vista
@@ -46,6 +47,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             Command commandGetInvoicesByAccount;
             Command commandGetInvoicesByRestaurant;
             Command commandGetClosedOrderAccount;
+            Command commandGetOrder;
 
             try
             {
@@ -60,11 +62,18 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 {
                     //Obtiene la instancia del comando enviado el restaurante como parametro
                     commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByAccount(result);
+                    commandGetOrder = CommandFactory.GetCommandGetOrder(result);
                     _view.SessionAccountId = result.ToString();
                     //Ejecuta el comando deseado
                     commandGetInvoicesByAccount.Execute();
+                    commandGetOrder.Execute();
                     //Se obtiene el resultado de la operacion
                     listInvoice = (IList<Invoice>)commandGetInvoicesByAccount.Receiver;
+                    _account = (Account)commandGetOrder.Receiver;
+                    //Habilita el Label del Numero de la Orden
+                    _view.NumberAccount.Visible = true;
+                    _view.NumberAccount.Text = "# Orden: " + _account.Number.ToString();
+
                 }
 
                 else if (result == 0)

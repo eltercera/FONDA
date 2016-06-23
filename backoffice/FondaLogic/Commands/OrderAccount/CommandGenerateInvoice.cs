@@ -4,12 +4,12 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System;
 using System.Collections.Generic;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using com.ds201625.fonda.Factory;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandGenerateInvoice : Command
     {
@@ -47,8 +47,7 @@ namespace FondaLogic.Commands.OrderAccount
                 //ESTO TIENE QUE CAMBIARSE POR UN RECURSO
                 totalInvoice += totalInvoice * 0.12F;
 
-                //VERIFICA QUE EL PAGO SEA MAYOR O IGUAL QUE EL TOTAL DE LA FACTURA
-                //ES OTRO COMANDO?
+                
                 if (payment.Amount >= totalInvoice)
                 {
                     //ESTE CONSTRUCTOR DEBO REVISARLO
@@ -74,7 +73,7 @@ namespace FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 _invoice = EntityFactory.GetInvoice(); ;
                 Receiver = _invoice;
             }
@@ -88,7 +87,7 @@ namespace FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 _invoice = EntityFactory.GetInvoice(); ;
                 Receiver = _invoice;
             }
