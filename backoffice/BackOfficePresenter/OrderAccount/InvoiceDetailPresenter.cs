@@ -1,11 +1,11 @@
-﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
-using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
-using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException.OrderAccount;
+﻿using BackOfficeModel.OrderAccount;
+using BackOfficePresenter.FondaMVPException;
+using BackOfficePresenter.FondaMVPException.OrderAccount;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
-using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +14,12 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Security.AntiXss;
 using System.Web.UI.WebControls;
-using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
 
-namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
+namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 {
-    public class DetailInvoicePresenter : Presenter
+    public class InvoiceDetailPresenter : BackOfficePresenter.Presenter
     {
-        private IDetailInvoiceContract _view;
+        private IInvoiceDetailModel _view;
         private int totalColumns = 3;
         private int accountId = 0;
         private int invoiceId = 0;
@@ -29,78 +28,88 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         private string _currency = null;
         private float subtotal = 0.0F;
         private Invoice _invoice;
-        private Account _account;
         private CreditCardPayment _creditCardPayment;
 
-        public DetailInvoicePresenter(IDetailInvoiceContract viewInvoiceDetail) : 
+        public InvoiceDetailPresenter(IInvoiceDetailModel viewInvoiceDetail) : 
             base(viewInvoiceDetail)
         {
             _view = viewInvoiceDetail;
         }
+        public void SendInvoice() {
 
-        ///<summary>
-        ///Metodo para imprimir la factura
-        /// </summary>
+            CommandSendPrintInvoice cm = new CommandSendPrintInvoice();
+            cm.Get();
 
-        public void PrintInvoice()
-        {
 
-            List<int> parameters;
-            Command commandPrintInvoice;
+    }
 
-            //try
-            //{
-                accountId = int.Parse(_view.SessionIdAccount);
-                restaurantId = int.Parse(_view.SessionRestaurant);
+    ///<summary>
+    ///Metodo para imprimir la factura
+    /// </summary>
+    //public void PrintInvoice()
+    //{
 
-                //Recibe 2 enteros
-                // 1  id de la factura
-                // 2  id del restaurant               
-                parameters = new List<int> { accountId, restaurantId };
-                //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandPrintInvoice = CommandFactory.GetCommandPrintInvoice(parameters);
+    //    List<int> parameters;
+    //    //Command commandPrintInvoice;
 
-                //Ejecuta el comando deseado
-                commandPrintInvoice.Execute();
+    //    //try
+    //    //{
+    //        accountId = int.Parse(_view.SessionIdAccount);
+    //        restaurantId = int.Parse(_view.SessionRestaurant);
 
-            //}
-            //catch (MVPExceptionPrintInvoice ex)
-            //{
-            //    MVPExceptionPrintInvoice e = new MVPExceptionPrintInvoice
-            //        (
-            //            OrderAccountResources.MVPExceptionPrintInvoiceCode,
-            //            OrderAccountResources.ClassNameInvoiceDetailPresenter,
-            //            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-            //            OrderAccountResources.MessageMVPExceptionPrintInvoice,
-            //            ex
-            //        );
-            //    Logger.WriteErrorLog(e.ClassName, e);
-            //    ErrorLabel(e.MessageException);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
-            //        (
-            //            OrderAccountResources.MVPExceptionPrintInvoiceCode,
-            //            OrderAccountResources.ClassNameInvoiceDetailPresenter,
-            //            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-            //            OrderAccountResources.MessageMVPExceptionPrintInvoice,
-            //            ex
-            //        );
-            //    Logger.WriteErrorLog(e.ClassName, e);
-            //    ErrorLabel(e.MessageException);
-            //}
+    //        //Recibe 2 enteros
+    //        // 1  id de la factura
+    //        // 2  id del restaurant               
+    //        parameters = new List<int> { accountId, restaurantId };
+    //    //Obtiene la instancia del comando enviado el restaurante como parametro
 
-            //Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDetailPresenter
-            //    , OrderAccountResources.SuccessPrintInvoice
-            //    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
-            //    );
-            SuccessLabel(OrderAccountResources.SuccessPrintInvoice);
-        }
+    //    CommandSendPrintInvoice cm = new CommandSendPrintInvoice();
+    //    cm.Get();
 
-        ///<summary>
-        ///Metodo para llenar la tabla de Detalle de la factura
-        public void GetDetailInvoice()
+
+    //      //commandPrintInvoice = CommandFactory.GetCommandPrintInvoice(parameters);
+
+    //    ////Ejecuta el comando deseado
+    //    //commandPrintInvoice.Execute();
+
+    //    //}
+    //    //catch (MVPExceptionPrintInvoice ex)
+    //    //{
+    //    //    MVPExceptionPrintInvoice e = new MVPExceptionPrintInvoice
+    //    //        (
+    //    //            OrderAccountResources.MVPExceptionPrintInvoiceCode,
+    //    //            OrderAccountResources.ClassNameInvoiceDetailPresenter,
+    //    //            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+    //    //            OrderAccountResources.MessageMVPExceptionPrintInvoice,
+    //    //            ex
+    //    //        );
+    //    //    Logger.WriteErrorLog(e.ClassName, e);
+    //    //    ErrorLabel(e.MessageException);
+    //    //}
+    //    //catch (Exception ex)
+    //    //{
+    //    //    MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+    //    //        (
+    //    //            OrderAccountResources.MVPExceptionPrintInvoiceCode,
+    //    //            OrderAccountResources.ClassNameInvoiceDetailPresenter,
+    //    //            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+    //    //            OrderAccountResources.MessageMVPExceptionPrintInvoice,
+    //    //            ex
+    //    //        );
+    //    //    Logger.WriteErrorLog(e.ClassName, e);
+    //    //    ErrorLabel(e.MessageException);
+    //    //}
+
+    //    //Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDetailPresenter
+    //    //    , OrderAccountResources.SuccessPrintInvoice
+    //    //    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+    //    //    );
+    //    SuccessLabel(OrderAccountResources.SuccessPrintInvoice);
+    //}
+
+    ///<summary>
+    ///Metodo para llenar la tabla de Detalle de la factura
+    public void GetDetailInvoice()
         {
             
             //Define objeto a recibir
@@ -131,7 +140,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
                 _currency = (string)result[1];
                 listDishOrder = (IList<DishOrder>)result[2];
                 subtotal = (float) result[3];
-                _account = (Account)result[4];
                 
 
                 //Revisa si la lista no esta vacia
@@ -182,7 +190,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
             //Label de la factura
             _view.SessionNumberInvoice = _invoice.Number.ToString();
             _view.DateInvoice.Text = _invoice.Date.ToShortDateString();
-            _view.NumberAccount.Text = _account.Number.ToString();
             _view.UserName.Text = _invoice.Profile.Person.Name.ToString();
             _view.UserLastName.Text = _invoice.Profile.Person.LastName.ToString();
             _view.UserId.Text = _invoice.Profile.Person.Ssn.ToString();
