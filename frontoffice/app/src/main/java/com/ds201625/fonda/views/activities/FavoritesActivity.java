@@ -283,13 +283,14 @@ public class FavoritesActivity extends BaseNavigationActivity implements
             presenter.findLoggedComensal();
             List<Restaurant> restaurantList = presenter.findAllFavoriteRestaurant();
 
-               if (restaurantList.size() == 0) {
-                    return true;
+               if (restaurantList != null) {
+                   if (restaurantList.size() == 0)
+                       return true;
                 }
 
         }
         catch (Exception e) {
-            Log.e(TAG,"Error al determinar si el commensal tiene favoritos",e);
+          //  Log.e(TAG,"Error al determinar si el commensal tiene favoritos",e);
         }
         return false;
     }

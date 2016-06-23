@@ -16,6 +16,6 @@ namespace com.ds201625.fonda.FondaBackEnd.Exceptions
 		public FondaBackendException (string message) : base(message) {	}
 
         public FondaBackendException(string message, Exception InnerException)
-			: base(message, InnerException) {	}
+            : base(message, InnerException) { }
 	}
 }

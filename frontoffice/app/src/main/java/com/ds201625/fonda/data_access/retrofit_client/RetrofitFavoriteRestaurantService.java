@@ -7,11 +7,14 @@ import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.domains.factory_entity.APIError;
+import com.ds201625.fonda.logic.ExceptionHandler.ErrorUtils;
 
 import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Implementacion de la interfaz FavoriteRestaurantService
@@ -76,14 +79,34 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
      * @throws RestClientException
      */
     @Override
-    public List<Restaurant> getAllFavoriteRestaurant(int idCommensal) throws RestClientException {
+    public List<Restaurant> getAllFavoriteRestaurant(int idCommensal) throws Exception {
         Log.d(TAG, "Se obtienen todos los restaurantes favoritos del comensal: "+idCommensal);
         Call<List<Restaurant>> call = favoriteRestaurantClient.getAllFavoriteRestaurant(idCommensal);
         List<Restaurant> test = null;
+        Response<List<Restaurant>> response;
+
         try {
-            test =call.execute().body();
+            response = call.execute();
+            if (response.isSuccessful()) {
+                // use response data and do some fancy stuff :)
+                test = response.body();
+            } else {
+                // parse the response body
+                APIError error = ErrorUtils.parseError(response);
+                // usar error para disparar exception
+                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   "+error.exceptionMessage());
+                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   "+error.exceptionType());
+                throw  new FindFavoriteRestaurantFondaWebApiControllerException(error.exceptionMessage());
+
+                // arreglar log
+                Log.d("error message", error.message());
+                Log.d("error message", error.exceptionType());
+            }
         } catch (IOException e) {
-            Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant", e);
+            throw new Exception(e.getMessage());
+           // Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant1", e);
+        } catch (Exception e) {
+            Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant2", e);
         }
 
         return test;
