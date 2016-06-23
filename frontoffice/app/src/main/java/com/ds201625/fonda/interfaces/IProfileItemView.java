@@ -14,5 +14,5 @@ public interface IProfileItemView {
      * Metodo para buscar los perfiles de un commensal
      * @return la lista de perfiles
      */
-    List<Profile> getProfiles (IProfileViewPresenter presenter);
+    List<Profile> getProfiles (IProfileViewPresenter presenter) throws Exception;
 }
