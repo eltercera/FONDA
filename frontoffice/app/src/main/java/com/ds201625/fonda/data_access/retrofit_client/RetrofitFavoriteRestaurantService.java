@@ -4,6 +4,9 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.retrofit_client.clients.FavoriteRestaurantClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.AddFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.DeleteFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
@@ -37,15 +40,28 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
         // aqui se supone que debo traerme el comensal Logeado
         Log.d(TAG, "Se agrega el restaurante "+idRestaurant+"a favoritos del comensal "+idCommensal);
         Call<Commensal> call = favoriteRestaurantClient.addfavoriterestaurant(idCommensal,idRestaurant);
-        Commensal rsvCommensal = null;
+        Commensal test = null;
+        Response<Commensal> response;
 
         try{
-            rsvCommensal = call.execute().body();
+            response = call.execute();
+            if (response.isSuccessful()) {
+                test = response.body();
+            } else {
+                APIError error = ErrorUtils.parseError(response);
+                Log.d(TAG, "Se obtiene la excepcion del WS");
+                // usar error para disparar exception
+                Log.e(TAG,"error message " + error.message());
+                Log.e(TAG,"error message " +error.exceptionType());
+                throw  new AddFavoriteRestaurantFondaWebApiControllerException(error.exceptionMessage());
+            }
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en AddFavoriteRestaurant", e);
-        }
+        } catch (Exception e) {
+        Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant2", e);
+    }
 
-        return rsvCommensal;
+        return test;
     }
 
     /**
@@ -70,18 +86,19 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
             } else {
                 // parse the response body
                  error = ErrorUtils.parseError(response);
+                Log.d(TAG, "Se obtiene la excepcion del WS");
                 // usar error para disparar exception
-            //    System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   "+error.exceptionMessage());
-              //  System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   "+error.exceptionType());
-               // throw  new FindFavoriteRestaurantFondaWebApiControllerException(error.exceptionMessage());
-
-                // arreglar log
                 Log.e(TAG,"error message " + error.message());
                 Log.e(TAG,"error message " +error.exceptionType());
+                throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(error.exceptionMessage());
             }
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en deleteFavoriteRestaurant", e);
-        }
+        } catch (DeleteFavoriteRestaurantFondaWebApiControllerException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+        Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant2", e);
+    }
 
         return test;
     }
