@@ -44,7 +44,7 @@
     <string name="filter_morning_schedule">Matutino</string>
     <string name="filter_afternoon_schedule">Vespertino</string>
     <string name="filter_night_schedule">Nocturno</string>
-
+    <string name="search_title">Búsqueda</string>
 
     <!-- Strings related to Settings -->
 
