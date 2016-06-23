@@ -2,13 +2,13 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 
 
-namespace FondaLogic.Commands.Reservations
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations
 {
     public class CommandGetTables : Command
     {
@@ -52,10 +52,10 @@ namespace FondaLogic.Commands.Reservations
             {
                 //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetTables exceptionGetTables = new CommandExceptionGetTables(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.Restaurant.RestaurantErrors.ClassNameGetReservations,
-                    FondaResources.Restaurant.RestaurantErrors.CommandMethod,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    Resources.FondaResources.General.Errors.NullExceptionReferenceCode,
+                    Resources.FondaResources.Restaurant.RestaurantErrors.ClassNameGetReservations,
+                    Resources.FondaResources.Restaurant.RestaurantErrors.CommandMethod,
+                    Resources.FondaResources.General.Errors.NullExceptionReferenceMessage,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetTables);

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FondaResources.Reservation {
+namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace FondaResources.Reservation {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.Reservation.ReservationResources", typeof(ReservationResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("com.ds201625.fonda.Resources.FondaResources.Reservation.ReservationResources", typeof(ReservationResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

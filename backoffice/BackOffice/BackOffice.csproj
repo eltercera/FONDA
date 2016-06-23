@@ -644,9 +644,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BackOfficeModel\BackOfficeModel.csproj">
+    <ProjectReference Include="..\BackOfficeModel\BackOfficeContracts.csproj">
       <Project>{0C4A3E0C-4E85-46B0-A6B0-A6DC2BCE3D8B}</Project>
-      <Name>BackOfficeModel</Name>
+      <Name>BackOfficeContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\BackOfficePresenter\BackOfficePresenter.csproj">
       <Project>{fde7b2a6-7496-4680-ab18-a336eebbe62e}</Project>

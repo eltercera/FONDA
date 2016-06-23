@@ -1,15 +1,14 @@
 ﻿using log4net;
 using System;
 
-namespace FondaLogic.Log
+namespace com.ds201625.fonda.Logic.FondaLogic.Log
 {
     public class Logger
     {
 
         public Logger()
         {
-            //GlobalContext.Properties["LogFileName"] = @"C:\Users\eilin\Desktop\Uni\Desarrollo\Proyecto\FONDA\backoffice\file.txt"; //log file path
-            
+                        
             log4net.Config.XmlConfigurator.Configure();
 
         }

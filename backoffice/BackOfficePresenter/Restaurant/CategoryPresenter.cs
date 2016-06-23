@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BackOfficeModel.Restaurant;
+using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
-using FondaLogic.Factory;
-using FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using System.Web;
-using FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 
 
-namespace BackOfficePresenter.Restaurante
+namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
 {
-    public class CategoryPresenter : BackOfficePresenter.Presenter
+    public class CategoryPresenter : Presenter
     {
         //enlace entre el modelo y la vista
         private ICategoryModel _view;
@@ -80,7 +80,7 @@ namespace BackOfficePresenter.Restaurante
                         //Agregar atributos de la celda
                         actionModify.Attributes["data-toggle"] = "modal";
                         actionModify.Attributes["data-target"] = "#modificar";
-                        actionModify.Text = FondaResources.Login.RestaurantResource.ActionModify;
+                        actionModify.Text = com.ds201625.fonda.Resources.FondaResources.Login.RestaurantResource.ActionModify;
                         tCell.Controls.Add(actionModify);
                     }
                     //Agrega la 
@@ -212,16 +212,7 @@ namespace BackOfficePresenter.Restaurante
         /// <param name="Id">Id de la categoria a mostrar</param>
         /// <returns>Informacion de objeto categoria</returns>
 
-        public static RestaurantCategory GetData(string Id)
-        {
-            int categoryId = int.Parse(Id);
-            FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-            RestaurantCategory restCategory = _restcatDAO.FindById(categoryId);
-
-            return restCategory;
-
-        }
+        
 
 
     }

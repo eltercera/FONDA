@@ -1,33 +1,36 @@
-﻿using BackOfficeModel.OrderAccount;
-using BackOfficePresenter.FondaMVPException;
-using BackOfficePresenter.FondaMVPException.OrderAccount;
+﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException.OrderAccount;
 using com.ds201625.fonda.Domain;
-using FondaLogic;
-using FondaLogic.Factory;
-using FondaLogic.Log;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Security.AntiXss;
 using System.Web.UI.WebControls;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
-    public class InvoiceDetailPresenter : BackOfficePresenter.Presenter
+    public class InvoiceDetailPresenter : Presenter
     {
-        private IInvoiceDetailModel _view;
+        private IDetailInvoiceContract _view;
         private int totalColumns = 3;
         private int accountId = 0;
         private int invoiceId = 0;
         private int restaurantId = 0;
+        private float tip = 0.0F;
         private string _currency = null;
         private float subtotal = 0.0F;
         private Invoice _invoice;
+        private CreditCardPayment _creditCardPayment;
 
-        public InvoiceDetailPresenter(IInvoiceDetailModel viewInvoiceDetail) : 
+        public InvoiceDetailPresenter(IDetailInvoiceContract viewInvoiceDetail) : 
             base(viewInvoiceDetail)
         {
             _view = viewInvoiceDetail;
@@ -181,6 +184,12 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             _view.SubTotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, subtotal.ToString());
             _view.IvaInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Tax.ToString());
             _view.TotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Total.ToString());
+            if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
+            {
+                _creditCardPayment = (CreditCardPayment)_invoice.Payment;
+                tip = _creditCardPayment.Tip;
+            }
+            _view.TipInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, tip.ToString());
             if (_invoice.Status.Equals(GeneratedInvoiceStatus.Instance))
                 _view.PrintInvoice.Visible = true;
             else if (_invoice.Status.Equals(CanceledInvoiceStatus.Instance))
@@ -304,11 +313,8 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             string queryParameter =
                 HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
 
-
-            if (queryParameter != null && queryParameter != string.Empty)
-            {
+            if (AntiXssEncoder.HtmlEncode(queryParameter, false) != null)
                 return int.Parse(queryParameter);
-            }
 
             return result;
         }

@@ -163,11 +163,12 @@ Agregar Categoria
                                     dataType: "json",
                                     success: function (response) {
                                         var local = response;
-                                        document.getElementById("contenido_NombreCatM").value = local.d.Name;
+                                        document.getElementById("<%=NombreCatM.ClientID%>").value = local.d.Name;
                                         
 
                                     },
-                                    failure: function (response) {
+                                        failure: function (response) {
+                                            
                                           alert("_");
                                     }
                                     });

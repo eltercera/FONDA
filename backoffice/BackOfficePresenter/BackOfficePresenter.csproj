@@ -7,7 +7,7 @@
     <ProjectGuid>{FDE7B2A6-7496-4680-AB18-A336EEBBE62E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BackOfficePresenter</RootNamespace>
+    <RootNamespace>com.ds201625.fonda.View.BackOfficePresenter</RootNamespace>
     <AssemblyName>BackOfficePresenter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -70,9 +70,9 @@
   <ItemGroup />
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\BackOfficeModel\BackOfficeModel.csproj">
+    <ProjectReference Include="..\BackOfficeModel\BackOfficeContracts.csproj">
       <Project>{0C4A3E0C-4E85-46B0-A6B0-A6DC2BCE3D8B}</Project>
-      <Name>BackOfficeModel</Name>
+      <Name>BackOfficeContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaBeckEndLogic\FondaBackEndLogic.csproj">
       <Project>{A1BE7D6C-7750-4795-AABF-B397E079C918}</Project>

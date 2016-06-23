@@ -2,10 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    Facturas
+    Facturas Disponibles
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    Orden # <%=Session["AccountNumber"]%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
     <%--Breadcrumbs--%>
@@ -54,6 +53,8 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
+                    <asp:Label Visible="false" id="ordernumber" runat="server"></asp:Label>
+                    <br />
                     <div class="table-responsive">
                         <asp:Table ID="orderInvoices" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
 

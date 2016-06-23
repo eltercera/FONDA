@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BackOfficeModel.OrderAccount;
-using FondaLogic;
-using FondaLogic.Factory;
+using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Domain;
-using BackOfficePresenter.FondaMVPException;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
 using System.Web.UI.WebControls;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System.Web;
-using FondaLogic.Log;
-using BackOfficePresenter.FondaMVPException.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException.OrderAccount;
 using System.Web.Security.AntiXss;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
-    public class OrderInvoicesPresenter : BackOfficePresenter.Presenter
+    public class OrderInvoicesPresenter : Presenter
     {
         //Enlace Modelo - Vista
-        private IOrderInvoicesModel _view;
+        private IOrderInvoicesContract _view;
         private int totalColumns = 4;
         private int _restaurantId;
         private IList<Invoice> listInvoice;
@@ -27,7 +27,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         ///Constructor
         /// </summary>
         /// <param name="viewOrderInvoices">Interfaz</param>
-        public OrderInvoicesPresenter(IOrderInvoicesModel viewOrderInvoices) 
+        public OrderInvoicesPresenter(IOrderInvoicesContract viewOrderInvoices) 
             : base(viewOrderInvoices)
         {
             //Enlace Modelo - Vista

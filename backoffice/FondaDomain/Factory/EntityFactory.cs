@@ -1,4 +1,5 @@
 ﻿using com.ds201625.fonda.Domain;
+using System;
 using System.Collections.Generic;
 
 namespace com.ds201625.fonda.Factory
@@ -73,7 +74,65 @@ namespace com.ds201625.fonda.Factory
             return new Restaurant();
         }
 
+        public static RestaurantCategory GetRestCategory(string name)
+        {
+            RestaurantCategory _restCategory = new RestaurantCategory();
+            _restCategory.Name = name;
+            return _restCategory;
+        }
+
+        public static Zone GetRestzone(string name)
+        {
+            Zone _zone = new Zone();
+            _zone.Name = name;
+            return _zone;
+        }
+
+        public static Currency GetRestCurrency(string name)
+        {
+            Currency _currency = new Currency();
+            _currency.Name = name;
+            return _currency;
+        }
+
+        public static Schedule GetRestSchedule (TimeSpan OpeningTime, TimeSpan ClosingTime, IList<Day> listDays)
+        {
+            Schedule _schedule = new Schedule();
+            _schedule.OpeningTime = OpeningTime;
+            _schedule.ClosingTime = ClosingTime;
+            _schedule.Day = listDays;
+            return _schedule;            
+        }
+
+        public static Coordinate GetCoordinate(double Long, double Lat)
+
+        {
+            Coordinate coordinat = new Coordinate();
+            coordinat.Latitude = Lat;
+            coordinat.Longitude = Long;
+            return coordinat;
+        }
+        
+        public static Restaurant GetGenerateRestaurant(string Name, string Logo, char Nationality, string Rif, string Address, RestaurantCategory category, Currency currency, Zone zone, Coordinate coordinate, Schedule schedule, SimpleStatus status)
+        {
+            Restaurant restaurant = new Restaurant();
+            restaurant.Name = Name;
+            restaurant.Logo = Logo;
+            restaurant.Nationality = Nationality;
+            restaurant.Ssn = Rif;
+            restaurant.Address = Address;
+            restaurant.RestaurantCategory = category;
+            restaurant.Currency = currency;
+            restaurant.Zone = zone;
+            restaurant.Coordinate = coordinate;
+            restaurant.Schedule = schedule;
+            restaurant.Status = status;
+            return restaurant;
+        }
+
+
         #endregion
+
 
         #region Menu
 
