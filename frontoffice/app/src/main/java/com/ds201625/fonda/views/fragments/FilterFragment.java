@@ -65,12 +65,13 @@ public class FilterFragment extends BaseFragment {
 
         lvItems.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {}
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+           }
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                int lastInScreen = firstVisibleItem + visibleItemCount;
-                if(lastInScreen == totalItemCount){
+                boolean loadMore = (firstVisibleItem + visibleItemCount) >= totalItemCount ;
+                if(loadMore){
                     switch (position) {
                         case 0:
                             RestaurantAdapter actualAdapter = (RestaurantAdapter) lvItems.getAdapter();
