@@ -4,6 +4,7 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.OrderAccount;
 using NUnit.Framework;
 using System;
@@ -109,6 +110,8 @@ namespace FondaBackOfficeLogicTest
         }
 
         #endregion
+
+        #region Pruebas de Logic/Command/CommandFindInvoicesByRestaurantTest
         [Test(Description = "Obtiene las facturas de un restaurante")]
         public void CommandFindInvoicesByRestaurantTest()
         {
@@ -123,7 +126,24 @@ namespace FondaBackOfficeLogicTest
             Assert.AreEqual(_listInvoices[0].Id,1);
             Assert.AreEqual(_listInvoices[1].Number, 2);
         }
+        [Test(Description = "Exception de CommandFindInvoicesByRestaurant")]
+        [ExpectedException(typeof(CommandExceptionFindInvoicesByRestaurant))]
+        public void CommandFindInvoicesByRestaurantExceptionTest()
+        {
 
+            _command = CommandFactory.GetCommandFindInvoicesByRestaurant(null);
+
+            _command.Execute();
+
+            _listInvoices = (IList<Invoice>)_command.Receiver;
+
+            Assert.IsNotNull(_listInvoices);
+            //Assert.AreEqual(_listInvoices[0].Id, 1);
+            //Assert.AreEqual(_listInvoices[1].Number, 2);
+        }
+        #endregion
+
+        #region Pruebas de Logic/Command/CommandFindInvoicesByAccountTest
         [Test(Description = "Obtiene las facturas de una cuenta")]
         public void CommandFindInvoicesByAccountTest()
         {
@@ -138,6 +158,20 @@ namespace FondaBackOfficeLogicTest
             Assert.AreEqual(_listInvoices[0].Id, 2);
             Assert.AreEqual(_listInvoices[0].Number, 2);
         }
+        [Test(Description = "Prueba de exception de CommandFindInvoicesByAccount")]
+        [ExpectedException(typeof(CommandExceptionFindInvoicesByAccount))]
+        public void CommandFindInvoicesByAccountExceptionTest()
+        {
+
+            _command = CommandFactory.GetCommandFindInvoicesByAccount(0);
+
+            _command.Execute();
+
+            _listInvoices = (IList<Invoice>)_command.Receiver;
+
+            Assert.IsNotNull(_listInvoices);
+        }
+        #endregion
 
         [Test(Description = "Genera una factura nueva")]
         public void CommandGenerateInvoiceTest()

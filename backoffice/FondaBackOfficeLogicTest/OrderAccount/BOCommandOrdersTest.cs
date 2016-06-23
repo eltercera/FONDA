@@ -75,7 +75,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
         #endregion
 
-        #region
+        #region Pruebas de Logic/Command/GetCommandCloseCashRegister
         [Test(Description = "Se cierra la caja")]
         public void CommandCloseCashRegisterTest()
         {
@@ -103,7 +103,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
             Assert.AreEqual(_totalOrders, "€ 13900");
         }
         #endregion
-
         [Test(Description = "Se paga la orden")]
         public void CommandPayOrderTest()
         {
