@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.SessionState;
 using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.View.BackOfficeModel.OrderAccount
 {
-    public interface IOrdersModel : IModel
+    public interface IDetailOrderContract : IContract
     {
-        Table OrdersTable { get; set; }
+        Table DetailOrderTable { get; set; }
 
         string Session { get; set; }
 
-        Button CloseButton { get; set; }
-
+        string SessionNumberAccount { get; set; }
     }
 }

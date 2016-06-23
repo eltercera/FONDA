@@ -13,7 +13,7 @@ namespace com.ds201625.fonda.View.BackOfficeModel.Login
     /// metodos get y set de los elementos de la vista Login.aspx
     /// a utilizarse en el presentador
     /// </summary>
-    public interface ILoginModel : IModel
+    public interface ILoginModel : IContract
     {
         // login del sistema
         HtmlInputText UserIni { get; set; }

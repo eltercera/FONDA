@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.View.BackOfficeModel.OrderAccount
 {
-    public interface IInvoiceDetailModel : IModel
+    public interface IDetailInvoiceContract : IContract
     {
         Table DetailInvoiceTable { get; set; }
 

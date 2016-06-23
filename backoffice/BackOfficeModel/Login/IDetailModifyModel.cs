@@ -7,7 +7,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 namespace com.ds201625.fonda.View.BackOfficeModel.Login
 {
-    public interface IDetailModifyModel : IModel
+    public interface IDetailModifyModel : IContract
     {
         /// <summary>
         /// metodos get y set de los elementos de la vista DetalleModificar.aspx

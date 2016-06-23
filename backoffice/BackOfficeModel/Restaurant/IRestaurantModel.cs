@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.View.BackOfficeModel.Restaurant
 {
-    public interface IRestaurantModel : IModel
+    public interface IRestaurantModel : IContract
     {
         Table restaurantTable { get; set; }
         HiddenField RestaurantModifyById { get; set; }
