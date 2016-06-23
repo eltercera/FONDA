@@ -35,6 +35,18 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
             return category;
         }
+        public RestaurantCategory ModifyCategory(int id, string name)
+        {
+            FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
+            IRestaurantCategoryDAO _restcatDAO = _facDAO.GetRestaurantCategoryDAO();
+
+            RestaurantCategory _restaurantC = _restcatDAO.FindById(id);
+
+            _restaurantC.Name = name;
+
+            return _restaurantC;
+
+        }
 
 		#region 3era entrga
 

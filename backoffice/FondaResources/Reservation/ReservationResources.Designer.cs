@@ -70,6 +70,24 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancelada.
+        /// </summary>
+        public static string CanceledReservationStatus {
+            get {
+                return ResourceManager.GetString("CanceledReservationStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservacion Cancelada.
+        /// </summary>
+        public static string CanceledReservationStatusDes {
+            get {
+                return ResourceManager.GetString("CanceledReservationStatusDes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot;  data-target=&quot;#cancel_reservation&quot; &gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
         /// </summary>
         public static string CancelReservation {
@@ -147,6 +165,24 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         public static string ReservationUserColumn {
             get {
                 return ResourceManager.GetString("ReservationUserColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservada.
+        /// </summary>
+        public static string ReservedReservationStatus {
+            get {
+                return ResourceManager.GetString("ReservedReservationStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservacion Realizada.
+        /// </summary>
+        public static string ReservedReservationStatusDes {
+            get {
+                return ResourceManager.GetString("ReservedReservationStatusDes", resourceCulture);
             }
         }
         

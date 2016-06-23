@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using com.ds201625.fonda.Resources.FondaResources.Reservation;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -19,10 +20,10 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
 		/// Constructor
 		/// </summary>
-		protected ReservedReservationStatus() : base()
+		public ReservedReservationStatus() : base()
         {
             StatusId = 8;
-            Description = "Reservación realizada";
+            Description = ReservationResources.ReservedReservationStatusDes;
         }
 
         /// <summary>
@@ -45,7 +46,7 @@ namespace com.ds201625.fonda.Domain
         /// <returns>Activa en String</returns>
         public override string ToString()
         {
-            return "Reservada";
+            return ReservationResources.ReservedReservationStatus;
         }
     }
 }

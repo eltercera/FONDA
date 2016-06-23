@@ -165,4 +165,20 @@
     <value>Estado</value>
     <comment>Nombre de columna de estado</comment>
   </data>
+  <data name="CanceledReservationStatus" xml:space="preserve">
+    <value>Cancelada</value>
+    <comment>Nombre del estado CanceledReservationStatus</comment>
+  </data>
+  <data name="CanceledReservationStatusDes" xml:space="preserve">
+    <value>Reservacion Cancelada</value>
+    <comment>Descripcion del estado CanceledReservationStatus</comment>
+  </data>
+  <data name="ReservedReservationStatus" xml:space="preserve">
+    <value>Reservada</value>
+    <comment>Nombre del estado ReservedReservationStatus</comment>
+  </data>
+  <data name="ReservedReservationStatusDes" xml:space="preserve">
+    <value>Reservacion Realizada</value>
+    <comment>Descripcion del estado ReservedReservationStatus</comment>
+  </data>
 </root>
