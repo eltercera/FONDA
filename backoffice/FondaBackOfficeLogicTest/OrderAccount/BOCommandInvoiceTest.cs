@@ -275,16 +275,7 @@ namespace FondaBackOfficeLogicTest
         }
         #endregion
 
-        [Test(Description = "Imprime una factura")]
-        public void CommandPrintInvoice()
-        {
-            _list.Add(7);
-            _list.Add(_restaurantId);
-            _command = CommandFactory.GetCommandPrintInvoice(_list);
-
-            _command.Execute();
-        }
-
+        #region Pruebas de Logic/Command/CommandGetInvoiceTest
         [Test(Description = "Devuelve una factura dada su Id")]
         public void CommandGetInvoiceTest()
         {
@@ -295,6 +286,42 @@ namespace FondaBackOfficeLogicTest
             Assert.IsNotNull(_invoice);
             Assert.AreEqual(_invoice.Number, 1);
         }
+
+        [Test(Description = "Exception CommandGetInvoice")]
+        [ExpectedException(typeof(CommandExceptionGetInvoice))]
+        public void CommandGetInvoiceExceptionTest()
+        {
+            _command = CommandFactory.GetCommandGetInvoice(0);
+            _command.Execute();
+            _invoice = (Invoice)_command.Receiver;
+
+           // Assert.IsNotNull(_invoice);
+           // Assert.AreEqual(_invoice.Number, 1);
+        }
+        #endregion
+
+        #region
+        [Test(Description = "Imprime una factura")]
+        public void CommandPrintInvoice()
+        {
+            _list.Add(7);
+            _list.Add(_restaurantId);
+            _command = CommandFactory.GetCommandPrintInvoice(_list);
+
+            _command.Execute();
+        }
+        [Test(Description = "Imprime una factura")]
+        [ExpectedException(typeof(CommandPrintInvoiceException))]
+        public void CommandPrintExceptionInvoice()
+        {
+            _list.Add(0);
+            _list.Add(100000);
+            _command = CommandFactory.GetCommandPrintInvoice(_list);
+
+            _command.Execute();
+        }
+
+        #endregion
 
         [Test(Description = "Verifica que devuelva una lista de Invoice dado un perfil")]
         public void CommandGetInvoicesByProfileTest()
