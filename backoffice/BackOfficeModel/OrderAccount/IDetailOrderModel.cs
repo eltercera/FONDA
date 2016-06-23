@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
-namespace BackOfficeModel.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficeModel.OrderAccount
 {
     public interface IDetailOrderModel : IModel
     {

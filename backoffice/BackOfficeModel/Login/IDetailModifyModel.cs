@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-namespace BackOfficeModel.Login
+namespace com.ds201625.fonda.View.BackOfficeModel.Login
 {
     public interface IDetailModifyModel : IModel
     {

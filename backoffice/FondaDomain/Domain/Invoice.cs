@@ -97,7 +97,7 @@ namespace com.ds201625.fonda.Domain
         /// <param name="total">Total de la factura</param>
         /// <param name="tax">Impuesto de la factura</param>
         public Invoice( int id,Payment payment, Profile profile, 
-            float total, float tax, int number)
+            float total, float tax, Currency currency, int number)
             : base()
         {
             this.Id = id;
@@ -106,6 +106,7 @@ namespace com.ds201625.fonda.Domain
             this._date = DateTime.Now;
             this._total = total;
             this._tax = tax;
+            this._currency = currency;
             this._status = new GeneratedInvoiceStatus();
             this._number = number;
         }
@@ -133,6 +134,15 @@ namespace com.ds201625.fonda.Domain
 
         }
 
+        /// <summary>
+        /// Constructor de Factura
+        /// </summary>
+        /// <param name="id">Id de la factura</param>
+        /// <param name="payment">Pago de la factura</param>
+        /// <param name="profile">Perfil de la factura</param>
+        /// <param name="total">Total de la factura</param>
+        /// <param name="tax">Impuesto de la factura</param>
+        /// <param name="currency">Tipo de Moneda</param>
         #endregion
 
         #region Properties

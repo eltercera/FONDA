@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FondaLogic.FondaCommandException
+namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException
 {
     /// <summary>
     /// Excepcion arrojada en caso de que falle el cierre de caja

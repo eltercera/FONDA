@@ -1,14 +1,15 @@
 ﻿using com.ds201625.fonda.Domain;
-using FondaLogic.Factory;
-using FondaLogic.FondaCommandException.OrderAccount;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandGetPaymentHistoryByProfile : Command
     {
@@ -43,77 +44,85 @@ namespace FondaLogic.Commands.OrderAccount
             {
                 //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetPaymentHistoryByProfile exception = new CommandExceptionGetPaymentHistoryByProfile(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameFindInvoicesByAccount,
+                    OrderAccountResources.CommandExceptionGetPaymentHistoryByProfileCode,
+                    OrderAccountResources.ClassNameGetPaymentHistoryByProfile,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionGetPaymentHistoryByProfile,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
 
                 paymentHistory = new List<Invoice>();
                 Receiver = paymentHistory;
+                throw exception;
             }
             catch(InvalidCastException ex)
             {
                 //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetPaymentHistoryByProfile exception = new CommandExceptionGetPaymentHistoryByProfile(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameFindInvoicesByAccount,
+                    OrderAccountResources.CommandExceptionGetPaymentHistoryByProfileCode,
+                    OrderAccountResources.ClassNameGetPaymentHistoryByProfile,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionGetPaymentHistoryByProfile,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
 
                 paymentHistory = new List<Invoice>();
                 Receiver = paymentHistory;
+                throw exception;
             }
-            catch(CommandExceptionValidateProfileByCommensal ex)
+            catch (CommandExceptionValidateProfileByCommensal ex)
+            {
+                CommandExceptionGetPaymentHistoryByProfile exception = new CommandExceptionGetPaymentHistoryByProfile(
+                    OrderAccountResources.CommandExceptionGetPaymentHistoryByProfileCode,
+                    OrderAccountResources.ClassNameGetPaymentHistoryByProfile,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionGetPaymentHistoryByProfile,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                paymentHistory = new List<Invoice>();
+                Receiver = paymentHistory;
+                throw exception;
+            }
+            catch (CommandExceptionGetInvoicesByProfile ex)
             {
                 //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetPaymentHistoryByProfile exception = new CommandExceptionGetPaymentHistoryByProfile(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameFindInvoicesByAccount,
+                    OrderAccountResources.CommandExceptionGetPaymentHistoryByProfileCode,
+                    OrderAccountResources.ClassNameGetPaymentHistoryByProfile,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionGetPaymentHistoryByProfile,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
 
                 paymentHistory = new List<Invoice>();
                 Receiver = paymentHistory;
+                throw exception;
             }
-            catch(CommandExceptionGetInvoicesByProfile ex)
+            catch (Exception ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetPaymentHistoryByProfile exception = new CommandExceptionGetPaymentHistoryByProfile(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameFindInvoicesByAccount,
+                    OrderAccountResources.CommandExceptionGetPaymentHistoryByProfileCode,
+                    OrderAccountResources.ClassNameGetPaymentHistoryByProfile,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionGetPaymentHistoryByProfile,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
 
                 paymentHistory = new List<Invoice>();
                 Receiver = paymentHistory;
+                throw exception;
             }
-            catch(Exception ex)
-            {
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetPaymentHistoryByProfile exception = new CommandExceptionGetPaymentHistoryByProfile(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameFindInvoicesByAccount,
-                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
-                    ex);
 
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
-                paymentHistory = new List<Invoice>();
-                Receiver = paymentHistory;
-            }
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameGetPaymentHistoryByProfile
+                    , OrderAccountResources.SuccessMessageCommandGetPaymentHistoryByProfile
+                    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                    );
         }
 
     }

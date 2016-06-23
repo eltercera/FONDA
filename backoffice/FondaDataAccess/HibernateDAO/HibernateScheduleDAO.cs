@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -31,15 +32,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
 
             IDayDAO _dayDAO = _facDAO.GetDayDAO();
-
-            Schedule schedule = new Schedule();
-            schedule.OpeningTime = OpeningTime;
-            schedule.ClosingTime = ClosingTime;
-
             IList<Day> listDays = _dayDAO.GetDay(Days);
-            schedule.Day = listDays;
 
-            
+            Schedule schedule = EntityFactory.GetRestSchedule(OpeningTime, ClosingTime, listDays);
             return schedule;
         }
     }

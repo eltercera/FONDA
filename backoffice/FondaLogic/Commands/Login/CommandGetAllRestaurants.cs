@@ -7,12 +7,12 @@ using com.ds201625.fonda;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using com.ds201625.fonda.DataAccess.Exceptions;
-using FondaLogic.FondaCommandException.Login;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
 
-namespace FondaLogic.Commands.Login
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Login
 {
     public class CommandGetAllRestaurants : Command
     {
@@ -47,27 +47,27 @@ namespace FondaLogic.Commands.Login
             catch (InvalidTypeParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
+                throw new CommandExceptionGetRestaurant(Resources.FondaResources.Login.Errors.ClassNameInvalidParameter, e);
             }
             catch (ParameterIndexOutRangeException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                throw new CommandExceptionGetRestaurant(Resources.FondaResources.Login.Errors.ClassNameIndexParameter, e);
             }
             catch (RequieredParameterNotFoundException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                throw new CommandExceptionGetRestaurant(Resources.FondaResources.Login.Errors.ClassNameParameterNotFound, e);
             }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantAll, e);
+                throw new CommandExceptionGetRestaurant(Resources.FondaResources.Login.Errors.ClassNameGetRestaurantAll, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurant(FondaResources.Login.Errors.ClassNameGetRestaurantAll, e);
+                throw new CommandExceptionGetRestaurant(Resources.FondaResources.Login.Errors.ClassNameGetRestaurantAll, e);
             }
             // Guarda el resultado.
             Object Result = Receiver;
@@ -75,7 +75,7 @@ namespace FondaLogic.Commands.Login
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                Resources.FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
     }
 }

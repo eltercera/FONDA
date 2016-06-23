@@ -1,13 +1,14 @@
 ﻿using com.ds201625.fonda;
 using com.ds201625.fonda.Domain;
-using FondaLogic.Commands.OrderAccount;
-using FondaLogic.Commands.Login;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.Login;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using System.Collections.Generic;
-using FondaLogic.Commands.Reservations;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations;
 using System;
+using com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante;
 
-namespace FondaLogic.Factory
+namespace com.ds201625.fonda.Logic.FondaLogic.Factory
 {
     /// <summary>
     /// Fabrica que genera los comandos del sistema
@@ -28,6 +29,18 @@ namespace FondaLogic.Factory
         #endregion
 
         #region OrderAccount
+
+        //Se obtienen los comandos a a utilizar
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CancelInvoice
+        /// </summary>
+        /// <param name="entity">Lista de ints (invoiceId, accountId)</param>
+        /// <returns>comando CancelInvoice</returns>
+        public static Command GetCommandCancelInvoiced(object receiver)
+        {
+            return new CommandCancelInvoice(receiver);
+        }
 
         //Se obtienen los comandos a a utilizar
 
@@ -246,6 +259,10 @@ namespace FondaLogic.Factory
         #region Restaurant
 
         //Defincion de los comandos a implementar del modulo Restaurante
+        public static Command GetCommandModifyRestaurant(object receiver)
+        {
+            return new CommandModifyRestaurant(receiver);
+        }
 
         #endregion
 
@@ -403,6 +420,7 @@ namespace FondaLogic.Factory
         {
             return new CommandFindReservationsByTable(receiver);
         }
+
 
         #endregion
 

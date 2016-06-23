@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using BackOfficeModel.OrderAccount;
-using FondaResources.OrderAccount;
-using FondaResources.Login;
+using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using System.Web.UI.HtmlControls;
-using BackOfficeModel;
+using com.ds201625.fonda.View.BackOfficeModel;
+using BackOffice.Content;
+using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -12,7 +14,7 @@ namespace BackOffice.Seccion.Caja
     { 
        #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.InvoiceDetailPresenter _presenter;
+        private InvoiceDetailPresenter _presenter;
 
         #endregion
 
@@ -59,6 +61,18 @@ namespace BackOffice.Seccion.Caja
 
             set { total = value; }
         }
+        public System.Web.UI.WebControls.Label SubTotalInvoice
+        {
+            get { return subtotal; }
+
+            set { subtotal = value; }
+        }
+        public System.Web.UI.WebControls.Label TipInvoice
+        {
+            get { return propina; }
+
+            set { propina = value; }
+        }
 
         public System.Web.UI.WebControls.Label DateInvoice
         {
@@ -67,11 +81,11 @@ namespace BackOffice.Seccion.Caja
             set { date = value; }
         }
 
-        public System.Web.UI.WebControls.LinkButton PrintInvoice
+        public System.Web.UI.WebControls.Button PrintInvoice
         {
-            get { return print; }
+            get { return invoicePrint; }
 
-            set { print = value; }
+            set { invoicePrint = value; }
         }
         Label IModel.ErrorLabelMessage
         {
@@ -136,20 +150,28 @@ namespace BackOffice.Seccion.Caja
         }
 
 
-
         #endregion
 
         #region Constructor
 
         public VerDetalleFactura()
         {
-            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.InvoiceDetailPresenter(this);
+            _presenter = new InvoiceDetailPresenter(this);
         }
         #endregion
-
+        protected void print_Click(object sender, EventArgs e)
+        {
+            _presenter.PrintInvoice();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            _presenter.GetDetailOrder();
+            if (Session[ResourceLogin.sessionUserID] != null &&
+                Session[ResourceLogin.sessionRestaurantID] != null)
+                _presenter.GetDetailInvoice();
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
+
+
         }
     }
 }

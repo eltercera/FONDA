@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using NHibernate.Criterion;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -31,9 +32,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             Zone zone = FindBy("Name", name);
             if (zone == null)
             {
-                Zone newZone = new Zone();
-                newZone.Name = name;
-                return newZone;
+                Zone _zone = EntityFactory.GetRestzone(name);
+                return _zone;
             }
 
             return zone;

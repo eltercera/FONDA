@@ -9,11 +9,11 @@ using System.Web.UI.WebControls;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using BackOffice.Content;
-using BackOfficeModel.Restaurant;
+using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
 using System.Web.UI.HtmlControls;
-using BackOfficePresenter.Restaurante;
+using com.ds201625.fonda.View.BackOfficePresenter.Restaurante;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -550,9 +550,9 @@ namespace BackOffice.Seccion.Restaurant
         /// </summary>
         protected void ButtonModify_Click(object sender, EventArgs e)
         {
-            ButtonModify_Click();
+            ButtonModify_Click2();
         }
-        public void ButtonModify_Click()
+        public void ButtonModify_Click2()
         {
             _presenter.ButtonModify_Click();
         }

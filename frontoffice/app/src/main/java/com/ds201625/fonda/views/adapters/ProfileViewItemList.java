@@ -12,9 +12,13 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.interfaces.IProfileItemView;
+import com.ds201625.fonda.interfaces.IProfileListView;
+import com.ds201625.fonda.interfaces.IProfileViewPresenter;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.presenter.ProfilePresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,24 +26,21 @@ import java.util.List;
 /**
  * Adapter para la vista de la lista de Profiles
  */
-public class ProfileViewItemList extends BaseArrayAdapter<Profile> {
+public class ProfileViewItemList extends BaseArrayAdapter<Profile> implements IProfileItemView{
 
-    public ProfileViewItemList(Context context) {
+
+    private String TAG = "ProfileViewItemList";
+
+    public ProfileViewItemList(Context context, IProfileViewPresenter presenter) {
         super(context, R.layout.item_profile,R.id.tvProfile,new ArrayList<Profile>());
-        update();
+        update(presenter);
     }
 
-    public void update() {
+    public void update(IProfileViewPresenter presenter) {
         List<Profile> profiles = null;
         clear();
         try {
-            Command commandoGetProfiles = FondaCommandFactory.getProfilesCommand();
-            commandoGetProfiles.run();
-            profiles = (List<Profile>)commandoGetProfiles.getResult();
-        }
-        catch (RestClientException e) {
-            e.printStackTrace();
-            Log.v("Fonda",e.toString());
+            profiles = getProfiles(presenter);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -82,4 +83,17 @@ public class ProfileViewItemList extends BaseArrayAdapter<Profile> {
         return convertView;
     }
 
+    @Override
+    public List<Profile> getProfiles(IProfileViewPresenter presenter) {
+        Log.d(TAG,"Metodo getProfiles");
+        List<Profile> resp = null;
+        try {
+            resp = presenter.getProfiles();
+            Log.d(TAG,"Se realizo la busqueda de los perfiles ");
+        }catch (Exception e)
+        {
+            Log.e(TAG,"Error al buscar los perfiles",e);
+        }
+        return resp;
+    }
 }

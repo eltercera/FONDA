@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FondaLogic.FondaCommandException.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.OrderAccount
 {
     /// <summary>
     /// Excepcion arrojada en caso de que falle la consulta  de una lista DishOrders 

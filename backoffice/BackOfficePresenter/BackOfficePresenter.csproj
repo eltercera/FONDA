@@ -7,7 +7,7 @@
     <ProjectGuid>{FDE7B2A6-7496-4680-AB18-A336EEBBE62E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BackOfficePresenter</RootNamespace>
+    <RootNamespace>com.ds201625.fonda.View.BackOfficePresenter</RootNamespace>
     <AssemblyName>BackOfficePresenter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +45,8 @@
   <ItemGroup>
     <Compile Include="FondaMVPException\MVPException.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionCloseButton.cs" />
+    <Compile Include="FondaMVPException\OrderAccount\MVPExceptionPrintInvoice.cs" />
+    <Compile Include="FondaMVPException\OrderAccount\MVPExceptionQuery.cs" />
     <Compile Include="Login\DetailModifyPresenter.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionClosedOrdersTable.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionDetailOrderTable.cs" />
@@ -61,8 +64,8 @@
     <Compile Include="Presenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Restaurant\CategoryPresenter.cs" />
-    <Compile Include="Reservation\ReservationsPresenter.cs" />
     <Compile Include="Restaurant\RestaurantPresenter.cs" />
+    <Compile Include="Reservation\ReservationsPresenter.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

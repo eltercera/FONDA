@@ -1,19 +1,19 @@
-﻿using BackOfficeModel.OrderAccount;
-using BackOfficePresenter.FondaMVPException;
+﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
-using FondaLogic;
-using FondaLogic.Factory;
-using FondaLogic.Log;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Web.UI.WebControls;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
-    public class OrdersPresenter : BackOfficePresenter.Presenter
+    public class OrdersPresenter : Presenter
     {
         //Enlace entre el Modelo y la Vista
         private IOrdersModel _view;
@@ -61,26 +61,44 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 {
                     commandCloseCashRegister.Execute();
                     totalOrder = (string)commandCloseCashRegister.Receiver;
-                    SuccessLabel("Ha cerrado la caja exitosamente, el balance del dia fue: " + totalOrder);
+                    SuccessLabel(OrderAccountResources.MessageClose + totalOrder);
 
                 }
                 else if (_openOrders.Count != 0)
-                    throw new MVPExceptionCloseButton("No se puede realizar el cierre de caja");
+                    throw new Exception();
 
             }
             catch (MVPExceptionCloseButton ex)
             {
                 MVPExceptionCloseButton e = new MVPExceptionCloseButton
                     (
-                        Errors.MVPExceptionCloseButtonCode,
-                        Errors.ClassNameOrdersPresenter,
+                        OrderAccountResources.MVPExceptionCloseButtonCode,
+                        OrderAccountResources.ClassNameOrdersPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionCloseButton,
+                        OrderAccountResources.MessageMVPExceptionCloseButton,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
                 ErrorLabel(e.MessageException);
             }
+            catch (Exception ex)
+            {
+                MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
+                    (
+                        OrderAccountResources.MVPExceptionOrdersTableCode,
+                        OrderAccountResources.ClassNameOrdersPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrdersTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                ErrorLabel(e.MessageException);
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameOrdersPresenter
+                , OrderAccountResources.MessageGetOrders
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
         }
      
 
@@ -121,21 +139,37 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             }
             catch (MVPExceptionOrdersTable ex)
             {
-                //Revisar
                 MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
                     (
-                        Errors.MVPExceptionOrdersTableCode,
-                        Errors.ClassNameOrdersPresenter,
+                        OrderAccountResources.MVPExceptionOrdersTableCode,
+                        OrderAccountResources.ClassNameOrdersPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionOrdersTable,
+                        OrderAccountResources.MessageMVPExceptionOrdersTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                throw e;
                 ErrorLabel(e.MessageException);
             }
-       
-    }
+            catch(Exception ex)
+            {
+                MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
+                    (
+                        OrderAccountResources.MVPExceptionOrdersTableCode,
+                        OrderAccountResources.ClassNameOrdersPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrdersTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                ErrorLabel(e.MessageException);
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameOrdersPresenter
+                , OrderAccountResources.MessageGetOrders
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
+
+        }
      
 
 
