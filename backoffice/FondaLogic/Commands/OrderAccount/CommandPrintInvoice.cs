@@ -1,9 +1,6 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
-using com.ds201625.fonda.Logic.FondaLogic.Log;
-using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
@@ -14,6 +11,9 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.IO;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
@@ -35,11 +35,14 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 
         public override void Execute()
         {
-            
-            //try
-            //{
+
+            try
+            {
+                
                 _list = (IList<int>)Receiver;
-                float totalFactura = 0;
+                using (System.IO.MemoryStream memoryStream = new System.IO.MemoryStream())
+                {
+                    float totalFactura = 0;
                 IUserAccountDAO _userAccountDao = _facDAO.GetUserAccountDAO();
                 ICommensalDAO _genericPersonDao = _facDAO.GetCommensalDAO();
                 IPersonDAO _personDao = _facDAO.GetPersonDao();
@@ -64,22 +67,18 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     _creditCardPayment = (CreditCardPayment)_invoice.Payment;
                     tip = _creditCardPayment.Tip;
                 }
-
-            // Creamos el documento con el tamaño de página tradicional
-            Document doc = new Document(PageSize.LETTER);
-                using (System.IO.MemoryStream memoryStream = new System.IO.MemoryStream()) ;
-                
-                String ruta = @"~\Factura_" + _invoice.Number.ToString() + "_" + _restaurant.Name + ".pdf";
+                #region Declaraciones
+                // Creamos el documento con el tamaño de página tradicional
+                Document doc = new Document(PageSize.LETTER); 
+                String nombre ="Factura_" + _invoice.Number.ToString() + "_" + _restaurant.Name + ".pdf";
             // Indicamos donde vamos a guardar el documento
-            PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(ruta,FileMode.Create));
-            //FileStream file = new FileStream(Server.MapPath("~/Files/") + "Test.PDF", FileMode.Create, System.IO.FileAccess.Write);
-            //PdfWriter.GetInstance(doc, new FileStream(Server.MapPath("~/Files/Pdf/test.pdf"), FileMode.Create));
-            //PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
-            //@"C:\Factura_"+_invoice.Number+/*"_"+_restaurant.Name+*/".pdf"
-            // Le colocamos el título y el autor
-            // **Nota: Esto no será visible en el documento
-            doc.AddTitle("Factura");
-                //doc.AddCreator("Roberto Torres");
+            
+                PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
+
+                // Le colocamos el título y el autor
+                // **Nota: Esto no será visible en el documento
+                doc.AddTitle("Factura");
+                doc.AddCreator("Restaurante " + _restaurant.Name);
 
                 // Abrimos el archivo
                 doc.Open();
@@ -88,13 +87,14 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
                 // Escribimos el encabezamiento en el documento
-                doc.Add(new Paragraph("Factura Restaurante "+_restaurant.Name));
+                doc.Add(new Paragraph("Factura Restaurante " + _restaurant.Name));
                 doc.Add(Chunk.NEWLINE);
+#endregion
 
-            // Creamos una tabla que contendrá la información 
-            // de nuestros visitante.
-            #region Llenado de la tabla
-            PdfPTable tblPrueba1 = new PdfPTable(5);
+                #region Creamos una tabla que contendrá la información 
+
+
+                PdfPTable tblPrueba1 = new PdfPTable(5);
                 tblPrueba1.WidthPercentage = 100;
 
                 PdfPTable tblPrueba2 = new PdfPTable(4);
@@ -105,8 +105,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 
                 PdfPTable tblPrueba4 = new PdfPTable(4);
                 tblPrueba4.WidthPercentage = 100;
-
+                #endregion
                 // Configuramos el título de las columnas de la tabla
+                #region Encabezados 
                 PdfPCell clFecha = new PdfPCell(new Phrase("Fecha", _standardFont));
                 clFecha.BorderWidth = 0;
                 clFecha.BorderWidthBottom = 0.75f;
@@ -159,6 +160,18 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 clTotalIva.BorderWidth = 0;
                 clTotalIva.BorderWidthBottom = 0.75f;
 
+                PdfPCell clPlatillo = new PdfPCell(new Phrase("Platillo", _standardFont));
+                clPlatillo.BorderWidth = 0;
+                clPlatillo.BorderWidthBottom = 0.75f;
+
+                PdfPCell clCantidad = new PdfPCell(new Phrase("Cantidad", _standardFont));
+                clCantidad.BorderWidth = 0;
+                clCantidad.BorderWidthBottom = 0.75f;
+
+                PdfPCell clPrecio = new PdfPCell(new Phrase("Precio", _standardFont));
+                clPrecio.BorderWidth = 0;
+                clPrecio.BorderWidthBottom = 0.75f;
+
                 // Añadimos las celdas a la tabla
                 tblPrueba1.AddCell(clFecha);
                 tblPrueba1.AddCell(clRestaurante);
@@ -170,11 +183,12 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 tblPrueba2.AddCell(clApellido);
                 tblPrueba2.AddCell(clCedula);
                 tblPrueba4.AddCell(clPropina);
-                tblPrueba4.AddCell(clTotal); 
+                tblPrueba4.AddCell(clTotal);
                 tblPrueba4.AddCell(clIVA);
                 tblPrueba4.AddCell(clTotalIva);
+                #endregion
 
-                // Llenamos la tabla con información
+                #region Llenamos la tabla con información
                 clFecha = new PdfPCell(new Phrase(_invoice.Date.ToString(), _standardFont));
                 clFecha.BorderWidth = 0;
 
@@ -205,17 +219,6 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 clPropina = new PdfPCell(new Phrase(tip.ToString(), _standardFont));
                 clPropina.BorderWidth = 0;
 
-                PdfPCell clPlatillo = new PdfPCell(new Phrase("Platillo", _standardFont));
-                clPlatillo.BorderWidth = 0;
-                clPlatillo.BorderWidthBottom = 0.75f;
-
-                PdfPCell clCantidad = new PdfPCell(new Phrase("Cantidad", _standardFont));
-                clCantidad.BorderWidth = 0;
-                clCantidad.BorderWidthBottom = 0.75f;
-
-                PdfPCell clPrecio = new PdfPCell(new Phrase("Precio", _standardFont));
-                clPrecio.BorderWidth = 0;
-                clPrecio.BorderWidthBottom = 0.75f;
                 tblPrueba3.AddCell(clPlatillo);
                 tblPrueba3.AddCell(clCantidad);
                 tblPrueba3.AddCell(clPrecio);
@@ -262,12 +265,12 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 tblPrueba2.AddCell(clApellido);
                 tblPrueba2.AddCell(clCedula);
                 tblPrueba4.AddCell(clPropina);
-                tblPrueba4.AddCell(clTotal); 
+                tblPrueba4.AddCell(clTotal);
                 tblPrueba4.AddCell(clIVA);
                 tblPrueba4.AddCell(clTotalIva);
+                #endregion
 
-
-                // Finalmente, añadimos la tabla al documento PDF y cerramos el documento
+                #region Finalmente, añadimos la tabla al documento PDF y cerramos el documento
                 doc.Add(tblPrueba1);
                 doc.Add(Chunk.NEWLINE);
                 doc.Add(tblPrueba2);
@@ -276,56 +279,59 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 doc.Add(tblPrueba3);
                 doc.Add(Chunk.NEWLINE);
                 doc.Add(tblPrueba4);
-            #endregion
-            doc.Close();
+                #endregion
+                doc.Close();
 
-            //byte[] bytes = memoryStream.ToArray();
-            //memoryStream.Close();
-            //Response.Clear();
-            //Response.ContentType = "application/pdf";
-            //Response.AddHeader("Content-Disposition", "attachment; filename=Employee.pdf");
-            //Response.ContentType = "application/pdf";
-            //Response.Buffer = true;
-            //Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            //Response.BinaryWrite(bytes);
-            //Response.End();
-            //Response.Close();
+                #region lo descargamos
+                byte[] bytes = memoryStream.ToArray();
+                memoryStream.Close();
+                HttpContext.Current.Response.Clear();
+                HttpContext.Current.Response.ContentType = "application/pdf";
+                HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=Factura_" + _invoice.Number.ToString() + "_" + _restaurant.Name + ".pdf");
+                HttpContext.Current.Response.ContentType = "application/pdf";
+                HttpContext.Current.Response.Buffer = true;
+                HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                HttpContext.Current.Response.BinaryWrite(bytes);
+                HttpContext.Current.Response.Flush();
+                HttpContext.Current.Response.SuppressContent = true;
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
+                HttpContext.Current.Response.Close();
+                    #endregion
+                    writer.Close();
+            }
 
-            writer.Close();
+        }
+            catch (NullReferenceException ex)
+            {
+                CommandExceptionPrintInvoice exception = new CommandExceptionPrintInvoice(
+                    OrderAccountResources.CommandExceptionPrintInvoiceCode,
+                    OrderAccountResources.ClassNamePrintInvoice,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionPrintInvoice,
+                    ex);
+
+        Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                throw exception;
+
+            }
+            catch (Exception ex)
+            {
+                CommandExceptionPrintInvoice exception = new CommandExceptionPrintInvoice(
+                    OrderAccountResources.CommandExceptionPrintInvoiceCode,
+                    OrderAccountResources.ClassNamePrintInvoice,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionPrintInvoice,
+                    ex);
+
+    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                throw exception;
+            }
 
 
-            //}
-            //catch (NullReferenceException ex)
-            //{
-            //    CommandExceptionPrintInvoice exception = new CommandExceptionPrintInvoice(
-            //        OrderAccountResources.CommandExceptionPrintInvoiceCode,
-            //        OrderAccountResources.ClassNamePrintInvoice,
-            //        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-            //        OrderAccountResources.MessageCommandExceptionPrintInvoice,
-            //        ex);
-
-            //    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-            //    throw exception;
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    CommandExceptionPrintInvoice exception = new CommandExceptionPrintInvoice(
-            //        OrderAccountResources.CommandExceptionPrintInvoiceCode,
-            //        OrderAccountResources.ClassNamePrintInvoice,
-            //        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-            //        OrderAccountResources.MessageCommandExceptionPrintInvoice,
-            //        ex);
-
-            //    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-            //    throw exception;
-            //}
-
-
-            //Logger.WriteSuccessLog(OrderAccountResources.ClassNamePrintInvoice
-            //        , OrderAccountResources.SuccessMessageCommandPrintInvoice
-            //        , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
-            //        );
+Logger.WriteSuccessLog(OrderAccountResources.ClassNamePrintInvoice
+                    , OrderAccountResources.SuccessMessageCommandPrintInvoice
+                    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                    );
         }
 
 

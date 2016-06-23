@@ -162,6 +162,7 @@ namespace BackOffice.Seccion.Caja
         protected void print_Click(object sender, EventArgs e)
         {
             _presenter.PrintInvoice();
+            //_presenter.SendInvoice();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
