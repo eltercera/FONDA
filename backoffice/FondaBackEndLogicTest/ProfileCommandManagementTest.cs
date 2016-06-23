@@ -26,6 +26,7 @@ namespace FondaBackEndLogicTest
         private ICommand _getProfile;
         private ICommand _updateProfile;
         private ICommand _deleteProfile;
+        private ICommand _getAccountEmail;
         private Commensal _commensal;
         private Profile _profile;
         private IProfileDAO _profileDAO;
@@ -132,6 +133,28 @@ namespace FondaBackEndLogicTest
             Assert.AreEqual(_profile.Id, _result.Id);
             Assert.AreEqual(_result.ProfileName, "Modificado");
         }
+
+        /// <summary>
+        /// Prueba del comando GetAccountEmail
+        /// </summary>
+        [Test]
+        public void GetAccountEmailCommandTest()
+        {
+            string _email = _commensal.Email;
+            string _password = _commensal.Password;
+
+            _getAccountEmail = BackendFactoryCommand.Instance.GetAccountEmailCommands();
+            _getAccountEmail.SetParameter(0, _email);
+            _getAccountEmail.SetParameter(1, _password);
+            _getAccountEmail.Run();
+
+            UserAccount _result = (UserAccount)_getAccountEmail.Result;
+
+            Assert.AreNotEqual(0, _result.Id);
+            Assert.AreEqual(_commensal.Id, _result.Id);
+            Assert.AreEqual(_email, _result.Email);
+            Assert.AreEqual(_password, _result.Password);
+        }
         [TearDown]
         protected void Clean()
         {
@@ -148,6 +171,7 @@ namespace FondaBackEndLogicTest
             _profile = null;
             _profileDAO = null;
             _commensalDAO = null;
+            _getAccountEmail = null;
             _idProfile = 0;
         }
 
