@@ -20,21 +20,17 @@ public class CategoriesAdapter extends BaseArrayAdapter<RestaurantCategory> {
 
     public CategoriesAdapter(Context context) {
         super(context, R.layout.fragment_filter,R.id.tvFilter,new ArrayList<RestaurantCategory>());
+        update();
     }
 
     @Override
     public View createView(RestaurantCategory item) {
         int currentPage = 0;
-        Log.d("Paso", "1");
         View convertView;
         LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
-        Log.d("Paso", "2");
         convertView = inflater.inflate(R.layout.item_filter, null, true);
         TextView tvFilter = (TextView) convertView.findViewById(R.id.tvFilter);
-        Log.d("Paso", "3");
         tvFilter.setText(item.getNameCategory());
-        Log.d("Paso", "4");
-        update();
         return convertView;
     }
 
@@ -67,7 +63,10 @@ public class CategoriesAdapter extends BaseArrayAdapter<RestaurantCategory> {
         }
 
         currentPage++;
-        if (restaurants != null) addAll(restaurants);
+        if (restaurants != null) {
+            clear();
+            addAll(restaurants);
+        }
         notifyDataSetChanged();
     }
 }

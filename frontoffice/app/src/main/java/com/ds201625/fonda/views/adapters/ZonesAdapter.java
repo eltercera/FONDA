@@ -21,8 +21,9 @@ public class ZonesAdapter extends BaseArrayAdapter<Zone> {
     int currentPage;
 
     public ZonesAdapter(Context context) {
-            super(context, R.layout.fragment_filter,R.id.tvFilter,new ArrayList<Zone>());
-            }
+        super(context, R.layout.fragment_filter,R.id.tvFilter,new ArrayList<Zone>());
+        update();
+    }
 
     @Override
     public View createView(Zone item) {
@@ -32,7 +33,6 @@ public class ZonesAdapter extends BaseArrayAdapter<Zone> {
         convertView = inflater.inflate(R.layout.item_filter, null, true);
         TextView tvFilter = (TextView) convertView.findViewById(R.id.tvFilter);
         tvFilter.setText(item.getName());
-        update();
         return convertView;
     }
 
@@ -65,7 +65,10 @@ public class ZonesAdapter extends BaseArrayAdapter<Zone> {
         }
 
         currentPage++;
-        if (restaurants != null) addAll(restaurants);
+        if (restaurants != null) {
+            clear();
+            addAll(restaurants);
+        }
         notifyDataSetChanged();
     }
 }

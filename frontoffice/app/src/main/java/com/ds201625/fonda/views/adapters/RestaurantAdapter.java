@@ -24,7 +24,8 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
 
 
     public RestaurantAdapter(Context context) {
-            super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
+        super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
+        update();
     }
 
     @Override
@@ -47,11 +48,7 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
         Context context = icon.getContext();
         int idImage = context.getResources().getIdentifier(image, "mipmap", context.getPackageName());
         icon.setImageResource(idImage);
-
-        update();
-
         return convertView;
-
     }
 
     /**
@@ -82,7 +79,7 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
             Command comando = FondaCommandFactory.getRestaurantsCommand();
             comando.setParameter(0, "");
             comando.setParameter(1, 10);
-            comando.setParameter(2, currentPage + 1);
+            comando.setParameter(2, currentPage+1);
             comando.setParameter(3, "");
             comando.setParameter(4, "");
             comando.run();
@@ -94,7 +91,10 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
         }
 
         currentPage++;
-        if (restaurants != null) addAll(restaurants);
+        if (restaurants != null) {
+            addAll(restaurants);
+            clear();
+        }
         notifyDataSetChanged();
     }
 }
