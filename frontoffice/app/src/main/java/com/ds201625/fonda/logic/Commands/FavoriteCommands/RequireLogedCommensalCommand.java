@@ -27,7 +27,7 @@ public class RequireLogedCommensalCommand extends BaseCommand {
         return parameters;
     }
     /**
-     * Comando para obtener el comensal logueado
+     * Metodo de invoke implementado: Comando para obtener el comensal logueado
      */
     @Override
     protected void invoke() {

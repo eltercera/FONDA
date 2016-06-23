@@ -122,10 +122,14 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Commensal result;
             try
             {
-                if (idcommensal == 13)
+              /*  if (idcommensal == 13)
                 {
-                    throw new AddFavoriteRestaurantFondaWebApiControllerException("Error al refistrar"+GeneralRes.AddFavRestException);
+               throw new AddFavoriteRestaurantFondaWebApiControllerException("Error al refistrar"+GeneralRes.AddFavRestException);
                 }
+
+                    throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException);
+                }*/
+
                 //Creación del commensal con id
                 commensal = EntityFactory.GetCommensal();
                 commensal.Id = idcommensal;                      
@@ -247,11 +251,12 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Commensal result;
             try
             {
-                if (idCommensal == 13)
+              /*  if (idCommensal == 13)
                 {
-                //Creación del commensal con id
-                   throw new  FindFavoriteRestaurantFondaWebApiControllerException("Error al consultar favoritos"+GeneralRes.GetFavoriteRestaurantException);
-                }
+
+                    throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException);
+                }*/
+
                 //Creación del commensal con id
                 commensal = EntityFactory.GetCommensal();  
                 commensal.Id = idCommensal;                      

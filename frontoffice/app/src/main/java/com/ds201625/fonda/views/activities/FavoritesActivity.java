@@ -254,9 +254,9 @@ public class FavoritesActivity extends BaseNavigationActivity implements
             catch (NullPointerException nu) {
                 Log.e(TAG,"Error en removeFavorite al eliminar un favorito",nu);
             }
-         catch (Exception e) {
+            catch (Exception e) {
             Log.e(TAG,"Error en removeFavorite al eliminar un favorito",e);
-        }
+            }
         hideKyboard();
          Log.d(TAG,"Se ha eliminado un favorito");
     }

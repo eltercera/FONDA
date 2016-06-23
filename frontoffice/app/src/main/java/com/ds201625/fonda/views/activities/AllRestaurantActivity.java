@@ -224,19 +224,12 @@ public class AllRestaurantActivity extends BaseNavigationActivity
         Log.d(TAG,"Ha entrado en save");
         //Guardar un favorito
         try {
-            try {
 
-                        if (isFavorite()) {
+            if (isFavorite()) {
                             try{
-                                try {
-                                    presenter.deleteFavoriteRestaurant(restaurant);
-                                } catch (Exception e) {
-                                    Log.e(TAG,"Error en el manejo de un favorito",e);
-                                    Toast.makeText(getApplicationContext(),
-                                            R.string.favorite_remove_fail_meessage,
-                                            Toast.LENGTH_LONG).show();
 
-                                }
+                                presenter.deleteFavoriteRestaurant(restaurant);
+
                                 Toast.makeText(getApplicationContext(),
                                         R.string.favorite_remove_success_meessage,
                                         Toast.LENGTH_LONG).show();
@@ -244,20 +237,15 @@ public class AllRestaurantActivity extends BaseNavigationActivity
                                 Log.d(TAG,"Se ha eliminado el favorito");
                             } catch (Exception e) {
                                 Log.e(TAG,"Error en el manejo de un favorito",e);
+                                Toast.makeText(getApplicationContext(),
+                                        R.string.favorite_remove_fail_meessage,
+                                        Toast.LENGTH_LONG).show();
                             }
-                        } else {
+            } else {
                             try{
                                 //Llamo al comando de addFavoriteRestaurant
                                 presenter.addFavoriteRestaurant(restaurant);
-                            try {
 
-                                } catch (Exception e) {
-                                    Log.e(TAG,"Error en el manejo de un favorito",e);
-                                    Toast.makeText(getApplicationContext(),
-                                            R.string.favorite_add_fail_meessage,
-                                            Toast.LENGTH_LONG).show();
-
-                                }
                                 Toast.makeText(getApplicationContext(),
                                         R.string.favorite_add_success_meessage,
                                         Toast.LENGTH_LONG).show();
@@ -265,13 +253,16 @@ public class AllRestaurantActivity extends BaseNavigationActivity
                                 Log.d(TAG,"Se ha guardado el favorito");
                             }  catch (Exception e) {
                                 Log.e(TAG,"Error en el manejo de un favorito",e);
+                                Toast.makeText(getApplicationContext(),
+                                        R.string.favorite_add_fail_meessage,
+                                        Toast.LENGTH_LONG).show();
                             }
-                        }
- }
-            catch (NullPointerException nu) {
-                Log.e(TAG,"Error en el manejo de un favorito",nu);
             }
-        } catch (Exception e) {
+        }
+        catch (NullPointerException nu) {
+                Log.e(TAG,"Error en el manejo de un favorito",nu);
+        }
+         catch (Exception e) {
             Log.e(TAG,"Error en el manejo de un favorito",e);
         }
         hideKyboard();

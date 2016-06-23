@@ -14,6 +14,9 @@ import java.util.List;
 /**
  * Created by Adri on 6/19/2016.
  */
+/**
+ * Clase De pruebas unitarias de FavoriteRestaurantMVPTest
+ */
 public class FavoriteRestaurantMVPTest extends TestCase implements FavoriteView {
 
     /**
@@ -114,6 +117,8 @@ public class FavoriteRestaurantMVPTest extends TestCase implements FavoriteView 
         }
     }
 
+
+    /*Metodos de la interfaz FavoriteView*/
 
     /**
      * Lista de todos los restaurantes favoritos
