@@ -2,33 +2,23 @@
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandClosedOrders : Command
     {
 
         private FactoryDAO _facDAO = FactoryDAO.Intance;
         private int _restaurantId;
-        IList<Account> listClosedOrders;
+        private IList<Account> listClosedOrders;
 
-        public CommandClosedOrders(Object receiver) : base(receiver)
-        {
-            try
-            {
-                _restaurantId = (int)receiver;
-            }
-            catch (Exception)
-            {
-                //TODO: Enviar excepcion personalizada
-                throw;
-            }
-        }
+        public CommandClosedOrders(Object receiver) : base(receiver) { }
 
 
 
@@ -40,6 +30,7 @@ namespace FondaLogic.Commands.OrderAccount
         {
             try
             {
+                _restaurantId = (int)Receiver;
                 //Defino el DAO
                 IRestaurantDAO _restaurantDAO;
                 //Obtengo la instancia del DAO a utilizar
@@ -48,23 +39,42 @@ namespace FondaLogic.Commands.OrderAccount
                 IList<Account> listClosedOrders = _restaurantDAO.ClosedOrdersByRestaurantId(_restaurantId);
                 Receiver = listClosedOrders;
 
-        }
+            }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetClosedOrders exception = new CommandExceptionGetClosedOrders(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameGetCloseOrders,
+                    OrderAccountResources.CommandExceptionGetClosedOrdersCode,
+                    OrderAccountResources.ClassNameGetCloseOrders,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionGetClosedOrders,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
 
                 listClosedOrders = new List<Account>();
                 Receiver = listClosedOrders;
-                //throw exceptionGetOrders;
+                throw exception;
             }
+            catch (Exception ex)
+            {
+                CommandExceptionGetClosedOrders exception = new CommandExceptionGetClosedOrders(
+                    OrderAccountResources.CommandExceptionGetClosedOrdersCode,
+                    OrderAccountResources.ClassNameGetCloseOrders,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionGetClosedOrders,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                listClosedOrders = new List<Account>();
+                Receiver = listClosedOrders;
+                throw exception;
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameValidateProfileByCommensal
+                , OrderAccountResources.SuccessMessageCommandGetClosedOrders
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
         }
 
     }

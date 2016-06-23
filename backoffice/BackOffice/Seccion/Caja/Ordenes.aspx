@@ -59,13 +59,14 @@
 
                             <asp:Table ID="orderList" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                     </div>
+                    <div class="text-right">                            
+                        <a href="OrdenesCerradas.aspx"><i class="fa fa-plus"></i> Ver ordenes cerradas</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="text-right">                            
-        <a href="OrdenesCerradas.aspx"><i class="fa fa-plus"></i> Ver ordenes cerradas</a>
-    </div>
+
         
 </asp:Content>

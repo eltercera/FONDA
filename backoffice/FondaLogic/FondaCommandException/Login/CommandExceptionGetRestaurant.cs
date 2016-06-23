@@ -1,11 +1,11 @@
-﻿using FondaLogic.FondaCommandException.Login;
+﻿using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.FondaCommandException
+namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException
 {
     /// <summary>
     /// excepcion que es lanzada en caso de que falle una consulta de restaurantes

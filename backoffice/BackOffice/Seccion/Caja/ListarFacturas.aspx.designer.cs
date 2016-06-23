@@ -49,6 +49,24 @@ namespace BackOffice.Seccion.Caja {
         protected global::System.Web.UI.WebControls.Label ErrorLabelMessage;
         
         /// <summary>
+        /// ordernumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ordernumber;
+        
+        /// <summary>
+        /// orderId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField orderId;
+        
+        /// <summary>
         /// orderInvoices control.
         /// </summary>
         /// <remarks>

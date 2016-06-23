@@ -7,7 +7,7 @@
     <ProjectGuid>{3184FE34-D7E3-44F6-95D9-25D1045BFFC8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FondaResources</RootNamespace>
+    <RootNamespace>com.ds201625.fonda.Resources.FondaResources</RootNamespace>
     <AssemblyName>FondaResources</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -72,11 +72,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RestaurantResource.resx</DependentUpon>
     </Compile>
-    <Compile Include="OrderAccount\Errors.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Errors.resx</DependentUpon>
-    </Compile>
     <Compile Include="OrderAccount\OrderAccountResources.Designer.cs">
       <DependentUpon>OrderAccountResources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -128,10 +123,6 @@
     <EmbeddedResource Include="Login\RestaurantResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RestaurantResource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OrderAccount\Errors.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Errors.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderAccount\OrderAccountResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

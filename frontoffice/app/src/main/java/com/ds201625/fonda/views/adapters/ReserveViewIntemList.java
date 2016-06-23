@@ -30,7 +30,7 @@ public class ReserveViewIntemList extends BaseArrayAdapter<Reservation> {
 
     public void update() {
         ReservationService rs = FondaServiceFactory.getInstance()
-                .getAllReservesService(SessionData.getInstance().getToken());
+                .getAllReservesService();
         List<Reservation> list = null;
         clear();
         try {

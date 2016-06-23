@@ -10,7 +10,7 @@ using com.ds201625.fonda.Domain;
 using System.Data;
 using System.Web.Services;
 using System.Text.RegularExpressions;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using BackOffice.Content;
 
 namespace BackOffice.Seccion.Menu

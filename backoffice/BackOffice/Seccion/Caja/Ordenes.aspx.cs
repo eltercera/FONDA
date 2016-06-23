@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using BackOfficeModel.OrderAccount;
-using FondaResources.OrderAccount;
-using FondaResources.Login;
-using BackOfficeModel;
+using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.Login;
+using com.ds201625.fonda.View.BackOfficeModel;
 using System.Web.UI.HtmlControls;
 using BackOffice.Content;
+using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -13,7 +14,7 @@ namespace BackOffice.Seccion.Caja
     {
         #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter _presenter;
+        private OrdersPresenter _presenter;
 
         #endregion
 
@@ -93,7 +94,7 @@ namespace BackOffice.Seccion.Caja
 
         public Ordenes()
         {
-                  _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter(this);
+                  _presenter = new OrdersPresenter(this);
         }
         #endregion
 
@@ -102,11 +103,9 @@ namespace BackOffice.Seccion.Caja
         protected void Page_Load(object sender, EventArgs e)
         {
             //Llama al presentador para llenar la tabla de ordenes
-            if (Session[ResourceLogin.sessionUserID] != null)
-            {
-
+            if (Session[ResourceLogin.sessionUserID] != null &&
+                Session[ResourceLogin.sessionRestaurantID] != null)
                 _presenter.GetOrders();
-            }
             else
                 Response.Redirect(RecursoMaster.addressLogin);
         }

@@ -8,7 +8,7 @@ using System.Xml;
 using System.Text;
 using System.Web.SessionState;
 using BackOffice.Content;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 
 public partial class MasterUI : System.Web.UI.MasterPage
 {

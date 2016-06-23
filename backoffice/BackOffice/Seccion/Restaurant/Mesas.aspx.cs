@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Web.Services;
 using System.Web.UI.WebControls;
 using com.ds201625.fonda.DataAccess.Exceptions;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using BackOffice.Content;
 
 namespace BackOffice.Seccion.Restaurant

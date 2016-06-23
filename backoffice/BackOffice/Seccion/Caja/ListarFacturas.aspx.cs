@@ -1,10 +1,12 @@
-﻿using BackOfficeModel.OrderAccount;
+﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
 using System;
 using System.Web.UI.WebControls;
-using BackOfficeModel;
+using com.ds201625.fonda.View.BackOfficeModel;
 using System.Web.UI.HtmlControls;
-using FondaResources.Login;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using BackOffice.Content;
+using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
@@ -12,13 +14,41 @@ namespace BackOffice.Seccion.Caja
     {
         #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrderInvoicesPresenter _presenter;
-
+        private OrderInvoicesPresenter _presenter;
+       
         #endregion
 
         #region Model
 
+        /// <summary>
+        /// Label de exito
+        /// </summary>
+        HtmlGenericControl IModel.SuccessLabel
+        {
+            get { return this.SuccessLabel; }
+        }
 
+        /// <summary>
+        /// Label de error
+        /// </summary>
+        HtmlGenericControl IModel.ErrorLabel
+        {
+            get { return this.ErrorLabel; }
+        }
+
+        /// <summary>
+        /// Mensaje de exito
+        /// </summary>
+        Label IModel.SuccessLabelMessage
+        {
+            get { return this.SuccessLabelMessage; }
+
+            set { this.SuccessLabelMessage = value; }
+        }
+
+        /// <summary>
+        /// Mensaje de error
+        /// </summary>
         Label IModel.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
@@ -27,58 +57,9 @@ namespace BackOffice.Seccion.Caja
 
         }
 
-        Label IModel.SuccessLabelMessage
-        {
-            get { return this.SuccessLabelMessage; }
-
-            set { this.SuccessLabelMessage = value; }
-        }
-
-        public System.Web.UI.WebControls.Table OrdersTable
-        {
-            get { return orderInvoices; }
-
-            set { orderInvoices = value; }
-        }
-
         /// <summary>
-        /// Recurso de Session para el ID de la orden
+        /// Tabla de Facturas
         /// </summary>
-        string IOrderInvoicesModel.Session
-        {
-            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
-
-            set { Session[OrderAccountResources.SessionIdAccount] = value; }
-        }
-        string IOrderInvoicesModel.SessionIdInvoice
-        {
-            get { return Session[OrderAccountResources.SessionIdInvoice].ToString(); }
-
-            set { Session[OrderAccountResources.SessionIdInvoice] = value; }
-        }
-        public string SessionRestaurant
-        {
-            get
-            {
-                if (Session[ResourceLogin.sessionRestaurantID] != null)
-                    return Session[ResourceLogin.sessionRestaurantID].ToString();
-                else
-                    return "0";
-            }
-
-            set { Session[ResourceLogin.sessionRestaurantID] = value; }
-        }
-
-        HtmlGenericControl IModel.SuccessLabel
-        {
-            get { return this.SuccessLabel; }
-        }
-
-        HtmlGenericControl IModel.ErrorLabel
-        {
-            get { return this.ErrorLabel; }
-        }
-
         public Table OrderInvoicesTable
         {
             get { return orderInvoices; }
@@ -86,18 +67,55 @@ namespace BackOffice.Seccion.Caja
             set { orderInvoices = value; }
         }
 
+        public System.Web.UI.WebControls.Label NumberAccount
+        {
+            get { return ordernumber; }
+            
+            set { ordernumber = value; }
+        }
+
+        /// <summary>
+        /// Recurso de Session para el ID de la orden
+        /// </summary>
+        string IOrderInvoicesModel.SessionAccountId
+        {
+            get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
+
+            set { Session[OrderAccountResources.SessionIdAccount] = value; }
+        }
+
+        /// <summary>
+        /// Variable de sesion del Restaurante
+        /// </summary>
+        public string SessionRestaurant
+        {
+            get
+            {
+                if (Session[OrderAccountResources.SessionRestaurantId] != null)
+                    return Session[OrderAccountResources.SessionRestaurantId].ToString();
+                else
+                    return OrderAccountResources.Empty;
+        }
+
+            set { Session[OrderAccountResources.SessionRestaurantId] = value; }
+        }
+
         #endregion
 
         #region Constructor
         public ListarFacturas()
         {
-            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrderInvoicesPresenter(this);
+            _presenter = new OrderInvoicesPresenter(this);
         }
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session[ResourceLogin.sessionUserID] != null &&
+                Session[ResourceLogin.sessionRestaurantID] != null)
             _presenter.GetInvoices();
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using FondaLogic.Commands.OrderAccount;
+﻿using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
             compare = 1;
         }
 
-        [Test]
+        [Test(Description = "Prueba para testear la validación")]
         public void ValidateParameters()
         {
             CommandGetOrders cmdords = new CommandGetOrders(parameter);
