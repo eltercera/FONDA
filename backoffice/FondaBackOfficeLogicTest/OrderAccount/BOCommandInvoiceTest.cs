@@ -300,7 +300,7 @@ namespace FondaBackOfficeLogicTest
         }
         #endregion
 
-        #region
+        #region CommandPrintInvoice
         [Test(Description = "Imprime una factura")]
         public void CommandPrintInvoice()
         {
@@ -311,7 +311,7 @@ namespace FondaBackOfficeLogicTest
             _command.Execute();
         }
         [Test(Description = "Imprime una factura")]
-        [ExpectedException(typeof(CommandPrintInvoiceException))]
+        [ExpectedException(typeof(CommandExceptionPrintInvoice))]
         public void CommandPrintExceptionInvoice()
         {
             _list.Add(0);
