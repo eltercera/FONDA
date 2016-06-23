@@ -62,7 +62,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
           // Ejecucion del Buscar.		
 			try
 			{
-                favorites = (Commensal)commensalDAO.FindById(commensal.Id);//PREGUNTAR POR SI PUEDO HACER COMENSAL.ID
+                favorites = (Commensal)commensalDAO.FindById(commensal.Id);
                 foreach (var restaurant in favorites.FavoritesRestaurants) 
                 {
                     restaurant.RestaurantCategory = new RestaurantCategory

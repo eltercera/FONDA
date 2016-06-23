@@ -256,15 +256,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             try
             {
 
-<<<<<<< HEAD
-                if (idCommensal == 13)
-                {
-
-                    throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException);
-                }
-
-=======
->>>>>>> 490f2ab83e329f97fe1134ed086c48c6775ab890
                 //Creación del commensal con id
                 commensal = EntityFactory.GetCommensal();
                 commensal.Id = idCommensal;
