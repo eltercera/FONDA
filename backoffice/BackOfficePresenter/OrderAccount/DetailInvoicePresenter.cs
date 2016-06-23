@@ -29,6 +29,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         private string _currency = null;
         private float subtotal = 0.0F;
         private Invoice _invoice;
+        private Account _account;
         private CreditCardPayment _creditCardPayment;
 
         public DetailInvoicePresenter(IDetailInvoiceContract viewInvoiceDetail) : 
@@ -130,6 +131,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
                 _currency = (string)result[1];
                 listDishOrder = (IList<DishOrder>)result[2];
                 subtotal = (float) result[3];
+                _account = (Account)result[4];
                 
 
                 //Revisa si la lista no esta vacia
@@ -180,6 +182,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
             //Label de la factura
             _view.SessionNumberInvoice = _invoice.Number.ToString();
             _view.DateInvoice.Text = _invoice.Date.ToShortDateString();
+            _view.NumberAccount.Text = _account.Number.ToString();
             _view.UserName.Text = _invoice.Profile.Person.Name.ToString();
             _view.UserLastName.Text = _invoice.Profile.Person.LastName.ToString();
             _view.UserId.Text = _invoice.Profile.Person.Ssn.ToString();
