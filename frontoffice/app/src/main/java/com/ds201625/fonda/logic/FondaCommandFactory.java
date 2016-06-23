@@ -1,5 +1,6 @@
 package com.ds201625.fonda.logic;
 
+import com.ds201625.fonda.data_access.retrofit_client.FindFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommand.CreateProfileCommand;
@@ -58,9 +59,10 @@ public class FondaCommandFactory {
      * Crea un AllFavoriteRestaurantCommand
      * @return comando AllFavoriteRestaurantCommand
      */
-    public static Command allFavoriteRestaurantCommand() {
+    public static Command allFavoriteRestaurantCommand() throws
+            FindFavoriteRestaurantFondaWebApiControllerException {
         return  new AllFavoriteRestaurantCommand();
-    }
+     }
 
     /**
      * Crea un AllRestaurantCommand

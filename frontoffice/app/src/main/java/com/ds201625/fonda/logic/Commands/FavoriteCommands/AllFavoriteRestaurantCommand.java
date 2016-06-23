@@ -39,7 +39,7 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
      * Metodo de invoke implementado: Comando para mostrar todos los restaurantes favoritos
      */
     @Override
-    protected void invoke()  {
+    protected void invoke() throws FindFavoriteRestaurantFondaWebApiControllerException {
         Log.d(TAG, "Comando para obtener los restaurantes favoritos");
         FavoriteRestaurantService serviceFavorits = FondaServiceFactory.getInstance()
                 .getFavoriteRestaurantService();
@@ -50,14 +50,19 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
             restaurantList =  serviceFavorits.getAllFavoriteRestaurant(idCommensal.getId());
 
             //AKI IRAN D BO DE PARAMETROS
-        } catch (RestClientException e) {
-           // throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
-        //    Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
-        } catch (NullPointerException e) {
+        }catch(FindFavoriteRestaurantFondaWebApiControllerException e){
+            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+            throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
+        }
+        catch (RestClientException e) {
+            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+           throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
+         } catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
         } catch (Exception e) {
-          //  throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
-          //  Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito");
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito");
+           throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
         }
         setResult(restaurantList);
     }
