@@ -5,6 +5,7 @@ using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.OrderAccount;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -225,83 +226,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
         #endregion
 
-        [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
-        public void CommandTotalOrderTest()
-        {
-            IList<int> _list = new List<int>();
-            int _accountId = 3;
-            float _total = 0;
-            _list.Add(_restaurantId); //1
-            _list.Add(_accountId); //3
-            _command = CommandFactory.GetCommandTotalOrder(_list);
-            _command.Execute();
-            _total = (float)_command.Receiver;
-            Assert.IsNotNull(_total);
-            Assert.AreEqual(_total, 10192f);
-        }
-
-        [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
-        public void BadRequestCommandTotalOrderTest()
-        {
-            IList<int> _list = new List<int>();
-            int _accountId = 3;
-            float _total = 0;
-            _list.Add(0); //1
-            _list.Add(_accountId); //3
-            _command = CommandFactory.GetCommandTotalOrder(_list);
-            _command.Execute();
-            _total = (float)_command.Receiver;
-            //Assert.IsNotNull(_total);
-            //Assert.AreEqual(_total, 9100);
-        }
-
-        [Test(Description = "Cambia el estado a la mesa")]
-        public void CommandReleaseTableByRestaurantTest()
-        {
-            int _tableId = 3;
-            ITableDAO _tableDAO = _facDAO.GetTableDAO();
-            IList<object> _list = new List<object>();
-            Table _table = new Table();
-            _list.Add(_restaurant); //1
-            _list.Add(_tableId); //3
-
-            _command = CommandFactory.GetCommandReleaseTableByRestaurant(_list);
-
-            _command.Execute();
-
-            _table = _tableDAO.FindById(_tableId);
-            Assert.AreEqual(_table.Id, _tableId);
-            //Assert.AreEqual(_table.Status,);
-        }
-
-
-        [Test]
-        public void CommandGetOrdersNullTest()
-        {
-            _command = CommandFactory.GetCommandGetOrders(100);
-
-            _command.Execute();
-
-            IList<Account> list = (IList<Account>)_command.Receiver;
-
-            Assert.IsNotNull(list);
-            Assert.Greater(list.Count, 0);
-        }
-
-
-
-        [Test(Description = "Obtiene la orden dado un id")]
-        public void CommandGetOrderTest()
-        {
-            _command = CommandFactory.GetCommandGetOrder(_orderId);
-
-            _command.Execute();
-
-            _account = (Account)_command.Receiver;
-
-            Assert.IsNotNull(_account);
-
-        }
+        #region Pruebas de Logic/Command/CommandPayOrderTest
 
         [Test(Description = "Obtiene el detalle de una orden")]
         public void CommandGetDetailOrderTest()
@@ -319,18 +244,183 @@ namespace com.ds201625.fonda.Tests.DataAccess
             Assert.AreEqual(_listDishOrder.Count, 2);
             Assert.AreEqual(_currency, "€");
         }
+
+        [Test(Description = "Exception de CommandGetDetailOrderTest")]
+        [ExpectedException(typeof(CommandExceptionGetDetailOrder))] //
+        public void CommandGetDetailOrderExceptionTest()
+        {
+            _command = CommandFactory.GetCommandGetDetailOrder(null);
+
+            _command.Execute();
+
+            result = (List<Object>)_command.Receiver;
+            _listDishOrder = (IList<DishOrder>)result[0];
+            _account = (Account)result[1];
+            _currency = (string)result[2];
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(_listDishOrder.Count, 2);
+            Assert.AreEqual(_currency, "€");
+        }
+        #endregion
+
+        #region
         [Test(Description = "Obtiene el detalle de una orden por id de la orden")]
         public void CommandGetDishOrderByAccountTest()
         {
             _command = CommandFactory.GetCommandGetDishOrdersByAccountId(_account.Id);
 
             _command.Execute();
-            
+
             _listDishOrder = (IList<DishOrder>)_command.Receiver;
 
             Assert.IsNotNull(_listDishOrder);
             Assert.AreEqual(_listDishOrder.Count, 2);
         }
+
+        [Test(Description = "Exception de CommandGetDishOrderByAccount")]
+        [ExpectedException(typeof(CommandExceptionGetDishOrdersByAccount))]
+        public void CommandGetDishOrderByAccountExceptionTest()
+        {
+            _command = CommandFactory.GetCommandGetDishOrdersByAccountId(0);
+
+            _command.Execute();
+
+            _listDishOrder = (IList<DishOrder>)_command.Receiver;
+
+            Assert.IsNotNull(_listDishOrder);
+            Assert.AreEqual(_listDishOrder.Count, 2);
+        }
+        #endregion
+
+        #region
+        [Test(Description = "Obtiene la orden dado un id")]
+        public void CommandGetOrderTest()
+        {
+            _command = CommandFactory.GetCommandGetOrder(_orderId);
+
+            _command.Execute();
+
+            _account = (Account)_command.Receiver;
+
+            Assert.IsNotNull(_account);
+
+        }
+        [Test(Description = "Exception CommandGetOrderExceptionTest")]
+        [ExpectedException(typeof(CommandExceptionGetOrder))]
+        public void CommandGetOrderExceptionTest()
+        {
+            _command = CommandFactory.GetCommandGetOrder(0);
+
+            _command.Execute();
+
+            _account = (Account)_command.Receiver;
+
+           // Assert.IsNotNull(_account);
+
+        }
+        #endregion
+
+        #region CommandTotalOrderTest
+        [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
+        public void CommandTotalOrderTest()
+        {
+            IList<int> _list = new List<int>();
+            int _accountId = 3;
+            float _total = 0;
+            _list.Add(_restaurantId); //1
+            _list.Add(_accountId); //3
+            _command = CommandFactory.GetCommandTotalOrder(_list);
+            _command.Execute();
+            _total = (float)_command.Receiver;
+            Assert.IsNotNull(_total);
+            Assert.AreEqual(_total, 10192f);
+        }
+
+        [Test(Description = "Exception ")]
+        [ExpectedException(typeof(CommandExceptionTotalOrder))]
+        public void CommandTotalOrderExceptionTest()
+        {
+            IList<int> _list = new List<int>();
+            int _accountId = 3;
+            float _total = 0;
+            _list.Add(0); //1
+            _list.Add(0); //3
+            _command = CommandFactory.GetCommandTotalOrder(_list);
+            _command.Execute();
+            _total = (float)_command.Receiver;
+            Assert.IsNotNull(_total);
+            Assert.AreEqual(_total, 10192f);
+        }
+
+        #endregion
+
+        [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
+        public void BadRequestCommandTotalOrderTest()
+        {
+            IList<int> _list = new List<int>();
+            int _accountId = 3;
+            float _total = 0;
+            _list.Add(0); //1
+            _list.Add(_accountId); //3
+            _command = CommandFactory.GetCommandTotalOrder(_list);
+            _command.Execute();
+            _total = (float)_command.Receiver;
+            //Assert.IsNotNull(_total);
+            //Assert.AreEqual(_total, 9100);
+        }
+
+        #region CommandReleaseTableByRestaurantTest
+        [Test(Description = "Cambia el estado a la mesa")]
+        public void CommandReleaseTableByRestaurantTest()
+        {
+            int _tableId = 3;
+            ITableDAO _tableDAO = _facDAO.GetTableDAO();
+            IList<object> _list = new List<object>();
+            Table _table = new Table();
+            _list.Add(_restaurant); //1
+            _list.Add(_tableId); //3
+            _command = CommandFactory.GetCommandReleaseTableByRestaurant(_list);
+            _command.Execute();
+
+            _table = _tableDAO.FindById(_tableId);
+            Assert.AreEqual(_table.Id, _tableId);
+            //Assert.AreEqual(_table.Status,);
+        }
+
+        [Test(Description = "Cambia el estado a la mesa")]
+        [ExpectedException(typeof(CommandExceptionReleaseTableByRestaurant))]
+        public void CommandReleaseTableByRestaurantExceptionTest()
+        {
+            int _tableId = 0;
+            ITableDAO _tableDAO = _facDAO.GetTableDAO();
+            IList<object> _list = new List<object>();
+            Table _table = new Table();
+            _list.Add(null); //1
+            _list.Add(0); //3
+            _command = CommandFactory.GetCommandReleaseTableByRestaurant(_list);
+            _command.Execute();
+
+            _table = _tableDAO.FindById(_tableId);
+            Assert.AreEqual(_table.Id, _tableId);
+            //Assert.AreEqual(_table.Status,);
+        }
+
+        #endregion
+        [Test]
+        public void CommandGetOrdersNullTest()
+        {
+            _command = CommandFactory.GetCommandGetOrders(100);
+
+            _command.Execute();
+
+            IList<Account> list = (IList<Account>)_command.Receiver;
+
+            Assert.IsNotNull(list);
+            Assert.Greater(list.Count, 0);
+        }
+
+
 
     }
 }
