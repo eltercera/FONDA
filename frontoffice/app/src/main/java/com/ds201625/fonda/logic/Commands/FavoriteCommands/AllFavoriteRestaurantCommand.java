@@ -3,6 +3,7 @@ package com.ds201625.fonda.logic.Commands.FavoriteCommands;
 import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
+import com.ds201625.fonda.data_access.retrofit_client.FindFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.domains.BaseEntity;
@@ -38,7 +39,7 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
      * Metodo de invoke implementado: Comando para mostrar todos los restaurantes favoritos
      */
     @Override
-    protected void invoke() {
+    protected void invoke()  {
         Log.d(TAG, "Comando para obtener los restaurantes favoritos");
         FavoriteRestaurantService serviceFavorits = FondaServiceFactory.getInstance()
                 .getFavoriteRestaurantService();
@@ -47,13 +48,16 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
         try {
             idCommensal = (Commensal) this.getParameter(0);
             restaurantList =  serviceFavorits.getAllFavoriteRestaurant(idCommensal.getId());
+
             //AKI IRAN D BO DE PARAMETROS
         } catch (RestClientException e) {
-            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+           // throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
+        //    Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
         } catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
         } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito");
+          //  throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
+          //  Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito");
         }
         setResult(restaurantList);
     }

@@ -1,5 +1,7 @@
 package com.ds201625.fonda.logic;
 
+import com.ds201625.fonda.data_access.retrofit_client.FindFavoriteRestaurantFondaWebApiControllerException;
+
 /**
  * Base para los comandos
  */
@@ -98,7 +100,7 @@ public abstract class BaseCommand implements Command {
     /**
      * Invocacion de la acción del comando
      */
-    protected abstract void invoke();
+    protected abstract void invoke() throws FindFavoriteRestaurantFondaWebApiControllerException;
 
     /**
      * Valida los parametros requeridos

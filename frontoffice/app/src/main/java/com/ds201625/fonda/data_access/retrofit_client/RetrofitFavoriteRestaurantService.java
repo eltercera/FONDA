@@ -60,15 +60,30 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
     public Commensal deleteFavoriteRestaurant(int idCommensal, int idRestaurant) throws RestClientException {
         Log.d(TAG, "Se elimina el restaurante "+idRestaurant+" de favoritos del comensal "+idCommensal);
         Call<Commensal> call = favoriteRestaurantClient.removefavoriterestaurant(idCommensal, idRestaurant);
-        Commensal rsvCommensal = null;
+        Commensal test = null;
+        Response<Commensal> response;
 
         try{
-            rsvCommensal = call.execute().body();
+            response = call.execute();
+            if (response.isSuccessful()) {
+                test = response.body();
+            } else {
+                // parse the response body
+                APIError error = ErrorUtils.parseError(response);
+                // usar error para disparar exception
+            //    System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   "+error.exceptionMessage());
+              //  System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   "+error.exceptionType());
+               // throw  new FindFavoriteRestaurantFondaWebApiControllerException(error.exceptionMessage());
+
+                // arreglar log
+                Log.d("error message", error.message());
+                Log.d("error message", error.exceptionType());
+            }
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en deleteFavoriteRestaurant", e);
         }
 
-        return rsvCommensal;
+        return test;
     }
 
     /**
@@ -96,15 +111,14 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
                 // usar error para disparar exception
                 System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   "+error.exceptionMessage());
                 System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   "+error.exceptionType());
-                throw  new FindFavoriteRestaurantFondaWebApiControllerException(error.exceptionMessage());
+                throw  new FindFavoriteRestaurantFondaWebApiControllerException(error.exceptionType());
 
                 // arreglar log
-                Log.d("error message", error.message());
-                Log.d("error message", error.exceptionType());
+             //   Log.d("error message", error.message());
+              //  Log.d("error message", error.exceptionType());
             }
         } catch (IOException e) {
-            throw new Exception(e.getMessage());
-           // Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant1", e);
+            Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant1", e);
         } catch (Exception e) {
             Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant2", e);
         }
