@@ -55,10 +55,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 total = 0;
                 Receiver = total;
-                throw exception;
             }
             catch (Exception ex)
             {
@@ -70,10 +69,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 total = 0;
                 Receiver = total;
-                throw exception;
             }
 
             Logger.WriteSuccessLog(OrderAccountResources.ClassNameTotalOrder

@@ -166,7 +166,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     foreach (Invoice invoice in _list)
                     {
                         _invoice = EntityFactory.GetInvoice(invoice.Id,invoice.Payment, 
-                            invoice.Profile, invoice.Total, invoice.Tax, invoice.Currency, invoice.Number);
+                            invoice.Profile, invoice.Total, invoice.Tax, invoice.Currency, invoice.Number, invoice.Status, invoice.Date);
                         _listInvoiceByRestaurnat.Add(_invoice);
                     }
                 }

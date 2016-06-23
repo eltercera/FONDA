@@ -792,4 +792,12 @@
     <value>Error en la base de datos al obtener los platillos de una cuenta</value>
     <comment>Mensaje de error para GetDishesByAccount</comment>
   </data>
+  <data name="ClassNameGetDetailInvoice" xml:space="preserve">
+    <value>CommandGetDetailInvoice</value>
+    <comment>Comando para obtener el detalle de la factura</comment>
+  </data>
+  <data name="CommandExceptionCommandGetDetailInvoiceCode" xml:space="preserve">
+    <value>BO-04-028</value>
+    <comment>Codigo de error al consultar el detalle de una factura</comment>
+  </data>
 </root>
