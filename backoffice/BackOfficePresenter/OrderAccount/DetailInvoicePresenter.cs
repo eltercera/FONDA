@@ -62,8 +62,13 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 
                 //Ejecuta el comando deseado
                 commandPrintInvoice.Execute();
-
-        }
+                Logger.WriteSuccessLog(
+                         OrderAccountResources.ClassNameInvoiceDetailPresenter,
+                         OrderAccountResources.SuccessPrintInvoice,
+                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                                );
+                SuccessLabel(OrderAccountResources.SuccessPrintInvoice);
+            }
             catch (MVPExceptionPrintInvoice ex)
             {
                 MVPExceptionPrintInvoice e = new MVPExceptionPrintInvoice
@@ -74,9 +79,9 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
                         OrderAccountResources.MessageMVPExceptionPrintInvoice,
                         ex
                     );
-        Logger.WriteErrorLog(e.ClassName, e);
+                Logger.WriteErrorLog(e.ClassName, e);
                 ErrorLabel(e.MessageException);
-    }
+            }
             catch (Exception ex)
             {
                 MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
@@ -87,15 +92,10 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
                         OrderAccountResources.MessageMVPExceptionPrintInvoice,
                         ex
                     );
-    Logger.WriteErrorLog(e.ClassName, e);
+                Logger.WriteErrorLog(e.ClassName, e);
                 ErrorLabel(e.MessageException);
-}
+            }
 
-Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDetailPresenter
-                , OrderAccountResources.SuccessPrintInvoice
-                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
-                );
-            SuccessLabel(OrderAccountResources.SuccessPrintInvoice);
         }
 
         ///<summary>
