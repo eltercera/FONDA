@@ -34,7 +34,7 @@ public class ReserveViewIntemList extends BaseArrayAdapter<Reservation> {
         List<Reservation> list = null;
         clear();
         try {
-            list = rs.getReservation();
+            list = rs.getReservarions(0);
         } catch (RestClientException e) {
             e.printStackTrace();
             Log.v("Fonda",e.toString());
