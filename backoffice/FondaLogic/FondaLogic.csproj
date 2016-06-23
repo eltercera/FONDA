@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +68,7 @@
     <Compile Include="Commands\OrderAccount\CommandGetDetailOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetDishOrdersByAccountId.cs" />
     <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
+    <Compile Include="Commands\OrderAccount\CommandSendPrintInvoice.cs" />
     <Compile Include="Commands\Reservations\CommandFindRestaurantById.cs" />
     <Compile Include="Commands\Reservations\CommandFindReservationsByRestaurant.cs" />
     <Compile Include="Commands\Reservations\CommandFindReservationsByTable.cs" />
