@@ -4,6 +4,7 @@ using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,35 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _creditPayment = EntityFactory.GetCreditCardPayment(11000,123,100);
             _comensal = new Commensal();
             _comensalDAO = _facDAO.GetCommensalDAO();
+        }
+        #endregion
+
+        #region
+        [Test(Description = "Se cierra la caja")]
+        public void CommandCloseCashRegisterTest()
+        {
+            _command = CommandFactory.GetCommandCloseCashRegister(_restaurantId);
+
+            _command.Execute();
+
+            _totalOrders = (string)_command.Receiver;
+
+            Assert.IsNotNull(_totalOrders);
+            Assert.AreEqual(_totalOrders, "€ 13900");
+        }
+
+        [Test(Description = "Prueba de excepcion CommandExceptionCloseCashRegister")]
+        [ExpectedException(typeof(CommandExceptionCloseCashRegister))]
+        public void CommandCloseCashRegisterExceptionTest()
+        {
+            _command = CommandFactory.GetCommandCloseCashRegister(0);
+
+            _command.Execute();
+
+            _totalOrders = (string)_command.Receiver;
+
+            Assert.IsNotNull(_totalOrders);
+            Assert.AreEqual(_totalOrders, "€ 13900");
         }
         #endregion
 
@@ -181,19 +211,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
             Assert.IsNotNull(_account);
 
-        }
-
-        [Test(Description = "Se cierra la caja")]
-        public void CommandCloseCashRegisterTest()
-        {
-            _command = CommandFactory.GetCommandCloseCashRegister(_restaurantId);
-
-            _command.Execute();
-
-            _totalOrders = (string)_command.Receiver;
-
-            Assert.IsNotNull(_totalOrders);
-            Assert.AreEqual(_totalOrders, "€ 13900");
         }
 
         [Test(Description = "Obtiene el detalle de una orden")]

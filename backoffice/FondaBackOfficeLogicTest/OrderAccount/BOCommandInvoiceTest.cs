@@ -75,6 +75,7 @@ namespace FondaBackOfficeLogicTest
 
         #endregion
 
+        #region Pruebas de Logic/Command/CommandCancelInvoiceTest
         [Test(Description = "Obtiene las facturas de un restaurante")]
         public void CommandCancelInvoiceTest()
         {
@@ -86,10 +87,23 @@ namespace FondaBackOfficeLogicTest
 
             Assert.IsNotNull(_invoice);
             Assert.AreEqual(_invoice.Status, CanceledInvoiceStatus.Instance);
-            //Assert.AreEqual(_listInvoices[1].Number, 2);
         }
 
+        [Test(Description = "Obtiene las facturas de un restaurante")]
+        [ExpectedException(typeof(CommandExceptionCancelInvoice))]
+        public void CommandCancelInvoiceExceptionTest()
+        {
+            _list.Add(0);//1
+            _list.Add(0);// 2
+            _command = CommandFactory.GetCommandCancelInvoiced(_list);
+            _command.Execute();
+            _invoice = (Invoice)_command.Receiver;
 
+            //Assert.IsNotNull(_invoice);
+            //Assert.AreEqual(_invoice.Status, CanceledInvoiceStatus.Instance);
+        }
+
+        #endregion
         [Test(Description = "Obtiene las facturas de un restaurante")]
         public void CommandFindInvoicesByRestaurantTest()
         {

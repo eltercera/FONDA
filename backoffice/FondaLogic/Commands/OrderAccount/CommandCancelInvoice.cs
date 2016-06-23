@@ -2,15 +2,11 @@
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
-using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.OrderAccount;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
 using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
@@ -49,7 +45,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 _invoice = EntityFactory.GetInvoice();
                 Receiver = _invoice;
             }
@@ -63,7 +59,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 _invoice = EntityFactory.GetInvoice();
                 Receiver = _invoice;
             }
