@@ -72,6 +72,7 @@ public class FavoritesPresenter implements FavoriteViewPresenter {
     public List<Restaurant> findAllFavoriteRestaurant()
                             throws FindFavoriteRestaurantFondaWebApiControllerException {
         Log.d(TAG,"Ha entrado en findAllFavoriteRestaurant");
+        Command cmdAllFavorite;
         try {
             cmdAllFavorite = facCmd.allFavoriteRestaurantCommand();
             cmdAllFavorite.setParameter(0,logedComensal);
