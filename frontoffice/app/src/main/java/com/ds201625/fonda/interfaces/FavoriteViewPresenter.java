@@ -1,6 +1,7 @@
 package com.ds201625.fonda.interfaces;
 
 import com.ds201625.fonda.data_access.retrofit_client.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Restaurant;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public interface FavoriteViewPresenter {
      * Encuentra los restaurantes favoritos
      * @return
      */
-    List<Restaurant> findAllFavoriteRestaurant() throws FindFavoriteRestaurantFondaWebApiControllerException;
+    List<Restaurant> findAllFavoriteRestaurant() throws FindFavoriteRestaurantFondaWebApiControllerException, FindFavoriteRestaurantFondaWebApiControllerException;
 
     /**
      * Elimina el restaurante seleccionado

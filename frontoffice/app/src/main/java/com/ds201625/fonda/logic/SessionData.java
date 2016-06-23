@@ -145,7 +145,7 @@ public class SessionData {
 
         if (this.commensal == null)
             return;
-        Command commandoCreateToken = FondaCommandFactory.deleteTokenCommand();
+        Command commandoCreateToken = FondaCommandFactory.createTokenCommand();
         commandoCreateToken.setParameter(0,this.context);
         commandoCreateToken.setParameter(1,this.commensal);
         commandoCreateToken.run();

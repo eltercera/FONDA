@@ -1,6 +1,13 @@
 package com.ds201625.fonda.logic;
 
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.AddCommensalWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.DeleteProfileFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.DeleteTokenFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetProfilesFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetTokenFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.PostProfileFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.PutProfileFondaWebApiControllerException;
 
 /**
  * Base para los comandos
@@ -100,7 +107,7 @@ public abstract class BaseCommand implements Command {
     /**
      * Invocacion de la acción del comando
      */
-    protected abstract void invoke();
+    protected abstract void invoke() throws FindFavoriteRestaurantFondaWebApiControllerException, GetTokenFondaWebApiControllerException, DeleteTokenFondaWebApiControllerException, AddCommensalWebApiControllerException, GetProfilesFondaWebApiControllerException, PostProfileFondaWebApiControllerException, PutProfileFondaWebApiControllerException, DeleteProfileFondaWebApiControllerException;
 
     /**
      * Valida los parametros requeridos

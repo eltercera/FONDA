@@ -1,7 +1,8 @@
 package com.ds201625.fonda.logic;
 
 
-import com.ds201625.fonda.data_access.retrofit_client.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateTokenCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.CreateProfileCommand;
@@ -118,6 +119,13 @@ public class FondaCommandFactory {
      * @return comando deleteTokenCommand
      */
     public static Command deleteTokenCommand() { return  new DeleteTokenCommand();
+    }
+
+    /**
+     * Crea un createTokenCommand
+     * @return comando createTokenCommand
+     */
+    public static Command createTokenCommand() { return  new CreateTokenCommand();
     }
 
 }
