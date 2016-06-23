@@ -1,22 +1,22 @@
-﻿using BackOfficeModel.OrderAccount;
-using BackOfficePresenter.FondaMVPException;
+﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Web.UI.WebControls;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
-    public class OrdersPresenter : BackOfficePresenter.Presenter
+    public class OrdersPresenter : Presenter
     {
         //Enlace entre el Modelo y la Vista
-        private IOrdersModel _view;
+        private IOrdersContract _view;
         private int totalColumns = 3;
 
 
@@ -24,7 +24,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         /// Constructor de la clase
         /// </summary>
         /// <param name="viewDefault">Interfaz</param>
-        public OrdersPresenter(IOrdersModel viewDefault)
+        public OrdersPresenter(IOrdersContract viewDefault)
             : base(viewDefault) 
         {
             //Se genera el enlace entre el modelo y la vista
@@ -278,6 +278,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
             return header;
         }
+
 
 
 

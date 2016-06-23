@@ -4,8 +4,9 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System.Collections.Generic;
 using NHibernate.Criterion;
 using com.ds201625.fonda.Factory;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.DataAccess.Log;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -35,9 +36,12 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 FindAllInvoiceFondaDAOException exception =
                     new FindAllInvoiceFondaDAOException(OrderAccountResources.MessagefindAllInvoiceException,
                     ex);
-                //Llamar al logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDAO,
+                OrderAccountResources.SuccessMessagefindAllInvoice,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
             return listInvoices;
         }
 
@@ -50,15 +54,16 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         {
             IOrderAccountDao _accountDAO;
             Account _account;
-            _accountDAO = _facDAO.GetOrderAccountDAO();
+            IList<Invoice> _invoices;
 
            try
             {
+                _accountDAO = _facDAO.GetOrderAccountDAO();
                 _account = _accountDAO.FindById(_accountId);
 
-                IList<Invoice> _invoices = new List<Invoice>();
+                _invoices = new List<Invoice>();
                 _invoices = _account.ListInvoice;
-                return _invoices;
+                
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -66,7 +71,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     FindInvoicesByAccountFondaDAOException(
                         OrderAccountResources.MessageFindInvoicesByRestaurantFondaDAOException,
                         ex);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
             catch(Exception e)
@@ -74,10 +79,15 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 FindInvoicesByAccountFondaDAOException exception = 
                     new FindInvoicesByAccountFondaDAOException
                     (OrderAccountResources.MessageFindInvoicesByAccountFondaDAOException, e);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception; 
 
             }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDAO,
+                OrderAccountResources.SuccessMessageFindInvoicesByAccount,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
+            return _invoices;
         }
 
         /// <summary>
@@ -104,7 +114,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     }
                 }
 
-                return payInvoice;
 
             }
             catch (ArgumentOutOfRangeException ex)
@@ -113,7 +122,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     FindGenerateInvoiceByAccountFondaDAOException(
                         OrderAccountResources.MessageFindInvoicesByRestaurantFondaDAOException,
                         ex);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
             catch(Exception e)
@@ -122,10 +131,14 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     new FindGenerateInvoiceByAccountFondaDAOException(
                         OrderAccountResources.MessageFindGenerateInvoiceByAccountFondaDAOException,
                         e);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
 
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDAO,
+                OrderAccountResources.SuccessMessageFindGenerateInvoiceByAccount,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
+            return payInvoice;
         }
 
         /// <summary>
@@ -139,12 +152,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             _facDAO = FactoryDAO.FactoryDAO.Intance;
             _accountDAO = _facDAO.GetOrderAccountDAO();
             IList<Account> _listAccount = new List<Account>();
+            IList<Invoice> _listInvoiceByRestaurnat = new List<Invoice>();
             Invoice _invoice;
             try
             {
                 _listAccount = _accountDAO.FindAccountByRestaurant(_restaurant.Id);
                 ICriterion criterion =(Expression.Eq("Restaurant.Id", _restaurant.Id));
-                IList<Invoice> _listInvoiceByRestaurnat = new List<Invoice>();
+                
                 foreach (Account account in _listAccount)
                 {
                     IList<Invoice> _list = new List<Invoice>();
@@ -157,8 +171,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     }
                 }
 
-
-                return _listInvoiceByRestaurnat;
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -166,18 +178,33 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     FindInvoicesByRestaurantFondaDAOException(
                         OrderAccountResources.MessageFindInvoicesByRestaurantFondaDAOException,
                         ex);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
-            catch(Exception ex)
+            catch (FindAccountByRestaurantFondaDAOException ex)
+            {
+                FindInvoicesByRestaurantFondaDAOException exception = new
+                    FindInvoicesByRestaurantFondaDAOException(
+                        OrderAccountResources.MessageFindInvoicesByRestaurantFondaDAOException,
+                        ex);
+                Logger.WriteErrorLog(exception.Message, exception);
+                throw exception;
+            }
+            catch (Exception ex)
             {
                 FindInvoicesByRestaurantFondaDAOException exception = new 
                     FindInvoicesByRestaurantFondaDAOException(
                         OrderAccountResources.MessageFindInvoicesByRestaurantFondaDAOException,
                         ex);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDAO,
+                OrderAccountResources.SuccessMessageFindInvoicesByRestaurant,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
+
+            return _listInvoiceByRestaurnat;
         }
 
         /// <summary>
@@ -188,11 +215,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         public int GenerateNumberInvoice(Restaurant _restaurant)
         {
+            int _length = 0;
              try
             {
                 IList<Invoice> _list = new List<Invoice>();
                 _list = FindInvoicesByRestaurant(_restaurant);
-                int _length = 0;
 
                 if (!(_list==null))
                 {
@@ -200,7 +227,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     _length = _length + 1;
                 }
                 
-                return _length;
             }
             catch (ArgumentOutOfRangeException e)
             {
@@ -208,27 +234,33 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     new GenerateNumberInvoiceFondaDAOException
                     (OrderAccountResources.MessageGenerateNumberInvoiceFondaDAOException,
                     e);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
-            //catch ( e)
-            //{
-            //    GenerateNumberInvoiceFondaDAOException exception =
-            //        new GenerateNumberInvoiceFondaDAOException
-            //        (OrderAccountResources.MessageGenerateNumberInvoiceFondaDAOException,
-            //        e);
-            //    //Logger
-            //    throw exception;
-            //}
+            catch (FindInvoicesByRestaurantFondaDAOException e)
+            {
+                GenerateNumberInvoiceFondaDAOException exception =
+                    new GenerateNumberInvoiceFondaDAOException
+                    (OrderAccountResources.MessageGenerateNumberInvoiceFondaDAOException,
+                    e);
+                Logger.WriteErrorLog(exception.Message, exception);
+                throw exception;
+            }
             catch (Exception e)
             {
                 GenerateNumberInvoiceFondaDAOException exception =
                     new GenerateNumberInvoiceFondaDAOException
                     (OrderAccountResources.MessageGenerateNumberInvoiceFondaDAOException,
                     e);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDAO,
+                OrderAccountResources.SuccessMessageFindGenerateInvoiceByAccount,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
+
+            return _length;
         }
     }
 }

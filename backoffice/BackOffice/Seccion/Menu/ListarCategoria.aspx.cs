@@ -5,21 +5,22 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
 using System.Web.Services;
-using BackOfficeModel.Menu;
+using com.ds201625.fonda.View.BackOfficeModel.Menu;
 using System.Text.RegularExpressions;
-using BackOfficeModel;
+using com.ds201625.fonda.View.BackOfficeModel;
 using System.Web.UI.HtmlControls;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using BackOffice.Content;
+using com.ds201625.fonda.View.BackOfficePresenter.Menu;
 
 namespace BackOffice.Seccion.Menu
 {
     public partial class ListarCategoria : System.Web.UI.Page, IMenuCategory
     {
-        private com.ds201625.fonda.BackOffice.Presenter.Menu.MenuCategoriaPresenter _presenter;
+        private MenuCategoriaPresenter _presenter;
 
         /* BEGIN Interface Code*/
-        string IModel.SessionRestaurant
+        string IContract.SessionRestaurant
         {
             get{ throw new NotImplementedException();}
             set{ throw new NotImplementedException(); }
@@ -28,23 +29,23 @@ namespace BackOffice.Seccion.Menu
         /// <summary>
         /// Retorna label exito al agregar una categoria
         /// </summary>
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get{ return this.AlertSuccess_AddCategory; }
         }
 
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get{ throw new NotImplementedException();}
             set{ throw new NotImplementedException();}
         }
 
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { throw new NotImplementedException();}
         }
 
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }

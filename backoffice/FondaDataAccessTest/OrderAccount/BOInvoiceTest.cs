@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.Domain;
@@ -32,7 +31,9 @@ namespace FondaDataAccessTest
         private float _amount, _tax;
 
         #endregion
-        #region
+
+        #region Initialzation
+
         [SetUp]
         public void Init()
         {
@@ -69,8 +70,6 @@ namespace FondaDataAccessTest
         }
         #endregion
 
-
-        //Debo agregar en el catch la otra excepcion
         #region Pruebas de DataAccess/HibernateDAO/FindInvoiceByRestaurant
 
         [Test(Description = "Busca las facturas de un restaurante")]
@@ -119,7 +118,6 @@ namespace FondaDataAccessTest
 
         #endregion
 
-        //Debo agregar en el catch una cosita
         #region Pruebas de DataAccess/HibernateDAO/GenerateNumberInvoice
 
         [Test(Description = "Prueba el numero generado de la factura (Numero único de factura por restaurante)")]
@@ -190,10 +188,9 @@ namespace FondaDataAccessTest
 
         #endregion
 
-        //Debe ir en las pruebas de OrderAccount
         #region Pruebas de DataAccess/HibernateDAO/ReleaseTable
 
-        [Test(Description ="Prueba que el estado de un Restaurante cambie de ocupado a libre")]
+        [Test(Description = "Prueba que el estado de un Restaurante cambie de ocupado a libre")]
         public void ReleaseTableTest()
         {
 
@@ -222,7 +219,23 @@ namespace FondaDataAccessTest
         [TearDown]
         public void EndTests()
         {
+            _restaurantDAO = null;
+            _accountDAO = null;
+            _invoiceDAO = null;
+            _profileDao = null;
 
+            _invoiceId = _accountId = 
+                _restaurantId = _tableId = 
+                    _profileId = _number = 0;
+
+            _tax = 0;
+
+            _restaurant = null;
+            _account = null;
+            _profile = null;
+            _cashPayment = null;
+            _invoice = null;
+            _listInvoices = null;
         }
     }
 }

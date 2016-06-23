@@ -15,7 +15,7 @@
               <a href="../Caja/Ordenes.aspx">Caja</a>
           </li>
           <li class="active">
-             Ver Ordenes Cerradas
+             Ver ordenes cerradas
           </li>
       </ol>
   </div>
@@ -49,7 +49,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Facturas </h3>
+                    <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Ordenes Cerradas </h3>
                                 
                     <div class="clearfix"></div>
                 </div>

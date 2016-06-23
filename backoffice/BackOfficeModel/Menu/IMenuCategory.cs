@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackOfficeModel.Menu
+namespace com.ds201625.fonda.View.BackOfficeModel.Menu
 {
-    public interface IMenuCategory : IModel
+    public interface IMenuCategory : IContract
     {
     }
 }

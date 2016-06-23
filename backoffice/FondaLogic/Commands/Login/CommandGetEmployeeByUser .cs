@@ -57,27 +57,27 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Login
             catch (InvalidTypeParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameInvalidParameter, e);
+                throw new CommandExceptionGetEmployee(Resources.FondaResources.Login.Errors.ClassNameInvalidParameter, e);
             }
             catch (ParameterIndexOutRangeException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameIndexParameter, e);
+                throw new CommandExceptionGetEmployee(Resources.FondaResources.Login.Errors.ClassNameIndexParameter, e);
             }
             catch (RequieredParameterNotFoundException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameParameterNotFound, e);
+                throw new CommandExceptionGetEmployee(Resources.FondaResources.Login.Errors.ClassNameParameterNotFound, e);
             }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameGetEmployeeUser, e);
+                throw new CommandExceptionGetEmployee(Resources.FondaResources.Login.Errors.ClassNameGetEmployeeUser, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetEmployee(FondaResources.Login.Errors.ClassNameGetEmployeeUser, e);
+                throw new CommandExceptionGetEmployee(Resources.FondaResources.Login.Errors.ClassNameGetEmployeeUser, e);
             }
             // Guarda el resultado.
             Object Result = Receiver;
@@ -85,7 +85,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Login
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                Resources.FondaResources.Login.Errors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
 
         }

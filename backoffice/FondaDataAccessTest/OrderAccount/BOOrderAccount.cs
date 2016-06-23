@@ -34,7 +34,7 @@ namespace FondaDataAccessTest
         private ICashPaymentDAO _cashPaymentDAO;
         #endregion
 
-        #region setup
+        #region Initialzation
         [SetUp]
         public void Init()
         {

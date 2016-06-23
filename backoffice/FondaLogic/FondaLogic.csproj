@@ -7,7 +7,7 @@
     <ProjectGuid>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FondaLogic</RootNamespace>
+    <RootNamespace>com.ds201625.fonda.Logic.FondaLogic</RootNamespace>
     <AssemblyName>FondaLogic</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +68,7 @@
     <Compile Include="Commands\OrderAccount\CommandGetDetailOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetDishOrdersByAccountId.cs" />
     <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
+    <Compile Include="Commands\OrderAccount\CommandSendPrintInvoice.cs" />
     <Compile Include="Commands\Reservations\CommandFindRestaurantById.cs" />
     <Compile Include="Commands\Reservations\CommandFindReservationsByRestaurant.cs" />
     <Compile Include="Commands\Reservations\CommandFindReservationsByTable.cs" />

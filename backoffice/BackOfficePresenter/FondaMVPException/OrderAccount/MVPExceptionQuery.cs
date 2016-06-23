@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackOfficePresenter.FondaMVPException.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException.OrderAccount
 {
     class MVPExceptionQuery : MVPException
     {

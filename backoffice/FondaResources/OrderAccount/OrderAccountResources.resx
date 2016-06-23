@@ -554,7 +554,7 @@
     <comment>Mensaje de exito para CommandGetGenerateInvoice</comment>
   </data>
   <data name="SuccessPrintInvoice" xml:space="preserve">
-    <value>La factura se ha imprimido satisfactoriamente</value>
+    <value>La factura se ha impreso satisfactoriamente</value>
     <comment>Mensaje de exito para PrintInvoice</comment>
   </data>
   <data name="allInvoicesURL" xml:space="preserve">
@@ -670,7 +670,7 @@
     <comment>Mensaje de exito para CommandPayOrder</comment>
   </data>
   <data name="SuccessMessageCommandPrintInvoice" xml:space="preserve">
-    <value>Se ha imprimido la factura correctamente</value>
+    <value>Se ha impreso la factura correctamente</value>
     <comment>Mensaje de exito para MessageCommandPrintInvoice</comment>
   </data>
   <data name="SuccessMessageCommandReleaseTableByRestaurant" xml:space="preserve">
@@ -764,6 +764,29 @@
   <data name="MessageOpenOrdersByRestaurantIdFondaDAOException" xml:space="preserve">
     <value>Error en la base de datos al obtener las ordenes abiertas de un restaurante</value>
     <comment>Mensaje de error para OpenOrdersByRestaurant</comment>
+  </data>
+  <data name="ClassNameInvoiceDAO" xml:space="preserve">
+    <value>HibernateInvoiceDAO</value>
+    <comment>HibernateDAO para la clase Invoice</comment>
+  </data>
+  <data name="SuccessMessagefindAllInvoice" xml:space="preserve">
+    <value>Se ha consultado todas las facturas de la base de datos exitosamente</value>
+    <comment>Mensaje de exito para findAllInvoice</comment>
+  </data>
+  <data name="SuccessMessageFindGenerateInvoiceByAccount" xml:space="preserve">
+    <value>Se ha obtenido la factura pagada de una orden de la base de datos correctamente</value>
+    <comment>Mensaje de exito para findAllInvoiceFindGenerateInvoiceByAccount</comment>
+  </data>
+  <data name="SuccessMessageFindInvoicesByAccount" xml:space="preserve">
+    <value>Se ha obtenido todas las facturas de una orden de la base de datos correctamente</value>
+    <comment>Mensaje de exito para FindInvoicesByAccount</comment>
+  </data>
+  <data name="SuccessMessageFindInvoicesByRestaurant" xml:space="preserve">
+    <value>Se ha obtenido todas las facturas de un Restaurante de la base de datos correctamente</value>
+    <comment>Mensaje de exito para FindInvoicesByRestaurant</comment>
+  </data>
+  <data name="SuccessMessageGenerateNumberInvoice" xml:space="preserve">
+    <value />
   </data>
   <data name="MessageGetDishesByAccountFondaDAOException" xml:space="preserve">
     <value>Error en la base de datos al obtener los platillos de una cuenta</value>

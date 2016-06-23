@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FondaResources.OrderAccount {
+namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace FondaResources.OrderAccount {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FondaResources.OrderAccount.OrderAccountResources", typeof(OrderAccountResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("com.ds201625.fonda.Resources.FondaResources.OrderAccount.OrderAccountResources", typeof(OrderAccountResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -291,6 +291,15 @@ namespace FondaResources.OrderAccount {
         public static string ClassNameGetPaymentHistoryByProfile {
             get {
                 return ResourceManager.GetString("ClassNameGetPaymentHistoryByProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HibernateInvoiceDAO.
+        /// </summary>
+        public static string ClassNameInvoiceDAO {
+            get {
+                return ResourceManager.GetString("ClassNameInvoiceDAO", resourceCulture);
             }
         }
         
@@ -1465,7 +1474,7 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Se ha imprimido la factura correctamente.
+        ///   Looks up a localized string similar to Se ha impreso la factura correctamente.
         /// </summary>
         public static string SuccessMessageCommandPrintInvoice {
             get {
@@ -1501,6 +1510,51 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha consultado todas las facturas de la base de datos exitosamente.
+        /// </summary>
+        public static string SuccessMessagefindAllInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessagefindAllInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido la factura pagada de una orden de la base de datos correctamente.
+        /// </summary>
+        public static string SuccessMessageFindGenerateInvoiceByAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageFindGenerateInvoiceByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido todas las facturas de una orden de la base de datos correctamente.
+        /// </summary>
+        public static string SuccessMessageFindInvoicesByAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageFindInvoicesByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido todas las facturas de un Restaurante de la base de datos correctamente.
+        /// </summary>
+        public static string SuccessMessageFindInvoicesByRestaurant {
+            get {
+                return ResourceManager.GetString("SuccessMessageFindInvoicesByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SuccessMessageGenerateNumberInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageGenerateNumberInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se han cargado las facturas correctamente.
         /// </summary>
         public static string SuccessMessageOrderInvoicesPresenter {
@@ -1510,7 +1564,7 @@ namespace FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to La factura se ha imprimido satisfactoriamente.
+        ///   Looks up a localized string similar to La factura se ha impreso satisfactoriamente.
         /// </summary>
         public static string SuccessPrintInvoice {
             get {

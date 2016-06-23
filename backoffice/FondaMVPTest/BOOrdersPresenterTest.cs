@@ -1,5 +1,6 @@
 ﻿using BackOffice.Seccion.Caja;
-using BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,14 @@ namespace FondaMVPTest
     [TestFixture()]
     public class BOOrdersPresenterTest
     {
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter _presenter;
-        private IOrdersModel orders;
+        private OrdersPresenter _presenter;
+        private IOrdersContract orders;
         private string sessionId;
 
         [SetUp]
         public void Init()
         {
-            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter(orders);
+            _presenter = new OrdersPresenter(orders);
             sessionId = "1";
             
         }
