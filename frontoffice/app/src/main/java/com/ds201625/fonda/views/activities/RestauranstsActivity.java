@@ -34,9 +34,9 @@ public class RestauranstsActivity extends  BaseNavigationActivity {
         catFrag.setTabLayout(tabLayout);
 
         RestaurantFilters = new BaseSectionsPagerAdapter(getSupportFragmentManager(),tabLayout);
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_food),resFrag);
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_zone),zoneFrag);
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_cost),catFrag);
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_global),resFrag);
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_zone),zoneFrag);
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_food),catFrag);
 
         viewPager.setAdapter(RestaurantFilters);
         tabLayout.setupWithViewPager(viewPager);
