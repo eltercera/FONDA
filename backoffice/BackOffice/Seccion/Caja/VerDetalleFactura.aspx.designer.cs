@@ -49,6 +49,15 @@ namespace BackOffice.Seccion.Caja {
         protected global::System.Web.UI.WebControls.Label ErrorLabelMessage;
         
         /// <summary>
+        /// invoicePrint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button invoicePrint;
+        
+        /// <summary>
         /// date control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace BackOffice.Seccion.Caja {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label date;
+        
+        /// <summary>
+        /// accountNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label accountNumber;
         
         /// <summary>
         /// lastname control.
@@ -128,14 +146,5 @@ namespace BackOffice.Seccion.Caja {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label total;
-        
-        /// <summary>
-        /// invoicePrint control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button invoicePrint;
     }
 }

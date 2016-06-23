@@ -49,7 +49,6 @@
     <Compile Include="BOCommandLoginTest.cs" />
     <Compile Include="OrderAccount\BOCommandOrdersTest.cs" />
     <Compile Include="OrderAccount\BOLoggerTest.cs" />
-    <Compile Include="OrderAccount\BOViewTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

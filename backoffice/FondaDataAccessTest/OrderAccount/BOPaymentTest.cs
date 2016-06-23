@@ -14,6 +14,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
     [TestFixture]
     public class BOPaymentTest
     {
+        #region fields
         private FactoryDAO _facDAO;
         private ICreditCardPaymentDAO _creditCardPaymentDAO;
         private ICashPaymentDAO _cashPaymentDAO;
@@ -21,7 +22,9 @@ namespace com.ds201625.fonda.Tests.DataAccess
         private CreditCardPayment _creditCardPayment;
         private float _amount;
         private int _lastCardDigits, _creditId, _cashId;
+        #endregion
 
+        #region Setup
         [SetUp]
         public void Init()
         {
@@ -39,7 +42,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
             _cashPayment = EntityFactory.GetCashPayment(_amount);
             _creditCardPayment = EntityFactory.GetCreditCardPayment(_amount, _lastCardDigits,0);
-
+            #endregion
         }
 
         [Test]
