@@ -27,8 +27,8 @@ public class GetRestaurantsCommand extends BaseCommand {
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[5];
         parameters[0] = new Parameter(String.class, true);
-        parameters[1] = new Parameter(int.class, true);
-        parameters[2] = new Parameter(int.class, true);
+        parameters[1] = new Parameter(Integer.class, true);
+        parameters[2] = new Parameter(Integer.class, true);
         parameters[3] = new Parameter(String.class, true);
         parameters[4] = new Parameter(String.class, true);
 

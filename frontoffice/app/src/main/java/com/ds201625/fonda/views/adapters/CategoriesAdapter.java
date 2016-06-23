@@ -2,6 +2,7 @@ package com.ds201625.fonda.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -24,11 +25,15 @@ public class CategoriesAdapter extends BaseArrayAdapter<RestaurantCategory> {
     @Override
     public View createView(RestaurantCategory item) {
         int currentPage = 0;
+        Log.d("Paso", "1");
         View convertView;
         LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
+        Log.d("Paso", "2");
         convertView = inflater.inflate(R.layout.item_filter, null, true);
         TextView tvFilter = (TextView) convertView.findViewById(R.id.tvFilter);
+        Log.d("Paso", "3");
         tvFilter.setText(item.getNameCategory());
+        Log.d("Paso", "4");
         update();
         return convertView;
     }
@@ -51,8 +56,9 @@ public class CategoriesAdapter extends BaseArrayAdapter<RestaurantCategory> {
 
         try {
             Command comando = FondaCommandFactory.getCategoriesCommand();
-            comando.setParameter(0, 10);
-            comando.setParameter(1, currentPage + 1);
+            comando.setParameter(0, "");
+            comando.setParameter(1, 10);
+            comando.setParameter(2, currentPage + 1);
             comando.run();
             restaurants = (List<RestaurantCategory>)comando.getResult();
         }

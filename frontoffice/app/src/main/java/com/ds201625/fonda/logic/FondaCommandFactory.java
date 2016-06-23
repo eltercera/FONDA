@@ -122,8 +122,8 @@ public class FondaCommandFactory {
 
     public static Command getCategoriesCommand() { return new GetCategoriesCommand();}
 
-    public static Command getZonesCommand() { return new GetCategoriesCommand();}
+    public static Command getZonesCommand() { return new GetZonesCommand();}
 
-    public static Command getRestaurantsCommand() { return new GetCategoriesCommand();}
+    public static Command getRestaurantsCommand() { return new GetRestaurantsCommand();}
 }
 

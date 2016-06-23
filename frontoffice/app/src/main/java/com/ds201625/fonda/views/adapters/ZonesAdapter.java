@@ -53,9 +53,10 @@ public class ZonesAdapter extends BaseArrayAdapter<Zone> {
         List<Zone> restaurants = null;
 
         try {
-            Command comando = FondaCommandFactory.getCategoriesCommand();
-            comando.setParameter(0, 10);
-            comando.setParameter(1, currentPage + 1);
+            Command comando = FondaCommandFactory.getZonesCommand();
+            comando.setParameter(0,"");
+            comando.setParameter(1, 10);
+            comando.setParameter(2, currentPage + 1);
             comando.run();
             restaurants = (List<Zone>)comando.getResult();
         }
