@@ -1,5 +1,6 @@
 package com.ds201625.fonda.interfaces;
 
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.AddCommensalWebApiControllerException;
 import com.ds201625.fonda.domains.Commensal;
 
 /**
@@ -11,7 +12,7 @@ public interface ILoginViewPresenter {
      * @param email
      * @param password
      */
-    void regiter(String email, String password);
+    void regiter(String email, String password) throws AddCommensalWebApiControllerException;
 
     /**
      * Metodo de logeo de un commensal

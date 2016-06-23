@@ -295,7 +295,8 @@ public class LoginActivity extends BaseActivity implements ILoginView {
                 presenter.regiter(email, password);
                 succ = true;
             } catch (Exception e) {
-                e.printStackTrace();
+                msj = Toast.makeText(getBaseContext(),
+                        "Error en el Registro",Toast.LENGTH_SHORT);
             }
 
             if (succ){
@@ -328,7 +329,8 @@ public class LoginActivity extends BaseActivity implements ILoginView {
            presenter.login(commensal);
             succ = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            Toast.makeText(getBaseContext(), "Error al iniciar sesión",
+                    Toast.LENGTH_SHORT).show();
         }
 
         if (succ){

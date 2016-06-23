@@ -12,12 +12,12 @@ public interface IProfileView {
      * @param profile
      * @return true si se agrego el perfil
      */
-    Boolean createProfile (Profile profile);
+    Boolean createProfile (Profile profile) throws Exception;
 
     /**
      * Metodo para modificar un perdil
      * @param profile
      * @return true si se modifico el perfil
      */
-    Boolean updateProfile (Profile profile);
+    Boolean updateProfile (Profile profile) throws Exception;
 }

@@ -2,6 +2,7 @@ package com.ds201625.fonda.presenter;
 
 import android.util.Log;
 
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.interfaces.FavoriteView;
@@ -68,19 +69,29 @@ public class FavoritesPresenter implements FavoriteViewPresenter {
      * @return
      */
     @Override
-    public List<Restaurant> findAllFavoriteRestaurant() {
+    public List<Restaurant> findAllFavoriteRestaurant()
+                            throws FindFavoriteRestaurantFondaWebApiControllerException {
         Log.d(TAG,"Ha entrado en findAllFavoriteRestaurant");
-        Command cmdAllFavorite = facCmd.allFavoriteRestaurantCommand();
+        Command cmdAllFavorite;
         try {
+            cmdAllFavorite = facCmd.allFavoriteRestaurantCommand();
             cmdAllFavorite.setParameter(0,logedComensal);
             cmdAllFavorite.run();
-        } catch (NullPointerException e){
+        }
+        catch (FindFavoriteRestaurantFondaWebApiControllerException e) {
             Log.e(TAG,"Error en findAllFavoriteRestaurant al buscar los restaurantes favoritos",
                     e);
+            throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
+            }
+         catch (NullPointerException e){
+            Log.e(TAG,"Error en findAllFavoriteRestaurant al buscar los restaurantes favoritos",
+                    e);
+             throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
         }
         catch (Exception e) {
             Log.e(TAG,"Error en findAllFavoriteRestaurant al buscar los restaurantes favoritos",
                     e);
+            throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
         }
         listRestWS = (List<Restaurant>) cmdAllFavorite.getResult();
         Log.d(TAG,"Se retorna la lista de Restaurantes Favoritos");
