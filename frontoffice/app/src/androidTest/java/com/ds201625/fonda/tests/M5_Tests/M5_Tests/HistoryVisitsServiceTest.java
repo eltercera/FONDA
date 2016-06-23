@@ -19,29 +19,38 @@ import java.util.List;
  * Clase De pruebas unitarias del historial de pagos de una persona en sus visitas a restaurant
  */
 public class HistoryVisitsServiceTest extends TestCase {
+/*
 
-    /*
+    */
+/*
      Lista de Invoice que contiene los pagos de los restaurant
-     */
+     *//*
+
     private List<Invoice> listInvoice;
 
-    /**
+    */
+/**
      * variable de la clase HistoryVisitsRestaurantService
-     */
+     *//*
+
     private HistoryVisitsRestaurantService historyVisitsRestaurantService;
 
-    /**
+    */
+/**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
      * @throws Exception
-     */
+     *//*
+
     protected void setUp() throws Exception {
         super.setUp();
         historyVisitsRestaurantService = FondaServiceFactory.getInstance().getHistoryVisitsService();
     }
 
-    /**
+    */
+/**
      *  Metodo que prueba que la lista de pagos no esta vacia cuando  se conecta con el WS
-     */
+     *//*
+
    public void testHistoryVisitsIsNotEmpty() {
 
        try {
@@ -53,9 +62,11 @@ public class HistoryVisitsServiceTest extends TestCase {
 
     }
 
-    /**
+    */
+/**
      * Metodo que prueba que el objeto Restaurant de la lista de pagos no este vacio
-     */
+     *//*
+
     public void testRestaurantInvoiceIsNotEmpty() {
 
         String nameRestaurant = "The dining room";
@@ -69,9 +80,11 @@ public class HistoryVisitsServiceTest extends TestCase {
 
     }
 
-    /**
+    */
+/**
      * Metodo que prueba que el perfil de la lista de pagos no este vacio
-     */
+     *//*
+
     public void testProfilesInvoiceIsNotEmpty(){
 
         String nameProfile = "Adriana Da Rocha";
@@ -85,9 +98,11 @@ public class HistoryVisitsServiceTest extends TestCase {
 
     }
 
-    /**
+    */
+/**
      * Metodo que prueba que la lista de pagos maneje el total de la factura
-     */
+     *//*
+
     public void testInvoiceIsNotEmpty() {
         float total = 350;
         try {
@@ -99,9 +114,11 @@ public class HistoryVisitsServiceTest extends TestCase {
 
     }
 
-    /**
+    */
+/**
      * Metodo que prueba que el objeto Restaurant de la lista de pagos no sea nulo
-     */
+     *//*
+
     public void testRestaurantInvoiceIsNotNull() {
 
         try {
@@ -113,9 +130,11 @@ public class HistoryVisitsServiceTest extends TestCase {
 
     }
 
-    /**
+    */
+/**
      * Metodo que prueba que el objeto Perfil de la lista de pagos no sea nulo
-     */
+     *//*
+
     public void testProfileInvoiceIsNotNull() {
 
         try {
@@ -127,9 +146,11 @@ public class HistoryVisitsServiceTest extends TestCase {
 
     }
 
-    /**
+    */
+/**
      * Metodo que prueba que la lista de pago no sea nula
-     */
+     *//*
+
     public void testHistoryVisitsIsNotNull() {
 
         try {
@@ -140,9 +161,11 @@ public class HistoryVisitsServiceTest extends TestCase {
         }
     }
 
-    /**
+    */
+/**
      * Metodo que prueba que existan elementos en la lista
-     */
+     *//*
+
     public void testElementLsit() {
 
         try {
@@ -157,13 +180,16 @@ public class HistoryVisitsServiceTest extends TestCase {
         }
     }
 
-    /**
+    */
+/**
      * Metodo para limpiar los objetos de las pruebas unitarias
      * @throws Exception
-     */
+     *//*
+
     protected void tearDown() throws Exception {
         super.tearDown();
         listInvoice = null;
     }
+*/
 
 }

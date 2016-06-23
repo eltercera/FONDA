@@ -3,6 +3,7 @@ package com.ds201625.fonda.logic;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.domains.Profile;
 
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class LogicHistoryVisits {
      */
     private List<Invoice> listVisitsRestaurantService;
 
+    private Profile idProfile;
+
     /**
      * Metodo que controla la llamada al ws para el manejo de pagos del restaurant
      *
@@ -28,7 +31,7 @@ public class LogicHistoryVisits {
     public List<Invoice> apihistoryVisits() throws RestClientException {
 
         try {
-            listVisitsRestaurantService = FondaServiceFactory.getInstance().getHistoryVisitsService().getHistoryVisits();
+            listVisitsRestaurantService = FondaServiceFactory.getInstance().getHistoryVisitsService().getHistoryVisits(idProfile.getId());
         } catch (RestClientException e) {
             throw new RestClientException("Error de IO", e);
         }

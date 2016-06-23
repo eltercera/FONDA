@@ -8,7 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 /**
- * Created by Adriana on 5/7/16.
+ * Created by Jessica 21/06/16.
  */
 
 /**
@@ -20,6 +20,6 @@ public interface HistoryVisitsClient {
      * Obtiene la lista del historial de visitas o pagos a restaurant
      * @return
      */
-    @GET("historyVisits")
+    @GET("GetPaymentHistory")
     Call<List<Invoice>> getHistoryVisits();
 }

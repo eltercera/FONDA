@@ -7,7 +7,7 @@ import com.ds201625.fonda.domains.Invoice;
 import java.util.List;
 
 /**
- * Created by Adri on 5/15/2016.
+ * Created by Jessica on 20/06/2016.
  */
 
 /**
@@ -15,5 +15,5 @@ import java.util.List;
  */
 public  interface HistoryVisitsRestaurantService {
 
-    List<Invoice> getHistoryVisits() throws RestClientException;
+    List<Invoice> getHistoryVisits(int idProfile) throws RestClientException;
 }

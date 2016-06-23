@@ -10,7 +10,7 @@ import java.io.IOException;
 import retrofit2.Call;
 
 /**
- * Created by Yuneth on 5/15/2016.
+ * Created by Jessica on 21/06/2016.
  */
 
 /**
@@ -36,7 +36,7 @@ public class RetrofitInvoiceService implements InvoiceService {
      * @return llamada
      */
     @Override
-    public Invoice getCurrentInvoice() throws RestClientException {
+    public Invoice getCurrentInvoice(int idProfile) throws RestClientException {
         Call<Invoice> call = invoiceClient.getCurrentInvoice();
         Invoice invoiceNew = null;
         try{
