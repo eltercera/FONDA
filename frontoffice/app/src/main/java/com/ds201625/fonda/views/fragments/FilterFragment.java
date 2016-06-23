@@ -70,7 +70,8 @@ public class FilterFragment extends BaseFragment {
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 int lastInScreen = firstVisibleItem + visibleItemCount;
-                if(lastInScreen == totalItemCount){
+                int limit = totalItemCount;
+                if(lastInScreen >= limit && totalItemCount > 0){
                     switch (position) {
                         case 0:
                             RestaurantAdapter actualAdapter = (RestaurantAdapter) lvItems.getAdapter();
