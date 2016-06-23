@@ -11,6 +11,7 @@ import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalC
 import com.ds201625.fonda.logic.Commands.ProfileCommands.DeleteProfileCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.GetProfilesCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.UpdateProfileCommand;
+import com.ds201625.fonda.logic.Commands.OrderCommands.*;
 
 /**
  * Fabrica de comandos
@@ -116,5 +117,29 @@ public class FondaCommandFactory {
      * @return comando deleteCommensalCommand
      */
     public static Command deleteCommensalCommand() { return  new DeleteCommensalCommand(); }
+
+    /**
+     * Crea un LogicCurrentOrderCommand
+     * @return comando LogicCurrentOrderCommand
+     */
+    public static Command logicCurrentOrderCommand() {
+        return  new LogicCurrentOrderCommand();
+    }
+
+    /**
+     * Crea un LogicHistoryVisitsCommand
+     * @return comando LogicHistoryVisitsCommand
+     */
+    public static Command logicHistoryVisitsCommand() {
+        return  new LogicHistoryVisitsCommand();
+    }
+
+    /**
+     * Crea un LogicInvoiceCommand
+     * @return comando LogicInvoiceCommand
+     */
+    public static Command logicInvoiceCommand() {
+        return  new LogicInvoiceCommand();
+    }
 }
 

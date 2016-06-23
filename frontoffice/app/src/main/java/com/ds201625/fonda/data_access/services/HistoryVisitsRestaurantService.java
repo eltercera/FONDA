@@ -15,5 +15,5 @@ import java.util.List;
  */
 public  interface HistoryVisitsRestaurantService {
 
-    List<Invoice> getHistoryVisits() throws RestClientException;
+    List<Invoice> getHistoryVisits(int idProfile) throws RestClientException;
 }

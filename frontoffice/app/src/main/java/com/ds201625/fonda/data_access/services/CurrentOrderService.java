@@ -14,6 +14,7 @@ import java.util.List;
  */
 public interface CurrentOrderService {
 
-    List<DishOrder> getListDishOrder() throws RestClientException;
+
+    List<DishOrder> getListDishOrder(int idRestaurante, int idOrden) throws RestClientException;
 
 }
