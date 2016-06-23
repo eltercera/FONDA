@@ -1,6 +1,6 @@
 package com.ds201625.fonda.logic;
 
-import com.ds201625.fonda.data_access.retrofit_client.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
 
 /**
  * Base para los comandos

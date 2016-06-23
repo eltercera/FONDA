@@ -1,4 +1,4 @@
-package com.ds201625.fonda.data_access.retrofit_client;
+package com.ds201625.fonda.data_access.retrofit_client.exceptions;
 
 import com.ds201625.fonda.domains.FondaBaseException;
 
