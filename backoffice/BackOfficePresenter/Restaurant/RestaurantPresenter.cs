@@ -483,7 +483,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     _restaurantDAO.GenerateRestaurant(Name, Logo, Nationality, Rif, Address,
                     Category, Currency, Zone, LongD, LatD, OT, CT, days);*/
 
-                //Guarda  nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
+                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
                 commandSaveRestaurant = CommandFactory.GetCommandSaveRestaurant(_restaurant);
                 //ejecuto el comando
                 commandSaveRestaurant.Execute();

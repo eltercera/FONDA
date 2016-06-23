@@ -161,6 +161,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
         public void ButtonAgregar_Click()
         {
             Command commandAddCategory;
+            Command commandSaveCategory;
             String nombreA = _view.nameCategoryA.Text;
             //si el campo es valido se registra la la nueva categoria y activa el mensaje de éxito
             if (CategoryValidate(nombreA))
@@ -177,8 +178,12 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
 
                 /*RestaurantCategory _restcat = new RestaurantCategory();
                 _restcat.Name = nombreA;*/
+                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
+                commandSaveCategory = CommandFactory.GetCommandSaveCategory(_restcat);
+                //ejecuto el comando
+                commandSaveCategory.Execute();
 
-                _restcatDAO.Save(_restcat);
+                //_restcatDAO.Save(_restcat);
                 LoadTable();
             }
             else
@@ -194,6 +199,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
         /// </summary>
         public void ButtonModificar_Click()
         {
+            Command commandSaveCategory;
             string nameM = _view.nameCategoryM.Text;
             if (CategoryValidate(nameM))
             {
@@ -204,8 +210,14 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 int idCat = int.Parse(CategoryID);
                 RestaurantCategory _restaurant = _restcatDAO.FindById(idCat);
                 _restaurant.Name = nameM;
-                _restcatDAO.Save(_restaurant);
-                LoadTable();
+
+                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
+               // commandSaveCategory = CommandFactory.GetCommandSaveCategory(_restcat);
+               //ejecuto el comando
+               //commandSaveCategory.Execute();
+
+               _restcatDAO.Save(_restaurant);
+               LoadTable();
             }
             else
             {
