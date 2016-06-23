@@ -62,4 +62,5 @@ public class RequireLogedCommensalCommand extends BaseCommand {
             GetAllRestaurantsFondaWebApiControllerException {
 
     }
+
 }
