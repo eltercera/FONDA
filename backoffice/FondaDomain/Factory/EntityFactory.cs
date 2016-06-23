@@ -66,6 +66,22 @@ namespace com.ds201625.fonda.Factory
 
         #endregion
 
+        #region Reservation
+
+        //Instancia los objetos del dominio invocando al constructor(es) de la entidad
+
+        public static Reservation GetReservation()
+        {
+            return new Reservation();
+        }
+
+        public static Reservation GetReservation(int number, DateTime reservationDate, int commensalNumber)
+        {
+            return new Reservation(number, reservationDate, commensalNumber);
+        }
+
+        #endregion
+        
         #region Restaurant
 
         //Instancia los objetos del dominio invocando al constructor(es) de la entidad
@@ -132,8 +148,7 @@ namespace com.ds201625.fonda.Factory
 
 
         #endregion
-
-
+        
         #region Menu
 
         //Instancia los objetos del dominio invocando al constructor(es) de la entidad
