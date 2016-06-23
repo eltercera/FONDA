@@ -86,6 +86,7 @@
     <Compile Include="Commands\OrderAccount\CommandReleaseTableByRestaurant.cs" />
     <Compile Include="Commands\OrderAccount\CommandTotalOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandValidateProfileByCommensal.cs" />
+    <Compile Include="Commands\Restaurant\CommandAddCategory.cs" />
     <Compile Include="Commands\Restaurant\CommandGenerateRestaurant.cs" />
     <Compile Include="Commands\Restaurant\CommandGetAllCategories.cs" />
     <Compile Include="Commands\Restaurant\CommandGetAllCurrency.cs" />
