@@ -19,12 +19,15 @@ public class ErrorUtils {
         Converter<ResponseBody, APIError> converter =
                 RetrofitService.getInstance().retrofit()
                         .responseBodyConverter(APIError.class, new Annotation[0]);
-        APIError error;
+        APIError error = null;
 
         try {
             error = converter.convert(response.errorBody());
         } catch (IOException e) {
-            return new APIError();
+
+        }
+        catch (Exception e) {
+
         }
 
         return error;

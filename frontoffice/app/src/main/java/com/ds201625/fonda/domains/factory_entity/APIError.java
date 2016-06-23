@@ -17,13 +17,13 @@ public class APIError {
         return message;
     }
     public String exceptionMessage() {
-        return exceptionMessage();
+        return exceptionMessage;
     }
 
     public String exceptionType() {
-        return exceptionMessage();
+        return exceptionMessage;
     }
     public String stackTrace() {
-        return  stackTrace();
+        return  stackTrace;
     }
 }
