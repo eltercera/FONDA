@@ -18,7 +18,7 @@ import java.util.List;
  * Created by gbsoj on 6/22/2016.
  */
 public class ZonesAdapter extends BaseArrayAdapter<Zone> {
-    int currentPage;
+    int currentPage = 0;
 
     public ZonesAdapter(Context context) {
         super(context, R.layout.fragment_filter,R.id.tvFilter,new ArrayList<Zone>());
@@ -27,7 +27,6 @@ public class ZonesAdapter extends BaseArrayAdapter<Zone> {
 
     @Override
     public View createView(Zone item) {
-        currentPage = 0;
         View convertView;
         LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
         convertView = inflater.inflate(R.layout.item_filter, null, true);

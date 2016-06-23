@@ -20,7 +20,7 @@ import java.util.List;
  * Created by gbsoj on 6/22/2016.
  */
 public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
-    int currentPage;
+    int currentPage = 0;
 
 
     public RestaurantAdapter(Context context) {
@@ -30,7 +30,6 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
 
     @Override
     public View createView(Restaurant item) {
-        currentPage = 0;
         View convertView;
         LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
         convertView = inflater.inflate(R.layout.list_restaurant, null, true);

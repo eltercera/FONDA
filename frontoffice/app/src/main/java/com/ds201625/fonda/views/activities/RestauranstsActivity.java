@@ -34,22 +34,13 @@ public class RestauranstsActivity extends  BaseNavigationActivity {
         catFrag.setTabLayout(tabLayout);
 
         RestaurantFilters = new BaseSectionsPagerAdapter(getSupportFragmentManager(),tabLayout);
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_global),resFrag);
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_zone),zoneFrag);
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_food),catFrag);
+//        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_global),resFrag);
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_zone),new ZoneFragment());
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_food),new FoodFragment());
 
         viewPager.setAdapter(RestaurantFilters);
         tabLayout.setupWithViewPager(viewPager);
         RestaurantFilters.iconsSetup();
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.search_menu, menu);
-
-        return true;
-    }
-
 
 }

@@ -16,7 +16,7 @@ import java.util.List;
 
 public class CategoriesAdapter extends BaseArrayAdapter<RestaurantCategory> {
 
-    int currentPage;
+    int currentPage=0;
 
     public CategoriesAdapter(Context context) {
         super(context, R.layout.fragment_filter,R.id.tvFilter,new ArrayList<RestaurantCategory>());
@@ -25,7 +25,6 @@ public class CategoriesAdapter extends BaseArrayAdapter<RestaurantCategory> {
 
     @Override
     public View createView(RestaurantCategory item) {
-        int currentPage = 0;
         View convertView;
         LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
         convertView = inflater.inflate(R.layout.item_filter, null, true);
