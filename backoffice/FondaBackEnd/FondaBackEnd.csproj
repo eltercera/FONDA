@@ -85,6 +85,7 @@
     <Compile Include="Controllers\MenuCategoryWebApiController.cs" />
     <Compile Include="Controllers\OrderAccountFondaWebApiController.cs" />
     <Compile Include="Controllers\PaymentFondaWebApiController.cs" />
+    <Compile Include="Controllers\ReservationFondaWebApiController.cs" />
     <Compile Include="Controllers\RestaurantCategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\RestaurantZoneFilterFondaWebApiController - Copia.cs" />
     <Compile Include="Controllers\RestaurantFondaWebApiController.cs" />
