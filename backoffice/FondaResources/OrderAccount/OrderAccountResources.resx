@@ -773,4 +773,19 @@
     <value>Se ha consultado todas las facturas de la base de datos exitosamente</value>
     <comment>Mensaje de exito para findAllInvoice</comment>
   </data>
+  <data name="SuccessMessageFindGenerateInvoiceByAccount" xml:space="preserve">
+    <value>Se ha obtenido la factura pagada de una orden de la base de datos correctamente</value>
+    <comment>Mensaje de exito para findAllInvoiceFindGenerateInvoiceByAccount</comment>
+  </data>
+  <data name="SuccessMessageFindInvoicesByAccount" xml:space="preserve">
+    <value>Se ha obtenido todas las facturas de una orden de la base de datos correctamente</value>
+    <comment>Mensaje de exito para FindInvoicesByAccount</comment>
+  </data>
+  <data name="SuccessMessageFindInvoicesByRestaurant" xml:space="preserve">
+    <value>Se ha obtenido todas las facturas de un Restaurante de la base de datos correctamente</value>
+    <comment>Mensaje de exito para FindInvoicesByRestaurant</comment>
+  </data>
+  <data name="SuccessMessageGenerateNumberInvoice" xml:space="preserve">
+    <value />
+  </data>
 </root>

@@ -1510,6 +1510,42 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido la factura pagada de una orden de la base de datos correctamente.
+        /// </summary>
+        public static string SuccessMessageFindGenerateInvoiceByAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageFindGenerateInvoiceByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido todas las facturas de una orden de la base de datos correctamente.
+        /// </summary>
+        public static string SuccessMessageFindInvoicesByAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageFindInvoicesByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido todas las facturas de un Restaurante de la base de datos correctamente.
+        /// </summary>
+        public static string SuccessMessageFindInvoicesByRestaurant {
+            get {
+                return ResourceManager.GetString("SuccessMessageFindInvoicesByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SuccessMessageGenerateNumberInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageGenerateNumberInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se han cargado las facturas correctamente.
         /// </summary>
         public static string SuccessMessageOrderInvoicesPresenter {
