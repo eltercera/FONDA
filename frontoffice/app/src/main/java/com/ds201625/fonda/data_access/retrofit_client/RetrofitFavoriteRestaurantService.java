@@ -111,6 +111,7 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
                 // usar error para disparar exception
                 System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   "+error.exceptionMessage());
                 System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA   "+error.exceptionType());
+              //  throw  new FindFavoriteRestaurantFondaWebApiControllerException(error.exceptionType());
                 throw  new FindFavoriteRestaurantFondaWebApiControllerException(error.exceptionType());
 
                 // arreglar log
