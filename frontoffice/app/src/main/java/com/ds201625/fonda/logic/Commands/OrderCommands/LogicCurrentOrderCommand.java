@@ -10,11 +10,13 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Dish;
 import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
+import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 
 import java.util.List;
 
@@ -28,6 +30,8 @@ public class LogicCurrentOrderCommand extends BaseCommand {
      */
     private List<DishOrder> listDishOrderService;
 
+    private Restaurant idRestaurant;
+    private DishOrder idOrder;
     /**
      * Asigna valor a los parametros
      * @return parametro comensal
@@ -49,8 +53,7 @@ public class LogicCurrentOrderCommand extends BaseCommand {
         Log.d(TAG, "Comando para ver la orden actual");
         CurrentOrderService serviceCurrentOrder = FondaServiceFactory.getInstance().getCurrentOrderService();
 
-        Restaurant idRestaurant;
-        DishOrder idOrder;
+        idRestaurant = FondaEntityFactory.getInstance().GetRestaurant();
 
         try {
             idRestaurant = (Restaurant) getParameter(0);

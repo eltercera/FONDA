@@ -22,7 +22,7 @@ public interface CurrentOrderClient {
      * Obtiene la lista de los platos ordenados.
      * @return
      */
-    @GET("listDishOrder")
+    @GET("GetOrderDetail")
     Call<List<DishOrder>> getListDishOrder();
 
 }

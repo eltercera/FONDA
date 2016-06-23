@@ -7,6 +7,8 @@ import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.InvoiceService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
 
@@ -22,11 +24,12 @@ public class LogicInvoiceCommand extends BaseCommand{
      * variable de tipo InvoiceService
      */
     private Invoice invoiceService;
+    private Profile idProfile;
 
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[1];
-        parameters[0] = new Parameter(Commensal.class, true);
+        parameters[0] = new Parameter(Profile.class, true);
 
         return parameters;
     }
@@ -40,8 +43,10 @@ public class LogicInvoiceCommand extends BaseCommand{
         Log.d(TAG, "Comando para ver la factura");
         InvoiceService serviceInvoice = FondaServiceFactory.getInstance().getInvoiceService();
 
+        idProfile = FondaEntityFactory.getInstance().GetProfile();
         try {
-            invoiceService = serviceInvoice.getCurrentInvoice();
+            idProfile = FondaEntityFactory.getInstance().GetProfile();
+            invoiceService = serviceInvoice.getCurrentInvoice(idProfile.getId());
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado un error obteniendo la factura", e);
         }catch (NullPointerException e) {

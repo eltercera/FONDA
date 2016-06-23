@@ -6,6 +6,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +18,13 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.interfaces.LogicCurrentOrderView;
+import com.ds201625.fonda.interfaces.LogicCurrentOrderViewPresenter;
 import com.ds201625.fonda.logic.HandlerSQLite;
+import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.presenter.LogicCurrentOrderPresenter;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.CloseAccountFragment;
@@ -28,11 +35,15 @@ import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
 import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
 import com.ds201625.fonda.views.fragments.ProfileListFragment;
 import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Activity de Ordenes
+ */
 
 public class OrdersActivity extends BaseNavigationActivity implements
-        ProfileListFragment.profileListFragmentListener {
+        LogicCurrentOrderView, ProfileListFragment.profileListFragmentListener {
 
-    private static int pos;
     /**
      * Item del Menu
      */
@@ -85,6 +96,16 @@ public class OrdersActivity extends BaseNavigationActivity implements
     private FrameLayout prueba;
 
     /**
+     * String para indicar en que clase se esta en el logger
+     */
+    private String TAG ="OrdersActivity";
+
+    /**
+     * String static para indicar en que clase se esta en el logger
+     */
+    private static String TAGS ="OrdersActivity";
+
+    /**
      * Fragment de Cierre de cuenta
      */
     private static CloseAccountFragment closeAccFrag;
@@ -112,6 +133,10 @@ public class OrdersActivity extends BaseNavigationActivity implements
      */
     private static HistoryVisitFragment histVisFrag;
 
+    /**
+     * Presentador de Favoritos
+     */
+    private LogicCurrentOrderViewPresenter presenter;
 
     /**
      * Asigna los elementos de la vista
@@ -131,40 +156,69 @@ public class OrdersActivity extends BaseNavigationActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreate");
         setContentView(R.layout.activity_orders);
+        presenter = new LogicCurrentOrderPresenter(this);
+
+        // inicializa los datos de la sesion
+        if (SessionData.getInstance() == null) {
+            try {
+                SessionData.initInstance(getApplicationContext());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         super.onCreate(savedInstanceState);
 
+        if (SessionData.getInstance().getToken() == null) {
+            skip();
+            return;
+        }
+        else {
 
-        //Importante Primero obtener el Tablayout
-        tb = (TabLayout) findViewById(R.id.tabsO);
+            //Importante Primero obtener el Tablayout
+            tb = (TabLayout) findViewById(R.id.tabsO);
+            fm = getSupportFragmentManager();
 
-        prueba = (FrameLayout) findViewById(R.id.fragment_container2);
+            prueba = (FrameLayout) findViewById(R.id.fragment_container2);
 
-        //Inyectarlo al BaseSectionsPagerAdapter
-        mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager(), tb);
+            //Inyectarlo al BaseSectionsPagerAdapter
+            mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager(), tb);
 
-        this.getAllElements();
+            this.getAllElements();
 
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        tb.setupWithViewPager(mViewPager);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
+            tb.setupWithViewPager(mViewPager);
 
-        orderListFrag = new CurrentOrderFragment();
+            orderListFrag = new CurrentOrderFragment();
 
-        histVisFrag = new HistoryVisitFragment();
+            histVisFrag = new HistoryVisitFragment();
 
-        //Tab con solo un String como titulo
-        mSectionsPagerAdapter.addFragment("Orden Actual", orderListFrag);
-        mSectionsPagerAdapter.addFragment("Historial de Visitas", histVisFrag);
+            //Tab con solo un String como titulo
+            mSectionsPagerAdapter.addFragment("Orden Actual", orderListFrag);
+            mSectionsPagerAdapter.addFragment("Historial de Visitas", histVisFrag);
 
 
-        //Importante ejecutar esto para que se creen los iconos en el tab.
-        mSectionsPagerAdapter.iconsSetup();
+            //Importante ejecutar esto para que se creen los iconos en el tab.
+            mSectionsPagerAdapter.iconsSetup();
 
-        fm = getSupportFragmentManager();
+            fm = getSupportFragmentManager();
 
-       // Probando que desaparesca el buscar
-        //changeTab(mSectionsPagerAdapter);
+            // Probando que desaparezca el buscar
+            //changeTab(mSectionsPagerAdapter);
 
+        }
+        Log.d(TAG,"Ha salido de onCreate");
+    }
+
+        /**
+         * Acción de saltar esta actividad.
+         */
+    public void skip() {
+        Log.d(TAG,"Ha entrado en skip");
+        startActivity(new Intent(this,LoginActivity.class));
+        Log.d(TAG,"Ha salido de skip");
     }
 
     /**
@@ -175,6 +229,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG,"Ha entrado en onCreateOptionsMenu");
 
         // Infla el menu
         getMenuInflater().inflate(R.menu.orders, menu);
@@ -187,6 +242,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
         downloadBotton = menu.findItem(R.id.action_favorite_download);
         acceptCCButton = menu.findItem(R.id.action_favorite_accept_cc);
         saveCCButton = menu.findItem(R.id.action_favorite_save_cc);
+        Log.d(TAG,"Ha salido de onCreateOptionsMenu");
         return true;
     }
 
@@ -196,6 +252,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
      * @param fragment el fragment que se quiere mostrar
      */
     public static void showFragment(BaseFragment fragment) {
+        Log.d(TAGS,"Ha entrado en showFragment");
         fm.beginTransaction()
                 .replace(R.id.fragment_container2, fragment)
                 .commit();
@@ -303,7 +360,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
                 downloadBotton.setVisible(false);
         }*/
 
-
+        Log.d(TAGS,"Ha salido de showFragment");
     }
 
     /**
@@ -314,6 +371,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG,"Ha entrado en onOptionsItemSelected");
         switch (item.getItemId()) {
             case R.id.close:
                 close();
@@ -350,6 +408,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
                 acceptCC();
                 break;
         }
+        Log.d(TAG,"Ha salido de onOptionsItemSelected");
         return true;
     }
 
@@ -663,4 +722,13 @@ public class OrdersActivity extends BaseNavigationActivity implements
     }
 
 
+    /**
+     * Lista de todas las ordenes
+     *
+     * @return restauraantes favoritos
+     */
+    @Override
+    public List<DishOrder> getOrderSW() {
+        return null;
+    }
 }

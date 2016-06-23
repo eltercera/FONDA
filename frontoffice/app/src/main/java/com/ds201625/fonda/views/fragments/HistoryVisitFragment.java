@@ -3,17 +3,23 @@ package com.ds201625.fonda.views.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.interfaces.LogicHistoryVisitsView;
+import com.ds201625.fonda.interfaces.LogicHistoryVisitsViewPresenter;
 import com.ds201625.fonda.logic.LogicHistoryVisits;
+import com.ds201625.fonda.presenter.LogicHistoryVisitsPresenter;
 import com.ds201625.fonda.views.adapters.ExpandableListAdapter;
+import com.ds201625.fonda.views.adapters.InvoiceViewItemList;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -26,7 +32,21 @@ import java.util.Map;
 /**
  * Clase de Fragment que maneja el historial de visitas al restaurant
  */
-public class HistoryVisitFragment extends BaseFragment {
+public class HistoryVisitFragment extends BaseFragment implements LogicHistoryVisitsView{
+    /**
+     * String que indica la clase al logger
+     */
+    private String TAG = "HistoryVisitFragment";
+    /**
+     * Lista
+     */
+    private ListView list;
+    /**
+     * Vista de lista
+     */
+    private InvoiceViewItemList invoiceList;
+
+    private LogicHistoryVisitsViewPresenter presenter;
     /**
      * Lista de String que contiene el nombre del restaurante
       */
@@ -94,7 +114,11 @@ public class HistoryVisitFragment extends BaseFragment {
      */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreate");
         super.onCreate(savedInstanceState);
+        invoiceList = new InvoiceViewItemList(getContext());
+        presenter = new LogicHistoryVisitsPresenter(this);
+        Log.d(TAG,"Ha salido en onCreate");
     }
 
     /**
@@ -104,16 +128,20 @@ public class HistoryVisitFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) { createGroupList();
-      View layout = (inflater.inflate(R.layout.fragment_historial_visitas,container,false));
+        Log.d(TAG,"Ha entrado en onCreateView");
+        View layout = (inflater.inflate(R.layout.fragment_historial_visitas,container,false));
         createCollection();
 
-        expListView = (ExpandableListView) layout.findViewById(R.id.restaurant_list);
-        final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
+        try{
+            listInvoice = getHistoryVisitsSW();
+           // invoiceList = new InvoiceViewItemList(getContext());
+            expListView = (ExpandableListView) layout.findViewById(R.id.restaurant_list);
+            final ExpandableListAdapter expListAdapter = new ExpandableListAdapter(
                 getContext(), groupNameRestaurant,collectionVisits, groupCategoryRestaurant,
                 groupAddressRestaurant, groupLogoRestaurant, groupDatePaymentRestaurant);
-        expListView.setAdapter(expListAdapter);
+             expListView.setAdapter(expListAdapter);
 
-        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             /** Metodo para cargar la vista del detalle de historial de pagos
              * Metodo
@@ -132,8 +160,12 @@ public class HistoryVisitFragment extends BaseFragment {
                         .show();
 
                 return true;
+
             }
         });
+        } catch(NullPointerException e){
+            Log.e(TAG,"Error al iniciar ordenes",e);
+        }
         return layout;
     }
 
@@ -221,6 +253,24 @@ public class HistoryVisitFragment extends BaseFragment {
         for (String model : restaurantDetails) {
             childList.add(model);
         }
+    }
+
+    @Override
+    public List<Invoice> getHistoryVisitsSW() {
+        List<Invoice> listHistorySW;
+        Log.d(TAG,"Ha ingresado a getHistoryVisitsSW");
+        try {
+            //Llamo al comando de requireLogedCommensalCommand
+            presenter.findLoggedComensal();
+            listHistorySW = presenter.findAllHistoryVisits();
+            return listHistorySW;
+        } catch (NullPointerException nu) {
+            Log.e(TAG, "Error en getOrderSW al obtener la orden", nu);
+        } catch (Exception e) {
+            System.out.println("Error en la Conexión");
+        }
+        Log.d(TAG,"Ha finalizado getOrderSWgetOrderSW");
+        return null;
     }
 }
 

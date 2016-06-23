@@ -36,7 +36,7 @@ public class RetrofitInvoiceService implements InvoiceService {
      * @return llamada
      */
     @Override
-    public Invoice getCurrentInvoice() throws RestClientException {
+    public Invoice getCurrentInvoice(int idProfile) throws RestClientException {
         Call<Invoice> call = invoiceClient.getCurrentInvoice();
         Invoice invoiceNew = null;
         try{

@@ -20,6 +20,6 @@ public interface HistoryVisitsClient {
      * Obtiene la lista del historial de visitas o pagos a restaurant
      * @return
      */
-    @GET("historyVisits")
+    @GET("GetPaymentHistory")
     Call<List<Invoice>> getHistoryVisits();
 }

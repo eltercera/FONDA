@@ -40,12 +40,12 @@ public class LogicHistoryVisitsCommand extends BaseCommand {
     protected void invoke() {
 
         Log.d(TAG, "Comando para ver el historial de pagos");
-        HistoryVisitsRestaurantService serviceInvoice = FondaServiceFactory.getInstance().getHistoryVisitsService();
+        HistoryVisitsRestaurantService serviceHistoryVisits = FondaServiceFactory.getInstance().getHistoryVisitsService();
 
         idProfile = FondaEntityFactory.getInstance().GetProfile();
         try {
             idProfile = (Profile) this.getParameter(0);
-            listVisitsRestaurantService = serviceInvoice.getHistoryVisits(idProfile.getId());
+            listVisitsRestaurantService = serviceHistoryVisits.getHistoryVisits(idProfile.getId());
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado un error obteniendo el historial de pagos", e);
         }catch (NullPointerException e) {

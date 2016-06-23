@@ -20,30 +20,39 @@ import java.util.List;
  * Clase De pruebas unitarias de la lista de platos ordenados de una persona en sus visitas a restaurant
  */
 public class CurrentOrderServiceTest extends TestCase {
+/*
 
-    /*
-       Lista de platos ordenados
     */
+/*
+       Lista de platos ordenados
+    *//*
+
     private List<DishOrder> listDishOrder;
 
-    /*
-       Variable de la clase CurrentOrderService
     */
+/*
+       Variable de la clase CurrentOrderService
+    *//*
+
     private CurrentOrderService currentOrderService;
 
-    /**
+    */
+/**
      * Metodo que se encarga de instanciar los objetos de las pruebas unitarias
      * @throws Exception
-     */
+     *//*
+
     protected void setUp() throws Exception {
         super.setUp();
         currentOrderService = FondaServiceFactory.getInstance().getCurrentOrderService();
     }
 
 
-    /**
+    */
+/**
      *  Metodo para probar que la lista no esta vacia cuando se conecta con el WS
-     */
+     *//*
+
     public void testListDishOrderIsNotEmpty() {
 
         try {
@@ -55,9 +64,11 @@ public class CurrentOrderServiceTest extends TestCase {
         }
     }
 
-    /*
+    */
+/*
      *  Metodo que prueba que existan elementos en la lista
-     */
+     *//*
+
     public void testListDishOrderElements() {
 
         try {
@@ -72,9 +83,11 @@ public class CurrentOrderServiceTest extends TestCase {
         }
     }
 
-    /**
+    */
+/**
      * Metodo que prueba que el objeto Dish de la lista de platos no este vacio
-     */
+     *//*
+
     public void testDishOrderIsNotEmpty() {
 
         try {
@@ -92,9 +105,11 @@ public class CurrentOrderServiceTest extends TestCase {
 
     }
 
-    /**
+    */
+/**
      * Metodo que prueba que el objeto Dish de la lista de platos no sea nulo
-     */
+     *//*
+
     public void testRestaurantInvoiceIsNotNull() {
 
         try {
@@ -106,9 +121,11 @@ public class CurrentOrderServiceTest extends TestCase {
         }
     }
 
-    /**
+    */
+/**
      * Metodo que prueba que la lista de platos no sea nula
-     */
+     *//*
+
     public void testListDishOrderIsNotNull() {
 
         try {
@@ -123,14 +140,17 @@ public class CurrentOrderServiceTest extends TestCase {
 
     }
 
-    /**
+    */
+/**
      * Metodo para limpiar los objetos de las pruebas unitarias
      * @throws Exception
-     */
+     *//*
+
     protected void tearDown() throws Exception {
         super.tearDown();
         listDishOrder = null;
     }
 
+*/
 
 }
