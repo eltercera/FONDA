@@ -14,7 +14,7 @@ namespace FondaMVPTest
     public class BOOrdersPresenterTest
     {
         private OrdersPresenter _presenter;
-        private IOrdersModel orders;
+        private IOrdersContract orders;
         private string sessionId;
 
         [SetUp]

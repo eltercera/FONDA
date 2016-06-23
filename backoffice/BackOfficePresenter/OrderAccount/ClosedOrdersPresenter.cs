@@ -15,7 +15,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
     public class ClosedOrdersPresenter : Presenter
     {
         //Enlace Modelo - Vista
-        private IClosedOrdersModel _view;
+        private IClosedOrdersContract _view;
         private int totalColumns = 2;
 
 
@@ -23,7 +23,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         ///Constructor
         /// </summary>
         /// <param name="viewClosedOrders">Interfaz</param>
-        public ClosedOrdersPresenter(IClosedOrdersModel viewClosedOrders)
+        public ClosedOrdersPresenter(IClosedOrdersContract viewClosedOrders)
             : base(viewClosedOrders)
         {
             //Enlace Modelo - Vista

@@ -21,7 +21,7 @@ namespace BackOffice.Seccion.Reservas
         #endregion
 
         #region Model
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
 
@@ -29,7 +29,7 @@ namespace BackOffice.Seccion.Reservas
 
         }
 
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get { return this.SuccessLabelMessage; }
 
@@ -76,12 +76,12 @@ namespace BackOffice.Seccion.Reservas
             set { Session[ResourceLogin.sessionRestaurantID] = value; }
         }
 
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get { return this.SuccessLabel; }
         }
 
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { return this.ErrorLabel; }
         }

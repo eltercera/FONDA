@@ -16,7 +16,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
     public class OrdersPresenter : Presenter
     {
         //Enlace entre el Modelo y la Vista
-        private IOrdersModel _view;
+        private IOrdersContract _view;
         private int totalColumns = 3;
 
 
@@ -24,7 +24,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         /// Constructor de la clase
         /// </summary>
         /// <param name="viewDefault">Interfaz</param>
-        public OrdersPresenter(IOrdersModel viewDefault)
+        public OrdersPresenter(IOrdersContract viewDefault)
             : base(viewDefault) 
         {
             //Se genera el enlace entre el modelo y la vista

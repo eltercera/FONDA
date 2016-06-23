@@ -10,7 +10,7 @@ using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class VerDetalleFactura : System.Web.UI.Page, IInvoiceDetailModel
+    public partial class VerDetalleFactura : System.Web.UI.Page, IDetailInvoiceContract
     { 
        #region Presenter
 
@@ -87,7 +87,7 @@ namespace BackOffice.Seccion.Caja
 
             set { invoicePrint = value; }
         }
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
 
@@ -95,7 +95,7 @@ namespace BackOffice.Seccion.Caja
 
         }
 
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get { return this.SuccessLabelMessage; }
 
@@ -105,13 +105,13 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Recurso de Session con el que inicia el Page_Load
         /// </summary>
-        string IInvoiceDetailModel.Session
+        string IDetailInvoiceContract.Session
         {
             get { return Session[OrderAccountResources.SessionIdInvoice].ToString(); }
 
             set { Session[OrderAccountResources.SessionIdInvoice] = value; }
         }
-        string IInvoiceDetailModel.SessionIdAccount
+        string IDetailInvoiceContract.SessionIdAccount
         {
             get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
@@ -138,12 +138,12 @@ namespace BackOffice.Seccion.Caja
 
             set { Session[OrderAccountResources.SessionNumberInvoice] = value; }
         }
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { return this.ErrorLabel; }
         }
 
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get { return this.SuccessLabel; }
 
