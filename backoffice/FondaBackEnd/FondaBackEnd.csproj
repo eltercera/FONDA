@@ -97,6 +97,7 @@
     <Compile Include="Exceptions\DeleteProfileFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\DeleteTokenFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FindByEmailUserAccountFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\FindCommensalReservationsFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FindFavoriteRestaurantFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FondaAuthLoginAttributeException.cs" />
     <Compile Include="Exceptions\FondaAuthTokenAttributeException.cs" />

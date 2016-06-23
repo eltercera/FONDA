@@ -232,4 +232,7 @@
   <data name="ParametersGetFavRestException" xml:space="preserve">
     <value>Parámetros iválidos al intentar obtener los restaurantes favoritos del comensal</value>
   </data>
+  <data name="CommensalReservation" xml:space="preserve">
+    <value>Reservacion del comensal</value>
+  </data>
 </root>

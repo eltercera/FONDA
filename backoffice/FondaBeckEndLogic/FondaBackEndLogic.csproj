@@ -46,6 +46,7 @@
     <Compile Include="Exceptions\GetAllRestaurantsCommandException.cs" />
     <Compile Include="Exceptions\GetCommensalCommandException.cs" />
     <Compile Include="Exceptions\GetCommensalEmailCommandException.cs" />
+    <Compile Include="Exceptions\GetCommensalReservationsFondaCommandException.cs" />
     <Compile Include="Exceptions\GetFavoriteRestaurantFondaCommandException.cs" />
     <Compile Include="Exceptions\GetProfileCommandException.cs" />
     <Compile Include="Exceptions\GetTokenCommandException.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Exceptions\InvalidTypeOfParameter.cs" />
     <Compile Include="Exceptions\ParameterIndexOutOfRangeException.cs" />
     <Compile Include="Exceptions\RequieredParameterNotFoundException.cs" />
+    <Compile Include="ReservationManagement\GetCommensalReservationsCommand.cs" />
     <Compile Include="ResourceMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
