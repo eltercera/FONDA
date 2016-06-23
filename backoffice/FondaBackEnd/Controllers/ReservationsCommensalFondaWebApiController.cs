@@ -102,16 +102,16 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         }
 
         /// <summary>
-        /// metodo que agrega un restaurant favorito de un comensal
+        /// metodo que agrega una reservacion de un comensal
         /// </summary>
         /// <param name="idCommensal"></param>
         /// <param name="idRestaurant"></param>
         /// <returns>result</returns>
 
-        [Route("addfavorite/{idCommensal}/{idRestaurant}")]
+        [Route("addReservation/{idCommensal}/{idRestaurant}")]
         [HttpGet]
         ///[FondaAuthToken]
-        public IHttpActionResult addfavorite(int idcommensal, int idrestaurant)
+        public IHttpActionResult addReservation(int idcommensal, int idrestaurant)
         {
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);

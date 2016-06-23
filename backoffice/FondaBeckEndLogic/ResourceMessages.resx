@@ -235,4 +235,13 @@
   <data name="CommensalReservation" xml:space="preserve">
     <value>Reservacion del comensal</value>
   </data>
+  <data name="CreateCommensalReservationException" xml:space="preserve">
+    <value>Error al agregar una reservacion al comensal</value>
+  </data>
+  <data name="ParametersCreateCommensalReservationException" xml:space="preserve">
+    <value>Parámetros iválidos al intentar agregar una reservacion al commensal</value>
+  </data>
+  <data name="ReservationAdded" xml:space="preserve">
+    <value>Reservacion Agregada al Commensal:</value>
+  </data>
 </root>

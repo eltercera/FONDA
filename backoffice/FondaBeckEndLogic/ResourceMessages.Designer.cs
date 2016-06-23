@@ -133,6 +133,15 @@ namespace FondaBeckEndLogic {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al agregar una reservacion al comensal.
+        /// </summary>
+        internal static string CreateCommensalReservationException {
+            get {
+                return ResourceManager.GetString("CreateCommensalReservationException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al eliminar un restaurante favorito del comensal.
         /// </summary>
         internal static string DeleteFavRestException {
@@ -286,6 +295,15 @@ namespace FondaBeckEndLogic {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parámetros iválidos al intentar agregar una reservacion al commensal.
+        /// </summary>
+        internal static string ParametersCreateCommensalReservationException {
+            get {
+                return ResourceManager.GetString("ParametersCreateCommensalReservationException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Parámetros iválidos al intentar eliminar un restaurant favorito.
         /// </summary>
         internal static string ParametersDeleteFavRestException {
@@ -354,6 +372,15 @@ namespace FondaBeckEndLogic {
         internal static string ProfileUpdated {
             get {
                 return ResourceManager.GetString("ProfileUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservacion Agregada al Commensal:.
+        /// </summary>
+        internal static string ReservationAdded {
+            get {
+                return ResourceManager.GetString("ReservationAdded", resourceCulture);
             }
         }
         
