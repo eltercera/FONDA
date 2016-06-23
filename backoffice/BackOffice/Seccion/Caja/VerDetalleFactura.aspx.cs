@@ -14,7 +14,7 @@ namespace BackOffice.Seccion.Caja
     { 
        #region Presenter
 
-        private InvoiceDetailPresenter _presenter;
+        private DetailInvoicePresenter _presenter;
 
         #endregion
 
@@ -156,7 +156,7 @@ namespace BackOffice.Seccion.Caja
 
         public VerDetalleFactura()
         {
-            _presenter = new InvoiceDetailPresenter(this);
+            _presenter = new DetailInvoicePresenter(this);
         }
         #endregion
         protected void print_Click(object sender, EventArgs e)
