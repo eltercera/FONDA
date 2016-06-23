@@ -1,5 +1,9 @@
 ﻿using com.ds201625.fonda.Domain;
+using com.ds201625.fonda.Logic.FondaCommandException.OrderAccount;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +64,16 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             }
             catch (Exception ex)
             {
+                CommandExceptionCommandGetDetailInvoice exception = new CommandExceptionCommandGetDetailInvoice(
+                    OrderAccountResources.CommandExceptionCommandGetDetailInvoiceCode,
+                    OrderAccountResources.ClassNameGetDetailInvoice,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionGenerateInvoice,
+                    ex);
 
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                throw exception;
             }
         }
     }

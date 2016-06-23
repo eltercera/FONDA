@@ -2,3 +2,5 @@ backoffice/FondaDataAccess/FondaDataAccess.csproj
 backoffice/FondaDataAccess/FondaDataAccess.csproj
 backoffice/FondaDataAccess/FondaDataAccess.csproj
 backoffice/FondaBeckEndLogic/ResourceMessages.resx
+frontoffice/app/src/main/java/com/ds201625/fonda/logic/Commands/CommensalCommands/AddCommensalCommand.java
+frontoffice/app/src/main/java/com/ds201625/fonda/logic/Commands/CommensalCommands/AddCommensalCommand.java

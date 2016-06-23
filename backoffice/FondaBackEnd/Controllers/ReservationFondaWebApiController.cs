@@ -39,14 +39,14 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
             ICommensalDAO commensalDAO = FactoryDAO.GetCommensalDAO();
 
-            if (reservation.ReserveDate == null || reservation.CreateDate == null || reservation.CommensalNumber == null)
+           /* if (reservation.ReserveDate == null || reservation.CreateDate == null || reservation.CommensalNumber == null)
                 return BadRequest();
 
             reservation.ReserveStatus = FactoryDAO.GetActiveReservationStatus();
             reservation.ReserveUser.Status = FactoryDAO.GetActiveSimpleStatus();
             reservation.ReserveTable.Status = FactoryDAO.GetFreeTableStatus();
             reservation.ReserveRestaurant.Status = FactoryDAO.GetActiveSimpleStatus();
-            commensal.Reservations.Add(reservation);
+            commensal.Reservations.Add(reservation);*/
 
 
             try

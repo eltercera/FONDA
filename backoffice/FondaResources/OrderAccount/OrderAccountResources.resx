@@ -792,4 +792,27 @@
     <value>Error en la base de datos al obtener los platillos de una cuenta</value>
     <comment>Mensaje de error para GetDishesByAccount</comment>
   </data>
+  <data name="ClassNameGetDetailInvoice" xml:space="preserve">
+    <value>CommandGetDetailInvoice</value>
+    <comment>Comando para obtener el detalle de la factura</comment>
+  </data>
+  <data name="CommandExceptionCommandGetDetailInvoiceCode" xml:space="preserve">
+    <value>BO-04-028</value>
+    <comment>Codigo de error al consultar el detalle de una factura</comment>
+  </data>
+  <data name="MessageCanceledInvoiceException" xml:space="preserve">
+    <value>Error al anular la factura</value>
+  </data>
+  <data name="MessageGetOrderDetailException" xml:space="preserve">
+    <value>Error al obtener el detalle de la orden</value>
+  </data>
+  <data name="MessageGetPaymentHistory" xml:space="preserve">
+    <value>Error al obtener el historial de facturas</value>
+  </data>
+  <data name="MessageGetTotalAccountException" xml:space="preserve">
+    <value>Error al obtener el monto total de la orden</value>
+  </data>
+  <data name="MessagePayAccountException" xml:space="preserve">
+    <value>Error al pagar la orden abierta</value>
+  </data>
 </root>

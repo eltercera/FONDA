@@ -1,3 +1,4 @@
+
 package com.ds201625.fonda.data_access.services;
 
 import android.content.Context;
@@ -5,6 +6,7 @@ import android.content.Context;
 import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.AddCommensalWebApiControllerException;
 import com.ds201625.fonda.domains.Commensal;
 
 /**
@@ -23,7 +25,7 @@ public interface CommensalService {
      * @throws LocalStorageException
      */
     Commensal RegisterCommensal(String user, String password, Context context)
-            throws InvalidDataRetrofitException, RestClientException, LocalStorageException;
+            throws InvalidDataRetrofitException, RestClientException, LocalStorageException, AddCommensalWebApiControllerException;
 
 
 

@@ -8,13 +8,9 @@ using com.ds201625.fonda.Logic.FondaLogic.Log;
 using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Security.AntiXss;
 using System.Web.UI.WebControls;
-using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
 
 namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
@@ -48,8 +44,8 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
             List<int> parameters;
             Command commandPrintInvoice;
 
-            //try
-            //{
+            try
+            {
                 accountId = int.Parse(_view.SessionIdAccount);
                 restaurantId = int.Parse(_view.SessionRestaurant);
 
@@ -62,40 +58,40 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 
                 //Ejecuta el comando deseado
                 commandPrintInvoice.Execute();
+                Logger.WriteSuccessLog(
+                         OrderAccountResources.ClassNameInvoiceDetailPresenter,
+                         OrderAccountResources.SuccessPrintInvoice,
+                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                                );
+                SuccessLabel(OrderAccountResources.SuccessPrintInvoice);
+            }
+            catch (MVPExceptionPrintInvoice ex)
+            {
+                MVPExceptionPrintInvoice e = new MVPExceptionPrintInvoice
+                    (
+                        OrderAccountResources.MVPExceptionPrintInvoiceCode,
+                        OrderAccountResources.ClassNameInvoiceDetailPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionPrintInvoice,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                ErrorLabel(e.MessageException);
+            }
+            catch (Exception ex)
+            {
+                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+                    (
+                        OrderAccountResources.MVPExceptionPrintInvoiceCode,
+                        OrderAccountResources.ClassNameInvoiceDetailPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionPrintInvoice,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                ErrorLabel(e.MessageException);
+            }
 
-            //}
-            //catch (MVPExceptionPrintInvoice ex)
-            //{
-            //    MVPExceptionPrintInvoice e = new MVPExceptionPrintInvoice
-            //        (
-            //            OrderAccountResources.MVPExceptionPrintInvoiceCode,
-            //            OrderAccountResources.ClassNameInvoiceDetailPresenter,
-            //            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-            //            OrderAccountResources.MessageMVPExceptionPrintInvoice,
-            //            ex
-            //        );
-            //    Logger.WriteErrorLog(e.ClassName, e);
-            //    ErrorLabel(e.MessageException);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
-            //        (
-            //            OrderAccountResources.MVPExceptionPrintInvoiceCode,
-            //            OrderAccountResources.ClassNameInvoiceDetailPresenter,
-            //            System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-            //            OrderAccountResources.MessageMVPExceptionPrintInvoice,
-            //            ex
-            //        );
-            //    Logger.WriteErrorLog(e.ClassName, e);
-            //    ErrorLabel(e.MessageException);
-            //}
-
-            //Logger.WriteSuccessLog(OrderAccountResources.ClassNameInvoiceDetailPresenter
-            //    , OrderAccountResources.SuccessPrintInvoice
-            //    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
-            //    );
-            SuccessLabel(OrderAccountResources.SuccessPrintInvoice);
         }
 
         ///<summary>
