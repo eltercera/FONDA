@@ -36,7 +36,8 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
      * @throws RestClientException
      */
     @Override
-    public Commensal AddFavoriteRestaurant(int idCommensal, int idRestaurant) throws RestClientException {
+    public Commensal AddFavoriteRestaurant(int idCommensal, int idRestaurant)
+            throws RestClientException, AddFavoriteRestaurantFondaWebApiControllerException {
         // aqui se supone que debo traerme el comensal Logeado
         Log.d(TAG, "Se agrega el restaurante "+idRestaurant+"a favoritos del comensal "+idCommensal);
         Call<Commensal> call = favoriteRestaurantClient.addfavoriterestaurant(idCommensal,idRestaurant);
@@ -57,8 +58,13 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
             }
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en AddFavoriteRestaurant", e);
+            throw  new AddFavoriteRestaurantFondaWebApiControllerException
+                    (error.exceptionMessage());
         } catch (Exception e) {
-        Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant2", e);
+            Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant2", e);
+            throw  new AddFavoriteRestaurantFondaWebApiControllerException
+                    (error.exceptionMessage());
+
     }
 
         return test;
@@ -73,9 +79,12 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
      * @throws RestClientException
      */
     @Override
-    public Commensal deleteFavoriteRestaurant(int idCommensal, int idRestaurant) throws RestClientException {
-        Log.d(TAG, "Se elimina el restaurante "+idRestaurant+" de favoritos del comensal "+idCommensal);
-        Call<Commensal> call = favoriteRestaurantClient.removefavoriterestaurant(idCommensal, idRestaurant);
+    public Commensal deleteFavoriteRestaurant(int idCommensal, int idRestaurant)
+            throws RestClientException, DeleteFavoriteRestaurantFondaWebApiControllerException {
+        Log.d(TAG, "Se elimina el restaurante "+idRestaurant+
+                                " de favoritos del comensal "+idCommensal);
+        Call<Commensal> call = favoriteRestaurantClient.removefavoriterestaurant
+                                                                (idCommensal, idRestaurant);
         Commensal test = null;
         Response<Commensal> response;
 
@@ -90,14 +99,17 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
                 // usar error para disparar exception
                 Log.e(TAG,"error message " + error.message());
                 Log.e(TAG,"error message " +error.exceptionType());
-                throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(error.exceptionMessage());
+                throw  new DeleteFavoriteRestaurantFondaWebApiControllerException
+                        (error.exceptionMessage());
             }
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en deleteFavoriteRestaurant", e);
-        } catch (DeleteFavoriteRestaurantFondaWebApiControllerException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
+            throw  new DeleteFavoriteRestaurantFondaWebApiControllerException
+                    (error.exceptionType());
+        }  catch (Exception e) {
         Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant2", e);
+            throw  new DeleteFavoriteRestaurantFondaWebApiControllerException
+                    (error.exceptionType());
     }
 
         return test;
@@ -131,7 +143,8 @@ public class RetrofitFavoriteRestaurantService implements FavoriteRestaurantServ
                 Log.e(TAG,"error message " + error.message());
                 Log.e(TAG,"error message " +error.exceptionType());
 
-                throw  new FindFavoriteRestaurantFondaWebApiControllerException(error.exceptionType());
+                throw  new FindFavoriteRestaurantFondaWebApiControllerException
+                                                                        (error.exceptionType());
              }
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en getAllFavoriteRestaurant1", e);

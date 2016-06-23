@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.*;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
@@ -47,12 +48,11 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
             idCommensal = (Commensal) this.getParameter(0);
             restaurantList =  serviceFavorits.getAllFavoriteRestaurant(idCommensal.getId());
 
-            //AKI IRAN D BO DE PARAMETROS
+
         }catch(FindFavoriteRestaurantFondaWebApiControllerException e){
             Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
             throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
-        }
-        catch (RestClientException e) {
+        } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
            throw  new FindFavoriteRestaurantFondaWebApiControllerException(e);
          } catch (NullPointerException e) {

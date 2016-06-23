@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.DeleteFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.interfaces.FavoriteView;
 import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
@@ -251,6 +253,12 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                     showFragment(fv);
                 }
             }
+            catch (DeleteFavoriteRestaurantFondaWebApiControllerException e) {
+             Toast.makeText(getApplicationContext(),
+                     "Ha ocurrido un error al obtener los restaurantes del WS",
+                     Toast.LENGTH_LONG).show();
+             Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
+         }
             catch (NullPointerException nu) {
                 Log.e(TAG,"Error en removeFavorite al eliminar un favorito",nu);
             }
@@ -288,6 +296,11 @@ public class FavoritesActivity extends BaseNavigationActivity implements
                        return true;
                 }
 
+        }catch (FindFavoriteRestaurantFondaWebApiControllerException e) {
+            Toast.makeText(getApplicationContext(),
+                    "Ha ocurrido un error al obtener los restaurantes del WS",
+                    Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
         }
         catch (Exception e) {
           //  Log.e(TAG,"Error al determinar si el commensal tiene favoritos",e);

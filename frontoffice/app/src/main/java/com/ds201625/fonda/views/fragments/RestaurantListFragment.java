@@ -17,6 +17,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.AddFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.interfaces.AllRestaurantsView;
 import com.ds201625.fonda.interfaces.AllRestaurantsViewPresenter;
@@ -127,6 +129,11 @@ public class RestaurantListFragment extends BaseFragment implements
                                                     " Restaurantes a Favoritos",
                                             Toast.LENGTH_LONG).show();
                                     Log.d("Favoritos eliminados: ",r.getName().toString());
+                                }catch (AddFavoriteRestaurantFondaWebApiControllerException e) {
+                                    Toast.makeText(RestaurantListFragment.super.getContext(),
+                                            "Ha ocurrido un error al obtener los restaurantes del WS",
+                                            Toast.LENGTH_LONG).show();
+                                    Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
                                 }
                                 catch (Exception e) {
                                     Log.e(TAG,"Error en onActionItemClicked al agregar restaurant",

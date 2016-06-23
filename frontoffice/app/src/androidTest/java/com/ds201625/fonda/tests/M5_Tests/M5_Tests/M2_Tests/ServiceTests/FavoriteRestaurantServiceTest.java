@@ -5,6 +5,8 @@ import android.test.MoreAsserts;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.AddFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.DeleteFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
@@ -289,7 +291,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         } catch(RestClientException e) {}
         catch(NullPointerException e) {
-            //fail("Se esperaba excepcion NullPointerException");
+            e.printStackTrace();
+        } catch (AddFavoriteRestaurantFondaWebApiControllerException e) {
+            e.printStackTrace();
         }
 
     }
@@ -308,7 +312,9 @@ public class FavoriteRestaurantServiceTest extends TestCase {
 
         }
         catch(NullPointerException e) {
-            //fail("Se esperaba excepcion NullPointerException");
+            e.printStackTrace();
+        } catch (DeleteFavoriteRestaurantFondaWebApiControllerException e) {
+            e.printStackTrace();
         }
 
     }

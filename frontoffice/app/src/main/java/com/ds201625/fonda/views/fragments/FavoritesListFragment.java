@@ -17,7 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.retrofit_client.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.*;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.interfaces.FavoriteView;
 import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
@@ -130,12 +130,16 @@ public class FavoritesListFragment extends BaseFragment implements
                                             " Restaurantes de Favoritos",
                                             Toast.LENGTH_LONG).show();
                                     Log.d("Favoritos eliminados: ",r.getName().toString());
-                                }
-                                catch (Exception e) {
+                                } catch (DeleteFavoriteRestaurantFondaWebApiControllerException e) {
+                                    Toast.makeText(FavoritesListFragment.super.getContext(),
+                                            "Ha ocurrido un error al eliminar los restaurantes del WS",
+                                            Toast.LENGTH_LONG).show();
+                                    Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
+                                } catch (Exception e) {
                                     Log.e(TAG,"Error en onActionItemClicked al eliminar restaurant",
                                             e);
                                 }
-                            }
+                             }
                             if(isEmptyFavorite()){
                                 FavoritesActivity.changeFrag(1);
                             }
@@ -231,6 +235,11 @@ public class FavoritesListFragment extends BaseFragment implements
                 return true;
             }
 
+        }catch (FindFavoriteRestaurantFondaWebApiControllerException e) {
+            Toast.makeText(this.getContext(),
+                    "Ha ocurrido un error al obtener los restaurantes del WS",
+                    Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
         }
         catch (Exception e) {
             Log.e(TAG,"Error al determinar si el commensal tiene favoritos",e);

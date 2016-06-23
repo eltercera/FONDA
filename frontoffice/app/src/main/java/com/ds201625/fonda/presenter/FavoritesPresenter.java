@@ -2,7 +2,7 @@ package com.ds201625.fonda.presenter;
 
 import android.util.Log;
 
-import com.ds201625.fonda.data_access.retrofit_client.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.*;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.interfaces.FavoriteView;
@@ -105,7 +105,9 @@ public class FavoritesPresenter implements FavoriteViewPresenter {
      * @param restaurant
      */
     @Override
-    public void deleteFavoriteRestaurant(Restaurant restaurant) {
+    public void deleteFavoriteRestaurant(Restaurant restaurant) throws
+            DeleteFavoriteRestaurantFondaWebApiControllerException
+    {
         Log.d(TAG,"Ha entrado en deleteFavoriteRestaurant");
         Command cmdDelete = facCmd.deleteFavoriteRestaurantCommand();
         try {
@@ -116,9 +118,11 @@ public class FavoritesPresenter implements FavoriteViewPresenter {
         catch (NullPointerException e){
             Log.e(TAG,"Error en deleteFavoriteRestaurant al eliminar un restaurante favorito",
                     e);
+            throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(e);
         }catch (Exception e) {
             Log.e(TAG,"Error en deleteFavoriteRestaurant al eliminar un restaurante favorito",
                     e);
+            throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(e);
         }
         Log.d(TAG,"Se elimina el restaurante de favoritos "+restaurant.getName());
         Log.d(TAG,"Ha finalizado deleteFavoriteRestaurant");
@@ -130,7 +134,8 @@ public class FavoritesPresenter implements FavoriteViewPresenter {
      * @param restaurant
      */
     @Override
-    public void addFavoriteRestaurant(Restaurant restaurant) {
+    public void addFavoriteRestaurant(Restaurant restaurant) throws
+            AddFavoriteRestaurantFondaWebApiControllerException {
         Log.d(TAG,"Ha entrado en addFavoriteRestaurant");
         Command cmdAddFavorite = facCmd.addFavoriteRestaurantCommand();
         try {
@@ -141,9 +146,11 @@ public class FavoritesPresenter implements FavoriteViewPresenter {
         } catch (NullPointerException e){
             Log.e(TAG,"Error en addFavoriteRestaurant al agregar un restaurante a favoritos",
                     e);
+            throw  new AddFavoriteRestaurantFondaWebApiControllerException(e);
         }catch (Exception e) {
             Log.e(TAG,"Error en addFavoriteRestaurant al agregar un restaurante a favoritos",
                     e);
+            throw  new AddFavoriteRestaurantFondaWebApiControllerException(e);
         }
         Log.d(TAG,"Se agrega el restaurante a favoritos "+restaurant.getName());
         Log.d(TAG,"Ha finalizado addFavoriteRestaurant");
