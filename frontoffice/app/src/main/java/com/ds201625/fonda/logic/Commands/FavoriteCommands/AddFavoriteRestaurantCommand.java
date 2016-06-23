@@ -52,7 +52,7 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
                     idRestaurant.getId());
 
         }catch(AddFavoriteRestaurantFondaWebApiControllerException e){
-            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
             throw  new AddFavoriteRestaurantFondaWebApiControllerException(e);
         }  catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);

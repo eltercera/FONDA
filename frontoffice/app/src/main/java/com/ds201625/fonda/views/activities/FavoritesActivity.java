@@ -255,9 +255,9 @@ public class FavoritesActivity extends BaseNavigationActivity implements
             }
             catch (DeleteFavoriteRestaurantFondaWebApiControllerException e) {
              Toast.makeText(getApplicationContext(),
-                     "Ha ocurrido un error al obtener los restaurantes del WS",
+                     "Ha ocurrido un error al conectar con el ServicioWeb",
                      Toast.LENGTH_LONG).show();
-             Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
+             Log.e(TAG, "Error en removeFavorite Proveniente del WEB SERVICE al eliminar favoritos", e);
          }
             catch (NullPointerException nu) {
                 Log.e(TAG,"Error en removeFavorite al eliminar un favorito",nu);

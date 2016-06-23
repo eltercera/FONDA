@@ -240,9 +240,9 @@ public class AllRestaurantActivity extends BaseNavigationActivity
                                 Log.d(TAG,"Se ha eliminado el favorito");
                             } catch (DeleteFavoriteRestaurantFondaWebApiControllerException e) {
                                 Toast.makeText(getApplicationContext(),
-                                        "Ha ocurrido un error al obtener los restaurantes del WS",
+                                        "Ha ocurrido un error al conectar con el ServicioWeb",
                                         Toast.LENGTH_LONG).show();
-                                Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
+                                Log.e(TAG, "Error Proveniente del WEB SERVICE al eliminar favoritos", e);
                             } catch (Exception e) {
                                 Log.e(TAG,"Error en el manejo de un favorito",e);
                                 Toast.makeText(getApplicationContext(),
@@ -261,9 +261,9 @@ public class AllRestaurantActivity extends BaseNavigationActivity
                                 Log.d(TAG,"Se ha guardado el favorito");
                             } catch (AddFavoriteRestaurantFondaWebApiControllerException e) {
                                 Toast.makeText(getApplicationContext(),
-                                        "Ha ocurrido un error al obtener los restaurantes del WS",
+                                        "Ha ocurrido un error al conectar con el ServicioWeb",
                                         Toast.LENGTH_LONG).show();
-                                Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
+                                Log.e(TAG, "Error Proveniente del WEB SERVICE al agregar favoritos", e);
                             } catch (Exception e) {
                                 Log.e(TAG,"Error en el manejo de un favorito",e);
                                 Toast.makeText(getApplicationContext(),
@@ -301,9 +301,9 @@ public class AllRestaurantActivity extends BaseNavigationActivity
             }
         }catch (FindFavoriteRestaurantFondaWebApiControllerException e) {
           Toast.makeText(getApplicationContext(),
-                  "Ha ocurrido un error al obtener los restaurantes del WS",
+                  "Ha ocurrido un error al conectar con el ServicioWeb",
                   Toast.LENGTH_LONG).show();
-          Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
+          Log.e(TAG, "Error Proveniente del WEB SERVICE al agregar favoritos", e);
       }
         catch (Exception e) {
             Log.e(TAG,"Error al determinar si es favorito",e);

@@ -73,7 +73,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Log.d(TAG,"ESTAAAAAAAASSSS EEENNN onCreateOptionsMenu");
+        Log.d(TAG,"Esta en onCreateOptionsMenu");
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.detail_restaurant, menu);
         makeReserve = menu.findItem(R.id.action_make_order);
