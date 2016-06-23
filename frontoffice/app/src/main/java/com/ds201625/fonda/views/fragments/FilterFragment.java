@@ -36,8 +36,6 @@ public class FilterFragment extends BaseFragment {
         TabLayout tabLayout = (TabLayout) layout.findViewById(R.id.tabs);
         position = tabLayout.getSelectedTabPosition();
         lvItems = (ListView)layout.findViewById(R.id.lvFilterList);
-        lvItems.setOnScrollListener((AbsListView.OnScrollListener) this);
-
         switch (position){
             case 0:
                 lvItems.setAdapter(new RestaurantAdapter(getContext()));
@@ -49,12 +47,36 @@ public class FilterFragment extends BaseFragment {
                 lvItems.setAdapter(new CategoriesAdapter(getContext()));
                 break;
         }
+        lvItems.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {}
 
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int lastInScreen = firstVisibleItem + visibleItemCount;
+                if(lastInScreen == totalItemCount){
+                    switch (position) {
+                        case 0:
+                            RestaurantAdapter actualAdapter = (RestaurantAdapter) lvItems.getAdapter();
+                            actualAdapter.update();
+                            break;
+                        case 1:
+                            ZonesAdapter actualAdapter2 = (ZonesAdapter) lvItems.getAdapter();
+                            //actualAdapter2.update();
+                            break;
+                        case 2:
+                            CategoriesAdapter actualAdapter3 = (CategoriesAdapter) lvItems.getAdapter();
+                            //actualAdapter3.update();
+                            break;
+                    }
+                }
+            }
+        });
 
         return layout;
     }
 
-    public void onScroll(final int firstVisibleItem,
+   /* public void onScroll(final int firstVisibleItem,
                          final int visibleItemCount, final int totalItemCount) {
         scrollFirstItem=lvItems.getFirstVisiblePosition();
         scrollLastItem=lvItems.getLastVisiblePosition();
@@ -75,5 +97,5 @@ public class FilterFragment extends BaseFragment {
             }
             scrollTotalItem=lvItems.getCount();
         }
-    }
+    }*/
 }
