@@ -223,6 +223,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandGetDetailInvoice.
+        /// </summary>
+        public static string ClassNameGetDetailInvoice {
+            get {
+                return ResourceManager.GetString("ClassNameGetDetailInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGetDetailOrder.
         /// </summary>
         public static string ClassNameGetDetailOrder {
@@ -390,6 +399,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string CommandExceptionCloseCashRegisterCode {
             get {
                 return ResourceManager.GetString("CommandExceptionCloseCashRegisterCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-028.
+        /// </summary>
+        public static string CommandExceptionCommandGetDetailInvoiceCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionCommandGetDetailInvoiceCode", resourceCulture);
             }
         }
         
