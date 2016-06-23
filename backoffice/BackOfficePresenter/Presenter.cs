@@ -1,4 +1,4 @@
-﻿using BackOfficeModel;
+﻿using com.ds201625.fonda.View.BackOfficeModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +6,13 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace BackOfficePresenter
+namespace com.ds201625.fonda.View.BackOfficePresenter
 {
     public class Presenter
     {
-        private IModel _view;
+        private IContract _view;
 
-        public Presenter(IModel page)
+        public Presenter(IContract page)
         {
             _view = page;
         }
@@ -28,6 +28,12 @@ namespace BackOfficePresenter
             _view.ErrorLabel.Visible = true;
             _view.ErrorLabelMessage.Text = message;
         }
+        /// <summary>
+        /// metodo que valida un string con respecto a una expresion regular
+        /// </summary>
+        /// <param name="expresionRegular">expresion regular a comparar</param>
+        /// <param name="evalua">string a evaluar</param>
+        /// <returns></returns>
         public bool validaString(string expresionRegular,string evalua)
         {
             if ((!Regex.IsMatch(evalua, expresionRegular)))
@@ -46,7 +52,7 @@ namespace BackOfficePresenter
 
         }
 
-        public void HideMessageLabel()
+        public virtual void HideMessageLabel()
         {
             _view.ErrorLabel.Visible = false;
             _view.SuccessLabel.Visible = false;

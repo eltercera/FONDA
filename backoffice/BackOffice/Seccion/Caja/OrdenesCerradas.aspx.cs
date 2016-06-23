@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using BackOfficeModel.OrderAccount;
-using BackOffice.Seccion.Restaurant;
-using FondaResources.Login;
+using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using System.Web.UI.HtmlControls;
-using BackOfficeModel;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.View.BackOfficeModel;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using BackOffice.Content;
+using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class OrdenesCerradas : System.Web.UI.Page, IClosedOrdersModel
+    public partial class OrdenesCerradas : System.Web.UI.Page, IClosedOrdersContract
     {
         #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.ClosedOrdersPresenter _presenter;
+        private ClosedOrdersPresenter _presenter;
 
         #endregion
 
@@ -26,7 +27,7 @@ namespace BackOffice.Seccion.Caja
             set { closedOrders = value; }
         }
 
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
 
@@ -34,7 +35,7 @@ namespace BackOffice.Seccion.Caja
 
         }
 
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get { return this.SuccessLabelMessage; }
 
@@ -43,9 +44,9 @@ namespace BackOffice.Seccion.Caja
 
         public string SessionRestaurant
         {
-            get { return Session[ResourceLogin.sessionRestaurantID].ToString(); }
+            get { return Session[OrderAccountResources.SessionRestaurantId].ToString(); }
 
-            set { Session[ResourceLogin.sessionRestaurantID] = value; }
+            set { Session[OrderAccountResources.SessionRestaurantId] = value; }
         }
 
         public string SessionNumberAccount
@@ -55,13 +56,13 @@ namespace BackOffice.Seccion.Caja
             set { Session[OrderAccountResources.SessionNumberAccount] = value; }
         }
 
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get { return this.SuccessLabel; }
 
         }
 
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { return this.ErrorLabel; }
 
@@ -70,7 +71,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Recurso de Session para el ID de la orden
         /// </summary>
-        string IClosedOrdersModel.Session
+        string IClosedOrdersContract.Session
         {
             get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
@@ -83,7 +84,7 @@ namespace BackOffice.Seccion.Caja
 
         public OrdenesCerradas()
         {
-            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.ClosedOrdersPresenter(this);
+            _presenter = new ClosedOrdersPresenter(this);
         }
         #endregion
 
@@ -91,12 +92,12 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            
-            if (Session["RestaurantID"] != null)
-            {   //Llama al presentador para llenar la tabla de ordenes
-                _presenter.GetClosedOrders(Session[RestaurantResource.SessionRestaurant].ToString());
-            }
+            //Llama al presentador para llenar la tabla de ordenes
+            if (Session[ResourceLogin.sessionUserID] != null &&
+                Session[OrderAccountResources.SessionRestaurantId] != null)
+                _presenter.GetClosedOrders();
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
 
 

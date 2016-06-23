@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-namespace BackOfficeModel.Restaurant
+namespace com.ds201625.fonda.View.BackOfficeModel.Restaurant
 {
-    public interface ICategoryModel : IModel
+    public interface ICategoryModel : IContract
     {
         //alertas de agregar categoria 
         HtmlGenericControl alertAddCategoryError { get; set; }

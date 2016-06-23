@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BackOfficeModel.Menu;
+using com.ds201625.fonda.View.BackOfficeModel.Menu;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.Menu
+namespace com.ds201625.fonda.View.BackOfficePresenter.Menu
 {
-    public class MenuCategoriaPresenter : BackOfficePresenter.Presenter
+    public class MenuCategoriaPresenter : Presenter
     {
         //Enlace Modelo - Vista
         private IMenuCategory _view;

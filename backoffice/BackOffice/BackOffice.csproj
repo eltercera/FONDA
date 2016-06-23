@@ -425,7 +425,7 @@
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
     <Content Include="Seccion\Menu\MenuDia.aspx" />
-    <Content Include="Seccion\Reservas\Default.aspx" />
+    <Content Include="Seccion\Reservas\ListarReservas.aspx" />
     <Content Include="Seccion\Restaurant\AgregarCategoria.aspx" />
     <Content Include="Seccion\Restaurant\Mesas.aspx" />
     <Content Include="Seccion\Restaurant\Restaurante.aspx" />
@@ -545,12 +545,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourceMenu.resx</DependentUpon>
     </Compile>
-    <Compile Include="Seccion\Reservas\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Seccion\Reservas\ListarReservas.aspx.cs">
+      <DependentUpon>ListarReservas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Seccion\Reservas\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Seccion\Reservas\ListarReservas.aspx.designer.cs">
+      <DependentUpon>ListarReservas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Restaurant\AgregarCategoria.aspx.cs">
       <DependentUpon>AgregarCategoria.aspx</DependentUpon>
@@ -644,9 +644,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BackOfficeModel\BackOfficeModel.csproj">
+    <ProjectReference Include="..\BackOfficeModel\BackOfficeContracts.csproj">
       <Project>{0C4A3E0C-4E85-46B0-A6B0-A6DC2BCE3D8B}</Project>
-      <Name>BackOfficeModel</Name>
+      <Name>BackOfficeContracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\BackOfficePresenter\BackOfficePresenter.csproj">
       <Project>{fde7b2a6-7496-4680-ab18-a336eebbe62e}</Project>

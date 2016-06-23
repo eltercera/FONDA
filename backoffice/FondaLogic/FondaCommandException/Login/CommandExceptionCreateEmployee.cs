@@ -1,5 +1,6 @@
 ﻿
-using FondaLogic.FondaCommandException.Login;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,11 @@ using System.Threading.Tasks;
 
 
 
-namespace FondaLogic.FondaCommandException.Login
+namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login
 {
+    /// <summary>
+    /// excepcion creada en caso de que falle un save de un empleado
+    /// </summary>
     public class CommandExceptionCreateEmployee : FondaLogicException
     {
 

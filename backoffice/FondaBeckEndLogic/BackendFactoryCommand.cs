@@ -4,6 +4,8 @@ using com.ds201625.fonda.BackEndLogic.ProfileManagement;
 using com.ds201625.fonda.BackEndLogic.TokenManagement;
 using com.ds201625.fonda.BackEndLogic.CommensalManagement;
 using com.ds201625.fonda.BackEndLogic.ActionFiltersManagement;
+using com.ds201625.fonda.BackEndLogic.ReservationManagement;
+using com.ds201625.fonda.BackEndLogic.ReservationManager;
 
 namespace com.ds201625.fonda.BackEndLogic
 {
@@ -176,7 +178,26 @@ namespace com.ds201625.fonda.BackEndLogic
         {
             return new CreateCommensalCommand();
         }
-	}
+
+        /// <summary>
+        /// Obtiene un GetFavoriteRestaurantCommand.
+        /// </summary>
+        /// <returns>Comando GetFavoriteRestaurantCommand().</returns>
+        public ICommand GetCommensalReservationsCommand()
+        {
+            return new GetCommensalReservationsCommand();
+        }
+
+
+        /// <summary>
+        /// Obtiene un CreateCommensalReservationCommand.
+        /// </summary>
+        /// <returns>Comando CreateCommensalReservationCommand()</returns>
+        public ICommand GetCreateCommensalReservationCommand()
+        {
+            return new CreateCommensalReservationCommand();
+        }
+    }
 	
 }
 

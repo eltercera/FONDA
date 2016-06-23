@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BackOfficeModel.Login;
+using com.ds201625.fonda.View.BackOfficeModel.Login;
 using System.Web.UI.HtmlControls;
-using FondaResources.Login;
-using BackOfficePresenter.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
+using com.ds201625.fonda.View.BackOfficePresenter.Login;
+using com.ds201625.fonda.View.BackOfficeModel;
 using BackOffice.Content;
 
 namespace BackOffice.Seccion.Configuracion
@@ -16,10 +17,10 @@ namespace BackOffice.Seccion.Configuracion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Llama al presentador para llenar la tabla de ordenes
+            
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-
+                //Llama al presentador para llenar datos del empleado
                 detailModifyPresenter.cargarUserDetail();
             }
             else
@@ -337,16 +338,30 @@ namespace BackOffice.Seccion.Configuracion
             detailModifyPresenter = new DetailModifyPresenter(this);
         }
         #endregion
-
+        /// <summary>
+        /// metodo que llama a void en el presentador para modificar usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Modify_Click1(object sender, EventArgs e)
         {
+            //se cargan datos del usuario en el modal
             detailModifyPresenter.cargarUser();
-            ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
+            //NOTA PROFESOR MAGURNO : INTENTAMOS BAJAR EL MODAL DESDE EL PRESENTADOR
+            // NO HAYAMOS LA MANERA DE BAJARLO, ESTA DIFICIL ESO
+            ClientScript.RegisterStartupScript(GetType(), "mostrarModal", 
+            "$('#modalAddModify').modal('show');", true);
 
         }
+        /// <summary>
+        /// metodo que valida y modifica al usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Modify_Click2(object sender, EventArgs e)
         { 
-            
+            // se valida los campos que se estan intentando ingresar en el sistema
+            //si son validos se modifica , si no se baja modal con mensajes de errores
             bool result = detailModifyPresenter.Modify_Click();
             if (result)
             {
@@ -354,7 +369,8 @@ namespace BackOffice.Seccion.Configuracion
             }
             else
             {
-                ClientScript.RegisterStartupScript(GetType(), "mostrarModal", "$('#modalAddModify').modal('show');", true);
+                ClientScript.RegisterStartupScript(GetType(), "mostrarModal", 
+                "$('#modalAddModify').modal('show');", true);
             }
         }
 

@@ -4,7 +4,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO.Session
 {
-    class HibernateCanceledInvoiceStatus :
+    public class HibernateCanceledInvoiceStatus :
             HibernateStatusDAO<CanceledInvoiceStatus>, ICanceledInvoiceStatusDAO
     {
 

@@ -1,40 +1,32 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandTotalOrder :Command
     {
-        int _accountId, _restaurantId;
-        float total;
-        Account _account;
-        Restaurant _restaurant;
-        IList<int> _list;
-        IRestaurantDAO _restaurantDao;
-        IOrderAccountDao _accountDao;
-        FactoryDAO _facDAO = FactoryDAO.Intance;
-        public CommandTotalOrder(Object receiver) : base(receiver)
-        {
-            try
-            {
-                _list = (IList<int>)receiver;
-            }
-            catch (Exception)
-            {
-                //TODO: Enviar excepcion personalizada
-                throw;
-            }
-        }
+        private int _accountId, _restaurantId;
+        private float total;
+        private Account _account;
+        private Restaurant _restaurant;
+        private IList<int> _list;
+        private IRestaurantDAO _restaurantDao;
+        private IOrderAccountDao _accountDao;
+        private FactoryDAO _facDAO = FactoryDAO.Intance;
+
+        public CommandTotalOrder(Object receiver) : base(receiver) { }
 
         public override void Execute()
         {
             try
             {
+                _list = (IList<int>)Receiver;
                 _restaurantDao = _facDAO.GetRestaurantDAO();
                 _restaurantId = _list[0];
                 _accountId = _list[1];
@@ -48,6 +40,7 @@ namespace FondaLogic.Commands.OrderAccount
                     }
                 }
                 total =_account.GetAmount();
+                total = total + (total*0.12f);
                 if (total == 0)
                     throw new NullReferenceException();
                 Receiver = total;
@@ -55,17 +48,36 @@ namespace FondaLogic.Commands.OrderAccount
             catch (NullReferenceException ex)
             {
                 CommandExceptionTotalOrder exception = new CommandExceptionTotalOrder(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameTotalOrder,
+                    OrderAccountResources.CommandExceptionTotalOrderCode,
+                    OrderAccountResources.ClassNameTotalOrder,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionTotalOrder,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 total = 0;
                 Receiver = total;
             }
+            catch (Exception ex)
+            {
+                CommandExceptionTotalOrder exception = new CommandExceptionTotalOrder(
+                    OrderAccountResources.CommandExceptionTotalOrderCode,
+                    OrderAccountResources.ClassNameTotalOrder,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionTotalOrder,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                throw exception;
+                total = 0;
+                Receiver = total;
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameTotalOrder
+                , OrderAccountResources.SuccessMessageCommandTotalOrder
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
 
         }
     }

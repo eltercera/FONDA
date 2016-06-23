@@ -1,11 +1,15 @@
-﻿using System;
+﻿using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.FondaCommandException.Login
+namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login
 {
+    /// <summary>
+    /// excepcion de tipo RequieredParameterNotFoundException
+    /// </summary>
     class RequieredParameterNotFoundException : FondaLogicException
     {
         private RequieredParameterNotFoundException(string message) : base(message)

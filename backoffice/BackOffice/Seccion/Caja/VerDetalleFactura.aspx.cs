@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using BackOfficeModel.OrderAccount;
-using FondaResources.OrderAccount;
-using FondaResources.Login;
+using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using System.Web.UI.HtmlControls;
-using BackOfficeModel;
+using com.ds201625.fonda.View.BackOfficeModel;
+using BackOffice.Content;
+using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class VerDetalleFactura : System.Web.UI.Page, IInvoiceDetailModel
+    public partial class VerDetalleFactura : System.Web.UI.Page, IDetailInvoiceContract
     { 
        #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.InvoiceDetailPresenter _presenter;
+        private DetailInvoicePresenter _presenter;
 
         #endregion
 
@@ -45,7 +47,12 @@ namespace BackOffice.Seccion.Caja
 
             set { ssn = value; }
         }
+        public System.Web.UI.WebControls.Label NumberAccount
+        {
+            get { return accountNumber; }
 
+            set { accountNumber = value; }
+        }
         public System.Web.UI.WebControls.Label IvaInvoice
         {
             get { return iva; }
@@ -59,6 +66,18 @@ namespace BackOffice.Seccion.Caja
 
             set { total = value; }
         }
+        public System.Web.UI.WebControls.Label SubTotalInvoice
+        {
+            get { return subtotal; }
+
+            set { subtotal = value; }
+        }
+        public System.Web.UI.WebControls.Label TipInvoice
+        {
+            get { return propina; }
+
+            set { propina = value; }
+        }
 
         public System.Web.UI.WebControls.Label DateInvoice
         {
@@ -67,13 +86,13 @@ namespace BackOffice.Seccion.Caja
             set { date = value; }
         }
 
-        public System.Web.UI.WebControls.LinkButton PrintInvoice
+        public System.Web.UI.WebControls.Button PrintInvoice
         {
-            get { return print; }
+            get { return invoicePrint; }
 
-            set { print = value; }
+            set { invoicePrint = value; }
         }
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
 
@@ -81,7 +100,7 @@ namespace BackOffice.Seccion.Caja
 
         }
 
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get { return this.SuccessLabelMessage; }
 
@@ -91,13 +110,13 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Recurso de Session con el que inicia el Page_Load
         /// </summary>
-        string IInvoiceDetailModel.Session
+        string IDetailInvoiceContract.Session
         {
             get { return Session[OrderAccountResources.SessionIdInvoice].ToString(); }
 
             set { Session[OrderAccountResources.SessionIdInvoice] = value; }
         }
-        string IInvoiceDetailModel.SessionIdAccount
+        string IDetailInvoiceContract.SessionIdAccount
         {
             get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
@@ -124,17 +143,16 @@ namespace BackOffice.Seccion.Caja
 
             set { Session[OrderAccountResources.SessionNumberInvoice] = value; }
         }
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { return this.ErrorLabel; }
         }
 
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get { return this.SuccessLabel; }
 
         }
-
 
 
         #endregion
@@ -143,13 +161,22 @@ namespace BackOffice.Seccion.Caja
 
         public VerDetalleFactura()
         {
-            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.InvoiceDetailPresenter(this);
+            _presenter = new DetailInvoicePresenter(this);
         }
         #endregion
-
+        protected void print_Click(object sender, EventArgs e)
+        {
+            _presenter.PrintInvoice();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            _presenter.GetDetailOrder();
+            if (Session[ResourceLogin.sessionUserID] != null &&
+                Session[ResourceLogin.sessionRestaurantID] != null)
+                _presenter.GetDetailInvoice();
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
+
+
         }
     }
 }

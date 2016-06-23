@@ -1,32 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using BackOfficeModel;
-using BackOfficeModel.OrderAccount;
-using FondaLogic;
-using FondaLogic.Factory;
+using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Domain;
-using BackOfficePresenter.FondaMVPException;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
 using System.Web.UI.WebControls;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System.Web;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException.OrderAccount;
+using System.Web.Security.AntiXss;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
-    public class OrderInvoicesPresenter : BackOfficePresenter.Presenter
+    public class OrderInvoicesPresenter : Presenter
     {
         //Enlace Modelo - Vista
-        private IOrderInvoicesModel _view;
+        private IOrderInvoicesContract _view;
         private int totalColumns = 4;
+        private int _restaurantId;
+        private IList<Invoice> listInvoice;
+        private Account _account;
 
         ///<summary>
         ///Constructor
         /// </summary>
         /// <param name="viewOrderInvoices">Interfaz</param>
-        public OrderInvoicesPresenter(IOrderInvoicesModel viewOrderInvoices) 
+        public OrderInvoicesPresenter(IOrderInvoicesContract viewOrderInvoices) 
             : base(viewOrderInvoices)
         {
             //Enlace Modelo - Vista
@@ -40,48 +42,121 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         {
             int result;
             //Define objeto a recibir
-            IList<Invoice> listInvoice;
+            IList<Account> listClosedAccount;
             //Invoca a comando del tipo deseado
             Command commandGetInvoicesByAccount;
+            Command commandGetInvoicesByRestaurant;
+            Command commandGetClosedOrderAccount;
+            Command commandGetOrder;
 
             try
             {
                 result = GetQueryParameter();
+                _restaurantId = int.Parse(_view.SessionRestaurant);
+                commandGetClosedOrderAccount = CommandFactory.GetCommandClosedOrders(_restaurantId);
+                commandGetClosedOrderAccount.Execute();
+                listClosedAccount = (IList<Account>)commandGetClosedOrderAccount.Receiver;
 
-                //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByAccount(result);
-                _view.Session = result.ToString();
 
-                //Ejecuta el comando deseado
-                commandGetInvoicesByAccount.Execute();
+                if (result <= listClosedAccount.Count && result != 0)
+                {
+                    //Obtiene la instancia del comando enviado el restaurante como parametro
+                    commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByAccount(result);
+                    commandGetOrder = CommandFactory.GetCommandGetOrder(result);
+                    _view.SessionAccountId = result.ToString();
+                    //Ejecuta el comando deseado
+                    commandGetInvoicesByAccount.Execute();
+                    commandGetOrder.Execute();
+                    //Se obtiene el resultado de la operacion
+                    listInvoice = (IList<Invoice>)commandGetInvoicesByAccount.Receiver;
+                    _account = (Account)commandGetOrder.Receiver;
+                    //Habilita el Label del Numero de la Orden
+                    _view.NumberAccount.Visible = true;
+                    _view.NumberAccount.Text = "# Orden: " + _account.Number.ToString();
 
-                //Se obtiene el resultado de la operacion
-                listInvoice = (IList<Invoice>)commandGetInvoicesByAccount.Receiver;
+                }
+
+                else if (result == 0)
+                {
+                    int restaurantId = int.Parse(_view.SessionRestaurant);
+                    //Obtiene la instancia del comando enviado el restaurante como parametro
+                    commandGetInvoicesByRestaurant = CommandFactory.GetCommandFindInvoicesByRestaurant(restaurantId);
+                   //Ejecuta el comando deseado
+                    commandGetInvoicesByRestaurant.Execute();
+                    //Se obtiene el resultado de la operacion
+                    listInvoice = (IList<Invoice>)commandGetInvoicesByRestaurant.Receiver;
+                }
 
 
                 //Revisa si la lista no esta vacia
-                if (listInvoice != null)
-                {
-                    //Llama al metodo para el llenado de la tabla
+                //Llama al metodo para el llenado de la tabla
+                if (listInvoice != null) 
                     FillTable(listInvoice);
-                }
+                else
+                    throw new Exception();
+
             }
             catch (MVPExceptionOrderInvoicesTable ex)
             {
-                //Revisar
                 MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
                     (
-                        Errors.MVPExceptionOrderInvoicesTableCode,
-                        Errors.ClassNameOrderInvoicesPresenter,
+                        OrderAccountResources.MVPExceptionOrderInvoicesTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionOrderInvoicesTable,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                throw e;
+                ErrorLabel(e.MessageException);
+            }
+            catch (FormatException ex)
+            {
+                MVPExceptionQuery e = new MVPExceptionQuery
+                    (
+                        OrderAccountResources.MVPExceptionQueryCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionQuery,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                FillTable(new List<Invoice>());
+                ErrorLabel(e.MessageException);
+            }
+            catch (HttpRequestValidationException ex)
+            {
+                MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
+                    (
+                        OrderAccountResources.MVPExceptionOrderInvoicesTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allInvoicesURL);
+            }
+            catch (Exception ex)
+            {
+                MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
+                    (
+                        OrderAccountResources.MVPExceptionOrderInvoicesTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                FillTable(new List<Invoice>());
                 ErrorLabel(e.MessageException);
             }
 
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameOrderInvoicesPresenter
+                                    , OrderAccountResources.SuccessMessageOrderInvoicesPresenter
+                                    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                                    );
         }
 
 
@@ -112,7 +187,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 //Le asigna el Id a cada fila de la tabla
                 tRow.Attributes[OrderAccountResources.dataId] =
                     data[i].Id.ToString();
-                _view.Session = dataId.ToString();
+
                 //Agrega la fila a la tabla existente
                 _view.OrderInvoicesTable.Rows.Add(tRow);
                 for (int j = 0; j <= totalColumns; j++)
@@ -211,12 +286,10 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         {
             int result = 0;
             string queryParameter =
-                HttpContext.Current.Request.QueryString["Id"];
+                HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
 
-            if (queryParameter != null && queryParameter != string.Empty)
-            {
-                return int.Parse(queryParameter);
-            }
+                if (AntiXssEncoder.HtmlEncode(queryParameter, false) != null)
+                    return int.Parse(queryParameter);
 
             return result;
         }

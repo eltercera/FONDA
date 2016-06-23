@@ -5,6 +5,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System.Collections.Generic;
 using com.ds201625.fonda.Factory;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace FondaDataAccessTest
 {
@@ -12,6 +13,7 @@ namespace FondaDataAccessTest
     [TestFixture()]
     public class BODishOrderTest
     {
+        #region field
         private int accountId, _number;
         private IList<DishOrder> _listDishOrder;
         private Account _account;
@@ -20,7 +22,9 @@ namespace FondaDataAccessTest
         private DishOrder _dishOrder;
         private FactoryDAO _facDAO;
         private IDishOrderDAO _dishOrderDAO;
+        #endregion
 
+        #region Setup
         [SetUp]
         public void Init()
         {
@@ -39,8 +43,10 @@ namespace FondaDataAccessTest
 
 
         }
+        #endregion
 
-        [Test]
+        #region Pruebas de DataAccess/HibernateOrderAccount/FindAccountsByRestaurant
+        [Test(Description = "Busca los platillos de una orden")]
         public void DishOrderTest()
         {
 
@@ -48,5 +54,14 @@ namespace FondaDataAccessTest
             Assert.IsNotNull(_listDishOrder);
         }
 
+        [Test(Description = "Prueba  la excepcion al buscar los platillos de una orden")]
+        [ExpectedException(typeof(GetDishesByAccountFondaDAOException))]
+        public void DishOrderExceptionTest()
+        {
+
+            _listDishOrder = _dishOrderDAO.GetDishesByAccount(0);
+            Assert.IsNotNull(_listDishOrder);
+        }
+        #endregion
     }
 }

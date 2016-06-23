@@ -1,35 +1,26 @@
 ﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.FondaCommandException.OrderAccount;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandGetDishOrdersByAccountId : Command
     {
         private FactoryDAO _facDAO = FactoryDAO.Intance;
         private int _orderAccount = 0;
 
-        public CommandGetDishOrdersByAccountId(Object receiver) : base(receiver)
-        {
-            try
-            {
-                _orderAccount = (int)receiver;
-            }
-            catch (Exception)
-            {
-                //TODO: Enviar excepcion personalizada
-                throw;
-            }
-        }
+        public CommandGetDishOrdersByAccountId(Object receiver) : base(receiver) { }
         public override void Execute()
         {
             try
             {
+                _orderAccount = (int)Receiver;
                 //Defino el DAO
                 IDishOrderDAO _dishOrderDAO;
                 //Obtengo la instancia del DAO a utilizar
@@ -41,20 +32,43 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
-                CommandExceptionGetDishOrdersByAccount exceptionGetOrders = new CommandExceptionGetDishOrdersByAccount(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameGetDishOrdersByAccount,
+                CommandExceptionGetDishOrdersByAccount exception = new CommandExceptionGetDishOrdersByAccount(
+                    OrderAccountResources.CommandExceptionGetDishOrdersByAccountCode,
+                    OrderAccountResources.ClassNameGetDishOrdersByAccount,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionGetDishOrdersByAccount,
                     ex);
 
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrders);
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
 
                 IList<DishOrder>  listDetailOrder = new List<DishOrder>();
                 Receiver = listDetailOrder;
 
+                throw exception;
+
             }
+            catch (Exception ex)
+            {
+                CommandExceptionGetDishOrdersByAccount exception = new CommandExceptionGetDishOrdersByAccount(
+                    OrderAccountResources.CommandExceptionGetDishOrdersByAccountCode,
+                    OrderAccountResources.ClassNameGetDishOrdersByAccount,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionGetDishOrdersByAccount,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                IList<DishOrder> listDetailOrder = new List<DishOrder>();
+                Receiver = listDetailOrder;
+
+                throw exception;
+
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameGetDishOrdersByAccount
+                , OrderAccountResources.SuccessMessageCommandGetDishOrdersByAccount
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
         }
     }
 

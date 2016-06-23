@@ -100,7 +100,7 @@
                 <div class="col-lg-3 col-md-8 col-sm-8 col-xs-8">
                         <div class="form-group">
                             <label class="control-label">Cédula</label>
-                            <asp:TextBox ID="nss2" CssClass="form-control" placeholder="Ej. 19245998" MaxLength="9" runat="server"/><span style="color:#FF6633" class="form-control-feedback">*</span>
+                            <asp:TextBox ID="nss2" CssClass="form-control" placeholder="Ej. 19245998" MaxLength="9" runat="server"/><span style="color:#FF6633" class="form-control-feedback" disabled>*</span>
                             <div id="menssageSsn" style="color:#FF9999" runat="server" ></div>
                             <div id="messageDni" style="color:#FF9999" runat="server" ></div>
                         </div>

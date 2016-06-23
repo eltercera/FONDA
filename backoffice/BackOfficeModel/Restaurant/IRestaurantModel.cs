@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-namespace BackOfficeModel.Restaurant
+namespace com.ds201625.fonda.View.BackOfficeModel.Restaurant
 {
-    public interface IRestaurantModel : IModel
+    public interface IRestaurantModel : IContract
     {
         Table restaurantTable { get; set; }
         HiddenField RestaurantModifyById { get; set; }

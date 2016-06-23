@@ -18,10 +18,10 @@ namespace com.ds201625.fonda.Domain
 
         public virtual ReservationStatus Change()
         {
-            if (Equals(ActiveReservationStatus.Instance))
+            if (Equals(ReservedReservationStatus.Instance))
                 return CanceledReservationStatus.Instance;
 
-            return ActiveReservationStatus.Instance;
+            return ReservedReservationStatus.Instance;
 
 
         }

@@ -1,12 +1,15 @@
-﻿using FondaLogic.FondaCommandException.Login;
+﻿using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.FondaCommandException.login
+namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.login
 {
+    /// <summary>
+    /// excepcion que se crea en caso de que se falle una consulta de un empleado
+    /// </summary>
     public class CommandExceptionGetEmployee : FondaLogicException
     {
 

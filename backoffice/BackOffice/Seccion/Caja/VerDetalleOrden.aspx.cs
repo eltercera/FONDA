@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using BackOfficeModel.OrderAccount;
-using FondaResources.OrderAccount;
-using FondaResources.Login;
+using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using System.Web.UI.HtmlControls;
-using BackOfficeModel;
+using com.ds201625.fonda.View.BackOfficeModel;
+using BackOffice.Content;
+using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class VerDetalleOrden : System.Web.UI.Page, IDetailOrderModel
+    public partial class VerDetalleOrden : System.Web.UI.Page, IDetailOrderContract
     {
         #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.DetailOrderPresenter _presenter;
+        private DetailOrderPresenter _presenter;
 
         #endregion
 
@@ -25,7 +27,7 @@ namespace BackOffice.Seccion.Caja
             set { orderDetail = value; }
         }
 
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
 
@@ -33,7 +35,7 @@ namespace BackOffice.Seccion.Caja
 
         }
 
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get { return this.SuccessLabelMessage; }
 
@@ -43,7 +45,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Recurso de Session con el que inicia el Page_Load
         /// </summary>
-        string IDetailOrderModel.Session
+        string IDetailOrderContract.Session
         {
             get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
@@ -63,12 +65,12 @@ namespace BackOffice.Seccion.Caja
 
             set { Session[OrderAccountResources.SessionNumberAccount] = value; }
         }
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { return this.ErrorLabel; }
         }
 
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get { return this.SuccessLabel; }
 
@@ -82,7 +84,7 @@ namespace BackOffice.Seccion.Caja
 
         public VerDetalleOrden()
         {
-            _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.DetailOrderPresenter(this);
+            _presenter = new DetailOrderPresenter(this);
         }
         #endregion
 
@@ -90,10 +92,11 @@ namespace BackOffice.Seccion.Caja
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["AccountID"] != null)
-            //{   //Llama al presentador para llenar la tabla de ordenes
+            if (Session[ResourceLogin.sessionUserID] != null &&
+                Session[ResourceLogin.sessionRestaurantID] != null)
                 _presenter.GetDetailOrder();
-            //}
+            else
+                Response.Redirect(RecursoMaster.addressLogin);
         }
 
 

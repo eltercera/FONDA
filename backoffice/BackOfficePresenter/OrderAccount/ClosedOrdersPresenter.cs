@@ -1,30 +1,29 @@
-﻿using BackOfficeModel.OrderAccount;
-using BackOfficePresenter.FondaMVPException;
+﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
 using com.ds201625.fonda.Domain;
-using FondaLogic;
-using FondaLogic.Factory;
-using FondaLogic.Log;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Web.UI.WebControls;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
-    public class ClosedOrdersPresenter : BackOfficePresenter.Presenter
+    public class ClosedOrdersPresenter : Presenter
     {
         //Enlace Modelo - Vista
-        private IClosedOrdersModel _view;
-        int totalColumns = 2;
-        Account _account;
+        private IClosedOrdersContract _view;
+        private int totalColumns = 2;
 
 
         ///<summary>
         ///Constructor
         /// </summary>
         /// <param name="viewClosedOrders">Interfaz</param>
-        public ClosedOrdersPresenter(IClosedOrdersModel viewClosedOrders)
+        public ClosedOrdersPresenter(IClosedOrdersContract viewClosedOrders)
             : base(viewClosedOrders)
         {
             //Enlace Modelo - Vista
@@ -34,7 +33,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         ///<summary>
         ///Metodo para llenar la tabla de Ordenes Cerradas
         /// </summary>
-        public void GetClosedOrders(string restaurantId)
+        public void GetClosedOrders()
         {
             int result = 0;
             //Define objeto a recibir
@@ -58,27 +57,47 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
 
 
                 //Revisa si la lista no esta vacia
+                //Llama al metodo para el llenado de la tabla
                 if (listAccount != null)
-                {
-                    //Llama al metodo para el llenado de la tabla
                     FillTable(listAccount);
-                }
+                else
+                    throw new Exception();
+
             }
             catch (MVPExceptionClosedOrdersTable ex)
             {
                 //Revisar
                 MVPExceptionClosedOrdersTable e = new MVPExceptionClosedOrdersTable
                     (
-                        Errors.MVPExceptionClosedOrdersTableCode,
-                        Errors.ClassNameClosedOrdersPresenter,
+                        OrderAccountResources.MVPExceptionClosedOrdersTableCode,
+                        OrderAccountResources.ClassNameClosedOrdersPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionClosedOrdersTable,
+                        OrderAccountResources.MessageMVPExceptionClosedOrdersTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName,e);
-                throw e;
+                FillTable(new List<Account>());
                 ErrorLabel(e.MessageException);
             }
+            catch(Exception ex)
+            {
+                MVPExceptionClosedOrdersTable e = new MVPExceptionClosedOrdersTable
+                    (
+                        OrderAccountResources.MVPExceptionClosedOrdersTableCode,
+                        OrderAccountResources.ClassNameClosedOrdersPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionClosedOrdersTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                FillTable(new List<Account>());
+                ErrorLabel(e.MessageException);
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameClosedOrdersPresenter
+                                    ,OrderAccountResources.MessageGetClosedOrders
+                                    ,System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                                    );
         }
 
         private void FillTable(IList<Account> data)

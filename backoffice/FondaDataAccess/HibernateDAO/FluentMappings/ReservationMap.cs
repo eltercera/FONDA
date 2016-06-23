@@ -13,11 +13,15 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Not.Nullable()
               .GeneratedBy.Increment();
 
-            Map(x => x.ReserveDate)
+            Map(x => x.Number)
+              .Column("res_number")
+              .Not.Nullable();
+
+            Map(x => x.ReservationDate)
               .Column("res_date")
               .Not.Nullable();
 
-            Map(x => x.CreateDate)
+            Map(x => x.CreationDate)
               .Column("res_createDate")
               .Not.Nullable();
 
@@ -25,15 +29,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .Column("res_commensalNumber")
               .Not.Nullable();
 
-            References(x => x.ReserveRestaurant)
-              .Column("fk_res_restaurant");
-            //.Not.Nullable();
-
-            References(x => x.ReserveTable)
-              .Column("fk_res_table");
-            //  .Not.Nullable();
-
-            References(x => x.ReserveStatus)
+            References(x => x.Status)
                 .Column("fk_res_status")
                 .Not.Nullable()
                 .Cascade.Persist();

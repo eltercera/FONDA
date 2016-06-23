@@ -1,11 +1,12 @@
+
 package com.ds201625.fonda.logic.Commands.ProfileCommands;
 
 import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.PostProfileFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.ProfileService;
-import com.ds201625.fonda.domains.Token;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
 import com.ds201625.fonda.domains.Profile;
@@ -32,7 +33,7 @@ public class CreateProfileCommand extends BaseCommand {
     }
 
     @Override
-    protected void invoke() {
+    protected void invoke() throws PostProfileFondaWebApiControllerException {
 
         Log.d(TAG, "Comando para agregar un perfil a un commensal");
         Profile profile;
@@ -43,20 +44,19 @@ public class CreateProfileCommand extends BaseCommand {
         {
             profile = (Profile) getParameter(0);
             profileService.addProfile(profile);
-        }
-        catch (RestClientException e)
-        {
+        }catch(PostProfileFondaWebApiControllerException e){
             Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
-            e.printStackTrace();
+            throw  new PostProfileFondaWebApiControllerException(e);
         }
-        catch (NullPointerException e) {
+        catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
-            e.printStackTrace();
-        }
-        catch (Exception e)
-        {
+            throw  new PostProfileFondaWebApiControllerException(e);
+        } catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
-            e.printStackTrace();
+            throw  new PostProfileFondaWebApiControllerException(e);
+        } catch (Exception e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil");
+            throw  new PostProfileFondaWebApiControllerException(e);
         }
 
         setResult(true);

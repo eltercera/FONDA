@@ -1,21 +1,23 @@
-﻿using BackOfficeModel.OrderAccount;
-using BackOfficePresenter.FondaMVPException;
+﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException.OrderAccount;
 using com.ds201625.fonda.Domain;
-using FondaLogic;
-using FondaLogic.Factory;
-using FondaLogic.Log;
-using FondaResources.OrderAccount;
+using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Web;
+using System.Web.Security.AntiXss;
 using System.Web.UI.WebControls;
 
-namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
+namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
-    public class DetailOrderPresenter : BackOfficePresenter.Presenter
+    public class DetailOrderPresenter : Presenter
     {
         //Enlace Modelo - Vista
-        private IDetailOrderModel _view;
+        private IDetailOrderContract _view;
         int totalColumns = 3;
         string currency;
 
@@ -25,7 +27,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         /// </summary>
         /// <param name="viewDetailOrder">Interfaz</param>
 
-        public DetailOrderPresenter(IDetailOrderModel viewDetailOrder)
+        public DetailOrderPresenter(IDetailOrderContract viewDetailOrder)
             : base(viewDetailOrder)
         {
             //Enlace Modelo - Vista
@@ -37,6 +39,7 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         /// </summary>
         public void GetDetailOrder()
         {
+
             //Define objeto a recibir
             IList<DishOrder> listDishOrder;
             Account order;
@@ -68,7 +71,15 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
                 listDishOrder = (IList<DishOrder>)result[0];
                 order = (Account)result[1];
                 currency = (string)result[2];
-              
+
+                //Variables de sesion, no deberian estar vacias
+                //El metodo getqueryparam url tiene una falla, deberia ser transparente para el usuario el id de la orden
+                //Deberia mostrarse es el number de la account y junto con el restaurante devolver la orden correspondiente
+                //Igual pasa con factura
+                //Esto implica cambiar el metodo que te devuelve la factura
+                _view.SessionNumberAccount = order.Number.ToString();
+
+
                 //Revisa si la lista no esta vacia
                 if (listDishOrder != null)
                 {
@@ -78,19 +89,66 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
             }
             catch (MVPExceptionDetailOrderTable ex)
             {
-                //Revisar
                 MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
                     (
-                        Errors.MVPExceptionDetailOrderTableCode,
-                        Errors.ClassNameDetailOrderPresenter,
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameDetailOrderPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        Errors.MessageMVPExceptionDetailOrderTable,
+                        OrderAccountResources.MessageMVPExceptionDetailOrderTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                throw e;
                 ErrorLabel(e.MessageException);
             }
+            catch (FormatException ex)
+            {
+                MVPExceptionQuery e = new MVPExceptionQuery
+                    (
+                        OrderAccountResources.MVPExceptionQueryCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionQuery,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allOrdersURL);
+            }
+            catch (HttpRequestValidationException ex)
+            {
+                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+                    (
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allOrdersURL);
+            }
+            catch (Exception ex)
+            {
+                MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
+                    (
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                //Cambiar URL
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allOrdersURL);
+                ErrorLabel(e.MessageException);
+            }
+
+
+            Logger.WriteSuccessLog(OrderAccountResources.MVPExceptionDetailOrderTableCode
+                                    , OrderAccountResources.SuccessMessageDetailOrderPresenter
+                                    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                                    );
         }
 
         private void FillTable(IList<DishOrder> data)
@@ -186,18 +244,17 @@ namespace com.ds201625.fonda.BackOffice.Presenter.OrderAccount
         private int GetQueryParameter()
         {
             int result = 0;
-            string queryParameter = 
-                HttpContext.Current.Request.QueryString["Id"];
+            string queryParameter =
+                HttpContext.Current.Request.QueryString[OrderAccountResources.QueryParam];
 
-
-            if(queryParameter != null && queryParameter != string.Empty)
-            {
+            if (AntiXssEncoder.HtmlEncode(queryParameter, false) != null)
                 return int.Parse(queryParameter);
-            }
 
             return result;
         }
 
 
+
     }
 }
+

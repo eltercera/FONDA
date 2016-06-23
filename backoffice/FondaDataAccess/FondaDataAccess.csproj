@@ -43,6 +43,10 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
@@ -62,7 +66,13 @@
     <Compile Include="Exceptions\CastException.cs" />
     <Compile Include="Exceptions\ClearTableEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\DeleteEntityFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\CancelInvoiceFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\ChangeStatusAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\CloseCashRegisterFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\ClosedOrdersByRestaurantFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\FindAccountByRestaurantFondaDAOException.cs" />
     <Compile Include="Exceptions\FindAllFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\FindAllInvoiceFondaDAOException.cs" />
     <Compile Include="Exceptions\FindByEmailUserAccountFondaDAOException.cs" />
     <Compile Include="Exceptions\FindByFondaDAOException.cs" />
     <Compile Include="Exceptions\FindByIdFondaDAOException.cs" />
@@ -74,10 +84,18 @@
     <Compile Include="Exceptions\LoadDataTableEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\LoadTabletEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\MofifyEmployeeFondaBackOfficeException.cs" />
+    <Compile Include="Exceptions\OrderAccount\FindGenerateInvoiceByAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\FindInvoicesByAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\GenerateNumberAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\GetDishesByAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\OpenOrdersByRestaurantIdFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\SaveInvoiceFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\FindInvoicesByRestaurantFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\GenerateNumberInvoiceFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\ReleaseTableFondaDAOException.cs" />
     <Compile Include="Exceptions\ValidationEmailEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\ValidationSsnEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\ValidationUsernameEmployeeFondaBackOfficeException.cs" />
-    <Compile Include="HibernateDAO\FluentMappings\ActiveReservationStatusMap.cs" />
     <Compile Include="FactoryDAO\FactoryDAO.cs" />
     <Compile Include="FondaDAOExceptions\FondaIndexException.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CanceledInvoiceStatus.cs" />
@@ -90,8 +108,7 @@
     <Compile Include="HibernateDAO\FluentMappings\PaymentMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\ReservationMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\ReservationStatusMap.cs" />
-    <Compile Include="HibernateDAO\FluentMappings\UsedReservationStatusMap.cs" />
-    <Compile Include="HibernateDAO\HibernateActiveReservationStatusDAO.cs" />
+    <Compile Include="HibernateDAO\HibernateReservedReservationStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateBusyTableStatus.cs" />
     <Compile Include="HibernateDAO\HibernateCanceledReservationStatusDAO.cs" />
     <Compile Include="HibernateDAO\HibernateCashPaymentDAO.cs" />
@@ -137,8 +154,7 @@
     <Compile Include="InterfaceDAO\IBusyTableStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICanceledInvoiceStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IDisableSimpleStatusDAO.cs" />
-    <Compile Include="HibernateDAO\HibernateUsedReservationStatus.cs" />
-    <Compile Include="InterfaceDAO\IActiveReservationStatusDAO.cs" />
+    <Compile Include="InterfaceDAO\IReservedReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICanceledReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\ICashPaymentDAO.cs" />
     <Compile Include="InterfaceDAO\IClosedAccountStatusDAO.cs" />
@@ -167,8 +183,8 @@
     <Compile Include="InterfaceDAO\IRestaurantDAO.cs" />
     <Compile Include="InterfaceDAO\IScheduleDAO.cs" />
     <Compile Include="InterfaceDAO\ITableDAO.cs" />
-    <Compile Include="InterfaceDAO\IUsedReservationStatusDAO.cs" />
     <Compile Include="InterfaceDAO\IZoneDAO.cs" />
+    <Compile Include="Log\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InterfaceDAO\IBaseEntityDAO.cs" />
     <Compile Include="InterfaceDAO\INounBaseEntityDAO.cs" />

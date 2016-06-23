@@ -1,4 +1,4 @@
-﻿using FondaLogic.Commands.OrderAccount;
+﻿using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -11,19 +11,21 @@ namespace com.ds201625.fonda.Tests.DataAccess
     [TestFixture]
     public class BOValidationsTest
     {
+        #region fields
         CommandGetOrders compareCommand;
         Object parameter;
         Object compare;
         bool result;
-
+#endregion
+        #region SetUp
         [SetUp]
         public void Init()
         {
             parameter = 1;
             compare = 1;
         }
-
-        [Test]
+        #endregion
+        [Test(Description = "Prueba para testear la validación")]
         public void ValidateParameters()
         {
             CommandGetOrders cmdords = new CommandGetOrders(parameter);

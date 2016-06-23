@@ -59,7 +59,8 @@
   <ItemGroup>
     <Compile Include="Domain\Account.cs" />
     <Compile Include="Domain\AccountStatus.cs" />
-    <Compile Include="Domain\ActiveReservationStatus.cs" />
+    <Compile Include="Domain\Reserve.cs" />
+    <Compile Include="Domain\ReservedReservationStatus.cs" />
     <Compile Include="Domain\BaseEntity.cs" />
     <Compile Include="Domain\BusyTableStatus.cs" />
     <Compile Include="Domain\CanceledInvoiceStatus.cs" />
@@ -88,7 +89,6 @@
     <Compile Include="Domain\Schedule.cs" />
     <Compile Include="Domain\Table.cs" />
     <Compile Include="Domain\TableStatus.cs" />
-    <Compile Include="Domain\UsedReservationStatus.cs" />
     <Compile Include="Factory\EntityFactory.cs" />
     <Compile Include="GeneralRes.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -136,6 +136,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FondaResources\FondaResources.csproj">
+      <Project>{3184fe34-d7e3-44f6-95d9-25d1045bffc8}</Project>
+      <Name>FondaResources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

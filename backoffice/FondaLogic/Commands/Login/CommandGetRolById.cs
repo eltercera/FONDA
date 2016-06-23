@@ -7,16 +7,22 @@ using com.ds201625.fonda;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 
-namespace FondaLogic.Commands.Login
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Login
 {
+    // comando que busca rol dado un id 
     class CommandGetRolById : Command
     {
+        // fabrica que me dara el dao que contiene metodo a encapsular en este comando
         FactoryDAO _facDAO = FactoryDAO.Intance;
+        // id del rol a buscar
         int _id;
-
+        /// <summary>
+        /// metodo constuctor del comando
+        /// </summary>
+        /// <param name="receiver">recibe id del rol que se quiere buscar</param>
         public CommandGetRolById(Object receiver) : base(receiver)
         {
             try
@@ -43,7 +49,7 @@ namespace FondaLogic.Commands.Login
 
                 IRoleDAO _rolDAO = _facDAO.GetRoleDAO();
 
-
+                // se ejecuta metodo del dao 
                 Receiver = _rolDAO.FindById(_id);
             }
             catch (NullReferenceException ex)

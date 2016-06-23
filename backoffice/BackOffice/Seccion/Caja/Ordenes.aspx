@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    Ordenes Abiertas
+    Ordenes abiertas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
     de <%=Session["NameRestaurant"]%>
@@ -15,7 +15,7 @@
               <a href="../Caja/Ordenes.aspx">Caja</a>
           </li>
           <li class="active">
-             Ver Ordenes abiertas
+             Ver ordenes abiertas
           </li>
       </ol>
   </div>
@@ -50,7 +50,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i>Cuentas abiertas</h3>
+                    <h3 class="panel-title pull-left"><i class="fa fa-shopping-basket fa-fw"></i> Ordenes abiertas </h3>
                     <asp:Button onClick="CloseCashRegister_Click" ID="closeCR" class="btn btn-default pull-right" text="Cerrar Caja" runat="server"></asp:Button>                               
                     <div class="clearfix"></div>
                 </div>
@@ -59,13 +59,14 @@
 
                             <asp:Table ID="orderList" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
                     </div>
+                    <div class="text-right">                            
+                        <a href="OrdenesCerradas.aspx"><i class="fa fa-plus"></i> Ver ordenes cerradas</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="text-right">                            
-        <a href="OrdenesCerradas.aspx"><i class="fa fa-plus"></i> Ver ordenes cerradas</a>
-    </div>
+
         
 </asp:Content>

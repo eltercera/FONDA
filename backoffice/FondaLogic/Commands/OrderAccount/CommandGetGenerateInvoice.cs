@@ -2,35 +2,25 @@
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
-using FondaLogic.Factory;
-using FondaLogic.FondaCommandException;
-using FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandGetGenerateInvoice : Command
     {
 
-        FactoryDAO _facDAO = FactoryDAO.Intance;
-        Account _account = EntityFactory.GetAccount();
+        private FactoryDAO _facDAO = FactoryDAO.Intance;
+        private Account _account = EntityFactory.GetAccount();
 
-        public CommandGetGenerateInvoice(Object receiver) : base(receiver)
-        {
-            try
-            {
-                _account = (Account)receiver;
-            }
-            catch (Exception)
-            {
-                //TODO: Enviar excepcion personalizada
-                throw;
-            }
-        }
+        public CommandGetGenerateInvoice(Object receiver) : base(receiver) { }
 
         /// <summary>
         /// Metodo que ejecuta el comando que consulta las ordenes segun un Restaurante
@@ -39,6 +29,7 @@ namespace FondaLogic.Commands.OrderAccount
         {
             try
             {
+                _account = (Account)Receiver;
                 //Defino el DAO
                 IInvoiceDao _invoiceDAO;
                 //Obtengo la instancia del DAO a utilizar
@@ -51,19 +42,39 @@ namespace FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetGenerateInvoice exception = new CommandExceptionGetGenerateInvoice(
-                    FondaResources.General.Errors.NullExceptionReferenceCode,
-                    FondaResources.OrderAccount.Errors.ClassNameGetGenerateInvoice,
+                    OrderAccountResources.CommandExceptionGetGenerateInvoiceCode,
+                    OrderAccountResources.ClassNameGetGenerateInvoice,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    FondaResources.General.Errors.NullExceptionReferenceMessage,
+                    OrderAccountResources.MessageCommandExceptionGetGenerateInvoice,
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
 
                 Invoice _invoice = new Invoice();
                 Receiver = _invoice;
+                throw exception;
             }
+            catch (Exception ex)
+            {
+                CommandExceptionGetGenerateInvoice exception = new CommandExceptionGetGenerateInvoice(
+                    OrderAccountResources.CommandExceptionGetGenerateInvoiceCode,
+                    OrderAccountResources.ClassNameGetGenerateInvoice,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionGetGenerateInvoice,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                Invoice _invoice = new Invoice();
+                Receiver = _invoice;
+                throw exception;
+            }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameGetGenerateInvoice
+                , OrderAccountResources.SuccessMessageCommandGetGenerateInvoice
+                , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                );
         }
 
     }

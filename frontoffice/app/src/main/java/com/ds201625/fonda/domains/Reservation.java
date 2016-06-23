@@ -6,19 +6,25 @@ import java.util.Date;
  * Created by rrodriguez on 5/4/16.
  */
 public class Reservation extends BaseEntity {
+    private  int number_r;
     private Date reserveDate;
     private Date createDate;
     private int commensalNumber;
-    private Restaurant restaurant;
-    private Commensal user;
+    private boolean status;
 
-    public Reservation(Date reserveDate, Date createDate, int commensalNumber, Restaurant restaurant, Commensal user) {
+
+    public Reservation(int number_r,Date reserveDate, Date createDate, int commensalNumber, boolean status) {
+        this.number_r = number_r;
         this.reserveDate = reserveDate;
         this.createDate = createDate;
         this.commensalNumber = commensalNumber;
-        this.restaurant = restaurant;
-        this.user = user;
+        this.status = status;
+
     }
+
+    public int getNumber_r() { return  number_r;}
+
+    public void setNumber_r(int number_r){ this.number_r = number_r;}
 
     public Date getReserveDate() {
         return reserveDate;
@@ -44,19 +50,7 @@ public class Reservation extends BaseEntity {
         this.commensalNumber = commensalNumber;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
+    public void setStatus(boolean status) {this.status= status; }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
-
-    public Commensal getUser() {
-        return user;
-    }
-
-    public void setUser(Commensal user) {
-        this.user = user;
-    }
+    public boolean getStatus(){ return status;}
 }

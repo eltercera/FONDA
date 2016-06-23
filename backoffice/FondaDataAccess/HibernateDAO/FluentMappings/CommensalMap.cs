@@ -23,10 +23,18 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
             HasManyToMany(x => x.FavoritesRestaurants)
                 .Cascade.All()
                 .ExtraLazyLoad()
-                .Table("RESTAURANT_COMMENSAL")
-                ;
+                .Table("RESTAURANT_COMMENSAL");
+
+            #region Reservation
+
+            HasManyToMany(x => x.Reservations)
+               .Cascade.All()
+               .ExtraLazyLoad()
+               .Table("RESERVATION_COMMENSAL");
+
+            #endregion
 
         }
-	}
+    }
 }
 

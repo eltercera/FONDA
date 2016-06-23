@@ -9,11 +9,11 @@ using System.Web.UI.WebControls;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using FondaResources.Login;
+using com.ds201625.fonda.Resources.FondaResources.Login;
 using BackOffice.Content;
-using BackOfficeModel.Restaurant;
+using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
 using System.Web.UI.HtmlControls;
-using BackOfficePresenter.Restaurante;
+using com.ds201625.fonda.View.BackOfficePresenter.Restaurante;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -550,11 +550,53 @@ namespace BackOffice.Seccion.Restaurant
         /// </summary>
         protected void ButtonModify_Click(object sender, EventArgs e)
         {
-            ButtonModify_Click();
+            ButtonModify_Click2();
         }
-        public void ButtonModify_Click()
+        public void ButtonModify_Click2()
         {
             _presenter.ButtonModify_Click();
+        }
+
+        [WebMethod]
+        public static com.ds201625.fonda.Domain.Restaurant GetData(string Id)
+        {
+            int restaurantId = int.Parse(Id);
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+            com.ds201625.fonda.Domain.Restaurant restaurant = _restaurantDAO.FindById(restaurantId);
+    
+            return restaurant;
+        }
+
+        /// <summary>
+        /// Cambia el Status del Restaurante
+        /// </summary>
+        /// <param name="Id">Recibe el Id del Restaurante</param>
+        /// <param name="Status">Recibe el Status al que se va a cambiar</param>
+        /// <returns>El Status a mostrar en la tabla</returns>
+        public static string ChangeStatus(string Id, string Status)
+        {
+            FactoryDAO factoryDAO = FactoryDAO.Intance;
+            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+            string RestaurantID = Id;
+            string response = "";
+            int idRestaurant = int.Parse(RestaurantID);
+            com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(idRestaurant);
+
+            if (Status.Equals("Active"))
+            {
+                _restaurant.Status = factoryDAO.GetActiveSimpleStatus();
+                response = RestaurantResource.Active;
+            }
+            else if (Status.Equals("Disable"))
+            {
+                _restaurant.Status = factoryDAO.GetDisabledSimpleStatus();
+                response = RestaurantResource.Inactive;
+            }
+
+            _restaurantDAO.Save(_restaurant);
+            return response;
+
         }
 
 

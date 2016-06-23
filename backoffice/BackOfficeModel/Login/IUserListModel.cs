@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-namespace BackOfficeModel.Login
+namespace com.ds201625.fonda.View.BackOfficeModel.Login
 {
-    public interface IUserListModel : IModel
+    public interface IUserListModel : IContract
     {
+        /// <summary>
+        /// metodos get y set de los elementos de la vista ListarUsuario.aspx
+        /// a utilizarse en el presentador
+        /// </summary>
         HtmlGenericControl userListAlert { get; set; }
         Table tableUserList { get; set; }
         TextBox textBoxNameUser { get; set; }

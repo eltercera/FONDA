@@ -7,9 +7,13 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 
-namespace BackOfficeModel.Login
+namespace com.ds201625.fonda.View.BackOfficeModel.Login
 {
-    public interface ILoginModel : IModel
+    /// <summary>
+    /// metodos get y set de los elementos de la vista Login.aspx
+    /// a utilizarse en el presentador
+    /// </summary>
+    public interface ILoginModel : IContract
     {
         // login del sistema
         HtmlInputText UserIni { get; set; }

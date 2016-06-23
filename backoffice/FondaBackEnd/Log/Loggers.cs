@@ -1,4 +1,4 @@
-﻿using FondaLogic.FondaCommandException;
+﻿using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using log4net;
 using System;

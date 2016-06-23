@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FondaLogic.FondaCommandException.Login
+namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login
 {
     class InvalidTypeParameterException : FondaLogicException
     {
-
+        /// <summary>
+        /// excepcion que es lanzada en caso de que falle una consulta con un parametro incorrecto
+        /// </summary>
+        /// <param name="message"></param>
         public InvalidTypeParameterException(string message) : base(message) { }
 
         public static InvalidTypeParameterException Generate(Type spected, Type recive)

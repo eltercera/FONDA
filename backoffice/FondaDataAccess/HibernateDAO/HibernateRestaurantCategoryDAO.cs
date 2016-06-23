@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using NHibernate.Criterion;
-
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -29,12 +29,23 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             RestaurantCategory category = FindBy("Name", name);
             if (category == null)
             {
-                RestaurantCategory newCategory = new RestaurantCategory();
-                newCategory.Name = name;
-                return newCategory;
+                RestaurantCategory _restCategory = EntityFactory.GetRestCategory(name);
+                return _restCategory;
             }
 
             return category;
+        }
+        public RestaurantCategory ModifyCategory(int id, string name)
+        {
+            FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
+            IRestaurantCategoryDAO _restcatDAO = _facDAO.GetRestaurantCategoryDAO();
+
+            RestaurantCategory _restaurantC = _restcatDAO.FindById(id);
+
+            _restaurantC.Name = name;
+
+            return _restaurantC;
+
         }
 
 		#region 3era entrga

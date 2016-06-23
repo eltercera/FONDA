@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Web.UI.WebControls;
-using BackOfficeModel.OrderAccount;
-using FondaResources.OrderAccount;
-using FondaResources.Login;
-using BackOfficeModel;
+using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using com.ds201625.fonda.Resources.FondaResources.Login;
+using com.ds201625.fonda.View.BackOfficeModel;
 using System.Web.UI.HtmlControls;
 using BackOffice.Content;
+using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class Ordenes : System.Web.UI.Page, IOrdersModel
+    public partial class Ordenes : System.Web.UI.Page, IOrdersContract
     {
         #region Presenter
 
-        private com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter _presenter;
+        private OrdersPresenter _presenter;
 
         #endregion
 
         #region Model
 
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
 
@@ -27,7 +28,7 @@ namespace BackOffice.Seccion.Caja
 
         }
 
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get { return this.SuccessLabelMessage; }
 
@@ -51,7 +52,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Recurso de Session para el ID de la orden
         /// </summary>
-        string IOrdersModel.Session
+        string IOrdersContract.Session
         {
             get
             {
@@ -77,12 +78,12 @@ namespace BackOffice.Seccion.Caja
             set { Session[ResourceLogin.sessionRestaurantID] = value; }
         }
 
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get { return this.SuccessLabel; }
         }
 
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { return this.ErrorLabel; }
         }
@@ -93,7 +94,7 @@ namespace BackOffice.Seccion.Caja
 
         public Ordenes()
         {
-                  _presenter = new com.ds201625.fonda.BackOffice.Presenter.OrderAccount.OrdersPresenter(this);
+                  _presenter = new OrdersPresenter(this);
         }
         #endregion
 
@@ -102,11 +103,9 @@ namespace BackOffice.Seccion.Caja
         protected void Page_Load(object sender, EventArgs e)
         {
             //Llama al presentador para llenar la tabla de ordenes
-            if (Session[ResourceLogin.sessionUserID] != null)
-            {
-
+            if (Session[ResourceLogin.sessionUserID] != null &&
+                Session[ResourceLogin.sessionRestaurantID] != null)
                 _presenter.GetOrders();
-            }
             else
                 Response.Redirect(RecursoMaster.addressLogin);
         }
@@ -115,5 +114,6 @@ namespace BackOffice.Seccion.Caja
         {
             _presenter.Close();
         }
+
     }
 }

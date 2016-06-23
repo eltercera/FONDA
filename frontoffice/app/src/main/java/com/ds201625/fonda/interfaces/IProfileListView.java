@@ -1,3 +1,4 @@
+
 package com.ds201625.fonda.interfaces;
 
 import com.ds201625.fonda.domains.Profile;
@@ -11,5 +12,5 @@ public interface IProfileListView {
      * @param profile
      * @return true si se elimino el perfil
      */
-    Boolean deleteProfile (Profile profile);
+    Boolean deleteProfile (Profile profile) throws Exception;
 }
