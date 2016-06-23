@@ -1,4 +1,5 @@
 ﻿using BackOffice.Seccion.Caja;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
 using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 using Moq;
@@ -86,23 +87,109 @@ namespace FondaMVPTest
             Assert.AreEqual(false, _mock.Object.SuccessLabel.Visible);
         }
 
-        [Test(Description = "Oculta los campos para mostrar mensajes de error o de exito")]
-        public void GenerateTableHeader()
+        [Test(Description = "Caso de error, cuando la tabla de ordenes no tiene un Id de Restaurante")]
+        public void ErrorGetOrdersTest()
         {
+            Table orderTable = new Table();
+            _mock.Setup(x => x.OrdersTable).Returns(orderTable);
+
+            HtmlGenericControl errorLabel = new HtmlGenericControl();
+            _mock.Setup(x => x.ErrorLabel).Returns(errorLabel);
+
+            Label errorLabelMessage = new Label();
+            _mock.Setup(x => x.ErrorLabelMessage).Returns(errorLabelMessage);
+
+            contract = _mock.Object;
+
+            _ordersPresenter = new OrdersPresenter(contract);
+
+            _ordersPresenter.GetOrders();
+
+            Assert.AreEqual(0, contract.OrdersTable.Rows.Count);
+            Assert.AreEqual(true, contract.ErrorLabel.Visible);
+
+        }
+
+        [Test(Description = "Carga la tabla con la ordenes abiertas de un Restaurante")]
+        public void GetOrdersTest()
+        {
+            Table orderTable = new Table();
+            _mock.Setup(x => x.OrdersTable).Returns(orderTable);
+
             HtmlGenericControl successLabel = new HtmlGenericControl();
             _mock.Setup(x => x.SuccessLabel).Returns(successLabel);
 
             HtmlGenericControl errorLabel = new HtmlGenericControl();
             _mock.Setup(x => x.ErrorLabel).Returns(errorLabel);
 
+            string sessionId = "1";
+            _mock.Setup(x => x.SessionRestaurant).Returns(sessionId);
+
+            Label errorLabelMessage = new Label();
+            _mock.Setup(x => x.ErrorLabelMessage).Returns(errorLabelMessage);
+
             contract = _mock.Object;
 
             _ordersPresenter = new OrdersPresenter(contract);
 
-            _ordersPresenter.HideMessageLabel();
+            _ordersPresenter.GetOrders();
 
-            Assert.AreEqual(false, _mock.Object.ErrorLabel.Visible);
-            Assert.AreEqual(false, _mock.Object.SuccessLabel.Visible);
+            Assert.AreEqual(3, contract.OrdersTable.Rows.Count);
+            Assert.AreEqual(false, contract.ErrorLabel.Visible);
+            Assert.AreEqual(false, contract.SuccessLabel.Visible);
+            Assert.AreEqual("1", contract.SessionRestaurant);
+
+        }
+
+        [Test(Description = "Caso de error, metodo para cerrar la caja de un Restaurante")]
+        public void ErrorCloseTest()
+        {
+
+            HtmlGenericControl errorLabel = new HtmlGenericControl();
+            _mock.Setup(x => x.ErrorLabel).Returns(errorLabel);
+
+            string sessionId = "1";
+            _mock.Setup(x => x.SessionRestaurant).Returns(sessionId);
+
+            Label errorLabelMessage = new Label();
+            _mock.Setup(x => x.ErrorLabelMessage).Returns(errorLabelMessage);
+
+            contract = _mock.Object;
+
+            _ordersPresenter = new OrdersPresenter(contract);
+
+            _ordersPresenter.Close();
+
+
+            Assert.AreEqual(true, contract.ErrorLabel.Visible);
+            Assert.AreEqual(OrderAccountResources.MessageMVPExceptionOrdersTable, contract.ErrorLabelMessage.Text);
+            Assert.AreEqual("1", contract.SessionRestaurant);
+
+        }
+
+        [Test(Description = "Metodo para cerrar la caja de un Restaurante")]
+        public void CloseTest()
+        {
+
+            HtmlGenericControl errorLabel = new HtmlGenericControl();
+            _mock.Setup(x => x.ErrorLabel).Returns(errorLabel);
+
+            string sessionId = "2";
+            _mock.Setup(x => x.SessionRestaurant).Returns(sessionId);
+
+            Label errorLabelMessage = new Label();
+            _mock.Setup(x => x.ErrorLabelMessage).Returns(errorLabelMessage);
+
+            contract = _mock.Object;
+
+            _ordersPresenter = new OrdersPresenter(contract);
+
+            _ordersPresenter.Close();
+
+
+            Assert.AreEqual(true, contract.ErrorLabel.Visible);
+            Assert.AreEqual(OrderAccountResources.MessageMVPExceptionOrdersTable, contract.ErrorLabelMessage.Text);
+
         }
 
 

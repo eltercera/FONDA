@@ -73,6 +73,10 @@
       <Project>{F1CEAC46-0E2B-45F1-8EDC-D99F77B9DD26}</Project>
       <Name>BackOffice</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FondaResources\FondaResources.csproj">
+      <Project>{3184fe34-d7e3-44f6-95d9-25d1045bffc8}</Project>
+      <Name>FondaResources</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
