@@ -38,7 +38,7 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
      * Metodo de invoke implementado: Comando para mostrar todos los restaurantes favoritos
      */
     @Override
-    protected void invoke() throws FindFavoriteRestaurantFondaWebApiControllerException {
+    protected void invokeF() throws FindFavoriteRestaurantFondaWebApiControllerException {
         Log.d(TAG, "Comando para obtener los restaurantes favoritos");
         FavoriteRestaurantService serviceFavorits = FondaServiceFactory.getInstance()
                 .getFavoriteRestaurantService();
@@ -64,4 +64,8 @@ public class AllFavoriteRestaurantCommand extends BaseCommand {
         }
         setResult(restaurantList);
     }
+
+
+    @Override
+    protected void invoke(){}
 }
