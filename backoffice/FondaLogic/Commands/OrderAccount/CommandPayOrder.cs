@@ -94,6 +94,19 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 
                 throw exception;
             }
+            catch (Exception ex)
+            {
+                CommandExceptionPayOrder exception = new CommandExceptionPayOrder(
+                    OrderAccountResources.CommandExceptionPayOrderCode,
+                    OrderAccountResources.ClassNamePayOrder,
+                    System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                    OrderAccountResources.MessageCommandExceptionPayOrder,
+                    ex);
+
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+
+                throw exception;
+            }
 
             Logger.WriteSuccessLog(OrderAccountResources.ClassNamePayOrder
                 , OrderAccountResources.SuccessMessageCommandGetPaymentHistoryByProfile

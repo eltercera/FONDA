@@ -40,6 +40,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         private ICommensalDAO _comensalDAO;
         private UserAccount _user;
         #endregion
+
         #region
         [SetUp]
         public void Init()
@@ -155,6 +156,37 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
         #endregion
 
+        #region Pruebas de Logic/Command/CommandGetCurrencyByRestaurantTest
+        [Test(Description = "Obtiene la unidad monetaria de un restaurante")]
+        public void CommandGetCurrencyByRestaurantTest()
+        {
+
+            _command = CommandFactory.GetCommandGetCurrency(_restaurantId);
+
+            _command.Execute();
+
+            _currency = (string)_command.Receiver;
+
+            Assert.AreEqual(_currency, "€");
+
+        }
+        [Test(Description = "Prueba de exception de CommandGetCurrencyByRestaurant")]
+        [ExpectedException(typeof(CommandExceptionGetCurrencyByRestaurant))]
+        public void CommandGetCurrencyByRestaurantExceptionTest()
+        {
+
+            _command = CommandFactory.GetCommandGetCurrency(0);
+
+            _command.Execute();
+
+            _currency = (string)_command.Receiver;
+
+            Assert.AreEqual(_currency, "€");
+
+        }
+        #endregion
+
+        #region Pruebas de Logic/Command/CommandPayOrderTest
         [Test(Description = "Se paga la orden")]
         public void CommandPayOrderTest()
         {
@@ -172,6 +204,26 @@ namespace com.ds201625.fonda.Tests.DataAccess
             Assert.IsNotNull(_invoice);
             //Assert.AreEqual(_total, 10192f);
         }
+
+        [Test(Description = "Se paga la orden")]
+        [ExpectedException(typeof(CommandExceptionPayOrder))]
+        public void CommandPayOrderExceptionTest()
+        {
+            _user = _comensalDAO.FindById(0);
+            _comensal = (Commensal)_comensalDAO.FindById(0);
+            IList<object> _result = new List<object>();
+            _result.Add(_restaurantId);//1
+            _result.Add(_orderId);//1
+            _result.Add(1);//1 profile
+            _result.Add(_cashPayment);
+            _result.Add(_comensal);
+            _command = CommandFactory.GetCommandPayOrder(_result);
+            _command.Execute();
+            _invoice = (Invoice)_command.Receiver;
+            Assert.IsNotNull(_invoice);
+            //Assert.AreEqual(_total, 10192f);
+        }
+        #endregion
 
         [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
         public void CommandTotalOrderTest()
@@ -222,19 +274,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
             //Assert.AreEqual(_table.Status,);
         }
 
-        [Test(Description = "Obtiene la unidad monetaria de un restaurante")]
-        public void CommandGetCurrencyByRestaurantTest()
-        {
-
-            _command = CommandFactory.GetCommandGetCurrency(_restaurantId);
-
-            _command.Execute();
-
-            _currency = (string)_command.Receiver;
-
-            Assert.AreEqual(_currency, "€");
-
-        }
 
         [Test]
         public void CommandGetOrdersNullTest()
