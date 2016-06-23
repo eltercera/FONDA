@@ -52,7 +52,7 @@ public class ZonesAdapter extends BaseArrayAdapter<Zone> {
         List<Zone> restaurants = null;
 
         try {
-            Command comando = FondaCommandFactory.getZonesCommand();
+            Command comando = FondaCommandFactory.getInstance().getZonesCommand();
             comando.setParameter(0,"");
             comando.setParameter(1, 10);
             comando.setParameter(2, currentPage + 1);

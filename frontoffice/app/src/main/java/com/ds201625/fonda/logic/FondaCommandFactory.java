@@ -41,14 +41,6 @@ public class FondaCommandFactory {
     public FondaCommandFactory() {  }
 
     /**
-     * Crea un CreateProfileCommand
-     * @return comando CreateProfileCommand
-     */
-    public Command createCreateProfileCommand() {
-        return  new CreateProfileCommand();
-    }
-
-    /**
      * Crea un AddFavoriteRestaurantCommand
      * @return comando AddFavoriteRestaurantCommand
      */
@@ -89,15 +81,15 @@ public class FondaCommandFactory {
         return  new RequireLogedCommensalCommand();
     }
 
-    public static Command getCategoriesCommand() {
+    public Command getCategoriesCommand() {
         return new GetCategoriesCommand();
     }
 
-    public static Command getZonesCommand() {
+    public Command getZonesCommand() {
         return new GetZonesCommand();
     }
 
-    public static Command getRestaurantsCommand() {
+    public Command getRestaurantsCommand() {
         return new GetRestaurantsCommand();
     }
 

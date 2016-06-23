@@ -50,7 +50,7 @@ public class CategoriesAdapter extends BaseArrayAdapter<RestaurantCategory> {
         List<RestaurantCategory> restaurants = null;
 
         try {
-            Command comando = FondaCommandFactory.getCategoriesCommand();
+            Command comando = FondaCommandFactory.getInstance().getCategoriesCommand();
             comando.setParameter(0, "");
             comando.setParameter(1, 10);
             comando.setParameter(2, currentPage + 1);

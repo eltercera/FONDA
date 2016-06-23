@@ -75,7 +75,7 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
         List<Restaurant> restaurants = null;
 
         try {
-            Command comando = FondaCommandFactory.getRestaurantsCommand();
+            Command comando = FondaCommandFactory.getInstance().getRestaurantsCommand();
             comando.setParameter(0, "");
             comando.setParameter(1, 10);
             comando.setParameter(2, currentPage+1);
