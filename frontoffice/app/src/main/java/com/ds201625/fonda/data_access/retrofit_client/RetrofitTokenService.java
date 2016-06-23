@@ -16,16 +16,20 @@ import java.io.IOException;
 import retrofit2.Call;
 
 /**
- * Created by rrodriguez on 5/16/16.
+ * Implementacion de la interfaz TokenService
  */
 public class RetrofitTokenService implements TokenService{
-
+    private String TAG = "RetrofitTokenService";
     private TokenClient tokenClient;
 
     private Commensal commensal;
 
     private JsonFile<Token> localFile;
 
+    /**
+     * Instancia cliente rest TokenClient
+     * @param commensal
+     */
     public RetrofitTokenService(Commensal commensal) {
         tokenClient = RetrofitService.getInstance().createService(
                 TokenClient.class,commensal.getEmail(), commensal.getPassword());
