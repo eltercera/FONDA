@@ -3,6 +3,9 @@ package com.ds201625.fonda.views.activities;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
@@ -12,6 +15,7 @@ public class RestauranstsActivity extends  BaseNavigationActivity {
 
     private ViewPager viewPager;
     private BaseSectionsPagerAdapter RestaurantFilters;
+    private FilterFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { //Se corren las vistas y menu
@@ -22,19 +26,21 @@ public class RestauranstsActivity extends  BaseNavigationActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
+        FilterFragment zoneFrag = new FilterFragment();
+        FilterFragment resFrag = new FilterFragment();
+        FilterFragment catFrag = new FilterFragment();
+        zoneFrag.setTabLayout(tabLayout);
+        resFrag.setTabLayout(tabLayout);
+        catFrag.setTabLayout(tabLayout);
+
         RestaurantFilters = new BaseSectionsPagerAdapter(getSupportFragmentManager(),tabLayout);
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_food),new FoodFragment());
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_zone),new ZoneFragment());
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_cost),new CostFragment());
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_time),new TimeFragment());
-        //RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_near),new NearFragment());
+//        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_global),resFrag);
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_zone),new ZoneFragment());
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_food),new FoodFragment());
 
         viewPager.setAdapter(RestaurantFilters);
         tabLayout.setupWithViewPager(viewPager);
         RestaurantFilters.iconsSetup();
-
-
     }
-
 
 }

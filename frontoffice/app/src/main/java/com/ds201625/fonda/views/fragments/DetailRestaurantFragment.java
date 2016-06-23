@@ -60,7 +60,6 @@ public class DetailRestaurantFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         form = inflater.inflate(R.layout.fragment_detail_restaurants, container, false);
         tvRestName = (TextView) form.findViewById(R.id.text_view_restaurant_name);
-        tvNames = (TextView) form.findViewById(R.id.text_view_restaurant);
         tvType = (TextView) form.findViewById(R.id.text_view_restaurant_type);
         tvZone = (TextView) form.findViewById(R.id.text_view_restaurant_zone);
         tvAvPr = (TextView) form.findViewById(R.id.text_view_restaurant_principal_avenue);

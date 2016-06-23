@@ -75,7 +75,7 @@ public class ReservationPresenter implements ReservationViewPresenter {
    @Override
     public void addReservation(Reservation reservation) {
         Log.d(TAG, "Ha entrado en addReservation");
-       Command cmdAddReservation = facCmd.AddReservationCommand();
+       Command cmdAddReservation = facCmd.addReservationCommand();
         try {
            cmdAddReservation.setParameter(0, logedComensal);
             cmdAddReservation.setParameter(1, reservation);
@@ -100,7 +100,7 @@ public class ReservationPresenter implements ReservationViewPresenter {
     @Override
     public List<Reservation> AllReservation() {
         Log.d(TAG,"Ha entrado en AllReservation");
-        Command cmdAllReservation = facCmd.AllReservationCommand();
+        Command cmdAllReservation = facCmd.allReservationCommand();
         try {
             cmdAllReservation.setParameter(0,logedComensal);
             cmdAllReservation.run();
