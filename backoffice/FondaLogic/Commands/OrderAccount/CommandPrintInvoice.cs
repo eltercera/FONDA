@@ -72,7 +72,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(ruta,FileMode.Create));
             //FileStream file = new FileStream(Server.MapPath("~/Files/") + "Test.PDF", FileMode.Create, System.IO.FileAccess.Write);
             //PdfWriter.GetInstance(doc, new FileStream(Server.MapPath("~/Files/Pdf/test.pdf"), FileMode.Create));
-            PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
+            //PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
             //@"C:\Factura_"+_invoice.Number+/*"_"+_restaurant.Name+*/".pdf"
             // Le colocamos el título y el autor
             // **Nota: Esto no será visible en el documento
