@@ -126,4 +126,8 @@ public class RetrofitService {
         });
     }
 
+    public  Retrofit retrofit() {
+        OkHttpClient client = httpClient.build();
+        return builder.client(client).build();
+    }
 }
