@@ -19,6 +19,7 @@ import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.views.activities.FilterCategoryList;
 import com.ds201625.fonda.views.activities.RestaurantListActivity;
+import com.ds201625.fonda.views.adapters.CategoriesAdapter;
 import com.google.gson.Gson;
 
 import java.util.Iterator;
@@ -111,8 +112,8 @@ public class FoodFragment extends BaseFragment {
     }
 
     private void setupListView() {
-        FilterCategoryList adapter = new FilterCategoryList(getActivity(), listCategory);
-        list.setAdapter(adapter);
+        //FilterCategoryList adapter = new FilterCategoryList(getActivity(), listCategory);
+        list.setAdapter(new CategoriesAdapter(getContext()));
 
     }
 
