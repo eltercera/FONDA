@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using com.ds201625.fonda.Resources.FondaResources.Reservation;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -22,7 +23,7 @@ namespace com.ds201625.fonda.Domain
 		protected CanceledReservationStatus() : base()
         {
             StatusId = 7;
-            Description = "Reservación Cancelada";
+            Description = ReservationResources.CanceledReservationStatusDes;
         }
 
         /// <summary>
@@ -45,7 +46,7 @@ namespace com.ds201625.fonda.Domain
         /// <returns>Cancelada en String</returns>
         public override string ToString()
         {
-            return "Cancelada";
+            return ReservationResources.CanceledReservationStatus;
         }
 
     }

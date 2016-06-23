@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="Controllers\CategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\CostFilterFondaWebApiController.cs" />
+    <Compile Include="Controllers\ReservationsCommensalFondaWebApiController.cs" />
     <Compile Include="Controllers\FavoritesRestaurantsFondaWebApiController.cs" />
     <Compile Include="Controllers\MenuCategoryWebApiController.cs" />
     <Compile Include="Controllers\OrderAccountFondaWebApiController.cs" />

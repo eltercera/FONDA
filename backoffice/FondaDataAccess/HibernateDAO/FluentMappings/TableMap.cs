@@ -29,10 +29,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
 
             #region Reservation
 
-            HasMany(x => x.Reservations)
-                .KeyColumn("fk_tab_reservations")
-                .ExtraLazyLoad()
-                .Cascade.All();
+            HasManyToMany(x => x.Reservations)
+               .Cascade.All()
+               .ExtraLazyLoad()
+               .Table("RESERVATION_TABLE");
 
             #endregion
 

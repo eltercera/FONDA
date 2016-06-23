@@ -14,7 +14,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO.FluentMappings
               .GeneratedBy.Increment();
 
             Map(x => x.Number)
-              .Column("res_date")
+              .Column("res_number")
               .Not.Nullable();
 
             Map(x => x.ReservationDate)

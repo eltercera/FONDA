@@ -11,6 +11,7 @@ namespace com.ds201625.fonda.Domain
     /// </summary>
     public class Reservation : BaseEntity
     {
+        #region Fields
 
         /// <summary>
         /// Numero de la reservacion
@@ -37,11 +38,37 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private ReservationStatus _status;
 
+        #endregion
+
+        #region Constructors
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Reservation() : base()
+        {
+        }
+
+
 
         /// <summary>
-		/// Constructor
-		/// </summary>
-		public Reservation() : base () { }
+        /// Constructor para crear una reservacion nueva
+        /// </summary>
+        /// <param name="number">Numero de la reservacion</param>
+        /// <param name="reservationDate">Fecha de la reservacion</param>
+        /// <param name="commensalNumber">Numero de comensales</param>
+        public Reservation(int number, DateTime reservationDate, int commensalNumber) : base()
+        {
+
+            this._number = number;
+            this._reservationDate = reservationDate;
+            this._creationDate = DateTime.Now;
+            this._commensalNumber = commensalNumber;
+            this._status = new ReservedReservationStatus();
+
+        }
+        #endregion
+
+        #region Properties
 
 
         public virtual int Number
@@ -74,6 +101,18 @@ namespace com.ds201625.fonda.Domain
             set { _status = value; }
         }
 
+        #endregion
 
+        #region Methods
+
+        /// <summary>
+        /// Cambia el estado actual de la reservacion.
+        /// </summary>
+        public virtual void ChangeStatus()
+        {
+            _status = _status.Change();
+        }
+
+        #endregion
     }
 }
