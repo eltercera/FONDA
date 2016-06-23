@@ -20,7 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "View", "View", "{AD8307F1-7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOffice", "BackOffice\BackOffice.csproj", "{F1CEAC46-0E2B-45F1-8EDC-D99F77B9DD26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOfficeModel", "BackOfficeModel\BackOfficeModel.csproj", "{0C4A3E0C-4E85-46B0-A6B0-A6DC2BCE3D8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOfficeContracts", "BackOfficeModel\BackOfficeContracts.csproj", "{0C4A3E0C-4E85-46B0-A6B0-A6DC2BCE3D8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackOfficePresenter", "BackOfficePresenter\BackOfficePresenter.csproj", "{FDE7B2A6-7496-4680-AB18-A336EEBBE62E}"
 EndProject

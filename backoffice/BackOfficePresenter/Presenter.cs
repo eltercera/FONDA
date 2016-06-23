@@ -10,9 +10,9 @@ namespace com.ds201625.fonda.View.BackOfficePresenter
 {
     public class Presenter
     {
-        private IModel _view;
+        private IContract _view;
 
-        public Presenter(IModel page)
+        public Presenter(IContract page)
         {
             _view = page;
         }

@@ -10,7 +10,7 @@ using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class ListarFacturas : System.Web.UI.Page, IOrderInvoicesModel
+    public partial class ListarFacturas : System.Web.UI.Page, IOrderInvoicesContract
     {
         #region Presenter
 
@@ -23,7 +23,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Label de exito
         /// </summary>
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get { return this.SuccessLabel; }
         }
@@ -31,7 +31,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Label de error
         /// </summary>
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { return this.ErrorLabel; }
         }
@@ -39,7 +39,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Mensaje de exito
         /// </summary>
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get { return this.SuccessLabelMessage; }
 
@@ -49,7 +49,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Mensaje de error
         /// </summary>
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
 
@@ -77,7 +77,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Recurso de Session para el ID de la orden
         /// </summary>
-        string IOrderInvoicesModel.SessionAccountId
+        string IOrderInvoicesContract.SessionAccountId
         {
             get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
