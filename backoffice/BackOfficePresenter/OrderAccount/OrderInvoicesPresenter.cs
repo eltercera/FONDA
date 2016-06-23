@@ -58,6 +58,8 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 
                 if (result <= listClosedAccount.Count && result != 0)
                 {
+                    _view.NumberAccount.Visible = true;
+                    //_view.NumberAccount.Text = _view.;
                     //Obtiene la instancia del comando enviado el restaurante como parametro
                     commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByAccount(result);
                     _view.SessionAccountId = result.ToString();
