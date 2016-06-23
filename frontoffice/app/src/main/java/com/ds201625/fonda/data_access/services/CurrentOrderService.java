@@ -6,7 +6,7 @@ import com.ds201625.fonda.domains.DishOrder;
 import java.util.List;
 
 /**
- * Created by Yuneth on 5/15/2016.
+ * Created by Jessica on 20/06/2016.
  */
 
 /**
@@ -14,6 +14,7 @@ import java.util.List;
  */
 public interface CurrentOrderService {
 
-    List<DishOrder> getListDishOrder() throws RestClientException;
+
+    List<DishOrder> getListDishOrder(int idRestaurante, int idOrden) throws RestClientException;
 
 }

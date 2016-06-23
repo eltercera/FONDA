@@ -4,7 +4,7 @@ import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Invoice;
 
 /**
- * Created by Yuneth on 5/15/2016.
+ * Created by Jessica on 20/06/2016.
  */
 
 /**
@@ -12,6 +12,6 @@ import com.ds201625.fonda.domains.Invoice;
  */
 public interface InvoiceService {
 
-    Invoice getCurrentInvoice() throws RestClientException;
+    Invoice getCurrentInvoice(int idProfile) throws RestClientException;
 
 }

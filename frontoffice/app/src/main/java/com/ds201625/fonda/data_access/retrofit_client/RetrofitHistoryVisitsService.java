@@ -11,7 +11,7 @@ import java.util.List;
 import retrofit2.Call;
 
 /**
- * Created by Adriana on 5/7/16.
+ * Created by Jessica on 21/06/2016.
  */
 
 /**
@@ -37,7 +37,7 @@ public class RetrofitHistoryVisitsService implements HistoryVisitsRestaurantServ
      * @return llamada
      */
     @Override
-    public List<Invoice> getHistoryVisits() throws RestClientException {
+    public List<Invoice> getHistoryVisits(int idProfile) throws RestClientException {
         Call<List<Invoice>> call = historyVisitsClient.getHistoryVisits();
         List<Invoice> calling = null;
         try{

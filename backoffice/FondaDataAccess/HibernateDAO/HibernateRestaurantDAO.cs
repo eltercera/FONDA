@@ -8,6 +8,7 @@ using com.ds201625.fonda.DataAccess.FondaDAOExceptions;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using com.ds201625.fonda.Factory;
+using com.ds201625.fonda.DataAccess.Log;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -258,7 +259,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             try
             {
 
-                //TODO: Excepcion en caso de no encontrar restaurante
                 Restaurant restaurant = Session.QueryOver<Restaurant>()
                     .Where(r => r.Id == restaurantId)
                     .Where(r => r.Status == ActiveSimpleStatus.Instance)
@@ -266,7 +266,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
                 IList<Account> list = new List<Account>();
 
-                //TODO: Excepcion en caso de no encontrar lista llena
                 foreach (Account closedAccount in restaurant.Accounts)
                 {
                     if (closedAccount.Status.Equals(ClosedAccountStatus.Instance))
@@ -276,13 +275,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 return list;
 
             }
-            //TODO: Arrojar excepciones personalizadas
             catch (ArgumentOutOfRangeException e)
             {
                 ClosedOrdersByRestaurantFondaDAOException exception =
                        new ClosedOrdersByRestaurantFondaDAOException(
                            OrderAccountResources.MessageClosedOrdersByRestaurantFondaDAOException,
                            e);
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
             catch (Exception e)
@@ -291,7 +290,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     new ClosedOrdersByRestaurantFondaDAOException(
                         OrderAccountResources.MessageClosedOrdersByRestaurantFondaDAOException,
                         e);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
 
@@ -307,7 +306,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
             try
             {
-                //TODO: Excepcion en caso de no encontrar restaurante
                 Restaurant restaurant = Session.QueryOver<Restaurant>()
                     .Where(r => r.Id == restaurantId)
                     .Where(r => r.Status == ActiveSimpleStatus.Instance)
@@ -315,7 +313,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
                 IList<Account> list = new List<Account>();
 
-                //TODO: Excepcion en caso de no encontrar lista llena
                 foreach (Account closedAccount in restaurant.Accounts)
                 {
                     if (closedAccount.Status.Equals(OpenAccountStatus.Instance))
@@ -331,6 +328,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                        new OpenOrdersByRestaurantIdFondaDAOException(
                            OrderAccountResources.MessageOpenOrdersByRestaurantIdFondaDAOException,
                            e);
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
             catch (Exception e)
@@ -339,7 +337,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     new OpenOrdersByRestaurantIdFondaDAOException(
                         OrderAccountResources.MessageOpenOrdersByRestaurantIdFondaDAOException,
                         e);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
         }
@@ -381,7 +379,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 ReleaseTableFondaDAOException exception = new ReleaseTableFondaDAOException
                     (OrderAccountResources.MessageReleaseTableFondaDAOException,
                     ex);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
 
             }
@@ -390,7 +388,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 ReleaseTableFondaDAOException exception = new ReleaseTableFondaDAOException
                     (OrderAccountResources.MessageReleaseTableFondaDAOException,
                     ex);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
         }

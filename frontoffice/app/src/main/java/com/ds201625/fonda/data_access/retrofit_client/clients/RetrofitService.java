@@ -39,7 +39,7 @@ public class RetrofitService {
 
    // private final String API_BASE_URL = "http://fonda.eltercera.com.ve:8080/api/";
 
-   private final String API_BASE_URL = "http://192.168.8.111:3500/api/";
+   private final String API_BASE_URL = "http://localhost:38716/";
 
 
     /**
