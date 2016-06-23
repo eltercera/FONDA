@@ -1,5 +1,4 @@
-﻿using com.ds201625.fonda;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
@@ -19,6 +18,7 @@ namespace FondaBackOfficeLogicTest
         private Command _command;
         private IList<Account> _listClosedOrders;
         private IList<Invoice> _listInvoices;
+        private IList<DishOrder> _listDishOrder;
         private FactoryDAO _facDAO;
         private IOrderAccountDao _orderAccountDAO;
         private Restaurant _restaurant;
@@ -32,7 +32,10 @@ namespace FondaBackOfficeLogicTest
         private Profile _profile;
         private CashPayment _cashPayment;
         private CreditCardPayment _creditPayment;
+        private string _currency;
         private int _commensalId;
+        private List<int> parameters;
+        List<Object> result;
 
         #endregion
 
@@ -69,7 +72,9 @@ namespace FondaBackOfficeLogicTest
             _profile =_profileDao.FindById(_profileId);
             _invoice = _invoiceDAO.FindById(_invoiceId);
             _commensal = (Commensal) _commensalDAO.FindById(_commensalId);
-            _restaurant = _restaurantDAO.FindById(_restaurantId);  
+            _restaurant = _restaurantDAO.FindById(_restaurantId);
+            _currency = null;
+            parameters = new List<int> { _invoiceId, _accountId };
             //IBaseEntityDAO<Payment> bla = _facDAO
         }
 
@@ -119,6 +124,21 @@ namespace FondaBackOfficeLogicTest
             Assert.AreEqual(_listInvoices[1].Number, 2);
         }
 
+        [Test(Description = "Obtiene las facturas de una cuenta")]
+        public void CommandFindInvoicesByAccountTest()
+        {
+
+            _command = CommandFactory.GetCommandFindInvoicesByAccount(_accountId);
+
+            _command.Execute();
+
+            _listInvoices = (IList<Invoice>)_command.Receiver;
+
+            Assert.IsNotNull(_listInvoices);
+            Assert.AreEqual(_listInvoices[0].Id, 2);
+            Assert.AreEqual(_listInvoices[0].Number, 2);
+        }
+
         [Test(Description = "Genera una factura nueva")]
         public void CommandGenerateInvoiceTest()
         {
@@ -137,6 +157,19 @@ namespace FondaBackOfficeLogicTest
             //Assert.AreEqual(_invoice.Total, 100);
         }
 
+        [Test(Description = "Obtiene la unidad monetaria de una factura")]
+        public void CommandGetCurrencyInvoiceTest()
+        {
+
+            _command = CommandFactory.GetCommandGetCurrencyInvoice(_invoiceId);
+
+            _command.Execute();
+
+            _currency = (string)_command.Receiver;
+
+            Assert.AreEqual(_currency, "€");
+
+        }
         [Test(Description = "Imprime una factura")]
         public void CommandPrintInvoice()
         {
@@ -147,17 +180,28 @@ namespace FondaBackOfficeLogicTest
             _command.Execute();
         }
 
-        
-        [Test(Description ="Verifica que devuelva una lista de Invoice dado un perfil")]
+        [Test(Description = "Devuelve una factura dada su Id")]
+        public void CommandGetInvoiceTest()
+        {
+            _command = CommandFactory.GetCommandGetInvoice(_invoiceId);
+            _command.Execute();
+            _invoice = (Invoice)_command.Receiver;
+
+            Assert.IsNotNull(_invoice);
+            Assert.AreEqual(_invoice.Number, 1);
+        }
+
+        [Test(Description = "Verifica que devuelva una lista de Invoice dado un perfil")]
         public void CommandGetInvoicesByProfileTest()
         {
             _command = CommandFactory.GetCommandGetInvoicesByProfile(_profileId);
             _command.Execute();
-            _listInvoices = (List<Invoice>) _command.Receiver;
+            _listInvoices = (List<Invoice>)_command.Receiver;
 
             Assert.IsNotNull(_listInvoices);
             Assert.AreEqual(3, _listInvoices.Count);
         }
+
 
         [Test]
         [ExpectedException(typeof(CommandExceptionGetInvoicesByProfile))]
@@ -227,6 +271,27 @@ namespace FondaBackOfficeLogicTest
 
             Assert.AreEqual(0, _listInvoices.Count);
 
+        }
+
+        [Test(Description = "Obtiene el detalle de una factura")]
+        public void CommandGetDetailInvoiceTest()
+        {
+            parameters = new List<int> { 1, 2 };
+            _command = CommandFactory.GetCommandGetDetailInvoice(parameters);
+
+            _command.Execute();
+
+            result = (List<Object>)_command.Receiver;
+            _invoice = (Invoice)result[0];
+            _currency = (string)result[1];
+            _listDishOrder = (IList<DishOrder>)result[2];
+            _account = (Account)result[4];
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(_invoice.Id, 1);
+            Assert.AreEqual(_currency, "€");
+            Assert.AreEqual(_listDishOrder.Count, 2);
+            Assert.AreEqual(_account.Id, 2);
         }
 
 

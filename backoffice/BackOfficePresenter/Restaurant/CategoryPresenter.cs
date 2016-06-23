@@ -160,6 +160,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
         /// </summary>
         public void ButtonAgregar_Click()
         {
+            Command commandAddCategory;
             String nombreA = _view.nameCategoryA.Text;
             //si el campo es valido se registra la la nueva categoria y activa el mensaje de éxito
             if (CategoryValidate(nombreA))
@@ -167,8 +168,16 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 _view.alertAddCategorySuccess.Visible = true;
                 FactoryDAO factoryDAO = FactoryDAO.Intance;
                 IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
-                RestaurantCategory _restcat = new RestaurantCategory();
-                _restcat.Name = nombreA;
+
+                //Llamada al comando para generar la lista de todos los restaurantes
+                commandAddCategory = CommandFactory.GetCommandAddCategory(nombreA);
+                commandAddCategory.Execute();
+                //Resultado del receiver
+                RestaurantCategory _restcat = (RestaurantCategory)commandAddCategory.Receiver;
+
+                /*RestaurantCategory _restcat = new RestaurantCategory();
+                _restcat.Name = nombreA;*/
+
                 _restcatDAO.Save(_restcat);
                 LoadTable();
             }
