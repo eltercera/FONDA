@@ -18,6 +18,7 @@ import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.views.activities.FilterZoneList;
 import com.ds201625.fonda.views.activities.RestaurantListActivity;
+import com.ds201625.fonda.views.adapters.ZonesAdapter;
 import com.google.gson.Gson;
 
 import java.util.Iterator;
@@ -66,8 +67,8 @@ public class ZoneFragment extends BaseFragment {
         List<Zone> zones = null;
         View view= inflater.inflate(R.layout.fragment_zone,container,false);
         list=(ListView)view.findViewById(R.id.listViewRestaurants);
-
-        try {
+        list.setAdapter(new ZonesAdapter(getContext()));
+        /*try {
             Command comando = FondaCommandFactory.getZonesCommand();
             comando.setParameter(0,"");
             comando.setParameter(1, 10);
@@ -81,7 +82,7 @@ public class ZoneFragment extends BaseFragment {
 /*
         zoneService = FondaServiceFactory.getInstance().getZoneService();
         listZone = zoneService.getZone();*/
-        if (zones != null) {
+        /*if (zones != null) {
             iterator = zones.listIterator();
 
             while (iterator.hasNext()) {
@@ -102,7 +103,7 @@ public class ZoneFragment extends BaseFragment {
             });
         }
 
-        setupListView();
+        setupListView();*/
         return view;
 
     }
