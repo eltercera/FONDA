@@ -103,6 +103,7 @@
     <Compile Include="Exceptions\GetCommensalFondaWebApiException.cs" />
     <Compile Include="Exceptions\GetCommensalIdFondaWebApiException.cs" />
     <Compile Include="Exceptions\GetProfileFondaWebApiException.cs" />
+    <Compile Include="Exceptions\GetProfilesFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\GetTokenFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\GetTotalAccountException.cs" />
     <Compile Include="Exceptions\PostProfileFondaWebApiControllerException.cs" />
