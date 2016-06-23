@@ -28,12 +28,12 @@ public class FilterFragment extends BaseFragment {
     private int scrollFirstItem;
     private int scrollLastItem;
     private int scrollTotalItem;
+    private TabLayout tabLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_filter,container,false);
-        TabLayout tabLayout = (TabLayout) layout.findViewById(R.id.tabs);
         position = tabLayout.getSelectedTabPosition();
         lvItems = (ListView)layout.findViewById(R.id.lvFilterList);
         switch (position){
@@ -74,6 +74,10 @@ public class FilterFragment extends BaseFragment {
         });
 
         return layout;
+    }
+
+    public void setTabLayout(TabLayout tabLayout) {
+        this.tabLayout = tabLayout;
     }
 
    /* public void onScroll(final int firstVisibleItem,

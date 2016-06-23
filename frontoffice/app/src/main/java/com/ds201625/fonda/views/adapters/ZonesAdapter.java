@@ -32,6 +32,7 @@ public class ZonesAdapter extends BaseArrayAdapter<Zone> {
         convertView = inflater.inflate(R.layout.item_filter, null, true);
         TextView tvFilter = (TextView) convertView.findViewById(R.id.tvFilter);
         tvFilter.setText(item.getName());
+        update();
         return convertView;
     }
 

@@ -48,6 +48,8 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
         int idImage = context.getResources().getIdentifier(image, "mipmap", context.getPackageName());
         icon.setImageResource(idImage);
 
+        update();
+
         return convertView;
 
     }

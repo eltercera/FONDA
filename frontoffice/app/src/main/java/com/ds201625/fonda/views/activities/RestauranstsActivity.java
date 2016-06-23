@@ -26,10 +26,17 @@ public class RestauranstsActivity extends  BaseNavigationActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
+        FilterFragment zoneFrag = new FilterFragment();
+        FilterFragment resFrag = new FilterFragment();
+        FilterFragment catFrag = new FilterFragment();
+        zoneFrag.setTabLayout(tabLayout);
+        resFrag.setTabLayout(tabLayout);
+        catFrag.setTabLayout(tabLayout);
+
         RestaurantFilters = new BaseSectionsPagerAdapter(getSupportFragmentManager(),tabLayout);
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_food),new FilterFragment());
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_zone),new FilterFragment());
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_cost),new FilterFragment());
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_food),resFrag);
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_zone),zoneFrag);
+        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.filter_cost),catFrag);
 
         viewPager.setAdapter(RestaurantFilters);
         tabLayout.setupWithViewPager(viewPager);
