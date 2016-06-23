@@ -3,6 +3,7 @@ package com.ds201625.fonda.logic;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.AddFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.DeleteFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.GetAllRestaurantsFondaWebApiControllerException;
 
 /**
  * Base para los comandos
@@ -107,7 +108,8 @@ public abstract class BaseCommand implements Command {
     protected abstract void invokeF() throws
             FindFavoriteRestaurantFondaWebApiControllerException,
             DeleteFavoriteRestaurantFondaWebApiControllerException,
-            AddFavoriteRestaurantFondaWebApiControllerException;
+            AddFavoriteRestaurantFondaWebApiControllerException,
+            GetAllRestaurantsFondaWebApiControllerException;
 
     /**
      * Valida los parametros requeridos

@@ -29,6 +29,7 @@ public class RetrofitAllRestaurantService implements AllRestaurantService {
         super();
     }
 
+    private APIError error;
     /**
      * Método que obtiene todos los restaurantes
      *
@@ -36,7 +37,7 @@ public class RetrofitAllRestaurantService implements AllRestaurantService {
      * @throws RestClientException
      */
     @Override
-    public List<Restaurant> getAllRestaurant() throws RestClientException {
+    public List<Restaurant> getAllRestaurant() throws GetAllRestaurantsFondaWebApiControllerException {
         Log.d(TAG, "Se obtienen todos los restaurantes");
         Call<List<Restaurant>> call = currentAllRestaurantClient.getAllRestaurant();
         List<Restaurant> test = null;
@@ -48,7 +49,7 @@ public class RetrofitAllRestaurantService implements AllRestaurantService {
                 test = response.body();
             } else {
                 // parse the response body
-                APIError error = ErrorUtils.parseError(response);
+               error = ErrorUtils.parseError(response);
                 // usar error para disparar exception
 
                 Log.d("Error message", error.message());
@@ -58,8 +59,10 @@ public class RetrofitAllRestaurantService implements AllRestaurantService {
             }
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en getAllRestaurant", e);
+            throw  new GetAllRestaurantsFondaWebApiControllerException(error.exceptionType());
         } catch (Exception e) {
             Log.e(TAG, "Se ha generado error en getAllRestaurant", e);
+            throw  new GetAllRestaurantsFondaWebApiControllerException(error.exceptionType());
         }
         return test;
     }
