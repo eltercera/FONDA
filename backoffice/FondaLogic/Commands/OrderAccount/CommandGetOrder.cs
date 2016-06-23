@@ -28,8 +28,6 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             {
                 orderId = (int)Receiver;
                 //Metodos para acceder a la BD
-                //ESTO HAY QUE CAMBIARLO
-                //DEBERIA BUSCAR UNA ORDEN POR SU NUMERO Y SU RESTAURANTE
                 IOrderAccountDao _orderDAO = _facDAO.GetOrderAccountDAO();
 
 

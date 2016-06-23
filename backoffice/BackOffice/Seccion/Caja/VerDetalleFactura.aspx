@@ -69,7 +69,7 @@
                             <br />
                             <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;<b># Orden: </b>
-                            <%=Session["AccountNumber"]%>
+                            <asp:Label ID="accountNumber" runat="server"></asp:Label>
                             <br />
                             <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;<b>Apellido, Nombre: </b>
