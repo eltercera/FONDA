@@ -1465,7 +1465,7 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Se ha imprimido la factura correctamente.
+        ///   Looks up a localized string similar to Se ha impreso la factura correctamente.
         /// </summary>
         public static string SuccessMessageCommandPrintInvoice {
             get {
@@ -1519,7 +1519,7 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to La factura se ha imprimido satisfactoriamente.
+        ///   Looks up a localized string similar to La factura se ha impreso satisfactoriamente.
         /// </summary>
         public static string SuccessPrintInvoice {
             get {

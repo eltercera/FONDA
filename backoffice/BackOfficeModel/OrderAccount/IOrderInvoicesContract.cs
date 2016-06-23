@@ -7,12 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace com.ds201625.fonda.View.BackOfficeModel.OrderAccount
 {
-    public interface IDetailOrderModel : IModel
+    public interface IOrderInvoicesContract : IContract
     {
-        Table DetailOrderTable { get; set; }
+        Table OrderInvoicesTable { get; set; }
 
-        string Session { get; set; }
+        string SessionAccountId { get; set; }
 
-        string SessionNumberAccount { get; set; }
+        Label NumberAccount { get; set; }
     }
 }

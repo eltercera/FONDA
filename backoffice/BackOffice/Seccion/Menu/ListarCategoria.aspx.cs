@@ -20,7 +20,7 @@ namespace BackOffice.Seccion.Menu
         private MenuCategoriaPresenter _presenter;
 
         /* BEGIN Interface Code*/
-        string IModel.SessionRestaurant
+        string IContract.SessionRestaurant
         {
             get{ throw new NotImplementedException();}
             set{ throw new NotImplementedException(); }
@@ -29,23 +29,23 @@ namespace BackOffice.Seccion.Menu
         /// <summary>
         /// Retorna label exito al agregar una categoria
         /// </summary>
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get{ return this.AlertSuccess_AddCategory; }
         }
 
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get{ throw new NotImplementedException();}
             set{ throw new NotImplementedException();}
         }
 
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { throw new NotImplementedException();}
         }
 
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }

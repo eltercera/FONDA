@@ -10,7 +10,7 @@ using com.ds201625.fonda.View.BackOfficePresenter.OrderAccount;
 
 namespace BackOffice.Seccion.Caja
 {
-    public partial class VerDetalleOrden : System.Web.UI.Page, IDetailOrderModel
+    public partial class VerDetalleOrden : System.Web.UI.Page, IDetailOrderContract
     {
         #region Presenter
 
@@ -27,7 +27,7 @@ namespace BackOffice.Seccion.Caja
             set { orderDetail = value; }
         }
 
-        Label IModel.ErrorLabelMessage
+        Label IContract.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }
 
@@ -35,7 +35,7 @@ namespace BackOffice.Seccion.Caja
 
         }
 
-        Label IModel.SuccessLabelMessage
+        Label IContract.SuccessLabelMessage
         {
             get { return this.SuccessLabelMessage; }
 
@@ -45,7 +45,7 @@ namespace BackOffice.Seccion.Caja
         /// <summary>
         /// Recurso de Session con el que inicia el Page_Load
         /// </summary>
-        string IDetailOrderModel.Session
+        string IDetailOrderContract.Session
         {
             get { return Session[OrderAccountResources.SessionIdAccount].ToString(); }
 
@@ -65,12 +65,12 @@ namespace BackOffice.Seccion.Caja
 
             set { Session[OrderAccountResources.SessionNumberAccount] = value; }
         }
-        HtmlGenericControl IModel.ErrorLabel
+        HtmlGenericControl IContract.ErrorLabel
         {
             get { return this.ErrorLabel; }
         }
 
-        HtmlGenericControl IModel.SuccessLabel
+        HtmlGenericControl IContract.SuccessLabel
         {
             get { return this.SuccessLabel; }
 

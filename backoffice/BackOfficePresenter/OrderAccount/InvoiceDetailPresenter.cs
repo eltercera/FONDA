@@ -19,7 +19,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {
     public class InvoiceDetailPresenter : Presenter
     {
-        private IInvoiceDetailModel _view;
+        private IDetailInvoiceContract _view;
         private int totalColumns = 3;
         private int accountId = 0;
         private int invoiceId = 0;
@@ -30,7 +30,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         private Invoice _invoice;
         private CreditCardPayment _creditCardPayment;
 
-        public InvoiceDetailPresenter(IInvoiceDetailModel viewInvoiceDetail) : 
+        public InvoiceDetailPresenter(IDetailInvoiceContract viewInvoiceDetail) : 
             base(viewInvoiceDetail)
         {
             _view = viewInvoiceDetail;

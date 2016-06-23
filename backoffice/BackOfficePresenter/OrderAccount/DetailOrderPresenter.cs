@@ -17,7 +17,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
     public class DetailOrderPresenter : Presenter
     {
         //Enlace Modelo - Vista
-        private IDetailOrderModel _view;
+        private IDetailOrderContract _view;
         int totalColumns = 3;
         string currency;
 
@@ -27,7 +27,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         /// </summary>
         /// <param name="viewDetailOrder">Interfaz</param>
 
-        public DetailOrderPresenter(IDetailOrderModel viewDetailOrder)
+        public DetailOrderPresenter(IDetailOrderContract viewDetailOrder)
             : base(viewDetailOrder)
         {
             //Enlace Modelo - Vista
