@@ -1,3 +1,4 @@
+
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -9,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>com.ds201625.fonda.BackEnd</RootNamespace>
-    <AssemblyName>FondaBackEnd</AssemblyName>
+    <AssemblyName>com.ds201625.fonda.BackEnd</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -81,18 +82,17 @@
   <ItemGroup>
     <Compile Include="Controllers\CategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\CostFilterFondaWebApiController.cs" />
-    <Compile Include="Controllers\ReservationsCommensalFondaWebApiController.cs" />
     <Compile Include="Controllers\FavoritesRestaurantsFondaWebApiController.cs" />
     <Compile Include="Controllers\MenuCategoryWebApiController.cs" />
     <Compile Include="Controllers\OrderAccountFondaWebApiController.cs" />
     <Compile Include="Controllers\PaymentFondaWebApiController.cs" />
+    <Compile Include="Controllers\ReservationFondaWebApiController.cs" />
     <Compile Include="Controllers\RestaurantCategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\RestaurantZoneFilterFondaWebApiController - Copia.cs" />
     <Compile Include="Controllers\RestaurantFondaWebApiController.cs" />
     <Compile Include="Controllers\ZoneFilterFondaWebApiController.cs" />
     <Compile Include="Exceptions\AddCommensalWebApiControllerException.cs" />
     <Compile Include="Exceptions\AddFavoriteRestaurantFondaWebApiControllerException.cs" />
-    <Compile Include="Exceptions\CanceledInvoiceException.cs" />
     <Compile Include="Exceptions\DeleteFavoriteRestaurantFondaWebApiControllerException .cs" />
     <Compile Include="Exceptions\DeleteProfileFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\DeleteTokenFondaWebApiControllerException.cs" />
@@ -104,11 +104,10 @@
     <Compile Include="Exceptions\GetAllRestaurantsFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\GetCommensalFondaWebApiException.cs" />
     <Compile Include="Exceptions\GetCommensalIdFondaWebApiException.cs" />
-    <Compile Include="Exceptions\GetOrderDetailException.cs" />
     <Compile Include="Exceptions\GetProfileFondaWebApiException.cs" />
+    <Compile Include="Exceptions\GetProfilesFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\GetTokenFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\GetTotalAccountException.cs" />
-    <Compile Include="Exceptions\PayAccountException.cs" />
     <Compile Include="Exceptions\PostProfileFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\PutProfileFondaWebApiControllerException.cs" />
     <Compile Include="GeneralRes.Designer.cs">
