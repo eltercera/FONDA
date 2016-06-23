@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,12 +87,14 @@
     <Compile Include="Commands\OrderAccount\CommandReleaseTableByRestaurant.cs" />
     <Compile Include="Commands\OrderAccount\CommandTotalOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandValidateProfileByCommensal.cs" />
+    <Compile Include="Commands\Restaurant\CommandAddCategory.cs" />
     <Compile Include="Commands\Restaurant\CommandGenerateRestaurant.cs" />
     <Compile Include="Commands\Restaurant\CommandGetAllCategories.cs" />
     <Compile Include="Commands\Restaurant\CommandGetAllCurrency.cs" />
     <Compile Include="Commands\Restaurant\CommandGetAllZones.cs" />
     <Compile Include="Commands\Restaurant\CommandModifyRestaurant.cs" />
     <Compile Include="Commands\Reservations\CommandGetTables.cs" />
+    <Compile Include="Commands\Restaurant\CommandSaveMRestaurant.cs" />
     <Compile Include="Commands\Restaurant\CommandSaveRestaurant.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />

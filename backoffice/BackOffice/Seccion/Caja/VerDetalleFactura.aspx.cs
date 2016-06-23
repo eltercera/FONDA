@@ -14,7 +14,7 @@ namespace BackOffice.Seccion.Caja
     { 
        #region Presenter
 
-        private InvoiceDetailPresenter _presenter;
+        private DetailInvoicePresenter _presenter;
 
         #endregion
 
@@ -47,7 +47,12 @@ namespace BackOffice.Seccion.Caja
 
             set { ssn = value; }
         }
+        public System.Web.UI.WebControls.Label NumberAccount
+        {
+            get { return accountNumber; }
 
+            set { accountNumber = value; }
+        }
         public System.Web.UI.WebControls.Label IvaInvoice
         {
             get { return iva; }
@@ -156,12 +161,13 @@ namespace BackOffice.Seccion.Caja
 
         public VerDetalleFactura()
         {
-            _presenter = new InvoiceDetailPresenter(this);
+            _presenter = new DetailInvoicePresenter(this);
         }
         #endregion
         protected void print_Click(object sender, EventArgs e)
         {
             _presenter.PrintInvoice();
+            //_presenter.SendInvoice();
         }
         protected void Page_Load(object sender, EventArgs e)
         {

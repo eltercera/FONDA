@@ -1033,6 +1033,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error en la base de datos al obtener los platillos de una cuenta.
+        /// </summary>
+        public static string MessageGetDishesByAccountFondaDAOException {
+            get {
+                return ResourceManager.GetString("MessageGetDishesByAccountFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha cargado la tabla de ordenes abiertas satisfactoriamente.
         /// </summary>
         public static string MessageGetOrders {
@@ -1506,6 +1515,42 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string SuccessMessagefindAllInvoice {
             get {
                 return ResourceManager.GetString("SuccessMessagefindAllInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido la factura pagada de una orden de la base de datos correctamente.
+        /// </summary>
+        public static string SuccessMessageFindGenerateInvoiceByAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageFindGenerateInvoiceByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido todas las facturas de una orden de la base de datos correctamente.
+        /// </summary>
+        public static string SuccessMessageFindInvoicesByAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageFindInvoicesByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido todas las facturas de un Restaurante de la base de datos correctamente.
+        /// </summary>
+        public static string SuccessMessageFindInvoicesByRestaurant {
+            get {
+                return ResourceManager.GetString("SuccessMessageFindInvoicesByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SuccessMessageGenerateNumberInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageGenerateNumberInvoice", resourceCulture);
             }
         }
         
