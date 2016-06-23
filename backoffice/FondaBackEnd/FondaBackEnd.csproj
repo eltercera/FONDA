@@ -104,7 +104,8 @@
     <Compile Include="Exceptions\GetAllRestaurantsFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\GetCommensalFondaWebApiException.cs" />
     <Compile Include="Exceptions\GetCommensalIdFondaWebApiException.cs" />
-    <Compile Include="Exceptions\GetOrderDetailException.cs" />
+    <Compile Include="Exceptions\GetOrderDetailException.cs" />\
+    <Compile Include="Exceptions\GetPaymentHistoryByProfileException.cs" />
     <Compile Include="Exceptions\GetProfileFondaWebApiException.cs" />
     <Compile Include="Exceptions\GetProfilesFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\GetTokenFondaWebApiControllerException.cs" />
