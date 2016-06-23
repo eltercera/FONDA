@@ -48,7 +48,4 @@ public class CreateProfileCommand extends BaseCommand {
         setResult(true);
     }
 
-    @Override
-    protected void invokeF() {
-    }
 }

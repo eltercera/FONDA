@@ -33,7 +33,7 @@ public class AllRestaurantCommand extends BaseCommand {
      * Metodo de invoke implementado: Comando para mostrar todos los restaurantes
      */
     @Override
-    protected void invokeF() throws GetAllRestaurantsFondaWebApiControllerException {
+    protected void invoke() throws GetAllRestaurantsFondaWebApiControllerException {
 
         Log.d(TAG, "Comando para obtener los restaurantes");
 
@@ -60,6 +60,4 @@ public class AllRestaurantCommand extends BaseCommand {
         setResult(restaurantList);
     }
 
-    @Override
-    protected void invoke() {}
 }

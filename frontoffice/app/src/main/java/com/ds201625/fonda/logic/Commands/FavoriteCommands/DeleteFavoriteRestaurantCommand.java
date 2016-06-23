@@ -40,7 +40,7 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
      * Metodo de invoke implementado: Comando para eliminar un restaurante favorito
      */
     @Override
-    protected void invokeF() throws DeleteFavoriteRestaurantFondaWebApiControllerException {
+    protected void invoke() throws DeleteFavoriteRestaurantFondaWebApiControllerException {
         Log.d(TAG, "Comando para eliminar un restaurante de favoritos");
         FavoriteRestaurantService serviceFavorits = FondaServiceFactory.getInstance()
                 .getFavoriteRestaurantService();
@@ -71,7 +71,4 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
     }
 
 
-
-    @Override
-    protected void invoke(){}
 }

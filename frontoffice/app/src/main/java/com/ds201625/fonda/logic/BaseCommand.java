@@ -103,13 +103,8 @@ public abstract class BaseCommand implements Command {
     /**
      * Invocacion de la acción del comando
      */
-    protected abstract void invoke();
+    protected abstract void invoke() throws Exception;
 
-    protected abstract void invokeF() throws
-            FindFavoriteRestaurantFondaWebApiControllerException,
-            DeleteFavoriteRestaurantFondaWebApiControllerException,
-            AddFavoriteRestaurantFondaWebApiControllerException,
-            GetAllRestaurantsFondaWebApiControllerException;
 
     /**
      * Valida los parametros requeridos
