@@ -2,6 +2,7 @@
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
+using com.ds201625.fonda.Logic.FondaCommandException.OrderAccount;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
@@ -209,19 +210,71 @@ namespace FondaBackOfficeLogicTest
             //Assert.AreEqual(_invoice.Total, 100);
         }
         #endregion
+
+        #region Pruebas de Logic/Command/CommandGetCurrencyInvoiceTest
         [Test(Description = "Obtiene la unidad monetaria de una factura")]
         public void CommandGetCurrencyInvoiceTest()
         {
-
             _command = CommandFactory.GetCommandGetCurrencyInvoice(_invoiceId);
+            _command.Execute();
+            _currency = (string)_command.Receiver;
+            Assert.AreEqual(_currency, "€");
+        }
+        [Test(Description = "Exception CommandGetCurrencyInvoiceTest")]
+        [ExpectedException(typeof(CommandExceptionGetCurrencyInvoice))]
+        public void CommandGetCurrencyInvoiceExceptionTest()
+        {
+            _command = CommandFactory.GetCommandGetCurrencyInvoice(0);
+            _command.Execute();
+            _currency = (string)_command.Receiver;
+            Assert.AreEqual(_currency, "€");
+        }
+        #endregion
+
+        #region Pruebas de Logic/Command/CommandGetDetailInvoiceTest
+        [Test(Description = "Obtiene el detalle de una factura")]
+        public void CommandGetDetailInvoiceTest()
+        {
+            parameters = new List<int> { 1, 2 };
+            _command = CommandFactory.GetCommandGetDetailInvoice(parameters);
 
             _command.Execute();
 
-            _currency = (string)_command.Receiver;
+            result = (List<Object>)_command.Receiver;
+            _invoice = (Invoice)result[0];
+            _currency = (string)result[1];
+            _listDishOrder = (IList<DishOrder>)result[2];
+            _account = (Account)result[4];
 
+            Assert.IsNotNull(result);
+            Assert.AreEqual(_invoice.Id, 1);
             Assert.AreEqual(_currency, "€");
-
+            Assert.AreEqual(_listDishOrder.Count, 2);
+            Assert.AreEqual(_account.Id, 2);
         }
+        [Test(Description = "Exception CommandGetDetailInvoiceExcepionTest")]
+        [ExpectedException(typeof(CommandExceptionCommandGetDetailInvoice))]
+        public void CommandGetDetailInvoiceExcepionTest()
+        {
+            parameters = new List<int>();
+            _command = CommandFactory.GetCommandGetDetailInvoice(parameters);
+
+            _command.Execute();
+
+            result = (List<Object>)_command.Receiver;
+            _invoice = (Invoice)result[0];
+            _currency = (string)result[1];
+            _listDishOrder = (IList<DishOrder>)result[2];
+            _account = (Account)result[4];
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(_invoice.Id, 1);
+            Assert.AreEqual(_currency, "€");
+            Assert.AreEqual(_listDishOrder.Count, 2);
+            Assert.AreEqual(_account.Id, 2);
+        }
+        #endregion
+
         [Test(Description = "Imprime una factura")]
         public void CommandPrintInvoice()
         {
@@ -323,27 +376,6 @@ namespace FondaBackOfficeLogicTest
 
             Assert.AreEqual(0, _listInvoices.Count);
 
-        }
-
-        [Test(Description = "Obtiene el detalle de una factura")]
-        public void CommandGetDetailInvoiceTest()
-        {
-            parameters = new List<int> { 1, 2 };
-            _command = CommandFactory.GetCommandGetDetailInvoice(parameters);
-
-            _command.Execute();
-
-            result = (List<Object>)_command.Receiver;
-            _invoice = (Invoice)result[0];
-            _currency = (string)result[1];
-            _listDishOrder = (IList<DishOrder>)result[2];
-            _account = (Account)result[4];
-
-            Assert.IsNotNull(result);
-            Assert.AreEqual(_invoice.Id, 1);
-            Assert.AreEqual(_currency, "€");
-            Assert.AreEqual(_listDishOrder.Count, 2);
-            Assert.AreEqual(_account.Id, 2);
         }
 
 

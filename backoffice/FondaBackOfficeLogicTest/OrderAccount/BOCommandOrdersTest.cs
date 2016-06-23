@@ -225,6 +225,43 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
         #endregion
 
+        #region Pruebas de Logic/Command/CommandPayOrderTest
+
+        [Test(Description = "Obtiene el detalle de una orden")]
+        public void CommandGetDetailOrderTest()
+        {
+            _command = CommandFactory.GetCommandGetDetailOrder(parameters);
+
+            _command.Execute();
+
+            result = (List<Object>)_command.Receiver;
+            _listDishOrder = (IList<DishOrder>)result[0];
+            _account = (Account)result[1];
+            _currency = (string)result[2];
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(_listDishOrder.Count, 2);
+            Assert.AreEqual(_currency, "€");
+        }
+
+        [Test(Description = "Exception de CommandGetDetailOrderTest")]
+        [ExpectedException(typeof(CommandExceptionGetDetailOrder))] //
+        public void CommandGetDetailOrderExceptionTest()
+        {
+            _command = CommandFactory.GetCommandGetDetailOrder(null);
+
+            _command.Execute();
+
+            result = (List<Object>)_command.Receiver;
+            _listDishOrder = (IList<DishOrder>)result[0];
+            _account = (Account)result[1];
+            _currency = (string)result[2];
+
+            Assert.IsNotNull(result);
+            Assert.AreEqual(_listDishOrder.Count, 2);
+            Assert.AreEqual(_currency, "€");
+        }
+        #endregion
         [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
         public void CommandTotalOrderTest()
         {
@@ -303,22 +340,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
 
         }
 
-        [Test(Description = "Obtiene el detalle de una orden")]
-        public void CommandGetDetailOrderTest()
-        {
-            _command = CommandFactory.GetCommandGetDetailOrder(parameters);
-
-            _command.Execute();
-
-            result = (List<Object>)_command.Receiver;
-            _listDishOrder = (IList<DishOrder>)result[0];
-            _account = (Account)result[1];
-            _currency = (string)result[2];
-
-            Assert.IsNotNull(result);
-            Assert.AreEqual(_listDishOrder.Count, 2);
-            Assert.AreEqual(_currency, "€");
-        }
         [Test(Description = "Obtiene el detalle de una orden por id de la orden")]
         public void CommandGetDishOrderByAccountTest()
         {
