@@ -173,6 +173,7 @@ namespace FondaBackOfficeLogicTest
         }
         #endregion
 
+        #region Pruebas de Logic/Command/CommandGenerateInvoiceTest
         [Test(Description = "Genera una factura nueva")]
         public void CommandGenerateInvoiceTest()
         {
@@ -187,10 +188,27 @@ namespace FondaBackOfficeLogicTest
             _command.Execute();
             _invoice = (Invoice)_command.Receiver;
             Assert.IsNotNull(_invoice);
-            //Assert.AreEqual(_invoice.Tax, 12);
+            Assert.AreEqual(_invoice.Tax, ((_cashPayment.Amount) * 0.12f));
             //Assert.AreEqual(_invoice.Total, 100);
         }
+        [Test(Description = "Prueba de la exception de CommandGenerateInvoiceExceptionTest")]
+        [ExpectedException(typeof(CommandExceptionGenerateInvoice))]
+        public void CommandGenerateInvoiceExceptionTest()
+        {
+            InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
+            _invoice = EntityFactory.GetInvoice(null, null, 0, ((_cashPayment.Amount) * 0.12f), null, 100, i);
+            _listObject.Add(null); //11000
+            _listObject.Add(0);
+            _listObject.Add(_restaurantId);
+            _listObject.Add(_profileId);
+            _command = CommandFactory.GetCommandGenerateInvoice(_listObject);
 
+            _command.Execute();
+            _invoice = (Invoice)_command.Receiver;
+            Assert.IsNotNull(_invoice);
+            //Assert.AreEqual(_invoice.Total, 100);
+        }
+        #endregion
         [Test(Description = "Obtiene la unidad monetaria de una factura")]
         public void CommandGetCurrencyInvoiceTest()
         {

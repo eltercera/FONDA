@@ -103,6 +103,58 @@ namespace com.ds201625.fonda.Tests.DataAccess
             Assert.AreEqual(_totalOrders, "€ 13900");
         }
         #endregion
+
+        #region Pruebas de Logic/Command/CommandGetOrdersTest
+        [Test(Description = "Obtiene las ordenes de un restaurante")]
+        public void CommandGetOrdersTest()
+        {
+
+            _command = CommandFactory.GetCommandGetOrders(_restaurantId);
+
+            _command.Execute();
+
+            _listAccount = (IList<Account>)_command.Receiver;
+
+            Assert.IsNotNull(_listAccount);
+
+        }
+        [Test(Description = "Prueba de la exception de CommandGetOrdersExceptionTest")]
+        [ExpectedException(typeof(CommandExceptionGetOrders))]
+        public void CommandGetOrdersExceptionTest()
+        {
+            _command = CommandFactory.GetCommandGetOrders(0);
+
+            _command.Execute();
+
+            _listAccount = (IList<Account>)_command.Receiver;
+
+            Assert.IsNotNull(_listAccount);
+
+        }
+        #endregion
+
+        #region Pruebas de Logic/Command/CommandGetClosedOrdersTest
+        [Test(Description = "Obtiene las ordenes cerradas de un restaurante")]
+        public void CommandGetClosedOrdersTest()
+        {
+            _command = CommandFactory.GetCommandClosedOrders(_restaurantId);
+            _command.Execute();
+            _listAccount = (IList<Account>)_command.Receiver;
+            Assert.IsNotNull(_listAccount);
+            Assert.AreEqual(_listAccount[0].Id, 2);
+        }
+        [Test(Description = "Pueba de exception de CommandGetClosedOrdersExceptionTest")]
+        [ExpectedException(typeof(CommandExceptionGetClosedOrders))]
+        public void CommandGetClosedOrdersExceptionTest()
+        {
+            _command = CommandFactory.GetCommandClosedOrders(0);
+            _command.Execute();
+            _listAccount = (IList<Account>)_command.Receiver;
+            Assert.IsNotNull(_listAccount);
+            Assert.AreEqual(_listAccount[0].Id, 2);
+        }
+        #endregion
+
         [Test(Description = "Se paga la orden")]
         public void CommandPayOrderTest()
         {
@@ -168,35 +220,6 @@ namespace com.ds201625.fonda.Tests.DataAccess
             _table = _tableDAO.FindById(_tableId);
             Assert.AreEqual(_table.Id, _tableId);
             //Assert.AreEqual(_table.Status,);
-        }
-
-        [Test(Description = "Obtiene las ordenes de un restaurante")]
-        public void CommandGetOrdersTest()
-        {
-
-            _command = CommandFactory.GetCommandGetOrders(_restaurantId);
-
-            _command.Execute();
-
-            _listAccount = (IList<Account>)_command.Receiver;
-
-            Assert.IsNotNull(_listAccount);
-
-        }
-
-        [Test(Description = "Obtiene las ordenes cerradas de un restaurante")]
-        public void CommandGetClosedOrdersTest()
-        {
-
-            _command = CommandFactory.GetCommandClosedOrders(_restaurantId);
-
-            _command.Execute();
-
-            _listAccount = (IList<Account>)_command.Receiver;
-
-            Assert.IsNotNull(_listAccount);
-            Assert.AreEqual(_listAccount[0].Id, 2);
-
         }
 
         [Test(Description = "Obtiene la unidad monetaria de un restaurante")]
