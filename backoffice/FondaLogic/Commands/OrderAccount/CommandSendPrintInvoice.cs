@@ -22,14 +22,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 PdfPCell cell = null;
                 PdfPTable table = null;
 
-                document.Open();
 
-                table.AddCell(PhraseCell(new Phrase("Employee code:", FontFactory.GetFont("Arial", 8, Font.BOLD, BaseColor.BLACK)), PdfPCell.ALIGN_LEFT));
-                table.AddCell(PhraseCell(new Phrase("000" + dr["EmployeeId"], FontFactory.GetFont("Arial", 8, Font.NORMAL, BaseColor.BLACK)), PdfPCell.ALIGN_LEFT));
-                cell = PhraseCell(new Phrase(), PdfPCell.ALIGN_CENTER);
-                cell.Colspan = 2;
-                cell.PaddingBottom = 10f;
-                table.AddCell(cell);
 
 
                 document.Add(table);
