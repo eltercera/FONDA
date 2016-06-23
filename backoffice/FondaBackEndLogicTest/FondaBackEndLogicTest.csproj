@@ -55,6 +55,7 @@
     <Compile Include="FavoriteRestaurantCommandTest\DeleteRestaurantManagementTest.cs" />
     <Compile Include="FavoriteRestaurantCommandTest\CreateFavoriteRestaurantManagementTest.cs" />
     <Compile Include="HelpTestCommand.cs" />
+    <Compile Include="ProfileCommandManagementTest.cs" />
     <Compile Include="ProfileManagementTest.cs" />
   </ItemGroup>
   <ItemGroup>
