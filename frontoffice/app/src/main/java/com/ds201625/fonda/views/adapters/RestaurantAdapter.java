@@ -22,6 +22,7 @@ import java.util.List;
 public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
     int currentPage;
 
+
     public RestaurantAdapter(Context context) {
             super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
     }
@@ -77,8 +78,9 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
 
         try {
             Command comando = FondaCommandFactory.getCategoriesCommand();
-            comando.setParameter(0, 10);
-            comando.setParameter(1, currentPage + 1);
+
+            comando.setParameter(1, 10);
+            comando.setParameter(2, currentPage + 1);
             comando.run();
             restaurants = (List<Restaurant>)comando.getResult();
         }
