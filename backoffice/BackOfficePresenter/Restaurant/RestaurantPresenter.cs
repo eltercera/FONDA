@@ -43,11 +43,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             //Resultado del receiver
             IList<Restaurant> listRestaurant = (IList<Restaurant>)commandGetAllRestaurants.Receiver;
 
-            /*FactoryDAO factoryDAO = FactoryDAO.Intance;
-            IRestaurantDAO _RestaurantDAO = factoryDAO.GetRestaurantDAO();
-            IList<com.ds201625.fonda.Domain.Restaurant> listRestaurant = _RestaurantDAO.GetAll();*/
-
-
             int totalRows = listRestaurant.Count; //tamano de la lista 
             int totalColumns = 4; //numero de columnas de la tabla
 
@@ -453,9 +448,6 @@ string zone, string longitud, string latitud, string otime, string ctime)
             if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
                 Address, Zone, Long, Lat, _view.openingTimeAdd.Text, _view.closingTimeAdd.Text))
             {
-                //FactoryDAO factoryDAO = FactoryDAO.Intance;
-                //IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
-
                 //Genera la lista del objeto para el comando
                 Object[] _addlist = new Object[13];
                 _addlist[0] = Name;
@@ -479,16 +471,10 @@ string zone, string longitud, string latitud, string otime, string ctime)
                 //Resultado del receiver
                 Restaurant _restaurant = (Restaurant)commandGenerateRestaurant.Receiver;
 
-                /*com.ds201625.fonda.Domain.Restaurant _restaurant =
-                    _restaurantDAO.GenerateRestaurant(Name, Logo, Nationality, Rif, Address,
-                    Category, Currency, Zone, LongD, LatD, OT, CT, days);*/
-
                 //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
                 commandSaveRestaurant = CommandFactory.GetCommandSaveRestaurant(_restaurant);
                 //ejecuto el comando
                 commandSaveRestaurant.Execute();
-
-                //_restaurantDAO.Save(_restaurant);
 
                 //Refresca la tabla de Restaurantes
                 LoadTable();
@@ -578,9 +564,6 @@ string zone, string longitud, string latitud, string otime, string ctime)
             if (ValidateRestaurantM(Name, Category, Nationality.ToString(), Rif, Currency,
                 Address, Zone, Long, Lat, _view.openingTimeModify.Text, _view.closingTimeModify.Text))
             {
-                //FactoryDAO factoryDAO = FactoryDAO.Intance;
-                //IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
-
                 //Horario de apertura y cierre
                 TimeSpan OT = TimeSpan.Parse(_view.openingTimeModify.Text);
                 TimeSpan CT = TimeSpan.Parse(_view.closingTimeModify.Text);
@@ -589,12 +572,6 @@ string zone, string longitud, string latitud, string otime, string ctime)
                 string RestaurantID = _view.RestaurantModifyById.Value;
                 int idRestaurant = int.Parse(RestaurantID);
 
-                // Genera un objeto Restaurante a partir de los campos suministrados
-                /* com.ds201625.fonda.Domain.Restaurant _restaurantM =
-                     _restaurantDAO.GenerateRestaurant(Name, Logo, Nationality, Rif, Address,
-                     Category, Currency, Zone, LongD, LatD, OT, CT, days);*/
-
-                // com.ds201625.fonda.Domain.Restaurant _restaurantO = _restaurantDAO.FindById(idRestaurant);
                 //Genera la lista del objeto para el comando
                 Object[] _addlist = new Object[13];
                 _addlist[0] = Name;
@@ -618,7 +595,6 @@ string zone, string longitud, string latitud, string otime, string ctime)
                 //Resultado del receiver
                 Restaurant _restaurantM = (Restaurant)commandGenerateRestaurant.Receiver;
 
-
                 //Lista de objetos para el comando
                 Object[] _modifylist = new Object[2];
                 _modifylist[0] = _restaurantM;
@@ -630,10 +606,6 @@ string zone, string longitud, string latitud, string otime, string ctime)
 
                 //Resultado del receiver
                 Restaurant _restaurant = (Restaurant)commandModifyRestaurant.Receiver;
-
-                // Modifica un objeto restaurante
-                // com.ds201625.fonda.Domain.Restaurant _restaurant =
-                //    _restaurantDAO.ModifyRestaurant(idRestaurant, _restaurantM);
 
                 //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
                 commandSaveRestaurant = CommandFactory.GetCommandSaveRestaurant(_restaurant);
