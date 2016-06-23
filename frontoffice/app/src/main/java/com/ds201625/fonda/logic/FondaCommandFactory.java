@@ -1,8 +1,8 @@
 package com.ds201625.fonda.logic;
 
-import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
-import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteTokenCommand;
+
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateTokenCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.CreateProfileCommand;
@@ -12,6 +12,10 @@ import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalC
 import com.ds201625.fonda.logic.Commands.ProfileCommands.DeleteProfileCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.GetProfilesCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.UpdateProfileCommand;
+import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
+import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteTokenCommand;
+import com.ds201625.fonda.logic.Commands.ReservationCommands.AddReservationCommand;
+import com.ds201625.fonda.logic.Commands.ReservationCommands.AllReservationCommand;
 import com.ds201625.fonda.logic.Commands.RestaurantCommands.*;
 
 /**
@@ -65,9 +69,10 @@ public class FondaCommandFactory {
      * Crea un AllFavoriteRestaurantCommand
      * @return comando AllFavoriteRestaurantCommand
      */
-    public static Command allFavoriteRestaurantCommand() {
+    public static Command allFavoriteRestaurantCommand() throws
+            FindFavoriteRestaurantFondaWebApiControllerException {
         return  new AllFavoriteRestaurantCommand();
-    }
+     }
 
     /**
      * Crea un AllRestaurantCommand
@@ -117,8 +122,32 @@ public class FondaCommandFactory {
      * Crea un deleteTokenCommand
      * @return comando deleteTokenCommand
      */
+    public static Command deleteTokenCommand() { return  new DeleteTokenCommand();
+    }
 
-    public static Command deleteTokenCommand() { return  new DeleteTokenCommand();}
+    /**
+     * Crea un createTokenCommand
+     * @return comando createTokenCommand
+     */
+    public static Command createTokenCommand() { return  new CreateTokenCommand();
+    }
+
+
+    /**
+     * Crea un AddReservationCommand
+     * @return comando AddReservationCommand
+     */
+    public static Command AddReservationCommand() {
+        return  new AddReservationCommand();
+    }
+
+    /**
+     * Crea un AllReservationCommand
+     * @return comando AllReservationCommand
+     */
+    public static Command AllReservationCommand() {
+        return  new AllReservationCommand();
+    }
 
     public static Command getCategoriesCommand() { return new GetCategoriesCommand();}
 

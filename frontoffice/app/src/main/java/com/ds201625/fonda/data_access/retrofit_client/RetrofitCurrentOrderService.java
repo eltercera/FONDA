@@ -11,7 +11,7 @@ import java.util.List;
 import retrofit2.Call;
 
 /**
- * Created by Yuneth on 5/15/2016.
+ * Created by Jessica on 20/06/2016.
  */
 
 /**
@@ -37,7 +37,7 @@ public class RetrofitCurrentOrderService implements CurrentOrderService {
      * @return llamada
      */
     @Override
-    public List<DishOrder> getListDishOrder() throws RestClientException {
+    public List<DishOrder> getListDishOrder(int idRestaurante, int idOrden) throws RestClientException {
         Call<List<DishOrder>> call = currentOrderClient.getListDishOrder();
         List<DishOrder> listDishOrder = null;
         try{
@@ -48,4 +48,9 @@ public class RetrofitCurrentOrderService implements CurrentOrderService {
 
         return listDishOrder;
     }
+
+//    @Override
+//    public List<DishOrder> getListDishOrder(int idRestaurante, int idOrden) throws RestClientException {
+//        return null;
+//    }
 }

@@ -145,5 +145,3 @@ public class FoodFragment extends BaseFragment {
 
 
 }
-
-

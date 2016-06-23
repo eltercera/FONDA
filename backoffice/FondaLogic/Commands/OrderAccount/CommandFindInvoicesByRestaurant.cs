@@ -49,7 +49,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 listInvoices = new List<Invoice>();
                 Receiver = listInvoices;
             }
@@ -64,7 +64,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 listInvoices = new List<Invoice>();
                 Receiver = listInvoices;
             }

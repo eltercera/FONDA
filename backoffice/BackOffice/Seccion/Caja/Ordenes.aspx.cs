@@ -114,5 +114,6 @@ namespace BackOffice.Seccion.Caja
         {
             _presenter.Close();
         }
+
     }
 }

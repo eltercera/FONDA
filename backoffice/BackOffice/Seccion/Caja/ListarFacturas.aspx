@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
-    Facturas Disponibles
+    Facturas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
 </asp:Content>
@@ -49,7 +49,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-money" aria-hidden="true"></i> Facturas Asociadas</h3>
+                    <h3 class="panel-title"><i class="fa fa-money" aria-hidden="true"></i> Facturas Generadas </h3>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">

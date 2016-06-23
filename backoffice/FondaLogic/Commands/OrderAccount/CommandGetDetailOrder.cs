@@ -49,30 +49,30 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                CommandExceptionGetDetailOrder exceptionGetOrders = new CommandExceptionGetDetailOrder(
+                CommandExceptionGetDetailOrder exception = new CommandExceptionGetDetailOrder(
                     OrderAccountResources.CommandExceptionGetDetailOrderCode,
                     OrderAccountResources.ClassNameGetDetailOrder,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                     OrderAccountResources.MessageCommandExceptionGetDetailOrder,
                     ex);
 
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrders);
-
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                throw exception;
                 IList<Object> _list = new List<Object>();
                 Receiver = _list;
 
             }
             catch (Exception ex)
             {
-                CommandExceptionGetDetailOrder exceptionGetOrders = new CommandExceptionGetDetailOrder(
+                CommandExceptionGetDetailOrder exception = new CommandExceptionGetDetailOrder(
                     OrderAccountResources.CommandExceptionGetDetailOrderCode,
                     OrderAccountResources.ClassNameGetDetailOrder,
                     System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                     OrderAccountResources.MessageCommandExceptionGetDetailOrder,
                     ex);
 
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrders);
-
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                throw exception;
                 IList<Object> _list = new List<Object>();
                 Receiver = _list;
 

@@ -68,6 +68,7 @@ public interface ServiceFactory {
      */
     FavoriteRestaurantService getFavoriteRestaurantService();
 
+    ReservationService getReservesService();
 
     /**
      * Devuelve a un comensal logeado
@@ -94,7 +95,7 @@ public interface ServiceFactory {
 
     FilterByCategoryService getFilterByCategoryService();
 
-    ReservationService getAllReservesService();
+
 
     /**
      * Obtiene los servicios de los restaurantes

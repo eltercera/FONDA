@@ -47,8 +47,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 //ESTO TIENE QUE CAMBIARSE POR UN RECURSO
                 totalInvoice += totalInvoice * 0.12F;
 
-                //VERIFICA QUE EL PAGO SEA MAYOR O IGUAL QUE EL TOTAL DE LA FACTURA
-                //ES OTRO COMANDO?
+                
                 if (payment.Amount >= totalInvoice)
                 {
                     //ESTE CONSTRUCTOR DEBO REVISARLO
@@ -74,7 +73,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 _invoice = EntityFactory.GetInvoice(); ;
                 Receiver = _invoice;
             }
@@ -88,7 +87,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-
+                throw exception;
                 _invoice = EntityFactory.GetInvoice(); ;
                 Receiver = _invoice;
             }

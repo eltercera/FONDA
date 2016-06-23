@@ -37,6 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,13 +87,21 @@
     <Compile Include="Commands\OrderAccount\CommandReleaseTableByRestaurant.cs" />
     <Compile Include="Commands\OrderAccount\CommandTotalOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandValidateProfileByCommensal.cs" />
+    <Compile Include="Commands\Restaurant\CommandAddCategory.cs" />
+    <Compile Include="Commands\Restaurant\CommandGenerateRestaurant.cs" />
+    <Compile Include="Commands\Restaurant\CommandGetAllCategories.cs" />
+    <Compile Include="Commands\Restaurant\CommandGetAllCurrency.cs" />
+    <Compile Include="Commands\Restaurant\CommandGetAllZones.cs" />
+    <Compile Include="Commands\Restaurant\CommandModifyCategory.cs" />
     <Compile Include="Commands\Restaurant\CommandModifyRestaurant.cs" />
     <Compile Include="Commands\Reservations\CommandGetTables.cs" />
+    <Compile Include="Commands\Restaurant\CommandSaveCategory.cs" />
+    <Compile Include="Commands\Restaurant\CommandSaveRestaurant.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionFindReservationsByRestaurant.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionFindReservationsByTable.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionFindRestaurantById.cs" />
+    <Compile Include="FondaCommandException\Reservation\CommandExceptionFindReservationsByRestaurant.cs" />
+    <Compile Include="FondaCommandException\Reservation\CommandExceptionFindReservationsByTable.cs" />
+    <Compile Include="FondaCommandException\Reservation\CommandExceptionFindRestaurantById.cs" />
     <Compile Include="FondaCommandException\Login\CommandExceptionCreateEmployee.cs" />
     <Compile Include="FondaCommandException\Login\CommandExceptionGetEmployee.cs" />
     <Compile Include="FondaCommandException\Login\CommandExceptionGetRestaurant.cs" />
@@ -105,6 +114,7 @@
     <Compile Include="FondaCommandException\Login\RequieredParameterNotFoundException.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionCancelInvoice.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionCloseCashRegister.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionCommandGetDetailInvoice.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionFindInvoicesByAccount.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionFindInvoicesByRestaurant.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGenerateInvoice.cs" />

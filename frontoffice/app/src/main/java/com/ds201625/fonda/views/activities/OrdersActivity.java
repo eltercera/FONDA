@@ -6,6 +6,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +18,13 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.interfaces.LogicCurrentOrderView;
+import com.ds201625.fonda.interfaces.LogicCurrentOrderViewPresenter;
 import com.ds201625.fonda.logic.HandlerSQLite;
+import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.presenter.LogicCurrentOrderPresenter;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.CloseAccountFragment;
@@ -28,11 +35,15 @@ import com.ds201625.fonda.views.fragments.HistoryVisitFragment;
 import com.ds201625.fonda.views.fragments.OrderPaymentFragment;
 import com.ds201625.fonda.views.fragments.ProfileListFragment;
 import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Activity de Ordenes
+ */
 
 public class OrdersActivity extends BaseNavigationActivity implements
-        ProfileListFragment.profileListFragmentListener {
+        LogicCurrentOrderView, ProfileListFragment.profileListFragmentListener {
 
-    private static int pos;
     /**
      * Item del Menu
      */
@@ -59,8 +70,8 @@ public class OrdersActivity extends BaseNavigationActivity implements
     /**
      * Interface for the Credit Card
      */
-    private EditText number, name,idOwner,expiration,cvv;
-    private RadioButton rBVisa,rBMaster;
+    private EditText number, name, idOwner, expiration, cvv;
+    private RadioButton rBVisa, rBMaster;
     private Spinner spinner;
     /**
      * Amount of the check (subtotal+tax)
@@ -83,6 +94,16 @@ public class OrdersActivity extends BaseNavigationActivity implements
     private static TabLayout tb;
 
     private FrameLayout prueba;
+
+    /**
+     * String para indicar en que clase se esta en el logger
+     */
+    private String TAG = "OrdersActivity";
+
+    /**
+     * String static para indicar en que clase se esta en el logger
+     */
+    private static String TAGS = "OrdersActivity";
 
     /**
      * Fragment de Cierre de cuenta
@@ -112,13 +133,17 @@ public class OrdersActivity extends BaseNavigationActivity implements
      */
     private static HistoryVisitFragment histVisFrag;
 
+    /**
+     * Presentador de Favoritos
+     */
+    private LogicCurrentOrderViewPresenter presenter;
 
     /**
      * Asigna los elementos de la vista
      */
-    private void getAllElements(){
+    private void getAllElements() {
         mViewPager = (ViewPager) findViewById(R.id.containerO);
-        number = (EditText)findViewById(R.id.eT_number);
+        number = (EditText) findViewById(R.id.eT_number);
         name = (EditText) findViewById(R.id.eT_name);
         idOwner = (EditText) findViewById(R.id.eT_idOwner);
         expiration = (EditText) findViewById(R.id.eT_expiring);
@@ -131,40 +156,68 @@ public class OrdersActivity extends BaseNavigationActivity implements
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "Ha entrado en onCreate");
         setContentView(R.layout.activity_orders);
+        presenter = new LogicCurrentOrderPresenter(this);
+
+        // inicializa los datos de la sesion
+        if (SessionData.getInstance() == null) {
+            try {
+                SessionData.initInstance(getApplicationContext());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         super.onCreate(savedInstanceState);
 
+        if (SessionData.getInstance().getToken() == null) {
+            skip();
+            return;
+        } else {
 
-        //Importante Primero obtener el Tablayout
-        tb = (TabLayout) findViewById(R.id.tabsO);
+            //Importante Primero obtener el Tablayout
+            tb = (TabLayout) findViewById(R.id.tabsO);
+            fm = getSupportFragmentManager();
 
-        prueba = (FrameLayout) findViewById(R.id.fragment_container2);
+            prueba = (FrameLayout) findViewById(R.id.fragment_container2);
 
-        //Inyectarlo al BaseSectionsPagerAdapter
-        mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager(), tb);
+            //Inyectarlo al BaseSectionsPagerAdapter
+            mSectionsPagerAdapter = new BaseSectionsPagerAdapter(getSupportFragmentManager(), tb);
 
-        this.getAllElements();
+            this.getAllElements();
 
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        tb.setupWithViewPager(mViewPager);
+            mViewPager.setAdapter(mSectionsPagerAdapter);
+            tb.setupWithViewPager(mViewPager);
 
-        orderListFrag = new CurrentOrderFragment();
+            orderListFrag = new CurrentOrderFragment();
 
-        histVisFrag = new HistoryVisitFragment();
+            histVisFrag = new HistoryVisitFragment();
 
-        //Tab con solo un String como titulo
-        mSectionsPagerAdapter.addFragment("Orden Actual", orderListFrag);
-        mSectionsPagerAdapter.addFragment("Historial de Visitas", histVisFrag);
+            //Tab con solo un String como titulo
+            mSectionsPagerAdapter.addFragment("Orden Actual", orderListFrag);
+            mSectionsPagerAdapter.addFragment("Historial de Visitas", histVisFrag);
 
 
-        //Importante ejecutar esto para que se creen los iconos en el tab.
-        mSectionsPagerAdapter.iconsSetup();
+            //Importante ejecutar esto para que se creen los iconos en el tab.
+            mSectionsPagerAdapter.iconsSetup();
 
-        fm = getSupportFragmentManager();
+            fm = getSupportFragmentManager();
 
-       // Probando que desaparesca el buscar
-        //changeTab(mSectionsPagerAdapter);
+            // Probando que desaparezca el buscar
+            //changeTab(mSectionsPagerAdapter);
 
+        }
+        Log.d(TAG, "Ha salido de onCreate");
+    }
+
+    /**
+     * Acción de saltar esta actividad.
+     */
+    public void skip() {
+        Log.d(TAG, "Ha entrado en skip");
+        startActivity(new Intent(this, LoginActivity.class));
+        Log.d(TAG, "Ha salido de skip");
     }
 
     /**
@@ -175,6 +228,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.d(TAG, "Ha entrado en onCreateOptionsMenu");
 
         // Infla el menu
         getMenuInflater().inflate(R.menu.orders, menu);
@@ -187,6 +241,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
         downloadBotton = menu.findItem(R.id.action_favorite_download);
         acceptCCButton = menu.findItem(R.id.action_favorite_accept_cc);
         saveCCButton = menu.findItem(R.id.action_favorite_save_cc);
+        Log.d(TAG, "Ha salido de onCreateOptionsMenu");
         return true;
     }
 
@@ -196,6 +251,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
      * @param fragment el fragment que se quiere mostrar
      */
     public static void showFragment(BaseFragment fragment) {
+        Log.d(TAGS, "Ha entrado en showFragment");
         fm.beginTransaction()
                 .replace(R.id.fragment_container2, fragment)
                 .commit();
@@ -209,8 +265,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
                 closeBotton.setVisible(true);
             if (searchBotton != null)
                 searchBotton.setVisible(false);
-        }
-        else if (fragment.equals(histVisFrag)) {
+        } else if (fragment.equals(histVisFrag)) {
             if (searchBotton != null)
                 searchBotton.setVisible(true);
             if (closeBotton != null)
@@ -227,8 +282,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
                 acceptCCButton.setVisible(false);
                 saveCCButton.setVisible(false);
             }
-        }
-        else if (fragment.equals(closeAccFrag)) {
+        } else if (fragment.equals(closeAccFrag)) {
             if (closeBotton != null)
                 closeBotton.setVisible(false);
             if (searchBotton != null)
@@ -263,23 +317,23 @@ public class OrdersActivity extends BaseNavigationActivity implements
                 saveCCButton.setVisible(false);
             }
         } else if (fragment.equals(ccFrag)) {
-                if (closeBotton != null)
-                    closeBotton.setVisible(false);
+            if (closeBotton != null)
+                closeBotton.setVisible(false);
             if (searchBotton != null)
                 searchBotton.setVisible(false);
-                if ((sendBotton != null) && (cancelBotton != null)) {
-                    sendBotton.setVisible(false);
-                    cancelBotton.setVisible(false);
-                }
-                if ((sendPayBotton != null) && (cancelPayBotton != null)) {
-                    sendPayBotton.setVisible(false);
-                    cancelPayBotton.setVisible(false);
-                }
-                if ((acceptCCButton != null) && (saveCCButton != null)) {
-                    acceptCCButton.setVisible(true);
-                    saveCCButton.setVisible(true);
-             }
-            }else if (fragment.equals(factFrag)) {
+            if ((sendBotton != null) && (cancelBotton != null)) {
+                sendBotton.setVisible(false);
+                cancelBotton.setVisible(false);
+            }
+            if ((sendPayBotton != null) && (cancelPayBotton != null)) {
+                sendPayBotton.setVisible(false);
+                cancelPayBotton.setVisible(false);
+            }
+            if ((acceptCCButton != null) && (saveCCButton != null)) {
+                acceptCCButton.setVisible(true);
+                saveCCButton.setVisible(true);
+            }
+        } else if (fragment.equals(factFrag)) {
             if (closeBotton != null)
                 closeBotton.setVisible(false);
             if (searchBotton != null)
@@ -303,7 +357,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
                 downloadBotton.setVisible(false);
         }*/
 
-
+        Log.d(TAGS, "Ha salido de showFragment");
     }
 
     /**
@@ -314,6 +368,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Log.d(TAG, "Ha entrado en onOptionsItemSelected");
         switch (item.getItemId()) {
             case R.id.close:
                 close();
@@ -332,8 +387,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
             case R.id.action_favorite_send_pay:
                 try {
                     cambiarFac();
-                }
-                catch(NullPointerException n){
+                } catch (NullPointerException n) {
 
                 }
                 break;
@@ -350,6 +404,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
                 acceptCC();
                 break;
         }
+        Log.d(TAG, "Ha salido de onOptionsItemSelected");
         return true;
     }
 
@@ -357,7 +412,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
      * Envia a la pantalla de cierre la cuenta
      */
     private void close() {
-           if (closeAccFrag == null)
+        if (closeAccFrag == null)
             closeAccFrag = new CloseAccountFragment();
         showFragment(closeAccFrag);
     }
@@ -398,8 +453,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
     public void cambiarFac() {
         try {
             ordPay.postPayment();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Ha ocurrido un error al guardar la factura");
         }
         factFrag = new InvoiceFragment();
@@ -416,6 +470,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
 
     /**
      * Permite la seleccion de solo un radioButton
+     *
      * @param view
      */
     public void onRadioButtonClicked(View view) {
@@ -441,7 +496,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
     /**
      * Guarda la TDC en SqLite Database
      */
-    public void saveCC(){
+    public void saveCC() {
         getAllElements();
         HandlerSQLite handlerSQLite = new HandlerSQLite(this);
         String numberCC = number.getText().toString();
@@ -451,10 +506,9 @@ public class OrdersActivity extends BaseNavigationActivity implements
         int cvvCC = Integer.parseInt(cvv.getText().toString());
         boolean typeMaster = rBMaster.isChecked();
         boolean typeVisa = rBVisa.isChecked();
-        if(typeMaster) {
+        if (typeMaster) {
             handlerSQLite.save(numberCC, nameCC, idOwnerCC, expCC, cvvCC, "Mastercard");
-        }
-        else if(typeVisa) {
+        } else if (typeVisa) {
             handlerSQLite.save(numberCC, nameCC, idOwnerCC, expCC, cvvCC, "Visa");
         }
         ArrayAdapter<String> LTRadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
@@ -468,28 +522,29 @@ public class OrdersActivity extends BaseNavigationActivity implements
     /**
      * Obtiene la TDC seleccionada
      */
-    public void acceptCC (){
+    public void acceptCC() {
         getAllElements();
         Bundle args = new Bundle();
         String cc = spinner.getSelectedItem().toString();
-            ordPay = new OrderPaymentFragment();
-            args.putFloat("amount",a);
-            args.putString("creditC", cc);
-            ordPay.setArguments(args);
-            showFragment(ordPay);
+        ordPay = new OrderPaymentFragment();
+        args.putFloat("amount", a);
+        args.putString("creditC", cc);
+        ordPay.setArguments(args);
+        showFragment(ordPay);
     }
 
     /**
      * Obtiene el monto total (subtotal + iva)
+     *
      * @return amountT amount of the bill
      */
-    public float amount (){
+    public float amount() {
         Bundle args = new Bundle();
         CloseAccountFragment cls = new CloseAccountFragment();
         float amountT = cls.getAmount();
         double iva = cls.getIva();
         ordPay = new OrderPaymentFragment();
-        args.putDouble("iva",iva);
+        args.putDouble("iva", iva);
         args.putFloat("amount", amountT);
         ordPay.setArguments(args);
         showFragment(ordPay);
@@ -499,7 +554,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
     /**
      * Valida los campos de la TDC
      */
-    public void validationCC (){
+    public void validationCC() {
         getAllElements();
         saveCCButton.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -514,7 +569,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
     /**
      * Contiene los metodos que validan los campos
      */
-    public void validate(){
+    public void validate() {
         String numberCC = number.getText().toString();
         String nameCC = name.getText().toString();
         String idOwnerCC = idOwner.getText().toString();
@@ -529,12 +584,10 @@ public class OrdersActivity extends BaseNavigationActivity implements
         boolean ex = validateDate(expCC);
         boolean cv = validateCvv(cvvCC);
 
-        if (nu && na && id && cv && ex || typeMaster || typeVisa){
+        if (nu && na && id && cv && ex || typeMaster || typeVisa) {
 
             saveCC();
-        }
-        else
-        {
+        } else {
             Toast.makeText(this, "Debe seleccionar tipo tarjeta", Toast.LENGTH_SHORT).show();
 
         }
@@ -543,40 +596,43 @@ public class OrdersActivity extends BaseNavigationActivity implements
 
     /**
      * Valida que el numero de la TDC sea igual a 16 digitos y que no este vacio
+     *
      * @param numberC numero de la tdc
      * @return true si no tiene 20 digitosn y false si sí
      */
-    public boolean validateCCNumber(String numberC){
+    public boolean validateCCNumber(String numberC) {
         boolean op = true;
-            if (numberC.isEmpty() || numberC.length() < 16) {
-                op = false;
-                number.setError("Debe contener 16 dígitos");
-            }
+        if (numberC.isEmpty() || numberC.length() < 16) {
+            op = false;
+            number.setError("Debe contener 16 dígitos");
+        }
         return op;
     }
 
     /**
      * Valida si el campo es vacio
+     *
      * @param nameO nombre del tarjetahabiente
      * @return true si no esta vacio y false si lo esta
      */
-    private boolean validateNameOwner(String nameO){
+    private boolean validateNameOwner(String nameO) {
         boolean op = true;
-        if(nameO.isEmpty()){
-          op = false;
-        name.setError("Campo obligatorio");
-    }
+        if (nameO.isEmpty()) {
+            op = false;
+            name.setError("Campo obligatorio");
+        }
         return op;
     }
 
     /**
      * Valida si el campo es vacio
+     *
      * @param id id del tarjetahabiente
      * @return op true si no esta vacio y false si lo esta
      */
-    private boolean validateIdOwner(String id){
+    private boolean validateIdOwner(String id) {
         boolean op = true;
-        if(id.isEmpty()) {
+        if (id.isEmpty()) {
             op = false;
             idOwner.setError("Campo obligatorio");
         }
@@ -585,12 +641,13 @@ public class OrdersActivity extends BaseNavigationActivity implements
 
     /**
      * Valida si el campo es vacio
+     *
      * @param dateC fecha de vencimiento
      * @return op true si no esta vacio y false si lo esta
      */
-    private boolean validateDate(String dateC){
+    private boolean validateDate(String dateC) {
         boolean op = true;
-        if(dateC.isEmpty()) {
+        if (dateC.isEmpty()) {
             op = false;
             expiration.setError("Campo obligatorio");
         }
@@ -599,12 +656,13 @@ public class OrdersActivity extends BaseNavigationActivity implements
 
     /**
      * Valida si el campo es vacio
+     *
      * @param cvvC
      * @return op ttrue si no esta vacio y false si lo esta
-    */
-     private boolean validateCvv(String cvvC){
+     */
+    private boolean validateCvv(String cvvC) {
         boolean op = true;
-        if(cvvC.isEmpty() || cvvC.length() < 3 ) {
+        if (cvvC.isEmpty() || cvvC.length() < 3) {
             op = false;
             cvv.setError("Debe contener 3 digitos");
         }
@@ -613,6 +671,7 @@ public class OrdersActivity extends BaseNavigationActivity implements
 
     /**
      * Metodos que implementa el perfil
+     *
      * @param profile perfiles guardados
      */
     @Override
@@ -642,25 +701,35 @@ public class OrdersActivity extends BaseNavigationActivity implements
 
     /**
      * Cambia de fragment dependiendo del parametro
+     *
      * @param opc
      */
-    public static void changeFrag (int opc){
-         if(opc == 2) {
+    public static void changeFrag(int opc) {
+        if (opc == 2) {
             ccFrag = new CreditCardFragment();
             showFragment(ccFrag);
         }
     }
 
 
-    public void changeTab(BaseSectionsPagerAdapter mSectionsPagerAdapter){
-        if(mSectionsPagerAdapter.getItem(0).isAdded()){
+    public void changeTab(BaseSectionsPagerAdapter mSectionsPagerAdapter) {
+        if (mSectionsPagerAdapter.getItem(0).isAdded()) {
             if (searchBotton != null)
-            searchBotton.setVisible(false);
-        }else if(mSectionsPagerAdapter.getItem(1).isAdded()){
+                searchBotton.setVisible(false);
+        } else if (mSectionsPagerAdapter.getItem(1).isAdded()) {
             if (searchBotton != null)
-            searchBotton.setVisible(true);
+                searchBotton.setVisible(true);
         }
     }
 
 
+    /**
+     * Lista de todas las ordenes
+     *
+     * @return restauraantes favoritos
+     */
+    @Override
+    public List<DishOrder> getOrderSW() {
+        return null;
+    }
 }

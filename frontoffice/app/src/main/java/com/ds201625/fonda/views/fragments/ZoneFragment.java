@@ -143,5 +143,3 @@ public class ZoneFragment extends BaseFragment {
 
 
 }
-
-

@@ -113,7 +113,8 @@ public class RetroditServiceFactory implements ServiceFactory {
     }
 
     @Override
-    public ReservationService getAllReservesService() {
+    public ReservationService getReservesService() {
+
         return new RetrofitReservationService();
     }
 

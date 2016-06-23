@@ -28,15 +28,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="fill_vertical" />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Hours"
-            android:id="@+id/tvHours"
-            android:layout_gravity="center_vertical"
-            android:gravity="bottom|fill_vertical" />
+
     </LinearLayout>
-
-
 
 </LinearLayout>
