@@ -83,7 +83,9 @@ public class FavoritesListFragment extends BaseFragment implements
 
         try {
             restaurantList = getListSW();
-            favoritesList.addAll(restaurantList);
+            if (restaurantList != null){
+                favoritesList.addAll(restaurantList);
+            }
             restaurants.setAdapter(favoritesList);
         }
         catch(NullPointerException e){
