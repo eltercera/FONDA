@@ -9,6 +9,8 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 
         RestaurantCategory GetRestaurantCategory(string name);
 
+        RestaurantCategory ModifyCategory(int id, string name);
+
 		#region 3era entrega
 
 		IList<RestaurantCategory> FindAllWithRestaurants (

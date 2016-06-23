@@ -167,8 +167,8 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             if (CategoryValidate(nombreA))
             {
                 _view.alertAddCategorySuccess.Visible = true;
-                FactoryDAO factoryDAO = FactoryDAO.Intance;
-                IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
+                //FactoryDAO factoryDAO = FactoryDAO.Intance;
+                //IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
 
                 //Llamada al comando para generar la lista de todos los restaurantes
                 commandAddCategory = CommandFactory.GetCommandAddCategory(nombreA);
@@ -200,23 +200,37 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
         public void ButtonModificar_Click()
         {
             Command commandSaveCategory;
+            Command commandModifyCategory;
             string nameM = _view.nameCategoryM.Text;
             if (CategoryValidate(nameM))
             {
                 _view.alertModifyCategorySuccess.Visible = true;
-                FactoryDAO factoryDAO = FactoryDAO.Intance;
-                IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
+                //FactoryDAO factoryDAO = FactoryDAO.Intance;
+                //IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();
                 string CategoryID = _view.categoryModifyId.Value;
                 int idCat = int.Parse(CategoryID);
-                RestaurantCategory _restaurant = _restcatDAO.FindById(idCat);
-                _restaurant.Name = nameM;
+
+                //Lista de objetos que se le pasara al comando
+                Object[] _modifylist = new Object[2];
+                _modifylist[0] = idCat;
+                _modifylist[1] = nameM;
+
+                //Llamada al comando para modificar el nombre de la categoria
+                commandModifyCategory = CommandFactory.GetCommandModifyCategory(_modifylist);
+                commandModifyCategory.Execute();
+
+                //Resultado del receiver
+                RestaurantCategory _restcat = (RestaurantCategory)commandModifyCategory.Receiver;
+
+                //RestaurantCategory _restaurant = _restcatDAO.FindById(idCat);
+                //_restaurant.Name = nameM;
 
                 //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
-               // commandSaveCategory = CommandFactory.GetCommandSaveCategory(_restcat);
+                commandSaveCategory = CommandFactory.GetCommandSaveCategory(_restcat);
                //ejecuto el comando
-               //commandSaveCategory.Execute();
+                commandSaveCategory.Execute();
 
-               _restcatDAO.Save(_restaurant);
+               //_restcatDAO.Save(_restaurant);
                LoadTable();
             }
             else

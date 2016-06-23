@@ -293,6 +293,10 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandSaveCategory(receiver);
         }
+        public static Command GetCommandModifyCategory(object receiver)
+        {
+            return new CommandModifyCategory(receiver);
+        }
 
         #endregion
 

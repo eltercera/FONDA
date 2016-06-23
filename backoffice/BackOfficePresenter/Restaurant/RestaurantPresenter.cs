@@ -453,8 +453,8 @@ string zone, string longitud, string latitud, string otime, string ctime)
             if (ValidarRestaurant(Name, Category, Nationality.ToString(), Rif, Currency,
                 Address, Zone, Long, Lat, _view.openingTimeAdd.Text, _view.closingTimeAdd.Text))
             {
-                FactoryDAO factoryDAO = FactoryDAO.Intance;
-                IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+                //FactoryDAO factoryDAO = FactoryDAO.Intance;
+                //IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
 
                 //Genera la lista del objeto para el comando
                 Object[] _addlist = new Object[13];
@@ -578,8 +578,8 @@ string zone, string longitud, string latitud, string otime, string ctime)
             if (ValidateRestaurantM(Name, Category, Nationality.ToString(), Rif, Currency,
                 Address, Zone, Long, Lat, _view.openingTimeModify.Text, _view.closingTimeModify.Text))
             {
-                FactoryDAO factoryDAO = FactoryDAO.Intance;
-                IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+                //FactoryDAO factoryDAO = FactoryDAO.Intance;
+                //IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
 
                 //Horario de apertura y cierre
                 TimeSpan OT = TimeSpan.Parse(_view.openingTimeModify.Text);
