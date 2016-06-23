@@ -1,5 +1,7 @@
 package com.ds201625.fonda.views.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -8,10 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.views.activities.AllRestaurantActivity;
+import com.ds201625.fonda.views.activities.DetailRestaurantActivity;
+import com.ds201625.fonda.views.activities.RestauranstsActivity;
 import com.ds201625.fonda.views.adapters.CategoriesAdapter;
 import com.ds201625.fonda.views.adapters.RestaurantAdapter;
 import com.ds201625.fonda.views.adapters.ZonesAdapter;
@@ -39,6 +46,14 @@ public class FilterFragment extends BaseFragment {
         switch (position){
             case 0:
                 lvItems.setAdapter(new RestaurantAdapter(getContext()));
+                lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Restaurant item = (Restaurant) lvItems.getItemAtPosition(position);
+                        Intent intent = new Intent(getActivity(), DetailRestaurantActivity.class);
+                        startActivity(intent);
+                    }
+                });
                 break;
             case 1:
                 lvItems.setAdapter(new ZonesAdapter(getContext()));
@@ -47,6 +62,7 @@ public class FilterFragment extends BaseFragment {
                 lvItems.setAdapter(new CategoriesAdapter(getContext()));
                 break;
         }
+
         lvItems.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {}
@@ -62,11 +78,11 @@ public class FilterFragment extends BaseFragment {
                             break;
                         case 1:
                             ZonesAdapter actualAdapter2 = (ZonesAdapter) lvItems.getAdapter();
-                            //actualAdapter2.update();
+                            actualAdapter2.update();
                             break;
                         case 2:
                             CategoriesAdapter actualAdapter3 = (CategoriesAdapter) lvItems.getAdapter();
-                            //actualAdapter3.update();
+                            actualAdapter3.update();
                             break;
                     }
                 }
