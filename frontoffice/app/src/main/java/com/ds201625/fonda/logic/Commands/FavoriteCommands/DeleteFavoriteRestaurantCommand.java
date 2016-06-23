@@ -55,16 +55,16 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
                     idRestaurant.getId());
 
         } catch(DeleteFavoriteRestaurantFondaWebApiControllerException e){
-            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
             throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(e);
         }catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
             throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(e);
         } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
             throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(e);
         } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
             throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(e);
     }
         setResult(commensal);

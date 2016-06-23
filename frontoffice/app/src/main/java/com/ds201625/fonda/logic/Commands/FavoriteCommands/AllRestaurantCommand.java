@@ -44,16 +44,16 @@ public class AllRestaurantCommand extends BaseCommand {
             restaurantList =  serviceAllRestaurants.getAllRestaurant();
         }
         catch(GetAllRestaurantsFondaWebApiControllerException e){
-            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes favoritos", e);
+            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes", e);
             throw  new GetAllRestaurantsFondaWebApiControllerException(e);
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes", e);
             throw  new GetAllRestaurantsFondaWebApiControllerException(e);
         } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes", e);
             throw  new GetAllRestaurantsFondaWebApiControllerException(e);
         } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes", e);
             throw  new GetAllRestaurantsFondaWebApiControllerException(e);
         }
 
