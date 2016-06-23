@@ -58,7 +58,7 @@
     <Compile Include="Menu\MenuCategoriaPresenter.cs" />
     <Compile Include="OrderAccount\ClosedOrdersPresenter.cs" />
     <Compile Include="OrderAccount\DetailOrderPresenter.cs" />
-    <Compile Include="OrderAccount\InvoiceDetailPresenter.cs" />
+    <Compile Include="OrderAccount\DetailInvoicePresenter.cs" />
     <Compile Include="OrderAccount\OrderInvoicesPresenter.cs" />
     <Compile Include="OrderAccount\OrdersPresenter.cs" />
     <Compile Include="Presenter.cs" />

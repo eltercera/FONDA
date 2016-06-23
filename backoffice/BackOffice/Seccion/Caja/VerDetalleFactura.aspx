@@ -54,7 +54,8 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-cutlery" aria-hidden="true"></i> Detalle la factura</h3>
+                    <h3 class="panel-title pull-left"><i class="fa fa-cutlery" aria-hidden="true"></i> Detalle la factura</h3>
+                    <asp:Button class="btn btn-default pull-right" text="Imprimir" Visible="false" ID="invoicePrint" OnClick="print_Click" runat="server" />                        
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
@@ -68,7 +69,7 @@
                             <br />
                             <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;<b># Orden: </b>
-                            <%=Session["AccountNumber"]%>
+                            <asp:Label ID="accountNumber" runat="server"></asp:Label>
                             <br />
                             <br />
                             &nbsp;&nbsp;&nbsp;&nbsp;<b>Apellido, Nombre: </b>
@@ -99,9 +100,6 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;<b>Total: </b>
                             <asp:Label ID="total" runat="server"></asp:Label>
                         </h5>
-                         <div style="text-indent: 980px;">
-                             <asp:Button class="btn btn-default" text="Imprimir" Visible="false" ID="invoicePrint" OnClick="print_Click" runat="server" />
-                         </div>
                 </div>
             </div>
         </div>

@@ -11,18 +11,20 @@ namespace com.ds201625.fonda.Tests.DataAccess
     [TestFixture]
     public class BOValidationsTest
     {
+        #region fields
         CommandGetOrders compareCommand;
         Object parameter;
         Object compare;
         bool result;
-
+#endregion
+        #region SetUp
         [SetUp]
         public void Init()
         {
             parameter = 1;
             compare = 1;
         }
-
+        #endregion
         [Test(Description = "Prueba para testear la validación")]
         public void ValidateParameters()
         {

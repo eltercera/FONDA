@@ -13,8 +13,6 @@ namespace com.ds201625.fonda.View.BackOfficeModel.OrderAccount
 
         string Session { get; set; }
 
-        string SessionNumberAccount { get; set; }
-
         string SessionIdAccount { get; set; }
 
         string SessionNumberInvoice { get; set; }
@@ -24,6 +22,8 @@ namespace com.ds201625.fonda.View.BackOfficeModel.OrderAccount
         Label UserLastName { get; set; }
 
         Label UserId { get; set; }
+
+        Label NumberAccount { get; set; }
 
         Label IvaInvoice { get; set; }
 
