@@ -205,16 +205,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             //Resultado del receiver
             IList<Zone> listZones = (IList<Zone>)commandGetAllZone.Receiver;
 
-            //Genero los objetos para la consulta
-            //Genero la lista de la consulta
-            /* FactoryDAO factoryDAO = FactoryDAO.Intance;
-             IRestaurantCategoryDAO _categoryDAO = factoryDAO.GetRestaurantCategoryDAO();
-             IList<com.ds201625.fonda.Domain.RestaurantCategory> listCategories = _categoryDAO.GetAll();
-             ICurrencyDAO _currencyDAO = factoryDAO.GetCurrencyDAO();
-             IList<com.ds201625.fonda.Domain.Currency> listCurrencies = _currencyDAO.GetAll();
-             IZoneDAO _zoneDAO = factoryDAO.GetZoneDAO();
-             IList<com.ds201625.fonda.Domain.Zone> listZones = _zoneDAO.allZone();*/
-
             //Se llenan los Dropdownlist con los registros existentes
             foreach (RestaurantCategory category in listCategories)
             {
@@ -256,17 +246,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             commandGetAllZone.Execute();
             //Resultado del receiver
             IList<Zone> listZones = (IList<Zone>)commandGetAllZone.Receiver;
-
-
-            //Genero los objetos para la consulta
-            //Genero la lista de la consulta
-            /* FactoryDAO factoryDAO = FactoryDAO.Intance;
-             IRestaurantCategoryDAO _categoryDAO = factoryDAO.GetRestaurantCategoryDAO();
-             IList<com.ds201625.fonda.Domain.RestaurantCategory> listCategories = _categoryDAO.GetAll();
-             ICurrencyDAO _currencyDAO = factoryDAO.GetCurrencyDAO();
-             IList<com.ds201625.fonda.Domain.Currency> listCurrencies = _currencyDAO.GetAll();
-             IZoneDAO _zoneDAO = factoryDAO.GetZoneDAO();
-             IList<com.ds201625.fonda.Domain.Zone> listZones = _zoneDAO.allZone();*/
 
             //Se limpia los Dropdownlist con los registros existentes
             foreach (RestaurantCategory category in listCategories)
@@ -423,7 +402,9 @@ string zone, string longitud, string latitud, string otime, string ctime)
         /// </summary>
         public void ButtonAdd_Click()
         {
+            //declaracion de los comandos
             Command commandGenerateRestaurant;
+            Command commandSaveRestaurant;
 
             #region Campos del Restaurante
             //Datos basicos del Restaurante
@@ -502,8 +483,12 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     _restaurantDAO.GenerateRestaurant(Name, Logo, Nationality, Rif, Address,
                     Category, Currency, Zone, LongD, LatD, OT, CT, days);*/
 
-                //Salva nuevo Restaurante en la Base de Datos
-                _restaurantDAO.Save(_restaurant);
+                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
+                commandSaveRestaurant = CommandFactory.GetCommandSaveRestaurant(_restaurant);
+                //ejecuto el comando
+                commandSaveRestaurant.Execute();
+
+                //_restaurantDAO.Save(_restaurant);
 
                 //Refresca la tabla de Restaurantes
                 LoadTable();
@@ -552,6 +537,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
         {
             Command commandModifyRestaurant;
             Command commandGenerateRestaurant;
+            Command commandSaveRestaurant;
 
             #region Campos del Restaurante
             //Datos basicos del Restaurante
@@ -649,8 +635,10 @@ string zone, string longitud, string latitud, string otime, string ctime)
                 // com.ds201625.fonda.Domain.Restaurant _restaurant =
                 //    _restaurantDAO.ModifyRestaurant(idRestaurant, _restaurantM);
 
-                //Salva Restaurante modificado en la Base de Datos
-                _restaurantDAO.Save(_restaurant);
+                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
+                commandSaveRestaurant = CommandFactory.GetCommandSaveRestaurant(_restaurant);
+                //ejecuto el comando
+                commandSaveRestaurant.Execute();
 
                 //Refresca la tabla de Restaurantes
                 LoadTable();

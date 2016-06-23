@@ -281,6 +281,11 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandGetAllZones(receiver);
         }
+        public static Command GetCommandSaveRestaurant(object receiver)
+        {
+            return new CommandSaveRestaurant(receiver);
+        }
+
         #endregion
 
         #region Menu
