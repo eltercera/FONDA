@@ -18,20 +18,30 @@ public class ItemFilterAdapter extends BaseArrayAdapter<NounBaseEntity> {
         super(context, R.layout.fragment_filter,R.id.tvFilter,new ArrayList<NounBaseEntity>());
     }
 
+
     /**
-     * No es una lista multi-select
+     * Vista de un item Seleccionado
+     * @param item item seleccionado
+     * @param convertView vista ya creada
+     * @return Vista de item Seleccionado
      */
     @Override
     public View getSelectedView(NounBaseEntity item, View convertView) {
-        return null;
+        convertView.setBackgroundColor(getContext().getResources().
+                getColor(R.color.creme));
+        return convertView;
     }
 
     /**
-     * No es una lista multi-select
+     * Vista de un item no Seleccionado
+     * @param item item no seleccionado
+     * @param convertView vista ya creada
+     * @return Vista de item no Seleccionado
      */
     @Override
     public View getNotSelectedView(NounBaseEntity item, View convertView) {
-        return null;
+        convertView.setBackgroundColor(0x00000000);
+        return convertView;
     }
 
 

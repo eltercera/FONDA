@@ -30,7 +30,7 @@ public class RetrofitRestaurantService implements RestaurantService {
         try {
             categories = call.execute().body();
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
 
         return categories;

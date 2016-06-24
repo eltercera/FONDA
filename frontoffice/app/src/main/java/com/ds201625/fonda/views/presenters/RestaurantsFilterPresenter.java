@@ -181,10 +181,12 @@ public class RestaurantsFilterPresenter {
             }
 
             if (cmd.getResult() != null) {
-                if (((List<NounBaseEntity>)cmd.getResult()).isEmpty())
+                List<NounBaseEntity> list = (List<NounBaseEntity>) cmd.getResult();
+                if (list.isEmpty()) {
                     this.listFull = true;
-                else
-                    itemFilterAdapter.addAll((List<NounBaseEntity>) cmd.getResult());
+                }else {
+                    itemFilterAdapter.addAll(list);
+                }
             }
         }
     }

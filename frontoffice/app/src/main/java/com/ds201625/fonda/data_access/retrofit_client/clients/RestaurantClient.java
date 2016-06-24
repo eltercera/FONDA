@@ -15,7 +15,7 @@ import retrofit2.http.Query;
  */
 public interface RestaurantClient {
 
-    @GET("restaurantcategories")
+    @GET("restaurantscategories")
     Call<List<RestaurantCategory>> getCategories(@Query("q") String q, @Query("max") int max, @Query("page") int page);
 
     @GET("zones")
