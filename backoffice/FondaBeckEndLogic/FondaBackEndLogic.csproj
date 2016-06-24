@@ -36,7 +36,8 @@
     <Compile Include="CommensalManagement\CreateCommensalCommand.cs" />
     <Compile Include="CommensalManagement\GetCommensalCommand.cs" />
     <Compile Include="Exceptions\CreateCommensalCommandException.cs" />
-    <Compile Include="Exceptions\CreateFavoriteRestaurantCommandException.cs" />
+    <Compile Include="Exceptions\CreateFavoriteRestaurantCommandException - Copy.cs" />
+    <Compile Include="Exceptions\CreateCommensalReservationCommandException.cs" />
     <Compile Include="Exceptions\CreateProfileCommandException.cs" />
     <Compile Include="Exceptions\DeleteFavoriteRestaurantCommandException .cs" />
     <Compile Include="Exceptions\DeleteProfileCommandException.cs" />
@@ -46,6 +47,7 @@
     <Compile Include="Exceptions\GetAllRestaurantsCommandException.cs" />
     <Compile Include="Exceptions\GetCommensalCommandException.cs" />
     <Compile Include="Exceptions\GetCommensalEmailCommandException.cs" />
+    <Compile Include="Exceptions\GetCommensalReservationsFondaCommandException.cs" />
     <Compile Include="Exceptions\GetFavoriteRestaurantFondaCommandException.cs" />
     <Compile Include="Exceptions\GetProfileCommandException.cs" />
     <Compile Include="Exceptions\GetTokenCommandException.cs" />
@@ -68,6 +70,8 @@
     <Compile Include="Exceptions\InvalidTypeOfParameter.cs" />
     <Compile Include="Exceptions\ParameterIndexOutOfRangeException.cs" />
     <Compile Include="Exceptions\RequieredParameterNotFoundException.cs" />
+    <Compile Include="ReservationManagement\CreateCommensalReservationCommand.cs" />
+    <Compile Include="ReservationManagement\GetCommensalReservationsCommand.cs" />
     <Compile Include="ResourceMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

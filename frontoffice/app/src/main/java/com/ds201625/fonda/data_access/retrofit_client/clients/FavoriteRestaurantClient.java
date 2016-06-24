@@ -23,7 +23,8 @@ public interface FavoriteRestaurantClient {
      * @return
      */
     @GET("addfavorite/{idcommensal}/{idrestaurant}")
-    Call<Commensal> addfavoriterestaurant(@Path("idcommensal") int idCommensal ,@Path("idrestaurant") int idRestaurant);
+    Call<Commensal> addfavoriterestaurant(@Path("idcommensal") int idCommensal ,
+                                          @Path("idrestaurant") int idRestaurant);
 
     /**
      * Find /api/findRestaurantFavorites/{id}
@@ -42,5 +43,6 @@ public interface FavoriteRestaurantClient {
      * @return
      */
     @GET("deletefavorite/{idcommensal}/{idrestaurant}")
-    Call<Commensal> removefavoriterestaurant(@Path("idcommensal") int idCommensal, @Path("idrestaurant") int idRestaurant);
+    Call<Commensal> removefavoriterestaurant(@Path("idcommensal") int idCommensal,
+                                             @Path("idrestaurant") int idRestaurant);
 }

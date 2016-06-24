@@ -13,6 +13,8 @@ using System.Web.Http;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
 using com.ds201625.fonda.BackEnd.Exceptions;
 using com.ds201625.fonda.BackEnd.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using com.ds201625.fonda.FondaBackEnd.Exceptions;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -48,21 +50,20 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (CommandExceptionTotalOrder e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                GetTotalAccountException ex = new GetTotalAccountException(GeneralRes.GetTotalAccountException, e);
+                GetTotalAccountException ex = new GetTotalAccountException(OrderAccountResources.MessageGetTotalAccountException, e);
 
-                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", ex);
+                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog(ex.Message, ex);
                 return InternalServerError(ex);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                GetTotalAccountException ex = new GetTotalAccountException(GeneralRes.GetTotalAccountException, e);
+                GetTotalAccountException ex = new GetTotalAccountException(OrderAccountResources.MessageGetTotalAccountException, e);
 
-                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", ex);
+                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog(ex.Message, ex);
                 return InternalServerError(ex);
             }
 
-            //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, totalAccount.ToString(),
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
@@ -104,18 +105,17 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             }
             catch (PayAccountException ex)
             {
-                PayAccountException e = new PayAccountException("FALTA PERSONALIZAR");
-                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
+                PayAccountException e = new PayAccountException(OrderAccountResources.MessagePayAccountException);
+                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog(e.Message, e);
                 return InternalServerError(ex);
             }
             catch (Exception ex)
             {
-                PayAccountException e = new PayAccountException("FALTA PERSONALIZAR");
-                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
+                PayAccountException e = new PayAccountException(OrderAccountResources.MessagePayAccountException);
+                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog(e.Message, e);
                 return InternalServerError(ex);
             }
 
-            //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, invoice.ToString(),
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
@@ -149,16 +149,15 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             }
             catch (CommandExceptionGetPaymentHistoryByProfile ex)
             {
-                CommandExceptionGetPaymentHistoryByProfile e = new CommandExceptionGetPaymentHistoryByProfile("FALTA PERSONALIZAR");
-                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
+                GetPaymentHistoryByProfileException e = new GetPaymentHistoryByProfileException(OrderAccountResources.MessageGetPaymentHistory);
+                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog(e.Message, e);
                 return InternalServerError(ex);
             }
             catch (Exception ex) {
-                CommandExceptionGetPaymentHistoryByProfile e = new CommandExceptionGetPaymentHistoryByProfile("FALTA PERSONALIZAR");
-                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
+                GetPaymentHistoryByProfileException e = new GetPaymentHistoryByProfileException(OrderAccountResources.MessageGetPaymentHistory);
+                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog(e.Message, e);
                 return InternalServerError(ex);
             }
-            //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, paymentHistory.ToString(),
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
@@ -191,18 +190,17 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             }
             catch (GetOrderDetailException ex)
             {
-                GetOrderDetailException e = new GetOrderDetailException("FALTA PERSONALIZAR");
-                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
+                GetOrderDetailException e = new GetOrderDetailException(OrderAccountResources.MessageGetOrderDetailException);
+                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog(e.Message, e);
                 return InternalServerError(ex);
             }
             catch (Exception ex)
             {
-                GetOrderDetailException e = new GetOrderDetailException("FALTA PERSONALIZAR");
-                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
+                GetOrderDetailException e = new GetOrderDetailException(OrderAccountResources.MessageGetOrderDetailException);
+                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog(e.Message, e);
                 return InternalServerError(ex);
             }
 
-            //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, orderDetail.ToString(),
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
@@ -231,23 +229,22 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             }
             catch (CanceledInvoiceException ex)
             {
-                CanceledInvoiceException e = new CanceledInvoiceException("FALTA PERSONALIZAR");
-                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
+                CanceledInvoiceException e = new CanceledInvoiceException(OrderAccountResources.MessageGetOrderDetailException);
+                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog(e.Message, e);
                 return InternalServerError(ex);
             }
             catch (Exception ex)
             {
-                CanceledInvoiceException e = new CanceledInvoiceException("FALTA PERSONALIZAR");
-                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog("Falta modificar", e);
+                CanceledInvoiceException e = new CanceledInvoiceException(OrderAccountResources.MessageGetOrderDetailException);
+                com.ds201625.fonda.Logic.FondaLogic.Log.Logger.WriteErrorLog(e.Message, e);
                 return InternalServerError(ex);
             }
 
-            //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, _invoice.ToString(),
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            //DEBERIA SER ELIMINADO
+
             return Ok(_invoice);
         }
 

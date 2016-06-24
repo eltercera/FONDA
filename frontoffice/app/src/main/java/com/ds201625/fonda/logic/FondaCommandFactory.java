@@ -1,11 +1,12 @@
-
 package com.ds201625.fonda.logic;
 
-
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
 import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateTokenCommand;
+import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteTokenCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
+import com.ds201625.fonda.logic.Commands.OrderCommands.LogicCurrentOrderCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.CreateProfileCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.DeleteFavoriteRestaurantCommand;
@@ -13,8 +14,9 @@ import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalC
 import com.ds201625.fonda.logic.Commands.ProfileCommands.DeleteProfileCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.GetProfilesCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.UpdateProfileCommand;
-import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
-import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteTokenCommand;
+import com.ds201625.fonda.logic.Commands.RestaurantCommands.*;
+import com.ds201625.fonda.logic.Commands.ReservationCommands.*;
+
 /**
  * Fabrica de comandos
  */
@@ -37,14 +39,6 @@ public class FondaCommandFactory {
     }
 
     public FondaCommandFactory() {  }
-
-    /**
-     * Crea un CreateProfileCommand
-     * @return comando CreateProfileCommand
-     */
-    public static Command createProfileCommand() {
-        return  new CreateProfileCommand();
-    }
 
     /**
      * Crea un AddFavoriteRestaurantCommand
@@ -87,47 +81,55 @@ public class FondaCommandFactory {
         return  new RequireLogedCommensalCommand();
     }
 
-    /**
-     * Crea un updateProfileCommand
-     * @return comando updateProfileCommand
-     */
-    public static Command updateProfileCommand() {
-        return  new UpdateProfileCommand();
+    public Command getCategoriesCommand() {
+        return new GetCategoriesCommand();
     }
 
-    /**
-     * Crea un deleteProfileCommand
-     * @return comando deleteProfileCommand
-     */
+    public Command getZonesCommand() {
+        return new GetZonesCommand();
+    }
+
+    public Command getRestaurantsCommand() {
+        return new GetRestaurantsCommand();
+    }
+
+    public static Command createCommensalCommand() {
+        return new CreateCommensalCommand();
+    }
+
+    public static Command createProfileCommand() {
+        return new CreateProfileCommand();
+    }
+
     public static Command deleteProfileCommand() {
-        return  new DeleteProfileCommand();
+        return new DeleteProfileCommand();
     }
 
-    /**
-     * Crea un getProfilesCommand
-     * @return comando getProfilesCommand
-     */
-    public static Command getProfilesCommand() { return  new GetProfilesCommand(); }
-
-    /**
-     * Crea un createCommensalCommand
-     * @return comando createCommensalCommand
-     */
-    public static Command createCommensalCommand() { return  new CreateCommensalCommand(); }
-
-    /**
-     * Crea un deleteTokenCommand
-     * @return comando deleteTokenCommand
-     */
-    public static Command deleteTokenCommand() { return  new DeleteTokenCommand();
+    public static Command getProfilesCommand() {
+        return new GetProfilesCommand();
     }
 
-    /**
-     * Crea un createTokenCommand
-     * @return comando createTokenCommand
-     */
-    public static Command createTokenCommand() { return  new CreateTokenCommand();
+    public static Command updateProfileCommand() {
+        return new UpdateProfileCommand();
     }
 
+    public static Command createTokenCommand() {
+        return new CreateTokenCommand();
+    }
+
+    public static Command deleteTokenCommand() {
+        return new DeleteTokenCommand();
+    }
+
+    public static Command logicCurrentOrderCommand() {
+        return new LogicCurrentOrderCommand();
+    }
+
+    public static Command addReservationCommand() {
+        return new AddReservationCommand();
+    }
+
+    public static Command allReservationCommand() {
+        return new AllReservationCommand();
+    }
 }
-

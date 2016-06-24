@@ -89,7 +89,6 @@
     <Compile Include="BOTableTest.cs" />
     <Compile Include="BOUserAcountTest.cs" />
     <Compile Include="FORestaurantFavoriteNewTest.cs" />
-    <Compile Include="FORestaurantFavorite.cs" />
     <Compile Include="FOCommensalRegister.cs" />
     <Compile Include="FORegisterZone.cs" />
     <Compile Include="FORestaurantRegister.cs" />

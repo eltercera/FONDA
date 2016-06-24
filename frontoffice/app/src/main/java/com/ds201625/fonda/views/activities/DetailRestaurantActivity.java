@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.AddFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.DeleteFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
@@ -71,7 +73,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Log.d(TAG,"ESTAAAAAAAASSSS EEENNN onCreateOptionsMenu");
+        Log.d(TAG,"Esta en onCreateOptionsMenu");
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.detail_restaurant, menu);
         makeReserve = menu.findItem(R.id.action_make_order);
@@ -122,6 +124,11 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
                     setAsFavorite.setIcon(R.drawable.ic_star_border_creme_24dp);
                     } catch (RestClientException e) {
                         e.printStackTrace();
+                    } catch (DeleteFavoriteRestaurantFondaWebApiControllerException e) {
+                        Toast.makeText(getApplicationContext(),
+                                "Ha ocurrido un error al eliminar los restaurantes del WS",
+                                Toast.LENGTH_LONG).show();
+                        Log.e(TAG, "Error Proveniente del WEB SERVICE al eliminar favoritos", e);
                     }
                 } else {
                     try{
@@ -130,20 +137,23 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
                     Commensal comensal = addFavoriteRestaurant.AddFavoriteRestaurant(logedCommensal.getId(), selectedRestaurant.getId());
 
-
-                    try {
                         Log.v(TAG, comensal.getId() + "");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        Toast.makeText(getApplicationContext(), R.string.favorite_add_fail_meessage,
-                                Toast.LENGTH_LONG).show();
 
-                    }
                     Toast.makeText(getApplicationContext(), R.string.favorite_add_success_meessage,
                             Toast.LENGTH_LONG).show();
                     setAsFavorite.setIcon(R.drawable.ic_star_yellow);
                     } catch (RestClientException e) {
                         e.printStackTrace();
+                    } catch (AddFavoriteRestaurantFondaWebApiControllerException e) {
+                    Toast.makeText(getApplicationContext(),
+                            "Ha ocurrido un error al agregar los restaurantes del WS",
+                            Toast.LENGTH_LONG).show();
+                    Log.e(TAG, "Error Proveniente del WEB SERVICE al agregar favoritos", e);
+                    }catch (Exception e) {
+                        Log.e(TAG, "Error Proveniente del WEB SERVICE al agregar favoritos", e);
+                        Toast.makeText(getApplicationContext(), R.string.favorite_add_fail_meessage,
+                                Toast.LENGTH_LONG).show();
+
                     }
                 }
 
@@ -241,3 +251,4 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
     }
 }
+

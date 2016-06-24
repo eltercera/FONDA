@@ -745,6 +745,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al anular la factura.
+        /// </summary>
+        public static string MessageCanceledInvoiceException {
+            get {
+                return ResourceManager.GetString("MessageCanceledInvoiceException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error en la base de datos al cancelar la factura.
         /// </summary>
         public static string MessageCancelInvoiceException {
@@ -1060,11 +1069,38 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al obtener el detalle de la orden.
+        /// </summary>
+        public static string MessageGetOrderDetailException {
+            get {
+                return ResourceManager.GetString("MessageGetOrderDetailException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha cargado la tabla de ordenes abiertas satisfactoriamente.
         /// </summary>
         public static string MessageGetOrders {
             get {
                 return ResourceManager.GetString("MessageGetOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al obtener el historial de facturas.
+        /// </summary>
+        public static string MessageGetPaymentHistory {
+            get {
+                return ResourceManager.GetString("MessageGetPaymentHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al obtener el monto total de la orden.
+        /// </summary>
+        public static string MessageGetTotalAccountException {
+            get {
+                return ResourceManager.GetString("MessageGetTotalAccountException", resourceCulture);
             }
         }
         
@@ -1137,6 +1173,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string MessageOpenOrdersByRestaurantIdFondaDAOException {
             get {
                 return ResourceManager.GetString("MessageOpenOrdersByRestaurantIdFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al pagar la orden abierta.
+        /// </summary>
+        public static string MessagePayAccountException {
+            get {
+                return ResourceManager.GetString("MessagePayAccountException", resourceCulture);
             }
         }
         

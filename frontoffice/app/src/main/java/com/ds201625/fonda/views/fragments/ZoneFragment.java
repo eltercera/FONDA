@@ -14,8 +14,11 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.ZoneService;
 import com.ds201625.fonda.domains.Zone;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.views.activities.FilterZoneList;
 import com.ds201625.fonda.views.activities.RestaurantListActivity;
+import com.ds201625.fonda.views.adapters.ZonesAdapter;
 import com.google.gson.Gson;
 
 import java.util.Iterator;
@@ -47,6 +50,8 @@ public class ZoneFragment extends BaseFragment {
      */
     private Iterator iterator;
 
+    private int currentPage = 0;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,30 +63,47 @@ public class ZoneFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
+        List<Zone> zones = null;
         View view= inflater.inflate(R.layout.fragment_zone,container,false);
         list=(ListView)view.findViewById(R.id.listViewRestaurants);
-
-        zoneService = FondaServiceFactory.getInstance().getZoneService();
-        listZone = zoneService.getZone();
-        iterator = listZone.listIterator();
-
-        while (iterator.hasNext()) {
-            Zone zone = (Zone) iterator.next();
-            //String nameZona = zone.getName();
-            //System.out.println("Zona: "+nameZona);
+        list.setAdapter(new ZonesAdapter(getContext()));
+        /*try {
+            Command comando = FondaCommandFactory.getZonesCommand();
+            comando.setParameter(0,"");
+            comando.setParameter(1, 10);
+            comando.setParameter(2, currentPage + 1);
+            comando.run();
+            zones = (List<Zone>)comando.getResult();
         }
-       list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+/*
+        zoneService = FondaServiceFactory.getInstance().getZoneService();
+        listZone = zoneService.getZone();*/
+        /*if (zones != null) {
+            iterator = zones.listIterator();
 
-                Intent intent = new Intent (getActivity(),RestaurantListActivity.class);
-                Zone _zone = getSelectedZone(position);
-                intent.putExtra("zona", new Gson().toJson(_zone));
-                startActivity(intent);
+            while (iterator.hasNext()) {
+                Zone zone = (Zone) iterator.next();
+                //String nameZona = zone.getName();
+                //System.out.println("Zona: "+nameZona);
             }
-        });
 
-        setupListView();
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Intent intent = new Intent(getActivity(), RestaurantListActivity.class);
+                    Zone _zone = getSelectedZone(position);
+                    intent.putExtra("zona", new Gson().toJson(_zone));
+                    startActivity(intent);
+                }
+            });
+        }
+
+        setupListView();*/
         return view;
 
     }
@@ -122,5 +144,3 @@ public class ZoneFragment extends BaseFragment {
 
 
 }
-
-

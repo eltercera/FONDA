@@ -33,21 +33,21 @@ public class RequireLogedCommensalCommand extends BaseCommand {
     protected void invoke() {
         Log.d(TAG, "Comando para obtener el comensal logeado");
         Commensal commensal = FondaEntityFactory.getInstance().GetCommensal();
-
         RequireLogedCommensalService serviceFavorites = FondaServiceFactory.getInstance()
-
                 .getLogedCommensalService();
         String email = "";
         try {
             email = (String) this.getParameter(0);
-
             commensal =  serviceFavorites.getLogedCommensal(email);
-            //FALTAN EXCEPCIONES DE BO
+
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado error en invoke al obtener el comensal logeado", e);
         }catch (Exception e) {
             Log.e(TAG, "Se ha generado error en invoke al obtener el comensal logeado", e);
+
         }
        setResult(commensal);
     }
+
 }
+

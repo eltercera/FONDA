@@ -4,8 +4,8 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.DeleteFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
@@ -38,7 +38,7 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
      * Metodo de invoke implementado: Comando para eliminar un restaurante favorito
      */
     @Override
-    protected void invoke() {
+    protected void invoke() throws DeleteFavoriteRestaurantFondaWebApiControllerException {
         Log.d(TAG, "Comando para eliminar un restaurante de favoritos");
         FavoriteRestaurantService serviceFavorits = FondaServiceFactory.getInstance()
                 .getFavoriteRestaurantService();
@@ -51,14 +51,23 @@ public class DeleteFavoriteRestaurantCommand extends BaseCommand {
             idRestaurant = (Restaurant) getParameter(1);
             commensal =  serviceFavorits.deleteFavoriteRestaurant(idCommensal.getId(),
                     idRestaurant.getId());
-            //AKI FALTAN LAS RECIBIDAS DE BO
-        } catch (RestClientException e) {
+
+        } catch(DeleteFavoriteRestaurantFondaWebApiControllerException e){
             Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
+            throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(e);
+        }catch (RestClientException e) {
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
+            throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(e);
         } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
+            throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(e);
         } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un restaurant favorito", e);
+            throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(e);
     }
         setResult(commensal);
     }
+
+
 }
+

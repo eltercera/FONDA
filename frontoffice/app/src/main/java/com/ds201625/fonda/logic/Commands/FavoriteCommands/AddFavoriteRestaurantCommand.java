@@ -3,10 +3,9 @@ package com.ds201625.fonda.logic.Commands.FavoriteCommands;
 import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.AddFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
@@ -37,29 +36,36 @@ public class AddFavoriteRestaurantCommand extends BaseCommand {
      * Metodo de invoke implementado: Comando para agregar un restaurante favorito
      */
     @Override
-    protected void invoke() {
+    protected void invoke() throws AddFavoriteRestaurantFondaWebApiControllerException {
         Log.d(TAG, "Comando para agregar un restaurante a favoritos");
-
         FavoriteRestaurantService serviceFavorites = FondaServiceFactory.getInstance()
-		.getFavoriteRestaurantService();
+                .getFavoriteRestaurantService();
         Commensal commensal = FondaEntityFactory.getInstance().GetCommensal();
         Commensal idCommensal;
         Restaurant idRestaurant;
         try {
             idCommensal = (Commensal) getParameter(0);
             idRestaurant = (Restaurant) getParameter(1);
-
             commensal = serviceFavorites.AddFavoriteRestaurant(idCommensal.getId(),
                     idRestaurant.getId());
-            //AKI IRAN MAS EXCEPCIONES RECIBIDAS D BO
-        } catch (RestClientException e) {
+
+        }catch(AddFavoriteRestaurantFondaWebApiControllerException e){
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            throw  new AddFavoriteRestaurantFondaWebApiControllerException(e);
+        }  catch (RestClientException e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            throw  new AddFavoriteRestaurantFondaWebApiControllerException(e);
         } catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            throw  new AddFavoriteRestaurantFondaWebApiControllerException(e);
         } catch (Exception e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un restaurant favorito", e);
+            throw  new AddFavoriteRestaurantFondaWebApiControllerException(e);
     }
 
         setResult(commensal);
     }
+
+
 }
+

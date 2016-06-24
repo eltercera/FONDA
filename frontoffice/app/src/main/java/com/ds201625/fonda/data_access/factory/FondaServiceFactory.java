@@ -14,6 +14,7 @@ import com.ds201625.fonda.data_access.services.PaymentService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.data_access.services.ReservationService;
+import com.ds201625.fonda.data_access.services.RestaurantService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.data_access.services.ZoneService;
 import com.ds201625.fonda.domains.Commensal;
@@ -172,13 +173,16 @@ public class FondaServiceFactory {
     }
 
 
-
     /**
      * Obtiene los servicios de commensal logueado
      * @return
      */
     public static RequireLogedCommensalService getLogedCommensalService(){
       return  serviceFactory.getLogedCommensalService();
-    };
+    }
+
+    public RestaurantService getRestaurantService() {
+        return serviceFactory.getRestaurantService();
+    }
 }
 

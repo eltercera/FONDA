@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
-using com.ds201625.fonda.Logic.FondaLogic.Log;
 using FondaBeckEndLogic;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 
 
 namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
@@ -62,7 +58,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
           // Ejecucion del Buscar.		
 			try
 			{
-                favorites = (Commensal)commensalDAO.FindById(commensal.Id);//PREGUNTAR POR SI PUEDO HACER COMENSAL.ID
+                favorites = (Commensal)commensalDAO.FindById(commensal.Id);
                 foreach (var restaurant in favorites.FavoritesRestaurants) 
                 {
                     restaurant.RestaurantCategory = new RestaurantCategory

@@ -13,9 +13,13 @@ import android.widget.ListView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.CategoryService;
+import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.RestaurantCategory;
+import com.ds201625.fonda.logic.Command;
+import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.views.activities.FilterCategoryList;
 import com.ds201625.fonda.views.activities.RestaurantListActivity;
+import com.ds201625.fonda.views.adapters.CategoriesAdapter;
 import com.google.gson.Gson;
 
 import java.util.Iterator;
@@ -47,6 +51,8 @@ public class FoodFragment extends BaseFragment {
      */
     private Iterator iterator;
 
+    private int currentPage=0;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,29 +64,46 @@ public class FoodFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        //Indicar el layout que va a usar el fragment
+
+        List<RestaurantCategory> categories = null;
         View view= inflater.inflate(R.layout.fragment_food,container,false);
         list=(ListView)view.findViewById(R.id.listViewRestaurants);
 
-        categoryService = FondaServiceFactory.getInstance().getCategoryService();
-        listCategory = categoryService.getRestaurantCategory();
-        iterator = listCategory.listIterator();
-
-
-        while (iterator.hasNext()) {
-            RestaurantCategory category = (RestaurantCategory) iterator.next();
-            String nameZona = category.getName();
+        try {
+            Command comando = FondaCommandFactory.getInstance().getCategoriesCommand();
+            comando.setParameter(0, "");
+            comando.setParameter(1, 10);
+            comando.setParameter(2, currentPage + 1);
+            comando.run();
+            categories = (List<RestaurantCategory>)comando.getResult();
         }
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        //Indicar el layout que va a usar el fragment
+/*
+        categoryService = FondaServiceFactory.getInstance().getCategoryService();
+        listCategory = categoryService.getRestaurantCategory();*/
+        if (categories!=null) {
+            iterator = categories.listIterator();
 
-                Intent intent = new Intent (getActivity(),RestaurantListActivity.class);
-                RestaurantCategory _category = getSelectedCategory(position);
-                intent.putExtra("categoria", new Gson().toJson(_category));
-                startActivity(intent);
+
+            while (iterator.hasNext()) {
+                RestaurantCategory category = (RestaurantCategory) iterator.next();
+                String nameZona = category.getName();
             }
-        });
+
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Intent intent = new Intent(getActivity(), RestaurantListActivity.class);
+                    RestaurantCategory _category = getSelectedCategory(position);
+                    intent.putExtra("categoria", new Gson().toJson(_category));
+                    startActivity(intent);
+                }
+            });
+        }
 
 
         setupListView();
@@ -89,8 +112,8 @@ public class FoodFragment extends BaseFragment {
     }
 
     private void setupListView() {
-        FilterCategoryList adapter = new FilterCategoryList(getActivity(), listCategory);
-        list.setAdapter(adapter);
+        //FilterCategoryList adapter = new FilterCategoryList(getActivity(), listCategory);
+        list.setAdapter(new CategoriesAdapter(getContext()));
 
     }
 
@@ -123,5 +146,3 @@ public class FoodFragment extends BaseFragment {
 
 
 }
-
-
