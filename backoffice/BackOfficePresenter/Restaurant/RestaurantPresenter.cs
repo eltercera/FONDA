@@ -9,6 +9,10 @@ using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Resources.FondaResources.Login;
 using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
+using com.ds201625.fonda.Resources.FondaResources.Restaurant;
+using com.ds201625.fonda.DataAccess.Log;
+using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
 {
@@ -400,6 +404,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
             //declaracion de los comandos
             Command commandGenerateRestaurant;
             Command commandSaveRestaurant;
+            Restaurant _restaurant;
 
             #region Campos del Restaurante
             //Datos basicos del Restaurante
@@ -464,13 +469,47 @@ string zone, string longitud, string latitud, string otime, string ctime)
                 _addlist[11] = CT;
                 _addlist[12] = days;
 
-                //Llamada al comando para generar un restaurante
-                commandGenerateRestaurant = CommandFactory.GetCommandGenerateRestaurant(_addlist);
-                commandGenerateRestaurant.Execute();
+                try
+                {
+                    //Llamada al comando para generar un restaurante
+                    commandGenerateRestaurant = CommandFactory.GetCommandGenerateRestaurant(_addlist);
+                    commandGenerateRestaurant.Execute();
 
-                //Resultado del receiver
-                Restaurant _restaurant = (Restaurant)commandGenerateRestaurant.Receiver;
+                    //Resultado del receiver
+                    _restaurant = (Restaurant)commandGenerateRestaurant.Receiver;
+                }
+                catch (CommandExceptionGenerateRestaurant e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionGenerateRestaurant(RestaurantErrors.GenerateRestaurantFondaDAOException, e);
 
+                }
+                catch (InvalidTypeOfParameterException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionGenerateRestaurant(RestaurantErrors.InvalidTypeParameterException, e);
+                }
+                catch (ParameterIndexOutOfRangeException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ParameterIndexOutRangeException, e);
+                }
+                catch (RequieredParameterNotFoundException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionGenerateRestaurant(RestaurantErrors.RequieredParameterNotFoundException, e);
+                }
+                catch (NullReferenceException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+                }
+                catch (Exception e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+                }
+                                
                 //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
                 commandSaveRestaurant = CommandFactory.GetCommandSaveRestaurant(_restaurant);
                 //ejecuto el comando

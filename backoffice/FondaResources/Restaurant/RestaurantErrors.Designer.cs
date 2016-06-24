@@ -61,11 +61,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comando para generar un objeto restaurante.
+        /// </summary>
+        public static string ClassNameGenerateRestaurant {
+            get {
+                return ResourceManager.GetString("ClassNameGenerateRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGetTables.
         /// </summary>
         public static string ClassNameGetReservations {
             get {
                 return ResourceManager.GetString("ClassNameGetReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al generar el objeto restaurante (Command).
+        /// </summary>
+        public static string CommandExceptionGenerateRestaurant {
+            get {
+                return ResourceManager.GetString("CommandExceptionGenerateRestaurant", resourceCulture);
             }
         }
         
@@ -84,6 +102,42 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         public static string ErrorMessageGetTables {
             get {
                 return ResourceManager.GetString("ErrorMessageGetTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al generar el objeto restaurante (DAO).
+        /// </summary>
+        public static string GenerateRestaurantFondaDAOException {
+            get {
+                return ResourceManager.GetString("GenerateRestaurantFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error tipo de parametro inválido.
+        /// </summary>
+        public static string InvalidTypeParameterException {
+            get {
+                return ResourceManager.GetString("InvalidTypeParameterException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error parámetro fuera de rango.
+        /// </summary>
+        public static string ParameterIndexOutRangeException {
+            get {
+                return ResourceManager.GetString("ParameterIndexOutRangeException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error parámetro requerido no encontrado.
+        /// </summary>
+        public static string RequieredParameterNotFoundException {
+            get {
+                return ResourceManager.GetString("RequieredParameterNotFoundException", resourceCulture);
             }
         }
     }

@@ -14,6 +14,9 @@ using BackOffice.Content;
 using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
 using System.Web.UI.HtmlControls;
 using com.ds201625.fonda.View.BackOfficePresenter.Restaurante;
+using com.ds201625.fonda.Resources.FondaResources.Restaurant;
+using com.ds201625.fonda.DataAccess.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -558,8 +561,20 @@ namespace BackOffice.Seccion.Restaurant
         }
         public void ButtonAdd_Click()
         {
-            _presenter.ButtonAdd_Click();
-
+            try
+            {
+                _presenter.ButtonAdd_Click();
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+            }
         }
         /// <summary>
         /// Llamada al metodo para modificar un restaurante
