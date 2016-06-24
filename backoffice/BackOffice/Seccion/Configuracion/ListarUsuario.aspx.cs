@@ -317,7 +317,14 @@ namespace BackOffice.Seccion.Configuracion
             userListPresenter.ClearAlert();
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                userListPresenter.LoadTable(Session[ResourceLogin.sessionRol].ToString());
+                if ((Session[ResourceLogin.sessionRol].ToString() == "Sistema") || (Session[ResourceLogin.sessionRol].ToString() == "Restaurante"))
+                {
+                    userListPresenter.LoadTable(Session[ResourceLogin.sessionRol].ToString());
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);

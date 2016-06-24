@@ -43,12 +43,19 @@ namespace BackOffice.Seccion.Restaurant
         {
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                AlertSuccess_AgregarCategoria.Visible = false;
+                if (Session[ResourceLogin.sessionRol].ToString() == "Sistema")
+                {
+                    AlertSuccess_AgregarCategoria.Visible = false;
                 AlertSuccess_ModificarCategoria.Visible = false;
                 AlertError_AgregarCategoria.Visible = false;
                 AlertError_ModificarCategoria.Visible = false;
                 //NombreCatA.Attributes.Add("required", "required");
                 _presenter.LoadTable();
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);

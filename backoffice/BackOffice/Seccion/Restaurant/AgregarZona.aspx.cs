@@ -16,7 +16,14 @@ namespace BackOffice.Seccion.Restaurant
         {
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                
+                if (Session[ResourceLogin.sessionRol].ToString() == "Sistema")
+                {
+                   // HECHAR CODIGO AQUI DE LO QUE SE QUIERA HACER EN EL PAGE LOAD
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);

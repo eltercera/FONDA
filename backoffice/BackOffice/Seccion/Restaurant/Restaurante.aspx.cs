@@ -518,14 +518,21 @@ namespace BackOffice.Seccion.Restaurant
         {
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                AlertSuccess_AddRestaurant.Visible = false;
-                AlertSuccess_ModifyRestaurant.Visible = false;
-                OpeningTimeA.Attributes.Add("type", "time");
-                ClosingTimeA.Attributes.Add("type", "time");
-                OpeningTimeM.Attributes.Add("type", "time");
-                ClosingTimeM.Attributes.Add("type", "time");
-                _presenter.LoadTable();
-                _presenter.FillDropdown();
+                if (Session[ResourceLogin.sessionRol].ToString() == "Sistema")
+                {
+                    AlertSuccess_AddRestaurant.Visible = false;
+                    AlertSuccess_ModifyRestaurant.Visible = false;
+                    OpeningTimeA.Attributes.Add("type", "time");
+                    ClosingTimeA.Attributes.Add("type", "time");
+                    OpeningTimeM.Attributes.Add("type", "time");
+                    ClosingTimeM.Attributes.Add("type", "time");
+                    _presenter.LoadTable();
+                    _presenter.FillDropdown();
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);

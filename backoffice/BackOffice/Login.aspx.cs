@@ -236,7 +236,7 @@ namespace BackOffice.Seccion.Configuracion
                 else
                 {
                     // redireccion la pagina como empleado de un restaurante
-                    Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
+                    Response.Redirect("Default.aspx");
                 }
             }
             catch (Exception)
