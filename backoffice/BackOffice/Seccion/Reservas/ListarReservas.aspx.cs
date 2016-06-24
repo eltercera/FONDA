@@ -106,9 +106,15 @@ namespace BackOffice.Seccion.Reservas
         {
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-
-                //Llama al presentador para llenar la tabla reservas
-                _presenter.GetReservations();
+                if ((Session[ResourceLogin.sessionRol].ToString() == "Sistema") || (Session[ResourceLogin.sessionRol].ToString() == "Restaurante"))
+                {
+                    //Llama al presentador para llenar la tabla reservas
+                    _presenter.GetReservations();
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);
