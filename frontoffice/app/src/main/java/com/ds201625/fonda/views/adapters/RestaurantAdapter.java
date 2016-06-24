@@ -10,6 +10,9 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
 import java.util.ArrayList;
 
+/**
+ * Adactador para lista de restaurantes
+ */
 public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
 
 
@@ -17,6 +20,11 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
         super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
     }
 
+    /**
+     * Creacion de la vusta de in iten de restaurante
+     * @param item elemento a construir la vista
+     * @return vista contruida
+     */
     @Override
     public View createView(Restaurant item) {
         View convertView;

@@ -12,23 +12,41 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.contracts.RestaurantsFiltersContract;
 import com.ds201625.fonda.views.presenters.RestaurantsFilterPresenter;
 
-
+/**
+ * Frament para la vista de busqueda de restaurantes
+ */
 public class FilterFragment extends BaseFragment
         implements SwipeRefreshLayout.OnRefreshListener,RestaurantsFiltersContract {
 
+    /**
+     * componentes de la vista
+     */
     private ListView listView;
-
     private SwipeRefreshLayout swipeRefreshLayout;
 
+    /**
+     * presentador / controlador
+     */
     private RestaurantsFilterPresenter presenter;
 
+    /**
+     * Para controlar la actualizacion de la lista con el scroll
+     */
     private int lastfirstVisibleItem = 100;
     private int lastvisibleItemCount = 100;
 
+    /**
+     * Asignacion del presentador / controlador
+     * @param presenter
+     */
     public void setPresenter(RestaurantsFilterPresenter presenter) {
         this.presenter = presenter;
     }
 
+    /**
+     * Implementacion de contrato
+     * @return
+     */
     @Override
     public ListView getListView() {
         return this.listView;
@@ -43,13 +61,14 @@ public class FilterFragment extends BaseFragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        //Obtencion de componentes
         View layout = inflater.inflate(R.layout.fragment_filter,container,false);
         swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
         swipeRefreshLayout.setOnRefreshListener(this);
-
         if (this.listView == null)
             this.listView = (ListView)layout.findViewById(R.id.lvFilterList);
 
+        // inicializacion de componetes y escuchas
         this.presenter.onCreateView();
 
         this.listView.setOnScrollListener(new AbsListView.OnScrollListener() {

@@ -5,33 +5,41 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.NounBaseEntity;
-
-
 import java.util.ArrayList;
 
-
+/**
+ * Adaptador para lista de filtros de busqueda
+ */
 public class ItemFilterAdapter extends BaseArrayAdapter<NounBaseEntity> {
 
     public ItemFilterAdapter(Context context) {
         super(context, R.layout.fragment_filter,R.id.tvFilter,new ArrayList<NounBaseEntity>());
     }
 
+    /**
+     * No es una lista multi-select
+     */
     @Override
     public View getSelectedView(NounBaseEntity item, View convertView) {
-        convertView.setBackgroundColor(getContext().getResources().
-                getColor(R.color.creme));
-        return convertView;
+        return null;
     }
 
+    /**
+     * No es una lista multi-select
+     */
     @Override
     public View getNotSelectedView(NounBaseEntity item, View convertView) {
-        convertView.setBackgroundColor(0x00000000);
-        return convertView;
+        return null;
     }
 
+
+    /**
+     * Creacion de vista para un item
+     * @param item elemento a construir la vista
+     * @return vista contruida
+     */
     @Override
     public View createView(NounBaseEntity item) {
         View convertView;

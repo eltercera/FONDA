@@ -8,20 +8,39 @@ import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.FilterFragment;
 import com.ds201625.fonda.views.presenters.RestaurantsFilterPresenter;
 
+/**
+ * Activity para la busqueda de restaurantes
+ */
 public class RestauranstsActivity extends BaseNavigationActivity {
 
     /**
-     * Componentes
+     * Componentes de la bista
      */
     private ViewPager viewPager;
-    private BaseSectionsPagerAdapter pagerAdapter;
     private TabLayout tabLayout;
 
+    /**
+     * Adaptador para tabs
+     */
+    private BaseSectionsPagerAdapter pagerAdapter;
+
+    /**
+     * Fragmen y presentador para busqueda general
+     */
     private FilterFragment generalFilterFragment;
     private RestaurantsFilterPresenter generalFilterPresenter;
 
+    /**
+     * Fragmen y presentador para busqueda por zona
+     */
     private FilterFragment zoneFilterFragment;
     private RestaurantsFilterPresenter zoneFilterPresenter;
+
+    /**
+     * Fragmen y presentador para busqueda por categoria
+     */
+    private FilterFragment categoryFilterFragment;
+    private RestaurantsFilterPresenter categoryFilterPresenter;
 
 
     @Override
@@ -38,6 +57,7 @@ public class RestauranstsActivity extends BaseNavigationActivity {
         this.pagerAdapter = new BaseSectionsPagerAdapter
                 (this.getSupportFragmentManager(),this.tabLayout);
 
+        //creación de fragments
         this.generalFilterFragment = new FilterFragment();
         this.generalFilterPresenter = new RestaurantsFilterPresenter
                 (this.generalFilterFragment,
@@ -45,6 +65,14 @@ public class RestauranstsActivity extends BaseNavigationActivity {
         this.generalFilterFragment.setPresenter(this.generalFilterPresenter);
         this.pagerAdapter.addFragment
                 (getResources().getDrawable(R.drawable.ic_global),this.generalFilterFragment);
+
+        this.categoryFilterFragment = new FilterFragment();
+        this.categoryFilterPresenter = new RestaurantsFilterPresenter
+                (this.categoryFilterFragment,
+                        RestaurantsFilterPresenter.RestaurantsFilterPresenterType.CATEGORY);
+        this.categoryFilterFragment.setPresenter(this.categoryFilterPresenter);
+        this.pagerAdapter.addFragment
+                (getResources().getDrawable(R.drawable.ic_food),this.categoryFilterFragment);
 
         this.zoneFilterFragment = new FilterFragment();
         this.zoneFilterPresenter = new RestaurantsFilterPresenter
@@ -54,8 +82,8 @@ public class RestauranstsActivity extends BaseNavigationActivity {
         this.pagerAdapter.addFragment
                 (getResources().getDrawable(R.drawable.ic_zone),this.zoneFilterFragment);
 
+        // Set de Adapters de tabs y view pager
         this.viewPager.setAdapter(this.pagerAdapter);
-
         this.tabLayout.setupWithViewPager(this.viewPager);
         this.pagerAdapter.iconsSetup();
     }
