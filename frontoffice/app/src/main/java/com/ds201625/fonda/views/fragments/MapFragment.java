@@ -23,9 +23,11 @@ public class MapFragment extends Fragment {
     MapView mapView;
     GoogleMap map;
 
+    //Esto deberia cambiarse al Activity de Detail
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_map, container, false);
+        View v = inflater.inflate(R.layout.activity_detail_restaurant, container, false);
 
         // Gets the MapView from the XML layout and creates it
         mapView = (MapView) v.findViewById(R.id.mapview);
