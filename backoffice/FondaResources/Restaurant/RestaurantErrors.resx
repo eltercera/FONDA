@@ -130,11 +130,20 @@
     <value>CommandGetTables</value>
     <comment>Comando para obtener las mesasde un Restaurante</comment>
   </data>
+  <data name="ClassNameModifyCategory" xml:space="preserve">
+    <value>Comando para modificar una categoria</value>
+  </data>
+  <data name="ClassNameModifyRestaurant" xml:space="preserve">
+    <value>Comando para modificar el objeto restaurante</value>
+  </data>
   <data name="CommandExceptionAddCategory" xml:space="preserve">
     <value>Error al agregar el objeto categoria (Command)</value>
   </data>
   <data name="CommandExceptionGenerateRestaurant" xml:space="preserve">
     <value>Error al generar el objeto restaurante (Command)</value>
+  </data>
+  <data name="CommandExceptionModifyCategory" xml:space="preserve">
+    <value>Error al modificar el objeto categoria (Command)</value>
   </data>
   <data name="CommandMethod" xml:space="preserve">
     <value>Execute</value>
@@ -149,6 +158,9 @@
   </data>
   <data name="InvalidTypeParameterException" xml:space="preserve">
     <value>Error tipo de parametro inválido</value>
+  </data>
+  <data name="ModifyCategoryFondaDAOException" xml:space="preserve">
+    <value>Error al modificar el objeto categoria (DAO)</value>
   </data>
   <data name="ModifyRestaurantFondaDAOException" xml:space="preserve">
     <value>Error al modificar el objeto restaurante (DAO)</value>

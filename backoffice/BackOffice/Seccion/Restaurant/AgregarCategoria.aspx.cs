@@ -235,7 +235,20 @@ namespace BackOffice.Seccion.Restaurant
         }
         public void ButtonModificar_Click()
         {
-            _presenter.ButtonModificar_Click();
+            try
+            {
+                _presenter.ButtonModificar_Click();
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionModifyCategory(RestaurantErrors.ClassNameModifyCategory, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionModifyCategory(RestaurantErrors.ClassNameModifyCategory, e);
+            }
         }
 
         [WebMethod]

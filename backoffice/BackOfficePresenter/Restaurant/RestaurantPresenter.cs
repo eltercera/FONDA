@@ -660,12 +660,12 @@ string zone, string longitud, string latitud, string otime, string ctime)
                 catch (NullReferenceException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionModifyRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+                    throw new CommandExceptionModifyRestaurant(RestaurantErrors.ClassNameModifyRestaurant, e);
                 }
                 catch (Exception e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+                    throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameModifyRestaurant, e);
                 }
                 //Lista de objetos para el comando
                 Object[] _modifylist = new Object[2];

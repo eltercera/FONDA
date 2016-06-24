@@ -97,6 +97,24 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comando para modificar una categoria.
+        /// </summary>
+        public static string ClassNameModifyCategory {
+            get {
+                return ResourceManager.GetString("ClassNameModifyCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comando para modificar el objeto restaurante.
+        /// </summary>
+        public static string ClassNameModifyRestaurant {
+            get {
+                return ResourceManager.GetString("ClassNameModifyRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al agregar el objeto categoria (Command).
         /// </summary>
         public static string CommandExceptionAddCategory {
@@ -111,6 +129,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         public static string CommandExceptionGenerateRestaurant {
             get {
                 return ResourceManager.GetString("CommandExceptionGenerateRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al modificar el objeto categoria (Command).
+        /// </summary>
+        public static string CommandExceptionModifyCategory {
+            get {
+                return ResourceManager.GetString("CommandExceptionModifyCategory", resourceCulture);
             }
         }
         
@@ -147,6 +174,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         public static string InvalidTypeParameterException {
             get {
                 return ResourceManager.GetString("InvalidTypeParameterException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al modificar el objeto categoria (DAO).
+        /// </summary>
+        public static string ModifyCategoryFondaDAOException {
+            get {
+                return ResourceManager.GetString("ModifyCategoryFondaDAOException", resourceCulture);
             }
         }
         

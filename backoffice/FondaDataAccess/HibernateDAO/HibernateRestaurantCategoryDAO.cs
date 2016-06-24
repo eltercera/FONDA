@@ -49,16 +49,35 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
             return category;
         }
+        /// <summary>
+        /// Metodo para modificar una categoria 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public RestaurantCategory ModifyCategory(int id, string name)
         {
-            FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
-            IRestaurantCategoryDAO _restcatDAO = _facDAO.GetRestaurantCategoryDAO();
+            try
+            {
+                FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
+                IRestaurantCategoryDAO _restcatDAO = _facDAO.GetRestaurantCategoryDAO();
 
-            RestaurantCategory _restaurantC = _restcatDAO.FindById(id);
+                RestaurantCategory _restaurantC = _restcatDAO.FindById(id);
 
-            _restaurantC.Name = name;
+                _restaurantC.Name = name;
 
-            return _restaurantC;
+                return _restaurantC;
+            }
+            catch (ModifyCategoryFondaDAOException e)
+            {
+                throw new ModifyCategoryFondaDAOException(ResourceRestaurantMessagesDAO.ModifyCategoryFondaDAOException, e);
+
+            }
+            catch (Exception e)
+            {
+                throw new ModifyCategoryFondaDAOException(ResourceRestaurantMessagesDAO.ModifyCategoryFondaDAOException, e);
+
+            }
 
         }
 

@@ -38,7 +38,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return (FindAll(criterion));
         }
 
-        #region Restaurant
+        #region 3era Entrega Restaurant
         /// <summary>
         /// Genera un nuevo Restaurante a partir de los datos suministrados por el usuario
         /// </summary>
