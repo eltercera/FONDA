@@ -115,6 +115,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comando para guardar la categoria.
+        /// </summary>
+        public static string ClassNameSaveCategory {
+            get {
+                return ResourceManager.GetString("ClassNameSaveCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comando para guardar un objeto restaurant.
         /// </summary>
         public static string ClassNameSaveRestaurant {
@@ -147,6 +156,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         public static string CommandExceptionModifyCategory {
             get {
                 return ResourceManager.GetString("CommandExceptionModifyCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al guardar el objeto categoria.
+        /// </summary>
+        public static string CommandExceptionSaveCategory {
+            get {
+                return ResourceManager.GetString("CommandExceptionSaveCategory", resourceCulture);
             }
         }
         
@@ -232,7 +250,16 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error al guardar el objeto restaurante.
+        ///   Looks up a localized string similar to Error al guardar el objeto categoria (DAO).
+        /// </summary>
+        public static string SaveEntityCategoryFondaDAOException {
+            get {
+                return ResourceManager.GetString("SaveEntityCategoryFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al guardar el objeto restaurante (DAO).
         /// </summary>
         public static string SaveEntityRestaurantFondaDAOException {
             get {

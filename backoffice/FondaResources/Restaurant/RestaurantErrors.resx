@@ -136,6 +136,9 @@
   <data name="ClassNameModifyRestaurant" xml:space="preserve">
     <value>Comando para modificar el objeto restaurante</value>
   </data>
+  <data name="ClassNameSaveCategory" xml:space="preserve">
+    <value>Comando para guardar la categoria</value>
+  </data>
   <data name="ClassNameSaveRestaurant" xml:space="preserve">
     <value>Comando para guardar un objeto restaurant</value>
   </data>
@@ -147,6 +150,9 @@
   </data>
   <data name="CommandExceptionModifyCategory" xml:space="preserve">
     <value>Error al modificar el objeto categoria (Command)</value>
+  </data>
+  <data name="CommandExceptionSaveCategory" xml:space="preserve">
+    <value>Error al guardar el objeto categoria</value>
   </data>
   <data name="CommandExceptionSaveRestaurant" xml:space="preserve">
     <value>Error al guardar el objeto restaurante</value>
@@ -177,7 +183,10 @@
   <data name="RequieredParameterNotFoundException" xml:space="preserve">
     <value>Error parámetro requerido no encontrado</value>
   </data>
+  <data name="SaveEntityCategoryFondaDAOException" xml:space="preserve">
+    <value>Error al guardar el objeto categoria (DAO)</value>
+  </data>
   <data name="SaveEntityRestaurantFondaDAOException" xml:space="preserve">
-    <value>Error al guardar el objeto restaurante</value>
+    <value>Error al guardar el objeto restaurante (DAO)</value>
   </data>
 </root>

@@ -174,6 +174,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             {
                 _view.alertAddCategorySuccess.Visible = true;
 
+                //Try-Catch para Comando de agregar una categoria
                 try
                 {
                     //Llamada al comando para generar la lista de todos los restaurantes
@@ -212,10 +213,46 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionAddCategory(RestaurantErrors.ClassNameAddCategory, e);
                 }
-                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
-                commandSaveCategory = CommandFactory.GetCommandSaveCategory(_restcat);
-                //ejecuto el comando
-                commandSaveCategory.Execute();
+
+                //Try Catch del comando guardar una categoria
+                try
+                {
+                    //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
+                    commandSaveCategory = CommandFactory.GetCommandSaveCategory(_restcat);
+                    //ejecuto el comando
+                    commandSaveCategory.Execute();
+                }
+                catch (CommandExceptionSaveCategory e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.CommandExceptionSaveCategory, e);
+                }
+                catch (InvalidTypeOfParameterException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.InvalidTypeParameterException, e);
+                }
+                catch (ParameterIndexOutOfRangeException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.ParameterIndexOutRangeException, e);
+                }
+                catch (RequieredParameterNotFoundException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.RequieredParameterNotFoundException, e);
+                }
+                catch (NullReferenceException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.ClassNameSaveCategory, e);
+                }
+                catch (Exception e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.ClassNameSaveCategory, e);
+                }
+
 
                 //_restcatDAO.Save(_restcat);
                 LoadTable();
@@ -287,13 +324,47 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionModifyCategory(RestaurantErrors.ClassNameModifyCategory, e);
                 }
-                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
-                commandSaveCategory = CommandFactory.GetCommandSaveCategory(_restcat);
-               //ejecuto el comando
-                commandSaveCategory.Execute();
 
-               //_restcatDAO.Save(_restaurant);
-               LoadTable();
+                //Try Catch del Comando Save Category
+                try
+                {
+                    //Guarda nueva Categoria en la Base de Datos usando el comando saveCategory
+                    commandSaveCategory = CommandFactory.GetCommandSaveCategory(_restcat);
+                    //ejecuto el comando
+                    commandSaveCategory.Execute();
+                }
+                catch (CommandExceptionSaveCategory e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.CommandExceptionSaveCategory, e);
+                }
+                catch (InvalidTypeOfParameterException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.InvalidTypeParameterException, e);
+                }
+                catch (ParameterIndexOutOfRangeException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.ParameterIndexOutRangeException, e);
+                }
+                catch (RequieredParameterNotFoundException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.RequieredParameterNotFoundException, e);
+                }
+                catch (NullReferenceException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.ClassNameSaveCategory, e);
+                }
+                catch (Exception e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveCategory(RestaurantErrors.ClassNameSaveCategory, e);
+                }
+
+                LoadTable();
             }
             else
             {
