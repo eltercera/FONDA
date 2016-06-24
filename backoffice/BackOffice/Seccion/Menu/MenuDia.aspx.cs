@@ -23,7 +23,14 @@ namespace BackOffice.Seccion.Menu
         {
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                LoadDayMenuTable();
+                if ((Session[ResourceLogin.sessionRol].ToString() == "Sistema") || (Session[ResourceLogin.sessionRol].ToString() == "Restaurante"))
+                {
+                    LoadDayMenuTable();
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);

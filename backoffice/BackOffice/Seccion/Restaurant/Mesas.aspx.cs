@@ -21,9 +21,16 @@ namespace BackOffice.Seccion.Restaurant
         {
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                AlertSuccess_AddTable.Visible = false;
-                AlertSuccess_ModifyTable.Visible = false;
-                LoadDataTable();
+                if (Session[ResourceLogin.sessionRol].ToString() == "Sistema")
+                {
+                    AlertSuccess_AddTable.Visible = false;
+                    AlertSuccess_ModifyTable.Visible = false;
+                    LoadDataTable();
+                }
+                else
+                {
+                    Response.Redirect("~/Default.aspx");
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);
