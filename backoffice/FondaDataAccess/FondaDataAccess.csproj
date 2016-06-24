@@ -43,10 +43,6 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
@@ -60,6 +56,9 @@
       <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\AddEmployeeFondaBackOfficeException.cs" />
@@ -72,7 +71,6 @@
     <Compile Include="Exceptions\OrderAccount\ClosedOrdersByRestaurantFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\FindAccountByRestaurantFondaDAOException.cs" />
     <Compile Include="Exceptions\FindAllFondaDAOException.cs" />
-    <Compile Include="Exceptions\OrderAccount\FindAllInvoiceFondaDAOException.cs" />
     <Compile Include="Exceptions\FindByEmailUserAccountFondaDAOException.cs" />
     <Compile Include="Exceptions\FindByFondaDAOException.cs" />
     <Compile Include="Exceptions\FindByIdFondaDAOException.cs" />
@@ -232,6 +230,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourceMessagesDAO.resx</DependentUpon>
     </Compile>
+    <Compile Include="Exceptions\OrderAccount\FindAllInvoiceFondaDAOException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
