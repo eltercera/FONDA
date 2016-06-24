@@ -117,12 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCategoryFondaDAOException" xml:space="preserve">
+    <value>Error al agregar el objeto categoria (DAO)</value>
+  </data>
+  <data name="ClassNameAddCategory" xml:space="preserve">
+    <value>Comando para generar un objeto categoria</value>
+  </data>
   <data name="ClassNameGenerateRestaurant" xml:space="preserve">
     <value>Comando para generar un objeto restaurante</value>
   </data>
   <data name="ClassNameGetReservations" xml:space="preserve">
     <value>CommandGetTables</value>
     <comment>Comando para obtener las mesasde un Restaurante</comment>
+  </data>
+  <data name="CommandExceptionAddCategory" xml:space="preserve">
+    <value>Error al agregar el objeto categoria (Command)</value>
   </data>
   <data name="CommandExceptionGenerateRestaurant" xml:space="preserve">
     <value>Error al generar el objeto restaurante (Command)</value>
