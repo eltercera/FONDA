@@ -26,34 +26,47 @@ public class GetRestaurantsCommand extends BaseCommand {
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[5];
-        parameters[0] = new Parameter(String.class, true);
-        parameters[1] = new Parameter(Integer.class, true);
-        parameters[2] = new Parameter(Integer.class, true);
-        parameters[3] = new Parameter(String.class, true);
-        parameters[4] = new Parameter(String.class, true);
+        parameters[0] = new Parameter(String.class, false);
+        parameters[1] = new Parameter(Integer.class, false);
+        parameters[2] = new Parameter(Integer.class, false);
+        parameters[3] = new Parameter(Integer.class, false);
+        parameters[4] = new Parameter(Integer.class, false);
 
         return parameters;
     }
 
     @Override
     protected void invoke() {
-        Log.d(TAG, "Comando para obtener la lista de Categorias");
+        Log.d(TAG, "Comando para obtener la lista de restaurantes");
         List<Restaurant> restaurants = null;
 
         RestaurantService resService = FondaServiceFactory.getInstance()
                 .getRestaurantService();
 
+        int max = 0;
+        int page = 0;
+        int zone = 0;
+        int category = 0;
+
         try
         {
             String query = (String) getParameter(0);
-            int max = (int) getParameter(1);
-            int page = (int) getParameter(2);
-            String zone = (String) getParameter(3);
-            String category = (String) getParameter(4);
+
+            if (getParameter(1) != null) {
+                max = (int) getParameter(1);
+            }
+            if (getParameter(2) != null) {
+                page = (int) getParameter(2);
+            }
+            if (getParameter(3) != null) {
+                zone = (int) getParameter(3);
+            }
+            if (getParameter(4) != null) {
+                category = (int) getParameter(4);
+            }
             restaurants = resService.getRestaurants(query, max, page, category, zone);
         }
         catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al obtener los restaurantes", e);
             e.printStackTrace();
         }
 

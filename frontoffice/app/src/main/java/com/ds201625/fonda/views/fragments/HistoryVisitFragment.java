@@ -188,7 +188,7 @@ public class HistoryVisitFragment extends BaseFragment implements LogicHistoryVi
                 Invoice invoice = (Invoice) iterator.next();
                 String nameRestaurant = invoice.getRestaurant().getName();
                 String addresRestaurant = invoice.getRestaurant().getAddress();
-                String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getNameCategory();
+                String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getName();
                 String logoRestaurant = invoice.getRestaurant().getLogo();
                 Date date = invoice.getDate();
                 String datePayment = new SimpleDateFormat("dd-MM-yyyy").format(date);
@@ -216,7 +216,7 @@ public class HistoryVisitFragment extends BaseFragment implements LogicHistoryVi
                 Invoice invoice = (Invoice) iterator.next();
                 String nameRestaurant = invoice.getRestaurant().getName();
                 String addresRestaurant = invoice.getRestaurant().getAddress();
-                String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getNameCategory();
+                String categoryRestaurant = invoice.getRestaurant().getRestaurantCategory().getName();
                 float tax = invoice.getTax();
                 float tip = invoice.getTip();
                 float totalPayment = invoice.getTotal();
