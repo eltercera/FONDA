@@ -19,4 +19,9 @@ public interface RestaurantsFiltersContract {
      * @return ListView
      */
     ListView getListView();
+
+    /**
+     * Cirerra la vista de busqueda
+     */
+    void closeSearchView();
 }
