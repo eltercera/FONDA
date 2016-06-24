@@ -62,8 +62,6 @@ public class DetailRestaurantFragment extends BaseFragment {
         tvRestName = (TextView) form.findViewById(R.id.text_view_restaurant_name);
         tvType = (TextView) form.findViewById(R.id.text_view_restaurant_type);
         tvZone = (TextView) form.findViewById(R.id.text_view_restaurant_zone);
-        tvAvPr = (TextView) form.findViewById(R.id.text_view_restaurant_principal_avenue);
-        tvOther = (TextView) form.findViewById(R.id.text_view_restaurant_other_avenue);
 
         //Falta Horario
         return form;
