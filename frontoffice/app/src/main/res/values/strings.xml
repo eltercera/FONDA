@@ -121,4 +121,8 @@
     <string name="favorite_add_fail_meessage">No se ha agregado el restaurante de su lista de favoritos.</string>
     <string name="cliente">Cliente:</string>
 
+    <!--Strings related to Restaurant Detail View-->
+
+    <string name="restaurant_hours">Horario</string>
+
 </resources>
