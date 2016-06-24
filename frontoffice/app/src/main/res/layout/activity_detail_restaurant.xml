@@ -16,7 +16,29 @@
 
         <include layout="@layout/toolbar_default" />
 
-        <include layout="@layout/content_detail_restaurant" />
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include layout="@layout/content_detail_restaurant" />
+
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/mapview"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
 
     </android.support.design.widget.CoordinatorLayout>
 
