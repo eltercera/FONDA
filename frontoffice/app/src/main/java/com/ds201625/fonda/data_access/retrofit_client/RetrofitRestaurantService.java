@@ -5,7 +5,6 @@ import com.ds201625.fonda.data_access.retrofit_client.clients.RestaurantClient;
 import com.ds201625.fonda.data_access.services.RestaurantService;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.RestaurantCategory;
-import com.ds201625.fonda.domains.Token;
 import com.ds201625.fonda.domains.Zone;
 
 import java.io.IOException;
@@ -45,21 +44,21 @@ public class RetrofitRestaurantService implements RestaurantService {
         try {
             zones = call.execute().body();
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
 
         return zones;
     }
 
     @Override
-    public List<Restaurant> getRestaurants(String query, int max, int page, String category, String zone) {
+    public List<Restaurant> getRestaurants(String query, int max, int page, int category, int zone) {
         Call<List<Restaurant>> call = resClient.getRestaurants(query, max, page, category, zone);
         List<Restaurant> restaurants = null;
 
         try {
             restaurants = call.execute().body();
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
 
         return restaurants;

@@ -3,44 +3,61 @@ package com.ds201625.fonda.views.activities;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
-import com.ds201625.fonda.views.fragments.*;
+import com.ds201625.fonda.views.fragments.FilterFragment;
+import com.ds201625.fonda.views.presenters.RestaurantsFilterPresenter;
 
-public class RestauranstsActivity extends  BaseNavigationActivity {
+public class RestauranstsActivity extends BaseNavigationActivity {
 
+    /**
+     * Componentes
+     */
     private ViewPager viewPager;
-    private BaseSectionsPagerAdapter RestaurantFilters;
-    private FilterFragment fragment;
+    private BaseSectionsPagerAdapter pagerAdapter;
+    private TabLayout tabLayout;
+
+    private FilterFragment generalFilterFragment;
+    private RestaurantsFilterPresenter generalFilterPresenter;
+
+    private FilterFragment zoneFilterFragment;
+    private RestaurantsFilterPresenter zoneFilterPresenter;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) { //Se corren las vistas y menu
+    protected void onCreate(Bundle savedInstanceState) {
 
         setContentView(R.layout.activity_restaurants);
         super.onCreate(savedInstanceState);
 
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        //Obtencion de componentes
+        this.viewPager = (ViewPager) findViewById(R.id.viewPager);
+        this.tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-        FilterFragment zoneFrag = new FilterFragment();
-        FilterFragment resFrag = new FilterFragment();
-        FilterFragment catFrag = new FilterFragment();
-        zoneFrag.setTabLayout(tabLayout);
-        resFrag.setTabLayout(tabLayout);
-        catFrag.setTabLayout(tabLayout);
+        //creación de componentes
+        this.pagerAdapter = new BaseSectionsPagerAdapter
+                (this.getSupportFragmentManager(),this.tabLayout);
 
-        RestaurantFilters = new BaseSectionsPagerAdapter(getSupportFragmentManager(),tabLayout);
-//        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_global),resFrag);
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_zone),new ZoneFragment());
-        RestaurantFilters.addFragment(getResources().getDrawable(R.drawable.ic_food),new FoodFragment());
+        this.generalFilterFragment = new FilterFragment();
+        this.generalFilterPresenter = new RestaurantsFilterPresenter
+                (this.generalFilterFragment,
+                        RestaurantsFilterPresenter.RestaurantsFilterPresenterType.GENERAL);
+        this.generalFilterFragment.setPresenter(this.generalFilterPresenter);
+        this.pagerAdapter.addFragment
+                (getResources().getDrawable(R.drawable.ic_global),this.generalFilterFragment);
 
-        viewPager.setAdapter(RestaurantFilters);
-        tabLayout.setupWithViewPager(viewPager);
-        RestaurantFilters.iconsSetup();
+        this.zoneFilterFragment = new FilterFragment();
+        this.zoneFilterPresenter = new RestaurantsFilterPresenter
+                (this.zoneFilterFragment,
+                        RestaurantsFilterPresenter.RestaurantsFilterPresenterType.ZONE);
+        this.zoneFilterFragment.setPresenter(this.zoneFilterPresenter);
+        this.pagerAdapter.addFragment
+                (getResources().getDrawable(R.drawable.ic_zone),this.zoneFilterFragment);
+
+        this.viewPager.setAdapter(this.pagerAdapter);
+
+        this.tabLayout.setupWithViewPager(this.viewPager);
+        this.pagerAdapter.iconsSetup();
     }
 
 }

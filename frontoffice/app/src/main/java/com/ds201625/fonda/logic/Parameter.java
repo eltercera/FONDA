@@ -47,6 +47,8 @@ public class Parameter {
      * @throws Exception
      */
     public void setData(Object data) throws Exception {
+        if (data == null)
+            return;
         if(!dataType.isAssignableFrom(data.getClass()))
             //TODO: Crear excepción personalizada
             throw new Exception("Se expera un tipo de datos " + dataType.toString()
