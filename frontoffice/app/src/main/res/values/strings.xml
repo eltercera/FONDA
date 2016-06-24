@@ -45,6 +45,8 @@
     <string name="filter_afternoon_schedule">Vespertino</string>
     <string name="filter_night_schedule">Nocturno</string>
     <string name="search_title">Búsqueda</string>
+    <string name="empty_search">Su búsqueda no ha arrojado resultados</string>
+    <string name="no_connection">Compruebe su conexión a internet e inténtelo de nuevo</string>
 
     <!-- Strings related to Settings -->
 
