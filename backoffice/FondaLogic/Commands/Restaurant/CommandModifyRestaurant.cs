@@ -2,9 +2,8 @@
 using com.ds201625.fonda.DataAccess.Exceptions.Restaurant;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.DataAccess.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
 using com.ds201625.fonda.Resources.FondaResources.Restaurant;
 using System;

@@ -115,6 +115,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comando para guardar un objeto restaurant.
+        /// </summary>
+        public static string ClassNameSaveRestaurant {
+            get {
+                return ResourceManager.GetString("ClassNameSaveRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al agregar el objeto categoria (Command).
         /// </summary>
         public static string CommandExceptionAddCategory {
@@ -138,6 +147,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         public static string CommandExceptionModifyCategory {
             get {
                 return ResourceManager.GetString("CommandExceptionModifyCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al guardar el objeto restaurante.
+        /// </summary>
+        public static string CommandExceptionSaveRestaurant {
+            get {
+                return ResourceManager.GetString("CommandExceptionSaveRestaurant", resourceCulture);
             }
         }
         
@@ -210,6 +228,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         public static string RequieredParameterNotFoundException {
             get {
                 return ResourceManager.GetString("RequieredParameterNotFoundException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al guardar el objeto restaurante.
+        /// </summary>
+        public static string SaveEntityRestaurantFondaDAOException {
+            get {
+                return ResourceManager.GetString("SaveEntityRestaurantFondaDAOException", resourceCulture);
             }
         }
     }

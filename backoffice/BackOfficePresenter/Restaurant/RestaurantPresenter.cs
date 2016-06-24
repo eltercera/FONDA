@@ -509,11 +509,45 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
                 }
-                                
-                //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
-                commandSaveRestaurant = CommandFactory.GetCommandSaveRestaurant(_restaurant);
-                //ejecuto el comando
-                commandSaveRestaurant.Execute();
+
+                try
+                {
+                    //Guarda nuevo Restaurante en la Base de Datos usando el comando saveRestaurant
+                    commandSaveRestaurant = CommandFactory.GetCommandSaveRestaurant(_restaurant);
+                    //ejecuto el comando
+                    commandSaveRestaurant.Execute();
+                }
+                catch (CommandExceptionSaveRestaurant e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveRestaurant(RestaurantErrors.CommandExceptionSaveRestaurant, e);
+
+                }
+                catch (InvalidTypeOfParameterException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveRestaurant(RestaurantErrors.InvalidTypeParameterException, e);
+                }
+                catch (ParameterIndexOutOfRangeException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveRestaurant(RestaurantErrors.ParameterIndexOutRangeException, e);
+                }
+                catch (RequieredParameterNotFoundException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveRestaurant(RestaurantErrors.RequieredParameterNotFoundException, e);
+                }
+                catch (NullReferenceException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveRestaurant(RestaurantErrors.ClassNameSaveRestaurant, e);
+                }
+                catch (Exception e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionSaveRestaurant(RestaurantErrors.ClassNameSaveRestaurant, e);
+                }
 
                 //Refresca la tabla de Restaurantes
                 LoadTable();
