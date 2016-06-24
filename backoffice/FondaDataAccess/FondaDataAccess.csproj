@@ -91,6 +91,12 @@
     <Compile Include="Exceptions\OrderAccount\FindInvoicesByRestaurantFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\GenerateNumberInvoiceFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\ReleaseTableFondaDAOException.cs" />
+    <Compile Include="Exceptions\Restaurant\GenerateRestaurantFondaDAOException.cs" />
+    <Compile Include="Exceptions\Restaurant\ResourceRestaurantMessagesDAO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceRestaurantMessagesDAO.resx</DependentUpon>
+    </Compile>
     <Compile Include="Exceptions\ValidationEmailEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\ValidationSsnEmployeeFondaBackOfficeException.cs" />
     <Compile Include="Exceptions\ValidationUsernameEmployeeFondaBackOfficeException.cs" />
@@ -264,6 +270,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Exceptions\Restaurant\ResourceRestaurantMessagesDAO.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceRestaurantMessagesDAO.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResourceMessagesDAO.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceMessagesDAO.Designer.cs</LastGenOutput>

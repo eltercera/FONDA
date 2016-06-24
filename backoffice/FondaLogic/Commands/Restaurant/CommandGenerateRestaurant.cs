@@ -1,6 +1,10 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.Exceptions.Restaurant;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.DataAccess.Log;
 using com.ds201625.fonda.Logic.FondaLogic;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
+using com.ds201625.fonda.Resources.FondaResources.Restaurant;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,9 +71,35 @@ namespace FondaLogic.Commands.Restaurante
 
                 Receiver = _RestaurantDAO.GenerateRestaurant(name, logo, nationality, rif, address, category, currency, zone, _long, _lat, openingTime, closingTime, days);
             }
-            catch
+            catch(GenerateRestaurantFondaDAOException e)
             {
-                throw new NotImplementedException();
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.GenerateRestaurantFondaDAOException, e);
+            }
+            catch (InvalidTypeParameterException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.InvalidTypeParameterException, e);
+            }
+            catch (ParameterIndexOutRangeException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ParameterIndexOutRangeException, e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.RequieredParameterNotFoundException, e);
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
             }
         }
     }
