@@ -241,6 +241,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             {
                 generalCriterial.Add(Restrictions.Eq("RestaurantCategory.Id", idCategory));
             }
+			generalCriterial.Add(
+				Restrictions.Eq("Status", FactoryDAO.FactoryDAO.Intance.GetActiveSimpleStatus()));
 
             return FindAllSortedByName(true, generalCriterial, max, (page - 1) * max);
         }
