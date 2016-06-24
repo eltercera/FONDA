@@ -8,13 +8,9 @@ using com.ds201625.fonda.Logic.FondaLogic.Log;
 using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Security.AntiXss;
 using System.Web.UI.WebControls;
-using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
 
 namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 {

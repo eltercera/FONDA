@@ -1,9 +1,10 @@
+
 ﻿using com.ds201625.fonda.BackEndLogic;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
-using com.ds201625.fonda.Logic.FondaLogic.Log;
+using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,7 +78,7 @@ namespace com.ds201625.fonda.BackEndLogic.TokenManagement
             }
 
             //Logger al Culminar el metodo
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, "",
                  System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);

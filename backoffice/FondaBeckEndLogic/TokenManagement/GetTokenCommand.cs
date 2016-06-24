@@ -1,10 +1,11 @@
+
 ﻿using com.ds201625.fonda.BackEndLogic;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
-using com.ds201625.fonda.Logic.FondaLogic.Log;
+using FondaLogic.Log;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,7 @@ namespace com.ds201625.fonda.BackEndLogic.TokenManagement
                 Token token = (Token)EntityFactory.GetToken();
             try
             {
-                // Se agraga el Token al commensal
+                // Se agrega el Token al commensal
                 commensal.AddToken(token);
 
                 //Se guardan los cambios

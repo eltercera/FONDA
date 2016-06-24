@@ -1,7 +1,9 @@
+
 package com.ds201625.fonda.logic;
 
-import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
-import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteCommensalCommand;
+
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateTokenCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.CreateProfileCommand;
@@ -11,8 +13,8 @@ import com.ds201625.fonda.logic.Commands.FavoriteCommands.RequireLogedCommensalC
 import com.ds201625.fonda.logic.Commands.ProfileCommands.DeleteProfileCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.GetProfilesCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.UpdateProfileCommand;
-import com.ds201625.fonda.logic.Commands.OrderCommands.*;
-
+import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
+import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteTokenCommand;
 /**
  * Fabrica de comandos
  */
@@ -40,7 +42,7 @@ public class FondaCommandFactory {
      * Crea un CreateProfileCommand
      * @return comando CreateProfileCommand
      */
-    public static Command createCreateProfileCommand() {
+    public static Command createProfileCommand() {
         return  new CreateProfileCommand();
     }
 
@@ -64,9 +66,10 @@ public class FondaCommandFactory {
      * Crea un AllFavoriteRestaurantCommand
      * @return comando AllFavoriteRestaurantCommand
      */
-    public static Command allFavoriteRestaurantCommand() {
+    public static Command allFavoriteRestaurantCommand() throws
+            FindFavoriteRestaurantFondaWebApiControllerException {
         return  new AllFavoriteRestaurantCommand();
-    }
+     }
 
     /**
      * Crea un AllRestaurantCommand
@@ -113,32 +116,18 @@ public class FondaCommandFactory {
     public static Command createCommensalCommand() { return  new CreateCommensalCommand(); }
 
     /**
-     * Crea un deleteCommensalCommand
-     * @return comando deleteCommensalCommand
+     * Crea un deleteTokenCommand
+     * @return comando deleteTokenCommand
      */
-    public static Command deleteCommensalCommand() { return  new DeleteCommensalCommand(); }
-
-    /**
-     * Crea un LogicCurrentOrderCommand
-     * @return comando LogicCurrentOrderCommand
-     */
-    public static Command logicCurrentOrderCommand() {
-        return  new LogicCurrentOrderCommand();
+    public static Command deleteTokenCommand() { return  new DeleteTokenCommand();
     }
 
     /**
-     * Crea un LogicHistoryVisitsCommand
-     * @return comando LogicHistoryVisitsCommand
+     * Crea un createTokenCommand
+     * @return comando createTokenCommand
      */
-    public static Command logicHistoryVisitsCommand() {
-        return  new LogicHistoryVisitsCommand();
+    public static Command createTokenCommand() { return  new CreateTokenCommand();
     }
 
-    /**
-     * Crea un LogicInvoiceCommand
-     * @return comando LogicInvoiceCommand
-     */
-    public static Command logicInvoiceCommand() {
-        return  new LogicInvoiceCommand();
-    }
 }
+
