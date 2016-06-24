@@ -92,6 +92,7 @@
     <Compile Include="Exceptions\OrderAccount\GenerateNumberInvoiceFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\ReleaseTableFondaDAOException.cs" />
     <Compile Include="Exceptions\Restaurant\GenerateRestaurantFondaDAOException.cs" />
+    <Compile Include="Exceptions\Restaurant\ModifyRestaurantFondaDAOException.cs" />
     <Compile Include="Exceptions\Restaurant\ResourceRestaurantMessagesDAO.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -576,7 +576,21 @@ namespace BackOffice.Seccion.Restaurant
         }
         public void ButtonModify_Click2()
         {
-            _presenter.ButtonModify_Click();
+            try
+            {
+                _presenter.ButtonModify_Click();
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+            }
+
         }
 
         [WebMethod]

@@ -124,6 +124,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al modificar el objeto restaurante (DAO).
+        /// </summary>
+        public static string ModifyRestaurantFondaDAOException {
+            get {
+                return ResourceManager.GetString("ModifyRestaurantFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error parámetro fuera de rango.
         /// </summary>
         public static string ParameterIndexOutRangeException {

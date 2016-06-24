@@ -135,6 +135,7 @@
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionTotalOrder.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionValidateProfileByCommensal.cs" />
     <Compile Include="FondaCommandException\Reservation\CommandExceptionGetTables.cs" />
+    <Compile Include="FondaCommandException\Restaurant\CommandExceptionModifyRestaurant.cs" />
     <Compile Include="FondaCommandException\Restaurant\CommandExceptionGenerateRestaurant.cs" />
     <Compile Include="FondaCommandException\Restaurant\FondaCommandLogicException.cs" />
     <Compile Include="FondaCommandException\Restaurant\InvalidTypeParameterException.cs" />

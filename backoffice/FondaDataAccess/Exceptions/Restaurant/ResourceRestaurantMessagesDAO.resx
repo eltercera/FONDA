@@ -120,4 +120,7 @@
   <data name="GenerateRestaurantFondaDAOException" xml:space="preserve">
     <value>Error al generar el objeto restaurante</value>
   </data>
+  <data name="ModifyRestaurantFondaDAOException" xml:space="preserve">
+    <value>Error al modificar el objeto restaurante</value>
+  </data>
 </root>

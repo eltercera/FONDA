@@ -563,6 +563,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
             Command commandModifyRestaurant;
             Command commandGenerateRestaurant;
             Command commandSaveRestaurant;
+            Restaurant _restaurantM;
 
             #region Campos del Restaurante
             //Datos basicos del Restaurante
@@ -627,13 +628,45 @@ string zone, string longitud, string latitud, string otime, string ctime)
                 _addlist[11] = CT;
                 _addlist[12] = days;
 
-                //Llamada al comando para generar un restaurante antes de modificar
-                commandGenerateRestaurant = CommandFactory.GetCommandGenerateRestaurant(_addlist);
-                commandGenerateRestaurant.Execute();
+                try
+                {
+                    //Llamada al comando para generar un restaurante antes de modificar
+                    commandGenerateRestaurant = CommandFactory.GetCommandGenerateRestaurant(_addlist);
+                    commandGenerateRestaurant.Execute();
 
-                //Resultado del receiver
-                Restaurant _restaurantM = (Restaurant)commandGenerateRestaurant.Receiver;
-
+                    //Resultado del receiver
+                    _restaurantM = (Restaurant)commandGenerateRestaurant.Receiver;
+                }
+                catch (CommandExceptionModifyRestaurant e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionModifyRestaurant(RestaurantErrors.ModifyRestaurantFondaDAOException, e);
+                }
+                catch (InvalidTypeOfParameterException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionModifyRestaurant(RestaurantErrors.InvalidTypeParameterException, e);
+                }
+                catch (ParameterIndexOutOfRangeException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionModifyRestaurant(RestaurantErrors.ParameterIndexOutRangeException, e);
+                }
+                catch (RequieredParameterNotFoundException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionModifyRestaurant(RestaurantErrors.RequieredParameterNotFoundException, e);
+                }
+                catch (NullReferenceException e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionModifyRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+                }
+                catch (Exception e)
+                {
+                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                    throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+                }
                 //Lista de objetos para el comando
                 Object[] _modifylist = new Object[2];
                 _modifylist[0] = _restaurantM;

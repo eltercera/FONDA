@@ -69,5 +69,14 @@ namespace com.ds201625.fonda.DataAccess.Exceptions.Restaurant {
                 return ResourceManager.GetString("GenerateRestaurantFondaDAOException", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al modificar el objeto restaurante.
+        /// </summary>
+        internal static string ModifyRestaurantFondaDAOException {
+            get {
+                return ResourceManager.GetString("ModifyRestaurantFondaDAOException", resourceCulture);
+            }
+        }
     }
 }
