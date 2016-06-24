@@ -531,7 +531,16 @@ namespace BackOffice.Seccion.Restaurant
                 }
                 else
                 {
-                    Response.Redirect("~/Default.aspx");
+                    if (Session[ResourceLogin.sessionRol].ToString() == "Restaurante")
+                    {
+                        // redireccion la pagina como empleado de un restaurante
+                        Response.Redirect("Default.aspx");
+                    }
+                    if (Session[ResourceLogin.sessionRol].ToString() == "Caja")
+                    {
+                        // redireccion la pagina como empleado de un restaurante
+                        Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
+                    }
                 }
             }
             else
