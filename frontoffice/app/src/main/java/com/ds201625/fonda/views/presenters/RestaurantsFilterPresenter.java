@@ -1,5 +1,7 @@
 package com.ds201625.fonda.views.presenters;
 
+import android.util.Log;
+import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.NounBaseEntity;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.Command;
@@ -89,18 +91,47 @@ public class RestaurantsFilterPresenter {
         if (this.showRestaurant) {
             this.restaurantAdapter.clear();
             this.restPage = 1;
-            this.restaurantAdapter.notifyDataSetChanged();
         } else {
             this.itemFilterAdapter.clear();
             this.itemPage = 1;
-            this.itemFilterAdapter.notifyDataSetChanged();
         }
         this.listFull = false;
         fillList();
     }
 
+    public void onItemClick(int position) {
+        Log.d("RestFilPresenter","Seleccionada posicion " + position + " de la lista.");
+        if (this.showRestaurant) {
+
+        } else {
+            int id = ((BaseEntity) itemFilterAdapter.getItem(position)).getId();
+            this.textSearch = null;
+            this.fragment.closeSearchView();
+
+            switch (this.type) {
+                case CATEGORY:
+                    Log.d("RestFilPresenter",
+                            "Seleccionada categoria id: " + id);
+                    this.idCat = id;
+                    break;
+
+                case ZONE:
+                    Log.d("RestFilPresenter",
+                            "Seleccionada zona id: " + id);
+                    this.idZone = id;
+                    break;
+                default:
+
+                    break;
+            }
+            this.showRestaurant = true;
+            this.fragment.getListView().setAdapter(this.restaurantAdapter);
+            this.onRefresh();
+        }
+    }
+
     /**
-     * Ejecutar cuando el listview esta al fundo
+     * Ejecutar cuando el listview esta al fondo
      */
     public void scrollOnBottom() {
         if(listFull)
@@ -115,12 +146,28 @@ public class RestaurantsFilterPresenter {
     }
 
     /**
+     * Accion de actura del boton de atras
+     * @return true si deja ejecutarse la accion por defecto
+     */
+    public boolean onBackPressed() {
+
+        if (this.type != RestaurantsFilterPresenterType.GENERAL && this.showRestaurant) {
+            this.fragment.getListView().setAdapter(this.itemFilterAdapter);
+            this.showRestaurant = false;
+            this.onRefresh();
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Ejecutar el filtro de busqeda
      * @param text
      */
     public void search(String text) {
         this.textSearch = text;
-        fillList();
+        this.onRefresh();
     }
 
     /**
@@ -135,8 +182,8 @@ public class RestaurantsFilterPresenter {
                 cmd.setParameter(0,this.textSearch);
                 cmd.setParameter(1,6);
                 cmd.setParameter(2,this.restPage);
-                cmd.setParameter(3,this.idZone);
-                cmd.setParameter(4,this.idCat);
+                cmd.setParameter(4,this.idZone);
+                cmd.setParameter(3,this.idCat);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -150,8 +197,11 @@ public class RestaurantsFilterPresenter {
             if (cmd.getResult() != null) {
                 if (((List<Restaurant>)cmd.getResult()).isEmpty())
                     this.listFull = true;
-                else
+                else {
                     restaurantAdapter.addAll((List<Restaurant>) cmd.getResult());
+                    this.restaurantAdapter.notifyDataSetChanged();
+                    this.fragment.getListView().refreshDrawableState();
+                }
             }
         } else {
             switch (this.type) {
@@ -182,13 +232,18 @@ public class RestaurantsFilterPresenter {
 
             if (cmd.getResult() != null) {
                 List<NounBaseEntity> list = (List<NounBaseEntity>) cmd.getResult();
+                Log.d("RestFilPresenter",
+                        "Llenando lista con " + list.size() + " de la lista.");
                 if (list.isEmpty()) {
                     this.listFull = true;
-                }else {
-                    itemFilterAdapter.addAll(list);
+                } else {
+                    this.itemFilterAdapter.addAll(list);
+                    this.itemFilterAdapter.notifyDataSetChanged();
+                    this.fragment.getListView().refreshDrawableState();
                 }
             }
         }
+
     }
 
     /**

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.contracts.RestaurantsFiltersContract;
@@ -23,6 +24,7 @@ public class FilterFragment extends BaseFragment
      */
     private ListView listView;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private FilterFragmentListener activity;
 
     /**
      * presentador / controlador
@@ -41,6 +43,14 @@ public class FilterFragment extends BaseFragment
      */
     public void setPresenter(RestaurantsFilterPresenter presenter) {
         this.presenter = presenter;
+    }
+
+    /**
+     * Asignacion de activity padre.
+     * @param activity
+     */
+    public void setActivity(FilterFragmentListener activity) {
+        this.activity = activity;
     }
 
     /**
@@ -92,6 +102,13 @@ public class FilterFragment extends BaseFragment
             }
         });
 
+        this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                presenter.onItemClick(position);
+            }
+        });
+
         return layout;
     }
 
@@ -100,5 +117,37 @@ public class FilterFragment extends BaseFragment
         this.swipeRefreshLayout.setRefreshing(true);
         this.presenter.onRefresh();
         this.swipeRefreshLayout.setRefreshing(false);
+    }
+
+    /**
+     * proxy BackPressed
+     * @return
+     */
+    public boolean onBackPressed() {
+        return presenter.onBackPressed();
+    }
+
+    /**
+     * Proxy search
+     * @param query string de busqueda
+     */
+    public void search(String query) {
+        presenter.search(query);
+    }
+
+    @Override
+    public void closeSearchView() {
+        this.activity.closeSearchView();
+    }
+
+    /**
+     * Interface de comunicación conta el Activity padre
+     */
+    public interface FilterFragmentListener {
+
+        /**
+         * Para el cierre de la vista de busqueda
+         */
+        void closeSearchView();
     }
 }
