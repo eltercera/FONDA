@@ -323,7 +323,7 @@ namespace BackOffice.Seccion.Configuracion
                 }
                 else
                 {
-                    Response.Redirect("~/Default.aspx");
+                    Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
                 }
             }
             else
