@@ -16,7 +16,9 @@ using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
 using System.Web.UI.HtmlControls;
 using com.ds201625.fonda.View.BackOfficePresenter.Restaurante;
 using BackOffice.Content;
-
+using com.ds201625.fonda.DataAccess.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
+using com.ds201625.fonda.Resources.FondaResources.Restaurant;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -209,8 +211,20 @@ namespace BackOffice.Seccion.Restaurant
         }
         public void ButtonAgregar_Click()
         {
-            _presenter.ButtonAgregar_Click();
-
+            try
+            {
+                _presenter.ButtonAgregar_Click();
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionAddCategory(RestaurantErrors.ClassNameAddCategory, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionAddCategory(RestaurantErrors.ClassNameAddCategory, e);
+            }
         }
         /// <summary>
         /// llamada al metodo para modificar una categoria

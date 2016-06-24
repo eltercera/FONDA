@@ -61,6 +61,24 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al agregar el objeto categoria (DAO).
+        /// </summary>
+        public static string AddCategoryFondaDAOException {
+            get {
+                return ResourceManager.GetString("AddCategoryFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comando para generar un objeto categoria.
+        /// </summary>
+        public static string ClassNameAddCategory {
+            get {
+                return ResourceManager.GetString("ClassNameAddCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comando para generar un objeto restaurante.
         /// </summary>
         public static string ClassNameGenerateRestaurant {
@@ -75,6 +93,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         public static string ClassNameGetReservations {
             get {
                 return ResourceManager.GetString("ClassNameGetReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al agregar el objeto categoria (Command).
+        /// </summary>
+        public static string CommandExceptionAddCategory {
+            get {
+                return ResourceManager.GetString("CommandExceptionAddCategory", resourceCulture);
             }
         }
         
