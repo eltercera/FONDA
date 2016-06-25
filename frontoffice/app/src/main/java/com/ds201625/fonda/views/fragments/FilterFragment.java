@@ -140,6 +140,11 @@ public class FilterFragment extends BaseFragment
         this.activity.closeSearchView();
     }
 
+    @Override
+    public void displayMsj(String msj) {
+        activity.displayMsj(msj);
+    }
+
     /**
      * Interface de comunicación conta el Activity padre
      */
@@ -149,5 +154,8 @@ public class FilterFragment extends BaseFragment
          * Para el cierre de la vista de busqueda
          */
         void closeSearchView();
+
+        void displayMsj(String msj);
     }
+
 }

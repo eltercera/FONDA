@@ -46,13 +46,12 @@ public class Parameter {
      * @param data objeto a contener
      * @throws Exception
      */
-    public void setData(Object data) throws Exception {
+    public void setData(Object data) throws InvalidParameterTypeException {
         if (data == null)
             return;
         if(!dataType.isAssignableFrom(data.getClass()))
-            //TODO: Crear excepción personalizada
-            throw new Exception("Se expera un tipo de datos " + dataType.toString()
-                    + " y se paso un tipo " + data.getClass().toString());
+            throw InvalidParameterTypeException.
+                    generate(dataType.getClass().toString(),data.getClass().toString());
         this.data = data;
     }
 

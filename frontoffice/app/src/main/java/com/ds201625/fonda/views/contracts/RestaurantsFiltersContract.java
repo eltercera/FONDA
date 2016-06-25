@@ -24,4 +24,6 @@ public interface RestaurantsFiltersContract {
      * Cirerra la vista de busqueda
      */
     void closeSearchView();
+
+    void displayMsj(String msj);
 }

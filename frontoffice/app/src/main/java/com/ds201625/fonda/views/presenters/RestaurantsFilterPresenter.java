@@ -6,6 +6,8 @@ import com.ds201625.fonda.domains.NounBaseEntity;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
+import com.ds201625.fonda.logic.InvalidParameterTypeException;
+import com.ds201625.fonda.logic.ParameterOutOfIndexException;
 import com.ds201625.fonda.views.adapters.ItemFilterAdapter;
 import com.ds201625.fonda.views.adapters.RestaurantAdapter;
 import com.ds201625.fonda.views.contracts.RestaurantsFiltersContract;
@@ -178,20 +180,23 @@ public class RestaurantsFilterPresenter {
 
         if (this.showRestaurant) {
             cmd = FondaCommandFactory.getInstance().getRestaurantsCommand();
+
             try {
                 cmd.setParameter(0,this.textSearch);
                 cmd.setParameter(1,6);
                 cmd.setParameter(2,this.restPage);
                 cmd.setParameter(4,this.idZone);
                 cmd.setParameter(3,this.idCat);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                this.fragment.displayMsj("Error interno: " + e.getMessage());
+                return;
             }
 
             try {
                 cmd.run();
             } catch (Exception e) {
-                e.printStackTrace();
+                this.fragment.displayMsj("Error Al obtener los datos: " + e.getMessage());
+                return;
             }
 
             if (cmd.getResult() != null) {
@@ -220,20 +225,20 @@ public class RestaurantsFilterPresenter {
                 cmd.setParameter(0,this.textSearch);
                 cmd.setParameter(1,10);
                 cmd.setParameter(2,this.itemPage);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                this.fragment.displayMsj("Error interno: " + e.getMessage());
+                return;
             }
 
             try {
                 cmd.run();
             } catch (Exception e) {
-                e.printStackTrace();
+                this.fragment.displayMsj("Error Al obtener los datos: " + e.getMessage());
+                return;
             }
 
             if (cmd.getResult() != null) {
                 List<NounBaseEntity> list = (List<NounBaseEntity>) cmd.getResult();
-                Log.d("RestFilPresenter",
-                        "Llenando lista con " + list.size() + " de la lista.");
                 if (list.isEmpty()) {
                     this.listFull = true;
                 } else {

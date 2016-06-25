@@ -5,7 +5,9 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.RestaurantService;
 import com.ds201625.fonda.domains.RestaurantCategory;
 import com.ds201625.fonda.logic.BaseCommand;
+import com.ds201625.fonda.logic.CommandInternalErrorException;
 import com.ds201625.fonda.logic.Parameter;
+import com.ds201625.fonda.logic.ParameterOutOfIndexException;
 
 import java.util.List;
 
@@ -33,8 +35,7 @@ public class GetCategoriesCommand extends BaseCommand {
     }
 
     @Override
-    protected void invoke() {
-        Log.d(TAG, "Comando para obtener la lista de Categorias");
+    protected void invoke() throws Exception {
         List<RestaurantCategory> categories = null;
 
         RestaurantService resService = FondaServiceFactory.getInstance()
@@ -42,22 +43,21 @@ public class GetCategoriesCommand extends BaseCommand {
 
         int max = 0;
         int page = 0;
+        String query = null;
         try {
-
             if (getParameter(1) != null) {
                 max = (int) getParameter(1);
             }
             if (getParameter(2) != null) {
                 page = (int) getParameter(2);
             }
-            String query = (String) getParameter(0);
+            query = (String) getParameter(0);
+        } catch (ParameterOutOfIndexException e) {
+            Log.e("Fonda Command",e.getMessage());
+            throw CommandInternalErrorException.generate(this.getClass().toString(),e);
+        }
 
-            categories = resService.getCategories(query, max, page);
-        }
-        catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al obtener las categorias de restaurantes", e);
-            e.printStackTrace();
-        }
+        categories = resService.getCategories(query, max, page);
 
         setResult(categories);
     }

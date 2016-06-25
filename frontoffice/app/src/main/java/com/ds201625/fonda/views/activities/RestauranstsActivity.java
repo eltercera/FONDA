@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.FilterFragment;
@@ -97,6 +99,11 @@ public class RestauranstsActivity extends BaseNavigationActivity
         this.viewPager.setAdapter(this.pagerAdapter);
         this.tabLayout.setupWithViewPager(this.viewPager);
         this.pagerAdapter.iconsSetup();
+    }
+
+    @Override
+    public void displayMsj(String msj) {
+        Toast.makeText(this, msj, Toast.LENGTH_LONG).show();
     }
 
     @Override
