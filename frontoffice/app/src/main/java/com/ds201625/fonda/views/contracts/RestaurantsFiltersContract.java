@@ -24,4 +24,14 @@ public interface RestaurantsFiltersContract {
      * Cirerra la vista de busqueda
      */
     void closeSearchView();
+
+    void displayMsj(String msj);
+
+    void setListViewEmtyType(ListViewEmtyType type);
+
+    enum ListViewEmtyType {
+        NORMAL,
+        NO_CONNECTION,
+        EMPTY
+    }
 }

@@ -4,17 +4,19 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
-
-import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.UnknownServerErrorException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.ServerErrorException;
 import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.NounBaseEntity;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
+import com.ds201625.fonda.logic.InvalidParameterTypeException;
+import com.ds201625.fonda.logic.ParameterOutOfIndexException;
 import com.ds201625.fonda.views.adapters.ItemFilterAdapter;
 import com.ds201625.fonda.views.adapters.RestaurantAdapter;
 import com.ds201625.fonda.views.contracts.RestaurantsFiltersContract;
-
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -90,6 +92,7 @@ public class RestaurantsFilterPresenter {
             this.fragment.getListView().setAdapter(this.itemFilterAdapter);
             this.showRestaurant = false;
         }
+
         onRefresh();
     }
 
@@ -186,22 +189,32 @@ public class RestaurantsFilterPresenter {
 
         Command cmd = null;
 
+        fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.NORMAL);
+
         if (this.showRestaurant) {
             cmd = FondaCommandFactory.getInstance().getRestaurantsCommand();
+
             try {
                 cmd.setParameter(0,this.textSearch);
                 cmd.setParameter(1,6);
                 cmd.setParameter(2,this.restPage);
                 cmd.setParameter(4,this.idZone);
                 cmd.setParameter(3,this.idCat);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                this.fragment.displayMsj("Error interno: " + e.getMessage());
+                fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.NO_CONNECTION);
+                return;
             }
 
             try {
                 cmd.run();
             } catch (Exception e) {
-                e.printStackTrace();
+                this.fragment.displayMsj("Error Al obtener los datos: " + e.getMessage());
+                if (e.getClass() == RestClientException.class
+                        || e.getClass() == ServerErrorException.class
+                        || e.getClass() ==UnknownServerErrorException.class )
+                    fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.NO_CONNECTION);
+                return;
             }
 
             if (cmd.getResult() != null) {
@@ -209,10 +222,11 @@ public class RestaurantsFilterPresenter {
                     this.listFull = true;
                 else {
                     restaurantAdapter.addAll((List<Restaurant>) cmd.getResult());
-                    this.restaurantAdapter.notifyDataSetChanged();
-                    this.fragment.getListView().refreshDrawableState();
                 }
+                this.restaurantAdapter.notifyDataSetChanged();
             }
+            if (restaurantAdapter.isEmpty())
+                fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.EMPTY);
         } else {
             switch (this.type) {
                 case ZONE:
@@ -230,55 +244,35 @@ public class RestaurantsFilterPresenter {
                 cmd.setParameter(0,this.textSearch);
                 cmd.setParameter(1,10);
                 cmd.setParameter(2,this.itemPage);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                this.fragment.displayMsj("Error interno: " + e.getMessage());
+                return;
             }
 
             try {
                 cmd.run();
             } catch (Exception e) {
-                e.printStackTrace();
+                this.fragment.displayMsj("Error Al obtener los datos: " + e.getMessage());
+                if (e.getClass() == RestClientException.class
+                        || e.getClass() == ServerErrorException.class
+                        || e.getClass() == UnknownServerErrorException.class )
+                    fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.NO_CONNECTION);
+                return;
             }
 
             if (cmd.getResult() != null) {
                 List<NounBaseEntity> list = (List<NounBaseEntity>) cmd.getResult();
-                Log.d("RestFilPresenter",
-                        "Llenando lista con " + list.size() + " de la lista.");
                 if (list.isEmpty()) {
                     this.listFull = true;
                 } else {
                     this.itemFilterAdapter.addAll(list);
-                    this.itemFilterAdapter.notifyDataSetChanged();
-                    this.fragment.getListView().refreshDrawableState();
                 }
+                this.itemFilterAdapter.notifyDataSetChanged();
             }
+            if (itemFilterAdapter.isEmpty())
+                fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.EMPTY);
         }
 
-    }
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) fragment.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null;
-    }
-
-    public boolean hasActiveInternetConnection() {
-        if (isNetworkAvailable()) {
-            try {
-                HttpURLConnection urlc = (HttpURLConnection) (new URL("http://www.google.com").openConnection());
-                urlc.setRequestProperty("User-Agent", "Test");
-                urlc.setRequestProperty("Connection", "close");
-                urlc.setConnectTimeout(1500);
-                urlc.connect();
-                return (urlc.getResponseCode() == 200);
-            } catch (IOException e) {
-                Log.e("Error", "Error checking internet connection", e);
-            }
-        } else {
-            Log.d("Error", "No network available!");
-        }
-        return false;
     }
 
     /**

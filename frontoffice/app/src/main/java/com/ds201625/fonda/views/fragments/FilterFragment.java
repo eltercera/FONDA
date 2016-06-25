@@ -140,6 +140,31 @@ public class FilterFragment extends BaseFragment
         this.activity.closeSearchView();
     }
 
+    @Override
+    public void displayMsj(String msj) {
+        activity.displayMsj(msj);
+    }
+
+    @Override
+    public void setListViewEmtyType(ListViewEmtyType type) {
+        switch (type) {
+            case NORMAL:
+                activity.setNormalView();
+                break;
+            case NO_CONNECTION:
+                activity.setErrorView();
+                break;
+
+            case EMPTY:
+                activity.setEmptyView();
+                break;
+
+            default:
+
+                break;
+        }
+    }
+
     /**
      * Interface de comunicación conta el Activity padre
      */
@@ -149,5 +174,16 @@ public class FilterFragment extends BaseFragment
          * Para el cierre de la vista de busqueda
          */
         void closeSearchView();
+
+        void displayMsj(String msj);
+
+        View findViewById (int id);
+
+        void setNormalView();
+
+        void setEmptyView();
+
+        void setErrorView();
+
     }
 }

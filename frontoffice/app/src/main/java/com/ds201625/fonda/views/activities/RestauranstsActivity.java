@@ -7,6 +7,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.FilterFragment;
@@ -26,6 +29,8 @@ public class RestauranstsActivity extends BaseNavigationActivity
     private TabLayout tabLayout;
     private SearchView searchView;
     private MenuItem searchMenuItem;
+    private View errorLayout;
+    private View emtyLayout;
 
     /**
      * Adaptador para tabs
@@ -60,6 +65,8 @@ public class RestauranstsActivity extends BaseNavigationActivity
         //Obtencion de componentes
         this.viewPager = (ViewPager) findViewById(R.id.viewPager);
         this.tabLayout = (TabLayout) findViewById(R.id.tabs);
+        this.emtyLayout = findViewById(R.id.empty_search_list);
+        this.errorLayout = findViewById(R.id.no_connection_list);
 
         //creación de componentes
         this.pagerAdapter = new BaseSectionsPagerAdapter
@@ -97,6 +104,11 @@ public class RestauranstsActivity extends BaseNavigationActivity
         this.viewPager.setAdapter(this.pagerAdapter);
         this.tabLayout.setupWithViewPager(this.viewPager);
         this.pagerAdapter.iconsSetup();
+    }
+
+    @Override
+    public void displayMsj(String msj) {
+        Toast.makeText(this, msj, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -148,4 +160,24 @@ public class RestauranstsActivity extends BaseNavigationActivity
         this.searchMenuItem.collapseActionView();
     }
 
+    @Override
+    public void setNormalView() {
+        this.viewPager.setVisibility(View.VISIBLE);
+        this.emtyLayout.setVisibility(View.GONE);
+        this.errorLayout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setEmptyView() {
+        this.viewPager.setVisibility(View.GONE);
+        this.emtyLayout.setVisibility(View.VISIBLE);
+        this.errorLayout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setErrorView() {
+        this.viewPager.setVisibility(View.GONE);
+        this.emtyLayout.setVisibility(View.GONE);
+        this.errorLayout.setVisibility(View.VISIBLE);
+    }
 }
