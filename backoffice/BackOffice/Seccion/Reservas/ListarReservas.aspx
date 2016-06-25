@@ -7,7 +7,7 @@
     Reservas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    Listar Reservas
+    de <%=Session["NameRestaurant"]%>
 <%--      de <%=Session["NameRestaurant"]%>--%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">

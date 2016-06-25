@@ -17,7 +17,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
     {
         //Enlace entre el Modelo y la Vista
         private IReservationsContract _view;
-        private int totalColumns = 5;
+        private int totalColumns = 6;
 
 
         /// <summary>
@@ -125,6 +125,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             //Tamaño de la lista de reservaciones
             int totalRowsReservations = listReservations.Count;
             StringBuilder dataId = new StringBuilder();
+            StringBuilder status = new StringBuilder();
 
             //Recorremos la lista
             for (int i = 0; i <= totalRowsReservations - 1; i++)
@@ -170,14 +171,34 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                     //Agrega el numero de comensales de la reservacion
                     else if (j.Equals(3))
                         tCell.Text = listReservations[i].CommensalNumber.ToString();
+                 
+                    //TODO (Reservacion): Arreglar el estado
                     //Agrega el estado de la reservacion
                     else if (j.Equals(4))
-                        tCell.Text = listReservations[i].Status.ToString();
+                    {
+                        //Revisa el estado actual para convertirlo a string
+                        if (listReservations[i].Status.Equals(ReservedReservationStatus.Instance))
+                            status.Append(ReservationResources.CanceledReservationStatus);
+                        else if (listReservations[i].Status.Equals(CanceledReservationStatus.Instance))
+                            status.Append(ReservationResources.ReservedReservationStatus);
+  
+                        tCell.Text = status.ToString();
+                        status.Clear();
+                    }
                     //Agrega las acciones de la tabla
                     else if (j.Equals(5))
                     {
-                        LinkButton LBCancelReservation = new LinkButton();
+                        tCell.CssClass = ReservationResources.CssClassActions;
 
+                        //boton de detalle de la reservacion
+                        LinkButton LBReservationInfo = new LinkButton();
+                        LBReservationInfo.Text += ReservationResources.ReservationInfo;
+                        LBReservationInfo.Attributes[ReservationResources.href] =
+                            ReservationResources.RefreshURL + dataId.ToString();
+                        tCell.Controls.Add(LBReservationInfo);
+
+                        //boton de cancelar reservacion
+                        LinkButton LBCancelReservation = new LinkButton();
                         LBCancelReservation.Text += ReservationResources.CancelReservation;
                         LBCancelReservation.Attributes[ReservationResources.href] =
                             ReservationResources.RefreshURL + dataId.ToString();
