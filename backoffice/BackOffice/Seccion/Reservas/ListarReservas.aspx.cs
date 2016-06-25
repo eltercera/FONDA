@@ -14,7 +14,7 @@ using BackOffice.Content;
 
 namespace BackOffice.Seccion.Reservas
 {
-    public partial class Default : System.Web.UI.Page, IReservationsModel
+    public partial class Default : System.Web.UI.Page, IReservationsContract
     {
         #region Presenter
         private ReservationsPresenter _presenter;
@@ -36,7 +36,7 @@ namespace BackOffice.Seccion.Reservas
             set { this.SuccessLabelMessage = value; }
         }
 
-        Label IReservationsModel.WarningLabelMessage
+        Label IReservationsContract.WarningLabelMessage
         {
             get { return this.WarningLabelMessage; }
 
@@ -56,7 +56,7 @@ namespace BackOffice.Seccion.Reservas
         /// <summary>
         /// Recurso de Session para el ID de la Reserva
         /// </summary>
-        string IReservationsModel.Session
+        string IReservationsContract.Session
         {
             get { return Session[ReservationResources.SessionIdReservation].ToString(); }
 
@@ -86,7 +86,7 @@ namespace BackOffice.Seccion.Reservas
             get { return this.ErrorLabel; }
         }
 
-        HtmlGenericControl IReservationsModel.WarningLabel
+        HtmlGenericControl IReservationsContract.WarningLabel
         {
             get { return this.WarningLabel; }
         }

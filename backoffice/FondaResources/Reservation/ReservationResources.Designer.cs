@@ -97,6 +97,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ReservationsPresenter.
+        /// </summary>
+        public static string ClassNameReservationsPresenter {
+            get {
+                return ResourceManager.GetString("ClassNameReservationsPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to data-id.
         /// </summary>
         public static string dataId {
@@ -115,11 +124,47 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha cargado la tabla de reservaciones satisfactoriamente.
+        /// </summary>
+        public static string MessageGetReservations {
+            get {
+                return ResourceManager.GetString("MessageGetReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla de Reservaciones.
+        /// </summary>
+        public static string MessageMVPExceptionReservationsTable {
+            get {
+                return ResourceManager.GetString("MessageMVPExceptionReservationsTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-08-001.
+        /// </summary>
+        public static string MVPExceptionReservationsTableCode {
+            get {
+                return ResourceManager.GetString("MVPExceptionReservationsTableCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to #.
         /// </summary>
         public static string RefreshURL {
             get {
                 return ResourceManager.GetString("RefreshURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # Comensales.
+        /// </summary>
+        public static string ReservationCommensalNumberColumn {
+            get {
+                return ResourceManager.GetString("ReservationCommensalNumberColumn", resourceCulture);
             }
         }
         

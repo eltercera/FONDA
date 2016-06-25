@@ -181,4 +181,23 @@
     <value>Reservacion Realizada</value>
     <comment>Descripcion del estado ReservedReservationStatus</comment>
   </data>
+  <data name="ClassNameReservationsPresenter" xml:space="preserve">
+    <value>ReservationsPresenter</value>
+    <comment>Clase presentadora de las Reservaciones</comment>
+  </data>
+  <data name="MessageGetReservations" xml:space="preserve">
+    <value>Se ha cargado la tabla de reservaciones satisfactoriamente</value>
+    <comment>Mensaje de exito para GetReservations</comment>
+  </data>
+  <data name="MessageMVPExceptionReservationsTable" xml:space="preserve">
+    <value>Se ha producido un error al llenar la tabla de Reservaciones</value>
+    <comment>Mensaje de error para MVPExceptionReservationsTable</comment>
+  </data>
+  <data name="MVPExceptionReservationsTableCode" xml:space="preserve">
+    <value>BO-08-001</value>
+    <comment>Codigo de error al llenar tabla de Reservaciones</comment>
+  </data>
+  <data name="ReservationCommensalNumberColumn" xml:space="preserve">
+    <value># Comensales</value>
+  </data>
 </root>
