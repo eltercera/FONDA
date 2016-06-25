@@ -1,5 +1,9 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.Exceptions.Restaurant;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
+using com.ds201625.fonda.Resources.FondaResources.Restaurant;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,9 +41,35 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante
 
                 Receiver = _restcatDAO.ModifyCategory(id, name);
             }
-            catch
+            catch (ModifyCategoryFondaDAOException e)
             {
-                throw new NotImplementedException();
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionModifyCategory(RestaurantErrors.ModifyCategoryFondaDAOException, e);
+            }
+            catch (InvalidTypeParameterException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionModifyCategory(RestaurantErrors.InvalidTypeParameterException, e);
+            }
+            catch (ParameterIndexOutRangeException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionModifyCategory(RestaurantErrors.ParameterIndexOutRangeException, e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionModifyCategory(RestaurantErrors.RequieredParameterNotFoundException, e);
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionModifyCategory(RestaurantErrors.ClassNameModifyCategory, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionModifyCategory(RestaurantErrors.ClassNameModifyCategory, e);
             }
         }
     }

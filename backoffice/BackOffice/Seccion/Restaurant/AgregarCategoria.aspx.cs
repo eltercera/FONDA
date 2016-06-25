@@ -16,7 +16,9 @@ using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
 using System.Web.UI.HtmlControls;
 using com.ds201625.fonda.View.BackOfficePresenter.Restaurante;
 using BackOffice.Content;
-
+using com.ds201625.fonda.DataAccess.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
+using com.ds201625.fonda.Resources.FondaResources.Restaurant;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -43,12 +45,28 @@ namespace BackOffice.Seccion.Restaurant
         {
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                AlertSuccess_AgregarCategoria.Visible = false;
+                if (Session[ResourceLogin.sessionRol].ToString() == "Sistema")
+                {
+                    AlertSuccess_AgregarCategoria.Visible = false;
                 AlertSuccess_ModificarCategoria.Visible = false;
                 AlertError_AgregarCategoria.Visible = false;
                 AlertError_ModificarCategoria.Visible = false;
                 //NombreCatA.Attributes.Add("required", "required");
                 _presenter.LoadTable();
+                }
+                else
+                {
+                    if (Session[ResourceLogin.sessionRol].ToString() == "Restaurante")
+                    {
+                        // redireccion la pagina como empleado de un restaurante
+                        Response.Redirect("Default.aspx");
+                    }
+                    if (Session[ResourceLogin.sessionRol].ToString() == "Caja")
+                    {
+                        // redireccion la pagina como empleado de un restaurante
+                        Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
+                    }
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);
@@ -193,8 +211,18 @@ namespace BackOffice.Seccion.Restaurant
         }
         public void ButtonAgregar_Click()
         {
-            _presenter.ButtonAgregar_Click();
-
+            try
+            {
+                _presenter.ButtonAgregar_Click();
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(RestaurantErrors.CommandExceptionAddCategory);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(RestaurantErrors.CommandExceptionAddCategory);
+            }
         }
         /// <summary>
         /// llamada al metodo para modificar una categoria
@@ -205,7 +233,18 @@ namespace BackOffice.Seccion.Restaurant
         }
         public void ButtonModificar_Click()
         {
-            _presenter.ButtonModificar_Click();
+            try
+            {
+                _presenter.ButtonModificar_Click();
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(RestaurantErrors.CommandExceptionModifyCategory);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(RestaurantErrors.CommandExceptionModifyCategory);
+            }
         }
 
         [WebMethod]

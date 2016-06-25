@@ -35,7 +35,6 @@ public partial class MasterUI : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        System.Diagnostics.Debug.WriteLine("entre modify code behind");
         try
         {
             ///verifica si un usuario esta en el sistema

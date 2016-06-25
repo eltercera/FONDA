@@ -20,8 +20,15 @@ namespace BackOffice.Seccion.Configuracion
             
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                //Llama al presentador para llenar datos del empleado
-                detailModifyPresenter.cargarUserDetail();
+                if ((Session[ResourceLogin.sessionRol].ToString() == "Sistema") || (Session[ResourceLogin.sessionRol].ToString() == "Restaurante"))
+                {
+                    //Llama al presentador para llenar datos del empleado
+                    detailModifyPresenter.cargarUserDetail();
+                }
+                else
+                {
+                    Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);

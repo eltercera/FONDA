@@ -1,6 +1,10 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
+using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Resources.FondaResources.Restaurant;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,10 +45,36 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante
                 _restaurantDAO.Save(_restaurant);
 
             }
-            catch (NullReferenceException ex)
+            catch (SaveEntityFondaDAOException e)
             {
-                // se guarda el resultado en el objeto 
-                throw;
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionSaveRestaurant(RestaurantErrors.SaveEntityRestaurantFondaDAOException, e);
+
+            }
+            catch (InvalidTypeParameterException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionAddCategory(RestaurantErrors.InvalidTypeParameterException, e);
+            }
+            catch (ParameterIndexOutRangeException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionAddCategory(RestaurantErrors.ParameterIndexOutRangeException, e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionAddCategory(RestaurantErrors.RequieredParameterNotFoundException, e);
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionAddCategory(RestaurantErrors.ClassNameSaveRestaurant, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionAddCategory(RestaurantErrors.ClassNameSaveRestaurant, e);
             }
 
             System.Diagnostics.Debug.WriteLine("entro al execute de save restaurant");

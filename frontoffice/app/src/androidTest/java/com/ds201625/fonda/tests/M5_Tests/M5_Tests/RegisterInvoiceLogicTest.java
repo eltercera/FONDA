@@ -191,10 +191,10 @@ public class RegisterInvoiceLogicTest extends TestCase {
 
             restaurant.setRestaurantCategory(category);
             invoice.setRestaurant(restaurant);
-            invoice.getRestaurant().getRestaurantCategory().setNameCategory("Romantico");
+            invoice.getRestaurant().getRestaurantCategory().setName("Romantico");
             invoicePayment =  logicPayment.paymentService(invoice);
-            assertEquals(invoicePayment.getRestaurant().getRestaurantCategory().getNameCategory(),
-                    invoice.getRestaurant().getRestaurantCategory().getNameCategory());
+            assertEquals(invoicePayment.getRestaurant().getRestaurantCategory().getName(),
+                    invoice.getRestaurant().getRestaurantCategory().getName());
         } catch (InvalidDataRetrofitException e) {
             e.printStackTrace();
         } catch (RestClientException e1) {
@@ -209,7 +209,7 @@ public class RegisterInvoiceLogicTest extends TestCase {
         try {
             restaurant.setRestaurantCategory(category);
             invoice.setRestaurant(restaurant);
-            invoice.getRestaurant().getRestaurantCategory().setNameCategory("Romantico");
+            invoice.getRestaurant().getRestaurantCategory().setName("Romantico");
             invoicePayment =  logicPayment.paymentService(invoice);
             assertNotNull(invoicePayment);
         } catch (InvalidDataRetrofitException e) {
