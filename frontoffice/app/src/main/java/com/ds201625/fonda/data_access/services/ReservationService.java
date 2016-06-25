@@ -13,6 +13,6 @@ public interface ReservationService {
 
     Commensal AddReservation(int idCommensal, int idRestaurant)  throws RestClientException;;
 
-    List<Reservation> getReservesService(int idCommensal)  throws RestClientException;;
+    List<Reservation> getReservations(int idCommensal)  throws Exception;;
 
 }
