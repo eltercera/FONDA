@@ -1,7 +1,9 @@
 package com.ds201625.fonda.views.presenters;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
-
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.UnknownServerErrorException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.ServerErrorException;
@@ -15,6 +17,9 @@ import com.ds201625.fonda.logic.ParameterOutOfIndexException;
 import com.ds201625.fonda.views.adapters.ItemFilterAdapter;
 import com.ds201625.fonda.views.adapters.RestaurantAdapter;
 import com.ds201625.fonda.views.contracts.RestaurantsFiltersContract;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -181,6 +186,7 @@ public class RestaurantsFilterPresenter {
      * Llenado de lista
      */
     private void fillList() {
+
         Command cmd = null;
 
         fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.NORMAL);

@@ -42,7 +42,7 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:id="@+id/imageView8"
+                android:id="@+id/imageview_logo"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:src="#9e6c6c" />
@@ -109,7 +109,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:text="DireccionDireccionDireccionDireccionDireccionDireccionDireccionDireccionDireccion"
-                        android:id="@+id/textView5"
+                        android:id="@+id/text_view_restaurant_address"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:layout_gravity="center_horizontal|left" />
@@ -147,22 +147,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lunes a Martes"
-                    android:id="@+id/textView4"
+                    android:id="@+id/text_view_restaurant_hours"
                     android:textAlignment="textEnd"
                     android:gravity="end"
                     android:layout_gravity="right"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:layout_weight="1" />
                 <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="8:00am a 7:00pm"
-                android:id="@+id/textView5"
-                android:textAlignment="textEnd"
-                android:gravity="end"
-                android:layout_gravity="right"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_weight="1" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8:00am a 7:00pm"
+                    android:id="@+id/text_view_restaurant_days"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"
+                    android:layout_gravity="right"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_weight="1" />
             </LinearLayout>
 
         </LinearLayout>
