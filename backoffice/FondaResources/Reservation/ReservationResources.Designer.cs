@@ -142,24 +142,6 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla de Reservaciones.
-        /// </summary>
-        public static string MessageMVPExceptionReservationsTable {
-            get {
-                return ResourceManager.GetString("MessageMVPExceptionReservationsTable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to BO-08-001.
-        /// </summary>
-        public static string MVPExceptionReservationsTableCode {
-            get {
-                return ResourceManager.GetString("MVPExceptionReservationsTableCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ../Reservas/ListarReservas.aspx?Id=.
         /// </summary>
         public static string RefreshURL {

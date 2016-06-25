@@ -40,7 +40,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
         {
             int result = 0;
             IList<Reservation> _listReservations = new List<Reservation>();
-            Command commandFindReservationsByRestaurant;
+            Command commandGetReservations;
 
             try
             {
@@ -49,14 +49,17 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                 result = int.Parse(_view.SessionRestaurant);
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandFindReservationsByRestaurant = CommandFactory.GetCommandFindReservationsByRestaurant(result);
+                if (result != 0)
+                    commandGetReservations = CommandFactory.GetCommandFindReservationsByRestaurant(result);
+                else
+                    commandGetReservations = CommandFactory.GetCommandGetAllReservations();
 
                 //TODO (Reservations): Revisar si esto funciona bien
                 //ejecuta el comando deseado
-                commandFindReservationsByRestaurant.Execute();
+                commandGetReservations.Execute();
 
                 //asigno el resultado a la lista de reservaciones
-                _listReservations = (List<Reservation>)commandFindReservationsByRestaurant.Receiver;
+                _listReservations = (List<Reservation>)commandGetReservations.Receiver;
 
                 //reviso si la lista de reservaciones no esta vacia
                 if (_listReservations != null)
@@ -69,10 +72,10 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             {
                 MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
                     (
-                        ReservationResources.MVPExceptionReservationsTableCode,
+                        ReservationErrors.MVPExceptionReservationsTableCode,
                         ReservationResources.ClassNameReservationsPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        ReservationResources.MessageMVPExceptionReservationsTable,
+                        ReservationErrors.MessageMVPExceptionReservationsTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
@@ -82,10 +85,10 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             {
                 MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
                     (
-                        ReservationResources.MVPExceptionReservationsTableCode,
+                        ReservationErrors.MVPExceptionReservationsTableCode,
                         ReservationResources.ClassNameReservationsPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        ReservationResources.MessageMVPExceptionReservationsTable,
+                        ReservationErrors.MessageMVPExceptionReservationsTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);

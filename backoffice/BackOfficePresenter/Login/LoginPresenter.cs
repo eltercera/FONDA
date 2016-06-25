@@ -258,6 +258,8 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Login
                                             }
                                             else
                                             {
+                                                HttpContext.Current.Session[RestaurantResource.SessionNameRest] = 
+                                                    RestaurantResource.SessionAllRestaurants;
                                                 _info[4] = "0";
                                             }
 

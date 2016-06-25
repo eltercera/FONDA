@@ -141,6 +141,10 @@
     <value>&lt;span class="label label-danger"&gt;&lt;i class="fa fa-times"&gt;&lt;p class="stat"&gt;I&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;&lt;/td&gt;</value>
     <comment>Estado Inactivo</comment>
   </data>
+  <data name="SessionAllRestaurants" xml:space="preserve">
+    <value>Todos los Restaurantes</value>
+    <comment>Nombre para subtitulo de todos los restaurantes</comment>
+  </data>
   <data name="SessionNameRest" xml:space="preserve">
     <value>NameRestaurant</value>
     <comment>Nombre del Restaurante</comment>
