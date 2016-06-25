@@ -1,33 +1,30 @@
 package com.ds201625.fonda.views.adapters;
 
 import android.app.Activity;
-import android.app.ListFragment;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.logic.Command;
-import com.ds201625.fonda.logic.FondaCommandFactory;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by gbsoj on 6/22/2016.
+ * Adactador para lista de restaurantes
  */
 public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
-    int currentPage = 0;
 
 
     public RestaurantAdapter(Context context) {
         super(context, R.layout.list_restaurant,R.id.txt,new ArrayList<Restaurant>());
-        update();
     }
 
+    /**
+     * Creacion de la vusta de in iten de restaurante
+     * @param item elemento a construir la vista
+     * @return vista contruida
+     */
     @Override
     public View createView(Restaurant item) {
         View convertView;
@@ -69,31 +66,5 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
 
         convertView.setBackgroundColor(0x00000000);
         return convertView;
-    }
-
-    public void update() {
-        List<Restaurant> restaurants = null;
-
-        try {
-            Command comando = FondaCommandFactory.getInstance().getRestaurantsCommand();
-            comando.setParameter(0, "");
-            comando.setParameter(1, 10);
-            comando.setParameter(2, currentPage+1);
-            comando.setParameter(3, "");
-            comando.setParameter(4, "");
-            comando.run();
-
-            restaurants = (List<Restaurant>)comando.getResult();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        currentPage++;
-        if (restaurants != null) {
-            addAll(restaurants);
-            clear();
-        }
-        notifyDataSetChanged();
     }
 }

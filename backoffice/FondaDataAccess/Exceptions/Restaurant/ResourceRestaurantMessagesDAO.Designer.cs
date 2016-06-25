@@ -62,11 +62,38 @@ namespace com.ds201625.fonda.DataAccess.Exceptions.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al agregar el objeto categoria.
+        /// </summary>
+        internal static string AddCategoryFondaDAOException {
+            get {
+                return ResourceManager.GetString("AddCategoryFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al generar el objeto restaurante.
         /// </summary>
         internal static string GenerateRestaurantFondaDAOException {
             get {
                 return ResourceManager.GetString("GenerateRestaurantFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al modificar el objeto categoria.
+        /// </summary>
+        internal static string ModifyCategoryFondaDAOException {
+            get {
+                return ResourceManager.GetString("ModifyCategoryFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al modificar el objeto restaurante.
+        /// </summary>
+        internal static string ModifyRestaurantFondaDAOException {
+            get {
+                return ResourceManager.GetString("ModifyRestaurantFondaDAOException", resourceCulture);
             }
         }
     }

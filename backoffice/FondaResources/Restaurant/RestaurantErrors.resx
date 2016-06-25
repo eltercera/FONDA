@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCategoryFondaDAOException" xml:space="preserve">
+    <value>Error al agregar el objeto categoria (DAO)</value>
+  </data>
+  <data name="ClassNameAddCategory" xml:space="preserve">
+    <value>Comando para generar un objeto categoria</value>
+  </data>
   <data name="ClassNameGenerateRestaurant" xml:space="preserve">
     <value>Comando para generar un objeto restaurante</value>
   </data>
@@ -124,8 +130,32 @@
     <value>CommandGetTables</value>
     <comment>Comando para obtener las mesasde un Restaurante</comment>
   </data>
+  <data name="ClassNameModifyCategory" xml:space="preserve">
+    <value>Comando para modificar una categoria</value>
+  </data>
+  <data name="ClassNameModifyRestaurant" xml:space="preserve">
+    <value>Comando para modificar el objeto restaurante</value>
+  </data>
+  <data name="ClassNameSaveCategory" xml:space="preserve">
+    <value>Comando para guardar la categoria</value>
+  </data>
+  <data name="ClassNameSaveRestaurant" xml:space="preserve">
+    <value>Comando para guardar un objeto restaurant</value>
+  </data>
+  <data name="CommandExceptionAddCategory" xml:space="preserve">
+    <value>Error al agregar el objeto categoria (Command)</value>
+  </data>
   <data name="CommandExceptionGenerateRestaurant" xml:space="preserve">
     <value>Error al generar el objeto restaurante (Command)</value>
+  </data>
+  <data name="CommandExceptionModifyCategory" xml:space="preserve">
+    <value>Error al modificar el objeto categoria (Command)</value>
+  </data>
+  <data name="CommandExceptionSaveCategory" xml:space="preserve">
+    <value>Error al guardar el objeto categoria</value>
+  </data>
+  <data name="CommandExceptionSaveRestaurant" xml:space="preserve">
+    <value>Error al guardar el objeto restaurante</value>
   </data>
   <data name="CommandMethod" xml:space="preserve">
     <value>Execute</value>
@@ -141,10 +171,22 @@
   <data name="InvalidTypeParameterException" xml:space="preserve">
     <value>Error tipo de parametro inválido</value>
   </data>
+  <data name="ModifyCategoryFondaDAOException" xml:space="preserve">
+    <value>Error al modificar el objeto categoria (DAO)</value>
+  </data>
+  <data name="ModifyRestaurantFondaDAOException" xml:space="preserve">
+    <value>Error al modificar el objeto restaurante (DAO)</value>
+  </data>
   <data name="ParameterIndexOutRangeException" xml:space="preserve">
     <value>Error parámetro fuera de rango</value>
   </data>
   <data name="RequieredParameterNotFoundException" xml:space="preserve">
     <value>Error parámetro requerido no encontrado</value>
+  </data>
+  <data name="SaveEntityCategoryFondaDAOException" xml:space="preserve">
+    <value>Error al guardar el objeto categoria (DAO)</value>
+  </data>
+  <data name="SaveEntityRestaurantFondaDAOException" xml:space="preserve">
+    <value>Error al guardar el objeto restaurante (DAO)</value>
   </data>
 </root>

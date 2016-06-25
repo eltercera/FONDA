@@ -29,7 +29,7 @@ public class CategoriesAdapter extends BaseArrayAdapter<RestaurantCategory> {
         LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
         convertView = inflater.inflate(R.layout.item_filter, null, true);
         TextView tvFilter = (TextView) convertView.findViewById(R.id.tvFilter);
-        tvFilter.setText(item.getNameCategory());
+        tvFilter.setText(item.getName());
         return convertView;
     }
 

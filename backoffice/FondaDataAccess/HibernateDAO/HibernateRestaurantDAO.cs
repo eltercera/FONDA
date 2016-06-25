@@ -38,6 +38,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return (FindAll(criterion));
         }
 
+        #region 3era Entrega Restaurant
         /// <summary>
         /// Genera un nuevo Restaurante a partir de los datos suministrados por el usuario
         /// </summary>
@@ -102,26 +103,40 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Restaurante resultante</returns>
         public Restaurant ModifyRestaurant(int idRestaurant, Restaurant newRestaurant)
         {
-            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            try
+            {
+                IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
 
-            // Consigue el Restaurante a modificar en la Base de Datos
-            com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(idRestaurant);
+                // Consigue el Restaurante a modificar en la Base de Datos
+                com.ds201625.fonda.Domain.Restaurant _restaurant = _restaurantDAO.FindById(idRestaurant);
 
-            // Cambia los valores suministrados por el usuario
-            _restaurant.Name = newRestaurant.Name;
-            _restaurant.Logo = newRestaurant.Logo;
-            _restaurant.Nationality = newRestaurant.Nationality;
-            _restaurant.Ssn = newRestaurant.Ssn;
-            _restaurant.Address = newRestaurant.Address;
-            _restaurant.RestaurantCategory = newRestaurant.RestaurantCategory;
-            _restaurant.Currency = newRestaurant.Currency;
-            _restaurant.Zone = newRestaurant.Zone;
-            _restaurant.Coordinate = newRestaurant.Coordinate;
-            _restaurant.Schedule = newRestaurant.Schedule;
-            _restaurant.Status = _facDAO.GetActiveSimpleStatus();
+                // Cambia los valores suministrados por el usuario
+                _restaurant.Name = newRestaurant.Name;
+                _restaurant.Logo = newRestaurant.Logo;
+                _restaurant.Nationality = newRestaurant.Nationality;
+                _restaurant.Ssn = newRestaurant.Ssn;
+                _restaurant.Address = newRestaurant.Address;
+                _restaurant.RestaurantCategory = newRestaurant.RestaurantCategory;
+                _restaurant.Currency = newRestaurant.Currency;
+                _restaurant.Zone = newRestaurant.Zone;
+                _restaurant.Coordinate = newRestaurant.Coordinate;
+                _restaurant.Schedule = newRestaurant.Schedule;
+                _restaurant.Status = _facDAO.GetActiveSimpleStatus();
 
-            return _restaurant;
+                return _restaurant;
+            }
+            catch (ModifyRestaurantFondaDAOException e)
+            {
+                throw new ModifyRestaurantFondaDAOException(ResourceRestaurantMessagesDAO.ModifyRestaurantFondaDAOException, e);
+
+            }
+            catch (Exception e)
+            {
+                throw new ModifyRestaurantFondaDAOException(ResourceRestaurantMessagesDAO.ModifyRestaurantFondaDAOException, e);
+
+            }
         }
+        #endregion
 
         /*
         public Restaurant findByTable(Table table)

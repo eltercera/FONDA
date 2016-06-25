@@ -61,6 +61,24 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al agregar el objeto categoria (DAO).
+        /// </summary>
+        public static string AddCategoryFondaDAOException {
+            get {
+                return ResourceManager.GetString("AddCategoryFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comando para generar un objeto categoria.
+        /// </summary>
+        public static string ClassNameAddCategory {
+            get {
+                return ResourceManager.GetString("ClassNameAddCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comando para generar un objeto restaurante.
         /// </summary>
         public static string ClassNameGenerateRestaurant {
@@ -79,11 +97,83 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comando para modificar una categoria.
+        /// </summary>
+        public static string ClassNameModifyCategory {
+            get {
+                return ResourceManager.GetString("ClassNameModifyCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comando para modificar el objeto restaurante.
+        /// </summary>
+        public static string ClassNameModifyRestaurant {
+            get {
+                return ResourceManager.GetString("ClassNameModifyRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comando para guardar la categoria.
+        /// </summary>
+        public static string ClassNameSaveCategory {
+            get {
+                return ResourceManager.GetString("ClassNameSaveCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comando para guardar un objeto restaurant.
+        /// </summary>
+        public static string ClassNameSaveRestaurant {
+            get {
+                return ResourceManager.GetString("ClassNameSaveRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al agregar el objeto categoria (Command).
+        /// </summary>
+        public static string CommandExceptionAddCategory {
+            get {
+                return ResourceManager.GetString("CommandExceptionAddCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al generar el objeto restaurante (Command).
         /// </summary>
         public static string CommandExceptionGenerateRestaurant {
             get {
                 return ResourceManager.GetString("CommandExceptionGenerateRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al modificar el objeto categoria (Command).
+        /// </summary>
+        public static string CommandExceptionModifyCategory {
+            get {
+                return ResourceManager.GetString("CommandExceptionModifyCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al guardar el objeto categoria.
+        /// </summary>
+        public static string CommandExceptionSaveCategory {
+            get {
+                return ResourceManager.GetString("CommandExceptionSaveCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al guardar el objeto restaurante.
+        /// </summary>
+        public static string CommandExceptionSaveRestaurant {
+            get {
+                return ResourceManager.GetString("CommandExceptionSaveRestaurant", resourceCulture);
             }
         }
         
@@ -124,6 +214,24 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al modificar el objeto categoria (DAO).
+        /// </summary>
+        public static string ModifyCategoryFondaDAOException {
+            get {
+                return ResourceManager.GetString("ModifyCategoryFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al modificar el objeto restaurante (DAO).
+        /// </summary>
+        public static string ModifyRestaurantFondaDAOException {
+            get {
+                return ResourceManager.GetString("ModifyRestaurantFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error parámetro fuera de rango.
         /// </summary>
         public static string ParameterIndexOutRangeException {
@@ -138,6 +246,24 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         public static string RequieredParameterNotFoundException {
             get {
                 return ResourceManager.GetString("RequieredParameterNotFoundException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al guardar el objeto categoria (DAO).
+        /// </summary>
+        public static string SaveEntityCategoryFondaDAOException {
+            get {
+                return ResourceManager.GetString("SaveEntityCategoryFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al guardar el objeto restaurante (DAO).
+        /// </summary>
+        public static string SaveEntityRestaurantFondaDAOException {
+            get {
+                return ResourceManager.GetString("SaveEntityRestaurantFondaDAOException", resourceCulture);
             }
         }
     }

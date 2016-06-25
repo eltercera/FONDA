@@ -14,5 +14,5 @@ public interface RestaurantService {
 
     List<Zone> getZones(String query, int max, int page);
 
-    List<Restaurant> getRestaurants(String query, int max, int page, String category, String zone);
+    List<Restaurant> getRestaurants(String query, int max, int page, int category, int zone);
 }

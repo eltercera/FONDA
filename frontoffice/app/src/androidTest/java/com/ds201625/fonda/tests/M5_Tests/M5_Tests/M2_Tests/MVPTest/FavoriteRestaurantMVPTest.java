@@ -78,11 +78,11 @@ public class FavoriteRestaurantMVPTest extends TestCase implements FavoriteView 
     public void testFindFavoriteRestaurant() {
 
         try {
-            restaurant.getRestaurantCategory().setNameCategory("Chatarra");
+            restaurant.getRestaurantCategory().setName("Chatarra");
             favoritesPresenter.findLoggedComensal();
             restaurantList = favoritesPresenter.findAllFavoriteRestaurant();
-            assertEquals(restaurant.getRestaurantCategory().getNameCategory(),
-                    restaurantList.get(1).getRestaurantCategory().getNameCategory());
+            assertEquals(restaurant.getRestaurantCategory().getName(),
+                    restaurantList.get(1).getRestaurantCategory().getName());
         } catch (Exception e) {
             Log.e(TAG,"Error en testFindFavoriteRestaurant al listar favorito",e);
         }
