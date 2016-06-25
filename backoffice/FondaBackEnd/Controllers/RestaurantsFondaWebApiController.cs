@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEndLogic;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
+using com.ds201625.fonda.BackEnd.ActionFilters;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
 {
@@ -20,6 +21,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 		{
 		}
 
+		[FondaAuthToken]
 		[Route("restaurants")]
 		[HttpGet]
 		/// <summary>
@@ -84,9 +86,116 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
 			LogDebug("Retornando Lista de " + restaurants.Count + " Restaurantes.");
 
+			setFavorites (restaurants);
 			return Ok (restaurants);
 		}
 
+		/// <summary>
+		/// Colocal true a los restaurantes favoritos del comensal.
+		/// </summary>
+		/// <param name="restaurants">Restaurants.</param>
+		private void setFavorites(IList<Restaurant> restaurants)
+		{
+			foreach (Restaurant res in GetCommensal(Request.Headers).FavoritesRestaurants)
+			{
+				if (restaurants.Contains (res))
+				{
+					res.Favorite = true;
+				}
+			}
+		}
+
+		[FondaAuthToken]
+		[Route("commensal/restaurants/{restIde}")]
+		[HttpPost]
+		public IHttpActionResult PostCommensalRestaurants(int restIde)
+		{
+			ICommand cmd = FacCommand.CreatePostFabRestaurantCommand ();
+
+			try
+			{
+				cmd.SetParameter(0, GetCommensal(Request.Headers));
+				cmd.SetParameter(1, restIde);
+			} 
+			catch (ParameterIndexOutOfRangeException e)
+			{
+				LogException (e);
+				return InternalServerError (e);
+			}
+			catch (InvalidTypeOfParameterException e)
+			{
+				LogException (e);
+				return InternalServerError (e);
+			}
+			catch (Exception e)
+			{
+				LogException (e, "Error desconocido");
+				return InternalServerError (e);
+			}
+
+			try 
+			{
+				cmd.Run();
+			}
+			catch (FondaBackendLogicException e)
+			{
+				LogException (e);
+				return InternalServerError (e);
+			}
+			catch (Exception e)
+			{
+				LogException (e, "Error desconocido");
+				return InternalServerError (e);
+			}
+
+			return Ok ();
+		}
+
+		[FondaAuthToken]
+		[Route("commensal/restaurants/{restIde}")]
+		[HttpDelete]
+		public IHttpActionResult DeleteCommensalRestaurants(int restIde)
+		{
+			ICommand cmd = FacCommand.CreateDeleteFabRestaurantCommand ();
+
+			try
+			{
+				cmd.SetParameter(0, GetCommensal(Request.Headers));
+				cmd.SetParameter(1, restIde);
+			} 
+			catch (ParameterIndexOutOfRangeException e)
+			{
+				LogException (e);
+				return InternalServerError (e);
+			}
+			catch (InvalidTypeOfParameterException e)
+			{
+				LogException (e);
+				return InternalServerError (e);
+			}
+			catch (Exception e)
+			{
+				LogException (e, "Error desconocido");
+				return InternalServerError (e);
+			}
+
+			try 
+			{
+				cmd.Run();
+			}
+			catch (FondaBackendLogicException e)
+			{
+				LogException (e);
+				return InternalServerError (e);
+			}
+			catch (Exception e)
+			{
+				LogException (e, "Error desconocido");
+				return InternalServerError (e);
+			}
+
+			return Ok ();
+		}
 	}
 }
 
