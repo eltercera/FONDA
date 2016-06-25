@@ -38,7 +38,7 @@ namespace BackOffice.Seccion.Menu
                 }
                 else
                 {
-                        Response.Redirect("~/Default.aspx");
+                    Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
                 }
             }
             else

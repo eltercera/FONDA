@@ -113,7 +113,7 @@ namespace BackOffice.Seccion.Reservas
                 }
                 else
                 {
-                    Response.Redirect("~/Default.aspx");
+                    Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
                 }
             }
             else
