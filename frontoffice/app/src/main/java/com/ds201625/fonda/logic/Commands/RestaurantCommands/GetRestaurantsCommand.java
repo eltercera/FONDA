@@ -8,6 +8,7 @@ import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.CommandInternalErrorException;
 import com.ds201625.fonda.logic.Parameter;
 import com.ds201625.fonda.logic.ParameterOutOfIndexException;
+import com.ds201625.fonda.logic.SessionData;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class GetRestaurantsCommand extends BaseCommand {
         List<Restaurant> restaurants = null;
 
         RestaurantService resService = FondaServiceFactory.getInstance()
-                .getRestaurantService();
+                .getRestaurantService(SessionData.getInstance().getToken());
 
         int max = 0;
         int page = 0;

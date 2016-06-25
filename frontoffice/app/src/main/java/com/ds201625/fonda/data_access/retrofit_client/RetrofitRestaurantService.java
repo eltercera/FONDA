@@ -7,6 +7,7 @@ import com.ds201625.fonda.data_access.retrofit_client.exceptions.ServerErrorExce
 import com.ds201625.fonda.data_access.services.RestaurantService;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.RestaurantCategory;
+import com.ds201625.fonda.domains.Token;
 import com.ds201625.fonda.domains.Zone;
 import java.io.IOException;
 import java.util.List;
@@ -23,10 +24,10 @@ public class RetrofitRestaurantService implements RestaurantService {
      */
     private RestaurantClient resClient;
 
-    public RetrofitRestaurantService() {
+    public RetrofitRestaurantService(Token token) {
         super();
         resClient = RetrofitService.getInstance()
-                .createService(RestaurantClient.class);
+                .createService(RestaurantClient.class,token.getStrToken());
     }
 
     @Override
@@ -105,5 +106,31 @@ public class RetrofitRestaurantService implements RestaurantService {
         }
 
         return restaurants;
+    }
+
+    @Override
+    public void setRestaurantFab(boolean fab, int id)
+        throws RestClientException, ServerErrorException, UnknownServerErrorException {
+        Call<Void> call = null;
+        Response<Void> response = null;
+
+        if (fab)
+            call = resClient.postCommensalRestaurants(id);
+        else
+            call = resClient.deleteCommensalRestaurants(id);
+
+        try {
+            response = call.execute();
+        } catch (IOException e) {
+            throw new RestClientException(e);
+        }
+
+        if (!response.isSuccessful()) {
+            if (response.code() == 500) {
+                throw new ServerErrorException();
+            } else {
+                throw UnknownServerErrorException.generate(response.code(), response.message());
+            }
+        }
     }
 }

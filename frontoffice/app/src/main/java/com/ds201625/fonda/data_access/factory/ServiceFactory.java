@@ -101,7 +101,7 @@ public interface ServiceFactory {
      * Obtiene los servicios de los restaurantes
      * @return
      */
-    RestaurantService getRestaurantService();
+    RestaurantService getRestaurantService(Token token);
 
 }
 

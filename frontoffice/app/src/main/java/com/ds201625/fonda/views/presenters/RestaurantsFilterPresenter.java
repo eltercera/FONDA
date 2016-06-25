@@ -212,7 +212,7 @@ public class RestaurantsFilterPresenter {
                 this.fragment.displayMsj("Error Al obtener los datos: " + e.getMessage());
                 if (e.getClass() == RestClientException.class
                         || e.getClass() == ServerErrorException.class
-                        || e.getClass() ==UnknownServerErrorException.class )
+                        || e.getClass() == UnknownServerErrorException.class )
                     fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.NO_CONNECTION);
                 return;
             }

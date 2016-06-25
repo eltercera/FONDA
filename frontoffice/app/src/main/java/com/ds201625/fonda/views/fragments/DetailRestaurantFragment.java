@@ -68,7 +68,19 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
         tvHours = (TextView) form.findViewById(R.id.text_view_restaurant_hours);
         tvDays = (TextView) form.findViewById(R.id.text_view_restaurant_days);
 
+        setInfo();
         return form;
+    }
+
+    private void setInfo() {
+        if (restaurant == null || tvRestName == null)
+            return;
+        tvRestName.setText(restaurant.getName());
+        tvType.setText(restaurant.getRestaurantCategory().getName());
+        tvZone.setText(""); //No hay zona en el rest?
+        tvAddress.setText(restaurant.getAddress());
+        tvHours.setText(""); //No hay horas
+        tvDays.setText(""); //No hay dias
     }
 
     /**
@@ -77,12 +89,7 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
      */
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
-        tvRestName.setText(restaurant.getName());
-        tvType.setText(restaurant.getRestaurantCategory().getName());
-        tvZone.setText(""); //No hay zona en el rest?
-        tvAddress.setText(restaurant.getAddress());
-        tvHours.setText(""); //No hay horas
-        tvDays.setText(""); //No hay dias
+        setInfo();
     }
 
 
@@ -98,19 +105,19 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
     /**
      * Cuando se une
      * @param context
-     */
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-    }
+    } */
 
     /**
      * Cuando se desune
-     */
+
     @Override
     public void onDetach() {
         super.onDetach();
-    }
+    }*/
 
 
 

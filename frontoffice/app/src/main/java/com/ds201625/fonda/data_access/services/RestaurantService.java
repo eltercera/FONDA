@@ -53,4 +53,7 @@ public interface RestaurantService {
      */
     List<Restaurant> getRestaurants(String query, int max, int page, int category, int zone)
             throws RestClientException, ServerErrorException, UnknownServerErrorException;
+
+    void setRestaurantFab(boolean fab, int id)
+            throws RestClientException, ServerErrorException, UnknownServerErrorException;
 }

@@ -51,7 +51,7 @@ public class Parameter {
             return;
         if(!dataType.isAssignableFrom(data.getClass()))
             throw InvalidParameterTypeException.
-                    generate(dataType.getClass().toString(),data.getClass().toString());
+                    generate(dataType.toString(),data.getClass().toString());
         this.data = data;
     }
 

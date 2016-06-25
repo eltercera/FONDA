@@ -8,6 +8,7 @@ public class Restaurant extends Company {
 
     private String logo;
     private String address;
+    private Boolean favorite;
     private RestaurantCategory restaurantCategory;
     private List<Table> tables;
 
@@ -55,5 +56,13 @@ public class Restaurant extends Company {
 
     public void setListTable(List tables) {
         this.tables = tables;
+    }
+
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
     }
 }
