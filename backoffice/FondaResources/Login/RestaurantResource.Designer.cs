@@ -115,6 +115,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Login {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Todos los Restaurantes.
+        /// </summary>
+        public static string SessionAllRestaurants {
+            get {
+                return ResourceManager.GetString("SessionAllRestaurants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NameRestaurant.
         /// </summary>
         public static string SessionNameRest {
