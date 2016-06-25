@@ -189,7 +189,7 @@ namespace FondaBackOfficeLogicTest
             _command.Execute();
             _invoice = (Invoice)_command.Receiver;
             Assert.IsNotNull(_invoice);
-            Assert.AreEqual(_invoice.Tax, ((_cashPayment.Amount) * 0.12f));
+            Assert.AreEqual(_invoice.Tax, ((_invoice.Total) * 0.12f));
             //Assert.AreEqual(_invoice.Total, 100);
         }
         [Test(Description = "Prueba de la exception de CommandGenerateInvoiceExceptionTest")]
