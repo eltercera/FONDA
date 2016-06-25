@@ -25,6 +25,8 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             List<Object> parameters;
             Payment payment;
             Account account;
+            float _tip=0;
+            CreditCardPayment _creditCard;
             try
             {
                 _list = (IList<object>)Receiver;
@@ -47,7 +49,13 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 //ESTO TIENE QUE CAMBIARSE POR UN RECURSO
                 totalInvoice += totalInvoice * 0.12F;
 
-                
+                 if (payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
+                {
+                    _creditCard = (CreditCardPayment)payment;
+                    _tip = _creditCard.Tip;
+                }
+
+
                 if (payment.Amount >= totalInvoice)
                 {
                     //ESTE CONSTRUCTOR DEBO REVISARLO
