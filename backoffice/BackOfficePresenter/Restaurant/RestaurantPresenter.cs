@@ -1,6 +1,4 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.Domain;
+﻿using com.ds201625.fonda.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -312,8 +310,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             IList<Currency> listCurrencies;
             IList<Zone> listZones;
 
-            try
-            {
+           
                 //Llamada al comando para generar la lista de todos las categorias
                 commandGetAllCategories = CommandFactory.GetCommandGetAllCategories("null");
                 commandGetAllCategories.Execute();
@@ -331,7 +328,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 commandGetAllZone.Execute();
                 //Resultado del receiver
                 listZones = (IList<Zone>)commandGetAllZone.Receiver;
-            }
+            /*}
             catch (CommandExceptionGetAllCategories e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -340,12 +337,12 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             catch (CommandExceptionGetAllCurrencies e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetFillDropdownCurrencies, e);
+                throw new CommandExceptionGetAllCurrencies(RestaurantErrors.ClassNameGetFillDropdownCurrencies, e);
             }
             catch (CommandExceptionGetAllZones e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetFillDropdownZones, e);
+                throw new CommandExceptionGetAllZones(RestaurantErrors.ClassNameGetFillDropdownZones, e);
             }
             catch (InvalidTypeOfParameterException e)
             {
@@ -371,7 +368,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetFillDropdown, e);
-            }
+            }*/
 
             //Se limpia los Dropdownlist con los registros existentes
             foreach (RestaurantCategory category in listCategories)

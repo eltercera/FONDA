@@ -1,24 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
-using com.ds201625.fonda.DataAccess.Exceptions;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
-using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
-using System.Web;
 using com.ds201625.fonda.Logic.FondaLogic;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
 using com.ds201625.fonda.DataAccess.Log;
 using com.ds201625.fonda.Resources.FondaResources.Restaurant;
-using com.ds201625.fonda.DataAccess.Exceptions.Restaurant;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
 
 namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante

@@ -37,9 +37,9 @@ namespace FondaLogic.Commands.Restaurante
         {
             try
             {
-                IRestaurantDAO _RestaurantDAO = _facDAO.GetRestaurantDAO();
+                ICurrencyDAO _CurrencyDAO = _facDAO.GetCurrencyDAO();
 
-                Receiver = _RestaurantDAO.GetAll();
+                Receiver = _CurrencyDAO.GetAll();
             }
             catch (FindAllFondaDAOException e)
             {
