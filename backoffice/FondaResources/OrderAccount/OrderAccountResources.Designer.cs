@@ -331,6 +331,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HibernateOrderAccountDAO.
+        /// </summary>
+        public static string ClassNameOrderAccountDAO {
+            get {
+                return ResourceManager.GetString("ClassNameOrderAccountDAO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OrderInvoicesPresenter.
         /// </summary>
         public static string ClassNameOrderInvoicesPresenter {
@@ -1159,6 +1168,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se ha podido obtener la orden de la Base de Datos.
+        /// </summary>
+        public static string MessageGetOrderAccountFondaDAOException {
+            get {
+                return ResourceManager.GetString("MessageGetOrderAccountFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al obtener el detalle de la orden.
         /// </summary>
         public static string MessageGetOrderDetailException {
@@ -1519,6 +1537,33 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha anulado la factura con éxito.
+        /// </summary>
+        public static string SuccessMessageCancelInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageCancelInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha cambiado el estado de la orden de la Base de datos correctamente.
+        /// </summary>
+        public static string SuccessMessageChangeStatusAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageChangeStatusAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha calculado el cierre de caja con éxito.
+        /// </summary>
+        public static string SuccessMessageCloseCashRegister {
+            get {
+                return ResourceManager.GetString("SuccessMessageCloseCashRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha anulado la factura satisfactoriamente.
         /// </summary>
         public static string SuccessMessageCommandCancelInvoice {
@@ -1708,6 +1753,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido la cuenta dado un restaurante de la base de datos con éxito.
+        /// </summary>
+        public static string SuccessMessageFindAccountByRestaurant {
+            get {
+                return ResourceManager.GetString("SuccessMessageFindAccountByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha consultado todas las facturas de la base de datos exitosamente.
         /// </summary>
         public static string SuccessMessagefindAllInvoice {
@@ -1744,6 +1798,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha generado el número de la cuenta correctamente.
+        /// </summary>
+        public static string SuccessMessageGenerateNumberAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageGenerateNumberAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha generado el número de la factura correctamente.
         /// </summary>
         public static string SuccessMessageGenerateNumberInvoice {
@@ -1753,11 +1816,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido la orden correctamente de la Base de Datos.
+        /// </summary>
+        public static string SuccessMessageGetOrderAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageGetOrderAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se han cargado las facturas correctamente.
         /// </summary>
         public static string SuccessMessageOrderInvoicesPresenter {
             get {
                 return ResourceManager.GetString("SuccessMessageOrderInvoicesPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha guardado la factura correctamente en la Base de datos .
+        /// </summary>
+        public static string SuccessMessageSaveInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageSaveInvoice", resourceCulture);
             }
         }
         

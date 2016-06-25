@@ -88,6 +88,7 @@
     <Compile Include="Exceptions\OrderAccount\FindInvoicesByAccountFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\GenerateNumberAccountFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\GetDishesByAccountFondaDAOException.cs" />
+    <Compile Include="Exceptions\OrderAccount\GetOrderAccountFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\OpenOrdersByRestaurantIdFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\SaveInvoiceFondaDAOException.cs" />
     <Compile Include="Exceptions\OrderAccount\FindInvoicesByRestaurantFondaDAOException.cs" />

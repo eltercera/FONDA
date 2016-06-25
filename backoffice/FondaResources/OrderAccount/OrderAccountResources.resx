@@ -895,4 +895,39 @@
     <value>C.I</value>
     <comment>Cedula del usuario</comment>
   </data>
+  <data name="ClassNameOrderAccountDAO" xml:space="preserve">
+    <value>HibernateOrderAccountDAO</value>
+  </data>
+  <data name="MessageGetOrderAccountFondaDAOException" xml:space="preserve">
+    <value>No se ha podido obtener la orden de la Base de Datos</value>
+    <comment>Mensaje de error para GetOrderAccount</comment>
+  </data>
+  <data name="SuccessMessageCancelInvoice" xml:space="preserve">
+    <value>Se ha anulado la factura con éxito</value>
+    <comment>Mensaje de exito para CancelInvoice</comment>
+  </data>
+  <data name="SuccessMessageChangeStatusAccount" xml:space="preserve">
+    <value>Se ha cambiado el estado de la orden de la Base de datos correctamente</value>
+    <comment>Mensaje de exito para ChangeStatusAccount</comment>
+  </data>
+  <data name="SuccessMessageCloseCashRegister" xml:space="preserve">
+    <value>Se ha calculado el cierre de caja con éxito</value>
+    <comment>Mensaje de exito para CloseCashRegister</comment>
+  </data>
+  <data name="SuccessMessageFindAccountByRestaurant" xml:space="preserve">
+    <value>Se ha obtenido la cuenta dado un restaurante de la base de datos con éxito</value>
+    <comment>Mensaje de exito para ChangeStatusAccount FindAccountByRestaurant</comment>
+  </data>
+  <data name="SuccessMessageGenerateNumberAccount" xml:space="preserve">
+    <value>Se ha generado el número de la cuenta correctamente</value>
+    <comment>Mensaje de exito para GenerateNumberAccount</comment>
+  </data>
+  <data name="SuccessMessageGetOrderAccount" xml:space="preserve">
+    <value>Se ha obtenido la orden correctamente de la Base de Datos</value>
+    <comment>Mensaje de exito para GetOrderAccount</comment>
+  </data>
+  <data name="SuccessMessageSaveInvoice" xml:space="preserve">
+    <value>Se ha guardado la factura correctamente en la Base de datos </value>
+    <comment>Mensaje de exito para SaveInvoice</comment>
+  </data>
 </root>
