@@ -14,6 +14,9 @@ using BackOffice.Content;
 using com.ds201625.fonda.View.BackOfficeModel.Restaurant;
 using System.Web.UI.HtmlControls;
 using com.ds201625.fonda.View.BackOfficePresenter.Restaurante;
+using com.ds201625.fonda.Resources.FondaResources.Restaurant;
+using com.ds201625.fonda.DataAccess.Log;
+using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
 
 namespace BackOffice.Seccion.Restaurant
 {
@@ -515,14 +518,30 @@ namespace BackOffice.Seccion.Restaurant
         {
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                AlertSuccess_AddRestaurant.Visible = false;
-                AlertSuccess_ModifyRestaurant.Visible = false;
-                OpeningTimeA.Attributes.Add("type", "time");
-                ClosingTimeA.Attributes.Add("type", "time");
-                OpeningTimeM.Attributes.Add("type", "time");
-                ClosingTimeM.Attributes.Add("type", "time");
-                _presenter.LoadTable();
-                _presenter.FillDropdown();
+                if (Session[ResourceLogin.sessionRol].ToString() == "Sistema")
+                {
+                    AlertSuccess_AddRestaurant.Visible = false;
+                    AlertSuccess_ModifyRestaurant.Visible = false;
+                    OpeningTimeA.Attributes.Add("type", "time");
+                    ClosingTimeA.Attributes.Add("type", "time");
+                    OpeningTimeM.Attributes.Add("type", "time");
+                    ClosingTimeM.Attributes.Add("type", "time");
+                    _presenter.LoadTable();
+                    _presenter.FillDropdown();
+                }
+                else
+                {
+                    if (Session[ResourceLogin.sessionRol].ToString() == "Restaurante")
+                    {
+                        // redireccion la pagina como empleado de un restaurante
+                        Response.Redirect("Default.aspx");
+                    }
+                    if (Session[ResourceLogin.sessionRol].ToString() == "Caja")
+                    {
+                        // redireccion la pagina como empleado de un restaurante
+                        Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
+                    }
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);
@@ -542,8 +561,18 @@ namespace BackOffice.Seccion.Restaurant
         }
         public void ButtonAdd_Click()
         {
-            _presenter.ButtonAdd_Click();
-
+            try
+            {
+                _presenter.ButtonAdd_Click();
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(RestaurantErrors.CommandExceptionGenerateRestaurant);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(RestaurantErrors.CommandExceptionGenerateRestaurant);
+            }
         }
         /// <summary>
         /// Llamada al metodo para modificar un restaurante
@@ -554,7 +583,19 @@ namespace BackOffice.Seccion.Restaurant
         }
         public void ButtonModify_Click2()
         {
-            _presenter.ButtonModify_Click();
+            try
+            {
+                _presenter.ButtonModify_Click();
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(RestaurantErrors.CommandExceptionModifyRestaurant);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(RestaurantErrors.CommandExceptionModifyRestaurant);
+            }
+
         }
 
         [WebMethod]

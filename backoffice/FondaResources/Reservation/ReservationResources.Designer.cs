@@ -88,11 +88,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;a data-toggle=&quot;modal&quot;  data-target=&quot;#cancel_reservation&quot; &gt;&lt;i class=&quot;fa fa-times&quot;&gt;&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-times&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
         /// </summary>
         public static string CancelReservation {
             get {
                 return ResourceManager.GetString("CancelReservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ReservationsPresenter.
+        /// </summary>
+        public static string ClassNameReservationsPresenter {
+            get {
+                return ResourceManager.GetString("ClassNameReservationsPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to text-center.
+        /// </summary>
+        public static string CssClassActions {
+            get {
+                return ResourceManager.GetString("CssClassActions", resourceCulture);
             }
         }
         
@@ -115,11 +133,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to #.
+        ///   Looks up a localized string similar to Se ha cargado la tabla de reservaciones satisfactoriamente.
+        /// </summary>
+        public static string MessageGetReservations {
+            get {
+                return ResourceManager.GetString("MessageGetReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ../Reservas/ListarReservas.aspx?Id=.
         /// </summary>
         public static string RefreshURL {
             get {
                 return ResourceManager.GetString("RefreshURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # Comensales.
+        /// </summary>
+        public static string ReservationCommensalNumberColumn {
+            get {
+                return ResourceManager.GetString("ReservationCommensalNumberColumn", resourceCulture);
             }
         }
         
@@ -138,6 +174,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         public static string ReservationDateColumn {
             get {
                 return ResourceManager.GetString("ReservationDateColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;i class=&quot;fa fa-info-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;.
+        /// </summary>
+        public static string ReservationInfo {
+            get {
+                return ResourceManager.GetString("ReservationInfo", resourceCulture);
             }
         }
         

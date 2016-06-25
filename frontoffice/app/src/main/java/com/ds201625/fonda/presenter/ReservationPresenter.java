@@ -2,6 +2,7 @@ package com.ds201625.fonda.presenter;
 
 import android.util.Log;
 
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetReservationFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Reservation;
 import com.ds201625.fonda.interfaces.ReservationView;
@@ -30,16 +31,13 @@ public class ReservationPresenter implements ReservationViewPresenter {
      *
      * @param view
      */
-
     public ReservationPresenter(ReservationView view) {
         iReservationView = view;
     }
 
-
     /**
      * Encuentra el comensal logueado
      */
-
     @Override
     public void findLoggedComensal() {
         Log.d(TAG, "Ha entrado en findLoggedComensal");
@@ -94,27 +92,35 @@ public class ReservationPresenter implements ReservationViewPresenter {
 
     /**
      * Encuentra las reservaciones
-     *
      * @return listReserWS
      */
     @Override
-    public List<Reservation> AllReservation() {
+    public List<Reservation> AllReservation() throws GetReservationFondaWebApiControllerException {
         Log.d(TAG,"Ha entrado en AllReservation");
-        Command cmdAllReservation = facCmd.allReservationCommand();
+        Command cmdAllReservation;
         try {
+            cmdAllReservation = facCmd.allReservationCommand();
             cmdAllReservation.setParameter(0,logedComensal);
             cmdAllReservation.run();
-        } catch (NullPointerException e){
-            Log.e(TAG,"Error en cmdAllReservation",
-                    e);
         }
-        catch (Exception e) {
-            Log.e(TAG,"Error en cmdAllReservation ",
-                    e);
-        }
-        listReserWS = (List<Reservation>) cmdAllReservation.getResult();
-        Log.d(TAG,"Se retorna la lista de Restaurantes Favoritos");
-        Log.d(TAG,"Ha finalizado findAllFavoriteRestaurant");
+            catch (GetReservationFondaWebApiControllerException e) {
+                Log.e(TAG,"Error en AllReservation al buscar las Reservas",
+                        e);
+                throw  new GetReservationFondaWebApiControllerException(e);
+            }
+            catch (NullPointerException e){
+                Log.e(TAG,"Error en AllReservation al buscar las reservas",
+                        e);
+                throw  new GetReservationFondaWebApiControllerException(e);
+            }
+            catch (Exception e) {
+                Log.e(TAG,"Error en AllReservation al buscar los restaurantes favoritos",
+                        e);
+                throw  new GetReservationFondaWebApiControllerException(e);
+            }
+            listReserWS = (List<Reservation>) cmdAllReservation.getResult();
+            Log.d(TAG,"Se retorna la lista de Reservass");
+            Log.d(TAG,"Ha finalizado AllReservation");
         return listReserWS;
     }
 }

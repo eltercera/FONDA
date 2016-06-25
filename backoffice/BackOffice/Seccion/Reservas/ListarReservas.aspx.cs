@@ -14,7 +14,7 @@ using BackOffice.Content;
 
 namespace BackOffice.Seccion.Reservas
 {
-    public partial class Default : System.Web.UI.Page, IReservationsModel
+    public partial class Default : System.Web.UI.Page, IReservationsContract
     {
         #region Presenter
         private ReservationsPresenter _presenter;
@@ -36,7 +36,7 @@ namespace BackOffice.Seccion.Reservas
             set { this.SuccessLabelMessage = value; }
         }
 
-        Label IReservationsModel.WarningLabelMessage
+        Label IReservationsContract.WarningLabelMessage
         {
             get { return this.WarningLabelMessage; }
 
@@ -56,11 +56,19 @@ namespace BackOffice.Seccion.Reservas
         /// <summary>
         /// Recurso de Session para el ID de la Reserva
         /// </summary>
-        string IReservationsModel.Session
+        string IReservationsContract.Session
         {
-            get { return Session[ReservationResources.SessionIdReservation].ToString(); }
+            get
+            {
+                return Session[ReservationResources.SessionIdReservation].ToString();
+            }
 
-            set { Session[ReservationResources.SessionIdReservation] = value; }
+            set
+            {
+                //Session[ReservationResources.SessionIdReservation] = value;
+
+                throw new NotImplementedException();
+            }
         }
 
         public string SessionRestaurant
@@ -86,7 +94,7 @@ namespace BackOffice.Seccion.Reservas
             get { return this.ErrorLabel; }
         }
 
-        HtmlGenericControl IReservationsModel.WarningLabel
+        HtmlGenericControl IReservationsContract.WarningLabel
         {
             get { return this.WarningLabel; }
         }
@@ -104,15 +112,13 @@ namespace BackOffice.Seccion.Reservas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session[ResourceLogin.sessionUserID] != null)
-            {
-
-                //Llama al presentador para llenar la tabla reservas
-                _presenter.GetReservations();
-            }
-            else
-                Response.Redirect(RecursoMaster.addressLogin);
-
+            //TODO (Reservation): Dejar que entre como sistema
+            //Llama al presentador para llenar la tabla reservas
+        //    if (Session[ResourceLogin.sessionUserID] != null &&           
+        //         Session[ResourceLogin.sessionRestaurantID] != null)       
+                    _presenter.GetReservations();
+        //        else
+        //            Response.Redirect(RecursoMaster.addressLogin);
         }
 
         protected void ButtonCancelReservation_Click(object sender, EventArgs e)

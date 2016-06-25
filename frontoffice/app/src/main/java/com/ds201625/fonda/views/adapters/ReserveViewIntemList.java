@@ -37,19 +37,6 @@ public class ReserveViewIntemList extends BaseArrayAdapter<Reservation> implemen
         presenter =  new ReservationPresenter(this);
     }
 
-
-
-
-    @Override
-    public View getSelectedView(Reservation item, View convertView) {
-        return null;
-    }
-
-    @Override
-    public View getNotSelectedView(Reservation item, View convertView) {
-        return null;
-    }
-
     /**
      * Crea la vista
      *
@@ -75,6 +62,16 @@ public class ReserveViewIntemList extends BaseArrayAdapter<Reservation> implemen
 
 
         return convertView;
+    }
+
+    @Override
+    public View getSelectedView(Reservation item, View convertView) {
+        return null;
+    }
+
+    @Override
+    public View getNotSelectedView(Reservation item, View convertView) {
+        return null;
     }
 
         /**

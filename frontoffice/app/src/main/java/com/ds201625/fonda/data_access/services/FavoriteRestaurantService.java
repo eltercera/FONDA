@@ -20,7 +20,8 @@ public interface FavoriteRestaurantService {
      * @return
      * @throws RestClientException
      */
-    Commensal AddFavoriteRestaurant(int idCommensal, int idRestaurant) throws RestClientException, AddFavoriteRestaurantFondaWebApiControllerException;;
+    Commensal AddFavoriteRestaurant(int idCommensal, int idRestaurant)
+            throws RestClientException, AddFavoriteRestaurantFondaWebApiControllerException;;
 
     /**
      * Elimina un restaurante de favoritos
@@ -29,7 +30,8 @@ public interface FavoriteRestaurantService {
      * @return
      * @throws RestClientException
      */
-    Commensal deleteFavoriteRestaurant(int idCommensal, int idRestaurant) throws RestClientException, DeleteFavoriteRestaurantFondaWebApiControllerException;;
+    Commensal deleteFavoriteRestaurant(int idCommensal, int idRestaurant)
+            throws RestClientException, DeleteFavoriteRestaurantFondaWebApiControllerException;;
 
     /**
      * Obtiene todos los restaurantes favoritos

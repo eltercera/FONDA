@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.retrofit_client.clients.AllRestaurantClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.GetAllRestaurantsFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.domains.Restaurant;

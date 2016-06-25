@@ -19,6 +19,8 @@ import android.widget.ListView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetReservationFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.PostReservationFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.Reservation;
@@ -41,7 +43,6 @@ import java.util.List;
      */
     public class ReserveListFragment extends BaseFragment
             implements ReservationView, SwipeRefreshLayout.OnRefreshListener{
-
         /**
          * String que indica la clase al logger
          */
@@ -141,6 +142,10 @@ import java.util.List;
             }
             catch (NullPointerException nu) {
                 Log.e(TAG, "Error en getListSW al obtener reservas", nu);
+            } catch (PostReservationFondaWebApiControllerException e) {
+                e.printStackTrace();
+            } catch (GetReservationFondaWebApiControllerException e) {
+                e.printStackTrace();
             }
             Log.d(TAG,"Ha finalizado getListSW");
             return null;

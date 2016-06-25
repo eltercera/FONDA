@@ -297,7 +297,10 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandModifyCategory(receiver);
         }
-
+        public static Command GetCommandGetRestaurants(object receiver)
+        {
+            return new CommandGetRestaurants(receiver);
+        }
         #endregion
 
         #region Menu
@@ -453,6 +456,17 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         public static Command GetCommandFindReservationsByTable(object receiver)
         {
             return new CommandFindReservationsByTable(receiver);
+        }
+
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandGetAllReservations
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <returns>comando CommandGetAllReservations</returns>
+        public static Command GetCommandGetAllReservations()
+        {
+            return new CommandGetAllReservations();
         }
 
 

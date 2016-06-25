@@ -57,13 +57,22 @@ namespace BackOffice.Seccion.Menu
         {
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                AlertSuccess_AddCategory.Visible = false;
+                if ((Session[ResourceLogin.sessionRol].ToString() == "Sistema") || (Session[ResourceLogin.sessionRol].ToString() == "Restaurante"))
+                {
+                    AlertSuccess_AddCategory.Visible = false;
                 AlertSuccess_ModifyCategory.Visible = false;
                 AlertDanger_AddCategory.Visible = false;
                 AlertDanger_ModifyCategory.Visible = false;
+                 LoadMenuCategoryTable();
+                }
+                else
+                {
+                    Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
+                }
+            
 
 
-                LoadMenuCategoryTable();
+           
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);
