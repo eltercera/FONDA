@@ -15,7 +15,7 @@ import retrofit2.Response;
  * Created by Adri on 6/20/2016.
  */
 public class ErrorUtils {
-    /*public static APIError parseError(Response<?> response) {
+    public static APIError parseError(Response<?> response) {
         Converter<ResponseBody, APIError> converter =
                 RetrofitService.getInstance().retrofit()
                         .responseBodyConverter(APIError.class, new Annotation[0]);
@@ -28,5 +28,5 @@ public class ErrorUtils {
         }
 
         return error;
-    }*/
+    }
 }

@@ -189,6 +189,6 @@ INSERT INTO [dbo].[GENERIC_PERSON] ([gp_id], [gp_type], [gp_name], [gp_address],
 ---------Reservations--------------
 INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (1, 1, N'2016-07-10 00:00:00', N'2016-07-01 00:00:00', 2, 8)
 INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (2, 2, N'2016-07-11 00:00:00', N'2016-07-01 00:00:00', 4, 8)
-INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (3, 3, N'2016-07-12 00:00:00', N'2016-07-01 00:00:00', 8, 8)
-INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (4, 4, N'2016-07-13 00:00:00', N'2016-07-01 00:00:00', 16, 8)
+INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (3, 3, N'2016-07-12 00:00:00', N'2016-07-01 00:00:00', 6, 8)
+INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (4, 4, N'2016-07-13 00:00:00', N'2016-07-01 00:00:00', 8, 8)
 

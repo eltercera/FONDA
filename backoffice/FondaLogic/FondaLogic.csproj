@@ -99,9 +99,9 @@
     <Compile Include="Commands\Restaurant\CommandSaveRestaurant.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionFindReservationsByRestaurant.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionFindReservationsByTable.cs" />
-    <Compile Include="FondaCommandException\CommandExceptionFindRestaurantById.cs" />
+    <Compile Include="FondaCommandException\Reservation\CommandExceptionFindReservationsByRestaurant.cs" />
+    <Compile Include="FondaCommandException\Reservation\CommandExceptionFindReservationsByTable.cs" />
+    <Compile Include="FondaCommandException\Reservation\CommandExceptionFindRestaurantById.cs" />
     <Compile Include="FondaCommandException\Login\CommandExceptionCreateEmployee.cs" />
     <Compile Include="FondaCommandException\Login\CommandExceptionGetEmployee.cs" />
     <Compile Include="FondaCommandException\Login\CommandExceptionGetRestaurant.cs" />
