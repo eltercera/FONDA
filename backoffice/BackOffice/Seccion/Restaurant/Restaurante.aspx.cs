@@ -567,13 +567,11 @@ namespace BackOffice.Seccion.Restaurant
             }
             catch (NullReferenceException e)
             {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+                Console.WriteLine(RestaurantErrors.CommandExceptionGenerateRestaurant);
             }
             catch (Exception e)
             {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+                Console.WriteLine(RestaurantErrors.CommandExceptionGenerateRestaurant);
             }
         }
         /// <summary>
@@ -591,13 +589,11 @@ namespace BackOffice.Seccion.Restaurant
             }
             catch (NullReferenceException e)
             {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+                Console.WriteLine(RestaurantErrors.CommandExceptionModifyRestaurant);
             }
             catch (Exception e)
             {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+                Console.WriteLine(RestaurantErrors.CommandExceptionModifyRestaurant);
             }
 
         }

@@ -223,11 +223,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al cargar todos los restaurantes (Command).
+        /// </summary>
+        public static string CommandExceptionGetRestaurants {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetRestaurants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al modificar el objeto categoria (Command).
         /// </summary>
         public static string CommandExceptionModifyCategory {
             get {
                 return ResourceManager.GetString("CommandExceptionModifyCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al modificar un restaurante (Command).
+        /// </summary>
+        public static string CommandExceptionModifyRestaurant {
+            get {
+                return ResourceManager.GetString("CommandExceptionModifyRestaurant", resourceCulture);
             }
         }
         

@@ -172,8 +172,14 @@
   <data name="CommandExceptionGenerateRestaurant" xml:space="preserve">
     <value>Error al generar el objeto restaurante (Command)</value>
   </data>
+  <data name="CommandExceptionGetRestaurants" xml:space="preserve">
+    <value>Error al cargar todos los restaurantes (Command)</value>
+  </data>
   <data name="CommandExceptionModifyCategory" xml:space="preserve">
     <value>Error al modificar el objeto categoria (Command)</value>
+  </data>
+  <data name="CommandExceptionModifyRestaurant" xml:space="preserve">
+    <value>Error al modificar un restaurante (Command)</value>
   </data>
   <data name="CommandExceptionSaveCategory" xml:space="preserve">
     <value>Error al guardar el objeto categoria</value>

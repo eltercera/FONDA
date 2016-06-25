@@ -217,13 +217,11 @@ namespace BackOffice.Seccion.Restaurant
             }
             catch (NullReferenceException e)
             {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionAddCategory(RestaurantErrors.ClassNameAddCategory, e);
+                Console.WriteLine(RestaurantErrors.CommandExceptionAddCategory);
             }
             catch (Exception e)
             {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionAddCategory(RestaurantErrors.ClassNameAddCategory, e);
+                Console.WriteLine(RestaurantErrors.CommandExceptionAddCategory);
             }
         }
         /// <summary>
@@ -241,13 +239,11 @@ namespace BackOffice.Seccion.Restaurant
             }
             catch (NullReferenceException e)
             {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionModifyCategory(RestaurantErrors.ClassNameModifyCategory, e);
+                Console.WriteLine(RestaurantErrors.CommandExceptionModifyCategory);
             }
             catch (Exception e)
             {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionModifyCategory(RestaurantErrors.ClassNameModifyCategory, e);
+                Console.WriteLine(RestaurantErrors.CommandExceptionModifyCategory);
             }
         }
 

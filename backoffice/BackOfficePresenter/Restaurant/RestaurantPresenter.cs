@@ -52,7 +52,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             catch (CommandExceptionGetRestaurants e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetRestaurants(RestaurantErrors.GetAllRestaurantsFondaDAOException, e);
+                throw new CommandExceptionGetRestaurants(RestaurantErrors.CommandExceptionGetRestaurants, e);
             }
             catch (InvalidTypeOfParameterException e)
             {
@@ -310,7 +310,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             IList<Currency> listCurrencies;
             IList<Zone> listZones;
 
-           
+           try { 
                 //Llamada al comando para generar la lista de todos las categorias
                 commandGetAllCategories = CommandFactory.GetCommandGetAllCategories("null");
                 commandGetAllCategories.Execute();
@@ -328,7 +328,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 commandGetAllZone.Execute();
                 //Resultado del receiver
                 listZones = (IList<Zone>)commandGetAllZone.Receiver;
-            /*}
+            }
             catch (CommandExceptionGetAllCategories e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -368,7 +368,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetFillDropdown, e);
-            }*/
+            }
 
             //Se limpia los Dropdownlist con los registros existentes
             foreach (RestaurantCategory category in listCategories)
@@ -849,7 +849,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
                 catch (CommandExceptionModifyRestaurant e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionModifyRestaurant(RestaurantErrors.ModifyRestaurantFondaDAOException, e);
+                    throw new CommandExceptionModifyRestaurant(RestaurantErrors.CommandExceptionModifyRestaurant, e);
                 }
                 catch (InvalidTypeOfParameterException e)
                 {
