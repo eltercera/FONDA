@@ -75,7 +75,7 @@ public class DetailRestaurantFragment extends BaseFragment {
      */
     public void setRestaurant(Restaurant restaurant) {
         tvRestName.setText(restaurant.getName());
-//        tvNames.setText(restaurant.getRestaurantCategory().getNameCategory());
+        tvNames.setText(restaurant.getRestaurantCategory().getName());
         tvType.setText(restaurant.getRestaurantCategory().getName());
         tvAvPr.setText(restaurant.getAddress());
         this.restaurant = restaurant;

@@ -35,7 +35,7 @@ public class FilterCategoryList extends ArrayAdapter<RestaurantCategory> {
 
         for (RestaurantCategory restaurantCategory: this.listCategory){
             if (counter == position){
-                txtTitle.setText(restaurantCategory.getNameCategory());
+                txtTitle.setText(restaurantCategory.getName());
             }
             counter++;
         }
