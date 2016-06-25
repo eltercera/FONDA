@@ -1,3 +1,4 @@
+
 package com.ds201625.fonda.views.adapters;
 
 import android.app.Activity;
@@ -6,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
@@ -43,7 +45,8 @@ public class ProfileViewItemList extends BaseArrayAdapter<Profile> implements IP
             profiles = getProfiles(presenter);
         }
         catch (Exception e) {
-            e.printStackTrace();
+            Toast.makeText(this.getContext(),e.getMessage(),
+                    Toast.LENGTH_SHORT).show();
         }
         if (profiles != null)
             addAll(profiles);
@@ -84,7 +87,7 @@ public class ProfileViewItemList extends BaseArrayAdapter<Profile> implements IP
     }
 
     @Override
-    public List<Profile> getProfiles(IProfileViewPresenter presenter) {
+    public List<Profile> getProfiles(IProfileViewPresenter presenter) throws Exception {
         Log.d(TAG,"Metodo getProfiles");
         List<Profile> resp = null;
         try {
@@ -93,6 +96,7 @@ public class ProfileViewItemList extends BaseArrayAdapter<Profile> implements IP
         }catch (Exception e)
         {
             Log.e(TAG,"Error al buscar los perfiles",e);
+            throw new Exception("Error al Buscar los Perfiles");
         }
         return resp;
     }

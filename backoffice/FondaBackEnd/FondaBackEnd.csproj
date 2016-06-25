@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>com.ds201625.fonda.BackEnd</RootNamespace>
-    <AssemblyName>FondaBackEnd</AssemblyName>
+    <AssemblyName>com.ds201625.fonda.BackEnd</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -81,11 +81,11 @@
   <ItemGroup>
     <Compile Include="Controllers\CategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\CostFilterFondaWebApiController.cs" />
-    <Compile Include="Controllers\ReservationsCommensalFondaWebApiController.cs" />
     <Compile Include="Controllers\FavoritesRestaurantsFondaWebApiController.cs" />
     <Compile Include="Controllers\MenuCategoryWebApiController.cs" />
     <Compile Include="Controllers\OrderAccountFondaWebApiController.cs" />
     <Compile Include="Controllers\PaymentFondaWebApiController.cs" />
+    <Compile Include="Controllers\ReservationsCommensalFondaWebApiController.cs" />
     <Compile Include="Controllers\RestaurantCategoryFilterFondaWebApiController.cs" />
     <Compile Include="Controllers\RestaurantZoneFilterFondaWebApiController - Copia.cs" />
     <Compile Include="Controllers\RestaurantFondaWebApiController.cs" />
@@ -97,6 +97,7 @@
     <Compile Include="Exceptions\DeleteProfileFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\DeleteTokenFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FindByEmailUserAccountFondaWebApiControllerException.cs" />
+    <Compile Include="Exceptions\FindCommensalReservationsFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FindFavoriteRestaurantFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FondaAuthLoginAttributeException.cs" />
     <Compile Include="Exceptions\FondaAuthTokenAttributeException.cs" />
@@ -105,7 +106,9 @@
     <Compile Include="Exceptions\GetCommensalFondaWebApiException.cs" />
     <Compile Include="Exceptions\GetCommensalIdFondaWebApiException.cs" />
     <Compile Include="Exceptions\GetOrderDetailException.cs" />
+    <Compile Include="Exceptions\GetPaymentHistoryByProfileException.cs" />
     <Compile Include="Exceptions\GetProfileFondaWebApiException.cs" />
+    <Compile Include="Exceptions\GetProfilesFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\GetTokenFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\GetTotalAccountException.cs" />
     <Compile Include="Exceptions\PayAccountException.cs" />

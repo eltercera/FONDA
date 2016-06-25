@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Web.Http;
 using System.Linq;
@@ -52,13 +53,13 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (GetCommensalFondaWebApiException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                PostProfileFondaWebApiControllerException ex = new PostProfileFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
+                GetProfilesFondaWebApiControllerException ex = new GetProfilesFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
                 return InternalServerError(ex);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                PostProfileFondaWebApiControllerException ex = new PostProfileFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
+                GetProfilesFondaWebApiControllerException ex = new GetProfilesFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
                 return InternalServerError(ex);
             }
             //Logger al Culminar el metodo
