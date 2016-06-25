@@ -98,6 +98,15 @@ namespace com.ds201625.fonda.DataAccess.Exceptions.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al cargar todas los restaurantes de la base de datos.
+        /// </summary>
+        internal static string GetAllRestaurantsFondaDAOException {
+            get {
+                return ResourceManager.GetString("GetAllRestaurantsFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al cargar todas las zonas de la base de datos.
         /// </summary>
         internal static string GetAllZonesFondaDAOException {

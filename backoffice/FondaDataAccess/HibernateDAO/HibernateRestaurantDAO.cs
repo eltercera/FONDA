@@ -18,15 +18,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         FactoryDAO.FactoryDAO _facDAO = FactoryDAO.FactoryDAO.Intance;
 
         /// <summary>
-        /// Devuelve todos los restaurantes
-        /// </summary>
-        /// <returns>Una lista de restaurantes</returns>
-        public IList<Restaurant> GetAll()
-        {
-            return FindAll();
-        }
-
-        /// <summary>
         /// Metodo para devolver todos los restaurantes 
         /// que se encuentran en una zona
         /// </summary>
@@ -38,7 +29,30 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return (FindAll(criterion));
         }
 
-        #region 3era Entrega Restaurant
+        #region Restaurant
+        /// <summary>
+        /// Devuelve todos los restaurantes
+        /// </summary>
+        /// <returns>Una lista de restaurantes</returns>
+        public IList<Restaurant> GetAll()
+        {
+            try
+            {
+                return FindAll();
+            }
+            catch (FindAllFondaDAOException e)
+            {
+                throw new GetAllRestaurantsFondaDAOException(ResourceRestaurantMessagesDAO.GetAllRestaurantsFondaDAOException, e);
+
+            }
+            catch (Exception e)
+            {
+                throw new GetAllRestaurantsFondaDAOException(ResourceRestaurantMessagesDAO.GetAllRestaurantsFondaDAOException, e);
+
+            }
+        }
+
+
         /// <summary>
         /// Genera un nuevo Restaurante a partir de los datos suministrados por el usuario
         /// </summary>

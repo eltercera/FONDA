@@ -48,12 +48,45 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
         {
             Command commandGetAllCategories;
             CleanTable();
-
-            //Llamada al comando para generar la lista de todos las categorias
-            commandGetAllCategories = CommandFactory.GetCommandGetAllCategories("null");
-            commandGetAllCategories.Execute();
-            //Resultado del receiver
-            IList<RestaurantCategory> listRest = (IList<RestaurantCategory>)commandGetAllCategories.Receiver;
+            IList<RestaurantCategory> listRest;
+            try
+            {
+                //Llamada al comando para generar la lista de todos las categorias
+                commandGetAllCategories = CommandFactory.GetCommandGetAllCategories("null");
+                commandGetAllCategories.Execute();
+                //Resultado del receiver
+                listRest = (IList<RestaurantCategory>)commandGetAllCategories.Receiver;
+            }
+            catch (CommandExceptionGetAllCategories e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetAllCategories, e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetAllCategories(RestaurantErrors.InvalidTypeParameterException, e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetAllCategories(RestaurantErrors.ParameterIndexOutRangeException, e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetAllCategories(RestaurantErrors.RequieredParameterNotFoundException, e);
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetAllCategories, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetAllCategories, e);
+            }
 
             int totalRows = listRest.Count; //tamano de la lista 
             int totalColumns = 1; //numero de columnas de la tabla

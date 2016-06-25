@@ -129,6 +129,9 @@
   <data name="GetAllCurrenciesFondaDAOException" xml:space="preserve">
     <value>Error al cargar todas las currencies de la base de datos</value>
   </data>
+  <data name="GetAllRestaurantsFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todas los restaurantes de la base de datos</value>
+  </data>
   <data name="GetAllZonesFondaDAOException" xml:space="preserve">
     <value>Error al cargar todas las zonas de la base de datos</value>
   </data>

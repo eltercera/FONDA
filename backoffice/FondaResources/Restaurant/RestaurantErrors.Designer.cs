@@ -88,7 +88,7 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comando para mostrar todos los objetos categorias.
+        ///   Looks up a localized string similar to Comando para mostrar todos los objetos categoria.
         /// </summary>
         public static string ClassNameGetAllCategories {
             get {
@@ -102,6 +102,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         public static string ClassNameGetAllCurrencies {
             get {
                 return ResourceManager.GetString("ClassNameGetAllCurrencies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comando para mostrar todos los objetos restaurante.
+        /// </summary>
+        public static string ClassNameGetAllRestaurants {
+            get {
+                return ResourceManager.GetString("ClassNameGetAllRestaurants", resourceCulture);
             }
         }
         
@@ -282,6 +291,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         public static string GetAllCurrenciesFondaDAOException {
             get {
                 return ResourceManager.GetString("GetAllCurrenciesFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al cargar todos los objetos restaurante.
+        /// </summary>
+        public static string GetAllRestaurantsFondaDAOException {
+            get {
+                return ResourceManager.GetString("GetAllRestaurantsFondaDAOException", resourceCulture);
             }
         }
         

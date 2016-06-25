@@ -20,6 +20,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
     {
         //enlace entre el modelo y la vista
         private IRestaurantModel _view;
+
         /// <summary>
         /// Constructor de la clase
         /// </summary>
@@ -37,15 +38,49 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
         /// </summary>
         public void LoadTable()
         {
-            Command commandGetAllRestaurants;
+            Command commandGetRestaurants;
             CleanTable();
+            IList<Restaurant> listRestaurant;
 
-            //Llamada al comando para generar la lista de todos los restaurantes
-            commandGetAllRestaurants = CommandFactory.GetCommandGetAllRestaurants("null");
-            commandGetAllRestaurants.Execute();
+            try
+            {
+                //Llamada al comando para generar la lista de todos los restaurantes
+                commandGetRestaurants = CommandFactory.GetCommandGetRestaurants("null");
+                commandGetRestaurants.Execute();
 
-            //Resultado del receiver
-            IList<Restaurant> listRestaurant = (IList<Restaurant>)commandGetAllRestaurants.Receiver;
+                //Resultado del receiver
+                listRestaurant = (IList<Restaurant>)commandGetRestaurants.Receiver;
+            }
+            catch (CommandExceptionGetRestaurants e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRestaurants(RestaurantErrors.GetAllRestaurantsFondaDAOException, e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRestaurants(RestaurantErrors.InvalidTypeParameterException, e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRestaurants(RestaurantErrors.ParameterIndexOutRangeException, e);
+            }
+            catch (RequieredParameterNotFoundException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRestaurants(RestaurantErrors.RequieredParameterNotFoundException, e);
+            }
+            catch (NullReferenceException e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRestaurants(RestaurantErrors.ClassNameGetAllRestaurants, e);
+            }
+            catch (Exception e)
+            {
+                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                throw new CommandExceptionGetRestaurants(RestaurantErrors.ClassNameGetAllRestaurants, e);
+            }
 
             int totalRows = listRestaurant.Count; //tamano de la lista 
             int totalColumns = 4; //numero de columnas de la tabla
@@ -249,6 +284,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetFillDropdown, e);
             }
+
             //Se llenan los Dropdownlist con los registros existentes
             foreach (RestaurantCategory category in listCategories)
             {

@@ -127,10 +127,13 @@
     <value>Comando para generar un objeto restaurante</value>
   </data>
   <data name="ClassNameGetAllCategories" xml:space="preserve">
-    <value>Comando para mostrar todos los objetos categorias</value>
+    <value>Comando para mostrar todos los objetos categoria</value>
   </data>
   <data name="ClassNameGetAllCurrencies" xml:space="preserve">
     <value>Comando para mostrar todos los objetos currency</value>
+  </data>
+  <data name="ClassNameGetAllRestaurants" xml:space="preserve">
+    <value>Comando para mostrar todos los objetos restaurante</value>
   </data>
   <data name="ClassNameGetAllZones" xml:space="preserve">
     <value>Comando para mostrar todos los objetos zona</value>
@@ -194,6 +197,9 @@
   </data>
   <data name="GetAllCurrenciesFondaDAOException" xml:space="preserve">
     <value>Error al cargar todos los objetos currency</value>
+  </data>
+  <data name="GetAllRestaurantsFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todos los objetos restaurante</value>
   </data>
   <data name="GetAllZonesFondaDAOException" xml:space="preserve">
     <value>Error al cargar todos los objetos zona</value>

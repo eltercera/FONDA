@@ -297,7 +297,10 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandModifyCategory(receiver);
         }
-
+        public static Command GetCommandGetRestaurants(object receiver)
+        {
+            return new CommandGetRestaurants(receiver);
+        }
         #endregion
 
         #region Menu
