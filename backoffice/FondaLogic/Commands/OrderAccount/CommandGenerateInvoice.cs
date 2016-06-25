@@ -51,7 +51,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 if (payment.Amount >= totalInvoice)
                 {
                     //ESTE CONSTRUCTOR DEBO REVISARLO
-                    Invoice invoice = EntityFactory.GetInvoice(payment, profile, payment.Amount, totalInvoice, null, 100, null);
+                    Invoice invoice = EntityFactory.GetInvoice(payment, profile, totalInvoice, (account.GetAmount())*0.12f, null, 100, null);
 
                     _invoice = _accountDAO.SaveInvoice(invoice, orderId, restaurantId);
                 }

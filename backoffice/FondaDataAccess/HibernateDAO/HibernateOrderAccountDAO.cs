@@ -161,6 +161,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
             IInvoiceDao _invoiceDAO = _facDAO.GetInvoiceDao();
             int _number = 0;
+            float tip = 0;
             Restaurant _restaurant = new Restaurant();
             _restaurantDAO = _facDAO.GetRestaurantDAO();
             ICashPaymentDAO _cashPaymentDAO = _facDAO.GetCashPaymentDAO();
@@ -180,6 +181,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 else if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
                 {
                     _creditPaymentDAO.Save((CreditCardPayment)_invoice.Payment);
+                   // tip = ((CreditCardPayment)_invoice.Payment).Tip;
                 }
 
                 _invoice = (Invoice)EntityFactory.GetInvoice(_invoice.Payment, _invoice.Profile,
