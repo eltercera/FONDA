@@ -123,6 +123,15 @@
   <data name="GenerateRestaurantFondaDAOException" xml:space="preserve">
     <value>Error al generar el objeto restaurante</value>
   </data>
+  <data name="GetAllCategoriesFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todas las categorias de la base de datos</value>
+  </data>
+  <data name="GetAllCurrenciesFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todas las currencies de la base de datos</value>
+  </data>
+  <data name="GetAllZonesFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todas las zonas de la base de datos</value>
+  </data>
   <data name="ModifyCategoryFondaDAOException" xml:space="preserve">
     <value>Error al modificar el objeto categoria</value>
   </data>

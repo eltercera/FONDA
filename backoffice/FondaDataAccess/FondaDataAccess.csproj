@@ -93,6 +93,9 @@
     <Compile Include="Exceptions\OrderAccount\ReleaseTableFondaDAOException.cs" />
     <Compile Include="Exceptions\Restaurant\AddCategoryFondaDAOException.cs" />
     <Compile Include="Exceptions\Restaurant\GenerateRestaurantFondaDAOException.cs" />
+    <Compile Include="Exceptions\Restaurant\GetAllCategoriesFondaDAOException.cs" />
+    <Compile Include="Exceptions\Restaurant\GetAllCurrenciesFondaDAOException.cs" />
+    <Compile Include="Exceptions\Restaurant\GetAllZonesFondaDAOException.cs" />
     <Compile Include="Exceptions\Restaurant\ModifyCategoryFondaDAOException.cs" />
     <Compile Include="Exceptions\Restaurant\ModifyRestaurantFondaDAOException.cs" />
     <Compile Include="Exceptions\Restaurant\ResourceRestaurantMessagesDAO.Designer.cs">

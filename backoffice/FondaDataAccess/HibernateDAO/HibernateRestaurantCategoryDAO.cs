@@ -6,18 +6,33 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using NHibernate.Criterion;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.DataAccess.Exceptions.Restaurant;
+using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
     public class HibernateRestaurantCategoryDAO : HibernateNounBaseEntityDAO<RestaurantCategory>, IRestaurantCategoryDAO
     {
+        #region Restaurant
         /// <summary>
         /// Devuelve la lista de todas las Categorias por Restaurante de la Base de Datos
         /// </summary>
         /// <returns>Lista de tipo RestaurantCategory</returns>
         public IList<RestaurantCategory> GetAll()
         {
-            return FindAll();
+            try
+            {
+                return FindAll();
+            }
+            catch (FindAllFondaDAOException e)
+            {
+                throw new GetAllCategoriesFondaDAOException(ResourceRestaurantMessagesDAO.GetAllCategoriesFondaDAOException, e);
+
+            }
+            catch (Exception e)
+            {
+                throw new GetAllCategoriesFondaDAOException(ResourceRestaurantMessagesDAO.GetAllCategoriesFondaDAOException, e);
+
+            }
         }
 
         /// <summary>
@@ -27,7 +42,21 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Objeto tipo RestaurantCategory</returns>
         public RestaurantCategory GetRestaurantCategory(string name)
         {
-            RestaurantCategory category = FindBy("Name", name);
+            RestaurantCategory category;
+            try
+            {
+                category = FindBy("Name", name);
+            }
+            catch (FindByFondaDAOException e)
+            {
+                throw new GetAllCategoriesFondaDAOException(ResourceRestaurantMessagesDAO.GetAllCategoriesFondaDAOException, e);
+
+            }
+            catch (Exception e)
+            {
+                throw new GetAllCategoriesFondaDAOException(ResourceRestaurantMessagesDAO.GetAllCategoriesFondaDAOException, e);
+
+            }
             if (category == null)
             {
                 try
@@ -49,6 +78,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
             return category;
         }
+
         /// <summary>
         /// Metodo para modificar una categoria 
         /// </summary>
@@ -80,10 +110,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
 
         }
+        #endregion
 
-		#region 3era entrga
+        #region 3era entrga
 
-		public IList<RestaurantCategory> FindAllWithRestaurants (
+        public IList<RestaurantCategory> FindAllWithRestaurants (
 			string query = null, int max = -1, int page = 1)
 		{
 			DetachedCriteria critRest = DetachedCriteria.For<Restaurant> ("rest")

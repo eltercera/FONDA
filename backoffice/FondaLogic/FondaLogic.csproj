@@ -136,6 +136,9 @@
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionValidateProfileByCommensal.cs" />
     <Compile Include="FondaCommandException\Reservation\CommandExceptionGetTables.cs" />
     <Compile Include="FondaCommandException\Restaurant\CommandExceptionAddCategory.cs" />
+    <Compile Include="FondaCommandException\Restaurant\CommandExceptionGetAllCategories.cs" />
+    <Compile Include="FondaCommandException\Restaurant\CommandExceptionGetAllCurrencies.cs" />
+    <Compile Include="FondaCommandException\Restaurant\CommandExceptionGetAllZones.cs" />
     <Compile Include="FondaCommandException\Restaurant\CommandExceptionModifyCategory.cs" />
     <Compile Include="FondaCommandException\Restaurant\CommandExceptionModifyRestaurant.cs" />
     <Compile Include="FondaCommandException\Restaurant\CommandExceptionGenerateRestaurant.cs" />

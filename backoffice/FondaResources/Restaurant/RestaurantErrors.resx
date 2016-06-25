@@ -126,6 +126,27 @@
   <data name="ClassNameGenerateRestaurant" xml:space="preserve">
     <value>Comando para generar un objeto restaurante</value>
   </data>
+  <data name="ClassNameGetAllCategories" xml:space="preserve">
+    <value>Comando para mostrar todos los objetos categorias</value>
+  </data>
+  <data name="ClassNameGetAllCurrencies" xml:space="preserve">
+    <value>Comando para mostrar todos los objetos currency</value>
+  </data>
+  <data name="ClassNameGetAllZones" xml:space="preserve">
+    <value>Comando para mostrar todos los objetos zona</value>
+  </data>
+  <data name="ClassNameGetFillDropdown" xml:space="preserve">
+    <value>Metodo para listar</value>
+  </data>
+  <data name="ClassNameGetFillDropdownCategories" xml:space="preserve">
+    <value>Error al listar categorias</value>
+  </data>
+  <data name="ClassNameGetFillDropdownCurrencies" xml:space="preserve">
+    <value>Error al listar currencies</value>
+  </data>
+  <data name="ClassNameGetFillDropdownZones" xml:space="preserve">
+    <value>Error al listar zonas</value>
+  </data>
   <data name="ClassNameGetReservations" xml:space="preserve">
     <value>CommandGetTables</value>
     <comment>Comando para obtener las mesasde un Restaurante</comment>
@@ -167,6 +188,15 @@
   </data>
   <data name="GenerateRestaurantFondaDAOException" xml:space="preserve">
     <value>Error al generar el objeto restaurante (DAO)</value>
+  </data>
+  <data name="GetAllCategoriesFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todos los objetos categoria</value>
+  </data>
+  <data name="GetAllCurrenciesFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todos los objetos currency</value>
+  </data>
+  <data name="GetAllZonesFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todos los objetos zona</value>
   </data>
   <data name="InvalidTypeParameterException" xml:space="preserve">
     <value>Error tipo de parametro inválido</value>

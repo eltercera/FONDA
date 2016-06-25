@@ -80,6 +80,33 @@ namespace com.ds201625.fonda.DataAccess.Exceptions.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al cargar todas las categorias de la base de datos.
+        /// </summary>
+        internal static string GetAllCategoriesFondaDAOException {
+            get {
+                return ResourceManager.GetString("GetAllCategoriesFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al cargar todas las currencies de la base de datos.
+        /// </summary>
+        internal static string GetAllCurrenciesFondaDAOException {
+            get {
+                return ResourceManager.GetString("GetAllCurrenciesFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al cargar todas las zonas de la base de datos.
+        /// </summary>
+        internal static string GetAllZonesFondaDAOException {
+            get {
+                return ResourceManager.GetString("GetAllZonesFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al modificar el objeto categoria.
         /// </summary>
         internal static string ModifyCategoryFondaDAOException {

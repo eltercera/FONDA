@@ -88,6 +88,69 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comando para mostrar todos los objetos categorias.
+        /// </summary>
+        public static string ClassNameGetAllCategories {
+            get {
+                return ResourceManager.GetString("ClassNameGetAllCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comando para mostrar todos los objetos currency.
+        /// </summary>
+        public static string ClassNameGetAllCurrencies {
+            get {
+                return ResourceManager.GetString("ClassNameGetAllCurrencies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comando para mostrar todos los objetos zona.
+        /// </summary>
+        public static string ClassNameGetAllZones {
+            get {
+                return ResourceManager.GetString("ClassNameGetAllZones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metodo para listar.
+        /// </summary>
+        public static string ClassNameGetFillDropdown {
+            get {
+                return ResourceManager.GetString("ClassNameGetFillDropdown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al listar categorias.
+        /// </summary>
+        public static string ClassNameGetFillDropdownCategories {
+            get {
+                return ResourceManager.GetString("ClassNameGetFillDropdownCategories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al listar currencies.
+        /// </summary>
+        public static string ClassNameGetFillDropdownCurrencies {
+            get {
+                return ResourceManager.GetString("ClassNameGetFillDropdownCurrencies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al listar zonas.
+        /// </summary>
+        public static string ClassNameGetFillDropdownZones {
+            get {
+                return ResourceManager.GetString("ClassNameGetFillDropdownZones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGetTables.
         /// </summary>
         public static string ClassNameGetReservations {
@@ -201,6 +264,33 @@ namespace com.ds201625.fonda.Resources.FondaResources.Restaurant {
         public static string GenerateRestaurantFondaDAOException {
             get {
                 return ResourceManager.GetString("GenerateRestaurantFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al cargar todos los objetos categoria.
+        /// </summary>
+        public static string GetAllCategoriesFondaDAOException {
+            get {
+                return ResourceManager.GetString("GetAllCategoriesFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al cargar todos los objetos currency.
+        /// </summary>
+        public static string GetAllCurrenciesFondaDAOException {
+            get {
+                return ResourceManager.GetString("GetAllCurrenciesFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error al cargar todos los objetos zona.
+        /// </summary>
+        public static string GetAllZonesFondaDAOException {
+            get {
+                return ResourceManager.GetString("GetAllZonesFondaDAOException", resourceCulture);
             }
         }
         
