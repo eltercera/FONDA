@@ -1,9 +1,11 @@
 package com.ds201625.fonda.domains;
 
+import java.io.Serializable;
+
 /**
  * Class base para las entidades.
  */
-public abstract class BaseEntity extends Object {
+public abstract class BaseEntity extends Object implements Serializable {
 
     /**
      * Identificador de la entidad.

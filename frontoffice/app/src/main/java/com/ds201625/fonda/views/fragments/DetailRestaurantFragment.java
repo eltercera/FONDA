@@ -63,6 +63,11 @@ public class DetailRestaurantFragment extends BaseFragment {
         tvType = (TextView) form.findViewById(R.id.text_view_restaurant_type);
         tvZone = (TextView) form.findViewById(R.id.text_view_restaurant_zone);
 
+        tvRestName.setText(restaurant.getName());
+        //tvNames.setText(restaurant.getRestaurantCategory().getName());
+        tvType.setText(restaurant.getRestaurantCategory().getName());
+        //tvAvPr.setText(restaurant.getAddress());
+
         //Falta Horario
         return form;
     }
@@ -72,10 +77,10 @@ public class DetailRestaurantFragment extends BaseFragment {
      * @param restaurant restaurant a mostrar
      */
     public void setRestaurant(Restaurant restaurant) {
-        tvRestName.setText(restaurant.getName());
+        /*tvRestName.setText(restaurant.getName());
         tvNames.setText(restaurant.getRestaurantCategory().getName());
         tvType.setText(restaurant.getRestaurantCategory().getName());
-        tvAvPr.setText(restaurant.getAddress());
+        tvAvPr.setText(restaurant.getAddress());*/
         this.restaurant = restaurant;
     }
 

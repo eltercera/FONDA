@@ -2,46 +2,59 @@ package com.ds201625.fonda.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.AddFavoriteRestaurantFondaWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.DeleteFavoriteRestaurantFondaWebApiControllerException;
-import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
-import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
-import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.logic.SessionData;
-import com.google.gson.Gson;
+import com.ds201625.fonda.views.contracts.DetailRestaurantActivityContract;
+import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
+import com.ds201625.fonda.views.presenters.DetailRestaurantActivityPresenter;
 
-import java.util.List;
 
-/**
- * Created by jesus on 20/04/16.
- */
-public class DetailRestaurantActivity extends BaseNavigationActivity{
+public class DetailRestaurantActivity extends BaseNavigationActivity
+    implements DetailRestaurantActivityContract{
 
-    //Declaracion de varialbes globales de la clase
-
-    private MenuItem setAsFavorite;
+    /*private MenuItem setAsFavorite;
     private MenuItem makeReserve;
     private Toolbar tb;
     private Restaurant selectedRestaurant;
     private TextView tvRestaurantName;
     private String TAG = "DetailRestaurantActivity";
-    private Commensal logedCommensal;
+    private Commensal logedCommensal;*/
+
+    /**
+     * Componentes de vista
+     */
+    private View mainContent;
+    private MenuItem favoriteMenuItem;
+    private MenuItem reserveMenuItem;
+    private DetailRestaurantFragment restaurantFragment;
+    private Toolbar tb;
+    private FragmentManager fm;
+
+    private DetailRestaurantActivityPresenter presenter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_detail_restaurant);
+        super.onCreate(savedInstanceState);
+
+        //obtencion de componentes
+        this.mainContent = findViewById(R.id.fragment_container);
+        this.tb = (Toolbar)findViewById(R.id.toolbar);
+        this.fm = getSupportFragmentManager();
+        tb.setVisibility(View.VISIBLE);
+
+        this.presenter = new DetailRestaurantActivityPresenter
+                ((Restaurant) getIntent().getSerializableExtra("restaurant"),this);
+
+        this.presenter.onCreate();
+        /*setContentView(R.layout.activity_detail_restaurant);
         super.onCreate(savedInstanceState);
         String jsonMyObject = null;
         String jsonMyOtherObject = null;
@@ -63,7 +76,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
         tvRestaurantName = (TextView)findViewById(R.id.text_view_restaurant_name);
 
-        setupDataOfView();
+        setupDataOfView();*/
     }
 
     /**
@@ -73,7 +86,17 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        Log.d(TAG,"Esta en onCreateOptionsMenu");
+        getMenuInflater().inflate(R.menu.detail_restaurant, menu);
+
+        //obtencion de componenes
+        this.favoriteMenuItem = menu.findItem(R.id.action_set_favorite);
+        this.reserveMenuItem = menu.findItem(R.id.action_make_order);
+
+        this.favoriteMenuItem.setVisible(true);
+        this.reserveMenuItem.setVisible(true);
+        return true;
+
+        /*Log.d(TAG,"Esta en onCreateOptionsMenu");
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.detail_restaurant, menu);
         makeReserve = menu.findItem(R.id.action_make_order);
@@ -161,43 +184,46 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
             }
 
         });
-        return true;
+        return true;*/
     }
 
-    /**
-     * Opciones y acciones del menu en el toolbars
-     * @param item
-     * @return
-     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_favorite_save:
+                presenter.setFavorite();
+                break;
+
+            case R.id.action_make_order:
+                presenter.goToReserve();
+                break;
+
+            default:
+
                 break;
         }
         return true;
     }
 
-    /**
-     * Le asigna los valores del restaurante seleccionado a la vista..
-     * @param
-     * @return
-     */
-    private void setupDataOfView(){
+    @Override
+    public void setDetailsViewOf(Restaurant restaurant) {
+        if (this.restaurantFragment == null)
+            this.restaurantFragment = new DetailRestaurantFragment();
 
-        try {
-            tvRestaurantName.setText(selectedRestaurant.getName());
-        }catch (NullPointerException e){
-            e.printStackTrace();
-        }
-    };
+        this.restaurantFragment.setRestaurant(restaurant);
 
-    /**
-     * Devuelve el estado del restaurante seleccionado (si es favorito) con respecto al usuario.
-     * @param
-     * @return Boolean.
-     */
-    public boolean isFavorite(){
+        fm.beginTransaction()
+            .replace(R.id.fragment_container,this.restaurantFragment)
+                .addToBackStack(null)
+            .commit();
+        fm.executePendingTransactions();
+
+    }
+
+
+
+    /*public boolean isFavorite(){
     try{
         FavoriteRestaurantService allFavoriteRestaurant = FondaServiceFactory.getInstance().
                 getFavoriteRestaurantService();
@@ -214,15 +240,10 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
         e.printStackTrace();
     }
         return false;
-    }
+    }*/
 
 
-    /**
-     * Devuelve el Commensal logeado.
-     * @param
-     * @return Commensal.
-     */
-    private Commensal getLogedCommensal(){
+    /*private Commensal getLogedCommensal(){
         Commensal log= SessionData.getInstance().getCommensal();
         String emailToWebService;
         Commensal toReturn = null;
@@ -245,10 +266,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
 
         }
         return toReturn;
-    }
+    }*/
 
-    private void CallReserveActivity(){
-
-    }
 }
 

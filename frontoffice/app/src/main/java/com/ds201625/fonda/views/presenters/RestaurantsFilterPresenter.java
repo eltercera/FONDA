@@ -109,7 +109,7 @@ public class RestaurantsFilterPresenter {
     public void onItemClick(int position) {
         Log.d("RestFilPresenter","Seleccionada posicion " + position + " de la lista.");
         if (this.showRestaurant) {
-
+            this.fragment.openRestaurantActiviy((Restaurant) restaurantAdapter.getItem(position));
         } else {
             int id = ((BaseEntity) itemFilterAdapter.getItem(position)).getId();
             this.textSearch = null;

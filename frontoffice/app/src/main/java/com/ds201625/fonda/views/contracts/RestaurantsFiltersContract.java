@@ -2,6 +2,7 @@ package com.ds201625.fonda.views.contracts;
 
 import android.content.Context;
 import android.widget.ListView;
+import com.ds201625.fonda.domains.Restaurant;
 
 /**
  * Contrato de vista de busqueda de restaurantes
@@ -28,6 +29,8 @@ public interface RestaurantsFiltersContract {
     void displayMsj(String msj);
 
     void setListViewEmtyType(ListViewEmtyType type);
+
+    void openRestaurantActiviy(Restaurant restaurant);
 
     enum ListViewEmtyType {
         NORMAL,

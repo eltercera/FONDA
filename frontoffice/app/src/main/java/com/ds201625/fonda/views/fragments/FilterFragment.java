@@ -10,6 +10,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.views.contracts.RestaurantsFiltersContract;
 import com.ds201625.fonda.views.presenters.RestaurantsFilterPresenter;
 
@@ -128,6 +129,14 @@ public class FilterFragment extends BaseFragment
     }
 
     /**
+     *
+     * @param restaurant
+     */
+    public void openRestaurantActiviy(Restaurant restaurant) {
+        activity.openRestaurantActiviy(restaurant);
+    }
+
+    /**
      * Proxy search
      * @param query string de busqueda
      */
@@ -185,5 +194,6 @@ public class FilterFragment extends BaseFragment
 
         void setErrorView();
 
+        void openRestaurantActiviy(Restaurant restaurant);
     }
 }

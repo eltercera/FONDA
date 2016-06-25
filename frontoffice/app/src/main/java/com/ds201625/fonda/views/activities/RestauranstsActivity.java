@@ -1,5 +1,6 @@
 package com.ds201625.fonda.views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.views.adapters.BaseSectionsPagerAdapter;
 import com.ds201625.fonda.views.fragments.FilterFragment;
 import com.ds201625.fonda.views.presenters.RestaurantsFilterPresenter;
@@ -179,5 +181,12 @@ public class RestauranstsActivity extends BaseNavigationActivity
         this.viewPager.setVisibility(View.GONE);
         this.emtyLayout.setVisibility(View.GONE);
         this.errorLayout.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void openRestaurantActiviy(Restaurant restaurant) {
+        Intent intent = new Intent(this,DetailRestaurantActivity.class);
+        intent.putExtra("restaurant", restaurant);
+        this.startActivity(intent);
     }
 }
