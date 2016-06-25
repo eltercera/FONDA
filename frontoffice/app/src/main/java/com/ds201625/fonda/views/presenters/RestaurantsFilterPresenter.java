@@ -1,6 +1,10 @@
 package com.ds201625.fonda.views.presenters;
 
 import android.util.Log;
+
+import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.UnknownServerErrorException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.ServerErrorException;
 import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.NounBaseEntity;
 import com.ds201625.fonda.domains.Restaurant;
@@ -83,6 +87,7 @@ public class RestaurantsFilterPresenter {
             this.fragment.getListView().setAdapter(this.itemFilterAdapter);
             this.showRestaurant = false;
         }
+
         onRefresh();
     }
 
@@ -178,6 +183,8 @@ public class RestaurantsFilterPresenter {
     private void fillList() {
         Command cmd = null;
 
+        fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.NORMAL);
+
         if (this.showRestaurant) {
             cmd = FondaCommandFactory.getInstance().getRestaurantsCommand();
 
@@ -189,6 +196,7 @@ public class RestaurantsFilterPresenter {
                 cmd.setParameter(3,this.idCat);
             } catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
                 this.fragment.displayMsj("Error interno: " + e.getMessage());
+                fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.NO_CONNECTION);
                 return;
             }
 
@@ -196,6 +204,10 @@ public class RestaurantsFilterPresenter {
                 cmd.run();
             } catch (Exception e) {
                 this.fragment.displayMsj("Error Al obtener los datos: " + e.getMessage());
+                if (e.getClass() == RestClientException.class
+                        || e.getClass() == ServerErrorException.class
+                        || e.getClass() ==UnknownServerErrorException.class )
+                    fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.NO_CONNECTION);
                 return;
             }
 
@@ -204,10 +216,11 @@ public class RestaurantsFilterPresenter {
                     this.listFull = true;
                 else {
                     restaurantAdapter.addAll((List<Restaurant>) cmd.getResult());
-                    this.restaurantAdapter.notifyDataSetChanged();
-                    this.fragment.getListView().refreshDrawableState();
                 }
+                this.restaurantAdapter.notifyDataSetChanged();
             }
+            if (restaurantAdapter.isEmpty())
+                fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.EMPTY);
         } else {
             switch (this.type) {
                 case ZONE:
@@ -234,6 +247,10 @@ public class RestaurantsFilterPresenter {
                 cmd.run();
             } catch (Exception e) {
                 this.fragment.displayMsj("Error Al obtener los datos: " + e.getMessage());
+                if (e.getClass() == RestClientException.class
+                        || e.getClass() == ServerErrorException.class
+                        || e.getClass() == UnknownServerErrorException.class )
+                    fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.NO_CONNECTION);
                 return;
             }
 
@@ -243,10 +260,11 @@ public class RestaurantsFilterPresenter {
                     this.listFull = true;
                 } else {
                     this.itemFilterAdapter.addAll(list);
-                    this.itemFilterAdapter.notifyDataSetChanged();
-                    this.fragment.getListView().refreshDrawableState();
                 }
+                this.itemFilterAdapter.notifyDataSetChanged();
             }
+            if (itemFilterAdapter.isEmpty())
+                fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.EMPTY);
         }
 
     }

@@ -26,4 +26,12 @@ public interface RestaurantsFiltersContract {
     void closeSearchView();
 
     void displayMsj(String msj);
+
+    void setListViewEmtyType(ListViewEmtyType type);
+
+    enum ListViewEmtyType {
+        NORMAL,
+        NO_CONNECTION,
+        EMPTY
+    }
 }
