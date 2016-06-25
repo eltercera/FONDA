@@ -786,7 +786,8 @@
     <comment>Mensaje de exito para FindInvoicesByRestaurant</comment>
   </data>
   <data name="SuccessMessageGenerateNumberInvoice" xml:space="preserve">
-    <value />
+    <value>Se ha generado el número de la factura correctamente</value>
+    <comment>Mensaje de exito para GenerateNumberInvoice</comment>
   </data>
   <data name="MessageGetDishesByAccountFondaDAOException" xml:space="preserve">
     <value>Error en la base de datos al obtener los platillos de una cuenta</value>
@@ -814,5 +815,84 @@
   </data>
   <data name="MessagePayAccountException" xml:space="preserve">
     <value>Error al pagar la orden abierta</value>
+  </data>
+  <data name="address" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="filename" xml:space="preserve">
+    <value>Factura_{0}_{1}.pdf</value>
+    <comment>Nombre del archivo pdf</comment>
+  </data>
+  <data name="header" xml:space="preserve">
+    <value>Factura Restaurante {0}</value>
+    <comment>Encabezado de la factura</comment>
+  </data>
+  <data name="Invoice" xml:space="preserve">
+    <value>Factura</value>
+    <comment>Nombre del titulo del documento pdf</comment>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+    <comment>Recurso general para nombre</comment>
+  </data>
+  <data name="InvoiceRestaurant" xml:space="preserve">
+    <value>Restaurante {0}</value>
+    <comment>Nombre del creador del documento</comment>
+  </data>
+  <data name="Ssn" xml:space="preserve">
+    <value>Rif</value>
+    <comment>Rif del restaurante</comment>
+  </data>
+  <data name="ContentAttachment" xml:space="preserve">
+    <value>attachment; filename=Factura_{0}_{1}_.pdf</value>
+    <comment>Nombre archivo adjuntado</comment>
+  </data>
+  <data name="ContentDisposition" xml:space="preserve">
+    <value>Content-Disposition</value>
+    <comment>Disposicion del contenido</comment>
+  </data>
+  <data name="ContentType" xml:space="preserve">
+    <value>application/pdf</value>
+    <comment>Tipo de archivo enviado</comment>
+  </data>
+  <data name="Dish" xml:space="preserve">
+    <value>Platillo</value>
+    <comment>Nombre del platillo</comment>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Apellido</value>
+    <comment>Apellido del usuario</comment>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Precio</value>
+    <comment>Precio del platillo</comment>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Cantidad</value>
+    <comment>Cantidad de platillo</comment>
+  </data>
+  <data name="Restaurant" xml:space="preserve">
+    <value>Restaurante</value>
+    <comment>Restaurante</comment>
+  </data>
+  <data name="Tax" xml:space="preserve">
+    <value>IVA (12%)</value>
+    <comment>Impuesto de la factura</comment>
+  </data>
+  <data name="Tip" xml:space="preserve">
+    <value>Propina</value>
+    <comment>Propina de la factura</comment>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+    <comment>Monto total de la factura (Impuesto+Total)</comment>
+  </data>
+  <data name="TotalCost" xml:space="preserve">
+    <value>Total + IVA + Propina</value>
+    <comment>Costo total de la factura</comment>
+  </data>
+  <data name="UId" xml:space="preserve">
+    <value>C.I</value>
+    <comment>Cedula del usuario</comment>
   </data>
 </root>
