@@ -39,7 +39,8 @@ namespace FondaBackEndLogicTest
             _commensal = EntityFactory.GetCommensal();
             _token = null;
             _commensalDAO = FactoryDAO.Intance.GetCommensalDAO();
-            _commensal = (Commensal)_commensalDAO.FindById(1);
+            _commensal = generateCommensal();
+            _commensalDAO.Save(_commensal);
             _idToken = 0;
         }
 
@@ -49,7 +50,7 @@ namespace FondaBackEndLogicTest
         [Test]
         public void GetTokenCommandTest()
         {
-            int _length = _commensal.SesionTokens.Count;
+            Assert.AreEqual(0, _commensal.SesionTokens.Count);
             _getToken = BackendFactoryCommand.Instance.GetTokenCommand();
             _getToken.SetParameter(0, _commensal);
             _getToken.Run();
@@ -58,7 +59,7 @@ namespace FondaBackEndLogicTest
             _idToken = _result.Id;
             _token = _result;
             Assert.AreNotEqual(0, _result.Id);
-            Assert.AreNotEqual(_length, _commensal.SesionTokens.Count);
+            Assert.AreEqual(1, _commensal.SesionTokens.Count);
         }
 
         /// <summary>
@@ -68,13 +69,14 @@ namespace FondaBackEndLogicTest
         public void DeleteTokenCommandTest()
         {
             _token = EntityFactory.GetToken();
+            Assert.AreEqual(0, _commensal.SesionTokens.Count);
             Assert.False(_commensal.SesionTokens.Contains(_token));
             //Se agrega el Token al commensal
             _commensal.AddToken(_token);
 
             //Se guardan los cambios
             _commensalDAO.Save(_commensal);
-            
+            Assert.AreEqual(1, _commensal.SesionTokens.Count);            
             Assert.True(_commensal.SesionTokens.Contains(_token));
             int _length = _commensal.SesionTokens.Count;
             _deleteToken = BackendFactoryCommand.Instance.DeleteTokenCommensalCommand();
@@ -82,6 +84,7 @@ namespace FondaBackEndLogicTest
             _deleteToken.SetParameter(1, _token);
             _deleteToken.Run();
 
+            Assert.AreEqual(0, _commensal.SesionTokens.Count);
             Assert.False(_commensal.SesionTokens.Contains(_token));
             Assert.AreNotEqual(_length, _commensal.SesionTokens.Count);
         }
@@ -92,13 +95,14 @@ namespace FondaBackEndLogicTest
         [Test]
         public void GetTokenStrCommandTest()
         {
+            Assert.AreEqual(0, _commensal.SesionTokens.Count);
             _token = EntityFactory.GetToken();
             //Se agrega el Token al commensal
             _commensal.AddToken(_token);
 
             //Se guardan los cambios
             _commensalDAO.Save(_commensal);
-
+            Assert.AreEqual(1, _commensal.SesionTokens.Count);
             string _strToken = _token.StrToken;
             _getTokenStr = BackendFactoryCommand.Instance.GetTokenStrCommands();
             _getTokenStr.SetParameter(0, _strToken);

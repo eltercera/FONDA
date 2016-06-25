@@ -67,15 +67,15 @@ namespace FondaBackEndLogicTest
         [Test]
         public void GetCommensalCommandTest()
         {
-
-            _commensal.Id = 1;
+            _commensalDAO.Save(_commensal);
+            _idCommensal = _commensal.Id;
             _getCommensal.SetParameter(0, _commensal);
             _getCommensal.Run();
             Commensal _result = (Commensal)_getCommensal.Result;
 
             Assert.NotNull(_result);
             Assert.AreNotEqual(0, _result.Id);
-            Assert.AreEqual(1, _result.Id);
+            Assert.AreEqual(_idCommensal, _result.Id);
         }
 
         /// <summary>
