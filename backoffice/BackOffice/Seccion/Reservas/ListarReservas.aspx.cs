@@ -58,9 +58,17 @@ namespace BackOffice.Seccion.Reservas
         /// </summary>
         string IReservationsContract.Session
         {
-            get { return Session[ReservationResources.SessionIdReservation].ToString(); }
+            get
+            {
+                return Session[ReservationResources.SessionIdReservation].ToString();
+            }
 
-            set { Session[ReservationResources.SessionIdReservation] = value; }
+            set
+            {
+                //Session[ReservationResources.SessionIdReservation] = value;
+
+                throw new NotImplementedException();
+            }
         }
 
         public string SessionRestaurant
@@ -104,21 +112,13 @@ namespace BackOffice.Seccion.Reservas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session[ResourceLogin.sessionUserID] != null)
-            {
-                if ((Session[ResourceLogin.sessionRol].ToString() == "Sistema") || (Session[ResourceLogin.sessionRol].ToString() == "Restaurante"))
-                {
-                    //Llama al presentador para llenar la tabla reservas
+            //TODO (Reservation): Dejar que entre como sistema
+            //Llama al presentador para llenar la tabla reservas
+            if (Session[ResourceLogin.sessionUserID] != null &&           
+                 Session[ResourceLogin.sessionRestaurantID] != null)       
                     _presenter.GetReservations();
-                }
                 else
-                {
-                    Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
-                }
-            }
-            else
-                Response.Redirect(RecursoMaster.addressLogin);
-
+                    Response.Redirect(RecursoMaster.addressLogin);
         }
 
         protected void ButtonCancelReservation_Click(object sender, EventArgs e)
