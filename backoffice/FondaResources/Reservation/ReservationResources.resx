@@ -158,7 +158,7 @@
     <comment>Nombre de columna de acciones</comment>
   </data>
   <data name="RefreshURL" xml:space="preserve">
-    <value>../Reserva/ListarReservas.aspx?Id=</value>
+    <value>../Reservas/ListarReservas.aspx?Id=</value>
     <comment>Refrescar la pagina</comment>
   </data>
   <data name="StatusColumn" xml:space="preserve">

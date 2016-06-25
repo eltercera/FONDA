@@ -160,7 +160,7 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ../Reserva/ListarReservas.aspx?Id=.
+        ///   Looks up a localized string similar to ../Reservas/ListarReservas.aspx?Id=.
         /// </summary>
         public static string RefreshURL {
             get {
