@@ -2,12 +2,16 @@ package com.ds201625.fonda.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
+
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -40,10 +44,10 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
         txtName.setText(item.getName());
         txtAdd.setText(item.getAddress());
         txtCategory.setText(item.getRestaurantCategory().getName());
-        String image = item.getLogo();
-        Context context = icon.getContext();
-        int idImage = context.getResources().getIdentifier(image, "mipmap", context.getPackageName());
-        icon.setImageResource(idImage);
+        String path = item.getLogo();
+        Drawable image = loadImageFromWebOperations(path);
+        if (image == null) icon.setImageResource(R.mipmap.ic_launcher);
+        else icon.setImageDrawable(image);
         return convertView;
     }
 
@@ -66,5 +70,15 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
 
         convertView.setBackgroundColor(0x00000000);
         return convertView;
+    }
+
+    public Drawable loadImageFromWebOperations(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, "logo");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

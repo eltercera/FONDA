@@ -1,5 +1,6 @@
 package com.ds201625.fonda.views.activities;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -20,17 +21,14 @@ import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
 import com.google.gson.Gson;
 
 import java.util.List;
 
-/**
- * Created by jesus on 20/04/16.
- */
 public class DetailRestaurantActivity extends BaseNavigationActivity{
 
-    //Declaracion de varialbes globales de la clase
-
+    private DetailRestaurantFragment fragment;
     private MenuItem setAsFavorite;
     private MenuItem makeReserve;
     private Toolbar tb;
@@ -43,6 +41,11 @@ public class DetailRestaurantActivity extends BaseNavigationActivity{
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_detail_restaurant);
         super.onCreate(savedInstanceState);
+
+        //creacion de fragment
+        this.fragment = new DetailRestaurantFragment();
+
+
         String jsonMyObject = null;
         String jsonMyOtherObject = null;
         Bundle extras = getIntent().getExtras();

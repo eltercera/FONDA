@@ -123,6 +123,8 @@ public abstract class BaseNavigationActivity extends BaseActivity
                 e.printStackTrace();
             }
 
+        } else if ( id == R.id.nav_prueba){
+            startFondaActivity("DetailRestaurantActivity");
         }
 
         this.getDrawer().closeDrawer(GravityCompat.START);
