@@ -5,7 +5,6 @@ import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,9 +52,7 @@ public abstract class BaseArrayAdapter<T> extends ArrayAdapter<T> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         T item = getItem(position);
-        if (convertView == null) {
-            convertView = createView(item);
-        }
+        convertView = createView(item);
         if (mSelectedItemsIds.get(position))
             return getSelectedView(item,convertView);
         return getNotSelectedView(item,convertView);

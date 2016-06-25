@@ -21,7 +21,9 @@ namespace BackOffice.Seccion.Menu
         {
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                AlertSuccess_AddDish.Visible = false;
+                if ((Session[ResourceLogin.sessionRol].ToString() == "Sistema") || (Session[ResourceLogin.sessionRol].ToString() == "Restaurante"))
+                {
+                    AlertSuccess_AddDish.Visible = false;
                 AlertSuccess_SuggestionDish.Visible = false;
                 AlertSuccess_ModifyDish.Visible = false;
                 AlertSuccess_ActivateDish.Visible = false;
@@ -32,10 +34,16 @@ namespace BackOffice.Seccion.Menu
                 AlertDanger_DeactivateDish.Visible = false;
                 AlertWarning_ActivateDish.Visible = false;
                 AlertWarning_DeactivateDish.Visible = false;
+                LoadDishTable();
+                }
+                else
+                {
+                    Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);
-            LoadDishTable();
+            
         }
 
         protected void LoadDishTable()

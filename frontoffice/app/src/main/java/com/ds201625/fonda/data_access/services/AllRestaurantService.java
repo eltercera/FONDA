@@ -17,7 +17,8 @@ public interface AllRestaurantService {
      * @return
      * @throws RestClientException
      */
-    List<Restaurant> getAllRestaurant() throws RestClientException, GetAllRestaurantsFondaWebApiControllerException;
+    List<Restaurant> getAllRestaurant() throws RestClientException,
+            GetAllRestaurantsFondaWebApiControllerException;
 
 }
 

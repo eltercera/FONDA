@@ -1,18 +1,11 @@
-using com.ds201625.fonda.BackEnd.ActionFilters;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEndLogic;
-using com.ds201625.fonda.BackEndLogic.Exceptions;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
 using com.ds201625.fonda.FondaBackEnd.Exceptions;
 using com.ds201625.fonda.FondaBackEndLogic.Exceptions;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Web.Http;
 
 namespace com.ds201625.fonda.BackEnd.Controllers
@@ -53,7 +46,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Commensal result;  
             try
             {
-
+            
                 commensal = EntityFactory.GetCommensal();
                 commensal.Id = idCommensal;
 
@@ -126,6 +119,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Commensal result;
             try
             {
+
 
                 //Creación del commensal con id
                 commensal = EntityFactory.GetCommensal();
@@ -255,6 +249,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Commensal result;
             try
             {
+    
 
                 //Creación del commensal con id
                 commensal = EntityFactory.GetCommensal();

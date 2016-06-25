@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.AddFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
@@ -173,14 +174,25 @@ public class AddFavoriteRestaurantCommandTest extends TestCase {
 
             assertNull(commensal);
 
-        } catch(RestClientException e) {
+        }catch(AddFavoriteRestaurantFondaWebApiControllerException e) {
             Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favorito",e);
+            System.out.println ("El error es: " + e.getMessage());
+            e.printStackTrace();
+        }
+        catch(RestClientException e) {
+            Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favorito",e);
+            System.out.println ("El error es: " + e.getMessage());
+            e.printStackTrace();
         }
         catch(NullPointerException e) {
             Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favorito",e);
+            System.out.println ("El error es: " + e.getMessage());
+            e.printStackTrace();
         }
         catch(Exception e) {
             Log.e(TAG,"Error en testAddFavoriteRestauranIsNull al agregar favorito",e);
+            System.out.println ("El error es: " + e.getMessage());
+            e.printStackTrace();
         }
 
     }

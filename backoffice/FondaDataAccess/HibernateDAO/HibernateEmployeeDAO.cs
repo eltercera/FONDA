@@ -35,12 +35,14 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 throw new FindByusernameEmployeFondaDAOException(
                     "Excepción al consultar UserName "+ user + " de un Employee",
                     e);
+                
             }
             catch (Exception e)
             {
                 throw new GetAllRoleFondaDAOException(
                     "Excepción al consultar UserName " + user + " de un Employee",
                     e);
+                
             }
         }
     }

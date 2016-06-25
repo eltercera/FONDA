@@ -117,9 +117,75 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCategoryFondaDAOException" xml:space="preserve">
+    <value>Error al agregar el objeto categoria (DAO)</value>
+  </data>
+  <data name="ClassNameAddCategory" xml:space="preserve">
+    <value>Comando para generar un objeto categoria</value>
+  </data>
+  <data name="ClassNameGenerateRestaurant" xml:space="preserve">
+    <value>Comando para generar un objeto restaurante</value>
+  </data>
+  <data name="ClassNameGetAllCategories" xml:space="preserve">
+    <value>Comando para mostrar todos los objetos categoria</value>
+  </data>
+  <data name="ClassNameGetAllCurrencies" xml:space="preserve">
+    <value>Comando para mostrar todos los objetos currency</value>
+  </data>
+  <data name="ClassNameGetAllRestaurants" xml:space="preserve">
+    <value>Comando para mostrar todos los objetos restaurante</value>
+  </data>
+  <data name="ClassNameGetAllZones" xml:space="preserve">
+    <value>Comando para mostrar todos los objetos zona</value>
+  </data>
+  <data name="ClassNameGetFillDropdown" xml:space="preserve">
+    <value>Metodo para listar</value>
+  </data>
+  <data name="ClassNameGetFillDropdownCategories" xml:space="preserve">
+    <value>Error al listar categorias</value>
+  </data>
+  <data name="ClassNameGetFillDropdownCurrencies" xml:space="preserve">
+    <value>Error al listar currencies</value>
+  </data>
+  <data name="ClassNameGetFillDropdownZones" xml:space="preserve">
+    <value>Error al listar zonas</value>
+  </data>
   <data name="ClassNameGetReservations" xml:space="preserve">
     <value>CommandGetTables</value>
     <comment>Comando para obtener las mesasde un Restaurante</comment>
+  </data>
+  <data name="ClassNameModifyCategory" xml:space="preserve">
+    <value>Comando para modificar una categoria</value>
+  </data>
+  <data name="ClassNameModifyRestaurant" xml:space="preserve">
+    <value>Comando para modificar el objeto restaurante</value>
+  </data>
+  <data name="ClassNameSaveCategory" xml:space="preserve">
+    <value>Comando para guardar la categoria</value>
+  </data>
+  <data name="ClassNameSaveRestaurant" xml:space="preserve">
+    <value>Comando para guardar un objeto restaurant</value>
+  </data>
+  <data name="CommandExceptionAddCategory" xml:space="preserve">
+    <value>Error al agregar el objeto categoria (Command)</value>
+  </data>
+  <data name="CommandExceptionGenerateRestaurant" xml:space="preserve">
+    <value>Error al generar el objeto restaurante (Command)</value>
+  </data>
+  <data name="CommandExceptionGetRestaurants" xml:space="preserve">
+    <value>Error al cargar todos los restaurantes (Command)</value>
+  </data>
+  <data name="CommandExceptionModifyCategory" xml:space="preserve">
+    <value>Error al modificar el objeto categoria (Command)</value>
+  </data>
+  <data name="CommandExceptionModifyRestaurant" xml:space="preserve">
+    <value>Error al modificar un restaurante (Command)</value>
+  </data>
+  <data name="CommandExceptionSaveCategory" xml:space="preserve">
+    <value>Error al guardar el objeto categoria</value>
+  </data>
+  <data name="CommandExceptionSaveRestaurant" xml:space="preserve">
+    <value>Error al guardar el objeto restaurante</value>
   </data>
   <data name="CommandMethod" xml:space="preserve">
     <value>Execute</value>
@@ -128,5 +194,41 @@
   <data name="ErrorMessageGetTables" xml:space="preserve">
     <value>Error obteniendo las mesas de un Restaurante</value>
     <comment>Mensaje de error para CommandGetTables</comment>
+  </data>
+  <data name="GenerateRestaurantFondaDAOException" xml:space="preserve">
+    <value>Error al generar el objeto restaurante (DAO)</value>
+  </data>
+  <data name="GetAllCategoriesFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todos los objetos categoria</value>
+  </data>
+  <data name="GetAllCurrenciesFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todos los objetos currency</value>
+  </data>
+  <data name="GetAllRestaurantsFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todos los objetos restaurante</value>
+  </data>
+  <data name="GetAllZonesFondaDAOException" xml:space="preserve">
+    <value>Error al cargar todos los objetos zona</value>
+  </data>
+  <data name="InvalidTypeParameterException" xml:space="preserve">
+    <value>Error tipo de parametro inválido</value>
+  </data>
+  <data name="ModifyCategoryFondaDAOException" xml:space="preserve">
+    <value>Error al modificar el objeto categoria (DAO)</value>
+  </data>
+  <data name="ModifyRestaurantFondaDAOException" xml:space="preserve">
+    <value>Error al modificar el objeto restaurante (DAO)</value>
+  </data>
+  <data name="ParameterIndexOutRangeException" xml:space="preserve">
+    <value>Error parámetro fuera de rango</value>
+  </data>
+  <data name="RequieredParameterNotFoundException" xml:space="preserve">
+    <value>Error parámetro requerido no encontrado</value>
+  </data>
+  <data name="SaveEntityCategoryFondaDAOException" xml:space="preserve">
+    <value>Error al guardar el objeto categoria (DAO)</value>
+  </data>
+  <data name="SaveEntityRestaurantFondaDAOException" xml:space="preserve">
+    <value>Error al guardar el objeto restaurante (DAO)</value>
   </data>
 </root>

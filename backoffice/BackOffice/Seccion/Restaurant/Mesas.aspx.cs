@@ -21,9 +21,25 @@ namespace BackOffice.Seccion.Restaurant
         {
             if (Session[ResourceLogin.sessionUserID] != null)
             {
-                AlertSuccess_AddTable.Visible = false;
-                AlertSuccess_ModifyTable.Visible = false;
-                LoadDataTable();
+                if (Session[ResourceLogin.sessionRol].ToString() == "Sistema")
+                {
+                    AlertSuccess_AddTable.Visible = false;
+                    AlertSuccess_ModifyTable.Visible = false;
+                    LoadDataTable();
+                }
+                else
+                {
+                    if (Session[ResourceLogin.sessionRol].ToString() == "Restaurante")
+                    {
+                        // redireccion la pagina como empleado de un restaurante
+                        Response.Redirect("Default.aspx");
+                    }
+                    if (Session[ResourceLogin.sessionRol].ToString() == "Caja")
+                    {
+                        // redireccion la pagina como empleado de un restaurante
+                        Response.Redirect("~/Seccion/Caja/Ordenes.aspx");
+                    }
+                }
             }
             else
                 Response.Redirect(RecursoMaster.addressLogin);

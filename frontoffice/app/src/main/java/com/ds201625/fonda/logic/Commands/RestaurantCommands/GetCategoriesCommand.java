@@ -25,9 +25,9 @@ public class GetCategoriesCommand extends BaseCommand {
     @Override
     protected Parameter[] setParameters() {
         Parameter [] parameters = new Parameter[3];
-        parameters[0] = new Parameter(String.class, true);
-        parameters[1] = new Parameter(Integer.class, true);
-        parameters[2] = new Parameter(Integer.class, true);
+        parameters[0] = new Parameter(String.class, false);
+        parameters[1] = new Parameter(Integer.class, false);
+        parameters[2] = new Parameter(Integer.class, false);
 
         return parameters;
     }
@@ -40,11 +40,18 @@ public class GetCategoriesCommand extends BaseCommand {
         RestaurantService resService = FondaServiceFactory.getInstance()
                 .getRestaurantService();
 
-        try
-        {
+        int max = 0;
+        int page = 0;
+        try {
+
+            if (getParameter(1) != null) {
+                max = (int) getParameter(1);
+            }
+            if (getParameter(2) != null) {
+                page = (int) getParameter(2);
+            }
             String query = (String) getParameter(0);
-            int max = (int) getParameter(1);
-            int page = (int) getParameter(2);
+
             categories = resService.getCategories(query, max, page);
         }
         catch (Exception e) {

@@ -139,6 +139,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
             catch (Exception e)
             {
+                
                 throw new FindByFondaDAOException(ResourceMessagesDAO.FindByFondaDAOExceptionProperty + property +
                     ResourceMessagesDAO.FindByFondaDAOExceptionValue + value, e);
             }
