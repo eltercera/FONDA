@@ -236,7 +236,7 @@ namespace FondaBackOfficeLogicTest
         [Test(Description = "Obtiene el detalle de una factura")]
         public void CommandGetDetailInvoiceTest()
         {
-            parameters = new List<int> { 1, 2 };
+            parameters = new List<int> { 1, 1 };
             _command = CommandFactory.GetCommandGetDetailInvoice(parameters);
 
             _command.Execute();

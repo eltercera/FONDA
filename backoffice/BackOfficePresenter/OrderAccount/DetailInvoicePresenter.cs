@@ -27,6 +27,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         private Invoice _invoice;
         private Account _account;
         private CreditCardPayment _creditCardPayment;
+        private List<int> _listInt;
 
         public DetailInvoicePresenter(IDetailInvoiceContract viewInvoiceDetail) : 
             base(viewInvoiceDetail)
@@ -103,14 +104,17 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
             IList<DishOrder> listDishOrder;
 
             List<Object> result;
+            
             Command commandGetDetailInvoice;
 
             try
             {
                 invoiceId = GetQueryParameter();
-
+                _listInt.Add(invoiceId);
+                restaurantId = int.Parse(_view.SessionRestaurant);
+                _listInt.Add(restaurantId);
                 //Obtiene la instancia del comando enviado el Id del invoice como parametro
-                commandGetDetailInvoice = CommandFactory.GetCommandGetDetailInvoice(invoiceId);
+                commandGetDetailInvoice = CommandFactory.GetCommandGetDetailInvoice(_listInt);
 
                 //Ejecuta el comando deseado
                 commandGetDetailInvoice.Execute();

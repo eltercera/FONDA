@@ -1,20 +1,18 @@
 ﻿using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Logic.FondaCommandException.OrderAccount;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
 using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandGetDetailInvoice : Command
     {
-        private int parameter;
+        private IList<int> parameter;
+        private IList<object> _list;
+        private Account _account;
 
         public CommandGetDetailInvoice(Object receiver) : base(receiver) { }
 
@@ -26,23 +24,34 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             Command commandGetInvoice;
             Command commandGetDishOrder;
             Command commandGetCurrencyInvoice;
-            Command commandGetOrder;
-
+            Command commandGetOrderAccountByInvoice;
+            int _invoiceId, _restaurantId;
             try
             {
-                parameter = (int) Receiver;
-
+                parameter = (List<int>) Receiver;
+                _invoiceId = parameter[0];
+                _restaurantId = parameter[1];
+                _list = new List<object>();
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetInvoice = CommandFactory.GetCommandGetInvoice(parameter[0]);
-                commandGetCurrencyInvoice = CommandFactory.GetCommandGetCurrencyInvoice(parameter[0]);
-                commandGetDishOrder = CommandFactory.GetCommandGetDishOrdersByAccountId(parameter[1]);
-                commandGetOrder = CommandFactory.GetCommandGetOrder(parameter[1]);
+                commandGetInvoice = CommandFactory.GetCommandGetInvoice(_invoiceId);
+                commandGetCurrencyInvoice = CommandFactory.GetCommandGetCurrencyInvoice(_invoiceId);
 
                 //Ejecuta el comando deseado
                 commandGetInvoice.Execute();
+
+                _list.Add ( (Invoice)commandGetInvoice.Receiver);
+                _list.Add ( _restaurantId);
+
+                commandGetOrderAccountByInvoice = CommandFactory.GetCommandGetOrderAccountByInvoice(_list);
+                commandGetOrderAccountByInvoice.Execute();
+                _account = (Account) commandGetOrderAccountByInvoice.Receiver;
+
+                commandGetDishOrder = CommandFactory.GetCommandGetDishOrdersByAccountId(_account.Id);
+
                 commandGetCurrencyInvoice.Execute();
                 commandGetDishOrder.Execute();
-                commandGetOrder.Execute();
+
+
 
                 listDishOrder = (IList<DishOrder>) commandGetDishOrder.Receiver;
 
@@ -58,7 +67,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                         commandGetCurrencyInvoice.Receiver,
                         commandGetDishOrder.Receiver,
                         subtotal,
-                        commandGetOrder.Receiver
+                        _account
                     };
 
             }
@@ -75,6 +84,11 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 
                 throw exception;
             }
+
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameGetDetailInvoice
+            , OrderAccountResources.SuccessMessageCommandGetDetailInvoice
+            , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+            );
         }
     }
 }

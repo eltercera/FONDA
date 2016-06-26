@@ -304,6 +304,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandGetOrderAccountByInvoice.
+        /// </summary>
+        public static string ClassNameGetOrderAccountByInvoice {
+            get {
+                return ResourceManager.GetString("ClassNameGetOrderAccountByInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGetOrders.
         /// </summary>
         public static string ClassNameGetOrders {
@@ -543,6 +552,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string CommandExceptionGetInvoicesByProfileCode {
             get {
                 return ResourceManager.GetString("CommandExceptionGetInvoicesByProfileCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-030.
+        /// </summary>
+        public static string CommandExceptionGetOrderAccountByInvoiceCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetOrderAccountByInvoiceCode", resourceCulture);
             }
         }
         
@@ -1047,6 +1065,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string MessageCommandExceptionGetOrder {
             get {
                 return ResourceManager.GetString("MessageCommandExceptionGetOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede obtener esta cuenta.
+        /// </summary>
+        public static string MessageCommandExceptionGetOrderAccountByInvoice {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetOrderAccountByInvoice", resourceCulture);
             }
         }
         
@@ -1690,6 +1717,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido correctamente el detalle de la factura.
+        /// </summary>
+        public static string SuccessMessageCommandGetDetailInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetDetailInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha obtenido el detalle de la orden satisfactoriamente.
         /// </summary>
         public static string SuccessMessageCommandGetDetailOrder {
@@ -1740,6 +1776,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string SuccessMessageCommandGetOrder {
             get {
                 return ResourceManager.GetString("SuccessMessageCommandGetOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido correctamente la cuenta de esta factura.
+        /// </summary>
+        public static string SuccessMessageCommandGetOrderAccountByInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetOrderAccountByInvoice", resourceCulture);
             }
         }
         

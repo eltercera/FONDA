@@ -966,4 +966,24 @@
     <value>Se han obtenido las facturas de un perfil correctamente</value>
     <comment>Mensaje de exito para CommandGetInvoicesByProfile</comment>
   </data>
+  <data name="ClassNameGetOrderAccountByInvoice" xml:space="preserve">
+    <value>CommandGetOrderAccountByInvoice</value>
+    <comment>Codigo de error al obtener una cuenta dada una factura</comment>
+  </data>
+  <data name="CommandExceptionGetOrderAccountByInvoiceCode" xml:space="preserve">
+    <value>BO-04-030</value>
+    <comment>Codigo de error al obtener una cuenta dada una factura</comment>
+  </data>
+  <data name="MessageCommandExceptionGetOrderAccountByInvoice" xml:space="preserve">
+    <value>No se puede obtener esta cuenta</value>
+    <comment>Mensaje de error para CommandExceptionGetOrderAccountByInvoice</comment>
+  </data>
+  <data name="SuccessMessageCommandGetDetailInvoice" xml:space="preserve">
+    <value>Se ha obtenido correctamente el detalle de la factura</value>
+    <comment>Mensaje de exito para CommandGetDetailInvoice</comment>
+  </data>
+  <data name="SuccessMessageCommandGetOrderAccountByInvoice" xml:space="preserve">
+    <value>Se ha obtenido correctamente la cuenta de esta factura</value>
+    <comment>Mensaje de exito para CommandGetOrderAccountByInvoice</comment>
+  </data>
 </root>

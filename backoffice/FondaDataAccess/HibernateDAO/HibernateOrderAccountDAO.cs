@@ -169,7 +169,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="invoice"></param>
         /// <returns></returns>
-        public Account GetOrderAccount(Invoice _invoice, int _restaurantId)
+        public Account GetOrderAccountByInvoice(Invoice _invoice, int _restaurantId)
         {
             IList<Account> _listaccount= new List<Account>();
             IList<Invoice> _listinvoice = new List<Invoice>();
