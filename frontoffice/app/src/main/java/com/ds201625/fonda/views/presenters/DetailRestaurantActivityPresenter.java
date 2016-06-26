@@ -59,8 +59,4 @@ public class DetailRestaurantActivityPresenter {
         this.activity.setIconFavorite(this.restaurant.getFavorite());
     }
 
-    public void goToReserve() {
-        this.activity.setDetailsViewOf(this.restaurant);
-    }
-
 }
