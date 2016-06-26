@@ -56,9 +56,14 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
                 commandGetClosedOrderAccount = CommandFactory.GetCommandClosedOrders(_restaurantId);
                 commandGetClosedOrderAccount.Execute();
                 listClosedAccount = (IList<Account>)commandGetClosedOrderAccount.Receiver;
+                _restaurantId = int.Parse(_view.SessionRestaurant);
+                commandGetInvoicesByRestaurant = CommandFactory.GetCommandFindInvoicesByRestaurant(_restaurantId);
+                commandGetInvoicesByRestaurant.Execute();
+                listInvoice = (IList<Invoice>)commandGetInvoicesByRestaurant.Receiver;
+                int count = listClosedAccount.Count + listInvoice.Count;
 
 
-                if (result <= listClosedAccount.Count && result != 0)
+                if (result <= count && result != 0)
                 {
                     //Obtiene la instancia del comando enviado el restaurante como parametro
                     commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByAccount(result);
