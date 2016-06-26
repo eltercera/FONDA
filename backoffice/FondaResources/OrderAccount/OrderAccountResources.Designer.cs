@@ -385,6 +385,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HibernateRestaurantDAO.
+        /// </summary>
+        public static string ClassNameRestaurantDAO {
+            get {
+                return ResourceManager.GetString("ClassNameRestaurantDAO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandTotalOrder.
         /// </summary>
         public static string ClassNameTotalOrder {
@@ -1564,6 +1573,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se han obtenido las ordenes cerradas de un Restaurante de forma satisfactoria.
+        /// </summary>
+        public static string SuccessMessageClosedOrdersByRestaurantId {
+            get {
+                return ResourceManager.GetString("SuccessMessageClosedOrdersByRestaurantId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha anulado la factura satisfactoriamente.
         /// </summary>
         public static string SuccessMessageCommandCancelInvoice {
@@ -1825,11 +1843,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se han obtenido las ordenes abiertas de un Restaurante de forma satisfactoria.
+        /// </summary>
+        public static string SuccessMessageOpenOrdersByRestaurantId {
+            get {
+                return ResourceManager.GetString("SuccessMessageOpenOrdersByRestaurantId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se han cargado las facturas correctamente.
         /// </summary>
         public static string SuccessMessageOrderInvoicesPresenter {
             get {
                 return ResourceManager.GetString("SuccessMessageOrderInvoicesPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha cambiado el estado de la mesa ocupada a libre en la Base de datos.
+        /// </summary>
+        public static string SuccessMessageReleaseTable {
+            get {
+                return ResourceManager.GetString("SuccessMessageReleaseTable", resourceCulture);
             }
         }
         

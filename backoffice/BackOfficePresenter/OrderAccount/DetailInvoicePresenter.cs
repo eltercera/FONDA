@@ -109,14 +109,9 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
             try
             {
                 invoiceId = GetQueryParameter();
-                accountId = int.Parse(_view.SessionIdAccount);
 
-                //Recibe 2 enteros
-                // 1  id de la factura
-                // 2  id de la orden                
-                parameters = new List<int> { invoiceId, accountId };
-                //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetDetailInvoice = CommandFactory.GetCommandGetDetailInvoice(parameters);
+                //Obtiene la instancia del comando enviado el Id del invoice como parametro
+                commandGetDetailInvoice = CommandFactory.GetCommandGetDetailInvoice(invoiceId);
 
                 //Ejecuta el comando deseado
                 commandGetDetailInvoice.Execute();

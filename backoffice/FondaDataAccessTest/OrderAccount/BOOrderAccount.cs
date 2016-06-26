@@ -66,6 +66,8 @@ namespace FondaDataAccessTest
             IProfileDAO _profileDao = _facDAO.GetProfileDAO();
             _profile = _profileDao.FindById(_profileId);
             creditDao = _facDAO.GetCreditCardPaymentDAO();
+
+            _invoice = _invoiceDAO.FindById(_invoiceId);
         }
         #endregion
 
@@ -225,6 +227,19 @@ namespace FondaDataAccessTest
             Assert.AreEqual(_listAccounts.Count, 2);
         }
         #endregion
+
+        #region DataAccess/HibernateOrderAccount/GetOrderAccount
+
+        [Test]
+        public void GetOrderAccountTest()
+        {
+            Account _result = _accountDAO.GetOrderAccount(_invoice);
+
+            
+        }
+
+        #endregion
+
 
         [TestFixtureTearDown]
         public void EndTests()

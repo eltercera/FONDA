@@ -15,5 +15,6 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
         Invoice SaveInvoice(Invoice _invoice, int _accountId, int _restaurantId);
         void ChangeStatusAccount(Account _account);
         Invoice CancelInvoice(Invoice _invoice, int _accountId);
+        Account GetOrderAccount(Invoice invoice);
     }
 }
