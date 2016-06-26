@@ -92,7 +92,6 @@ public class DetailRestaurantActivity extends BaseNavigationActivity
 
         fm.beginTransaction()
             .replace(R.id.fragment_container,this.restaurantFragment)
-                .addToBackStack(null)
             .commit();
         fm.executePendingTransactions();
 

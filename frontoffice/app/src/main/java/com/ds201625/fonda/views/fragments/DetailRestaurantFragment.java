@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Coordinate;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.views.contracts.DetailRestaurantContract;
 import com.google.android.gms.maps.CameraUpdate;
@@ -46,25 +47,6 @@ public class DetailRestaurantFragment extends BaseFragment
 
 
     /**
-     * Crea el fragment
-     * @param savedInstanceState
-     */
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    /**
-     * Crea la actividad
-     * @param savedInstanceState
-     */
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    /**
      * Crea la vista
      * @param inflater
      * @param container
@@ -98,13 +80,19 @@ public class DetailRestaurantFragment extends BaseFragment
     @Override
     public void onMapReady(GoogleMap map) {
         this.map = map;
-        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom
-                (new LatLng(10.4642053,-66.9779887),20);
-        map.animateCamera(cameraUpdate);
-        map.addMarker(new MarkerOptions()
-                .position(new LatLng(10.4642053,-66.9779887))
-                .title("Marker"));
+        Coordinate coordinate = restaurant.getCoordinate();
+        if (coordinate != null ) {
+            LatLng ling = new LatLng(coordinate.getLatitude(),coordinate.getLongitude());
+            mMapFragment.setUserVisibleHint(true);
+            map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(ling,17);
+            map.animateCamera(cameraUpdate);
+            map.addMarker(new MarkerOptions()
+                    .position(ling )
+                    .title(restaurant.getName()));
+        } else {
+            mMapFragment.setUserVisibleHint(false);
+        }
     }
 
 
