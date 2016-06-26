@@ -189,11 +189,11 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
         {
             Command commandAddCategory;
             Command commandSaveCategory;
-            String nombreA = _view.nameCategoryA.Text;
+            String name = _view.nameCategoryA.Text;
             RestaurantCategory _restcat;
 
             //si el campo es valido se registra la la nueva categoria y activa el mensaje de éxito
-            if (CategoryValidate(nombreA))
+            if (CategoryValidate(name))
             {
                 _view.alertAddCategorySuccess.Visible = true;
 
@@ -201,7 +201,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 try
                 {
                     //Llamada al comando para generar la lista de todos los restaurantes
-                    commandAddCategory = CommandFactory.GetCommandAddCategory(nombreA);
+                    commandAddCategory = CommandFactory.GetCommandAddCategory(name);
                     commandAddCategory.Execute();
                     //Resultado del receiver
                     _restcat = (RestaurantCategory)commandAddCategory.Receiver;
