@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BODAOLogin.cs" />
     <Compile Include="OrderAccount\BOCommandInvoiceTest.cs" />
     <Compile Include="BOCommandLoginTest.cs" />
     <Compile Include="OrderAccount\BOCommandOrdersTest.cs" />
