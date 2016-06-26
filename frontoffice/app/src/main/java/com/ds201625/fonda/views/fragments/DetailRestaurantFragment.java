@@ -1,6 +1,7 @@
 package com.ds201625.fonda.views.fragments;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,7 +12,17 @@ import android.widget.TextView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.views.contracts.DetailRestaurantContract;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.model.LatLng;
+
 import org.w3c.dom.Text;
+
+import java.io.InputStream;
+import java.net.URL;
 
 
 /**
@@ -28,6 +39,8 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
     private TextView tvAddress;
     private TextView tvHours;
     private TextView tvDays;
+    MapView mapView;
+    GoogleMap map;
     private View form;
 
 
@@ -68,6 +81,19 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
         tvAddress = (TextView) form.findViewById(R.id.text_view_restaurant_address);
         tvHours = (TextView) form.findViewById(R.id.text_view_restaurant_hours);
         tvDays = (TextView) form.findViewById(R.id.text_view_restaurant_days);
+        logo = (ImageView) form.findViewById(R.id.imageview_logo);
+
+        //Codigo del Mapa
+        mapView = (MapView) form.findViewById(R.id.mapview);
+        mapView.onCreate(savedInstanceState);
+
+        // Gets to GoogleMap from the MapView and does initialization stuff
+        map = mapView.getMap();
+        map.getUiSettings().setMyLocationButtonEnabled(false);
+        map.setMyLocationEnabled(true);
+
+        // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
+        MapsInitializer.initialize(this.getActivity());
 
         setInfo();
         return form;
@@ -82,6 +108,12 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
         tvAddress.setText(restaurant.getAddress());
         tvHours.setText("8:00am a 7:00 pm"); //No hay horas
         tvDays.setText("Martes a Domingo"); //No hay dias
+        Drawable image = loadImageFromWebOperations(restaurant.getLogo());
+        if (image == null) logo.setImageResource(R.mipmap.ic_launcher);
+        else logo.setImageDrawable(image);
+        // Updates the location and zoom of the MapView
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(40.7484, 73.9857), 10);
+        map.animateCamera(cameraUpdate);
     }
 
     /**
@@ -102,6 +134,15 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
         return restaurant;
     }
 
+    public Drawable loadImageFromWebOperations(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, "logo");
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     /**
      * Cuando se une
