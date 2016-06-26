@@ -1,4 +1,3 @@
-
 package com.ds201625.fonda.views.activities;
 
 import android.content.Intent;
@@ -15,18 +14,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.interfaces.ILoginView;
-import com.ds201625.fonda.interfaces.ILoginViewPresenter;
+import com.ds201625.fonda.views.contracts.ILoginViewContract;
 import com.ds201625.fonda.logic.SessionData;
-import com.ds201625.fonda.presenter.LoginPresenter;
+import com.ds201625.fonda.views.presenters.LoginPresenter;
 
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends BaseActivity implements ILoginView {
+public class LoginActivity extends BaseActivity implements ILoginViewContract {
 
     /**
      * Estados de para el formulario y acciones.
@@ -49,7 +46,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     private Button mRegisterButton;
     private LinearLayout mLoginLayout;
     private LinearLayout mInitLayout;
-    private ILoginViewPresenter presenter;
+    private LoginPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -296,8 +293,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
                 presenter.regiter(email, password);
                 succ = true;
             } catch (Exception e) {
-                msj = Toast.makeText(getBaseContext(),
-                        "Error en el Registro",Toast.LENGTH_SHORT);
+                e.printStackTrace();
             }
 
             if (succ){
@@ -330,8 +326,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
            presenter.login(commensal);
             succ = true;
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), "Error al iniciar sesión",
-                    Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
 
         if (succ){
@@ -344,3 +339,4 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     }
 
 }
+

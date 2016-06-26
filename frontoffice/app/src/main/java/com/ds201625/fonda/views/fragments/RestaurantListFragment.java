@@ -132,11 +132,14 @@ public class RestaurantListFragment extends BaseFragment implements
                                     Log.d("Favoritos eliminados: ",r.getName().toString());
                                 }catch (AddFavoriteRestaurantFondaWebApiControllerException e) {
                                     Toast.makeText(RestaurantListFragment.super.getContext(),
-                                            "Ha ocurrido un error al obtener los restaurantes del WS",
+                                            "Ha ocurrido un error al agregar los restaurantes (BO)",
                                             Toast.LENGTH_LONG).show();
-                                    Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
+                                    Log.e(TAG, "Error Proveniente del WEB SERVICE al agregar favoritos", e);
                                 }
                                 catch (Exception e) {
+                                    Toast.makeText(RestaurantListFragment.super.getContext(),
+                                            "Ha ocurrido un error al obtener los restaurantes favoritos",
+                                            Toast.LENGTH_LONG).show();
                                     Log.e(TAG,"Error en onActionItemClicked al agregar restaurant",
                                             e);
                                 }
@@ -254,9 +257,15 @@ public class RestaurantListFragment extends BaseFragment implements
                 Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener lista de restaurantes", e);
             }
             catch (NullPointerException nu) {
+                Toast.makeText(RestaurantListFragment.super.getContext(),
+                        "Ha ocurrido un error al obtener los restaurantes favoritos",
+                        Toast.LENGTH_LONG).show();
                     Log.e(TAG,"Error en getListSW al obtener restaurantes", nu);
                 }
              catch (Exception e) {
+                 Toast.makeText(RestaurantListFragment.super.getContext(),
+                         "Ha ocurrido un error al obtener los restaurantes favoritos",
+                         Toast.LENGTH_LONG).show();
                 Log.e(TAG,"Error en getListSW al obtener restaurantes", e);
             }
         Log.d(TAG,"Ha finalizado getListSW");

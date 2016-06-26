@@ -91,7 +91,6 @@
     <Compile Include="Controllers\RestaurantZoneFilterFondaWebApiController - Copia.cs" />
     <Compile Include="Controllers\RestaurantFondaWebApiController.cs" />
     <Compile Include="Controllers\ZoneFilterFondaWebApiController.cs" />
-    <Compile Include="Exceptions\AddCommensalWebApiControllerException.cs" />
     <Compile Include="Exceptions\AddFavoriteRestaurantFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\CanceledInvoiceException.cs" />
     <Compile Include="Exceptions\DeleteFavoriteRestaurantFondaWebApiControllerException .cs" />

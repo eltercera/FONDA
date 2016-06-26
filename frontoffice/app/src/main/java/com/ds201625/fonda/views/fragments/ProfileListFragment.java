@@ -1,4 +1,3 @@
-
 package com.ds201625.fonda.views.fragments;
 
 import android.content.Context;
@@ -15,16 +14,11 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.interfaces.IProfileListView;
-import com.ds201625.fonda.interfaces.IProfileViewPresenter;
-import com.ds201625.fonda.logic.Command;
-import com.ds201625.fonda.logic.FondaCommandFactory;
-import com.ds201625.fonda.presenter.ProfilePresenter;
+import com.ds201625.fonda.views.contracts.IProfileListViewContract;
+import com.ds201625.fonda.views.presenters.ProfilePresenter;
 import com.ds201625.fonda.views.adapters.ProfileViewItemList;
 
 import java.util.ArrayList;
@@ -33,12 +27,12 @@ import java.util.ArrayList;
  * Fragment que contiene la lista de Perfiles.
  */
 public class ProfileListFragment extends BaseFragment
-        implements SwipeRefreshLayout.OnRefreshListener, IProfileListView{
+        implements SwipeRefreshLayout.OnRefreshListener, IProfileListViewContract {
 
     /**
      * Presentador
      */
-    private IProfileViewPresenter presenter;
+    private ProfilePresenter presenter;
 
     private String TAG = "ProfileListFragment";
     //Interface de comunicaciond contra la activity
@@ -55,6 +49,7 @@ public class ProfileListFragment extends BaseFragment
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //TODO: agregar try/catch en caso de que no se pase el argumento.
         multi = getArguments().getBoolean("multiSelect");
         presenter = new ProfilePresenter(this);
         profileList = new ProfileViewItemList(getContext(), presenter);
@@ -103,8 +98,7 @@ public class ProfileListFragment extends BaseFragment
                                     try {
                                        deleteProfile(profile);
                                     } catch (Exception e) {
-                                        Toast.makeText(ProfileListFragment.super.getContext(),e.getMessage(),
-                                                Toast.LENGTH_SHORT).show();
+                                        e.printStackTrace();
                                     }
                             }
                             Log.v("Perfiles eliminados: ", sal);
@@ -170,7 +164,7 @@ public class ProfileListFragment extends BaseFragment
     }
 
     @Override
-    public Boolean deleteProfile(Profile profile) throws Exception {
+    public Boolean deleteProfile(Profile profile) {
         Log.d(TAG,"Metodo deleteProfile");
         Boolean resp = false;
         try {
@@ -179,7 +173,6 @@ public class ProfileListFragment extends BaseFragment
         }catch (Exception e)
         {
             Log.e(TAG,"Error al eliminar el Perfil",e);
-            throw new Exception("Error al Eliminar un Perfil");
         }
         return resp;
     }

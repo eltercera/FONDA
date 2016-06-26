@@ -1,11 +1,7 @@
-﻿using com.ds201625.fonda;
-using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
+﻿using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
 using com.ds201625.fonda.Logic.FondaLogic.Commands.Login;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
-using System.Collections.Generic;
 using com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations;
-using System;
 using com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante;
 using FondaLogic.Commands.Restaurante;
 

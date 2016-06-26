@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using com.ds201625.fonda.View.BackOfficeModel.Reservations;
@@ -10,7 +6,6 @@ using com.ds201625.fonda.View.BackOfficePresenter.Reservations;
 using com.ds201625.fonda.Resources.FondaResources.Reservation;
 using com.ds201625.fonda.View.BackOfficeModel;
 using com.ds201625.fonda.Resources.FondaResources.Login;
-using BackOffice.Content;
 
 namespace BackOffice.Seccion.Reservas
 {

@@ -53,14 +53,22 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (CreateCommensalCommandException e)
 			{
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                AddCommensalWebApiControllerException ex = new AddCommensalWebApiControllerException(GeneralRes.AddCommensal, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                AddCommensalWebApiControllerException ex = new AddCommensalWebApiControllerException(GeneralRes.AddCommensal, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
             }
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, commensal.ToString(),

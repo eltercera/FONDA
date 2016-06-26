@@ -59,6 +59,11 @@ namespace com.ds201625.fonda.Domain
         /// </summary>
         private IList<Account> _accounts;
 
+		/// <summary>
+		/// Si es favorito
+		/// </summary>
+		private bool _favorite = false;
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -132,6 +137,13 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe la zona de ubicacion del restaurante</value>
             set { _zone = value; }
         }
+
+		[DataMember]
+		public virtual bool Favorite
+		{
+			get { return _favorite; }
+			set { _favorite = value; }
+		}
         
         public virtual Schedule Schedule
         {
