@@ -204,4 +204,16 @@
     <value>ReservationNumber</value>
     <comment>Numero de la Reservacion</comment>
   </data>
+  <data name="reservationURL" xml:space="preserve">
+    <value>../Reservas/VerDetalleReserva.aspx?Id=</value>
+    <comment>URL de detalle de factura</comment>
+  </data>
+  <data name="SessionAllRestaurants" xml:space="preserve">
+    <value>Todos los Restaurantes</value>
+    <comment>Nombre para subtitulo de todos los restaurantes</comment>
+  </data>
+  <data name="SessionNameRest" xml:space="preserve">
+    <value>NameRestaurant</value>
+    <comment>Variable de sesion que contiene el nombre del Restaurante</comment>
+  </data>
 </root>

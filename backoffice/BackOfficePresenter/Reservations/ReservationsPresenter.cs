@@ -196,7 +196,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                         LinkButton LBReservationInfo = new LinkButton();
                         LBReservationInfo.Text += ReservationResources.ReservationInfo;
                         LBReservationInfo.Attributes[ReservationResources.href] =
-                            ReservationResources.RefreshURL + dataId.ToString();
+                            ReservationResources.reservationURL + dataId.ToString();
                         tCell.Controls.Add(LBReservationInfo);
 
                         //boton de cancelar reservacion

@@ -107,13 +107,16 @@ namespace BackOffice.Seccion.Reservas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //TODO (Reservation): Dejar que entre como sistema
+            //TODO (Reservation): Esto se deberia controlar por el presentador
             //Llama al presentador para llenar la tabla reservas
-        //    if (Session[ResourceLogin.sessionUserID] != null &&           
-        //         Session[ResourceLogin.sessionRestaurantID] != null)       
-                    _presenter.GetReservations();
-        //        else
-        //            Response.Redirect(RecursoMaster.addressLogin);
+                if (Session[ResourceLogin.sessionUserID] != null &&           
+                     Session[ResourceLogin.sessionRestaurantID] != null)
+                _presenter.GetReservations();
+            else if (Session[ResourceLogin.sessionRestaurantID] == null)
+            {
+                Session[ReservationResources.SessionNameRest] = ReservationResources.SessionAllRestaurants;
+                _presenter.GetReservations();
+            }
         }
 
         protected void ButtonCancelReservation_Click(object sender, EventArgs e)

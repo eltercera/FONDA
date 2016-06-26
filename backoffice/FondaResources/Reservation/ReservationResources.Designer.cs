@@ -205,6 +205,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ../Reservas/VerDetalleReserva.aspx?Id=.
+        /// </summary>
+        public static string reservationURL {
+            get {
+                return ResourceManager.GetString("reservationURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nombre.
         /// </summary>
         public static string ReservationUserColumn {
@@ -232,11 +241,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Todos los Restaurantes.
+        /// </summary>
+        public static string SessionAllRestaurants {
+            get {
+                return ResourceManager.GetString("SessionAllRestaurants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ReservationID.
         /// </summary>
         public static string SessionIdReservation {
             get {
                 return ResourceManager.GetString("SessionIdReservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NameRestaurant.
+        /// </summary>
+        public static string SessionNameRest {
+            get {
+                return ResourceManager.GetString("SessionNameRest", resourceCulture);
             }
         }
         
