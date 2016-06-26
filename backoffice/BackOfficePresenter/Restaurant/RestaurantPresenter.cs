@@ -757,7 +757,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
             bool Day5 = _view.day5Modify.Checked;
             bool Day6 = _view.day6Modify.Checked;
             bool Day7 = _view.day7Modify.Checked;
-            bool[] days = new bool[] { Day1, Day2, Day3, Day4, Day5, Day6 };
+            bool[] days = new bool[] { Day1, Day2, Day3, Day4, Day5, Day6, Day7};
             #endregion
             System.Diagnostics.Debug.WriteLine(Name + Category + Nationality.ToString() + Rif + Currency +
                 Address + Zone + Long + Lat + _view.openingTimeModify.Text + _view.closingTimeModify.Text);
