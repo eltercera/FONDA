@@ -180,13 +180,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandGetInvoice(receiver);
         }
-        /// <summary>
-        /// Metodo de la fabrica para el CCommandGenerateException
-        /// </summary>
-        public static Command GetCommandGenerateException(object receiver)
-        {
-            return new CommandGenerateException(receiver);
-        }
+
         /// <summary>
         /// Metodo de la fabrica para el CommandCloseCashRegister
         /// </summary>

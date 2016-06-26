@@ -171,11 +171,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns></returns>
         public Account GetOrderAccount(Invoice invoice, int restaurantId)
         {
-            List<Account> account;
+            Account account = null;
             try
             {
-                account = 
-                account = Session.QueryOver<Account>().Where(a => a.
+                //account = 
+                //account = Session.QueryOver<Account>().Where(a => a.
 
             }
             catch (Exception ex)
