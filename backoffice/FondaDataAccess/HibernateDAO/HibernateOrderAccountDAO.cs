@@ -169,13 +169,30 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="invoice"></param>
         /// <returns></returns>
-        public Account GetOrderAccount(Invoice invoice, int restaurantId)
+        public Account GetOrderAccount(Invoice _invoice, int _restaurantId)
         {
-            Account account = null;
+            IList<Account> _listaccount= new List<Account>();
+            IList<Invoice> _listinvoice = new List<Invoice>();
+            Account _account=  EntityFactory.GetAccount();
+            Restaurant _restaurant;
+            _restaurantDAO = _facDAO.GetRestaurantDAO();
             try
             {
-                //account = 
-                //account = Session.QueryOver<Account>().Where(a => a.
+                _restaurant = _restaurantDAO.FindById(_restaurantId);
+                _listaccount = _restaurant.Accounts;
+
+                for (int i = 0; i < _listaccount.Count; i++)
+                {
+                    _listinvoice = _listaccount[i].ListInvoice;
+
+                    foreach (Invoice invoice in _listinvoice)
+                    {
+                        if (invoice.Id.Equals(_invoice.Id))
+                        {
+                            _account = _listaccount[i];
+                        }
+                    }
+                }
 
             }
             catch (Exception ex)
@@ -188,7 +205,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             Logger.WriteSuccessLog(OrderAccountResources.ClassNameOrderAccountDAO,
                 OrderAccountResources.SuccessMessageGetOrderAccount,
                 System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
-            return account;
+            return _account;
         }
 
         /// <summary>
