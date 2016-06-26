@@ -52,7 +52,7 @@
     <Compile Include="OrderAccount\IOrderInvoicesContract.cs" />
     <Compile Include="OrderAccount\IOrdersContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reservation\IReservationsModel.cs" />
+    <Compile Include="Reservation\IReservationsContract.cs" />
     <Compile Include="Restaurant\ICategoryModel.cs" />
     <Compile Include="Restaurant\IRestaurantModel.cs" />
   </ItemGroup>

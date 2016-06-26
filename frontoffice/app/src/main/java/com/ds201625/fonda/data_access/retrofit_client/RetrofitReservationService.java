@@ -4,14 +4,18 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.retrofit_client.clients.ReservationClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetReservationFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.ReservationService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Reservation;
+import com.ds201625.fonda.domains.factory_entity.APIError;
+import com.ds201625.fonda.logic.ExceptionHandler.ErrorUtils;
 
 import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  *
@@ -22,9 +26,7 @@ public class RetrofitReservationService implements ReservationService {
     private ReservationClient reservationClient  =
             RetrofitService.getInstance().createService(ReservationClient.class);
 
-    public RetrofitReservationService() {
-        super();
-    }
+   private APIError error;
 
 
     @Override
@@ -52,14 +54,34 @@ public class RetrofitReservationService implements ReservationService {
      */
 
     @Override
-    public List<Reservation> getReservesService(int idCommensal) throws RestClientException {
+    public List<Reservation> getReservations(int idCommensal) throws
+            GetReservationFondaWebApiControllerException {
         Log.d(TAG, "Se obtienen toda las reservas del comensal: "+idCommensal);
         Call<List<Reservation>> call = reservationClient.getReservations(idCommensal);
         List<Reservation> test = null;
+        Response <List<Reservation>> response;
         try {
-            test =call.execute().body();
+            response =call.execute();
+            if (response.isSuccessful()){
+                test = response.body();}
+            else{
+                error = ErrorUtils.parseError(response);
+                Log.d(TAG, "Se obtiene la excepcion del WS");
+                // usar error para disparar exception
+                Log.e(TAG,"error message " + error.message());
+                Log.e(TAG,"error message " +error.exceptionType());
+
+                throw  new GetReservationFondaWebApiControllerException
+                        (error.exceptionType());
+            }
+
         } catch (IOException e) {
-            Log.e(TAG, "Se ha generado error en getReservarions", e);
+            Log.e(TAG, "Se ha generado error en getReservations", e);
+            throw  new GetReservationFondaWebApiControllerException(error.exceptionType());
+        } catch (Exception e) {
+            Log.e(TAG, "Se ha generado error en getReservations", e);
+            throw  new GetReservationFondaWebApiControllerException(error.exceptionType());
+
         }
 
         return test;

@@ -65,21 +65,6 @@ namespace com.ds201625.fonda.BackEndLogic.CommensalManagement
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CreateCommensalCommandException(ResourceMessages.CreateCommensalException, e);
             }
-            catch (InvalidTypeOfParameterException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateCommensalCommandException(ResourceMessages.CreateCommensalException, e);
-            }
-            catch (ParameterIndexOutOfRangeException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateCommensalCommandException(ResourceMessages.CreateCommensalException, e);
-            }
-            catch (RequieredParameterNotFoundException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CreateCommensalCommandException(ResourceMessages.CreateCommensalException, e);
-            }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);

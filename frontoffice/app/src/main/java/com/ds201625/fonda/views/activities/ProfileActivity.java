@@ -1,4 +1,3 @@
-
 package com.ds201625.fonda.views.activities;
 
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
@@ -191,8 +189,7 @@ public class ProfileActivity extends BaseNavigationActivity
             }
         } catch (Exception e) {
             Log.e(TAG,"Error al salvar el perfil",e);
-            Toast.makeText(getBaseContext(),e.getMessage(),
-                    Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
         profileListFrag.updateList();
         profileListFrag.updateList();
@@ -237,7 +234,7 @@ public class ProfileActivity extends BaseNavigationActivity
     }
 
     @Override
-    public Boolean createProfile(Profile profile) throws Exception {
+    public Boolean createProfile(Profile profile) {
         Log.d(TAG,"Metodo createProfile");
         Boolean resp = false;
         try {
@@ -246,13 +243,12 @@ public class ProfileActivity extends BaseNavigationActivity
         }catch (Exception e)
         {
             Log.e(TAG,"Error al crear Perfil",e);
-            throw new Exception("Error al crear Perfil");
         }
         return resp;
     }
 
     @Override
-    public Boolean updateProfile(Profile profile) throws Exception {
+    public Boolean updateProfile(Profile profile) {
         Log.d(TAG,"Metodo updateProfile");
         Boolean resp = false;
         try {
@@ -261,7 +257,6 @@ public class ProfileActivity extends BaseNavigationActivity
         }catch (Exception e)
         {
             Log.e(TAG,"Error al modificar Perfil",e);
-            throw new Exception("Error al modificar Perfil");
         }
         return resp;
     }

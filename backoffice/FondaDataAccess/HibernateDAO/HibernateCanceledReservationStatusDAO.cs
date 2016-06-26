@@ -1,10 +1,5 @@
 ﻿using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -16,7 +11,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         public CanceledReservationStatus getCanceledReservationStatus()
         {
-            CanceledReservationStatus status = FindById(8);
+            CanceledReservationStatus status = FindById(7);
             if (status == null)
             {
                 status = CanceledReservationStatus.Instance;

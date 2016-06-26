@@ -1,6 +1,8 @@
 
 package com.ds201625.fonda.domains.factory_entity;
 
+import android.text.format.DateFormat;
+
 import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Profile;
@@ -9,6 +11,7 @@ import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.RestaurantCategory;
 import com.ds201625.fonda.domains.Token;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -78,6 +81,10 @@ public class FondaEntityFactory {
     {
         return new Restaurant(id);
     }
+
+
+    public static Reservation GetReservation(int number_r, Date reserveDate,Date createDate, int commensalNumber, boolean status )
+    {return  new Reservation(number_r, reserveDate, createDate, commensalNumber, status);}
 
 
     /**

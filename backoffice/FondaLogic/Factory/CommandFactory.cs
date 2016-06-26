@@ -459,6 +459,17 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         }
 
 
+        /// <summary>
+        /// Metodo de la fabrica para el Comando CommandGetAllReservations
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <returns>comando CommandGetAllReservations</returns>
+        public static Command GetCommandGetAllReservations()
+        {
+            return new CommandGetAllReservations();
+        }
+
+
         #endregion
 
     }

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetReservationFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.ReservationService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Reservation;
@@ -39,7 +40,7 @@ public class AllReservationCommand extends BaseCommand {
      * Metodo de invoke implementado: Comando para mostrar toda las reservas
      */
     @Override
-    protected void invoke() {
+    protected void invoke() throws GetReservationFondaWebApiControllerException {
         Log.d(TAG, "Comando para obtener las reservas");
         ReservationService serviceReservation = FondaServiceFactory.getInstance()
                 .getReservationService();
@@ -47,14 +48,19 @@ public class AllReservationCommand extends BaseCommand {
 
         try {
             idCommensal = (Commensal) this.getParameter(0);
-            reservationList =  serviceReservation.getReservesService(idCommensal.getId());
-            //AKI IRAN D BO DE PARAMETROS
+            reservationList =  serviceReservation.getReservations(idCommensal.getId());
+        }catch(GetReservationFondaWebApiControllerException e){
+            Log.e(TAG, "Se ha generado error en invoke al obtener las reservas", e);
+            throw  new GetReservationFondaWebApiControllerException(e);
         } catch (RestClientException e) {
-            Log.e(TAG, "Se ha generado error en invoke ", e);
+            Log.e(TAG, "Se ha generado error en invoke al obtener las reservas", e);
+            throw  new GetReservationFondaWebApiControllerException(e);
         } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke", e);
+            Log.e(TAG, "Se ha generado error en invoke al obtener las reservas", e);
+            throw  new GetReservationFondaWebApiControllerException(e);
         } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke");
+            Log.e(TAG, "Se ha generado error en invoke al obtener las reservas", e);
+            throw  new GetReservationFondaWebApiControllerException(e);
         }
         setResult(reservationList);
     }
