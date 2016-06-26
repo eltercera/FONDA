@@ -82,6 +82,8 @@
     <Compile Include="RestaurantsSearch\GetRestaurantsCommand.cs" />
     <Compile Include="TokenManagement\DeleteTokenCommand.cs" />
     <Compile Include="TokenManagement\GetTokenCommand.cs" />
+    <Compile Include="RestaurantsSearch\DeleteFabRestaurantCommand.cs" />
+    <Compile Include="RestaurantsSearch\PostFabRestaurantCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -94,7 +96,7 @@
       <Name>FondaDataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaLogic\FondaLogic.csproj">
-      <Project>{64636df8-e693-4abb-8964-5c7fa5a6a50e}</Project>
+      <Project>{64636DF8-E693-4ABB-8964-5C7FA5A6A50E}</Project>
       <Name>FondaLogic</Name>
     </ProjectReference>
   </ItemGroup>
