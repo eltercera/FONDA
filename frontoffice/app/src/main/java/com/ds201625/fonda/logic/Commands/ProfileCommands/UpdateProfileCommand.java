@@ -1,11 +1,9 @@
-
 package com.ds201625.fonda.logic.Commands.ProfileCommands;
 
 import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.PutProfileFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.BaseCommand;
@@ -33,7 +31,7 @@ public class UpdateProfileCommand extends BaseCommand {
     }
 
     @Override
-    protected void invoke() throws PutProfileFondaWebApiControllerException {
+    protected void invoke() {
 
         Log.d(TAG, "Comando para modificar un perfil a un commensal");
         Profile profile;
@@ -44,19 +42,20 @@ public class UpdateProfileCommand extends BaseCommand {
         {
             profile = (Profile) getParameter(0);
             profileService.editProfile(profile);
-        }catch(PutProfileFondaWebApiControllerException e){
-            Log.e(TAG, "Se ha generado error en invoke al editar un Perfil", e);
-            throw  new PutProfileFondaWebApiControllerException(e);
         }
-        catch (RestClientException e) {
-            Log.e(TAG, "Se ha generado error en invoke al editar un Perfil", e);
-            throw  new PutProfileFondaWebApiControllerException(e);
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al editar un Perfil", e);
-            throw  new PutProfileFondaWebApiControllerException(e);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al editar un Perfil");
-            throw  new PutProfileFondaWebApiControllerException(e);
+        catch (RestClientException e)
+        {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            e.printStackTrace();
+        }
+        catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            e.printStackTrace();
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            e.printStackTrace();
         }
 
         setResult(true);

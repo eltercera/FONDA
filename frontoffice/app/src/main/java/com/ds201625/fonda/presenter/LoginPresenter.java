@@ -1,10 +1,5 @@
-
 package com.ds201625.fonda.presenter;
 
-import android.util.Log;
-
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.AddCommensalWebApiControllerException;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.interfaces.ILoginView;
 import com.ds201625.fonda.interfaces.ILoginViewPresenter;
@@ -24,24 +19,12 @@ public class LoginPresenter implements ILoginViewPresenter {
     public LoginPresenter (ILoginView view){ loginView = view;}
 
     @Override
-        public void regiter(String email, String password) throws AddCommensalWebApiControllerException {
-        Log.d(TAG,"Metodo para registrar Commensal");
-        try
+        public void regiter(String email, String password) {
+            try
             {
                 SessionData.getInstance().registerCommensal(email, password);
-            } catch(AddCommensalWebApiControllerException e){
-                Log.e(TAG, "Se ha generado error al agregar un Commensal", e);
-                throw  new AddCommensalWebApiControllerException(e);
-            }
-            catch (RestClientException e) {
-                Log.e(TAG, "Se ha generado error al agregar un Commensal", e);
-                throw  new AddCommensalWebApiControllerException(e);
-            } catch (NullPointerException e) {
-                Log.e(TAG, "Se ha generado error al agregar un Commensal", e);
-                throw  new AddCommensalWebApiControllerException(e);
             } catch (Exception e) {
-                Log.e(TAG, "Se ha generado error al agregar un Commensal");
-                throw  new AddCommensalWebApiControllerException(e);
+                e.printStackTrace();
             }
 
     }

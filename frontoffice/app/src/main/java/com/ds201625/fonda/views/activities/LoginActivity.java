@@ -1,4 +1,3 @@
-
 package com.ds201625.fonda.views.activities;
 
 import android.content.Intent;
@@ -296,8 +295,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
                 presenter.regiter(email, password);
                 succ = true;
             } catch (Exception e) {
-                msj = Toast.makeText(getBaseContext(),
-                        "Error en el Registro",Toast.LENGTH_SHORT);
+                e.printStackTrace();
             }
 
             if (succ){
@@ -330,8 +328,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
            presenter.login(commensal);
             succ = true;
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), "Error al iniciar sesión",
-                    Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
         }
 
         if (succ){
@@ -344,3 +341,4 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     }
 
 }
+
