@@ -19,6 +19,9 @@ import com.ds201625.fonda.views.contracts.ILoginViewContract;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.presenters.LoginPresenter;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /**
  * A login screen that offers login via email/password.
@@ -186,11 +189,13 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
         String password = mPasswordView.getText().toString();
         String repassword = mPasswordView2.getText().toString();
 
+        String alphanumeric = "^[A-Za-z0-9]$";
+
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password,alphanumeric)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -252,8 +257,14 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
         }
     }
 
-    private boolean isPasswordValid(String password) {
-        return password.length() >= 6;
+    private boolean isPasswordValid(String password, String patron) {
+        boolean isValid = false;
+        Pattern pattern = Pattern.compile(patron, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(password);
+        if (matcher.matches() && password.length() >= 6) {
+            isValid = true;
+        }
+        return isValid;
     }
 
     /**
