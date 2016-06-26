@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.FavoriteView;
-import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
-import com.ds201625.fonda.presenter.FavoritesPresenter;
+import com.ds201625.fonda.views.contracts.FavoriteView;
+import com.ds201625.fonda.views.contracts.FavoriteViewPresenter;
+import com.ds201625.fonda.views.presenters.FavoritesPresenter;
 
 import java.util.ArrayList;
 import java.util.List;

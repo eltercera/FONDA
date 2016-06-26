@@ -1,6 +1,7 @@
 package com.ds201625.fonda.data_access.services;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindByEmailUserAccountFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Commensal;
 
 /**
@@ -14,6 +15,7 @@ public interface RequireLogedCommensalService {
      * @return
      * @throws RestClientException
      */
-    Commensal getLogedCommensal(String email) throws RestClientException;
+    Commensal getLogedCommensal(String email) throws RestClientException,
+            FindByEmailUserAccountFondaWebApiControllerException;
 
 }
