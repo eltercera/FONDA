@@ -178,6 +178,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to HibernateDishOrderDAO.
+        /// </summary>
+        public static string ClassNameDishOrderDAO {
+            get {
+                return ResourceManager.GetString("ClassNameDishOrderDAO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandFindInvoicesByAccount.
         /// </summary>
         public static string ClassNameFindInvoicesByAccount {
@@ -1830,6 +1839,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string SuccessMessageGenerateNumberInvoice {
             get {
                 return ResourceManager.GetString("SuccessMessageGenerateNumberInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido el detalle de la orden correctamente.
+        /// </summary>
+        public static string SuccessMessageGetDishesByAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageGetDishesByAccount", resourceCulture);
             }
         }
         

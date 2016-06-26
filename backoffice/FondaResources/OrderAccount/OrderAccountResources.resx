@@ -930,6 +930,10 @@
     <value>Se ha guardado la factura correctamente en la Base de datos </value>
     <comment>Mensaje de exito para SaveInvoice</comment>
   </data>
+  <data name="ClassNameDishOrderDAO" xml:space="preserve">
+    <value>HibernateDishOrderDAO</value>
+    <comment>Manejo el acceso a datos de la clase DishOrder</comment>
+  </data>
   <data name="ClassNameRestaurantDAO" xml:space="preserve">
     <value>HibernateRestaurantDAO</value>
     <comment>Metodo usado para obtener las ordenes cerradas de un Restaurante</comment>
@@ -937,6 +941,10 @@
   <data name="SuccessMessageClosedOrdersByRestaurantId" xml:space="preserve">
     <value>Se han obtenido las ordenes cerradas de un Restaurante de forma satisfactoria</value>
     <comment>Mensaje de exito para ClosedOrdersByRestaurantId</comment>
+  </data>
+  <data name="SuccessMessageGetDishesByAccount" xml:space="preserve">
+    <value>Se ha obtenido el detalle de la orden correctamente</value>
+    <comment>Mensaje de exito para GetDishesByAccount</comment>
   </data>
   <data name="SuccessMessageOpenOrdersByRestaurantId" xml:space="preserve">
     <value>Se han obtenido las ordenes abiertas de un Restaurante de forma satisfactoria</value>
