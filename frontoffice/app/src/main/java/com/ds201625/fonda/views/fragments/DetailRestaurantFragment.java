@@ -1,9 +1,9 @@
 package com.ds201625.fonda.views.fragments;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +15,10 @@ import com.ds201625.fonda.views.contracts.DetailRestaurantContract;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-
-import org.w3c.dom.Text;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -28,7 +27,8 @@ import java.net.URL;
 /**
  * Fragment que contiene los detalles de un restaurante
  */
-public class DetailRestaurantFragment extends BaseFragment implements DetailRestaurantContract {
+public class DetailRestaurantFragment extends BaseFragment
+        implements DetailRestaurantContract, OnMapReadyCallback{
 
     //Elementos de la vista
     private Restaurant restaurant;
@@ -39,8 +39,9 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
     private TextView tvAddress;
     private TextView tvHours;
     private TextView tvDays;
-    MapView mapView;
-    GoogleMap map;
+    private GoogleMap map;
+    private SupportMapFragment mMapFragment;
+
     private View form;
 
 
@@ -83,21 +84,29 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
         tvDays = (TextView) form.findViewById(R.id.text_view_restaurant_days);
         logo = (ImageView) form.findViewById(R.id.imageview_logo);
 
-        //Codigo del Mapa
-        mapView = (MapView) form.findViewById(R.id.mapview);
-        mapView.onCreate(savedInstanceState);
-
-        // Gets to GoogleMap from the MapView and does initialization stuff
-        map = mapView.getMap();
-        map.getUiSettings().setMyLocationButtonEnabled(false);
-        map.setMyLocationEnabled(true);
-
-        // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
-        MapsInitializer.initialize(this.getActivity());
+        this.mMapFragment = SupportMapFragment.newInstance();
+        this.mMapFragment.getMapAsync(this);
+        FragmentTransaction fragmentTransaction =
+                getFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.mapview, mMapFragment);
+        fragmentTransaction.commit();
 
         setInfo();
         return form;
     }
+
+    @Override
+    public void onMapReady(GoogleMap map) {
+        this.map = map;
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom
+                (new LatLng(10.4642053,-66.9779887),20);
+        map.animateCamera(cameraUpdate);
+        map.addMarker(new MarkerOptions()
+                .position(new LatLng(10.4642053,-66.9779887))
+                .title("Marker"));
+    }
+
 
     private void setInfo() {
         if (restaurant == null || tvRestName == null)
@@ -109,11 +118,10 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
         tvHours.setText("8:00am a 7:00 pm"); //No hay horas
         tvDays.setText("Martes a Domingo"); //No hay dias
         Drawable image = loadImageFromWebOperations(restaurant.getLogo());
-        if (image == null) logo.setImageResource(R.mipmap.ic_launcher);
-        else logo.setImageDrawable(image);
-        // Updates the location and zoom of the MapView
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(40.7484, 73.9857), 10);
-        map.animateCamera(cameraUpdate);
+        if (image == null)
+            logo.setImageResource(R.mipmap.ic_launcher);
+        else
+            logo.setImageDrawable(image);
     }
 
     /**
@@ -143,24 +151,5 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
             return null;
         }
     }
-
-    /**
-     * Cuando se une
-     * @param context
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    } */
-
-    /**
-     * Cuando se desune
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }*/
-
-
 
 }
