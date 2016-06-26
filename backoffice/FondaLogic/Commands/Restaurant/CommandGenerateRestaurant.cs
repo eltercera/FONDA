@@ -76,7 +76,7 @@ namespace FondaLogic.Commands.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGenerateRestaurant(RestaurantErrors.GenerateRestaurantFondaDAOException, e);
             }
-            catch (InvalidTypeParameterException e)
+            catch (InvalidCastException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGenerateRestaurant(RestaurantErrors.InvalidTypeParameterException, e);

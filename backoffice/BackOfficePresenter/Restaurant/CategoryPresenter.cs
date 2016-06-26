@@ -42,7 +42,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             try
             {
                 //Llamada al comando para generar la lista de todos las categorias
-                commandGetAllCategories = CommandFactory.GetCommandGetAllCategories("null");
+                commandGetAllCategories = CommandFactory.GetCommandGetAllCategories();
                 commandGetAllCategories.Execute();
                 //Resultado del receiver
                 listRest = (IList<RestaurantCategory>)commandGetAllCategories.Receiver;
@@ -52,7 +52,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetAllCategories, e);
             }
-            catch (InvalidTypeOfParameterException e)
+            catch (InvalidCastException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCategories(RestaurantErrors.InvalidTypeParameterException, e);
@@ -189,11 +189,11 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
         {
             Command commandAddCategory;
             Command commandSaveCategory;
-            String nombreA = _view.nameCategoryA.Text;
+            String name = _view.nameCategoryA.Text;
             RestaurantCategory _restcat;
 
             //si el campo es valido se registra la la nueva categoria y activa el mensaje de éxito
-            if (CategoryValidate(nombreA))
+            if (CategoryValidate(name))
             {
                 _view.alertAddCategorySuccess.Visible = true;
 
@@ -201,7 +201,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 try
                 {
                     //Llamada al comando para generar la lista de todos los restaurantes
-                    commandAddCategory = CommandFactory.GetCommandAddCategory(nombreA);
+                    commandAddCategory = CommandFactory.GetCommandAddCategory(name);
                     commandAddCategory.Execute();
                     //Resultado del receiver
                     _restcat = (RestaurantCategory)commandAddCategory.Receiver;
@@ -211,7 +211,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionAddCategory(RestaurantErrors.CommandExceptionAddCategory, e);
                 }
-                catch (InvalidTypeOfParameterException e)
+                catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionAddCategory(RestaurantErrors.InvalidTypeParameterException, e);
@@ -250,7 +250,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionSaveCategory(RestaurantErrors.CommandExceptionSaveCategory, e);
                 }
-                catch (InvalidTypeOfParameterException e)
+                catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionSaveCategory(RestaurantErrors.InvalidTypeParameterException, e);
@@ -322,7 +322,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionModifyCategory(RestaurantErrors.CommandExceptionModifyCategory, e);
                 }
-                catch (InvalidTypeOfParameterException e)
+                catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionModifyCategory(RestaurantErrors.InvalidTypeParameterException, e);
@@ -361,7 +361,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionSaveCategory(RestaurantErrors.CommandExceptionSaveCategory, e);
                 }
-                catch (InvalidTypeOfParameterException e)
+                catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionSaveCategory(RestaurantErrors.InvalidTypeParameterException, e);
