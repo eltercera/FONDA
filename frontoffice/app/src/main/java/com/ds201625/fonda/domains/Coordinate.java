@@ -3,7 +3,7 @@ package com.ds201625.fonda.domains;
 /**
  * Created by gbsoj on 6/25/2016.
  */
-public class Coordinate {
+public class Coordinate extends BaseEntity {
 
     private Double longitude;
     private Double latitude;
