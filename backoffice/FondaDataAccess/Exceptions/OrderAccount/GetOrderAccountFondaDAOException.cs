@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.DataAccess.Exceptions
 {
-    class GetOrderAccountFondaDAOException : FondaDAOException
+    public class GetOrderAccountFondaDAOException : FondaDAOException
     {
         #region Constructors
 

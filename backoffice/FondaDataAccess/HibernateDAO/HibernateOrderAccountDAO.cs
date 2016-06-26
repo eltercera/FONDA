@@ -76,6 +76,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
 
         }
 
+        /// <summary>
+        /// Cambia el estado de la Cuenta
+        /// </summary>
+        /// <param name="_account">Account</param>
         public void ChangeStatusAccount(Account _account)
         {
             IOrderAccountDao _accountDao = _facDAO.GetOrderAccountDAO();
@@ -165,12 +169,30 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="invoice"></param>
         /// <returns></returns>
-        public Account GetOrderAccount(Invoice invoice)
+        public Account GetOrderAccount(Invoice _invoice, int _restaurantId)
         {
-            Account account;
+            IList<Account> _listaccount= new List<Account>();
+            IList<Invoice> _listinvoice = new List<Invoice>();
+            Account _account=  EntityFactory.GetAccount();
+            Restaurant _restaurant;
+            _restaurantDAO = _facDAO.GetRestaurantDAO();
             try
             {
-                account = Session.QueryOver<Account>().Where(a => a.ListInvoice.Contains(invoice) == true).SingleOrDefault();
+                _restaurant = _restaurantDAO.FindById(_restaurantId);
+                _listaccount = _restaurant.Accounts;
+
+                for (int i = 0; i < _listaccount.Count; i++)
+                {
+                    _listinvoice = _listaccount[i].ListInvoice;
+
+                    foreach (Invoice invoice in _listinvoice)
+                    {
+                        if (invoice.Id.Equals(_invoice.Id))
+                        {
+                            _account = _listaccount[i];
+                        }
+                    }
+                }
 
             }
             catch (Exception ex)
@@ -183,7 +205,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             Logger.WriteSuccessLog(OrderAccountResources.ClassNameOrderAccountDAO,
                 OrderAccountResources.SuccessMessageGetOrderAccount,
                 System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
-            return account;
+            return _account;
         }
 
         /// <summary>
@@ -197,7 +219,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
             IInvoiceDao _invoiceDAO = _facDAO.GetInvoiceDao();
             int _number = 0;
-            float tip = 0;
             Restaurant _restaurant = new Restaurant();
             _restaurantDAO = _facDAO.GetRestaurantDAO();
             ICashPaymentDAO _cashPaymentDAO = _facDAO.GetCashPaymentDAO();
@@ -256,7 +277,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// </summary>
         /// <param name="Restaurant">Un objeto Restaurant</param>
         /// <returns>Un int que es el numero unico de Cuenta</returns>
-
         public int GenerateNumberAccount(Restaurant _restaurant)
         {
             int _length;
@@ -295,6 +315,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return _length;
         }
 
+        /// <summary>
+        /// Metodo encargado de registrar el cierre de caja
+        /// </summary>
+        /// <param name="restaurantId">Id del Restaurante</param>
+        /// <returns>El total acumulado en ese dia</returns>
         public float CloseCashRegister(int restaurantId)
         {
 

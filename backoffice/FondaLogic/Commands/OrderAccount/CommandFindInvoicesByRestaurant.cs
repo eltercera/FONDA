@@ -40,7 +40,6 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionFindInvoicesByRestaurant exception= new CommandExceptionFindInvoicesByRestaurant(
                     OrderAccountResources.CommandExceptionFindInvoicesByRestaurantCode,
                     OrderAccountResources.ClassNameFindInvoicesByRestaurant,
@@ -49,13 +48,12 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 listInvoices = new List<Invoice>();
                 Receiver = listInvoices;
+                throw exception;
             }
             catch (Exception ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionFindInvoicesByRestaurant exception = new CommandExceptionFindInvoicesByRestaurant(
                     OrderAccountResources.CommandExceptionFindInvoicesByRestaurantCode,
                     OrderAccountResources.ClassNameFindInvoicesByRestaurant,
@@ -64,13 +62,13 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 listInvoices = new List<Invoice>();
                 Receiver = listInvoices;
+                throw exception;
             }
 
             Logger.WriteSuccessLog(OrderAccountResources.ClassNameFindInvoicesByRestaurant
-                , OrderAccountResources.SuccessMessageCommandCancelInvoice
+                , OrderAccountResources.SuccessMessageCommandFindInvoicesByRestaurant
                 , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
                 );
 

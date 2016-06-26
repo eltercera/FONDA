@@ -26,6 +26,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             Payment payment;
             Account account;
             float _tip=0;
+            float tax = 0.12F;
             CreditCardPayment _creditCard;
             try
             {
@@ -46,8 +47,8 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 profile = _profileDAO.FindById(profileId);
 
                 float totalInvoice = account.GetAmount();
-                //ESTO TIENE QUE CAMBIARSE POR UN RECURSO
-                totalInvoice += totalInvoice * 0.12F;
+                tax += totalInvoice * tax;
+                totalInvoice += tax;
 
                  if (payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
                 {
@@ -58,9 +59,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 
                 if (payment.Amount >= totalInvoice)
                 {
-                    //ESTE CONSTRUCTOR DEBO REVISARLO
-                    Invoice invoice = EntityFactory.GetInvoice(payment, profile, totalInvoice, (account.GetAmount())*0.12f, null, 100, null);
-
+                    Invoice invoice = EntityFactory.GetInvoice(payment, profile, totalInvoice, tax);
                     _invoice = _accountDAO.SaveInvoice(invoice, orderId, restaurantId);
                 }
                 else
@@ -81,9 +80,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 _invoice = EntityFactory.GetInvoice(); ;
                 Receiver = _invoice;
+                throw exception;
             }
             catch (Exception ex)
             {
@@ -95,9 +94,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 _invoice = EntityFactory.GetInvoice(); ;
                 Receiver = _invoice;
+                throw exception;
             }
 
             Logger.WriteSuccessLog(OrderAccountResources.ClassNameGenerateInvoice

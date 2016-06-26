@@ -109,7 +109,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 #endregion
                 // Configuramos el título de las columnas de la tabla
                 #region Encabezados 
-                PdfPCell clDate = new PdfPCell(new Phrase(string.Format(OrderAccountResources.DateColumn, _standardFont)));
+                PdfPCell clDate = new PdfPCell(new Phrase(OrderAccountResources.DateColumn, _standardFont));
                 clDate.BorderWidth = borderWidth;
                 clDate.BorderWidthBottom = borderWidthBottom;
 
@@ -117,7 +117,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 clNOrder.BorderWidth = borderWidth;
                 clNOrder.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clNInvoice = new PdfPCell(new Phrase(string.Format(OrderAccountResources.InvoiceNumberColumn, _standardFont)));
+                PdfPCell clNInvoice = new PdfPCell(new Phrase(OrderAccountResources.InvoiceNumberColumn, _standardFont));
                 clNInvoice.BorderWidth = borderWidth;
                 clNInvoice.BorderWidthBottom = borderWidthBottom;
 
@@ -275,7 +275,6 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 doc.Add(tblHeaderInvoice);
                 doc.Add(Chunk.NEWLINE);
                 doc.Add(tblOrderDetail);
-                //doc.Add(Chunk.NEWLINE);
                 doc.Add(Chunk.NEWLINE);
                 doc.Add(tblDishDetail);
                 doc.Add(Chunk.NEWLINE);

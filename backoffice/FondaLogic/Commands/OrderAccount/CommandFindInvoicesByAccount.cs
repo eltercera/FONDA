@@ -3,7 +3,6 @@ using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
-using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.OrderAccount;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
 using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using System;
@@ -44,6 +43,8 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
+                listInvoices = new List<Invoice>();
+                Receiver = listInvoices;
                 throw exception;
             }
             catch (NullReferenceException ex)
@@ -56,9 +57,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 listInvoices = new List<Invoice>();
                 Receiver = listInvoices;
+                throw exception;
 
             }
             catch(Exception ex)
@@ -71,9 +72,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 listInvoices = new List<Invoice>();
                 Receiver = listInvoices;
+                throw exception;
             }
 
             Logger.WriteSuccessLog(OrderAccountResources.ClassNameFindInvoicesByAccount

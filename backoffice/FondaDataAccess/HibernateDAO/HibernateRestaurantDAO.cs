@@ -256,6 +256,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Una lista de Close Account</returns>
         public IList<Account> ClosedOrdersByRestaurantId(int restaurantId)
         {
+            IList<Account> list = new List<Account>();
             try
             {
 
@@ -264,7 +265,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     .Where(r => r.Status == ActiveSimpleStatus.Instance)
                     .SingleOrDefault();
 
-                IList<Account> list = new List<Account>();
+
 
                 foreach (Account closedAccount in restaurant.Accounts)
                 {
@@ -272,7 +273,6 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                         list.Add(closedAccount);
                 }
 
-                return list;
 
             }
             catch (ArgumentOutOfRangeException e)
@@ -293,6 +293,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameRestaurantDAO,
+                OrderAccountResources.SuccessMessageClosedOrdersByRestaurantId,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
+            return list;
 
         }
 
@@ -303,7 +307,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Una List de Accounts</returns>
         public IList<Account> OpenOrdersByRestaurantId(int restaurantId)
         {
-
+            IList<Account> list = new List<Account>();
             try
             {
                 Restaurant restaurant = Session.QueryOver<Restaurant>()
@@ -311,15 +315,13 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     .Where(r => r.Status == ActiveSimpleStatus.Instance)
                     .SingleOrDefault();
 
-                IList<Account> list = new List<Account>();
+
 
                 foreach (Account closedAccount in restaurant.Accounts)
                 {
                     if (closedAccount.Status.Equals(OpenAccountStatus.Instance))
                         list.Add(closedAccount);
                 }
-
-                return list;
 
             }
             catch (ArgumentOutOfRangeException e)
@@ -340,6 +342,10 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameRestaurantDAO,
+                OrderAccountResources.SuccessMessageOpenOrdersByRestaurantId,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
+            return list;
         }
 
         /// <summary>
@@ -391,6 +397,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameRestaurantDAO,
+                OrderAccountResources.SuccessMessageReleaseTable,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
         }
 
         #endregion

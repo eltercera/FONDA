@@ -930,4 +930,40 @@
     <value>Se ha guardado la factura correctamente en la Base de datos </value>
     <comment>Mensaje de exito para SaveInvoice</comment>
   </data>
+  <data name="ClassNameDishOrderDAO" xml:space="preserve">
+    <value>HibernateDishOrderDAO</value>
+    <comment>Manejo el acceso a datos de la clase DishOrder</comment>
+  </data>
+  <data name="ClassNameRestaurantDAO" xml:space="preserve">
+    <value>HibernateRestaurantDAO</value>
+    <comment>Metodo usado para obtener las ordenes cerradas de un Restaurante</comment>
+  </data>
+  <data name="SuccessMessageClosedOrdersByRestaurantId" xml:space="preserve">
+    <value>Se han obtenido las ordenes cerradas de un Restaurante de forma satisfactoria</value>
+    <comment>Mensaje de exito para ClosedOrdersByRestaurantId</comment>
+  </data>
+  <data name="SuccessMessageGetDishesByAccount" xml:space="preserve">
+    <value>Se ha obtenido el detalle de la orden correctamente</value>
+    <comment>Mensaje de exito para GetDishesByAccount</comment>
+  </data>
+  <data name="SuccessMessageOpenOrdersByRestaurantId" xml:space="preserve">
+    <value>Se han obtenido las ordenes abiertas de un Restaurante de forma satisfactoria</value>
+    <comment>Mensaje de exito para OpenOrdersByRestaurantId</comment>
+  </data>
+  <data name="SuccessMessageReleaseTable" xml:space="preserve">
+    <value>Se ha cambiado el estado de la mesa ocupada a libre en la Base de datos</value>
+    <comment>Mensaje de exito para ReleaseTable</comment>
+  </data>
+  <data name="CommandExceptionGetInvoicesByProfileCode" xml:space="preserve">
+    <value>BO-04-029</value>
+    <comment>Codigo de error para CommandExceptionGetInvoicesByProfile</comment>
+  </data>
+  <data name="MessageCommandExceptionGetInvoicesByProfile" xml:space="preserve">
+    <value>No se ha podido cargar la lista de facturas de un perfil</value>
+    <comment>Mensaje de error para CommandExceptionGetInvoicesByProfile</comment>
+  </data>
+  <data name="SuccessMessageCommandGetInvoicesByProfile" xml:space="preserve">
+    <value>Se han obtenido las facturas de un perfil correctamente</value>
+    <comment>Mensaje de exito para CommandGetInvoicesByProfile</comment>
+  </data>
 </root>
