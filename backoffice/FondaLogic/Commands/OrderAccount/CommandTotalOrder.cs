@@ -17,7 +17,6 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
         private Restaurant _restaurant;
         private IList<int> _list;
         private IRestaurantDAO _restaurantDao;
-        private IOrderAccountDao _accountDao;
         private FactoryDAO _facDAO = FactoryDAO.Intance;
 
         public CommandTotalOrder(Object receiver) : base(receiver) { }
@@ -55,9 +54,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 total = 0;
                 Receiver = total;
+                throw exception;
             }
             catch (Exception ex)
             {
@@ -69,9 +68,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 total = 0;
                 Receiver = total;
+                throw exception;
             }
 
             Logger.WriteSuccessLog(OrderAccountResources.ClassNameTotalOrder

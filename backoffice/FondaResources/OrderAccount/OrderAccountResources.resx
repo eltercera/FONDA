@@ -954,4 +954,16 @@
     <value>Se ha cambiado el estado de la mesa ocupada a libre en la Base de datos</value>
     <comment>Mensaje de exito para ReleaseTable</comment>
   </data>
+  <data name="CommandExceptionGetInvoicesByProfileCode" xml:space="preserve">
+    <value>BO-04-029</value>
+    <comment>Codigo de error para CommandExceptionGetInvoicesByProfile</comment>
+  </data>
+  <data name="MessageCommandExceptionGetInvoicesByProfile" xml:space="preserve">
+    <value>No se ha podido cargar la lista de facturas de un perfil</value>
+    <comment>Mensaje de error para CommandExceptionGetInvoicesByProfile</comment>
+  </data>
+  <data name="SuccessMessageCommandGetInvoicesByProfile" xml:space="preserve">
+    <value>Se han obtenido las facturas de un perfil correctamente</value>
+    <comment>Mensaje de exito para CommandGetInvoicesByProfile</comment>
+  </data>
 </root>

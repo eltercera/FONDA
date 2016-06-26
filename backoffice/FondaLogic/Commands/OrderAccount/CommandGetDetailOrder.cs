@@ -57,9 +57,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 IList<Object> _list = new List<Object>();
                 Receiver = _list;
+                throw exception;
 
             }
             catch (Exception ex)
@@ -72,9 +72,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 IList<Object> _list = new List<Object>();
                 Receiver = _list;
+                throw exception;
 
             }
 

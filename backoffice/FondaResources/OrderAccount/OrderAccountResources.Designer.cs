@@ -538,6 +538,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BO-04-029.
+        /// </summary>
+        public static string CommandExceptionGetInvoicesByProfileCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetInvoicesByProfileCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BO-04-020.
         /// </summary>
         public static string CommandExceptionGetOrderCode {
@@ -1020,6 +1029,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string MessageCommandExceptionGetInvoice {
             get {
                 return ResourceManager.GetString("MessageCommandExceptionGetInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se ha podido cargar la lista de facturas de un perfil.
+        /// </summary>
+        public static string MessageCommandExceptionGetInvoicesByProfile {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetInvoicesByProfile", resourceCulture);
             }
         }
         
@@ -1704,6 +1722,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string SuccessMessageCommandGetInvoice {
             get {
                 return ResourceManager.GetString("SuccessMessageCommandGetInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se han obtenido las facturas de un perfil correctamente.
+        /// </summary>
+        public static string SuccessMessageCommandGetInvoicesByProfile {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetInvoicesByProfile", resourceCulture);
             }
         }
         
