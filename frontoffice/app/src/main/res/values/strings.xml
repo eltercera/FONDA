@@ -31,10 +31,15 @@
     <string name="prompt_password2">Repita contraseña</string>
 
     <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_format_email">Formato inválido.
+        Asegúrese de seguir el formato usuario@dominio</string>
+    <string name="error_format_password">La contraseña debe estar en formato alfanumérico</string>
+    <string name="error_length_password">La contraseña debe contener entre
+        6 y 12 caracteres</string>
+    <string name="error_invalid_password">La contraseña debe ser alfanumérica y
+        contener de 6 a 12 caracteres</string>
     <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="error_field_required">Campo requerido</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>

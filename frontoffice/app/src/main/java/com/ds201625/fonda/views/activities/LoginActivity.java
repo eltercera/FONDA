@@ -41,7 +41,7 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
      // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private EditText mPasswordView2;
+    private EditText mRePasswordView;
     private TextView mTextViewForgetPass;
     private LoginActivityStatus status = LoginActivityStatus.ON_LOGIN;
     private Button mEmailSignInButton;
@@ -133,7 +133,7 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
     private void getAllElements() {
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView2 = (EditText) findViewById(R.id.password2);
+        mRePasswordView = (EditText) findViewById(R.id.password2);
         mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mSignInButton = (Button) findViewById(R.id.signin_button);
         mRegisterButton = (Button) findViewById(R.id.register_button);
@@ -151,7 +151,7 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
         mEmailView.setNextFocusDownId(R.id.password);
         mPasswordView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
         mPasswordView.setNextFocusDownId(R.id.password2);
-        mPasswordView2.setVisibility(View.VISIBLE);
+        mRePasswordView.setVisibility(View.VISIBLE);
         mTextViewForgetPass.setVisibility(View.GONE);
         mEmailSignInButton.setText(getString(R.string.login_register));
         mPasswordView.setVisibility(View.VISIBLE);
@@ -163,7 +163,7 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
     private void setOnForgetPass() {
         this.status = LoginActivityStatus.ON_PASSWORD_FORGET;
         mEmailView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        mPasswordView2.setVisibility(View.GONE);
+        mRePasswordView.setVisibility(View.GONE);
         mTextViewForgetPass.setVisibility(View.GONE);
         mEmailSignInButton.setText(getString(R.string.login_recover_passwd));
         mPasswordView.setVisibility(View.GONE);
@@ -177,7 +177,7 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
         mPasswordView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         mEmailView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
         mEmailView.setNextFocusDownId(R.id.password);
-        mPasswordView2.setVisibility(View.GONE);
+        mRePasswordView.setVisibility(View.GONE);
         mTextViewForgetPass.setVisibility(View.VISIBLE);
         mEmailSignInButton.setText(getString(R.string.login_start_session));
         mPasswordView.setVisibility(View.VISIBLE);
@@ -188,21 +188,30 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
+        mRePasswordView.setError(null);
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
-        String repassword = mPasswordView2.getText().toString();
+        String repassword = mRePasswordView.getText().toString();
 
         String alphanumeric = "^[A-Za-z0-9]+$";
 
         boolean cancel = false;
         View focusView = null;
 
-        // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password,alphanumeric)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
+        // Check for a valid password
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password,alphanumeric,6).isEmpty()) {
+            mPasswordView.setError(isPasswordValid(password,alphanumeric,6));
             focusView = mPasswordView;
+            cancel = true;
+        }else if (TextUtils.isEmpty(password)) {
+            mPasswordView.setError(getString(R.string.error_field_required));
+            focusView = mPasswordView;
+            cancel = true;
+        }else if (TextUtils.isEmpty(repassword)) {
+            mRePasswordView.setError(getString(R.string.error_field_required));
+            focusView = mRePasswordView;
             cancel = true;
         }
 
@@ -212,7 +221,7 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
             focusView = mEmailView;
             cancel = true;
         } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
+            mEmailView.setError(getString(R.string.error_format_email));
             focusView = mEmailView;
             cancel = true;
         }
@@ -262,14 +271,20 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
         }
     }
 
-    private boolean isPasswordValid(String password, String patron) {
-        boolean isValid = false;
-        Pattern pattern = Pattern.compile(patron, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(password);
-        if (matcher.matches() && password.length() >= 6) {
-            isValid = true;
+    private String isPasswordValid(String password, String patron, int min) {
+        //boolean isValid = false;
+        if (!Pattern.compile(patron, Pattern.CASE_INSENSITIVE).matcher(password).matches() &&
+                password.length() < min){
+            return getString(R.string.error_invalid_password);
         }
-        return isValid;
+        else if (!Pattern.compile(patron, Pattern.CASE_INSENSITIVE).matcher(password).matches()) {
+            //isValid = true;
+            return getString(R.string.error_format_password);
+        }
+        else if (password.length() < min){
+            return getString(R.string.error_length_password);
+        }
+        return "";
     }
 
     /**
