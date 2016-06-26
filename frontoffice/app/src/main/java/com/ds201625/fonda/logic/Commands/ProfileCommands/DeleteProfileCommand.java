@@ -47,16 +47,16 @@ public class DeleteProfileCommand extends BaseCommand {
         }
         catch (RestClientException e)
         {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un Perfil", e);
             e.printStackTrace();
         }
         catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un Perfil", e);
             e.printStackTrace();
         }
         catch (Exception e)
         {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un Perfil", e);
             e.printStackTrace();
         }
 
