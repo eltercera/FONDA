@@ -84,7 +84,7 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe el logo de un restaurante </value>
             set { _logo = value; }
         }
-
+        
         public virtual Currency Currency
         {
             /// <summary>
@@ -97,7 +97,7 @@ namespace com.ds201625.fonda.Domain
             /// <value>Recibe el tipo de moneda de un restaurante </value>
             set { _currency = value; }
         }
-
+        [DataMember]
         public virtual Coordinate Coordinate
         {
             /// <summary>

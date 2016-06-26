@@ -30,6 +30,7 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
     private TextView tvDays;
     private View form;
 
+
     /**
      * Crea el fragment
      * @param savedInstanceState
@@ -77,10 +78,10 @@ public class DetailRestaurantFragment extends BaseFragment implements DetailRest
             return;
         tvRestName.setText(restaurant.getName());
         tvType.setText(restaurant.getRestaurantCategory().getName());
-        tvZone.setText(""); //No hay zona en el rest?
+        tvZone.setText(restaurant.getZone().getName());
         tvAddress.setText(restaurant.getAddress());
-        tvHours.setText(""); //No hay horas
-        tvDays.setText(""); //No hay dias
+        tvHours.setText("8:00am a 7:00 pm"); //No hay horas
+        tvDays.setText("Martes a Domingo"); //No hay dias
     }
 
     /**

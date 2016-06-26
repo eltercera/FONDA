@@ -7,10 +7,14 @@ import java.util.List;
 public class Restaurant extends Company {
 
     private String logo;
+    private Coordinate coordinate;
+    private RestaurantCategory restaurantCategory;
+    private Zone zone;
     private String address;
     private Boolean favorite;
-    private RestaurantCategory restaurantCategory;
+
     private List<Table> tables;
+
 
     public Restaurant () {
         super();
@@ -65,4 +69,13 @@ public class Restaurant extends Company {
     public void setFavorite(Boolean favorite) {
         this.favorite = favorite;
     }
+
+    public Coordinate getCoordinate() { return coordinate; }
+
+    public void setCoordinate(Coordinate coordinate) { this.coordinate = coordinate; }
+
+    public Zone getZone() { return zone; }
+
+    public void setZone(Zone zone) { this.zone = zone; }
+
 }
