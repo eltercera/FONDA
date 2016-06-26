@@ -97,7 +97,7 @@ Restaurantes
                      <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
                         <div class="form-group">
                             <label class="control-label">Nombre</label>
-                            <asp:TextBox ID="NameC" CssClass="form-control" readonly="true"  runat="server"/>
+                            <asp:TextBox ID="NameC" CssClass="form-control" readonly="true"  runat="server" />
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">
@@ -356,6 +356,7 @@ Restaurantes
                         <div class="form-group">
                             <label class="control-label">Nombre</label>
                             <asp:TextBox ID="NameA" CssClass="form-control" placeholder="ej. El Budare"  runat="server"/>
+
                         </div>
                 </div>
                 <div class="col-lg-5 col-md-10 col-sm-10 col-xs-10">

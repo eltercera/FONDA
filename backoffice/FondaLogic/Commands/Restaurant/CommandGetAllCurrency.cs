@@ -24,8 +24,7 @@ namespace FondaLogic.Commands.Restaurante
         /// Constructor del comando
         /// </summary>
         /// <param name="receiver"></param>
-        public CommandGetAllCurrency(object receiver)
-            : base(receiver)
+        public CommandGetAllCurrency()
         {
 
         }
@@ -56,7 +55,7 @@ namespace FondaLogic.Commands.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCurrencies(RestaurantErrors.GetAllCurrenciesFondaDAOException, e);
             }
-            catch (InvalidTypeParameterException e)
+            catch (InvalidCastException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCurrencies(RestaurantErrors.InvalidTypeParameterException, e);
