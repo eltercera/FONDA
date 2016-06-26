@@ -256,7 +256,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            return Ok();
+            return Ok(id);
         }
 
     }

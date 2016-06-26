@@ -10,13 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.interfaces.IProfileView;
-import com.ds201625.fonda.interfaces.IProfileViewPresenter;
-import com.ds201625.fonda.logic.Command;
-import com.ds201625.fonda.logic.FondaCommandFactory;
-import com.ds201625.fonda.presenter.ProfilePresenter;
+import com.ds201625.fonda.views.contracts.IProfileViewContract;
+import com.ds201625.fonda.views.presenters.ProfilePresenter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.ProfileFormFragment;
 import com.ds201625.fonda.views.fragments.ProfileListFragment;
@@ -28,7 +24,7 @@ import java.util.List;
  * Activity de Perfil de usuario
  */
 public class ProfileActivity extends BaseNavigationActivity
-    implements ProfileListFragment.profileListFragmentListener, IProfileView{
+    implements ProfileListFragment.profileListFragmentListener, IProfileViewContract {
 
     private String TAG = "ProfileActivity";
     /**
@@ -64,7 +60,7 @@ public class ProfileActivity extends BaseNavigationActivity
     /**
      * Presentador
      */
-    private IProfileViewPresenter presenter;
+    private ProfilePresenter presenter;
 
     /**
      * Solo para prueba de la interface
