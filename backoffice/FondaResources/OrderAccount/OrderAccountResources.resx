@@ -454,7 +454,7 @@
     <comment>Mensaje de error para MVPExceptionClosedOrdersTable</comment>
   </data>
   <data name="MessageMVPExceptionDetailOrderTable" xml:space="preserve">
-    <value>Se ha producido un error al llenar la tabla del detale de la Orden #</value>
+    <value>Se ha producido un error al llenar la tabla del detale de la Orden </value>
     <comment>Mensaje de error para MVPExceptionDetailOrderTable</comment>
   </data>
   <data name="MessageMVPExceptionOrderInvoicesTable" xml:space="preserve">

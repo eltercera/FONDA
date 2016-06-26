@@ -1294,7 +1294,7 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla del detale de la Orden #.
+        ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla del detale de la Orden .
         /// </summary>
         public static string MessageMVPExceptionDetailOrderTable {
             get {
