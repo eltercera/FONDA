@@ -102,7 +102,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
             //Define objeto a recibir
             IList<DishOrder> listDishOrder;
 
-            List<int> parameters;
             List<Object> result;
             Command commandGetDetailInvoice;
 
