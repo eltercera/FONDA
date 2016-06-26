@@ -1,4 +1,3 @@
-
 package com.ds201625.fonda.logic.Commands.CommensalCommands;
 
 import android.content.Context;
@@ -6,7 +5,6 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetTokenFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Token;
@@ -35,13 +33,10 @@ public class CreateTokenCommand extends BaseCommand {
         return parameters;
     }
 
-    /**
-     * Implementacion del metodo invoke para crear un Token
-     */
     @Override
-    protected void invoke() throws GetTokenFondaWebApiControllerException {
+    protected void invoke() {
 
-        Log.d(TAG, "Comando para crear un Token");
+        Log.d(TAG, "Comando para eliminar un Token");
         Context context;
         Commensal commensal;
         Token tokenTest = null;
@@ -57,19 +52,19 @@ public class CreateTokenCommand extends BaseCommand {
             }
 
         }
-        catch(GetTokenFondaWebApiControllerException e){
-            Log.e(TAG, "Se ha generado error en invoke al crear un Token", e);
-            throw  new GetTokenFondaWebApiControllerException(e);
+        catch (RestClientException e)
+        {
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un Token", e);
+            e.printStackTrace();
         }
-        catch (RestClientException e) {
-            Log.e(TAG, "Se ha generado error en invoke al crear un Token", e);
-            throw  new GetTokenFondaWebApiControllerException(e);
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al crear un Token", e);
-            throw  new GetTokenFondaWebApiControllerException(e);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al crear un Token");
-            throw  new GetTokenFondaWebApiControllerException(e);
+        catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un Token", e);
+            e.printStackTrace();
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, "Se ha generado error en invoke al eliminar un Token", e);
+            e.printStackTrace();
         }
 
         setResult(tokenTest);

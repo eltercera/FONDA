@@ -1,4 +1,3 @@
-
 package com.ds201625.fonda.views.fragments;
 
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
@@ -55,6 +53,7 @@ public class ProfileListFragment extends BaseFragment
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //TODO: agregar try/catch en caso de que no se pase el argumento.
         multi = getArguments().getBoolean("multiSelect");
         presenter = new ProfilePresenter(this);
         profileList = new ProfileViewItemList(getContext(), presenter);
@@ -103,8 +102,7 @@ public class ProfileListFragment extends BaseFragment
                                     try {
                                        deleteProfile(profile);
                                     } catch (Exception e) {
-                                        Toast.makeText(ProfileListFragment.super.getContext(),e.getMessage(),
-                                                Toast.LENGTH_SHORT).show();
+                                        e.printStackTrace();
                                     }
                             }
                             Log.v("Perfiles eliminados: ", sal);
@@ -170,7 +168,7 @@ public class ProfileListFragment extends BaseFragment
     }
 
     @Override
-    public Boolean deleteProfile(Profile profile) throws Exception {
+    public Boolean deleteProfile(Profile profile) {
         Log.d(TAG,"Metodo deleteProfile");
         Boolean resp = false;
         try {
@@ -179,7 +177,6 @@ public class ProfileListFragment extends BaseFragment
         }catch (Exception e)
         {
             Log.e(TAG,"Error al eliminar el Perfil",e);
-            throw new Exception("Error al Eliminar un Perfil");
         }
         return resp;
     }
