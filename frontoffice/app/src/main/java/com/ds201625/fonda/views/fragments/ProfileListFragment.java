@@ -16,13 +16,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.interfaces.IProfileListView;
-import com.ds201625.fonda.interfaces.IProfileViewPresenter;
-import com.ds201625.fonda.logic.Command;
-import com.ds201625.fonda.logic.FondaCommandFactory;
-import com.ds201625.fonda.presenter.ProfilePresenter;
+import com.ds201625.fonda.views.contracts.IProfileListViewContract;
+import com.ds201625.fonda.views.presenters.ProfilePresenter;
 import com.ds201625.fonda.views.adapters.ProfileViewItemList;
 
 import java.util.ArrayList;
@@ -31,12 +27,12 @@ import java.util.ArrayList;
  * Fragment que contiene la lista de Perfiles.
  */
 public class ProfileListFragment extends BaseFragment
-        implements SwipeRefreshLayout.OnRefreshListener, IProfileListView{
+        implements SwipeRefreshLayout.OnRefreshListener, IProfileListViewContract {
 
     /**
      * Presentador
      */
-    private IProfileViewPresenter presenter;
+    private ProfilePresenter presenter;
 
     private String TAG = "ProfileListFragment";
     //Interface de comunicaciond contra la activity

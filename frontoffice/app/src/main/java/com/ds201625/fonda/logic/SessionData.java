@@ -30,7 +30,7 @@ public class SessionData {
     private Context context;
 
     /**
-     * Instancia singelton
+     * Instancia singleton
      */
     private static SessionData instance;
 
@@ -84,14 +84,14 @@ public class SessionData {
      */
     public void registerCommensal(String email, String password) throws Exception {
         if (email.isEmpty() || password.isEmpty()) {
-            throw new Exception("Datos de regsitro invalido");
+            throw new Exception("Datos de registro invalidos");
         }
         Commensal newCommensal;
 
         Command commandoCreateCommensal = FondaCommandFactory.createCommensalCommand();
         commandoCreateCommensal.setParameter(0,email);
         commandoCreateCommensal.setParameter(1,password);
-        commandoCreateCommensal.setParameter(2,context);
+        commandoCreateCommensal.setParameter(2,this.context);
         commandoCreateCommensal.run();
         newCommensal = (Commensal)commandoCreateCommensal.getResult();
         if (newCommensal == null) {
@@ -126,8 +126,9 @@ public class SessionData {
      * @throws LocalStorageException
      */
     public void addCommensal(Commensal commensal) throws LocalStorageException {
-        getCommensalsrv().saveCommensal(commensal,context);
+        getCommensalsrv().saveCommensal(commensal,this.context);
         setCommensal();
+        SessionData.instance = null;
     }
 
     /**
@@ -145,7 +146,7 @@ public class SessionData {
 
         if (this.commensal == null)
             return;
-        Command commandoCreateToken = FondaCommandFactory.deleteTokenCommand();
+        Command commandoCreateToken = FondaCommandFactory.createTokenCommand();
         commandoCreateToken.setParameter(0,this.context);
         commandoCreateToken.setParameter(1,this.commensal);
         commandoCreateToken.run();
@@ -179,7 +180,7 @@ public class SessionData {
         Commensal commensal = getCommensalsrv().getCommensal(this.context);
         if (commensal != null) {
             CommensalService service = getCommensalsrv();
-            service.deleteCommensal(context);
+            service.deleteCommensal(this.context);
         }
 
         this.commensal = null;
@@ -198,7 +199,7 @@ public class SessionData {
      * @return
      */
     private TokenService getTokenServ() {
-        return FondaServiceFactory.getInstance().getTokenService(commensal);
+        return FondaServiceFactory.getInstance().getTokenService(this.commensal);
     }
 
 }

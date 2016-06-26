@@ -88,6 +88,7 @@
                         android:hint="@string/prompt_email"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
+                        android:maxLength="30"
                         android:singleLine="true"
                         android:textIsSelectable="false"
                         android:textColor="@color/creme"/>
@@ -106,6 +107,7 @@
                         android:hint="@string/prompt_password"
                         android:inputType="textPassword"
                         android:maxLines="1"
+                        android:maxLength="12"
                         android:singleLine="true"
                         android:textColor="@color/creme"/>
 
@@ -125,6 +127,7 @@
                         android:imeOptions="actionDone"
                         android:inputType="textPassword"
                         android:maxLines="1"
+                        android:maxLength="12"
                         android:singleLine="true"
                         android:visibility="gone"
                         android:textColor="@color/creme"/>

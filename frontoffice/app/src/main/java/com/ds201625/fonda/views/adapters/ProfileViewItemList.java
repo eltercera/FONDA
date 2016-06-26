@@ -8,17 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.interfaces.IProfileItemView;
-import com.ds201625.fonda.interfaces.IProfileListView;
-import com.ds201625.fonda.interfaces.IProfileViewPresenter;
-import com.ds201625.fonda.logic.Command;
-import com.ds201625.fonda.logic.FondaCommandFactory;
-import com.ds201625.fonda.logic.SessionData;
-import com.ds201625.fonda.presenter.ProfilePresenter;
+import com.ds201625.fonda.views.presenters.ProfilePresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +17,17 @@ import java.util.List;
 /**
  * Adapter para la vista de la lista de Profiles
  */
-public class ProfileViewItemList extends BaseArrayAdapter<Profile> implements IProfileItemView{
+public class ProfileViewItemList extends BaseArrayAdapter<Profile> {
 
 
     private String TAG = "ProfileViewItemList";
 
-    public ProfileViewItemList(Context context, IProfileViewPresenter presenter) {
+    public ProfileViewItemList(Context context, ProfilePresenter presenter) {
         super(context, R.layout.item_profile,R.id.tvProfile,new ArrayList<Profile>());
         update(presenter);
     }
 
-    public void update(IProfileViewPresenter presenter) {
+    public void update(ProfilePresenter presenter) {
         List<Profile> profiles = null;
         clear();
         try {
@@ -83,8 +74,7 @@ public class ProfileViewItemList extends BaseArrayAdapter<Profile> implements IP
         return convertView;
     }
 
-    @Override
-    public List<Profile> getProfiles(IProfileViewPresenter presenter) {
+    public List<Profile> getProfiles(ProfilePresenter presenter) {
         Log.d(TAG,"Metodo getProfiles");
         List<Profile> resp = null;
         try {
