@@ -1,12 +1,10 @@
-package com.ds201625.fonda.presenter;
+package com.ds201625.fonda.views.presenters;
 
 import android.util.Log;
 
 import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.interfaces.IProfileItemView;
-import com.ds201625.fonda.interfaces.IProfileListView;
-import com.ds201625.fonda.interfaces.IProfileView;
-import com.ds201625.fonda.interfaces.IProfileViewPresenter;
+import com.ds201625.fonda.views.contracts.IProfileListViewContract;
+import com.ds201625.fonda.views.contracts.IProfileViewContract;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 
@@ -15,25 +13,23 @@ import java.util.List;
 /**
  * Created by jessi_ds930h9 on 22/6/2016.
  */
-public class ProfilePresenter implements IProfileViewPresenter {
+public class ProfilePresenter{
 
-    private IProfileListView profileListView;
-    private IProfileView profileView;
-    private IProfileItemView profileItemView;
+    private IProfileListViewContract profileListView;
+    private IProfileViewContract profileView;
     private String TAG = "ProfilePresenter";
     /**
      * Constructor para la vita de ProfileListFraggment
      * @param view
      */
-    public ProfilePresenter (IProfileListView view){ profileListView = view;}
+    public ProfilePresenter (IProfileListViewContract view){ profileListView = view;}
 
     /**
      * Constructor para la vita de ProfileActivity
      * @param view
      */
-    public ProfilePresenter (IProfileView view){ profileView = view;}
+    public ProfilePresenter (IProfileViewContract view){ profileView = view;}
 
-        @Override
         public Boolean createProfile(Profile profile) {
             Log.d(TAG,"Metodo createProfile");
             Boolean resp = false;
@@ -50,7 +46,6 @@ public class ProfilePresenter implements IProfileViewPresenter {
             return resp;
         }
 
-        @Override
         public Boolean updateProfile(Profile profile) {
             Log.d(TAG,"Metodo updateProfile");
             Boolean resp = false;
@@ -67,7 +62,6 @@ public class ProfilePresenter implements IProfileViewPresenter {
             return resp;
         }
 
-        @Override
         public Boolean deleteProfile(Profile profile) {
             Log.d(TAG,"Metodo deleteProfile");
             Boolean resp = false;
@@ -85,7 +79,6 @@ public class ProfilePresenter implements IProfileViewPresenter {
             return resp;
         }
 
-        @Override
         public List<Profile> getProfiles() {
             Log.d(TAG,"Metodo getProfiles");
             List<Profile> resp = null;
