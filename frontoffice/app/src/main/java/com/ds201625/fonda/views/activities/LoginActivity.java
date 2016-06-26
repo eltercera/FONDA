@@ -51,6 +51,10 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
     private LinearLayout mInitLayout;
     private LoginPresenter presenter;
 
+    /**
+     * Metodo que se llama cuando se crea el activities
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,7 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
                 SessionData.initInstance(getApplicationContext());
             } catch (Exception e) {
                 e.printStackTrace();
+                msj( "Error al Iniciar sesion");
             }
 
         // si existe un token o lo logra obtener uno nuevo vigente salta
@@ -347,6 +352,15 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
                     "Error al iniciar sesión",
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    /**
+     *Metodo para el despliegue de mensajes
+     * @param msj
+     */
+    public void msj(String msj)
+    {
+        Toast.makeText(getBaseContext(),msj, Toast.LENGTH_SHORT).show();
     }
 
 }

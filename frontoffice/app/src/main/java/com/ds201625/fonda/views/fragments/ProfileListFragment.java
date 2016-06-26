@@ -140,6 +140,9 @@ public class ProfileListFragment extends BaseFragment
         updateList();
     }
 
+    /**
+     * Metodo que modifica la lista
+     */
     public void updateList() {
         swipeRefreshLayout.setRefreshing(true);
         profileList.update(presenter);
@@ -163,6 +166,11 @@ public class ProfileListFragment extends BaseFragment
         super.onDetach();
     }
 
+    /**
+     * Metodo encargado de eliminar perfil
+     * @param profile
+     * @return
+     */
     @Override
     public Boolean deleteProfile(Profile profile) {
         Log.d(TAG,"Metodo deleteProfile");

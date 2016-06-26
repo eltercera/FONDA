@@ -17,7 +17,10 @@ import com.ds201625.fonda.R;
 public class ProfileEmptyFragment extends BaseFragment {
 
 
-
+    /**
+     * Metodo que es llamado para inicializacion
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

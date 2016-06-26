@@ -74,6 +74,10 @@ public class ProfileActivity extends BaseNavigationActivity
 
     private boolean onForm;
 
+    /**
+     * Metodo que se llama cuando se crea el activities
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG,"Metodo onCreate");
@@ -280,6 +284,11 @@ public class ProfileActivity extends BaseNavigationActivity
         return resp;
     }
 
+    /**
+     * Metodo encargado de la gestion de modificar un perfil
+     * @param profile
+     * @return
+     */
     @Override
     public Boolean updateProfile(Profile profile) {
         Log.d(TAG,"Metodo updateProfile");
@@ -317,6 +326,11 @@ public class ProfileActivity extends BaseNavigationActivity
         }
         return true;
     }
+
+    /**
+     * Metodo que muestra los msj al usuario
+     * @param msj
+     */
     public void msj(String msj)
     {
         Toast.makeText(getBaseContext(),msj, Toast.LENGTH_SHORT).show();

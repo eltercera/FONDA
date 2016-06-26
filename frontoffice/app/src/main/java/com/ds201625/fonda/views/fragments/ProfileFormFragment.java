@@ -38,6 +38,13 @@ public class ProfileFormFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    /**
+     * Metodo que Crea la vista
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +73,9 @@ public class ProfileFormFragment extends BaseFragment {
         this.profile = profile;
     }
 
+    /**
+     * Metodo que inicializa los componentes
+     */
     public void setProfile() {
         Profile profile = new Profile();
         profile.setPerson(new Person());
