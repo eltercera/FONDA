@@ -275,7 +275,6 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 doc.Add(tblHeaderInvoice);
                 doc.Add(Chunk.NEWLINE);
                 doc.Add(tblOrderDetail);
-                //doc.Add(Chunk.NEWLINE);
                 doc.Add(Chunk.NEWLINE);
                 doc.Add(tblDishDetail);
                 doc.Add(Chunk.NEWLINE);

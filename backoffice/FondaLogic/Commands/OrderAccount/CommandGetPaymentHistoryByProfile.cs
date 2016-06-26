@@ -42,7 +42,6 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetPaymentHistoryByProfile exception = new CommandExceptionGetPaymentHistoryByProfile(
                     OrderAccountResources.CommandExceptionGetPaymentHistoryByProfileCode,
                     OrderAccountResources.ClassNameGetPaymentHistoryByProfile,
@@ -51,13 +50,12 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 paymentHistory = new List<Invoice>();
                 Receiver = paymentHistory;
+                throw exception;
             }
             catch(InvalidCastException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionGetPaymentHistoryByProfile exception = new CommandExceptionGetPaymentHistoryByProfile(
                     OrderAccountResources.CommandExceptionGetPaymentHistoryByProfileCode,
                     OrderAccountResources.ClassNameGetPaymentHistoryByProfile,
@@ -66,9 +64,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 paymentHistory = new List<Invoice>();
                 Receiver = paymentHistory;
+                throw exception;
             }
             catch (CommandExceptionValidateProfileByCommensal ex)
             {
@@ -80,13 +78,13 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 paymentHistory = new List<Invoice>();
                 Receiver = paymentHistory;
+                throw exception;
             }
             catch (CommandExceptionGetInvoicesByProfile ex)
             {
-                //TODO: Arrojar Excepcion personalizada
+
                 CommandExceptionGetPaymentHistoryByProfile exception = new CommandExceptionGetPaymentHistoryByProfile(
                     OrderAccountResources.CommandExceptionGetPaymentHistoryByProfileCode,
                     OrderAccountResources.ClassNameGetPaymentHistoryByProfile,
@@ -95,9 +93,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 paymentHistory = new List<Invoice>();
                 Receiver = paymentHistory;
+                throw exception;
             }
             catch (Exception ex)
             {
@@ -109,9 +107,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 paymentHistory = new List<Invoice>();
                 Receiver = paymentHistory;
+                throw exception;
             }
 
             Logger.WriteSuccessLog(OrderAccountResources.ClassNameGetPaymentHistoryByProfile
