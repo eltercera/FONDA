@@ -184,7 +184,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
             _view.UserId.Text = _invoice.Profile.Person.Ssn.ToString();
             _view.SubTotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, subtotal.ToString());
             _view.IvaInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Tax.ToString());
-            _view.TotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Total.ToString());
+            _view.TotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Payment.Amount.ToString());
             if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
             {
                 _creditCardPayment = (CreditCardPayment)_invoice.Payment;
