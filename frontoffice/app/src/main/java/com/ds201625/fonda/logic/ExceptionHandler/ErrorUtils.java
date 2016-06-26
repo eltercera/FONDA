@@ -27,10 +27,12 @@ public class ErrorUtils {
         try {
             error = converter.convert(response.errorBody());
         } catch (IOException e) {
-
+             System.out.print("Se ha generado error en la Clase ErrorUtils");
+                e.printStackTrace();
         }
         catch (Exception e) {
             System.out.print("Se ha generado error en la Clase ErrorUtils");
+            e.printStackTrace();
         }
         return error;
     }

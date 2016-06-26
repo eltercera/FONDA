@@ -90,7 +90,7 @@ public class FavoritesListFragment extends BaseFragment implements
             restaurants.setAdapter(favoritesList);
         }
         catch(NullPointerException e){
-                Log.e(TAG,"Error al iniciar favoritos",e);
+             Log.e(TAG,"Error al iniciar favoritos",e);
             }
 
 
@@ -134,7 +134,7 @@ public class FavoritesListFragment extends BaseFragment implements
                                     Toast.makeText(FavoritesListFragment.super.getContext(),
                                             "Ha ocurrido un error al eliminar los restaurantes del WS",
                                             Toast.LENGTH_LONG).show();
-                                    Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
+                                    Log.e(TAG, "Error Proveniente del WEB SERVICE al eliminar favoritos", e);
                                 } catch (Exception e) {
                                     Log.e(TAG,"Error en onActionItemClicked al eliminar restaurant",
                                             e);
@@ -237,7 +237,7 @@ public class FavoritesListFragment extends BaseFragment implements
 
         }catch (FindFavoriteRestaurantFondaWebApiControllerException e) {
             Toast.makeText(this.getContext(),
-                    "Ha ocurrido un error al obtener los restaurantes del WS",
+                    "Ha ocurrido un error al obtener los restaurantes (BO)",
                     Toast.LENGTH_LONG).show();
             Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
         }
@@ -290,12 +290,20 @@ public class FavoritesListFragment extends BaseFragment implements
                     return listRestWS;
                 }
                 catch (NullPointerException nu) {
+                    Toast.makeText(FavoritesListFragment.super.getContext(),
+                            "Ha ocurrido un error al obtener los restaurantes",
+                            Toast.LENGTH_LONG).show();
                     Log.e(TAG, "Error en getListSW al obtener favoritos", nu);
                 } catch (FindFavoriteRestaurantFondaWebApiControllerException e) {
                 Toast.makeText(this.getContext(),
-                        "Ha ocurrido un error al obtener los restaurantes del WS",
+                        "Ha ocurrido un error al obtener los restaurantes (BO)",
                         Toast.LENGTH_LONG).show();
                 Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
+            } catch(Exception e){
+                Toast.makeText(FavoritesListFragment.super.getContext(),
+                        "Ha ocurrido un error al obtener los restaurantes",
+                        Toast.LENGTH_LONG).show();
+                Log.e(TAG, "Error en getListSW al obtener favoritos", e);
             }
         Log.d(TAG,"Ha finalizado getListSW");
         return null;

@@ -10,6 +10,8 @@ import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.factory_entity.APIError;
 import com.ds201625.fonda.logic.ExceptionHandler.ErrorUtils;
 import java.io.IOException;
+import java.net.SocketTimeoutException;
+
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -53,6 +55,8 @@ public class RetrofitRequireLogedCommensalService implements RequireLogedCommens
                 throw  new FindByEmailUserAccountFondaWebApiControllerException(error.exceptionMessage());
 
             }
+        } catch(SocketTimeoutException e) {
+            Log.e(TAG, "Se ha generado error en la clase getLogedCommensal", e);
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en la clase getLogedCommensal", e);
         } catch (Exception e) {
