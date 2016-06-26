@@ -23,7 +23,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
     /// </summary>
     public class ReservationsCommensalFondaWebApiController : FondaWebApi
     {
-        /*private Commensal commensal;
+        private Commensal commensal;
         private Restaurant restaurant;
         private ICommand command;
 
@@ -32,199 +32,59 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// </summary>
         public ReservationsCommensalFondaWebApiController() : base() { }
 
-        /// <summary>
-        /// elimina un restaurante de la lista de favoritos de un
-        /// commensal, recibe id int del restaurant a agregar,
-        /// retorna lista de favoritos actualizada
-        /// </summary>
-        /// <param name="idCommensal"></param>
-        /// <param name="idRestaurant"></param>
-        /// <returns>result</returns>
+      
+        
 
-        [Route("deletefavorite/{idCommensal}/{idRestaurant}")]
-        [HttpGet]
-        //[FondaAuthToken]
-        public IHttpActionResult deletefavorite(int idcommensal, int idrestaurant)
-        {
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        ///// <summary>
+        ///// metodo que lista todos los restaurant
+        ///// </summary>
+        ///// <returns>result</returns>
 
-            Commensal result;   //PREGUNTAR SI ES PRIVADA O CUANDO SON STATIC
-            try
-            {
+        //[Route("ListaRestaurant")]
+        //[HttpGet]
+        //public IHttpActionResult getRestaurant()
+        //{
+        //    Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+        //        GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                commensal = EntityFactory.GetCommensal();
-                commensal.Id = idcommensal;
+        //    IList<Restaurant> result;
+        //    try
+        //    {
 
-                //Creación del restaurant con id
-                restaurant = EntityFactory.GetRestaurant();
-                restaurant.Id = idrestaurant;
+        //        // Obtención del commando
+        //        command = FacCommand.GetAllRestaurantCommand();
+        //        // Ejecucion del commando
+        //        command.Run();
+        //        result = (IList<Restaurant>)command.Result;
 
-                // Obtención del commando
-                command = FacCommand.DeleteFavoriteRestaurantCommand();
+        //        Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+        //         GeneralRes.Restaurant, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        //    }
+        //    catch (GetAllRestaurantsCommandException e)
+        //    {
+        //        Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+        //        throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetAllRestaurantsException, e);
+        //    }
+        //    catch (NullReferenceException e)
+        //    {
+        //        Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+        //        throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetAllRestaurantsException, e);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+        //        throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetAllRestaurantsException, e);
 
-                // Agregacion de parametros
-                command.SetParameter(0, commensal);
-                command.SetParameter(1, restaurant);
+        //    }
 
-                // Ejecucion del commando
-                command.Run();
+        //    Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+        //        result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
+        //    Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+        //        GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-                // Obtención de respuesta
-                result = (Commensal)command.Result;
-                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                    GeneralRes.RestDeletedFromFav + commensal.Id + GeneralRes.Slash + restaurant.Name,
-                   System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-            catch (DeleteFavoriteRestaurantCommandException e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                DeleteFavoriteRestaurantFondaWebApiControllerException ex = new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.DeleteFavRestException, e);
-                return InternalServerError(ex);
-            }
-            catch (NullReferenceException e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.DeleteFavRestException, e);
-            }
-            catch (Exception e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new DeleteFavoriteRestaurantFondaWebApiControllerException(GeneralRes.DeleteFavRestException, e);
-            }
+        //    return Ok(result);
 
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-
-            return Ok(result);
-        }
-
-        /// <summary>
-        /// metodo que agrega una reservacion de un comensal
-        /// </summary>
-        /// <param name="idCommensal"></param>
-        /// <param name="idRestaurant"></param>
-        /// <returns>result</returns>
-
-        [Route("addReservation/{idCommensal}/{idRestaurant}")]
-        [HttpGet]
-        ///[FondaAuthToken]
-        public IHttpActionResult addReservation(int idcommensal, int idrestaurant)
-        {
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-
-            Commensal result;
-            try
-            {
-                /*  if (idcommensal == 13)
-                  {
-                      throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException);
-                  }*/
-                //Creación del commensal con id
-               /* commensal = EntityFactory.GetCommensal();
-                commensal.Id = idcommensal;
-
-                //Creación del restaurant con id
-                restaurant = EntityFactory.GetRestaurant();
-                restaurant.Id = idrestaurant;
-
-                // Obtención del commando
-                command = FacCommand.CreateFavoriteRestaurantCommand();
-
-                // Agregacion de parametros
-                command.SetParameter(0, commensal);
-                command.SetParameter(1, restaurant);
-
-                // Ejecucion del commando
-                command.Run();
-
-                // Obtención de respuesta
-                result = (Commensal)command.Result;
-
-                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                   GeneralRes.RestAddedToFav + commensal.Id + GeneralRes.Slash + restaurant.Name,
-                  System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-            catch (CreateFavoriteRestaurantCommandException e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException, e);
-            }
-            catch (NullReferenceException e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException, e);
-            }
-            catch (Exception e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                //throw new AddFavoriteRestaurantFondaWebApiControllerException(GeneralRes.AddFavRestException, e);
-
-                AddFavoriteRestaurantFondaWebApiControllerException error = new AddFavoriteRestaurantFondaWebApiControllerException();
-                return InternalServerError(error);
-            }
-
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-
-            return Ok(result);
-        }
-
-        /// <summary>
-        /// metodo que lista todos los restaurant
-        /// </summary>
-        /// <returns>result</returns>
-
-        [Route("ListaRestaurant")]
-        [HttpGet]
-        public IHttpActionResult getRestaurant()
-        {
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-
-            IList<Restaurant> result;
-            try
-            {
-
-                // Obtención del commando
-                command = FacCommand.GetAllRestaurantCommand();
-                // Ejecucion del commando
-                command.Run();
-                result = (IList<Restaurant>)command.Result;
-
-                Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                 GeneralRes.Restaurant, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-            catch (GetAllRestaurantsCommandException e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetAllRestaurantsException, e);
-            }
-            catch (NullReferenceException e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetAllRestaurantsException, e);
-            }
-            catch (Exception e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new GetAllRestaurantsFondaWebApiControllerException(GeneralRes.GetAllRestaurantsException, e);
-
-            }
-
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-
-            return Ok(result);
-
-        }
+        //}
 
         /// <summary>
         /// metodo que lista las reservaciones de un commensal
@@ -239,7 +99,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-            Commensal result;
+            IList<Reservation> result;
             try
             {
                 //Creación del commensal con id
@@ -256,8 +116,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 command.Run();
 
                 // Obtención de respuesta
-                result = (Commensal)command.Result;
-
+                result = (IList<Reservation>)command.Result;
+                 
                 Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                  GeneralRes.CommensalReservation + commensal.Email,
                 System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -275,22 +135,22 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 throw new FindCommensalReservationsFondaWebApiControllerException(GeneralRes.GetCommensalReservationsException,
                     e);
             }
-            //catch (Exception e)
-            //{
-            //    Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-            //    /*throw new FindFavoriteRestaurantFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurantException, 
-            //        e);*/
-            //    AddFavoriteRestaurantFondaWebApiControllerException error = new AddFavoriteRestaurantFondaWebApiControllerException("adriana");
-            //    return InternalServerError(error);
+            catch (Exception e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                /*throw new FindCommensalReservationsFondaWebApiControllerException(GeneralRes.GetFavoriteRestaurantException, 
+                    e);*/
+                FindCommensalReservationsFondaWebApiControllerException error = new FindCommensalReservationsFondaWebApiControllerException("prueba");
+                return InternalServerError(error);
 
-            //}
+            }
 
-           /* Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-            return Ok(result.Reservations);
+            return Ok(result);
         }
 
         /// <summary>
@@ -350,6 +210,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
             return Ok(result);
-        }*/
+        }
     }
 }
