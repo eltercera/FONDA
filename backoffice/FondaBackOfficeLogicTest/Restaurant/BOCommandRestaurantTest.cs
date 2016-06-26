@@ -60,10 +60,6 @@ namespace FondaBackOfficeLogicTest.Restaurante
         {
             _facDAO = FactoryDAO.Intance;
             _restaurantDAO = _facDAO.GetRestaurantDAO();
-            _restCatDAO = _facDAO.GetRestaurantCategoryDAO();
-            _currencyDAO = _facDAO.GetCurrencyDAO();
-            _scheduleDAO = _facDAO.GetScheduleDAO();
-            _zoneDAO = _facDAO.GetZoneDAO();
             _restaurant = new Restaurant();
             idRestaurant = 3;
             name = "Salon Canton";
