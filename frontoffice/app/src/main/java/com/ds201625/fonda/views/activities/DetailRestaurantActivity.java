@@ -1,5 +1,6 @@
 package com.ds201625.fonda.views.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
@@ -68,16 +69,16 @@ public class DetailRestaurantActivity extends BaseNavigationActivity
         this.updateFab();
         return true;
 
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item == this.favoriteMenuItem){
             presenter.setFavorite();
         } else if (item == this.reserveMenuItem){
-            presenter.goToReserve();
+            // En espera por que va aqui
+            // Deberia de enviar a la pantalla de realizar unareserva
+            // al restaurante.
         }
         return true;
     }
