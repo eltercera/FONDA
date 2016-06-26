@@ -14,7 +14,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandGetDetailInvoice : Command
     {
-        private List<int> parameter;
+        private int parameter;
 
         public CommandGetDetailInvoice(Object receiver) : base(receiver) { }
 
@@ -30,7 +30,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 
             try
             {
-                parameter = (List<int>)Receiver;
+                parameter = (int) Receiver;
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
                 commandGetInvoice = CommandFactory.GetCommandGetInvoice(parameter[0]);
