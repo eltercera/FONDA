@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
+import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.views.contracts.IProfileViewContract;
@@ -184,6 +184,9 @@ public class ProfileActivity extends BaseNavigationActivity
         return true;
     }
 
+    /**
+     * Metodo que gestiona el guardado de perfil
+     */
     private void save() {
         Log.d(TAG,"Metodo save");
         profileFormFrag.changeProfile();
@@ -194,10 +197,11 @@ public class ProfileActivity extends BaseNavigationActivity
             if (profile.getId() == 0) {
                 createProfile(profile);
                 Log.d(TAG,"Se agrego el perfil"+profile.getProfileName());
-
+                msj( "El perfil fue agregado con exito!");
             } else {
                 updateProfile(profile);
                 Log.d(TAG,"Se modifico el perfil"+profile.getId());
+                msj( "Se modifico el perfil");
             }
         } catch (Exception e) {
             Log.e(TAG,"Error al salvar el perfil",e);
@@ -257,6 +261,11 @@ public class ProfileActivity extends BaseNavigationActivity
         }
     }
 
+    /**
+     * Metodo que permite el llamado para guardar  nuevo perfil
+     * @param profile
+     * @return
+     */
     @Override
     public Boolean createProfile(Profile profile) {
         Log.d(TAG,"Metodo createProfile");
@@ -278,9 +287,12 @@ public class ProfileActivity extends BaseNavigationActivity
         try {
             resp = presenter.updateProfile(profile);
             Log.d(TAG,"Se modifico el perfil "+ profile.getId());
+            msj( "El perfil se modifico exitosamente!");
+
         }catch (Exception e)
         {
             Log.e(TAG,"Error al modificar Perfil",e);
+            msj( "Error al modificar Perfil");
         }
         return resp;
     }
@@ -301,8 +313,14 @@ public class ProfileActivity extends BaseNavigationActivity
         }
         catch (Exception e) {
             Log.e(TAG,"Error al determinar si el commensal tiene perfiles",e);
+            msj( "Error al buscar Perfil");
         }
         return true;
     }
+    public void msj(String msj)
+    {
+        Toast.makeText(getBaseContext(),msj, Toast.LENGTH_SHORT).show();
+    }
+
 
 }
