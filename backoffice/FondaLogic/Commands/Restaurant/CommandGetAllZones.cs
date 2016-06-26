@@ -23,8 +23,7 @@ namespace FondaLogic.Commands.Restaurante
         /// Constructor del metodo
         /// </summary>
         /// <param name="receiver"></param>
-        public CommandGetAllZones(object receiver)
-            : base(receiver)
+        public CommandGetAllZones()
         {
 
         }
@@ -55,7 +54,7 @@ namespace FondaLogic.Commands.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllZones(RestaurantErrors.GetAllZonesFondaDAOException, e);
             }
-            catch (InvalidTypeParameterException e)
+            catch (InvalidCastException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllZones(RestaurantErrors.InvalidTypeParameterException, e);

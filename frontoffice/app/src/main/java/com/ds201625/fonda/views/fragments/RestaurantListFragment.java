@@ -18,15 +18,15 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.AddFavoriteRestaurantFondaWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindByEmailUserAccountFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.GetAllRestaurantsFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.AllRestaurantsView;
-import com.ds201625.fonda.interfaces.AllRestaurantsViewPresenter;
-import com.ds201625.fonda.interfaces.FavoriteView;
-import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
-import com.ds201625.fonda.presenter.AllRestaurantsPresenter;
-import com.ds201625.fonda.presenter.FavoritesPresenter;
+import com.ds201625.fonda.views.contracts.AllRestaurantsView;
+import com.ds201625.fonda.views.contracts.AllRestaurantsViewPresenter;
+import com.ds201625.fonda.views.contracts.FavoriteView;
+import com.ds201625.fonda.views.contracts.FavoriteViewPresenter;
+import com.ds201625.fonda.views.presenters.AllRestaurantsPresenter;
+import com.ds201625.fonda.views.presenters.FavoritesPresenter;
 import com.ds201625.fonda.views.adapters.RestaurantViewItemList;
 
 import java.util.ArrayList;
@@ -250,7 +250,13 @@ public class RestaurantListFragment extends BaseFragment implements
 
                    listRestWS = presenter.findAllRestaurants();
                     return listRestWS;
-                } catch (GetAllRestaurantsFondaWebApiControllerException e) {
+                } catch (FindByEmailUserAccountFondaWebApiControllerException e) {
+                Log.e(TAG, "Error en findLoggedComensal al buscar el comensal logueado", e);
+                Toast.makeText(this.getContext(),
+                        "Ha ocurrido un error al obtener el commensal logueado (BO)",
+                        Toast.LENGTH_LONG).show();
+                Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener el commensal logueado", e);
+            }catch (GetAllRestaurantsFondaWebApiControllerException e) {
                 Toast.makeText(RestaurantListFragment.super.getContext(),
                         "Ha ocurrido un error al obtener los restaurantes del WS",
                         Toast.LENGTH_LONG).show();
