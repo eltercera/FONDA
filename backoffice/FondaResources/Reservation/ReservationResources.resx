@@ -200,4 +200,8 @@
     <value>&lt;i class="fa fa-info-circle" aria-hidden="true"&gt;&lt;/i&gt;</value>
     <comment>Muestra informacion en detalle de una reservacion</comment>
   </data>
+  <data name="SessionNumberReservation" xml:space="preserve">
+    <value>ReservationNumber</value>
+    <comment>Numero de la Reservacion</comment>
+  </data>
 </root>

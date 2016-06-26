@@ -14,7 +14,7 @@ using BackOffice.Content;
 
 namespace BackOffice.Seccion.Reservas
 {
-    public partial class Default : System.Web.UI.Page, IReservationsContract
+    public partial class ListarReservas : System.Web.UI.Page, IReservationsContract
     {
         #region Presenter
         private ReservationsPresenter _presenter;
@@ -103,7 +103,7 @@ namespace BackOffice.Seccion.Reservas
         #endregion
 
         #region Constructor
-        public Default()
+        public ListarReservas()
         {
             _presenter = new ReservationsPresenter(this);
         }

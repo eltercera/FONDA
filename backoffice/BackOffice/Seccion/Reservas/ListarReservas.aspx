@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="ListarReservas.aspx.cs" Inherits="BackOffice.Seccion.Reservas.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="ListarReservas.aspx.cs" Inherits="BackOffice.Seccion.Reservas.ListarReservas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
     Reservas
@@ -82,39 +82,5 @@
     </div>
     <%--/Tabla Reservas--%>
 
-        <!-- Modal cancelar estado-->
-        <div class="modal fade" id="cancel_reservation" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Cancelar Reservacion</h4>
-                            </div>
-                                <div class="modal-body">
-                                     <div class="row">
-                                             <div class="col-lg-12 col-md-10 col-sm-10 col-xs-10">
-                                                    <div class="form-group">
-                                                        <label class="control-label">¿Desea cancelar la reservacion?</label>
-                                                    </div>
-                                            </div>    
-                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <asp:Button ID="ButtonCancelReservation" Text="Aceptar" CssClass="btn btn-success" OnClick="ButtonCancelReservation_Click" runat= "server" />                                  
-                                    <asp:Button ID="ButtonCancelCancelReservation" Text="Cancelar" CssClass="btn btn-danger"  runat="server" />
-                                </div>
-                      </div>
-                </div>
-         </div>
-
-
-
-
-
-
-
-
-
+ 
 </asp:Content>

@@ -241,6 +241,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ReservationNumber.
+        /// </summary>
+        public static string SessionNumberReservation {
+            get {
+                return ResourceManager.GetString("SessionNumberReservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estado.
         /// </summary>
         public static string StatusColumn {
