@@ -14,13 +14,15 @@ using System.IO;
 using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandPrintInvoice : Command
     {
         private FactoryDAO _facDAO = FactoryDAO.Intance;
-        private IList<int> _list;
+        private IList<int> _listInt;
+        private IList<object> _listObject;
         private IList<DishOrder> _listDishOrder;
         private Restaurant _restaurant;
         private Invoice _invoice;
@@ -37,11 +39,13 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             float borderWidthBottom = 0.75f;
             float borderWidth = 0;
             float taxPercentage = 0.12f;
+            Command commandGetOrderAccountByInvoice;
 
             try
             {
                 
-                _list = (IList<int>)Receiver;
+                _listInt = (IList<int>)Receiver;
+                _listObject = new List<object>();
                 using (System.IO.MemoryStream memoryStream = new System.IO.MemoryStream())
                 {
                     float totalFactura = 0;
@@ -55,9 +59,14 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 float tip, totaDishOrder,tax;
                 tip = totaDishOrder = tax = 0;
                 CreditCardPayment _creditCardPayment;
+                _invoice = _invoiceDao.FindById(_listInt[0]);
+                _listObject.Add(_invoice);
+                _listObject.Add(_listInt[1]);
+                 commandGetOrderAccountByInvoice = CommandFactory.GetCommandGetOrderAccountByInvoice(_listObject);
+                 commandGetOrderAccountByInvoice.Execute();
+                 _account = (Account)commandGetOrderAccountByInvoice.Receiver;
 
-                _account = _accountDAO.FindById(_list[0]);
-                _restaurant = _restaurantDao.FindById(_list[1]);
+                _restaurant = _restaurantDao.FindById(_listInt[1]);
                 _invoice = _invoiceDao.FindGenerateInvoiceByAccount(_account.Id);
                 _listDishOrder = _dishOrderDao.GetDishesByAccount(_account.Id);
 

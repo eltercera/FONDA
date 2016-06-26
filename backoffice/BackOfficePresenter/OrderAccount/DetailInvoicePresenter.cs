@@ -47,13 +47,14 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 
             try
             {
-                accountId = int.Parse(_view.SessionIdAccount);
+                invoiceId = GetQueryParameter();
+                
                 restaurantId = int.Parse(_view.SessionRestaurant);
 
                 //Recibe 2 enteros
                 // 1  id de la factura
                 // 2  id del restaurant               
-                parameters = new List<int> { accountId, restaurantId };
+                parameters = new List<int> { invoiceId, restaurantId };
                 //Obtiene la instancia del comando enviado el restaurante como parametro
                 commandPrintInvoice = CommandFactory.GetCommandPrintInvoice(parameters);
 
@@ -102,7 +103,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
             
             //Define objeto a recibir
             IList<DishOrder> listDishOrder;
-
+            _listInt = new List<int>();
             List<Object> result;
             
             Command commandGetDetailInvoice;
