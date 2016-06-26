@@ -194,7 +194,7 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
         String password = mPasswordView.getText().toString();
         String repassword = mPasswordView2.getText().toString();
 
-        String alphanumeric = "^[A-Za-z0-9]$";
+        String alphanumeric = "^[A-Za-z0-9]+$";
 
         boolean cancel = false;
         View focusView = null;
