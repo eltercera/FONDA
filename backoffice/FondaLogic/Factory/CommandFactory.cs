@@ -183,10 +183,10 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         /// <summary>
         /// Metodo de la fabrica para el CCommandGenerateException
         /// </summary>
-        public static Command GetCommandGenerateException(object receiver)
-        {
-            return new CommandGenerateException(receiver);
-        }
+        //public static Command GetCommandGenerateException(object receiver)
+        //{
+        //    return new CommandGenerateException(receiver);
+        //}
         /// <summary>
         /// Metodo de la fabrica para el CommandCloseCashRegister
         /// </summary>
