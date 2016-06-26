@@ -37,7 +37,7 @@ public class RetrofitService {
      * todo Ver como colocar esto usando el /etc/hosts del telefono.
      */
 
-    private final String API_BASE_URL = "http://192.168.1.105:3500/api/";
+    private final String API_BASE_URL = "http://192.168.1.108:3500/api/";
 
     /**
      * Cliente http

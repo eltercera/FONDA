@@ -27,10 +27,6 @@
             android:icon="@drawable/nav_profile"
             android:title="Perfiles" />
         <item
-            android:id="@+id/nav_prueba"
-            android:icon="@drawable/ic_food"
-            android:title="Prueba" />
-        <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_power_settings_black_24dp"
             android:title="@string/nav_logout" />
