@@ -10,14 +10,11 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.interfaces.IProfileView;
-import com.ds201625.fonda.interfaces.IProfileViewPresenter;
-import com.ds201625.fonda.logic.Command;
-import com.ds201625.fonda.logic.FondaCommandFactory;
-import com.ds201625.fonda.presenter.ProfilePresenter;
+import com.ds201625.fonda.views.contracts.IProfileViewContract;
+import com.ds201625.fonda.views.presenters.ProfilePresenter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
+import com.ds201625.fonda.views.fragments.ProfileEmptyFragment;
 import com.ds201625.fonda.views.fragments.ProfileFormFragment;
 import com.ds201625.fonda.views.fragments.ProfileListFragment;
 
@@ -28,7 +25,7 @@ import java.util.List;
  * Activity de Perfil de usuario
  */
 public class ProfileActivity extends BaseNavigationActivity
-    implements ProfileListFragment.profileListFragmentListener, IProfileView{
+    implements ProfileListFragment.profileListFragmentListener, IProfileViewContract {
 
     private String TAG = "ProfileActivity";
     /**
@@ -45,6 +42,10 @@ public class ProfileActivity extends BaseNavigationActivity
      * Fragment de la lista
      */
     private ProfileListFragment profileListFrag;
+    /**
+     * Fragment vacio
+     */
+    private ProfileEmptyFragment profileemptyFrag;
 
     /**
      * Boton Flotante
@@ -64,7 +65,7 @@ public class ProfileActivity extends BaseNavigationActivity
     /**
      * Presentador
      */
-    private IProfileViewPresenter presenter;
+    private ProfilePresenter presenter;
 
     /**
      * Solo para prueba de la interface
@@ -90,14 +91,24 @@ public class ProfileActivity extends BaseNavigationActivity
         // Creacion de fragmen y pase argumento
         profileFormFrag = new ProfileFormFragment();
         profileListFrag = new ProfileListFragment();
-        Bundle args = new Bundle();
-        args.putBoolean("multiSelect",true);
-        profileListFrag.setArguments(args);
+        profileemptyFrag = new ProfileEmptyFragment();
 
-        //Lanzamiento de profileListFrag como el principal
-        fm.beginTransaction()
-            .replace(R.id.fragment_container,profileListFrag)
-            .commit();
+        Bundle args = new Bundle();
+     if(!isEmptyProfile())
+     {
+         args.putBoolean("multiSelect",true);
+         profileListFrag.setArguments(args);
+         //Lanzamiento de profileListFrag como el principal
+         fm.beginTransaction()
+                 .replace(R.id.fragment_container,profileListFrag)
+                 .commit();
+     }
+        else{
+         //Lanzamiento de profile vacio
+         fm.beginTransaction()
+                 .replace(R.id.fragment_container, profileemptyFrag)
+                 .commit();
+     }
 
         // Asegura que almenos onCreate se ejecuto en el fragment
         fm.executePendingTransactions();
@@ -183,6 +194,7 @@ public class ProfileActivity extends BaseNavigationActivity
             if (profile.getId() == 0) {
                 createProfile(profile);
                 Log.d(TAG,"Se agrego el perfil"+profile.getProfileName());
+
             } else {
                 updateProfile(profile);
                 Log.d(TAG,"Se modifico el perfil"+profile.getId());
@@ -191,11 +203,23 @@ public class ProfileActivity extends BaseNavigationActivity
             Log.e(TAG,"Error al salvar el perfil",e);
             e.printStackTrace();
         }
+        try
+        {
         profileListFrag.updateList();
         profileListFrag.updateList();
         showFragment(profileListFrag);
-        hideKyboard();
-    }
+        hideKyboard();}
+    catch (Exception e) {
+        e.printStackTrace();
+        Bundle args = new Bundle();
+        args.putBoolean("multiSelect",true);
+        profileListFrag.setArguments(args);
+        //Lanzamiento de profileListFrag como el principal
+        fm.beginTransaction()
+                .replace(R.id.fragment_container,profileListFrag)
+                .commit();
+    }}
+
 
     /**
      * Implementaciones de comunicacion con los fragments
@@ -260,4 +284,25 @@ public class ProfileActivity extends BaseNavigationActivity
         }
         return resp;
     }
+
+    /**
+     * Metodo que valida si el comensal logeado posee perfil
+     * @return true si posee perfil
+     */
+    public boolean isEmptyProfile() {
+        try {
+            List<Profile> profilesList = presenter.getProfiles();
+
+            if (profilesList != null) {
+                if (profilesList.size() != 0)
+                    return false;
+            }
+
+        }
+        catch (Exception e) {
+            Log.e(TAG,"Error al determinar si el commensal tiene perfiles",e);
+        }
+        return true;
+    }
+
 }

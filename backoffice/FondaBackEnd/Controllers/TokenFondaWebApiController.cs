@@ -98,6 +98,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         {
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Token token = EntityFactory.GetToken();
+            token.Id = id;
             try
             {
                 Commensal commensal = GetCommensal(Request.Headers);
@@ -106,12 +108,11 @@ namespace com.ds201625.fonda.BackEnd.Controllers
 
                 // Se obtiene el commando CreateCreateProfileCommand 
                 ICommand command = FacCommand.DeleteTokenCommensalCommand();
-                Token token = EntityFactory.GetToken();
-                token.Id = id;
+                
                 // Se agrega el commensal como parametro
                 command.SetParameter(0, commensal);
                 // Se agrega el Token como parametro
-                command.SetParameter(0, token);
+                command.SetParameter(1, token);
 
                 //se ejecuta el comando
                 command.Run();
@@ -141,7 +142,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
-            return Ok();
+            return Ok(token);
         }
     }
 }
