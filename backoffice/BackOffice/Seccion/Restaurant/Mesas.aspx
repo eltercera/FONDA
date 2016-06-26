@@ -52,7 +52,7 @@ Mesas
                                 <div class="table-responsive">
                                         <asp:HiddenField ID="TableModifyId" runat="server" Value="" />
 
-                                        <asp:Table ID="table" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>                      
+                                        <asp:Table ID="tablepage" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>                      
                                              
                                 </div>
                             </div>

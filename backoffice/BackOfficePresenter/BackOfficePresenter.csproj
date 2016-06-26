@@ -67,6 +67,7 @@
     <Compile Include="Restaurant\CategoryPresenter.cs" />
     <Compile Include="Restaurant\RestaurantPresenter.cs" />
     <Compile Include="Reservation\ReservationsPresenter.cs" />
+    <Compile Include="Restaurant\TablePresenter.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
