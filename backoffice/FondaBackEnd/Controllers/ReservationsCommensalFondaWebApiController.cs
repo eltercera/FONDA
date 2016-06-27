@@ -106,12 +106,13 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// <summary>
         /// metodo que busca la existencia de un commensal
         /// </summary>
-        /// <param name="email"></param>
+        /// <param name="mail"></param>
         /// <returns>result</returns>
 
-        [Route("findCommensalEmail/{email}")]
+        [Route("findCommensalMail/{mail}")]
         [HttpGet]
-        public IHttpActionResult findCommensalEmail(string email)
+        [FondaAuthToken]
+        public IHttpActionResult findCommensalMail(string mail)
         {
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -120,7 +121,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             try
             {
                 UserAccount commensal = EntityFactory.GetUserAccount();
-                commensal.Email = email;
+                commensal.Email = mail;
                 // Obtención del commando
                 command = FacCommand.GetCommensalEmailCommand();
                 // Agregacion de parametros

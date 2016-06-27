@@ -25,7 +25,7 @@ public interface ReservationClient {
     Call<Commensal> addReservation(@Path("idcommensal") int idCommensal , @Path("idrestaurant") int idRestaurant);
 
     /**
-     * Find /api/findReservation/{id}
+     * Find findCommensalReservations
      * Obtiene la lista de las reservas de los comensales.
      * @param
      * @return

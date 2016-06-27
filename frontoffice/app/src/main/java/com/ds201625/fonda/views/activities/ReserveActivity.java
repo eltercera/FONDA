@@ -98,7 +98,16 @@ public class ReserveActivity extends BaseNavigationActivity implements
             rf = new ReserveListFragment();
          //   detailRestaurantFrag = new DetailRestaurantFragment();
 
+            //Lanzamiento de ListFrag como el principal
+            fm.beginTransaction()
+                    .replace(R.id.fragment_container, rf)
+                    .commit();
+
+
+            // Asegura que almenos onCreate se ejecuto en el fragment
+            fm.executePendingTransactions();
         }
+
         Log.d(TAG,"Ha salido de onCreate");
 
     }
