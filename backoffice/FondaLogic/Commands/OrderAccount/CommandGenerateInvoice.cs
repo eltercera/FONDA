@@ -17,6 +17,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
         private IList<object> _list;
         private Invoice _invoice;
         private Profile profile;
+        private Invoice _invoiceGenerate;
 
         public CommandGenerateInvoice(Object receiver) : base(receiver) { }
 
@@ -35,6 +36,8 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 IPaymentDao<Payment> _paymentDAO = _facDAO.GetPaymentDAO();
                 IProfileDAO _profileDAO = _facDAO.GetProfileDAO();
                 IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
+                IInvoiceDao _invoiceDao = _facDAO.GetInvoiceDao();
+                _invoiceGenerate = EntityFactory.GetInvoice();
 
                 parameters = (List<Object>)Receiver;
 
@@ -43,29 +46,36 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 int restaurantId = (int)parameters[2];
                 int profileId = (int)parameters[3];
 
-                account = _accountDAO.FindById(orderId);
-                profile = _profileDAO.FindById(profileId);
 
-                float totalInvoice = account.GetAmount();
-                tax += totalInvoice * tax;
-                totalInvoice += tax;
+                _invoiceGenerate = _invoiceDao.FindGenerateInvoiceByAccount(orderId);
 
-                 if (payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
+                if (!_invoiceGenerate.Equals(null))
                 {
-                    _creditCard = (CreditCardPayment)payment;
-                    _tip = _creditCard.Tip;
+                    account = _accountDAO.FindById(orderId);
+                    profile = _profileDAO.FindById(profileId);
+
+                    float totalInvoice = account.GetAmount();
+                    tax += totalInvoice * tax;
+                    totalInvoice += tax;
+
+                    if (payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
+                    {
+                        _creditCard = (CreditCardPayment)payment;
+                        _tip = _creditCard.Tip;
+                    }
+
+
+                    if (payment.Amount >= totalInvoice)
+                    {
+                        Invoice invoice = EntityFactory.GetInvoice(payment, profile, totalInvoice, tax);
+                        _invoice = _accountDAO.SaveInvoice(invoice, orderId, restaurantId);
+                    }
+                    else
+                        throw new NullReferenceException();
                 }
 
-
-                if (payment.Amount >= totalInvoice)
-                {
-                    Invoice invoice = EntityFactory.GetInvoice(payment, profile, totalInvoice, tax);
-                    _invoice = _accountDAO.SaveInvoice(invoice, orderId, restaurantId);
-                }
                 else
                     throw new NullReferenceException();
-
-
 
                 Receiver = _invoice;
 
