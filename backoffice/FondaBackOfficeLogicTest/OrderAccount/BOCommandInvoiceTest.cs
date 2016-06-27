@@ -87,8 +87,8 @@ namespace FondaBackOfficeLogicTest
         [Test(Description = "Obtiene las facturas de un restaurante")]
         public void CommandCancelInvoiceTest()
         {
-            _list.Add(_invoiceId);//1
-            _list.Add(_accountId);// 2
+            _list.Add(2);//2 _invoiceId
+            _list.Add(3);//3  _accountId
             _command = CommandFactory.GetCommandCancelInvoiced(_list);
             _command.Execute();
             _invoice = (Invoice)_command.Receiver;
