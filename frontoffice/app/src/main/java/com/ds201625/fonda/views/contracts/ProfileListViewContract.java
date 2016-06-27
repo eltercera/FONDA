@@ -6,7 +6,7 @@ import com.ds201625.fonda.domains.Profile;
 /**
  * Interfaz de ProfileListFragment
  */
-public interface IProfileListViewContract {
+public interface ProfileListViewContract {
     /**
      * Metodo para eliminar un perfil
      * @param profile
