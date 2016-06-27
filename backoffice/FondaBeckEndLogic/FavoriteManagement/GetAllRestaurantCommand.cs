@@ -17,7 +17,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
     class GetAllRestaurantCommand : BaseCommand
     {
         private IList<Restaurant> listRestaurant;
-        private List<Restaurant> nuevaListRestaurant;
+        private List<Restaurant> newListRestaurant;
         private IRestaurantDAO RestaurantDAO;
         /// <summary>
         /// constructor obtener todos los restaurant command
@@ -49,7 +49,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 RestaurantDAO = FacDao.GetRestaurantDAO();
                 // Ejecucion del obtener.	
                 listRestaurant = (IList<Restaurant>)RestaurantDAO.GetAll();
-                nuevaListRestaurant = new List<Restaurant>();
+                newListRestaurant = new List<Restaurant>();
                 foreach (var restaurant in listRestaurant)
                 {
 
@@ -63,7 +63,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                             Id = restaurant.RestaurantCategory.Id,
 
                         };
-                        nuevaListRestaurant.Add(restaurant);
+                        newListRestaurant.Add(restaurant);
                     }
 
                     Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
@@ -90,7 +90,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             }
 
             // Guardar el resultado.
-            Result = nuevaListRestaurant;
+            Result = newListRestaurant;
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
