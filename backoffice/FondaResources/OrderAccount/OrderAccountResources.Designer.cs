@@ -88,6 +88,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dirección.
+        /// </summary>
+        public static string address {
+            get {
+                return ResourceManager.GetString("address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ../Caja/ListarFacturas.aspx.
         /// </summary>
         public static string allInvoicesURL {
@@ -165,6 +174,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string ClassNameDetailOrderPresenter {
             get {
                 return ResourceManager.GetString("ClassNameDetailOrderPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HibernateDishOrderDAO.
+        /// </summary>
+        public static string ClassNameDishOrderDAO {
+            get {
+                return ResourceManager.GetString("ClassNameDishOrderDAO", resourceCulture);
             }
         }
         
@@ -286,6 +304,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandGetOrderAccountByInvoice.
+        /// </summary>
+        public static string ClassNameGetOrderAccountByInvoice {
+            get {
+                return ResourceManager.GetString("ClassNameGetOrderAccountByInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGetOrders.
         /// </summary>
         public static string ClassNameGetOrders {
@@ -318,6 +345,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string ClassNameInvoiceDetailPresenter {
             get {
                 return ResourceManager.GetString("ClassNameInvoiceDetailPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HibernateOrderAccountDAO.
+        /// </summary>
+        public static string ClassNameOrderAccountDAO {
+            get {
+                return ResourceManager.GetString("ClassNameOrderAccountDAO", resourceCulture);
             }
         }
         
@@ -363,6 +399,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string ClassNameReleaseTableByRestaurant {
             get {
                 return ResourceManager.GetString("ClassNameReleaseTableByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HibernateRestaurantDAO.
+        /// </summary>
+        public static string ClassNameRestaurantDAO {
+            get {
+                return ResourceManager.GetString("ClassNameRestaurantDAO", resourceCulture);
             }
         }
         
@@ -502,6 +547,24 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BO-04-029.
+        /// </summary>
+        public static string CommandExceptionGetInvoicesByProfileCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetInvoicesByProfileCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-030.
+        /// </summary>
+        public static string CommandExceptionGetOrderAccountByInvoiceCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetOrderAccountByInvoiceCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BO-04-020.
         /// </summary>
         public static string CommandExceptionGetOrderCode {
@@ -574,6 +637,33 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to attachment; filename=Factura_{0}_{1}_.pdf.
+        /// </summary>
+        public static string ContentAttachment {
+            get {
+                return ResourceManager.GetString("ContentAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Content-Disposition.
+        /// </summary>
+        public static string ContentDisposition {
+            get {
+                return ResourceManager.GetString("ContentDisposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to application/pdf.
+        /// </summary>
+        public static string ContentType {
+            get {
+                return ResourceManager.GetString("ContentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CreditCardPayment.
         /// </summary>
         public static string CreditCard {
@@ -619,6 +709,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Platillo.
+        /// </summary>
+        public static string Dish {
+            get {
+                return ResourceManager.GetString("Dish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nombre del Platillo.
         /// </summary>
         public static string DishNameColum {
@@ -633,6 +732,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string Empty {
             get {
                 return ResourceManager.GetString("Empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede realizar el cierre de caja, usted no posee ordenes facturadas el dia de hoy.
+        /// </summary>
+        public static string ErrorMessageCloseCashRegister {
+            get {
+                return ResourceManager.GetString("ErrorMessageCloseCashRegister", resourceCulture);
             }
         }
         
@@ -691,11 +799,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Factura_{0}_{1}.pdf.
+        /// </summary>
+        public static string filename {
+            get {
+                return ResourceManager.GetString("filename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;span class=&quot;label label-success&quot;&gt;&lt;i class=&quot;fa fa-check&quot;&gt;&lt;p class=&quot;stat&quot;&gt;A&lt;/p&gt;&lt;/i&gt;&lt;/span&gt;.
         /// </summary>
         public static string GeneratedStatus {
             get {
                 return ResourceManager.GetString("GeneratedStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Factura Restaurante {0}.
+        /// </summary>
+        public static string header {
+            get {
+                return ResourceManager.GetString("header", resourceCulture);
             }
         }
         
@@ -709,11 +835,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Factura.
+        /// </summary>
+        public static string Invoice {
+            get {
+                return ResourceManager.GetString("Invoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to # Factura.
         /// </summary>
         public static string InvoiceNumberColumn {
             get {
                 return ResourceManager.GetString("InvoiceNumberColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restaurante {0}.
+        /// </summary>
+        public static string InvoiceRestaurant {
+            get {
+                return ResourceManager.GetString("InvoiceRestaurant", resourceCulture);
             }
         }
         
@@ -741,6 +885,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string IVAColumn {
             get {
                 return ResourceManager.GetString("IVAColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apellido.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         
@@ -907,11 +1060,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se ha podido cargar la lista de facturas de un perfil.
+        /// </summary>
+        public static string MessageCommandExceptionGetInvoicesByProfile {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetInvoicesByProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha producido un error al obtener la orden.
         /// </summary>
         public static string MessageCommandExceptionGetOrder {
             get {
                 return ResourceManager.GetString("MessageCommandExceptionGetOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No se puede obtener esta cuenta.
+        /// </summary>
+        public static string MessageCommandExceptionGetOrderAccountByInvoice {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetOrderAccountByInvoice", resourceCulture);
             }
         }
         
@@ -1069,6 +1240,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se ha podido obtener la orden de la Base de Datos.
+        /// </summary>
+        public static string MessageGetOrderAccountFondaDAOException {
+            get {
+                return ResourceManager.GetString("MessageGetOrderAccountFondaDAOException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al obtener el detalle de la orden.
         /// </summary>
         public static string MessageGetOrderDetailException {
@@ -1123,7 +1303,7 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla del detale de la Orden #.
+        ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla del detale de la Orden .
         /// </summary>
         public static string MessageMVPExceptionDetailOrderTable {
             get {
@@ -1267,6 +1447,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nombre.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to # Orden.
         /// </summary>
         public static string OrderNumberColumn {
@@ -1294,11 +1483,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Precio.
+        /// </summary>
+        public static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Precio por plato.
         /// </summary>
         public static string PriceColumn {
             get {
                 return ResourceManager.GetString("PriceColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cantidad.
+        /// </summary>
+        public static string Quantity {
+            get {
+                return ResourceManager.GetString("Quantity", resourceCulture);
             }
         }
         
@@ -1317,6 +1524,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         public static string QueryParam {
             get {
                 return ResourceManager.GetString("QueryParam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restaurante.
+        /// </summary>
+        public static string Restaurant {
+            get {
+                return ResourceManager.GetString("Restaurant", resourceCulture);
             }
         }
         
@@ -1375,11 +1591,56 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rif.
+        /// </summary>
+        public static string Ssn {
+            get {
+                return ResourceManager.GetString("Ssn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estado.
         /// </summary>
         public static string StatusColumn {
             get {
                 return ResourceManager.GetString("StatusColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha anulado la factura con éxito.
+        /// </summary>
+        public static string SuccessMessageCancelInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageCancelInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha cambiado el estado de la orden de la Base de datos correctamente.
+        /// </summary>
+        public static string SuccessMessageChangeStatusAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageChangeStatusAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha calculado el cierre de caja con éxito.
+        /// </summary>
+        public static string SuccessMessageCloseCashRegister {
+            get {
+                return ResourceManager.GetString("SuccessMessageCloseCashRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se han obtenido las ordenes cerradas de un Restaurante de forma satisfactoria.
+        /// </summary>
+        public static string SuccessMessageClosedOrdersByRestaurantId {
+            get {
+                return ResourceManager.GetString("SuccessMessageClosedOrdersByRestaurantId", resourceCulture);
             }
         }
         
@@ -1465,6 +1726,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido correctamente el detalle de la factura.
+        /// </summary>
+        public static string SuccessMessageCommandGetDetailInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetDetailInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha obtenido el detalle de la orden satisfactoriamente.
         /// </summary>
         public static string SuccessMessageCommandGetDetailOrder {
@@ -1501,11 +1771,29 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se han obtenido las facturas de un perfil correctamente.
+        /// </summary>
+        public static string SuccessMessageCommandGetInvoicesByProfile {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetInvoicesByProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha obtenido la orden con exito.
         /// </summary>
         public static string SuccessMessageCommandGetOrder {
             get {
                 return ResourceManager.GetString("SuccessMessageCommandGetOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido correctamente la cuenta de esta factura.
+        /// </summary>
+        public static string SuccessMessageCommandGetOrderAccountByInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetOrderAccountByInvoice", resourceCulture);
             }
         }
         
@@ -1573,6 +1861,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido la cuenta dado un restaurante de la base de datos con éxito.
+        /// </summary>
+        public static string SuccessMessageFindAccountByRestaurant {
+            get {
+                return ResourceManager.GetString("SuccessMessageFindAccountByRestaurant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha consultado todas las facturas de la base de datos exitosamente.
         /// </summary>
         public static string SuccessMessagefindAllInvoice {
@@ -1609,11 +1906,47 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Se ha generado el número de la cuenta correctamente.
+        /// </summary>
+        public static string SuccessMessageGenerateNumberAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageGenerateNumberAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha generado el número de la factura correctamente.
         /// </summary>
         public static string SuccessMessageGenerateNumberInvoice {
             get {
                 return ResourceManager.GetString("SuccessMessageGenerateNumberInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido el detalle de la orden correctamente.
+        /// </summary>
+        public static string SuccessMessageGetDishesByAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageGetDishesByAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido la orden correctamente de la Base de Datos.
+        /// </summary>
+        public static string SuccessMessageGetOrderAccount {
+            get {
+                return ResourceManager.GetString("SuccessMessageGetOrderAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se han obtenido las ordenes abiertas de un Restaurante de forma satisfactoria.
+        /// </summary>
+        public static string SuccessMessageOpenOrdersByRestaurantId {
+            get {
+                return ResourceManager.GetString("SuccessMessageOpenOrdersByRestaurantId", resourceCulture);
             }
         }
         
@@ -1627,6 +1960,24 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Se ha cambiado el estado de la mesa ocupada a libre en la Base de datos.
+        /// </summary>
+        public static string SuccessMessageReleaseTable {
+            get {
+                return ResourceManager.GetString("SuccessMessageReleaseTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha guardado la factura correctamente en la Base de datos .
+        /// </summary>
+        public static string SuccessMessageSaveInvoice {
+            get {
+                return ResourceManager.GetString("SuccessMessageSaveInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to La factura se ha impreso satisfactoriamente.
         /// </summary>
         public static string SuccessPrintInvoice {
@@ -1636,11 +1987,56 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IVA (12%).
+        /// </summary>
+        public static string Tax {
+            get {
+                return ResourceManager.GetString("Tax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Propina.
+        /// </summary>
+        public static string Tip {
+            get {
+                return ResourceManager.GetString("Tip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total.
         /// </summary>
         public static string TotalColumn {
             get {
                 return ResourceManager.GetString("TotalColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total + IVA + Propina.
+        /// </summary>
+        public static string TotalCost {
+            get {
+                return ResourceManager.GetString("TotalCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C.I.
+        /// </summary>
+        public static string UId {
+            get {
+                return ResourceManager.GetString("UId", resourceCulture);
             }
         }
     }
