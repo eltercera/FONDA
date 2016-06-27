@@ -91,7 +91,12 @@ public class RetrofitTokenService implements TokenService{
 
     @Override
     public Token getToken(Context context) throws Exception {
-        Token token = getFile(context).getObj();
+        Token token = null;
+        try {
+            token = getFile(context).getObj();
+        } catch (LocalStorageException e) {
+            // Deverias solo hacer log de esto.
+        }
         return token;
     }
 

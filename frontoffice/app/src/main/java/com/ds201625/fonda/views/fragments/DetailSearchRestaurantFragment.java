@@ -57,7 +57,7 @@ public class DetailSearchRestaurantFragment extends BaseFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        form = inflater.inflate(R.layout.fragment_detail_restaurants, container, false);
+        form = inflater.inflate(R.layout.fragment_detail_search_restaurants, container, false);
         tvRestName = (TextView) form.findViewById(R.id.text_view_restaurant_name);
         tvType = (TextView) form.findViewById(R.id.text_view_restaurant_type);
         tvZone = (TextView) form.findViewById(R.id.text_view_restaurant_zone);
