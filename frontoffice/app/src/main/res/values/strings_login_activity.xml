@@ -3,5 +3,5 @@
     <string name="login_forget_pasword"><u>¿Olvidaste tu contraseña?</u></string>
     <string name="login_register"><u>Registrarse</u></string>
     <string name="login_start_session">Iniciar Sesión</string>
-    <string name="login_recover_passwd">Recuperar contraseña</string>
+    <string name="login_recover_passwd">Recuperar Contraseña</string>
 </resources>

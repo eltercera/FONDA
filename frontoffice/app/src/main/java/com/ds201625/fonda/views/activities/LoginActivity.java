@@ -162,11 +162,14 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
      */
     private void setOnForgetPass() {
         this.status = LoginActivityStatus.ON_PASSWORD_FORGET;
-        mEmailView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        mRePasswordView.setVisibility(View.GONE);
+        mEmailView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        mEmailView.setNextFocusDownId(R.id.password);
+        mPasswordView.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+        mPasswordView.setNextFocusDownId(R.id.password2);
+        mRePasswordView.setVisibility(View.VISIBLE);
         mTextViewForgetPass.setVisibility(View.GONE);
         mEmailSignInButton.setText(getString(R.string.login_recover_passwd));
-        mPasswordView.setVisibility(View.GONE);
+        mPasswordView.setVisibility(View.VISIBLE);
     }
 
     /**
