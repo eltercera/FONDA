@@ -57,5 +57,21 @@ namespace com.ds201625.fonda.View.BackOfficePresenter
             _view.ErrorLabel.Visible = false;
             _view.SuccessLabel.Visible = false;
         }
+
+        public bool validaFechaNac(DateTime fechaF)
+        {
+            DateTime FechAc = DateTime.Now.Date;
+            if (fechaF >= FechAc) // Si la fecha indicada es menor o igual a la fecha actual
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+
     }
 }
