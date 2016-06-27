@@ -120,9 +120,6 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new FondaAuthLoginAttributeException(GeneralRes.ValidateAccountEmailException, e);
             }
-            //Logger al Culminar el metodo
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, idCommensal.ToString(),
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 

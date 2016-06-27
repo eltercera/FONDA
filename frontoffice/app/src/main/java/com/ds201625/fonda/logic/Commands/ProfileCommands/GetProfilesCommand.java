@@ -56,7 +56,7 @@ public class GetProfilesCommand extends BaseCommand {
         }
         catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
-      throw new NullPointerException(e.getMessage());
+            throw new NullPointerException(e.getMessage());
         }
         catch (Exception e)
         {

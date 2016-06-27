@@ -47,7 +47,7 @@ public class UpdateProfileCommand extends BaseCommand {
             e.printStackTrace();
         } catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en invoke al modificar un Perfil", e);
-            e.printStackTrace();
+            throw new NullPointerException(e.getMessage());
         } catch (Exception e) {
             Log.e(TAG, "Se ha generado error en invoke al modificar un Perfil", e);
             e.printStackTrace();
