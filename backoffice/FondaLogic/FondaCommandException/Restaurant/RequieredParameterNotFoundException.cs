@@ -9,7 +9,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant
     /// <summary>
     /// excepcion de tipo RequieredParameterNotFoundException
     /// </summary>
-    class RequieredParameterNotFoundException : FondaCommandLogicException
+    class RequieredParameterNotFoundException : CommandException
     {
         private RequieredParameterNotFoundException(string message) : base(message)
         { }

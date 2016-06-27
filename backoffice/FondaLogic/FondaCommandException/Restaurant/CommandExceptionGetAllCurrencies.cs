@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant
 {
-    public class CommandExceptionGetAllCurrencies : FondaCommandLogicException
+    public class CommandExceptionGetAllCurrencies : CommandException
     {
-        public CommandExceptionGetAllCurrencies() : base() { }
-
-        public CommandExceptionGetAllCurrencies(string message) : base(message) { }
-
-        public CommandExceptionGetAllCurrencies(string message, Exception InnerException)
-            : base(message, InnerException) { }
+        public CommandExceptionGetAllCurrencies(string message) : base(message)
+        {
+        }
+        public CommandExceptionGetAllCurrencies(string message, Exception ex) : base(message, ex)
+        {
+        }
+        public CommandExceptionGetAllCurrencies(string id, string classname, string method, string message, Exception ex)
+                : base(id, classname, method, message, ex)
+        {
+        }
     }
 
 }

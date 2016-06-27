@@ -149,7 +149,6 @@
     <Compile Include="FondaCommandException\Restaurant\CommandExceptionGenerateRestaurant.cs" />
     <Compile Include="FondaCommandException\Restaurant\CommandExceptionSaveCategory.cs" />
     <Compile Include="FondaCommandException\Restaurant\CommandExceptionSaveRestaurant.cs" />
-    <Compile Include="FondaCommandException\Restaurant\FondaCommandLogicException.cs" />
     <Compile Include="FondaCommandException\Restaurant\ParameterIndexOutRangeException.cs" />
     <Compile Include="FondaCommandException\Restaurant\RequieredParameterNotFoundException.cs" />
     <Compile Include="ICommand.cs" />

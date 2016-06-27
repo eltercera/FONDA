@@ -9,7 +9,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant
     /// <summary>
     /// Excepcion de tipo ParameterIndexOutRangeException
     /// </summary>
-    class ParameterIndexOutRangeException : FondaCommandLogicException
+    class ParameterIndexOutRangeException : CommandException
     {
 
         private ParameterIndexOutRangeException(string message) : base(message)

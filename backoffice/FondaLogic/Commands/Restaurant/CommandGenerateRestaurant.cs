@@ -81,11 +81,6 @@ namespace FondaLogic.Commands.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGenerateRestaurant(RestaurantErrors.InvalidTypeParameterException, e);
             }
-            catch (RequieredParameterNotFoundException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.RequieredParameterNotFoundException, e);
-            }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);

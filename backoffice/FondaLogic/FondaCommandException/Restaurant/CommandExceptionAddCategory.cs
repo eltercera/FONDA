@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant
 {
-    public class CommandExceptionAddCategory : FondaCommandLogicException
+    public class CommandExceptionAddCategory : CommandException
     {
-        public CommandExceptionAddCategory() : base() { }
-
-        public CommandExceptionAddCategory(string message) : base(message) { }
-
-        public CommandExceptionAddCategory(string message, Exception InnerException)
-            : base(message, InnerException) { }
+        public CommandExceptionAddCategory(string message) : base(message)
+        {
+        }
+        public CommandExceptionAddCategory(string message, Exception ex) : base(message, ex)
+        {
+        }
+        public CommandExceptionAddCategory(string id, string classname, string method, string message, Exception ex)
+                : base(id, classname, method, message, ex)
+        {
+        }
     }
 }

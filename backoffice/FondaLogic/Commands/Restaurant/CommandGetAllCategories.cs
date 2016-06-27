@@ -54,16 +54,6 @@ namespace FondaLogic.Commands.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCategories(RestaurantErrors.InvalidTypeParameterException, e);
             }
-            catch (ParameterIndexOutRangeException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllCategories(RestaurantErrors.ParameterIndexOutRangeException, e);
-            }
-            catch (RequieredParameterNotFoundException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllCategories(RestaurantErrors.RequieredParameterNotFoundException, e);
-            }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
