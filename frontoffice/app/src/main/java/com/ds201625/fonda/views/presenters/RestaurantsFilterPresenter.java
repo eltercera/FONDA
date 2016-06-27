@@ -87,9 +87,11 @@ public class RestaurantsFilterPresenter {
 
         if (this.type == RestaurantsFilterPresenterType.GENERAL) {
             this.fragment.getListView().setAdapter(this.restaurantAdapter);
+            this.fragment.setMultiSelect(true);
             this.showRestaurant = true;
         } else {
             this.fragment.getListView().setAdapter(this.itemFilterAdapter);
+            this.fragment.setMultiSelect(false);
             this.showRestaurant = false;
         }
 
@@ -138,6 +140,7 @@ public class RestaurantsFilterPresenter {
             }
             this.showRestaurant = true;
             this.fragment.getListView().setAdapter(this.restaurantAdapter);
+            this.fragment.setMultiSelect(true);
             this.onRefresh();
         }
     }
@@ -164,6 +167,7 @@ public class RestaurantsFilterPresenter {
     public boolean onBackPressed() {
 
         if (this.type != RestaurantsFilterPresenterType.GENERAL && this.showRestaurant) {
+            this.fragment.setMultiSelect(false);
             this.fragment.getListView().setAdapter(this.itemFilterAdapter);
             this.showRestaurant = false;
             this.onRefresh();

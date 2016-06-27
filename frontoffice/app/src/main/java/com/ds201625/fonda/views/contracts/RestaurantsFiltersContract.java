@@ -30,6 +30,8 @@ public interface RestaurantsFiltersContract {
 
     void setListViewEmtyType(ListViewEmtyType type);
 
+    void setMultiSelect(Boolean multiSelect);
+
     void openRestaurantActiviy(Restaurant restaurant);
 
     enum ListViewEmtyType {
