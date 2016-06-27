@@ -265,17 +265,17 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
             return new CommandGenerateRestaurant(receiver);
         }
 
-        public static Command GetCommandGetAllCategories(object receiver)
+        public static Command GetCommandGetAllCategories()
         {
-            return new CommandGetAllCategories(receiver);
+            return new CommandGetAllCategories();
         }
-        public static Command GetCommandGetAllCurrencies(object receiver)
+        public static Command GetCommandGetAllCurrencies()
         {
-            return new CommandGetAllCurrency(receiver);
+            return new CommandGetAllCurrency();
         }
-        public static Command GetCommandGetAllZones(object receiver)
+        public static Command GetCommandGetAllZones()
         {
-            return new CommandGetAllZones(receiver);
+            return new CommandGetAllZones();
         }
         public static Command GetCommandSaveRestaurant(object receiver)
         {

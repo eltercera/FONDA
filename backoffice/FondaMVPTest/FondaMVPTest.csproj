@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Login\BOLoginPresenter.cs" />
+    <Compile Include="Login\BOUserListPresenterTest.cs" />
     <Compile Include="OrderAccount\BOClosedOrdersPresenterTest.cs" />
     <Compile Include="OrderAccount\BODetailInvoicePresenterTest.cs" />
     <Compile Include="OrderAccount\BODetailOrderPresenterTest.cs" />
@@ -76,6 +78,14 @@
     <ProjectReference Include="..\BackOffice\BackOffice.csproj">
       <Project>{F1CEAC46-0E2B-45F1-8EDC-D99F77B9DD26}</Project>
       <Name>BackOffice</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaDataAccess\FondaDataAccess.csproj">
+      <Project>{4A769797-45C6-4AD9-95FD-7B950D937D1C}</Project>
+      <Name>FondaDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FondaDomain\FondaDomain.csproj">
+      <Project>{CD756618-286A-4FBC-93A3-0ECCB571B18F}</Project>
+      <Name>FondaDomain</Name>
     </ProjectReference>
     <ProjectReference Include="..\FondaResources\FondaResources.csproj">
       <Project>{3184fe34-d7e3-44f6-95d9-25d1045bffc8}</Project>

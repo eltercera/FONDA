@@ -54,7 +54,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetRestaurants(RestaurantErrors.CommandExceptionGetRestaurants, e);
             }
-            catch (InvalidTypeOfParameterException e)
+            catch (InvalidCastException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetRestaurants(RestaurantErrors.InvalidTypeParameterException, e);
@@ -225,19 +225,19 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             try
             {
                 //Llamada al comando para generar la lista de todos las categorias
-                commandGetAllCategories = CommandFactory.GetCommandGetAllCategories("null");
+                commandGetAllCategories = CommandFactory.GetCommandGetAllCategories();
                 commandGetAllCategories.Execute();
                 //Resultado del receiver
                 listCategories = (IList<RestaurantCategory>)commandGetAllCategories.Receiver;
 
                 //Llamada al comando para generar la lista de todos los currencies
-                commandGetAllCurrencies = CommandFactory.GetCommandGetAllCurrencies("null");
+                commandGetAllCurrencies = CommandFactory.GetCommandGetAllCurrencies();
                 commandGetAllCurrencies.Execute();
                 //Resultado del receiver
                 listCurrencies = (IList<Currency>)commandGetAllCurrencies.Receiver;
 
                 //Llamada al comando para generar la lista de todos las zonas
-                commandGetAllZone = CommandFactory.GetCommandGetAllZones("null");
+                commandGetAllZone = CommandFactory.GetCommandGetAllZones();
                 commandGetAllZone.Execute();
                 //Resultado del receiver
                 listZones = (IList<Zone>)commandGetAllZone.Receiver;
@@ -257,7 +257,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetFillDropdownZones, e);
             }
-            catch (InvalidTypeOfParameterException e)
+            catch (InvalidCastException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCategories(RestaurantErrors.InvalidTypeParameterException, e);
@@ -312,19 +312,19 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
 
            try { 
                 //Llamada al comando para generar la lista de todos las categorias
-                commandGetAllCategories = CommandFactory.GetCommandGetAllCategories("null");
+                commandGetAllCategories = CommandFactory.GetCommandGetAllCategories();
                 commandGetAllCategories.Execute();
                 //Resultado del receiver
                 listCategories = (IList<RestaurantCategory>)commandGetAllCategories.Receiver;
 
                 //Llamada al comando para generar la lista de todos los currencies
-                commandGetAllCurrencies = CommandFactory.GetCommandGetAllCurrencies("null");
+                commandGetAllCurrencies = CommandFactory.GetCommandGetAllCurrencies();
                 commandGetAllCurrencies.Execute();
                 //Resultado del receiver
                 listCurrencies = (IList<Currency>)commandGetAllCurrencies.Receiver;
 
                 //Llamada al comando para generar la lista de todos las zonas
-                commandGetAllZone = CommandFactory.GetCommandGetAllZones("null");
+                commandGetAllZone = CommandFactory.GetCommandGetAllZones();
                 commandGetAllZone.Execute();
                 //Resultado del receiver
                 listZones = (IList<Zone>)commandGetAllZone.Receiver;
@@ -344,7 +344,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllZones(RestaurantErrors.ClassNameGetFillDropdownZones, e);
             }
-            catch (InvalidTypeOfParameterException e)
+            catch (InvalidCastException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCategories(RestaurantErrors.InvalidTypeParameterException, e);
@@ -609,7 +609,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     throw new CommandExceptionGenerateRestaurant(RestaurantErrors.GenerateRestaurantFondaDAOException, e);
 
                 }
-                catch (InvalidTypeOfParameterException e)
+                catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionGenerateRestaurant(RestaurantErrors.InvalidTypeParameterException, e);
@@ -649,7 +649,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     throw new CommandExceptionSaveRestaurant(RestaurantErrors.CommandExceptionSaveRestaurant, e);
 
                 }
-                catch (InvalidTypeOfParameterException e)
+                catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionSaveRestaurant(RestaurantErrors.InvalidTypeParameterException, e);
@@ -805,7 +805,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     throw new CommandExceptionGenerateRestaurant(RestaurantErrors.GenerateRestaurantFondaDAOException, e);
 
                 }
-                catch (InvalidTypeOfParameterException e)
+                catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionGenerateRestaurant(RestaurantErrors.InvalidTypeParameterException, e);
@@ -851,7 +851,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionModifyRestaurant(RestaurantErrors.CommandExceptionModifyRestaurant, e);
                 }
-                catch (InvalidTypeOfParameterException e)
+                catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionModifyRestaurant(RestaurantErrors.InvalidTypeParameterException, e);
@@ -891,7 +891,7 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     throw new CommandExceptionSaveRestaurant(RestaurantErrors.CommandExceptionSaveRestaurant, e);
 
                 }
-                catch (InvalidTypeOfParameterException e)
+                catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new CommandExceptionSaveRestaurant(RestaurantErrors.InvalidTypeParameterException, e);

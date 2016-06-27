@@ -23,8 +23,7 @@ namespace FondaLogic.Commands.Restaurante
         /// Constructor del comando
         /// </summary>
         /// <param name="receiver"></param>
-        public CommandGetAllCategories(object receiver)
-            : base(receiver)
+        public CommandGetAllCategories()
         {
 
         }
@@ -50,7 +49,7 @@ namespace FondaLogic.Commands.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCategories(RestaurantErrors.GetAllCategoriesFondaDAOException, e);
             }
-            catch (InvalidTypeParameterException e)
+            catch (InvalidCastException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionGetAllCategories(RestaurantErrors.InvalidTypeParameterException, e);

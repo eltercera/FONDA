@@ -20,6 +20,8 @@ namespace FondaDataAccessTest
         public void init()
         {
             _facDAO = FactoryDAO.Intance;
+            _restaurantCategoryDAO = _facDAO.GetRestaurantCategoryDAO();
+
         }
 
         [TearDown]
@@ -35,7 +37,7 @@ namespace FondaDataAccessTest
             RestaurantCategory _newCategory = _restaurantCategoryDAO.GetRestaurantCategory("Alemana");
             RestaurantCategory _restaurantCategory = new RestaurantCategory();
             _restaurantCategory.Name = "Alemana";
-            Assert.AreEqual(_restaurantCategory, _newCategory);
+            Assert.AreEqual(_restaurantCategory.Name, _newCategory.Name);
 
         }
 
@@ -57,10 +59,9 @@ namespace FondaDataAccessTest
 
         [ExpectedException(typeof(FindAllFondaDAOException))]
         [Test]
-        public void getAllTestFindAllFondaDAOException()
+        public void getFindAllFondaDAOException()
         {
             List<RestaurantCategory> _categoryList = (List<RestaurantCategory>)_restaurantCategoryDAO.GetAll();
-            Assert.Null(_categoryList);
         }
 
         #endregion
