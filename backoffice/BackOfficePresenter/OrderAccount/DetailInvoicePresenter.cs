@@ -152,19 +152,55 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
                 Logger.WriteErrorLog(e.ClassName, e);
                 ErrorLabel(e.MessageException);
             }
-            catch(Exception ex)
+            catch (FormatException ex)
+            {
+                MVPExceptionQuery e = new MVPExceptionQuery
+                    (
+                        OrderAccountResources.MVPExceptionQueryCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionQuery,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allInvoicesURL);
+            }
+            catch (HttpRequestValidationException ex)
             {
                 MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
                     (
                         OrderAccountResources.MVPExceptionDetailOrderTableCode,
-                        OrderAccountResources.ClassNameDetailOrderPresenter,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        OrderAccountResources.MessageMVPExceptionDetailOrderTable,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allInvoicesURL);
+            }
+            catch (Exception ex)
+            {
+                MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
+                    (
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                //Cambiar URL
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allInvoicesURL);
                 ErrorLabel(e.MessageException);
             }
+
+
+            Logger.WriteSuccessLog(OrderAccountResources.MVPExceptionDetailOrderTableCode
+                                    , OrderAccountResources.SuccessMessageDetailOrderPresenter
+                                    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                                    );
         }
 
         /// <summary>
