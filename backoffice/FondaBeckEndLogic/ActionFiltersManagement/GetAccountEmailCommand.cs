@@ -60,7 +60,6 @@ namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
                 user = commensalDAO.FindByEmail(email);
 
                 if (user != null)
-                //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                  ResourceMessages.Commensal + user.Email, System.Reflection.MethodBase.GetCurrentMethod().Name);
 

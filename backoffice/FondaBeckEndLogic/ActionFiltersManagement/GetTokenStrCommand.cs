@@ -59,7 +59,6 @@ namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
                 // Busca el Token
                 tok = tokenDAO.FindByStrToken(property,token);
                 if (tok != null)
-                //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                  ResourceMessages.Token + token, System.Reflection.MethodBase.GetCurrentMethod().Name);
 

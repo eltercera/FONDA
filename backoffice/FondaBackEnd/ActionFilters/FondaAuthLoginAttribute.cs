@@ -107,6 +107,7 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
                     idCommensal = 0;
                 else
                     idCommensal = user.Id;
+                if (user != null)
                 Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    GeneralRes.Commensal + idCommensal, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
