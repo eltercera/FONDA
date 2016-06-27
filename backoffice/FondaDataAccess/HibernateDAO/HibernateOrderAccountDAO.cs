@@ -243,7 +243,11 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 _invoice = (Invoice)EntityFactory.GetInvoice(_invoice.Payment, _invoice.Profile,
                     _invoice.Total, _invoice.Tax, _restaurant.Currency, _number, i);
                 //Se le cambia el estatus de la orden a cerrada
-                _account.ChangeStatus();
+                if (_account.Status.Equals(OpenAccountStatus.Instance))
+                {
+                    _account.ChangeStatus();
+                }
+                
                 // se le agrega la invoice a la cuenta
                 _account.ListInvoice.Add(_invoice);
                 //se salva la cuenta para registrar la nueva factura

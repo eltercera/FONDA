@@ -29,6 +29,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             float _tip=0;
             float tax = 0.12F;
             CreditCardPayment _creditCard;
+            bool validate = false;
             try
             {
                 _list = (IList<object>)Receiver;
@@ -45,13 +46,29 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 int orderId = (int)parameters[1];
                 int restaurantId = (int)parameters[2];
                 int profileId = (int)parameters[3];
+                account = _accountDAO.FindById(orderId);
 
 
-                _invoiceGenerate = _invoiceDao.FindGenerateInvoiceByAccount(orderId);
 
-                if (!_invoiceGenerate.Equals(null))
+                if (account.Status.Equals(OpenAccountStatus.Instance))
                 {
-                    account = _accountDAO.FindById(orderId);
+                    validate = true;
+                }
+
+                else {
+                    _invoiceGenerate = _invoiceDao.FindGenerateInvoiceByAccount(orderId);
+
+                    if (_invoiceGenerate.Id.Equals(0))
+                    {
+                        validate = true;
+                    }
+
+                }
+
+                if (validate)
+                {
+
+                   
                     profile = _profileDAO.FindById(profileId);
 
                     float totalInvoice = account.GetAmount();
@@ -72,8 +89,8 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     }
                     else
                         throw new NullReferenceException();
-                }
 
+                }
                 else
                     throw new NullReferenceException();
 

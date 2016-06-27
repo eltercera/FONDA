@@ -182,7 +182,7 @@ namespace FondaBackOfficeLogicTest
             InvoiceStatus i = _facDAO.GetGeneratedInvoiceStatus();
             _invoice = EntityFactory.GetInvoice(_creditPayment, _profile, _creditPayment.Amount, ((_creditPayment.Amount)*0.12f), null, 100, i);
            _listObject.Add(_creditPayment); //11000
-            _listObject.Add(3);
+            _listObject.Add(1); //_accountId
             _listObject.Add(_restaurantId);
             _listObject.Add(_profileId);
             _command = CommandFactory.GetCommandGenerateInvoice(_listObject);
