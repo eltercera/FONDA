@@ -233,7 +233,7 @@ namespace FondaDataAccessTest
         [Test]
         public void GetOrderAccountTest()
         {
-            Account _result = _accountDAO.GetOrderAccount(_invoice,1); //invoice 1
+            Account _result = _accountDAO.GetOrderAccountByInvoice(_invoice,1); //invoice 1
             Assert.IsNotNull(_result);
             Assert.AreEqual(_result.Id,2);
         }
@@ -242,7 +242,7 @@ namespace FondaDataAccessTest
         [ExpectedException(typeof(GetOrderAccountFondaDAOException))]
         public void GetOrderAccountExceptionTest()
         {
-            Account _result = _accountDAO.GetOrderAccount(_invoice, 0);
+            Account _result = _accountDAO.GetOrderAccountByInvoice(_invoice, 0);
             Assert.IsNotNull(_result);
         }
 

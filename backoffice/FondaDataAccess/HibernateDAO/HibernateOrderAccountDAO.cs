@@ -339,7 +339,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 {
                     if (_order.Date.Equals(_day) && _order.Status.Equals(ClosedAccountStatus.Instance))
                     {
-                        Invoice _invoice = _invoiceDAO.FindById(_order.Id);
+                        Invoice _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_order.Id);
                         totalInvoice = _invoice.Total + totalInvoice;
                     }
                 }

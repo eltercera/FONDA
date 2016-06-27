@@ -65,7 +65,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 
                 }
                 else if (_openOrders.Count != 0)
-                    throw new Exception();
+                    throw new MVPExceptionCloseButton("a");
 
             }
             catch (MVPExceptionCloseButton ex)
