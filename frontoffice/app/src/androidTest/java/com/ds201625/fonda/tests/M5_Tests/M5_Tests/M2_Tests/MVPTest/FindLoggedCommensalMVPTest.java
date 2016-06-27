@@ -5,8 +5,8 @@ import android.util.Log;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
-import com.ds201625.fonda.interfaces.FavoriteView;
-import com.ds201625.fonda.presenter.FavoritesPresenter;
+import com.ds201625.fonda.views.contracts.FavoriteView;
+import com.ds201625.fonda.views.presenters.FavoritesPresenter;
 
 import junit.framework.TestCase;
 

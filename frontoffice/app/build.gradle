@@ -38,6 +38,7 @@ android {
             signingConfig signingConfigs.config
         }
     }
+
     sourceSets {
         main {
             assets.srcDirs = ['src/main/assets', 'src/main/assets/']

@@ -8,6 +8,9 @@
     <subopcion rol ="Sistema" nombre ="Reservas" link="~/Seccion/Reservas/ListarReservas.aspx"/>
   </opcion>
 
+  <opcion rol="Restaurante" nombre="Restaurante" img="fa fa-fw fa-user">
+    <subopcion rol ="Sistema" nombre ="Reservas" link="~/Seccion/Reservas/ListarReservas.aspx"/>
+  </opcion> 
 
   <opcion rol="Sistema-Restaurante" nombre="Menú" img="fa fa-fw fa-shopping-basket">
     <subopcion rol="Sistema-Restaurante" nombre="Menú del día" link="~/Seccion/Menu/MenuDia.aspx"/>
@@ -25,8 +28,6 @@
     <subopcion rol="Sistema-Restaurante" nombre="Usuarios" link="~/Seccion/Configuracion/ListarUsuario.aspx#"/>
   </opcion>
   
-   <opcion rol="Restaurante" nombre="Restaurante" img="fa fa-fw fa-user">
-    <subopcion rol ="Sistema" nombre ="Reservas" link="~/Seccion/Reservas/ListarReservas.aspx"/>
-  </opcion> 
+
 
 </menu>
