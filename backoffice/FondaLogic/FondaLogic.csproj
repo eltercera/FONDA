@@ -105,6 +105,7 @@
     <Compile Include="Commands\Restaurant\CommandSaveRestaurant.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
+    <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrderAccountByInvoice.cs" />
     <Compile Include="FondaCommandException\Reservations\CommandExceptionCancelReservation.cs" />
     <Compile Include="FondaCommandException\Reservations\CommandExceptionGetDetailReservation.cs" />
     <Compile Include="FondaCommandException\Reservations\CommandExceptionFindReservationsByRestaurant.cs" />
