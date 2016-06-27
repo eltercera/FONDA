@@ -36,7 +36,7 @@ public class CreateTokenCommand extends BaseCommand {
     @Override
     protected void invoke() {
 
-        Log.d(TAG, "Comando para eliminar un Token");
+        Log.d(TAG, "Comando para crear un Token");
         Context context;
         Commensal commensal;
         Token tokenTest = null;

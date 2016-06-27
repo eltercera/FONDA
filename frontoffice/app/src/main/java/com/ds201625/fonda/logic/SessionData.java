@@ -91,7 +91,7 @@ public class SessionData {
         Command commandoCreateCommensal = FondaCommandFactory.createCommensalCommand();
         commandoCreateCommensal.setParameter(0,email);
         commandoCreateCommensal.setParameter(1,password);
-        commandoCreateCommensal.setParameter(2,this.context);
+        commandoCreateCommensal.setParameter(2,context);
         commandoCreateCommensal.run();
         newCommensal = (Commensal)commandoCreateCommensal.getResult();
         if (newCommensal == null) {
@@ -118,6 +118,7 @@ public class SessionData {
     public void logoutCommensal() throws Exception {
         removeToken();
         removeCommensal();
+        SessionData.instance = null;
     }
 
     /**
@@ -126,9 +127,8 @@ public class SessionData {
      * @throws LocalStorageException
      */
     public void addCommensal(Commensal commensal) throws LocalStorageException {
-        getCommensalsrv().saveCommensal(commensal,this.context);
+        getCommensalsrv().saveCommensal(commensal,context);
         setCommensal();
-        SessionData.instance = null;
     }
 
     /**
@@ -180,7 +180,7 @@ public class SessionData {
         Commensal commensal = getCommensalsrv().getCommensal(this.context);
         if (commensal != null) {
             CommensalService service = getCommensalsrv();
-            service.deleteCommensal(this.context);
+            service.deleteCommensal(context);
         }
 
         this.commensal = null;
@@ -199,7 +199,7 @@ public class SessionData {
      * @return
      */
     private TokenService getTokenServ() {
-        return FondaServiceFactory.getInstance().getTokenService(this.commensal);
+        return FondaServiceFactory.getInstance().getTokenService(commensal);
     }
 
 }
