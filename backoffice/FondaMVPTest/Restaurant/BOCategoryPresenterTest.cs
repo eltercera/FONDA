@@ -14,13 +14,18 @@ namespace FondaMVPTest.Restaurant
 {
     public class BOCategoryPresenterTest
     {
-
+        //Variables para el test
         private MockRepository _MockRepository;
         private Mock<ICategoryModel> _mock;
         private ICategoryModel contract;
         private CategoryPresenter _categoryPresenter;
         private bool valid;
 
+        /// <summary>
+        /// Metodo que inicializa mock y las variables que se necesitan 
+        /// para empezar el test
+        /// Mock = contrato entre la vista y el presentador
+        /// </summary>
         [SetUp]
         public void init()
         {
@@ -29,6 +34,10 @@ namespace FondaMVPTest.Restaurant
             valid = false;
         }
 
+        /// <summary>
+        /// Metodo para limpiar las variables una vez el test
+        /// haya culminado
+        /// </summary>
         [TearDown]
         public void clean()
         {
@@ -36,45 +45,12 @@ namespace FondaMVPTest.Restaurant
             valid = false;
         }
 
-        [Test(Description = "Muestra el label con el mensaje de error")]
-        public void ErrorLabelTest()
-        {
-            Label errorLabelMessage = new Label();
-            _mock.Setup(x => x.ErrorLabelMessage).Returns(errorLabelMessage);
 
-            HtmlGenericControl errorLabel = new HtmlGenericControl();
-            _mock.Setup(x => x.ErrorLabel).Returns(errorLabel);
-
-            contract = _mock.Object;
-
-            _categoryPresenter = new CategoryPresenter(contract);
-
-            _categoryPresenter.ErrorLabel("Ha ocurrido un error");
-
-            Assert.AreEqual(true, _mock.Object.ErrorLabel.Visible);
-            Assert.AreEqual("Ha ocurrido un error", _mock.Object.ErrorLabelMessage.Text);
-        }
-
-        [Test(Description = "Muestra el label con el mensaje de exito")]
-        public void SuccessLabelTest()
-        {
-            Label successLabelMessage = new Label();
-            _mock.Setup(x => x.SuccessLabelMessage).Returns(successLabelMessage);
-
-            HtmlGenericControl successLabel = new HtmlGenericControl();
-            _mock.Setup(x => x.SuccessLabel).Returns(successLabel);
-
-            contract = _mock.Object;
-
-            _categoryPresenter = new CategoryPresenter(contract);
-
-            _categoryPresenter.SuccessLabel("Operacion exitosa");
-
-            Assert.AreEqual(true, _mock.Object.SuccessLabel.Visible);
-            Assert.AreEqual("Operacion exitosa", _mock.Object.SuccessLabelMessage.Text);
-        }
-
-        [Test(Description = "Indica que la tabla de restaurantes se llenó correctamente")]
+        /// <summary>
+        /// Metodo para cargar los restaurantes que se encuentran
+        /// en la bd, comprueba que existan elementos.
+        /// </summary>
+        [Test(Description = "Indica que la tabla de categorias se llenó correctamente")]
         public void SuccessLoadCategoryTableTest()
         {
             Table categoryTable = new Table();
@@ -87,6 +63,10 @@ namespace FondaMVPTest.Restaurant
             Assert.AreEqual(5, contract.categoryRest.Rows.Count);
         }
 
+        /// <summary>
+        /// Metodo que valida que el nombre de la categoria se encuentre
+        /// en el patron alfabetico definido
+        /// </summary>
         [Test]
         public void CategoryValidateTest()
         {

@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant
 {
-    public class CommandExceptionGetAllZones : FondaCommandLogicException
+    public class CommandExceptionGetAllZones : CommandException
     {
-        public CommandExceptionGetAllZones() : base() { }
-
-        public CommandExceptionGetAllZones(string message) : base(message) { }
-
-        public CommandExceptionGetAllZones(string message, Exception InnerException)
-            : base(message, InnerException) { }
+        public CommandExceptionGetAllZones(string message) : base(message)
+        {
+        }
+        public CommandExceptionGetAllZones(string message, Exception ex) : base(message, ex)
+        {
+        }
+        public CommandExceptionGetAllZones(string id, string classname, string method, string message, Exception ex)
+                : base(id, classname, method, message, ex)
+        {
+        }
 
     }
 }

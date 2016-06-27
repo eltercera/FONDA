@@ -11,6 +11,7 @@ using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
 using com.ds201625.fonda.DataAccess.Log;
 using com.ds201625.fonda.Resources.FondaResources.Restaurant;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException.Restaurant;
 
 namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
 {
@@ -51,32 +52,27 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             catch (CommandExceptionGetAllCategories e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetAllCategories, e);
+                throw new MVPExceptionLoadTable(RestaurantErrors.ClassNameGetAllCategories, e);
             }
             catch (InvalidCastException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllCategories(RestaurantErrors.InvalidTypeParameterException, e);
-            }
-            catch (ParameterIndexOutOfRangeException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllCategories(RestaurantErrors.ParameterIndexOutRangeException, e);
+                throw new MVPExceptionLoadTable(RestaurantErrors.InvalidTypeParameterException, e);
             }
             catch (RequieredParameterNotFoundException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllCategories(RestaurantErrors.RequieredParameterNotFoundException, e);
+                throw new MVPExceptionLoadTable(RestaurantErrors.RequieredParameterNotFoundException, e);
             }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetAllCategories, e);
+                throw new MVPExceptionLoadTable(RestaurantErrors.ClassNameGetAllCategories, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllCategories(RestaurantErrors.ClassNameGetAllCategories, e);
+                throw new MVPExceptionLoadTable(RestaurantErrors.ClassNameGetAllCategories, e);
             }
 
             int totalRows = listRest.Count; //tamano de la lista 
@@ -210,32 +206,22 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 catch (CommandExceptionAddCategory e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionAddCategory(RestaurantErrors.CommandExceptionAddCategory, e);
+                    throw new MVPExceptionButtonAdd(RestaurantErrors.CommandExceptionAddCategory, e);
                 }
                 catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionAddCategory(RestaurantErrors.InvalidTypeParameterException, e);
-                }
-                catch (ParameterIndexOutOfRangeException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionAddCategory(RestaurantErrors.ParameterIndexOutRangeException, e);
-                }
-                catch (RequieredParameterNotFoundException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionAddCategory(RestaurantErrors.RequieredParameterNotFoundException, e);
+                    throw new MVPExceptionButtonAdd(RestaurantErrors.InvalidTypeParameterException, e);
                 }
                 catch (NullReferenceException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionAddCategory(RestaurantErrors.ClassNameAddCategory, e);
+                    throw new MVPExceptionButtonAdd(RestaurantErrors.ClassNameAddCategory, e);
                 }
                 catch (Exception e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionAddCategory(RestaurantErrors.ClassNameAddCategory, e);
+                    throw new MVPExceptionButtonAdd(RestaurantErrors.ClassNameAddCategory, e);
                 }
 
                 //Try Catch del comando guardar una categoria
@@ -249,32 +235,22 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 catch (CommandExceptionSaveCategory e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.CommandExceptionSaveCategory, e);
+                    throw new MVPExceptionSave(RestaurantErrors.CommandExceptionSaveCategory, e);
                 }
                 catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.InvalidTypeParameterException, e);
-                }
-                catch (ParameterIndexOutOfRangeException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.ParameterIndexOutRangeException, e);
-                }
-                catch (RequieredParameterNotFoundException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.RequieredParameterNotFoundException, e);
+                    throw new MVPExceptionSave(RestaurantErrors.InvalidTypeParameterException, e);
                 }
                 catch (NullReferenceException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.ClassNameSaveCategory, e);
+                    throw new MVPExceptionSave(RestaurantErrors.ClassNameSaveCategory, e);
                 }
                 catch (Exception e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.ClassNameSaveCategory, e);
+                    throw new MVPExceptionSave(RestaurantErrors.ClassNameSaveCategory, e);
                 }
 
 
@@ -321,32 +297,22 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 catch (CommandExceptionModifyCategory e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionModifyCategory(RestaurantErrors.CommandExceptionModifyCategory, e);
+                    throw new MVPExceptionButtonModify(RestaurantErrors.CommandExceptionModifyCategory, e);
                 }
                 catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionModifyCategory(RestaurantErrors.InvalidTypeParameterException, e);
-                }
-                catch (ParameterIndexOutOfRangeException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionModifyCategory(RestaurantErrors.ParameterIndexOutRangeException, e);
-                }
-                catch (RequieredParameterNotFoundException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionModifyCategory(RestaurantErrors.RequieredParameterNotFoundException, e);
+                    throw new MVPExceptionButtonModify(RestaurantErrors.InvalidTypeParameterException, e);
                 }
                 catch (NullReferenceException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionModifyCategory(RestaurantErrors.ClassNameModifyCategory, e);
+                    throw new MVPExceptionButtonModify(RestaurantErrors.ClassNameModifyCategory, e);
                 }
                 catch (Exception e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionModifyCategory(RestaurantErrors.ClassNameModifyCategory, e);
+                    throw new MVPExceptionButtonModify(RestaurantErrors.ClassNameModifyCategory, e);
                 }
 
                 //Try Catch del Comando Save Category
@@ -360,32 +326,22 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 catch (CommandExceptionSaveCategory e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.CommandExceptionSaveCategory, e);
+                    throw new MVPExceptionSave(RestaurantErrors.CommandExceptionSaveCategory, e);
                 }
                 catch (InvalidCastException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.InvalidTypeParameterException, e);
-                }
-                catch (ParameterIndexOutOfRangeException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.ParameterIndexOutRangeException, e);
-                }
-                catch (RequieredParameterNotFoundException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.RequieredParameterNotFoundException, e);
+                    throw new MVPExceptionSave(RestaurantErrors.InvalidTypeParameterException, e);
                 }
                 catch (NullReferenceException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.ClassNameSaveCategory, e);
+                    throw new MVPExceptionSave(RestaurantErrors.ClassNameSaveCategory, e);
                 }
                 catch (Exception e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new CommandExceptionSaveCategory(RestaurantErrors.ClassNameSaveCategory, e);
+                    throw new MVPExceptionSave(RestaurantErrors.ClassNameSaveCategory, e);
                 }
 
                 LoadTable();
