@@ -93,6 +93,7 @@
     <Compile Include="Commands\Reservations\CommandGetReservationById.cs" />
     <Compile Include="Commands\Reservations\CommandSaveReservation.cs" />
     <Compile Include="Commands\Restaurant\CommandAddCategory.cs" />
+    <Compile Include="Commands\Restaurant\CommandFindTableById.cs" />
     <Compile Include="Commands\Restaurant\CommandGenerateRestaurant.cs" />
     <Compile Include="Commands\Restaurant\CommandGetAllCategories.cs" />
     <Compile Include="Commands\Restaurant\CommandGetAllCurrency.cs" />

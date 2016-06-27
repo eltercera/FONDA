@@ -305,6 +305,10 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandSaveTable(receiver);
         }
+        public static Command GetCommandFindTableById(object receiver)
+        {
+            return new CommandFindTableById(receiver);
+        }
 
         #endregion
 

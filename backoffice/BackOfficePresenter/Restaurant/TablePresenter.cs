@@ -105,7 +105,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 //Agrega la fila a la tabla existente
                 _view.tablePage.Rows.Add(tRow);
 
-                #region CABLEADO RESERVA
+                #region RESERVA
                 string user = string.Empty;
                 string status = listTable[i].Status.ToString();
                 int quantity = 0;
@@ -312,12 +312,21 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
         {
             //declaraciones de comandos
             Command commandSaveTable;
+            Command commandFindTableById;
+            Domain.Table _tableM;
             _view.alertSuccess_ModifyTable.Visible = true; 
 
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             string TableID = _view.tableModifyId.Value;
             int idTable = int.Parse(TableID);
-            com.ds201625.fonda.Domain.Table _tableM = _tableDAO.FindById(idTable);
+            //comando que busca una mesa dado su id
+            commandFindTableById = CommandFactory.GetCommandFindTableById(idTable);
+            //ejecuto el comando
+            commandFindTableById.Execute();
+            //Asigno el resultado del comando
+            _tableM = (Domain.Table)commandFindTableById.Receiver;
+
+            //com.ds201625.fonda.Domain.Table _tableM = _tableDAO.FindById(idTable);
             int capacity = int.Parse(_view.dddlCapacityM.SelectedValue);
             _tableM.Capacity = capacity;
             //Guardo modificacion de mesa en la bd utilizando el comando SaveTable
