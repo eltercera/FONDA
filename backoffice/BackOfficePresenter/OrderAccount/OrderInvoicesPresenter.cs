@@ -125,8 +125,8 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                FillTable(new List<Invoice>());
-                ErrorLabel(e.MessageException);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allInvoicesURL);
             }
             catch (HttpRequestValidationException ex)
             {

@@ -3,7 +3,7 @@ package com.ds201625.fonda.views.contracts;
 /**
  * Created by jessi_ds930h9 on 22/6/2016.
  */
-public interface ILoginViewContract {
+public interface LoginViewContract {
 
     /**
      * Metodo para registrar un commensal

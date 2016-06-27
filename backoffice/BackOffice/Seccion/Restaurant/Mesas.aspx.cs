@@ -219,6 +219,7 @@ namespace BackOffice.Seccion.Restaurant
             return _table;
         }
         
+
         /// <summary>
         /// Cambia el Status de la mesa
         /// </summary>

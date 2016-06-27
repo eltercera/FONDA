@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using com.ds201625.fonda.View.BackOfficeModel.Reservations;
 using com.ds201625.fonda.View.BackOfficePresenter.Reservations;
-using com.ds201625.fonda.Resources.FondaResources.Reservation;
+using com.ds201625.fonda.Resources.FondaResources.Reservations;
 using com.ds201625.fonda.View.BackOfficeModel;
 using com.ds201625.fonda.Resources.FondaResources.Login;
-using BackOffice.Content;
 
 namespace BackOffice.Seccion.Reservas
 {
-    public partial class Default : System.Web.UI.Page, IReservationsContract
+    public partial class ListarReservas : System.Web.UI.Page, IReservationsContract
     {
         #region Presenter
         private ReservationsPresenter _presenter;
@@ -103,7 +98,7 @@ namespace BackOffice.Seccion.Reservas
         #endregion
 
         #region Constructor
-        public Default()
+        public ListarReservas()
         {
             _presenter = new ReservationsPresenter(this);
         }
@@ -112,18 +107,21 @@ namespace BackOffice.Seccion.Reservas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //TODO (Reservation): Dejar que entre como sistema
+            //TODO (Reservation): Esto se deberia controlar por el presentador
             //Llama al presentador para llenar la tabla reservas
-        //    if (Session[ResourceLogin.sessionUserID] != null &&           
-        //         Session[ResourceLogin.sessionRestaurantID] != null)       
-                    _presenter.GetReservations();
-        //        else
-        //            Response.Redirect(RecursoMaster.addressLogin);
+                if (Session[ResourceLogin.sessionUserID] != null &&           
+                     Session[ResourceLogin.sessionRestaurantID] != null)
+                _presenter.GetReservations();
+            else if (Session[ResourceLogin.sessionRestaurantID] == null)
+            {
+                Session[ReservationResources.SessionNameRest] = ReservationResources.SessionAllRestaurants;
+                _presenter.GetReservations();
+            }
         }
 
-        protected void ButtonCancelReservation_Click(object sender, EventArgs e)
-        {
-            _presenter.CancelReservation();
-        }
+        //protected void ButtonCancelReservation_Click(object sender, EventArgs e)
+        //{
+        //    _presenter.CancelReservation(sender, e);
+        //}
     }
 }

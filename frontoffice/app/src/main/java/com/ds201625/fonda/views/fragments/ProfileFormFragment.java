@@ -11,13 +11,13 @@ import android.widget.TextView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Person;
 import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.views.contracts.IProfileViewContract;
+import com.ds201625.fonda.views.contracts.ProfileViewContract;
 
 
 /**
  * Fragment que contiene el formulario de para un perfil
  */
-public class ProfileFormFragment extends BaseFragment implements IProfileViewContract{
+public class ProfileFormFragment extends BaseFragment implements ProfileViewContract {
 
     //Elementos de la vista
     private Profile profile;
