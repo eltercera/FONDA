@@ -97,7 +97,6 @@ public class RetrofitTokenService implements TokenService{
         } catch (LocalStorageException e) {
             Log.e(TAG, "Se genero un error al buscar el Token en el Archivo Local",e);
         }
-        Log.d(TAG,"Se busco el token en el archivo local con exito. Return: " + token.getId());
         return token;
     }
 
