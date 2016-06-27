@@ -336,6 +336,7 @@ namespace FondaBackOfficeLogicTest
         }
 
 
+
         [Test]
         [ExpectedException(typeof(CommandExceptionGetInvoicesByProfile))]
         public void ErrorCommandGetInvoicesByProfileTest()
