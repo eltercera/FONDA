@@ -33,7 +33,7 @@ public class DeleteProfileCommand extends BaseCommand {
     @Override
     protected void invoke() {
 
-        Log.d(TAG, "Comando para eliminar un perfil a un commensal");
+        Log.d(TAG, "Comando para eliminar un perfil de un commensal logeado");
         int idProfile;
         Profile profile;
 
@@ -44,6 +44,7 @@ public class DeleteProfileCommand extends BaseCommand {
             profile = (Profile) getParameter(0);
             idProfile = profile.getId();
             profileService.deleteProfile(idProfile);
+            Log.d(TAG, "Se elimino el Perfil: " + profile.getProfileName());
         }
         catch (RestClientException e)
         {
@@ -61,5 +62,7 @@ public class DeleteProfileCommand extends BaseCommand {
         }
 
         setResult(true);
+        Log.d(TAG, "Se elimino con exito el Perfil. Result: " + getResult().toString());
+        Log.d(TAG, "Se elimino con exito el Perfil");
     }
 }

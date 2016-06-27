@@ -41,7 +41,7 @@ public class RetrofitTokenService implements TokenService{
         tokenClient = RetrofitService.getInstance().createService(
                 TokenClient.class,commensal.getEmail(), commensal.getPassword());
         this.commensal = commensal;
-        Log.v("Fonda",this.commensal.getEmail());
+        Log.v("Fonda: ",this.commensal.getEmail());
     }
 
     /**
@@ -74,9 +74,9 @@ public class RetrofitTokenService implements TokenService{
             Log.e(TAG, "Se ha generado error en createToken", e);
             throw new GetTokenFondaWebApiControllerException(error.exceptionType());
         }
-        Log.d(TAG, "Cierre del metodo crear Token"+ token.toString());
 
         getFile(context).save(token);
+        Log.d(TAG, "Cierre del metodo crear Token"+ token.toString());
 
         return token;
     }
@@ -95,8 +95,9 @@ public class RetrofitTokenService implements TokenService{
         try {
             token = getFile(context).getObj();
         } catch (LocalStorageException e) {
-            // Deverias solo hacer log de esto.
+            Log.e(TAG, "Se genero un error al buscar el Token en el Archivo Local",e);
         }
+        Log.d(TAG,"Se busco el token en el archivo local con exito. Return: " + token.getId());
         return token;
     }
 
@@ -108,7 +109,8 @@ public class RetrofitTokenService implements TokenService{
      * @throws DeleteTokenFondaWebApiControllerException
      */
     @Override
-    public void removeToken(Context context) throws LocalStorageException, RestClientException, DeleteTokenFondaWebApiControllerException {
+    public void removeToken(Context context) throws LocalStorageException, RestClientException,
+            DeleteTokenFondaWebApiControllerException {
         Log.d(TAG, "Se Elimina un Token");
         Token localToken = null;
         Token aux = null;
@@ -136,7 +138,7 @@ public class RetrofitTokenService implements TokenService{
             Log.e(TAG, "Se ha generado error en removeToken", e);
             throw new DeleteTokenFondaWebApiControllerException(error.exceptionType());
         }
-        Log.d(TAG, "Cierre del metodo eliminar Token"+ context.toString());
+        Log.d(TAG, "Cierre del metodo eliminar Token "+ context.toString());
 
     }
 }
