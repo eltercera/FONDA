@@ -5,10 +5,6 @@ using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FondaBackOfficeLogicTest.Restaurante
 {
@@ -46,7 +42,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
         }
 
         #region Commands Test
-        [Test]
+        [Test(Description = "Genera un objeto categoria")]
         public void commandAddCategoryTest()
         {
             _commandAddCategory = CommandFactory.GetCommandAddCategory(name);
@@ -57,7 +53,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
 
         }
 
-        [Test]
+        [Test(Description = "Modifica un objeto categoria")]
         public void commandModifyCategory()
         {
             _modifylist[0] = idCat;
@@ -70,7 +66,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
             Assert.AreEqual(_restcat.Name, _restcatE.Name);
         }
 
-        [Test]
+        [Test(Description = "Guarda un objeto categoria")]
         public void commandSaveCategoryTest()
         {
             _restcat = _restaurantCategoryDAO.FindById(2);
@@ -85,7 +81,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
 
         #region Exceptions Test
         [ExpectedException(typeof(NullReferenceException))]
-        [Test]
+        [Test(Description = "Excepción Nula al generar un objeto categoria")]
         public void AddCategoryNullExceptionTest()
         {
             _commandAddCategory = CommandFactory.GetCommandAddCategory(null);
@@ -94,7 +90,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
         }
 
         [ExpectedException(typeof(InvalidCastException))]
-        [Test]
+        [Test(Description = "Excepción de casteo invalido al generar un objeto categoria")]
         public void AddCategoryInvalidExceptionTest()
         {
             _commandAddCategory = CommandFactory.GetCommandAddCategory(1325);
@@ -103,7 +99,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
         }
 
         [ExpectedException(typeof(NullReferenceException))]
-        [Test]
+        [Test(Description = "Excepción Nula al modificar un objeto categoria")]
         public void ModifyCategoryNullExceptionTest()
         {
             _modifylist[0] = idCat;
@@ -112,7 +108,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
         }
 
         [ExpectedException(typeof(InvalidCastException))]
-        [Test]
+        [Test(Description = "Excepción de casteo invalido al modificar un objeto categoria")]
         public void ModifyCategoryInvalidExceptionTest()
         {
             _modifylist[0] = "prueba";

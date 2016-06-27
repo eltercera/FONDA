@@ -69,11 +69,11 @@
     <Compile Include="Commands\OrderAccount\CommandGetDishOrdersByAccountId.cs" />
     <Compile Include="Commands\OrderAccount\CommandFindInvoicesByAccount.cs" />
     <Compile Include="Commands\Reservations\CommandCancelReservation.cs" />
+    <Compile Include="Commands\OrderAccount\CommandGetOrderAccountByInvoice.cs" />
     <Compile Include="Commands\Reservations\CommandFindRestaurantById.cs" />
     <Compile Include="Commands\Reservations\CommandFindReservationsByRestaurant.cs" />
     <Compile Include="Commands\Reservations\CommandFindReservationsByTable.cs" />
     <Compile Include="Commands\OrderAccount\CommandFindInvoicesByRestaurant.cs" />
-    <Compile Include="Commands\OrderAccount\CommandGenerateException.cs" />
     <Compile Include="Commands\OrderAccount\CommandGenerateInvoice.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetClosedOrders.cs" />
     <Compile Include="Commands\OrderAccount\CommandGetCurrencyByRestaurantId.cs" />

@@ -61,16 +61,15 @@ public abstract class BaseCommand implements Command {
      * @throws Exception
      */
     @Override
-    public void setParameter(int index, Object data) throws Exception {
+    public void setParameter(int index, Object data)
+            throws ParameterOutOfIndexException,InvalidParameterTypeException {
 
         if (this.parameters == null) {
             return;
         }
 
         if ( index < 0 || index >= this.parameters.length)
-            // TODO: Exeption personalizada
-            throw new Exception("Index (" + index + ") fuera de rango."
-            + this.parameters.length);
+            throw ParameterOutOfIndexException.generate(this.getClass().toString(),index);
 
         parameters[index].setData(data);
     }
@@ -81,15 +80,12 @@ public abstract class BaseCommand implements Command {
      * @return Objeto que contiene el parametro
      * @throws Exception
      */
-    protected Object getParameter(int index) throws Exception {
+    protected Object getParameter(int index) throws ParameterOutOfIndexException {
         if (this.parameters == null)
-            // TODO: Exeption personalizada
-            throw new Exception("No se han definido parametros para el este commando ("
-                    + this.getClass().toString() + ").");
+            throw ParameterOutOfIndexException.generate(this.getClass().toString(),index);
 
         if ( index < 0 || index >= this.parameters.length)
-            // TODO: Exeption personalizada
-            throw new Exception("Index (" + index + " fuera de rango." );
+            throw ParameterOutOfIndexException.generate(this.getClass().toString(),index);
 
         return parameters[index].getData();
     }
@@ -110,14 +106,13 @@ public abstract class BaseCommand implements Command {
      * Valida los parametros requeridos
      * @throws Exception
      */
-    private void validateParameters() throws Exception {
+    private void validateParameters() throws EmptyRequieredParameterException {
         if (this.parameters == null) {
             return;
         }
         for (int i = 0; i < parameters.length; i++) {
             if (parameters[i].isRequiered() && parameters[i].getData() == null)
-                // TODO: Exeption personalizada
-                throw new Exception("Parametro requerido no espesificado. index (" + i + ")");
+                throw EmptyRequieredParameterException.generate(this.getClass().toString(),i);
         }
     }
 }

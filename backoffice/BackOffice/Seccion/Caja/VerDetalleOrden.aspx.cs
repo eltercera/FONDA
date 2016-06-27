@@ -27,6 +27,13 @@ namespace BackOffice.Seccion.Caja
             set { orderDetail = value; }
         }
 
+        public System.Web.UI.WebControls.Label DateOrder
+        {
+            get { return date; }
+
+            set { date = value; }
+        }
+
         Label IContract.ErrorLabelMessage
         {
             get { return this.ErrorLabelMessage; }

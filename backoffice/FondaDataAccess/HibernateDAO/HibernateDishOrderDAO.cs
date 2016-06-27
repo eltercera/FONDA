@@ -4,6 +4,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using System.Collections.Generic;
 using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
+using com.ds201625.fonda.DataAccess.Log;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -23,6 +24,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// 
         public IList<DishOrder> GetDishesByAccount(int _accountId)
         {
+            Account _account;
             try
             {
                 IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
@@ -30,9 +32,9 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                 IList<DishOrder> dishOrder = GetAll();
                 IList<DishOrder> _dishOrder = new List<DishOrder>();
                 IList<Account> _listAccount = _accountDAO.GetAll();
-                Account _account = _accountDAO.FindById(_accountId);
+                _account = _accountDAO.FindById(_accountId);
 
-                return _account.ListDish;
+
             }
             catch (ArgumentOutOfRangeException e)
             {
@@ -40,7 +42,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         new GetDishesByAccountFondaDAOException(
             OrderAccountResources.MessageGetDishesByAccountFondaDAOException,
             e);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
             catch (Exception e)
@@ -49,10 +51,14 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         new GetDishesByAccountFondaDAOException(
             OrderAccountResources.MessageGetDishesByAccountFondaDAOException,
             e);
-                //Logger
+                Logger.WriteErrorLog(exception.Message, exception);
                 throw exception;
             }
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameDishOrderDAO,
+                OrderAccountResources.SuccessMessageGetDishesByAccount,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
 
+            return _account.ListDish;
 
         }
     }

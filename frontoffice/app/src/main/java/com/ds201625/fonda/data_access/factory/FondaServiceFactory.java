@@ -160,6 +160,10 @@ public class FondaServiceFactory {
         return serviceFactory.getCategoryService();
     }
 
+    public RestaurantService getRestaurantService(Token token) {
+        return serviceFactory.getRestaurantService(token);
+    }
+
     /**
      * Obtiene los restaurantes filtrados por zona
      * @return
@@ -181,8 +185,5 @@ public class FondaServiceFactory {
       return  serviceFactory.getLogedCommensalService();
     }
 
-    public RestaurantService getRestaurantService() {
-        return serviceFactory.getRestaurantService();
-    }
 }
 

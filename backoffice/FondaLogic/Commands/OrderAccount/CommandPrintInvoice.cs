@@ -14,20 +14,21 @@ using System.IO;
 using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.Logic.FondaLogic.Factory;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 {
     public class CommandPrintInvoice : Command
     {
         private FactoryDAO _facDAO = FactoryDAO.Intance;
-        private IList<int> _list;
+        private IList<int> _listInt;
+        private IList<object> _listObject;
         private IList<DishOrder> _listDishOrder;
         private Restaurant _restaurant;
         private Invoice _invoice;
         private Account _account;
         private UserAccount _userAccount;
         private Person _person;
-        private object Server;
 
         public CommandPrintInvoice(Object receiver) : base(receiver) {
 
@@ -35,11 +36,16 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 
         public override void Execute()
         {
+            float borderWidthBottom = 0.75f;
+            float borderWidth = 0;
+            float taxPercentage = 0.12f;
+            Command commandGetOrderAccountByInvoice;
 
             try
             {
                 
-                _list = (IList<int>)Receiver;
+                _listInt = (IList<int>)Receiver;
+                _listObject = new List<object>();
                 using (System.IO.MemoryStream memoryStream = new System.IO.MemoryStream())
                 {
                     float totalFactura = 0;
@@ -53,9 +59,14 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 float tip, totaDishOrder,tax;
                 tip = totaDishOrder = tax = 0;
                 CreditCardPayment _creditCardPayment;
+                _invoice = _invoiceDao.FindById(_listInt[0]);
+                _listObject.Add(_invoice);
+                _listObject.Add(_listInt[1]);
+                 commandGetOrderAccountByInvoice = CommandFactory.GetCommandGetOrderAccountByInvoice(_listObject);
+                 commandGetOrderAccountByInvoice.Execute();
+                 _account = (Account)commandGetOrderAccountByInvoice.Receiver;
 
-                _account = _accountDAO.FindById(_list[0]);
-                _restaurant = _restaurantDao.FindById(_list[1]);
+                _restaurant = _restaurantDao.FindById(_listInt[1]);
                 _invoice = _invoiceDao.FindGenerateInvoiceByAccount(_account.Id);
                 _listDishOrder = _dishOrderDao.GetDishesByAccount(_account.Id);
 
@@ -70,15 +81,15 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 #region Declaraciones
                 // Creamos el documento con el tamaño de página tradicional
                 Document doc = new Document(PageSize.LETTER); 
-                String nombre ="Factura_" + _invoice.Number.ToString() + "_" + _restaurant.Name + ".pdf";
+                String name = string.Format(OrderAccountResources.filename, _invoice.Number.ToString(), _restaurant.Name );
             // Indicamos donde vamos a guardar el documento
             
                 PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
 
                 // Le colocamos el título y el autor
                 // **Nota: Esto no será visible en el documento
-                doc.AddTitle("Factura");
-                doc.AddCreator("Restaurante " + _restaurant.Name);
+                doc.AddTitle(OrderAccountResources.Invoice);
+                doc.AddCreator(string.Format(OrderAccountResources.InvoiceRestaurant, _restaurant.Name));
 
                 // Abrimos el archivo
                 doc.Open();
@@ -87,208 +98,206 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
 
                 // Escribimos el encabezamiento en el documento
-                doc.Add(new Paragraph("Factura Restaurante " + _restaurant.Name));
+                doc.Add(new Paragraph(string.Format(OrderAccountResources.header, _restaurant.Name)));
                 doc.Add(Chunk.NEWLINE);
-#endregion
+                #endregion
 
                 #region Creamos una tabla que contendrá la información 
 
 
-                PdfPTable tblPrueba1 = new PdfPTable(5);
-                tblPrueba1.WidthPercentage = 100;
+                PdfPTable tblHeaderInvoice = new PdfPTable(5);
+                tblHeaderInvoice.WidthPercentage = 100;
 
-                PdfPTable tblPrueba2 = new PdfPTable(4);
-                tblPrueba2.WidthPercentage = 100;
+                PdfPTable tblOrderDetail = new PdfPTable(4);
+                tblOrderDetail.WidthPercentage = 100;
 
-                PdfPTable tblPrueba3 = new PdfPTable(3);
-                //tblPrueba3.WidthPercentage = 100;
+                PdfPTable tblDishDetail = new PdfPTable(3);
 
-                PdfPTable tblPrueba4 = new PdfPTable(4);
-                tblPrueba4.WidthPercentage = 100;
+                PdfPTable tblInvoiceDetail = new PdfPTable(4);
+                tblInvoiceDetail.WidthPercentage = 100;
                 #endregion
                 // Configuramos el título de las columnas de la tabla
                 #region Encabezados 
-                PdfPCell clFecha = new PdfPCell(new Phrase("Fecha", _standardFont));
-                clFecha.BorderWidth = 0;
-                clFecha.BorderWidthBottom = 0.75f;
+                PdfPCell clDate = new PdfPCell(new Phrase(OrderAccountResources.DateColumn, _standardFont));
+                clDate.BorderWidth = borderWidth;
+                clDate.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clNOrden = new PdfPCell(new Phrase("#Orden", _standardFont));
-                clNOrden.BorderWidth = 0;
-                clNOrden.BorderWidthBottom = 0.75f;
+                PdfPCell clNOrder = new PdfPCell(new Phrase(OrderAccountResources.OrderNumberColumn, _standardFont));
+                clNOrder.BorderWidth = borderWidth;
+                clNOrder.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clNFactura = new PdfPCell(new Phrase("#Factura", _standardFont));
-                clNFactura.BorderWidth = 0;
-                clNFactura.BorderWidthBottom = 0.75f;
+                PdfPCell clNInvoice = new PdfPCell(new Phrase(OrderAccountResources.InvoiceNumberColumn, _standardFont));
+                clNInvoice.BorderWidth = borderWidth;
+                clNInvoice.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clRestaurante = new PdfPCell(new Phrase("Restaurante", _standardFont));
-                clRestaurante.BorderWidth = 0;
-                clRestaurante.BorderWidthBottom = 0.75f;
+                PdfPCell clRestaurant = new PdfPCell(new Phrase(OrderAccountResources.Restaurant, _standardFont));
+                clRestaurant.BorderWidth = borderWidth;
+                clRestaurant.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clDireccion = new PdfPCell(new Phrase("Direccion", _standardFont));
-                clDireccion.BorderWidth = 0;
-                clDireccion.BorderWidthBottom = 0.75f;
+                PdfPCell clAddress = new PdfPCell(new Phrase(OrderAccountResources.address, _standardFont));
+                clAddress.BorderWidth = borderWidth;
+                clAddress.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clRif = new PdfPCell(new Phrase("Rif", _standardFont));
-                clRif.BorderWidth = 0;
-                clRif.BorderWidthBottom = 0.75f;
+                PdfPCell clSsn = new PdfPCell(new Phrase(OrderAccountResources.Ssn, _standardFont));
+                clSsn.BorderWidth = borderWidth;
+                clSsn.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clNombre = new PdfPCell(new Phrase("Nombre", _standardFont));
-                clNombre.BorderWidth = 0;
-                clNombre.BorderWidthBottom = 0.75f;
+                PdfPCell clName = new PdfPCell(new Phrase(OrderAccountResources.Name, _standardFont));
+                clName.BorderWidth = borderWidth;
+                clName.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clApellido = new PdfPCell(new Phrase("Apellido", _standardFont));
-                clApellido.BorderWidth = 0;
-                clApellido.BorderWidthBottom = 0.75f;
+                PdfPCell clLastName = new PdfPCell(new Phrase(OrderAccountResources.LastName, _standardFont));
+                clLastName.BorderWidth = borderWidth;
+                clLastName.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clCedula = new PdfPCell(new Phrase("C.I", _standardFont));
-                clCedula.BorderWidth = 0;
-                clCedula.BorderWidthBottom = 0.75f;
+                PdfPCell clUserSsn = new PdfPCell(new Phrase(OrderAccountResources.UId, _standardFont));
+                clUserSsn.BorderWidth = borderWidth;
+                clUserSsn.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clPropina = new PdfPCell(new Phrase("Propina", _standardFont));
-                clPropina.BorderWidth = 0;
-                clPropina.BorderWidthBottom = 0.75f;
+                PdfPCell clTip = new PdfPCell(new Phrase(OrderAccountResources.Tip, _standardFont));
+                clTip.BorderWidth = borderWidth;
+                clTip.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clIVA = new PdfPCell(new Phrase("IVA (12%)", _standardFont));
-                clIVA.BorderWidth = 0;
-                clIVA.BorderWidthBottom = 0.75f;
+                PdfPCell clTax = new PdfPCell(new Phrase(OrderAccountResources.Tax, _standardFont));
+                clTax.BorderWidth = borderWidth;
+                clTax.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clTotal = new PdfPCell(new Phrase("Total", _standardFont));
-                clTotal.BorderWidth = 0;
-                clTotal.BorderWidthBottom = 0.75f;
+                PdfPCell clTotal = new PdfPCell(new Phrase(OrderAccountResources.Total, _standardFont));
+                clTotal.BorderWidth = borderWidth;
+                clTotal.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clTotalIva = new PdfPCell(new Phrase("Total + IVA + Propina", _standardFont));
-                clTotalIva.BorderWidth = 0;
-                clTotalIva.BorderWidthBottom = 0.75f;
+                PdfPCell clTotalTax = new PdfPCell(new Phrase(OrderAccountResources.TotalCost, _standardFont));
+                clTotalTax.BorderWidth = borderWidth;
+                clTotalTax.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clPlatillo = new PdfPCell(new Phrase("Platillo", _standardFont));
-                clPlatillo.BorderWidth = 0;
-                clPlatillo.BorderWidthBottom = 0.75f;
+                PdfPCell clDish = new PdfPCell(new Phrase(OrderAccountResources.Dish, _standardFont));
+                clDish.BorderWidth = borderWidth;
+                clDish.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clCantidad = new PdfPCell(new Phrase("Cantidad", _standardFont));
-                clCantidad.BorderWidth = 0;
-                clCantidad.BorderWidthBottom = 0.75f;
+                PdfPCell clQuantity = new PdfPCell(new Phrase(OrderAccountResources.Quantity, _standardFont));
+                clQuantity.BorderWidth = borderWidth;
+                clQuantity.BorderWidthBottom = borderWidthBottom;
 
-                PdfPCell clPrecio = new PdfPCell(new Phrase("Precio", _standardFont));
-                clPrecio.BorderWidth = 0;
-                clPrecio.BorderWidthBottom = 0.75f;
+                PdfPCell clPrice = new PdfPCell(new Phrase(OrderAccountResources.Price, _standardFont));
+                clPrice.BorderWidth = borderWidth;
+                clPrice.BorderWidthBottom = borderWidthBottom;
 
                 // Añadimos las celdas a la tabla
-                tblPrueba1.AddCell(clFecha);
-                tblPrueba1.AddCell(clRestaurante);
-                tblPrueba1.AddCell(clRif);
-                tblPrueba1.AddCell(clDireccion);
-                tblPrueba1.AddCell(clNFactura);
-                tblPrueba2.AddCell(clNOrden);
-                tblPrueba2.AddCell(clNombre);
-                tblPrueba2.AddCell(clApellido);
-                tblPrueba2.AddCell(clCedula);
-                tblPrueba4.AddCell(clPropina);
-                tblPrueba4.AddCell(clTotal);
-                tblPrueba4.AddCell(clIVA);
-                tblPrueba4.AddCell(clTotalIva);
+                tblHeaderInvoice.AddCell(clDate);
+                tblHeaderInvoice.AddCell(clRestaurant);
+                tblHeaderInvoice.AddCell(clSsn);
+                tblHeaderInvoice.AddCell(clAddress);
+                tblHeaderInvoice.AddCell(clNInvoice);
+                tblOrderDetail.AddCell(clNOrder);
+                tblOrderDetail.AddCell(clName);
+                tblOrderDetail.AddCell(clLastName);
+                tblOrderDetail.AddCell(clUserSsn);
+                tblInvoiceDetail.AddCell(clTip);
+                tblInvoiceDetail.AddCell(clTotal);
+                tblInvoiceDetail.AddCell(clTax);
+                tblInvoiceDetail.AddCell(clTotalTax);
                 #endregion
 
                 #region Llenamos la tabla con información
-                clFecha = new PdfPCell(new Phrase(_invoice.Date.ToString(), _standardFont));
-                clFecha.BorderWidth = 0;
+                clDate = new PdfPCell(new Phrase(_invoice.Date.ToString(), _standardFont));
+                clDate.BorderWidth = borderWidth;
 
-                clNOrden = new PdfPCell(new Phrase(_account.Number.ToString(), _standardFont));
-                clNOrden.BorderWidth = 0;
+                clNOrder = new PdfPCell(new Phrase(_account.Number.ToString(), _standardFont));
+                clNOrder.BorderWidth = borderWidth;
 
-                clNFactura = new PdfPCell(new Phrase(_invoice.Number.ToString(), _standardFont));
-                clNFactura.BorderWidth = 0;
+                clNInvoice = new PdfPCell(new Phrase(_invoice.Number.ToString(), _standardFont));
+                clNInvoice.BorderWidth = borderWidth;
 
-                clRestaurante = new PdfPCell(new Phrase(_restaurant.Name, _standardFont));
-                clRestaurante.BorderWidth = 0;
+                clRestaurant = new PdfPCell(new Phrase(_restaurant.Name, _standardFont));
+                clRestaurant.BorderWidth = borderWidth;
 
-                clDireccion = new PdfPCell(new Phrase(_restaurant.Address, _standardFont));
-                clDireccion.BorderWidth = 0;
+                clAddress = new PdfPCell(new Phrase(_restaurant.Address, _standardFont));
+                clAddress.BorderWidth = borderWidth;
 
-                clRif = new PdfPCell(new Phrase(_restaurant.Ssn, _standardFont));
-                clRif.BorderWidth = 0;
+                clSsn = new PdfPCell(new Phrase(_restaurant.Ssn, _standardFont));
+                clSsn.BorderWidth = borderWidth;
 
-                clNombre = new PdfPCell(new Phrase(_person.Name, _standardFont));
-                clNombre.BorderWidth = 0;
+                clName = new PdfPCell(new Phrase(_person.Name, _standardFont));
+                clName.BorderWidth = borderWidth;
 
-                clApellido = new PdfPCell(new Phrase(_person.LastName, _standardFont));
-                clApellido.BorderWidth = 0;
+                clLastName = new PdfPCell(new Phrase(_person.LastName, _standardFont));
+                clLastName.BorderWidth = borderWidth;
 
-                clCedula = new PdfPCell(new Phrase(_person.Ssn, _standardFont));
-                clCedula.BorderWidth = 0;
+                clUserSsn = new PdfPCell(new Phrase(_person.Ssn, _standardFont));
+                clUserSsn.BorderWidth = borderWidth;
 
-                clPropina = new PdfPCell(new Phrase(tip.ToString(), _standardFont));
-                clPropina.BorderWidth = 0;
+                clTip = new PdfPCell(new Phrase(tip.ToString(), _standardFont));
+                clTip.BorderWidth = borderWidth;
 
-                tblPrueba3.AddCell(clPlatillo);
-                tblPrueba3.AddCell(clCantidad);
-                tblPrueba3.AddCell(clPrecio);
+                tblDishDetail.AddCell(clDish);
+                tblDishDetail.AddCell(clQuantity);
+                tblDishDetail.AddCell(clPrice);
 
                 for (int j = 0; j < _listDishOrder.Count; j++)
                 {
-                    clPlatillo = new PdfPCell(new Phrase(_listDishOrder[j].Dish.Name, _standardFont));
-                    clPlatillo.BorderWidth = 0;
+                    clDish = new PdfPCell(new Phrase(_listDishOrder[j].Dish.Name, _standardFont));
+                    clDish.BorderWidth = borderWidth;
 
-                    clCantidad = new PdfPCell(new Phrase(_listDishOrder[j].Count.ToString(), _standardFont));
-                    clCantidad.BorderWidth = 0;
+                    clQuantity = new PdfPCell(new Phrase(_listDishOrder[j].Count.ToString(), _standardFont));
+                    clQuantity.BorderWidth = borderWidth;
 
-                    clPrecio = new PdfPCell(new Phrase(_listDishOrder[j].Dish.Cost.ToString(), _standardFont));
-                    clPrecio.BorderWidth = 0;
+                    clPrice = new PdfPCell(new Phrase(_listDishOrder[j].Dish.Cost.ToString(), _standardFont));
+                    clPrice.BorderWidth = borderWidth;
                     totaDishOrder = (_listDishOrder[j].Dish.Cost * _listDishOrder[j].Count) + totaDishOrder;
-                    tblPrueba3.AddCell(clPlatillo);
-                    tblPrueba3.AddCell(clCantidad);
-                    tblPrueba3.AddCell(clPrecio);
+                    tblDishDetail.AddCell(clDish);
+                    tblDishDetail.AddCell(clQuantity);
+                    tblDishDetail.AddCell(clPrice);
 
                 }
 
-                tax = totaDishOrder * 0.12f;
+                tax = totaDishOrder * taxPercentage;
 
-                clIVA = new PdfPCell(new Phrase(tax.ToString(), _standardFont));
-                clIVA.BorderWidth = 0;
+                clTax = new PdfPCell(new Phrase(tax.ToString(), _standardFont));
+                clTax.BorderWidth = borderWidth;
 
                 clTotal = new PdfPCell(new Phrase((totaDishOrder).ToString(), _standardFont));
-                clTotal.BorderWidth = 0;
+                clTotal.BorderWidth = borderWidth;
 
                 totalFactura = totaDishOrder + tip + tax;
 
-                clTotalIva = new PdfPCell(new Phrase(totalFactura.ToString(), _standardFont));
-                clTotalIva.BorderWidth = 0;
+                clTotalTax = new PdfPCell(new Phrase(totalFactura.ToString(), _standardFont));
+                clTotalTax.BorderWidth = borderWidth;
 
 
                 // Añadimos las celdas a la tabla
-                tblPrueba1.AddCell(clFecha);
-                tblPrueba1.AddCell(clRestaurante);
-                tblPrueba1.AddCell(clRif);
-                tblPrueba1.AddCell(clDireccion);
-                tblPrueba1.AddCell(clNFactura);
-                tblPrueba2.AddCell(clNOrden);
-                tblPrueba2.AddCell(clNombre);
-                tblPrueba2.AddCell(clApellido);
-                tblPrueba2.AddCell(clCedula);
-                tblPrueba4.AddCell(clPropina);
-                tblPrueba4.AddCell(clTotal);
-                tblPrueba4.AddCell(clIVA);
-                tblPrueba4.AddCell(clTotalIva);
+                tblHeaderInvoice.AddCell(clDate);
+                tblHeaderInvoice.AddCell(clRestaurant);
+                tblHeaderInvoice.AddCell(clSsn);
+                tblHeaderInvoice.AddCell(clAddress);
+                tblHeaderInvoice.AddCell(clNInvoice);
+                tblOrderDetail.AddCell(clNOrder);
+                tblOrderDetail.AddCell(clName);
+                tblOrderDetail.AddCell(clLastName);
+                tblOrderDetail.AddCell(clUserSsn);
+                tblInvoiceDetail.AddCell(clTip);
+                tblInvoiceDetail.AddCell(clTotal);
+                tblInvoiceDetail.AddCell(clTax);
+                tblInvoiceDetail.AddCell(clTotalTax);
                 #endregion
 
                 #region Finalmente, añadimos la tabla al documento PDF y cerramos el documento
-                doc.Add(tblPrueba1);
+                doc.Add(tblHeaderInvoice);
                 doc.Add(Chunk.NEWLINE);
-                doc.Add(tblPrueba2);
-                //doc.Add(Chunk.NEWLINE);
+                doc.Add(tblOrderDetail);
                 doc.Add(Chunk.NEWLINE);
-                doc.Add(tblPrueba3);
+                doc.Add(tblDishDetail);
                 doc.Add(Chunk.NEWLINE);
-                doc.Add(tblPrueba4);
-                #endregion
+                doc.Add(tblInvoiceDetail);
                 doc.Close();
+                #endregion
 
                 #region lo descargamos
                 byte[] bytes = memoryStream.ToArray();
                 memoryStream.Close();
                 HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.ContentType = "application/pdf";
-                HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment; filename=Factura_" + _invoice.Number.ToString() + "_" + _restaurant.Name + ".pdf");
-                HttpContext.Current.Response.ContentType = "application/pdf";
+                HttpContext.Current.Response.ContentType = OrderAccountResources.ContentType;
+                HttpContext.Current.Response.AddHeader(OrderAccountResources.ContentDisposition,
+                    string.Format(OrderAccountResources.ContentAttachment, _invoice.Number.ToString(), _restaurant.Name));
                 HttpContext.Current.Response.Buffer = true;
                 HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
                 HttpContext.Current.Response.BinaryWrite(bytes);
@@ -296,7 +305,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 HttpContext.Current.Response.SuppressContent = true;
                 HttpContext.Current.ApplicationInstance.CompleteRequest();
                 HttpContext.Current.Response.Close();
-                    #endregion
+                #endregion
                     writer.Close();
             }
 

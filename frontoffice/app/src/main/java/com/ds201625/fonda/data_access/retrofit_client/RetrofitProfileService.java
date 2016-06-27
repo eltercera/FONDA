@@ -34,6 +34,10 @@ public class RetrofitProfileService implements ProfileService {
 
     private APIError error;
 
+    /**
+     * Constructor de RetrofitProfileService
+     * @param token
+     */
     public RetrofitProfileService(Token token) {
         super();
         profileClient = RetrofitService.getInstance()
@@ -46,8 +50,7 @@ public class RetrofitProfileService implements ProfileService {
      * @throws RestClientException
      */
     @Override
-    public List<Profile> getProfiles() throws RestClientException,
-            GetProfilesFondaWebApiControllerException {
+    public List<Profile> getProfiles() throws Exception {
         Log.d(TAG, "Se Buscan los perfiles del commensal logeado");
         Call<List<Profile>> call = profileClient.getProfiles();
         List<Profile> profiles = null;
@@ -63,7 +66,11 @@ public class RetrofitProfileService implements ProfileService {
                 Log.e(TAG,"error message " +error.exceptionType());
                 throw new GetProfilesFondaWebApiControllerException(error.exceptionType());
             }
-        } catch (IOException e) {
+
+        }  catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en getProfiles", e);
+            throw new NullPointerException("Error de conexion");
+        }catch (IOException e) {
             Log.e(TAG, "Se ha generado error en getProfiles", e);
             throw new RestClientException("Error de IO",e);
         } catch (Exception e) {

@@ -52,6 +52,16 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         }
 
         /// <summary>
+        /// Metodo de la fabrica para el Comando GetOrderAccountByInvoice
+        /// </summary>
+        /// <param name="entity">Lista de objetos (Invoice, restaurantId)</param>
+        /// <returns>comando GetOrderAccountByInvoice</returns>
+        public static Command GetCommandGetOrderAccountByInvoice(object receiver)
+        {
+            return new CommandGetOrderAccountByInvoice(receiver);
+        }
+
+        /// <summary>
         /// Metodo de la fabrica para el Comando ReleaseTableByRestaurant
         /// </summary>
         /// <param name="entity">Lista de objetos (Restaurante, tableId)</param>
@@ -176,13 +186,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandGetInvoice(receiver);
         }
-        /// <summary>
-        /// Metodo de la fabrica para el CCommandGenerateException
-        /// </summary>
-        public static Command GetCommandGenerateException(object receiver)
-        {
-            return new CommandGenerateException(receiver);
-        }
+
         /// <summary>
         /// Metodo de la fabrica para el CommandCloseCashRegister
         /// </summary>

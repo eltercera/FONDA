@@ -15,6 +15,8 @@ namespace FondaMVPTest.Login
     [TestFixture]
     class BOUserListPresenterTest
     {
+
+        //variables a utillizar en el transcurso de las pruebas unitarias
         private FactoryDAO _facDAO = FactoryDAO.Intance;
         private com.ds201625.fonda.Domain.UserAccount _userAcount;
         private MockRepository _MockRepository;
@@ -23,7 +25,10 @@ namespace FondaMVPTest.Login
         private UserListPresenter _userListPresenter;
         private com.ds201625.fonda.Domain.Employee _employee;
         private DateTime _employeeBirthDate = Convert.ToDateTime("03/09/1992");
-
+        /// <summary>
+        /// metodo setUp de las pruebas unitarias
+        /// se le da valor al mock a utilizarse
+        /// </summary>
         [SetUp]
         public void Init()
         {
@@ -31,9 +36,14 @@ namespace FondaMVPTest.Login
             _mock = _MockRepository.Create<IUserListModel>();
 
         }
+        /// <summary>
+        /// verifica que si no se tiene un id de restaurante y de rol logueado como 
+        /// restaurante y no se cargara la tabla
+        /// </summary>
         [Test(Description = "Caso de error, cuando la tabla de usuarios no tiene un Id de Restaurante y rol restaurant")]
         public void LoadTableUserListRolRestaurantTest()
         {
+            //elementos de la vista a utilizarse en el presentador
             Table userListTable = new Table();
             _mock.Setup(x => x.tableUserList).Returns(userListTable);
 
@@ -47,21 +57,25 @@ namespace FondaMVPTest.Login
 
             Label errorLabelMessage = new Label();
             _mock.Setup(x => x.ErrorLabelMessage).Returns(errorLabelMessage);
-
+            // se le da valor al contrato
             contract = _mock.Object;
-
+            //se instancia al presentador
             _userListPresenter = new UserListPresenter(contract);
-
+            // se llama metodo del presentador que carga la tabla
             _userListPresenter.LoadTable("Restaurante");
-
+            //no hay filas en la tabla
             Assert.AreEqual(0, contract.tableUserList.Rows.Count);
             Assert.AreEqual(true, contract.ErrorLabel.Visible);
 
         }
-
+        /// <summary>
+        /// verifica que si no se tiene un id de restaurante y de rol logueado como 
+        /// Sistema y no se cargara la tabla
+        /// </summary>
         [Test(Description = "Caso de error, cuando la tabla de usuarios no tiene un Id de Restaurante y rol sistema")]
         public void LoadTableUserListRolSistemTest()
         {
+            //Elementos de la vista a utilizarse en el presentador
             Table userListTable = new Table();
             _mock.Setup(x => x.tableUserList).Returns(userListTable);
 
@@ -73,11 +87,11 @@ namespace FondaMVPTest.Login
 
             Label errorLabelMessage = new Label();
             _mock.Setup(x => x.ErrorLabelMessage).Returns(errorLabelMessage);
-
+            //se le da valor al contrato
             contract = _mock.Object;
-
+            // se instancia presentador
             _userListPresenter = new UserListPresenter(contract);
-
+            // se llama a metodo del presentador que carga la tabla
             _userListPresenter.LoadTable("Sistema");
 
             Assert.AreEqual(0, contract.tableUserList.Rows.Count);
@@ -149,7 +163,10 @@ namespace FondaMVPTest.Login
             
 
         }*/
-
+        /// <summary>
+        /// metodo que le da valor a la variable de userAccount a utilizarse 
+        /// en la prueba unitaria
+        /// </summar
         public void generateUserAccount()
         {
             _userAcount = new com.ds201625.fonda.Domain.UserAccount();
@@ -158,7 +175,10 @@ namespace FondaMVPTest.Login
             _userAcount.Status = com.ds201625.fonda.Domain.ActiveSimpleStatus.Instance;
 
         }
-
+        /// <summary>
+        /// metodo que le da valor a la variable de empleado a utilizarse 
+        /// en la prueba unitaria
+        /// </summary>
         public void generateEmployee()
         {
             _employee = new com.ds201625.fonda.Domain.Employee();
@@ -176,30 +196,41 @@ namespace FondaMVPTest.Login
             _employee.Status = com.ds201625.fonda.Domain.ActiveSimpleStatus.Instance;
 
         }
-
-        [Test(Description = "prueba unitaria de cuando se agrega un empleado")]
+        /// <summary>
+        /// prueba unitaria que verifica que presentador valide q correo ya existe en la bd
+        /// </summary>
+        [Test(Description = "prueba unitaria que verifica que presentador valide q correo ya existe en la bd")]
         public void ValidateEmailTest()
         {
+            //se generara empleado y userAccount
             generateUserAccount();
             generateEmployee();
             IUserAccountDAO _userAcountDAO = _facDAO.GetUserAccountDAO();
             IEmployeeDAO _employeeDAO = _facDAO.GetEmployeeDAO();
+            // se guardan
             _userAcountDAO.Save(_userAcount);
             _employeeDAO.Save(_employee);
+            // elemento de la vista a utilizar en el presentador 
             TextBox textBoxEmail = new TextBox();
             textBoxEmail.Text = "fondasis@gmail.com";
             _mock.Setup(x => x.textBoxEmail).Returns(textBoxEmail);
+            // se le da valor al contrato
             contract = _mock.Object;
+            // se instancia presentador
             _userListPresenter = new UserListPresenter(contract);
+            //se llama metodo presentador que valida que email exista en la bd
             bool existeemail = _userListPresenter.ValidationEmail();
             Assert.AreEqual(true, existeemail);
 
 
         }
-        [Test(Description = "prueba unitaria de cuando se agrega un empleado")]
+        /// <summary>
+        /// prueba unitaria que verifica que el presentador valide que ya existe un empleado con un Ssn
+        /// </summary>
+        [Test(Description = "prueba unitaria que verifica que el presentador valide que ya existe un empleado con un Ssn")]
         public void ValidateSsnTest()
         {
-
+            // elementos de la vista a utilizarse en el presentador
             DropDownList dropDownListNss1 = new DropDownList();
             dropDownListNss1.Text = "V";
             _mock.Setup(x => x.dropDownListNss1).Returns(dropDownListNss1);
@@ -207,28 +238,40 @@ namespace FondaMVPTest.Login
             TextBox textBoxNss2 = new TextBox();
             textBoxNss2.Text = "242871509";
             _mock.Setup(x => x.textBoxNss2).Returns(textBoxNss2);
+            // se le da valor al contrato
             contract = _mock.Object;
+            // se instacia presentador
             _userListPresenter = new UserListPresenter(contract);
+           // se llama metodo del presentador que valida que ssn exista en la Bd
             bool existessn = _userListPresenter.ValidationSsn();
             Assert.AreEqual(true, existessn);
 
 
         }
-
-        [Test(Description = "prueba unitaria de cuando se agrega un empleado")]
+        /// <summary>
+        /// prueba unitaria que verifica que el presentador valide que ya existe un empleado con un username
+        /// </summary>
+        [Test(Description = "prueba unitaria que verifica que el presentador valide que ya existe un empleado con un username")]
         public void ValidateUsernameTest()
         {
+            //elemento de la vista a utilizarse en el presentador
             TextBox textBoxUserNameU = new TextBox();
             textBoxUserNameU.Text = "rejimenez.12";
             _mock.Setup(x => x.textBoxUserNameU).Returns(textBoxUserNameU);
+            // se le da valor al contrato
             contract = _mock.Object;
+            // se instacia presentador
             _userListPresenter = new UserListPresenter(contract);
-            bool existeusername = _userListPresenter.ValidationSsn();
+            //se llama metodo del presentador que valida que username ya existe en la bd
+            bool existeusername = _userListPresenter.ValidationUsername();
             Assert.AreEqual(true, existeusername);
 
 
         }
-
+        /// <summary>
+        /// prueba unitaria final que elimina datos insertads en la bd
+        /// durante las pruebas unitarias
+        /// </summary>
         [Test]
         public void zFinishTest()
         {
