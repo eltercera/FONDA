@@ -31,6 +31,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -422,6 +423,7 @@
     <Content Include="Seccion\Caja\VerDetalleOrden.aspx" />
     <Content Include="Seccion\Configuracion\DetalleModificar.aspx" />
     <Content Include="Seccion\Configuracion\ListarUsuario.aspx" />
+    <Content Include="Seccion\Configuracion\ModalAgregar.aspx" />
     <Content Include="Seccion\Menu\Default.aspx" />
     <Content Include="Seccion\Menu\ListarCategoria.aspx" />
     <Content Include="Seccion\Menu\MenuDia.aspx" />
@@ -520,6 +522,13 @@
       <DependentUpon>ListarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Seccion\Configuracion\mensajes.cs" />
+    <Compile Include="Seccion\Configuracion\ModalAgregar.aspx.cs">
+      <DependentUpon>ModalAgregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Seccion\Configuracion\ModalAgregar.aspx.designer.cs">
+      <DependentUpon>ModalAgregar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Seccion\Menu\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -633,6 +642,7 @@
     <Content Include="Content\js\datatables\Spanish.json" />
     <!-- <None Include="Properties\PublishProfiles\backend.pubxml" />
     <None Include="Properties\PublishProfiles\backoffice.pubxml" /> -->
+    <None Include="Properties\PublishProfiles\backoffice.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
