@@ -1,8 +1,5 @@
 package com.ds201625.fonda.views.presenters;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.util.Log;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.UnknownServerErrorException;
@@ -17,9 +14,6 @@ import com.ds201625.fonda.logic.ParameterOutOfIndexException;
 import com.ds201625.fonda.views.adapters.ItemFilterAdapter;
 import com.ds201625.fonda.views.adapters.RestaurantAdapter;
 import com.ds201625.fonda.views.contracts.RestaurantsFiltersContract;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -66,8 +60,11 @@ public class RestaurantsFilterPresenter {
      */
     private boolean showRestaurant;
 
-
-
+    /**
+     * Constructor del presentador para vista de filtros de restaurantes
+     * @param fragment el fragment con la implementacion dela interfaz
+     * @param type El tipo a mostrar (GENERAL, ZONE, CATEGORY)
+     */
     public RestaurantsFilterPresenter
             (RestaurantsFiltersContract fragment, RestaurantsFilterPresenterType type) {
         this.fragment = fragment;
@@ -113,11 +110,19 @@ public class RestaurantsFilterPresenter {
         fillList();
     }
 
+    /**
+     * Accion de seleccionar un item
+     * @param position posicion del item en la lista
+     */
     public void onItemClick(int position) {
         Log.d("RestFilPresenter","Seleccionada posicion " + position + " de la lista.");
+
+
         if (this.showRestaurant) {
+            // Si esta mostrando restaurantes se manda a abrir el activity de detalle
             this.fragment.openRestaurantActiviy((Restaurant) restaurantAdapter.getItem(position));
         } else {
+            // Si no se obtiene la zona o categoria para aplicar filtro.
             int id = ((BaseEntity) itemFilterAdapter.getItem(position)).getId();
             this.textSearch = null;
             this.fragment.closeSearchView();
@@ -277,6 +282,63 @@ public class RestaurantsFilterPresenter {
                 fragment.setListViewEmtyType(RestaurantsFiltersContract.ListViewEmtyType.EMPTY);
         }
 
+    }
+
+    /**
+     * Colocar seleccionado un item
+     * @param position
+     * @param checked
+     * @return
+     */
+    public int checkItem(int position,boolean checked) {
+        this.restaurantAdapter.setSelectedItem(position,checked);
+        return this.restaurantAdapter.countSelected();
+    }
+
+    /**
+     * Accion de marcar como favoritos los seleccionados
+     */
+    public void favoriteMack() {
+        int count = 0;
+        for(Restaurant res : this.restaurantAdapter.getAllSeletedItems()) {
+            if (res.getFavorite())
+                continue;
+
+            Command cmd = FondaCommandFactory.getInstance().getSetFabRestaurantCommand();
+
+            try {
+                cmd.setParameter(0,res.getId());
+                cmd.setParameter(1,!res.getFavorite());
+            } catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                this.fragment.displayMsj("Se ha producido un error interno en la aplicación " +
+                "intente mas tarde.");
+                e.printStackTrace();
+                return;
+            }
+
+            try {
+                cmd.run();
+            } catch (Exception e) {
+                if (e.getClass() == RestClientException.class
+                        || e.getClass() == ServerErrorException.class
+                        || e.getClass() == UnknownServerErrorException.class ) {
+                    this.fragment.displayMsj("Se ha producido un error al conectarse con el servidor, " +
+                            "intente mas tarde.");
+                }
+                e.printStackTrace();
+                return;
+            }
+            count++;
+        }
+        this.fragment.displayMsj("Se han agregado " + count + " " +
+                (count>1?" restaurantes":"restaurante") + " a sus favoritos.");
+    }
+
+    /**
+     * limpiar los seleccionados
+     */
+    public void reset() {
+        this.restaurantAdapter.cleanSelected();
     }
 
     /**

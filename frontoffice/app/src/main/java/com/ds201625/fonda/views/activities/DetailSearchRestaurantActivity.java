@@ -6,13 +6,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.views.contracts.DetailRestaurantActivityContract;
 import com.ds201625.fonda.views.fragments.DetailSearchRestaurantFragment;
 import com.ds201625.fonda.views.presenters.DetailSearchRestaurantActivityPresenter;
 
-
+/**
+ * Activity para mostrar detalles de un restaurante
+ */
 public class DetailSearchRestaurantActivity extends BaseNavigationActivity
     implements DetailRestaurantActivityContract{
 
@@ -110,6 +114,11 @@ public class DetailSearchRestaurantActivity extends BaseNavigationActivity
             this.favoriteMenuItem.setIcon(R.drawable.ic_star_yellow);
         else
             this.favoriteMenuItem.setIcon(R.drawable.ic_grade_creme_24dp);
+    }
+
+    @Override
+    public void displayMsj(String msj) {
+        Toast.makeText(this, msj, Toast.LENGTH_LONG).show();
     }
 }
 
