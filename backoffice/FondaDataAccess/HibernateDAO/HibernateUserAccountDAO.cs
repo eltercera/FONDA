@@ -34,6 +34,15 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
 		}
 
-	}
+        /// <summary>
+		/// Obtiene todos los UserAccount del sistema
+		/// </summary>
+		/// <returns>Las cuentas de usuario.</returns>
+		public IList<UserAccount> GetAll()
+        {
+            return FindAll();
+        }
+
+    }
 }
 

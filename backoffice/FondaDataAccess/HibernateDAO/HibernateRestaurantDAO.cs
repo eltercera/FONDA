@@ -483,7 +483,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             //TODO: Arrojar excepciones personalizadas
             catch (ArgumentOutOfRangeException e)
             {
-                throw new FondaIndexException("Not Found invoice", e);
+                throw new FondaIndexException("Not Found reservation", e);
             }
         }
 
