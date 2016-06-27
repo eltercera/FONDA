@@ -17,6 +17,7 @@ namespace FondaBackOfficeLogicTest
 {
     class BODAOLogin
     {
+        
         private FactoryDAO _facDAO = FactoryDAO.Intance;
         private IUserAccountDAO _userAcountDAO;
         private IRoleDAO _roleDAO;
@@ -173,16 +174,13 @@ namespace FondaBackOfficeLogicTest
         [Test]
         public void dEmployeeDAOTest()
         {
-            /*_commandSaveEmployee = CommandFactory.GetCommandSaveEmployee(_employee);
-            _commandSaveEmployee.Execute();*/
+
             _employeeDAO = _facDAO.GetEmployeeDAO();
             _employeeDAO.Save(_employee);
             Assert.AreNotEqual(_employee, null);
             Assert.AreNotEqual(_employee.Id, 0);
 
-            /*_commandFindEmployeebyId = CommandFactory.GetCommandGetEmployeeById(_employee.Id);
-            _commandFindEmployeebyId.Execute();
-            Employee employeeTest = (Employee)_commandFindEmployeebyId.Receiver;*/
+
             Employee employeeTest =  _employeeDAO.FindById(_employee.Id);
             Assert.AreEqual(employeeTest.Name, "Rafael");
             Assert.AreEqual(employeeTest.LastName, "Jimenez");
@@ -213,9 +211,7 @@ namespace FondaBackOfficeLogicTest
         public void EmployeeDAOByUserTest()
         {
 
-            /*_commandFindEmployeebyUser = CommandFactory.GetCommandGetEmployeeByUser(_employee.Username);
-            _commandFindEmployeebyUser.Execute();
-            Employee employeeTest = (Employee)_commandFindEmployeebyUser.Receiver;*/
+
             _employeeDAO = _facDAO.GetEmployeeDAO();
             Employee employeeTest = _employeeDAO.FindByusername(_employee.Username);
            Assert.AreEqual(employeeTest.Name, "Rafael");
@@ -245,9 +241,7 @@ namespace FondaBackOfficeLogicTest
 
         public void fRolDAOTest()
         {
-            /*_commandFindAllRoles = CommandFactory.GetCommandGetAllRoles("null");
-            _commandFindAllRoles.Execute();
-            List<Role> _role = (List<Role>)_commandFindAllRoles.Receiver;*/
+
             _roleDAO = _facDAO.GetRoleDAO();
             List<Role> _role = (List<Role>)_roleDAO.GetAll();
 

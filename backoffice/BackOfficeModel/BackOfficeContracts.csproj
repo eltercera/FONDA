@@ -55,6 +55,7 @@
     <Compile Include="Reservation\IReservationsContract.cs" />
     <Compile Include="Restaurant\ICategoryModel.cs" />
     <Compile Include="Restaurant\IRestaurantModel.cs" />
+    <Compile Include="Restaurant\ITableModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

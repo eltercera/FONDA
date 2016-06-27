@@ -579,9 +579,24 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Login
                     _view.HtmlGenericControlemessagePasswordEqual.Attributes.Clear();
                     _view.HtmlGenericControlemessagePasswordEqual.InnerHtml = "";
                 }
+                //Validacion de que fecha no sea mayor que la de hoy
+                string Birthdate2 = _view.textBoxBirtDate.Value;
+                String[] substring = Birthdate2.Split('-');
+                Birthdate2 = substring[0] + '-' + substring[1] + '-' + substring[2];
+                if (validaFechaNac(Convert.ToDateTime(Birthdate2)))
+                {
+                    Alerts("InvalidBirthdate");
+                    bad = ++bad;
+                }
+                else
+                {
+                    good = ++good;
+                    _view.HtmlGenericControlemessageBirthdate.Attributes.Clear();
+                    _view.HtmlGenericControlemessageBirthdate.InnerHtml = "";
+                }
 
-                //si no hubo errores true , sino false
-                if (bad == 0)
+            //si no hubo errores true , sino false
+            if (bad == 0)
                 {
                     return true;
                 }
@@ -702,6 +717,9 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Login
 
                 case "InvalidFormatBirthdate":
                     _view.HtmlGenericControlemessageBirthdate.InnerHtml = G1RecursosInterfaz.iconDanger + " Formato de fecha inválido (DD/MM/YYYY)";
+                    break;
+                case "InvalidBirthdate":
+                    _view.HtmlGenericControlemessageBirthdate.InnerHtml = G1RecursosInterfaz.iconDanger + " Fecha igual o mayor que la actual";
                     break;
 
                 case "Empty":

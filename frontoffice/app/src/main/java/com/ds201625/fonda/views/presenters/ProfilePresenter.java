@@ -88,6 +88,7 @@ public class ProfilePresenter{
                 resp = (List<Profile>) commandoGetProfiles.getResult();
             } catch (Exception e)
             {
+                this. profileView.displayMsj(e.getMessage());
                 Log.e(TAG,"Error al Listar los Perfiles",e);
             }
             Log.d(TAG,"Cierre del Metodo getProfiles");

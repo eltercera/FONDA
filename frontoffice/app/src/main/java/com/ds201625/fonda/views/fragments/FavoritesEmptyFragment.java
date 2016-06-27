@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.views.activities.RestaurantListActivity;
+
 
 /**
  *  Fragmento de Favoritos Vacio

@@ -10,7 +10,7 @@
             android:visible="false"/>
         <item
             android:id="@+id/action_make_order"
-            android:icon="@drawable/nav_reserve"
+            android:icon="@drawable/ic_reservation"
             android:title="Order"
             app:showAsAction="ifRoom"
             android:visible="false"/>

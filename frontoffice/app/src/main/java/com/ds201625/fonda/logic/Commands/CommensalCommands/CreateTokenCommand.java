@@ -36,7 +36,7 @@ public class CreateTokenCommand extends BaseCommand {
     @Override
     protected void invoke() {
 
-        Log.d(TAG, "Comando para eliminar un Token");
+        Log.d(TAG, "Comando para crear un Token");
         Context context;
         Commensal commensal;
         Token tokenTest = null;
@@ -49,24 +49,28 @@ public class CreateTokenCommand extends BaseCommand {
             tokenTest = tokenService.getToken(context);
             if (tokenTest == null || tokenTest.getExpiration().compareTo(new Date()) < 0) {
                 tokenTest = tokenService.createToken(context);
+                Log.d(TAG, "Token creado: " + tokenTest.getId());
             }
+            Log.d(TAG, "Token actual: " + tokenTest.getId());
 
         }
         catch (RestClientException e)
         {
-            Log.e(TAG, "Se ha generado error en invoke al eliminar un Token", e);
+            Log.e(TAG, "Se ha generado error en invoke al crear un Token", e);
             e.printStackTrace();
         }
         catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al eliminar un Token", e);
+            Log.e(TAG, "Se ha generado error en invoke al crear un Token", e);
             e.printStackTrace();
         }
         catch (Exception e)
         {
-            Log.e(TAG, "Se ha generado error en invoke al eliminar un Token", e);
+            Log.e(TAG, "Se ha generado error en invoke al crear un Token", e);
             e.printStackTrace();
         }
 
         setResult(tokenTest);
+        Log.d(TAG, "Se agrego con exito el Token. Result: " + getResult().toString());
+        Log.d(TAG, "Se agrego con exito el Token");
     }
 }

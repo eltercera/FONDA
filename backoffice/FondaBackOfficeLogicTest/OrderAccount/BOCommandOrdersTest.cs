@@ -226,7 +226,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
         #endregion
 
-        #region Pruebas de Logic/Command/CommandPayOrderTest
+        #region Pruebas de Logic/Command/CommandGetDetailOrderTest
 
         [Test(Description = "Obtiene el detalle de una orden")]
         public void CommandGetDetailOrderTest()
@@ -264,7 +264,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
         #endregion
 
-        #region
+        #region Pruebas de Logic/Command/CommandGetDishOrderByAccountTest
         [Test(Description = "Obtiene el detalle de una orden por id de la orden")]
         public void CommandGetDishOrderByAccountTest()
         {
@@ -293,7 +293,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
         #endregion
 
-        #region
+        #region Pruebas de Logic/Command/CommandGetOrderTest
         [Test(Description = "Obtiene la orden dado un id")]
         public void CommandGetOrderTest()
         {
@@ -321,7 +321,7 @@ namespace com.ds201625.fonda.Tests.DataAccess
         }
         #endregion
 
-        #region CommandTotalOrderTest
+        #region Pruebas de Logic/Command/CommandTotalOrderTest
         [Test(Description = "Obtiene el total de la orden, es decir, el costo de los platillos por la cantidad")]
         public void CommandTotalOrderTest()
         {
@@ -329,12 +329,12 @@ namespace com.ds201625.fonda.Tests.DataAccess
             int _accountId = 3;
             float _total = 0;
             _list.Add(_restaurantId); //1
-            _list.Add(_accountId); //3
+            _list.Add(2); //2 _accountId
             _command = CommandFactory.GetCommandTotalOrder(_list);
             _command.Execute();
             _total = (float)_command.Receiver;
             Assert.IsNotNull(_total);
-            Assert.AreEqual(_total, 10192f);
+            Assert.AreEqual(_total, 5376f);
         }
 
         [Test(Description = "Exception ")]

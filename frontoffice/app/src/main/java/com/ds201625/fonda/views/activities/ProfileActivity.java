@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Profile;
@@ -74,6 +75,10 @@ public class ProfileActivity extends BaseNavigationActivity
 
     private boolean onForm;
 
+    /**
+     * Metodo llamado al crearce el Activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG,"Metodo onCreate");
@@ -184,6 +189,9 @@ public class ProfileActivity extends BaseNavigationActivity
         return true;
     }
 
+    /**
+     * metodo encargado de la gestion de crear o modificar perfil
+     */
     private void save() {
         Log.d(TAG,"Metodo save");
         profileFormFrag.changeProfile();
@@ -202,6 +210,7 @@ public class ProfileActivity extends BaseNavigationActivity
         } catch (Exception e) {
             Log.e(TAG,"Error al salvar el perfil",e);
             e.printStackTrace();
+            msj("Error al salvar el perfil");
         }
         try
         {
@@ -218,6 +227,7 @@ public class ProfileActivity extends BaseNavigationActivity
         fm.beginTransaction()
                 .replace(R.id.fragment_container,profileListFrag)
                 .commit();
+        showFragment(profileListFrag);
     }}
 
 
@@ -257,6 +267,11 @@ public class ProfileActivity extends BaseNavigationActivity
         }
     }
 
+    /**
+     * Metodo encargado de crear neuvo perfil
+     * @param profile
+     * @return
+     */
     @Override
     public Boolean createProfile(Profile profile) {
         Log.d(TAG,"Metodo createProfile");
@@ -264,13 +279,20 @@ public class ProfileActivity extends BaseNavigationActivity
         try {
             resp = presenter.createProfile(profile);
             Log.d(TAG,"Se agrego el perfil "+ profile.getProfileName());
+            msj("Se agrego el perfil exitosamente!");
         }catch (Exception e)
         {
             Log.e(TAG,"Error al crear Perfil",e);
+            msj("Error al crear Perfil");
         }
         return resp;
     }
 
+    /**
+     * Metodo que modifica el perfil
+     * @param profile
+     * @return
+     */
     @Override
     public Boolean updateProfile(Profile profile) {
         Log.d(TAG,"Metodo updateProfile");
@@ -278,11 +300,18 @@ public class ProfileActivity extends BaseNavigationActivity
         try {
             resp = presenter.updateProfile(profile);
             Log.d(TAG,"Se modifico el perfil "+ profile.getId());
+            msj("Se modifico el perfil exitosamente!");
         }catch (Exception e)
         {
             Log.e(TAG,"Error al modificar Perfil",e);
+            msj("Error al modificar Perfil");
         }
         return resp;
+    }
+
+    @Override
+    public void displayMsj(String msj) {
+        Toast.makeText(this, msj, Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -304,5 +333,14 @@ public class ProfileActivity extends BaseNavigationActivity
         }
         return true;
     }
+    /**
+     * Metodo que muestra los msj al usuario
+     * @param msj
+     */
+    public void msj(String msj)
+    {
+        Toast.makeText(getBaseContext(),msj, Toast.LENGTH_SHORT).show();
+    }
+
 
 }

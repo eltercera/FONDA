@@ -44,9 +44,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 Invoice _invoice = EntityFactory.GetInvoice();
                 Receiver = _invoice;
+                throw exception;
 
                 
             }
@@ -60,9 +60,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 Invoice _invoice = EntityFactory.GetInvoice();
                 Receiver = _invoice;
+                throw exception;
 
             }
 
