@@ -181,4 +181,24 @@
     <value>BO-04-004</value>
     <comment>Codigo de error al llenar tabla de detalle de Reservacion</comment>
   </data>
+  <data name="CommandExceptionCancelReservationCode" xml:space="preserve">
+    <value>BO-08-005</value>
+    <comment>Codigo de error al cancelar la reservacion</comment>
+  </data>
+  <data name="MessageCommandExceptionCancelReservation" xml:space="preserve">
+    <value>No ha sido posible anular la reservacion</value>
+    <comment>Mensaje de error para CommandExceptionCancelReservation</comment>
+  </data>
+  <data name="MessageCommandExceptionCancelReservationCanceledStatus" xml:space="preserve">
+    <value>La reservacion ya se encuentra cancelada</value>
+    <comment>Mensaje de error para CommandExceptionCancelReservation</comment>
+  </data>
+  <data name="MessageMVPExceptionCancelReservation" xml:space="preserve">
+    <value>Se ha producido un error al cancelar la reservacion</value>
+    <comment>Mensaje de error al cancelar una reservacion</comment>
+  </data>
+  <data name="MVPExceptionCancelReservationCode" xml:space="preserve">
+    <value>BO-04-006</value>
+    <comment>Codigo de error al cancelar una reservacion</comment>
+  </data>
 </root>

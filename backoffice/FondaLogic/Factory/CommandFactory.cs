@@ -497,6 +497,16 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
             return new CommandSaveReservation(receiver);
         }
 
+        /// <summary>
+        /// Metodo de la fabrica para el comando GetCommandCancelReservation 
+        /// </summary>
+        /// <param name="receiver">el objeto de la reservacion</param>
+        /// <returns>comando CommandCancelReservation</returns>
+        public static Command GetCommandCancelReservation(object receiver)
+        {
+            return new CommandCancelReservation(receiver);
+        }
+
 
         #endregion
 

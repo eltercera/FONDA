@@ -236,4 +236,12 @@
     <value>Se ha obtenido la reservacion con exito</value>
     <comment>Mensaje de exito para CommandExceptionGetReservationById</comment>
   </data>
+  <data name="ClassNameCancelReservation" xml:space="preserve">
+    <value>CommandCancelReservation</value>
+    <comment>Comando para cancelar una reservacion</comment>
+  </data>
+  <data name="SuccessMessageCommandCancelReservation" xml:space="preserve">
+    <value>Se ha anulado la reservacion satisfactoriamente</value>
+    <comment>Mensaje de exito para CommandCancelReservation</comment>
+  </data>
 </root>

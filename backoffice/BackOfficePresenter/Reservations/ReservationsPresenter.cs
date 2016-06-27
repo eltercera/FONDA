@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Web.UI.WebControls;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException.Reservations;
 
 namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
 {
@@ -28,6 +29,15 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             //Se genera el enlace entre el modelo y la vista
             _view = viewDefault;
 
+        }
+
+        public void WarningLabel(string message)
+        {
+
+            {
+                _view.WarningLabel.Visible = true;
+                _view.WarningLabelMessage.Text = message;
+            }
         }
 
 
@@ -66,9 +76,9 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
 
             }
             //TODO Reservations: Acomodar las excepciones a las nuestras
-            catch (MVPExceptionOrdersTable ex)
+            catch (MVPExceptionReservationsTable ex)
             {
-                MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
+                MVPExceptionReservationsTable e = new MVPExceptionReservationsTable
                     (
                         ReservationErrors.MVPExceptionReservationsTableCode,
                         ReservationResources.ClassNameReservationsPresenter,
@@ -81,7 +91,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             }
             catch (Exception ex)
             {
-                MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
+                MVPExceptionReservationsTable e = new MVPExceptionReservationsTable
                     (
                         ReservationErrors.MVPExceptionReservationsTableCode,
                         ReservationResources.ClassNameReservationsPresenter,
@@ -111,27 +121,62 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             LinkButton linkButtonCancelReservation = (LinkButton)sender;
             int _idReservation = int.Parse(linkButtonCancelReservation.Attributes[ReservationResources.dataId]);
             Command commandGetReservationByid;
-            Command commandSaveReservation;
+            Command commandCancelReservation;
             Reservation _reservation;
-     
+
 
             try
             {
+
+
+
                 commandGetReservationByid = CommandFactory.GetCommandGetReservationById(_idReservation);
                 commandGetReservationByid.Execute();
                 _reservation = (Reservation)commandGetReservationByid.Receiver;
-                _reservation.ChangeStatus();
 
-                commandSaveReservation = CommandFactory.GetCommandSaveReservation(_reservation);
-                commandSaveReservation.Execute();
+                //Obtiene la instancia del comando enviado la reservacion como parametro
+                commandCancelReservation = CommandFactory.GetCommandCancelReservation(_reservation);
+                //ejecuta el comando deseado
+                commandCancelReservation.Execute();
 
-                
+                //asigno el resultado a la lista de reservaciones
+                _reservation = (Reservation)commandCancelReservation.Receiver;
+
+                //TODO Reservation: Revisar por que hay que darle dos veces en la segunda vuelta
+                GetReservations();
+                SuccessLabel(ReservationResources.SuccessMessageCommandCancelReservation);
+         
+
+
+
+            }
+            catch (MVPExceptionCancelReservation ex)
+            {
+                MVPExceptionCancelReservation exe = new MVPExceptionCancelReservation
+                    (
+                        ReservationErrors.MVPExceptionCancelReservationCode,
+                        ReservationResources.ClassNameReservationsPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        ReservationErrors.MessageMVPExceptionCancelReservation,
+                        ex
+                    );
+                Logger.WriteErrorLog(exe.ClassName, exe);
+                WarningLabel(exe.MessageException);
             }
             catch (Exception ex)
             {
-
+                MVPExceptionReservationsTable exe = new MVPExceptionReservationsTable
+                    (
+                        ReservationErrors.MVPExceptionCancelReservationCode,
+                        ReservationResources.ClassNameReservationsPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        ReservationErrors.MessageCommandExceptionCancelReservationCanceledStatus,
+                        ex
+                    );
+                Logger.WriteErrorLog(exe.ClassName, exe);
+                WarningLabel(exe.MessageException);
             }
-//Command commandCancelReservation;
+            //Command commandCancelReservation;
         }
 
 
@@ -185,7 +230,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                             status.Append(ReservationResources.ReservedReservationStatus);
                         else if (listReservations[i].Status.Equals(CanceledReservationStatus.Instance))
                             status.Append(ReservationResources.CanceledReservationStatus);
-  
+
                         tCell.Text = status.ToString();
                         status.Clear();
                     }

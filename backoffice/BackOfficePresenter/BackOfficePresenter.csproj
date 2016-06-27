@@ -48,6 +48,7 @@
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionPrintInvoice.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionQuery.cs" />
     <Compile Include="FondaMVPException\Reservation\MVPExceptionDetailReservationTable.cs" />
+    <Compile Include="FondaMVPException\Reservation\MVPExceptionCancelReservation.cs" />
     <Compile Include="FondaMVPException\Reservation\MVPExceptionReservationsTable.cs" />
     <Compile Include="Login\DetailModifyPresenter.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionClosedOrdersTable.cs" />

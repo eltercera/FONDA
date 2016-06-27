@@ -97,6 +97,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandCancelReservation.
+        /// </summary>
+        public static string ClassNameCancelReservation {
+            get {
+                return ResourceManager.GetString("ClassNameCancelReservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DetailReservationPresenter.
         /// </summary>
         public static string ClassNameDetailReservationPresenter {
@@ -318,6 +327,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservations {
         public static string StatusColumn {
             get {
                 return ResourceManager.GetString("StatusColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha anulado la reservacion satisfactoriamente.
+        /// </summary>
+        public static string SuccessMessageCommandCancelReservation {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandCancelReservation", resourceCulture);
             }
         }
         
