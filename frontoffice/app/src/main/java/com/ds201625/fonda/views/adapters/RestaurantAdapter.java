@@ -39,15 +39,21 @@ public class RestaurantAdapter extends BaseArrayAdapter<Restaurant> {
         TextView txtAdd = (TextView) convertView.findViewById(R.id.txt2);
         TextView txtCategory = (TextView) convertView.findViewById(R.id.txt3);
         ImageView icon = (ImageView) convertView.findViewById(R.id.imageRest);
-
+        ImageView favIcon = (ImageView) convertView.findViewById(R.id.fav);
+        if (item.getFavorite())
+            favIcon.setVisibility(View.VISIBLE);
+        else
+            favIcon.setVisibility(View.GONE);
 
         txtName.setText(item.getName());
         txtAdd.setText(item.getAddress());
         txtCategory.setText(item.getRestaurantCategory().getName());
         String path = item.getLogo();
         Drawable image = loadImageFromWebOperations(path);
-        if (image == null) icon.setImageResource(R.mipmap.ic_launcher);
-        else icon.setImageDrawable(image);
+        if (image == null)
+            icon.setImageResource(R.mipmap.ic_launcher);
+        else
+            icon.setImageDrawable(image);
         return convertView;
     }
 
