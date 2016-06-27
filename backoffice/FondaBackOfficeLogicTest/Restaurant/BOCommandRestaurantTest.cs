@@ -1,12 +1,8 @@
-﻿using com.ds201625.fonda.BackEndLogic.Exceptions;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
-using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Restaurant;
-using com.ds201625.fonda.Logic.FondaLogic.Log;
-using com.ds201625.fonda.Resources.FondaResources.Restaurant;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -155,7 +151,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
             listCategories = (IList<RestaurantCategory>) _commandGetAllCategories.Receiver;
 
             Assert.NotNull(listCategories);
-            Assert.AreEqual(listCategories[0].Name, "China");            
+            Assert.AreEqual("China", listCategories[0].Name);            
         }
 
         [Test(Description = "Devuelve todas las Monedas")]
@@ -166,7 +162,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
             listCurrencies = (IList<Currency>)_commandGetAllCurrencies.Receiver;
 
             Assert.NotNull(listCurrencies);
-            Assert.AreEqual(listCurrencies[0].Name, "Dolar");
+            Assert.AreEqual("Dolar", listCurrencies[0].Name);
         }
 
         [Test(Description = "Devuelve todas las zonas")]
@@ -177,7 +173,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
             listZones = (IList<Zone>)_commandGetAllZones.Receiver;
 
             Assert.NotNull(listZones);
-            Assert.AreEqual(listZones[0].Name, "Altamira");
+            Assert.AreEqual("Altamira", listZones[0].Name);
         }
 
         [Test(Description = "Devuelve todas las restaurantes")]
@@ -188,7 +184,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
             listRestaurants = (IList<Restaurant>)_commandGetRestaurants.Receiver;
 
             Assert.NotNull(listRestaurants);
-            Assert.AreEqual(listRestaurants[1].Name, "El Mundo del Pollo");
+            Assert.AreEqual("El Mundo del Pollo", listRestaurants[1].Name);
         }
 
         #endregion
@@ -196,7 +192,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
         #region Exceptions Test
 
         [ExpectedException(typeof(NullReferenceException))]
-        [Test]
+        [Test(Description = "Excepción Nula al generar un objeto restaurante")]
         public void GenerateRestaurantNullExceptionTest()
         {
             _addlist[0] = name;
@@ -204,7 +200,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
             _commandGenerateRestaurant.Execute();
         }
         [ExpectedException(typeof(InvalidCastException))]
-        [Test]
+        [Test(Description = "Excepción de casteo invalido al generar un objeto restaurante")]
         public void GenerateRestaurantInvalidExceptionTest()
         {
             _addlist[0] = 13546;
@@ -214,7 +210,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
 
 
         [ExpectedException(typeof(NullReferenceException))]
-        [Test]
+        [Test(Description = "Excepción Nula al modificar un objeto restaurante")]
         public void ModifyRestauranteNullExceptionTest()
         {
             _addlist[0] = name;
@@ -231,7 +227,7 @@ namespace FondaBackOfficeLogicTest.Restaurante
             _restaurant = (Restaurant)_commandModifyRestaurant.Receiver;
         }
         [ExpectedException(typeof(InvalidCastException))]
-        [Test]
+        [Test(Description = "Excepción de casteo invalido al modificar un objeto restaurante")]
         public void ModifyRestauranteInvalidExceptionTest()
         {
             _addlist[0] = 1234548;
@@ -250,44 +246,36 @@ namespace FondaBackOfficeLogicTest.Restaurante
 
 
         [ExpectedException(typeof(NullReferenceException))]
-        [Test]
+        [Test(Description = "Excepción Nula al generar una lista de categorias (indica que la tabla RestaurantCategory esta vacia)")]
         public void commandGetAllCategoriesExceptionTest()
         {
             _commandGetAllCategories = CommandFactory.GetCommandGetAllCategories();
             _commandGetAllCategories.Execute();
-            listCategories = (IList<RestaurantCategory>)_commandGetAllCategories.Receiver;
-
         }
 
         [ExpectedException(typeof(NullReferenceException))]
-        [Test]
+        [Test(Description = "Excepción Nula al generar una lista de moneda (indica que la tabla Currency esta vacia)")]
         public void commandGetAllCCurrenciesExceptionTest()
         {
             _commandGetAllCurrencies = CommandFactory.GetCommandGetAllCurrencies();
             _commandGetAllCurrencies.Execute();
-            listCurrencies = (IList<Currency>)_commandGetAllCurrencies.Receiver;
-
         }
 
         [ExpectedException(typeof(NullReferenceException))]
-        [Test]
+        [Test(Description = "Excepción Nula al generar una lista de zonas (indica que la tabla Zone esta vacia)")]
         public void commandGetAllZonesExceptionTest()
         {
             _commandGetAllZones = CommandFactory.GetCommandGetAllZones();
             _commandGetAllZones.Execute();
-            listZones = (IList<Zone>)_commandGetAllZones.Receiver;
-
         }
 
         [ExpectedException(typeof(NullReferenceException))]
-        [Test]
+        [Test(Description = "Excepción Nula al generar una lista de restaurantes (indica que la tabla Restaurant esta vacia)")]
         public void commandGetRestaurantsExceptionTest()
         {
-            _commandGetRestaurants = CommandFactory.GetCommandGetRestaurants("null");
+            _commandGetRestaurants = CommandFactory.GetCommandGetRestaurants(null);
             _commandGetRestaurants.Execute();
             listRestaurants = (IList<Restaurant>)_commandGetRestaurants.Receiver;
-
-
         }
 
         #endregion
