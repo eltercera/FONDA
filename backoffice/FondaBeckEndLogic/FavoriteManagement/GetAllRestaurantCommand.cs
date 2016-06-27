@@ -17,6 +17,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
     class GetAllRestaurantCommand : BaseCommand
     {
         private IList<Restaurant> listRestaurant;
+        private List<Restaurant> nuevaListRestaurant;
         private IRestaurantDAO RestaurantDAO;
         /// <summary>
         /// constructor obtener todos los restaurant command
@@ -48,15 +49,23 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 RestaurantDAO = FacDao.GetRestaurantDAO();
                 // Ejecucion del obtener.	
                 listRestaurant = (IList<Restaurant>)RestaurantDAO.GetAll();
+              nuevaListRestaurant = new List<Restaurant>();
                 foreach (var restaurant in listRestaurant)
                 {
-                    restaurant.RestaurantCategory = new RestaurantCategory
                     
+                    if (restaurant.Status.StatusId == 1)
                     {
-                        Name = restaurant.RestaurantCategory.Name,
-                        Id = restaurant.RestaurantCategory.Id
+                        
+                        Console.Write("IDDD" + restaurant.Status.StatusId);
+                        restaurant.RestaurantCategory = new RestaurantCategory
+                        {
+                            Name = restaurant.RestaurantCategory.Name,
+                            Id = restaurant.RestaurantCategory.Id,
+                          
+                        };
+                     nuevaListRestaurant.Add(restaurant);   
+                    }
 
-                    };
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                   ResourceMessages.Restaurant + restaurant.Name + ResourceMessages.Slash +
                   restaurant.RestaurantCategory,System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -81,7 +90,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
             }
             
 			// Guardar el resultado.
-            Result = listRestaurant;
+            Result = nuevaListRestaurant;
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
                 Result.ToString(),System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
