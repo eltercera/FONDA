@@ -37,6 +37,7 @@ public class RetroditServiceFactory implements ServiceFactory {
         return new RetrofitReservationService(token);
     }
 
+
     @Override
     public CommensalService getCommensalService() {
         return new RetrofitCommensalService();
@@ -118,11 +119,7 @@ public class RetroditServiceFactory implements ServiceFactory {
         return new RetrofitFilterByCategoryService();
     }
 
-    @Override
-    public ReservationService getReservesService() {
 
-        return new RetrofitReservationService();
-    }
 
     @Override
     public RestaurantService getRestaurantService(Token token) {return new RetrofitRestaurantService(token); }
