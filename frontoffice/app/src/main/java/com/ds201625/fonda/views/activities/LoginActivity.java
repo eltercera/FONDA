@@ -18,6 +18,7 @@ import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.views.contracts.ILoginViewContract;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.presenters.LoginPresenter;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -266,11 +267,12 @@ public class LoginActivity extends BaseActivity implements ILoginViewContract {
     }
 
     private String isPasswordValid(String password, String patron, int min) {
-        if (!Pattern.compile(patron, Pattern.CASE_INSENSITIVE).matcher(password).matches() &&
-                password.length() < min){
+        Pattern patternPassword = Pattern.compile(patron, Pattern.CASE_INSENSITIVE);
+        Matcher matcherPassword = patternPassword.matcher(password);
+        if (!matcherPassword.matches() && password.length() < min){
             return getString(R.string.error_invalid_password);
         }
-        else if (!Pattern.compile(patron, Pattern.CASE_INSENSITIVE).matcher(password).matches()) {
+        else if (!matcherPassword.matches()) {
             return getString(R.string.error_format_password);
         }
         else if (password.length() < min){
