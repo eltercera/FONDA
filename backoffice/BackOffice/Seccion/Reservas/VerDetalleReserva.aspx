@@ -62,69 +62,58 @@
                 </div>
                 <div class="panel-body">
 
-                    <%--TODO Reservation: Tratar de hacerlo con bootstrap--%>
                     <div class="row">
-                        <h5>&nbsp;&nbsp;&nbsp;&nbsp;<b>Usuario: </b>
-                            <asp:Label ID="userAccount" runat="server"></asp:Label>
-                            <br />
-                            <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<b># de Comensales: </b>
-                            <asp:Label ID="numberCommensal" runat="server"></asp:Label>
-                            <br />
-                            <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Restaurante: </b>
-                            <asp:Label ID="restaurant" runat="server"></asp:Label>
-                            <%-- <%=Session["NameRestaurant"]%>--%>
-                            <br />
-                            <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Mesa: </b>
-                            <asp:Label ID="table" runat="server"></asp:Label>
-                            <br />
-                            <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Fecha de Creacion: </b>
-                            <asp:Label ID="creationDate" runat="server"></asp:Label>
-                            <br />
-                            <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Fecha de Reservacion: </b>
-                            <asp:Label ID="reservationDate" runat="server"></asp:Label>
-                            <br />
-                            <br />
-                            <%--   &nbsp;&nbsp;&nbsp;&nbsp;<b>: </b>
-                            <asp:Label ID="reservationNumber" runat="server"></asp:Label>
-                            <br />
-                            <br />--%>
-                            <%--   &nbsp;&nbsp;&nbsp;&nbsp;<b>Apellido, Nombre: </b>
-                            <asp:Label ID="lastname" runat="server"></asp:Label>,  
-                            <asp:Label ID="name" runat="server"></asp:Label>
-                            <br />
-                            <br />--%>
-                            <%--                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Cedula: </b>
-                            <asp:Label ID="ssn" runat="server"></asp:Label>--%>
-                        </h5>
+                        <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Usuario</label>
+                                <asp:Label ID="userAccount" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
+                                <div id="Div1" style="color: #FF9999" runat="server"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label"># de Comensales</label>
+                                <asp:Label ID="numberCommensal" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
+                                <div id="Div2" style="color: #FF9999" runat="server"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="table-responsive">
-                        <asp:Table ID="reservationDetail" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>
-                    </div>
-
                     <div class="row">
-                        <h5>&nbsp;&nbsp;&nbsp;&nbsp;<b>Sub-total: </b>
-                            <asp:Label ID="subtotal" runat="server"></asp:Label>
-                            <br />
-                            <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Iva: </b>
-                            <asp:Label ID="iva" runat="server"></asp:Label>
-                            <br />
-                            <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Propina: </b>
-                            <asp:Label ID="propina" runat="server"></asp:Label>
-                            <br />
-                            <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Total: </b>
-                            <asp:Label ID="total" runat="server"></asp:Label>
-                        </h5>
+                        <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Restaurante</label>
+                                <asp:Label ID="restaurant" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
+                                <div id="Div3" style="color: #FF9999" runat="server"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Mesa</label>
+                                <asp:Label ID="restaurantTable" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
+                                <div id="Div4" style="color: #FF9999" runat="server"></div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Fecha de Creacion</label>
+                                <asp:Label ID="creationDate" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
+                                <div id="Div5" style="color: #FF9999" runat="server"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
+                            <div class="form-group">
+                                <label class="control-label">Fecha de Reservacion</label>
+                                <asp:Label ID="reservationDate" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
+                                <div id="Div6" style="color: #FF9999" runat="server"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                         <a href="ListarReservas.aspx"><i class="fa fa-arrow-circle-left"></i> Volver a la lista</a>
                 </div>
-            </div>
+                </div>
             </div>
         </div>
 </asp:Content>
