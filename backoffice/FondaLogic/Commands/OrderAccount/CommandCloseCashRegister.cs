@@ -36,17 +36,18 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 _restaurantDAO = _facDAO.GetRestaurantDAO();
                 //Obtengo el objeto con la informacion enviada
                 IList<Account> _openOrdersDay = _restaurantDAO.OpenOrdersByRestaurantId(_restaurantId);
-                    _totalOrders = _orderDAO.CloseCashRegister(_restaurantId);
-                    Restaurant _restaurant = _restaurantDAO.FindById(_restaurantId);
-                    Currency curr = new Currency();
-                    curr = _restaurant.Currency;
-                    _symbol = curr.Symbol;
-
-                Receiver = string.Format(OrderAccountResources.CurrencyTotal, _symbol, _totalOrders);         
+                _totalOrders = _orderDAO.CloseCashRegister(_restaurantId);
+                Restaurant _restaurant = _restaurantDAO.FindById(_restaurantId);
+                Currency curr = new Currency();
+                curr = _restaurant.Currency;
+                _symbol = curr.Symbol;
+                if (_totalOrders != 0)
+                    Receiver = string.Format(OrderAccountResources.CurrencyTotal, _symbol, _totalOrders);
+                else if (_totalOrders == 0)
+                    Receiver = "0";
             }
             catch (NullReferenceException ex)
             {
-                //TODO: Arrojar Excepcion personalizada
                 CommandExceptionCloseCashRegister exception = new CommandExceptionCloseCashRegister(
                     OrderAccountResources.CommandExceptionCloseCashRegisterCode,
                     OrderAccountResources.ClassNameCloseCashRegister,
@@ -55,8 +56,6 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
-
                 Receiver = string.Empty;
                 throw exception;
             }
@@ -70,8 +69,6 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
-
                 Receiver = string.Empty;
                 throw exception;
             }

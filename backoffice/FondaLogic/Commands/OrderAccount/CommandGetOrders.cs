@@ -49,9 +49,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,exceptionGetOrders);
 
-                throw exceptionGetOrders;
                 listAccounts = new List<Account>();
                 Receiver = listAccounts;
+                throw exceptionGetOrders;
             }
             catch (Exception ex)
             {
@@ -64,9 +64,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exceptionGetOrders);
 
-                throw exceptionGetOrders;
                 listAccounts = new List<Account>();
                 Receiver = listAccounts;
+                throw exceptionGetOrders;
             }
 
             Logger.WriteSuccessLog(OrderAccountResources.ClassNameGetOrders

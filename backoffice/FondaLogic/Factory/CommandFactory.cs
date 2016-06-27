@@ -1,11 +1,7 @@
-﻿using com.ds201625.fonda;
-using com.ds201625.fonda.Domain;
-using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
+﻿using com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount;
 using com.ds201625.fonda.Logic.FondaLogic.Commands.Login;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
-using System.Collections.Generic;
 using com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations;
-using System;
 using com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante;
 using FondaLogic.Commands.Restaurante;
 
@@ -53,6 +49,16 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         public static Command GetCommandGetDishOrdersByAccountId(object receiver)
         {
             return new CommandGetDishOrdersByAccountId(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el Comando GetOrderAccountByInvoice
+        /// </summary>
+        /// <param name="entity">Lista de objetos (Invoice, restaurantId)</param>
+        /// <returns>comando GetOrderAccountByInvoice</returns>
+        public static Command GetCommandGetOrderAccountByInvoice(object receiver)
+        {
+            return new CommandGetOrderAccountByInvoice(receiver);
         }
 
         /// <summary>
@@ -180,13 +186,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandGetInvoice(receiver);
         }
-        /// <summary>
-        /// Metodo de la fabrica para el CCommandGenerateException
-        /// </summary>
-        public static Command GetCommandGenerateException(object receiver)
-        {
-            return new CommandGenerateException(receiver);
-        }
+
         /// <summary>
         /// Metodo de la fabrica para el CommandCloseCashRegister
         /// </summary>
@@ -301,6 +301,15 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandGetRestaurants(receiver);
         }
+        public static Command GetCommandSaveTable(object receiver)
+        {
+            return new CommandSaveTable(receiver);
+        }
+        public static Command GetCommandFindTableById(object receiver)
+        {
+            return new CommandFindTableById(receiver);
+        }
+
         #endregion
 
         #region Menu
@@ -467,6 +476,48 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         public static Command GetCommandGetAllReservations()
         {
             return new CommandGetAllReservations();
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el CommandGetDetailReservation
+        /// </summary>
+        /// <param name="receiver">Parametros, Id de la reservacion</param>
+        /// <returns>List Reservation, Commensal, Table</returns>
+        /// 
+        public static Command GetCommandGetDetailReservation(object receiver)
+        {
+            return new CommandGetDetailReservation(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el CommandGetReservationById
+        /// </summary>
+        /// <param name="receiver">Id de la reservacion</param>
+        /// <returns>comando CommmandGetReservationById</returns>
+        /// 
+        public static Command GetCommandGetReservationById(object receiver)
+        {
+            return new CommandGetReservationById(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el comando GetCommandSaveReservation 
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <returns>comando CommandSaveReservation</returns>
+        public static Command GetCommandSaveReservation(object receiver)
+        {
+            return new CommandSaveReservation(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el comando GetCommandCancelReservation 
+        /// </summary>
+        /// <param name="receiver">el objeto de la reservacion</param>
+        /// <returns>comando CommandCancelReservation</returns>
+        public static Command GetCommandCancelReservation(object receiver)
+        {
+            return new CommandCancelReservation(receiver);
         }
 
 

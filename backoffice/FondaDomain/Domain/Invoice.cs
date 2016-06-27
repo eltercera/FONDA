@@ -74,18 +74,30 @@ namespace com.ds201625.fonda.Domain
          float total, float tax, Currency currency, int number, InvoiceStatus status) 
             : base()
         {
-            
-
             this._payment = payment;
             this._profile = profile;
             this._date = DateTime.Now;
             this._total = total;
             this._tax = tax;
-
             this._status = status;
-
             this._currency = currency;
             this._number = number;
+        }
+
+        /// <summary>
+        /// Constructor de Factura
+        /// </summary>
+        /// <param name="payment">Pago de la factura</param>
+        /// <param name="profile">Perfil del usuario</param>
+        /// <param name="total">Monto total</param>
+        /// <param name="tax">Impuesto calculado</param>
+        public Invoice(Payment payment, Profile profile, float total, float tax)
+            : base()
+        {
+            this._payment = payment;
+            this._profile = profile;
+            this._total = total;
+            this._tax = tax;
         }
 
         /// <summary>

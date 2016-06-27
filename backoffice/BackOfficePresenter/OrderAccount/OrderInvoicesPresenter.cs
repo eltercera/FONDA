@@ -56,9 +56,14 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
                 commandGetClosedOrderAccount = CommandFactory.GetCommandClosedOrders(_restaurantId);
                 commandGetClosedOrderAccount.Execute();
                 listClosedAccount = (IList<Account>)commandGetClosedOrderAccount.Receiver;
+                int max = 0;
+                for (int i = 0; i <= listClosedAccount.Count - 1; i++)
+                {
+                    if (listClosedAccount[i].Id > max)
+                        max = listClosedAccount[i].Id;
+                }
 
-
-                if (result <= listClosedAccount.Count && result != 0)
+                if (result <= max && result != 0)
                 {
                     //Obtiene la instancia del comando enviado el restaurante como parametro
                     commandGetInvoicesByAccount = CommandFactory.GetCommandFindInvoicesByAccount(result);
@@ -120,8 +125,8 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
-                FillTable(new List<Invoice>());
-                ErrorLabel(e.MessageException);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allInvoicesURL);
             }
             catch (HttpRequestValidationException ex)
             {

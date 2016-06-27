@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante
 {
-    class CommandSaveRestaurant : Command
+    public class CommandSaveRestaurant : Command
     {
         FactoryDAO _facDAO = FactoryDAO.Intance;
         Restaurant _restaurant;

@@ -27,6 +27,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         private Invoice _invoice;
         private Account _account;
         private CreditCardPayment _creditCardPayment;
+        private List<int> _listInt;
 
         public DetailInvoicePresenter(IDetailInvoiceContract viewInvoiceDetail) : 
             base(viewInvoiceDetail)
@@ -46,13 +47,14 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 
             try
             {
-                accountId = int.Parse(_view.SessionIdAccount);
+                invoiceId = GetQueryParameter();
+                
                 restaurantId = int.Parse(_view.SessionRestaurant);
 
                 //Recibe 2 enteros
                 // 1  id de la factura
                 // 2  id del restaurant               
-                parameters = new List<int> { accountId, restaurantId };
+                parameters = new List<int> { invoiceId, restaurantId };
                 //Obtiene la instancia del comando enviado el restaurante como parametro
                 commandPrintInvoice = CommandFactory.GetCommandPrintInvoice(parameters);
 
@@ -101,22 +103,19 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
             
             //Define objeto a recibir
             IList<DishOrder> listDishOrder;
-
-            List<int> parameters;
+            _listInt = new List<int>();
             List<Object> result;
+            
             Command commandGetDetailInvoice;
 
             try
             {
                 invoiceId = GetQueryParameter();
-                accountId = int.Parse(_view.SessionIdAccount);
-
-                //Recibe 2 enteros
-                // 1  id de la factura
-                // 2  id de la orden                
-                parameters = new List<int> { invoiceId, accountId };
-                //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetDetailInvoice = CommandFactory.GetCommandGetDetailInvoice(parameters);
+                _listInt.Add(invoiceId);
+                restaurantId = int.Parse(_view.SessionRestaurant);
+                _listInt.Add(restaurantId);
+                //Obtiene la instancia del comando enviado el Id del invoice como parametro
+                commandGetDetailInvoice = CommandFactory.GetCommandGetDetailInvoice(_listInt);
 
                 //Ejecuta el comando deseado
                 commandGetDetailInvoice.Execute();
@@ -153,19 +152,55 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
                 Logger.WriteErrorLog(e.ClassName, e);
                 ErrorLabel(e.MessageException);
             }
-            catch(Exception ex)
+            catch (FormatException ex)
+            {
+                MVPExceptionQuery e = new MVPExceptionQuery
+                    (
+                        OrderAccountResources.MVPExceptionQueryCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionQuery,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allInvoicesURL);
+            }
+            catch (HttpRequestValidationException ex)
             {
                 MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
                     (
                         OrderAccountResources.MVPExceptionDetailOrderTableCode,
-                        OrderAccountResources.ClassNameDetailOrderPresenter,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
                         System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                        OrderAccountResources.MessageMVPExceptionDetailOrderTable,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
                         ex
                     );
                 Logger.WriteErrorLog(e.ClassName, e);
+                HttpContext.Current.Server.ClearError();
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allInvoicesURL);
+            }
+            catch (Exception ex)
+            {
+                MVPExceptionOrderInvoicesTable e = new MVPExceptionOrderInvoicesTable
+                    (
+                        OrderAccountResources.MVPExceptionDetailOrderTableCode,
+                        OrderAccountResources.ClassNameOrderInvoicesPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        OrderAccountResources.MessageMVPExceptionOrderInvoicesTable,
+                        ex
+                    );
+                Logger.WriteErrorLog(e.ClassName, e);
+                //Cambiar URL
+                HttpContext.Current.Response.Redirect(OrderAccountResources.allInvoicesURL);
                 ErrorLabel(e.MessageException);
             }
+
+
+            Logger.WriteSuccessLog(OrderAccountResources.MVPExceptionDetailOrderTableCode
+                                    , OrderAccountResources.SuccessMessageDetailOrderPresenter
+                                    , System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
+                                    );
         }
 
         /// <summary>
@@ -184,7 +219,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
             _view.UserId.Text = _invoice.Profile.Person.Ssn.ToString();
             _view.SubTotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, subtotal.ToString());
             _view.IvaInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Tax.ToString());
-            _view.TotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Total.ToString());
+            _view.TotalInvoice.Text = string.Format(OrderAccountResources.CurrencyTotal, _currency, _invoice.Payment.Amount.ToString());
             if (_invoice.Payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
             {
                 _creditCardPayment = (CreditCardPayment)_invoice.Payment;

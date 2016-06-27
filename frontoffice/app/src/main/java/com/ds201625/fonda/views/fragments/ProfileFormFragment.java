@@ -11,12 +11,13 @@ import android.widget.TextView;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Person;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.views.contracts.ProfileViewContract;
 
 
 /**
  * Fragment que contiene el formulario de para un perfil
  */
-public class ProfileFormFragment extends BaseFragment {
+public class ProfileFormFragment extends BaseFragment implements ProfileViewContract {
 
     //Elementos de la vista
     private Profile profile;
@@ -105,4 +106,18 @@ public class ProfileFormFragment extends BaseFragment {
         super.onDetach();
     }
 
+    @Override
+    public Boolean createProfile(Profile profile) throws Exception {
+        return null;
+    }
+
+    @Override
+    public Boolean updateProfile(Profile profile) throws Exception {
+        return null;
+    }
+
+    @Override
+    public void displayMsj(String msj) {
+
+    }
 }

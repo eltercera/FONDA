@@ -5,7 +5,11 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.RestaurantService;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.logic.BaseCommand;
+import com.ds201625.fonda.logic.CommandInternalErrorException;
 import com.ds201625.fonda.logic.Parameter;
+import com.ds201625.fonda.logic.ParameterOutOfIndexException;
+import com.ds201625.fonda.logic.SessionData;
+
 import java.util.List;
 
 /**
@@ -36,12 +40,12 @@ public class GetRestaurantsCommand extends BaseCommand {
     }
 
     @Override
-    protected void invoke() {
+    protected void invoke() throws Exception {
         Log.d(TAG, "Comando para obtener la lista de restaurantes");
         List<Restaurant> restaurants = null;
 
         RestaurantService resService = FondaServiceFactory.getInstance()
-                .getRestaurantService();
+                .getRestaurantService(SessionData.getInstance().getToken());
 
         int max = 0;
         int page = 0;
@@ -65,9 +69,9 @@ public class GetRestaurantsCommand extends BaseCommand {
                 category = (int) getParameter(4);
             }
             restaurants = resService.getRestaurants(query, max, page, category, zone);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        } catch (ParameterOutOfIndexException e) {
+            Log.e("Fonda Command",e.getMessage());
+            throw CommandInternalErrorException.generate(this.getClass().toString(),e);
         }
 
         setResult(restaurants);
