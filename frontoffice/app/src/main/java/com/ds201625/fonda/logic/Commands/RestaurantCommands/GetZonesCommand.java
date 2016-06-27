@@ -6,7 +6,10 @@ import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.services.RestaurantService;
 import com.ds201625.fonda.domains.Zone;
 import com.ds201625.fonda.logic.BaseCommand;
+import com.ds201625.fonda.logic.CommandInternalErrorException;
 import com.ds201625.fonda.logic.Parameter;
+import com.ds201625.fonda.logic.ParameterOutOfIndexException;
+import com.ds201625.fonda.logic.SessionData;
 
 import java.util.List;
 
@@ -34,12 +37,12 @@ public class GetZonesCommand extends BaseCommand {
     }
 
     @Override
-    public void invoke () {
+    public void invoke () throws Exception{
         Log.d(TAG, "Comando para obtener la lista de Categorias");
         List<Zone> zones = null;
 
         RestaurantService resService = FondaServiceFactory.getInstance()
-                .getRestaurantService();
+                .getRestaurantService(SessionData.getInstance().getToken());
 
         int max = 0;
         int page = 0;
@@ -54,10 +57,9 @@ public class GetZonesCommand extends BaseCommand {
             String query = (String) getParameter(0);
 
             zones = resService.getZones(query, max, page);
-        }
-        catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al obtener las zonas de restaurantes", e);
-            e.printStackTrace();
+        }catch (ParameterOutOfIndexException e) {
+            Log.e("Fonda Command",e.getMessage());
+            throw CommandInternalErrorException.generate(this.getClass().toString(),e);
         }
 
         setResult(zones);

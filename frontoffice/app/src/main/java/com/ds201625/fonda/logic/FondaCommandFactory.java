@@ -94,6 +94,10 @@ public class FondaCommandFactory {
         return new GetRestaurantsCommand();
     }
 
+    public Command getSetFabRestaurantCommand() {
+        return new SetFabRestaurantCommand();
+    }
+
     public static Command createCommensalCommand() {
         return new CreateCommensalCommand();
     }

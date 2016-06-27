@@ -3,13 +3,17 @@ package com.ds201625.fonda.views.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.views.contracts.RestaurantsFiltersContract;
 import com.ds201625.fonda.views.presenters.RestaurantsFilterPresenter;
 
@@ -17,7 +21,8 @@ import com.ds201625.fonda.views.presenters.RestaurantsFilterPresenter;
  * Frament para la vista de busqueda de restaurantes
  */
 public class FilterFragment extends BaseFragment
-        implements SwipeRefreshLayout.OnRefreshListener,RestaurantsFiltersContract {
+        implements SwipeRefreshLayout.OnRefreshListener,RestaurantsFiltersContract,
+        AbsListView.MultiChoiceModeListener{
 
     /**
      * componentes de la vista
@@ -75,8 +80,9 @@ public class FilterFragment extends BaseFragment
         View layout = inflater.inflate(R.layout.fragment_filter,container,false);
         swipeRefreshLayout = (SwipeRefreshLayout) layout.findViewById(R.id.srlUpdater);
         swipeRefreshLayout.setOnRefreshListener(this);
-        if (this.listView == null)
-            this.listView = (ListView)layout.findViewById(R.id.lvFilterList);
+        if (this.listView == null) {
+            this.listView = (ListView) layout.findViewById(R.id.lvFilterList);
+        }
 
         // inicializacion de componetes y escuchas
         this.presenter.onCreateView();
@@ -128,6 +134,14 @@ public class FilterFragment extends BaseFragment
     }
 
     /**
+     *
+     * @param restaurant
+     */
+    public void openRestaurantActiviy(Restaurant restaurant) {
+        activity.openRestaurantActiviy(restaurant);
+    }
+
+    /**
      * Proxy search
      * @param query string de busqueda
      */
@@ -140,6 +154,67 @@ public class FilterFragment extends BaseFragment
         this.activity.closeSearchView();
     }
 
+    @Override
+    public void displayMsj(String msj) {
+        activity.displayMsj(msj);
+    }
+
+    @Override
+    public void setListViewEmtyType(ListViewEmtyType type) {
+        switch (type) {
+            case NORMAL:
+                activity.setNormalView();
+                break;
+            case NO_CONNECTION:
+                activity.setErrorView();
+                break;
+
+            case EMPTY:
+                activity.setEmptyView();
+                break;
+
+            default:
+
+                break;
+        }
+    }
+
+    @Override
+    public void setMultiSelect(Boolean multiSelect) {
+        if (multiSelect) {
+            this.listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
+            this.listView.setMultiChoiceModeListener(this);
+        } else {
+            this.listView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
+            this.listView.setMultiChoiceModeListener(null);
+        }
+    }
+
+    @Override
+    public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+
+    }
+
+    @Override
+    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+        return true;
+    }
+
+    @Override
+    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+        return true;
+    }
+
+    @Override
+    public void onDestroyActionMode(ActionMode mode) {
+
+    }
+
     /**
      * Interface de comunicación conta el Activity padre
      */
@@ -149,5 +224,17 @@ public class FilterFragment extends BaseFragment
          * Para el cierre de la vista de busqueda
          */
         void closeSearchView();
+
+        void displayMsj(String msj);
+
+        View findViewById (int id);
+
+        void setNormalView();
+
+        void setEmptyView();
+
+        void setErrorView();
+
+        void openRestaurantActiviy(Restaurant restaurant);
     }
 }

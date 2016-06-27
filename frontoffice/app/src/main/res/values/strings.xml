@@ -45,6 +45,8 @@
     <string name="filter_afternoon_schedule">Vespertino</string>
     <string name="filter_night_schedule">Nocturno</string>
     <string name="search_title">Búsqueda</string>
+    <string name="empty_search">Su búsqueda no ha arrojado resultados</string>
+    <string name="no_connection">Compruebe su conexión a internet e inténtelo de nuevo</string>
 
     <!-- Strings related to Settings -->
 
@@ -120,6 +122,10 @@
     <string name="favorite_add_success_meessage">Se ha agregado el restaurante de su lista de favoritos.</string>
     <string name="favorite_add_fail_meessage">No se ha agregado el restaurante de su lista de favoritos.</string>
     <string name="cliente">Cliente:</string>
+
+    <!--Strings related to Restaurant Detail View-->
+
+    <string name="restaurant_hours">Horario</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

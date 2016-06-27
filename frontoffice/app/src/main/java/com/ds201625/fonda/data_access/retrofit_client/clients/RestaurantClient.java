@@ -7,7 +7,10 @@ import com.ds201625.fonda.domains.Zone;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -24,5 +27,10 @@ public interface RestaurantClient {
     @GET("restaurants")
     Call<List<Restaurant>> getRestaurants(@Query("q") String q, @Query("max") int max, @Query("page") int page, @Query("zone") int zone, @Query("category") int category);
 
+    @POST("commensal/restaurants/{id}")
+    Call<Void> postCommensalRestaurants(@Path("id") int id);
+
+    @DELETE("commensal/restaurants/{id}")
+    Call<Void> deleteCommensalRestaurants(@Path("id") int id);
 
 }
