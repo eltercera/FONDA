@@ -309,6 +309,11 @@ public class ProfileActivity extends BaseNavigationActivity
         return resp;
     }
 
+    @Override
+    public void displayMsj(String msj) {
+        Toast.makeText(this, msj, Toast.LENGTH_LONG).show();
+    }
+
     /**
      * Metodo que valida si el comensal logeado posee perfil
      * @return true si posee perfil

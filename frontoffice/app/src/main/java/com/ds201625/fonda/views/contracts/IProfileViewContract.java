@@ -21,4 +21,10 @@ public interface IProfileViewContract {
      * @return true si se modifico el perfil
      */
     Boolean updateProfile (Profile profile) throws Exception;
+
+    /**
+     * Metodo para el Despliegue de mensajes
+     * @param msj
+     */
+    void displayMsj(String msj);
 }

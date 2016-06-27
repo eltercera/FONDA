@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetProfilesFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.BaseCommand;
@@ -31,7 +32,7 @@ public class GetProfilesCommand extends BaseCommand {
     }
 
     @Override
-    protected void invoke() {
+    protected void invoke() throws Exception {
 
         Log.d(TAG, "Comando para buscar los perfiles de un commensal");
         List<Profile> profiles = null;
@@ -43,6 +44,11 @@ public class GetProfilesCommand extends BaseCommand {
             profiles = profileService.getProfiles();
             Log.d(TAG, "Numero de perfiles encontrados: " + profiles.size());
         }
+        catch (GetProfilesFondaWebApiControllerException e)
+        {
+            Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
+            throw new Exception("Error WebService");
+        }
         catch (RestClientException e)
         {
             Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
@@ -50,13 +56,14 @@ public class GetProfilesCommand extends BaseCommand {
         }
         catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
-            e.printStackTrace();
+      throw new NullPointerException(e.getMessage());
         }
         catch (Exception e)
         {
             Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
             e.printStackTrace();
         }
+
 
         setResult(profiles);
 
