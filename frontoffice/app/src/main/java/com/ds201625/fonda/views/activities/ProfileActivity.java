@@ -226,6 +226,7 @@ public class ProfileActivity extends BaseNavigationActivity
         fm.beginTransaction()
                 .replace(R.id.fragment_container,profileListFrag)
                 .commit();
+        showFragment(profileListFrag);
     }}
 
 
