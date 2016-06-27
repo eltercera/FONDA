@@ -20,12 +20,14 @@ namespace com.ds201625.fonda.View.BackOfficePresenter
         public void SuccessLabel(string message)
         {
             _view.SuccessLabel.Visible = true;
+            _view.ErrorLabel.Visible = false;
             _view.SuccessLabelMessage.Text = message;
         }
 
         public void ErrorLabel(string message)
         {
             _view.ErrorLabel.Visible = true;
+            _view.SuccessLabel.Visible = false;
             _view.ErrorLabelMessage.Text = message;
         }
         /// <summary>
