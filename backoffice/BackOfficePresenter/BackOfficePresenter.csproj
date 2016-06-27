@@ -47,6 +47,8 @@
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionCloseButton.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionPrintInvoice.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionQuery.cs" />
+    <Compile Include="FondaMVPException\Reservation\MVPExceptionDetailReservationTable.cs" />
+    <Compile Include="FondaMVPException\Reservation\MVPExceptionCancelReservation.cs" />
     <Compile Include="FondaMVPException\Reservation\MVPExceptionReservationsTable.cs" />
     <Compile Include="Login\DetailModifyPresenter.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionClosedOrdersTable.cs" />
@@ -64,9 +66,10 @@
     <Compile Include="OrderAccount\OrdersPresenter.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservations\DetailReservationPresenter.cs" />
+    <Compile Include="Reservations\ReservationsPresenter.cs" />
     <Compile Include="Restaurant\CategoryPresenter.cs" />
     <Compile Include="Restaurant\RestaurantPresenter.cs" />
-    <Compile Include="Reservation\ReservationsPresenter.cs" />
     <Compile Include="Restaurant\TablePresenter.cs" />
   </ItemGroup>
   <ItemGroup />
