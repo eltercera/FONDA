@@ -736,6 +736,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.OrderAccount {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No se puede realizar el cierre de caja, usted no posee ordenes facturadas el dia de hoy.
+        /// </summary>
+        public static string ErrorMessageCloseCashRegister {
+            get {
+                return ResourceManager.GetString("ErrorMessageCloseCashRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error al crear la factura para una orden cerrada.
         /// </summary>
         public static string ErrorMessageGenerateInvoice {

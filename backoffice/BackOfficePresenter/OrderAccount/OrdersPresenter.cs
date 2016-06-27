@@ -61,7 +61,10 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
                 {
                     commandCloseCashRegister.Execute();
                     totalOrder = (string)commandCloseCashRegister.Receiver;
-                    SuccessLabel(OrderAccountResources.MessageClose + totalOrder);
+                    if (totalOrder != "0")
+                        SuccessLabel(OrderAccountResources.MessageClose + totalOrder);
+                    else if (totalOrder == "0")
+                        ErrorLabel(OrderAccountResources.ErrorMessageCloseCashRegister);
 
                 }
                 else if (_openOrders.Count != 0)

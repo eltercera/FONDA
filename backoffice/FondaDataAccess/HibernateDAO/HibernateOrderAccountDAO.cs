@@ -342,6 +342,8 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                         Invoice _invoice = _invoiceDAO.FindGenerateInvoiceByAccount(_order.Id);
                         totalInvoice = _invoice.Total + totalInvoice;
                     }
+                    else if (!_order.Date.Equals(_day) && _order.Status.Equals(ClosedAccountStatus.Instance))
+                        totalInvoice = 0;
                 }
 
 
