@@ -30,12 +30,10 @@ namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
         protected override Parameter[] InitParameters()
         {
             // Requiere 1 Parametro
-            Parameter[] paramters = new Parameter[2];
+            Parameter[] paramters = new Parameter[1];
 
             // [0] El email
             paramters[0] = new Parameter(typeof(String), true);
-            // [1] El password
-            paramters[1] = new Parameter(typeof(String), true);
 
             return paramters;
         }
@@ -51,7 +49,6 @@ namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
 
             // Obtencion de parametros
             String email = (String)GetParameter(0);
-            String password = (String)GetParameter(1);
 
             // Obtiene el dao CommensalDAO
             ICommensalDAO commensalDAO = FacDao.GetCommensalDAO();

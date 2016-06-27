@@ -97,8 +97,6 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 
                 // Se agrega el email como parametro
                 command.SetParameter(0, email);
-                // Se agrega el password como parametro
-                command.SetParameter(1, password);
                 
                 //se ejecuta el comando
                 command.Run();

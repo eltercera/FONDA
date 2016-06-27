@@ -3,16 +3,15 @@ package com.ds201625.fonda.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Reservation;
-import com.ds201625.fonda.interfaces.ReservationView;
-import com.ds201625.fonda.interfaces.ReservationViewPresenter;
-import com.ds201625.fonda.presenter.ReservationPresenter;
+import com.ds201625.fonda.views.contracts.ReservationView;
+import com.ds201625.fonda.views.contracts.ReservationViewPresenter;
+import com.ds201625.fonda.views.presenters.ReservationPresenter;
 
 import java.util.ArrayList;
 import java.util.List;

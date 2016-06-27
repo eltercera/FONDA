@@ -30,7 +30,7 @@ public interface ReservationClient {
      * @param idCommensal identificador del comensal.
      * @return
      */
-    @GET("allreservation/{id}")
+    @GET("findCommensalReservations/{idCommensal}")
     Call<List<Reservation>> getReservations(@Path("id") int idCommensal);
 
 

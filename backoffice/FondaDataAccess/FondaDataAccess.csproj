@@ -288,4 +288,7 @@
       <LastGenOutput>ResourceMessagesDAO.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exceptions\Reservations\" />
+  </ItemGroup>
 </Project>
