@@ -465,6 +465,38 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
             return new CommandGetAllReservations();
         }
 
+        /// <summary>
+        /// Metodo de la fabrica para el CommandGetDetailReservation
+        /// </summary>
+        /// <param name="receiver">Parametros, Id de la reservacion</param>
+        /// <returns>List Reservation, Commensal, Table</returns>
+        /// 
+        public static Command GetCommandGetDetailReservation(object receiver)
+        {
+            return new CommandGetDetailReservation(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el CommandGetReservationById
+        /// </summary>
+        /// <param name="receiver">Id de la reservacion</param>
+        /// <returns>comando CommmandGetReservationById</returns>
+        /// 
+        public static Command GetCommandGetReservationById(object receiver)
+        {
+            return new CommandGetReservationById(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el comando GetCommandSaveReservation 
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <returns>comando CommandSaveReservation</returns>
+        public static Command GetCommandSaveReservation(object receiver)
+        {
+            return new CommandSaveReservation(receiver);
+        }
+
 
         #endregion
 

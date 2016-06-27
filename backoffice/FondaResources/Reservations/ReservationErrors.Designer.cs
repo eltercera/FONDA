@@ -106,6 +106,24 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BO-04-003.
+        /// </summary>
+        public static string CommandExceptionGetDetailReservationCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetDetailReservationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-08-002.
+        /// </summary>
+        public static string CommandExceptionGetReservationByIdCode {
+            get {
+                return ResourceManager.GetString("CommandExceptionGetReservationByIdCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Execute.
         /// </summary>
         public static string CommandMethod {
@@ -133,11 +151,47 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error al generar la factura.
+        /// </summary>
+        public static string MessageCommandExceptionGetDetailReservation {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetDetailReservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al obtener la reservacion.
+        /// </summary>
+        public static string MessageCommandExceptionGetReservationById {
+            get {
+                return ResourceManager.GetString("MessageCommandExceptionGetReservationById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla del detall de la Reservacion.
+        /// </summary>
+        public static string MessageMVPExceptionDetailReservationTable {
+            get {
+                return ResourceManager.GetString("MessageMVPExceptionDetailReservationTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla de Reservaciones.
         /// </summary>
         public static string MessageMVPExceptionReservationsTable {
             get {
                 return ResourceManager.GetString("MessageMVPExceptionReservationsTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-04-004.
+        /// </summary>
+        public static string MVPExceptionDetailReservationTableCode {
+            get {
+                return ResourceManager.GetString("MVPExceptionDetailReservationTableCode", resourceCulture);
             }
         }
         
