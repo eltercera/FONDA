@@ -1057,7 +1057,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Login
         /// metodo que valida ssn del usuario existe
         /// </summary>
         /// <returns></returns>
-        protected bool ValidationSsn()
+        public bool ValidationSsn()
         {
             // se verifica si existe algun usuario con ssn igual
             try
@@ -1110,7 +1110,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Login
         /// </summary>
         /// <returns></returns>
 
-        protected bool ValidationEmail()
+        public bool ValidationEmail()
         {
             UserAccount _userAccount = null;
             try
@@ -1164,7 +1164,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Login
         /// valida que username no exista ya en la bd
         /// </summary>
         /// <returns></returns>
-        protected bool ValidationUsername()
+        public bool ValidationUsername()
         {
             try
             {
