@@ -46,7 +46,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Commensal result;  
             try
             {
-            
                 commensal = EntityFactory.GetCommensal();
                 commensal.Id = idCommensal;
 
@@ -119,8 +118,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Commensal result;
             try
             {
-
-
                 //Creación del commensal con id
                 commensal = EntityFactory.GetCommensal();
                 commensal.Id = idCommensal;
@@ -249,8 +246,6 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             Commensal result;
             try
             {
-    
-
                 //Creación del commensal con id
                 commensal = EntityFactory.GetCommensal();
                 commensal.Id = idCommensal;

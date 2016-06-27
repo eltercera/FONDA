@@ -61,11 +61,47 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comando para obtener todas las reservas.
+        /// </summary>
+        public static string ClassNameGetAllReservations {
+            get {
+                return ResourceManager.GetString("ClassNameGetAllReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommandGetReservations.
         /// </summary>
         public static string ClassNameGetReservations {
             get {
                 return ResourceManager.GetString("ClassNameGetReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excepcion fuera del rango del parametro..
+        /// </summary>
+        public static string ClassNameIndexParameter {
+            get {
+                return ResourceManager.GetString("ClassNameIndexParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excepcion para parametro invalido..
+        /// </summary>
+        public static string ClassNameInvalidParameter {
+            get {
+                return ResourceManager.GetString("ClassNameInvalidParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excepcion para pametro no encontrado..
+        /// </summary>
+        public static string ClassNameParameterNotFound {
+            get {
+                return ResourceManager.GetString("ClassNameParameterNotFound", resourceCulture);
             }
         }
         
@@ -79,11 +115,38 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error obteniendo las reservaciones de un Restaurante.
+        ///   Looks up a localized string similar to Ha finalizado el logger.
+        /// </summary>
+        public static string EndLogger {
+            get {
+                return ResourceManager.GetString("EndLogger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error obteniendo las reservaciones de una reservacion.
         /// </summary>
         public static string ErrorMessageGetReservations {
             get {
                 return ResourceManager.GetString("ErrorMessageGetReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha producido un error al llenar la tabla de Reservaciones.
+        /// </summary>
+        public static string MessageMVPExceptionReservationsTable {
+            get {
+                return ResourceManager.GetString("MessageMVPExceptionReservationsTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BO-08-001.
+        /// </summary>
+        public static string MVPExceptionReservationsTableCode {
+            get {
+                return ResourceManager.GetString("MVPExceptionReservationsTableCode", resourceCulture);
             }
         }
     }

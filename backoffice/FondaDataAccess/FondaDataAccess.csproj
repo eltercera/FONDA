@@ -113,6 +113,7 @@
     <Compile Include="HibernateDAO\FluentMappings\CanceledReservationStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CashPaymentMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\CreditCardPaymentMap.cs" />
+    <Compile Include="HibernateDAO\FluentMappings\ReservedReservationStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\GeneratedInvoiceStatusMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\InvoiceMap.cs" />
     <Compile Include="HibernateDAO\FluentMappings\InvoiceStatusMap.cs" />

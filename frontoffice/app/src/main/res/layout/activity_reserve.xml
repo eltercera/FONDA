@@ -16,7 +16,7 @@
 
         <include layout="@layout/toolbar_default" />
 
-        <include layout="@layout/content_all_restaurant" />
+        <include layout="@layout/content_reserve" />
 
     </android.support.design.widget.CoordinatorLayout>
 

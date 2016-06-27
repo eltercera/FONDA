@@ -53,6 +53,8 @@ namespace BackOffice.Seccion.Restaurant
                 AlertError_ModificarCategoria.Visible = false;
                 //NombreCatA.Attributes.Add("required", "required");
                 _presenter.LoadTable();
+                   
+                   
                 }
                 else
                 {
@@ -95,9 +97,7 @@ namespace BackOffice.Seccion.Restaurant
             {
                 throw new NotImplementedException();
             }
-        }
-
-        public Label SuccessLabelMessage
+        }        public Label SuccessLabelMessage
         {
             get
             {
@@ -169,7 +169,7 @@ namespace BackOffice.Seccion.Restaurant
             get { return ButtonCancelarM; }
             set { ButtonCancelarM = value; }
         }
-        //Modelas de agregar categoria
+        //Modal de agregar categoria
         public System.Web.UI.WebControls.TextBox nameCategoryA
         {
             get { return NombreCatA; }
@@ -250,7 +250,7 @@ namespace BackOffice.Seccion.Restaurant
         [WebMethod]
         public static RestaurantCategory GetData(string Id)
         {
-            System.Diagnostics.Debug.WriteLine("aqui llegoiahsiahsi");
+            System.Diagnostics.Debug.WriteLine("aqui llego");
             int categoryId = int.Parse(Id);
             FactoryDAO factoryDAO = FactoryDAO.Intance;
             IRestaurantCategoryDAO _restcatDAO = factoryDAO.GetRestaurantCategoryDAO();

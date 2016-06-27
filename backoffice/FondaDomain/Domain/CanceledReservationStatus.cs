@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using com.ds201625.fonda.Resources.FondaResources.Reservation;
+﻿using com.ds201625.fonda.Resources.FondaResources.Reservation;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -27,7 +22,7 @@ namespace com.ds201625.fonda.Domain
         }
 
         /// <summary>
-        /// Obtiene el Estado Ocupado de una entidad
+        /// Obtiene el Estado Cancelada de una entidad
         /// </summary>
         public static CanceledReservationStatus Instance
         {

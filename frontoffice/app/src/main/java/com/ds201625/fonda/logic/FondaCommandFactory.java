@@ -1,6 +1,7 @@
 package com.ds201625.fonda.logic;
 
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetReservationFondaWebApiControllerException;
 import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateCommensalCommand;
 import com.ds201625.fonda.logic.Commands.CommensalCommands.CreateTokenCommand;
 import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteTokenCommand;
@@ -129,7 +130,7 @@ public class FondaCommandFactory {
         return new AddReservationCommand();
     }
 
-    public static Command allReservationCommand() {
+    public static Command allReservationCommand() throws GetReservationFondaWebApiControllerException {
         return new AllReservationCommand();
     }
 }

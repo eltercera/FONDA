@@ -7,8 +7,7 @@
     Reservas
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="subtitulo" runat="server">
-    Listar Reservas
-<%--      de <%=Session["NameRestaurant"]%>--%>
+      de <%=Session["NameRestaurant"]%>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="migas" runat="server">
     <%--Breadcrumbs--%>
@@ -33,7 +32,6 @@
             <div class="alert alert-success fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <i class="fa fa-check"></i>
-                <%--La categoría fue agregada <strong>exitosamente!</strong>--%>
                  <asp:Label id="SuccessLabelMessage" runat="server"> 
                 </asp:Label>
             </div>
@@ -45,7 +43,6 @@
             <div class="alert  alert-danger fade in alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <i class="fa fa-times"></i>
-                <%--La categoría <strong>no</strong> pudo ser agregada exitosamente.--%>
                  <asp:Label id="ErrorLabelMessage" runat="server"> 
                 </asp:Label>
              </div>
@@ -59,7 +56,6 @@
                 <i class="fa fa-exclamation-triangle"></i>
                        <asp:Label id="WarningLabelMessage" runat="server"> 
                 </asp:Label>
-                <%--El plato ya se encuentra <u>activado</u>.--%>
             </div>
         </div>
     </div>

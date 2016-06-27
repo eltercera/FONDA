@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using com.ds201625.fonda.Resources.FondaResources.Reservation;
+﻿using com.ds201625.fonda.Resources.FondaResources.Reservation;
 
 namespace com.ds201625.fonda.Domain
 {
     /// <summary>
-    /// Estado activa de una reservacion
+    /// Estado reservada de una reservacion
     /// </summary>
     public class ReservedReservationStatus : ReservationStatus
     {
@@ -27,7 +22,7 @@ namespace com.ds201625.fonda.Domain
         }
 
         /// <summary>
-        /// Obtiene el Estado Activo de una entidad
+        /// Obtiene el Estado Reservada de una entidad
         /// </summary>
         public static ReservedReservationStatus Instance
         {
@@ -43,7 +38,7 @@ namespace com.ds201625.fonda.Domain
         /// <summary>
         /// Retorna una descripcion del estado
         /// </summary>
-        /// <returns>Activa en String</returns>
+        /// <returns>Reservada en String</returns>
         public override string ToString()
         {
             return ReservationResources.ReservedReservationStatus;

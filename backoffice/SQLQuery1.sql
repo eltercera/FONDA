@@ -188,7 +188,23 @@ INSERT INTO [dbo].[GENERIC_PERSON] ([gp_id], [gp_type], [gp_name], [gp_address],
 
 ---------Reservations--------------
 INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (1, 1, N'2016-07-10 00:00:00', N'2016-07-01 00:00:00', 2, 8)
-INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (2, 2, N'2016-07-11 00:00:00', N'2016-07-01 00:00:00', 4, 8)
+INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (2, 2, N'2016-07-11 00:00:00', N'2016-07-01 00:00:00', 4, 7)
 INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (3, 3, N'2016-07-12 00:00:00', N'2016-07-01 00:00:00', 6, 8)
-INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (4, 4, N'2016-07-13 00:00:00', N'2016-07-01 00:00:00', 8, 8)
+INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (4, 4, N'2016-07-13 00:00:00', N'2016-07-01 00:00:00', 8, 7)
+INSERT INTO [dbo].[RESERVATION] ([res_id], [res_number], [res_date], [res_createDate], [res_commensalNumber], [fk_res_status]) VALUES (5, 5, N'2016-07-14 00:00:00', N'2016-07-01 00:00:00', 8, 8)
+
+
+-----------Reservation_Commensal---------
+INSERT INTO [dbo].[RESERVATION_COMMENSAL] ([Commensal_id], [Reservation_id]) VALUES (1, 1)
+INSERT INTO [dbo].[RESERVATION_COMMENSAL] ([Commensal_id], [Reservation_id]) VALUES (1, 2)
+INSERT INTO [dbo].[RESERVATION_COMMENSAL] ([Commensal_id], [Reservation_id]) VALUES (2, 3)
+INSERT INTO [dbo].[RESERVATION_COMMENSAL] ([Commensal_id], [Reservation_id]) VALUES (2, 4)
+INSERT INTO [dbo].[RESERVATION_COMMENSAL] ([Commensal_id], [Reservation_id]) VALUES (3, 5)
+
+----------Reservation_Table---------------
+INSERT INTO [dbo].[RESERVATION_TABLE] ([Table_id], [Reservation_id]) VALUES (1, 1)
+INSERT INTO [dbo].[RESERVATION_TABLE] ([Table_id], [Reservation_id]) VALUES (3, 2)
+INSERT INTO [dbo].[RESERVATION_TABLE] ([Table_id], [Reservation_id]) VALUES (5, 3)
+INSERT INTO [dbo].[RESERVATION_TABLE] ([Table_id], [Reservation_id]) VALUES (15, 4)
+INSERT INTO [dbo].[RESERVATION_TABLE] ([Table_id], [Reservation_id]) VALUES (20, 5)
 

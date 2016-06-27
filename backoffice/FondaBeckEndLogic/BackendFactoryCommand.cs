@@ -98,6 +98,16 @@ namespace com.ds201625.fonda.BackEndLogic
 			return new GetRestaurantsCommand ();
 		}
 
+		public ICommand CreateDeleteFabRestaurantCommand ()
+		{
+			return new DeleteFabRestaurantCommand ();
+		}
+
+		public ICommand CreatePostFabRestaurantCommand ()
+		{
+			return new PostFabRestaurantCommand ();
+		}
+
         /// <summary>
         /// Obtiene un GetCommensalIdCommand
         /// </summary>

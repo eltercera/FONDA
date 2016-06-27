@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CancelReservation" xml:space="preserve">
-    <value>&lt;a data-toggle="modal"  data-target="#cancel_reservation" &gt;&lt;i class="fa fa-times"&gt;&lt;/i&gt;</value>
+    <value>&lt;i class="fa fa-times" aria-hidden="true"&gt;&lt;/i&gt;</value>
     <comment>Accion para cancelar una reservacion</comment>
   </data>
   <data name="dataId" xml:space="preserve">
@@ -158,7 +158,7 @@
     <comment>Nombre de columna de acciones</comment>
   </data>
   <data name="RefreshURL" xml:space="preserve">
-    <value>#</value>
+    <value>../Reservas/ListarReservas.aspx?Id=</value>
     <comment>Refrescar la pagina</comment>
   </data>
   <data name="StatusColumn" xml:space="preserve">
@@ -180,5 +180,24 @@
   <data name="ReservedReservationStatusDes" xml:space="preserve">
     <value>Reservacion Realizada</value>
     <comment>Descripcion del estado ReservedReservationStatus</comment>
+  </data>
+  <data name="ClassNameReservationsPresenter" xml:space="preserve">
+    <value>ReservationsPresenter</value>
+    <comment>Clase presentadora de las Reservaciones</comment>
+  </data>
+  <data name="MessageGetReservations" xml:space="preserve">
+    <value>Se ha cargado la tabla de reservaciones satisfactoriamente</value>
+    <comment>Mensaje de exito para GetReservations</comment>
+  </data>
+  <data name="ReservationCommensalNumberColumn" xml:space="preserve">
+    <value># Comensales</value>
+  </data>
+  <data name="CssClassActions" xml:space="preserve">
+    <value>text-center</value>
+    <comment>Atributo de la clase de los botones de accion</comment>
+  </data>
+  <data name="ReservationInfo" xml:space="preserve">
+    <value>&lt;i class="fa fa-info-circle" aria-hidden="true"&gt;&lt;/i&gt;</value>
+    <comment>Muestra informacion en detalle de una reservacion</comment>
   </data>
 </root>

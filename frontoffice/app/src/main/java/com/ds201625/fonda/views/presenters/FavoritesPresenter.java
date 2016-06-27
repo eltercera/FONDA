@@ -1,12 +1,12 @@
-package com.ds201625.fonda.presenter;
+package com.ds201625.fonda.views.presenters;
 
 import android.util.Log;
 
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.*;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.FavoriteView;
-import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
+import com.ds201625.fonda.views.contracts.FavoriteView;
+import com.ds201625.fonda.views.contracts.FavoriteViewPresenter;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
@@ -38,7 +38,7 @@ public class FavoritesPresenter implements FavoriteViewPresenter {
      * Encuentra el comensal logueado
      */
     @Override
-    public void findLoggedComensal() {
+    public void findLoggedComensal() throws FindByEmailUserAccountFondaWebApiControllerException {
         Log.d(TAG,"Ha entrado en findLoggedComensal");
         Commensal log = SessionData.getInstance().getCommensal();
 
@@ -49,12 +49,17 @@ public class FavoritesPresenter implements FavoriteViewPresenter {
         try {
             cmdRequireLoged.setParameter(0,emailToWebService);
             cmdRequireLoged.run();
+        }catch (FindByEmailUserAccountFondaWebApiControllerException e) {
+            Log.e(TAG, "Error en findLoggedComensal al buscar el comensal logueado", e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(e);
         } catch (NullPointerException e){
             Log.e(TAG,"Error en findLoggedComensal al buscar el comensal logueado",
                     e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(e);
         }catch (Exception e) {
             Log.e(TAG,"Error en findLoggedComensal al buscar el comensal logueado",
                     e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(e);
         }
 
         logedComensal = (Commensal) cmdRequireLoged.getResult();
@@ -114,6 +119,10 @@ public class FavoritesPresenter implements FavoriteViewPresenter {
             cmdDelete.setParameter(0,logedComensal);
             cmdDelete.setParameter(1,restaurant);
             cmdDelete.run();
+        }catch (DeleteFavoriteRestaurantFondaWebApiControllerException e){
+            Log.e(TAG,"Error en deleteFavoriteRestaurant al eliminar un restaurante favorito",
+                    e);
+            throw  new DeleteFavoriteRestaurantFondaWebApiControllerException(e);
         }
         catch (NullPointerException e){
             Log.e(TAG,"Error en deleteFavoriteRestaurant al eliminar un restaurante favorito",
@@ -143,6 +152,10 @@ public class FavoritesPresenter implements FavoriteViewPresenter {
             cmdAddFavorite.setParameter(1,restaurant);
             cmdAddFavorite.run();
 
+        }catch (AddFavoriteRestaurantFondaWebApiControllerException e){
+            Log.e(TAG,"Error en addFavoriteRestaurant al agregar un restaurante a favoritos",
+                    e);
+            throw  new AddFavoriteRestaurantFondaWebApiControllerException(e);
         } catch (NullPointerException e){
             Log.e(TAG,"Error en addFavoriteRestaurant al agregar un restaurante a favoritos",
                     e);

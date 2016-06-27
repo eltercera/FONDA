@@ -4,12 +4,16 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.retrofit_client.clients.RequireLogedCommensalClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindByEmailUserAccountFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.RequireLogedCommensalService;
 import com.ds201625.fonda.domains.Commensal;
-
+import com.ds201625.fonda.domains.factory_entity.APIError;
+import com.ds201625.fonda.logic.ExceptionHandler.ErrorUtils;
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 
 import retrofit2.Call;
+import retrofit2.Response;
 
 
 /**
@@ -24,6 +28,7 @@ public class RetrofitRequireLogedCommensalService implements RequireLogedCommens
         super();
     }
 
+    private APIError error;
     /**
      * Obtiene el comensal logueado
      *
@@ -32,14 +37,36 @@ public class RetrofitRequireLogedCommensalService implements RequireLogedCommens
      * @throws RestClientException
      */
     @Override
-    public Commensal getLogedCommensal(String email) throws RestClientException {
+    public Commensal getLogedCommensal(String email) throws RestClientException,
+            FindByEmailUserAccountFondaWebApiControllerException  {
         Log.d(TAG, "Se obtiene el comensal logeado: "+email);
         Call<Commensal> call = currentLogedCommensal.getAllFavoriteRestaurant(email);
         Commensal test = null;
+        Response<Commensal> response;
         try {
-            test =call.execute().body();
+            response = call.execute();
+            if (response.isSuccessful()) {
+                test = response.body();
+            }else {
+                // parse the response body
+                error = ErrorUtils.parseError(response);
+                // arreglar log
+                Log.d("Error message", error.message());
+                Log.d("Error ExceptionType", error.exceptionType());
+                // usar error para disparar exception
+                throw  new FindByEmailUserAccountFondaWebApiControllerException
+                        (error.exceptionMessage());
+
+            }
+        } catch(SocketTimeoutException e) {
+            Log.e(TAG, "Se ha generado error en la clase getLogedCommensal", e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(error.exceptionMessage());
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en la clase getLogedCommensal", e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(error.exceptionMessage());
+        } catch (Exception e) {
+            Log.e(TAG, "Se ha generado error en getLogedCommensal", e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(error.exceptionMessage());
         }
         return test;
     }

@@ -1,8 +1,9 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using NUnit.Framework;
-
+using System.Collections.Generic;
 
 namespace FondaDataAccessTest
 {
@@ -14,6 +15,59 @@ namespace FondaDataAccessTest
         private RestaurantCategory _restaurantCategory;
         private RestaurantCategory _result;
 
+        #region 3era Entrega - Restaurante
+        [SetUp]
+        public void init()
+        {
+            _facDAO = FactoryDAO.Intance;
+            _restaurantCategoryDAO = _facDAO.GetRestaurantCategoryDAO();
+
+        }
+
+        [TearDown]
+        public void clean()
+        {
+            _facDAO = null;
+        }
+
+
+        [Test]
+        public void GetRestaurantCategoryTest()
+        {
+            RestaurantCategory _newCategory = _restaurantCategoryDAO.GetRestaurantCategory("Alemana");
+            RestaurantCategory _restaurantCategory = new RestaurantCategory();
+            _restaurantCategory.Name = "Alemana";
+            Assert.AreEqual(_restaurantCategory.Name, _newCategory.Name);
+
+        }
+
+        [Test]
+        public void ModifyCategoryTest()
+        {
+            RestaurantCategory _modifyCategory = _restaurantCategoryDAO.GetRestaurantCategory("Inglesa");
+            RestaurantCategory _category = _restaurantCategoryDAO.ModifyCategory(2, _modifyCategory.Name);
+            Assert.AreEqual("Inglesa", _category.Name);
+        }
+
+        [Test]
+        public void getAllTest()
+        {
+            IList<RestaurantCategory> _categoryList = _restaurantCategoryDAO.GetAll();
+            Assert.NotNull(_categoryList);
+            Assert.AreEqual(_categoryList[3].Name, "Mexicana");
+        }
+
+        [ExpectedException(typeof(FindAllFondaDAOException))]
+        [Test]
+        public void getFindAllFondaDAOException()
+        {
+            List<RestaurantCategory> _categoryList = (List<RestaurantCategory>)_restaurantCategoryDAO.GetAll();
+        }
+
+        #endregion
+
+
+        /*
         [SetUp]
         public void Init()
         {
@@ -79,7 +133,7 @@ namespace FondaDataAccessTest
         public void EndTests()
         {
 
-        }
+        }*/
 
     }
 }

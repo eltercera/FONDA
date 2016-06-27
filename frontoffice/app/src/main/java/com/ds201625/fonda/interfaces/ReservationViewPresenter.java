@@ -1,5 +1,7 @@
 package com.ds201625.fonda.interfaces;
 
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetReservationFondaWebApiControllerException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.PostReservationFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Reservation;
 
 import java.util.List;
@@ -14,7 +16,6 @@ public interface ReservationViewPresenter {
      */
     void findLoggedComensal();
 
-
     /**
      * Agrega una Reservacion
      * @param reservation
@@ -25,6 +26,6 @@ public interface ReservationViewPresenter {
      * Encuentra las reservaciones
      * @return
      */
-    List<Reservation> AllReservation();
+    List<Reservation> AllReservation() throws PostReservationFondaWebApiControllerException, GetReservationFondaWebApiControllerException;
 
 }

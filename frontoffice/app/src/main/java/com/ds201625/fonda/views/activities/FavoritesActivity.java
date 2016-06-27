@@ -14,10 +14,10 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.DeleteFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindFavoriteRestaurantFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.FavoriteView;
-import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
+import com.ds201625.fonda.views.contracts.FavoriteView;
+import com.ds201625.fonda.views.contracts.FavoriteViewPresenter;
 import com.ds201625.fonda.logic.SessionData;
-import com.ds201625.fonda.presenter.FavoritesPresenter;
+import com.ds201625.fonda.views.presenters.FavoritesPresenter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
 import com.ds201625.fonda.views.fragments.FavoritesEmptyFragment;
@@ -255,7 +255,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
             }
             catch (DeleteFavoriteRestaurantFondaWebApiControllerException e) {
              Toast.makeText(getApplicationContext(),
-                     "Ha ocurrido un error al conectar con el ServicioWeb",
+                     "Ha ocurrido un error al eliminar el restaurante favorito",
                      Toast.LENGTH_LONG).show();
              Log.e(TAG, "Error en removeFavorite Proveniente del WEB SERVICE al eliminar favoritos", e);
          }
@@ -303,7 +303,7 @@ public class FavoritesActivity extends BaseNavigationActivity implements
             Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener favoritos", e);
         }
         catch (Exception e) {
-          //  Log.e(TAG,"Error al determinar si el commensal tiene favoritos",e);
+          Log.e(TAG,"Error al determinar si el commensal tiene favoritos",e);
         }
         return false;
     }
