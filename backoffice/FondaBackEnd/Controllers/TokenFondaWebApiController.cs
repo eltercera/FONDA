@@ -55,29 +55,30 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    GeneralRes.Token + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (GetTokenCommandException e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
-                return InternalServerError(ex);
-            }
             catch (GetCommensalFondaWebApiException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
-                return InternalServerError(ex);
-            }//HttpResponseException
-            catch (HttpResponseException e)
+                return InternalServerError(e);
+            }
+            catch (GetTokenCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                GetTokenFondaWebApiControllerException ex = new GetTokenFondaWebApiControllerException(GeneralRes.GetTokenException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
             }
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
@@ -120,23 +121,30 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    GeneralRes.Token + commensal.Id, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            catch (DeleteTokenCommandException e)
-            {
-                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
-                return InternalServerError(ex);
-            }
             catch (GetCommensalFondaWebApiException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
+            }
+            catch (DeleteTokenCommandException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                DeleteTokenFondaWebApiControllerException ex = new DeleteTokenFondaWebApiControllerException(GeneralRes.DeleteTokenException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
             }
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
