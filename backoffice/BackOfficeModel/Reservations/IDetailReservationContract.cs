@@ -4,7 +4,7 @@ namespace com.ds201625.fonda.View.BackOfficeModel.Reservations
 {
     public interface IDetailReservationContract : IContract
     {
-        Table DetailReservationTable { get; set; }
+      //  Table DetailReservationTable { get; set; }
 
         string Session { get; set; }
 

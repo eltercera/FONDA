@@ -20,12 +20,12 @@ namespace BackOffice.Seccion.Reservas
 
         #region Model
 
-        public System.Web.UI.WebControls.Table DetailReservationTable
-        {
-            get { return reservationDetail; }
+        //public System.Web.UI.WebControls.Table DetailReservationTable
+        //{
+        //    get { return reservationDetail; }
 
-            set { reservationDetail = value; }
-        }
+        //    set { reservationDetail = value; }
+        //}
 
         public System.Web.UI.WebControls.Label UserAccount
         {
@@ -50,9 +50,9 @@ namespace BackOffice.Seccion.Reservas
 
         public System.Web.UI.WebControls.Label Table
         {
-            get { return table; }
+            get { return restaurantTable; }
 
-            set { table = value; }
+            set { restaurantTable = value; }
         }
 
 
@@ -97,9 +97,6 @@ namespace BackOffice.Seccion.Reservas
 
             set { Session[ReservationResources.SessionIdReservation] = value; }
         }
-      
-
-
 
         public string SessionRestaurant
         {
