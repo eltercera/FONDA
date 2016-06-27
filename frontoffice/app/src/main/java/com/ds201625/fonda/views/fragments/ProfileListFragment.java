@@ -17,7 +17,7 @@ import android.widget.ListView;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.views.contracts.IProfileListViewContract;
+import com.ds201625.fonda.views.contracts.ProfileListViewContract;
 import com.ds201625.fonda.views.presenters.ProfilePresenter;
 import com.ds201625.fonda.views.adapters.ProfileViewItemList;
 
@@ -27,7 +27,7 @@ import java.util.ArrayList;
  * Fragment que contiene la lista de Perfiles.
  */
 public class ProfileListFragment extends BaseFragment
-        implements SwipeRefreshLayout.OnRefreshListener, IProfileListViewContract {
+        implements SwipeRefreshLayout.OnRefreshListener, ProfileListViewContract {
 
     /**
      * Presentador

@@ -3,8 +3,8 @@ package com.ds201625.fonda.views.presenters;
 import android.util.Log;
 
 import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.views.contracts.IProfileListViewContract;
-import com.ds201625.fonda.views.contracts.IProfileViewContract;
+import com.ds201625.fonda.views.contracts.ProfileListViewContract;
+import com.ds201625.fonda.views.contracts.ProfileViewContract;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 
@@ -15,20 +15,20 @@ import java.util.List;
  */
 public class ProfilePresenter{
 
-    private IProfileListViewContract profileListView;
-    private IProfileViewContract profileView;
+    private ProfileListViewContract profileListView;
+    private ProfileViewContract profileView;
     private String TAG = "ProfilePresenter";
     /**
      * Constructor para la vita de ProfileListFraggment
      * @param view
      */
-    public ProfilePresenter (IProfileListViewContract view){ profileListView = view;}
+    public ProfilePresenter (ProfileListViewContract view){ profileListView = view;}
 
     /**
      * Constructor para la vita de ProfileActivity
      * @param view
      */
-    public ProfilePresenter (IProfileViewContract view){ profileView = view;}
+    public ProfilePresenter (ProfileViewContract view){ profileView = view;}
 
         public Boolean createProfile(Profile profile) {
             Log.d(TAG,"Metodo createProfile");

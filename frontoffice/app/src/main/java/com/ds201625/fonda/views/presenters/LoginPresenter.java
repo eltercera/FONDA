@@ -1,7 +1,7 @@
 package com.ds201625.fonda.views.presenters;
 
 import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.views.contracts.ILoginViewContract;
+import com.ds201625.fonda.views.contracts.LoginViewContract;
 import com.ds201625.fonda.logic.SessionData;
 
 /**
@@ -9,13 +9,13 @@ import com.ds201625.fonda.logic.SessionData;
  */
 public class LoginPresenter {
 
-    private ILoginViewContract loginView;
+    private LoginViewContract loginView;
     private String TAG = "LoginPresenter";
     /**
      * Constructor para la vita de LoginActivity
      * @param view
      */
-    public LoginPresenter (ILoginViewContract view){ loginView = view;}
+    public LoginPresenter (LoginViewContract view){ loginView = view;}
 
         public void regiter(String email, String password) {
             try
