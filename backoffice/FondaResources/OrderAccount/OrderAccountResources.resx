@@ -986,4 +986,8 @@
     <value>Se ha obtenido correctamente la cuenta de esta factura</value>
     <comment>Mensaje de exito para CommandGetOrderAccountByInvoice</comment>
   </data>
+  <data name="ErrorMessageCloseCashRegister" xml:space="preserve">
+    <value>No se puede realizar el cierre de caja, usted no posee ordenes facturadas el dia de hoy</value>
+    <comment>Cierre de caja invalido porque no ha facturado</comment>
+  </data>
 </root>

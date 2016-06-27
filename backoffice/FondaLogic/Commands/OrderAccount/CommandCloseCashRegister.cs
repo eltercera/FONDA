@@ -41,8 +41,10 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 Currency curr = new Currency();
                 curr = _restaurant.Currency;
                 _symbol = curr.Symbol;
-
-                Receiver = string.Format(OrderAccountResources.CurrencyTotal, _symbol, _totalOrders);         
+                if (_totalOrders != 0)
+                    Receiver = string.Format(OrderAccountResources.CurrencyTotal, _symbol, _totalOrders);
+                else if (_totalOrders == 0)
+                    Receiver = "0";
             }
             catch (NullReferenceException ex)
             {
