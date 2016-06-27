@@ -2,7 +2,7 @@
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
-using com.ds201625.fonda.Resources.FondaResources.Reservation;
+using com.ds201625.fonda.Resources.FondaResources.Reservations;
 using System;
 using System.Collections.Generic;
 using System.Linq;

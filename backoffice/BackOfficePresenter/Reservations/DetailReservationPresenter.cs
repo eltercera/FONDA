@@ -1,4 +1,4 @@
-﻿using com.ds201625.fonda.View.BackOfficeModel.OrderAccount;
+﻿using com.ds201625.fonda.View.BackOfficeModel.Reservations;
 using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Logic.FondaLogic;
@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Security.AntiXss;
 using System.Web.UI.WebControls;
-using com.ds201625.fonda.View.BackOfficeModel.Reservations;
 
 namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
 {

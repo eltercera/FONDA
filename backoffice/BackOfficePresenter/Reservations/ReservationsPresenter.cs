@@ -3,7 +3,7 @@ using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Logic.FondaLogic;
 using com.ds201625.fonda.Logic.FondaLogic.Factory;
-using com.ds201625.fonda.Resources.FondaResources.Reservation;
+using com.ds201625.fonda.Resources.FondaResources.Reservations;
 using System;
 using System.Collections.Generic;
 using System.Text;

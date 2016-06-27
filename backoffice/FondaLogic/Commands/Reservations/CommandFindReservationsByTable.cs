@@ -4,7 +4,7 @@ using com.ds201625.fonda.Domain;
 using System;
 using System.Collections.Generic;
 
-namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations
 {
     public class CommandFindReservationsByTable : Command
     {

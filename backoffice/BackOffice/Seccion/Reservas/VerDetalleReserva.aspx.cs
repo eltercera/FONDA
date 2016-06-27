@@ -6,7 +6,7 @@ using com.ds201625.fonda.View.BackOfficeModel;
 using BackOffice.Content;
 using com.ds201625.fonda.View.BackOfficeModel.Reservations;
 using com.ds201625.fonda.View.BackOfficePresenter.Reservations;
-using com.ds201625.fonda.Resources.FondaResources.Reservation;
+using com.ds201625.fonda.Resources.FondaResources.Reservations;
 
 namespace BackOffice.Seccion.Reservas
 {

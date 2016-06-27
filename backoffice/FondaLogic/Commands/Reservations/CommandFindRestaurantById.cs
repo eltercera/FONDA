@@ -3,7 +3,7 @@ using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using System;
 
-namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations
 {
     public class CommandFindRestaurantById : Command
     {

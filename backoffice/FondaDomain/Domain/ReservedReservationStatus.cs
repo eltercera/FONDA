@@ -1,4 +1,4 @@
-﻿using com.ds201625.fonda.Resources.FondaResources.Reservation;
+﻿using com.ds201625.fonda.Resources.FondaResources.Reservations;
 
 namespace com.ds201625.fonda.Domain
 {
