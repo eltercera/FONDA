@@ -21,8 +21,13 @@ public class LoginPresenter {
             try
             {
                 SessionData.getInstance().registerCommensal(email, password);
-            } catch (Exception e) {
+            }  catch (NullPointerException e) {
                 e.printStackTrace();
+                throw new NullPointerException("Error de Servicio Web");
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                this. loginView.displayMsj(e.getMessage());
             }
 
     }
@@ -34,6 +39,7 @@ public class LoginPresenter {
                 SessionData.getInstance().loginCommensal();
             } catch (Exception e) {
                 e.printStackTrace();
+                this. loginView.displayMsj(e.getMessage());
             }
 
         }

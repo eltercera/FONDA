@@ -67,7 +67,11 @@ public class RetrofitTokenService implements TokenService{
                 Log.e(TAG,"error message " +error.exceptionType());
                 throw new GetTokenFondaWebApiControllerException(error.exceptionType());
             }
-        } catch (IOException e) {
+        }catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en createToken", e);
+            throw new NullPointerException("Error de ServicioWeb");
+        }
+        catch (IOException e) {
             Log.e(TAG, "Se ha generado error en createToken", e);
             throw new RestClientException("Error de IO",e);
         } catch (Exception e) {
@@ -130,6 +134,9 @@ public class RetrofitTokenService implements TokenService{
                 }
             Token token = null;
             getFile(context).save(token);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en ws", e);
+            throw new NullPointerException("Error en el Servicio Web");
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en removeToken", e);
             throw new RestClientException("Error de IO",e);

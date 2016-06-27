@@ -75,7 +75,11 @@ public class RetrofitCommensalService implements CommensalService {
                 Log.e(TAG,"error message " +error.exceptionType());
                 throw new AddCommensalWebApiControllerException(error.exceptionType());
             }
-        }  catch (IOException e) {
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en WebService");
+            throw new NullPointerException("Error de Servicio Web");
+        }
+        catch (IOException e) {
             Log.e(TAG, "Se ha generado error en getProfiles", e);
             throw new RestClientException("Error de IO",e);
         } catch (Exception e) {

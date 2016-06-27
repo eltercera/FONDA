@@ -61,7 +61,8 @@ public class CreateCommensalCommand extends BaseCommand {
         }
         catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en invoke al agregar un commensal", e);
-            e.printStackTrace();
+          //  e.printStackTrace();
+            throw new NullPointerException("Error de Servicio Web");
         }
         catch (Exception e)
         {

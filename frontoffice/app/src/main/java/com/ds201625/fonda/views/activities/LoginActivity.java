@@ -369,4 +369,9 @@ public class LoginActivity extends BaseActivity implements LoginViewContract {
                     Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    public void displayMsj(String msj) {
+        Toast.makeText(this, msj, Toast.LENGTH_LONG).show();
+    }
 }
