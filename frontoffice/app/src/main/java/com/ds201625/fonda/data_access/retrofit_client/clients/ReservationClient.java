@@ -27,11 +27,11 @@ public interface ReservationClient {
     /**
      * Find /api/findReservation/{id}
      * Obtiene la lista de las reservas de los comensales.
-     * @param idCommensal identificador del comensal.
+     * @param
      * @return
      */
-    @GET("findCommensalReservations/{idCommensal}")
-    Call<List<Reservation>> getReservations(@Path("id") int idCommensal);
+    @GET("findCommensalReservations")
+    Call<List<Reservation>> getReservations();
 
 
 }

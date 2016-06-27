@@ -11,9 +11,10 @@ import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
+import com.ds201625.fonda.logic.SessionData;
 
 /**
- * Created by Eduardo on 22-06-2016.
+ * Created by Andreina on 22-06-2016.
  */
 public class AddReservationCommand extends BaseCommand {
 
@@ -32,7 +33,7 @@ public class AddReservationCommand extends BaseCommand {
     protected void invoke() {
         Log.d(TAG, "Comando para agregar una Reservacion");
         ReservationService rs = FondaServiceFactory.getInstance()
-                .getReservationService();
+                .getReservationService(SessionData.getInstance().getToken());
         Commensal commensal = FondaEntityFactory.getInstance().GetCommensal();
         Commensal idCommensal;
         Restaurant idRestaurant;

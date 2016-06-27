@@ -8,6 +8,7 @@ import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions
 import com.ds201625.fonda.data_access.services.ReservationService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Reservation;
+import com.ds201625.fonda.domains.Token;
 import com.ds201625.fonda.domains.factory_entity.APIError;
 import com.ds201625.fonda.logic.ExceptionHandler.ErrorUtils;
 
@@ -22,11 +23,21 @@ import retrofit2.Response;
  */
 public class RetrofitReservationService implements ReservationService {
 
+
+    private ReservationClient reserveClient;
+
     private String TAG = "RetrofitReservationService";
     private ReservationClient reservationClient  =
             RetrofitService.getInstance().createService(ReservationClient.class);
 
-   private APIError error;
+    private APIError error;
+
+
+        public RetrofitReservationService(Token token) {
+            super();
+            reserveClient = RetrofitService.getInstance()
+                    .createService(ReservationClient.class,token.getStrToken());
+        }
 
 
     @Override
@@ -39,7 +50,7 @@ public class RetrofitReservationService implements ReservationService {
         try{
             r = call.execute().body();
         } catch (IOException e) {
-            Log.e(TAG, "Se ha generado error en AddFavoriteRestaurant", e);
+            Log.e(TAG, "Se ha generado error en AddReservation", e);
         }
 
         return r;
@@ -57,7 +68,7 @@ public class RetrofitReservationService implements ReservationService {
     public List<Reservation> getReservations(int idCommensal) throws
             GetReservationFondaWebApiControllerException {
         Log.d(TAG, "Se obtienen toda las reservas del comensal: "+idCommensal);
-        Call<List<Reservation>> call = reservationClient.getReservations(idCommensal);
+        Call<List<Reservation>> call = reservationClient.getReservations();
         List<Reservation> test = null;
         Response <List<Reservation>> response;
         try {

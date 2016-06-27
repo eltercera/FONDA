@@ -40,8 +40,9 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// <param name="idCommensal"></param>
         /// <returns>result.Reservations</returns>
 
-        [Route("findCommensalReservations/{idCommensal}")]
+        [Route("findCommensalReservations")]
         [HttpGet]
+        [FondaAuthToken]
         public IHttpActionResult findCommensalReservations(int idCommensal)
         {
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
@@ -50,6 +51,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             IList<Reservation> result;
             try
             {
+                Commensal commensal = GetCommensal(Request.Headers);
                 //Creación del commensal con id
                 commensal = EntityFactory.GetCommensal();
                 commensal.Id = idCommensal;

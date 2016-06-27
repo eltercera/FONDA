@@ -68,7 +68,7 @@ public interface ServiceFactory {
      */
     FavoriteRestaurantService getFavoriteRestaurantService();
 
-    ReservationService getReservesService();
+    ReservationService getReservesService(Token token);
 
     /**
      * Devuelve a un comensal logeado
