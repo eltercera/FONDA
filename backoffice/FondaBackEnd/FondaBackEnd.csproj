@@ -93,8 +93,6 @@
     <Compile Include="Exceptions\AddFavoriteRestaurantFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\CanceledInvoiceException.cs" />
     <Compile Include="Exceptions\DeleteFavoriteRestaurantFondaWebApiControllerException .cs" />
-    <Compile Include="Exceptions\DeleteProfileFondaWebApiControllerException.cs" />
-    <Compile Include="Exceptions\DeleteTokenFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FindByEmailUserAccountFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FindCommensalReservationsFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\FindFavoriteRestaurantFondaWebApiControllerException.cs" />
@@ -107,12 +105,8 @@
     <Compile Include="Exceptions\GetOrderDetailException.cs" />
     <Compile Include="Exceptions\GetPaymentHistoryByProfileException.cs" />
     <Compile Include="Exceptions\GetProfileFondaWebApiException.cs" />
-    <Compile Include="Exceptions\GetProfilesFondaWebApiControllerException.cs" />
-    <Compile Include="Exceptions\GetTokenFondaWebApiControllerException.cs" />
     <Compile Include="Exceptions\GetTotalAccountException.cs" />
     <Compile Include="Exceptions\PayAccountException.cs" />
-    <Compile Include="Exceptions\PostProfileFondaWebApiControllerException.cs" />
-    <Compile Include="Exceptions\PutProfileFondaWebApiControllerException.cs" />
     <Compile Include="GeneralRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
