@@ -161,6 +161,8 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                         ex
                     );
                 Logger.WriteErrorLog(exe.ClassName, exe);
+               // _view.ReservationsTable.Page.Response.Redirect(ReservationResources.RefreshURL);
+                GetReservations();
                 WarningLabel(exe.MessageException);
             }
             catch (Exception ex)
@@ -174,6 +176,9 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                         ex
                     );
                 Logger.WriteErrorLog(exe.ClassName, exe);
+      
+               // _view.ReservationsTable.Page.Response.Redirect(ReservationResources.RefreshURL);
+                GetReservations();
                 WarningLabel(exe.MessageException);
             }
             //Command commandCancelReservation;
