@@ -96,12 +96,12 @@
                             <i class="fa fa-credit-card fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">124k</div>
-                            <div>Bs. por facturar</div>
+                            <div style="font-size:200%">Ordenes</div>
+                            <div>abiertas</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="/Seccion/Caja/Ordenes.aspx">
                     <div class="panel-footer">
                         <span class="pull-left">Ver más</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
