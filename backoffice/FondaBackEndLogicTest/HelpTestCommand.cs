@@ -21,7 +21,6 @@ namespace FondaBackEndLogicTest
         private Token _token;
         private string _dataProfileName;
         private SimpleStatus _dataProfileStatus;
-        private string _dataTokenStrToken;
         private string _dataPersonName;
         private string _dataPersonLastName;
         private string _dataPersonSsn;
@@ -35,7 +34,7 @@ namespace FondaBackEndLogicTest
         /// <summary>
         /// Genera un comensal
         /// </summary>
-        protected Commensal generateCommensal()
+        protected Commensal generateCommensal(Boolean tok = false)
         {
             _commensal = EntityFactory.GetCommensal();
 
@@ -48,14 +47,13 @@ namespace FondaBackEndLogicTest
             _commensal.Email = _dataCommensalEmail;
             _commensal.Password = _dataCommensalPassword;
             _commensal.Status = _dataCommensalStatus;
-            _profile = generateProfile();
-            _commensal.AddProfile(_profile);
 
-            _token = EntityFactory.GetToken();
+            if (tok)
+            {
+                _token = EntityFactory.GetToken();
 
-            _commensal.AddToken(_token);
-
-            _dataTokenStrToken = _token.StrToken;
+                _commensal.AddToken(_token);
+            }
 
             return _commensal;
 
@@ -64,19 +62,29 @@ namespace FondaBackEndLogicTest
         /// <summary>
         /// Genera un Perfil
         /// </summary>
-        protected Profile generateProfile()
+        protected Profile generateProfile(bool edit = false)
         {
             if (_profile != null)
                 return _profile;
 
+            String editado = "";
+
+            if (edit)
+                editado = "Editado";
+
             _profile = EntityFactory.GetProfile();
 
-            _dataProfileName = "Nombre de Perfil";
+            _dataProfileName = "Nombre de Perfil" + editado;
             _dataProfileStatus = ActiveSimpleStatus.Instance;
 
             _profile.ProfileName = _dataProfileName;
             _profile.Status = _dataProfileStatus;
-            generatePerson();
+
+            if (edit)
+                generatePerson(true);
+            else
+                generatePerson();
+
             _profile.Person = _person;
             return _profile;
         }

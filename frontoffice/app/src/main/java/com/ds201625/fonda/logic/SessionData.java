@@ -1,15 +1,8 @@
-
 package com.ds201625.fonda.logic;
 
 import android.content.Context;
-import android.util.Log;
-
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.AddCommensalWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.DeleteTokenFondaWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetTokenFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.TokenService;
 import com.ds201625.fonda.domains.Commensal;
@@ -21,7 +14,6 @@ import java.util.Date;
  */
 public class SessionData {
 
-    private String TAG = "SessionData";
     /**
      * Commensal logeado.
      */
@@ -38,7 +30,7 @@ public class SessionData {
     private Context context;
 
     /**
-     * Instancia singelton
+     * Instancia singleton
      */
     private static SessionData instance;
 
@@ -91,32 +83,17 @@ public class SessionData {
      * @throws Exception
      */
     public void registerCommensal(String email, String password) throws Exception {
-        Log.d(TAG,"Metodo para registrar un commensal");
         if (email.isEmpty() || password.isEmpty()) {
-            throw new Exception("Datos de regsitro invalido");
+            throw new Exception("Datos de registro invalidos");
         }
         Commensal newCommensal;
-        try {
-            Command commandoCreateCommensal = FondaCommandFactory.createCommensalCommand();
-            commandoCreateCommensal.setParameter(0, email);
-            commandoCreateCommensal.setParameter(1, password);
-            commandoCreateCommensal.setParameter(2, context);
-            commandoCreateCommensal.run();
-            newCommensal = (Commensal) commandoCreateCommensal.getResult();
-        }catch(AddCommensalWebApiControllerException e){
-            Log.e(TAG, "Se ha generado error al agregar un Commensal", e);
-            throw  new AddCommensalWebApiControllerException(e);
-        }
-        catch (RestClientException e) {
-            Log.e(TAG, "Se ha generado error al agregar un Commensal", e);
-            throw  new AddCommensalWebApiControllerException(e);
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error al agregar un Commensal", e);
-            throw  new AddCommensalWebApiControllerException(e);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error al agregar un Commensal");
-            throw  new AddCommensalWebApiControllerException(e);
-        }
+
+        Command commandoCreateCommensal = FondaCommandFactory.createCommensalCommand();
+        commandoCreateCommensal.setParameter(0,email);
+        commandoCreateCommensal.setParameter(1,password);
+        commandoCreateCommensal.setParameter(2,this.context);
+        commandoCreateCommensal.run();
+        newCommensal = (Commensal)commandoCreateCommensal.getResult();
         if (newCommensal == null) {
             throw new Exception("No se logro crear el usuario");
         }
@@ -149,8 +126,9 @@ public class SessionData {
      * @throws LocalStorageException
      */
     public void addCommensal(Commensal commensal) throws LocalStorageException {
-        getCommensalsrv().saveCommensal(commensal,context);
+        getCommensalsrv().saveCommensal(commensal,this.context);
         setCommensal();
+        SessionData.instance = null;
     }
 
     /**
@@ -168,27 +146,12 @@ public class SessionData {
 
         if (this.commensal == null)
             return;
-        try {
-            Command commandoCreateToken = FondaCommandFactory.createTokenCommand();
-            commandoCreateToken.setParameter(0, this.context);
-            commandoCreateToken.setParameter(1, this.commensal);
-            commandoCreateToken.run();
-            Token tokenTest = (Token) commandoCreateToken.getResult();
-            this.token = tokenTest;
-        }catch(GetTokenFondaWebApiControllerException e){
-            Log.e(TAG, "Se ha generado error al crear un Token", e);
-            throw  new GetTokenFondaWebApiControllerException(e);
-        }
-        catch (RestClientException e) {
-            Log.e(TAG, "Se ha generado error al crear un Token", e);
-            throw  new GetTokenFondaWebApiControllerException(e);
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error al crear un Token", e);
-            throw  new GetTokenFondaWebApiControllerException(e);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error al crear un Token");
-            throw  new GetTokenFondaWebApiControllerException(e);
-        }
+        Command commandoCreateToken = FondaCommandFactory.createTokenCommand();
+        commandoCreateToken.setParameter(0,this.context);
+        commandoCreateToken.setParameter(1,this.commensal);
+        commandoCreateToken.run();
+        Token tokenTest = (Token)commandoCreateToken.getResult();
+        this.token = tokenTest;
     }
 
     private void removeToken() throws Exception {
@@ -204,20 +167,9 @@ public class SessionData {
             boolean resp =  (boolean)commandoDeleteToken.getResult();
             if (resp)
             { this.token = null;}
-        }catch(DeleteTokenFondaWebApiControllerException e){
-            Log.e(TAG, "Se ha generado error al eliminar el Token", e);
-            throw  new DeleteTokenFondaWebApiControllerException(e);
         }
-        catch (RestClientException e) {
-            Log.e(TAG, "Se ha generado error al eliminar el Token", e);
-            throw  new DeleteTokenFondaWebApiControllerException(e);
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error al eliminar el Token", e);
-            throw  new DeleteTokenFondaWebApiControllerException(e);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error al eliminar el Token");
-            throw  new DeleteTokenFondaWebApiControllerException(e);
-        }
+        catch (Exception e)
+        {}
     }
 
     private void removeCommensal() throws Exception {
@@ -228,7 +180,7 @@ public class SessionData {
         Commensal commensal = getCommensalsrv().getCommensal(this.context);
         if (commensal != null) {
             CommensalService service = getCommensalsrv();
-            service.deleteCommensal(context);
+            service.deleteCommensal(this.context);
         }
 
         this.commensal = null;
@@ -247,7 +199,7 @@ public class SessionData {
      * @return
      */
     private TokenService getTokenServ() {
-        return FondaServiceFactory.getInstance().getTokenService(commensal);
+        return FondaServiceFactory.getInstance().getTokenService(this.commensal);
     }
 
 }

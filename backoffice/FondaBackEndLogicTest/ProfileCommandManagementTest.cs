@@ -31,6 +31,7 @@ namespace FondaBackEndLogicTest
         private Profile _profile;
         private ICommensalDAO _commensalDAO;
         private int _idProfile;
+        private int _idCommensal;
 
         /// <summary>
         /// Inicializacion de variables antes de cada prueba
@@ -41,8 +42,10 @@ namespace FondaBackEndLogicTest
             _commensal = EntityFactory.GetCommensal();
             _profile = EntityFactory.GetProfile();
             _commensalDAO = FactoryDAO.Intance.GetCommensalDAO();
-            _commensal = (Commensal)_commensalDAO.FindById(1);
+            _commensal = generateCommensal();
+            _commensalDAO.Save(_commensal);
             _profile = generateProfile();
+            _idCommensal = _commensal.Id;
             _idProfile = 0;
         }
 
@@ -52,6 +55,7 @@ namespace FondaBackEndLogicTest
         [Test]
         public void CreateProfileCommandTest()
         {
+            Assert.AreEqual(0, _commensal.Profiles.Count);
             Assert.False(_commensal.Profiles.Contains(_profile));
             _createProfile = BackendFactoryCommand.Instance.GetCreateProfileCommand();
             _createProfile.SetParameter(0, _commensal);
@@ -60,7 +64,8 @@ namespace FondaBackEndLogicTest
 
             Profile _result = (Profile)_createProfile.Result;
             _idProfile = _result.Id;
-            _commensal = (Commensal)_commensalDAO.FindById(1);
+
+            Assert.AreEqual(1, _commensal.Profiles.Count);
             Assert.AreNotEqual(0, _result.Id);
             Assert.True(_commensal.Profiles.Contains(_profile));
         }
@@ -71,9 +76,11 @@ namespace FondaBackEndLogicTest
         [Test]
         public void GetProfileCommandTest()
         {
+            Assert.AreEqual(0, _commensal.Profiles.Count);
             _commensal.Profiles.Add(_profile);
             //Se Guarda el commensal con el nuevo perfil
             _commensalDAO.Save(_commensal);
+            Assert.AreEqual(1, _commensal.Profiles.Count);
 
             _getProfile = BackendFactoryCommand.Instance.GetProfileIdCommand();
             _getProfile.SetParameter(0, _profile);
@@ -92,17 +99,20 @@ namespace FondaBackEndLogicTest
         [Test]
         public void DeleteProfileCommandTest()
         {
+            Assert.AreEqual(0, _commensal.Profiles.Count);
             Assert.False(_commensal.Profiles.Contains(_profile));
             _commensal.Profiles.Add(_profile);
             //Se Guarda el commensal con el nuevo perfil
             _commensalDAO.Save(_commensal);
+            Assert.AreEqual(1, _commensal.Profiles.Count);
             Assert.True(_commensal.Profiles.Contains(_profile));
             Profile _pro = _profile;
             _deleteProfile = BackendFactoryCommand.Instance.DeleteProfileCommand();
             _deleteProfile.SetParameter(0, _commensal);
             _deleteProfile.SetParameter(1, _profile);
             _deleteProfile.Run();
-            
+
+            Assert.AreEqual(0, _commensal.Profiles.Count);
             Assert.False(_commensal.Profiles.Contains(_pro));
         }
 
@@ -112,14 +122,16 @@ namespace FondaBackEndLogicTest
         [Test]
         public void UpdateProfileCommandTest()
         {
+            Assert.AreEqual(0, _commensal.Profiles.Count);
             Assert.False(_commensal.Profiles.Contains(_profile));
             _commensal.Profiles.Add(_profile);
             //Se Guarda el commensal con el nuevo perfil
             _commensalDAO.Save(_commensal);
+            Assert.AreEqual(1, _commensal.Profiles.Count);
             Assert.True(_commensal.Profiles.Contains(_profile));
             Assert.AreEqual(_profile.ProfileName, "Nombre de Perfil");
             Profile _pro = _profile;
-            _pro.ProfileName = "Modificado";
+            _pro.ProfileName = "Editado";
             _updateProfile = BackendFactoryCommand.Instance.UpdateProfileCommand();
             _updateProfile.SetParameter(0, _commensal);
             _updateProfile.SetParameter(1, _profile);
@@ -130,7 +142,7 @@ namespace FondaBackEndLogicTest
             _idProfile = _result.Id;
             Assert.AreNotEqual(0, _result.Id);
             Assert.AreEqual(_profile.Id, _result.Id);
-            Assert.AreEqual(_result.ProfileName, "Modificado");
+            Assert.AreEqual(_result.ProfileName, _pro.ProfileName);
         }
 
         /// <summary>
@@ -165,6 +177,10 @@ namespace FondaBackEndLogicTest
                 _commensal.Profiles.Remove(_profile);
                 _commensalDAO.Save(_commensal);
             }
+            if (_idCommensal != 0)
+                _commensalDAO.Delete(_commensal);
+
+            _idCommensal = 0;
             _createProfile = null;
             _getProfile = null;
             _updateProfile = null;

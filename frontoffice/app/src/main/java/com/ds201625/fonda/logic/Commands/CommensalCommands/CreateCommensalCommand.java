@@ -1,4 +1,3 @@
-
 package com.ds201625.fonda.logic.Commands.CommensalCommands;
 
 import android.content.Context;
@@ -6,7 +5,6 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.AddCommensalWebApiControllerException;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Commensal;
@@ -38,7 +36,7 @@ public class CreateCommensalCommand extends BaseCommand {
     }
 
     @Override
-    protected void invoke() throws AddCommensalWebApiControllerException {
+    protected void invoke() {
 
         Log.d(TAG, "Comando para agregar un perfil a un commensal");
         String email;
@@ -54,19 +52,19 @@ public class CreateCommensalCommand extends BaseCommand {
             context = (Context) getParameter(2);
             commensal = commensalService.RegisterCommensal(email,password,context);
         }
-        catch(AddCommensalWebApiControllerException e){
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Commensal", e);
-            throw  new AddCommensalWebApiControllerException(e);
+        catch (RestClientException e)
+        {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            e.printStackTrace();
         }
-        catch (RestClientException e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Commensal", e);
-            throw  new AddCommensalWebApiControllerException(e);
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Commensal", e);
-            throw  new AddCommensalWebApiControllerException(e);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Commensal");
-            throw  new AddCommensalWebApiControllerException(e);
+        catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            e.printStackTrace();
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            e.printStackTrace();
         }
 
         setResult(commensal);

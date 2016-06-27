@@ -1,12 +1,12 @@
 
-package com.ds201625.fonda.interfaces;
+package com.ds201625.fonda.views.contracts;
 
 import com.ds201625.fonda.domains.Profile;
 
 /**
  * Interfaz de ProfileListFragment
  */
-public interface IProfileListView {
+public interface IProfileListViewContract {
     /**
      * Metodo para eliminar un perfil
      * @param profile

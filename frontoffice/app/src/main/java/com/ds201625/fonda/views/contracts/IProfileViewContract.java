@@ -1,12 +1,12 @@
 
-package com.ds201625.fonda.interfaces;
+package com.ds201625.fonda.views.contracts;
 
 import com.ds201625.fonda.domains.Profile;
 
 /**
  * Interfaz de ProfileActivity
  */
-public interface IProfileView {
+public interface IProfileViewContract {
 
     /**
      * Metodo para crear un perfil
