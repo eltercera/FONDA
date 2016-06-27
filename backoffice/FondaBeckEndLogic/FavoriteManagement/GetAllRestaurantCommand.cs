@@ -38,41 +38,41 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
         /// <summary>
         /// metodo invoke que ejecuta la obtencion de todos los restaurantes
         /// </summary>
-		protected override void Invoke()
-		{
+        protected override void Invoke()
+        {
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                ResourceMessages.BeginLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
-          
-			try
-			{
+                ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            try
+            {
                 // Obtiene el dao que se requiere
                 RestaurantDAO = FacDao.GetRestaurantDAO();
                 // Ejecucion del obtener.	
                 listRestaurant = (IList<Restaurant>)RestaurantDAO.GetAll();
-              nuevaListRestaurant = new List<Restaurant>();
+                nuevaListRestaurant = new List<Restaurant>();
                 foreach (var restaurant in listRestaurant)
                 {
-                    
+
                     if (restaurant.Status.StatusId == 1)
                     {
-                        
+
                         Console.Write("IDDD" + restaurant.Status.StatusId);
                         restaurant.RestaurantCategory = new RestaurantCategory
                         {
                             Name = restaurant.RestaurantCategory.Name,
                             Id = restaurant.RestaurantCategory.Id,
-                          
+
                         };
-                     nuevaListRestaurant.Add(restaurant);   
+                        nuevaListRestaurant.Add(restaurant);
                     }
 
-                Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                  ResourceMessages.Restaurant + restaurant.Name + ResourceMessages.Slash +
-                  restaurant.RestaurantCategory,System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                      ResourceMessages.Restaurant + restaurant.Name + ResourceMessages.Slash +
+                      restaurant.RestaurantCategory, System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
-                
-               
-			}
+
+
+            }
             catch (ParameterIndexOutOfRangeException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -88,13 +88,13 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetAllRestaurantsCommandException(ResourceMessages.GetAllRestaurantException, e);
             }
-            
-			// Guardar el resultado.
+
+            // Guardar el resultado.
             Result = nuevaListRestaurant;
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
-                Result.ToString(),System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                ResourceMessages.EndLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
-		}
-	}
+                Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        }
+    }
 }

@@ -11,9 +11,9 @@ namespace FondaBackEndLogicTest
     /// class  GetAllRestaurantManagementTest
     /// Clase que realiza las pruebas unitarias del comando obtener restaurantes disponibles.
     /// </summary>
-	[TestFixture]
-	public class GetAllRestaurantManagementTest
-	{
+    [TestFixture]
+    public class GetAllRestaurantManagementTest
+    {
         private Commensal commensal;
         private ICommand getRestaurant;
         private IList<Restaurant> listRestaurant;
@@ -41,17 +41,17 @@ namespace FondaBackEndLogicTest
         /// <summary>
         /// prueba unitaria de obtener restaurantes disponibles.
         /// </summary>
-		[Test]
-		public void GetAllRestaurantCommandTest()
-		{
+        [Test]
+        public void GetAllRestaurantCommandTest()
+        {
             getRestaurant.Run();
             listRestaurant = (IList<Restaurant>)getRestaurant.Result;
-         
+
             Assert.NotNull(listRestaurant);
-            Assert.NotNull(listRestaurant[3].RestaurantCategory);
-            Assert.AreEqual("Burger Shack", listRestaurant[3].Name);
-            Assert.AreEqual("Mexicana", listRestaurant[3].RestaurantCategory.Name);
-		}
+            Assert.NotNull(listRestaurant[2].RestaurantCategory);
+            Assert.AreEqual("Burger Shack", listRestaurant[2].Name);
+
+        }
 
 
         /// <summary>
@@ -64,6 +64,6 @@ namespace FondaBackEndLogicTest
             getRestaurant.SetParameter(1, commensal);
             getRestaurant.Run();
         }
-	}
+    }
 }
 
