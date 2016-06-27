@@ -14,5 +14,7 @@ namespace com.ds201625.fonda.View.BackOfficeModel.OrderAccount
         string Session { get; set; }
 
         string SessionNumberAccount { get; set; }
+
+        Label DateOrder { get; set; }
     }
 }

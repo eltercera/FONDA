@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,7 @@ public class RestauranstsActivity extends BaseNavigationActivity
     private MenuItem searchMenuItem;
     private View errorLayout;
     private View emtyLayout;
+    private Toolbar tb;
 
     /**
      * Adaptador para tabs
@@ -69,6 +71,7 @@ public class RestauranstsActivity extends BaseNavigationActivity
         this.tabLayout = (TabLayout) findViewById(R.id.tabs);
         this.emtyLayout = findViewById(R.id.empty_search_list);
         this.errorLayout = findViewById(R.id.no_connection_list);
+        this.tb = (Toolbar)findViewById(R.id.toolbar);
 
         //creación de componentes
         this.pagerAdapter = new BaseSectionsPagerAdapter
@@ -188,5 +191,16 @@ public class RestauranstsActivity extends BaseNavigationActivity
         Intent intent = new Intent(this,DetailSearchRestaurantActivity.class);
         intent.putExtra("restaurant", restaurant);
         this.startActivity(intent);
+    }
+
+    @Override
+    public void onMultiSelect(boolean multi) {
+        if (multi) {
+            this.tb.setVisibility(View.GONE);
+            this.tabLayout.setVisibility(View.GONE);
+        } else {
+            this.tb.setVisibility(View.VISIBLE);
+            this.tabLayout.setVisibility(View.VISIBLE);
+        }
     }
 }

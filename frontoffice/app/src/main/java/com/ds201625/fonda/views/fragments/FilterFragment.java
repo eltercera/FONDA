@@ -22,7 +22,8 @@ import com.ds201625.fonda.views.presenters.RestaurantsFilterPresenter;
  */
 public class FilterFragment extends BaseFragment
         implements SwipeRefreshLayout.OnRefreshListener,RestaurantsFiltersContract,
-        AbsListView.MultiChoiceModeListener{
+        AbsListView.MultiChoiceModeListener,
+        AbsListView.OnScrollListener{
 
     /**
      * componentes de la vista
@@ -30,6 +31,7 @@ public class FilterFragment extends BaseFragment
     private ListView listView;
     private SwipeRefreshLayout swipeRefreshLayout;
     private FilterFragmentListener activity;
+    private MenuItem itemFav;
 
     /**
      * presentador / controlador
@@ -119,6 +121,31 @@ public class FilterFragment extends BaseFragment
     }
 
     @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+    }
+
+    /**
+     * Control de paginacion del scroll
+     */
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+        if (totalItemCount > 0 && this.lastfirstVisibleItem !=firstVisibleItem
+                && this.lastvisibleItemCount != visibleItemCount) {
+            int lastInScreen = firstVisibleItem + visibleItemCount;
+            if(lastInScreen == totalItemCount) {
+                this.lastfirstVisibleItem =firstVisibleItem;
+                this.lastvisibleItemCount = visibleItemCount;
+                this.presenter.scrollOnBottom();
+            }
+        }
+    }
+
+    /**
+     * actualizacion total de la lista
+     */
+    @Override
     public void onRefresh() {
         this.swipeRefreshLayout.setRefreshing(true);
         this.presenter.onRefresh();
@@ -126,19 +153,19 @@ public class FilterFragment extends BaseFragment
     }
 
     /**
-     * proxy BackPressed
+     * proxy
      * @return
      */
     public boolean onBackPressed() {
-        return presenter.onBackPressed();
+        return this.presenter.onBackPressed();
     }
 
     /**
-     *
+     * proxy
      * @param restaurant
      */
     public void openRestaurantActiviy(Restaurant restaurant) {
-        activity.openRestaurantActiviy(restaurant);
+        this.activity.openRestaurantActiviy(restaurant);
     }
 
     /**
@@ -148,6 +175,7 @@ public class FilterFragment extends BaseFragment
     public void search(String query) {
         presenter.search(query);
     }
+
 
     @Override
     public void closeSearchView() {
@@ -192,11 +220,18 @@ public class FilterFragment extends BaseFragment
 
     @Override
     public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-
+        int count = this.presenter.checkItem(position,checked);
+        mode.setTitle(count + (count>1?" selecciones":" selección"));
     }
 
     @Override
     public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+        this.activity.onMultiSelect(true);
+        mode.getMenuInflater().inflate(R.menu.detail_restaurant, menu);
+        this.itemFav = menu.findItem(R.id.action_set_favorite);
+        this.itemFav.setIcon(R.drawable.ic_star_yellow);
+        this.itemFav.setVisible(true);
+        menu.findItem(R.id.action_make_order).setVisible(false);
         return true;
     }
 
@@ -207,12 +242,17 @@ public class FilterFragment extends BaseFragment
 
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+        if (item.getItemId() == this.itemFav.getItemId()) {
+            this.presenter.favoriteMack();
+            mode.finish();
+        }
         return true;
     }
 
     @Override
     public void onDestroyActionMode(ActionMode mode) {
-
+        this.activity.onMultiSelect(false);
+        this.presenter.reset();
     }
 
     /**
@@ -225,16 +265,44 @@ public class FilterFragment extends BaseFragment
          */
         void closeSearchView();
 
+        /**
+         * Para mostrar un mensaje
+         * @param msj mensajea mostrar
+         */
         void displayMsj(String msj);
 
+        /**
+         * Obtiene una vista
+         * @param id
+         * @return
+         */
         View findViewById (int id);
 
+        /**
+         * Vista normal
+         */
         void setNormalView();
 
+        /**
+         * Vista con  lista vacia
+         */
         void setEmptyView();
 
+        /**
+         * Vista de error
+         */
         void setErrorView();
 
+        /**
+         * Apertura de actividad de restaurante
+         * @param restaurant
+         */
         void openRestaurantActiviy(Restaurant restaurant);
+
+        /**
+         * Colocar la actividad en modo multi seleccion
+         * @param multi
+         */
+        void onMultiSelect(boolean multi);
     }
 }

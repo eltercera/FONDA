@@ -34,6 +34,10 @@ public class RetrofitProfileService implements ProfileService {
 
     private APIError error;
 
+    /**
+     * Constructor de RetrofitProfileService
+     * @param token
+     */
     public RetrofitProfileService(Token token) {
         super();
         profileClient = RetrofitService.getInstance()

@@ -40,6 +40,17 @@ public class RetrofitCommensalService implements CommensalService {
      */
     private JsonFile<Commensal> localFile;
 
+    /**
+     * Metodo utiliza el ws para registrar un commensal
+     * @param user Usuario
+     * @param password Clave
+     * @param context Contexto para el guardado local
+     * @return el Commensal creado
+     * @throws InvalidDataRetrofitException
+     * @throws RestClientException
+     * @throws LocalStorageException
+     * @throws AddCommensalWebApiControllerException
+     */
     @Override
     public Commensal RegisterCommensal(String user, String password, Context context)
             throws InvalidDataRetrofitException, RestClientException, LocalStorageException, AddCommensalWebApiControllerException {
@@ -71,7 +82,7 @@ public class RetrofitCommensalService implements CommensalService {
             Log.e(TAG, "Se ha generado error en getProfiles", e);
             throw new AddCommensalWebApiControllerException(error.exceptionType());
         }
-        Log.d(TAG, "Cierre del metodo registrar commensal "+ rsvCommensal.toString());
+        Log.d(TAG, "Cierre del metodo registrar commensal. Return: "+ rsvCommensal.toString());
 
         getFile(context).save(rsvCommensal);
         return rsvCommensal;

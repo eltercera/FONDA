@@ -41,22 +41,26 @@ public class GetProfilesCommand extends BaseCommand {
         try
         {
             profiles = profileService.getProfiles();
+            Log.d(TAG, "Numero de perfiles encontrados: " + profiles.size());
         }
         catch (RestClientException e)
         {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
             e.printStackTrace();
         }
         catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
             e.printStackTrace();
         }
         catch (Exception e)
         {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
             e.printStackTrace();
         }
 
         setResult(profiles);
+
+        Log.d(TAG, "Se buscaron con exito los perfiles. Result: " + getResult().toString());
+        Log.d(TAG, "Se buscaron con exito los perfiles");
     }
 }
