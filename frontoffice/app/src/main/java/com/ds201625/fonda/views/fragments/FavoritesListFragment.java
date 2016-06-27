@@ -19,9 +19,9 @@ import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.*;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.FavoriteView;
-import com.ds201625.fonda.interfaces.FavoriteViewPresenter;
-import com.ds201625.fonda.presenter.FavoritesPresenter;
+import com.ds201625.fonda.views.contracts.FavoriteView;
+import com.ds201625.fonda.views.contracts.FavoriteViewPresenter;
+import com.ds201625.fonda.views.presenters.FavoritesPresenter;
 import com.ds201625.fonda.views.activities.FavoritesActivity;
 import com.ds201625.fonda.views.adapters.FavoriteRestViewItemList;
 
@@ -235,6 +235,12 @@ public class FavoritesListFragment extends BaseFragment implements
                 return true;
             }
 
+        }catch (FindByEmailUserAccountFondaWebApiControllerException e) {
+            Log.e(TAG, "Error en findLoggedComensal al buscar el comensal logueado", e);
+            Toast.makeText(this.getContext(),
+                    "Ha ocurrido un error al obtener el commensal logueado (BO)",
+                    Toast.LENGTH_LONG).show();
+            Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener el commensal logueado", e);
         }catch (FindFavoriteRestaurantFondaWebApiControllerException e) {
             Toast.makeText(this.getContext(),
                     "Ha ocurrido un error al obtener los restaurantes (BO)",
@@ -288,6 +294,12 @@ public class FavoritesListFragment extends BaseFragment implements
                     //Llamo al comando de allFavoriteRestaurantCommand
                     listRestWS = presenter.findAllFavoriteRestaurant();
                     return listRestWS;
+                }catch (FindByEmailUserAccountFondaWebApiControllerException e) {
+                Log.e(TAG, "Error en findLoggedComensal al buscar el comensal logueado", e);
+                Toast.makeText(this.getContext(),
+                        "Ha ocurrido un error al obtener el commensal logueado (BO)",
+                        Toast.LENGTH_LONG).show();
+                Log.e(TAG, "Error Proveniente del WEB SERVICE al obtener el commensal logueado", e);
                 }
                 catch (NullPointerException nu) {
                     Toast.makeText(FavoritesListFragment.super.getContext(),

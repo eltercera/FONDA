@@ -1,5 +1,6 @@
-package com.ds201625.fonda.interfaces;
+package com.ds201625.fonda.views.contracts;
 
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindByEmailUserAccountFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.GetAllRestaurantsFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Restaurant;
 
@@ -23,7 +24,7 @@ public interface AllRestaurantsViewPresenter {
     /**
      * Encuentra el comensal logueado
      */
-    void findLoggedComensal();
+    void findLoggedComensal() throws FindByEmailUserAccountFondaWebApiControllerException;
 
 
 }

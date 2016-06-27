@@ -59,10 +59,9 @@ namespace FondaDataAccessTest
 
         [ExpectedException(typeof(FindAllFondaDAOException))]
         [Test]
-        public void getAllTestFindAllFondaDAOException()
+        public void getFindAllFondaDAOException()
         {
             List<RestaurantCategory> _categoryList = (List<RestaurantCategory>)_restaurantCategoryDAO.GetAll();
-            Assert.Null(_categoryList);
         }
 
         #endregion

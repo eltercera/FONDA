@@ -44,7 +44,8 @@ namespace FondaBackOfficeLogicTest.Restaurante
         {
             _facDAO = null;
         }
-        
+
+        #region Commands Test
         [Test]
         public void commandAddCategoryTest()
         {
@@ -80,5 +81,45 @@ namespace FondaBackOfficeLogicTest.Restaurante
             _restcatE = _restaurantCategoryDAO.FindById(2);
             Assert.AreEqual(_restcatE.Name, _restcat.Name);
         }
+        #endregion
+
+        #region Exceptions Test
+        [ExpectedException(typeof(NullReferenceException))]
+        [Test]
+        public void AddCategoryNullExceptionTest()
+        {
+            _commandAddCategory = CommandFactory.GetCommandAddCategory(null);
+            _commandAddCategory.Execute();
+
+        }
+
+        [ExpectedException(typeof(InvalidCastException))]
+        [Test]
+        public void AddCategoryInvalidExceptionTest()
+        {
+            _commandAddCategory = CommandFactory.GetCommandAddCategory(1325);
+            _commandAddCategory.Execute();
+
+        }
+
+        [ExpectedException(typeof(NullReferenceException))]
+        [Test]
+        public void ModifyCategoryNullExceptionTest()
+        {
+            _modifylist[0] = idCat;
+            _commandModifyCategory = CommandFactory.GetCommandModifyCategory(_modifylist);
+            _commandModifyCategory.Execute();
+        }
+
+        [ExpectedException(typeof(InvalidCastException))]
+        [Test]
+        public void ModifyCategoryInvalidExceptionTest()
+        {
+            _modifylist[0] = "prueba";
+            _commandModifyCategory = CommandFactory.GetCommandModifyCategory(_modifylist);
+            _commandModifyCategory.Execute();
+        }
+
+        #endregion 
     }
 }

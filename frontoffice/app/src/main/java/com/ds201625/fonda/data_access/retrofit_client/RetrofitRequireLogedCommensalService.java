@@ -28,6 +28,7 @@ public class RetrofitRequireLogedCommensalService implements RequireLogedCommens
         super();
     }
 
+    private APIError error;
     /**
      * Obtiene el comensal logueado
      *
@@ -36,7 +37,8 @@ public class RetrofitRequireLogedCommensalService implements RequireLogedCommens
      * @throws RestClientException
      */
     @Override
-    public Commensal getLogedCommensal(String email) throws RestClientException {
+    public Commensal getLogedCommensal(String email) throws RestClientException,
+            FindByEmailUserAccountFondaWebApiControllerException  {
         Log.d(TAG, "Se obtiene el comensal logeado: "+email);
         Call<Commensal> call = currentLogedCommensal.getAllFavoriteRestaurant(email);
         Commensal test = null;
@@ -47,20 +49,24 @@ public class RetrofitRequireLogedCommensalService implements RequireLogedCommens
                 test = response.body();
             }else {
                 // parse the response body
-                APIError error = ErrorUtils.parseError(response);
+                error = ErrorUtils.parseError(response);
                 // arreglar log
                 Log.d("Error message", error.message());
                 Log.d("Error ExceptionType", error.exceptionType());
                 // usar error para disparar exception
-                throw  new FindByEmailUserAccountFondaWebApiControllerException(error.exceptionMessage());
+                throw  new FindByEmailUserAccountFondaWebApiControllerException
+                        (error.exceptionMessage());
 
             }
         } catch(SocketTimeoutException e) {
             Log.e(TAG, "Se ha generado error en la clase getLogedCommensal", e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(error.exceptionMessage());
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en la clase getLogedCommensal", e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(error.exceptionMessage());
         } catch (Exception e) {
             Log.e(TAG, "Se ha generado error en getLogedCommensal", e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(error.exceptionMessage());
         }
         return test;
     }

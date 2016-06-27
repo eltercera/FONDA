@@ -37,7 +37,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionAddCategory(RestaurantErrors.AddCategoryFondaDAOException, e);
             }
-            catch (InvalidTypeParameterException e)
+            catch (InvalidCastException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionAddCategory(RestaurantErrors.InvalidTypeParameterException, e);

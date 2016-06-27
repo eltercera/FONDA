@@ -1,12 +1,13 @@
-package com.ds201625.fonda.presenter;
+package com.ds201625.fonda.views.presenters;
 
 import android.util.Log;
 
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.FindByEmailUserAccountFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.GetAllRestaurantsFondaWebApiControllerException;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Restaurant;
-import com.ds201625.fonda.interfaces.AllRestaurantsView;
-import com.ds201625.fonda.interfaces.AllRestaurantsViewPresenter;
+import com.ds201625.fonda.views.contracts.AllRestaurantsView;
+import com.ds201625.fonda.views.contracts.AllRestaurantsViewPresenter;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
@@ -37,7 +38,7 @@ public class AllRestaurantsPresenter implements AllRestaurantsViewPresenter {
      * Encuentra el comensal logueado
      */
     @Override
-    public void findLoggedComensal() {
+    public void findLoggedComensal() throws FindByEmailUserAccountFondaWebApiControllerException {
         Log.d(TAG,"Ha entrado en findLoggedComensal");
         Commensal log = SessionData.getInstance().getCommensal();
         emailToWebService=log.getEmail()+"/";
@@ -47,12 +48,18 @@ public class AllRestaurantsPresenter implements AllRestaurantsViewPresenter {
         try {
             cmdRequireLoged.setParameter(0,emailToWebService);
             cmdRequireLoged.run();
-        } catch (NullPointerException e){
+        }catch (FindByEmailUserAccountFondaWebApiControllerException e) {
+            Log.e(TAG, "Error en findLoggedComensal al buscar el comensal logueado", e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(e);
+        }
+        catch (NullPointerException e){
             Log.e(TAG,"Error en findLoggedComensal al buscar el comensal logueado",
                     e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(e);
         }catch (Exception e) {
             Log.e(TAG,"Error en findLoggedComensal al buscar el comensal logueado",
                     e);
+            throw  new FindByEmailUserAccountFondaWebApiControllerException(e);
         }
          logedComensal = (Commensal) cmdRequireLoged.getResult();
         Log.d(TAG,"Se obtiene el comensal logueado "+logedComensal.getId());
