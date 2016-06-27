@@ -99,6 +99,7 @@
     <Compile Include="Commands\Reservations\CommandGetTables.cs" />
     <Compile Include="Commands\Restaurant\CommandSaveCategory.cs" />
     <Compile Include="Commands\Restaurant\CommandSaveRestaurant.cs" />
+    <Compile Include="Commands\Restaurant\CommandSaveTable.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrderAccountByInvoice.cs" />

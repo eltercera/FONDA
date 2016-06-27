@@ -305,6 +305,11 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandGetRestaurants(receiver);
         }
+        public static Command GetCommandSaveTable(object receiver)
+        {
+            return new CommandSaveTable(receiver);
+        }
+
         #endregion
 
         #region Menu

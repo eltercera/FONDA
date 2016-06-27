@@ -67,12 +67,12 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             //ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             //IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
 
-            //PRUEBAAAA!!
+            //llena tabla con lista de mesas de un restaurante
             IList<com.ds201625.fonda.Domain.Table> listTable;
             commandGetTables = CommandFactory.GetCommandGetTables(_idRestaurant);
             commandGetTables.Execute();
             listTable = (IList<com.ds201625.fonda.Domain.Table>)commandGetTables.Receiver;
-            System.Diagnostics.Debug.WriteLine("lista de mesas");
+            System.Diagnostics.Debug.WriteLine("lista de mesas por restaurante");
             System.Diagnostics.Debug.WriteLine(listTable);
 
             //Genero la lista de reservas por restaurant
@@ -262,12 +262,26 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
         /// </summary>
         public void ButtonAdd_Click()
         {
-           _view.alertSuccess_AddTable.Visible = true;
-            ITableDAO _tableDAO = factoryDAO.GetTableDAO();
-            IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+            //declaro comandos
+            Command commandGetTables;
+            Command commandGetRestaurantById;
+            Command commandSaveTable;
+            Restaurant _restaurant;
+            _view.alertSuccess_AddTable.Visible = true;
+
+            IList<com.ds201625.fonda.Domain.Table> listTable;
+            commandGetTables = CommandFactory.GetCommandGetTables(_idRestaurant);
+            commandGetTables.Execute();
+            //asigno valores a la lista
+            listTable = (IList<com.ds201625.fonda.Domain.Table>)commandGetTables.Receiver;
+
+            //ITableDAO _tableDAO = factoryDAO.GetTableDAO();
+            //IRestaurantDAO _restaurantDAO = factoryDAO.GetRestaurantDAO();
+            //genero una nueva mesa
             com.ds201625.fonda.Domain.Table _table = new com.ds201625.fonda.Domain.Table();
+
             //busca las mesas del restaurante
-            IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
+            // IList<com.ds201625.fonda.Domain.Table> listTable = _tableDAO.GetTables(_idRestaurant);
             int capacity = int.Parse(_view.dddlCapacityA.SelectedValue);
             _table.Capacity = capacity;
             _table.Status = factoryDAO.GetFreeTableStatus();
@@ -275,9 +289,19 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
             System.Diagnostics.Debug.WriteLine("numero de mesas" + listTable.Count);
             _table.Number = listTable.Count + 1;
 
-            _restaurant = _restaurantDAO.FindById(_idRestaurant);
+            //commandGetRestaurantById = CommandFactory.GetCommandGetRestaurantById(_idRestaurant);
+           // commandGetRestaurantById.Execute();
+            //_restaurant = (Restaurant)commandGetRestaurantById.Receiver;
+
+            // _restaurant = _restaurantDAO.FindById(_idRestaurant);
+           // _table. = _restaurant;
+            //Guardo modificacion de mesa en la bd utilizando el comando SaveTable
+            commandSaveTable = CommandFactory.GetCommandSaveTable(_table);
+            //ejecuto el comando
+            commandSaveTable.Execute();
+            
             //  _table.Restaurant = _restaurant;
-            _tableDAO.Save(_table);
+            //_tableDAO.Save(_table);
             LoadDataTable();
         }
 
@@ -286,14 +310,21 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
         /// </summary>
         public void ButtonModify_Click()
         {
-            _view.alertSuccess_ModifyTable.Visible = true; ;
+            //declaraciones de comandos
+            Command commandSaveTable;
+            _view.alertSuccess_ModifyTable.Visible = true; 
+
             ITableDAO _tableDAO = factoryDAO.GetTableDAO();
             string TableID = _view.tableModifyId.Value;
             int idTable = int.Parse(TableID);
             com.ds201625.fonda.Domain.Table _tableM = _tableDAO.FindById(idTable);
             int capacity = int.Parse(_view.dddlCapacityM.SelectedValue);
             _tableM.Capacity = capacity;
-            _tableDAO.Save(_tableM);
+            //Guardo modificacion de mesa en la bd utilizando el comando SaveTable
+            commandSaveTable = CommandFactory.GetCommandSaveTable(_tableM);
+            //ejecuto el comando
+            commandSaveTable.Execute();
+           // _tableDAO.Save(_tableM);
             LoadDataTable();
 
         }
