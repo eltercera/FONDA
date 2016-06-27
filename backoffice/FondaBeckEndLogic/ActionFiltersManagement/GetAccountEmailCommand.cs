@@ -59,6 +59,7 @@ namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
                 //Buscar el usuario
                 user = commensalDAO.FindByEmail(email);
 
+                if (user != null)
                 //Logger
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                  ResourceMessages.Commensal + user.Email, System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -79,9 +80,6 @@ namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
             //Se guardan los resultados
             Result = user;
 
-            //Logger al Culminar el metodo
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 

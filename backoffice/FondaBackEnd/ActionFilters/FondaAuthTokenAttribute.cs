@@ -97,8 +97,6 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
                 throw new FondaAuthTokenAttributeException(GeneralRes.ValidateAccountTokenException, e);
             }
             //Logger al Culminar el metodo
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, idCommensal.ToString(),
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
             

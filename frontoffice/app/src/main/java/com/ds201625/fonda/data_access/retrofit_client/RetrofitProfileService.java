@@ -67,10 +67,10 @@ public class RetrofitProfileService implements ProfileService {
                 throw new GetProfilesFondaWebApiControllerException(error.exceptionType());
             }
 
-        }  catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en getProfiles", e);
             throw new NullPointerException("Error de conexion");
-        }catch (IOException e) {
+        } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en getProfiles", e);
             throw new RestClientException("Error de IO",e);
         } catch (Exception e) {
@@ -104,6 +104,9 @@ public class RetrofitProfileService implements ProfileService {
                 Log.e(TAG,"error message " +error.exceptionType());
                 throw new PostProfileFondaWebApiControllerException(error.exceptionType());
             }
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en addProfile", e);
+            throw new NullPointerException("Error de conexion");
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en addProfile", e);
             throw new RestClientException("Error de IO",e);
@@ -137,6 +140,9 @@ public class RetrofitProfileService implements ProfileService {
                 Log.e(TAG,"error message " +error.exceptionType());
                 throw new PutProfileFondaWebApiControllerException(error.exceptionType());
             }
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en editProfile", e);
+            throw new NullPointerException("Error de conexion");
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en editProfile", e);
             throw new RestClientException("Error de IO",e);
@@ -168,8 +174,11 @@ public class RetrofitProfileService implements ProfileService {
                 Log.e(TAG, "Se ha generado error en WS ");
                 Log.e(TAG,"error message " + error.message());
                 Log.e(TAG,"error message " +error.exceptionType());
-                throw new DeleteProfileFondaWebApiControllerException(error.exceptionType());
+                throw new DeleteProfileFondaWebApiControllerException("Ha ocurrido un error remoto");
             }
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en deleteProfile", e);
+            throw new DeleteProfileFondaWebApiControllerException("Error de conexion");
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en deleteProfile", e);
             throw new RestClientException("Error de IO",e);
