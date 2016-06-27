@@ -1,6 +1,5 @@
 package com.ds201625.fonda.views.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
@@ -10,11 +9,11 @@ import android.view.View;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Restaurant;
 import com.ds201625.fonda.views.contracts.DetailRestaurantActivityContract;
-import com.ds201625.fonda.views.fragments.DetailRestaurantFragment;
-import com.ds201625.fonda.views.presenters.DetailRestaurantActivityPresenter;
+import com.ds201625.fonda.views.fragments.DetailSearchRestaurantFragment;
+import com.ds201625.fonda.views.presenters.DetailSearchRestaurantActivityPresenter;
 
 
-public class DetailRestaurantActivity extends BaseNavigationActivity
+public class DetailSearchRestaurantActivity extends BaseNavigationActivity
     implements DetailRestaurantActivityContract{
 
     /**
@@ -23,7 +22,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity
     private View mainContent;
     private MenuItem favoriteMenuItem;
     private MenuItem reserveMenuItem;
-    private DetailRestaurantFragment restaurantFragment;
+    private DetailSearchRestaurantFragment restaurantFragment;
     private Toolbar tb;
     private FragmentManager fm;
 
@@ -32,7 +31,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity
      */
     private boolean fab;
 
-    private DetailRestaurantActivityPresenter presenter;
+    private DetailSearchRestaurantActivityPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity
         this.fm = getSupportFragmentManager();
         tb.setVisibility(View.VISIBLE);
 
-        this.presenter = new DetailRestaurantActivityPresenter
+        this.presenter = new DetailSearchRestaurantActivityPresenter
                 ((Restaurant) getIntent().getSerializableExtra("restaurant"),this);
 
         this.presenter.onCreate();
@@ -86,7 +85,7 @@ public class DetailRestaurantActivity extends BaseNavigationActivity
     @Override
     public void setDetailsViewOf(Restaurant restaurant) {
         if (this.restaurantFragment == null)
-            this.restaurantFragment = new DetailRestaurantFragment();
+            this.restaurantFragment = new DetailSearchRestaurantFragment();
 
         this.restaurantFragment.setRestaurant(restaurant);
 

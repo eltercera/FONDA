@@ -15,13 +15,13 @@ import com.ds201625.fonda.views.contracts.DetailRestaurantActivityContract;
 /**
  * Created by rrodriguez on 6/25/16.
  */
-public class DetailRestaurantActivityPresenter {
+public class DetailSearchRestaurantActivityPresenter {
 
     public Restaurant restaurant;
 
     public DetailRestaurantActivityContract activity;
 
-    public DetailRestaurantActivityPresenter
+    public DetailSearchRestaurantActivityPresenter
             (Restaurant restaurant, DetailRestaurantActivityContract activity) {
         this.restaurant = restaurant;
         this.activity = activity;

@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.activities.DetailRestaurantActivity"
+            android:name=".views.activities.DetailSearchRestaurantActivity"
             android:label="@string/nav_detail_restaurant"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

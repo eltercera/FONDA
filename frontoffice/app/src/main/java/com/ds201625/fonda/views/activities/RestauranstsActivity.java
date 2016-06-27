@@ -185,7 +185,7 @@ public class RestauranstsActivity extends BaseNavigationActivity
 
     @Override
     public void openRestaurantActiviy(Restaurant restaurant) {
-        Intent intent = new Intent(this,DetailRestaurantActivity.class);
+        Intent intent = new Intent(this,DetailSearchRestaurantActivity.class);
         intent.putExtra("restaurant", restaurant);
         this.startActivity(intent);
     }
