@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.views.contracts.IProfileViewContract;
+import com.ds201625.fonda.views.contracts.ProfileViewContract;
 import com.ds201625.fonda.views.presenters.ProfilePresenter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.ProfileEmptyFragment;
@@ -26,7 +26,7 @@ import java.util.List;
  * Activity de Perfil de usuario
  */
 public class ProfileActivity extends BaseNavigationActivity
-    implements ProfileListFragment.profileListFragmentListener, IProfileViewContract {
+    implements ProfileListFragment.profileListFragmentListener, ProfileViewContract {
 
     private String TAG = "ProfileActivity";
     /**

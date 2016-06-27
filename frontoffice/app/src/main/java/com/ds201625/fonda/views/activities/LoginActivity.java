@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.views.contracts.ILoginViewContract;
+import com.ds201625.fonda.views.contracts.LoginViewContract;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.presenters.LoginPresenter;
 import java.util.regex.Matcher;
@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends BaseActivity implements ILoginViewContract {
+public class LoginActivity extends BaseActivity implements LoginViewContract {
 
     /**
      * Estados de para el formulario y acciones.
