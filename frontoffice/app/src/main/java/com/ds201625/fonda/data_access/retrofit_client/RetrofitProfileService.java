@@ -60,22 +60,14 @@ public class RetrofitProfileService implements ProfileService {
             if (response.isSuccessful()) {
                 profiles = response.body();
             } else {
-                APIError error = ErrorUtils.parseError(response);
                 Log.e(TAG, "Se ha generado error en WS ");
-                Log.e(TAG,"error message " + error.message());
-                Log.e(TAG,"error message " +error.exceptionType());
-                throw new GetProfilesFondaWebApiControllerException(error.exceptionType());
+                throw new GetProfilesFondaWebApiControllerException("Error del Servicio Web " +
+                        "al buscar los perfiles");
             }
 
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en getProfiles", e);
-            throw new NullPointerException("Error de conexion");
-        } catch (IOException e) {
+        }  catch (IOException e) {
             Log.e(TAG, "Se ha generado error en getProfiles", e);
             throw new RestClientException("Error de IO",e);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en getProfiles", e);
-            throw new GetProfilesFondaWebApiControllerException(error.exceptionType());
         }
         Log.d(TAG, "Cierre del metodo buscar perfiles del commensal logeado "+ profiles.toString());
         return profiles;
@@ -88,8 +80,11 @@ public class RetrofitProfileService implements ProfileService {
      * @throws PostProfileFondaWebApiControllerException
      */
     @Override
-    public void addProfile(Profile profile) throws RestClientException, PostProfileFondaWebApiControllerException {
+    public void addProfile(Profile profile) throws Exception {
         Log.d(TAG, "Se Agrega un perfil al commensal logeado");
+        if (profile == null) {
+            throw new InvalidDataRetrofitException("Perfil Nulo");
+        }
         Call<Profile> call = profileClient.postProfile(profile);
         Profile profileNew = null;
         Response<Profile> response;
@@ -98,21 +93,13 @@ public class RetrofitProfileService implements ProfileService {
             if (response.isSuccessful()) {
                 profileNew = response.body();
             } else {
-                APIError error = ErrorUtils.parseError(response);
                 Log.e(TAG, "Se ha generado error en WS ");
-                Log.e(TAG,"error message " + error.message());
-                Log.e(TAG,"error message " +error.exceptionType());
-                throw new PostProfileFondaWebApiControllerException(error.exceptionType());
+                throw new PostProfileFondaWebApiControllerException("Error del Servicio Web " +
+                        "al agregar un perfil");
             }
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en addProfile", e);
-            throw new NullPointerException("Error de conexion");
-        } catch (IOException e) {
+        }  catch (IOException e) {
             Log.e(TAG, "Se ha generado error en addProfile", e);
             throw new RestClientException("Error de IO",e);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en addProfile", e);
-            throw new PostProfileFondaWebApiControllerException(error.exceptionType());
         }
         Log.d(TAG, "Cierre del metodo agregar perfil al commensal logeado "+ profile.toString());
     }
@@ -124,8 +111,11 @@ public class RetrofitProfileService implements ProfileService {
      * @throws PutProfileFondaWebApiControllerException
      */
     @Override
-    public void editProfile(Profile profile) throws RestClientException, PutProfileFondaWebApiControllerException {
+    public void editProfile(Profile profile) throws Exception {
         Log.d(TAG, "Se Edita un perfil del commensal logeado");
+        if (profile == null) {
+            throw new InvalidDataRetrofitException("Perfil Nulo");
+        }
         Call<Profile> call = profileClient.putProfile(profile,profile.getId());
         Profile profileNew = null;
         Response<Profile> response;
@@ -134,21 +124,13 @@ public class RetrofitProfileService implements ProfileService {
             if (response.isSuccessful()) {
                 profileNew = response.body();
             } else {
-                APIError error = ErrorUtils.parseError(response);
                 Log.e(TAG, "Se ha generado error en WS ");
-                Log.e(TAG,"error message " + error.message());
-                Log.e(TAG,"error message " +error.exceptionType());
-                throw new PutProfileFondaWebApiControllerException(error.exceptionType());
+                throw new PutProfileFondaWebApiControllerException("Error del Servicio Web " +
+                        "al editar un perfil");
             }
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en editProfile", e);
-            throw new NullPointerException("Error de conexion");
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en editProfile", e);
             throw new RestClientException("Error de IO",e);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en editProfile", e);
-            throw new PutProfileFondaWebApiControllerException(error.exceptionType());
         }
         Log.d(TAG, "Cierre del metodo editar perfil del commensal logeado "+ profile.toString());
     }
@@ -160,8 +142,11 @@ public class RetrofitProfileService implements ProfileService {
      * @throws DeleteProfileFondaWebApiControllerException
      */
     @Override
-    public void deleteProfile(int id) throws RestClientException, DeleteProfileFondaWebApiControllerException {
+    public void deleteProfile(int id) throws Exception {
         Log.d(TAG, "Se Elimina un perfil del commensal logeado");
+        if (id <= 0) {
+            throw new InvalidDataRetrofitException("Id de Perfil Erroneo.");
+        }
         Call<String> call = profileClient.DeleteProfile(id);
         String aux = null;
         Response<String> response;
@@ -170,22 +155,13 @@ public class RetrofitProfileService implements ProfileService {
             if (response.isSuccessful()) {
                 aux = response.body();
             } else {
-                APIError error = ErrorUtils.parseError(response);
                 Log.e(TAG, "Se ha generado error en WS ");
-                Log.e(TAG,"error message " + error.message());
-                Log.e(TAG,"error message " +error.exceptionType());
-                throw new DeleteProfileFondaWebApiControllerException("Ha ocurrido un error remoto");
+                throw new DeleteProfileFondaWebApiControllerException("Error del Servicio Web " +
+                        "al eliminar un perfil");
             }
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en deleteProfile", e);
-            throw new DeleteProfileFondaWebApiControllerException("Error de conexion");
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en deleteProfile", e);
             throw new RestClientException("Error de IO",e);
-        }
-        catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en deleteProfile", e);
-            throw new DeleteProfileFondaWebApiControllerException(error.exceptionType());
         }
         Log.d(TAG, "Cierre del metodo eliminar perfil del commensal logeado "+ id);
 

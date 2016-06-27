@@ -57,16 +57,13 @@ public class CreateTokenCommand extends BaseCommand {
         catch (RestClientException e)
         {
             Log.e(TAG, "Se ha generado error en invoke al crear un Token", e);
-            e.printStackTrace();
         }
         catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en invoke al crear un Token", e);
-            e.printStackTrace();
         }
         catch (Exception e)
         {
             Log.e(TAG, "Se ha generado error en invoke al crear un Token", e);
-            e.printStackTrace();
         }
 
         setResult(tokenTest);

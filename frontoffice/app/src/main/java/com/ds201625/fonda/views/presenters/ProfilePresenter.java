@@ -3,6 +3,8 @@ package com.ds201625.fonda.views.presenters;
 import android.util.Log;
 
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.logic.InvalidParameterTypeException;
+import com.ds201625.fonda.logic.ParameterOutOfIndexException;
 import com.ds201625.fonda.views.contracts.ProfileListViewContract;
 import com.ds201625.fonda.views.contracts.ProfileViewContract;
 import com.ds201625.fonda.logic.Command;
@@ -38,9 +40,15 @@ public class ProfilePresenter{
                 commandoCreateProfile.setParameter(0, profile);
                 commandoCreateProfile.run();
                 resp = (boolean) commandoCreateProfile.getResult();
-            } catch (Exception e)
+                this.profileView.displayMsj("Se agrego con Exito!!");
+            }
+            catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                this.profileView.displayMsj("Error interno: " + e.getMessage());
+            }
+            catch (Exception e)
             {
                 Log.e(TAG,"Error al crear Perfil",e);
+                this. profileView.displayMsj(e.getMessage());
             }
             Log.d(TAG,"Cierre del Metodo createProfile");
             return resp;
@@ -54,9 +62,14 @@ public class ProfilePresenter{
                 commandoUpdateProfile.setParameter(0,profile);
                 commandoUpdateProfile.run();
                 resp = (boolean) commandoUpdateProfile.getResult();
+                this.profileView.displayMsj("Se modifico con Exito!!");
+            }
+            catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                this.profileView.displayMsj("Error interno: " + e.getMessage());
             } catch (Exception e)
             {
                 Log.e(TAG,"Error al modificar Perfil",e);
+                this. profileView.displayMsj(e.getMessage());
             }
             Log.d(TAG,"Cierre del Metodo updateProfile");
             return resp;
@@ -71,9 +84,15 @@ public class ProfilePresenter{
                 commandoDeleteProfile.setParameter(0,profile);
                 commandoDeleteProfile.run();
                 resp = (boolean) commandoDeleteProfile.getResult();
-            } catch (Exception e)
+                this.profileView.displayMsj("Se elimino con Exito!!");
+            }
+            catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                this.profileView.displayMsj("Error interno: " + e.getMessage());
+            }
+            catch (Exception e)
             {
                 Log.e(TAG,"Error al eliminar el Perfil",e);
+                this. profileView.displayMsj(e.getMessage());
             }
             Log.d(TAG,"Cierre del Metodo deleteProfile");
             return resp;
@@ -86,10 +105,13 @@ public class ProfilePresenter{
                 Command commandoGetProfiles = FondaCommandFactory.getProfilesCommand();
                 commandoGetProfiles.run();
                 resp = (List<Profile>) commandoGetProfiles.getResult();
+            }
+            catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                this.profileView.displayMsj("Error interno: " + e.getMessage());
             } catch (Exception e)
             {
-                this. profileView.displayMsj(e.getMessage());
                 Log.e(TAG,"Error al Listar los Perfiles",e);
+                this. profileView.displayMsj(e.getMessage());
             }
             Log.d(TAG,"Cierre del Metodo getProfiles");
             return resp;

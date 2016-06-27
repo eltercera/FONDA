@@ -52,7 +52,7 @@ public class RetrofitTokenService implements TokenService{
      */
     @Override
     public Token createToken(Context context) throws Exception {
-        Log.d(TAG, "Se crear Token");
+        Log.d(TAG, "Se crea un Token");
         Call<Token> call = tokenClient.postToken();
         Token token = null;
         Response<Token> response;
@@ -63,13 +63,11 @@ public class RetrofitTokenService implements TokenService{
             } else {
                 APIError error = ErrorUtils.parseError(response);
                 Log.e(TAG, "Se ha generado error en WS ");
-                Log.e(TAG,"error message " + error.message());
-                Log.e(TAG,"error message " +error.exceptionType());
-                throw new GetTokenFondaWebApiControllerException(error.exceptionType());
+                throw new GetTokenFondaWebApiControllerException("Error al agregar Token");
             }
         }catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado error en createToken", e);
-            throw new NullPointerException("Error de ServicioWeb");
+            throw new NullPointerException("Error de Servicio Web");
         }
         catch (IOException e) {
             Log.e(TAG, "Se ha generado error en createToken", e);

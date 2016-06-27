@@ -8,7 +8,9 @@ import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.BaseCommand;
+import com.ds201625.fonda.logic.CommandInternalErrorException;
 import com.ds201625.fonda.logic.Parameter;
+import com.ds201625.fonda.logic.ParameterOutOfIndexException;
 import com.ds201625.fonda.logic.SessionData;
 
 import java.util.List;
@@ -44,24 +46,9 @@ public class GetProfilesCommand extends BaseCommand {
             profiles = profileService.getProfiles();
             Log.d(TAG, "Numero de perfiles encontrados: " + profiles.size());
         }
-        catch (GetProfilesFondaWebApiControllerException e)
-        {
-            Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
-            throw new Exception("Error WebService");
-        }
-        catch (RestClientException e)
-        {
-            Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
-            e.printStackTrace();
-        }
-        catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
-            throw new NullPointerException(e.getMessage());
-        }
-        catch (Exception e)
-        {
-            Log.e(TAG, "Se ha generado error en invoke al buscar los perfiles", e);
-            e.printStackTrace();
+        catch (ParameterOutOfIndexException e) {
+            Log.e("Fonda Command",e.getMessage());
+            throw CommandInternalErrorException.generate(this.getClass().toString(),e);
         }
 
 

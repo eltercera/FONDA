@@ -22,7 +22,6 @@ public class LoginPresenter {
             {
                 SessionData.getInstance().registerCommensal(email, password);
             }  catch (NullPointerException e) {
-                e.printStackTrace();
                 throw new NullPointerException("Error de Servicio Web");
             }
             catch (Exception e) {

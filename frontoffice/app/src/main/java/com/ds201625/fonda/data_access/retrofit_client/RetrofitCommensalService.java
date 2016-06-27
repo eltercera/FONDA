@@ -53,7 +53,7 @@ public class RetrofitCommensalService implements CommensalService {
      */
     @Override
     public Commensal RegisterCommensal(String user, String password, Context context)
-            throws InvalidDataRetrofitException, RestClientException, LocalStorageException, AddCommensalWebApiControllerException {
+            throws Exception{
         Log.d(TAG, "Se registra un commensal");
         if (user.isEmpty() || password.isEmpty())
             throw new InvalidDataRetrofitException("Usuario o password son vacios.");
@@ -69,22 +69,15 @@ public class RetrofitCommensalService implements CommensalService {
             if (response.isSuccessful()) {
                 rsvCommensal = response.body();
             } else {
-                APIError error = ErrorUtils.parseError(response);
                 Log.e(TAG, "Se ha generado error en WS ");
-                Log.e(TAG,"error message " + error.message());
-                Log.e(TAG,"error message " +error.exceptionType());
-                throw new AddCommensalWebApiControllerException(error.exceptionType());
+                throw new AddCommensalWebApiControllerException("Error de Servicio Web");
             }
-        } catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en WebService");
-            throw new NullPointerException("Error de Servicio Web");
         }
         catch (IOException e) {
             Log.e(TAG, "Se ha generado error en getProfiles", e);
             throw new RestClientException("Error de IO",e);
         } catch (Exception e) {
             Log.e(TAG, "Se ha generado error en getProfiles", e);
-            throw new AddCommensalWebApiControllerException(error.exceptionType());
         }
         Log.d(TAG, "Cierre del metodo registrar commensal. Return: "+ rsvCommensal.toString());
 
