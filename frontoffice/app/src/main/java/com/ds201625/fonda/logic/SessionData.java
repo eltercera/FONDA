@@ -118,6 +118,7 @@ public class SessionData {
     public void logoutCommensal() throws Exception {
         removeToken();
         removeCommensal();
+        SessionData.instance = null;
     }
 
     /**
@@ -128,7 +129,6 @@ public class SessionData {
     public void addCommensal(Commensal commensal) throws LocalStorageException {
         getCommensalsrv().saveCommensal(commensal,this.context);
         setCommensal();
-        SessionData.instance = null;
     }
 
     /**

@@ -119,6 +119,12 @@ public class RetroditServiceFactory implements ServiceFactory {
     }
 
     @Override
-    public RestaurantService getRestaurantService() {return new RetrofitRestaurantService(); }
+    public ReservationService getReservesService() {
+
+        return new RetrofitReservationService();
+    }
+
+    @Override
+    public RestaurantService getRestaurantService(Token token) {return new RetrofitRestaurantService(token); }
 }
 

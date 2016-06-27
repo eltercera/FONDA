@@ -66,15 +66,13 @@
                         <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                             <div class="form-group">
                                 <label class="control-label">Usuario</label>
-                                <asp:Label ID="userAccount" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
-                                <div id="Div1" style="color: #FF9999" runat="server"></div>
+                                <asp:Label ID="userAccount" CssClass="form-control" placeholder="Usuario" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                             <div class="form-group">
                                 <label class="control-label"># de Comensales</label>
-                                <asp:Label ID="numberCommensal" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
-                                <div id="Div2" style="color: #FF9999" runat="server"></div>
+                                <asp:Label ID="numberCommensal" CssClass="form-control" placeholder="># de Comensales" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
                             </div>
                         </div>
                     </div>
@@ -82,15 +80,13 @@
                         <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                             <div class="form-group">
                                 <label class="control-label">Restaurante</label>
-                                <asp:Label ID="restaurant" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
-                                <div id="Div3" style="color: #FF9999" runat="server"></div>
+                                <asp:Label ID="restaurant" CssClass="form-control" placeholder="Restaurante" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                             <div class="form-group">
                                 <label class="control-label">Mesa</label>
-                                <asp:Label ID="restaurantTable" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
-                                <div id="Div4" style="color: #FF9999" runat="server"></div>
+                                <asp:Label ID="restaurantTable" CssClass="form-control" placeholder="Mesa" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
                             </div>
                         </div>
                     </div>
@@ -98,15 +94,13 @@
                         <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                             <div class="form-group">
                                 <label class="control-label">Fecha de Creacion</label>
-                                <asp:Label ID="creationDate" CssClass="form-control" placeholder="Nombre" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
-                                <div id="Div5" style="color: #FF9999" runat="server"></div>
+                                <asp:Label ID="creationDate" CssClass="form-control" placeholder="Fecha de Creacion" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                             <div class="form-group">
                                 <label class="control-label">Fecha de Reservacion</label>
-                                <asp:Label ID="reservationDate" CssClass="form-control" placeholder="Apellido" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
-                                <div id="Div6" style="color: #FF9999" runat="server"></div>
+                                <asp:Label ID="reservationDate" CssClass="form-control" placeholder="Fecha de Reservacion" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
                             </div>
                         </div>
                     </div>

@@ -52,6 +52,16 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         }
 
         /// <summary>
+        /// Metodo de la fabrica para el Comando GetOrderAccountByInvoice
+        /// </summary>
+        /// <param name="entity">Lista de objetos (Invoice, restaurantId)</param>
+        /// <returns>comando GetOrderAccountByInvoice</returns>
+        public static Command GetCommandGetOrderAccountByInvoice(object receiver)
+        {
+            return new CommandGetOrderAccountByInvoice(receiver);
+        }
+
+        /// <summary>
         /// Metodo de la fabrica para el Comando ReleaseTableByRestaurant
         /// </summary>
         /// <param name="entity">Lista de objetos (Restaurante, tableId)</param>
@@ -176,13 +186,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         {
             return new CommandGetInvoice(receiver);
         }
-        /// <summary>
-        /// Metodo de la fabrica para el CCommandGenerateException
-        /// </summary>
-        public static Command GetCommandGenerateException(object receiver)
-        {
-            return new CommandGenerateException(receiver);
-        }
+
         /// <summary>
         /// Metodo de la fabrica para el CommandCloseCashRegister
         /// </summary>
@@ -463,6 +467,48 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Factory
         public static Command GetCommandGetAllReservations()
         {
             return new CommandGetAllReservations();
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el CommandGetDetailReservation
+        /// </summary>
+        /// <param name="receiver">Parametros, Id de la reservacion</param>
+        /// <returns>List Reservation, Commensal, Table</returns>
+        /// 
+        public static Command GetCommandGetDetailReservation(object receiver)
+        {
+            return new CommandGetDetailReservation(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el CommandGetReservationById
+        /// </summary>
+        /// <param name="receiver">Id de la reservacion</param>
+        /// <returns>comando CommmandGetReservationById</returns>
+        /// 
+        public static Command GetCommandGetReservationById(object receiver)
+        {
+            return new CommandGetReservationById(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el comando GetCommandSaveReservation 
+        /// </summary>
+        /// <param name="receiver"></param>
+        /// <returns>comando CommandSaveReservation</returns>
+        public static Command GetCommandSaveReservation(object receiver)
+        {
+            return new CommandSaveReservation(receiver);
+        }
+
+        /// <summary>
+        /// Metodo de la fabrica para el comando GetCommandCancelReservation 
+        /// </summary>
+        /// <param name="receiver">el objeto de la reservacion</param>
+        /// <returns>comando CommandCancelReservation</returns>
+        public static Command GetCommandCancelReservation(object receiver)
+        {
+            return new CommandCancelReservation(receiver);
         }
 
 

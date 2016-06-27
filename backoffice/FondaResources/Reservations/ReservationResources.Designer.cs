@@ -97,6 +97,42 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CommandCancelReservation.
+        /// </summary>
+        public static string ClassNameCancelReservation {
+            get {
+                return ResourceManager.GetString("ClassNameCancelReservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DetailReservationPresenter.
+        /// </summary>
+        public static string ClassNameDetailReservationPresenter {
+            get {
+                return ResourceManager.GetString("ClassNameDetailReservationPresenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetDetailReservation.
+        /// </summary>
+        public static string ClassNameGetDetailReservation {
+            get {
+                return ResourceManager.GetString("ClassNameGetDetailReservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommandGetReservationById.
+        /// </summary>
+        public static string ClassNameGetReservationById {
+            get {
+                return ResourceManager.GetString("ClassNameGetReservationById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ReservationsPresenter.
         /// </summary>
         public static string ClassNameReservationsPresenter {
@@ -138,6 +174,15 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservations {
         public static string MessageGetReservations {
             get {
                 return ResourceManager.GetString("MessageGetReservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id.
+        /// </summary>
+        public static string QueryParam {
+            get {
+                return ResourceManager.GetString("QueryParam", resourceCulture);
             }
         }
         
@@ -282,6 +327,24 @@ namespace com.ds201625.fonda.Resources.FondaResources.Reservations {
         public static string StatusColumn {
             get {
                 return ResourceManager.GetString("StatusColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha anulado la reservacion satisfactoriamente.
+        /// </summary>
+        public static string SuccessMessageCommandCancelReservation {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandCancelReservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Se ha obtenido la reservacion con exito.
+        /// </summary>
+        public static string SuccessMessageCommandGetReservationById {
+            get {
+                return ResourceManager.GetString("SuccessMessageCommandGetReservationById", resourceCulture);
             }
         }
     }

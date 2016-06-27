@@ -34,7 +34,7 @@ public class CreateProfileCommand extends BaseCommand {
     @Override
     protected void invoke() {
 
-        Log.d(TAG, "Comando para agregar un perfil a un commensal");
+        Log.d(TAG, "Comando para agregar un perfil de un commensal logeado");
         Profile profile;
 
         ProfileService profileService = FondaServiceFactory.getInstance()
@@ -43,6 +43,7 @@ public class CreateProfileCommand extends BaseCommand {
         {
             profile = (Profile) getParameter(0);
             profileService.addProfile(profile);
+            Log.d(TAG, "Se agrego el Perfil: " + profile.getProfileName());
         }
         catch (RestClientException e)
         {
@@ -60,5 +61,7 @@ public class CreateProfileCommand extends BaseCommand {
         }
 
         setResult(true);
+        Log.d(TAG, "Se agrego con exito el Perfil. Result: " + getResult().toString());
+        Log.d(TAG, "Se agrego con exito el Perfil");
     }
 }

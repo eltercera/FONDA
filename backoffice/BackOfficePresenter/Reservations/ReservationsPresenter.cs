@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Web.UI.WebControls;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
+using com.ds201625.fonda.View.BackOfficePresenter.FondaMVPException.Reservations;
 
 namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
 {
@@ -17,7 +18,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
         //Enlace entre el Modelo y la Vista
         private IReservationsContract _view;
         private int totalColumns = 6;
-
 
         /// <summary>
         /// Constructor de la clase
@@ -29,6 +29,15 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             //Se genera el enlace entre el modelo y la vista
             _view = viewDefault;
 
+        }
+
+        public void WarningLabel(string message)
+        {
+
+            {
+                _view.WarningLabel.Visible = true;
+                _view.WarningLabelMessage.Text = message;
+            }
         }
 
 
@@ -53,7 +62,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                 else
                     commandGetReservations = CommandFactory.GetCommandGetAllReservations();
 
-                //TODO (Reservations): Revisar si esto funciona bien
                 //ejecuta el comando deseado
                 commandGetReservations.Execute();
 
@@ -67,9 +75,10 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                 }
 
             }
-            catch (MVPExceptionOrdersTable ex)
+            //TODO Reservations: Acomodar las excepciones a las nuestras
+            catch (MVPExceptionReservationsTable ex)
             {
-                MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
+                MVPExceptionReservationsTable e = new MVPExceptionReservationsTable
                     (
                         ReservationErrors.MVPExceptionReservationsTableCode,
                         ReservationResources.ClassNameReservationsPresenter,
@@ -82,7 +91,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             }
             catch (Exception ex)
             {
-                MVPExceptionOrdersTable e = new MVPExceptionOrdersTable
+                MVPExceptionReservationsTable e = new MVPExceptionReservationsTable
                     (
                         ReservationErrors.MVPExceptionReservationsTableCode,
                         ReservationResources.ClassNameReservationsPresenter,
@@ -103,13 +112,76 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
 
 
 
-        //TODO (RESERVATIONS):
+        //TODO (RESERVATIONS): Terminar esto, da error NonUniqueObject
         /// <summary>
         /// Metodo encargado de cancelar la reservacion
         /// </summary>
-        public void CancelReservation()
+        public void CancelReservation(object sender, EventArgs e)
         {
+            LinkButton linkButtonCancelReservation = (LinkButton)sender;
+            int _idReservation = int.Parse(linkButtonCancelReservation.Attributes[ReservationResources.dataId]);
+            Command commandGetReservationByid;
+            Command commandCancelReservation;
+            Reservation _reservation;
 
+
+            try
+            {
+
+
+
+                commandGetReservationByid = CommandFactory.GetCommandGetReservationById(_idReservation);
+                commandGetReservationByid.Execute();
+                _reservation = (Reservation)commandGetReservationByid.Receiver;
+
+                //Obtiene la instancia del comando enviado la reservacion como parametro
+                commandCancelReservation = CommandFactory.GetCommandCancelReservation(_reservation);
+                //ejecuta el comando deseado
+                commandCancelReservation.Execute();
+
+                //asigno el resultado a la lista de reservaciones
+                _reservation = (Reservation)commandCancelReservation.Receiver;
+
+                //TODO Reservation: Revisar por que hay que darle dos veces en la segunda vuelta
+                GetReservations();
+                SuccessLabel(ReservationResources.SuccessMessageCommandCancelReservation);
+         
+
+
+
+            }
+            catch (MVPExceptionCancelReservation ex)
+            {
+                MVPExceptionCancelReservation exe = new MVPExceptionCancelReservation
+                    (
+                        ReservationErrors.MVPExceptionCancelReservationCode,
+                        ReservationResources.ClassNameReservationsPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        ReservationErrors.MessageMVPExceptionCancelReservation,
+                        ex
+                    );
+                Logger.WriteErrorLog(exe.ClassName, exe);
+               // _view.ReservationsTable.Page.Response.Redirect(ReservationResources.RefreshURL);
+                GetReservations();
+                WarningLabel(exe.MessageException);
+            }
+            catch (Exception ex)
+            {
+                MVPExceptionReservationsTable exe = new MVPExceptionReservationsTable
+                    (
+                        ReservationErrors.MVPExceptionCancelReservationCode,
+                        ReservationResources.ClassNameReservationsPresenter,
+                        System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                        ReservationErrors.MessageCommandExceptionCancelReservationCanceledStatus,
+                        ex
+                    );
+                Logger.WriteErrorLog(exe.ClassName, exe);
+      
+               // _view.ReservationsTable.Page.Response.Redirect(ReservationResources.RefreshURL);
+                GetReservations();
+                WarningLabel(exe.MessageException);
+            }
+            //Command commandCancelReservation;
         }
 
 
@@ -143,27 +215,9 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                 {
                     //Crea una nueva celda de la tabla
                     TableCell tCell = new TableCell();
-
                     //Agrega el numero de la reservacion. Esto hay que implementarlo
                     if (j.Equals(0))
                         tCell.Text = listReservations[i].Number.ToString();
-
-                    //TODO (Reservations): Agregar la columna del email del comensal
-                    //Agrega el email del comensal. Esto hay que implementarlo en comensal
-                    // else if (j.Equals(1))
-                    //     tCell.Text = data[i].Commensal.Email.ToString();
-
-                    //TODO (Reservations): Agregar la columna de restaurant
-                    //Agrega el restaurante
-                    //else if (j.Equals(2))
-                    //    tCell.Text = restaurant.Name.ToString();
-                    //TODO (Reservations): Posemos hacerlo con un CommandFindRestaurantByTable
-
-                    //TODO (Reservationes): Agregar la columna de numero de mesas
-                    //Agrega el numero de mesa
-                    //else if (j.Equals(3))
-                    //    tCell.Text = listTables[k].Number.ToString();
-
                     //Agrega la fecha de creacion de la reservacion
                     else if (j.Equals(1))
                         tCell.Text = listReservations[i].CreationDate.ToString();
@@ -173,17 +227,15 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                     //Agrega el numero de comensales de la reservacion
                     else if (j.Equals(3))
                         tCell.Text = listReservations[i].CommensalNumber.ToString();
-                 
-                    //TODO (Reservacion): Arreglar el estado
                     //Agrega el estado de la reservacion
                     else if (j.Equals(4))
                     {
                         //Revisa el estado actual para convertirlo a string
                         if (listReservations[i].Status.Equals(ReservedReservationStatus.Instance))
-                            status.Append(ReservationResources.CanceledReservationStatus);
-                        else if (listReservations[i].Status.Equals(CanceledReservationStatus.Instance))
                             status.Append(ReservationResources.ReservedReservationStatus);
-  
+                        else if (listReservations[i].Status.Equals(CanceledReservationStatus.Instance))
+                            status.Append(ReservationResources.CanceledReservationStatus);
+
                         tCell.Text = status.ToString();
                         status.Clear();
                     }
@@ -202,8 +254,11 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                         //boton de cancelar reservacion
                         LinkButton LBCancelReservation = new LinkButton();
                         LBCancelReservation.Text += ReservationResources.CancelReservation;
-                        LBCancelReservation.Attributes[ReservationResources.href] =
-                            ReservationResources.RefreshURL + dataId.ToString();
+
+                        LBCancelReservation.Click += new EventHandler(CancelReservation);
+                        LBCancelReservation.Attributes[ReservationResources.dataId] = dataId.ToString();
+                        //LBCancelReservation.Attributes[ReservationResources.href] =
+                        //    ReservationResources.RefreshURL + dataId.ToString();
                         tCell.Controls.Add(LBCancelReservation);
                     }
                     //    Agrega la celda a la fila
@@ -235,17 +290,11 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             TableHeaderCell h4 = new TableHeaderCell();
             TableHeaderCell h5 = new TableHeaderCell();
             TableHeaderCell h6 = new TableHeaderCell();
-           // TableHeaderCell h7 = new TableHeaderCell();
 
             //Se indica que se trabajara en el header y se asignan los valores a las columnas
             header.TableSection = TableRowSection.TableHeader;
-            //TODO (Reservacion): Mejorar esto
             h1.Text = ReservationResources.ReservationNumberColumn;
             h1.Scope = TableHeaderScope.Column;
-          //  h2.Text = ReservationResources.ReservationUserColumn;
-          //  h2.Scope = TableHeaderScope.Column;
-          //  h3.Text = ReservationResources.ReservationTableColumn;
-          //  h3.Scope = TableHeaderScope.Column;
             h2.Text = ReservationResources.ReservationCreationDateColumn;
             h2.Scope = TableHeaderScope.Column;
             h3.Text = ReservationResources.ReservationDateColumn;
@@ -264,7 +313,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             header.Cells.Add(h4);
             header.Cells.Add(h5);
             header.Cells.Add(h6);
-         //   header.Cells.Add(h7);
 
             return header;
         }

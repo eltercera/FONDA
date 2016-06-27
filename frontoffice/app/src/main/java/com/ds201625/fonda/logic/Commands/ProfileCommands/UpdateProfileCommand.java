@@ -11,7 +11,7 @@ import com.ds201625.fonda.logic.Parameter;
 import com.ds201625.fonda.logic.SessionData;
 
 /**
- * Comando para crear un perfil
+ * Comando para modificar un perfil
  */
 public class UpdateProfileCommand extends BaseCommand {
 
@@ -38,26 +38,23 @@ public class UpdateProfileCommand extends BaseCommand {
 
         ProfileService profileService = FondaServiceFactory.getInstance()
                 .getProfileService(SessionData.getInstance().getToken());
-        try
-        {
+        try {
             profile = (Profile) getParameter(0);
             profileService.editProfile(profile);
-        }
-        catch (RestClientException e)
-        {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            Log.d(TAG, "Se modifico el Perfil: " + profile.getId());
+        } catch (RestClientException e) {
+            Log.e(TAG, "Se ha generado error en invoke al modificar un Perfil", e);
             e.printStackTrace();
-        }
-        catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+        } catch (NullPointerException e) {
+            Log.e(TAG, "Se ha generado error en invoke al modificar un Perfil", e);
             e.printStackTrace();
-        }
-        catch (Exception e)
-        {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+        } catch (Exception e) {
+            Log.e(TAG, "Se ha generado error en invoke al modificar un Perfil", e);
             e.printStackTrace();
         }
 
         setResult(true);
+        Log.d(TAG, "Se modifico con exito el Perfil. Result: " + getResult().toString());
+        Log.d(TAG, "Se modifico con exito el Perfil");
     }
 }

@@ -119,9 +119,9 @@ namespace BackOffice.Seccion.Reservas
             }
         }
 
-        protected void ButtonCancelReservation_Click(object sender, EventArgs e)
-        {
-            _presenter.CancelReservation();
-        }
+        //protected void ButtonCancelReservation_Click(object sender, EventArgs e)
+        //{
+        //    _presenter.CancelReservation(sender, e);
+        //}
     }
 }

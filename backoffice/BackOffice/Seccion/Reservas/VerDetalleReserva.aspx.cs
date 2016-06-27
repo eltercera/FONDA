@@ -48,7 +48,7 @@ namespace BackOffice.Seccion.Reservas
             set { restaurant = value; }
         }
 
-        public System.Web.UI.WebControls.Label Table
+        public System.Web.UI.WebControls.Label RestaurantTable
         {
             get { return restaurantTable; }
 
@@ -138,19 +138,7 @@ namespace BackOffice.Seccion.Reservas
         //}
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session[ResourceLogin.sessionUserID] != null &&
-            //    Session[ResourceLogin.sessionRestaurantID] != null)
-            //    _presenter.GetDetailInvoice();
-            //else
-            //    Response.Redirect(RecursoMaster.addressLogin);
-
-//TODO Reservation: Descomentar ahorita
-          //  _presenter.GetDetailReservation();
-
-            //TODO Reservation: Esto lo podemos hacer en el presentador
-            // Session[ReservationResources.SessionNameRest] = ReservationResources.SessionAllRestaurants;
-            Session[ReservationResources.SessionNameRest] = "Hola";
-
+           _presenter.GetDetailReservation();
         }
     }
 }

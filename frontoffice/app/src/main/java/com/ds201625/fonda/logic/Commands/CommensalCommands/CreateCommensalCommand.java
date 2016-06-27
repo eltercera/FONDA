@@ -14,11 +14,11 @@ import com.ds201625.fonda.logic.Parameter;
 import com.ds201625.fonda.logic.SessionData;
 
 /**
- * Comando para crear un perfil
+ * Comando para crear un Commensal
  */
 public class CreateCommensalCommand extends BaseCommand {
 
-    private String TAG = "CreateProfileCommand";
+    private String TAG = "CreateCommensalCommand";
 
     /**
      * Se asignan los parametros del commando
@@ -38,7 +38,7 @@ public class CreateCommensalCommand extends BaseCommand {
     @Override
     protected void invoke() {
 
-        Log.d(TAG, "Comando para agregar un perfil a un commensal");
+        Log.d(TAG, "Comando para agregar un commensal");
         String email;
         String password;
         Context context;
@@ -51,22 +51,26 @@ public class CreateCommensalCommand extends BaseCommand {
             password = (String) getParameter(1);
             context = (Context) getParameter(2);
             commensal = commensalService.RegisterCommensal(email,password,context);
+            Log.d(TAG, "Se agrego el Commensal id: " + commensal.getId() +
+                    " email: " + commensal.getEmail());
         }
         catch (RestClientException e)
         {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            Log.e(TAG, "Se ha generado error en invoke al agregar un commensal", e);
             e.printStackTrace();
         }
         catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            Log.e(TAG, "Se ha generado error en invoke al agregar un commensal", e);
             e.printStackTrace();
         }
         catch (Exception e)
         {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
+            Log.e(TAG, "Se ha generado error en invoke al agregar un commensal", e);
             e.printStackTrace();
         }
 
         setResult(commensal);
+        Log.d(TAG, "Se agrego con exito el Commensal. Result: " + getResult().toString());
+        Log.d(TAG, "Se agrego con exito el Commensal");
     }
 }

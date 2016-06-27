@@ -17,6 +17,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
         private IList<object> _list;
         private Invoice _invoice;
         private Profile profile;
+        private Invoice _invoiceGenerate;
 
         public CommandGenerateInvoice(Object receiver) : base(receiver) { }
 
@@ -25,6 +26,10 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
             List<Object> parameters;
             Payment payment;
             Account account;
+            float _tip=0;
+            float tax = 0.12F;
+            CreditCardPayment _creditCard;
+            bool validate = false;
             try
             {
                 _list = (IList<object>)Receiver;
@@ -32,6 +37,8 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 IPaymentDao<Payment> _paymentDAO = _facDAO.GetPaymentDAO();
                 IProfileDAO _profileDAO = _facDAO.GetProfileDAO();
                 IOrderAccountDao _accountDAO = _facDAO.GetOrderAccountDAO();
+                IInvoiceDao _invoiceDao = _facDAO.GetInvoiceDao();
+                _invoiceGenerate = EntityFactory.GetInvoice();
 
                 parameters = (List<Object>)Receiver;
 
@@ -39,26 +46,53 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                 int orderId = (int)parameters[1];
                 int restaurantId = (int)parameters[2];
                 int profileId = (int)parameters[3];
-
                 account = _accountDAO.FindById(orderId);
-                profile = _profileDAO.FindById(profileId);
 
-                float totalInvoice = account.GetAmount();
-                //ESTO TIENE QUE CAMBIARSE POR UN RECURSO
-                totalInvoice += totalInvoice * 0.12F;
 
-                
-                if (payment.Amount >= totalInvoice)
+
+                if (account.Status.Equals(OpenAccountStatus.Instance))
                 {
-                    //ESTE CONSTRUCTOR DEBO REVISARLO
-                    Invoice invoice = EntityFactory.GetInvoice(payment, profile, payment.Amount, totalInvoice, null, 100, null);
+                    validate = true;
+                }
 
-                    _invoice = _accountDAO.SaveInvoice(invoice, orderId, restaurantId);
+                else {
+                    _invoiceGenerate = _invoiceDao.FindGenerateInvoiceByAccount(orderId);
+
+                    if (_invoiceGenerate.Id.Equals(0))
+                    {
+                        validate = true;
+                    }
+
+                }
+
+                if (validate)
+                {
+
+                   
+                    profile = _profileDAO.FindById(profileId);
+
+                    float totalInvoice = account.GetAmount();
+                    tax += totalInvoice * tax;
+                    totalInvoice += tax;
+
+                    if (payment.GetType().Name.Equals(OrderAccountResources.CreditCard))
+                    {
+                        _creditCard = (CreditCardPayment)payment;
+                        _tip = _creditCard.Tip;
+                    }
+
+
+                    if (payment.Amount >= totalInvoice)
+                    {
+                        Invoice invoice = EntityFactory.GetInvoice(payment, profile, totalInvoice, tax);
+                        _invoice = _accountDAO.SaveInvoice(invoice, orderId, restaurantId);
+                    }
+                    else
+                        throw new NullReferenceException();
+
                 }
                 else
                     throw new NullReferenceException();
-
-
 
                 Receiver = _invoice;
 
@@ -73,9 +107,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 _invoice = EntityFactory.GetInvoice(); ;
                 Receiver = _invoice;
+                throw exception;
             }
             catch (Exception ex)
             {
@@ -87,9 +121,9 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.OrderAccount
                     ex);
 
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, exception);
-                throw exception;
                 _invoice = EntityFactory.GetInvoice(); ;
                 Receiver = _invoice;
+                throw exception;
             }
 
             Logger.WriteSuccessLog(OrderAccountResources.ClassNameGenerateInvoice

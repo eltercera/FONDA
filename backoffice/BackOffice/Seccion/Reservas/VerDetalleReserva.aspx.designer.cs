@@ -58,15 +58,6 @@ namespace BackOffice.Seccion.Reservas {
         protected global::System.Web.UI.WebControls.Label userAccount;
         
         /// <summary>
-        /// Div1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
-        
-        /// <summary>
         /// numberCommensal control.
         /// </summary>
         /// <remarks>
@@ -74,15 +65,6 @@ namespace BackOffice.Seccion.Reservas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label numberCommensal;
-        
-        /// <summary>
-        /// Div2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div2;
         
         /// <summary>
         /// restaurant control.
@@ -94,15 +76,6 @@ namespace BackOffice.Seccion.Reservas {
         protected global::System.Web.UI.WebControls.Label restaurant;
         
         /// <summary>
-        /// Div3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
-        
-        /// <summary>
         /// restaurantTable control.
         /// </summary>
         /// <remarks>
@@ -110,15 +83,6 @@ namespace BackOffice.Seccion.Reservas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label restaurantTable;
-        
-        /// <summary>
-        /// Div4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div4;
         
         /// <summary>
         /// creationDate control.
@@ -130,15 +94,6 @@ namespace BackOffice.Seccion.Reservas {
         protected global::System.Web.UI.WebControls.Label creationDate;
         
         /// <summary>
-        /// Div5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div5;
-        
-        /// <summary>
         /// reservationDate control.
         /// </summary>
         /// <remarks>
@@ -146,14 +101,5 @@ namespace BackOffice.Seccion.Reservas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label reservationDate;
-        
-        /// <summary>
-        /// Div6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div6;
     }
 }

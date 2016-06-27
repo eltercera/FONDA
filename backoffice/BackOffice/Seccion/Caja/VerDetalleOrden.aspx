@@ -55,6 +55,12 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
+                    <div class="row">
+                            &nbsp;&nbsp;&nbsp;&nbsp;<b>Fecha: </b>
+                            <asp:Label ID="date" runat="server"></asp:Label>
+                            <br />
+                            <br />
+                    </div>
                     <div class="table-responsive">
 
                         <asp:Table ID="orderDetail" CssClass="table table-bordered table-hover table-striped" runat="server"></asp:Table>

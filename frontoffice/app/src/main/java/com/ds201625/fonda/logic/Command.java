@@ -15,7 +15,8 @@ public interface Command {
      * @param index posición del parametro
      * @param data objeto a contener
      */
-    void setParameter(int index, Object data) throws Exception;
+    void setParameter(int index, Object data)
+            throws ParameterOutOfIndexException,InvalidParameterTypeException;
 
     /**
      * Obtiene el resultado del commando

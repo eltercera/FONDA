@@ -41,6 +41,14 @@ namespace com.ds201625.fonda.Factory
         }
 
         public static Invoice GetInvoice(Payment payment, Profile profile,
+            float total, float tax)
+        {
+            return new Invoice(payment, profile,
+             total, tax);
+        }
+
+
+        public static Invoice GetInvoice(Payment payment, Profile profile,
             float total, float tax, Currency currency, int number)
         {
             return new Invoice(payment, profile,

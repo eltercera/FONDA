@@ -66,7 +66,6 @@ namespace com.ds201625.fonda.BackEndLogic.ProfileManagement
 			    profile.Person.Status = FacDao.GetActiveSimpleStatus();
                 // Se agrega el perfil al commensal
 			    commensal.Profiles.Add(profile);
-                //Debo agregar genero y fecha nacimento
 			    profile.Person.Gender = ' ';
 			    profile.Person.BirthDate = DateTime.Now;
 

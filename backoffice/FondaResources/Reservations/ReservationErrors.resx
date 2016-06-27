@@ -157,4 +157,48 @@
     <value>BO-08-001</value>
     <comment>Codigo de error al llenar tabla de Reservaciones</comment>
   </data>
+  <data name="CommandExceptionGetDetailReservationCode" xml:space="preserve">
+    <value>BO-04-003</value>
+    <comment>Codigo de error al consultar el detalle de una reservacion</comment>
+  </data>
+  <data name="CommandExceptionGetReservationByIdCode" xml:space="preserve">
+    <value>BO-08-002</value>
+    <comment>Codigo de error para CommandExceptionGetReservationByIdCode</comment>
+  </data>
+  <data name="MessageCommandExceptionGetDetailReservation" xml:space="preserve">
+    <value>Error al generar la factura</value>
+    <comment>Mensaje de error para CommandExceptionGetDetailReservation</comment>
+  </data>
+  <data name="MessageCommandExceptionGetReservationById" xml:space="preserve">
+    <value>Se ha producido un error al obtener la reservacion</value>
+    <comment>Mensaje de error para CommandExceptionGetReservationById</comment>
+  </data>
+  <data name="MessageMVPExceptionDetailReservationTable" xml:space="preserve">
+    <value>Se ha producido un error al llenar la tabla del detall de la Reservacion</value>
+    <comment>Mensaje de error para MVPExceptionDetailReservationTable</comment>
+  </data>
+  <data name="MVPExceptionDetailReservationTableCode" xml:space="preserve">
+    <value>BO-04-004</value>
+    <comment>Codigo de error al llenar tabla de detalle de Reservacion</comment>
+  </data>
+  <data name="CommandExceptionCancelReservationCode" xml:space="preserve">
+    <value>BO-08-005</value>
+    <comment>Codigo de error al cancelar la reservacion</comment>
+  </data>
+  <data name="MessageCommandExceptionCancelReservation" xml:space="preserve">
+    <value>No ha sido posible anular la reservacion</value>
+    <comment>Mensaje de error para CommandExceptionCancelReservation</comment>
+  </data>
+  <data name="MessageCommandExceptionCancelReservationCanceledStatus" xml:space="preserve">
+    <value>La reservacion ya se encuentra cancelada</value>
+    <comment>Mensaje de error para CommandExceptionCancelReservation</comment>
+  </data>
+  <data name="MessageMVPExceptionCancelReservation" xml:space="preserve">
+    <value>Se ha producido un error al cancelar la reservacion</value>
+    <comment>Mensaje de error al cancelar una reservacion</comment>
+  </data>
+  <data name="MVPExceptionCancelReservationCode" xml:space="preserve">
+    <value>BO-04-006</value>
+    <comment>Codigo de error al cancelar una reservacion</comment>
+  </data>
 </root>

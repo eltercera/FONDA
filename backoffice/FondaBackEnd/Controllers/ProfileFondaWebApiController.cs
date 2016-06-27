@@ -53,14 +53,22 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (GetCommensalFondaWebApiException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                GetProfilesFondaWebApiControllerException ex = new GetProfilesFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                GetProfilesFondaWebApiControllerException ex = new GetProfilesFondaWebApiControllerException(GeneralRes.GetProfilesException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
             }
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, profiles.ToString(),
@@ -111,20 +119,27 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (CreateProfileCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                PostProfileFondaWebApiControllerException ex = new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
             }
             catch (GetCommensalFondaWebApiException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                PostProfileFondaWebApiControllerException ex = new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                PostProfileFondaWebApiControllerException ex = new PostProfileFondaWebApiControllerException(GeneralRes.AddProfileException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
             }
             //Logger al Culminar el metodo
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, result.ToString(),
@@ -183,14 +198,22 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (UpdateProfileCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                PutProfileFondaWebApiControllerException ex = new PutProfileFondaWebApiControllerException(GeneralRes.UpdateProfileException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                PutProfileFondaWebApiControllerException ex = new PutProfileFondaWebApiControllerException(GeneralRes.UpdateProfileException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
             }
 
             //Logger al Culminar el metodo
@@ -243,14 +266,22 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             catch (DeleteProfileCommandException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                DeleteProfileFondaWebApiControllerException ex = new DeleteProfileFondaWebApiControllerException(GeneralRes.DeleteProfileException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
+            }
+            catch (ParameterIndexOutOfRangeException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
+            }
+            catch (InvalidTypeOfParameterException e)
+            {
+                Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
+                return InternalServerError(e);
             }
             catch (Exception e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                DeleteProfileFondaWebApiControllerException ex = new DeleteProfileFondaWebApiControllerException(GeneralRes.DeleteProfileException, e);
-                return InternalServerError(ex);
+                return InternalServerError(e);
             }
 
             //Logger al Culminar el metodo

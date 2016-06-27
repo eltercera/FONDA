@@ -20,6 +20,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         private IDetailOrderContract _view;
         int totalColumns = 3;
         string currency;
+        Account order;
 
 
         ///<summary>
@@ -42,7 +43,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
 
             //Define objeto a recibir
             IList<DishOrder> listDishOrder;
-            Account order;
 
             int orderId, restaurantId;
             List<int> parameters;
@@ -154,8 +154,9 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.OrderAccount
         private void FillTable(IList<DishOrder> data)
         {
             HideMessageLabel();
+            _view.DateOrder.Text = string.Empty;
             CleanTable(_view.DetailOrderTable);
-
+            _view.DateOrder.Text = order.Date.ToShortDateString();
             int totalRows = data.Count; //tamano de la lista 
             float total = 0;
 

@@ -21,7 +21,7 @@ namespace com.ds201625.fonda.Domain
             if (Equals(ReservedReservationStatus.Instance))
                 return CanceledReservationStatus.Instance;
 
-            return ReservedReservationStatus.Instance;
+            return CanceledReservationStatus.Instance;
 
 
         }

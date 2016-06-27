@@ -3,6 +3,10 @@
     package="com.ds201625.fonda">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -10,12 +14,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBAVOkT3ElsLdc4J_IhelcpIHZbeRrFofw" />
 
         <activity
             android:name=".views.activities.LoginActivity"
@@ -36,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.activities.DetailRestaurantActivity"
+            android:name=".views.activities.DetailSearchRestaurantActivity"
             android:label="@string/nav_detail_restaurant"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -59,14 +57,13 @@
          ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
         -->
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBzO-toBOJoaZhEivD6WgJz8cVNnZlwZn4" />
 
         <activity
             android:name=".views.activities.AllRestaurantActivity"
             android:label="@string/title_activity_all_restaurant"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

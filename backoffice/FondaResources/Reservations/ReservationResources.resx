@@ -216,4 +216,32 @@
     <value>NameRestaurant</value>
     <comment>Variable de sesion que contiene el nombre del Restaurante</comment>
   </data>
+  <data name="ClassNameDetailReservationPresenter" xml:space="preserve">
+    <value>DetailReservationPresenter</value>
+    <comment>Comando para obtener para la detalle de la reservacion</comment>
+  </data>
+  <data name="ClassNameGetDetailReservation" xml:space="preserve">
+    <value>CommandGetDetailReservation</value>
+    <comment>Comando para obtener el detalle de la reservacion</comment>
+  </data>
+  <data name="ClassNameGetReservationById" xml:space="preserve">
+    <value>CommandGetReservationById</value>
+    <comment>Comando para obtener una reservacion por id</comment>
+  </data>
+  <data name="QueryParam" xml:space="preserve">
+    <value>Id</value>
+    <comment>Parametro del Query para el URL</comment>
+  </data>
+  <data name="SuccessMessageCommandGetReservationById" xml:space="preserve">
+    <value>Se ha obtenido la reservacion con exito</value>
+    <comment>Mensaje de exito para CommandExceptionGetReservationById</comment>
+  </data>
+  <data name="ClassNameCancelReservation" xml:space="preserve">
+    <value>CommandCancelReservation</value>
+    <comment>Comando para cancelar una reservacion</comment>
+  </data>
+  <data name="SuccessMessageCommandCancelReservation" xml:space="preserve">
+    <value>Se ha anulado la reservacion satisfactoriamente</value>
+    <comment>Mensaje de exito para CommandCancelReservation</comment>
+  </data>
 </root>

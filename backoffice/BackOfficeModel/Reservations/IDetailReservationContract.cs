@@ -16,7 +16,7 @@ namespace com.ds201625.fonda.View.BackOfficeModel.Reservations
 
         Label Restaurant { get; set; }
 
-        Label Table { get; set; }
+        Label RestaurantTable { get; set; }
 
         Label CreationDate { get; set; }
 

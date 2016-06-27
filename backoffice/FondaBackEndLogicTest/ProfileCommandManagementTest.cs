@@ -156,7 +156,6 @@ namespace FondaBackEndLogicTest
 
             _getAccountEmail = BackendFactoryCommand.Instance.GetAccountEmailCommands();
             _getAccountEmail.SetParameter(0, _email);
-            _getAccountEmail.SetParameter(1, _password);
             _getAccountEmail.Run();
 
             UserAccount _result = (UserAccount)_getAccountEmail.Result;
