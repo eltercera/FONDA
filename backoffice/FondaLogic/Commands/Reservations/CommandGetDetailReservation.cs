@@ -13,7 +13,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations
 {
     public class CommandGetDetailReservation : Command
     {
-        private List<int> parameter;
+        private int _reservationId;
 
         public CommandGetDetailReservation(Object receiver) : base(receiver) { }
        
@@ -23,37 +23,40 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations
             // float subtotal = 0;
             //Invoca al comando
             Command commandGetReservationById;
+            Command commandGetCommensalByReservation;
             //   Command commandGetDishOrder;
             //   Command commandGetCurrencyInvoice;
             //   Command commandGetOrder;
 
             try
             {
-                parameter = (List<int>)Receiver;
+                _reservationId = (int)Receiver;
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetReservationById = CommandFactory.GetCommandGetReservationById(parameter[0]);
-                //    commandGetCurrencyInvoice = CommandFactory.GetCommandGetCurrencyInvoice(parameter[0]);
+                commandGetReservationById = CommandFactory.GetCommandGetReservationById(_reservationId);
+                commandGetCommensalByReservation = CommandFactory.GetCommandGetCommensalByReservation(_reservationId);
                 //     commandGetDishOrder = CommandFactory.GetCommandGetDishOrdersByAccountId(parameter[1]);
                 //     commandGetOrder = CommandFactory.GetCommandGetOrder(parameter[1]);
 
                 //Ejecuta el comando deseado
                 commandGetReservationById.Execute();
-          //      commandGetCurrencyInvoice.Execute();
-          //      commandGetDishOrder.Execute();
-          //      commandGetOrder.Execute();
+                commandGetCommensalByReservation.Execute();
+                //      commandGetCurrencyInvoice.Execute();
+                //      commandGetDishOrder.Execute();
+                //      commandGetOrder.Execute();
 
-          //      listDishOrder = (IList<DishOrder>)commandGetDishOrder.Receiver;
+                //      listDishOrder = (IList<DishOrder>)commandGetDishOrder.Receiver;
 
-          //      foreach (DishOrder d in listDishOrder)
-         //       {
-         //           subtotal += d.Dish.Cost * d.Count;
-          //      }
+                //      foreach (DishOrder d in listDishOrder)
+                //       {
+                //           subtotal += d.Dish.Cost * d.Count;
+                //      }
 
                 //Respuesta a devolver
                 Receiver = new List<Object>
                     {
                         commandGetReservationById.Receiver,
+                        commandGetCommensalByReservation.Receiver
                         //commandGetCurrencyInvoice.Receiver,
                         //commandGetDishOrder.Receiver,
                         //subtotal,

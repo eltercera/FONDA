@@ -24,7 +24,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
         private string _currency = null;
         private float subtotal = 0.0F;
         private Reservation _reservation;
-        private Account _account;
+        private Commensal _commensal;
         private CreditCardPayment _creditCardPayment;
 
         public DetailReservationPresenter(IDetailReservationContract viewReservationDetail) :
@@ -33,88 +33,21 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             _view = viewReservationDetail;
         }
 
-        /////<summary>
-        /////Metodo para imprimir la factura
-        ///// </summary>
-
-        //public void PrintInvoice()
-        //{
-
-        //    List<int> parameters;
-        //    Command commandPrintInvoice;
-
-        //    try
-        //    {
-        //        accountId = int.Parse(_view.SessionIdAccount);
-        //        restaurantId = int.Parse(_view.SessionRestaurant);
-
-        //        //Recibe 2 enteros
-        //        // 1  id de la factura
-        //        // 2  id del restaurant               
-        //        parameters = new List<int> { accountId, restaurantId };
-        //        //Obtiene la instancia del comando enviado el restaurante como parametro
-        //        commandPrintInvoice = CommandFactory.GetCommandPrintInvoice(parameters);
-
-        //        //Ejecuta el comando deseado
-        //        commandPrintInvoice.Execute();
-        //        Logger.WriteSuccessLog(
-        //                 OrderAccountResources.ClassNameInvoiceDetailPresenter,
-        //                 OrderAccountResources.SuccessPrintInvoice,
-        //                 System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name
-        //                        );
-        //        SuccessLabel(OrderAccountResources.SuccessPrintInvoice);
-        //    }
-        //    catch (MVPExceptionPrintInvoice ex)
-        //    {
-        //        MVPExceptionPrintInvoice e = new MVPExceptionPrintInvoice
-        //            (
-        //                OrderAccountResources.MVPExceptionPrintInvoiceCode,
-        //                OrderAccountResources.ClassNameInvoiceDetailPresenter,
-        //                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-        //                OrderAccountResources.MessageMVPExceptionPrintInvoice,
-        //                ex
-        //            );
-        //        Logger.WriteErrorLog(e.ClassName, e);
-        //        ErrorLabel(e.MessageException);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MVPExceptionDetailOrderTable e = new MVPExceptionDetailOrderTable
-        //            (
-        //                OrderAccountResources.MVPExceptionPrintInvoiceCode,
-        //                OrderAccountResources.ClassNameInvoiceDetailPresenter,
-        //                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-        //                OrderAccountResources.MessageMVPExceptionPrintInvoice,
-        //                ex
-        //            );
-        //        Logger.WriteErrorLog(e.ClassName, e);
-        //        ErrorLabel(e.MessageException);
-        //    }
-
-        //}
+       
 
         ///<summary>
         ///Metodo para buscar los campos del Detalle de la reservacion
         public void GetDetailReservation()
         {
 
-            //Define objeto a recibir
-            //          IList<DishOrder> listDishOrder;
-
             List<int> parameters;
             List<Object> result;
             Command commandGetDetailReservation;
-
             try
             {
                 reservationId = GetQueryParameter();
-                //accountId = int.Parse(_view.SessionIdAccount);
-
-                //Recibe 1 entero
-                // 1  id de la reservacion               
-                parameters = new List<int> { reservationId };
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetDetailReservation = CommandFactory.GetCommandGetDetailReservation(parameters);
+                commandGetDetailReservation = CommandFactory.GetCommandGetDetailReservation(reservationId);
 
                 //Ejecuta el comando deseado
                 commandGetDetailReservation.Execute();
@@ -122,6 +55,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
                 //Se obtiene el resultado de la operacion
                 result = (List<Object>)commandGetDetailReservation.Receiver;
                 _reservation = (Reservation)result[0];
+                _commensal = (Commensal)result[1];
           //      _currency = (string)result[1];
           //      listDishOrder = (IList<DishOrder>)result[2];
           //      subtotal = (float)result[3];
@@ -177,7 +111,7 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Reservations
             ResetLabels();
             //Label de la factura
             _view.SessionNumberReservation = _reservation.Number.ToString();
-          //  _view.UserAccount.Text = 
+            _view.UserAccount.Text = _commensal.Email;
             _view.NumberCommensal.Text = _reservation.CommensalNumber.ToString();
             //  _view.Restaurant.Text = 
             //  _view.RestaurantTable.Text = 
