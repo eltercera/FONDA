@@ -47,6 +47,7 @@ public class DeleteTokenCommand extends BaseCommand {
             TokenService tokenService = FondaServiceFactory.getInstance().getTokenService(commensal);
             Token tokenTest = tokenService.getToken(context);
             if (tokenTest != null) {
+                Log.d(TAG, "Token a eliminar: " + tokenTest.getId());
                 tokenService.removeToken(context);
             }
 
@@ -67,5 +68,7 @@ public class DeleteTokenCommand extends BaseCommand {
         }
 
         setResult(true);
+        Log.d(TAG, "Se elimino con exito el Token. Result: " + getResult().toString());
+        Log.d(TAG, "Se elimino con exito el Token");
     }
 }
