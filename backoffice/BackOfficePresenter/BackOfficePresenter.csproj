@@ -50,6 +50,11 @@
     <Compile Include="FondaMVPException\Reservation\MVPExceptionDetailReservationTable.cs" />
     <Compile Include="FondaMVPException\Reservation\MVPExceptionCancelReservation.cs" />
     <Compile Include="FondaMVPException\Reservation\MVPExceptionReservationsTable.cs" />
+    <Compile Include="FondaMVPException\Restaurant\MVPExceptionButtonAdd.cs" />
+    <Compile Include="FondaMVPException\Restaurant\MVPExceptionButtonModify.cs" />
+    <Compile Include="FondaMVPException\Restaurant\MVPExceptionFillDropdown.cs" />
+    <Compile Include="FondaMVPException\Restaurant\MVPExceptionLoadTable.cs" />
+    <Compile Include="FondaMVPException\Restaurant\MVPExceptionSave.cs" />
     <Compile Include="Login\DetailModifyPresenter.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionClosedOrdersTable.cs" />
     <Compile Include="FondaMVPException\OrderAccount\MVPExceptionDetailOrderTable.cs" />

@@ -51,16 +51,6 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionModifyRestaurant(RestaurantErrors.InvalidTypeParameterException, e);
             }
-            catch (ParameterIndexOutRangeException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionModifyRestaurant(RestaurantErrors.ParameterIndexOutRangeException, e);
-            }
-            catch (RequieredParameterNotFoundException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionModifyRestaurant(RestaurantErrors.RequieredParameterNotFoundException, e);
-            }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -69,7 +59,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGenerateRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
+                throw new CommandExceptionModifyRestaurant(RestaurantErrors.ClassNameGenerateRestaurant, e);
             }
         }
     }
