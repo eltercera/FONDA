@@ -107,7 +107,13 @@ namespace FondaMVPTest.Restaurante
             Table restaurantTable = new Table();
             _mock.Setup(x => x.restaurantTable).Returns(restaurantTable);
             contract = _mock.Object;
-            contract.day1Add.Checked = true;
+            contract.day1Add.Checked = false;
+            contract.day2Add.Checked = true;
+            contract.day3Add.Checked = true;
+            contract.day4Add.Checked = true;
+            contract.day5Add.Checked = true;
+            contract.day6Add.Checked = true;
+            contract.day7Add.Checked = false;
 
             _restaurantPresenter = new RestaurantPresenter(contract);
             valid = _restaurantPresenter.ValidarRestaurant("El Tinajero", "China", "V","135584","Dolar",
@@ -122,7 +128,26 @@ namespace FondaMVPTest.Restaurante
             Table restaurantTable = new Table();
             _mock.Setup(x => x.restaurantTable).Returns(restaurantTable);
             contract = _mock.Object;
-            contract.nameAdd.Text = "Hola";
+            contract.nameAdd.Text= "Sanduchef";
+            //contract.imageAdd.PostedFile = "C:/";
+            contract.categoryAdd.Text = "China";
+            contract.nationalityAdd.Text = "V";
+            contract.rifAdd.Text = "22587";
+            contract.addressAdd.Text = "5ta trasversal";
+            contract.currencyAdd.Text = "Bolivar Fuerte";
+            contract.zoneAdd.Text = "La Castellana";
+            contract.longAdd.Text = "14.5";
+            contract.latAdd.Text = "174.2";
+            contract.openingTimeAdd.Text = "1:00:00";
+            contract.closingTimeAdd.Text = "5:00:00";
+            contract.day1Add.Checked = false;
+            contract.day2Add.Checked = true;
+            contract.day3Add.Checked = true;
+            contract.day4Add.Checked = true;
+            contract.day5Add.Checked = true;
+            contract.day6Add.Checked = true;
+            contract.day7Add.Checked = false;
+
 
             _restaurantPresenter = new RestaurantPresenter(contract);
             _restaurantPresenter.ButtonAdd_Click();
@@ -130,6 +155,19 @@ namespace FondaMVPTest.Restaurante
             Assert.AreEqual(true, contract.alertSuccessAdd.Visible);
         }
 
+        [Test]
+        public void FillDropDownTest()
+        {
+            Table restaurantTable = new Table();
+            _mock.Setup(x => x.restaurantTable).Returns(restaurantTable);
+            contract = _mock.Object;
+
+            _restaurantPresenter = new RestaurantPresenter(contract);
+            _restaurantPresenter.FillDropdown();
+
+            Assert.NotNull(contract.categoryAdd.Items);
+        }
+                
 
     }
 }

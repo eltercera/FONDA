@@ -59,11 +59,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new MVPExceptionLoadTable(RestaurantErrors.InvalidTypeParameterException, e);
             }
-            catch (RequieredParameterNotFoundException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new MVPExceptionLoadTable(RestaurantErrors.RequieredParameterNotFoundException, e);
-            }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
