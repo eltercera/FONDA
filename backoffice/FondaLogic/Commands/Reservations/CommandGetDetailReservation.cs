@@ -13,51 +13,44 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations
 {
     public class CommandGetDetailReservation : Command
     {
-        private List<int> parameter;
+        private int _reservationId;
+        private Table _table;
+        private int _tableId;
 
         public CommandGetDetailReservation(Object receiver) : base(receiver) { }
        
         public override void Execute()
         {
-            // IList<DishOrder> listDishOrder = new List<DishOrder>();
-            // float subtotal = 0;
             //Invoca al comando
             Command commandGetReservationById;
-            //   Command commandGetDishOrder;
-            //   Command commandGetCurrencyInvoice;
-            //   Command commandGetOrder;
+            //Command commandGetCommensalByReservation;
+            Command commandGetTableByReservation;
+            Command commandGetRestaurantByTable;
 
             try
             {
-                parameter = (List<int>)Receiver;
+                _reservationId = (int)Receiver;
 
                 //Obtiene la instancia del comando enviado el restaurante como parametro
-                commandGetReservationById = CommandFactory.GetCommandGetReservationById(parameter[0]);
-                //    commandGetCurrencyInvoice = CommandFactory.GetCommandGetCurrencyInvoice(parameter[0]);
-                //     commandGetDishOrder = CommandFactory.GetCommandGetDishOrdersByAccountId(parameter[1]);
-                //     commandGetOrder = CommandFactory.GetCommandGetOrder(parameter[1]);
-
+                commandGetReservationById = CommandFactory.GetCommandGetReservationById(_reservationId);
+                //commandGetCommensalByReservation = CommandFactory.GetCommandGetCommensalByReservation(_reservationId);
+                commandGetTableByReservation = CommandFactory.GetCommandGetTableByReservation(_reservationId);
                 //Ejecuta el comando deseado
                 commandGetReservationById.Execute();
-          //      commandGetCurrencyInvoice.Execute();
-          //      commandGetDishOrder.Execute();
-          //      commandGetOrder.Execute();
+                commandGetTableByReservation.Execute();
+                _table = (Table)commandGetTableByReservation.Receiver;
+                _tableId = _table.Id;
 
-          //      listDishOrder = (IList<DishOrder>)commandGetDishOrder.Receiver;
-
-          //      foreach (DishOrder d in listDishOrder)
-         //       {
-         //           subtotal += d.Dish.Cost * d.Count;
-          //      }
-
+                commandGetRestaurantByTable = CommandFactory.GetCommandGetRestaurantByTable(_tableId);
+                commandGetRestaurantByTable.Execute();
+                //commandGetCommensalByReservation.Execute();
                 //Respuesta a devolver
                 Receiver = new List<Object>
                     {
                         commandGetReservationById.Receiver,
-                        //commandGetCurrencyInvoice.Receiver,
-                        //commandGetDishOrder.Receiver,
-                        //subtotal,
-                        //commandGetOrder.Receiver
+                        //commandGetCommensalByReservation.Receiver,
+                        commandGetTableByReservation.Receiver,
+                        commandGetRestaurantByTable.Receiver
                     };
 
             }

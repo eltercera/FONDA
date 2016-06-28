@@ -3,6 +3,10 @@ using com.ds201625.fonda.Domain;
 using System;
 using System.Collections.Generic;
 using NHibernate.Criterion;
+using com.ds201625.fonda.Factory;
+using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.DataAccess.Log;
+using com.ds201625.fonda.Resources.FondaResources.OrderAccount;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -101,5 +105,49 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             return tablesAvailible;
         }
 
+        #region Reservation
+        /// <summary>
+        /// Retorna una lista de Mesas de un restaurante
+        /// </summary>
+        /// <param name="restaurant">Recibe el ID de un Restaurante</param>
+        /// <returns>Retorna una Lista de Table</returns>
+        public Table GetTableByReservation(int reservationId)
+        {
+            IList<Table> _listTable = new List<Table>();
+            ITableDAO _tableDAO = _facDAO.GetTableDAO();
+            IReservationDAO _reservationDAO = _facDAO.GetReservationDAO();
+            Table _table = new Table();
+
+            try
+            {
+                //busca las mesas de un restaurante
+                _listTable = _tableDAO.GetAll();
+              
+                foreach (Table reservedTable in _listTable)
+                {
+                    foreach (Reservation _reservation in reservedTable.Reservations)
+                    {
+                        if (_reservation.Id.Equals(reservationId))
+                        {
+                            _table = reservedTable;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                GetOrderAccountFondaDAOException exception = new GetOrderAccountFondaDAOException(
+                    OrderAccountResources.MessageCanceledInvoiceException, ex);
+                Logger.WriteErrorLog(exception.Message, exception);
+                throw exception;
+            }
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameOrderAccountDAO,
+                OrderAccountResources.SuccessMessageGetOrderAccount,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
+            return _table;
+
+        }
+
+        #endregion
     }
 }

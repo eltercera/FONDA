@@ -307,7 +307,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                     .Where(r => r.Status == ActiveSimpleStatus.Instance)
                     .SingleOrDefault();
 
-
+             
 
                 foreach (Account closedAccount in restaurant.Accounts)
                 {
@@ -483,7 +483,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             //TODO: Arrojar excepciones personalizadas
             catch (ArgumentOutOfRangeException e)
             {
-                throw new FondaIndexException("Not Found invoice", e);
+                throw new FondaIndexException("Not Found reservation", e);
             }
         }
 
@@ -523,6 +523,49 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             }
         }
 
+        /// <summary>
+        /// Busca un restaurant por una mesa
+        /// <param name="tableId"></param>
+        /// <returns>Restaurant</returns>
+        public Restaurant GetRestaurantByTable(int tableId)
+        {
+            IList<Restaurant> _listRestaurant = new List<Restaurant>();
+            IList<Table> _listTable = new List<Table>();
+            Restaurant _restaurant = EntityFactory.GetRestaurant();
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
+            //  Restaurant _restaurant;
+            // _restaurantDAO = _facDAO.GetRestaurantDAO();
+            try
+            {
+                _listRestaurant = _restaurantDAO.GetAll();
+
+                foreach (Restaurant restaurant in _listRestaurant)
+                {
+              
+                    foreach (Table _table in restaurant.Tables)
+                    {
+                        if (tableId.Equals(_table.Id))
+                        {
+                            _restaurant = restaurant;
+                        }
+                    }
+                }
+
+
+            }
+            //Todo Reservation: Personalizar
+            catch (Exception ex)
+            {
+                GetOrderAccountFondaDAOException exception = new GetOrderAccountFondaDAOException(
+                    OrderAccountResources.MessageCanceledInvoiceException, ex);
+                Logger.WriteErrorLog(exception.Message, exception);
+                throw exception;
+            }
+            Logger.WriteSuccessLog(OrderAccountResources.ClassNameOrderAccountDAO,
+                OrderAccountResources.SuccessMessageGetOrderAccount,
+                System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name);
+            return _restaurant;
+        }
 
         #endregion
     }

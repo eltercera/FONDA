@@ -11,6 +11,7 @@ import com.ds201625.fonda.domains.Reservation;
 import com.ds201625.fonda.domains.factory_entity.FondaEntityFactory;
 import com.ds201625.fonda.logic.BaseCommand;
 import com.ds201625.fonda.logic.Parameter;
+import com.ds201625.fonda.logic.SessionData;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class AllReservationCommand extends BaseCommand {
     protected void invoke() throws GetReservationFondaWebApiControllerException {
         Log.d(TAG, "Comando para obtener las reservas");
         ReservationService serviceReservation = FondaServiceFactory.getInstance()
-                .getReservationService();
+                .getReservationService(SessionData.getInstance().getToken());
         idCommensal = FondaEntityFactory.getInstance().GetCommensal();
 
         try {

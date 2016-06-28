@@ -20,18 +20,11 @@ namespace BackOffice.Seccion.Reservas
 
         #region Model
 
-        //public System.Web.UI.WebControls.Table DetailReservationTable
-        //{
-        //    get { return reservationDetail; }
-
-        //    set { reservationDetail = value; }
-        //}
-
-        public System.Web.UI.WebControls.Label UserAccount
+        public System.Web.UI.WebControls.Label NumberReservation
         {
-            get { return userAccount; }
+            get { return numberReservation; }
 
-            set { userAccount = value; }
+            set { numberReservation = value; }
         }
 
         public System.Web.UI.WebControls.Label NumberCommensal
@@ -132,10 +125,7 @@ namespace BackOffice.Seccion.Reservas
             _presenter = new DetailReservationPresenter(this);
         }
         #endregion
-        //protected void print_Click(object sender, EventArgs e)
-        //{
-        //    _presenter.PrintInvoice();
-        //}
+
         protected void Page_Load(object sender, EventArgs e)
         {
            _presenter.GetDetailReservation();

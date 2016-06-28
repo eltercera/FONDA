@@ -57,7 +57,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title pull-left"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Detalle de  la Reservacion</h3>
-                    <%--<asp:Button class="btn btn-default pull-right" text="Imprimir" Visible="false" ID="invoicePrint" OnClick="print_Click" runat="server" />--%>
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
@@ -65,8 +64,8 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                             <div class="form-group">
-                                <label class="control-label">Usuario</label>
-                                <asp:Label ID="userAccount" CssClass="form-control" placeholder="Usuario" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
+                                <label class="control-label">Reservacion #</label>
+                                <asp:Label ID="numberReservation" CssClass="form-control" placeholder="NumeroReserva" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
@@ -85,7 +84,7 @@
                         </div>
                         <div class="col-lg-6 col-md-10 col-sm-10 col-xs-10">
                             <div class="form-group">
-                                <label class="control-label">Mesa</label>
+                                <label class="control-label">Mesa #</label>
                                 <asp:Label ID="restaurantTable" CssClass="form-control" placeholder="Mesa" MaxLength="10" runat="server" /><span style="color: #FF6633" class="form-control-feedback"></span>
                             </div>
                         </div>

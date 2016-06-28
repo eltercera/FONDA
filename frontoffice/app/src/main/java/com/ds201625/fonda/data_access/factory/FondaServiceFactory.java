@@ -121,8 +121,8 @@ public class FondaServiceFactory {
      * Obtiene los servicios de la reserva
      * @param
      */
-    public static ReservationService getReservationService(){
-        return serviceFactory.getReservesService();
+    public static ReservationService getReservationService(Token token){
+        return serviceFactory.getReservesService(token);
     }
 
 

@@ -5,6 +5,7 @@ using NHibernate.Criterion;
 using System.Collections.Generic;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.Exceptions;
+using com.ds201625.fonda.Factory;
 
 namespace com.ds201625.fonda.DataAccess.HibernateDAO
 {
@@ -33,7 +34,21 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
                    + email, e);
             }
 		}
+        #region Reservation
+        /// <summary>
+        /// Obtiene todos los UserAccount del sistema
+        /// </summary>
+        /// <returns>Las cuentas de usuario.</returns>
+        public IList<object> GetAll()
+        {
+          //  Commensal commensal = EntityFactory.GetCommensal() ;
+          //  ICriterion criterion = Restrictions.Eq("ua_type", commensal.ToString());
+         //   return (IList<Commensal>)FindAll(criterion);
+            return (IList<object>)FindAll();
+        }
 
-	}
+        #endregion
+
+    }
 }
 
