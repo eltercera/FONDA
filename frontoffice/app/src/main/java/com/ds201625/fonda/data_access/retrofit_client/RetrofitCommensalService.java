@@ -70,14 +70,13 @@ public class RetrofitCommensalService implements CommensalService {
                 rsvCommensal = response.body();
             } else {
                 Log.e(TAG, "Se ha generado error en WS ");
-                throw new AddCommensalWebApiControllerException("Error de Servicio Web");
+                throw new AddCommensalWebApiControllerException("Error del Servicio Web " +
+                        "al agregar Commensal");
             }
         }
         catch (IOException e) {
             Log.e(TAG, "Se ha generado error en getProfiles", e);
             throw new RestClientException("Error de IO",e);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en getProfiles", e);
         }
         Log.d(TAG, "Cierre del metodo registrar commensal. Return: "+ rsvCommensal.toString());
 

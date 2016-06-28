@@ -10,7 +10,9 @@ import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.logic.BaseCommand;
+import com.ds201625.fonda.logic.CommandInternalErrorException;
 import com.ds201625.fonda.logic.Parameter;
+import com.ds201625.fonda.logic.ParameterOutOfIndexException;
 import com.ds201625.fonda.logic.SessionData;
 
 /**
@@ -36,7 +38,7 @@ public class CreateCommensalCommand extends BaseCommand {
     }
 
     @Override
-    protected void invoke() {
+    protected void invoke() throws Exception{
 
         Log.d(TAG, "Comando para agregar un commensal");
         String email;
@@ -54,20 +56,9 @@ public class CreateCommensalCommand extends BaseCommand {
             Log.d(TAG, "Se agrego el Commensal id: " + commensal.getId() +
                     " email: " + commensal.getEmail());
         }
-        catch (RestClientException e)
-        {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un commensal", e);
-            e.printStackTrace();
-        }
-        catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un commensal", e);
-          //  e.printStackTrace();
-            throw new NullPointerException("Error de Servicio Web");
-        }
-        catch (Exception e)
-        {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un commensal", e);
-            e.printStackTrace();
+        catch (ParameterOutOfIndexException e) {
+            Log.e("Fonda Command",e.getMessage());
+            throw CommandInternalErrorException.generate(this.getClass().toString(),e);
         }
 
         setResult(commensal);

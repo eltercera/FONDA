@@ -327,21 +327,9 @@ public class LoginActivity extends BaseActivity implements LoginViewContract {
                 presenter.regiter(email, password);
                 succ = true;
             } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            if (succ){
-                msj = Toast.makeText(getBaseContext(),
-                        "Registro Satisfactorio",
-                        Toast.LENGTH_SHORT);
-            } else {
-                msj = Toast.makeText(getBaseContext(),
-                        "Error en el registro",
-                        Toast.LENGTH_SHORT);
+                succ = false;
             }
         }
-        if (msj != null)
-            msj.show();
 
         if (succ){
             setOnLogin();
@@ -360,15 +348,13 @@ public class LoginActivity extends BaseActivity implements LoginViewContract {
             presenter.login(commensal);
             succ = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            succ = false;
         }
 
         if (succ){
             skip();
         } else {
-            Toast.makeText(getBaseContext(),
-                    "Error al iniciar sesión",
-                    Toast.LENGTH_SHORT).show();
+            displayMsj("Error al iniciar sesión");
         }
     }
 
