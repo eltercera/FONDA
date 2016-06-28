@@ -5,6 +5,7 @@ import android.text.format.DateFormat;
 
 import com.ds201625.fonda.domains.BaseEntity;
 import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.domains.Email;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.Reservation;
 import com.ds201625.fonda.domains.Restaurant;
@@ -102,6 +103,8 @@ public class FondaEntityFactory {
     public Profile GetProfile() { return new Profile();}
 
     public Token GetToken() {return  new Token();}
+
+    public Email GetEmail() {return  new Email();}
 
 
 }

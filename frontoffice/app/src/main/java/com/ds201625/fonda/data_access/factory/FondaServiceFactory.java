@@ -5,6 +5,7 @@ import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
+import com.ds201625.fonda.data_access.services.EmailService;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.FilterByCategoryService;
 import com.ds201625.fonda.data_access.services.FilterByZoneService;
@@ -185,5 +186,8 @@ public class FondaServiceFactory {
       return  serviceFactory.getLogedCommensalService();
     }
 
+    public EmailService getEmailService(){
+        return serviceFactory.getEmailService();
+    }
 }
 
