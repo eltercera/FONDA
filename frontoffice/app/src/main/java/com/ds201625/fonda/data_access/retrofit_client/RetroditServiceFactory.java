@@ -6,6 +6,7 @@ import com.ds201625.fonda.data_access.services.AllRestaurantService;
 import com.ds201625.fonda.data_access.services.CategoryService;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
+import com.ds201625.fonda.data_access.services.EmailService;
 import com.ds201625.fonda.data_access.services.FavoriteRestaurantService;
 import com.ds201625.fonda.data_access.services.FilterByCategoryService;
 import com.ds201625.fonda.data_access.services.FilterByZoneService;
@@ -107,6 +108,11 @@ public class RetroditServiceFactory implements ServiceFactory {
     @Override
     public PaymentService setPaymentService() {
         return new RetrofitPaymentService();
+    }
+
+    @Override
+    public EmailService getEmailService() {
+        return null;
     }
 
     @Override

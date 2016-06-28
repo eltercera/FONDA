@@ -2,6 +2,7 @@ package com.ds201625.fonda.logic;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.OrderExceptions.LogicInvoiceWebApiControllerException;
 import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.domains.Profile;
 
@@ -31,6 +32,11 @@ public class LogicInvoice {
         invoiceService = FondaServiceFactory.getInstance().getInvoiceService().getCurrentInvoice(idProfile.getId());
         } catch (RestClientException e) {
             throw new RestClientException("Error de IO", e);
+        } catch (LogicInvoiceWebApiControllerException e) {
+            e.printStackTrace();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
         return invoiceService;
 

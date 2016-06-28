@@ -311,8 +311,9 @@ public class OrderPaymentFragment extends BaseFragment implements LogicPaymentVi
 
     *//**
      * Manda la informacion de la factura al web service
-     *//*
+     */
     public void postPayment() {
+/*
         CloseAccountFragment cls = new CloseAccountFragment();
         Invoice invoice = new Invoice();
         List<DishOrder> lista = cls.getListDishO();
@@ -352,9 +353,10 @@ public class OrderPaymentFragment extends BaseFragment implements LogicPaymentVi
         }catch (Exception e) {
             System.out.println("Error");
         }
+*/
 
 
-    }*/
+    }
 
 
     @Override

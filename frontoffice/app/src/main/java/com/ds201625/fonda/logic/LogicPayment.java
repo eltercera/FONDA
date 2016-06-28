@@ -25,9 +25,9 @@ public class LogicPayment {
      * @return
      * @throws RestClientException
      * @throws InvalidDataRetrofitException
-     *//*
+     */
 
-    public Invoice paymentService (Invoice invoice) throws RestClientException, InvalidDataRetrofitException {
+    /*public Invoice paymentService (Invoice invoice) throws RestClientException, InvalidDataRetrofitException {
 
         try {
             payment = FondaServiceFactory.getInstance().setPaymentService().setPayments(invoice);
@@ -37,7 +37,6 @@ public class LogicPayment {
             throw new InvalidDataRetrofitException("Invoice es nulo.");
         }
         return payment;
-    }
-*/
+    }*/
 
 }

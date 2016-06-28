@@ -2,6 +2,7 @@ package com.ds201625.fonda.logic;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.OrderExceptions.LogicCurrentOrderFondaWebApiControllerException;
 import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Restaurant;
 
@@ -34,6 +35,12 @@ public class LogicCurrentOrder {
 
         } catch (RestClientException e) {
             throw new RestClientException("Error de IO", e);
+        }
+        catch (LogicCurrentOrderFondaWebApiControllerException e) {
+
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
 
         return listDishOrderService;

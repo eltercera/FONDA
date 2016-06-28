@@ -2,6 +2,7 @@ package com.ds201625.fonda.logic;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.OrderExceptions.LogicHistoryVisitsWebApiControllerException;
 import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.domains.Profile;
 
@@ -34,6 +35,11 @@ public class LogicHistoryVisits {
             listVisitsRestaurantService = FondaServiceFactory.getInstance().getHistoryVisitsService().getHistoryVisits(idProfile.getId());
         } catch (RestClientException e) {
             throw new RestClientException("Error de IO", e);
+        } catch (LogicHistoryVisitsWebApiControllerException e) {
+            e.printStackTrace();
+        }
+        catch (Exception e ){
+            e.printStackTrace();
         }
 
         return listVisitsRestaurantService;
