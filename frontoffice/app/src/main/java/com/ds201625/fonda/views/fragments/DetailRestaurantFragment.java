@@ -79,9 +79,9 @@ public class DetailRestaurantFragment extends BaseFragment {
      */
     public void setRestaurant(Restaurant restaurant) {
         tvRestName.setText(restaurant.getName());
-        tvType.setText(restaurant.getRestaurantCategory().getName());
-        tvZone.setText(restaurant.getZone().getName());
-        tvAvPr.setText(restaurant.getAddress());
+        tvType.setText("Tipo de Comida: " + restaurant.getRestaurantCategory().getName());
+        tvZone.setText("Zona: " + restaurant.getZone().getName());
+        tvAvPr.setText("Av. Principal: " + restaurant.getAddress());
         tvOther.setText("12:00 pm - 06:00 pm");
         tvDay.setText("Lunes - Domingo");
         String image = restaurant.getLogo();
