@@ -104,34 +104,36 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         }
 
         /// <summary>
+
         /// metodo que busca la existencia de un commensal
+
         /// </summary>
+
         /// <param name="email"></param>
+
         /// <returns>result</returns>
 
-        [Route("findCommensalEmail/{email}")]
+        [Route("findCommensalMail/{mail}")]
         [HttpGet]
-        public IHttpActionResult findCommensalEmail(string email)
+        public IHttpActionResult findCommensalEmail(string mail)
         {
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-
             UserAccount result;
             try
             {
                 UserAccount commensal = EntityFactory.GetUserAccount();
-                commensal.Email = email;
+                commensal.Email = mail;
+
                 // Obtención del commando
                 command = FacCommand.GetCommensalEmailCommand();
+
                 // Agregacion de parametros
                 command.SetParameter(0, commensal);
-
                 // Ejecucion del commando
                 command.Run();
-
                 // Obtención de respuesta
                 result = (UserAccount)command.Result;
-
                 Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.CommensalEmail + commensal.Email, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
@@ -153,13 +155,12 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 throw new FindByEmailUserAccountFondaWebApiControllerException(GeneralRes.GetCommensalEmailException,
                     e);
             }
-
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-
             return Ok(result);
+
         }
 
         /// <summary>
