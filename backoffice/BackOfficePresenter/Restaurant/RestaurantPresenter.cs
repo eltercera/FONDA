@@ -60,16 +60,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new MVPExceptionLoadTable(RestaurantErrors.InvalidTypeParameterException, e);
             }
-            catch (ParameterIndexOutOfRangeException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new MVPExceptionLoadTable(RestaurantErrors.ParameterIndexOutRangeException, e);
-            }
-            catch (RequieredParameterNotFoundException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new MVPExceptionLoadTable(RestaurantErrors.RequieredParameterNotFoundException, e);
-            }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -340,11 +330,6 @@ namespace com.ds201625.fonda.View.BackOfficePresenter.Restaurante
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new MVPExceptionFillDropdown(RestaurantErrors.InvalidTypeParameterException, e);
             }
-            catch (RequieredParameterNotFoundException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new MVPExceptionFillDropdown(RestaurantErrors.RequieredParameterNotFoundException, e);
-            }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -600,11 +585,6 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new MVPExceptionButtonAdd(RestaurantErrors.InvalidTypeParameterException, e);
                 }
-                catch (RequieredParameterNotFoundException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new MVPExceptionButtonAdd(RestaurantErrors.RequieredParameterNotFoundException, e);
-                }
                 catch (NullReferenceException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -634,16 +614,6 @@ string zone, string longitud, string latitud, string otime, string ctime)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new MVPExceptionSave(RestaurantErrors.InvalidTypeParameterException, e);
-                }
-                catch (ParameterIndexOutOfRangeException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new MVPExceptionSave(RestaurantErrors.ParameterIndexOutRangeException, e);
-                }
-                catch (RequieredParameterNotFoundException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new MVPExceptionSave(RestaurantErrors.RequieredParameterNotFoundException, e);
                 }
                 catch (NullReferenceException e)
                 {
@@ -791,16 +761,6 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new MVPExceptionButtonModify(RestaurantErrors.InvalidTypeParameterException, e);
                 }
-                catch (ParameterIndexOutOfRangeException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new MVPExceptionButtonModify(RestaurantErrors.ParameterIndexOutRangeException, e);
-                }
-                catch (RequieredParameterNotFoundException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new MVPExceptionButtonModify(RestaurantErrors.RequieredParameterNotFoundException, e);
-                }
                 catch (NullReferenceException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -837,16 +797,6 @@ string zone, string longitud, string latitud, string otime, string ctime)
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new MVPExceptionButtonModify(RestaurantErrors.InvalidTypeParameterException, e);
                 }
-                catch (ParameterIndexOutOfRangeException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new MVPExceptionButtonModify(RestaurantErrors.ParameterIndexOutRangeException, e);
-                }
-                catch (RequieredParameterNotFoundException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new MVPExceptionButtonModify(RestaurantErrors.RequieredParameterNotFoundException, e);
-                }
                 catch (NullReferenceException e)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -876,16 +826,6 @@ string zone, string longitud, string latitud, string otime, string ctime)
                 {
                     Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                     throw new MVPExceptionSave(RestaurantErrors.InvalidTypeParameterException, e);
-                }
-                catch (ParameterIndexOutOfRangeException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new MVPExceptionSave(RestaurantErrors.ParameterIndexOutRangeException, e);
-                }
-                catch (RequieredParameterNotFoundException e)
-                {
-                    Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                    throw new MVPExceptionSave(RestaurantErrors.RequieredParameterNotFoundException, e);
                 }
                 catch (NullReferenceException e)
                 {
