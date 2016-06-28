@@ -1,14 +1,9 @@
-﻿using com.ds201625.fonda.BackEndLogic;
-using com.ds201625.fonda.DataAccess.Exceptions;
+﻿using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FondaBeckEndLogic;
 
 namespace com.ds201625.fonda.BackEndLogic.ProfileManagement
