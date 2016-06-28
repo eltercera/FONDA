@@ -58,8 +58,7 @@ namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
             {
                 // Busca el Token
                 tok = tokenDAO.FindByStrToken(property,token);
-
-                //Logger
+                if (tok != null)
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                  ResourceMessages.Token + token, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
@@ -80,8 +79,6 @@ namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
             Result = tok;
 
             //Logger al Culminar el metodo
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 

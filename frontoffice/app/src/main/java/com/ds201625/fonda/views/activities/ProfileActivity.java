@@ -209,8 +209,6 @@ public class ProfileActivity extends BaseNavigationActivity
             }
         } catch (Exception e) {
             Log.e(TAG,"Error al salvar el perfil",e);
-            e.printStackTrace();
-            msj("Error al salvar el perfil");
         }
         try
         {
@@ -279,11 +277,9 @@ public class ProfileActivity extends BaseNavigationActivity
         try {
             resp = presenter.createProfile(profile);
             Log.d(TAG,"Se agrego el perfil "+ profile.getProfileName());
-            msj("Se agrego el perfil exitosamente!");
         }catch (Exception e)
         {
             Log.e(TAG,"Error al crear Perfil",e);
-            msj("Error al crear Perfil");
         }
         return resp;
     }
@@ -300,11 +296,9 @@ public class ProfileActivity extends BaseNavigationActivity
         try {
             resp = presenter.updateProfile(profile);
             Log.d(TAG,"Se modifico el perfil "+ profile.getId());
-            msj("Se modifico el perfil exitosamente!");
         }catch (Exception e)
         {
             Log.e(TAG,"Error al modificar Perfil",e);
-            msj("Error al modificar Perfil");
         }
         return resp;
     }

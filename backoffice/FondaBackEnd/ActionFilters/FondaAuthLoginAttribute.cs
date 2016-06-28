@@ -107,6 +107,7 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
                     idCommensal = 0;
                 else
                     idCommensal = user.Id;
+                if (user != null)
                 Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                    GeneralRes.Commensal + idCommensal, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
@@ -120,9 +121,6 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new FondaAuthLoginAttributeException(GeneralRes.ValidateAccountEmailException, e);
             }
-            //Logger al Culminar el metodo
-            Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, idCommensal.ToString(),
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 

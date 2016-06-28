@@ -1,6 +1,10 @@
 package com.ds201625.fonda.views.presenters;
 
+import android.util.Log;
+
 import com.ds201625.fonda.domains.Commensal;
+import com.ds201625.fonda.logic.InvalidParameterTypeException;
+import com.ds201625.fonda.logic.ParameterOutOfIndexException;
 import com.ds201625.fonda.views.contracts.LoginViewContract;
 import com.ds201625.fonda.logic.SessionData;
 
@@ -17,23 +21,40 @@ public class LoginPresenter {
      */
     public LoginPresenter (LoginViewContract view){ loginView = view;}
 
-        public void regiter(String email, String password) {
+        public void regiter(String email, String password) throws Exception {
+            Log.d(TAG,"Registro Commensal");
             try
             {
                 SessionData.getInstance().registerCommensal(email, password);
-            } catch (Exception e) {
-                e.printStackTrace();
+                this.loginView.displayMsj("Registro Satisfactorio");
+            }
+            catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                this.loginView.displayMsj("Error interno: " + e.getMessage());
+                throw e;
+            } catch (Exception e)
+            {
+                Log.e(TAG,"Error al Registar Commensal",e);
+                this. loginView.displayMsj(e.getMessage());
+                throw e;
             }
 
     }
 
-        public void login(Commensal commensal) {
+        public void login(Commensal commensal) throws Exception{
+            Log.d(TAG,"Login Commensal");
             try
             {
                 SessionData.getInstance().addCommensal(commensal);
                 SessionData.getInstance().loginCommensal();
-            } catch (Exception e) {
-                e.printStackTrace();
+            }
+            catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                Log.e(TAG,"Error al Logearse un Commensal",e);
+                this.loginView.displayMsj("Error interno: " + e.getMessage());
+                throw e;
+            } catch (Exception e)
+            {
+                Log.e(TAG,"Error al Logearse un Commensal",e);
+                throw e;
             }
 
         }

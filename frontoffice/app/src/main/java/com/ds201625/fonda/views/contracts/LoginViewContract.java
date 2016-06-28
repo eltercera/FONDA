@@ -19,4 +19,10 @@ public interface LoginViewContract {
      * @param password
      */
     void login(String email, String password);
+
+    /**
+     * Metodo para el Despliegue de mensajes
+     * @param msj
+     */
+    void displayMsj(String msj);
 }
