@@ -7,8 +7,10 @@ import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Token;
 import com.ds201625.fonda.logic.BaseCommand;
+import com.ds201625.fonda.logic.CommandInternalErrorException;
 import com.ds201625.fonda.logic.Parameter;
 import com.ds201625.fonda.domains.Profile;
+import com.ds201625.fonda.logic.ParameterOutOfIndexException;
 import com.ds201625.fonda.logic.SessionData;
 
 /**
@@ -32,7 +34,7 @@ public class CreateProfileCommand extends BaseCommand {
     }
 
     @Override
-    protected void invoke() {
+    protected void invoke() throws Exception{
 
         Log.d(TAG, "Comando para agregar un perfil de un commensal logeado");
         Profile profile;
@@ -45,19 +47,9 @@ public class CreateProfileCommand extends BaseCommand {
             profileService.addProfile(profile);
             Log.d(TAG, "Se agrego el Perfil: " + profile.getProfileName());
         }
-        catch (RestClientException e)
-        {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
-            e.printStackTrace();
-        }
-        catch (NullPointerException e) {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
-            e.printStackTrace();
-        }
-        catch (Exception e)
-        {
-            Log.e(TAG, "Se ha generado error en invoke al agregar un Perfil", e);
-            e.printStackTrace();
+        catch (ParameterOutOfIndexException e) {
+            Log.e("Fonda Command",e.getMessage());
+            throw CommandInternalErrorException.generate(this.getClass().toString(),e);
         }
 
         setResult(true);

@@ -25,7 +25,7 @@ public interface CommensalService {
      * @throws LocalStorageException
      */
     Commensal RegisterCommensal(String user, String password, Context context)
-            throws InvalidDataRetrofitException, RestClientException, LocalStorageException, AddCommensalWebApiControllerException;
+            throws InvalidDataRetrofitException, RestClientException, LocalStorageException, AddCommensalWebApiControllerException, Exception;
 
 
 

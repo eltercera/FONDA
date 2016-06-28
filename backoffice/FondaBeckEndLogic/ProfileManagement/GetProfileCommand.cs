@@ -56,7 +56,7 @@ namespace com.ds201625.fonda.BackEndLogic.ProfileManagement
             {
                 //Se busca el profile por su id
                 profile = (Profile)profileDAO.FindById(profile.Id);
-                //Logger
+                if (profile != null)
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                  ResourceMessages.Profile + profile.ProfileName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
@@ -75,8 +75,6 @@ namespace com.ds201625.fonda.BackEndLogic.ProfileManagement
             Result = profile;
 
             //Logger al Culminar el metodo
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
         }

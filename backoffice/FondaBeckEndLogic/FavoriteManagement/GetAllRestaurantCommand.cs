@@ -17,6 +17,7 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
     class GetAllRestaurantCommand : BaseCommand
     {
         private IList<Restaurant> listRestaurant;
+        private List<Restaurant> newListRestaurant;
         private IRestaurantDAO RestaurantDAO;
         /// <summary>
         /// constructor obtener todos los restaurant command
@@ -37,33 +38,41 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
         /// <summary>
         /// metodo invoke que ejecuta la obtencion de todos los restaurantes
         /// </summary>
-		protected override void Invoke()
-		{
+        protected override void Invoke()
+        {
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                ResourceMessages.BeginLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
-          
-			try
-			{
+                ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            try
+            {
                 // Obtiene el dao que se requiere
                 RestaurantDAO = FacDao.GetRestaurantDAO();
                 // Ejecucion del obtener.	
                 listRestaurant = (IList<Restaurant>)RestaurantDAO.GetAll();
+                newListRestaurant = new List<Restaurant>();
                 foreach (var restaurant in listRestaurant)
                 {
-                    restaurant.RestaurantCategory = new RestaurantCategory
-                    
-                    {
-                        Name = restaurant.RestaurantCategory.Name,
-                        Id = restaurant.RestaurantCategory.Id
 
-                    };
-                Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                  ResourceMessages.Restaurant + restaurant.Name + ResourceMessages.Slash +
-                  restaurant.RestaurantCategory,System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    if (restaurant.Status.StatusId == 1)
+                    {
+
+                        Console.Write("IDDD" + restaurant.Status.StatusId);
+                        restaurant.RestaurantCategory = new RestaurantCategory
+                        {
+                            Name = restaurant.RestaurantCategory.Name,
+                            Id = restaurant.RestaurantCategory.Id,
+
+                        };
+                        newListRestaurant.Add(restaurant);
+                    }
+
+                    Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                      ResourceMessages.Restaurant + restaurant.Name + ResourceMessages.Slash +
+                      restaurant.RestaurantCategory, System.Reflection.MethodBase.GetCurrentMethod().Name);
                 }
-                
-               
-			}
+
+
+            }
             catch (ParameterIndexOutOfRangeException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -79,13 +88,13 @@ namespace com.ds201625.fonda.BackEndLogic.FavoriteManagement
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new GetAllRestaurantsCommandException(ResourceMessages.GetAllRestaurantException, e);
             }
-            
-			// Guardar el resultado.
-            Result = listRestaurant;
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
-                Result.ToString(),System.Reflection.MethodBase.GetCurrentMethod().Name);
+
+            // Guardar el resultado.
+            Result = newListRestaurant;
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                ResourceMessages.EndLogger,System.Reflection.MethodBase.GetCurrentMethod().Name);
-		}
-	}
+                Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
+            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        }
+    }
 }
