@@ -13,11 +13,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.views.contracts.LoginViewContract;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.presenters.LoginPresenter;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -337,6 +339,11 @@ public class LoginActivity extends BaseActivity implements LoginViewContract {
         }
     }
 
+    /**
+     * Metodo que permite el logi ndel comensal
+     * @param email del comensal que desea ingresar
+     * @param password del comensal que desea ingresar
+     */
     @Override
     public void login(String email, String password) {
         boolean succ = false;
@@ -358,6 +365,10 @@ public class LoginActivity extends BaseActivity implements LoginViewContract {
         }
     }
 
+    /**
+     * Metodo encargado del despliegue de msj al usuario
+     * @param msj
+     */
     @Override
     public void displayMsj(String msj) {
         Toast.makeText(this, msj, Toast.LENGTH_LONG).show();

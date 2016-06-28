@@ -2,7 +2,6 @@
 package com.ds201625.fonda.data_access.retrofit_client;
 
 import android.util.Log;
-
 import com.ds201625.fonda.data_access.retrofit_client.clients.ProfileClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.DeleteProfileFondaWebApiControllerException;
@@ -13,12 +12,8 @@ import com.ds201625.fonda.data_access.services.ProfileService;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.Token;
 import com.ds201625.fonda.domains.factory_entity.APIError;
-import com.ds201625.fonda.logic.ExceptionHandler.ErrorUtils;
-import com.google.android.gms.appdatasearch.GetRecentContextCall;
-
 import java.io.IOException;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Response;
 

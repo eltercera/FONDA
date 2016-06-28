@@ -2,7 +2,6 @@
 package com.ds201625.fonda.data_access.services;
 
 import android.content.Context;
-
 import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;

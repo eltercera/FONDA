@@ -21,6 +21,12 @@ public class LoginPresenter {
      */
     public LoginPresenter (LoginViewContract view){ loginView = view;}
 
+    /**
+     * Metodo que permite el registro
+     * @param email del nuevo comensal
+     * @param password del nuevo comensal
+     * @throws Exception
+     */
         public void regiter(String email, String password) throws Exception {
             Log.d(TAG,"Registro Commensal");
             try
@@ -40,6 +46,11 @@ public class LoginPresenter {
 
     }
 
+    /**
+     * Metodo que permite el login a un comensal
+     * @param commensal comensal que desea ingresar
+     * @throws Exception
+     */
         public void login(Commensal commensal) throws Exception{
             Log.d(TAG,"Login Commensal");
             try

@@ -9,11 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
+
 public class ProfileEmptyFragment extends BaseFragment {
 
 

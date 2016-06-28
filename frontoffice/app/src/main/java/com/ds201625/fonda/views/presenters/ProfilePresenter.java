@@ -32,6 +32,11 @@ public class ProfilePresenter{
      */
     public ProfilePresenter (ProfileViewContract view){ profileView = view;}
 
+    /**
+     * Metodo encargado de Crear perdil
+     * @param profile que se desea crear
+     * @return True si se crea de forma correcta,false en caso contrario
+     */
         public Boolean createProfile(Profile profile) {
             Log.d(TAG,"Metodo createProfile");
             Boolean resp = false;
@@ -54,6 +59,11 @@ public class ProfilePresenter{
             return resp;
         }
 
+    /**
+     * Metodo Encargado de actualizar perfil
+     * @param profile
+     * @return True en caso de exito,false en caso contrario
+     */
         public Boolean updateProfile(Profile profile) {
             Log.d(TAG,"Metodo updateProfile");
             Boolean resp = false;
@@ -75,6 +85,11 @@ public class ProfilePresenter{
             return resp;
         }
 
+    /**
+     * Metodo encargado de eliminar Perfil
+     * @param profile
+     * @return True en caso de eliminar con exito,false en caso contrario
+     */
         public Boolean deleteProfile(Profile profile) {
             Log.d(TAG,"Metodo deleteProfile");
             Boolean resp = false;
@@ -98,6 +113,10 @@ public class ProfilePresenter{
             return resp;
         }
 
+    /**
+     * Metodo encargado de buscar la lista de perfiles de comensal
+     * @return List<Profile>
+     */
         public List<Profile> getProfiles() {
             Log.d(TAG,"Metodo getProfiles");
             List<Profile> resp = null;

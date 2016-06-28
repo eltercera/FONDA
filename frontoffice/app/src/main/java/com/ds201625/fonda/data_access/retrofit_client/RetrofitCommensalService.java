@@ -3,23 +3,15 @@ package com.ds201625.fonda.data_access.retrofit_client;
 
 import android.content.Context;
 import android.util.Log;
-
 import com.ds201625.fonda.data_access.local_storage.JsonFile;
 import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.data_access.retrofit_client.clients.CommensalClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.AddCommensalWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetProfilesFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.factory_entity.APIError;
-import com.ds201625.fonda.logic.ExceptionHandler.ErrorUtils;
-
-
 import java.io.IOException;
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -112,6 +104,11 @@ public class RetrofitCommensalService implements CommensalService {
         }
     }
 
+    /**
+     * Metodo que implementa  Eliminar comensal
+     * @param context Contexto para el borrado local
+     * @throws LocalStorageException
+     */
     @Override
     public void deleteCommensal(Context context) throws LocalStorageException {
         Commensal commensal = null;
