@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Filters;
 using System.Web.Http.Controllers;
@@ -30,8 +29,15 @@ namespace com.ds201625.fonda.BackEnd.ActionFilters
 		/// <param name="context">Context.</param>
 		public override void OnAuthorization(HttpActionContext context)
 		{
-            if (!Authorize(context))
-               throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            try
+            {
+                if (!Authorize(context))
+                    throw new HttpResponseException(HttpStatusCode.Unauthorized);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
 			
 			base.OnAuthorization(context);
 		}

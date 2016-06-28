@@ -19,9 +19,11 @@ namespace com.ds201625.fonda.BackEndLogic.ReservationManagement
     /// </summary>
     class GetCommensalReservationsCommand : BaseCommand
     {
-        private Commensal reservation;
+        private IList<Reservation> listReservation;
+        private ICommensalDAO CommensalDAO;
         private Commensal commensal;
-        private ICommensalDAO commensalDAO;
+        private IList<Reservation> reservations;
+      
 
         /// <summary>
         /// constructor obtener Reservations command
@@ -50,31 +52,27 @@ namespace com.ds201625.fonda.BackEndLogic.ReservationManagement
 		{
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            
+
+             
             // Obtencion de parametros
             commensal = (Commensal)GetParameter(0);
             // Obtiene el dao que se requiere
-            commensalDAO = FacDao.GetCommensalDAO();
+            CommensalDAO = FacDao.GetCommensalDAO();
 
-            if (commensal.Id <= 0)
+              if (commensal.Id <= 0)
                 throw new Exception(ResourceMessages.InvalidInformation);
 
-          // Ejecucion del Buscar.		
-			try
-			{
-                reservation = (Commensal)commensalDAO.FindById(commensal.Id);//PREGUNTAR POR SI PUEDO HACER COMENSAL.ID
-                //foreach (var reservation in reservation.Reservations) 
-                //{
-                //    reservation.RestaurantCategory = new RestaurantCategory
-                //    {
-                //        Name = restaurant.RestaurantCategory.Name,
-                //        Id = restaurant.RestaurantCategory.Id
-                //    };
-                //    Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                //  ResourceMessages.CommensalReservation + restaurant.Name + ResourceMessages.Slash + favorites.Email,
-                // System.Reflection.MethodBase.GetCurrentMethod().Name);
-                //}
-			}
+            try
+            {
+               commensal = (Commensal)CommensalDAO.FindById(commensal.Id);
+               reservations = commensal.Reservations;
+            
+                            
+                    Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
+                      ResourceMessages.Commensal + commensal.Id + ResourceMessages.Slash +
+                      commensal.Email, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            
             catch (InvalidTypeOfParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
@@ -101,7 +99,7 @@ namespace com.ds201625.fonda.BackEndLogic.ReservationManagement
                 throw new GetFavoriteRestaurantFondaCommandException(ResourceMessages.GetFavoriteRestaurantException, e);
             }
             // Guardar el resultado.
-            Result = reservation;
+               Result = reservations;
             //logger
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, 
                 Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);

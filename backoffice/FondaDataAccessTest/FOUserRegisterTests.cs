@@ -1,11 +1,9 @@
 ﻿using NUnit.Framework;
 using System;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.DataAccess.HibernateDAO.Session;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Factory;
-using com.ds201625.fonda.DataAccess.Exceptions;
 
 namespace FondaDataAccessTest
 {

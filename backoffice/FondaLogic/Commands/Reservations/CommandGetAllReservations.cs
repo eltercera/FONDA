@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using com.ds201625.fonda;
 using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
-using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.Logic.FondaLogic.FondaCommandException.Login;
 
-namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Login
+namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations
 {
     public class CommandGetAllReservations : Command
     {
@@ -45,27 +38,27 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Login
             catch (InvalidTypeParameterException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllReservations(Resources.FondaResources.Reservation.ReservationErrors.ClassNameInvalidParameter, e);
+                throw new CommandExceptionGetAllReservations(Resources.FondaResources.Reservations.ReservationErrors.ClassNameInvalidParameter, e);
             }
             catch (ParameterIndexOutRangeException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllReservations(Resources.FondaResources.Reservation.ReservationErrors.ClassNameIndexParameter, e);
+                throw new CommandExceptionGetAllReservations(Resources.FondaResources.Reservations.ReservationErrors.ClassNameIndexParameter, e);
             }
             catch (RequieredParameterNotFoundException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllReservations(Resources.FondaResources.Reservation.ReservationErrors.ClassNameParameterNotFound, e);
+                throw new CommandExceptionGetAllReservations(Resources.FondaResources.Reservations.ReservationErrors.ClassNameParameterNotFound, e);
             }
             catch (NullReferenceException e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllReservations(Resources.FondaResources.Reservation.ReservationErrors.ClassNameGetAllReservations, e);
+                throw new CommandExceptionGetAllReservations(Resources.FondaResources.Reservations.ReservationErrors.ClassNameGetAllReservations, e);
             }
             catch (Exception e)
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionGetAllReservations(Resources.FondaResources.Reservation.ReservationErrors.ClassNameGetAllReservations, e);
+                throw new CommandExceptionGetAllReservations(Resources.FondaResources.Reservations.ReservationErrors.ClassNameGetAllReservations, e);
             }
             // Guarda el resultado.
             Object Result = Receiver;
@@ -73,7 +66,7 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Login
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 Result.ToString(), System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
-                Resources.FondaResources.Reservation.ReservationErrors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                Resources.FondaResources.Reservations.ReservationErrors.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
     }
 }

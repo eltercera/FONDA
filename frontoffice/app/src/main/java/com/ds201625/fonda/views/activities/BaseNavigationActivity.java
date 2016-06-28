@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.logic.SessionData;
@@ -118,9 +119,14 @@ public abstract class BaseNavigationActivity extends BaseActivity
             try {
                 SessionData.getInstance().logoutCommensal();
                 this.startActivity(new Intent(this,Class.forName("com.ds201625.fonda.views.activities.LoginActivity")));
+                Toast.makeText(getBaseContext(),
+                        "Close",
+                        Toast.LENGTH_LONG).show();
             }
             catch (Exception e){
-                e.printStackTrace();
+                Toast.makeText(getBaseContext(),
+                        "Error al cerrar sesión",
+                        Toast.LENGTH_LONG).show();
             }
 
         }

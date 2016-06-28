@@ -3,23 +3,15 @@ package com.ds201625.fonda.data_access.retrofit_client;
 
 import android.content.Context;
 import android.util.Log;
-
 import com.ds201625.fonda.data_access.local_storage.JsonFile;
 import com.ds201625.fonda.data_access.local_storage.LocalStorageException;
 import com.ds201625.fonda.data_access.retrofit_client.clients.CommensalClient;
 import com.ds201625.fonda.data_access.retrofit_client.clients.RetrofitService;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.AddCommensalWebApiControllerException;
-import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetProfilesFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.CommensalService;
 import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.factory_entity.APIError;
-import com.ds201625.fonda.logic.ExceptionHandler.ErrorUtils;
-
-
 import java.io.IOException;
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -53,7 +45,7 @@ public class RetrofitCommensalService implements CommensalService {
      */
     @Override
     public Commensal RegisterCommensal(String user, String password, Context context)
-            throws InvalidDataRetrofitException, RestClientException, LocalStorageException, AddCommensalWebApiControllerException {
+            throws Exception{
         Log.d(TAG, "Se registra un commensal");
         if (user.isEmpty() || password.isEmpty())
             throw new InvalidDataRetrofitException("Usuario o password son vacios.");
@@ -69,18 +61,14 @@ public class RetrofitCommensalService implements CommensalService {
             if (response.isSuccessful()) {
                 rsvCommensal = response.body();
             } else {
-                APIError error = ErrorUtils.parseError(response);
                 Log.e(TAG, "Se ha generado error en WS ");
-                Log.e(TAG,"error message " + error.message());
-                Log.e(TAG,"error message " +error.exceptionType());
-                throw new AddCommensalWebApiControllerException(error.exceptionType());
+                throw new AddCommensalWebApiControllerException("Error del Servicio Web " +
+                        "al agregar Commensal");
             }
-        }  catch (IOException e) {
+        }
+        catch (IOException e) {
             Log.e(TAG, "Se ha generado error en getProfiles", e);
             throw new RestClientException("Error de IO",e);
-        } catch (Exception e) {
-            Log.e(TAG, "Se ha generado error en getProfiles", e);
-            throw new AddCommensalWebApiControllerException(error.exceptionType());
         }
         Log.d(TAG, "Cierre del metodo registrar commensal. Return: "+ rsvCommensal.toString());
 
@@ -116,6 +104,11 @@ public class RetrofitCommensalService implements CommensalService {
         }
     }
 
+    /**
+     * Metodo que implementa  Eliminar comensal
+     * @param context Contexto para el borrado local
+     * @throws LocalStorageException
+     */
     @Override
     public void deleteCommensal(Context context) throws LocalStorageException {
         Commensal commensal = null;

@@ -1,15 +1,9 @@
-﻿using com.ds201625.fonda.BackEndLogic;
-using com.ds201625.fonda.DataAccess.Exceptions;
-using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEndLogic.Exceptions;
 using com.ds201625.fonda.Logic.FondaLogic.Log;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FondaBeckEndLogic;
 
 namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
@@ -59,7 +53,7 @@ namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
                 //Buscar el usuario
                 user = commensalDAO.FindByEmail(email);
 
-                //Logger
+                if (user != null)
                 Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                  ResourceMessages.Commensal + user.Email, System.Reflection.MethodBase.GetCurrentMethod().Name);
 
@@ -79,9 +73,6 @@ namespace com.ds201625.fonda.BackEndLogic.ActionFiltersManagement
             //Se guardan los resultados
             Result = user;
 
-            //Logger al Culminar el metodo
-            Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, Result.ToString(),
-                 System.Reflection.MethodBase.GetCurrentMethod().Name);
             Logger.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 ResourceMessages.EndLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
 

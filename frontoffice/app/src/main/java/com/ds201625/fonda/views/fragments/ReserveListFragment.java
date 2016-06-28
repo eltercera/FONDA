@@ -6,32 +6,21 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
-import android.view.ActionMode;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.ds201625.fonda.R;
-import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
-import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.GetReservationFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.retrofit_client.exceptions.LoginExceptions.PostReservationFondaWebApiControllerException;
-import com.ds201625.fonda.data_access.services.ProfileService;
-import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.Reservation;
-import com.ds201625.fonda.interfaces.ReservationView;
-import com.ds201625.fonda.interfaces.ReservationViewPresenter;
-import com.ds201625.fonda.logic.SessionData;
-import com.ds201625.fonda.presenter.ReservationPresenter;
+import com.ds201625.fonda.views.contracts.ReservationView;
+import com.ds201625.fonda.views.contracts.ReservationViewPresenter;
+import com.ds201625.fonda.views.presenters.ReservationPresenter;
 import com.ds201625.fonda.views.activities.ReserveActivity;
 import com.ds201625.fonda.views.adapters.ReserveViewIntemList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
