@@ -31,8 +31,8 @@ public class AllReservationCommand extends BaseCommand {
     @Override
     protected Parameter[] setParameters() {
 
-        Parameter [] parameters = new Parameter[0];
-      //  parameters[0] = new Parameter(Commensal.class, true);
+        Parameter [] parameters = new Parameter[1];
+        parameters[0] = new Parameter(Commensal.class, true);
 
         return parameters;
     }
@@ -45,11 +45,11 @@ public class AllReservationCommand extends BaseCommand {
         Log.d(TAG, "Comando para obtener las reservas");
         ReservationService serviceReservation = FondaServiceFactory.getInstance()
                 .getReservationService(SessionData.getInstance().getToken());
-      //  idCommensal = FondaEntityFactory.getInstance().GetCommensal();
+        idCommensal = FondaEntityFactory.getInstance().GetCommensal();
 
         try {
-      //      idCommensal = (Commensal) this.getParameter(0);
-            reservationList =  serviceReservation.getReservations(0);
+            idCommensal = (Commensal) this.getParameter(0);
+            reservationList =  serviceReservation.getReservations(idCommensal.getId());
         }catch(GetReservationFondaWebApiControllerException e){
             Log.e(TAG, "Se ha generado error en invoke al obtener las reservas", e);
             throw  new GetReservationFondaWebApiControllerException(e);

@@ -33,7 +33,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
         /// <returns>Commensal</returns>
         public Commensal GetCommensalByReservation(int reservationId)
         {
-            IList<Commensal> _listCommensal = new List<Commensal>();
+            IList<object> _listCommensal = new List<object>();
             IList<Reservation> _listReservation = new List<Reservation>();
             Commensal _commensal = EntityFactory.GetCommensal();
             ICommensalDAO _commensalDAO = _facDAO.GetCommensalDAO();
@@ -41,7 +41,7 @@ namespace com.ds201625.fonda.DataAccess.HibernateDAO
             // _restaurantDAO = _facDAO.GetRestaurantDAO();
             try
             {
-                _listCommensal = (List<Commensal>)_commensalDAO.GetAll();
+                _listCommensal = _commensalDAO.GetAll();
 
                 foreach (Commensal commensal in _listCommensal)
                 {

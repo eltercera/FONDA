@@ -44,7 +44,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 
         IList<Reservation> ReservationsByRestaurantId(int restaurantId);
         IList<Table> TablesByRestaurantId(int restaurantId);
-
+        Restaurant GetRestaurantByTable(int tableId);
         #endregion
     }
 }

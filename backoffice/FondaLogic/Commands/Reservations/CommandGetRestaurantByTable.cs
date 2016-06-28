@@ -12,26 +12,26 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Reservations
 {
-    public class CommandGetTableByReservation : Command
+    public class CommandGetRestaurantByTable : Command
     {
-        private Table _table;
+        private Restaurant _restaurant;
         private FactoryDAO _facDAO = FactoryDAO.Intance;
-        private int _reservationId;
+        private int _tableId;
         //private Reservation _reservation;
         //private IList<object> _list;
-        public CommandGetTableByReservation(Object receiver) : base(receiver) { }
+        public CommandGetRestaurantByTable(Object receiver) : base(receiver) { }
 
         public override void Execute()
         {
-            ITableDAO _tableDAO = _facDAO.GetTableDAO();
+            IRestaurantDAO _restaurantDAO = _facDAO.GetRestaurantDAO();
          //   int _restaurantId;
             try
             {
 
-                _reservationId = (int)Receiver;
-                _table = _tableDAO.GetTableByReservation(_reservationId);
+                _tableId = (int)Receiver;
+                _restaurant = _restaurantDAO.GetRestaurantByTable(_tableId);
 
-                Receiver = _table;
+                Receiver = _restaurant;
 
             }
             catch (Exception ex)

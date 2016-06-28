@@ -89,6 +89,7 @@
     <Compile Include="Commands\OrderAccount\CommandTotalOrder.cs" />
     <Compile Include="Commands\OrderAccount\CommandValidateProfileByCommensal.cs" />
     <Compile Include="Commands\Reservations\CommandGetAllReservations.cs" />
+    <Compile Include="Commands\Reservations\CommandGetRestaurantByTable.cs" />
     <Compile Include="Commands\Reservations\CommandGetTableByReservation.cs" />
     <Compile Include="Commands\Reservations\CommandGetDetailReservation.cs" />
     <Compile Include="Commands\Reservations\CommandGetCommensalByReservation.cs" />

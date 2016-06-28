@@ -17,7 +17,7 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 		/// Obtiene todas las cuentas de usuario
 		/// </summary>
 		/// <returns>List UserAccount.</returns>
-        IList<UserAccount> GetAll();
+        IList<Object> GetAll();
 
 	}
 }

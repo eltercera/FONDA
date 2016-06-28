@@ -53,8 +53,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             {
                 Commensal commensal = GetCommensal(Request.Headers);
                 //Creación del commensal con id
-         //       commensal = EntityFactory.GetCommensal();
-         //       commensal.Id = idCommensal;
+       //         commensal = EntityFactory.GetCommensal();
+             //   commensal.Id = idCommensal;
 
                 // Obtención del commando
                 command = FacCommand.GetCommensalReservationsCommand();
@@ -77,14 +77,13 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new FindCommensalReservationsFondaWebApiControllerException(GeneralRes.GetCommensalReservationsException,
                     e);
-                return InternalServerError(e);
+
             }
             catch (NullReferenceException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new FindCommensalReservationsFondaWebApiControllerException(GeneralRes.GetCommensalReservationsException,
                     e);
-                return InternalServerError(e);
             }
             catch (Exception e)
             {
@@ -107,13 +106,12 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         /// <summary>
         /// metodo que busca la existencia de un commensal
         /// </summary>
-        /// <param name="mail"></param>
+        /// <param name="email"></param>
         /// <returns>result</returns>
 
-        [Route("findCommensalMail/{mail}")]
+        [Route("findCommensalEmail/{email}")]
         [HttpGet]
-        [FondaAuthToken]
-        public IHttpActionResult findCommensalMail(string mail)
+        public IHttpActionResult findCommensalEmail(string email)
         {
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -122,7 +120,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             try
             {
                 UserAccount commensal = EntityFactory.GetUserAccount();
-                commensal.Email = mail;
+                commensal.Email = email;
                 // Obtención del commando
                 command = FacCommand.GetCommensalEmailCommand();
                 // Agregacion de parametros

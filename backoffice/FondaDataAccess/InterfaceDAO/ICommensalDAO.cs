@@ -5,7 +5,10 @@ namespace com.ds201625.fonda.DataAccess.InterfaceDAO
 {
 	public interface ICommensalDAO : IUserAccountDAO
 	{
+        #region Reservation
         Commensal GetCommensalByReservation(int reservationId);
-	}
+        #endregion
+
+    }
 }
 

@@ -100,7 +100,7 @@ public class ReservationPresenter implements ReservationViewPresenter {
         Command cmdAllReservation;
         try {
             cmdAllReservation = facCmd.allReservationCommand();
-         //   cmdAllReservation.setParameter(0,logedComensal);
+            cmdAllReservation.setParameter(0,logedComensal);
             cmdAllReservation.run();
         }
             catch (GetReservationFondaWebApiControllerException e) {
@@ -114,7 +114,7 @@ public class ReservationPresenter implements ReservationViewPresenter {
                 throw  new GetReservationFondaWebApiControllerException(e);
             }
             catch (Exception e) {
-                Log.e(TAG,"Error en AllReservation al buscar  las reservas",
+                Log.e(TAG,"Error en AllReservation al buscar los restaurantes favoritos",
                         e);
                 throw  new GetReservationFondaWebApiControllerException(e);
             }

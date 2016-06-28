@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Runtime.Serialization;
 
 namespace com.ds201625.fonda.Domain
 {
@@ -71,28 +70,25 @@ namespace com.ds201625.fonda.Domain
 
         #region Properties
 
-        [DataMember]
+
         public virtual int Number
         {
             get { return _number; }
             set { _number = value; }
         }
 
-        [DataMember]
         public virtual DateTime ReservationDate
         {
             get { return _reservationDate; }
             set { _reservationDate = value; }
         }
 
-        [DataMember]
         public virtual DateTime CreationDate
         {
             get { return _creationDate; }
             set { _creationDate = value; }
         }
 
-        [DataMember]
         public virtual int CommensalNumber
         {
             get { return _commensalNumber; }

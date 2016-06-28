@@ -4,13 +4,12 @@ namespace com.ds201625.fonda.View.BackOfficeModel.Reservations
 {
     public interface IDetailReservationContract : IContract
     {
-      //  Table DetailReservationTable { get; set; }
 
         string Session { get; set; }
 
         string SessionNumberReservation { get; set; }
 
-        Label UserAccount { get; set; }
+        Label NumberReservation { get; set; }
 
         Label NumberCommensal { get; set; }
 
@@ -22,7 +21,6 @@ namespace com.ds201625.fonda.View.BackOfficeModel.Reservations
 
         Label ReservationDate { get; set; }
 
-        //Button PrintInvoice { get; set; }
 
     }
 }

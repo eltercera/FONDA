@@ -29,25 +29,6 @@
             android:gravity="fill_vertical" />
 
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="DateCreation"
-            android:id="@+id/tvCreationD"
-            android:layout_gravity="center_vertical"
-            android:gravity="fill_vertical" />
-
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Number"
-            android:id="@+id/tvNumber"
-            android:layout_gravity="center_vertical"
-            android:gravity="fill_vertical" />
-
-
-
     </LinearLayout>
 
 

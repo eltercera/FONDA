@@ -24,7 +24,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Number Comensal"
-            android:id="@+id/tvNumber"
+            android:id="@+id/tvNumberC"
             android:layout_gravity="center_vertical"
             android:gravity="fill_vertical" />
 

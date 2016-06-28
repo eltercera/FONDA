@@ -13,7 +13,6 @@ import com.ds201625.fonda.domains.factory_entity.APIError;
 import com.ds201625.fonda.logic.ExceptionHandler.ErrorUtils;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,7 +27,8 @@ public class RetrofitReservationService implements ReservationService {
     private ReservationClient reserveClient;
 
     private String TAG = "RetrofitReservationService";
-
+    private ReservationClient reservationClient  =
+            RetrofitService.getInstance().createService(ReservationClient.class);
 
     private APIError error;
 
@@ -43,7 +43,8 @@ public class RetrofitReservationService implements ReservationService {
     @Override
     public Commensal AddReservation(int idCommensal, int idRestaurant) throws RestClientException {
         // aqui se supone que debo traerme el comensal Logeado
-        Call<Commensal> call = reserveClient.addReservation(idCommensal, idRestaurant);
+        Log.d(TAG, "Se agrega el restaurante " + idRestaurant + "a favoritos del comensal " + idCommensal);
+        Call<Commensal> call = reservationClient.addReservation(idCommensal, idRestaurant);
         Commensal r = null;
 
         try{
@@ -67,19 +68,14 @@ public class RetrofitReservationService implements ReservationService {
     public List<Reservation> getReservations(int idCommensal) throws
             GetReservationFondaWebApiControllerException {
         Log.d(TAG, "Se obtienen toda las reservas del comensal: "+idCommensal);
-        Call<List<Reservation>> call = reserveClient.getReservations();
+        Call<List<Reservation>> call = reservationClient.getReservations();
         List<Reservation> test = null;
         Response <List<Reservation>> response;
         try {
-            Log.d(TAG, "Ejecutando <-------------------------------");
             response =call.execute();
-            //if (response.isSuccessful()){
-            Log.d(TAG, "Obteniendo Body <-------------------------------");
-                test = response.body();//}
-
-            Log.d(TAG,(test == null ? "Es nulo <---- y retorno codigo :" + response.code() : "Tienen " + test.size() +"<----------------------------------"));
-            /*else{
-
+            if (response.isSuccessful()){
+                test = response.body();}
+            else{
                 error = ErrorUtils.parseError(response);
                 Log.d(TAG, "Se obtiene la excepcion del WS");
                 // usar error para disparar exception
@@ -88,7 +84,7 @@ public class RetrofitReservationService implements ReservationService {
 
                 throw  new GetReservationFondaWebApiControllerException
                         (error.exceptionType());
-            }*/
+            }
 
         } catch (IOException e) {
             Log.e(TAG, "Se ha generado error en getReservations", e);

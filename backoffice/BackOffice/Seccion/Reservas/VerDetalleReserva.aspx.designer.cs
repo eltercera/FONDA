@@ -49,13 +49,13 @@ namespace BackOffice.Seccion.Reservas {
         protected global::System.Web.UI.WebControls.Label ErrorLabelMessage;
         
         /// <summary>
-        /// userAccount control.
+        /// numberReservation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userAccount;
+        protected global::System.Web.UI.WebControls.Label numberReservation;
         
         /// <summary>
         /// numberCommensal control.
