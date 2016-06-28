@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.Profile;
-import com.ds201625.fonda.views.contracts.IProfileViewContract;
+import com.ds201625.fonda.views.contracts.ProfileViewContract;
 import com.ds201625.fonda.views.presenters.ProfilePresenter;
 import com.ds201625.fonda.views.fragments.BaseFragment;
 import com.ds201625.fonda.views.fragments.ProfileEmptyFragment;
@@ -26,7 +26,7 @@ import java.util.List;
  * Activity de Perfil de usuario
  */
 public class ProfileActivity extends BaseNavigationActivity
-    implements ProfileListFragment.profileListFragmentListener, IProfileViewContract {
+    implements ProfileListFragment.profileListFragmentListener, ProfileViewContract {
 
     private String TAG = "ProfileActivity";
     /**
@@ -209,8 +209,6 @@ public class ProfileActivity extends BaseNavigationActivity
             }
         } catch (Exception e) {
             Log.e(TAG,"Error al salvar el perfil",e);
-            e.printStackTrace();
-            msj("Error al salvar el perfil");
         }
         try
         {
@@ -279,11 +277,9 @@ public class ProfileActivity extends BaseNavigationActivity
         try {
             resp = presenter.createProfile(profile);
             Log.d(TAG,"Se agrego el perfil "+ profile.getProfileName());
-            msj("Se agrego el perfil exitosamente!");
         }catch (Exception e)
         {
             Log.e(TAG,"Error al crear Perfil",e);
-            msj("Error al crear Perfil");
         }
         return resp;
     }
@@ -300,11 +296,9 @@ public class ProfileActivity extends BaseNavigationActivity
         try {
             resp = presenter.updateProfile(profile);
             Log.d(TAG,"Se modifico el perfil "+ profile.getId());
-            msj("Se modifico el perfil exitosamente!");
         }catch (Exception e)
         {
             Log.e(TAG,"Error al modificar Perfil",e);
-            msj("Error al modificar Perfil");
         }
         return resp;
     }

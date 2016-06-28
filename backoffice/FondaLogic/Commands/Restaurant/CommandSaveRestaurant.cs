@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante
 {
-    class CommandSaveRestaurant : Command
+    public class CommandSaveRestaurant : Command
     {
         FactoryDAO _facDAO = FactoryDAO.Intance;
         Restaurant _restaurant;
@@ -55,16 +55,6 @@ namespace com.ds201625.fonda.Logic.FondaLogic.Commands.Restaurante
             {
                 Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new CommandExceptionAddCategory(RestaurantErrors.InvalidTypeParameterException, e);
-            }
-            catch (ParameterIndexOutRangeException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionAddCategory(RestaurantErrors.ParameterIndexOutRangeException, e);
-            }
-            catch (RequieredParameterNotFoundException e)
-            {
-                Logger.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
-                throw new CommandExceptionAddCategory(RestaurantErrors.RequieredParameterNotFoundException, e);
             }
             catch (NullReferenceException e)
             {

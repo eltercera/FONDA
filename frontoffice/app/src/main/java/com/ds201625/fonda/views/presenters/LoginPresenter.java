@@ -1,7 +1,11 @@
 package com.ds201625.fonda.views.presenters;
 
+import android.util.Log;
+
 import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.views.contracts.ILoginViewContract;
+import com.ds201625.fonda.logic.InvalidParameterTypeException;
+import com.ds201625.fonda.logic.ParameterOutOfIndexException;
+import com.ds201625.fonda.views.contracts.LoginViewContract;
 import com.ds201625.fonda.logic.SessionData;
 
 /**
@@ -9,31 +13,59 @@ import com.ds201625.fonda.logic.SessionData;
  */
 public class LoginPresenter {
 
-    private ILoginViewContract loginView;
+    private LoginViewContract loginView;
     private String TAG = "LoginPresenter";
     /**
      * Constructor para la vita de LoginActivity
      * @param view
      */
-    public LoginPresenter (ILoginViewContract view){ loginView = view;}
+    public LoginPresenter (LoginViewContract view){ loginView = view;}
 
-        public void regiter(String email, String password) {
+    /**
+     * Metodo que permite el registro
+     * @param email del nuevo comensal
+     * @param password del nuevo comensal
+     * @throws Exception
+     */
+        public void regiter(String email, String password) throws Exception {
+            Log.d(TAG,"Registro Commensal");
             try
             {
                 SessionData.getInstance().registerCommensal(email, password);
-            } catch (Exception e) {
-                e.printStackTrace();
+                this.loginView.displayMsj("Registro Satisfactorio");
+            }
+            catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                this.loginView.displayMsj("Error interno: " + e.getMessage());
+                throw e;
+            } catch (Exception e)
+            {
+                Log.e(TAG,"Error al Registar Commensal",e);
+                this. loginView.displayMsj(e.getMessage());
+                throw e;
             }
 
     }
 
-        public void login(Commensal commensal) {
+    /**
+     * Metodo que permite el login a un comensal
+     * @param commensal comensal que desea ingresar
+     * @throws Exception
+     */
+        public void login(Commensal commensal) throws Exception{
+            Log.d(TAG,"Login Commensal");
             try
             {
                 SessionData.getInstance().addCommensal(commensal);
                 SessionData.getInstance().loginCommensal();
-            } catch (Exception e) {
-                e.printStackTrace();
+            }
+            catch (ParameterOutOfIndexException | InvalidParameterTypeException e) {
+                Log.e(TAG,"Error al Logearse un Commensal",e);
+                this.loginView.displayMsj("Error interno: " + e.getMessage());
+                throw e;
+            } catch (Exception e)
+            {
+                Log.e(TAG,"Error al Logearse un Commensal",e);
+                throw e;
             }
 
         }

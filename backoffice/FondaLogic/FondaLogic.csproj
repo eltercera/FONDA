@@ -96,6 +96,7 @@
     <Compile Include="Commands\Reservations\CommandGetReservationById.cs" />
     <Compile Include="Commands\Reservations\CommandSaveReservation.cs" />
     <Compile Include="Commands\Restaurant\CommandAddCategory.cs" />
+    <Compile Include="Commands\Restaurant\CommandFindTableById.cs" />
     <Compile Include="Commands\Restaurant\CommandGenerateRestaurant.cs" />
     <Compile Include="Commands\Restaurant\CommandGetAllCategories.cs" />
     <Compile Include="Commands\Restaurant\CommandGetAllCurrency.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Commands\Reservations\CommandGetTables.cs" />
     <Compile Include="Commands\Restaurant\CommandSaveCategory.cs" />
     <Compile Include="Commands\Restaurant\CommandSaveRestaurant.cs" />
+    <Compile Include="Commands\Restaurant\CommandSaveTable.cs" />
     <Compile Include="Factory\CommandFactory.cs" />
     <Compile Include="FondaCommandException\CommandException.cs" />
     <Compile Include="FondaCommandException\OrderAccount\CommandExceptionGetOrderAccountByInvoice.cs" />
@@ -159,9 +161,6 @@
     <Compile Include="FondaCommandException\Restaurant\CommandExceptionGenerateRestaurant.cs" />
     <Compile Include="FondaCommandException\Restaurant\CommandExceptionSaveCategory.cs" />
     <Compile Include="FondaCommandException\Restaurant\CommandExceptionSaveRestaurant.cs" />
-    <Compile Include="FondaCommandException\Restaurant\FondaCommandLogicException.cs" />
-    <Compile Include="FondaCommandException\Restaurant\ParameterIndexOutRangeException.cs" />
-    <Compile Include="FondaCommandException\Restaurant\RequieredParameterNotFoundException.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="Log\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

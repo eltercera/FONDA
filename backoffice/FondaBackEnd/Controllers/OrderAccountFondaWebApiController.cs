@@ -178,10 +178,13 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         public IHttpActionResult GetOrderDetail(int restaurantId, int orderId)
         {
             List<DishOrder> orderDetail = new List<DishOrder>();
+            IList<int> _list = new List<int>();
 
             try
             {
                 Command _command;
+                _list.Add(orderId);//1
+                _list.Add(restaurantId);// 2
                 _command = CommandFactory.GetCommandGetDishOrdersByAccountId(orderId);
                 _command.Execute();
                 orderDetail = (List<DishOrder>)_command.Receiver;

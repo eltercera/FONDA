@@ -6,7 +6,7 @@ import com.ds201625.fonda.domains.Profile;
 /**
  * Interfaz de ProfileActivity
  */
-public interface IProfileViewContract {
+public interface ProfileViewContract {
 
     /**
      * Metodo para crear un perfil

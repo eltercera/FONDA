@@ -15,7 +15,7 @@ import java.util.List;
 public interface ProfileService {
 
     List<Profile> getProfiles() throws Exception;
-    void addProfile(Profile profile) throws RestClientException, PostProfileFondaWebApiControllerException;
-    void editProfile(Profile profile) throws RestClientException, PutProfileFondaWebApiControllerException;
-    void deleteProfile(int id) throws RestClientException, DeleteProfileFondaWebApiControllerException;
+    void addProfile(Profile profile) throws RestClientException, PostProfileFondaWebApiControllerException, Exception;
+    void editProfile(Profile profile) throws RestClientException, PutProfileFondaWebApiControllerException, Exception;
+    void deleteProfile(int id) throws RestClientException, DeleteProfileFondaWebApiControllerException, Exception;
 }

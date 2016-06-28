@@ -2,8 +2,6 @@
 using System.Web.Http;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.BackEnd.ActionFilters;
-using com.ds201625.fonda.DataAccess.InterfaceDAO;
-using com.ds201625.fonda.DataAccess.Exceptions;
 using com.ds201625.fonda.BackEndLogic;
 using com.ds201625.fonda.BackEnd.Log;
 using com.ds201625.fonda.BackEnd.Exceptions;

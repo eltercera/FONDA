@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ds201625.fonda.R;
@@ -21,12 +22,13 @@ public class DetailRestaurantFragment extends BaseFragment {
     //Elementos de la vista
     private Restaurant restaurant;
     private TextView tvRestName;
-    private TextView tvNames;
+    private TextView tvDay;
     private TextView tvOther;
     private TextView tvType;
     private TextView tvZone;
     private TextView tvAvPr;
     private View form;
+    private ImageView icon;
 
     /**
      * Crea el fragment
@@ -63,7 +65,9 @@ public class DetailRestaurantFragment extends BaseFragment {
         tvType = (TextView) form.findViewById(R.id.text_view_restaurant_type);
         tvZone = (TextView) form.findViewById(R.id.text_view_restaurant_zone);
         tvAvPr = (TextView) form.findViewById(R.id.text_view_restaurant_principal_avenue);
-        tvOther = (TextView) form.findViewById(R.id.text_view_restaurant_other_avenue);
+        tvOther = (TextView) form.findViewById(R.id.text_view_restaurant_schedule);
+        tvDay = (TextView) form.findViewById(R.id.text_view_restaurant_work_days);
+        icon = (ImageView) form.findViewById(R.id.imageView8);
 
         //Falta Horario
         return form;
@@ -75,9 +79,15 @@ public class DetailRestaurantFragment extends BaseFragment {
      */
     public void setRestaurant(Restaurant restaurant) {
         tvRestName.setText(restaurant.getName());
-//        tvNames.setText(restaurant.getRestaurantCategory().getName());
-        tvType.setText(restaurant.getRestaurantCategory().getName());
-        tvAvPr.setText(restaurant.getAddress());
+        tvType.setText("Tipo de Comida: " + restaurant.getRestaurantCategory().getName());
+        tvZone.setText("Zona: " + restaurant.getZone().getName());
+        tvAvPr.setText("Av. Principal: " + restaurant.getAddress());
+        tvOther.setText("12:00 pm - 06:00 pm");
+        tvDay.setText("Lunes - Domingo");
+        String image = restaurant.getLogo();
+        Context context = icon.getContext();
+        int idImage = context.getResources().getIdentifier(image, "mipmap", context.getPackageName());
+        icon.setImageResource(idImage);
         this.restaurant = restaurant;
     }
 
