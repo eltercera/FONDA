@@ -98,13 +98,6 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="15dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Avenida secundaria"
-                    android:id="@+id/text_view_restaurant_other_avenue"
-                    android:layout_gravity="center_horizontal" />
             </LinearLayout>
         </LinearLayout>
 
@@ -131,14 +124,6 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="hora inicio - hora fin"
             android:id="@+id/text_view_restaurant_schedule"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/textView18"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
