@@ -1,11 +1,11 @@
-package com.ds201625.fonda.presenter;
+package com.ds201625.fonda.views.presenters;
 
 import android.util.Log;
 
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.DishOrder;
-import com.ds201625.fonda.interfaces.LogicCurrentOrderView;
-import com.ds201625.fonda.interfaces.LogicCurrentOrderViewPresenter;
+import com.ds201625.fonda.views.contracts.LogicCurrentOrderView;
+import com.ds201625.fonda.views.contracts.LogicCurrentOrderViewPresenter;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;

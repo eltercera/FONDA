@@ -3,6 +3,7 @@ package com.ds201625.fonda.views.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,11 @@ import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.logic.LogicInvoice;
 import com.ds201625.fonda.views.adapters.InvoiceViewItemList;
+import com.ds201625.fonda.views.contracts.LogicHistoryVisitsViewPresenter;
+import com.ds201625.fonda.views.contracts.LogicInvoiceView;
+import com.ds201625.fonda.views.contracts.LogicInvoiceViewPresenter;
+import com.ds201625.fonda.views.presenters.LogicInvoicePresenter;
+
 import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,7 +29,7 @@ import java.util.Iterator;
 /**
  * Clase Fragment que muestra la factura
  */
-public class InvoiceFragment extends BaseFragment {
+public class InvoiceFragment extends BaseFragment implements LogicInvoiceView {
 
     /**
      * Lista
@@ -49,14 +55,21 @@ public class InvoiceFragment extends BaseFragment {
      *  Atributo de tipo LogicInvoice que controla el acceso al WS
      */
     private LogicInvoice logicInvoice;
+    private String TAG = "InvoiceFragment";
 
+    private LogicInvoiceViewPresenter presenter;
     /**
      * Metodo que se ejecuta al instanciar el fragment
      * @param savedInstanceState Bundle que define el estado de la instancia
      */
+    @Nullable
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreate");
         super.onCreate(savedInstanceState);
+        invoiceViewItem = new InvoiceViewItemList(getContext());
+        presenter = new LogicInvoicePresenter(this);
+        Log.d(TAG,"Ha salido en onCreate");
     }
 
     /**
@@ -70,7 +83,7 @@ public class InvoiceFragment extends BaseFragment {
 
         View layout = inflater.inflate(R.layout.fragment_factura,container,false);
 
-        invoice = getinvoiceSW();
+        invoice = getInvoiceSW();
         listDishO = invoice.getAccount().getListDish();
         invoiceViewItem = new InvoiceViewItemList(getContext());
         invoiceViewItem.addAll(listDishO);
@@ -177,19 +190,21 @@ public class InvoiceFragment extends BaseFragment {
     /**
      * Metodo que obtiene los elementos del WS
      */
-    public Invoice getinvoiceSW(){
+    @Override
+    public Invoice getInvoiceSW() {
         Invoice invoiceWS;
         logicInvoice = new LogicInvoice();
+        Log.d(TAG,"Ha ingresado a getInvoiceSW");
         try {
-            invoiceWS=logicInvoice.getInvoiceSW();
-            System.out.println("Restaurant de la factura:  " + invoiceWS.getRestaurant().getName());
+            presenter.findLoggedComensal();
+            invoiceWS = presenter.findAllInvoice();
+            Log.e(TAG, "Restaurant de la factura:  " + invoiceWS.getRestaurant().getName());
             return invoiceWS;
-        } catch (RestClientException e) {
-            e.printStackTrace();
+        } catch (NullPointerException nu) {
+            Log.e(TAG, "Error en getHistoryVisitsSW al obtener los pagos", nu);
         } catch (Exception e) {
-            System.out.println("Error en la Conexión");
+            Log.e(TAG, "Error en la Conexión");
         }
         return null;
     }
-
 }

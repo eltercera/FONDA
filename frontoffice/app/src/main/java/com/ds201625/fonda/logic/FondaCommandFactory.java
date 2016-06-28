@@ -136,10 +136,20 @@ public class FondaCommandFactory {
         return new LogicCurrentOrderCommand();
     }
 
+<<<<<<< HEAD
     public static Command logicHistoryVisitsCommand() {return new LogicHistoryVisitsCommand();}
 
     public static Command logicInvoiceisitsCommand() {return new LogicInvoiceCommand();}
 
+=======
+    public static Command logicInvoiceCommand() {
+        return new LogicInvoiceCommand();
+    }
+
+    public static Command logicHistoryVisitsCommand() {
+        return new LogicHistoryVisitsCommand();
+    }
+>>>>>>> 17cacd4fce5b1dd026196233b092ca6687326c79
     public static Command addReservationCommand() {
         return new AddReservationCommand();
     }

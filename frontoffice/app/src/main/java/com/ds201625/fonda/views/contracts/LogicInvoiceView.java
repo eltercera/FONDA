@@ -1,4 +1,4 @@
-package com.ds201625.fonda.interfaces;
+package com.ds201625.fonda.views.contracts;
 
 import com.ds201625.fonda.domains.Invoice;
 

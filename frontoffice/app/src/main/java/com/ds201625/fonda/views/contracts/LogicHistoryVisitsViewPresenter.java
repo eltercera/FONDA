@@ -1,6 +1,7 @@
-package com.ds201625.fonda.interfaces;
+package com.ds201625.fonda.views.contracts;
 
 import com.ds201625.fonda.domains.DishOrder;
+import com.ds201625.fonda.domains.Invoice;
 
 import java.util.List;
 
@@ -11,12 +12,12 @@ import java.util.List;
 /**
  * Interfaz para la vista de RestaurantList.
  */
-public interface LogicCurrentOrderViewPresenter {
+public interface LogicHistoryVisitsViewPresenter {
     /**
      * Encuentra todos los platos pedidos
      * @return orden
      */
-    List<DishOrder> findAllDishOrder();
+    List<Invoice> findAllHistoryVisits();
 
     /**
      * Encuentra el comensal logueado
