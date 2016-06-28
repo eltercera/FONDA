@@ -18,6 +18,7 @@ import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.views.contracts.LoginViewContract;
 import com.ds201625.fonda.logic.SessionData;
 import com.ds201625.fonda.views.presenters.LoginPresenter;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -266,11 +267,12 @@ public class LoginActivity extends BaseActivity implements LoginViewContract {
     }
 
     private String isPasswordValid(String password, String patron, int min) {
-        if (!Pattern.compile(patron, Pattern.CASE_INSENSITIVE).matcher(password).matches() &&
-                password.length() < min){
+        Pattern patternPassword = Pattern.compile(patron, Pattern.CASE_INSENSITIVE);
+        Matcher matcherPassword = patternPassword.matcher(password);
+        if (!matcherPassword.matches() && password.length() < min){
             return getString(R.string.error_invalid_password);
         }
-        else if (!Pattern.compile(patron, Pattern.CASE_INSENSITIVE).matcher(password).matches()) {
+        else if (!matcherPassword.matches()) {
             return getString(R.string.error_format_password);
         }
         else if (password.length() < min){
@@ -325,21 +327,9 @@ public class LoginActivity extends BaseActivity implements LoginViewContract {
                 presenter.regiter(email, password);
                 succ = true;
             } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            if (succ){
-                msj = Toast.makeText(getBaseContext(),
-                        "Registro Satisfactorio",
-                        Toast.LENGTH_SHORT);
-            } else {
-                msj = Toast.makeText(getBaseContext(),
-                        "Error en el registro",
-                        Toast.LENGTH_SHORT);
+                succ = false;
             }
         }
-        if (msj != null)
-            msj.show();
 
         if (succ){
             setOnLogin();
@@ -358,15 +348,18 @@ public class LoginActivity extends BaseActivity implements LoginViewContract {
             presenter.login(commensal);
             succ = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            succ = false;
         }
 
         if (succ){
             skip();
         } else {
-            Toast.makeText(getBaseContext(),
-                    "Error al iniciar sesión",
-                    Toast.LENGTH_SHORT).show();
+            displayMsj("Error al iniciar sesión");
         }
+    }
+
+    @Override
+    public void displayMsj(String msj) {
+        Toast.makeText(this, msj, Toast.LENGTH_LONG).show();
     }
 }

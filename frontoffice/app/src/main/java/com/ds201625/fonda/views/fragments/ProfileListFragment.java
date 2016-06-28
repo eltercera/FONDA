@@ -98,7 +98,7 @@ public class ProfileListFragment extends BaseFragment
                                     try {
                                        deleteProfile(profile);
                                     } catch (Exception e) {
-                                        e.printStackTrace();
+                                        Log.e(TAG,"Error al eliminar perfil");
                                     }
                             }
                             Log.v("Perfiles eliminados: ", sal);

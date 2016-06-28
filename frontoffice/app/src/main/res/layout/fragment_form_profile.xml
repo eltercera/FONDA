@@ -39,6 +39,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Nombre del Perfil"
                         android:ems="10"
+                        android:maxLength="15"
                         android:id="@+id/profile_name"/>
                 </android.support.design.widget.TextInputLayout>
             </TableRow>
@@ -57,6 +58,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Nombres"
                         android:ems="10"
+                        android:maxLength="20"
                         android:id="@+id/profile_names"/>
                 </android.support.design.widget.TextInputLayout>
             </TableRow>
@@ -74,6 +76,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Apellidos"
                         android:ems="10"
+                        android:maxLength="20"
                         android:id="@+id/profile_lastnames"/>
                 </android.support.design.widget.TextInputLayout>
             </TableRow>
@@ -90,6 +93,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:ems="10"
+                        android:maxLength="12"
                         android:id="@+id/profile_ci_rif"
                         android:hint="Cédula de Identidad o RIF" />
                 </android.support.design.widget.TextInputLayout>
@@ -113,6 +117,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="phone"
                         android:ems="10"
+                        android:maxLength="13"
                         android:id="@+id/profile_phone"
                         android:hint="Teléfono" />
                 </android.support.design.widget.TextInputLayout>
@@ -138,6 +143,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="textMultiLine"
                         android:ems="10"
+                        android:maxLength="50"
                         android:id="@+id/profile_dir"
                         android:layout_column="1"
                         android:hint="Dirección"
