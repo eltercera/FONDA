@@ -1,13 +1,15 @@
 package com.ds201625.fonda.data_access.retrofit_client.clients;
 
 import com.ds201625.fonda.domains.Invoice;
+import com.ds201625.fonda.domains.Payment;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
- * Created by Hp on 21/05/2016.
+ * Created by Jessica on 21/06/2016.
  */
 
 
@@ -20,6 +22,9 @@ public interface PaymentClient {
         * Post /api/payment
         * Envia el pagopara crear la factura
         */
-       @POST("payment")
-       Call<Invoice> setPayments(@Body Invoice invoice);
+       @POST("PayAccount/{idRestaurant}/{idOrder}/{idProfile}/{Payment}")
+       Call<Invoice> setPayments(@Path("idrestaurant") int idRestaurant,
+                                 @Path("idorder") int idOrder,
+                                 @Path("idprofile") int idProfile,
+                                 @Body Payment payment);
 }

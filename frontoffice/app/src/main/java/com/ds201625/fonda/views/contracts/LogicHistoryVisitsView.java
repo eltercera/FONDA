@@ -10,12 +10,12 @@ import java.util.List;
  */
 
 /**
- * Interfaz para la vista de RestaurantList.
+ * Interfaz para la vista de historial de pagos.
  */
 public interface LogicHistoryVisitsView {
     /**
      * Obtiene lista de historial de pagos
-     * @return orden
+     * @return lista de pagos
      */
     List<Invoice> getHistoryVisitsSW();
 }

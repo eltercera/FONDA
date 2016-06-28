@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.OrderExceptions.LogicCurrentOrderFondaWebApiControllerException;
 import com.ds201625.fonda.data_access.services.CurrentOrderService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Dish;
@@ -48,7 +49,7 @@ public class LogicCurrentOrderCommand extends BaseCommand {
      * Metodo de invoke implementado: Comando para mostrar la orden actual
      */
     @Override
-    protected void invoke() {
+    protected void invoke() throws LogicCurrentOrderFondaWebApiControllerException{
 
         Log.d(TAG, "Comando para ver la orden actual");
         CurrentOrderService serviceCurrentOrder = FondaServiceFactory.getInstance().getCurrentOrderService();
@@ -60,12 +61,18 @@ public class LogicCurrentOrderCommand extends BaseCommand {
             idOrder = (DishOrder) getParameter(1);
 
             listDishOrderService = serviceCurrentOrder.getListDishOrder(idRestaurant.getId(), idOrder.getId());
+        }catch (LogicCurrentOrderFondaWebApiControllerException e){
+            Log.e(TAG, "Se ha generado un error obteniendo la orden actual", e);
+            throw new LogicCurrentOrderFondaWebApiControllerException(e);
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado un error obteniendo la orden actual", e);
+            throw new LogicCurrentOrderFondaWebApiControllerException(e);
         } catch (NullPointerException e) {
-        Log.e(TAG, "Se ha generado un error obteniendo la orden actual", e);
+            Log.e(TAG, "Se ha generado un error obteniendo la orden actual", e);
+            throw new LogicCurrentOrderFondaWebApiControllerException(e);
         } catch (Exception e) {
             Log.e(TAG, "Se ha generado un error obteniendo la orden actual", e);
+            throw new LogicCurrentOrderFondaWebApiControllerException(e);
         }
     setResult(listDishOrderService);
     }

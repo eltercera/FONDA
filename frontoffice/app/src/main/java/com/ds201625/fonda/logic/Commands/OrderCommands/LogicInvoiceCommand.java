@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.OrderExceptions.LogicInvoiceWebApiControllerException;
 import com.ds201625.fonda.data_access.services.InvoiceService;
 import com.ds201625.fonda.domains.Commensal;
 import com.ds201625.fonda.domains.Invoice;
@@ -38,7 +39,7 @@ public class LogicInvoiceCommand extends BaseCommand{
      * Metodo de invoke implementado: Comando para mostrar la factura
      */
     @Override
-    protected void invoke() {
+    protected void invoke() throws LogicInvoiceWebApiControllerException {
 
         Log.d(TAG, "Comando para ver la factura");
         InvoiceService serviceInvoice = FondaServiceFactory.getInstance().getInvoiceService();
@@ -47,12 +48,18 @@ public class LogicInvoiceCommand extends BaseCommand{
         try {
             idProfile = FondaEntityFactory.getInstance().GetProfile();
             invoiceService = serviceInvoice.getCurrentInvoice(idProfile.getId());
+        }catch (LogicInvoiceWebApiControllerException e){
+            Log.e(TAG, "Se ha generado un error obteniendo la factura", e);
+            throw new LogicInvoiceWebApiControllerException(e);
         } catch (RestClientException e) {
             Log.e(TAG, "Se ha generado un error obteniendo la factura", e);
+            throw new LogicInvoiceWebApiControllerException(e);
         }catch (NullPointerException e) {
             Log.e(TAG, "Se ha generado un error obteniendo la factura", e);
+            throw new LogicInvoiceWebApiControllerException(e);
         } catch (Exception e) {
             Log.e(TAG, "Se ha generado un error obteniendo la factura", e);
+            throw new LogicInvoiceWebApiControllerException(e);
         }
         setResult(invoiceService);
     }

@@ -9,12 +9,12 @@ import java.util.List;
  */
 
 /**
- * Interfaz para la vista de RestaurantList.
+ * Interfaz para la vista de factura.
  */
 public interface LogicInvoiceView {
     /**
      * Obtiene la factura
-     * @return orden
+     * @return factura
      */
     Invoice getInvoiceSW();
 }

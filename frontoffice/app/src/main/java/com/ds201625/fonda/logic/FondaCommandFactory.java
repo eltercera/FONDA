@@ -10,6 +10,7 @@ import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantC
 import com.ds201625.fonda.logic.Commands.OrderCommands.LogicCurrentOrderCommand;
 import com.ds201625.fonda.logic.Commands.OrderCommands.LogicHistoryVisitsCommand;
 import com.ds201625.fonda.logic.Commands.OrderCommands.LogicInvoiceCommand;
+import com.ds201625.fonda.logic.Commands.OrderCommands.LogicPaymentCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.CreateProfileCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.DeleteFavoriteRestaurantCommand;
@@ -134,6 +135,10 @@ public class FondaCommandFactory {
 
     public static Command logicInvoiceCommand() {
         return new LogicInvoiceCommand();
+    }
+
+    public static Command logicPaymentCommand() {
+        return new LogicPaymentCommand();
     }
 
     public static Command logicHistoryVisitsCommand() {

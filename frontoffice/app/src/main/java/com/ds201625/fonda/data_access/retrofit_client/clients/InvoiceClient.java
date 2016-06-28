@@ -4,6 +4,7 @@ import com.ds201625.fonda.domains.Invoice;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 /**
  * Created by Jessica on 20/06/2016.
@@ -20,7 +21,7 @@ public interface InvoiceClient {
      * Obtiene la factura de la cuenta cerrada
      * @return
      */
-    @GET("currentInvoice")
-    Call<Invoice> getCurrentInvoice();
+    @GET("currentInvoice/{id}")
+    Call<Invoice> getCurrentInvoice(@Path("id") int idProfile);
 
 }

@@ -9,19 +9,24 @@ import com.ds201625.fonda.domains.Invoice;
  * Logica del pago
  */
 public class LogicPayment {
+/*
 
-    /**
+    */
+/**
      * variable de tipo PaymentService
-     */
+     *//*
+
     private Invoice payment;
 
-    /**
+    */
+/**
      * Metodo que controla la llamada al ws para el manejo de facturas
      * @param invoice
      * @return
      * @throws RestClientException
      * @throws InvalidDataRetrofitException
-     */
+     *//*
+
     public Invoice paymentService (Invoice invoice) throws RestClientException, InvalidDataRetrofitException {
 
         try {
@@ -33,5 +38,6 @@ public class LogicPayment {
         }
         return payment;
     }
+*/
 
 }

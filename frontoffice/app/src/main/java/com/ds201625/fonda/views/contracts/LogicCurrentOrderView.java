@@ -10,11 +10,11 @@ import java.util.List;
  */
 
 /**
- * Interfaz para la vista de RestaurantList.
+ * Interfaz para la vista de La orden actual.
  */
 public interface LogicCurrentOrderView {
     /**
-     * Obtiene lista de todos los platos
+     * Obtiene a orden actual
      * @return orden
      */
     List<DishOrder> getOrderSW();

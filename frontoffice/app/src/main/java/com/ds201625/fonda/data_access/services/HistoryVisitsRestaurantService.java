@@ -1,6 +1,7 @@
 package com.ds201625.fonda.data_access.services;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.OrderExceptions.LogicHistoryVisitsWebApiControllerException;
 import com.ds201625.fonda.domains.Invoice;
 
 
@@ -15,5 +16,5 @@ import java.util.List;
  */
 public  interface HistoryVisitsRestaurantService {
 
-    List<Invoice> getHistoryVisits(int idProfile) throws RestClientException;
+    List<Invoice> getHistoryVisits(int idProfile) throws RestClientException, LogicHistoryVisitsWebApiControllerException;
 }

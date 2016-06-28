@@ -6,6 +6,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 /**
  * Created by Jessica 21/06/16.
@@ -20,6 +21,6 @@ public interface HistoryVisitsClient {
      * Obtiene la lista del historial de visitas o pagos a restaurant
      * @return
      */
-    @GET("GetPaymentHistory")
-    Call<List<Invoice>> getHistoryVisits();
+    @GET("GetPaymentHistory/{id}")
+    Call<List<Invoice>> getHistoryVisits(@Path("id") int idProfile);
 }

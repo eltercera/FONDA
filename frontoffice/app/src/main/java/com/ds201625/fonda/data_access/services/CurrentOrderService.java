@@ -1,6 +1,7 @@
 package com.ds201625.fonda.data_access.services;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.OrderExceptions.LogicCurrentOrderFondaWebApiControllerException;
 import com.ds201625.fonda.domains.DishOrder;
 
 import java.util.List;
@@ -15,6 +16,6 @@ import java.util.List;
 public interface CurrentOrderService {
 
 
-    List<DishOrder> getListDishOrder(int idRestaurante, int idOrden) throws RestClientException;
+    List<DishOrder> getListDishOrder(int idRestaurante, int idOrden) throws RestClientException, LogicCurrentOrderFondaWebApiControllerException;
 
 }

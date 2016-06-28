@@ -1,6 +1,7 @@
 package com.ds201625.fonda.data_access.services;
 
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
+import com.ds201625.fonda.data_access.retrofit_client.exceptions.OrderExceptions.LogicInvoiceWebApiControllerException;
 import com.ds201625.fonda.domains.Invoice;
 
 /**
@@ -12,6 +13,6 @@ import com.ds201625.fonda.domains.Invoice;
  */
 public interface InvoiceService {
 
-    Invoice getCurrentInvoice(int idProfile) throws RestClientException;
+    Invoice getCurrentInvoice(int idProfile) throws RestClientException, LogicInvoiceWebApiControllerException;
 
 }

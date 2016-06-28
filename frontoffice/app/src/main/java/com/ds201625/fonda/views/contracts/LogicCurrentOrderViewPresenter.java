@@ -9,7 +9,7 @@ import java.util.List;
  */
 
 /**
- * Interfaz para la vista de RestaurantList.
+ * Interfaz para la vista de la orden actual.
  */
 public interface LogicCurrentOrderViewPresenter {
     /**

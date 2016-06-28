@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +17,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.ds201625.fonda.R;
+import com.ds201625.fonda.data_access.factory.FondaServiceFactory;
 import com.ds201625.fonda.data_access.retrofit_client.InvalidDataRetrofitException;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.InvoiceService;
+import com.ds201625.fonda.data_access.services.PaymentService;
 import com.ds201625.fonda.domains.Account;
 import com.ds201625.fonda.domains.Currency;
 import com.ds201625.fonda.domains.DishOrder;
@@ -26,8 +29,13 @@ import com.ds201625.fonda.domains.Invoice;
 import com.ds201625.fonda.domains.Payment;
 import com.ds201625.fonda.domains.Profile;
 import com.ds201625.fonda.domains.Restaurant;
+import com.ds201625.fonda.logic.Commands.OrderCommands.LogicPaymentCommand;
 import com.ds201625.fonda.logic.LogicPayment;
 import com.ds201625.fonda.views.activities.OrdersActivity;
+import com.ds201625.fonda.views.contracts.LogicPaymentView;
+import com.ds201625.fonda.views.contracts.LogicPaymentViewPresenter;
+import com.ds201625.fonda.views.presenters.LogicPaymentPresenter;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,7 +44,7 @@ import java.util.List;
 /**
  * Clase que maneja el Fragment de pago de orden
  */
-public class OrderPaymentFragment extends BaseFragment {
+public class OrderPaymentFragment extends BaseFragment implements LogicPaymentView {
 
     /**
      * Recibe el monto
@@ -99,7 +107,7 @@ public class OrderPaymentFragment extends BaseFragment {
     /**
      * logicPayment
      */
-    LogicPayment logicPayment;
+    LogicPaymentCommand logicPayment;
 
     /**
      * Monto de la propina
@@ -121,11 +129,19 @@ public class OrderPaymentFragment extends BaseFragment {
      * Indica el perfil en curso
      */
     private String currentP="Adriana";
+    private String TAG = "OrderPaymentFragment";
+    /**
+     * Vista de lista
+     */
+    private Payment invoiceViewItem;
+    private LogicPaymentViewPresenter presenter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d(TAG,"Ha entrado en onCreate");
         super.onCreate(savedInstanceState);
-
+        presenter = new LogicPaymentPresenter(this);
+        Log.d(TAG,"Ha salido en onCreate");
     }
 
     /**
@@ -145,7 +161,7 @@ public class OrderPaymentFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-
+        Log.d(TAG,"Ha entrado en onCreateView");
         //Indicar el layout que va a usar el fragment
         layout = inflater.inflate(R.layout.fragment_order_payment,container,false);
         getAllElements();
@@ -288,14 +304,14 @@ public class OrderPaymentFragment extends BaseFragment {
 
     }
 
-    @Override
+/*    @Override
     public void onDetach() {
         super.onDetach();
     }
 
-    /**
+    *//**
      * Manda la informacion de la factura al web service
-     */
+     *//*
     public void postPayment() {
         CloseAccountFragment cls = new CloseAccountFragment();
         Invoice invoice = new Invoice();
@@ -326,9 +342,9 @@ public class OrderPaymentFragment extends BaseFragment {
         invoice.setTip(tip);
         invoice.setTotal(add);
 
-        logicPayment = new LogicPayment();
+       // logicPayment = new LogicPayment();
         try {
-            payment = logicPayment.paymentService(invoice);
+            payment = logicPayment.paymentService();
             } catch (RestClientException e) {
             System.out.println(e.getMessage());
         } catch (InvalidDataRetrofitException e) {
@@ -338,7 +354,56 @@ public class OrderPaymentFragment extends BaseFragment {
         }
 
 
+    }*/
+
+
+    @Override
+    public Invoice getPaymentSW() {
+        /**
+         * Manda la informacion de la factura al web service
+         */
+            CloseAccountFragment cls = new CloseAccountFragment();
+            Invoice invoice = new Invoice();
+            List<DishOrder> lista = cls.getListDishO();
+            Payment paym = new Payment();
+            Currency curr = new Currency();
+            Profile prof = new Profile();
+            Restaurant rest = new Restaurant();
+            DishOrder dishOrder = new DishOrder();
+            Account acc = new Account();
+            Date date = invoice.getDate();
+
+            paym.setAmount(always);
+
+            acc.setListDish(lista);
+            curr.setSymbol("Bs");
+            float tax = cls.getIva();
+            prof.setProfileName("Melanie");
+            rest.setName("The Dining Room");
+
+
+            invoice.setAccount(acc);
+            invoice.setCurrency(curr);
+            invoice.setDate(date);
+            invoice.setPayment(paym);
+            invoice.setProfile(prof);
+            invoice.setRestaurant(rest);
+            invoice.setTax(tax);
+            invoice.setTip(tip);
+            invoice.setTotal(add);
+
+
+            logicPayment = new LogicPaymentCommand();
+            try {
+                PaymentService paymentService = FondaServiceFactory.getInstance().setPaymentService();
+                payment = paymentService.setPayments(rest.getId(),dishOrder.getId(),prof.getId(),paym);
+            } catch (RestClientException e) {
+                System.out.println(e.getMessage());
+            } catch (InvalidDataRetrofitException e) {
+                System.out.println(e.getMessage());
+            }catch (Exception e) {
+                System.out.println("Error");
+            }
+        return payment;
     }
-
-
 }
