@@ -1,4 +1,5 @@
-﻿using com.ds201625.fonda.DataAccess.FactoryDAO;
+﻿using com.ds201625.fonda.DataAccess.Exceptions.Restaurant;
+using com.ds201625.fonda.DataAccess.FactoryDAO;
 using com.ds201625.fonda.DataAccess.InterfaceDAO;
 using com.ds201625.fonda.Domain;
 using com.ds201625.fonda.Logic.FondaLogic;
@@ -97,7 +98,14 @@ namespace FondaBackOfficeLogicTest.Restaurante
             _commandAddCategory.Execute();
 
         }
+        [ExpectedException(typeof(AddCategoryFondaDAOException))]
+        [Test(Description = "Excepción de casteo invalido al generar un objeto categoria")]
+        public void AddCategoryDAOExceptionTest()
+        {
+            _commandAddCategory = CommandFactory.GetCommandAddCategory("");
+            _commandAddCategory.Execute();
 
+        }
         [ExpectedException(typeof(NullReferenceException))]
         [Test(Description = "Excepción Nula al modificar un objeto categoria")]
         public void ModifyCategoryNullExceptionTest()

@@ -10,7 +10,7 @@
 namespace BackOffice.Seccion.Reservas {
     
     
-    public partial class Default {
+    public partial class ListarReservas {
         
         /// <summary>
         /// SuccessLabel control.
@@ -83,23 +83,5 @@ namespace BackOffice.Seccion.Reservas {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table ReservationsList;
-        
-        /// <summary>
-        /// ButtonCancelReservation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCancelReservation;
-        
-        /// <summary>
-        /// ButtonCancelCancelReservation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCancelCancelReservation;
     }
 }

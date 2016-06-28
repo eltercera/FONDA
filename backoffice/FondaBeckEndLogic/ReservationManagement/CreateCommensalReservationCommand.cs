@@ -21,10 +21,9 @@ namespace com.ds201625.fonda.BackEndLogic.ReservationManager
 
         private Commensal commensal;
         private Reservation reservation;
-     //   private Restaurant restaurant;
         private ICommensalDAO commensalDAO;
         private IReservationDAO reservationDAO;
-    //    private IRestaurantDAO restaurantDAO;
+  
 
         /// <summary>
         /// constructor create Commensal Reservation command
@@ -59,11 +58,11 @@ namespace com.ds201625.fonda.BackEndLogic.ReservationManager
             // Obtencion de parametros
             Commensal  idCommensal = (Commensal)GetParameter(0);
             Reservation idReservation = (Reservation)GetParameter(1);
-        //    Restaurant idRestaurant = (Restaurant)GetParameter(1);
+       
             // Obtiene el DAO que se requiere
             commensalDAO = FacDao.GetCommensalDAO();
             reservationDAO = FacDao.GetReservationDAO();
-       //     restaurantDAO = FacDao.GetRestaurantDAO();
+      
 
             if ((idCommensal.Id <= 0) || (idReservation.Id <= 0))
                 throw new Exception(ResourceMessages.InvalidInformation);

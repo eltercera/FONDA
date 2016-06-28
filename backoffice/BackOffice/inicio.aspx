@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="inicio.aspx.cs" Inherits="BackOffice.inicio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Content/MasterUI.master" AutoEventWireup="true" CodeBehind="inicio.aspx.cs" Inherits="BackOffice.Seccion.Configuracion.inicio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="pagina" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="titulo" runat="server">
