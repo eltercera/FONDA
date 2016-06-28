@@ -43,7 +43,7 @@ namespace com.ds201625.fonda.BackEnd.Controllers
         [Route("findCommensalReservations")]
         [HttpGet]
         [FondaAuthToken]
-        public IHttpActionResult findCommensalReservations(int idCommensal)
+        public IHttpActionResult findCommensalReservations()
         {
             Loggers.WriteSuccessLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name,
                 GeneralRes.BeginLogger, System.Reflection.MethodBase.GetCurrentMethod().Name);
@@ -53,8 +53,8 @@ namespace com.ds201625.fonda.BackEnd.Controllers
             {
                 Commensal commensal = GetCommensal(Request.Headers);
                 //Creación del commensal con id
-                commensal = EntityFactory.GetCommensal();
-                commensal.Id = idCommensal;
+         //       commensal = EntityFactory.GetCommensal();
+         //       commensal.Id = idCommensal;
 
                 // Obtención del commando
                 command = FacCommand.GetCommensalReservationsCommand();
@@ -77,13 +77,14 @@ namespace com.ds201625.fonda.BackEnd.Controllers
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new FindCommensalReservationsFondaWebApiControllerException(GeneralRes.GetCommensalReservationsException,
                     e);
-
+                return InternalServerError(e);
             }
             catch (NullReferenceException e)
             {
                 Loggers.WriteErrorLog(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, e);
                 throw new FindCommensalReservationsFondaWebApiControllerException(GeneralRes.GetCommensalReservationsException,
                     e);
+                return InternalServerError(e);
             }
             catch (Exception e)
             {

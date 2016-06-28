@@ -124,7 +124,7 @@ import java.util.List;
             Log.d(TAG,"Ha ingresado a getListSW");
             try {
                 //Llamo al comando de requireLogedCommensalCommand
-                presenter.findLoggedComensal();
+    //            presenter.findLoggedComensal();
                 //Llamo al comando de AllReservation
                 listReserWS = presenter.AllReservation();
                 return listReserWS;

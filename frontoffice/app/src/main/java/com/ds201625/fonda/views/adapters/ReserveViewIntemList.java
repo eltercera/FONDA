@@ -32,7 +32,7 @@ public class ReserveViewIntemList extends BaseArrayAdapter<Reservation> implemen
      */
 
     public ReserveViewIntemList(Context context) {
-        super(context, R.layout.list_reservations, R.id.tvDateR, new ArrayList<Reservation>());
+        super(context, R.layout.list_reservations, R.id.tvNumber, new ArrayList<Reservation>());
         presenter =  new ReservationPresenter(this);
     }
 
@@ -53,11 +53,14 @@ public class ReserveViewIntemList extends BaseArrayAdapter<Reservation> implemen
 
         TextView DateR = (TextView) convertView.findViewById(R.id.tvDateR);
         TextView NumberC = (TextView) convertView.findViewById(R.id.tvNumberC);
+        TextView DateC = (TextView) convertView.findViewById(R.id.tvCreationD);
+        TextView Number = (TextView) convertView.findViewById(R.id.tvNumber);
 
 
         DateR.setText(item.getReserveDate().toString());
         NumberC.setText(item.getCommensalNumber());
-
+        DateC.setText(item.getCreateDate().toString());
+        Number.setText(item.getNumber_r());
 
 
         return convertView;
