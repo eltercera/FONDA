@@ -1,0 +1,2 @@
+﻿INSERT INTO [dbo].[INVOICE] ([i_id], [i_number], [i_date], [i_total], [i_tax], [fk_status_id], [fk_currency_id], [fk_payment_id], [fk_profile_id], [fk_account_id]) VALUES (1, 1, N'2016-08-13 00:00:00', 6786, 899, 1, 1, 1, 1, 1)
+INSERT INTO [dbo].[INVOICE] ([i_id], [i_number], [i_date], [i_total], [i_tax], [fk_status_id], [fk_currency_id], [fk_payment_id], [fk_profile_id], [fk_account_id]) VALUES (2, 2, N'2016-09-07 00:00:00', 3459, 886, 1, 1, 2, 2, 2)

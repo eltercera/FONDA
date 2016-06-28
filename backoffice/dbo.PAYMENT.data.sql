@@ -1,0 +1,5 @@
+﻿INSERT INTO [dbo].[PAYMENT] ([p_id], [p_type], [p_amount], [ccp_last_digits], [ccp_tip]) VALUES (1, N'debito', 6786, 987, 755)
+INSERT INTO [dbo].[PAYMENT] ([p_id], [p_type], [p_amount], [ccp_last_digits], [ccp_tip]) VALUES (2, N'credito', 3459, 324, 345)
+INSERT INTO [dbo].[PAYMENT] ([p_id], [p_type], [p_amount], [ccp_last_digits], [ccp_tip]) VALUES (3, N'debito', 6789, 253, 678)
+INSERT INTO [dbo].[PAYMENT] ([p_id], [p_type], [p_amount], [ccp_last_digits], [ccp_tip]) VALUES (4, N'credito', 12456, 234, 888)
+INSERT INTO [dbo].[PAYMENT] ([p_id], [p_type], [p_amount], [ccp_last_digits], [ccp_tip]) VALUES (5, N'debito', 7788, 987, 999)
