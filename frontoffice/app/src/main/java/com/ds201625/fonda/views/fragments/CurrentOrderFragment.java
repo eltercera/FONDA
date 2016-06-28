@@ -11,10 +11,10 @@ import android.widget.ListView;
 
 import com.ds201625.fonda.R;
 import com.ds201625.fonda.domains.DishOrder;
-import com.ds201625.fonda.interfaces.LogicCurrentOrderView;
-import com.ds201625.fonda.interfaces.LogicCurrentOrderViewPresenter;
+import com.ds201625.fonda.views.contracts.LogicCurrentOrderView;
+import com.ds201625.fonda.views.contracts.LogicCurrentOrderViewPresenter;
 import com.ds201625.fonda.logic.Commands.OrderCommands.LogicCurrentOrderCommand;
-import com.ds201625.fonda.presenter.LogicCurrentOrderPresenter;
+import com.ds201625.fonda.views.presenters.LogicCurrentOrderPresenter;
 import com.ds201625.fonda.views.adapters.OrderViewItemList;
 import java.util.List;
 

@@ -13,10 +13,10 @@ import com.ds201625.fonda.R;
 import com.ds201625.fonda.data_access.retrofit_client.RestClientException;
 import com.ds201625.fonda.data_access.services.HistoryVisitsRestaurantService;
 import com.ds201625.fonda.domains.Invoice;
-import com.ds201625.fonda.interfaces.LogicHistoryVisitsView;
-import com.ds201625.fonda.interfaces.LogicHistoryVisitsViewPresenter;
+import com.ds201625.fonda.views.contracts.LogicHistoryVisitsView;
+import com.ds201625.fonda.views.contracts.LogicHistoryVisitsViewPresenter;
 import com.ds201625.fonda.logic.LogicHistoryVisits;
-import com.ds201625.fonda.presenter.LogicHistoryVisitsPresenter;
+import com.ds201625.fonda.views.presenters.LogicHistoryVisitsPresenter;
 import com.ds201625.fonda.views.adapters.ExpandableListAdapter;
 import com.ds201625.fonda.views.adapters.InvoiceViewItemList;
 
@@ -264,11 +264,11 @@ public class HistoryVisitFragment extends BaseFragment implements LogicHistoryVi
             listHistorySW = presenter.findAllHistoryVisits();
             return listHistorySW;
         } catch (NullPointerException nu) {
-            Log.e(TAG, "Error en getOrderSW al obtener la orden", nu);
+            Log.e(TAG, "Error en getHistoryVisitsSW al obtener los pagos", nu);
         } catch (Exception e) {
             System.out.println("Error en la Conexión");
         }
-        Log.d(TAG,"Ha finalizado getOrderSWgetOrderSW");
+        Log.d(TAG,"Ha finalizado getHistoryVisitsSW");
         return null;
     }
 }

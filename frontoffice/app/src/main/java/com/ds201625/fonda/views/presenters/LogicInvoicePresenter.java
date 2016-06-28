@@ -1,63 +1,60 @@
-package com.ds201625.fonda.presenter;
+package com.ds201625.fonda.views.presenters;
 
 import android.util.Log;
 
 import com.ds201625.fonda.domains.Commensal;
-import com.ds201625.fonda.domains.DishOrder;
 import com.ds201625.fonda.domains.Invoice;
-import com.ds201625.fonda.interfaces.LogicCurrentOrderView;
-import com.ds201625.fonda.interfaces.LogicCurrentOrderViewPresenter;
-import com.ds201625.fonda.interfaces.LogicHistoryVisitsView;
-import com.ds201625.fonda.interfaces.LogicHistoryVisitsViewPresenter;
 import com.ds201625.fonda.logic.Command;
 import com.ds201625.fonda.logic.FondaCommandFactory;
 import com.ds201625.fonda.logic.SessionData;
+import com.ds201625.fonda.views.contracts.LogicInvoiceView;
+import com.ds201625.fonda.views.contracts.LogicInvoiceViewPresenter;
 
 import java.util.List;
 
 /**
  * Created by Jessica on 22/6/2016.
  */
-public class LogicHistoryVisitsPresenter implements LogicHistoryVisitsViewPresenter {
 
-    private LogicHistoryVisitsView logicHistoryVisitsView;
+public class LogicInvoicePresenter implements LogicInvoiceViewPresenter {
+
+    private LogicInvoiceView logicInvoiceView;
     private Commensal logedComensal;
     private String emailToWebService;
     private FondaCommandFactory facCmd;
-    private List<Invoice> listHistoryVisitsWS;
-    private String TAG = "LogicHistoryVisitsPresenter";
+    private Invoice invoiceWS;
+    private String TAG = "LogicInvoicePresenter";
 
     /**
      * Constructor
      * @param view
      */
-    public LogicHistoryVisitsPresenter(LogicHistoryVisitsView view){
-        logicHistoryVisitsView = view;
+    public LogicInvoicePresenter(LogicInvoiceView view){
+        logicInvoiceView = view;
     }
 
     /**
-     * Encuentra historial de pagos
+     * Encuentra los platos ordenados
      *
      * @return
      */
-
     @Override
-    public List<Invoice> findAllHistoryVisits() {
-        Log.d(TAG,"Ha entrado en findAllHistoryVisits");
-        Command cmdAllCurrentOrder = facCmd.logicCurrentOrderCommand();
+    public Invoice findAllInvoice() {
+        Log.d(TAG,"Ha entrado en findAllInvoice");
+        Command cmdAllInvoice = facCmd.logicInvoiceCommand();
         try {
-            cmdAllCurrentOrder.setParameter(0,logedComensal);
-            cmdAllCurrentOrder.run();
+            cmdAllInvoice.setParameter(0,logedComensal);
+            cmdAllInvoice.run();
         } catch (NullPointerException e){
-            Log.e(TAG,"Error en findAllHistoryVisits al buscar el historial de pagos", e);
+            Log.e(TAG,"Error en findAllInvoice al buscar facturas", e);
         }
         catch (Exception e) {
-            Log.e(TAG,"Error en findAllHistoryVisits al buscar el historial de pagos", e);
+            Log.e(TAG,"Error en findAllInvoice al buscar facturas", e);
         }
-        listHistoryVisitsWS = (List<Invoice>) cmdAllCurrentOrder.getResult();
-        Log.d(TAG,"Se retorna la lista de historial de pagos");
-        Log.d(TAG,"Ha finalizado findAllHistoryVisits");
-        return listHistoryVisitsWS;
+        invoiceWS = (Invoice) cmdAllInvoice.getResult();
+        Log.d(TAG,"Se retorna la factura");
+        Log.d(TAG,"Ha finalizado findAllInvoice");
+        return invoiceWS;
     }
 
     /**

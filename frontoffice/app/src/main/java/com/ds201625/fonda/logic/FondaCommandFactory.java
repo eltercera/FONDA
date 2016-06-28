@@ -8,6 +8,8 @@ import com.ds201625.fonda.logic.Commands.CommensalCommands.DeleteTokenCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AddFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllFavoriteRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.OrderCommands.LogicCurrentOrderCommand;
+import com.ds201625.fonda.logic.Commands.OrderCommands.LogicHistoryVisitsCommand;
+import com.ds201625.fonda.logic.Commands.OrderCommands.LogicInvoiceCommand;
 import com.ds201625.fonda.logic.Commands.ProfileCommands.CreateProfileCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.AllRestaurantCommand;
 import com.ds201625.fonda.logic.Commands.FavoriteCommands.DeleteFavoriteRestaurantCommand;
@@ -130,6 +132,13 @@ public class FondaCommandFactory {
         return new LogicCurrentOrderCommand();
     }
 
+    public static Command logicInvoiceCommand() {
+        return new LogicInvoiceCommand();
+    }
+
+    public static Command logicHistoryVisitsCommand() {
+        return new LogicHistoryVisitsCommand();
+    }
     public static Command addReservationCommand() {
         return new AddReservationCommand();
     }
